@@ -1,0 +1,63 @@
+\documentclass[11pt, reqno, openany]{memoir}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage[english]{babel}
+\usepackage{fullpage}
+\usepackage{lmodern}
+%\usepackage{mathpple}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools, stmaryrd}
+\usepackage{upgreek}
+\usepackage{enumerate}
+\usepackage[all]{xy}
+\usepackage{tikz-cd}
+\usepackage{tikz}
+\usepackage{comment, todonotes}
+\usepackage{xcolor} 
+\usepackage{showkeys}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks = true,
+  linkcolor  = black
+}
+\usepackage{cleveref}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma} 
+\newtheorem{axiom}[theorem]{Axiom} 
+\newtheorem{proposition}[theorem]{Proposition} 
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition} 
+\newtheorem{remark}[theorem]{Remark} 
+\newtheorem{example}[theorem]{Example} 
+\newtheorem{notation}[theorem]{Notation} 
+\renewcommand\qedsymbol{\(\blacksquare\)} 
+
+%\parskip=5pt plus 1pt
+
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Obj}{Obj}
+\DeclareMathOperator{\Mor}{Mor}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Id}{id}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\codom}{codom}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Tr}{tr}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Char}{char}
+\DeclareMathOperator{\sign}{sign}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\isoto}{\xrightarrow{\raisebox{-.5ex}[0ex][0ex]{$\sim$}}}
+\newcommand{\mono}{\hookrightarrow}
+\newcommand{\epi}{\twoheadrightarrow}
+\newcommand{\cat}{\mathsf}
+\newcommand{\iso}{\cong} % changed from simeq
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}

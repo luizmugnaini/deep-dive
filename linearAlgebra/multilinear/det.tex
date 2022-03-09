@@ -1,0 +1,165 @@
+\section{Determinants and Inverse Matrices}
+
+\begin{definition}\label{def: wedge map}
+  Let \(f: V \to L\) be a \(k\)-linear map. We define the induced linear map
+  \(f^{\wedge d}: \Lambda^d(V) \to \Lambda^d(W)\) by
+  \[
+    v_1 \wedge \dots \wedge v_d \xmapsto{f^{\wedge d}}
+    f(v_1) \wedge \dots \wedge f(v_d).
+  \] 
+\end{definition}
+
+\begin{proposition}\label{prop: wedge map composition}
+  Let \(f: V \to W\) and \(g: W \to L\) be \(k\)-linear maps. Then the
+  composition \(g f: V \to L\) satisfy
+  \[
+    (g f)^{\wedge d} = g^{\wedge d} f^{\wedge d}.
+  \]
+\end{proposition}
+
+\begin{proof}
+  Notice that for any given \(v = v_1 \wedge \dots \wedge v_d \in \Lambda(V)\)
+  we have
+  \[
+    (g f)^{\wedge d}(v) = (g f)^{\wedge d}(v_1) \wedge \dots \wedge (g f)(v_d)
+    = g(f(v_1)) \wedge \dots \wedge g(f(v_2))
+    = (g^{\wedge d} f^{\wedge d})(v).
+  \] 
+  Therefore \((g f)^{\wedge d} = g^{\wedge d} f^{\wedge d}\).
+\end{proof}
+
+\begin{definition}[Determinant]\label{def: determinant}
+  Let \(V\) be an \(n\)-dimensional \(k\)-vector space and \(f \in \End(V)\).
+  Since \(\Lambda^n(V)\) is 1-dimensional, \(f^{\wedge n} \in \End(\Lambda^n
+  (V))\) is a multiplication by some scalar in \(\Lambda^n(V)\).  We define the
+  determinant of the \(k\)-linear endomorphism \(f\) as the element \(\det(f)
+  \in \Lambda^n(V)\) such that
+  \[
+    f^{\wedge n}(\omega) = \det(f) \omega.
+  \] 
+\end{definition}
+
+\begin{proposition}[Composition determinant]\label{prop: comp det}
+  Let \(f, g \in \End(V)\) where \(V\) is a \(n\)-dimensional vector space, then
+  \(\det(g f) = \det(g) \det(f)\).
+\end{proposition}
+
+\begin{proof}
+  From \cref{prop: wedge map composition}, \((g f)^{\wedge n}(\omega) =
+  g^{\wedge n}(f^{\wedge n}(\omega))\). From \cref{def: determinant} we find
+  \(\det(g f) \omega = \det(g) \det(f) \omega\), hence \(\det(g f) = \det(g)
+  \det(f)\).
+\end{proof}
+
+\begin{proposition}[Identity determinant]\label{prop: id det}
+  Let \(V\) be an \(n\)-dimensional vector space. The identity map \(\Id_V \in
+  \End(V)\) is such that \(\det(\Id_V) = 1\).
+\end{proposition}
+
+\begin{proof}
+  Notice that \(\Id_V^{\wedge n}(\omega) = \omega\) and from \cref{def:
+  determinant} we have \(\Id_V^{\wedge n}(\omega) = \det(\Id_V) \omega\). Hence
+  \(\det(\Id_V) = 1\).
+\end{proof}
+
+\begin{proposition}[Dual determinant]
+  Let \(V\) be a finite dimensional vector space and \(f \in \End(V)\). Then
+  \(\det f = \det f^*\), where \(f^*\) is the dual map of \(f\).
+\end{proposition}
+
+\todo[inline]{Dual determinant proof}
+
+\begin{lemma}\label{lem: not surjective 0 det}
+  Let \(V\) be an \(n\)-dimensional vector space. If \(f \in \End(V)\) is not
+  surjective, then \(\det f = 0\).
+\end{lemma}
+
+\begin{proof}
+  Let \(\im f = W \subseteq V\). Since \(f\) is not surjective, then \(W\) is a
+  subspace with \(\dim(W) < n\), hence \(\Lambda^n(W) = 0\) because any
+  collection with a number of elements greater than \(\dim(W)\) is linearly
+  dependent on \(W\), and from \cref{prop: li iff wedge nonzero} their wedge
+  product is equal to zero. Given any nonzero \(\omega = v_1 \wedge \dots \wedge
+  v_n \in \Lambda^n(V)\) we find that \(f^{\wedge n}(\omega) = f(v_1) \wedge
+  \dots \wedge f(v_n) \in \Lambda^n(W) = 0\), since \(\im f = W\), and therefore
+  \(f^{\wedge n}(\omega) = 0\). Moreover, since \(f^{\wedge n}(\omega) = \det(f)
+  \omega\) and \(\omega \neq 0\), it follows that \(\det(f) = 0\).
+\end{proof}
+
+\begin{proposition}[Isomorphism determinant]
+  \label{prop: iso det}
+  Let \(f \in \End(V)\) where \(V\) is an \(n\)-dimensional vector space. Then
+  \(f\) is an isomorphism if and only if \(\det f \neq 0\).
+\end{proposition}
+
+\begin{proof}
+  Let \(\{v_1, \dots, v_n\}\) be a basis for \(V\). From \cref{prop: li iff
+  wedge nonzero}, \(v = v_1 \wedge \dots \wedge v_n \neq 0\).  Suppose first
+  that \(f\) is an isomorphism, then \(f^{\wedge n}(v) = \det(f) v\) implies
+  \(\det f \neq 0\).
+
+  Suppose now that \(\det f \neq 0\). From \cref{lem: not surjective 0 det} we
+  find that \(f\) is surjective. Let \(\omega \in \Lambda^n(V)\) be such that
+  \(f^{\wedge n}(\omega) = 0\), then from the fact that \(f^{\wedge n}(\omega) =
+  \det(f) \omega\) and \(\det f \neq 0\), it follows that \(\omega = 0\). Hence
+  \(\ker f^{\wedge n} = 0\) and therefore \(f^{\wedge n}\) is injective. This
+  proves that \(f^{\wedge n}\) is an isomorphism.
+\end{proof}
+
+\begin{proposition}[Matrix determinant]
+  \label{prop: matrix det}
+  Let \(V\) be an \(n\)-dimensional \(k\)-vector spaces and \(f \in \End(V)\).
+  Let \(A: k^n \to k^n\) be the matrix representation of \(f\) and \(a_{i, j}
+  \in k\) be the entries of \(A\), where \(1 \leq i, j \leq n\). Then
+  \[
+    \det A = \sum_{\sigma \in \mathcal S_n} \sign(\sigma) a_{\sigma(1), 1}
+    a_{\sigma(2), 2} \dots a_{\sigma(n), n}.
+  \]
+\end{proposition}
+
+\begin{proof}
+  Let me show you something interesting. Suppose \(f: V \to L\) (the specified
+  case for \cref{prop: matrix det} is \(L = V\)). I want to show you that in
+  order to define the determinant we'll need \(f\) to be an endomorphism in
+  \(V\), otherwise the determinant cannot be fully well-defined. Let \(A =
+  [a_{i, j}]\) with respect to the basis \(\{v_j\}_{j=1}^n\) of \(V\). From
+  \cref{def: determinant} we have that
+  \[
+    \det(A) v_1 \wedge \dots \wedge v_n = A v_1 \wedge \dots \wedge A v_n
+  \] 
+  since \(A v_j = \sum_{i = 1}^n a_{i, j} v_i\) (see \cref{def: matrix for a
+  linear map}) then we can substitute to the previous equation to obtain
+  \begin{equation}\label{eq: det sum}
+    \det(A) v_1 \wedge \dots \wedge v_n 
+    = \sum_{i_1 = 1}^n a_{i_1, 1} v_{i_1} \wedge \dots \wedge \sum_{i_n = 1}^n
+    a_{i_n, n} v_{i_n}
+    = \sum_{1 \leq i_1, \dots, i_n \leq n} \prod_{j=1}^n a_{i_j, j} (v_{i_1}
+    \wedge \dots \wedge v_{i_n}).
+  \end{equation}
+  However, notice that if \(i_j = i_{j'}\) for some \(1 \leq j, j' \leq n\) then
+  \(v_{i_1} \wedge \dots \wedge v_{i_n} = 0\), from antisymmetry.
+  Therefore we can write \cref{eq: det sum} as a sum of permutations of the set
+  \(\{i_1, \dots, i_n\} = \{1, \dots, n\}\), that is
+  \begin{align*}
+    \det(A) v_1 \wedge \dots \wedge v_n
+    &= \sum_{\sigma \in \mathcal S_n} a_{\sigma(1), 1} \dots a_{\sigma(n), n}
+    (v_{\sigma(1)} \wedge \dots \wedge v_{\sigma(n)}) \\
+    &= \sum_{\sigma \in \mathcal S_n} \sign(\sigma) a_{\sigma(1), 1} \dots
+    a_{\sigma(n), n} (v_1 \wedge \dots \wedge v_n).
+  \end{align*}
+  Since \(v_1 \wedge \dots \wedge v_n \neq 0\), it follows that
+  \[
+    \det A = \sum_{\sigma \in \mathcal S_n} \sign(\sigma) a_{\sigma(1), 1}
+    a_{\sigma(2), 2} \dots a_{\sigma(n), n}.
+  \] 
+\end{proof}
+
+\begin{corollary}
+  Another equivalent way of writing the determinant of \(A\) is 
+  \[
+    \det A = \sum_{\sigma \in \mathcal S_n} \sign(\sigma) a_{1, \sigma(1)} a_{2,
+    \sigma(2)} \dots a_{n, \sigma(n)}.
+  \]
+\end{corollary}
+
+\todo[inline]{Useful determinant theorems, matrix determinant, etc}

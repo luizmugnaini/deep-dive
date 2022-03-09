@@ -1,0 +1,434 @@
+\section{Bases and Dimensions}
+
+\begin{definition}
+  Let \(V\) a \(k\)-vector space and \(S \subseteq V\) a subset. By the
+  universal property of free vector spaces, the inclusion \(S \hookrightarrow
+  V\) induces the unique \(k\)-linear morphism \(f : k^{\oplus S} \to V\). Then
+  we can classify the set \(S\) in terms of \(f\) as:
+  \begin{enumerate}[I.]
+    \item Linearly independent, in the case where \(f\) is injective, and
+      linearly dependent otherwise.
+    \item Generating (or spanning) if \(f\) is surjective.
+    \item Basis if \(f\) is an isomorphism.
+  \end{enumerate}
+\end{definition}
+
+\begin{proposition}
+  A set \(S \subseteq V\) is linearly independent if and only if for all subset
+  \(\{v_i\}_i \subseteq S\) and scalars \(\{a_i\}_i \subseteq k\), the equation
+  \(\sum_i a_i v_i = 0\) implies \(a_i = 0\) for all index \(i\).
+\end{proposition}
+
+\begin{definition}[Subspace spanned]
+  Let \(V\) be a \(k\)-vector space. Given a set \(S \subseteq V\), we define
+  the subspace spanned by \(S\) to be
+  \[
+    \mathrm{span}(S) = \im(k^{\oplus S} \to V)
+  \]
+\end{definition}
+
+\begin{proposition}
+  Let \(V\) be a \(k\)-vector space and the set \(S \subseteq V\). Then \(S\) is
+  a basis for \(V\) if and only if for all \(v \in V\) there exists a unique
+  tuple \((a_s)_{s \in S} \subseteq k\) such that there are only finitely many
+  \(a_s \neq 0\) and \(\sum_{s \in S} a_s s = v\).
+\end{proposition}
+
+\begin{lemma}[Zorn's Lemma]
+  Let \(X\) be a set and consider the partial order relation \((\vdash)
+  \subseteq X \times X\), so that \(\vdash\) is reflexive for all \(x \in X\),
+  antisymmetric for all \(x, y \in X\), and transitive for all \(x, y, z \in
+  X\). Moreover, if \(S \subseteq X\) is such that only one of the propositions:
+  \(x \vdash y\) or \(y \vdash x\) is true for every \(x, y \in S\); then there
+  exists an element \(z \in X\) for which \(x \vdash z\) for all choices of \(x
+  \in X\). Then there exists an element \(m \in X\) for which \(m \vdash x\) if
+  and only if \(x = m\).
+\end{lemma}
+
+\begin{theorem}
+  Every vector space has a basis.
+\end{theorem}
+
+\begin{proof}
+  Our initial goal is to construct a set \(\mathcal A\) together with a partial
+  order and then a set \(\mathcal B\) subset of the first for which the last
+  condition of Zorn's lemma is satisfied. Let then \(\mathcal A := \{X \subseteq
+  V : X \text{ linearly independent}\}\), partially order under inclusion.
+  Moreover, let \(\mathcal B \subseteq \mathcal A\) so that for every two
+  elements \(X, Y \in \mathcal B\) we have \(X \subseteq Y\) or (exclusive) \(Y
+  \subseteq X\).
+
+  To show that indeed \(\mathcal B\) satisfies the last condition, define \(Z\)
+  to be the inclusion of all sets in \(\mathcal B\). \(Z\) is linearly
+  independent so that \(Z \in \mathcal A\). We prove such statement: given any
+  finite subset \(\{v_1, \dots, v_n\} \subseteq Z\) then let the sets \(X_i \in
+  \mathcal C\) be such that \(v_i \in X_i\) and then label the vectors and
+  corresponding sets such that \(X_i \subseteq X_{i+1}\) and therefore \(X_1
+  \subseteq  X_2 \subseteq  \dots \subseteq X_n\). Then, we have \(\{v_1, \dots,
+  v_n\} \subseteq X_n \in \mathcal C\), which implies in \(\{v_1, \dots, v_n\}
+  \subseteq Z\) being linearly independent regardless of the choice of such
+  vectors. This finishes the proof that \(Z \in \mathcal A\) and \(X \subseteq
+  Z\) for every \(X \in \mathcal C\), which shows that \(Z\) satisfies the last
+  condition.
+
+  Then by means of Zorn's lemma we conclude that there exists a set \(S \in
+  \mathcal A\) such that \(S \subseteq X \in \mathcal A\), which implies in \(S
+  = X\).  Since \(S \in \mathcal A\) then \(k^{\oplus S} \to V\) is injective.
+  Now we show that it is also surjective. Suppose not, so that there exists a
+  vector \(v \in V\) such that \(v \not\in \mathrm{Span}(S)\), then \(S \cup
+  \{v\} \in \mathcal A\) (linealy independent) but also \(S \subseteq S \cup
+  \{v\}\) but \(S \neq S \cup \{v\}\), which is a contradiction obtained by
+  supposing that \(S\) does not span \(V\). Thus we conclude that
+  \(\mathrm{Span}(S) = V\) and moreover \(k^{\oplus S} \to V\) is an
+  isomorphism, so that \(S\) is a basis.
+\end{proof}
+
+\begin{corollary}
+  Every vector space is isomorphic to \(k^{\oplus S}\) for some set \(S\).
+\end{corollary}
+
+\begin{proposition}
+  Let \(B\) be a basis of the \(k\)-vector space \(V\). Then for every
+  \(k\)-vector space \(W\) there is a natural isomorphism of vector spaces
+  \[
+    \Hom_{\cat{Vect}_k}(V, W) \iso \prod_{b \in B} W
+  \]
+\end{proposition}
+
+\begin{proof}
+  We show that the map
+  \[
+    (f: V \to W) \longmapsto (f(b))_{b \in B}
+  \]
+  is an isomorphism. First, it is injective: let \(f, g \in \Hom(V, W)\);
+  suppose that \(f = g\) so that obviously \((f(b))_{b \in B} = (g(b))_{b \in
+  B}\) since \(f(b) = g(b)\) for all \(b \in B\); suppose now that \((f(b))_{b
+  \in B} = (g(b))_{b \in B}\), since \(B\) is a basis on \(V\) then, given any
+  \(v \in V\), we can write it as \(v = \sum_{b \in B} a_b b\) where \(a_b \neq
+  0\) only finitely many and \(a_b \in k\), then
+  \[
+    f(v) = f\bigg(\sum_{b \in B} a_b b\bigg) = \sum_{b \in B} a_b f(b)
+    = \sum_{b \in B} a_b g(b) = g\bigg(\sum_{b \in B} a_b b\bigg) = g(v)
+  \]
+  thus indeed the mapping is injective. Now we show that it is surjective:
+  notice that \(|W|^{|B|} = \left| \prod_{b \in B} W \right|\) and since the
+  morphism of \(\Hom(V, W)\) are completely determined by its image under \(B
+  \subseteq V\) then we conclude that \(|\Hom(V, W)| = |W|^{|B|}\), thus we can
+  create a mapping which satisfies the surjectivity.
+\end{proof}
+
+\begin{proposition}
+  Let \(\alpha : S \to T\) be a map between sets. Then the induced map
+  \(\alpha_\ast : k^{\oplus S} \to k^{\oplus T}\) is such that
+  \begin{enumerate}[i.]
+    \item \(\alpha_\ast\) is an monomorphism if \(\alpha\) is injective.
+    \item \(\alpha_\ast\) is an epimorphism if \(\alpha\) is surjective.
+    \item \(\alpha_\ast\) is an isomorphism if \(\alpha\) is bijective.
+  \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+  For the first, let \(\alpha\) be injective, then given \(f \in k^{\oplus S}\)
+  and define the finite set \(S_f := S \setminus \ker f\). Now we construct a
+  unique function \(g \in k^{\oplus T}\) defined such that \(g(t) \neq 0\) iff
+  \(t \in \alpha(S_f)\) (well defined since \(\alpha(S_f)\) is finite by the
+  injectivity of \(\alpha\)), and moreover the condition \(f(s) =
+  g(\alpha(s))\) (uniqueness), then our mapping \(\alpha_{\ast}\) can be
+  defined as \(f \mapsto g\), which is surely a monomorphism and well defined.
+
+  For the second proposition, let \(\alpha\) be surjective, then from the same
+  map as before, given any function \(g \in k^{\oplus T}\), let  \(T_g := T
+  \setminus \ker g\) then for every \(t \in T_g\) we chose one \(s \in
+  \alpha^{-1}(t)\) so that for some function \(f \in k^{\oplus T}\) defined by
+  \(f(s) = g(\alpha(s)) = g(t)\) and moreover \(f(s) \neq 0\) iff \(s \in
+  \alpha^{-1}(t)\) for some \(t \in T_g\) (thus \(f\) is well defined, since
+  \(T_g\) is finite and we are taking only one corresponding \(s\) for each \(t
+  \in T_g\)). Thus indeed \(f \xmapsto{\alpha_\ast} g\) is surjective.
+
+  The last proposition comes trivially from the last two.
+\end{proof}
+
+\begin{proposition}
+  Let the surjective \(k\)-linear morphism \(f: V \hookrightarrow W\). There
+  exists an injective \(k\)-linear morphism \(g: W \twoheadrightarrow V\) such
+  that \(f \circ g = \Id_{W}\).
+\end{proposition}
+
+\begin{proof}
+  Just take the mapping \(w \overset g \longmapsto v \in f^{-1}(w) \in V\), then
+  \(w \xmapsto g v \xmapsto f w\) and thus \(f \circ g = \Id_W\).
+\end{proof}
+
+\begin{proposition}
+  Let the injective \(k\)-linear morphism \(f: V \hookrightarrow W\). There
+  exists a surjective morphism \(g : W \twoheadrightarrow V\) such that \(g
+  \circ f = \Id_V\).
+\end{proposition}
+
+\begin{proof}
+  Given any \(v \in V\), we want \(g(f(v)) = g(w) = v\), but since \(f^{-1}(w)\)
+  is a singleton, we can simply make the well defined mapping \(w \xmapsto g v\)
+  for all \(w \in \im(f)\). With this unique condition we already have the
+  wanted \(g \circ f = \Id_V\). Moreover, given any \(v \in V\), there must
+  exist \(w \in W\) (in fact we could specify \(w \in \im(f)\), but here we can
+  be more general) such that \(g(w) = v\), thus \(g\) is surjective.
+\end{proof}
+
+\begin{proposition}
+  Let \(k\)-vector spaces \(V\) and \(W\). There exists injective linear
+  morphism \(V \hookrightarrow W\) if and only if there exists a surjective
+  morphism \(W \twoheadrightarrow V\).
+\end{proposition}
+
+\begin{proof}
+  The last two propositions.
+\end{proof}
+
+\begin{theorem}\label{thm: iso of basis}
+  Let sets \(S\) and \(T\). The following propositions are equivalent:
+  \begin{enumerate}[I.]
+    \item There exists injective linear morphism \(k^{\oplus S} \hookrightarrow
+      k^{\oplus T}\).
+    \item There exists surjective linear morphism \(k^{\oplus T}
+      \twoheadrightarrow k^{\oplus S}\).
+    \item There exists an injection \(S \hookrightarrow T\).
+    \item There exists a surjective map \(T \twoheadrightarrow S\) or \(S =
+      \varnothing\).
+  \end{enumerate}
+\end{theorem}
+
+\begin{lemma}
+  Let \(V\) a \(k\)-vector space, \(B \subseteq V\) a basis and \(S \subseteq
+  V\) a spanning set. Then for all \(b \in B\) there exists \(a \in A\) such
+  that \((B \setminus \{b\}) \cup \{a\}\) is a basis.
+\end{lemma}
+
+\begin{proof}
+  Let \(b \in B\) be any element. Suppose, for the sake of contradiction, that
+  \(A \subseteq \mathrm{span}(B \setminus \{b\})\) then \(V = \mathrm{span}(A)
+  \subseteq \mathrm{span}(B \setminus \{b\})\), which is a contradiction because
+  \(B\) is said to be a basis for \(V\); thus \(A \not\subseteq
+  \mathrm{span}(B\setminus \{b\})\). Let \(a \in A \setminus \mathrm{span}(B
+  \setminus \{b\})\), then consider the set \((B \setminus \{b\}) \setminus
+  \{a\}\). Let then \(a = cb + c_1 b_1 + \dots + c_n b_n\) with \(c \neq 0\)
+  from the construction of \(a\) (that is, \(a \not\in \mathrm{span}(B
+  \setminus \{b\})\)). This way we can make
+  \[
+    b = a/c - c_1/c b_1 - \dots - c_n/c b_n\
+    \text{ therefore }\ b \in \mathrm{span}((B \setminus \{b\}) \cup \{a\})
+  \]
+  which makes \((B \setminus \{b\}) \cup \{a\}\) a basis for \(V\).
+\end{proof}
+
+\begin{lemma}
+  Let \(B\) and \(B'\) be bases the \(k\)-vector space \(V\), then there exists
+  a bijection \(B \iso B\), and thus \(|B| = |B'|\).
+\end{lemma}
+
+\begin{proof}
+  From theorem \cref{thm: iso of basis} we see that since exists injective
+  \(k\)-linear morphism \(V \hookrightarrow V\), then exists injective map \(B
+  \hookrightarrow B'\) and also surjective map \(B \twoheadrightarrow B'\). From
+  Cantor-Schröder-Bernstein theorem we see that there exists bijection \(B \iso
+  B'\).
+\end{proof}
+
+\begin{proposition}\label{prop: li to basis}
+  Let \(V\) be a \(k\)-vector space and \(S \subseteq V\) be any linearly
+  independent set. There exists a set \(B \supseteq S\) such that \(B\) is a
+  basis of \(V\).
+\end{proposition}
+
+\todo[inline]{Prove: linearly independent \(\to\) basis}
+
+\subsection{Matrices and changes of base}
+
+\begin{definition}[Change of basis operator]
+  \label{def: change of basis matrix}
+  Let \(\mathcal C : V \to V\) be a linear operator of a finite dimensional
+  \(k\)-vector space, \(V \iso k^n\), defined by the mapping \([v]_{B_1}
+  \xmapsto{\mathcal C} [v]_{B_2}\), where \([v]_{B_1}\) and \([v]_{B_2}\) are the
+  representations of the vector \(v\) in the basis \(B_1\) and \(B_2\) of \(V\).
+  We define the matrix representation \(C_{B_1, B_2} : k^n \to k^n\) of the
+  linear operator \(\mathcal C\) to be the \emph{change of basis matrix}. Then
+  if \(B_1 = \{e_i\}_{i=1}^n\), and \(B_2 = \{e'_j\}_{j=1}^n\), and \(C_{B_1,
+  B_2} = [c_{i, j}]\), then the coefficients \(c_{i, j}\) of \(C_{B_1, B_2}\)
+  must be such that
+  \[
+    v = \sum_{i=1}^n a_i e_i = \sum_{j=1}^n b_j e'_j
+    = \sum_{j=1}^n b_j \left( \sum_{i=1}^n c_{i, j} e_i \right)
+    = \sum_{i=1}^n \left( \sum_{j=1}^n c_{i, j} b_j \right) e_i
+  \]
+\end{definition}
+
+\begin{proposition}[Change of basis, linear morphism]
+  \label{prop: change of basis, linear morphism}
+  Let \(f : V \to W\) be a \(k\)-linear morphism of finite dimensional spaces,
+  \(V \iso k^n\) and \(W \iso k^m\). Let \(M_{B, S} : k^n \to k^m\) and \(M_{B',
+  S'}\) be the matrix representation of \(f\) in the basis \(B\) and \(S\),
+  where \(B\) is a basis of \(V\) and \(S\) a basis of \(W\). Let now \(B'\) and
+  \(S'\) be basis for \(V\) and \(S\). Then, the matrix representation of \(f\)
+  in the basis \(B', S'\), that is, \(M_{B', S'} : k^n \to k^m\), is given by
+  the conjugation
+  \[
+    M_{B', S'} = C_{S, S'}^{-1} M_{B, S} C_{B, B'}
+  \]
+  where \(C_{S, S'}\) and \(C_{B, B'}\) are the change of basis matrix
+  representations defined in \cref{def: change of basis matrix}.
+\end{proposition}
+
+\begin{proof}
+  Consider the function \(\mathcal{C}_{S, S'}^{-1} \circ f \circ \mathcal{C}_{B,
+  B'} : V \to W\), then we have the mapping
+  \[
+    [v]_B \xmapsto{\mathcal{C}_{B, B'}} [v]_{B'}
+    \xmapsto f [f([v]_{B'})]_S
+    \xmapsto{\mathcal{C}_{S, S'}} [f([v]_{B'})]_{S'}
+  \]
+  hence the statement follows directly from \cref{prop: matrix of the
+  composition}.
+\end{proof}
+
+\begin{corollary}\label{cor: change of basis, linear operator}
+  In particular, if \(f : V \to V\) is a \(k\)-linear operator, and \(B, B'\)
+  are basis of \(V\), then given the matrix representation of \(f\) in base
+  \(B\), namely, \(M_B\), we have that the matrix representation of \(f\) in
+  base \(B'\) is given by
+  \[
+    M_{B'} = C^{-1} M_B C
+  \]
+  where \(C\) is the matrix representation of the change of basis operator from
+  base \(B\) to \(B'\).
+\end{corollary}
+
+\subsection{Dimension and Rank plus Nullity Theorem}
+
+\begin{definition}
+  Let \(V\) be a \(k\)-vector space. We define the dimension of \(V\) as
+  \[
+    \dim_k(V) = |B|
+  \]
+  for \(B \subseteq V\) basis of \(V\). In particular, if \(\dim_k(V) < \infty\)
+  we say that \(V\) is a finite dimensional \(k\)-vector space.
+\end{definition}
+
+\begin{lemma}\label{lem: rank plus nullity lemma}
+  Let \(V\) be a \(k\)-vector space and \(W \subseteq V\) a \(k\)-subspace, then
+  \[
+    \dim_k(V) = \dim_k(W) + \dim_k(V/W).
+  \]
+\end{lemma}
+
+\begin{proof}
+  Let \(B_W = \{w_i\}_{i \in I}\) be a basis for \(W\) and  \(B_{V/W} =
+  \{q_j\}_{j \in J}\) a basis for \(V/W\). Then \(\forall j \in J, \exists v_j
+  \in V : q_j = [v_j] \in V/W\). Define the set \(A := \{v_j : j \in J\}\),
+  then the map \(\varphi : J \to A\) with the mapping \(j \mapsto v_j\) is
+  surely surjective; moreover, if \(j, t \in J\) and  \(j \neq t\), then \(q_j
+  \neq q_t\) since \(B_{V/W}\) is a basis, hence \([v_j] \neq [v_t]\) and the
+  map \(\varphi\) is injective. Then \(\varphi\) is a bijection and thus \(|A| =
+  |J|\). Now we show that \(A\) is a linearly independent set: let \(J_t
+  \subseteq J\) be a finite subset of \(J\) with \(t\) elements and \(\alpha_1,
+  \dots, \alpha_t \in k\) be such that \(\sum_{\ell=1}^t \alpha_\ell v_{j_\ell}
+  = 0 \in V\) then \(\sum_{\ell=1}^t \alpha_\ell [v_{j_\ell}] = \big[
+  \sum_{\ell=1}^t \alpha_\ell v_{j_\ell} \big] = [0] \in V/W\) but notice that
+  the set of classes \([v_j] : v_j \in A\) is linearly independent (from the
+  fact that this corresponds to the basis \(B_{V/W}\)), hence we must have
+  \(\alpha_\ell = 0\) for all \(1 \leq \ell \leq t\), thus \(A\) is linearly
+  independent.
+
+  Consider now the set \(A \cup B_W\), we'll show that this is a basis for
+  \(V\). First we show that \(A \cup B_W\) is linearly independent: let \(I_s
+  \subseteq I\) be the finite set with \(s\) indices, and \(J_t \subseteq J\) be
+  the finite set with \(t\) indices, and \(\alpha_1, \dots \alpha_s, \beta_1,
+  \dots, \beta_t \in k\), be such that \(\sum_{\ell=1}^s \alpha_\ell w_{i_\ell}
+  + \sum_{r=1}^t \beta_r v_{j_r} = 0 \in V\) if we now take the module with
+  respect to \(W\) (as we did before with \(A\)) we see that
+  \[
+    [0] = \sum_{\ell=1}^s\alpha_\ell [w_{i_\ell}]
+    + \sum_{r=1}^t \beta_r [v_{j_r}] = \bigg[\sum_{r=1}^t \beta_r v_{j_r}\bigg]
+    \in V/W
+  \]
+  since \(w_{i_\ell} \in W\) and thus \([w_{i_\ell}] = [0]\); since \(B_{V/W}\)
+  (and \([v_{j_r}] = q_{j_r}\)) is linearly independent, we see that
+  necessarily \(\beta_r = 0\) for all \(1 \leq r \leq t\). Therefore, we
+  conclude that \(\sum_{\ell=1}^s \alpha_\ell w_{i_\ell} = 0\) and since \(B_W\)
+  is linearly independent, we conclude that \(\alpha_{\ell} = 0\) for all  \(1
+  \leq \ell \leq s\). For the final part, we need to show that \(V =
+  \mathrm{span}(A \cup B_{W})\): let \(v \in V\) be any element, then \([v] \in
+  V/W = \mathrm{span}(B_{V/W})\) then \([v] = \sum_{\ell=1}^t \alpha_\ell
+  [v_{j_\ell}]\) for \(J_t \subseteq J\) and \(\alpha_1, \dots, \alpha_t \in
+  k\); this implies that \([v] - \big[ \sum_{\ell=1}^t \alpha_\ell v_{j_\ell}
+  \big] = [0]\) and thus \(v - \sum_{\ell=1}^t \alpha_\ell v_{j_\ell} \in W =
+  \mathrm{span}(B_{W})\); hence for some \(\beta_1, \dots, \beta_s \in k\) and
+  \(I_s \subseteq I\) we have \(v - \sum_{\ell=1}^t \alpha_\ell v_{j_\ell} =
+  \sum_{r=1}^s \beta_r w_{i_r}\) hence \(v \in \mathrm{span}(A \cup B_{W})\) and
+  thus \(A \cup B_W\) is a basis for \(V\).
+
+  We'll now show that \(A \cap B_W = \emptyset\): suppose \(u \in A \cap B_W\),
+  then \(\exists i \in I, j \in J : u = w_i \text{ and } u = v_j\) thus we have
+  \(q_j = [v_j] = [w_i] = [0] \in V/W\) which cannot be true since \(B_{V/W}\)
+  is a basis. Therefore \(|A \cup B_W| = |A| + |B_W| = |J| + |B_W| =  |B_{V/W}|
+  + |B_W| = \dim_k(V)\) as wanted.
+\end{proof}
+
+\begin{theorem}[Rank plus nullity]\label{thm: rank plus nullity}
+  Let \(L : V \to W\) be a \(k\)-linear morphism, then
+  \[
+    \dim_k(V) = \dim_k(\ker(L)) + \rank(L).
+  \]
+\end{theorem}
+
+\begin{proof}
+  Notice that from the first isomorphism theorem we have \(V/\ker(L) \iso
+  \im(L)\) then it follows that \(\dim_k(V/\ker(L)) = \dim_k(\im(L)) =
+  \rank(L)\) from the fact that \(\ker(L)\) is a \(k\)-subspace of \(V\), we
+  conclude from \cref{lem: rank plus nullity lemma} that \(\dim_k(V) =
+  \dim_k(\ker(L)) + \dim_k(V/\ker(L)) = \dim_k(\ker(L)) + \rank(L)\).
+\end{proof}
+
+\begin{corollary}
+  Let \(V\) and \(W\) be \(k\)-vector spaces and \(L : V \to W\) be a
+  \(k\)-linear morphism. Then we have
+  \begin{enumerate}[(a).]
+    \item If \(L\) is injective, then \(\dim_k(V) \leq \dim_k(W)\).
+    \item If \(L\) is surjective, then \(\dim_k(V) \geq \dim_k(W)\).
+    \item If \(L\) is an isomorphism then \(\dim_k(V) = \dim_k(W)\).
+  \end{enumerate}
+\end{corollary}
+
+\begin{proof}
+  (a) If \(L\) is injective, then \(\ker(L) = 0\) and thus \(\dim_k(\ker(L)) =
+  0\) and from \cref{thm: rank plus nullity} we have \(\dim_k(V) = \rank(L)\) and
+  since \(\rank(L) \leq \dim_k(W)\) since \(\im(L) \subseteq W\) then we
+  conclude that the proposition is true. (b) Since \(L\) is surjective, then
+  \(\im(L) = W\) and in particular \(\rank(L) = \dim_k(W)\), thus \cref{thm: rank
+  plus nullity} implies that  \(\dim_k(V) = \dim_k(\ker(L)) + \dim_k(W) \geq
+  \dim_k(W)\). (c) Already proved before, but also comes from the last two
+  propositions.
+\end{proof}
+
+\begin{corollary}\label{cor: equal dim - iso conditions}
+  Let \(L : V \to W\) be a \(k\)-linear morphism of finite vector spaces \(V\)
+  and \(W\) such that \(\dim_k(V) = \dim_k(W)\). Then the following propositions
+  are equivalent:
+  \begin{enumerate}[(a).]
+    \item \(L\) is an isomorphism.
+    \item \(L\) is injective.
+    \item \(L\) is surjective.
+  \end{enumerate}
+\end{corollary}
+
+\begin{proof}
+  (b \(\Rightarrow\) c) Suppose \(L\) injective, then from \cref{thm: rank plus
+  nullity} we have \(\dim_k(V) = \rank(L)\) since \(\dim_k(\ker(L)) = 0\) then
+  we have \(\dim_k(W) = \rank(L)\) but then \(\im(L) = W\) and therefore \(L\)
+  is a surjective linear map. (c \(\Rightarrow\) a) Suppose that \(L\) is
+  surjective, from from \cref{thm: rank plus nullity} we have \(\dim_k(V) =
+  \dim_k(\ker(L)) + \rank(L) = \dim_k(\ker(L)) + \dim_k(W)\), but from
+  hypothesis we have \(\dim_k(V) = \dim_k(W)\), then, if the given vector spaces
+  \(V\) and \(W\) are finite dimensional we have \(\dim_k(\ker(L)) = 0\) and
+  thus \(\ker(L)\) is the zero space, which implies that \(L\) is injective,
+  hence an isomorphism.
+\end{proof}
+

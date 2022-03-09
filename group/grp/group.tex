@@ -1,0 +1,126 @@
+\section{Group definitions}
+
+Lets recall \cref{def: group} and demystify it in the following definition.
+
+\begin{definition}[Group]
+  A group \(G\) is a groupoid \(\cat G\) with one object \(*\). The elements of
+  the group are the morphisms \(\Aut_{\cat G}(*)\). From axioms of \cref{def:
+  category}:
+  \begin{enumerate}[(G1)]
+    \item An identity element \(e = \Id_*\).
+    \item An associative binary operation \(G \times G \to G\), commonly denoted
+      by juxtaposition.
+    \item For all \(g \in G\) there exists an inverse element \(g^{-1} \in G\)
+      such that \(g g^{-1} = e = g^{-1} g\).
+  \end{enumerate}
+\end{definition}
+
+\begin{proposition}
+  The identity element of a group is unique.
+\end{proposition}
+
+\begin{proof}
+  See \cref{cor: unique identity}.
+\end{proof}
+
+\begin{proposition}
+  The inverse of an element of a group is unique.
+\end{proposition}
+
+\begin{proof}
+  See \cref{prop: iso unique inverse}.
+\end{proof}
+
+\begin{proposition}[Cancellation]
+  Let \(G\) be a group and elements \(a, b, c \in G\). If \(a c = b c\) then
+  \(a = b\).
+\end{proposition}
+
+\begin{proof}
+  Notice that \(a = a e = (a c) c^{-1} = (b c) c^{-1} = b e = b\).
+\end{proof}
+
+\begin{definition}[Commutatie group]
+  A group \(G\) is said to be commutative (or abelian) if for all \(g, h \in G\)
+  we have \(g h = h g\).
+\end{definition}
+
+\begin{corollary}
+  Let \(G\) be a group such that for all \(g \in G\), \(g^2 = e\). Then \(G\) is
+  a commutative group.
+\end{corollary}
+
+\begin{proof}
+  Let \(g, h \in G\) be any elements, then \((g h) (h g) = g h^2 g = g e g = g^2
+  = e = (g h) (g h)\) and from cancellation law we find that \(g h = h g\).
+\end{proof}
+
+\subsection{Orders}
+
+\begin{definition}[Order of an element]\label{def: group elem order}
+  Let \(G\) be a group and \(g \in G\) be any element. We say that \(g\) has
+  finite order if there exists \(n \in \mathbb{Z}_{> 0}\) such that \(g^n = e\). 
+  The order \(|g|\) of the element \(g\) is defined as the smallest such
+  positive integer. If \(g\) does not have a finite order, it is common to write
+   \(|g| = \infty\).
+\end{definition}
+
+\begin{lemma}\label{lem: order and multiples}
+  Let \(G\) be a group and \(g \in G\) be an element with finite order. Then
+  \(g^n = e\) for some \(n \in \mathbb{Z}_{> 0}\) if and only if \(|g|\) divides
+  \(n\).
+\end{lemma}
+
+\begin{proof}
+  Since \(|g| \leq n\), define \(m \in \mathbb{Z}_{> 0}\) such that \(n - m |g|
+  \geq 0\) and \(n - (m + 1) |g| < 0\). Define \(r = n - m |g|\) to be the
+  remainder, hence \(r < |g|\). Our goal is to show that \(r = 0\). Notice that
+  \(g^r = g^n g^{-|g| m} = e e^{-m} = e\), which can only be the case for \(r =
+  0\), since \(|g|\) is defined to be the least positive integer such that
+  \(g^{|g|} = e\). This proves that \(m |g| = n\).
+
+  For the second part, suppose \(n\) is a multiple of \(|g|\) and denote it by
+  \(m|g| = n\). Then \(g^{m |g|} = e^m = e\).
+\end{proof}
+
+\begin{definition}[Order of a group]
+  Let \(G\) group of finite number of elements. We define the order of \(G\) to
+  be the number of its elements and denote it by \(|G|\). If \(G\) is an
+  infinite group, then \(|G| = \infty\).
+\end{definition}
+
+\begin{proposition}
+  Let \(G\) be a group and \(g \in G\) be an element with finite order. Then for
+  all \(m \in \mathbb{Z}_{\geq 0}\) the element \(g^m\) has finite order. For
+  \(m = 0\) we have \(|g^m| = 1\), for \(m > 0\) we have
+  \[
+    |g^m| = \frac{\operatorname{lcm}(m, |g|)}{m} =
+    \frac{|g|}{\operatorname{gcd}(m, |g|)}.
+  \] 
+\end{proposition}
+
+\begin{proof}
+  From divisibility arguments, we have \(\operatorname{lcm}(a, b)
+  \operatorname{gcd}(a, b) = ab\) for integers \(a\) and \(b\), hence the second
+  equality is justified. We prove the equality \(|g^m| =
+  \frac{\operatorname{lcm}(m, |g|)} m\). For the sake of notation, let \(d :=
+  |g^m|\). Notice that \(g^{m d} = e\) and hence \(|g|\) divides \(m d\). Since
+  \(d\) is the least positive integer with such property, it follows that \(m
+  d\) is the least common multiple of \(m\) and \(|g|\). Therefore \(m |g^m| =
+  \operatorname{lcm}(m, |g^m|)\), which proves the equation.
+\end{proof}
+
+\begin{proposition}
+  Let \(G\) be a group and \(g, h \in G\) be such that \(g h = h g\). Then \(|g
+  h|\) divides \(\operatorname{lcm}(|g|, |h|)\).
+\end{proposition}
+
+\begin{proof}
+  Let \(n\) be a common multiple of \(|g|\) and \(|h|\), then \(g^n = h^n = e\)
+  from \cref{lem: order and multiples}. Notice that the commutative property \(g
+  h = h g\) allow us to permute the terms of \(g^n h^n = e\) in order to obtain
+  \(g^n h^n = (g h)^n = e\). In particular, since \(\operatorname{lcm}(|g|,
+  |h|)\) is a common multiple of \(|g|\) and \(|h|\), we find that \((g
+  h)^{\operatorname{lcm}(|g|, |h|)} = e\) and again from \cref{lem: order and
+  multiples} we find that \(|g h|\) divides \(\operatorname{lcm}(|g|, |h|)\)
+\end{proof}

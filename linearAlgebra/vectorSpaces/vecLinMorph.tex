@@ -1,0 +1,426 @@
+\section{Vector Spaces from Linear Morphism}
+
+\begin{proposition}
+  Given \(k\)-vector spaces \(V\) and \(W\), consider the \(k\)-linear morphism
+  \(\varphi : V \to W\). Then \(\varphi\) is injective if and only if \(\ker
+  \varphi = \{0\}\).
+\end{proposition}
+
+\begin{proof}
+  (\(\Rightarrow\)) Suppose \(\varphi\) is injective, then, since \(0 \xmapsto
+  \varphi 0\), it follows that \(\ker \varphi = \{0\}\). (\(\Leftarrow\))
+  Suppose now that \(\ker \varphi = \{0\}\), then from the universal property
+  of quotients we find that \(V/\ker \varphi \hookrightarrow W\) is injective,
+  since the only possible element in \(V\) that generates the zero class is \(0
+  \in V\), therefore, we can regard the above mapping as \([v] \mapsto
+  \varphi(v)\), therefore we conclude that \(\varphi\) is injective.
+\end{proof}
+
+\begin{theorem}[Universal property for kernels]
+  Let \(V, W\) be \(k\)-vector spaces and consider the \(k\)-linear morphism
+  \(\varphi : V \to W\). Denote \(\iota : \ker \varphi \hookrightarrow V\) the
+  embedding morphism. Then, for any given \(k\)-vector space \(L\) and
+  \(k\)-linear morphism \(\psi : L \to V\) such that \(\varphi \circ \psi = 0\),
+  there exists a unique \(k\)-linear morphism \(\ell : L \to \ker \varphi\) such
+  that the following diagram commutes
+  \[
+    \begin{tikzcd}
+      L \ar[d, dashed, swap, "\ell"] \ar[dr, "\psi"] \ar[drr, bend left,
+      "0" description] & & \\
+      \ker \varphi \ar[r, hookrightarrow, "\iota"] &V \ar[r, "\varphi"] &W
+    \end{tikzcd}
+  \] 
+\end{theorem}
+
+\begin{proof}
+  The condition for the commutativity of the diagram is \(\psi = \iota \circ
+  \ell\). Notice that since the definition of \(\psi\) depends uniquely in the
+  condition \(\varphi \circ \psi = 0\), we find that since \(\im(\ell)
+  \subseteq \ker \varphi\) it follows that indeed \(\varphi \circ (\iota \circ
+  \ell) = 0\) and therefore the uniqueness of \(\ell\) comes by defining it as
+  \(\ell(l) = \psi(l)\) and the existence comes merely by the fact that \(\psi\) 
+  is already a \(k\)-linear morphism.
+\end{proof}
+
+\begin{definition}[Cokernel]
+  Let \(k\)-vector spaces \(V\) and \(W\) and consider the linear morphism
+  \(\varphi : V \to W\). We define the cokernel of \(\varphi\) as
+  \[
+    \coker \varphi = W/\im(\varphi).
+  \] 
+\end{definition}
+
+\begin{theorem}[Universal property for cokernels]
+   Let \(k\)-vector spaces \(V\) and \(W\) and the linear morphism \(\varphi : V
+   \to W\). Denote by \(\pi : W \to \coker \varphi\) the projection morphism.
+   For any given \(k\)-vector space \(L\) and linear morphism \(\psi : W \to L\)
+   such that  \(\psi \circ \varphi = 0\), then there exists a unique linear
+   morphism  \(\ell : \coker \varphi \to L\) such that the diagram commutes
+   \[
+     \begin{tikzcd}
+       V \ar[drr, bend right, "0" description] \ar[r, "\varphi"] &W \ar[r,
+       "\pi"] \ar[dr, "\psi"] &\coker \varphi \ar[d, dashed, "\ell"] 
+       \\
+        & &L
+     \end{tikzcd}
+   \] 
+\end{theorem}
+
+\begin{proof}
+  The condition for the diagram to commute is that \(\ell \circ \pi = \psi\).
+  For that, notice that since \(\coker \varphi = W/\im(\varphi)\) it follows
+  that \(\ell \circ \pi \circ \varphi (v) = \ell([\varphi(v)])\) but notice that
+  obviously \(\varphi(v) \in \im(\varphi)\) thus \([\varphi(v)] = 0 \in \coker
+  \varphi\) thus indeed \(\ell \circ \pi \circ \varphi = 0\). Moreover, in order
+  to define \(\ell\) we ought to have \(\ell([w]) = \psi(w)\), which is well
+  defined since \([w] = w + \im(\varphi)\) and \(\forall w' \in \im(\varphi)\) 
+  we have \(\psi(w') = 0\) and therefore \(\psi(w + w') = \psi(w)\), which ends
+  the proof since \(\ell\) gets the linear structure of \(\psi\) and also is
+  unique from construction.
+\end{proof}
+
+\begin{proposition}
+  Let \(k\)-vector spaces \(V\) and \(W\) and define any linear morphism
+  \(\varphi : V \to W\), then there are natural isomorphisms 
+  \[
+    \ker(W \overset \pi \longrightarrow \coker \varphi) \iso \coker(\ker \varphi
+    \overset \iota \longrightarrow V) \iso \im(\varphi)
+  \] 
+\end{proposition}
+
+\begin{proof}
+  First we show the existence of the isomorphism \(\ker \pi \iso \im(\varphi)\),
+  which is obtained by taking the mapping \(w \mapsto w\), since \(\ker \pi =
+  \im(\pi)\), establishing an obvious isomorphism between the two given objects.
+  Now we focus on showing the isomorphism \(\coker \iota = V/\ker \varphi \iso
+  \im(\varphi)\), which can be obtained by considering the mapping \([v] \mapsto
+  \varphi(v)\), which is well defined from the same reasoning as in the above
+  theorem.
+\end{proof}
+
+Consider the collections of \(k\)-vector spaces \(\{V_i\}_i\) and \(\{W_i\}_i\)
+with a corresponding collection of morphism \(\{f_i : V_i \to W_i\}_i\) and
+\(\{\varphi_i : V_i \to V_{i+1}\}_i\) and \(\{\psi_i : W_i \to W_{i+1}\}\) such
+that for any index \(i\) the following diagram commutes
+\[
+  \begin{tikzcd}
+    V_i \rar["f_i"] \dar["\varphi_i"] &W_i \dar["\psi_i"] 
+    \\
+    V_{i+1} \rar["f_{i+1}"] &W_{i+1}
+  \end{tikzcd}
+\] 
+
+By defining the morphisms \(\iota_i : \ker f_i \to V\) and \(\pi_i : W \to
+\coker f_i\) we find that since 
+\[
+  f_{i+1} \circ \varphi_i \circ \iota_i 
+  = \psi_i \circ f_i \circ \iota_i 
+  = \psi_i \circ 0 = 0
+\] 
+then we can use the universal property of kernels in order to find the existence
+of a unique morphism \(\ker f_i \to \ker f_{i+1}\), that is
+\[
+  \begin{tikzcd}
+    \ker f_i \dar[dashed] \ar[dr, "\varphi_i \circ \iota_i"] \ar[drr, bend
+    left, "0"] & &
+    \\
+    \ker f_{i+1} \rar[hook, "\iota_{i+1}"] &V_{i+1} \rar["f_{i+1}"] &W_{i+1}
+  \end{tikzcd}
+\] 
+
+On the other hand we have that 
+\[
+  \pi_{i+1} \circ \psi_i \circ f_i 
+  = \pi_{i+1} \circ f_{i+1} \circ \varphi_i 
+  = 0 \circ \varphi_i = 0 
+\] 
+thus by means of the universal property for cokernels we find that there exists
+a unique morphism \(\coker f_i \to \coker f_{i+1}\), that is
+\[
+  \begin{tikzcd}
+    V_i \rar["f_i"] \ar[drr, bend right, "0" description] 
+      &W_i \rar["\pi_i"] \ar[dr, "\pi_{i+1} \circ \psi_i" description]
+    &\coker f_i \dar[dashed]
+    \\
+    & &\coker f_{i+1}
+  \end{tikzcd}  
+\] 
+
+Binding both results together we find that in general we have the following
+diagram
+\[
+  \begin{tikzcd}
+    \vdots \dar[dashed] &\vdots \dar &\vdots \dar &\vdots \dar[dashed]
+    \\
+    \ker f_i \rar["\iota_i"] \dar[dashed]
+      &V_i \rar["f_i"] \dar["\varphi_i"] 
+    &W_i \dar["\psi_i"] \rar["\pi_i"] 
+      &\coker f_i \dar[dashed]
+    \\
+    \ker f_{i+1} \rar["\iota_{i+1}"] \dar[dashed]
+      &V_{i+1} \rar["f_{i+1}"] \dar
+    &W_{i+1} \rar["\pi_{i+1}"] \dar
+      &\coker f_{i+1} \dar[dashed]
+    \\
+    \vdots &\vdots &\vdots &\vdots
+  \end{tikzcd}
+\] 
+
+\begin{definition}[Exact sequence]
+  Given a collection of \(k\)-vector spaces \(\{V_i\}_i\) and \(k\)-linear
+  morphisms \(\{f_i : V_i \to V_{i+1}\}\), we say that the sequence 
+  \[
+    \begin{tikzcd}
+      V_0 \rar["f_0"] &V_1 \rar["f_1"] &\dots \rar["f_{n-1}"] &V_n
+    \end{tikzcd}  
+  \] 
+  is exact if \(\ker f_i = \im(f_{i-1})\) for all index.
+\end{definition}
+
+\begin{proposition}
+  Let the \(k\)-linear morphism \(f: V \to W\). Then \(f\) is injective if and
+  only if the sequence 
+  \begin{tikzcd}[cramped] 
+    0 \rar &V \rar["f"] &W 
+  \end{tikzcd}
+  is exact. On the other hand, the morphism \(f\) is surjective if and only if
+  the sequence
+  \begin{tikzcd}[cramped] 
+    V \rar["f"] &W \rar &0
+  \end{tikzcd}
+  is exact.
+\end{proposition} 
+
+\begin{proof}
+  (\(\Rightarrow\)) Suppose \(f\) is injective, then \(\ker f = \{0\}\),
+  moreover, surely \(\im(0) = \ker f\) thus the sequence is exact.
+  (\(\Leftarrow\)) Suppose the sequence is exact, so that \(\im(0) = \ker f\)
+  but then \(\ker f = \{0\}\) which, as we already have proven above, implies in
+  \(f\) injective. 
+
+  (\(\Rightarrow\)) Suppose \(f\) is surjective, then \(\im(f)= W = \ker 0\) and
+  thus the sequence is exact. (\(\Leftarrow\)) Suppose the sequence is exact, so
+  that \(\im(f) = W = \ker 0\), then given any element \(w \in W\) there exists
+  at least one corresponding \(v \in V\) such that \(f(v) = w\) and therefore
+  the morphism is surjective.
+\end{proof}
+
+\begin{definition}[Short exact sequence]   
+  Let the \(k\)-vector spaces \(V, W\) and \(L\). A exact sequence 
+  \[
+    \begin{tikzcd}
+      0 \rar &W \rar[hook, "f"] &V \rar[two heads, "g"] &L \rar &0
+    \end{tikzcd}
+  \] 
+  that is, with \(\ker g = \im(f)\), is said to be a short exact sequence of
+  \(k\)-vector spaces.
+\end{definition}
+
+\begin{proposition}
+  In the short exact sequence 
+  \begin{tikzcd}[cramped, sep = small]
+    0 \rar &W \rar[hook, "f"] &V \rar[two heads, "g"] &L \rar &0
+  \end{tikzcd}
+  we have \(L \iso V/W\).
+\end{proposition}
+
+\begin{proof}
+  Firstly, notice that since \(W \hookrightarrow V\) is an embedding, we can
+  regard \(W\) as a subspace of \(V\), so that taking the quotient \(V/W\) is
+  possible. Moreover, notice that since \(g\) is surjective, from the first
+  isomorphism theorem we find that \(V/\ker g \iso L\) which from the fact that
+  the sequence is exact, is the same as \(V/\im f \iso L\) but this is exactly
+  what we meant by \(V/W\) since \(W\) was regarded as a subspace of \(V\) via
+  the embedding \(f\).
+\end{proof}
+
+\begin{proposition}
+   Let \(f : V \to W\) be a \(k\)-linear morphism, then the following is true
+   \begin{enumerate}[(a).]
+     \item The sequence \(0 \to \ker f \to V \to \im f \to 0\) is exact.
+     \item The sequence \(0 \to \im f \to W \to \coker f \to 0\) is exact.
+     \item The sequence \(0 \to \ker f \to V \to W \to \coker f \to 0\) is
+       exact.
+   \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+  For (I) notice that trivially \(\ker(\ker f \to V) = \im(0) = \{0\}\), since
+  \(\ker f \subseteq V\); moreover, \(\im(\ker f \to V) = \ker f = \ker(V \to
+  \im(f))\) from the mere definition of kernel; finally, it is to be noticed
+  that \(\im(V \to \im(f)) = \ker(\im(f) \to 0)\) because the zero morphism has
+  its whole domain as its kernel. 
+  For (II) we have that \(\im(0 \to \im(f)) = \{0\} \subseteq W\), thus indeed
+  \(\ker(\im(f) \to W) = \im(0 \to \im(f))\); after that, notice \(\im(\im(f)
+  \to W) = \im(f)\) but from definition we have \(\coker f = W/\im(f)\) thus we
+  really get \(\im(f) = \ker(\coker f)\); the next morphism trivially obeys
+  \(\im(W \to \coker f) = \ker(\coker f \to 0)\).
+  For (III) the part \(0 \to \ker f \to V\) is already exact, also from
+  definition \(\im(\ker f \to V) = \ker f = \ker(V \to W)\); then, \(\im(V \to
+  W) = \im(f) = \ker(\coker f)\); and finally  \(\im(W \to \coker f) =
+  \ker(\coker f \to 0)\).
+\end{proof}
+
+\begin{definition}[The \(\Hom\) space]
+  Let the \(k\)-vector spaces \(V, W\). Then the collection of morphisms
+  \(\Hom_{\cat{Vect}_k}(V, W)\) is a \(k\)-vector space with structure given by
+  \begin{gather*}
+    (f + g)(v) = f(v) + g(v),\ \forall f, g \in \Hom_{\cat{Vect}_k}(V, W) \\
+    (cf)(v) = c f(v),\ \forall f \in \Hom_{\cat{Vect}_k}(V, W)\ \forall c \in k
+  \end{gather*}
+  where \(0\) is the map \(0 : V \to 0 \to W\).
+\end{definition}
+
+\begin{remark}
+  For the remaining this section we'll be dealing with the category
+  \(\cat{Vect}_k\), unless said otherwise, therefore I'll omit the
+  category for the sake of notation.
+\end{remark}
+
+\begin{proposition}
+   For any \(k\)-vector space \(V\) there exists a natural isomorphism
+   \[
+     \Hom(k, V) \iso V
+   \]
+\end{proposition}
+
+\begin{proof}
+  Map the zero morphism \((0 : k \to V) \longmapsto 0 \in V\). Then we could take
+  the morphism \(1_v : k \to V\) being defined as \(k \ni 1 \xmapsto{1_v} v \in
+  V\), not restricting the other mappings whatsoever, then we could trivially
+  make the mappings \((1_v : k \to V) \longmapsto v \in V\) and then we are
+  essentially done, since this is trivially an isomorphism.
+\end{proof}
+
+\begin{proposition}
+  Let the collection of \(k\)-vector spaces \(\{V_i\}_{i \in I}\), then, for any
+  \(L\), \(k\)-vector space, then:
+  \begin{enumerate}[I.]
+    \item There is a natural isomorphism 
+      \[
+        \Hom \bigg( L,\ \prod_{i \in I} V_i \bigg) \iso \prod_{i \in
+        I} \Hom(L,\ V_i).
+      \]
+    \item There is a natural isomorphism
+      \[
+        \Hom\bigg( \bigoplus_{i \in I} V_i,\ L \bigg) \iso
+        \prod_{i \in I} \Hom(V_i,\ L)
+      \] 
+      and therefore, given a set \(S\), there is also a natural isomorphism
+      \(\Hom(k^{\oplus S}, V) \iso V^S\).
+  \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+  For the first proposition, we can assign the map of zero mappings \((0 : L \to
+  \prod V_i) \longmapsto (0 : L \to V_i)_i\). Next we may consider the functions
+  \(g : L \to \prod V_i\), defined as \(g(l) = (f_1(l), f_2(l), \dots)\) for all
+  \(l \in L\), where \(f_i : L \to V_i\); then we can simply make the mapping
+  \(g \longmapsto (\pi_i \circ f_i)_i\).
+
+  For the second proposition, consider the morphism \(\psi : \Hom\left(
+  \bigoplus_{i \in I} V_i,\ L \right) \) with the mapping \(f \mapsto (f \circ
+  \iota_i)_{i \in I}\) where \(\iota_j: V_j \hookrightarrow \bigoplus_{i \in
+  I} V_i\) is the inclusion map. For the injectivity, consider \(f \in
+  \Hom\left( \bigoplus_{i \in I} V_i,\ L \right), f \neq 0\) be a morphism,
+  then \(f \circ \iota_i \neq 0\) and therefore \(\ker(\psi) = 0\), which
+  implies in the injectivity of \(\psi\). Now, let any tuple of morphisms
+  \((g_i)_{i \in I} \in \prod_{i \in I} \Hom(V_i, L)\), then we can define a
+  morphism \(f \in \Hom\left( \bigoplus_{i \in I} V_i,\ L \right)\) such that
+  \(f \circ \iota_i = g_i\) then definitely \(\psi(f) = (g_i)_{i \in I}\).
+\end{proof}
+
+\begin{definition}[Induced \(\Hom\) \(k\)-linear morphism]
+  Given a \(k\)-linear morphism \(f : V \to L\) and any \(k\)-vector space
+  \(W\), there are induced, uniquely defined, \(k\)-linear morphisms
+  \begin{enumerate}[(a)]
+    \item (Pushforward) \(f_\ast : \Hom(W, V) \to \Hom(W, L)\) with the mapping
+      \(\alpha \mapsto f \circ \alpha\), so that the diagram commutes
+      \[
+        \begin{tikzcd}
+          V \ar[r, "f"]
+            &L \\
+          W \ar[u, "\alpha"] 
+          \ar[ur, dashed, swap, "f_\ast(\alpha) := f \circ \alpha"]
+        \end{tikzcd}
+      \] 
+    \item (Pullback) \(f^\ast : \Hom(L, W) \longrightarrow \Hom(V, W)\) with
+      the mapping \(\alpha \longmapsto \alpha \circ f\), so that the diagram
+      commutes
+      \[
+        \begin{tikzcd}
+          V \ar[r, "f"] 
+            &L \ar[d, "\alpha"] \\
+            &W \ar[ul, dashed, "f^\ast(\alpha) := \alpha \circ f"]
+        \end{tikzcd}
+      \] 
+  \end{enumerate}
+\end{definition}
+
+\begin{proposition}
+  Given \(V_1, V_2, V_3\), \(k\)-vector spaces, the following holds for any
+  given \(k\)-vector space \(L\):
+  \begin{enumerate}[I.]
+    \item If the sequence \(0 \to V_1 \to V_2 \to V_3\) is exact, then 
+      \[
+          \Hom(L, 0) = 0 \to \Hom(L, V_1) \to \Hom(L, V_2) \to \Hom(L, V_3)
+      \] 
+      is an exact sequence, that is, covariant \(\Hom\) is left exact.
+    \item If the sequence \(V_1 \to V_2 \to V_3 \to 0\) is exact, then 
+      \[
+          \Hom(0, L) = 0 \to \Hom(V_3, L) \to \Hom(V_2, L) \to \Hom(V_1, L)
+      \] 
+      is an exact sequence, that is, contravariant \(\Hom\) is left exact.
+  \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+  For each of the propositions, we'll denote the morphisms \(f: V_1 \to V_2\)
+  and  \(g: V_2 \to V_3\) such that \(\ker g = \im f\).
+
+  For the first proposition, let \(0 \to V_1 \to V_2 \to V_3\) be a an exact
+  sequence, and consider the sequence \(0 \to \Hom(L, V_1) \xrightarrow{f_*}
+  \Hom(L, V_2) \xrightarrow{g_*} \Hom(L, V_3)\). Let \(\beta \in \im f_*\), then
+  there exists \(\alpha \in \Hom(L, V_1)\) such that \(f_*(\alpha) = f \circ
+  \alpha = \beta\), hence \(g_*(\beta) = g \circ \beta = g \circ f \circ \alpha
+  = 0\) since \(\ker g = \im f\), which implies in \(\im f_* \subseteq \ker
+  g_*\).  Suppose now that \(\beta \in \ker g_*\), so that \(g_*(\beta) = g
+  \circ \beta = 0\), then we find that \(\im \beta \subseteq \ker g = \im f\)
+  and hence \(\beta \in \im f_*\), which implies in \(\ker g_* \subseteq \im
+  f_*\).  Therefore \(\ker g_* = \im f_*\).
+
+  For the second proposition, let \(V_1 \to V_2 \to V_3 \to 0\) be a an exact
+  sequence and consider the sequence \(0 \to \Hom(V_3, L) \xrightarrow{g^*}
+  \Hom(V_2, L) \xrightarrow{f^*} \Hom(V_1, L)\). Let \(\gamma \in \im g_*\) and
+  consider \(\lambda \in \Hom(V_3, L)\) such that \(g^*(\lambda) = \lambda \circ
+  g = \gamma\). Then we find that \(f^*(\gamma) = \gamma \circ f = \lambda \circ
+  g \circ f = \lambda \circ 0 = 0\) hence \(\gamma \in \ker f^*\), which implies
+  in \(\im g^* \subseteq \ker f^*\).
+
+  Let \(\gamma \in \ker f^*\) so that \(f^*(\gamma) = \gamma \circ f = 0\), this
+  implies in \(\im f = \ker g \subseteq \ker \gamma\). From \cref{thm: universal
+  property for quotients} we find that \(\gamma\) induces a morphism
+  \(\overline\gamma\) such that the following diagram commutes
+  \[
+    \begin{tikzcd}
+      V_2 \ar[r, "\gamma"] \ar[d, "\pi"] &L \\
+      V/\ker g \ar[ur, swap, "\overline\gamma"]
+    \end{tikzcd}
+  \] 
+  so that \(\gamma = \overline\gamma \circ \pi\). Moreover, since \(g\) is
+  surjective we have \(\im g = V_3\), and from \cref{thm: first isomorphism} we
+  find that \(g\) induces an isomorphism \(\overline g: V_2/\ker g \isoto
+  V_3\), so that the following diagram commutes
+  \[
+    \begin{tikzcd} 
+      V_2 \ar[r, "g"] \ar[d, "\pi"] &V_3 \\
+      V_2/\ker g \ar[ru, swap, "\overline g"]
+    \end{tikzcd}
+  \] 
+  so that \(g = \overline g \circ \pi\) and since \(\overline g\) is an
+  isomorphims, then \(\pi = g \circ \overline g^{-1}\). Notice now that
+  \(g^*(\overline \gamma \circ \overline g^{-1}) = \overline\gamma \circ
+  \overline g^{-1} \circ g = \overline\gamma \circ \pi = \gamma\) and therefore
+  \(\gamma \in \im g^*\). This shows that \(\ker f^* \subseteq \im g^*\) and
+  therefore \(\ker f^* = \im g^*\).
+\end{proof}

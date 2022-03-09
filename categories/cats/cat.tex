@@ -1,0 +1,262 @@
+\section{Characterizations and Morphisms}
+
+\begin{definition}[Category]\label{def: category}
+  A category \(\cat C\) consists of the following data
+  \begin{enumerate}[(C1)]
+    \item A collection of objects. We say that \(X\) is an object of \(\cat C\)
+      by writing \(X \in \cat C\) or \(X \in \Obj(\cat C)\).
+    \item For every given pair of objects \(X, Y \in \cat C\) there exists a
+      collection of morphisms \(\Hom_{\cat C}(X, Y)\) with source \(X\) and
+      target \(Y\). The collection of morphisms between objects of \(\cat C\) is
+      denoted \(\Mor(\cat C)\).
+    \item For every object \(X \in \cat C\), there exists an identity morphism
+      \(\Id_X \in \Hom_{\cat C}(X, X)\).
+    \item For every triple of given objects \(X, Y, Z \in \cat C\), there exists
+      a composition map
+      \[
+        \Hom_{\cat C}(X, Y) \times \Hom_{\cat C}(Y, Z) \to \Hom_{\cat C}(X, Z).
+      \] 
+      So that for given morphisms \(f \in \Hom_{\cat C}(X, Y)\) and \(g \in
+      \Hom_{\cat C}(Y, Z)\) there exists a uniquely defined map \(g \circ f \in
+      \Hom_{\cat C}(X, Z)\) such that the following diagram commutes
+      \[
+        \begin{tikzcd}
+          Y \ar[r, "g"]
+            &Z \\
+          X \ar[u, "f"] \ar[ru, dashed, swap, "g \circ f"]
+        \end{tikzcd}
+      \]
+    \item For every morphism \(f: X \to Y\) we have that
+      \[
+        \begin{tikzcd}
+          X \ar[r, "f"] \ar[loop left, "\Id_X"] &Y \ar[loop right, "\Id_Y"]
+        \end{tikzcd}
+      \] 
+      so that \(\Id_Y \circ f = f = f \circ \Id_X\).
+    \item Given ojects \(W, X, Y, Z \in \cat C\), the following diagram commutes
+      \[
+        \begin{tikzcd}
+          W
+          \ar[r, "f"]
+          \ar[rr, bend right, swap, "g \circ f"]
+          \ar[rrr, bend right = 50, swap, "h \circ (g \circ f)"]
+          \ar[rrr, bend left = 50, "(h \circ g) \circ f"]
+            &X
+            \ar[r, "g"] \ar[rr, bend left, "h \circ g"]
+              &Y
+              \ar[r, "h"] 
+                &Z
+        \end{tikzcd}
+      \] 
+      that is, \(h \circ (g \circ f) = (h \circ g) \circ f\).
+  \end{enumerate} \end{definition} \begin{definition}[Small]\label{def: small cat}
+  A category \(\cat C\) is said to be small if it is composed of a set's worth
+  of morphisms.
+\end{definition}
+
+\begin{definition}[Locally small]
+  A category \(\cat C\) is said to be locally small if for any objects \(A,B
+  \cat C\) there exists a set's worth of morphisms \(A\) and \(B\).
+\end{definition}
+
+\begin{corollary}[Unique identity]\label{cor: unique identity}
+  Given a category \(\cat C\) and an object \(c \in \cat C\), the identity
+  \(\Id_c \in \Mor(\cat C)\) is unique.
+\end{corollary}
+
+\begin{proof}
+  Let \(f: c \to c\) be an identity of \(c\), then \(f = f \Id_c = \Id_c\).
+\end{proof}
+
+\begin{definition}
+  Given a category \(\cat{C}\) and objects  \(A, B \in \cat{C}\), we
+  define a morphism \(f \in \Hom(A, B)\) to be an \emph{isomorphism} if
+  and only if it has a both sided inverse, so that exists \(f^{-1} \in
+  \Hom(B, A)\) such that \(f^{-1}f = \Id_A\) and  \(ff^{-1} =
+  \Id_B\).
+\end{definition}
+
+\begin{proposition}\label{prop: iso unique inverse}
+   Given an isomorphism \(f\), its inverse is unique.
+\end{proposition}
+
+\begin{proof}
+   Suppose for instance that there are two such functions, \(g, h \in 
+   \Hom(B, A)\), that act as an inverse for \(f \in \Hom(A,
+   B)\). Note that 
+   \[
+      g = g \Id_B = g(f h) = (g f) h = \Id_A h = h
+   \] 
+   Thus \(g = h\) and therefore the inverse is indeed unique.
+\end{proof}
+
+\begin{definition}[Monoid]\label{def: monoid}
+  A monoid is a set \(M\) equipped with a binary operation \(\otimes: M \times M
+  \to M\) and a neutral element \(e \in M\). The binary operation is associative
+  and obeys the right and left unit laws, that is
+  \[
+    x \otimes (y \otimes z) = (x \otimes y) \otimes z \qquad \text{ and } \qquad
+    e \otimes x = x = x \otimes e.
+  \] 
+\end{definition}
+
+\begin{example}
+  A monoid \(M\) defines a 1-category object category \(\cat{BM}\) such that
+  \(\Obj(\cat{BM}) = \{*\}\) and \(\Hom_{\cat{BM}}(*, *) = \{*\}\). Composition
+  of morphisms \(f, g: * \to *\) is defined as \(g \circ f = g \otimes f\). The
+  identity morphism is \(\Id_* = e\). Hence we have \(e * f = f = f * e\) for
+  all morphisms \(f \in \Mor(\cat{BM})\).
+\end{example}
+
+\begin{definition}[Groupoids]\label{def: groupoids}
+  A \emph{groupoid} is the name given to a category in which all of its
+  morphisms are isomorphisms. 
+\end{definition}
+
+\begin{definition}[Group]\label{def: group}
+  A group is a groupoid with one object.
+\end{definition}
+
+\begin{definition}[Automorphism]
+  Given a category \(\cat C\) and an object  \(A \in \cat C\), we define an
+  automorphism of \(A\) to be an isomorphism \(A \to A\). The set consisting of
+  all such automorphisms of this object is denoted \(\Aut(A)\), the
+  automorphisms have properties:
+  \begin{enumerate}[i.]
+    \item The composition of two automorphisms is an automorphism.
+    \item Composition is associative.
+    \item \(\Id_A \in \Aut(A)\).
+    \item Every automorphism \(f \in \Aut(A)\) has an inverse \(f^{-1}
+       \in \Aut(A)\).
+  \end{enumerate}
+  With this, the structure \(\Aut(A)\) is a \emph{group}, for all choices of
+  objects \(A \in \cat{C}\).
+\end{definition}
+
+\begin{definition}[Subcategory]\label{def: subcategory}
+  Let \(\cat C\) be a category. We define \(\cat D \subseteq \cat C\) as a
+  subcategory of \(\cat C\) if: \(\Obj(\cat D)\) is a restriction of \(\Obj(\cat
+  C)\); for all \(A \in \Obj(\cat D)\) there exists \(\Id_A \in \Mor(\cat D)\);
+  for any \(f \in \Mor(\cat D)\) there exists \(\dom(f), \codom(f) \in
+  \Obj(D)\); for any composable pair of morphisms \(f, g \in \Mor(\cat D)\)
+  there exists \(f g \in \Mor(\cat D)\).
+\end{definition}
+
+\begin{lemma}
+  Any category \(\cat C\) contains a subcategory containing all of the objects
+  and whose morphisms are only the isomorphisms. Such subcategory is called a
+  maximal groupoid.
+\end{lemma}
+
+\begin{proof}
+  We are going to prove that the maximal groupoid, name it \(\cat G\) is indeed
+  a subcategory of \(\cat C\). Notice that \(\Obj(\cat G) = \Obj(\cat C)\),
+  moreover every identity is an isomorphism, then \(\Id_{*} \in \Mor(\cat G)\).
+  Let \(f \in \Mor(\cat G)\) then in particular we have \(f \in \Mor(\cat C)\)
+  and hence \(\operatorname{dom} f, \operatorname{codom} f \in \Obj(\cat C) =
+  \Obj(\cat G)\). Consider \(f \in \Hom_{\cat G}(A, B)\) and \(g \in \Hom_{\cat
+  G}(B, C)\), composable isomorphisms, and notice that \(f^{-1} \circ g^{-1}
+  \in \Hom_{\cat C}(C, A)\) is such that \((f^{-1} \circ g^{-1}) \circ (g \circ
+  f) = \Id_A\) and \((g \circ f) \circ (f^{-1} \circ g^{-1}) = \Id_C\), hence we
+  conclude that \(g \circ f\) is an isomorphism and therefore \(g \circ f \in
+  \Hom_{\cat G}(A, C)\).
+\end{proof}
+
+\begin{definition}[Full subcategory]\label{def: full subcategory}
+  A subcategory \(\cat D\) of \(\cat C\) (see \cref{def: subcategory}) is said
+  to be a full subcategory if for all \(x, y \in \cat D\) we have \(\cat D(x, y)
+  = \cat C(x, y)\).
+\end{definition}
+
+\begin{proposition}[Slice category]\label{prop: slice cat}
+  Given a category \(\cat C\) and an object \(c \in \cat C\). The following
+  define categories:
+  \begin{enumerate}[(SC1)]
+    \item\label{prop: slice under}
+      (Slice under \(c\)) A category \(c/\cat C\), called slice category of
+      \(\cat C\) under \(c\), whose objects are morphisms \(f \in \Hom_{\cat
+      C}(c, *)\). Given objects \(f, g \in c/\cat C\) such that \(f: c \to x\)
+      and \(g: c \to y\), we define a morphism \(f \to g\) as a map \(h: x \to
+      y\) such that the following diagram commutes
+      \[
+        \begin{tikzcd}
+          &c \ar[dl, swap,"f"] \ar[dr, "g"]\\
+          x \ar[rr, "h"] & &y
+        \end{tikzcd}
+      \] 
+      that is, \(g = h \circ f\).
+    \item\label{prop: slice over} 
+      (Slice over \(c\)) A category \(\cat C/c\), called the slice category of
+      \(\cat C\) over \(c\), whose objects are morphisms \(f \in \Hom_{\cat
+      C}(*, c)\). Morphisms between objects \(f, g \in \cat C/c\) such that \(f:
+      x \to c\) and \(g: y \to c\) are maps \(h: x \to y\) such that the
+      following diagram commutes 
+      \[
+        \begin{tikzcd}
+          x \ar[rr, "h"]
+            & &y \\
+            &c \ar[ul, "f"] \ar[ur, swap, "g"]
+        \end{tikzcd}
+      \]
+      so that \(f = g \circ h\).
+  \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+  (SC1) Given objects \(f, g \in c/\cat C\) we have from construction that
+  \[
+    \Hom_{c/\cat C}(f, g) = \Hom_{\cat C}(\codom f, \codom g),
+  \]
+  hence we are
+  ensured of the existence of such morphisms between objects. Given an object
+  \(f: c \to x\), the morphism \(\Id_x \in \Mor(\cat C)\) is such that \(f =
+  \Id_x \circ f\), so that \(\Id_x\) is the identity morphism for \(f\). Let
+  \(f, g, u \in c/\cat C\) be objects such that \(f: c \to x,\ g: c \to y,\ u: c
+  \to z\), then there exists morphisms \(h \in \Hom_{c/\cat C}(f, u)\) and
+  \(\ell: \Hom_{c/\cat C}(u, g)\) so that the following diagram commutes
+  \[
+    \begin{tikzcd}
+        &c \ar[dl, swap, "f"] \ar[d, "u"] \ar[dr, "g"] & \\
+      x \ar[r, "h"]
+        &z \ar[r, "\ell"]
+          &y
+    \end{tikzcd}
+  \] 
+  so that we have a uniquely defined morphism \(\ell \circ h \in \Hom_{\cat
+  C}(x, y)\), where in particular \(\ell \circ h \in \Hom_{c/\cat C}(f, g)\) and
+  thus this defines a map \(\Hom_{c/\cat C}(f, u) \times \Hom_{c/\cat C}(u, g)
+  \to \Hom_{c/\cat C}(f, g)\). Since \(\Id_x, \Id_z \in \Mor(c/\cat C)\) for any
+  \(x, y \in \cat C\), then given \(f, u \in c/\cat C\) just as above, the
+  morphism \(h: x \to z\) is such that \(\Id_z \circ h = h = h \circ \Id_x\). In
+  addition to the objects and morphisms named above, define \(v: c \to w\) and
+  the corresponding morphism \(t \in \Hom_{c/\cat C}(g, v)\) so that \(t: y \to
+  w\) and \(v = t \circ g\). From the fact that \(\cat C\) is a category, we
+  find that \((t \circ \ell) \circ h = t \circ (\ell \circ h)\) and hence the
+  same is true for \(c/\cat C\).
+
+  (SC2) Let \(f, g \in \cat C/c\), then from definition we have \(\Hom_{\cat
+  C/c}(f, g) = \Hom_{\cat C}(\dom f, \dom g)\), which is well defined on \(\cat
+  C\). Given an object \(f: x \to c\), there exists \(\Id_x: x \to x\) so that
+  \(f = f \circ \Id_x\) and hence \(\Id_x\) is the identity morphism for \(f\).
+  Define objects \(f, g, u \in \cat C/c\) such that \(f: x \to c,\ g: y \to c,\
+  u: c \to z\), and morphisms \(h \in \Hom_{\cat C/c}(u, f)\) and \(\ell \in
+  \Hom_{\cat C/c}(g, u)\). Then, the following diagram commutes 
+   \[
+    \begin{tikzcd}
+      x
+        &z \ar[l, swap, "h"]
+          &y \ar[l, swap, "\ell"] \\
+        &c \ar[lu, "f"] \ar[u, "u"] \ar[ru, swap, "g"]
+    \end{tikzcd}
+  \] 
+  hence the morphism \(h \circ \ell \in \Hom_{\cat C}(y, x)\) defines a morphism
+  \(h \circ \ell \in \Hom_{\cat C/c}(g, f)\) so that we can construct a map well
+  defined map \(\Hom_{\cat C/c}(g, u) \times \Hom_{\cat C/c}(u, f) \to
+  \Hom_{\cat C/c}(g, f)\). Moreover, given \(f\) and \(u\) as above, we have
+  that there exists \(\Id_x, \Id_z \in \Mor(\cat C/c)\) so that from the
+  category \(\cat C\) it follows that \(\Id_x \circ h = h \circ \Id_z\). In
+  addition to the above, define \(v: w \to c\) and the morphism \(t \in
+  \Hom_{\cat C/c}(v, g)\) so that \(t: w \to y\). Then we have \(g = t \circ v\) 
+  and since \(\cat C\) is a category, we find that \((h \circ \ell) \circ t = h
+  \circ (\ell \circ t)\).
+\end{proof}
