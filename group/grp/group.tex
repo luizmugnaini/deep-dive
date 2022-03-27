@@ -31,6 +31,15 @@ Lets recall \cref{def: group} and demystify it in the following definition.
   See \cref{prop: iso unique inverse}.
 \end{proof}
 
+\begin{proposition}
+  Let \(G\) be a group and \(g, h \in G\), then \((g h)^{-1} = h^{-1} g^{-1}\).
+\end{proposition}
+
+\begin{proof}
+  \((h^{-1} g^{-1})(g h) = h^{-1} (g^{-1} g) h = h^{-1} e h = h^{-1} h = e\)
+  hence \(h^{-1} g^{-1} = (g h)^{-1}\).
+\end{proof}
+
 \begin{proposition}[Cancellation]
   Let \(G\) be a group and elements \(a, b, c \in G\). If \(a c = b c\) then
   \(a = b\).
@@ -40,7 +49,18 @@ Lets recall \cref{def: group} and demystify it in the following definition.
   Notice that \(a = a e = (a c) c^{-1} = (b c) c^{-1} = b e = b\).
 \end{proof}
 
-\begin{definition}[Commutatie group]
+\begin{proposition}
+  Let \(G\) be a group. If \(g \in G\), then the collection \(\{g h: h \in G\}\)
+  is equal to \(G\).
+\end{proposition}
+
+\begin{proof}
+  Denote \(G' := \{g h: h \in G\}\). Clearly we have \(G' \subseteq G\). On the
+  other hand, if \(\ell \in G\), the element \(g (g^{-1} \ell) = e \ell = \ell
+  \in G'\), hence \(G \subseteq G'\). Thus \(G = G'\).
+\end{proof}
+
+\begin{definition}[Commutative group]
   A group \(G\) is said to be commutative (or abelian) if for all \(g, h \in G\)
   we have \(g h = h g\).
 \end{definition}
@@ -59,7 +79,7 @@ Lets recall \cref{def: group} and demystify it in the following definition.
 
 \begin{definition}[Order of an element]\label{def: group elem order}
   Let \(G\) be a group and \(g \in G\) be any element. We say that \(g\) has
-  finite order if there exists \(n \in \mathbb{Z}_{> 0}\) such that \(g^n = e\). 
+  finite order if there exists \(n \in \mathbb{Z}_{> 0}\) such that \(g^n = e\).
   The order \(|g|\) of the element \(g\) is defined as the smallest such
   positive integer. If \(g\) does not have a finite order, it is common to write
    \(|g| = \infty\).
@@ -96,7 +116,7 @@ Lets recall \cref{def: group} and demystify it in the following definition.
   \[
     |g^m| = \frac{\operatorname{lcm}(m, |g|)}{m} =
     \frac{|g|}{\operatorname{gcd}(m, |g|)}.
-  \] 
+  \]
 \end{proposition}
 
 \begin{proof}
@@ -107,10 +127,10 @@ Lets recall \cref{def: group} and demystify it in the following definition.
   |g^m|\). Notice that \(g^{m d} = e\) and hence \(|g|\) divides \(m d\). Since
   \(d\) is the least positive integer with such property, it follows that \(m
   d\) is the least common multiple of \(m\) and \(|g|\). Therefore \(m |g^m| =
-  \operatorname{lcm}(m, |g^m|)\), which proves the equation.
+  \operatorname{lcm}(m, |g|)\), which proves the equation.
 \end{proof}
 
-\begin{proposition}
+\begin{proposition}\label{prop: commutative-order-of-prod}
   Let \(G\) be a group and \(g, h \in G\) be such that \(g h = h g\). Then \(|g
   h|\) divides \(\operatorname{lcm}(|g|, |h|)\).
 \end{proposition}
@@ -123,4 +143,111 @@ Lets recall \cref{def: group} and demystify it in the following definition.
   |h|)\) is a common multiple of \(|g|\) and \(|h|\), we find that \((g
   h)^{\operatorname{lcm}(|g|, |h|)} = e\) and again from \cref{lem: order and
   multiples} we find that \(|g h|\) divides \(\operatorname{lcm}(|g|, |h|)\)
+\end{proof}
+
+\subsubsection{Finite Groups and Elements of Order 2}
+
+\begin{lemma}[Order 2 elements implies commutative]\label{lem: order2-commutes}
+  Let \(G\) be a group such that all non-identity elements have order \(2\).
+  Then \(G\) is commutative.
+\end{lemma}
+
+\begin{proof}
+  Let \(g, h \in G\), notice that \(|gh| = 2\) from \cref{prop:
+  commutative-order-of-prod} hence \(gh \in G\), then \((gh)^2 = e\) and
+  therefore \(gh = g^{-1} h^{-1} = g^{-1}(ghgh)h^{-1} = hg\) commutes.
+\end{proof}
+
+\begin{lemma}
+  Let \(G\) be a finite group such that any element has order at most \(2\). Let
+  \(H\) be any subgroup of \(G\), for any \(t \in G \setminus H\) consider the
+  collection \(T = H \cup \{h t : h \in H\}\), then \(T\) is a subgroup of \(G\)
+  with \(|T| = 2|H|\).
+\end{lemma}
+
+\begin{proof}
+  Since \(t \not\in H\), any element \(ht \in T\) with \(h \in H\) is such that
+  \(ht \not\in H\). The number of distinct elements of the form is \(|H|\) ---
+  one for each \(h \in H\) ---, hence \(|T| = |H| + |H| = 2|H|\).
+\end{proof}
+
+\begin{lemma}[Order \(2^n\)]\label{lem: order-2n}
+  Let \(G\) be a finite group such that any element has order at most \(2\). The
+  order of \(G\) is of the form \(2^n\) for some \(n \geq 0\). Moreover, if
+  \(|G| > 1\), then there exists a subgroup \(H\) of \(G\) with order \(|H| =
+  2^{n-1}\).
+\end{lemma}
+
+\begin{proof}
+  We create a recursive algorithm to find the collection of elements of \(G\)
+  that generate any other element contained in \(G\):
+  \begin{enumerate}
+    \item (Base case) If \(G = H_j\), return \(H_j\).
+    \item (Recursion) Let \(g \in G \setminus H_j\) and construct \(H_{j + 1} =
+      H_j \cup \{h g: h \in H_j\}\), recursively call the algorithm with \(H_{j
+      + 1}\).
+  \end{enumerate}
+  Such algorithm is certain to terminate since \(|G|\) is finite. Notice that
+  the second step always doubles the order of the set \(H_j\), so that --- if
+  \(H_n\) is the result of the algorithm --- then \(|H_n| = 2^n\). This shows
+  that \(|G| = |H_n| = 2^n\). The second part of the statement follows
+  immediately from the construction of the algorithm.
+\end{proof}
+
+\begin{proposition}
+  Let \(G\) be a commutative group, if there exists exactly one element of order
+  \(2\) --- say \(f \in G\) --- then the product of all elements of the group is
+  \[
+    \prod_{g \in G} g = f.
+  \]
+  Otherwise, we have \(\prod_{g \in G} g = e\).
+\end{proposition}
+
+\begin{proof}
+  Since \(G\) is finite, let \(G = \{e, g_1, g_1^{-1}, \dots, g_n, g_n^{-1}\}\).
+  Suppose there exists one and only one element of order \(2\) and denote it by
+  \(f\) --- that is, \(f = f^{-1}\). Since the group is commutative, we can
+  rearrange the product of elements so that we can take the pairwise product of
+  each element and its inverse --- this being possible only in the case where
+  \(g \neq g^{-1}\) ---, taking the product we find
+  \[
+    \prod_{g \in G} g = e (g_1 g_1^{-1}) \dots (g_j g_j^{-1}) f \dots (g_{j + 2}
+    g_{j + 2}^{-1}) (g_n g_n^{-1}) = e^{j + 1} f e^{n - (j + 1)} = f
+  \]
+  since \(f\) has no inverse in \(G \setminus \{f\}\).
+
+  Let there be no element with order \(2\) in \(G\), then the rearrangement of
+  pairwise element and respective inverse is possible with each \(g \in G\),
+  making
+  \[
+    \prod_{g \in G} g = e (g_1 g_1^{-1}) \dots (g_j g_j^{-1}) \dots (g_n
+    g_n^{-1}) = e^{n + 1} = e.
+  \]
+
+  Suppose there exists \(m > 1\) distinct elements in \(G\) with order \(2\) and
+  define \(T = \{f \in G: |f| \leq 2\}\) and \(S = G \setminus T\). From the
+  last case we know that \(\prod_{s \in S} s = e\). Note that \(T\) forms a
+  subgroup of \(G\):
+  \begin{itemize}
+    \item \(e \in T\).
+    \item If \(g, h \in T\), then from \cref{prop: commutative-order-of-prod}
+      \(|gh|\) divides \(\operatorname{lcm}(|g|, |h|) \leq 2\) hence \(|gh| \leq
+      2\) and \(gh \in T\).
+    \item Since \(g \in T\) implies \(g g = e\) then \(g = g^{-1}\) and
+      \(|g^{-1}| = 2\), so \(g^{-1} \in T\).
+  \end{itemize}
+  Moreover, the order of the group \(T\) has to be of the form \(2^k\) for some
+  \(k \geq 2\), from \cref{lem: order-2n}. From the same lemma, choose a
+  subgroup \(H\) with order \(2^{k-1}\) and take \(u \in T \setminus H\), so
+  that \(T = H \cup \{hu: h \in H\}\) --- such \(u\) exists from the algorithm
+  constructed in the lemma. Since \(T\) is commutative (see \cref{lem:
+  order2-commutes}), we can write
+  \[
+    \prod_{t \in T} t = \prod_{h \in H} h \prod_{h \in H} hu = \prod_{h \in H} u
+    h^2 = \prod_{h \in H} u = u^{2^{k-1}} = (u^2)^{2^{k-2}} = e.
+  \]
+  Therefore we can finally conclude that
+  \[
+    \prod_{g \in G} g = \prod_{s \in S} s \prod_{t \in T} t = e.
+  \]
 \end{proof}

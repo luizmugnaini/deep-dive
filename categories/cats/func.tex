@@ -55,9 +55,9 @@
   This can all be comprised diagrammatically as:
   \[
     \begin{tikzcd}
-      \cat C^\op \ar[rr, "F"] & &\cat D 
+      \cat C^\op \ar[rr, "F"] & &\cat D
       \\
-      c \ar[d, "f"] \ar[dd, bend right = 60, swap, "g f"] 
+      c \ar[d, "f"] \ar[dd, bend right = 60, swap, "g f"]
       \ar[rr, mapsto]
       & &F c
       \\
@@ -65,8 +65,8 @@
       & &F c' \ar[u, "F f"]
       \\
       c'' \ar[rr, mapsto]
-      & & F c'' 
-      \ar[u, "F g"] 
+      & & F c''
+      \ar[u, "F g"]
       \ar[uu, bend right = 60, swap, "F f \cdot F g = F (g \cdot f)"]
     \end{tikzcd}
   \]
@@ -86,22 +86,22 @@
       X \ar[r, "f"] \ar[rr, bend right = 40, swap, "C f(q) = q f"]
       & Y \ar[r, "q"] & \mathbb{R}
     \end{tikzcd}
-  \] 
+  \]
 
   We now show that the axioms for the contravariant functor are satisfied by
   \(C\). Let \(f: X \to Y\) and \(g: Y \to Z\), then given any \(p \in C Z\) we
-  have 
+  have
   \[
     \begin{tikzcd}
-      X \ar[r, "f"] 
+      X \ar[r, "f"]
       \ar[rrr, bend left = 60, "C f(C g (p))"]
       \ar[rrr, bend right, swap, "C (g f)(p)"]
       & Y \ar[r, "g"]
       \ar[rr, bend left = 35, "C g(p)"]
       & Z \ar[r, "p"] & \mathbb{R}
     \end{tikzcd}
-  \] 
-  hence \(C (f) C (g) = C (g f)\). Moreover, given any \(X \in \cat{Top}^\op\) 
+  \]
+  hence \(C (f) C (g) = C (g f)\). Moreover, given any \(X \in \cat{Top}^\op\)
   we find that \(C \Id_X: C X \to C X\) is such that for all \(q \in C X\), \(C
   \Id_X (q) = q \Id_X = q\) hence \(C \Id_X = \Id_{C X}\). This finishes the
   proof that \(C: \cat{Top}^\op \to \cat{Ring}\) is a contravariant functor.
@@ -132,8 +132,8 @@
 \end{lemma}
 
 \begin{proof}
-  Denote by \(f^{-1}: c' \isoto c\) the inverse of \(f\). By the composition axiom
-  we have 
+  Denote by \(f^{-1}: c' \isoto c\) the inverse of \(f\). By the composition
+  axiom we have
   \begin{gather*}
     F (f^{-1}) F (f) = F (f^{-1} f) = F \Id_c    = \Id_{F c}, \\
     F (f) F (f^{-1}) = F (f f^{-1}) = F \Id_{c'} = \Id_{F c'}.
@@ -159,7 +159,7 @@ and \(F r\) is a split epimorphism.
 \begin{definition}
   Let \(\cat C\) be a locally small category. Given any \(c \in \cat C\), there
   exists a pair of covariant and contravariant functors, \(\cat C(c, -)\) and
-  \(\cat C(-, c)\) respectively, represented by the object \(c\). That is: 
+  \(\cat C(-, c)\) respectively, represented by the object \(c\). That is:
   \[
     \begin{tikzcd}
       \cat C \ar[rr, "\cat C{(c, -)}"] & & \cat{Set}
@@ -174,11 +174,11 @@ and \(F r\) is a split epimorphism.
       \cat C^\op \ar[rr, "\cat C{(-, c)}"] & & \cat{Set}
       \\
       x \ar[rr, maps to] \ar[d, swap, "f"]
-      & & \cat C(x, c) 
+      & & \cat C(x, c)
       \\
       y \ar[rr, maps to] & & \cat C(y, c) \ar[u, swap, "f^*"]
     \end{tikzcd}
-  \] 
+  \]
 \end{definition}
 
 We now prove that such definition indeed satisfies the axioms for covariant and
@@ -202,9 +202,9 @@ c)\) is contravariant.
 
 \begin{definition}[Product category]
   Given categories \(\cat C\) and \(\cat D\), we define their product \(\cat C
-  \times \cat D\) to be a category whose objects are ordered pairs \((c, d)\) 
+  \times \cat D\) to be a category whose objects are ordered pairs \((c, d)\)
   such that \(c \in \cat C\) and \(d \in \cat D\), and morphisms are ordered
-  pairs \((f, g): (c, d) \to (c', d')\), where \(f: c \to c' \in \Mor(\cat C)\) 
+  pairs \((f, g): (c, d) \to (c', d')\), where \(f: c \to c' \in \Mor(\cat C)\)
   and \(g: d \to d' \in \Mor(\cat D)\).
 \end{definition}
 
