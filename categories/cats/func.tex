@@ -28,11 +28,11 @@
   We have some classical examples of forgetful functors, for instance, the
   following are functors that forget the structure of their domain categories:
   \begin{itemize}
-    \item The functor \(G: \cat{Group} \to \cat{Set}\) mapping groups to its
+    \item The functor \(G: \Grp \to \Set\) mapping groups to its
       corresponding underlying set.
-    \item The functor \(T: \cat{Top} \to \cat{Set}\) maps any topological space
+    \item The functor \(T: \Top \to \Set\) maps any topological space
       to its corresponding set of points.
-    \item The functor \(V, E: \cat{Graph} \to \cat{Set}\) maps the vertices and
+    \item The functor \(V, E: \Graph \to \Set\) maps the vertices and
       edges of a graph to the set of such vertices an edges.
   \end{itemize}
 \end{example}
@@ -72,19 +72,19 @@
   \]
 \end{definition}
 
-\begin{example}[\(\cat{Top}^\op \to \cat{Ring}\)]
-  Let \(C: \cat{Top}^\op \to \cat{Ring}\) be a contravariant functor such that
-  for all \(X \in \cat{Top}\), let \(C X\) be the ring of continuous functions
-  \(X \to \mathbb{R}\). The ring operations on \(C X\) are defined pointwise,
-  that is, given \(p, q: X \to \mathbb{R} \in C X\) we have \((p \cdot q) (x) =
+\begin{example}[\(\Top^\op \to \Rng\)]
+  Let \(C: \Top^\op \to \Rng\) be a contravariant functor such that
+  for all \(X \in \Top\), let \(C X\) be the ring of continuous functions
+  \(X \to \R\). The ring operations on \(C X\) are defined pointwise,
+  that is, given \(p, q: X \to \R \in C X\) we have \((p \cdot q) (x) =
   p(x) \cdot q(x)\) and \((p + q)(x) = p(x) + q(x)\) for all \(x \in X\).
-  Moreover, given a morphism \(f: X \to Y \in \Mor(\cat{Top})\) we define \(C f:
+  Moreover, given a morphism \(f: X \to Y \in \Mor(\Top)\) we define \(C f:
   C Y \to C X\) as the composition \((C f)(q) = q f \in \Mor(C X)\) for all \(q
   \in C Y\), that is
   \[
     \begin{tikzcd}
       X \ar[r, "f"] \ar[rr, bend right = 40, swap, "C f(q) = q f"]
-      & Y \ar[r, "q"] & \mathbb{R}
+      & Y \ar[r, "q"] & \R
     \end{tikzcd}
   \]
 
@@ -98,30 +98,30 @@
       \ar[rrr, bend right, swap, "C (g f)(p)"]
       & Y \ar[r, "g"]
       \ar[rr, bend left = 35, "C g(p)"]
-      & Z \ar[r, "p"] & \mathbb{R}
+      & Z \ar[r, "p"] & \R
     \end{tikzcd}
   \]
-  hence \(C (f) C (g) = C (g f)\). Moreover, given any \(X \in \cat{Top}^\op\)
+  hence \(C (f) C (g) = C (g f)\). Moreover, given any \(X \in \Top^\op\)
   we find that \(C \Id_X: C X \to C X\) is such that for all \(q \in C X\), \(C
   \Id_X (q) = q \Id_X = q\) hence \(C \Id_X = \Id_{C X}\). This finishes the
-  proof that \(C: \cat{Top}^\op \to \cat{Ring}\) is a contravariant functor.
+  proof that \(C: \Top^\op \to \Rng\) is a contravariant functor.
 \end{example}
 
 \begin{definition}[Presheaf]\label{def: presheaf}
   Let \(\cat C\) be a small category. A contravariant functor \(\cat C^\op \to
-  \cat{Set}\) is called a presheaf on \(\cat C\).
+  \Set\) is called a presheaf on \(\cat C\).
 \end{definition}
 
-\begin{example}[\(\mathcal O(X)^\op \to \cat{Set}\)]
-  Let \(X \in \cat{Top}\) we define \(\mathcal O(X)\) to be the poset category
+\begin{example}[\(\mathcal O(X)^\op \to \Set\)]
+  Let \(X \in \Top\) we define \(\mathcal O(X)\) to be the poset category
   whose objects are open sets of \(X\). That is, for sets \(U, U' \in \mathcal
   O(X)\), if \(U \subseteq U'\), then there exists a morphism \(U \to U'\) in
   \(\Mor(\mathcal O(X))\). A presheaf on the category \(\mathcal O(X)\) is a
-  functor \(F: \mathcal O(X)^\op \to \cat{Set}\) that assigns \(F U = \{f: U \to
-  \mathbb{R}: f \text{ continuous}\}\) for all \(U \in \mathcal O(X)\).
+  functor \(F: \mathcal O(X)^\op \to \Set\) that assigns \(F U = \{f: U \to
+  \R: f \text{ continuous}\}\) for all \(U \in \mathcal O(X)\).
   Moreover, for maps \(g: U \to U'\) (that is \(U \subseteq U'\)) we have \(F g:
-  F U' \to F U\) such that \(F g(f) = f|_U: U \to \mathbb{R}\) for all \(f: U'
-  \to \mathbb{R}\) continuous. Since the restriction of a continuous map is
+  F U' \to F U\) such that \(F g(f) = f|_U: U \to \R\) for all \(f: U'
+  \to \R\) continuous. Since the restriction of a continuous map is
   continuous, then \(f|_U \in F U\)
 \end{example}
 
@@ -162,7 +162,7 @@ and \(F r\) is a split epimorphism.
   \(\cat C(-, c)\) respectively, represented by the object \(c\). That is:
   \[
     \begin{tikzcd}
-      \cat C \ar[rr, "\cat C{(c, -)}"] & & \cat{Set}
+      \cat C \ar[rr, "\cat C{(c, -)}"] & & \Set
       \\
       x \ar[rr, maps to] \ar[d, swap, "f"]
       & & \cat C(c, x) \ar[d, "f_*"]
@@ -171,7 +171,7 @@ and \(F r\) is a split epimorphism.
     \end{tikzcd}
     \qquad
     \begin{tikzcd}
-      \cat C^\op \ar[rr, "\cat C{(-, c)}"] & & \cat{Set}
+      \cat C^\op \ar[rr, "\cat C{(-, c)}"] & & \Set
       \\
       x \ar[rr, maps to] \ar[d, swap, "f"]
       & & \cat C(x, c)

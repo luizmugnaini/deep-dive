@@ -57,13 +57,13 @@
   \[
     \sign(\sigma) = (-1)^m, \text{ where }
     m := |\{(i, j) : 1 \leq i < j \leq n,\ \sigma(i) > \sigma(j)\}|.
-  \] 
+  \]
   Equivalently, if \(x_1, \dots, x_n \in k\) then we can define the
   sign of \(\sigma\) as
   \[
     \sign(\sigma) = \prod_{i < j} \frac{x_{\sigma(i)} -
     x_{\sigma(j)}}{x_i - x_j}.
-  \] 
+  \]
 \end{definition}
 
 \begin{corollary}
@@ -73,11 +73,11 @@
 \end{corollary}
 
 \begin{proposition}\label{prop: sign is a group homomorphism}
-  Let \(\sigma, \tau \in \mathcal S_n\), then 
+  Let \(\sigma, \tau \in \mathcal S_n\), then
   \[
     \sign(\sigma \tau) = \sign(\sigma)
     \sign(\tau).
-  \] 
+  \]
   This implies that \(\sign: \mathcal S_n \to \{1, -1\}\) is a
   group homomorphism.
 \end{proposition}
@@ -118,7 +118,7 @@
   that exists \(i < j\) for which \(v_i = v_j\) then
   \[
     f(v_1, \dots, v_n) = 0.
-  \] 
+  \]
 \end{definition}
 
 \begin{proposition}\label{prop: alternating map property}
@@ -126,12 +126,12 @@
   \mathcal S_n\) is a transposition, we have
   \[
     f(v_{\tau(1)}, \dots, v_{\tau(n)}) = - f(v_1, \dots, v_n).
-  \] 
+  \]
   In general, if \(\sigma \in \mathcal S_n\) is any permutation, then
   \[
     f(v_{\sigma(1)}, \dots, v_{\sigma(n)}) = \sign(\sigma) f(v_1,
     \dots, v_n).
-  \] 
+  \]
 \end{proposition}
 
 \begin{proof}
@@ -143,7 +143,7 @@
   \end{align*}
   therefore we find
   \begin{align*}
-    f(v_1, \dots, v_i, \dots, v_i + v_j, \dots, v_n) 
+    f(v_1, \dots, v_i, \dots, v_i + v_j, \dots, v_n)
     &= - f(v_1, \dots, v_j, \dots, v_i + v_j, \dots, v_n) \\
     f(v_1, \dots, v_i, \dots, v_j, \dots, v_n)
     &= - f(v_1, \dots, v_j, \dots, v_i, \dots, v_n) \\
@@ -170,7 +170,7 @@
   alternating if for all \(\sigma \in \mathcal S_q\) permutation we have
   \[
     f_\sigma(T) = \sign(\sigma) T.
-  \] 
+  \]
   We denote by \(\Lambda^q(V)\) the subspace of \(T_0^q(V)\) of alternating
   tensors and call it the \(q\)-exterior power of \(V\).
 \end{definition}
@@ -182,7 +182,7 @@
   \[
     A(T) = \frac{1}{q!} \sum_{\sigma \in \mathcal S_q} \sign(\sigma)
     f_\sigma(T)
-  \] 
+  \]
   Then \(A^2 = A\) and \(\im A = \Lambda^q(V)\).
 \end{proposition}
 
@@ -190,7 +190,7 @@
   First we show that \(\im A \subseteq \Lambda^q(V)\) (we already know that
   clearly \(\Lambda^q(V) \subseteq \im A\)). Notice that
   \begin{align*}
-    f_\sigma(A(T)) 
+    f_\sigma(A(T))
     &= f_\sigma \left( \frac 1 {q!} \sum_{\tau \in \mathcal S_q}
     \sign(\tau) f_\tau(T) \right) \\
     &= \frac 1 {q!} \sum_{\tau \in \mathcal S_q} \sign(\tau)
@@ -218,7 +218,7 @@
   T_0^q(V)\). We define the exterior multiplication to be the map
   \[
     A(v_1 \otimes \dots \otimes v_q) := v_1 \wedge \dots \wedge v_q
-  \] 
+  \]
 \end{definition}
 
 \begin{proposition}[Universal property for exterior power]
@@ -232,7 +232,7 @@
       T_0^q(V) \ar[d, swap, two heads, "A"] &L \\
       \Lambda^q(V) \ar[ur, dashed, swap, "\ell"]
     \end{tikzcd}
-  \] 
+  \]
 \end{proposition}
 
 \begin{proof}
@@ -245,7 +245,7 @@
   %\wedge \dots \wedge v_q) = \ell(v_1 \wedge \dots \wedge v_q)\) and hence \(f =
   %\ell\).
   %(Existence) We must show that \(\ell\) is indeed a \(k\)-linear map. Notice
-  %that making \(\ell \circ A \circ \otimes = \mu\) 
+  %that making \(\ell \circ A \circ \otimes = \mu\)
 \end{proof}
 
 Now we get some geometric motivation behind the algebraic structure of the
@@ -279,7 +279,7 @@ basis for symmetric power}.
   \[
     A(e_{i_1} \otimes \dots \otimes e_{i_q}) = e_{i_1} \wedge \dots \wedge
     e_{i_q}
-  \] 
+  \]
   with \(1 \leq i_1 < \dots < i_n \leq n\) form a basis for the subspace
   \(\Lambda^q(V)\).
 \end{proposition}
@@ -298,7 +298,7 @@ basis for symmetric power}.
   \[
     \mu_I(v_1, \dots, v_q) = \sum_{\sigma \in \mathcal S_q}
     \sign(\sigma) \prod_{j=1}^q e_{i_{\sigma(j)}}^*(v_{i_j})
-  \] 
+  \]
   where \(\{e_{i_j}^*\}_{i_j \in I}\) is the dual of \(\{e_{i_j}\}_{i_j
   \in I}\). Using \cref{prop: exterior power universal property} we can
   define a unique linear map \(f_I: \Lambda^q(V) \to k\) such that the diagram
@@ -308,7 +308,7 @@ basis for symmetric power}.
       V^q \ar[r, "\mu_I"] \ar[d, swap, "A \circ \otimes"] &k \\
       \Lambda^q(V) \ar[ur, dashed, swap, "f_I"]
     \end{tikzcd}
-  \] 
+  \]
   which implies in \(\mu_I(v_1, \dots, v_q) = f_I(v_1 \wedge \dots \wedge v_q)\)
   for all \((v_1, \dots, v_q) \in V^q\).
 
@@ -320,7 +320,7 @@ basis for symmetric power}.
     f_I(e_{i_1'} \wedge \dots \wedge e_{i_q'}) = \mu_I(e_{i_1'}, \dots,
     e_{i_q'}) = \sum_{\sigma \in \mathcal S_q} \sign(\sigma)
     \prod_{j=1}^q e_{i_{\sigma(j)}}^*(e_{i_j'}) = 0
-  \] 
+  \]
   since \(e_{i_{\sigma(j)}}^*(e_{i_{j_0}}) = 0\) for all permutations \(\sigma
   \in \mathcal S_q\) and \(1 \leq j \leq q\). On the other hand, we have that
   \[
@@ -329,7 +329,7 @@ basis for symmetric power}.
     e_{i_{\sigma(j)}}^*(e_{i_j})
     = \sign(\Id) \prod_{j=1}^q e_{i_{\Id(j)}}^*(e_{i_j})
     = 1
-  \] 
+  \]
 
   Let \(c_P \in k\) for all \(P \in \mathcal I\) and consider the vanishing
   linear combination
@@ -341,8 +341,8 @@ basis for symmetric power}.
   \[
     0 = f_I\left( \sum_{P \in \mathcal I} c_P (e_{p_1} \wedge \dots \wedge
     e_{p_q}) \right) = \sum_{P \in \mathcal I} c_P f_I(e_{p_1} \wedge \dots \wedge
-    e_{p_q}) = c_I 
-  \] 
+    e_{p_q}) = c_I
+  \]
   hence we conclude that the linear combination \cref{eq: vanishing exterior
   product combination} vanishes if and only if each coefficient vanishes. This
   concludes that \(B\) is linearly independent. Hence we've proved that \(B\) is
@@ -353,7 +353,7 @@ basis for symmetric power}.
   Let \(V\) be a \(n\)-dimensional \(k\)-vector space. Then we have
   \[
     \dim_k \Lambda^q(V) = \binom n q
-  \] 
+  \]
 \end{proposition}
 
 \begin{proof}
@@ -370,19 +370,19 @@ basis for symmetric power}.
   Let \(V\) be a \(k\)-vector space. We define the exterior algebra on \(V\) as
   \[
     \Lambda^\bullet(V) = \bigoplus_{q=0}^\infty \Lambda^q(V)
-  \] 
+  \]
   together with a multiplicative structure \(\wedge: \Lambda^d(V) \otimes
   \Lambda^q(V) \to \Lambda^{d+q}(V)\) mapping
   \[
     (v_1 \wedge \dots \wedge v_d) \otimes (w_1 \wedge \dots \wedge w_q) \xmapsto
     \wedge v_1 \wedge \dots \wedge v_d \wedge w_1 \wedge \dots \wedge w_q.
-  \] 
+  \]
   We interpret \(\Lambda^0(V) = k\).
 \end{definition}
 
 \begin{proposition}
   The multiplicative structure of the tensor algebra \(\Lambda^\bullet(V)\) is
-  associative and skew-commutative, that is, for all \(\alpha \in \Lambda^d(V)\) 
+  associative and skew-commutative, that is, for all \(\alpha \in \Lambda^d(V)\)
   and \(\beta \in \Lambda^q(V)\) we have \(\alpha \wedge \beta = (-1)^{d q} \beta
   \wedge \alpha\).
 \end{proposition}
@@ -395,7 +395,7 @@ basis for symmetric power}.
   \end{equation} Notice that \[
     A(T_1) \otimes T_2 = \frac 1 {q!} \sum_{\sigma \in \mathcal S_q}
     \sign(\sigma) f_\sigma(T_1) \otimes T_2
-  \] 
+  \]
   therefore we find
   \begin{equation}\label{eq: A(A(T1) T2)}
     A(A(T_1) \otimes T_2) = \frac 1 {q!} \sum_{\sigma \in \mathcal S_q}
@@ -407,10 +407,10 @@ basis for symmetric power}.
   and \(\overline \sigma(i) = i\) for all \(i \in \{q + 1, \dots, q + d\}\). In
   particular, we find that \(f_\sigma(T_1) \otimes T_2 = f_{\overline \sigma}
   (T_1 \otimes T_2)\) and clearly \(\sign(\overline \sigma) = \sign(\sigma)\).
-  This implies that 
+  This implies that
   \begin{equation}\label{eq: ol sigma and A commute}
     A(f_\sigma(T_1) \otimes T_2) = A(f_{\overline \sigma}(T_1 \otimes T_2))
-    = f_{\overline \sigma}(A(T_1 \otimes T_2)) 
+    = f_{\overline \sigma}(A(T_1 \otimes T_2))
     = \sign(\overline \sigma) A(T_1 \otimes T_2)
     = \sign(\sigma) A(T_1 \otimes T_2)
   \end{equation}
@@ -420,7 +420,7 @@ basis for symmetric power}.
   \[
     A(A(T_1) \otimes T_2) = \frac 1 {q!} \sum_{\sigma \in \mathcal S_q}
     \sign^2(\sigma) A(T_1 \otimes T_2) = A(T_1 \otimes T_2).
-  \] 
+  \]
   In the same manner we can show that \(A(T_1 \otimes A(T_2)) = A(T_1 \otimes
   T_2)\). Hence \cref{eq: asso goal} holds.
 
@@ -428,17 +428,17 @@ basis for symmetric power}.
   Notice that from the construction of the product map \(\wedge\) and \cref{eq:
   asso goal} we find
   \[
-    (\alpha \wedge \beta) \wedge \gamma 
-    = \wedge\left( \wedge(\alpha \otimes \beta) \otimes \gamma \right) 
+    (\alpha \wedge \beta) \wedge \gamma
+    = \wedge\left( \wedge(\alpha \otimes \beta) \otimes \gamma \right)
     = \wedge\left(\alpha \otimes \wedge(\beta \otimes \gamma) \right)
     = (\alpha \wedge \beta) \wedge \gamma
-  \] 
+  \]
   which proves associativity of the tensor algebra.
 
   We now prove skew-commutativity. Let \(\alpha \in \Lambda^d(V)\) and \(\beta
   \in \Lambda^q(V)\), and a permutation \(\sigma \in \mathcal S_{q + d}\) such
-  that \(\sigma(i) = q + d - i + 1\), consisting of \(d q\) transpositions. 
-  Hence we find that 
+  that \(\sigma(i) = q + d - i + 1\), consisting of \(d q\) transpositions.
+  Hence we find that
   \[
     \beta \wedge \alpha = f_\sigma(\alpha \wedge \beta)
     = \sign(\sigma)(\alpha \wedge \beta) = (-1)^{d q} (\alpha \wedge \beta).
@@ -450,7 +450,7 @@ basis for symmetric power}.
   vectors \(v_1, \dots, v_d\) are linearly independent if and only if
   \[
     \Lambda^d(V) \ni v_1 \wedge \dots \wedge v_d \neq 0.
-  \] 
+  \]
 \end{proposition}
 
 \begin{proof}
@@ -463,7 +463,7 @@ basis for symmetric power}.
     \nonumber
     v_1 \wedge \dots \wedge v_j \wedge \dots \wedge v_d
     &= v_1 \wedge \dots \wedge \left( - \sum_{i=1}^d \frac{c_i}{c_j} v_i \right)
-    \wedge \dots \wedge v_d 
+    \wedge \dots \wedge v_d
     \\
     \nonumber
     &= \left( v_1, \dots, - \sum_{i=1}^d \frac{c_i}{c_j} v_i, \dots, v_d \right)
@@ -483,9 +483,9 @@ basis for symmetric power}.
   v_{j-1}, 0, v_{j+1}, \dots, v_d) \in \mathcal M_0\) and therefore we have
   \begin{align*}
     (v_1, \dots, a v_j + b w, \dots, v_d) + \mathcal M_0
-    &= (v_1, \dots, a v_j, \dots, v_d) + (v_1, \dots, b w, \dots, v_d) 
+    &= (v_1, \dots, a v_j, \dots, v_d) + (v_1, \dots, b w, \dots, v_d)
     + \mathcal M_0 \\
-    &= a(v_1, \dots, v_j, \dots, v_d) + b(v_1, \dots, w, \dots, v_d) 
+    &= a(v_1, \dots, v_j, \dots, v_d) + b(v_1, \dots, w, \dots, v_d)
     + \mathcal M_0.
   \end{align*}
   On the other hand, \cref{eq: wedge zero} comes from the fact that we have a
@@ -502,11 +502,10 @@ basis for symmetric power}.
 
 \todo[inline]{
 Add cool propositions for the exterior algebra: the Hodge Star Operator; the
-isomorphism \(\Lambda^d(V^*) \iso (\Lambda^d(V))^*\); and the natural
 isomorphisms
 \begin{gather*}
-  \Sym^d(V \oplus W) \iso \bigoplus_{i=0}^d \Sym^i(V) \otimes
-  \Sym^{d-i}(W) \\
+  \Lambda^d(V^*) \iso (\Lambda^d(V))^* \\
+  \Sym^d(V \oplus W) \iso \bigoplus_{i=0}^d \Sym^i(V) \otimes \Sym^{d-i}(W) \\
   \Lambda^d(V \oplus W) \iso \bigoplus_{i=0}^d \Lambda^i(V) \otimes
   \Lambda^{d-i}(W)
 \end{gather*}

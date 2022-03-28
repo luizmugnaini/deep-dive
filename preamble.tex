@@ -33,9 +33,13 @@
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{example}[theorem]{Example}
 \newtheorem{notation}[theorem]{Notation}
-\renewcommand\qedsymbol{\(\blacksquare\)}
 
 %\parskip=5pt plus 1pt
+
+% symbols
+\renewcommand{\qedsymbol}{\(\blacksquare\)}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
 
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\Obj}{Obj}
@@ -54,16 +58,24 @@
 \DeclareMathOperator{\Sym}{Sym}
 \DeclareMathOperator{\Char}{char}
 \DeclareMathOperator{\sign}{sign}
+
+% arrows
 \newcommand{\op}{\mathrm{op}}
 \newcommand{\isoto}{\xrightarrow{\raisebox{-.5ex}[0ex][0ex]{$\sim$}}}
 \newcommand{\mono}{\hookrightarrow}
 \newcommand{\epi}{\twoheadrightarrow}
 \newcommand{\cat}{\mathsf}
 \newcommand{\iso}{\simeq} % changed from simeq
-\renewcommand{\leq}{\leqslant}
-\renewcommand{\geq}{\geqslant}
+
 \newcommand{\Z}{\mathbf{Z}}
 \newcommand{\N}{\mathbf{N}}
 \newcommand{\Q}{\mathbf{Q}}
 \newcommand{\C}{\mathbf{C}}
 \newcommand{\R}{\mathbf{R}}
+
+% cats
+\newcommand{\Set}{\cat{Set}}
+\newcommand{\Top}{\cat{Top}}
+\newcommand{\Grp}{\cat{Group}}
+\newcommand{\Graph}{\cat{Graph}}
+\newcommand{\Rng}{\cat{Ring}}

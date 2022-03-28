@@ -79,7 +79,7 @@ Lets recall \cref{def: group} and demystify it in the following definition.
 
 \begin{definition}[Order of an element]\label{def: group elem order}
   Let \(G\) be a group and \(g \in G\) be any element. We say that \(g\) has
-  finite order if there exists \(n \in \mathbb{Z}_{> 0}\) such that \(g^n = e\).
+  finite order if there exists \(n \in \Z_{> 0}\) such that \(g^n = e\).
   The order \(|g|\) of the element \(g\) is defined as the smallest such
   positive integer. If \(g\) does not have a finite order, it is common to write
    \(|g| = \infty\).
@@ -87,12 +87,12 @@ Lets recall \cref{def: group} and demystify it in the following definition.
 
 \begin{lemma}\label{lem: order and multiples}
   Let \(G\) be a group and \(g \in G\) be an element with finite order. Then
-  \(g^n = e\) for some \(n \in \mathbb{Z}_{> 0}\) if and only if \(|g|\) divides
+  \(g^n = e\) for some \(n \in \Z_{> 0}\) if and only if \(|g|\) divides
   \(n\).
 \end{lemma}
 
 \begin{proof}
-  Since \(|g| \leq n\), define \(m \in \mathbb{Z}_{> 0}\) such that \(n - m |g|
+  Since \(|g| \leq n\), define \(m \in \Z_{> 0}\) such that \(n - m |g|
   \geq 0\) and \(n - (m + 1) |g| < 0\). Define \(r = n - m |g|\) to be the
   remainder, hence \(r < |g|\). Our goal is to show that \(r = 0\). Notice that
   \(g^r = g^n g^{-|g| m} = e e^{-m} = e\), which can only be the case for \(r =
@@ -109,9 +109,11 @@ Lets recall \cref{def: group} and demystify it in the following definition.
   infinite group, then \(|G| = \infty\).
 \end{definition}
 
-\begin{proposition}
+\subsubsection{Order of Products}
+
+\begin{proposition}[Order of the power]\label{prop: order of the power}
   Let \(G\) be a group and \(g \in G\) be an element with finite order. Then for
-  all \(m \in \mathbb{Z}_{\geq 0}\) the element \(g^m\) has finite order. For
+  all \(m \in \Z_{\geq 0}\) the element \(g^m\) has finite order. For
   \(m = 0\) we have \(|g^m| = 1\), for \(m > 0\) we have
   \[
     |g^m| = \frac{\operatorname{lcm}(m, |g|)}{m} =
@@ -130,6 +132,18 @@ Lets recall \cref{def: group} and demystify it in the following definition.
   \operatorname{lcm}(m, |g|)\), which proves the equation.
 \end{proof}
 
+\begin{proposition}\label{prop: order-prod-commutes}
+  Let \(G\) be a group, then for any \(g, h \in G\) we have \(|gh| = |hg|\).
+\end{proposition}
+
+\begin{proof}
+  First, let \(x, y \in G\) be any elements, we prove that \(|y x y^{-1}| =
+  |x|\). Notice that for any \(n \geq 1\) we have \((y x y^{-1})^n = y x^n
+  y^{-1}\), hence the least element that annihilates the product \(y x y^{-1}\)
+  is the order of \(x\) --- that is, \(|y x y^{-1}| = x\). In particular, \(hg =
+  g^{-1} gh g\), hence \(|hg| = |g^{-1} (gh) g| = |gh|\).
+\end{proof}
+
 \begin{proposition}\label{prop: commutative-order-of-prod}
   Let \(G\) be a group and \(g, h \in G\) be such that \(g h = h g\). Then \(|g
   h|\) divides \(\operatorname{lcm}(|g|, |h|)\).
@@ -143,6 +157,60 @@ Lets recall \cref{def: group} and demystify it in the following definition.
   |h|)\) is a common multiple of \(|g|\) and \(|h|\), we find that \((g
   h)^{\operatorname{lcm}(|g|, |h|)} = e\) and again from \cref{lem: order and
   multiples} we find that \(|g h|\) divides \(\operatorname{lcm}(|g|, |h|)\)
+\end{proof}
+
+\begin{lemma}\label{lem: ord-prod-rel-prime}
+  Let \(G\) be a group and \(g, h \in G\) commute --- \(gh = hg\). If
+  \(\operatorname{gcd}(|g|, |h|) = 1\), then \(|gh| = |g| |h|\).
+\end{lemma}
+
+\begin{proof}
+  Let \(|gh| = \ell, |g| = m\) and \(|h| = n\). From \cref{prop:
+  commutative-order-of-prod}, we have that \(\ell \mid \operatorname{lcm}(m,
+  n)\), and since \(m n = \operatorname{lcm}(m, n) \operatorname{gcd}(m, n) =
+  \operatorname{lcm}(m, n)\), then \(\ell \mid mn\), which implies that \(\ell
+  \leq mn\). Moreover, since the elements commute, \((g h)^\ell = g^\ell h^\ell
+  = e\) hence \(g^\ell = (h^\ell)^{-1}\). From \cref{prop: order of the power},
+  \(|g^\ell| = \frac{|g|}{\operatorname{gcd}(\ell, |g|)} = \frac m m = 1 \) and
+  equivalently for \(h\) we have \(|h^\ell| = 1\). This shows that \(g^\ell =
+  h^\ell = e\) and therefore both \(m\) and \(n\) divide \(\ell\), hence so does
+  the product \(mn\), thus \(mn \leq \ell\). This completes the proof that
+  \(\ell = mn\).
+\end{proof}
+
+\begin{definition}[Maximal finite order]\label{def: maximal-finite-order}
+  Let \(G\) be a group. An element \(g \in G\) is said to be of maximal finite
+  order if its order is finite and for all \(h \in G\) with finite order, we
+  have \(|h| \leq |g|\).
+\end{definition}
+
+\begin{proposition}
+  Let \(G\) be a commutative group and \(g \in G\) be of maximal finite order.
+  If \(h \in G\) has finite order, then \(|h|\) divides \(|g|\).
+\end{proposition}
+
+\begin{proof}
+  Define the notation \(|g| = m\) and \(|h| = n\). Let \(P = (p_j)_j\) be a
+  finite sequence containing all primes such that less than or equal to \(m\)
+  and define a finite sequence of integers of same length \(A = (a_j)_j\) such
+  that \(m = \prod_j p_j^{a_j}\). Since \(n \leq m\) it follows that there also
+  exists a finite sequence of integers \(B = (b_j)_j\) such that \(n = \prod_j
+  p_j^{b_j}\). Suppose for the sake of contradiction that \(n\) doesn't divide
+  \(m\), so that there exists an index \(k\) such that \(a_{k} < b_{k}\)
+  --- from the fact that \(\frac m n = \prod_j p_j^{a_j - b_j}\). Consider now
+  the order --- following from \cref{lem: ord-prod-rel-prime}:
+  \[
+    |g^{\left( p_k^{a_k} \right)} h^{\left(n / p_k^{b_k}\right)}|
+    = |g^{\left( p_k^{a_k} \right)}| |h^{\left(n / p_k^{b_k}\right)}|
+    = \frac m {\operatorname{gcd}(m, p_k^{a_k})}
+    \frac n {\operatorname{gcd}(n, n / p_k^{b_k})}
+    = \frac m {p_k^{a_k}} \frac n {n / p_k^{b_k}}
+    = m p_k^{b_k - a_k}
+  \]
+  and since \(b_k > a_k\), it follows that \(m p_k^{b_k - a_k} > m\) and hence
+  there is a contradiction since we assumed that \(m\) was the the maximal
+  finite order of the group. We conclude that there does not exist \(k\) for
+  which \(b_k\) is less than \(a_k\) --- thus \(n\) divides \(m\).
 \end{proof}
 
 \subsubsection{Finite Groups and Elements of Order 2}
@@ -251,3 +319,23 @@ Lets recall \cref{def: group} and demystify it in the following definition.
     \prod_{g \in G} g = \prod_{s \in S} s \prod_{t \in T} t = e.
   \]
 \end{proof}
+
+\section{Examples of Groups}
+
+\begin{definition}[Symmetric groups]\label{def: sym-group}
+  Let \(A \in \Set\). The symmetric group of \(A\) --- also referred to as the
+  permutation group of \(A\) ---, \(\Aut_\Set(A)\), is denoted by \(\mathcal
+  S_A\). The symmetric group of the range set \(\{1, \dots, n\}\) is denoted
+  \(\mathcal S_n\).
+\end{definition}
+
+\begin{notation}[Permutations]
+  A permutation \(\sigma \in \mathcal S_n\) is denoted by a table of the form
+  \[
+    \sigma =
+    \begin{pmatrix}
+      1 &2 &\dots &n-1 &n \\
+      \sigma(1) &\sigma(2) &\dots &\sigma(n-1) &\sigma(n)
+    \end{pmatrix}
+  \]
+\end{notation}
