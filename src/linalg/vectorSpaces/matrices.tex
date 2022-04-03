@@ -2,7 +2,7 @@
 
 \begin{definition}[Matrix]
    We define a \(m \times n\) matrix with entries in \(k\) as morphism \(k^n \to
-   k^m\) in the category \(\cat{Vect}_k\), that is, regarding \(k^n, k^m\) as
+   k^m\) in the category \(\Vect_k\), that is, regarding \(k^n, k^m\) as
    \(k\)-vector spaces.
 \end{definition}
 
@@ -10,16 +10,16 @@
 
 Let \(e_j\) be defined the be a tuple whose \(j\)-th element is \(1 \in k\) and
 all of the other elements of the tuple are \(0 \in k\), moreover, if \(e_j \in
-k^n\) it is an \(n\)-tuple. Let the morphism \(\varphi \in \Hom_{\cat{Vect}_k}
+k^n\) it is an \(n\)-tuple. Let the morphism \(\varphi \in \Hom_{\Vect_k}
 (k^n, k^m)\) and define for all \(1 \leq j \leq n\) the image
 \[
    \varphi(e_j) := (t_{1 j}, t_{2 j}, \dots, t_{mj}) = \sum_{i = 1}^m t_{ij} e_i
    \in k^m.
-\] 
+\]
 
 We now prove that in fact the \(mn\) elements \(t_{ij} \in k\) determine
 completely the behaviour of \(\varphi\), since for any element \((a_j)_{j=1}^n
-\in k^n\) we have 
+\in k^n\) we have
 \[
    \varphi((a_j)_{j=1}^n) = \varphi \Bigg( \sum_{j=1}^n a_j e_j \Bigg) =
    \sum_{j=1}^n a_j \varphi(e_j) = \sum_{j=1}^n \left( \sum_{i=1}^m a_j t_{i j}
@@ -27,12 +27,12 @@ completely the behaviour of \(\varphi\), since for any element \((a_j)_{j=1}^n
 \]
 Moreover, it can trivially be seen that the mapping \((a_j)_{j=1}^n \mapsto
 \sum_{j=1}^n \sum_{i=1}^m a_j t_{ij} e_i\)is indeed a morphism of vector
-spaces since, for another \((b_j)_{j=1}^n \in k^n\), we have 
+spaces since, for another \((b_j)_{j=1}^n \in k^n\), we have
 \[
    \varphi((a_j + b_j)_{j=1}^n) = \varphi((a_j)_{j=1}^n) +
    \varphi((b_j)_{j=1}^n)
-\] 
-also, given \(c \in k\) we have 
+\]
+also, given \(c \in k\) we have
 \[
    \varphi((c a_j)_{j=1}^n) = c\varphi((a_j)_{j=1}^n).
 \]
@@ -41,25 +41,25 @@ Since the matrix \(k^n \to k^m\) can be identified and completely determined
 with elements \((t_{ij})_{i, j}\) where \(1 \leq i \leq m\) and \(1 \leq j \leq
 n\), then we visually can represent it by
 \[
-   \varphi = 
-   \begin{pmatrix} 
+   \varphi =
+   \begin{pmatrix}
       t_{1 1} & \dots & t_{1 n} \\
       \vdots & \ddots & \vdots \\
       t_{m 1} & \dots & t_{m n}
-   \end{pmatrix} 
-\] 
+   \end{pmatrix}
+\]
 Also, we can regard the fact that \(\varphi((a_i)_{i=1}^n) = (b_i)_{i=1}^m\)
 visually as a system of equations
  \[
-    \begin{pmatrix} 
+    \begin{pmatrix}
       t_{1 1} & \dots & t_{1 n} \\
       \vdots & \ddots & \vdots \\
       t_{m 1} & \dots & t_{m n}
-    \end{pmatrix} 
-    \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix} 
-    = 
-    \begin{pmatrix} b_1 \\ \vdots \\ b_m \end{pmatrix} 
-\] 
+    \end{pmatrix}
+    \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix}
+    =
+    \begin{pmatrix} b_1 \\ \vdots \\ b_m \end{pmatrix}
+\]
 
 \begin{definition}[Square diagonal Matrix]
   \label{def: square diagonal matrix}
@@ -74,10 +74,10 @@ visually as a system of equations
   \(\{w_i\}_{i=1}^m\) be basis for the respective given finite dimensional
   vector spaces. By the isomorphism, we can represent \(L\) as a matrix \(k^n
   \to k^m\) whose components \(t_{i, j}\) with \(1 \leq i \leq m\) and \(1 \leq
-  i \leq n\) are defined with respect to the given basis as 
+  i \leq n\) are defined with respect to the given basis as
   \[
     L v_j = \sum_{i=1}^m t_{i, j} w_i
-  \] 
+  \]
 \end{definition}
 
 \subsection{Matrix multiplication}
@@ -88,7 +88,7 @@ visually as a system of equations
   \(AB : k^n \to k^\ell\) with coefficients
   \[
     c_{i, j} = \sum_{k=1}^n a_{i, k} b_{k, j}
-  \] 
+  \]
 \end{definition}
 
 \begin{proposition}[Composition of morphisms matrix]
@@ -104,13 +104,13 @@ visually as a system of equations
 \begin{proof}
   Let \(A_f := [a_{i, k}]\), and \(A_g := [b_{k, j}]\), and \(A_{f \circ g} =
   [c_{i, j}]\). Then, since from definition we have \(g(v_j) = \sum_k b_{k, j}
-  w_k\), hence 
+  w_k\), hence
   \[
     f \circ g(v_j) =
     \sum_k b_{k, j} f(w_k) =
-    \sum_k \bigg( b_{k, j} \bigg( \sum_i a_{i, k} l_i \bigg) \bigg) 
-    = \sum_i \bigg( \sum_k a_{i, k} b_{k, j} \bigg) l_i 
-    = \sum_i c_{i, j} l_i 
+    \sum_k \bigg( b_{k, j} \bigg( \sum_i a_{i, k} l_i \bigg) \bigg)
+    = \sum_i \bigg( \sum_k a_{i, k} b_{k, j} \bigg) l_i
+    = \sum_i c_{i, j} l_i
   \]
   thus \(c_{i, j} = \sum_k a_k{i, k} b_{k, j}\) and thus \(A_{f \circ g} = A_f
   A_g\) as wanted.

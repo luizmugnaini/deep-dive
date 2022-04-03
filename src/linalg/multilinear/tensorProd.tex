@@ -528,20 +528,20 @@ where the last is a basis for \(V\), we have \(\Id_V(v_j) = \sum_{i=1}^n
 \subsection{Tensor Multiplication Functor}
 
 \begin{definition}[Tensor multiplication functor]
-  Let \(\cat{FinVect}_k\) be the category of finite \(k\)-vector spaces together
-  with linear morphisms between them. Given \(M \in \cat{FinVect}_k\), we define
+  Let \(\FinVect_k\) be the category of finite \(k\)-vector spaces together
+  with linear morphisms between them. Given \(M \in \FinVect_k\), we define
   the functor of tensor multiplication on \(M\) as the mapping of objects \(L
   \xmapsto F L \otimes M\) and the mapping of morphisms \(f \xmapsto F f \otimes
   \Id_M\). Hence we have \(\Id_L \mapsto \Id_L \otimes \Id_M = \Id_{L \otimes
-  M}\) and given composable morphisms \(f, g \in \Mor(\cat{FinVect}_k)\) we have
+  M}\) and given composable morphisms \(f, g \in \Mor(\FinVect_k)\) we have
   \(f \circ g \mapsto (f \circ g) \otimes \Id_M = (f \otimes \Id_M) \circ (g
   \otimes \Id_M)\) as wanted.
 \end{definition}
 
 \begin{proposition}[Exactness]
   Let \(0 \to V \overset{f}\hookrightarrow L \overset{g}\twoheadrightarrow W \to
-  0\) be a short exact sequence, where \(V, L, W \in \cat{FinVect}_k\). Let \(M
-  \in \cat{FinVect}_k\), then following sequence is exact
+  0\) be a short exact sequence, where \(V, L, W \in \FinVect_k\). Let \(M
+  \in \FinVect_k\), then following sequence is exact
   \[
     0 \to V \otimes M \xrightarrow{f \otimes \Id_M}
     L \otimes M \xrightarrow{g \otimes \Id_M} W \otimes W \to 0.
@@ -591,7 +591,7 @@ where the last is a basis for \(V\), we have \(\Id_V(v_j) = \sum_{i=1}^n
     \item Tensors of type \((0,0)\) are called scalar tensors of rank \(0\).
     \item Tensors of type \((1, 0)\) are linear functionals on \(V\).
     \item Tensors of type \((1, 1)\) are elements of \(V^* \otimes V \iso
-      \End_{\cat{Vect}_k}(V)\), that is, linear operators.
+      \End_{\Vect_k}(V)\), that is, linear operators.
     \item Tensors of type \((2, 0)\) are elements of \(V^* \otimes V^* \iso
       \Hom(V^{**}, V^*) \iso \Hom(V, V^*)\) for a finite dimensional \(V\).
       Moreover \(V^* \otimes V^* \iso (V \otimes V)^* \iso \Hom(V, V; k)\) of

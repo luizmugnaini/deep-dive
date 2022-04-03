@@ -1,0 +1,150 @@
+\section{\texorpdfstring{\(\Grp\)}{Grp} Category}
+
+\begin{definition}[Group morphism]\label{def: grp-morphism}
+  Let \((G, \otimes)\) and \((H, \oplus)\) be groups together with their binary
+  operation. A group morphism --- also called homomorphism --- is a map
+  \(\varphi: (G, \otimes) \to (H, \oplus)\) such that the
+  that the following diagram commutes
+  \[
+    \begin{tikzcd}
+      G \times G \ar[d, swap, "\otimes"] \ar[r, "\varphi \times \varphi"]
+      &H \times H \ar[d, "\oplus"] \\
+      G \ar[r, "\varphi"] &H
+    \end{tikzcd}
+  \]
+  Where \(\varphi \times \varphi\) is uniquely defined in \(\Set\) by
+  \cref{prop: product-morphism} --- mapping \((g, \ell) \xmapsto{\varphi \times
+  \varphi} (\varphi(g), \varphi(\ell))\). The commutativity of such diagram can
+  be viewed as the requirement that \(\varphi\) preserves the structure coming
+  from the binary operations --- that is, for any \(g, \ell \in G\)
+  \[
+    \varphi(g \otimes \ell) = \varphi(g) \oplus \varphi(\ell).
+  \]
+\end{definition}
+
+\begin{definition}[Category of groups]\label{def: grp}
+  The category of groups \(\Grp\) consists of the collection of objects ---
+  called groups --- and group morphisms between them.
+\end{definition}
+
+\begin{proposition}
+  \(\Grp\) is a category.
+\end{proposition}
+
+\begin{proof}
+  Let \((G, \otimes)\), \((H, \oplus)\) and \((K, \star)\) be any groups. The
+  identity \(\Id_G: G \to G\) is a group morphism since \(\Id_G(g \otimes \ell)
+  = g \otimes \ell\) for any \(g, \ell \in G\). Moreover, we can define a map
+  \[
+    f: \Hom_{\Grp}(G, H) \times \Hom_{\Grp}(H, K) \to \Hom_{\Grp}(G, K)
+  \]
+  with the mapping \((\psi, \varphi) \xmapsto f \psi \circ \varphi\) --- since
+  the following diagram commutes
+  \[
+    \begin{tikzcd}
+      G \times G \ar[r, "\varphi \times \varphi"]
+      \ar[d, "\otimes"]
+      \ar[rr, bend left, "(\psi \circ \varphi) \times (\psi \circ \varphi)"]
+      &H \times H \ar[r, "\psi \times \psi"]
+      \ar[d, "\oplus"]
+      &K \times K \ar[d, "\star"]
+      \\
+      G \ar[r, "\varphi"]
+      \ar[rr, bend right, swap, "\psi \circ \varphi"]
+      &H \ar[r, "\psi"] &K
+    \end{tikzcd}
+  \]
+  Or, in other words, for any \(g, \ell \in G\) we have
+  \[
+    \psi(\varphi(g \otimes \ell))
+    = \psi(\varphi(g) \oplus \varphi(\ell))
+    = \psi(\varphi(g)) \star \psi(\varphi(\ell))
+    = \psi \circ \varphi(g) \star \psi \circ \varphi(\ell).
+  \]
+  Therefore \(\psi \circ \varphi \in \Hom_\Grp(G, K)\).
+
+  Since group morphisms are maps in \(\Set\), we have that associativity is
+  inherited.
+\end{proof}
+
+\begin{proposition}
+  There exists a covariant forgetful functor \(F: \Grp \to \Set\).
+\end{proposition}
+
+\begin{proof}
+  For objects, define \(F\) as \(F(G, \otimes) = G\) --- where we denoted \(G\)
+  together with its binary operation only to express that the multiplicative
+  structure is lost in the process. Let \(\varphi: (G, \otimes) \to (H,
+  \oplus)\) be a group morphism, denote by \(\overline \varphi \in \Mor(\Set)\)
+  the function \(\overline\varphi: G \to H\) such that \(\overline\varphi(g) =
+  \varphi(g)\) for all \(g \in G\). For such morphisms we define \(F\) as
+  \(F\varphi = \overline\varphi: F(G, \otimes) \to F(H, \oplus)\).
+
+  Let \(\psi \in \Hom_\Grp((H, \oplus), (K, \star))\), then we have
+  \(\overline{(\psi \circ \varphi)} = \overline \psi \circ \overline \varphi: H
+  \to K\). Thus
+  \[
+    F(\psi \circ \varphi) = \overline{(\psi \circ \varphi)}
+    = \overline \psi \circ \overline \varphi = F\psi \circ F\varphi.
+  \]
+  This shows that \(F\) is a covariant forgetful functor.
+\end{proof}
+
+\begin{proposition}
+  The trivial group \(* \in \Grp\) is the initial and final object of \(\Grp\).
+  That is, for any \(G \in \Grp\) the diagram
+  \[
+    \begin{tikzcd}
+      * \ar[r, dashed, bend right, swap, "\varphi"]
+      &G \ar[l, dashed, bend right, swap, "\psi"]
+    \end{tikzcd}
+  \]
+  commutes for uniquely defined group morphisms \(\varphi\) and \(\psi\).
+\end{proposition}
+
+\begin{proof}
+  Let \(G \in \Grp\) be any group. We define maps \(\varphi: * \to G\) mapping
+  \(e \xmapsto\varphi e_G\), where \(e\) is the only element of \(*\) --- being
+  unique possible map \(* \to G\) that preserves the group structure. Clearly,
+  \(\varphi\) is a group morphism since \(\varphi(e e) = \varphi(e) = e_G =
+  \varphi(e) \varphi(e)\) --- this shows that \(*\) is the initial object of
+  \(\Grp\). Let \(\psi: G \to *\) be a map defined by \(g \xmapsto\psi e\) ---
+  which is clearly unique. Then \(\psi\) is a morphism of groups, because
+  \(\psi(g h) = e = \psi(g) \psi(h)\) --- showing that \(*\) is the final object
+  of \(\Grp\).
+\end{proof}
+
+\begin{proposition}[Group morphism properties]
+  Let \((G, \otimes), (H, \oplus) \in \Grp\) and \(\varphi \in \Hom_\Grp(G,
+  H)\). Define \(\operatorname{inv}_G: G \isoto G\) and \(\operatorname{inv}_H:
+  H \isoto H\) as the maps \(g \xmapsto {\operatorname{inv}_G} g^{-1}\) and \(h
+  \xmapsto {\operatorname{inv}_H} h^{-1}\). Then the following diagram commutes
+  \[
+    \begin{tikzcd}
+      G \ar[r, "\varphi"]
+      \ar[d, swap, "\operatorname{inv}_G"]
+      &H \ar[d, "\operatorname{inv}_H"] \\
+      G \ar[r, "\varphi"] &H
+    \end{tikzcd}
+  \]
+\end{proposition}
+
+\begin{proof}
+  Let \(g \in G\) be any element, then
+  \[
+    \varphi(g^{-1}) = \varphi(g^{-1} e_G) = \varphi(g^{-1} \otimes g \otimes
+    g^{-1}) = \varphi(g^{-1}) \oplus \varphi(g) \oplus \varphi(g^{-1}),
+  \]
+  applying cancellation law on the equation above we find
+  \[
+    e_H = \varphi(g) \oplus \varphi(g^{-1}).
+  \]
+  Hence \(\varphi(g^{-1}) = \varphi(g)^{-1}\). Moreover, this implies that \(e_G
+  \xmapsto \varphi e_H\) since
+  \[
+    \varphi(e_G) = \varphi(g \otimes g^{-1}) = \varphi(g) \oplus \varphi(g^{-1})
+    = \varphi(g) \oplus \varphi(g)^{-1} = e_H.
+  \]
+\end{proof}
+
+\section{Group Products}

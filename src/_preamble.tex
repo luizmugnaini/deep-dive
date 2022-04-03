@@ -1,18 +1,11 @@
-\documentclass[11pt, reqno, openany, draft]{memoir}
+\documentclass[11pt, reqno, openany]{memoir}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{microtype}
 \usepackage[english]{babel}
 \usepackage{fullpage}
-%\usepackage{newpxtext}
 \usepackage{fontspec}
-\setmainfont{texgyrepagella}[
-  Extension = .otf,
-  UprightFont = *-regular,
-  BoldFont = *-bold,
-  ItalicFont = *-italic,
-  BoldItalicFont = *-bolditalic,
-]
+\usepackage{mathpazo}
 \usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools, stmaryrd}
 \usepackage{upgreek}
 \usepackage{enumerate}
@@ -70,7 +63,7 @@
 \newcommand{\isoto}{\xrightarrow{\raisebox{-.5ex}[0ex][0ex]{$\sim$}}}
 \newcommand{\mono}{\hookrightarrow}
 \newcommand{\epi}{\twoheadrightarrow}
-\newcommand{\cat}{\mathsf}
+\newcommand{\cat}{\mathcal}
 \newcommand{\iso}{\simeq} % changed from simeq
 
 \newcommand{\Z}{\mathbf{Z}}
@@ -80,11 +73,13 @@
 \newcommand{\R}{\mathbf{R}}
 
 % cats
-\newcommand{\Set}{\cat{Set}}
-\newcommand{\Top}{\cat{Top}}
-\newcommand{\Grp}{\cat{Group}}
-\newcommand{\Graph}{\cat{Graph}}
-\newcommand{\Rng}{\cat{Ring}}
+\newcommand{\Set}{{\cat{S}\textit{et}}}
+\newcommand{\Vect}{{\cat{V}\textit{ect}}}
+\newcommand{\FinVect}{{\cat{F}\textit{in}\cat{V}\textit{ect}}}
+\newcommand{\Top}{{\cat{T}\textit{op}}}
+\newcommand{\Grp}{{\cat{G}\textit{rp}}}
+\newcommand{\Graph}{{\cat{G}\textit{raph}}}
+\newcommand{\Rng}{{\cat{R}\textit{ing}}}
 
 \title{Algebra, a first encounter}
 \author{Luiz G. Mugnaini A.}

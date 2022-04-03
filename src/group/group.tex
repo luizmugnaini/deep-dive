@@ -322,6 +322,8 @@ Lets recall \cref{def: group} and demystify it in the following definition.
 
 \section{Examples of Groups}
 
+\subsection{Symmetry Group}
+
 \begin{definition}[Symmetric groups]\label{def: sym-group}
   Let \(A \in \Set\). The symmetric group of \(A\) --- also referred to as the
   permutation group of \(A\) ---, \(\Aut_\Set(A)\), is denoted by \(\mathcal
@@ -339,3 +341,414 @@ Lets recall \cref{def: group} and demystify it in the following definition.
     \end{pmatrix}
   \]
 \end{notation}
+
+\begin{remark}[Convention]\label{rem: convention-perm}
+  If \(\sigma, \tau \in \mathcal S_n\), we write the composition \(\sigma \tau\)
+  to denote the permutation
+  \[
+    i \xmapsto{\sigma\tau} \sigma(\tau(i)).
+  \]
+  That is, it follows the same order of composition for maps.
+\end{remark}
+
+\begin{proposition}
+  There exists an injection \(f: \mathcal S_n \mono M_{n \times n}(\{0, 1\})\)
+  --- where \(M_{n \times n}(\{0, 1\})\) is the collection of \(n \times n\)
+  matrices with entries assuming the value of \(1\) or \(0\). Moreover, if
+  \(f(\sigma) = M_\sigma\) and \(f(\tau) = M_\tau\) then \(f(\sigma \tau) =
+  M_\sigma M_\tau\).
+\end{proposition}
+
+\begin{proof}
+  Let \(\sigma \in \mathcal S_n\) be any permutation. We define \(f\) as the
+  mapping
+  \[
+    \sigma \overset f \longmapsto M_\sigma =
+    \begin{bmatrix}
+      \delta_{1 \sigma(1)} &\dots &\delta_{1 \sigma(n)} \\
+      \vdots &\ddots &\vdots \\
+      \delta_{n \sigma(1)} &\dots &\delta_{n \sigma(n)}
+    \end{bmatrix}
+  \]
+  It should be noted that since \(\sigma\) is injective, \(\delta_{i
+  \sigma(j)}\) assumes the value \(1\) only once in the \(j\)-th column. If
+  \(\sigma = \tau\) then clearly \(\delta_{i \sigma(j)} = \delta_{i \tau(j)}\)
+  for every \(1 \leq i, j \leq n\), thus \(f(\sigma) = f(\tau)\) --- \(f\) is
+  injective.
+
+  Consider now the composition of permutations \(\sigma \tau \in \mathcal S_n\).
+  Suppose we want to check where the \(j\)-th element goes to from the action of
+  \(\sigma \tau\). Notice that for all possible new positions \(1 \leq i \leq
+  n\) we have \(\delta_{i \sigma\tau(j)} = \sum_{k = 1}^n \delta_{i \sigma(k)}
+  \delta_{k \tau(j)}\) --- that is, \(j\) belongs to \(i\) after \(\sigma \tau\)
+  if and only if \(\tau(j) = k\) and \(\sigma(k) = i\) for some \(1 \leq k \leq
+  n\). We have
+  \[
+    f(\sigma \tau) = M_{\sigma \tau} =
+    \begin{bmatrix}
+      \delta_{1 \sigma\tau(1)} &\dots &\delta_{1 \sigma\tau(n)} \\
+      \vdots &\ddots &\vdots \\
+      \delta_{n \sigma\tau(1)} &\dots &\delta_{n \sigma\tau(n)}
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      \delta_{1 \sigma(1)} &\dots &\delta_{1 \sigma(n)} \\
+      \vdots &\ddots &\vdots \\
+      \delta_{n \sigma(1)} &\dots &\delta_{n \sigma(n)}
+    \end{bmatrix}
+    \begin{bmatrix}
+      \delta_{1 \tau(1)} &\dots &\delta_{1 \tau(n)} \\
+      \vdots &\ddots &\vdots \\
+      \delta_{n \tau(1)} &\dots &\delta_{n \tau(n)}
+    \end{bmatrix}
+    = M_\sigma M_\tau.
+  \]
+\end{proof}
+
+\begin{proposition}\label{prop: sym-n-all-orders}
+  The symmetry group \(\mathcal S_n\) contains elements of all orders \(d\) for
+  \(1 \leq d \leq n\).
+\end{proposition}
+
+\begin{proof}
+  Let \(d\) be any integer in the range \(1 \leq d \leq n\).
+  \todo[inline]{Write proof}
+\end{proof}
+
+\begin{corollary}
+  For every \(n \in \N\), there exists an element \(x \in \mathcal S_\N\) with
+  order \(|x| = n\).
+\end{corollary}
+
+\begin{proof}
+  Let any \(n \in \N\) and choose \(m \in \N\) with \(m \geq n\). From
+  \cref{prop: sym-n-all-orders} we find that the group \(\mathcal S_m\) contains
+  an element \(\sigma \in \mathcal S_m\) with order \(|\sigma| = n\). We can now
+  construct an element \(\tau \in \mathcal S_\N\) --- defined by
+  \[
+    \tau(a) =
+    \begin{cases}
+      \sigma(a), &a \leq m \\
+      a, &a > m
+    \end{cases}
+  \]
+  So clearly \(|\tau| = n\).
+\end{proof}
+
+\subsubsection{Permutations, Transpositions and Sign}
+
+\begin{definition}[Transposition]
+  \label{def: transposition}
+  We define a transposition on a collection \(\{1, \dots, n\}\) to be a map
+  \(\tau \in \mathcal S_n\) such that exists indices \(1 \leq i < j \leq n\)
+  for which \(\tau(i) = j\) and \(\tau(j) = i\), and \(\tau(k) = k\) for all
+  \(k \neq i, j\).
+\end{definition}
+
+\begin{proposition}\label{prop: permutations to transpositions}
+  Every permutation can be written as a composition of finitely many
+  transpositions.
+\end{proposition}
+
+\begin{proof}
+  We proceed via induction on the number of points of \(\{1, \dots, n\}\). For
+  the base case \(n = 2\) the composition is trivial. Assume as the induction
+  hypothesis that for \(n - 1 > 2\) the statement is true. Now, consider
+  \(\sigma \in \mathcal S_n\) and \(i \in \{1, \dots, n\}\) be any element in
+  the ordered collection \(I_n := \{1, \dots, n\}\). Denote \(\tau_{i, j}\) the
+  transposition that changes \(i\) with \(j\) and maintains unchanged the
+  remainder of the points. Assume that \(\sigma(i) = j\), then clearly
+  \(\tau_{i, j} \sigma(i) = \tau_{i, j}(j) = i\). Notice that since \(\tau_{i,
+  j} \sigma\) maintains \(i\) unchanged, we can see it as a permutation of \(n
+  - 1\) points (by simply ignoring the point \(i\)), hence it can be written as
+  a composition of finitely many transpositions by the induction hypothesis.
+  Notice that since \(\sigma = \tau_{i, j} (\tau_{i, j} \sigma)\) we find that
+  \(\sigma\) can also be written as a composition of finitely many
+  transpositions.
+\end{proof}
+
+\begin{definition}[Elementary transpositions]
+  Let \(\tau \in \mathcal S_n\) be a transposition. We say that \(\tau\) is an
+  elementary transposition if exists \(i \in \{1, \dots, n\}\) for which
+  \(\tau(i) = i + 1\) and \(\tau(i + 1) = i\), and for all \(j \neq i\) we have
+  \(\tau(j) = j\).
+\end{definition}
+
+\begin{proposition}
+  Every transposition can be written as a composition of finitely many
+  elementary transpositions.
+\end{proposition}
+
+\begin{proof}
+  Let \(\sigma \in \mathcal S_n\) be any transposition. Denote by \(\tau_k\) the
+  elementary transposition \(\tau_k(k) = k + 1\) and \(\tau(k + 1) k\). Let
+  \(x\) be the transposed element of \(\sigma\), and \(\sigma(x) = y\). Without
+  loss of generality we can assume that \(y > x\). Now we write \(\sigma\) as
+  the composition --- beware of \cref{rem: convention-perm}
+  \[
+    \sigma = \left(\tau_x \tau_{x + 1} \cdots \tau_{y - 3} \tau_{y - 2} \right)
+    \left( \tau_{y - 1} \tau_{y - 1} \cdots \tau_{x + 1} \tau_{x} \right)
+    = \left( \prod_{k = x}^{y-2} \tau_k \right)
+    \left( \prod_{k = 0}^{(y - 1) - x} \tau_{(y-1) - k} \right)
+  \]
+  Which follows from the fact that
+  \begin{gather*}
+    \left( \prod_{k = 0}^{(y - 1) - x} \tau_{(y-1) - k} \right)(i) =
+    \begin{cases}
+      y, &i = x \\
+      i - 1, &x < i \leq y \\
+      i, &i < x \text{ or } y < i
+    \end{cases}
+    \\
+    \left( \prod_{k = x}^{y-2} \tau_k \right)(i) =
+    \begin{cases}
+      x, &i = y \\
+      i + 1, &x \leq i < y \\
+      i, &i < x \text{ or } y < i
+    \end{cases}
+  \end{gather*}
+  Hence the composition of both gives
+  \[
+    \left( \prod_{k = x}^{y-2} \tau_k \right)
+    \left( \prod_{k = 0}^{(y - 1) - x} \tau_{(y-1) - k} \right)(i) =
+    \begin{cases}
+      y, &i = x \\
+      x, &i = y \\
+      i, &i \not\in \{x, y\}
+    \end{cases}
+  \]
+  which is equivalent to the transposition \(\sigma\).
+\end{proof}
+
+\begin{corollary}
+  Every permutation can be written as a composition of finitely many elementary
+  transpositions.
+\end{corollary}
+
+\begin{definition}[Sign]
+  \label{def: sign}
+  Let \(\sigma \in \mathcal S_n\) be a permutation on \(n\) objects. We define
+  the sign of \(\sigma\) as a map \(\sign: \mathcal S_n \to
+  \{1, -1\}\) such that
+  \[
+    \sign(\sigma) = (-1)^m, \text{ where }
+    m := |\{(i, j) : 1 \leq i < j \leq n,\ \sigma(i) > \sigma(j)\}|.
+  \]
+  Equivalently, if \(x_1, \dots, x_n \in k\) then we can define the
+  sign of \(\sigma\) as
+  \[
+    \sign(\sigma) = \prod_{i < j} \frac{x_{\sigma(i)} -
+    x_{\sigma(j)}}{x_i - x_j}.
+  \]
+\end{definition}
+
+\begin{corollary}
+  If \(\sigma\) can be written as an odd number of transpositions, then
+  \(\sign(\sigma) = -1\). Otherwise, if it is an even number of
+  transpositions, we have \(\sign(\sigma) = 1\).
+\end{corollary}
+
+\begin{proposition}\label{prop: sign is a group homomorphism}
+  Let \(\sigma, \tau \in \mathcal S_n\), then
+  \[
+    \sign(\sigma \tau) = \sign(\sigma)
+    \sign(\tau).
+  \]
+  This implies that \(\sign: \mathcal S_n \to \{1, -1\}\) is a
+  group homomorphism.
+\end{proposition}
+
+\begin{proof}
+  Consider the compostion \(\sigma \tau\), then we have
+  \begin{equation}\label{eq: sign sigma tau}
+     \sign(\sigma \tau) = \prod_{i < j} \frac{x_{\sigma\tau(i)} -
+     x_{\sigma\tau(j)}}{x_i - x_j}.
+  \end{equation}
+  Define the following: when \(\tau(i) < \tau(j)\) then \(\tau(i) := p\) and
+  \(\tau(j) := q\); on the other hand, when \(\tau(j) < \tau(i)\) let \(\tau(i)
+  := q\) and \(\tau(j) := p\). This way we find that
+  \begin{equation}\label{eq: sigma term}
+    \frac{x_{\sigma\tau(i)} - x_{\sigma\tau(j)}}{x_{\tau(i)} - x_{\tau(j)}}
+    = \frac{x_{\sigma(p)} - x_{\sigma(q)}}{x_p - x_q}.
+  \end{equation}
+  From construction of the above, \cref{eq: sigma term} yields
+  \begin{equation}\label{eq: sign sigma}
+    \sign(\sigma) = \prod_{p < q} \frac{x_{\sigma(p)} -
+    x_{\sigma(q)}}{x_p - x_q}.
+  \end{equation}
+  Notice that we can write \cref{eq: sign sigma tau} (using \cref{eq: sign
+  sigma}) as the product
+  \[
+    \sign(\sigma \tau) = \prod_{i < j}
+    \frac{x_{\sigma \tau(i)} - x_{\sigma \tau(j)}}{x_{\tau(i)} - x_{\tau(j)}}
+    \frac{x_{\tau(i)} - x_{\tau(j)}}{x_i - x_j}
+    = \sign(\sigma) \sign(\tau)
+  \]
+  as wanted.
+\end{proof}
+
+\subsection{Dihedral Group}
+
+\begin{definition}[Dihedral group]\label{def: dihedral}
+  A dihedral group is defined as the group of isometric symmetries of regular
+  polygons --- which are rotations and reflections about a line. Given a
+  \(n\)-sided regular polygon, its group of symmetries have \(2n\) elements ---
+  \(n\) rotations and \(n\) reflections --- and we denote it by \(D_{2n}\).
+\end{definition}
+
+\begin{proposition}\label{prop: dihetral-to-sym}
+  There exists an injection \(D_{2n} \mono \mathcal S_n\).
+\end{proposition}
+
+\begin{proof}
+  Label the vertices of the \(n\)-gon by \(V = \{[1]_n, \dots, [n]_n\} =
+  \Z/n\Z\). Notice that any element \(x \in D_{2n}\) can be described as \(x \in
+  \Aut_\Set(V)\) --- where the automorphism is restricted to the adjacency of
+  the vertices, that is, if \(x([i]_n) = [k]_n\), then \(x([i - 1]_n), x([i +
+  1]_n) \in \{[k - 1]_n, [k + 1]_n\}\). This shows the existence of the
+  inclusion \(D_{2n} \mono \Aut_\Set(V) = \mathcal S_V = \mathcal S_n\).
+\end{proof}
+
+\begin{proposition}
+  Any symmetry \(x \in D_{2n}\) can be written as \(y^a z^b\) --- where we
+  choose any \(y, z \in D_{2n}\) which are, respectively, a rotation and a
+  reflection about a line --- with \(0 \leq a < 2\) and \(0 \leq b < n\).
+\end{proposition}
+
+\begin{proof}
+  Notice that if \(y\) is any rotation, then \(|y| = n\) and if \(z\) is any
+  reflection, then \(|z| = 2\).
+
+  We first show that \(y\) and \(z\) are independent. We'll work with the
+  injection \(D_{2n} \mono \Aut_\Set(V)\), where we have the collection of
+  vertices \(V = \Z/n\Z\). Let \(j \in V\) be any vertex and suppose \(z(j) =
+  k\), then by the adjecency of the vertices are maintained, implying in \(z(j -
+  1) = k - 1\) and \(z(j + 1) = k + 1\). On the other hand, if \(y(j) = k\),
+  then the adjacency of the vertices is inverted, that is, \(y(j - 1) = k + 1\)
+  and \(y(j + 1) = k - 1\). Hence clearly reflections and rotations cannot be
+  dependent.
+
+  The only possible symmetries of \(D_{2n}\) involve the maintainence or the
+  inversion of the adjacency of each vertex --- we cannot break nor deform the
+  edges that connect each of the vertices ---, thus if \(x \in D_{2n}\), then
+  \(x = \prod_{(\alpha, \beta) \in I} z^\alpha y^\beta\) for some finite set
+  \(I\) with \(0 \leq \alpha < 2\) and \(0 \leq \beta < n\). We now show that such
+  product can be reduced. Let \(j \in V\) be any vertex and assume
+  \[
+    z(j) = k
+    \quad\text{ and }\quad
+    y(k) = \ell,
+  \]
+  We now analyse the symmetries \(y z\) and \(z y^m\) --- for \(0 \leq m < n\).
+  \begin{itemize}
+    \item The adjacent vertices of \(j\) --- when subjected to the symmetry \(y
+      z\) --- are obtained as
+      \[
+        y z(j - 1) = y(k + 1) = \ell + 1
+        \quad\text{ and }\quad
+        y z(j + 1) = y(k - 1) = \ell - 1
+      \]
+    \item Since \(y(k) = \ell\), \(y\) is the action rotating the vertex \(k\)
+      an amount of \(\ell - k\) times  --- where we'll adopt the convention that
+      if \(\ell - k < 0\), the rotation is counter-clockwise, if \(\ell + k >
+      0\) the rotation is clockwise. Therefore
+      \[
+        y(j) = j + (\ell - k).
+      \]
+      Notice that this implies in \(y^m(j) = j + m(\ell - k)\) --- we now define
+      \(t = y^m(j)\). Since \(z(j) = k\), then \(z(t) = k - m(\ell - k)\).
+      Therefore, adjacent vertices of \(j\) --- when subjected to the symmetry
+      \(z y^m\) --- are given by
+      \begin{gather*}
+        \text{Vertex } j - 1: \quad
+        z y^m(j - 1) = z(j + m (\ell - k) - 1) = k - m(\ell - k) + 1 \\
+        \text{Vertex } j + 1: \quad
+        z y^m(j + 1) = z(j + m (\ell - k) + 1) = k - m (\ell - k) - 1
+      \end{gather*}
+      In particular, for the case \(m = n - 1\) --- beware of the modularity of
+      the vertices, they lie on \(\Z/n\Z\) --- we get
+      \begin{align*}
+        &\text{Vertex } j - 1\text{:}\
+        zy^{n-1}(j - 1)
+        = k - (n - 1) (\ell - k) + 1
+        = k n - n \ell + \ell + 1
+        = \ell + 1
+        \\
+        &\text{Vertex } j\text{:} \qquad
+        zy^{n-1}(j)
+        = k - (n - 1) (\ell - k)
+        = kn - n \ell + \ell
+        = \ell
+        \\
+        &\text{Vertex } j + 1\text{:}\
+        zy^{n-1}(j + 1)
+        = k - (n - 1) (\ell - k) - 1
+        = k n - n \ell + \ell - 1
+        = \ell + 1
+      \end{align*}
+  \end{itemize}
+  From this analysis we conclude the general relation \(y z = z y^{n-1}\).
+
+  Lets analyse the product \((z^a y^b)(z^c y^d)\) for the different cases of \(0
+  \leq a, c < 2\) and \(0 \leq b, d < n\).
+  \begin{itemize}
+    \item If \(a = 1\) and \(c = 0\) then \((z^a y^b)(z^c y^d) = z y^{b + d}\).
+    \item If \(a, c = 0\) then
+      \[
+        (z^a y^b)(z^c y^d) = y^{b + d}.
+      \]
+    \item If \(a = 0\) and \(c = 1\) then \((z^a y^b)(z^c y^d) = y^b z^c y^d =
+      y^{b-1} z y^{d + (n - 1)}\), by recurrence we find find finally that
+      \[
+        (z^a y^b)(z^c y^d) = z y^{d + b(n - 1)}.
+      \]
+    \item If \(a, c = 1\) then \((z^a y^b)(z^c y^d) = z y^b z y^d = z y^{b-1} z
+      y^{d + (n - 1)}\) and, by recurrence
+      \[
+        (z^a y^b)(z^c y^d) = z^2 y^{d + b(n - 1)} = y^{d + b(n - 1)}.
+      \]
+  \end{itemize}
+  This shows that the finite product \(x = \prod_{(\alpha, \beta) \in I}
+  z^\alpha y^\beta\) can be reduced --- for some \(0 \leq a < 2\) and \(0 \leq b
+  < n\) --- to \(x = z^a y^b\).
+\end{proof}
+
+\begin{corollary}
+  Let \(y, z \in D_{2n}\) be, respectively, a rotation and a reflection. The
+  following relation are satisfied:
+  \[
+    |y| = n \text{, } |z| = 2 \text{, and}\ yz = z y^{n-1}.
+  \]
+  The set \(\{y, z\}\) generates any element of \(D_{2n}\).
+\end{corollary}
+
+\subsection{Cyclic Group}
+
+\begin{definition}[Cyclic group]\label{def: cyclic-grp}
+  A cyclic group is defined as a group generated by one element \(x\) with a
+  relation \(x^n = e\) for some \(n \in \N\). We'll denote such groups by
+  \(C_n\).
+\end{definition}
+
+\begin{example}
+  An example of a cyclic group is \((\Z/n\Z, +)\), where \([1]_n \in \Z/n\Z\) is
+  the element generating any elements of \(\Z/n\Z\).
+\end{example}
+
+\begin{proposition}
+  Given an element \(y \in C_n\) --- where \(x\) is the generating element of
+  \(C_n\) ---, assume \(y = x^m\). We have that
+  \[
+    |y| = \frac n {\operatorname{gcd}(m, n)}.
+  \]
+\end{proposition}
+
+\begin{proof}
+  Notice that \(|y| = |x^m| = \frac{|x|}{\operatorname{gcd}(m, |x|)} = \frac n
+  {\operatorname{gcd}(m, n)}\).
+\end{proof}
+
+\begin{corollary}
+  The element \(x \in C_n\) is the generator of the cyclic group if and only if
+  \(\operatorname{gcd}(|x|, n) = 1\).
+\end{corollary}

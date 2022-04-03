@@ -31,7 +31,7 @@
 \end{theorem}
 
 \begin{proof}
-   Suppose, for the sake of contradiction, that \(V = \bigcup_{i \in  I} S_i\) 
+   Suppose, for the sake of contradiction, that \(V = \bigcup_{i \in  I} S_i\)
    where \(I\) is a finite indexing set and \(S_i\) are all proper subspaces of
    \(V\). Then, let \(S_1\) be such that it is not contained in any other
    subspace \(S_i\). Define elements \(a \in S_1 \setminus \bigcup_{i \in
@@ -64,7 +64,7 @@
    intersection, then, we denote it by
    \[
       \bigcap_{i \in  I} S_i = \mathrm{Glb}\{S_i : i \in I\}.
-   \] 
+   \]
 \end{proposition}
 
 \begin{proof}
@@ -80,12 +80,12 @@
    sum of such subspaces as
    \[
       \sum_{i \in I} S_i := \left\{\sum_j s_j : s_j \in \bigcup_{i \in  I}
-      S_i\right\}. 
-   \] 
-   Therefore the least upper bound under set inclusion as 
+      S_i\right\}.
+   \]
+   Therefore the least upper bound under set inclusion as
    \[
       \mathrm{Lub}\{S_i : i \in I\} = \sum_{i \in I} S_i.
-   \] 
+   \]
 \end{definition}
 
 \begin{theorem}[Subspaces form a complete lattice]\label{thm: subspaces form a lattice}
@@ -95,12 +95,12 @@
    meet of any collection of sets \(\{S_i : i \in I\}\), where \(I\) is a finite
    indexing set, is
    \[
-      \bigcap_{i \in  I} S_i = \mathrm{Glb}\{S_i : i \in I\} 
-   \] 
+      \bigcap_{i \in  I} S_i = \mathrm{Glb}\{S_i : i \in I\}
+   \]
    and the join is defined as
    \[
       \sum_{i \in I} S_i = \mathrm{Lub}\{S_i : i \in I\}.
-   \] 
+   \]
 \end{theorem}
 
 \subsection{Morphisms of Vector Spaces}
@@ -127,7 +127,7 @@ which the item one is obtained.
 
 \begin{proposition}\label{prop: category of vector spaces}
    The \(k\)-vector spaces, together with morphism between such vector spaces,
-   form a category, of which we'll denote by \(\cat{Vect}_k\).
+   form a category, of which we'll denote by \(\Vect_k\).
 \end{proposition}
 
 \begin{proof}
@@ -138,15 +138,15 @@ which the item one is obtained.
    Another important feature of morphism between vector spaces is that they are
    closed under composition. Let \(\varphi : V \to L\) and \(\psi : L \to U\) be
    morphism between \(k\)-vector spaces, then the composition \(\psi \circ
-   \varphi : V \to U\) is such that, given any \(u, v \in V\) then 
-   \[ 
+   \varphi : V \to U\) is such that, given any \(u, v \in V\) then
+   \[
       \psi(\varphi(u+v)) = \psi(\varphi(u) + \varphi(v)) = \psi(\varphi(u)) +
       \psi(\varphi(v))
    \]
    and also, being \(a \in k\), we have
    \[
       \psi(\varphi(au)) = \psi(a\varphi(u)) = a \psi(\varphi(u)).
-   \] 
+   \]
    Which proves the closure under composition.
 
    We now prove that the composition of morphism of vector spaces is
@@ -155,23 +155,23 @@ which the item one is obtained.
    \[
       (\psi \circ (\varphi \circ \ell)) (w) = \psi(\varphi(\ell(w)) = (\psi \circ
       \varphi)(\ell(w)) = ((\psi \circ \varphi) \circ \ell) (w).
-   \] 
+   \]
 
    Consider the morphism \(\varphi : V \to L\), then clearly \(\varphi \circ
    \Id_V = \varphi = \Id_L \circ \varphi\). Together with the fact that the
    collection of morphisms between \(k\)-vector spaces \(V, L\) and the
    collection of morphisms between \(k\)-vector spaces \(U, W\), these two
    collections are clearly disjoint for \(V \neq U\) and \(L \neq W\). This
-   finishes the proof of the properties needed for a category. 
+   finishes the proof of the properties needed for a category.
 \end{proof}
 
 \begin{proposition}[Initial and Final object]
    The \(k \)-vector space \(0\) is a initial and final object of
-   \(\cat{Vect}_k\).
+   \(\Vect_k\).
 \end{proposition}
 
 \begin{proof}
-   Essentially, we need to prove that for all \(V \in \Obj(\cat{Vect}_k)\) there
+   Essentially, we need to prove that for all \(V \in \Obj(\Vect_k)\) there
    exists unique morphisms \(\varphi\) and \(\psi\) where
    \[
      \begin{tikzcd}
@@ -180,17 +180,17 @@ which the item one is obtained.
          &V
          \ar[l, bend left, dashed, "\varphi"]
      \end{tikzcd}
-   \] 
+   \]
    Notice that, since \(\varphi\) is a morphism of \(k\)-vector spaces, we'll
    need to impose \(\varphi(0) = 0\) and thus this morphism is clearly unique
    and satisfies the properties needed for a morphism. Moreover, the morphism
    has a unique target element, thus the image of \(\psi\) is the singleton
    \(\{0\}\) which is also clearly unique and satisfies the properties of
-   morphism. 
+   morphism.
 \end{proof}
 
 \begin{definition}[Isomorphism]
-   Let \(V, L \in \Obj(\cat{Vect}_k)\). We say that \(L\) and \(V\) are
+   Let \(V, L \in \Obj(\Vect_k)\). We say that \(L\) and \(V\) are
    isomorphic, that is \(L \iso V\), if there exists an isomorphism \(L \to V\)
    in \(\Hom(L, V)\).
 \end{definition}
@@ -199,11 +199,11 @@ which the item one is obtained.
 
 \begin{definition}[Linear functional]\label{def: linear functional}
    Let \(L\) be a \(k\)-space. We define a function \(f : L \to k\) to be a
-   \emph{linear functional} if 
+   \emph{linear functional} if
    \[
       f(av + bu) = f(av) + f(bu) = af(v) + bf(u),\ \forall u, v \in L\ \forall
       a, b \in k.
-   \] 
+   \]
 \end{definition}
 
 \begin{definition}[Dual Space]\label{def: dual space}

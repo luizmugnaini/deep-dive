@@ -17,10 +17,10 @@
    \begin{enumerate}[I.]
       \item If \(I',I'' \in \Obj(\cat{C})\) are initial objects of the
          category, then \(I' \iso I''\), where the isomorphism \(\varphi_I: I'
-         \to I''\) is unique. 
+         \to I''\) is unique.
       \item If \(F',F'' \in \Obj(\cat{C})\) are initial objects of the
          category, then \(F' \iso F''\), where the isomorphism \(\varphi_F: F'
-         \to F''\) is unique. 
+         \to F''\) is unique.
    \end{enumerate}
 \end{proposition}
 
@@ -41,7 +41,7 @@ construction is a terminal object of the category.
 Denote \(\sim\) an equivalence relation between elements of a given object
 \(A\) in the category \(\Set\). We say that the quotient \(A/\sim\) is
 universal with respect to the property that the image of equivalent elements
-under morphism is equal. 
+under morphism is equal.
 
 Moreover, the objects of the category we'll be dealing will be objects
 \(\varphi \in \Hom(A, Z)\) and the morphisms between objects \(\varphi : A \to
@@ -64,19 +64,19 @@ Z\) and \(\varphi' : A \to Z'\) is defined to be the commutative diagram
    commutes
     \[
       \begin{tikzcd}
-        A \ar[rr, "\varphi"] \ar[dr, swap, "\pi"] 
-          & 
+        A \ar[rr, "\varphi"] \ar[dr, swap, "\pi"]
+          &
             & Z \\
           & A/\sim \ar[ur, swap, "\widetilde \varphi"]
       \end{tikzcd}
-   \] 
+   \]
    From the imposition that such diagram commutes, we are inclined to define the
    morphism \(\tilde\varphi\) such that for every element \(a \in A\) it
    satisfies \(\tilde\varphi(\overline{a}) = \varphi(a)\), so that
    \(\tilde\varphi \circ \pi (a) = \varphi(a)\). Since the projection and
    \(\varphi\) are essentially unique, it is clear that if \(\tilde\varphi\)
    exists, then it should also be unique. We now show that we can construct the
-   morphism \(\tilde\varphi\). Notice that if \(\overline{a} = \overline{a'}\) 
+   morphism \(\tilde\varphi\). Notice that if \(\overline{a} = \overline{a'}\)
    then \(\tilde\varphi(\overline{a}) = \varphi(a)= \varphi(a') =
    \tilde\varphi(\overline{a'})\) thus indeed the morphism is well defined.
 \end{proof}
@@ -91,34 +91,59 @@ Z\) and \(\varphi' : A \to Z'\) is defined to be the commutative diagram
    \times Y)\) such that the following diagram commutes
    \[
       \begin{tikzcd}
-          & Z 
-          \ar[d, dashed, "\ell"] 
-          \ar[ddl, bend right, swap, "\varphi"] 
+          & Z
+          \ar[d, dashed, "\ell"]
+          \ar[ddl, bend right, swap, "\varphi"]
           \ar[ddr, bend left, "\psi"]
             & \\
-          & X \times Y \ar[dl, "\pi_X"] \ar[dr, "\pi_Y"] \\
-        X 
-          & 
+          & X \times Y \ar[dl, "\pi_X"] \ar[dr, swap, "\pi_Y"] \\
+        X
+          &
             & Y
       \end{tikzcd}
-   \] 
+   \]
    this is the so called \emph{universal property for products}.
 \end{proposition}
 
 \begin{proof}
    Define the morphism \(\ell(z) := (\varphi(z), \psi(z))\) for any  \(z \in
-   Z\), then \(\pi_X \circ \ell (z) = \pi_X(\varphi(z), \psi(z)) = \varphi(z)\) 
+   Z\), then \(\pi_X \circ \ell (z) = \pi_X(\varphi(z), \psi(z)) = \varphi(z)\)
    and the same being true for the left branch. Notice that trivially there is a
    unique mapping with such property because it need to imitate the image of
    both \(\varphi\) and \(\psi\).
 \end{proof}
+
+\begin{proposition}\label{prop: product-morphism}
+  Let \(\cat C\) be a category with products, and \(x \in \Hom_{\cat C}(X, Y)\).
+  Then there exists a unique morphism \(x \times x: X \times X \to Y \times Y\).
+\end{proposition}
+
+\begin{proof}
+  Let \(\pi_X: X \times X \to X\), and \(\pi_Y: Y \times Y \to Y\) denote any
+  projection. Define a morphism \(f \in \Hom_{\cat C}(X \times X, Y)\) by \(f =
+  \phi \pi_X\). From \cref{universal property for products} we find that there
+  exists a unique morphism \(X \times X \to Y \times Y\) --- which we'll denote
+  by \(x \times x\) --- such that the following diagram commutes
+  \[
+    \begin{tikzcd}
+      X \times X \ar[d, dashed, swap, "x \times x"] \ar[dr, bend left, "f"] \\
+      Y \times Y \ar[r, "\pi_Y"] &Y
+    \end{tikzcd}
+  \]
+\end{proof}
+
+If we consider the case for \(\Set\), we can even find a definite morphism \(x
+\times x\), it is given by \((a, b) \xmapsto{x \times x} (x(a), x(b))\). In the
+proof given above, however, one would need to caution that the projections
+\(\pi_X\) and \(\pi_Y\) must project the same component --- if not, the diagram
+would not comute in \(\Set\).
 
 \begin{proposition}[Fibered products]
    Let \(X, Y, Z\) objects of a category \(\cat C\) and morphisms \(\varphi :X
    \to Z\) and \(\psi : Y \to Z\). Define \(P\) to be an object such that the
    morphism  \(\pi_X : P \to X\) and  \(\pi_Y : P \to Y\) are such that, for any
    morphisms \(f : L \to X\) and  \(g : L \to Y\), where \(L\) is another object
-   of the category \(\cat C\), there exists a unique morphism \(\ell: L \to P\) 
+   of the category \(\cat C\), there exists a unique morphism \(\ell: L \to P\)
    for which the diagram commutes
    \[
      \begin{tikzcd}
@@ -138,8 +163,9 @@ Z\) and \(\varphi' : A \to Z'\) is defined to be the commutative diagram
         \ar[r, swap, "\varphi"]
           &Z
      \end{tikzcd}
-   \] 
-   We call the object \(P\) the \emph{fiber product of \(X\) and \(Y\) over \(Z\)}.
+   \]
+   We call the object \(P\) the \emph{fiber product of \(X\) and \(Y\) over
+   \(Z\)}.
 \end{proposition}
 
 \begin{proof}
@@ -147,10 +173,10 @@ Z\) and \(\varphi' : A \to Z'\) is defined to be the commutative diagram
    the morphisms \(\varphi \circ \pi_X = \psi \circ \pi_Y\). Thus for any
    given element \(p \in P\), we need \(\pi_X(p) = x \in X\) such that
    \(\varphi(x) = \psi(\pi_Y(p))\), and also the converse should be true.
-   Therefore, we simply need to define the object \(P\) as 
+   Therefore, we simply need to define the object \(P\) as
    \[
-      P := \{(a, b) \in X \times Y : \varphi(a) = \psi(b)\} 
-   \] 
+      P := \{(a, b) \in X \times Y : \varphi(a) = \psi(b)\}
+   \]
    and the morphisms as simply projections of such set into the respective
    object \(X\) or \(Y\).
 
@@ -186,13 +212,13 @@ coproducts (or disjoint unions) as initial objects of the category.
             &\\
           &Z
       \end{tikzcd}
-   \] 
+   \]
 \end{proposition}
 
 \begin{proof}
-   \todo[inline]{Coproduct universal property}  
+   \todo[inline]{Coproduct universal property}
 \end{proof}
-   
+
 \begin{proposition}
    The disjoint union is a coproduct in \(\Set\).
 \end{proposition}
@@ -212,11 +238,11 @@ coproducts (or disjoint unions) as initial objects of the category.
 \begin{proposition}[Cofibered Product]
    Let objects \(X, Y, Z\) in a category \(\cat C\) and morphisms \(\varphi : Z
    \to X\) and \(\psi : Z \to Y\). Let the inclusions \(\iota_A : A \to A \amalg
-   B\) and  \(\iota_B: B \to A \amalg B\) and define the object 
+   B\) and  \(\iota_B: B \to A \amalg B\) and define the object
     \[
        P := A \amalg B / (\iota \circ \varphi(z) \sim \iota \circ \psi(z),\
        \forall z \in Z).
-   \] 
+   \]
    With maps \(j_A : A \xrightarrow{\iota_A} A \amalg B \to P\) and  \(j_B : B
    \xrightarrow{\iota_B} A \amalg B \to P\). Then there exists a unique morphism
     \(\ell : P \to L\) for which the diagram commutes
@@ -238,12 +264,12 @@ coproducts (or disjoint unions) as initial objects of the category.
            &
              &L
        \end{tikzcd}
-    \] 
+    \]
     We call \(P\) the fiber coproduct of \(X\) and \(Y\) over \(Z\)
 \end{proposition}
 
 \begin{proof}
    Notice that we are imposing \(\ell \circ j_X = f\) and \(\ell \circ j_Y =
-   g\), thus  
+   g\), thus
    \todo[inline]{Cofibered product universal property}
 \end{proof}
