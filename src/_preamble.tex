@@ -1,26 +1,29 @@
-\documentclass[11pt, reqno, openany]{memoir}
+\documentclass[11pt, reqno, openany, draft]{memoir}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{microtype}
 \usepackage[english]{babel}
 \usepackage{fullpage}
-\usepackage{fontspec}
 \usepackage{mathpazo}
+\usepackage{marginnote}
 \usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools, stmaryrd}
 \usepackage{upgreek}
 \usepackage{enumerate}
 \usepackage[all]{xy}
 \usepackage{tikz-cd}
 \usepackage{tikz}
-\usepackage{comment, todonotes}
+\usepackage{comment}
+\usepackage{todonotes}
 \usepackage{xcolor}
 % \usepackage{showkeys}
+\definecolor{brightmaroon}{rgb}{0.76, 0.13, 0.28}
 \usepackage{hyperref}
 \hypersetup{
   colorlinks = true,
-  linkcolor  = black
+  linkcolor  = brightmaroon
 }
 \usepackage{cleveref}
+\linespread{1.05}
 
 \theoremstyle{definition}
 \newtheorem{theorem}{Theorem}[section]
@@ -78,6 +81,7 @@
 \newcommand{\FinVect}{{\cat{F}\textit{in}\cat{V}\textit{ect}}}
 \newcommand{\Top}{{\cat{T}\textit{op}}}
 \newcommand{\Grp}{{\cat{G}\textit{rp}}}
+\newcommand{\Ab}{{\cat{A}\textit{b}}}
 \newcommand{\Graph}{{\cat{G}\textit{raph}}}
 \newcommand{\Rng}{{\cat{R}\textit{ing}}}
 

@@ -15,15 +15,15 @@
       a composition map
       \[
         \Hom_{\cat C}(X, Y) \times \Hom_{\cat C}(Y, Z) \to \Hom_{\cat C}(X, Z).
-      \] 
+      \]
       So that for given morphisms \(f \in \Hom_{\cat C}(X, Y)\) and \(g \in
-      \Hom_{\cat C}(Y, Z)\) there exists a uniquely defined map \(g \circ f \in
+      \Hom_{\cat C}(Y, Z)\) there exists a uniquely defined map \(g  f \in
       \Hom_{\cat C}(X, Z)\) such that the following diagram commutes
       \[
         \begin{tikzcd}
           Y \ar[r, "g"]
             &Z \\
-          X \ar[u, "f"] \ar[ru, dashed, swap, "g \circ f"]
+          X \ar[u, "f"] \ar[ru, dashed, swap, "g  f"]
         \end{tikzcd}
       \]
     \item For every morphism \(f: X \to Y\) we have that
@@ -31,24 +31,24 @@
         \begin{tikzcd}
           X \ar[r, "f"] \ar[loop left, "\Id_X"] &Y \ar[loop right, "\Id_Y"]
         \end{tikzcd}
-      \] 
-      so that \(\Id_Y \circ f = f = f \circ \Id_X\).
+      \]
+      so that \(\Id_Y  f = f = f  \Id_X\).
     \item Given ojects \(W, X, Y, Z \in \cat C\), the following diagram commutes
       \[
         \begin{tikzcd}
           W
           \ar[r, "f"]
-          \ar[rr, bend right, swap, "g \circ f"]
-          \ar[rrr, bend right = 50, swap, "h \circ (g \circ f)"]
-          \ar[rrr, bend left = 50, "(h \circ g) \circ f"]
+          \ar[rr, bend right, swap, "g  f"]
+          \ar[rrr, bend right = 50, swap, "h  (g  f)"]
+          \ar[rrr, bend left = 50, "(h  g)  f"]
             &X
-            \ar[r, "g"] \ar[rr, bend left, "h \circ g"]
+            \ar[r, "g"] \ar[rr, bend left, "h  g"]
               &Y
-              \ar[r, "h"] 
+              \ar[r, "h"]
                 &Z
         \end{tikzcd}
-      \] 
-      that is, \(h \circ (g \circ f) = (h \circ g) \circ f\).
+      \]
+      that is, \(h  (g  f) = (h  g)  f\).
   \end{enumerate} \end{definition} \begin{definition}[Small]\label{def: small cat}
   A category \(\cat C\) is said to be small if it is composed of a set's worth
   of morphisms.
@@ -81,12 +81,12 @@
 \end{proposition}
 
 \begin{proof}
-   Suppose for instance that there are two such functions, \(g, h \in 
+   Suppose for instance that there are two such functions, \(g, h \in
    \Hom(B, A)\), that act as an inverse for \(f \in \Hom(A,
-   B)\). Note that 
+   B)\). Note that
    \[
       g = g \Id_B = g(f h) = (g f) h = \Id_A h = h
-   \] 
+   \]
    Thus \(g = h\) and therefore the inverse is indeed unique.
 \end{proof}
 
@@ -97,20 +97,20 @@
   \[
     x \otimes (y \otimes z) = (x \otimes y) \otimes z \qquad \text{ and } \qquad
     e \otimes x = x = x \otimes e.
-  \] 
+  \]
 \end{definition}
 
 \begin{example}
   A monoid \(M\) defines a 1-category object category \(\cat{BM}\) such that
   \(\Obj(\cat{BM}) = \{*\}\) and \(\Hom_{\cat{BM}}(*, *) = \{*\}\). Composition
-  of morphisms \(f, g: * \to *\) is defined as \(g \circ f = g \otimes f\). The
+  of morphisms \(f, g: * \to *\) is defined as \(g  f = g \otimes f\). The
   identity morphism is \(\Id_* = e\). Hence we have \(e * f = f = f * e\) for
   all morphisms \(f \in \Mor(\cat{BM})\).
 \end{example}
 
 \begin{definition}[Groupoids]\label{def: groupoids}
   A \emph{groupoid} is the name given to a category in which all of its
-  morphisms are isomorphisms. 
+  morphisms are isomorphisms.
 \end{definition}
 
 \begin{definition}[Group]\label{def: group}
@@ -138,7 +138,7 @@
   subcategory of \(\cat C\) if: \(\Obj(\cat D)\) is a restriction of \(\Obj(\cat
   C)\); for all \(A \in \Obj(\cat D)\) there exists \(\Id_A \in \Mor(\cat D)\);
   for any \(f \in \Mor(\cat D)\) there exists \(\dom(f), \codom(f) \in
-  \Obj(D)\); for any composable pair of morphisms \(f, g \in \Mor(\cat D)\)
+  \Obj(\cat D)\); for any composable pair of morphisms \(f, g \in \Mor(\cat D)\)
   there exists \(f g \in \Mor(\cat D)\).
 \end{definition}
 
@@ -155,10 +155,10 @@
   Let \(f \in \Mor(\cat G)\) then in particular we have \(f \in \Mor(\cat C)\)
   and hence \(\operatorname{dom} f, \operatorname{codom} f \in \Obj(\cat C) =
   \Obj(\cat G)\). Consider \(f \in \Hom_{\cat G}(A, B)\) and \(g \in \Hom_{\cat
-  G}(B, C)\), composable isomorphisms, and notice that \(f^{-1} \circ g^{-1}
-  \in \Hom_{\cat C}(C, A)\) is such that \((f^{-1} \circ g^{-1}) \circ (g \circ
-  f) = \Id_A\) and \((g \circ f) \circ (f^{-1} \circ g^{-1}) = \Id_C\), hence we
-  conclude that \(g \circ f\) is an isomorphism and therefore \(g \circ f \in
+  G}(B, C)\), composable isomorphisms, and notice that \(f^{-1}  g^{-1}
+  \in \Hom_{\cat C}(C, A)\) is such that \((f^{-1}  g^{-1})  (g
+  f) = \Id_A\) and \((g  f)  (f^{-1}  g^{-1}) = \Id_C\), hence we
+  conclude that \(g  f\) is an isomorphism and therefore \(g  f \in
   \Hom_{\cat G}(A, C)\).
 \end{proof}
 
@@ -183,14 +183,14 @@
           &c \ar[dl, swap,"f"] \ar[dr, "g"]\\
           x \ar[rr, "h"] & &y
         \end{tikzcd}
-      \] 
-      that is, \(g = h \circ f\).
-    \item\label{prop: slice over} 
+      \]
+      that is, \(g = h  f\).
+    \item\label{prop: slice over}
       (Slice over \(c\)) A category \(\cat C/c\), called the slice category of
       \(\cat C\) over \(c\), whose objects are morphisms \(f \in \Hom_{\cat
       C}(*, c)\). Morphisms between objects \(f, g \in \cat C/c\) such that \(f:
       x \to c\) and \(g: y \to c\) are maps \(h: x \to y\) such that the
-      following diagram commutes 
+      following diagram commutes
       \[
         \begin{tikzcd}
           x \ar[rr, "h"]
@@ -198,7 +198,7 @@
             &c \ar[ul, "f"] \ar[ur, swap, "g"]
         \end{tikzcd}
       \]
-      so that \(f = g \circ h\).
+      so that \(f = g  h\).
   \end{enumerate}
 \end{proposition}
 
@@ -210,7 +210,7 @@
   hence we are
   ensured of the existence of such morphisms between objects. Given an object
   \(f: c \to x\), the morphism \(\Id_x \in \Mor(\cat C)\) is such that \(f =
-  \Id_x \circ f\), so that \(\Id_x\) is the identity morphism for \(f\). Let
+  \Id_x  f\), so that \(\Id_x\) is the identity morphism for \(f\). Let
   \(f, g, u \in c/\cat C\) be objects such that \(f: c \to x,\ g: c \to y,\ u: c
   \to z\), then there exists morphisms \(h \in \Hom_{c/\cat C}(f, u)\) and
   \(\ell: \Hom_{c/\cat C}(u, g)\) so that the following diagram commutes
@@ -221,26 +221,26 @@
         &z \ar[r, "\ell"]
           &y
     \end{tikzcd}
-  \] 
-  so that we have a uniquely defined morphism \(\ell \circ h \in \Hom_{\cat
-  C}(x, y)\), where in particular \(\ell \circ h \in \Hom_{c/\cat C}(f, g)\) and
+  \]
+  so that we have a uniquely defined morphism \(\ell  h \in \Hom_{\cat
+  C}(x, y)\), where in particular \(\ell  h \in \Hom_{c/\cat C}(f, g)\) and
   thus this defines a map \(\Hom_{c/\cat C}(f, u) \times \Hom_{c/\cat C}(u, g)
   \to \Hom_{c/\cat C}(f, g)\). Since \(\Id_x, \Id_z \in \Mor(c/\cat C)\) for any
   \(x, y \in \cat C\), then given \(f, u \in c/\cat C\) just as above, the
-  morphism \(h: x \to z\) is such that \(\Id_z \circ h = h = h \circ \Id_x\). In
+  morphism \(h: x \to z\) is such that \(\Id_z  h = h = h  \Id_x\). In
   addition to the objects and morphisms named above, define \(v: c \to w\) and
   the corresponding morphism \(t \in \Hom_{c/\cat C}(g, v)\) so that \(t: y \to
-  w\) and \(v = t \circ g\). From the fact that \(\cat C\) is a category, we
-  find that \((t \circ \ell) \circ h = t \circ (\ell \circ h)\) and hence the
+  w\) and \(v = t  g\). From the fact that \(\cat C\) is a category, we
+  find that \((t  \ell)  h = t  (\ell  h)\) and hence the
   same is true for \(c/\cat C\).
 
   (SC2) Let \(f, g \in \cat C/c\), then from definition we have \(\Hom_{\cat
   C/c}(f, g) = \Hom_{\cat C}(\dom f, \dom g)\), which is well defined on \(\cat
   C\). Given an object \(f: x \to c\), there exists \(\Id_x: x \to x\) so that
-  \(f = f \circ \Id_x\) and hence \(\Id_x\) is the identity morphism for \(f\).
+  \(f = f  \Id_x\) and hence \(\Id_x\) is the identity morphism for \(f\).
   Define objects \(f, g, u \in \cat C/c\) such that \(f: x \to c,\ g: y \to c,\
   u: c \to z\), and morphisms \(h \in \Hom_{\cat C/c}(u, f)\) and \(\ell \in
-  \Hom_{\cat C/c}(g, u)\). Then, the following diagram commutes 
+  \Hom_{\cat C/c}(g, u)\). Then, the following diagram commutes
    \[
     \begin{tikzcd}
       x
@@ -248,15 +248,15 @@
           &y \ar[l, swap, "\ell"] \\
         &c \ar[lu, "f"] \ar[u, "u"] \ar[ru, swap, "g"]
     \end{tikzcd}
-  \] 
-  hence the morphism \(h \circ \ell \in \Hom_{\cat C}(y, x)\) defines a morphism
-  \(h \circ \ell \in \Hom_{\cat C/c}(g, f)\) so that we can construct a map well
+  \]
+  hence the morphism \(h  \ell \in \Hom_{\cat C}(y, x)\) defines a morphism
+  \(h  \ell \in \Hom_{\cat C/c}(g, f)\) so that we can construct a map well
   defined map \(\Hom_{\cat C/c}(g, u) \times \Hom_{\cat C/c}(u, f) \to
   \Hom_{\cat C/c}(g, f)\). Moreover, given \(f\) and \(u\) as above, we have
   that there exists \(\Id_x, \Id_z \in \Mor(\cat C/c)\) so that from the
-  category \(\cat C\) it follows that \(\Id_x \circ h = h \circ \Id_z\). In
+  category \(\cat C\) it follows that \(\Id_x  h = h  \Id_z\). In
   addition to the above, define \(v: w \to c\) and the morphism \(t \in
-  \Hom_{\cat C/c}(v, g)\) so that \(t: w \to y\). Then we have \(g = t \circ v\) 
-  and since \(\cat C\) is a category, we find that \((h \circ \ell) \circ t = h
-  \circ (\ell \circ t)\).
+  \Hom_{\cat C/c}(v, g)\) so that \(t: w \to y\). Then we have \(g = t  v\)
+  and since \(\cat C\) is a category, we find that \((h  \ell)  t = h
+   (\ell  t)\).
 \end{proof}

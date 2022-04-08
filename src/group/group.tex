@@ -326,13 +326,12 @@ Lets recall \cref{def: group} and demystify it in the following definition.
 
 \begin{definition}[Symmetric groups]\label{def: sym-group}
   Let \(A \in \Set\). The symmetric group of \(A\) --- also referred to as the
-  permutation group of \(A\) ---, \(\Aut_\Set(A)\), is denoted by \(\mathcal
-  S_A\). The symmetric group of the range set \(\{1, \dots, n\}\) is denoted
-  \(\mathcal S_n\).
+  permutation group of \(A\) ---, \(\Aut_\Set(A)\), is denoted by \(S_A\). The
+  symmetric group of the range set \(\{1, \dots, n\}\) is denoted \(S_n\).
 \end{definition}
 
 \begin{notation}[Permutations]
-  A permutation \(\sigma \in \mathcal S_n\) is denoted by a table of the form
+  A permutation \(\sigma \in S_n\) is denoted by a table of the form
   \[
     \sigma =
     \begin{pmatrix}
@@ -343,7 +342,7 @@ Lets recall \cref{def: group} and demystify it in the following definition.
 \end{notation}
 
 \begin{remark}[Convention]\label{rem: convention-perm}
-  If \(\sigma, \tau \in \mathcal S_n\), we write the composition \(\sigma \tau\)
+  If \(\sigma, \tau \in S_n\), we write the composition \(\sigma \tau\)
   to denote the permutation
   \[
     i \xmapsto{\sigma\tau} \sigma(\tau(i)).
@@ -352,7 +351,7 @@ Lets recall \cref{def: group} and demystify it in the following definition.
 \end{remark}
 
 \begin{proposition}
-  There exists an injection \(f: \mathcal S_n \mono M_{n \times n}(\{0, 1\})\)
+  There exists an embedding \(f: S_n \mono M_{n \times n}(\{0, 1\})\)
   --- where \(M_{n \times n}(\{0, 1\})\) is the collection of \(n \times n\)
   matrices with entries assuming the value of \(1\) or \(0\). Moreover, if
   \(f(\sigma) = M_\sigma\) and \(f(\tau) = M_\tau\) then \(f(\sigma \tau) =
@@ -360,7 +359,7 @@ Lets recall \cref{def: group} and demystify it in the following definition.
 \end{proposition}
 
 \begin{proof}
-  Let \(\sigma \in \mathcal S_n\) be any permutation. We define \(f\) as the
+  Let \(\sigma \in S_n\) be any permutation. We define \(f\) as the
   mapping
   \[
     \sigma \overset f \longmapsto M_\sigma =
@@ -376,7 +375,7 @@ Lets recall \cref{def: group} and demystify it in the following definition.
   for every \(1 \leq i, j \leq n\), thus \(f(\sigma) = f(\tau)\) --- \(f\) is
   injective.
 
-  Consider now the composition of permutations \(\sigma \tau \in \mathcal S_n\).
+  Consider now the composition of permutations \(\sigma \tau \in S_n\).
   Suppose we want to check where the \(j\)-th element goes to from the action of
   \(\sigma \tau\). Notice that for all possible new positions \(1 \leq i \leq
   n\) we have \(\delta_{i \sigma\tau(j)} = \sum_{k = 1}^n \delta_{i \sigma(k)}
@@ -406,25 +405,29 @@ Lets recall \cref{def: group} and demystify it in the following definition.
 \end{proof}
 
 \begin{proposition}\label{prop: sym-n-all-orders}
-  The symmetry group \(\mathcal S_n\) contains elements of all orders \(d\) for
+  The symmetry group \(S_n\) contains elements of all orders \(d\) for
   \(1 \leq d \leq n\).
 \end{proposition}
 
 \begin{proof}
-  Let \(d\) be any integer in the range \(1 \leq d \leq n\).
-  \todo[inline]{Write proof}
+  Let \(d\) be any integer in the range \(1 \leq d \leq n\). Consider the
+  subgroup \(S_d \subseteq S_n = \Aut_{\Set}(\Z/n\Z)\), composed of permutations
+  \(\sigma \in S_d\) such that \(\sigma([i]_n) = [i]_n\) for all \(i > d\).
+  Notice that the permutation \(\tau\) given by \(\tau([i]_n) = [i + 1]_n\) for
+  all \(i \leq d\) and \(\tau([j]_n) = [j]_n\) is an element of \(S_d\) and
+  \(|\tau| = d\). Thus \(\tau\) is an element of order \(d\) in \(S_n\).
 \end{proof}
 
 \begin{corollary}
-  For every \(n \in \N\), there exists an element \(x \in \mathcal S_\N\) with
+  For every \(n \in \N\), there exists an element \(x \in S_\N\) with
   order \(|x| = n\).
 \end{corollary}
 
 \begin{proof}
   Let any \(n \in \N\) and choose \(m \in \N\) with \(m \geq n\). From
-  \cref{prop: sym-n-all-orders} we find that the group \(\mathcal S_m\) contains
-  an element \(\sigma \in \mathcal S_m\) with order \(|\sigma| = n\). We can now
-  construct an element \(\tau \in \mathcal S_\N\) --- defined by
+  \cref{prop: sym-n-all-orders} we find that the group \(S_m\) contains
+  an element \(\sigma \in S_m\) with order \(|\sigma| = n\). We can now
+  construct an element \(\tau \in S_\N\) --- defined by
   \[
     \tau(a) =
     \begin{cases}
@@ -440,7 +443,7 @@ Lets recall \cref{def: group} and demystify it in the following definition.
 \begin{definition}[Transposition]
   \label{def: transposition}
   We define a transposition on a collection \(\{1, \dots, n\}\) to be a map
-  \(\tau \in \mathcal S_n\) such that exists indices \(1 \leq i < j \leq n\)
+  \(\tau \in S_n\) such that exists indices \(1 \leq i < j \leq n\)
   for which \(\tau(i) = j\) and \(\tau(j) = i\), and \(\tau(k) = k\) for all
   \(k \neq i, j\).
 \end{definition}
@@ -454,7 +457,7 @@ Lets recall \cref{def: group} and demystify it in the following definition.
   We proceed via induction on the number of points of \(\{1, \dots, n\}\). For
   the base case \(n = 2\) the composition is trivial. Assume as the induction
   hypothesis that for \(n - 1 > 2\) the statement is true. Now, consider
-  \(\sigma \in \mathcal S_n\) and \(i \in \{1, \dots, n\}\) be any element in
+  \(\sigma \in S_n\) and \(i \in \{1, \dots, n\}\) be any element in
   the ordered collection \(I_n := \{1, \dots, n\}\). Denote \(\tau_{i, j}\) the
   transposition that changes \(i\) with \(j\) and maintains unchanged the
   remainder of the points. Assume that \(\sigma(i) = j\), then clearly
@@ -468,7 +471,7 @@ Lets recall \cref{def: group} and demystify it in the following definition.
 \end{proof}
 
 \begin{definition}[Elementary transpositions]
-  Let \(\tau \in \mathcal S_n\) be a transposition. We say that \(\tau\) is an
+  Let \(\tau \in S_n\) be a transposition. We say that \(\tau\) is an
   elementary transposition if exists \(i \in \{1, \dots, n\}\) for which
   \(\tau(i) = i + 1\) and \(\tau(i + 1) = i\), and for all \(j \neq i\) we have
   \(\tau(j) = j\).
@@ -480,7 +483,7 @@ Lets recall \cref{def: group} and demystify it in the following definition.
 \end{proposition}
 
 \begin{proof}
-  Let \(\sigma \in \mathcal S_n\) be any transposition. Denote by \(\tau_k\) the
+  Let \(\sigma \in S_n\) be any transposition. Denote by \(\tau_k\) the
   elementary transposition \(\tau_k(k) = k + 1\) and \(\tau(k + 1) k\). Let
   \(x\) be the transposed element of \(\sigma\), and \(\sigma(x) = y\). Without
   loss of generality we can assume that \(y > x\). Now we write \(\sigma\) as
@@ -527,8 +530,8 @@ Lets recall \cref{def: group} and demystify it in the following definition.
 
 \begin{definition}[Sign]
   \label{def: sign}
-  Let \(\sigma \in \mathcal S_n\) be a permutation on \(n\) objects. We define
-  the sign of \(\sigma\) as a map \(\sign: \mathcal S_n \to
+  Let \(\sigma \in S_n\) be a permutation on \(n\) objects. We define
+  the sign of \(\sigma\) as a map \(\sign: S_n \to
   \{1, -1\}\) such that
   \[
     \sign(\sigma) = (-1)^m, \text{ where }
@@ -549,12 +552,12 @@ Lets recall \cref{def: group} and demystify it in the following definition.
 \end{corollary}
 
 \begin{proposition}\label{prop: sign is a group homomorphism}
-  Let \(\sigma, \tau \in \mathcal S_n\), then
+  Let \(\sigma, \tau \in S_n\), then
   \[
     \sign(\sigma \tau) = \sign(\sigma)
     \sign(\tau).
   \]
-  This implies that \(\sign: \mathcal S_n \to \{1, -1\}\) is a
+  This implies that \(\sign: S_n \to \{1, -1\}\) is a
   group homomorphism.
 \end{proposition}
 
@@ -597,7 +600,7 @@ Lets recall \cref{def: group} and demystify it in the following definition.
 \end{definition}
 
 \begin{proposition}\label{prop: dihetral-to-sym}
-  There exists an injection \(D_{2n} \mono \mathcal S_n\).
+  There exists an embedding \(D_{2n} \mono S_n\).
 \end{proposition}
 
 \begin{proof}
@@ -606,7 +609,7 @@ Lets recall \cref{def: group} and demystify it in the following definition.
   \Aut_\Set(V)\) --- where the automorphism is restricted to the adjacency of
   the vertices, that is, if \(x([i]_n) = [k]_n\), then \(x([i - 1]_n), x([i +
   1]_n) \in \{[k - 1]_n, [k + 1]_n\}\). This shows the existence of the
-  inclusion \(D_{2n} \mono \Aut_\Set(V) = \mathcal S_V = \mathcal S_n\).
+  embedding \(D_{2n} \mono \Aut_\Set(V) = S_V = S_n\).
 \end{proof}
 
 \begin{proposition}
@@ -750,5 +753,7 @@ Lets recall \cref{def: group} and demystify it in the following definition.
 
 \begin{corollary}
   The element \(x \in C_n\) is the generator of the cyclic group if and only if
-  \(\operatorname{gcd}(|x|, n) = 1\).
+  \[
+    \operatorname{gcd}(|x|, n) = 1.
+  \]
 \end{corollary}

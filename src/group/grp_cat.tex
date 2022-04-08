@@ -38,36 +38,44 @@
   \[
     f: \Hom_{\Grp}(G, H) \times \Hom_{\Grp}(H, K) \to \Hom_{\Grp}(G, K)
   \]
-  with the mapping \((\psi, \varphi) \xmapsto f \psi \circ \varphi\) --- since
+  with the mapping \((\psi, \varphi) \xmapsto f \psi \varphi\) --- since
   the following diagram commutes
   \[
     \begin{tikzcd}
       G \times G \ar[r, "\varphi \times \varphi"]
-      \ar[d, "\otimes"]
-      \ar[rr, bend left, "(\psi \circ \varphi) \times (\psi \circ \varphi)"]
+      \ar[d, swap, "\otimes"]
+      \ar[rr, bend left, "(\psi \varphi) \times (\psi \varphi)"]
       &H \times H \ar[r, "\psi \times \psi"]
       \ar[d, "\oplus"]
       &K \times K \ar[d, "\star"]
       \\
       G \ar[r, "\varphi"]
-      \ar[rr, bend right, swap, "\psi \circ \varphi"]
+      \ar[rr, bend right, swap, "\psi \varphi"]
       &H \ar[r, "\psi"] &K
     \end{tikzcd}
   \]
-  Or, in other words, for any \(g, \ell \in G\) we have
+  In other words, for any \(g, \ell \in G\) we have
   \[
-    \psi(\varphi(g \otimes \ell))
+    \psi \varphi (g \otimes \ell)
+    = \psi(\varphi(g \otimes \ell))
     = \psi(\varphi(g) \oplus \varphi(\ell))
     = \psi(\varphi(g)) \star \psi(\varphi(\ell))
-    = \psi \circ \varphi(g) \star \psi \circ \varphi(\ell).
+    = \psi \varphi(g) \star \psi \varphi(\ell).
   \]
-  Therefore \(\psi \circ \varphi \in \Hom_\Grp(G, K)\).
+  Therefore \(\psi \varphi \in \Hom_\Grp(G, K)\). For the other part of the
+  diagram, we have
+  \[
+    (\psi \varphi) \times (\psi \varphi) (g, \ell)
+    = (\psi \varphi(g), \psi \varphi(\ell))
+    = \psi \times \psi(\varphi(g), \varphi(\ell))
+    =(\psi \times \psi) (\varphi \times \varphi) (g, \ell)
+  \]
 
   Since group morphisms are maps in \(\Set\), we have that associativity is
   inherited.
 \end{proof}
 
-\begin{proposition}
+\begin{proposition}\label{prop: forgetful-func-grp-set}
   There exists a covariant forgetful functor \(F: \Grp \to \Set\).
 \end{proposition}
 
@@ -81,11 +89,10 @@
   \(F\varphi = \overline\varphi: F(G, \otimes) \to F(H, \oplus)\).
 
   Let \(\psi \in \Hom_\Grp((H, \oplus), (K, \star))\), then we have
-  \(\overline{(\psi \circ \varphi)} = \overline \psi \circ \overline \varphi: H
-  \to K\). Thus
+  \(\overline{\psi \varphi} = \overline \psi \overline \varphi: H \to K\). Thus
   \[
-    F(\psi \circ \varphi) = \overline{(\psi \circ \varphi)}
-    = \overline \psi \circ \overline \varphi = F\psi \circ F\varphi.
+    F(\psi \varphi) = \overline{\psi \varphi}
+    = \overline \psi \overline \varphi = F\psi F\varphi.
   \]
   This shows that \(F\) is a covariant forgetful functor.
 \end{proof}
@@ -148,3 +155,233 @@
 \end{proof}
 
 \section{Group Products}
+
+Let \((G, \otimes), (H, \oplus) \in \Grp\) be any objects. We define a binary
+operation \(\cdot: (G \times H)^2 \to G \times H\) as the mapping
+\begin{equation}\label{eq: grp-prod-bin}
+  (g, h) \cdot (g', h') = (g \otimes g', h \oplus h').
+\end{equation}
+Such binary operation defines a group structure on \(G \times H\). Notice that,
+given an element \((g, h) \in G \times H\), there exists an element \((g^{-1},
+h^{-1}) \in G \times H\) such that \((g, h) \cdot (g^{-1}, h^{-1}) = (e_G,
+e_H)\). Moreover, clearly \((e_G, e_H) \in G \times H\) is the identity element
+of the structure. Hence \((G \times H, \cdot) \in \Grp\).
+
+Also, the natural projections \(\pi_G: G \times H \to G\) and \(\pi_H: G \times
+H \to H\) define morphisms of groups.
+
+\begin{definition}[Direct product]
+  The group \(G \times H\) is called direct product group of \(G\) and \(H\).
+\end{definition}
+
+\begin{proposition}
+  The direct products of groups are products on the category of groups,
+  \(\Grp\). That is, for all group \(W\) and group morphisms \(f \in
+  \Hom_\Grp(W, G)\) and \(g \in \Hom_\Grp(W, H)\), there exists a unique
+  morphism \(\varphi \in \Hom_\Grp(W, G \times H)\) such that the following
+  diagram commutes
+  \[
+    \begin{tikzcd}
+      &W
+      \ar[d, dashed, "\varphi"]
+      \ar[ddr, bend left, "g"]
+      \ar[ddl, swap, bend right, "f"]
+      & \\
+      &G \times H \ar[dr, swap, "\pi_H"] \ar[dl, "\pi_G"] & \\
+      G & &H
+    \end{tikzcd}
+  \]
+\end{proposition}
+
+\begin{proof}
+  We just take \(\varphi: W \to G \times H\) as the mapping \(w \xmapsto \varphi
+  (f(w), g(w))\). We show that \(\varphi\) exists in \(\Grp\): let \(x, y \in
+  W\) be any elements, then, since \(f\) and \(g\) are group morphisms, we find
+  that
+  \[
+    \varphi(xy) = (f(xy), g(xy)) = (f(x) f(y), g(x) g(y))
+    = (f(x), g(x)) (f(y), g(y)) = \varphi(x) \varphi(y).
+  \]
+  That is, \(\varphi\) is a group morphism. The uniqueness comes from the
+  covariant functor \(F: \Grp \to \Set\), since \(\Set\) allows for products and
+  hence the set-function \(F \varphi\) is unique.
+\end{proof}
+
+\begin{remark}
+  We now show that if \(G, H \in \Grp\) are such that \(G \iso H \times G\),
+  \emph{it does not follow that} \(H\) is trivial.
+  \todo[inline]{Find counterexample}
+\end{remark}
+
+\section{\texorpdfstring{\(\Ab\)}{Ab} --- Category of Abelian Groups}
+
+\begin{definition}[Category of abelian groups]
+  We define the category of abelian groups, denoted \(\Ab\), to be the category
+  whose objects are abelian groups and group morphisms between them.
+\end{definition}
+
+\begin{proposition}[Coproduct in \(\Ab\)]\label{prop: coprod-ab}
+  The direct product of abelian groups is a coproduct in \(\Ab\). That is, for
+  any \(G, H, W \in \Ab\) and morphisms \(f \in \Hom_\Ab(W, G)\) and \(k \in
+  \Hom_\Ab(W, H)\), there exists a unique morphism \(\varphi \in \Hom_\Ab(W, G
+  \times H)\) such that the following diagram commutes
+  \[
+    \begin{tikzcd}
+      G \ar[dr, "\iota_G"] \ar[ddr, bend right, swap, "f"] &
+      &H \ar[dl, swap, "\iota_H"] \ar[ddl, bend left, "k"] \\
+      &G \times H \ar[d, dashed, "\varphi"]  & \\
+      &W &
+    \end{tikzcd}
+  \]
+  Where we define inclusion morphisms \(g \xmapsto{\iota_G} (g, e_H)\) and \(h
+  \xmapsto{\iota_H} (e_G, h)\).
+\end{proposition}
+
+\begin{proof}
+  Since \(\Ab \subset \Grp\) --- that is, the category of abelian groups is a
+  subcategory of \(\Grp\) --- then, from \cref{prop: forgetful-func-grp-set}
+  there exists a functor \(\Ab \to \Set\). Since coproducts exists in \(\Set\)
+  and are unique, a set-function \(\varphi\) exists and is unique, commuting the
+  diagram in \(\Set\). We now show that we can extend such set-function into a
+  morphism of groups. Let \(\varphi: G \times H \to W\) be the mapping \((g, h)
+  \xmapsto \varphi f(g) k(h)\). Notice that
+  \begin{align*}
+    \varphi((g, h)(g', h'))
+    = \varphi(gg', hh')
+    = f(g g') k(hh')
+    = f(g) f(g') k(h) k(h')
+    &= f(g) k(h) f(g') k(h') \\
+    &= \varphi(g, h) \varphi(g', h')
+  \end{align*}
+  that is, \(\varphi\) is a morphism of groups.
+\end{proof}
+
+\begin{remark}[Coproducts in \(\Grp\)]
+  Proposition \ref{prop: coprod-ab} is not at all true for the category of
+  groups. Consider for instance the cyclic groups \(C_2 = \{e_x, x\}\) and \(C_3
+  = \{e_y, y, y^2\}\). Let \(\sigma_k \in S_3\), for \(0 \leq k \leq 2\) be the
+  rotation of \(\{1, 2, 3\}\) by \(k\), that is, the permutations represented by
+  \[
+    M_{\sigma_0} =
+    \begin{bmatrix}
+      1 &0 &0 \\ 0 &1 &0 \\ 0 &0 &1
+    \end{bmatrix}
+    \qquad
+    M_{\sigma_1} =
+    \begin{bmatrix}
+      0 &0 &1 \\ 1 &0 &0 \\ 0 &1 &0
+    \end{bmatrix}
+    \qquad
+    M_{\sigma_2} =
+    \begin{bmatrix}
+      0 &1 &0 \\ 0 &0 &1 \\ 1 &0 &0
+    \end{bmatrix}
+  \]
+  Consider the embeddings \(f: C_2 \mono S_3\) mapping \(x^k \xmapsto f
+  \sigma_k\) for \(k \in \{0, 1\}\), and \(g: C_3 \mono S_3\) mapping \(y^k
+  \xmapsto g \sigma_k\) for \(k \in \{0, 1, 2\}\).
+
+  Suppose, for the sake of contradiction, that \(C_2 \times C_3\) is a coproduct
+  in \(\Grp\), that is, exists a unique morphism \(\varphi: C_2 \times C_3 \to
+  S_3\) such that \(f = \varphi \iota_{C_2}\) and \(g = \varphi \iota_{C_3}\).
+  Since \(\varphi\) is supposedly a morphism of groups,
+  \begin{gather*}
+    \varphi(x, y) = \varphi(x, e_y) \varphi(e_x, y) = \sigma_1 \sigma_1 =
+    \sigma_2 \\
+    \varphi(x, y^2) = \varphi(x, e_y) \varphi(e_x, y^2) = \sigma_1 \sigma_2
+    = \sigma_0
+  \end{gather*}
+  However, \(\varphi(e_x, e_y) = \sigma_0\) and on the other hand we have
+  \(\varphi(x, y) \varphi(x, y^2) = \sigma_2\), which contradicts the properties
+  of a group morphism. This shows that there exists no such \(\varphi\) in
+  \(\Grp\) and hence \(C_2 \times C_3\) is not a coproduct in \(\Grp\).
+
+  Although \(C_2 \times C_3\) is not a coproduct in \(\Grp\), that doesn't mean
+  that \(\Grp\) has no coproducts, they just behave differently when compared
+  with \(\Ab\). For instance, let \(C_2 * C_3 \in \Grp\) be defined to be the
+  group generated by elements \(x\) and \(y\), such that \(x^2 = e\) and \(y^3 =
+  e\). We'll now show that \(C_2 * C_3\) is a coproduct of \(C_2\) and \(C_3\)
+  in \(\Grp\). Let \(G\) be any group and consider morphisms \(f: C_2 \to G\)
+  and \(k: C_3 \to G\). The inclusions \(\iota_{C_2}: C_2 \to C_2 * C_3\) and
+  \(\iota_{C_3}: C_3 \to C_2 * C_3\) will be naturally given maps by taking each
+  element to itself.
+
+  Let \(q \in C_2 * C_3\) be any element. We know that there exists a finite
+  collection of coefficients \(I = \{(a, b) \in \Z^2\}\) such that \(q =
+  \prod_{(a, b) \in I} x^a y^z\). Define \(\phi: C_2 * C_3 \to G\) as the
+  mapping
+  \[
+    \phi(q) = \phi\left(\prod_{(a, b) \in I} x^a y^z\right)
+    = f\left(x^{\sum_{(a,b) \in I} a}\right)
+    k\left(y^{\sum_{(a,b) \in I} b}\right).
+  \]
+  Notice that \(\phi(e) = f(e) k(e) = e_G\) and for all \(q, p \in C_2 * C_3\)
+  --- with respective coefficients \(I = \{(a, b) \in \Z^2\}\) and \(J = \{(c,d)
+  \in \Z^2\}\) --- we have
+  \begin{align*}
+    \phi(qp)
+    &= \phi\left(\prod_{(a, b) \in I} x^a y^b
+      \prod_{(c, d) \in J} x^c y^d\right)
+    \\
+    &= f \left( x^{\sum_{(\alpha, \beta) \in I \cup J} \alpha} \right)
+    k\left( y^{\sum_{(\alpha, \beta) \in I \cup J} \beta} \right)
+    %\\
+    %&= f \left( x^ \right)
+  \end{align*}
+  \todo[inline]{finish}
+\end{remark}
+
+\begin{proposition}[Fiber products]
+  Fiber products exist in \(\Ab\). That is, given abelian groups \(G, H, W \in
+  \Ab\) and group morphisms \(\phi \in \Hom_\Ab(G, W)\) and \(\psi \in
+  \Hom_\Ab(H, W)\). Let
+  \[
+    G \times_W H \in \Ab_W
+  \]
+  be the fiber product of \(\phi\) and \(\psi\) in the category \(\Ab_W
+  \subseteq \Ab\)\footnote{As a reminder: \(\Ab_W\) is the category whose
+  objects are morphisms \(f \in \Hom_\Ab(-, W)\). If \(f: G \to W\) and \(g: H
+  \to W\) are objects of \(\Ab_W\), a morphism \(h \in \Hom_{\Ab_W}(f, g)\) is
+  such that \(hg = f\).}
+  --- for which exists natural projections \(\pi_G\) and \(\pi_H\). Let \(Q \in
+  \Ab\) be any abelian group and consider any morphisms \(f \in \Hom_\Ab(Q, G)\)
+  and \(k \in \Hom_\Ab(Q, H)\). Then there exists a unique morphism \(\varphi
+  \in \Hom_\Ab(Q, P)\) such that the following diagram commutes
+  \[
+    \begin{tikzcd}
+      Q \ar[dr, dashed, "\varphi"] \ar[ddr, bend right, swap, "f"]
+      \ar[drr, bend left, "k"]
+      & & \\
+      &G \times_W H \ar[r, "\pi_H"] \ar[d, swap, "\pi_G"] &H \ar[d, "\psi"] \\
+      &G \ar[r, swap, "\phi"] &W
+    \end{tikzcd}
+  \]
+\end{proposition}
+
+\begin{proof}
+  Define \(G \times_W H = \{(g, h) \in G \times H : \phi(g) = \psi(h)\}\). Since
+  \(\phi\) and \(\psi\) are group morphisms, given \((g, h) \in G \times_W H\),
+  we have
+  \[
+    \phi(g^{-1}) = \phi(g)^{-1} = \psi(h)^{-1} = \psi(h^{-1}),
+  \]
+  that is, \((g^{-1}, h^{-1}) \in G \times_W H\) exists and is the inverse of
+  \((g, h)\). Moreover, given any \((g, h), (g', h') \in G \times_W H\), the
+  product \((g, h)(g', h') = (gg', hh')\) is such that
+  \[
+    \phi(gg') = \phi(g) \phi(g') = \psi(h) \psi(h') = \psi(hh'),
+  \]
+  thus \((gg', hh') \in G \times_W H\). This shows that \(G \times_W H\) is
+  indeed a group and since \(G \times H\) is abelian, so is the fiber product
+  defined above.
+
+  From the forgetful functor \(\Ab \to \Set\) we know that there exists a unique
+  set-function \(\varphi\) such that the diagram commutes in \(\Set\). If we
+  define \(\varphi\) as the mapping \(q \overset \varphi \longmapsto (f(q),
+  k(q))\). Notice that
+  \[
+    \varphi(qq') = (f(qq'), k(qq')) = (f(q)f(q'), k(q)k(q'))
+    = (f(q), k(q))(f(q'), k(q')) = \varphi(q) \varphi(q'),
+  \]
+  so \(\varphi \in \Mor(\Ab)\).
+\end{proof}

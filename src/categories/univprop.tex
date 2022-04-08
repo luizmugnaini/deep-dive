@@ -73,7 +73,7 @@ Z\) and \(\varphi' : A \to Z'\) is defined to be the commutative diagram
    From the imposition that such diagram commutes, we are inclined to define the
    morphism \(\tilde\varphi\) such that for every element \(a \in A\) it
    satisfies \(\tilde\varphi(\overline{a}) = \varphi(a)\), so that
-   \(\tilde\varphi \circ \pi (a) = \varphi(a)\). Since the projection and
+   \(\tilde\varphi  \pi (a) = \varphi(a)\). Since the projection and
    \(\varphi\) are essentially unique, it is clear that if \(\tilde\varphi\)
    exists, then it should also be unique. We now show that we can construct the
    morphism \(\tilde\varphi\). Notice that if \(\overline{a} = \overline{a'}\)
@@ -107,7 +107,7 @@ Z\) and \(\varphi' : A \to Z'\) is defined to be the commutative diagram
 
 \begin{proof}
    Define the morphism \(\ell(z) := (\varphi(z), \psi(z))\) for any  \(z \in
-   Z\), then \(\pi_X \circ \ell (z) = \pi_X(\varphi(z), \psi(z)) = \varphi(z)\)
+   Z\), then \(\pi_X  \ell (z) = \pi_X(\varphi(z), \psi(z)) = \varphi(z)\)
    and the same being true for the left branch. Notice that trivially there is a
    unique mapping with such property because it need to imitate the image of
    both \(\varphi\) and \(\psi\).
@@ -170,7 +170,7 @@ would not comute in \(\Set\).
 
 \begin{proof}
    Indeed we can construct such object \(P\), for instance, notice that firstly
-   the morphisms \(\varphi \circ \pi_X = \psi \circ \pi_Y\). Thus for any
+   the morphisms \(\varphi  \pi_X = \psi  \pi_Y\). Thus for any
    given element \(p \in P\), we need \(\pi_X(p) = x \in X\) such that
    \(\varphi(x) = \psi(\pi_Y(p))\), and also the converse should be true.
    Therefore, we simply need to define the object \(P\) as
@@ -182,7 +182,7 @@ would not comute in \(\Set\).
 
    With this description, we can see that \(\ell\) should be constructed in such
    a way that for any given morphism \(f, g\) shown in the diagram the following
-   holds: \(\pi_X \circ \ell = \pi_Y \circ \ell\) thus, it is simply necessary
+   holds: \(\pi_X  \ell = \pi_Y  \ell\) thus, it is simply necessary
    to impose \(\ell(u) = (f(u), g(u))\) for all \(u \in L\).
 \end{proof}
 
@@ -240,7 +240,7 @@ coproducts (or disjoint unions) as initial objects of the category.
    \to X\) and \(\psi : Z \to Y\). Let the inclusions \(\iota_A : A \to A \amalg
    B\) and  \(\iota_B: B \to A \amalg B\) and define the object
     \[
-       P := A \amalg B / (\iota \circ \varphi(z) \sim \iota \circ \psi(z),\
+       P := A \amalg B / (\iota  \varphi(z) \sim \iota  \psi(z),\
        \forall z \in Z).
    \]
    With maps \(j_A : A \xrightarrow{\iota_A} A \amalg B \to P\) and  \(j_B : B
@@ -269,7 +269,7 @@ coproducts (or disjoint unions) as initial objects of the category.
 \end{proposition}
 
 \begin{proof}
-   Notice that we are imposing \(\ell \circ j_X = f\) and \(\ell \circ j_Y =
+   Notice that we are imposing \(\ell  j_X = f\) and \(\ell  j_Y =
    g\), thus
    \todo[inline]{Cofibered product universal property}
 \end{proof}
