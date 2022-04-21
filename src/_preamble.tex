@@ -1,4 +1,4 @@
-\documentclass[11pt, reqno, openany, draft]{memoir}
+\documentclass[11pt, reqno, openany]{memoir}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{microtype}
@@ -15,15 +15,16 @@
 \usepackage{comment}
 \usepackage{todonotes}
 \usepackage{xcolor}
-% \usepackage{showkeys}
 \definecolor{brightmaroon}{rgb}{0.76, 0.13, 0.28}
 \usepackage{hyperref}
 \hypersetup{
   colorlinks = true,
   linkcolor  = brightmaroon
 }
-\usepackage{cleveref}
+\usepackage[capitalize,nameinlink]{cleveref}
 \linespread{1.05}
+
+\vfuzz=14pt % No more shitty ass vbox errors all over the place
 
 \theoremstyle{definition}
 \newtheorem{theorem}{Theorem}[section]
@@ -39,9 +40,11 @@
 %\parskip=5pt plus 1pt
 
 % symbols
-\renewcommand{\qedsymbol}{\(\blacksquare\)}
+\renewcommand{\qedsymbol}{\(\blacklozenge\)}
 \renewcommand{\leq}{\leqslant}
 \renewcommand{\geq}{\geqslant}
+\renewcommand{\setminus}{\smallsetminus}
+\newcommand{\dual}{\vee}
 
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\Obj}{Obj}
@@ -64,6 +67,7 @@
 % arrows
 \newcommand{\op}{\mathrm{op}}
 \newcommand{\isoto}{\xrightarrow{\raisebox{-.5ex}[0ex][0ex]{$\sim$}}}
+\newcommand{\To}{\Rightarrow}
 \newcommand{\mono}{\hookrightarrow}
 \newcommand{\epi}{\twoheadrightarrow}
 \newcommand{\cat}{\mathcal}
@@ -85,7 +89,7 @@
 \newcommand{\Graph}{{\cat{G}\textit{raph}}}
 \newcommand{\Rng}{{\cat{R}\textit{ing}}}
 
-\title{Algebra, a first encounter}
+\title{Algebra \& Categories --- An Introduction}
 \author{Luiz G. Mugnaini A.}
 \date{Last modification: \today}
 

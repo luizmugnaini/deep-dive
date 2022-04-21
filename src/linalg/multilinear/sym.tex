@@ -8,11 +8,11 @@
   \[
     f_\sigma: T_0^q(V) \to T_0^q(V),\ \otimes_{i=1}^q v_i \xmapsto{f_\sigma}
     \otimes_{i=1}^q v_{f_\sigma(i)}.
-  \] 
+  \]
   We say that a tensor \(T \in T_0^q(V)\) is symmetric if
   \[
      f_\sigma(T) = T.
-  \] 
+  \]
 \end{definition}
 
 \begin{definition}[Symmetric tensor space]
@@ -37,19 +37,19 @@
           &L \\
       \Sym^q(V) \ar[ru, dashed, swap, "\ell"]
     \end{tikzcd}
-  \] 
+  \]
 \end{proposition}
 
 \begin{proof}
-  Since \(\Sym^q(V)\) is a subspace of \(T_0^q(V)\), then we can use the
-  universal property \cref{thm: universal property of tensor products}.
+  Since \(\Sym^q(V)\) is a subspace of \(T_0^q(V)\), then we can use
+  \cref{thm: universal property of tensor products}.
 \end{proof}
 
 \begin{proposition}
   For \(\Char k \nmid q!\), we have that
   \[
     S(T) = \frac{1}{q!} \sum_{\sigma \in \mathcal S_q} f_\sigma(T)
-  \] 
+  \]
   and hence \(S^2 = S\), and \(S(T_0^q(V)) = \Sym^q(V)\).
 \end{proposition}
 
@@ -60,7 +60,7 @@
   \[
     S(T) = \frac{1}{q!} \sum_{\sigma \in \mathcal S_q} f_\sigma(T^{i_1, \dots,
     i_q}) = \frac{1}{q!} (q! T^{i_1, \dots, i_q}) = T
-  \] 
+  \]
   where we assumed that \(\Char k \nmid q!\) in order to obtain a nonzero tensor
   after the summation. Hence \(S|_{\Sym^q(T)} = \Id_{\Sym^q(V)}\) therefore we
   find that \(\Sym^q(V) \subseteq \im S\). Moreover, let \(T = T^{i_1, \dots,
@@ -110,7 +110,7 @@
   \[
     \mu_I(v_1, \dots, v_n) = \sum_{\sigma \in \mathcal S_q} \prod_{j=1}^q
     e_{i_{\sigma(j)}}^*(v_j).
-  \] 
+  \]
   Then, from the universal property of tensor products we find a unique
   functional \(f_I: \Sym^q(V) \to k\) such that the diagram commutes:
   \[
@@ -118,7 +118,7 @@
       V^q \ar[r, "\mu_I"] \ar[d, swap, "S \circ \otimes"] &k \\
       \Sym^q(V) \ar[ru, swap, dashed, "f_I"]
     \end{tikzcd}
-  \] 
+  \]
   hence for all \((v_1, \dots, v_q) \in T_0^q(V)\) we have \(\mu(v_1, \dots,
   v_q) = f(v_1 \cdot \ldots \cdot v_n)\). Notice that if we have a monotonically
   increasing sequence of indices \(I' = (i_1', \dots, i_q') \neq I\), there must
@@ -129,7 +129,7 @@
   \[
     \mu_I(e_{i_1'}, \dots, e_{i_q'}) = f_I(e_{i_1'} \cdot \ldots \cdot e_{i_q'})
     = 0.
-  \] 
+  \]
 
   Lets compute the value of \(f_I(e_{i_1} \cdot \ldots \cdot e_{i_q})\). To do
   this, consider again the fixed monotone increasing sequence of indices that we
@@ -155,17 +155,17 @@
   \[
     \sum_{i_1', \dots, i_q'} c_{i_1', \dots, i_q'} (e_{i_1'} \cdot \ldots \cdot
     e_{i_q'}) = 0
-  \] 
+  \]
   where the indices are arranged in monotonic increasing order, then we conclude
   that
   \begin{align*}
     0 = f_I \left( \sum_{i_1', \dots, i_q'} c_{i_1', \dots, i_q'} (e_{i_1'} \cdot
-    \ldots \cdot e_{i_q}) \right) 
+    \ldots \cdot e_{i_q}) \right)
     &= c_{i_1', \dots, i_q'} \sum_{\sigma \in \mathcal S_q} \prod_{j=1}^q
     e_{i_{\sigma(j)}}^*(e_{i_j'}) \\
     &= c_{i_1, \dots, i_q} \sum_{\sigma \in \mathcal S_q} \prod_{j=1}^q
     e_{i_{\sigma(j)}}^*(e_j) \\
-    &=  c_{i_1, \dots, i_q} f_I(e_{i_1} \cdot \ldots \cdot e_{i_q}) 
+    &=  c_{i_1, \dots, i_q} f_I(e_{i_1} \cdot \ldots \cdot e_{i_q})
   \end{align*}
   hence \(c_{i_1, \dots, i_q} = 0\) since, as proved above, \(f_I(e_{i_1} \cdot
   \ldots \cdot e_{i_q}) \neq 0\). Now, passing \(I\) through all the monotone
@@ -179,7 +179,7 @@
   If \(V\) is a finite \(n\)-dimensional \(k\)-vector space, then
   \[
     \dim_k(\Sym^q(V)) = \binom{n + q - 1}{q}
-  \] 
+  \]
 \end{corollary}
 
 \begin{proof}
@@ -220,7 +220,7 @@
   an isomorphism of algebras.
   \[
     \{\text{polynomials in } e_1, \dots, e_n\} \iso \Sym V
-  \] 
+  \]
   where \(e_1, \dots, e_n\) forms a basis for \(V\).
 \end{proposition}
 
@@ -229,7 +229,7 @@
   \[
     S(T_1) \otimes T_2 = \left( \frac{1}{q!} \sum_{\sigma \in \mathcal S_q}
     f_\sigma(T_1) \right) \otimes T_2
-  \] 
+  \]
   This way we find that
   \begin{align*}
     S(S(T_1) \otimes T_2) = S \left( \frac{1}{q!} \sum_{\sigma \in \mathcal S_q}
@@ -243,15 +243,15 @@
   T_2)\). Hence, we can conclude in general that
   \[
     S(S(T_1) \otimes T_2) = S(T_1 \otimes S(T_2)) = S(T_1 \otimes T_2)
-  \] 
+  \]
   If we extend such argument for tensors \(T_1, T_2, T_3\), we find that
   \[
     (T_1 T_2) T_3 = S(S(T_1 \otimes T_2) \otimes T_3)
     = T_1 (T_2 T_3) = S(T_1 \otimes (T_1 \otimes T_3))
     = T_1 T_2 T_3 = S(T_1 \otimes T_2 \otimes T_3)
-  \] 
+  \]
   which proves associativity for the multiplication. From tensor commutativity
-  we find that 
+  we find that
   \[
     T_1 T_2 = S(T_1 \otimes T_2) = S(T_2 \otimes T_1) = T_2 T_1
   \]

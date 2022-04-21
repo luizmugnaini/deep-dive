@@ -6,7 +6,7 @@
   \[
     v_1 \wedge \dots \wedge v_d \xmapsto{f^{\wedge d}}
     f(v_1) \wedge \dots \wedge f(v_d).
-  \] 
+  \]
 \end{definition}
 
 \begin{proposition}\label{prop: wedge map composition}
@@ -24,7 +24,7 @@
     (g f)^{\wedge d}(v) = (g f)^{\wedge d}(v_1) \wedge \dots \wedge (g f)(v_d)
     = g(f(v_1)) \wedge \dots \wedge g(f(v_2))
     = (g^{\wedge d} f^{\wedge d})(v).
-  \] 
+  \]
   Therefore \((g f)^{\wedge d} = g^{\wedge d} f^{\wedge d}\).
 \end{proof}
 
@@ -36,7 +36,7 @@
   \in \Lambda^n(V)\) such that
   \[
     f^{\wedge n}(\omega) = \det(f) \omega.
-  \] 
+  \]
 \end{definition}
 
 \begin{proposition}[Composition determinant]\label{prop: comp det}
@@ -46,9 +46,11 @@
 
 \begin{proof}
   From \cref{prop: wedge map composition}, \((g f)^{\wedge n}(\omega) =
-  g^{\wedge n}(f^{\wedge n}(\omega))\). From \cref{def: determinant} we find
-  \(\det(g f) \omega = \det(g) \det(f) \omega\), hence \(\det(g f) = \det(g)
-  \det(f)\).
+  g^{\wedge n}(f^{\wedge n}(\omega))\). From \cref{def: determinant},
+  \[
+  \det(g f) \omega = \det(g) \det(f) \omega,
+  \]
+  thus \(\det(g f) = \det(g) \det(f)\).
 \end{proof}
 
 \begin{proposition}[Identity determinant]\label{prop: id det}
@@ -108,7 +110,7 @@
 
 \begin{proposition}[Matrix determinant]
   \label{prop: matrix det}
-  Let \(V\) be an \(n\)-dimensional \(k\)-vector spaces and \(f \in \End(V)\).
+  Let \(V\) be an \(n\)-dimensional \(k\)-vector space and \(f \in \End(V)\).
   Let \(A: k^n \to k^n\) be the matrix representation of \(f\) and \(a_{i, j}
   \in k\) be the entries of \(A\), where \(1 \leq i, j \leq n\). Then
   \[
@@ -126,11 +128,11 @@
   \cref{def: determinant} we have that
   \[
     \det(A) v_1 \wedge \dots \wedge v_n = A v_1 \wedge \dots \wedge A v_n
-  \] 
+  \]
   since \(A v_j = \sum_{i = 1}^n a_{i, j} v_i\) (see \cref{def: matrix for a
   linear map}) then we can substitute to the previous equation to obtain
   \begin{equation}\label{eq: det sum}
-    \det(A) v_1 \wedge \dots \wedge v_n 
+    \det(A) v_1 \wedge \dots \wedge v_n
     = \sum_{i_1 = 1}^n a_{i_1, 1} v_{i_1} \wedge \dots \wedge \sum_{i_n = 1}^n
     a_{i_n, n} v_{i_n}
     = \sum_{1 \leq i_1, \dots, i_n \leq n} \prod_{j=1}^n a_{i_j, j} (v_{i_1}
@@ -151,11 +153,11 @@
   \[
     \det A = \sum_{\sigma \in \mathcal S_n} \sign(\sigma) a_{\sigma(1), 1}
     a_{\sigma(2), 2} \dots a_{\sigma(n), n}.
-  \] 
+  \]
 \end{proof}
 
 \begin{corollary}
-  Another equivalent way of writing the determinant of \(A\) is 
+  Another equivalent way of writing the determinant of \(A\) is
   \[
     \det A = \sum_{\sigma \in \mathcal S_n} \sign(\sigma) a_{1, \sigma(1)} a_{2,
     \sigma(2)} \dots a_{n, \sigma(n)}.

@@ -1,14 +1,14 @@
 \section{\texorpdfstring{\(\Grp\)}{Grp} Category}
 
 \begin{definition}[Group morphism]\label{def: grp-morphism}
-  Let \((G, \otimes)\) and \((H, \oplus)\) be groups together with their binary
-  operation. A group morphism --- also called homomorphism --- is a map
-  \(\varphi: (G, \otimes) \to (H, \oplus)\) such that the
-  that the following diagram commutes
+  Let \((G, \circledast)\) and \((H, \circledcirc)\) be groups together with
+  their binary operation. A group morphism --- also called homomorphism --- is a
+  map \(\varphi: (G, \circledast) \to (H, \circledcirc)\) such that the that the
+  following diagram commutes
   \[
     \begin{tikzcd}
-      G \times G \ar[d, swap, "\otimes"] \ar[r, "\varphi \times \varphi"]
-      &H \times H \ar[d, "\oplus"] \\
+      G \times G \ar[d, swap, "\circledast"] \ar[r, "\varphi \times \varphi"]
+      &H \times H \ar[d, "\circledcirc"] \\
       G \ar[r, "\varphi"] &H
     \end{tikzcd}
   \]
@@ -18,7 +18,7 @@
   be viewed as the requirement that \(\varphi\) preserves the structure coming
   from the binary operations --- that is, for any \(g, \ell \in G\)
   \[
-    \varphi(g \otimes \ell) = \varphi(g) \oplus \varphi(\ell).
+    \varphi(g \circledast \ell) = \varphi(g) \circledcirc \varphi(\ell).
   \]
 \end{definition}
 
@@ -32,9 +32,10 @@
 \end{proposition}
 
 \begin{proof}
-  Let \((G, \otimes)\), \((H, \oplus)\) and \((K, \star)\) be any groups. The
-  identity \(\Id_G: G \to G\) is a group morphism since \(\Id_G(g \otimes \ell)
-  = g \otimes \ell\) for any \(g, \ell \in G\). Moreover, we can define a map
+  Let \((G, \circledast)\), \((H, \circledcirc)\) and \((K, \star)\) be any
+  groups. The identity \(\Id_G: G \to G\) is a group morphism since \(\Id_G(g
+  \circledast \ell) = g \circledast \ell\) for any \(g, \ell \in G\). Moreover,
+  we can define a map
   \[
     f: \Hom_{\Grp}(G, H) \times \Hom_{\Grp}(H, K) \to \Hom_{\Grp}(G, K)
   \]
@@ -43,10 +44,10 @@
   \[
     \begin{tikzcd}
       G \times G \ar[r, "\varphi \times \varphi"]
-      \ar[d, swap, "\otimes"]
+      \ar[d, swap, "\circledast"]
       \ar[rr, bend left, "(\psi \varphi) \times (\psi \varphi)"]
       &H \times H \ar[r, "\psi \times \psi"]
-      \ar[d, "\oplus"]
+      \ar[d, "\circledcirc"]
       &K \times K \ar[d, "\star"]
       \\
       G \ar[r, "\varphi"]
@@ -56,9 +57,9 @@
   \]
   In other words, for any \(g, \ell \in G\) we have
   \[
-    \psi \varphi (g \otimes \ell)
-    = \psi(\varphi(g \otimes \ell))
-    = \psi(\varphi(g) \oplus \varphi(\ell))
+    \psi \varphi (g \circledast \ell)
+    = \psi(\varphi(g \circledast \ell))
+    = \psi(\varphi(g) \circledcirc \varphi(\ell))
     = \psi(\varphi(g)) \star \psi(\varphi(\ell))
     = \psi \varphi(g) \star \psi \varphi(\ell).
   \]
@@ -80,15 +81,16 @@
 \end{proposition}
 
 \begin{proof}
-  For objects, define \(F\) as \(F(G, \otimes) = G\) --- where we denoted \(G\)
-  together with its binary operation only to express that the multiplicative
-  structure is lost in the process. Let \(\varphi: (G, \otimes) \to (H,
-  \oplus)\) be a group morphism, denote by \(\overline \varphi \in \Mor(\Set)\)
-  the function \(\overline\varphi: G \to H\) such that \(\overline\varphi(g) =
-  \varphi(g)\) for all \(g \in G\). For such morphisms we define \(F\) as
-  \(F\varphi = \overline\varphi: F(G, \otimes) \to F(H, \oplus)\).
+  For objects, define \(F\) as \(F(G, \circledast) = G\) --- where we denoted
+  \(G\) together with its binary operation only to express that the
+  multiplicative structure is lost in the process. Let \(\varphi: (G,
+  \circledast) \to (H, \circledcirc)\) be a group morphism, denote by
+  \(\overline \varphi \in \Mor(\Set)\) the function \(\overline\varphi: G \to
+  H\) such that \(\overline\varphi(g) = \varphi(g)\) for all \(g \in G\). For
+  such morphisms we define \(F\) as \(F\varphi = \overline\varphi: F(G,
+  \circledast) \to F(H, \circledcirc)\).
 
-  Let \(\psi \in \Hom_\Grp((H, \oplus), (K, \star))\), then we have
+  Let \(\psi \in \Hom_\Grp((H, \circledcirc), (K, \star))\), then we have
   \(\overline{\psi \varphi} = \overline \psi \overline \varphi: H \to K\). Thus
   \[
     F(\psi \varphi) = \overline{\psi \varphi}
@@ -122,10 +124,11 @@
 \end{proof}
 
 \begin{proposition}[Group morphism properties]
-  Let \((G, \otimes), (H, \oplus) \in \Grp\) and \(\varphi \in \Hom_\Grp(G,
-  H)\). Define \(\operatorname{inv}_G: G \isoto G\) and \(\operatorname{inv}_H:
-  H \isoto H\) as the maps \(g \xmapsto {\operatorname{inv}_G} g^{-1}\) and \(h
-  \xmapsto {\operatorname{inv}_H} h^{-1}\). Then the following diagram commutes
+  Let \((G, \circledast), (H, \circledcirc) \in \Grp\) and \(\varphi \in
+  \Hom_\Grp(G, H)\). Define \(\operatorname{inv}_G: G \isoto G\) and
+  \(\operatorname{inv}_H: H \isoto H\) as the maps \(g \xmapsto
+  {\operatorname{inv}_G} g^{-1}\) and \(h \xmapsto {\operatorname{inv}_H}
+  h^{-1}\). Then the following diagram commutes
   \[
     \begin{tikzcd}
       G \ar[r, "\varphi"]
@@ -139,27 +142,196 @@
 \begin{proof}
   Let \(g \in G\) be any element, then
   \[
-    \varphi(g^{-1}) = \varphi(g^{-1} e_G) = \varphi(g^{-1} \otimes g \otimes
-    g^{-1}) = \varphi(g^{-1}) \oplus \varphi(g) \oplus \varphi(g^{-1}),
+    \varphi(g^{-1}) = \varphi(g^{-1} e_G) = \varphi(g^{-1} \circledast g
+    \circledast g^{-1}) = \varphi(g^{-1}) \circledcirc \varphi(g) \circledcirc
+    \varphi(g^{-1}),
   \]
   applying cancellation law on the equation above we find
   \[
-    e_H = \varphi(g) \oplus \varphi(g^{-1}).
+    e_H = \varphi(g) \circledcirc \varphi(g^{-1}).
   \]
   Hence \(\varphi(g^{-1}) = \varphi(g)^{-1}\). Moreover, this implies that \(e_G
   \xmapsto \varphi e_H\) since
   \[
-    \varphi(e_G) = \varphi(g \otimes g^{-1}) = \varphi(g) \oplus \varphi(g^{-1})
-    = \varphi(g) \oplus \varphi(g)^{-1} = e_H.
+    \varphi(e_G) = \varphi(g \circledast g^{-1}) = \varphi(g) \circledcirc
+    \varphi(g^{-1}) = \varphi(g) \circledcirc \varphi(g)^{-1} = e_H.
   \]
 \end{proof}
 
-\section{Group Products}
+\begin{definition}[Group action]\label{def: grp-action}
+  Let \(\cat C\) be a category and \(A \in \cat C\) be an object. A group action
+  of \(G \in \Grp\) on \(A\) is a morphism of groups \(G \to \Aut_{\cat{C}}
+  (A)\).
+\end{definition}
 
-Let \((G, \otimes), (H, \oplus) \in \Grp\) be any objects. We define a binary
-operation \(\cdot: (G \times H)^2 \to G \times H\) as the mapping
+The following proposition is a trivial one, but it is a really useful tool to
+prove the non-existence of non-trivial morphisms between certain groups --- it
+relies on arguments based on the order of elements of each group.
+
+\begin{proposition}[Morphisms and orders]\label{prop: grp-morph-order}
+  Let \(G \in \Grp\) be a group admitting an element \(g \in G\) of finite order
+  \(|g| \in \N\). Let \(H\) be any group and consider the morphism \(\phi: G \to
+  H\). We have that \(|\phi(g)|\) divides the order of \(|g|\).
+\end{proposition}
+
+\begin{proof}
+  Notice that \(\phi(g)^{|g|} = \phi(g^{|g|}) = \phi(e_G) = e_H\), hence \(|g|\)
+  is a multiple of the order of \(\phi(g) \in H\).
+\end{proof}
+
+\begin{example}
+  Consider for example the collection of morphisms \(\Hom_\Grp(C_7, C_{15})\).
+  Let \(\phi\) be any such morphism. Consider any element \(g \in C_7\) and
+  recall that \(|g|\) must be a divisor of \(7\) --- see \cref{prop:
+  ord-cyclic-elem}. On the other hand, if \(h \in C_{15}\) then \(|h|\) divides
+  \(15\). From \cref{prop: grp-morph-order} we see that if \(\phi(g) = h\), then
+  \(|h|\) must divide \(|g|\), but \(\operatorname{gcd}(7, 15) = 1\), hence
+  \(|h| = 1\) --- that is \(h = e_H\) and \(\phi\) is the trivial morphism
+  \(\phi(g) = e_H\) for all \(g \in C_7\). This shows that there is no
+  non-trivial morphism between \(C_7\) and \(C_{15}\).
+\end{example}
+
+\begin{definition}[Kernel]
+  We define the kernel of a morphism of groups \(\phi \in \Hom_\Grp(G, H)\) as
+  the collection \(\{g \in G: \phi(g) = e_H\}\).
+\end{definition}
+
+\begin{proposition}[Injectivity of morphisms]\label{prop: ker-trivial-inj}
+  A morphism of groups is injective if and only if its kernel is trivial.
+\end{proposition}
+
+\begin{proof}
+  Let \(\phi: G \to H\) be any morphism. If \(\phi\) is injective then clearly
+  \(\ker\phi = \{e_G\}\). On the other hand, if \(\ker\phi = \{e_G\}\), then,
+  given elements \(g, g' \in G\) such that \(\phi(g) = \phi(g')\), then,
+  multiplying both sides by \(\phi(g')^{-1}\) we get
+  \[
+    \phi(g)\phi(g')^{-1} = \phi(g) \phi(g'^{-1}) = \phi(gg'^{-1}) = e_G.
+  \]
+  That is, \(gg'^{-1} \in \ker\phi\), but since \(\ker\phi\) is trivial, then
+  \(gg'^{-1} = e_G\) and hence \(g = g'\) --- in other words, \(\phi\) is
+  injective.
+\end{proof}
+
+\begin{proposition}[Isomorphisms are bijections]\label{prop: grp-iso-bij}
+  Let \(\phi \in \Mor(\Grp)\). Then \(\phi\) is an isomorphism if and only if it
+  is a bijection.
+\end{proposition}
+
+\begin{proof}
+  Consider an isomorphism \(\phi: G \to H\). Using the forgetful functor \(F:
+  \Grp \to \Set\) we see that \(F\phi\) is a bijection of sets in \(\Set\) ---
+  recall \cref{lem: functor preserve iso} ---, thus \(\phi\) defines a bijection
+  between the elements of \(G\) and \(H\).
+
+  On the other hand, if \(\phi\) is a bijection, consider its set-function
+  inverse \((F\phi)^{-1}: H \to G\). We now show that \((F\phi)^{-1}\) preserves
+  the structures of groups. Since \(\phi(e_G) = e_H\), then \((F\phi)^{-1}(e_H)
+  = e_G\). Moreover, for any \(h, h' \in H\) --- since \(\phi\) is surjective
+  ---, take elements \(g, g' \in G\) such that \(\phi(g) = h\) and \(\phi(g') =
+  h'\), then we find that \((F\phi)^{-1}(hh') = g g' = (F\phi)^{-1}(h) \cdot
+  (F\phi)^{-1}(h')\). This implies in the existence of a naturally induced
+  morphism of groups \(\phi^{-1}: H \to G\) defined by \(\phi^{-1}(h) =
+  (F\phi)^{-1}(h)\). It is clear that \(\phi^{-1}\) is the right and left
+  inverse of \(\phi\), thus \(\phi^{-1}\) is the inverse of \(\phi\) in \(\Grp\)
+  and \(\phi\) is an isomorphism.
+\end{proof}
+
+\begin{proposition}\label{prop: iso-order-com}
+  Let \(\phi: G \isoto H\) be an isomorphism of groups. Then:
+  \begin{itemize}
+    \setlength\itemsep{0em}
+    \item For all \(g \in G\), we have \(|g| = |\phi(g)|\).
+    \item \(G\) is commutative if and only if \(H\) is commutative.
+  \end{itemize}
+\end{proposition}
+
+\begin{proof}
+  Let \(g \in G\) be any element, then from \cref{prop: grp-morph-order} we have
+  that \(|\phi(g)|\) divides \(|g|\). Since \(\phi^{-1}\) exists and is a
+  morphism of groups, it also follows that \(|g|\) divides \(|\phi(g)|\) ---
+  hence \(|g| = |\phi(g)|\).
+
+  Let \(G\) be a commutative group and \(G \iso H\). Let \(h, h' \in H\) be any
+  elements and consider \(\phi^{-1}(h) = g\) and \(\phi^{-1}(h') = g'\). From
+  the structure preserving property of \(\phi\) we have
+  \[
+    h h' = \phi(g) \phi(g') = \phi(gg') = \phi(g'g) = \phi(g')\phi(g) = h' h.
+  \]
+  That is, \(H\) is commutative. The counter-implication is equivalent and will
+  be omitted.
+\end{proof}
+
+We can now state the definition of a cyclic group in a formal manner, it goes as
+follows:
+
+\begin{definition}[Cyclic group]\label{def: cyclic-grp}
+  A group \(G\) is said to be cyclic if \(G \iso \Z\) or \(G \iso \Z/n\Z\) for
+  some \(n \in \N\).
+\end{definition}
+
+\begin{proposition}
+  A finite group of order \(n \in \N\) is cyclic if and only if it contains an
+  element of order \(n\).
+\end{proposition}
+
+\begin{proof}
+  Let \(G\) be a cyclic group of order \(n\). Since \(G\) is finite, then there
+  exists an isomorphism \(\phi: G \isoto \Z/n\Z\). Consider the element \(g =
+  \phi^{-1}([1]_n) \in G\), from \cref{prop: iso-order-com} we see that \(|g| =
+  n\).
+
+  Let \(G\) be a finite group of order \(n\) and \(x \in G\) be such that \(|x|
+  = n\). Let \(\phi: G \to \Z/n\Z\) be any morphism of groups sending \(x
+  \mapsto [1]_n\). Consider the collection \(G' = \{e_G, x, x^2, \dots,
+  x^{n-1}\} \subseteq G\), and notice that, together with the binary operation
+  of \(G\), \(G'\) becomes a group of \(n\) elements --- that is, \(G' = G\) and
+  every element \(g \in G\) can be written as \(g = x^k\) for some \(1 \leq k
+  \leq n\). This implies in \(\phi\) injective --- thus a bijection. From
+  \cref{prop: grp-iso-bij} we see that \(\phi\) is an isomorphism \(G \iso
+  \Z/n\Z\) --- \(G\) is a cyclic group, which finishes our proof.
+\end{proof}
+
+\begin{lemma}[Inner automorphism]\label{lem: grp-inner-aut}
+  Let \(G \in \Grp\). For each \(g \in G\), the map \(\gamma_g: G \to G\) given
+  by \(\gamma_g(a) = gag^{-1}\) is an automorphism --- called inner
+  automorphism of \(G\).
+\end{lemma}
+
+\begin{proof}
+  Let \(g \in G\) be any element. Suppose \(a \in \ker\gamma_g\), then
+  \(\gamma_g(a) = gag^{-1} = e_G\), hence, \(a = g^{-1} e_G g = g^{-1}g = e_G\),
+  that is \(\ker\gamma_g = e_G\) --- \(\gamma_g\) is injective. Let \(g' \in G\)
+  be any element, then, \(\gamma_g(g^{-1} g' g) = g (g^{-1} g' g) g^{-1} = g'\),
+  that is, \(\gamma_g\) is surjective. We conclude that \(\gamma_g\) is a
+  bijection --- hence an isomorphism, so \(\gamma_g \in \Aut_\Grp(G)\).
+\end{proof}
+
+\begin{lemma}[Inner autormorphism correspondence]
+  \label{lem: grp-inner-aut-cor}
+  Let \(G \in \Grp\). The map \(\phi: G \to \Aut_\Grp(G)\) defined by the
+  mapping \(\phi(g) = \gamma_g\) (where \(\gamma_g\) is defined in \cref{lem:
+  grp-inner-aut}) is a morphism of groups.
+\end{lemma}
+
+\begin{proof}
+  Let \(g, g' \in G\) be any elements, then
+  \[
+    \gamma_{gg'}(a) = (gg')a(gg')^{-1} = (g g') a (g'^{-1} g^{-1}
+    = g(g' a g'^{-1}) g^{-1} = \gamma_g \gamma_{g'}(a).
+  \]
+  This being said, its easy to see that \(\phi\) preserves the group structure:
+  \(\phi(gg') = \gamma_{gg'} = \gamma_g \gamma_{g'} = \phi(g) \phi(g')\). Thus
+  \(\phi\) is a morphism of groups.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Group Products}
+
+Let \((G, \circledast), (H, \circledcirc) \in \Grp\) be any objects. We define a
+binary operation \(\cdot: (G \times H)^2 \to G \times H\) as the mapping
 \begin{equation}\label{eq: grp-prod-bin}
-  (g, h) \cdot (g', h') = (g \otimes g', h \oplus h').
+  (g, h) \cdot (g', h') = (g \circledast g', h \circledcirc h').
 \end{equation}
 Such binary operation defines a group structure on \(G \times H\). Notice that,
 given an element \((g, h) \in G \times H\), there exists an element \((g^{-1},
@@ -213,12 +385,112 @@ H \to H\) define morphisms of groups.
   \todo[inline]{Find counterexample}
 \end{remark}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\texorpdfstring{\(\Ab\)}{Ab} --- Category of Abelian Groups}
 
 \begin{definition}[Category of abelian groups]
   We define the category of abelian groups, denoted \(\Ab\), to be the category
   whose objects are abelian groups and group morphisms between them.
 \end{definition}
+
+\begin{proposition}
+  A group \(G\) is abelian if and only either one of the following conditions
+  are satisfied:
+  \begin{itemize}
+    \setlength\itemsep{0em}
+    \item The map \(G \to G\) mapping \(g \mapsto g^{-1}\) is a morphism of
+      groups.
+    \item The map \(G \to G\) mapping \(g \mapsto g^2\) is a morphism of groups.
+  \end{itemize}
+\end{proposition}
+
+\begin{proof}
+  Denote the first map by \(\phi\) and the second by \(\psi\). If \(G\) is
+  abelian, then for any \(g, g' \in G\) we have:
+  \begin{gather*}
+    \phi(gg') = (gg')^{-1} = g'^{-1} g^{-1} = g^{-1}g'^{-1} = \phi(g) \phi(g'),
+    \\
+    \psi(gg') = (gg')^2 = (gg')(gg') = g^2g'^2 = \psi(g)\psi(g').
+  \end{gather*}
+  That is, \(\phi\) and \(\psi\) are morphisms. Now suppose \(\phi\) and
+  \(\psi\) are morphisms and consider any elements \(g, g' \in G\) --- we get
+  the following relations from each of the morphisms:
+  \begin{gather*}
+    gg' = \phi(g^{-1})\phi(g'^{-1}) = \phi(g^{-1}g'^{-1})
+    = \phi((g'g)^{-1}) = g'g,
+    \\
+    (gg')^2 = \phi(gg') = \phi(g) \phi(g') = g^2 g'^2.
+  \end{gather*}
+  Using cancellation law for the second relation we find \(g'g = gg'\). This
+  shows that \(G\) is abelian.
+\end{proof}
+
+\begin{proposition}
+  Let \(\phi \in \Hom_\Grp(G, \Aut_\Grp(G))\) be the morphism of groups mapping
+  \(g \xmapsto \phi \gamma_g\) --- as defined in \cref{lem: grp-inner-aut-cor}.
+  \(G\) is an abelian group if and only if \(\phi\) is trivial.
+\end{proposition}
+
+\begin{proof}
+  Let \(G\) be an abelian group, then,
+  \todo[inline]{Continue proof}
+\end{proof}
+
+\begin{proposition}[\(\Hom_\Ab\) abelian group]\label{prop: hom-ab-grp}
+  Let \(G, H \in \Ab\) be any two commutative groups. The collection of
+  morphisms \(\Hom_\Ab(G, H)\) forms an abelian group with a binary operation
+  defined by \((\phi + \psi)(g) = \phi(g) +_H \psi(g)\) --- where \(+_H\) is the
+  binary operation of \(H\).
+\end{proposition}
+
+\begin{proof}
+  Let \(\phi, \psi \in \Hom_\Ab(G, H)\) be any morphisms and consider elements
+  \(g, g' \in G\). From the commutativity of \(H\) it follows that
+  \begin{align*}
+    (\phi + \psi)(g +_G g')
+    &= \phi(g +_G g') +_H \psi(g +_G g')
+    \\
+    &= \left(\phi(g) +_H \phi(g')\right) +_H \left(\psi(g) +_H \psi(g')\right)
+    \\
+    &= \left(\phi(g) +_H \psi(g)\right) +_H \left(\phi(g') +_H \psi(g')\right)
+    \\
+    &= (\phi + \psi)(g) +_H (\phi + \psi)(g').
+  \end{align*}
+  That is, \(\phi + \psi \in \Hom_\Ab(G, H)\). Moreover, given a morphism \(f
+  \in \Hom_\Ab(G, H)\), define the map \(k: G \to H\) mapping \(k(g) =
+  f(g)^{-1}\). Notice that \(k\) is a morphism:
+  \begin{align*}
+    k(g +_G g')
+    &= f(g +_G g')^{-1} \\
+    &= (f(g) +_H f(g'))^{-1} \\
+    &= f(g')^{-1} +_H f(g)^{-1} \\
+    &= f(g)^{-1} +_H f(g')^{-1} \\
+    &= k(g) +_H k(g').
+  \end{align*}
+  Moreover, \((f + k)(g) = f(g) +_H k(g) = f(g) +_H f(g)^{-1} = e_H\) --- that
+  is, \(f + k\) is the trivial morphism \(g \mapsto e_H\), i.e. \(k\) is the
+  inverse of \(f\). This finishes the proof that \(\Hom_\Ab(G, H)\) is a group.
+  For the commutativity, it follows directly from the commutativity of \(H\):
+  for all \(\phi, \psi \in \Hom_\Ab(G, H)\) we have
+  \[
+    (\phi + \psi)(g) = \phi(g) +_H \psi(g) = \psi(g) +_H \phi(g) = (\psi +
+    \phi)(g).
+  \]
+\end{proof}
+
+\begin{corollary}
+  Let \(G \in \Grp\) and \(H \in \Ab\). The collection of morphisms
+  \(\Hom_\Grp(G, H)\) forms a group under the binary operation defined above.
+\end{corollary}
+
+\begin{corollary}
+  Let \(A \in \Set\) and \(H \in \Ab\). The collection of morphisms
+  \(\Hom_\Set(A, FH)\) forms a group under the binary operation defined above
+  --- where \(F: \Grp \to \Set\) is the forgetful functor.
+\end{corollary}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Coproduct and Fiber Product}
 
 \begin{proposition}[Coproduct in \(\Ab\)]\label{prop: coprod-ab}
   The direct product of abelian groups is a coproduct in \(\Ab\). That is, for
@@ -308,27 +580,47 @@ H \to H\) define morphisms of groups.
 
   Let \(q \in C_2 * C_3\) be any element. We know that there exists a finite
   collection of coefficients \(I = \{(a, b) \in \Z^2\}\) such that \(q =
-  \prod_{(a, b) \in I} x^a y^z\). Define \(\phi: C_2 * C_3 \to G\) as the
+  \prod_{(a, b) \in I} x^a y^b\). Define \(\phi: C_2 * C_3 \to G\) as the
   mapping
   \[
-    \phi(q) = \phi\left(\prod_{(a, b) \in I} x^a y^z\right)
-    = f\left(x^{\sum_{(a,b) \in I} a}\right)
-    k\left(y^{\sum_{(a,b) \in I} b}\right).
+    \phi(q) = \phi\left(\prod_{(a, b) \in I} x^a y^b\right)
+    = \prod_{(a, b) \in I} f(x^a) k(y^b)
+    = \prod_{(a, b) \in I} f(x)^a k(y)^b
   \]
-  Notice that \(\phi(e) = f(e) k(e) = e_G\) and for all \(q, p \in C_2 * C_3\)
-  --- with respective coefficients \(I = \{(a, b) \in \Z^2\}\) and \(J = \{(c,d)
-  \in \Z^2\}\) --- we have
+  It should be clear that this definition implies \(\phi \iota_{C_2} = f\) and
+  \(\phi \iota_{C_3} = g\). Notice that \(\phi(e) = f(e) k(e) = e_G\) and for
+  all \(q, p \in C_2 * C_3\) --- with respective coefficients \(I = \{(a, b) \in
+  \Z^2\}\) and \(J = \{(c,d) \in \Z^2\}\) --- we have
   \begin{align*}
-    \phi(qp)
+    \phi(q) \phi(p)
+    &= \phi\left( \prod_{(a, b) \in I} x^a y^b \right)
+    \phi\left( \prod_{(c, d) \in J} x^c y^d \right)
+    \\
+    &= \prod_{(a, b) \in I} f(x^a) k(y^b)
+    \prod_{(c, d) \in J} f(x^c) k(y^d)
+    \\
+    &= \prod_{(\alpha, \beta) \in A} f(x^\alpha) g(y^\beta)
+    \\
+    &= \phi\left(\prod_{(\alpha, \beta) \in A} f(x^\alpha) g(y^\beta) \right)
+    \\
     &= \phi\left(\prod_{(a, b) \in I} x^a y^b
       \prod_{(c, d) \in J} x^c y^d\right)
     \\
-    &= f \left( x^{\sum_{(\alpha, \beta) \in I \cup J} \alpha} \right)
-    k\left( y^{\sum_{(\alpha, \beta) \in I \cup J} \beta} \right)
-    %\\
-    %&= f \left( x^ \right)
+    &= \phi(qp)
   \end{align*}
-  \todo[inline]{finish}
+  that is, \(\phi\) is a morphism of groups --- where we define \(A\) as the
+  concatenation of the coefficients \(I\) and \(J\). We have shown that the
+  following diagram commutes
+  \[
+    \begin{tikzcd}
+      C_2 \ar[dr, "\iota_{C_2}"] \ar[ddr, swap, bend right, "f"]
+      & &C_3 \ar[dl, swap, "\iota_{C_3}"] \ar[ddl, bend left, "g"] \\
+      &C_2 * C_3 \ar[d, dashed, "\phi"] & \\
+      &G &
+    \end{tikzcd}
+  \]
+  We can then conclude that \(C_2 * C_3\), as defined above, is the coproduct of
+  \(C_2\) and \(C_3\) in \(\Grp\).
 \end{remark}
 
 \begin{proposition}[Fiber products]
@@ -372,16 +664,16 @@ H \to H\) define morphisms of groups.
     \phi(gg') = \phi(g) \phi(g') = \psi(h) \psi(h') = \psi(hh'),
   \]
   thus \((gg', hh') \in G \times_W H\). This shows that \(G \times_W H\) is
-  indeed a group and since \(G \times H\) is abelian, so is the fiber product
+  indeed a group and since \(G \times H\) is aeolian, so is the fiber product
   defined above.
 
   From the forgetful functor \(\Ab \to \Set\) we know that there exists a unique
   set-function \(\varphi\) such that the diagram commutes in \(\Set\). If we
   define \(\varphi\) as the mapping \(q \overset \varphi \longmapsto (f(q),
-  k(q))\). Notice that
+  k(q))\) we can see that it preserves the group structure, since
   \[
     \varphi(qq') = (f(qq'), k(qq')) = (f(q)f(q'), k(q)k(q'))
     = (f(q), k(q))(f(q'), k(q')) = \varphi(q) \varphi(q'),
   \]
-  so \(\varphi \in \Mor(\Ab)\).
+  that is, \(\varphi \in \Mor(\Ab)\).
 \end{proof}
