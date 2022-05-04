@@ -1,0 +1,22 @@
+# Deep Dive
+
+This is just a poetic name to a compilation of notes that I'm writing while
+studying mathematics. They currently encompass:
+
+* Category Theory
+* Linear Algebra
+* Group Theory
+* Topology
+* Graph Theory
+
+None of these subjects are completed (for trivial reasons). I don't know why I
+keep these notes public, but if you happen to compile them and find them helpful
+or stupid in some way (and if you're willing to help), reach me out and I'll be
+quite happy to have some feedback.
+
+For the compilation of the notes:
+```
+$ git clone https://github.com/luizmugnaini/algebra
+$ cd deep-dive
+$ latexmk -pvc
+```
