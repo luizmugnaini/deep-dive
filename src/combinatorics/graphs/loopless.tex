@@ -1,0 +1,539 @@
+\section{The Simple Loopless Graph}
+
+Sometimes (and by that I mean almost always) graph theorists like the incidence
+relation be irreflexive --- loops are therefore forbidden, that is, \(E(x, x)\)
+is always false for any \(x \in V\) ---, but this construction does not get us a
+good category. We are going to reserve the word ``simple graph" to mean a simple
+graph with loops and the word ``graph" for simple graphs with no loops. The
+following is a formal definition of a loopless simple graph --- a ``graph".
+
+\begin{definition}[Graph]\label{def: graph}
+  \(G = (V, E, d)\) is said to be a graph if
+  \[
+    d: E \to \langle V \rangle^2 \text{, mapping } e \xmapsto d (x, y) = (y, x)
+    \text{ and } x \neq y.
+  \]
+  That is, \(E(x, y)\) if and only if \(E(y, x)\), and \(E(x, x)\) is always
+  false.
+\end{definition}
+
+From now on we are mostly going to assume the existence of the incidence
+relation map \(d\) (symmetric and irreflexive) and simply denote a graph \(G\)
+by \((V, E)\) --- where we assume that \(G\) is a simple loopless graph.
+
+\begin{definition}[Morphism of graphs]\label{def: graph-morph}
+  Let \(G = (V, E)\) and \(H = (V', E')\) be graphs. A morphism \(G \to H\) is a
+  map \(\varphi: V \to V'\) such that \(E(x, y)\) implies \(E(\varphi(x),
+  \varphi(y))\) --- that is, adjacency of vertices need to be preserved.
+\end{definition}
+
+\begin{definition}[Graph category]\label{def: graph-cat}
+  We define the category of simple loopless graphs, denoted by \(\Graph\), as
+  the category with graph objects and morphisms of graphs.
+\end{definition}
+
+\begin{lemma}[Stable preimage]\label{lem: stable-preimage}
+  Let \(\varphi: G \to H\) be a morphism of graphs, then, for any \(x' \in
+  V(H)\), the collection \(\varphi^{-1}(x') \subseteq V(G)\) is stable in \(G\).
+\end{lemma}
+
+\begin{proof}
+  Suppose, for the sake of contradition, that there exists vertices \(x, y \in
+  \varphi^{-1}(x)\) such that \(E(x, y)\) is true in \(G\). In particular, this
+  implies that \(E(\varphi(x), \varphi(y)) = E(x', x')\) is true in \(H\), which
+  is forbidden --- hence there can be no such pair of vertices in
+  \(\varphi^{-1}(x')\).
+\end{proof}
+
+\begin{definition}[Graph property]\label{def: graph-property}
+  A class of graphs is said to be a property of graphs if it is closed up to
+  isomorphism.
+\end{definition}
+
+\begin{definition}[Graph invariant]\label{def: graph-invariant}
+  A map \(\phi: \Graph \to S\) --- where \(S \in \Set\), possibly \(\R\) for
+  instance --- is said to be a graph invariant if for all \(G, G' \in
+  \Graph\) such that \(G \iso G'\) then
+  \[
+    \phi(G) = \phi(G').
+  \]
+\end{definition}
+
+\begin{definition}[Union and intersections]\label{def: union-intersection-gph}
+  Let \(G = (V, E), G' = (V', E') \in \Graph\). We define their union as the
+  graph
+  \[
+    G \cup G' = (V \cup V', E \cup E').
+  \]
+  Analogously, their intersection is defined as
+  \[
+    G \cap G' = (V \cap V', E \cap E').
+  \]
+\end{definition}
+
+\begin{definition}[Complete Graph]\label{def: complete-graph}
+  A graph \(G\) is said to be complete if for all pairs of vertices \(x, y \in
+  G\), \(E(x, y)\) is true.
+\end{definition}
+
+\begin{notation}
+  We denote by \(K^n\) the complete graph on \(n\) vertices.
+\end{notation}
+
+\begin{definition}[Subgraph]
+  Let \(G = (V, E)\) and \(G' = (V', E')\) be graphs. \(G'\) is said to be a
+  \emph{subgraph} of \(G\) --- denoted \(G' \subseteq G\) --- if \(V' \subseteq
+  V\) and \(E' \subseteq E\). On the other hand, \(G\) is said to be a
+  \emph{supergraph} of \(G'\).
+\end{definition}
+
+\begin{definition}[Induced subgraph]
+  Let \(G' = (V', E')\) be a subgraph of \(G\). \(G'\) is said to be an
+  \emph{induced subgraph} of \(G\) if for all \(x, y \in V\), then \(E_{G'}(x,
+  y)\) if \(E_G(x, y)\). We denote \(G' = G[V']\). If \(G[V'] = G\), then we say
+  that \(G'\) is a \emph{spanning subgraph} of \(G\).
+\end{definition}
+
+\begin{definition}[Embedding of graphs]\label{def: graph-embedding}
+  Let \(G\) and \(H\) be graphs. A morphism of graphs \(\iota: H \mono G\) is
+  said to be an embedding of \(H\) into \(G\) if its underlying map \(V(H) \mono
+  V(G)\) is injective.
+\end{definition}
+
+\begin{definition}[Deletion vertices or edges]
+  \label{def: deletion-graph}
+  Let \(G = (V, E)\) be a graph and \(V' \subseteq V\) a subset of the
+  vertices of \(G\). The deletion of the parts of \(G\) associated with the
+  vertices \(V'\) is defined as the graph \(G[V \setminus V']\) --- which we'll
+  shortly identify as \(G \setminus V'\). Equivalently we define the deletion
+  of edges \(E' \subseteq E\) as the graph \(G - E' := (V, E \setminus E')\).
+\end{definition}
+
+Notice that the non-connected vertices are not deleted from the resulting graph
+\(G \setminus E'\), contrary to the case of the deletion of vertices \(G
+\setminus V'\), where edges with endpoints out of \(V'\) where removed.
+
+\begin{definition}[Edge-maximal]
+  \label{def: edge-maximal}
+  Given a graph property \(P\), a graph \(G = (V, E)\) is said to be
+  \emph{edge-maximal} with respect to \(P\) if \(G \in P\) and for all \(E'
+  \supsetneq E\) the graph \((V, E')\) does not have the property \(P\).
+\end{definition}
+
+\begin{definition}[Clique]\label{def: clique}
+  Let \(G\) be a graph and \(S \subseteq V(G)\) be a subset with \(k\) vertices.
+  If the graph \(G[S]\) is complete, we call it a \(k\)-clique. Trivially,
+  \(G[S] \iso K_k\).
+\end{definition}
+
+\begin{definition}[Complement graph]\label{def: complement-graph}
+  Given a graph \(G = (V, E)\), the complement of \(G\) is defined as the graph
+  \(\overline G = (V, \langle V \rangle^2 \setminus E)\).
+\end{definition}
+
+\begin{definition}[Line graph]\label{def: line-graph}
+  Given a graph \(G\), the line graph of \(G\), denoted by \(L(G)\), is the
+  graph such that, if \(e = (x, y), e' = (y, z) \in E(G)\) are adjacent edges
+  then \(E_{L(G)}(x, z)\) --- that is \(L(G) = (V(G), E)\) where
+  \[
+    E = \{(x, z) \in \langle V \rangle^2 : E_G(x, y) \text{ and } E_G(y, z)
+    \text{ for some } y \in V(G)\}.
+  \]
+\end{definition}
+
+\begin{definition}[Join]\label{def: graph-join}
+  Let \(G = (V, E), G' = (V', E') \in \Graph\) be disjoint --- \(G \cap G' =
+  \emptyset\). We define their join as the graph \(G * G'\) with vertices \(V
+  \cup V'\) and edges \(E \cup E' \cup E^*\), where \(E^*\) is defined as \(E^*
+  = \{(x, y) : x \in G, y \in G'\}\) --- that is, the collection of all edges
+  connecting the vertices of \(G\) and \(G'\).
+\end{definition}
+
+The join definition fails to be a coproduct in the category of graphs exactly
+because of the addition of the \(E^*\) edges --- the edges between elements of
+\(G\) with \(G'\) in \(G * G'\) cannot be ensured to be preserved by a morphism
+\(G * G' \to H\) as described in \cref{prop: coprod-graph}.
+
+\subsection{Vertex Degree}
+
+\begin{notation}[Neighbourhood]
+  Given a graph \(G\), we denote by \(N(v)\) the collection of all neighbours of
+  \(v \in G\).
+\end{notation}
+
+\begin{definition}[Degree]\label{def: degree}
+  Let \(G\) be a graph, we define the degree (or valency) of a vertex \(v \in
+  G\) as \(\deg v = |N(v)|\). If \(G\) is a finite graph,
+  \begin{itemize}
+    \setlength\itemsep{0em}
+    \item The minimum degree of \(G\) is defined as \(\delta(G) = \min_{v \in
+      V(G)} \deg v\).
+    \item The maximum degree of \(G\) is defined as \(\Delta(G) = \max_{v \in
+      V(G)} \deg v\).
+    \item The average degree of \(G\) is defined as
+      \[
+        \deg G = \frac 1 {|G|} \sum_{v \in V(G)} \deg v.
+      \]
+    \item The edge-vertex ratio of \(G\) is \(\epsilon(G) =
+      \frac{\size{G}}{|G|}\). Since an edge is composed of two vertices, the sum
+      \(\sum_{v \in V(G)} \deg v\) counts every edge exactly twice, so that
+      \(\epsilon(G) = \frac 1 2 \sum_{v \in V(G)} \deg v\). Thus we arrive in
+      the relation \(\epsilon(G) = \frac 1 2 \deg G\).
+  \end{itemize}
+\end{definition}
+
+\begin{lemma}\label{lem: handshaking}
+  The number of vertices of odd degree in a graph is even.
+\end{lemma}
+
+\begin{proof}
+  Let \(G\) be a graph. Since \(\size G \in \N\) and \(\size G = \frac 1 2
+  \sum_{v \in V(G)} \deg v\), then \(\sum_{v \in V(G)} \deg v\) is even. If the
+  number of odd degree vertices where odd, then the sum of their degrees would
+  also be odd. Since the sum of even degree vertices is always even, it is
+  necessary for the number of odd degree vertices to be even.
+\end{proof}
+
+\begin{proposition}[Edge-dense subgraph]\label{prop: edge-dense-subgraph}
+  Let \(G\) be a finite graph with size \(\size G \geq 1\). Then there exists a
+  subgraph \(H \subseteq G\) such that
+  \[
+    \delta(H) > \epsilon(H) \geq \epsilon(G).
+  \]
+\end{proposition}
+
+\begin{proof}
+  We'll construct the subgraph \(H\) by means of a chain of consequent single
+  vertex deletion --- as in \cref{def: deletion-graph}. Let \(H_0 = G\) Notice
+  that, if we want to have the edge-vertex ratio unaltered (or increased) by the
+  deletion, we got to choose a vertex \(v \in H_0\) --- if existent --- such
+  that the graph \(H_1 = H_0 \setminus v\) has \(\epsilon(H_1) \geq
+  \epsilon(H_0)\), that is, \(\deg v\) has to satisfy
+  \[
+    \epsilon(H_1) = \frac{\size{H_0} - \deg v}{|H_0| - 1}
+    \geq \frac{\size{H_0}}{|H_0|} = \epsilon(H_0).
+  \]
+  Solving the above equation for the degree of \(v\), we find that \(\deg v \leq
+  \epsilon(H_0)\). Since \(\delta(H_0) \leq \deg H_0 \leq \Delta(H_0)\) and
+  \(\epsilon(H_0) \leq \deg H_0\), then \(\deg v \leq \Delta(H_0)\) --- that is,
+  \(\delta(H_1) \leq \delta(H_0)\). If such vertex doesn't exists in \(V(H_0)\),
+  we terminate our algorithm and find \(H = H_0 = G\). Otherwise, we continue
+  recursively, generating a finite chain of subgraphs --- the finiteness of the
+  chain comes from the fact that \(G\) itself is finite
+  \[
+    G = H_0 \supset H_1 \supset H_2 \supset \dots \supset H_n = H
+  \]
+  for some \(n \in \N\). Where \(\epsilon(H_{j+1}) \geq \epsilon(H_j)\) and
+  \(\delta(H_{j+1}) \geq \delta(H_j)\) for all \(0 \leq j < n\). At some point
+  the chain will terminate into the subgraph \(H\). Moreover, since the
+  recursion terminates in \(H \neq \emptygraph\), then necessarily \(\deg v >
+  \epsilon(H)\) for all \(v \in H\) --- in particular, this implies in
+  \(\delta(H) > \epsilon(H)\).
+\end{proof}
+
+\begin{definition}[Regular graph]\label{def: k-regular}
+  A graph \(G\) is said to be \(k\)-regular --- for some \(k \in \N\) --- if
+  \(\deg v = k\) for all \(v \in G\).
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Path to Glory}
+
+\begin{definition}[Walk]\label{def: walk}
+  A walk on a graph \(G\) is defined to be a subgraph \(W \subseteq G\) ---
+  assume \(|W| = n + 1\) for some \(n \in \N\) --- such that there exists a
+  \emph{surjective map} \(\ell: [n] \epi V(W)\) satisfying the
+  condition of \(E_G(\ell(k), \ell(k + 1))\) for all \(0 \leq k < n\). We'll
+  generally assume this underlying surjective vertex-labelling map and denote
+  \(W = (\ell(0), \dots, \ell(n)) = (v_0, \dots, v_n)\). The walk \(W\) is said
+  to be closed if \(v_0 = v_n\).
+\end{definition}
+
+\begin{definition}[Length]\label{def: walk-length}
+  We define the length of a walk \(W\) to be its size \(\size W\).
+\end{definition}
+
+\begin{definition}[Walk operations]\label{def: walk-operations}
+  Given a path \(W = (v_0, \dots, v_n)\) we can define the following:
+  \begin{itemize}
+    \setlength\itemsep{0.0em}
+    \item (Subwalk) Let \(v_j \in V(W)\) be any vertex. We define a subwalk of
+      \(W\) restricted to \(v_j\) to be one of the following subgraphs of \(W\):
+      \(v_jW = (v_j, v_{j+1}, \dots, v_n)\) and \(Wv_j = (v_0, \dots, v_{j-1},
+      v_j)\). We can also define excluding subwalk induced by \(v_j\) to be
+      \(\breve v_j W = (v_{j+1}, \dots, v_n)\) and \(W \breve v_j = (v_0, \dots,
+      v_{j-1})\).
+    \item (Inner walk) The inner walk of \(W\) is given by \(\breve W = (v_1,
+      \dots, v_{n-1})\).
+    \item (Walk concatenation) Let \(Q = (w_0, \dots, w_m)\) be a walk.
+      If \(P\) and \(Q\) have coinciding endings, say \(v_n = w_0 = x\), we can
+      define the concatenation of \(P\) with \(Q\) to be the walk \(PQ = (v_0,
+      \dots, v_{n-1}, x, w_1, \dots, w_m)\).
+  \end{itemize}
+\end{definition}
+
+\begin{definition}[Path]\label{def: path}
+  We define a path to be walk with no repeating vertices. A path graph \(P_n\)
+  is a graph of order \(n + 1\) and size \(n\) such that there exists a
+  \emph{bijective map} \(\ell_n: [n] \isoto V(P_n)\) for which
+  \(E_{P_n}(\ell_n(k), \ell_n(k+1))\) for all \(0 \leq k < n\). We'll usually
+  assume the existence of the underlying vertex-labelling bijection \(\ell_n\).
+  This way we can naturally write the path \(P_n\) as a unique sequence of
+  vertices \((v_0, v_1, \dots, v_n)\) \emph{up to isomorphism} of graphs.
+
+  Given a graph \(G\), we define a path of size \(n + 1\) \emph{on} \(G\) to be
+  the \emph{induced subgraph} of \(G\) given by \(G[\iota(P_n)]\), where
+  \(\iota: P_n \mono G\) is an \emph{embedding of graphs} --- see \cref{def:
+  graph-embedding}. The underlying labelling is now given by the composition
+  \(\iota \ell_n: [n] \to V(G)\).
+\end{definition}
+
+Since a path is just a special type of walk, every operation described on
+\cref{def: walk-operations} is carried over to the path graphs.
+
+\begin{proposition}[Transforming paths into walks]
+  \label{prop: morphism-path-walk}
+  A map \(\phi: P_n \to G\) is a morphism of graphs if and only if the sequence
+  \((\phi(v_0), \dots, \phi(v_n))\) is a walk on \(G\).
+\end{proposition}
+
+\begin{proof}
+  Throughout, assume \(0 \leq j < n\). If \(\phi\) is a morphism of graphs then
+  \(E_{P_n}(v_j, v_{j + 1})\) implies \(E_G(\phi(v_j), \phi(v_{j+1}))\) thus
+  inducing a walk on \(G\). On the other hand, if \((\phi(v_0), \dots,
+  \phi(v_n))\) is a walk on \(G\), then since the only edges on \(P_n\) occur
+  between consequent vertices \(v_j\) and \(v_{j+1}\), we have that \(\phi\)
+  indeed preserves the adjacency structure of the path \(P_n\), that is,
+  \(E_{P_n}(v_j, v_{j+1})\) implies \(E_G(\phi(v_j), \phi(v_{j+1}))\) --- hence
+  \(\phi\) is a morphism.
+\end{proof}
+
+\begin{lemma}[Paths on walks]\label{lem: paths-on-walks}
+  Let \(W\) be a walk. If \(x, y \in V(W)\), then there exists a path \(P
+  \subseteq W\) such that \(x, y \in V(P)\).
+\end{lemma}
+
+\begin{proof}
+  Assume \(W\) is a \(k\)-walk and contains \(x\) and \(y\) at its endvertices
+  --- if not, we would be analogously analysing the subwalk \(xWy\). Let \(\ell:
+  [k] \epi V(W)\) be a surjective labelling on \(W\) --- since \(x\) and \(y\)
+  are endvertices, we have
+  \begin{equation}\label{eq: paths-on-walks-1}
+    \ell(0) = x\ \text{ and }\ \ell(k) = y.
+  \end{equation}
+  Let \(\mathcal C\) be the
+  collection of all cycles on \(W\) --- refer to \cref{def: cycle}. Define the
+  equivalence relation \(\sim\) on the vertices \(V(W)\) to be so that \(v \sim
+  u\) if and only if \(v, u \in V(C)\) for some \(C \in \mathcal C\).
+
+  The quotient graph \(W/\sim\) (see \cref{def: quotient-graph}) is a path
+  joining the vertex classes \(\overline x\) and \(\overline y\). To see that,
+  we can first construct an equivalence relation \(\sim_\ell\) on the indexing
+  set \([k]\), defined as follows: \(i \sim_\ell j\) if and only if \(\ell(i)
+  \sim \ell(j)\) --- clearly \([k]/\sim_\ell\) is an indexing set for the
+  vertices of the quotient graph. Lets assume that \([k]/\sim_\ell\, =
+  \{\overline 0, \dots, \overline m\}\). Let \(\ell': [k]/\sim_\ell\, \to
+  V(W/\sim)\) be a labelling on \(W/\sim\) defined as \(\ell'(\overline j) =
+  \overline{\ell(j)}\). Using \cref{eq: paths-on-walks-1}, the sequence of
+  vertices \((\ell'(\overline 0), \dots, \ell'(\overline m)\) is such that
+  \(\ell'(\overline 0) = \overline x\) and \(\ell'(\overline m) = \overline y\).
+  Also, \(E_{W/\sim}(\ell'(\overline j), \ell'(\overline{j + 1})) = E_W(\ell(j),
+  \ell(j+1))\) is always true (because \(W\) is a walk). So far, we've shown
+  that \(W/\sim\) is a walk between \(\overline x\) and \(\overline y\) --- we
+  now need to show that no vertex is repeated in the given labelled sequence,
+  which is actually trivial. Suppose that \(\ell'(\overline i) = \ell'(\overline
+  j)\), then from definition of \(\ell'\) we have \(\overline{\ell(i)} =
+  \overline{\ell(j)}\), which implies that \(\ell(i) \sim \ell(j)\) and hence
+  \(i \sim_\ell j\) --- thus \(\overline i = \overline j\). This shows that
+  \[
+    W/\sim\ = (\overline x, \ell'(\overline 1), \dots, \ell'(\overline{m - 1}),
+    \overline y)
+  \]
+  is indeed a path joining \(\overline x\) and \(\overline y\).
+
+  For the last part we just need to consider the embedding of graphs \(\iota:
+  W/\sim\ \mono W\) such that \(E_{W/\sim}(\overline v, \overline u)\) implies
+  \(E_W(\iota(\overline v), \iota(\overline u))\). The sequence of vertices
+  \[
+    \iota(W/\sim) \coloneqq (\iota(\overline x), \iota\ell'(\overline 1), \dots,
+    \iota \ell'(\overline{m-1}), \iota(\overline y)) \subseteq W
+  \]
+  is clearly a path on \(W\) joining the vertices \(\iota(\overline x) = x\) and
+  \(\iota(\overline y) = y\). Hence, \(P = W[\im \iota]\) gives us the wanted
+  path --- finally the proposition is proved.
+\end{proof}
+
+The last proof may got really clumsy at some points, so here goes an example of
+the basic operations we've developed and used throughout the proof. Let \(W =
+(x, v_1, \dots, v_{12}, y)\) be a walk, visually given by --- where \(v_5 =
+v_2\) and \(v_{11} = v_6\)
+\[
+  \begin{tikzcd}[%
+    , cells={nodes={circle, draw, inner sep=1.5pt}}
+    , every arrow/.append style={dash,thick}
+    , row sep=tiny
+    , column sep=tiny
+    ]
+    % 1 line
+              &v_4 \ar[rr] \ar[dr] & &v_3 \ar[dl] & &
+    \\
+    % 2 line
+    x \ar[dr] & &v_2 \ar[dl] \ar[dr] & &v_{12} \ar[dr] &
+    \\
+    % 3 line
+              &v_1 & &v_6 \ar[ur] \ar[dl] \ar[dr] & &y
+    \\
+    % 4 line
+              & &v_{10} \ar[d] & &v_7 \ar[d] &
+    \\
+    % 5 line
+              & &v_9 \ar[rr] & &v_8 &
+  \end{tikzcd}
+\]
+Now, the process of taking the quotient of the graph amounts to the
+identification of the cycles
+\[
+  \mathcal C = \{W[\{v_2, v_3, v_4, v_5\}],\,
+  W[\{v_6, v_7, v_8, v_9, v_{10}, v_{11}\}]\}
+\]
+The cycles are respectively reduced to classes \(\overline v_2\) and \(\overline
+v_3\), both elements of \(V(W)/\sim\). The quotient graph \(W/\sim\) can be
+visually depicted as follows
+\[
+  \begin{tikzcd}[%
+    , cells={nodes={circle, draw, inner sep=1.5pt}}
+    , every arrow/.append style={dash,thick}
+    , row sep=tiny
+    , column sep=tiny
+    ]
+    % 1 line
+    \overline x \ar[dr]
+    & &\overline v_2 \ar[dl] \ar[dr] & &\overline v_4 \ar[dl] \ar[dr] &
+    \\
+    &\overline v_1 & &\overline v_3 & &y
+  \end{tikzcd}
+\]
+Now for the embedding of graphs \(\iota: W/\sim\, \mono W\), we can view \(P =
+W[\im\iota]\) as the subgraph consisting of the red edges and their endvertices
+--- that is, the collection of vertices \(\{x, v_1, v_2, v_6, v_{12}, y\}\) ---
+which can be visualised as follows
+\[
+  \begin{tikzcd}[%
+    , cells={nodes={circle, draw, inner sep=1.5pt}}
+    , every arrow/.append style={dash,thick}
+    , row sep=tiny
+    , column sep=tiny
+    ]
+    % 1 line
+              &v_4 \ar[rr] \ar[dr] & &v_3 \ar[dl] & &
+    \\
+    % 2 line
+    x \ar[dr, color=red] & &v_2 \ar[dl, color=red] \ar[dr, color=red]
+                         & &v_{12} \ar[dr, color=red] &
+    \\
+    % 3 line
+              &v_1 & &v_6 \ar[ur, color=red] \ar[dl] \ar[dr] & &y
+    \\
+    % 4 line
+              & &v_{10} \ar[d] & &v_7 \ar[d] &
+    \\
+    % 5 line
+              & &v_9 \ar[rr] & &v_8 &
+  \end{tikzcd}
+\]
+
+\begin{corollary}[Distances \& morphisms of graphs]
+  \label{cor: morphism-cycle}
+  Consider graphs \(G\) and \(H\). If \(\phi: G \to H\) is a morphism of
+  graphs then, for all \(x, y \in G\), we have
+  \[
+    d_H(\phi(x), \phi(y)) \leq d_G(x, y).
+  \]
+\end{corollary}
+
+\begin{proof}
+  Assume \(\phi\) is a morphism. Suppose \(x, y \in G\) are separated by a
+  finite distance --- if not, the proposition follows trivially. Let \(P_k\) be
+  a minimal path on \(G\) joining \(x\) and \(y\). Since \(\phi\) is a morphism,
+  the image \(\phi(P_k) \subseteq H\) is a walk where \(\phi(x), \phi(y) \in
+  P_k\) --- this follows directly from \cref{prop: morphism-path-walk}. Now,
+  using \cref{lem: paths-on-walks} on \(\phi(P_k)\) and the vertices \(\phi(x)\)
+  and \(\phi(y)\), it follows that there exists a path \(P \subseteq \phi(P_k)\)
+  joining \(\phi(x)\) and \(\phi(y)\). Moreover, clearly \(\size P \leq
+  \size{\phi(P_k)} \leq k\), thus \(d_H(\phi(x), \phi(y)) \leq d_G(x, y)\).
+\end{proof}
+
+\begin{definition}[Path between sets]\label{def: A-B-path}
+  Let \(A\) and \(B\) be disjoint sets of vertices. \(P = (v_0, \dots, v_n)\) is
+  said to be an \(A\)-\(B\) path if \(v_0 \in A\) and \(v_n \in B\).
+\end{definition}
+
+\begin{definition}[Independent paths]\label{def: independent-paths}
+  Two paths are said to be independent if their inner path share no vertex.
+\end{definition}
+
+\subsection{Cycles}
+
+\begin{definition}\label{def: cycle}
+  A cycle is a closed walk with size at least \(3\). A \(k\)-cycle is a cycle
+  \(C^k\) whose length is \(k\).
+
+  A \(k\)-cycle \emph{on} a graph \(G\) is the \emph{induced subgraph} of \(G\)
+  given by \(G[\iota(C^k)]\) such that \(\iota: C^k \to G\) is an embedding of
+  graphs.
+\end{definition}
+
+\begin{definition}[Chords]\label{def: chord}
+  Let \(G\) be a graph and \(C\) be a cycle on \(G\). Given \(x, y \in C\), a
+  chord is an edge \((x, y) \in E(G)\) such that \(E_C(x, y)\) is false.
+\end{definition}
+
+\begin{definition}[Induced cycle]\label{def: induced-cycle}
+  An induced cycle on a graph is a cycle with no chords.
+\end{definition}
+
+\begin{definition}[Distance]\label{def: vertex-distance}
+  Let \(G\) be a graph and \(x, y \in V(G)\) be any vertices. Let \(\mathcal P\)
+  be the collection of all paths in \(G\) containing the vertices \(x\) and
+  \(y\). If \(\mathcal P\) is nonempty, we define the distance of \(x\) and
+  \(y\) on \(G\) to be the minimum length of the subpaths linking \(x\) to
+  \(y\), in other words
+  \[
+    d_G(x, y) = \min_{P \in \mathcal P} \size{xPy}.
+  \]
+  On the other hand, if \(\mathcal P\) is empty, then \(d_G(x, y) = \infty\).
+\end{definition}
+
+\begin{definition}[Miscellaneous definitions]
+  \label{def: miscellaneous-graph-cycle}
+  We define the following:
+  \begin{enumerate}[(a).]
+    \setlength\itemsep{0.0em}
+    \item\label{def: girth}
+      (Girth) The girth of a graph \(G\) is the minimum length of a cycle on
+      \(G\). In other words, let \(\mathcal C\) be the collection of all cycles
+      on \(G\), the girth of \(G\) is
+      \[
+        g(G) = \min_{C \in \mathcal C} \size C.
+      \]
+    \item\label{def: circ-graph}
+      (Circumference) The circumference of a graph \(G\) is the maximal length
+      of a cycle on \(G\). In other words, let \(\mathcal C\) be the collection
+      of all cycles on \(G\). If \(\mathcal C\) is nonempty, we set
+      \[
+        \Circ(G) = \max_{C \in \mathcal C} \size C.
+      \]
+    \item\label{def: diameter}
+      (Diameter) The diameter of a graph \(G\) is the maximal distance between
+      two vertices of \(G\), that is
+      \[
+        \diam(G) = \max_{x, y \in V(G)} d_G(x, y).
+      \]
+  \end{enumerate}
+\end{definition}
+
+\begin{proposition}\label{prop: path-cycle-len-delta}
+  Let \(G\) be a graph such that \(\delta(G) \geq 2\). Then there exists a path
+  on \(G\) with length \(\delta(G)\) and a cycle on \(G\) with length at least
+  \(\delta(G) + 1\).
+\end{proposition}

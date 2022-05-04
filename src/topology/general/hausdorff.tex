@@ -1,0 +1,163 @@
+\section{Hausdorff Spaces}
+
+\begin{definition}
+  Let \(X\) be a topological space. We define
+  \begin{enumerate}[(1)]
+    \item \(X\) is \(T_0\) (or Kolmogorov) if and only if for every pair of
+      points \(x, y \in X\) there exists an open set containing one, but not
+      both, of them.
+    \item \(X\) is \(T_1\) (or Fréchet) if and only if for every pair or points
+      \(x, y \in X\) there exists open sets \(U, V \subseteq X\) such that \(x
+      \in U\) and \(y \in V\), but \(x \not\in V\) and \(y \not\in U\)
+  \end{enumerate}
+\end{definition}
+
+\begin{proposition}
+  A space \(X\) is \(T_1\) if and only if the constant sequence \((x)_{i \in
+  \mathbb{N}}\) converges to \(x\) and only to \(x\).
+\end{proposition}
+
+\begin{proof}
+  (\(\Rightarrow\)) Suppose \(X\) is \(T_1\), then certainly \(x \to x\). Let
+  \(y \in X\) be distinct of \(x\), then by the \(T_1\) property, there exists a
+  neighbourhood \(U \ni y\) such that \(x \not\in U\), hence \((x)_{i \in
+  \mathbb{N}}\) does not converge to \(y\). (\(\Leftarrow\)) Suppose \(X\) is
+  not \(T_1\), then choose \(y \in X\) for which every neighbourhood \(U \ni y\)
+  contains \(x\), then \(x \to y\).
+\end{proof}
+
+\begin{definition}[Hausdorff space]\label{def: Hausdorff space}
+  We say that a topological space \(X\) is Hausdorff (or \(T_2\)) if for all
+  pair of distinct points \(x, y \in X\), there exists neighbourhoods \(U_x\)
+  and \(U_y\), subsets of \(X\), such that \(U_x \cap U_y = \emptyset\).
+\end{definition}
+
+\begin{corollary}
+  Every open subset of a Hausdorff space is Hausdorff.
+\end{corollary}
+
+\begin{proof}
+  Let \(X\) be Hausdorff and \(U \subseteq X\) be an open. Choose any
+  distinct pair \(x, y \in U\) and let \(U_x, U_y \subseteq X\) be neighbouhoods
+  of \(x, y\) such that \(U_x \cap U_y = \emptyset\). Since \(U_x \cap U, U_y
+  \cap U \subseteq U\) are neighbouhoods of \(x\) and \(y\), respectively, then
+  \((U_x \cap U) \cap (U_y \cap U) = \emptyset\), hence \(U\) is Hausdorff.
+\end{proof}
+
+\begin{proposition}[Hausdorff properties]
+  \label{prop: Hausdorff properties}
+  Let \(X\) be a Hausdorff space. Then
+  \begin{enumerate}[(a)]
+    \item Every finite subset of \(X\) is closed.
+    \item If a sequence \((x_i) \subseteq X\) converges to \(x \in X\), then the
+      limit is unique.
+  \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+  (a) Let \(p_0 \in X\) be any point and \(p \in X\) be a distinct point. Since
+  \(X\) is Hausdorff, choose \(U_p, U_{p_0} \subseteq X\) such that \(U_p \cap
+  U_{p_0} = \emptyset\), hence  \(U_p \subseteq X \setminus \{p_0\}\). Since
+  \(\forall x \in X \setminus \{p_0\}\) there exists a neighbourhood \(U_x
+  \subseteq X \setminus \{p\}\), hence \(\{p\}\) must be a closed set (every
+  point of \(X \setminus A\) has a neighourhood in \(X \setminus A\) is
+  equivalent of saying that \(A\) is closed).
+
+  (b) Suppose that \(x_i \to x\) and \(x_i \to y\) are two limits of the
+  sequence. Since \(X\) is Hausdorff, if \(x \neq y\) implies that there exists
+  neighbourhoods \(U_x, U_y \subseteq X\) for which \(U_x \cap U_y =
+  \emptyset\). From the definition of convergence, there exists \(N \in
+  \mathbb{N}\) such that \(\forall i \geq N, x_i \in U_x\) and exists \(M \in
+  \mathbb{N}\) for which \(\forall i \geq M, x_i \in U_y\). Then, for \(i \geq
+  \max(N, M), x_i \in U_x \cap U_y\), which cannot happen if \(x \neq y\), hence
+  \(x = y\).
+\end{proof}
+
+\begin{proposition}
+  Let \(X\) be a Hausdorff space and \(A \subseteq X\). If \(p \in X\) is a
+  limit point of \(A\), then every neighbourhood of \(p\) contains infinitely
+  many points of \(A\).
+\end{proposition}
+
+\begin{proof}
+  Let \(p\) be a limit point of \(A\), then for any neighbourhood \(U_p
+  \subseteq X\) we must have \((U_p \setminus \{p\}) \cap A \neq \emptyset\).
+  For the sake of contradiction, suppose that there exists a finite number of
+  points, \(n > 1\), in the set \(U_p \cap A = \{x_i\}_{i=1}^n\), which implies
+  that \(U_p \cap A\) is closed. Consider now the non-empty closed set
+  \(\{x_i\}_{i=1}^n \setminus \{p\}\), then \(X \setminus (\{x_i\}_{i=1}^n
+  \setminus \{p\})\) is open and contains \(p\), thus is a neighbourhood of
+  \(p\). Notice that since the insersecition of finitely many open sets is open,
+  then \(U_p \cap \left( X \setminus \left( \{x_i\}_{i=1}^n \setminus \{p\}
+  \right) \right)\) is also open and is a neighbourhood of \(p\). However, notice
+  that
+  \[
+    A \cap U_p \cap (X \setminus (\{x_i\}_{i=1}^n \setminus \{p\}))
+    = \{x_i\}_{i=1}^n \cap ((X \setminus \{x_i\}_{i=1}^n) \cup \{p\})
+    = \{p\} 
+  \] 
+  which is a contradiction to the fact that \(p\) is a limit point of \(A\)
+  (because any neighbourhood of \(p\) should also contain a point of \(A\) other
+  than \(p\)). Hence we conclude that \(A \cap U_p\) must be infinite.
+\end{proof}
+
+\begin{proposition}
+  Let \(X\) be a Hausdorff space and \(A \subseteq X\). Then the set of limit
+  points of \(A\), denoted by \(A'\), is closed in \(X\).
+\end{proposition}
+
+\begin{proof}
+  Consider the complement set \(X \setminus A'\), we must show that it is open.
+  Consider \(x \in X \setminus A'\), so that \(x\) is not a limit point of \(A\)
+  and hence \(\exists U \subseteq X\) neighbourhood of \(x\) such that \((U
+  \setminus \{x\}) \cap A = \emptyset\). We now show that \(U \subseteq X
+  \setminus A'\). Let \(p \in U\) be any point, then the set \(U \setminus
+  \{x\}\) is a neighbourhood of \(p\) and is disjoint with \(A\), hence \(p\) is
+  not a limit point of \(A\), that is, \(p \not\in A'\), which proves that \(U
+  \subseteq X \setminus A'\). Moreover, since \(X\) is Hausdorff, the singleton
+  \(\{x\}\) is closed, hence \(U \setminus \{x\}\) is open
+\end{proof}
+
+\begin{proposition}
+  Let \(f,g : X \to Y\) be morphisms of topological spaces, and \(Y\) be a
+  Hausdorff space. Then the set \(\{x \in X : f(x) = g(x)\}\) is closed in
+  \(X\).
+\end{proposition}
+
+\begin{proof}
+  Consider the complement set \(A := X \setminus \{x \in X : f(x) = g(x)\}\).
+  Let any point \(x \in A\), since \(f(x) \neq g(x)\) and \(Y\) is Hausdorff,
+  there exists neighbourhoods \(U_1, U_2 \subseteq Y\) of \(f(x), g(x)\),
+  respectively, such that \(U_1 \cap U_2 = \emptyset\). Since \(U_1, U_2\) are
+  open, then \(f^{-1}(U_1), g^{-1}(U_2)\) are both open, hence \(f^{-1}(U_1)
+  \cap g^{-1}(U_2)\) is a neighbourhood of \(x\) such that \(f^{-1}(U_1) \cap
+  g^{-1}(U_2) \subseteq A\). From \cref{prop: open set nbhd criterion} we find
+  that \(A\) is open.
+\end{proof}
+
+\begin{proposition}\label{prop: metric space T2}
+  Every metric space is Hausdorff.
+\end{proposition}
+
+\begin{proof}
+  Let \((M, d)\) be a metric space and \(x, y \in M\) any distinct points. Let
+  \(r := d(x, y)\). The open balls \(B_{r/2}(x)\) and \(B_{r/2}(y)\) are
+  disjoint, thus \(M\) is Hausdorff.
+\end{proof}
+
+\begin{proposition}\label{prop: order top implies T2}
+  Every totally ordered set endowed with the order topology is a Hausdorff
+  space.
+\end{proposition}
+
+\begin{proof}
+  Let \(X\) be a space endowed with the order topology. Let \(x, y \in X\) be
+  distinct points. Suppose that \(x < y\). If there exists a point \(z \in X\)
+  such that  \(x < z < y\) then the neighbourhoods of \(x\) and \(y\),
+  respectively, \(U = \{u \in X : u < z\}\) and \(V = \{u \in X : u > z\}\) are
+  disjoint, that is \(U \cap V = \emptyset\). Suppose there is no such middle
+  element, then \(G = \{u \in X : u < y\} = \{u \in X : u \leq x\}\) and \(H =
+  \{u \in X : u > x\} = \{u \in X : u \geq y\}\) are neighbourhoods of \(x\) and
+  \(y\), respectively, and moreover \(G \cap V = \emptyset\). This shows that
+  \(X\) is Hausdorff.
+\end{proof}

@@ -1,0 +1,2 @@
+@default_files = ('algebra.tex');
+$pdf_mode = 1;

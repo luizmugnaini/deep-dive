@@ -1,0 +1,77 @@
+\section{General Definition Of a Graph}
+
+\begin{notation}[\(k\)-subsets]
+  Given a set \(A\), we define a \(k\)-subset --- where \(0 \leq k \leq |A|\)
+  --- to be the a subset of \(A\) with exactly \(k\) elements. We denote the
+  collection of all \(k\)-subsets of \(A\) as \([A]^k\).
+\end{notation}
+
+\begin{notation}[Range]
+  For any \(n \in \N\), we denote by \([n]\) the set of natural numbers \(\{0,
+  1, \dots, n\}\).
+\end{notation}
+
+\begin{definition}[General Graph]\label{def: general-graph}
+   We define a \emph{general graph} \(G = (V, E, d)\) as a collection of
+   disjoint sets \(V\) and \(E\) --- called, respectively, the vertices and
+   edges of \(G\) --- together with a map \(d\) that defines the relations of
+   incidence (see \cref{def: incidence} between vertices and edges --- that is,
+   it defines the formation of edges between vertices.
+\end{definition}
+
+\begin{definition}[Incidence]\label{def: incidence}
+  We say that a vertex \(x\) is \emph{incident} with an edge \(e\) if \(x \in
+  e\). Moreover if \(x \in e\), we say that \(e\) is an edge \emph{at} \(x\).
+\end{definition}
+
+\begin{definition}[Adjacency]
+  Given vertices \(x, y \in e\), we say that \(x\) and \(y\) are the
+  \emph{endvertices} or \emph{ends} of the edge \(e\) --- \(x\) and \(y\) are
+  then said to be \emph{adjecent} or \emph{neighbours}.
+
+  We say that two edges \(e\) and \(g\) are \emph{adjacent} or \emph{neighbours}
+  if there exists a unique vertex \(x\) common to both of them --- \(x \in e\)
+  and \(x \in g\).
+
+  A set of vertices, or edges, is said to be independent if no pair of elements
+  is adjacent. An independent set of vertices \(V\) is called stable.
+\end{definition}
+
+\begin{definition}[Vertice Diagonal]
+  Let \(G = (V, E)\) be a graph. We define the diagonal subset of \(V\) to be
+  the collection \(\Delta_V = \{(x, x) : x \in V\}\). So that we have
+  \(V^2 \setminus \Delta_V = \{(x, y) : x \neq y\}\) --- the collection of
+  unordered pairs of distinct vertices.
+\end{definition}
+
+\begin{definition}
+  We define the set \(\langle V \rangle^2\) to be the quotient
+  \[
+    \langle V \rangle^2 = (V^2 \setminus \Delta_V)/_{(x, y) \sim (y, x)}.
+  \]
+\end{definition}
+
+\begin{notation}[Vertices and edges of a graph]
+  Given a graph \(G\), its collection of vertices and edges are denoted by,
+  respectively, \(V(G)\) and \(E(G)\).
+\end{notation}
+
+\begin{notation}[Collection of edges]
+  Given sets \(X\) and \(Y\), we denote the collection of all edges of the form
+  \(xy\), where \(x \in X\) and \(y \in Y\), by \(E(X, Y)\). The collection of
+  all edges that a given vertex \(x\) is incident with is denoted \(E(x)\).
+\end{notation}
+
+\begin{notation}
+  Let \(x, y \in V\). We denote the relation \((x, y) \in E\) as \(E(x, y)\)
+\end{notation}
+
+\begin{definition}[Order and size]
+  Let \(G\) be a graph. We define the \emph{order} of \(G\) as \(|G| =|V(G)|\),
+  moreover, the \emph{size} of \(G\) is defined as \(\size{G} = |E(G)|\).
+\end{definition}
+
+\begin{definition}[Trivial graph]
+  A graph \(G\) is said to be trivial if \(|G| \leq 1\). In the case of the
+  \(0\) order, we denote the graph as \(\emptygraph\).
+\end{definition}

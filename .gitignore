@@ -1,4 +1,7 @@
 build/
+auto/
+*.~undo-tree~
+*#
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

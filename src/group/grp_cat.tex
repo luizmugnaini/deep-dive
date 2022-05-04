@@ -213,6 +213,8 @@ relies on arguments based on the order of elements of each group.
   injective.
 \end{proof}
 
+\subsubsection{Isomorphism of Groups}
+
 \begin{proposition}[Isomorphisms are bijections]\label{prop: grp-iso-bij}
   Let \(\phi \in \Mor(\Grp)\). Then \(\phi\) is an isomorphism if and only if it
   is a bijection.
@@ -262,36 +264,6 @@ relies on arguments based on the order of elements of each group.
   be omitted.
 \end{proof}
 
-We can now state the definition of a cyclic group in a formal manner, it goes as
-follows:
-
-\begin{definition}[Cyclic group]\label{def: cyclic-grp}
-  A group \(G\) is said to be cyclic if \(G \iso \Z\) or \(G \iso \Z/n\Z\) for
-  some \(n \in \N\).
-\end{definition}
-
-\begin{proposition}
-  A finite group of order \(n \in \N\) is cyclic if and only if it contains an
-  element of order \(n\).
-\end{proposition}
-
-\begin{proof}
-  Let \(G\) be a cyclic group of order \(n\). Since \(G\) is finite, then there
-  exists an isomorphism \(\phi: G \isoto \Z/n\Z\). Consider the element \(g =
-  \phi^{-1}([1]_n) \in G\), from \cref{prop: iso-order-com} we see that \(|g| =
-  n\).
-
-  Let \(G\) be a finite group of order \(n\) and \(x \in G\) be such that \(|x|
-  = n\). Let \(\phi: G \to \Z/n\Z\) be any morphism of groups sending \(x
-  \mapsto [1]_n\). Consider the collection \(G' = \{e_G, x, x^2, \dots,
-  x^{n-1}\} \subseteq G\), and notice that, together with the binary operation
-  of \(G\), \(G'\) becomes a group of \(n\) elements --- that is, \(G' = G\) and
-  every element \(g \in G\) can be written as \(g = x^k\) for some \(1 \leq k
-  \leq n\). This implies in \(\phi\) injective --- thus a bijection. From
-  \cref{prop: grp-iso-bij} we see that \(\phi\) is an isomorphism \(G \iso
-  \Z/n\Z\) --- \(G\) is a cyclic group, which finishes our proof.
-\end{proof}
-
 \begin{lemma}[Inner automorphism]\label{lem: grp-inner-aut}
   Let \(G \in \Grp\). For each \(g \in G\), the map \(\gamma_g: G \to G\) given
   by \(\gamma_g(a) = gag^{-1}\) is an automorphism --- called inner
@@ -325,7 +297,53 @@ follows:
   \(\phi\) is a morphism of groups.
 \end{proof}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{More Thoughts On Ciclic Groups}
+
+We can now state the definition of a cyclic group in a formal manner, it goes as
+follows:
+
+\begin{definition}[Cyclic group]\label{def: cyclic-grp}
+  A group \(G\) is said to be cyclic if \(G \iso \Z\) or \(G \iso \Z/n\Z\) for
+  some \(n \in \N\).
+\end{definition}
+
+\begin{proposition}
+  A finite group of order \(n \in \N\) is cyclic if and only if it contains an
+  element of order \(n\).
+\end{proposition}
+
+\begin{proof}
+  Let \(G\) be a cyclic group of order \(n\). Since \(G\) is finite, then there
+  exists an isomorphism \(\phi: G \isoto \Z/n\Z\). Consider the element \(g =
+  \phi^{-1}([1]_n) \in G\), from \cref{prop: iso-order-com} we see that \(|g| =
+  n\).
+
+  Let \(G\) be a finite group of order \(n\) and \(x \in G\) be such that \(|x|
+  = n\). Let \(\phi: G \to \Z/n\Z\) be any morphism of groups sending \(x
+  \mapsto [1]_n\). Consider the collection \(G' = \{e_G, x, x^2, \dots,
+  x^{n-1}\} \subseteq G\), and notice that, together with the binary operation
+  of \(G\), \(G'\) becomes a group of \(n\) elements --- that is, \(G' = G\) and
+  every element \(g \in G\) can be written as \(g = x^k\) for some \(1 \leq k
+  \leq n\). This implies in \(\phi\) injective --- thus a bijection. From
+  \cref{prop: grp-iso-bij} we see that \(\phi\) is an isomorphism \(G \iso
+  \Z/n\Z\) --- \(G\) is a cyclic group, which finishes our proof.
+\end{proof}
+
+\begin{proposition}
+  \label{prop:order-cyclic-totient}
+  The order of the cyclic group \(C_n\) is equal to \(\phi(n)\), where \(\phi\) is the
+  Euler totient function --- that is, the number of positive integers less than
+  \(n\) that are relatively prime to \(n\).
+\end{proposition}
+
+\begin{proof}
+  Let \(x \in C_n\) be a generator of the group --- that is, \(x^n = e\) --- then
+  for all \(d < n\) such that \(\gcd(d, n) = 1\) we have \(x^d \neq x\) and
+  \((x^d)^n = e\) thus \(x^d\) is a generator of \(C_n\). Therefore the number
+  of distict elements of \(C_n\) is the same as the number of positive integers
+  coprimes of \(n\).
+\end{proof}
+
 \subsection{Group Products}
 
 Let \((G, \circledast), (H, \circledcirc) \in \Grp\) be any objects. We define a
@@ -386,12 +404,16 @@ H \to H\) define morphisms of groups.
 \end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{\texorpdfstring{\(\Ab\)}{Ab} --- Category of Abelian Groups}
 
 \begin{definition}[Category of abelian groups]
   We define the category of abelian groups, denoted \(\Ab\), to be the category
   whose objects are abelian groups and group morphisms between them.
 \end{definition}
+
+In the following propositions we are going to describe ways of telling if the
+group you might be interested is abelian or not.
 
 \begin{proposition}
   A group \(G\) is abelian if and only either one of the following conditions
@@ -432,9 +454,16 @@ H \to H\) define morphisms of groups.
 \end{proposition}
 
 \begin{proof}
-  Let \(G\) be an abelian group, then,
-  \todo[inline]{Continue proof}
+  Let \(G\) be an abelian group, then for all \(g \in G\) the corresponding inner
+  automorphism \(\gamma_g\) maps \(a \xmapsto{\gamma_g} g a g^{-1} = a (g g^{-1}) = a\)
+  hence \(\gamma_g = \Id_G\), thus \(\phi\) is indeed trivial. Let \(\phi\) be trivial,
+  then for all \(g \in G\) the map \(\gamma_g = \Id_G\) and therefore for all \(a \in G\)
+  we have \(g a g^{-1} = a\), which implies in \(g a g^{-1} = a g g^{-1} = a
+  g^{-1} g = g g^{-1} a = g^{-1} g a\) --- that is, the group \(G\) is abelian.
 \end{proof}
+
+Now that we know some ways of identifying abelian groups, we dive deep again
+into the categorical foundations of the category of abelian groups \(\Ab\).
 
 \begin{proposition}[\(\Hom_\Ab\) abelian group]\label{prop: hom-ab-grp}
   Let \(G, H \in \Ab\) be any two commutative groups. The collection of
@@ -478,6 +507,9 @@ H \to H\) define morphisms of groups.
   \]
 \end{proof}
 
+The following corollaries follow immediatly from the construction of the
+category.
+
 \begin{corollary}
   Let \(G \in \Grp\) and \(H \in \Ab\). The collection of morphisms
   \(\Hom_\Grp(G, H)\) forms a group under the binary operation defined above.
@@ -486,7 +518,7 @@ H \to H\) define morphisms of groups.
 \begin{corollary}
   Let \(A \in \Set\) and \(H \in \Ab\). The collection of morphisms
   \(\Hom_\Set(A, FH)\) forms a group under the binary operation defined above
-  --- where \(F: \Grp \to \Set\) is the forgetful functor.
+  --- where \(F: \Grp \to \Set\) is a forgetful functor.
 \end{corollary}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -677,3 +709,9 @@ H \to H\) define morphisms of groups.
   \]
   that is, \(\varphi \in \Mor(\Ab)\).
 \end{proof}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../algebra"
+%%% End:
