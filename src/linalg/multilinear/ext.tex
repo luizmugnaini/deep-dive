@@ -2,9 +2,9 @@
 
 \begin{definition}[Alternating map]
   \label{def: alternating map}
-  Let vector spaces \(V, L\). A multilinear map \(f: V^n \to W\) is called
-  alternating if for any \((v_1, \dots, v_n) \in V^n\) such
-  that exists \(i < j\) for which \(v_i = v_j\) then
+  Let \(V\) and \(W\) be vector spaces. A multilinear map \(f: V^n \to W\) is
+  called alternating if for any \((v_1, \dots, v_n) \in V^n\) such that exists \(i
+  < j\) for which \(v_i = v_j\) then
   \[
     f(v_1, \dots, v_n) = 0.
   \]
@@ -12,11 +12,11 @@
 
 \begin{proposition}\label{prop: alternating map property}
   Let \(f: V^n \to W\) be an alternating multilinear map. Then if \(\tau \in
-  \mathcal S_n\) is a transposition, we have
+  S_n\) is a transposition, we have
   \[
     f(v_{\tau(1)}, \dots, v_{\tau(n)}) = - f(v_1, \dots, v_n).
   \]
-  In general, if \(\sigma \in \mathcal S_n\) is any permutation, then
+  In general, if \(\sigma \in S_n\) is any permutation, then
   \[
     f(v_{\sigma(1)}, \dots, v_{\sigma(n)}) = \sign(\sigma) f(v_1,
     \dots, v_n).
@@ -56,47 +56,47 @@
 \begin{definition}[Alternating tensor]
   \label{def: alternating tensor}
   Let \(V\) be a \(k\)-vector space we define a tensor \(T \in T_0^q(V)\) to be
-  alternating if for all \(\sigma \in \mathcal S_q\) permutation we have
+  alternating if for all \(\sigma \in S_q\) permutation we have
   \[
     f_\sigma(T) = \sign(\sigma) T.
   \]
-  We denote by \(\Lambda^q(V)\) the subspace of \(T_0^q(V)\) of alternating
+  We denote by \(\Lambda^q V\) the subspace of \(T_0^q(V)\) of alternating
   tensors and call it the \(q\)-exterior power of \(V\).
 \end{definition}
 
 \begin{proposition}[Alternating tensor projection]
   \label{prop: alternating projection}
-  Let \(V\) be a \(k\)-vector space and \(\operatorname{char} k \nmid q!\). We
-  define the linear projection operator \(A: T_0^q(V) \to T_0^q(V)\) where
+  Let \(V\) be a \(k\)-vector space and \(\Char k \nmid q!\). We
+  define the linear projection operator \(A: T_0^q(V) \epi T_0^q(V)\) where
   \[
-    A(T) = \frac{1}{q!} \sum_{\sigma \in \mathcal S_q} \sign(\sigma)
+    A(T) = \frac{1}{q!} \sum_{\sigma \in S_q} \sign(\sigma)
     f_\sigma(T)
   \]
-  Then \(A^2 = A\) and \(\im A = \Lambda^q(V)\).
+  Then \(A^2 = A\) and \(\im A = \Lambda^q V\).
 \end{proposition}
 
 \begin{proof}
-  First we show that \(\im A \subseteq \Lambda^q(V)\) (we already know that
-  clearly \(\Lambda^q(V) \subseteq \im A\)). Notice that
+  First we show that \(\im A \subseteq \Lambda^q V\) (we already know that
+  clearly \(\Lambda^q V \subseteq \im A\)). Notice that
   \begin{align*}
     f_\sigma(A(T))
-    &= f_\sigma \left( \frac 1 {q!} \sum_{\tau \in \mathcal S_q}
+    &= f_\sigma \left( \frac 1 {q!} \sum_{\tau \in S_q}
     \sign(\tau) f_\tau(T) \right) \\
-    &= \frac 1 {q!} \sum_{\tau \in \mathcal S_q} \sign(\tau)
+    &= \frac 1 {q!} \sum_{\tau \in S_q} \sign(\tau)
     f_{\sigma \tau}(T) \\
     &= \sign(\sigma) \left( \frac 1 {q!} \sum_{\tau \in \mathcal
     S_q} \sign(\sigma \tau) f_{\sigma \tau}(T) \right) \\
     &= \sign(\sigma) A(T)
   \end{align*}
   where we've used \cref{prop: sign is a group homomorphism}. Hence we conclude
-  that \(\im A = \Lambda^q(V)\). For the second proposition, notice that
+  that \(\im A = \Lambda^q V\). For the second proposition, notice that
   \[
-    A^2 = \frac 1 {q!^2} \sum_{\sigma, \tau \in \mathcal S_q}
+    A^2 = \frac 1 {q!^2} \sum_{\sigma, \tau \in S_q}
     \sign(\sigma \tau) f_{\sigma \tau}
-    = \frac 1 {q!} \sum_{\rho \in \mathcal S_q} \sign(\rho)
+    = \frac 1 {q!} \sum_{\rho \in S_q} \sign(\rho)
     f_\rho = A
   \]
-  since any permutation \(\rho \in \mathcal S_q\) can be represented in \(q!\)
+  since any permutation \(\rho \in S_q\) can be represented in \(q!\)
   different ways as a form of a product \(\sigma \tau\). This concludes the
   proof.
 \end{proof}
@@ -106,7 +106,7 @@
   Let \(V\) be a \(k\)-vector space and \(v_1 \otimes \dots \otimes v_q \in
   T_0^q(V)\). We define the exterior multiplication to be the map
   \[
-    A(v_1 \otimes \dots \otimes v_q) := v_1 \wedge \dots \wedge v_q
+    A(v_1 \otimes \dots \otimes v_q) \coloneqq v_1 \wedge \dots \wedge v_q
   \]
 \end{definition}
 
@@ -114,18 +114,18 @@
   \label{prop: exterior power universal property}
   Let \(V\) be a \(k\)-vector space. For all \(k\)-vector spaces \(L\) together
   with an alternating multilinear map \(\mu: V^q \to L\), there exists a unique
-  \(k\)-linear map \(\ell: \Lambda^q(V) \to L\) for which the diagram commutes
+  \(k\)-linear map \(\ell: \Lambda^q V \to L\) for which the diagram commutes
   \[
     \begin{tikzcd}
-      V^q \ar[d, swap, "\otimes"] \ar[dr, "\mu"] \\
-      T_0^q(V) \ar[d, swap, two heads, "A"] &L \\
-      \Lambda^q(V) \ar[ur, dashed, swap, "\ell"]
+      V^q \ar[d, swap, "\otimes"] \ar[r, "\mu"]  &L \\
+      T_0^q(V) \ar[r, swap, two heads, "A"]
+      &\Lambda^q V \ar[u, dashed, swap, "\ell"]
     \end{tikzcd}
   \]
 \end{proposition}
 
 \begin{proof}
-  Since \(\Lambda^q(V)\) is a subspace of \(T_0^q(V)\), then we can use the
+  Since \(\Lambda^q V\) is a subspace of \(T_0^q(V)\), then we can use the
   universal property \cref{thm: universal property of tensor products}.
   %(Uniqueness) Let \(\ell, f: \Lambda^q(V) \to L\) be \(k\)-linear maps such
   %that \(\ell \circ A \circ \otimes = f \circ A \circ \otimes = \mu\). Let
@@ -138,8 +138,8 @@
 \end{proof}
 
 Now we get some geometric motivation behind the algebraic structure of the
-exterior power \(\Lambda^q(V)\). Alternating tensors \(v_1 \wedge \dots \wedge
-v_q \in \Lambda^q(V)\) can be seen as \(q\)-dimensional oriented volume elements,
+exterior power \(\Lambda^q V\). Alternating tensors \(v_1 \wedge \dots \wedge
+v_q \in \Lambda^q V\) can be seen as \(q\)-dimensional oriented volume elements,
 where by oriented we mean that the transposition of two edges, say \(v_j\) and
 \(v_i\), implies in a change up to a minus sign of the value (the sign is what
 creates the bridge between orientation and wedge product). Notice that when
@@ -161,7 +161,7 @@ there are equal edges, the volume becomes malformed and \(v_1 \wedge \dots
 For the next proposition, we proceed in a similar fashion as in \cref{prop:
 basis for symmetric power}.
 
-\begin{proposition}[Exterior power \(\Lambda^q(V)\) basis]
+\begin{proposition}[Exterior power \(\Lambda^q V\) basis]
   \label{prop: exterior power basis}
   Let \(\{e_i\}_{i=1}^n\) be a basis for the \(k\)-vector space \(V\). The
   factorizable tensors
@@ -169,15 +169,15 @@ basis for symmetric power}.
     A(e_{i_1} \otimes \dots \otimes e_{i_q}) = e_{i_1} \wedge \dots \wedge
     e_{i_q}
   \]
-  with \(1 \leq i_1 < \dots < i_n \leq n\) form a basis for the subspace
-  \(\Lambda^q(V)\).
+  with \(1 \leq i_1 < \dots < i_q \leq n\) form a basis for the subspace
+  \(\Lambda^q V\).
 \end{proposition}
 
 \begin{proof}
   Let \(B := \{e_{i_1} \wedge \dots \wedge e_{i_q} : 1 \leq i_1 < \dots < i_q
   \leq n\}\). Since \(\{e_{i_1} \otimes \dots \otimes e_{i_q} : 1 \leq i_1 <
   \dots i_q \leq n\}\) generates \(T_0^q(V)\) (see \cref{lem: tensor basis}),
-  then clearly \(B\) does generate the subspace \(\Lambda^q(V)\). We now show
+  then clearly \(B\) does generate the subspace \(\Lambda^q V\). We now show
   that \(B\) is linearly independent.
 
   Denote by \(\mathcal I := \{I = (i_j)_{j=1}^q : 1 \leq i_1 < \dots < i_q \leq
@@ -185,17 +185,17 @@ basis for symmetric power}.
   \dots, i_q) \in \mathcal I\) we define the alternating multilinear map \(\mu_I
   : V^q \to k\) as
   \[
-    \mu_I(v_1, \dots, v_q) = \sum_{\sigma \in \mathcal S_q}
+    \mu_I(v_1, \dots, v_q) = \sum_{\sigma \in S_q}
     \sign(\sigma) \prod_{j=1}^q e_{i_{\sigma(j)}}^*(v_{i_j})
   \]
   where \(\{e_{i_j}^*\}_{i_j \in I}\) is the dual of \(\{e_{i_j}\}_{i_j
   \in I}\). Using \cref{prop: exterior power universal property} we can
-  define a unique linear map \(f_I: \Lambda^q(V) \to k\) such that the diagram
+  define a unique linear map \(f_I: \Lambda^q V \to k\) such that the diagram
   commutes
   \[
     \begin{tikzcd}
       V^q \ar[r, "\mu_I"] \ar[d, swap, "A \circ \otimes"] &k \\
-      \Lambda^q(V) \ar[ur, dashed, swap, "f_I"]
+      \Lambda^q V \ar[ur, dashed, swap, "f_I"]
     \end{tikzcd}
   \]
   which implies in \(\mu_I(v_1, \dots, v_q) = f_I(v_1 \wedge \dots \wedge v_q)\)
@@ -207,14 +207,14 @@ basis for symmetric power}.
   q\). In particular, this implies that
   \[
     f_I(e_{i_1'} \wedge \dots \wedge e_{i_q'}) = \mu_I(e_{i_1'}, \dots,
-    e_{i_q'}) = \sum_{\sigma \in \mathcal S_q} \sign(\sigma)
+    e_{i_q'}) = \sum_{\sigma \in S_q} \sign(\sigma)
     \prod_{j=1}^q e_{i_{\sigma(j)}}^*(e_{i_j'}) = 0
   \]
   since \(e_{i_{\sigma(j)}}^*(e_{i_{j_0}}) = 0\) for all permutations \(\sigma
-  \in \mathcal S_q\) and \(1 \leq j \leq q\). On the other hand, we have that
+  \in S_q\) and \(1 \leq j \leq q\). On the other hand, we have that
   \[
     f_I(e_{i_1} \wedge \dots \wedge e_{i_q}) = \mu_I(e_{i_1}, \dots, e_{i_q})
-    = \sum_{\sigma \in \mathcal S_q} \sign(\sigma) \prod_{j=1}^q
+    = \sum_{\sigma \in S_q} \sign(\sigma) \prod_{j=1}^q
     e_{i_{\sigma(j)}}^*(e_{i_j})
     = \sign(\Id) \prod_{j=1}^q e_{i_{\Id(j)}}^*(e_{i_j})
     = 1
@@ -235,13 +235,13 @@ basis for symmetric power}.
   hence we conclude that the linear combination \cref{eq: vanishing exterior
   product combination} vanishes if and only if each coefficient vanishes. This
   concludes that \(B\) is linearly independent. Hence we've proved that \(B\) is
-  a basis for \(\Lambda^q(V)\).
+  a basis for \(\Lambda^q V\).
 \end{proof}
 
 \begin{proposition}
   Let \(V\) be a \(n\)-dimensional \(k\)-vector space. Then we have
   \[
-    \dim_k \Lambda^q(V) = \binom n q
+    \dim_k \Lambda^q V = \binom n q
   \]
 \end{proposition}
 
@@ -258,21 +258,21 @@ basis for symmetric power}.
   \label{def: exterior algebra}
   Let \(V\) be a \(k\)-vector space. We define the exterior algebra on \(V\) as
   \[
-    \Lambda^\bullet(V) = \bigoplus_{q=0}^\infty \Lambda^q(V)
+    \Lambda^\bullet V = \bigoplus_{q=0}^\infty \Lambda^q V
   \]
-  together with a multiplicative structure \(\wedge: \Lambda^d(V) \otimes
-  \Lambda^q(V) \to \Lambda^{d+q}(V)\) mapping
+  together with a multiplicative structure \(\wedge: \Lambda^d V \otimes
+  \Lambda^q V \to \Lambda^{d+q} V\) mapping
   \[
     (v_1 \wedge \dots \wedge v_d) \otimes (w_1 \wedge \dots \wedge w_q) \xmapsto
     \wedge v_1 \wedge \dots \wedge v_d \wedge w_1 \wedge \dots \wedge w_q.
   \]
-  We interpret \(\Lambda^0(V) = k\).
+  We interpret \(\Lambda^0 V = k\).
 \end{definition}
 
 \begin{proposition}
-  The multiplicative structure of the tensor algebra \(\Lambda^\bullet(V)\) is
-  associative and skew-commutative, that is, for all \(\alpha \in \Lambda^d(V)\)
-  and \(\beta \in \Lambda^q(V)\) we have \(\alpha \wedge \beta = (-1)^{d q} \beta
+  The multiplicative structure of the tensor algebra \(\Lambda^\bullet V\) is
+  associative and skew-commutative, that is, for all \(\alpha \in \Lambda^d V\)
+  and \(\beta \in \Lambda^q V\) we have \(\alpha \wedge \beta = (-1)^{d q} \beta
   \wedge \alpha\).
 \end{proposition}
 
@@ -282,16 +282,16 @@ basis for symmetric power}.
     A(A(T_1) \otimes T_2) = A(T_1 \otimes A(T_2)) =
     A(T_1 \otimes T_2)
   \end{equation} Notice that \[
-    A(T_1) \otimes T_2 = \frac 1 {q!} \sum_{\sigma \in \mathcal S_q}
+    A(T_1) \otimes T_2 = \frac 1 {q!} \sum_{\sigma \in S_q}
     \sign(\sigma) f_\sigma(T_1) \otimes T_2
   \]
   therefore we find
   \begin{equation}\label{eq: A(A(T1) T2)}
-    A(A(T_1) \otimes T_2) = \frac 1 {q!} \sum_{\sigma \in \mathcal S_q}
+    A(A(T_1) \otimes T_2) = \frac 1 {q!} \sum_{\sigma \in S_q}
     \sign(\sigma) A(f_\sigma(T_1) \otimes T_2)
   \end{equation}
-  Moreover, we can construct an injection of the symmetry groups \(\mathcal S_q
-  \mono \mathcal S_{q + d}\) via the mapping \(\sigma \mapsto \overline \sigma\)
+  Moreover, we can construct an injection of the symmetry groups \(S_q
+  \mono S_{q + d}\) via the mapping \(\sigma \mapsto \overline \sigma\)
   where \(\overline \sigma(i) = \sigma(i)\) for all \(i \in \{1, \dots, q\}\)
   and \(\overline \sigma(i) = i\) for all \(i \in \{q + 1, \dots, q + d\}\). In
   particular, we find that \(f_\sigma(T_1) \otimes T_2 = f_{\overline \sigma}
@@ -307,13 +307,13 @@ basis for symmetric power}.
   If we substitute \cref{eq: ol sigma and A commute} in \cref{eq: A(A(T1) T2)}
   we find
   \[
-    A(A(T_1) \otimes T_2) = \frac 1 {q!} \sum_{\sigma \in \mathcal S_q}
+    A(A(T_1) \otimes T_2) = \frac 1 {q!} \sum_{\sigma \in S_q}
     \sign^2(\sigma) A(T_1 \otimes T_2) = A(T_1 \otimes T_2).
   \]
   In the same manner we can show that \(A(T_1 \otimes A(T_2)) = A(T_1 \otimes
   T_2)\). Hence \cref{eq: asso goal} holds.
 
-  Let \(\alpha \in \Lambda^d(V), \beta \in \Lambda^q(V), \gamma \in \Lambda^p(V)\).
+  Let \(\alpha \in \Lambda^d V, \beta \in \Lambda^q V, \gamma \in \Lambda^p V\).
   Notice that from the construction of the product map \(\wedge\) and \cref{eq:
   asso goal} we find
   \[
@@ -324,8 +324,8 @@ basis for symmetric power}.
   \]
   which proves associativity of the tensor algebra.
 
-  We now prove skew-commutativity. Let \(\alpha \in \Lambda^d(V)\) and \(\beta
-  \in \Lambda^q(V)\), and a permutation \(\sigma \in \mathcal S_{q + d}\) such
+  We now prove skew-commutativity. Let \(\alpha \in \Lambda^d V\) and \(\beta
+  \in \Lambda^q V\), and a permutation \(\sigma \in S_{q + d}\) such
   that \(\sigma(i) = q + d - i + 1\), consisting of \(d q\) transpositions.
   Hence we find that
   \[
@@ -338,16 +338,16 @@ basis for symmetric power}.
   Let \(V\) be a \(k\)-vector space and \(\{v_i\}_{i=1}^d \subseteq V\). The
   vectors \(v_1, \dots, v_d\) are linearly independent if and only if
   \[
-    \Lambda^d(V) \ni v_1 \wedge \dots \wedge v_d \neq 0.
+    \Lambda^d V \ni v_1 \wedge \dots \wedge v_d \neq 0.
   \]
 \end{proposition}
 
 \begin{proof}
   Let \(\{v_i\}_{i=1}^d\) be a set of linearly dependent vectors and choose
   a set of not-all zero scalars \(\{c_i\}_{i=1}^d \subseteq k\) such that
-  \(\sum_{i=1}^d c_i v_i \neq 0\). Choose \(1 \leq j \leq d\) such that \(c_j
+  \(\sum_{i=1}^d c_i v_i = 0\). Choose \(1 \leq j \leq d\) such that \(c_j
   \neq 0\) and write \(v_j = -\sum_{i=1}^d \frac{c_i}{c_j} v_i\). Then we find
-  that (recall \(\mathcal M_0\) from \cref{def: subspace M_0})
+  that (recall \(\mathcal M_0\) from our construction of the tensor product)
   \begin{align}
     \nonumber
     v_1 \wedge \dots \wedge v_j \wedge \dots \wedge v_d
@@ -357,7 +357,6 @@ basis for symmetric power}.
     \nonumber
     &= \left( v_1, \dots, - \sum_{i=1}^d \frac{c_i}{c_j} v_i, \dots, v_d \right)
     + \mathcal M_0 \\
-    \label{eq: split class M_0 wedge}
     &= -\sum_{i=1}^d \frac{c_i}{c_j} (v_1, \dots, v_i, \dots, v_d) + \mathcal
     M_0
     \\
@@ -368,37 +367,91 @@ basis for symmetric power}.
     \label{eq: wedge zero}
     &= 0
   \end{align}
-  where \cref{eq: split class M_0 wedge} comes from the fact that \(a(v_1, \dots,
-  v_{j-1}, 0, v_{j+1}, \dots, v_d) \in \mathcal M_0\) and therefore we have
-  \begin{align*}
-    (v_1, \dots, a v_j + b w, \dots, v_d) + \mathcal M_0
-    &= (v_1, \dots, a v_j, \dots, v_d) + (v_1, \dots, b w, \dots, v_d)
-    + \mathcal M_0 \\
-    &= a(v_1, \dots, v_j, \dots, v_d) + b(v_1, \dots, w, \dots, v_d)
-    + \mathcal M_0.
-  \end{align*}
-  On the other hand, \cref{eq: wedge zero} comes from the fact that we have a
+  Where \cref{eq: wedge zero} comes from the fact that we have a
   repeated \(v_i\) in the wedge product \cref{eq: wedge repeated v_i}.
 
   Suppose \(\{v_i\}_{i=1}^d\) is a linearly independent set. Then from
-  \cref{prop: li to basis} we can build \(B \supseteq \{v_i\}_{i=1}^d\) such
+  \cref{prop: li to basis} we can build \(B \supseteq \{v_i\}_{i=0}^d\) such
   that \(B\) is a basis for \(V\). From \cref{prop: exterior power basis}, we
-  find that \(\mathcal B = \{v_{i_1} \wedge \dots v_{i_d} : v_{i_j} \in B \text{
-  and } i_1 < \dots < i_d\}\) is a basis for \(\Lambda^d(V)\). In particular,
-  \(v_1 \wedge \dots \wedge v_d \in \mathcal B\), hence necessarily \(v_1 \wedge
-  \dots \wedge v_d \neq 0\).
+  find that \(\mathcal B = \{v_{i_1} \wedge \dots \wedge v_{i_d} : v_{i_j} \in B
+  \text{ and } i_1 < \dots < i_d\}\) is a basis for \(\Lambda^d V\). In
+  particular, \(v_1 \wedge \dots \wedge v_d \in \mathcal B\), hence necessarily
+  \(v_1 \wedge \dots \wedge v_d \neq 0\).
+\end{proof}
+
+Therefore one can trivially see that the kernel of the alternating projection
+\(A\) is simply the collection of all decomposable tensors \(v_1 \otimes \dots \otimes v_d\)
+such that the collection \(\{v_{1}, \dots, v_d\} \subseteq V\) is linerly dependent.
+
+\begin{corollary}\label{cor:kernel-alternating-projection}
+  The kernel of the alternating projection \(A: T^d_0(V) \epi \Lambda^d V\) is given
+  by the collection \(\{v_{1} \otimes \dots v_d \in T^d_0(V)\}\) such that \(\{v_{1} \otimes
+  \dots v_d\}\) is linearly dependent on \(V\).
+\end{corollary}
+
+\begin{theorem}\label{thm:iso-measure-volume-ext}
+Let \(V\) be a finite dimensional \(k\)-vector space. The map \(\phi: \Lambda^d V^{*}
+\isoto (\Lambda^dV)^{*}\) given by the mapping
+\[
+  f_1 \wedge \dots \wedge f_d \overset{\phi}\longmapsto \left(
+    v_1 \wedge \dots \wedge v_d \mapsto
+    \sum_{\sigma \in S_d} \sign(\sigma) \prod_{j=1}^d f_j(v_{\sigma(j)})
+  \right)
+\]
+is a \(k\)-linear isomorphism.
+\end{theorem}
+
+\begin{proof}
+First of all, we show that \(\phi\) is a \(k\)-linear map. For each \(f \in
+\Lambda^d V^{*}\), define the map \(\psi_{f} \in (\Lambda^dV)^{*}\) for which \(\phi(f) =
+\psi_f\). Notice that if \(a \in k\) and \(f, g \in \Lambda^d(V^{*})\), then \(\phi(f + a g) =
+\psi_{f + a g}\). Notice that
+\begin{align*}
+  \psi_{f + ag}(v_1 \wedge \dots \wedge v_d)
+  &= \sum_{\sigma \in S_d} \sign(\sigma) \prod_{j=1}^d (f_{j} + a g_{j})(v_{\sigma(j)}) \\
+  &= \sum_{\sigma \in S_d} \sign(\sigma) \prod_{j=1}^d f_j(v_{\sigma(j)}) + a g_j(v_{\sigma(j)}) \\
+  &= \sum_{\sigma \in S_d} \sign(\sigma) \prod_{j=1}^d f_j(v_{\sigma(j)})
+  + a \sum_{\sigma \in S_d} \sign(\sigma) \prod_{j=1}^d g_j(v_{\sigma(j)}) \\
+  &= \psi_f + a \psi_g
+\end{align*}
+Thus \(\phi(f + ag) = \phi(f) + a \phi(g)\) and therefore \(\phi\) is indeed linear.
+
+Suppose \(\dim V = n\) and let \(\{e_{j}\}_{j=1}^n\) be a base for \(V\). Define
+the collection of strictly increasing \(d\)-tuples \(\mathcal I = \{I =
+(i_{j})_{j=1}^d : 1 \leq i_1 < \dots < i_d \leq n\}\). From \cref{prop: exterior power
+basis}, we know that \(\{e_{i_{1}} \wedge \dots \wedge e_{i_{d}} \in \Lambda^d V: i_j \in I \text{
+and } I \in \mathcal I\}\) is a basis for \(\Lambda^d V\). Moreover,
+\(\{e_{j}^{*}\}_{j=1}^n\) is a basis for the dual space \(V^{*}\), thus the
+collection \(\{e_{i_{1}}^{*} \wedge \dots \wedge e_{i_{d}}^{*} \in \Lambda^d V: i_j \in I \text{
+  and } I \in \mathcal I\}\) is a basis for \(\Lambda^d V^{*}\).
+
+Let \(I \in \mathcal I\) be any strictly increasing \(d\)-tuple, and define the
+notation \(e_I^{*} \coloneq e_{i_1}^{*} \wedge \dots \wedge e_{i_d}^{*}\), so that
+\begin{equation}
+  \label{eq:basislambda*}
+  e_I^{*} \overset{\phi}\longmapsto
+  \psi_{e_I^{*}}(v_1 \wedge \dots \wedge v_d)
+  = \sum_{\sigma \in S_{d}} \sign(\sigma) \prod_{j=1}^d e_{i_j}^{*}(v_{\sigma(j)}) =
+  \begin{cases}
+    1, &\text{if }\ v_1 \wedge \dots \wedge v_d = e_{i_1} \wedge \dots \wedge e_{i_d} \\
+    0, &\text{otherwise}
+  \end{cases}
+\end{equation}
+Notice that we mapped a basis of \(\Lambda^d V^{*}\) into a basis of \((\Lambda^d V)^{*}\),
+since any map \(\psi \in (\Lambda^d V)^{*}\) can be obtained by a unique linear combination
+of maps of the collection \(\{\psi_{e_{I}^{*}} \in (\Lambda^d V)^{*} : I \in \mathcal I\}\)
+--- which, together with \cref{eq:basislambda*}, makes it a basis. This shows that
+the morphism \(\phi\) stablishes an isomorphism \(\Lambda^dV^{*} \iso (\Lambda^d V)\).
 \end{proof}
 
 \todo[inline]{
 Add cool propositions for the exterior algebra: the Hodge Star Operator; the
 isomorphisms
 \begin{gather*}
-  \Lambda^d(V^*) \iso (\Lambda^d(V))^* \\
   \Sym^d(V \oplus W) \iso \bigoplus_{i=0}^d \Sym^i(V) \otimes \Sym^{d-i}(W) \\
-  \Lambda^d(V \oplus W) \iso \bigoplus_{i=0}^d \Lambda^i(V) \otimes
-  \Lambda^{d-i}(W)
+  \Lambda^d(V \oplus W) \iso \bigoplus_{i=0}^d \Lambda^i(V) \otimes \Lambda^{d-i}(W)
 \end{gather*}
 }
 
-\todo[inline]{After creating sections on affine and projective geormetry,
+\todo[inline]{After creating sections on affine and projective geometry,
 introduce grassmanian varieties.}

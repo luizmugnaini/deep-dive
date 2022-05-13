@@ -4,9 +4,9 @@
 
 \begin{definition}[Quotient]\label{def: quotient-graph}
   Let \(G\) be a graph and \(\sim\) be an equivalence relation on the collection
-  of vertices \(V(G)\). We define the quotient graph \(G/\sim\) to be the graph
-  whose vertices are the vertex classes \(V(G)/\sim\) and whose edges are
-  such that \(E_{G/\sim}([x], [y])\) if and only if \(E_G(x, y)\).
+  of vertices \(V(G)\). We define the quotient graph \(G/{\sim}\) to be the graph
+  whose vertices are the vertex classes \(V(G)/{\sim}\) and whose edges are
+  such that \(E_{G/{\sim}}([x], [y])\) if and only if \(E_G(x, y)\).
 \end{definition}
 
 \begin{proposition}[Universal property of quotients]
@@ -14,12 +14,12 @@
   The quotient graph is a quotient in the category \(\Graph\). In other words,
   let \(G\) be a graph and \(\sim\) be an equivalence relation on \(V(G)\).
   Consider any graph \(H\) together with a morphism of graphs \(\psi: G \to H\).
-  Then there exists a unique morphism of graphs \(\phi: G/\sim\, \to H\) such
+  Then there exists a unique morphism of graphs \(\phi: G/{\sim}\, \to H\) such
   that the following diagram commutes
   \[
     \begin{tikzcd}
       G \ar[d, two heads, swap, "\pi"] \ar[r, "\psi"] &H \\
-      G/\sim \ar[ur, swap, bend right, dashed, "\phi"] &
+      G/{\sim} \ar[ur, swap, bend right, dashed, "\phi"] &
     \end{tikzcd}
   \]
   where \(\pi\) is the naturally defined projection.
@@ -29,7 +29,7 @@
   First we show that \(\phi\) is indeed unique. Suppose \(\phi_1\) and
   \(\phi_2\) are both morphisms that satisfy the commutativity of the diagram.
   Given any \(x \in V(G)\) we have \(\psi(x) = \phi_1([x]) = \phi_2([x])\) and
-  since \(\pi(V(G)) = V(G/\sim)\) (surjective property) then \(\phi_1\) and
+  since \(\pi(V(G)) = V(G/{\sim})\) (surjective property) then \(\phi_1\) and
   \(\phi_2\) have equal images throughout their whole domain --- implying
   \(\phi_1 = \phi_2\). To show that \(\phi\) is a morphism of graphs, it is
   sufficient to consider any \(x, y \in G\) such that \(E_G(x, y)\): \(\psi\)
@@ -83,7 +83,7 @@
   Finally we show that \(\phi\) is indeed a morphism of graphs. Given \(x, y \in
   V(G)\), suppose \(E_G(x, y)\), then \(E_W(f(x), f(y)) = E_W(\phi(x),
   \phi(y))\) --- since \(\phi(x) = f(x)\) and \(\phi(y) = f(y)\). The case \(x,
-  y \in V(H)\) is completely analogous and we'll therefore ommit for the sake of
+  y \in V(H)\) is completely analogous and we'll therefore omit for the sake of
   brevity. We don't need to inspect the case where \(x \in V(G)\) and \(y \in
   V(H)\) since \(E_{G \oplus H}(x, y)\) is always false in such instance. Thus
   \(\phi\) is a morphism of graphs.
@@ -123,7 +123,7 @@
 \begin{proof}
   Consider the morphism \(\phi: W \to G \otimes H\) defined by the mapping \(w
   \xmapsto \phi f(w) \otimes g(w)\). Let \(w, w' \in V(W)\) be any vertices such
-  that \(E_W(w, w')\), since \(f\) and \(g\) are graph morphims, then
+  that \(E_W(w, w')\), since \(f\) and \(g\) are graph morphisms, then
   \(E_G(f(w), f(w'))\) and \(E_H(g(w), g(w'))\). Since \(\phi(w) = f(w) \otimes
   g(w)\) and \(\phi(w') = f(w') \otimes g(w')\) it follows from the construction
   of the Kronecker product that \(E_{G \otimes H}(\phi(w), \phi(w'))\). This

@@ -1,8 +1,8 @@
-\section{Determinants and Inverse Matrices}
+\section{Determinants}
 
 \begin{definition}\label{def: wedge map}
-  Let \(f: V \to L\) be a \(k\)-linear map. We define the induced linear map
-  \(f^{\wedge d}: \Lambda^d(V) \to \Lambda^d(W)\) by
+  Let \(f: V \to L\) be a \(k\)-linear map. The map \(f\) naturally induces a
+  \(k\)-linear pullback \(f^{\wedge d}: \Lambda^d(V) \to \Lambda^d(L)\) which is defined by
   \[
     v_1 \wedge \dots \wedge v_d \xmapsto{f^{\wedge d}}
     f(v_1) \wedge \dots \wedge f(v_d).
@@ -18,10 +18,9 @@
 \end{proposition}
 
 \begin{proof}
-  Notice that for any given \(v = v_1 \wedge \dots \wedge v_d \in \Lambda(V)\)
-  we have
+  Notice that for any given \(v = v_1 \wedge \dots \wedge v_d \in \Lambda^d(V)\) we have
   \[
-    (g f)^{\wedge d}(v) = (g f)^{\wedge d}(v_1) \wedge \dots \wedge (g f)(v_d)
+    (g f)^{\wedge d}(v) = (g f) (v_1) \wedge \dots \wedge (g f) (v_d)
     = g(f(v_1)) \wedge \dots \wedge g(f(v_2))
     = (g^{\wedge d} f^{\wedge d})(v).
   \]
@@ -30,9 +29,9 @@
 
 \begin{definition}[Determinant]\label{def: determinant}
   Let \(V\) be an \(n\)-dimensional \(k\)-vector space and \(f \in \End(V)\).
-  Since \(\Lambda^n(V)\) is 1-dimensional, \(f^{\wedge n} \in \End(\Lambda^n
+  Since \(\Lambda^n(V)\) is 1-dimensional, the induced map \(f^{\wedge n} \in \End(\Lambda^n
   (V))\) is a multiplication by some scalar in \(\Lambda^n(V)\).  We define the
-  determinant of the \(k\)-linear endomorphism \(f\) as the element \(\det(f)
+  determinant of the \(k\)-linear endomorphism \(f\) as the element \(\det f
   \in \Lambda^n(V)\) such that
   \[
     f^{\wedge n}(\omega) = \det(f) \omega.
@@ -41,7 +40,7 @@
 
 \begin{proposition}[Composition determinant]\label{prop: comp det}
   Let \(f, g \in \End(V)\) where \(V\) is a \(n\)-dimensional vector space, then
-  \(\det(g f) = \det(g) \det(f)\).
+  \(\det(g f) = \det g \det f\).
 \end{proposition}
 
 \begin{proof}
@@ -68,6 +67,11 @@
   Let \(V\) be a finite dimensional vector space and \(f \in \End(V)\). Then
   \(\det f = \det f^*\), where \(f^*\) is the dual map of \(f\).
 \end{proposition}
+
+\begin{proof}
+
+\end{proof}
+
 
 \todo[inline]{Dual determinant proof}
 
@@ -164,9 +168,9 @@
   \]
 \end{corollary}
 
-\todo[inline]{Useful determinant theorems, matrix determinant, etc}
+\todo[inline]{Useful determinant theorems, matrix determinant, etc.}
 
 %%% Local Variables:
-%%% mode: plain-tex
-%%% TeX-master: "../../../algebra"
+%%% mode: LaTeX
+%%% TeX-master: "../../../deep-dive"
 %%% End:

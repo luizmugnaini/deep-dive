@@ -2,68 +2,90 @@
 
 \section{Multilinear Maps and Tensor Products}
 
+The goal of this section is to introduce another concept of linearity, one of
+which is induced by a kind of map that is called multilinear. This is a very
+important generalization of what we've been studying so far.
+
 \begin{definition}[Multilinear map]\label{def: multilinear map}
   Let \(\{V_i\}_{i=1}^n\) be a collection of \(k\)-vector spaces and \(W\) be a
   \(k\)-vector space. We say that a map
   \[
     \varphi: \prod_{i=1}^n V_i \to W
   \]
-  is a multilinear map if for a given \(1 \leq t \leq n\) we have that for all
-  collections \(\{v_i : v_i \in V_i, i \neq t\}\) the map
+  is a multilinear map if for a given \(1 \leq t \leq n\) we have that, for all
+  collections \(\{v_i : v_i \in V_i, i \neq t\}\), the map
   \[
-    \varphi(v_1, \dots, v_{t-1}, -, v_{t+1}, \dots, v_n): V_t \to W
+    \varphi(v_1, \dots, v_{t-1}, -, v_{t+1}, \dots, v_n): V_t \longrightarrow W
+    \text{, mapping } x \overset{\varphi}\longmapsto \varphi(v_1, \dots, v_{t-1}, x, v_t, \dots, v_n)
   \]
   is a \(k\)-linear morphism.
 \end{definition}
 
-\begin{definition}[Space \(\mathcal M\)]\label{def: space M}
-  Given a finite collection of \(k\)-vector spaces \(\{V_i\}_{i \in I}\), we
-  define the \(k\)-vector space \(\mathcal M = k^{\oplus \prod_{i \in I} V_i}\),
-  that is, the space of set-theoretic mappings \(\prod_{i \in I} V_i \to k\)
-  with finite support. Since the collection \(\{(v_i)_{i \in I} \in \prod_{i \in
-  I} V_i\}\) form a basis for \(\mathcal M\) way we can say that \(\mathcal M\)
-  consists of formal linear combinations
-  \[
-    \mathcal M =
-    \left\{
-      \sum a_{(v_i)_i} (v_i)_i :
-      (v_i)_i \in \prod_{i \in I} V_i,\
-      a_{(v_i)_i} \in k
-    \right\}.
-  \]
-  Thus, if \(\mathrm{char}(k) = 0\) and exists \(i \in I : \dim_k(V_i) > 0\),
-  then \(\mathcal M\) is an infinite-dimensional vector space.
-\end{definition}
+Multilinear structures seems interesting and what is even better is that there
+is a way of working with multilinear maps by means of the machinery accquired
+when we where studying linear structures --- we can simply linearize a multilinear
+map! That is a great idea, one that is accomplished via the introduction of a
+structure called tensor product. We'll now focus on the construction of it.
 
-\begin{definition}[Subspace \(\mathcal M_0\)]\label{def: subspace M_0}
-  We define the subspace \(\mathcal M_0 \subseteq \mathcal M\) as
-  \[
-    \mathcal M_0 = \mathrm{span}
-    \big(
-      (v_i, \dots, a(v'_j + v''_j), \dots, v_n) - a(v_i, \dots, v'_j +
-      v''_j, \dots, v_n) : j \in I,\ a \in k,\ |I| = n
-    \big)
-  \]
-  where the generating elements belong to \(\mathcal M\) (that is, \(v_i \in
-  V_i\) for each index).
-\end{definition}
+Given a finite collection of \(k\)-vector spaces \(\{V_i\}_{i \in I}\), we define
+the free \(k\)-vector space \(\mathcal M = k^{\oplus \prod_{i \in I} V_i}\) --- that is, the
+space of set-functions \(\prod_{i \in I} V_i \to k\) with finite support. A map \(f \in
+\mathcal M\) is entirely described by the set of all tuples of its domain. For
+each tuple \((v_i)_{i \in I} \in \prod_{i \in I} V_i\), we define a characteristic map
+\(\delta_{(v_{i})_{i \in I}}: \prod_{i \in I} V_i \to \{0, 1\}\) --- which happens to be an
+element of the space \(\mathcal M\). Since \(f(v) = \sum_{u \in \prod_{i \in I}V_i} f(u)
+\delta_v(u) = f(v) \delta_v(v) = f(v)\), then we conclude that the collection \(\{\delta_{v} \in
+\mathcal M : v \in V\}\) is a basis for the space \(\mathcal M\).
+
+For the sake of brevity, we'll simply denote \(\delta_v = v\) for every \(v \in \prod_{i \in
+I} V_i\). The space \(\mathcal M\) can then be viewed as the space of formal
+linear combination of the tuples of \(\prod_{i \in I} V_i\), that is
+\[
+  \mathcal M =
+  \left\{
+    \sum a_v v : v \in \prod_{i \in I} V_i \text{ and } a_v \in k
+  \right\}.
+\]
+Thus, if \(\Char k = 0\) and exists \(i \in I\) such that \(\dim_k(V_i) >
+0\), then \(\mathcal M\) is an infinite-dimensional vector space.
+
+The next step in our construction is to refine the space \(\mathcal M\) by means
+of taking the quotient of \(\mathcal M\) by some subspace \(\mathcal M_0\) so
+that the maps \(f \in \mathcal M / \mathcal M_0\) satisfy the properties arising
+from the multilinar structure induced by the maps \cref{def: multilinear
+  map}. We can do so by considering the collection of maps of the following form
+\[
+  f_0 = (v_1, \dots, v_j + av_j', \dots, v_n)
+  - (v_1, \dots, v_j, \dots, v_n)
+  - a(v_1, \dots, v_j', \dots, v_n) \in \mathcal M.
+\]
+We may simply define \(\mathcal M_0 \subseteq \mathcal M\) to be the subspace spanned by
+the maps of the same form as \(f_0 \in \mathcal M\). Now, when we take the
+quotient \(\mathcal M / \mathcal M_0\) we essentially classify the maps of the
+form \(f_0\) as the zero-maps --- so that every element of \(\mathcal M / \mathcal
+M_0\) satisfy an internal version of the properties of the multilinear maps. We
+are now ready to define what we call a tensor product --- we actually already
+constructed it, is the space \(\mathcal M / \mathcal M_{0}\)!
 
 \begin{definition}[Tensor product]\label{def: tensor product}
   We define the tensor product of the finite collection of \(k\)-vector spaces
   \(\{V_i\}_{i \in I}\) as the quotient space
   \[
-    \bigotimes_{i \in I} V_i = \mathcal M / \mathcal M_0
+    \bigotimes_{i \in I} V_i = \mathcal M / \mathcal M_0,
   \]
   where the elements of \(\bigotimes_{i \in I} V_i\) are called tensors, and in
-  special, the elements of the form \(\otimes_{i \in I} v_i = (v_i)_{i \in I}
-  + \mathcal M_0 \in \bigotimes_{i \in I} V_i\) are called factorizable tensors,
+  special, the elements of the form
+  \[
+    \otimes_{i \in I} v_i = (v_i)_{i \in I} + \mathcal M_0 \in \bigotimes_{i \in I} V_i
+  \]
+  are called factorizable tensors.
 \end{definition}
 
 \begin{lemma}\label{lem: tensor map}
   Let \(\{V_i\}_{i \in I}\) be a finite collection of \(k\)-vector spaces. The
-  canonical map to the factorizable tensors
+  canonical map
   \[
-    t: \prod_{i \in I} V_i \to \bigotimes_{i \in I} V_i
+    \otimes: \prod_{i \in I} V_i \to \bigotimes_{i \in I} V_i
     \text{, mapping }
     (v_i)_{i \in I} \longmapsto \otimes_{i \in I} v_i
   \]
@@ -71,36 +93,26 @@
 \end{lemma}
 
 \begin{proof}
-  Let \(|I| = n\), then
+  Let \(|I| = n\), and \(a \in k\) be any constant, then
   \begin{align*}
-    t(v_1, \dots, v_j + v'_j, \dots, v_n)
-    &= v_1 \otimes \dots \otimes (v_j + v'_j) \otimes \dots \otimes v_n
+    \otimes(v_1, \dots, v_j + a v'_j, \dots, v_n)
+    &= v_1 \otimes \dots \otimes (v_j + a v'_j) \otimes \dots \otimes v_n
     \\
-    &= (v_1, \dots, v_j + v'_j, \dots, v_n) + \mathcal M_0
+    &= (v_1, \dots, v_j + a v'_j, \dots, v_n) + \mathcal M_0
     \\
     &= [(v_1, \dots, v_j, \dots, v_n) + \mathcal M_0]
-    + [(v_1, \dots, v'_j, \dots, v_n) + \mathcal M_0]
+    + [a (v_1, \dots, v'_j, \dots, v_n) + \mathcal M_0]
     \\
     &= v_1 \otimes \dots \otimes v_j \otimes \dots \otimes v_n
-    + v_1 \otimes \dots \otimes v'_j \otimes \dots \otimes v_n
+    + a(v_1 \otimes \dots \otimes v'_j \otimes \dots \otimes v_n)
     \\
-    &= t(v_1, \dots, v_j, \dots, v_n) + t(v_1, \dots, v'_j, \dots, v_n)
+    &= \otimes(v_1, \dots, v_j, \dots, v_n) + a \otimes(v_1, \dots, v'_j, \dots, v_n).
   \end{align*}
-  where the spliting of the class was possible because \((v_1, \dots, v_{j -1},
-  0, v_{j+1}, \dots, v_n) \in \mathcal M_0\). Moreover, if \(a \in k\), then
-  \begin{align*}
-    t(v_1, \dots, a v_j, \dots, v_n)
-    &= v_1 \otimes \dots \otimes a v_j \otimes \dots v_n
-    \\
-    &= (v_1, \dots, a v_j, \dots, v_n) + \mathcal M_0
-    \\
-    &= a[(v_1, \dots, v_j, \dots, v_n) + \mathcal M_0]
-    \\
-    &= a (v_1 \otimes \dots \otimes v_j \otimes \dots \otimes v_n)
-    \\
-    &= a t(v_1, \dots, v_j, \dots, v_n)
-  \end{align*}
-  where the spliting of the classes was possible for the same reason as before.
+  Where we used the fact that
+  \[
+    (v_1, \dots, v_j + a v'_j, \dots, v_n) - (v_1, \dots, v_j, \dots, v_n)
+    - a (v_1, \dots, v_j', \dots, v_n) = 0 \in \mathcal M / \mathcal M_{0}
+  \]
 \end{proof}
 
 \begin{theorem}[Universal property of tensor products]
@@ -113,19 +125,19 @@
     \begin{tikzcd}
       \prod_{i \in I} V_i
       \ar[r, "f"]
-      \ar[d, swap, "t"]
+      \ar[d, swap, "\otimes"]
         &L \\
       \bigotimes_{i \in I} V_i
-      \ar[ur, swap, dashed, "\ell"]
+      \ar[ur, swap, bend right, dashed, "\ell"]
     \end{tikzcd}
   \]
 \end{theorem}
 
 \begin{proof}
   Let \(|I| = n\). (Uniqueness) Suppose that for any \(L\) and \(f\), the
-  morphism \(\ell\) exists, so that \(f = \ell \circ t\) and therefore
+  morphism \(\ell\) exists, so that \(f = \ell \otimes\) and therefore
   \[
-    \ell \circ t(v_1, \dots, v_n) = \ell(v_1 \otimes \dots \otimes v_n)
+    \ell \otimes (v_1, \dots, v_n) = \ell(v_1 \otimes \dots \otimes v_n)
     = f(v_1, \dots, v_n)
   \]
   then certainly \(\ell\) is uniquely defined by the pointwise image of \(f\),
@@ -174,7 +186,7 @@
     = \ell \circ \pi (v_1, \dots, v_n)
     = \ell(v_1 \otimes \dots \otimes v_n)
   \]
-  then indeed \(\ell \circ t = f\) as wanted.
+  then indeed \(\ell \otimes = f\) as wanted.
 \end{proof}
 
 
@@ -188,9 +200,9 @@
     \psi :
     \Hom\left(V_1, \dots, V_p;\, L\right) \longrightarrow
     \Hom\left( \bigotimes_{i=1}^p V_i, L \right),\
-    f \xmapsto \psi \ell
+    f \overset{\psi}\longmapsto \ell
   \]
-  where \(f = \ell \circ t\) (as in \cref{thm: universal property of tensor
+  where \(f = \ell \otimes\) (as in \cref{thm: universal property of tensor
   products}), is an isomorphism, so that
   \[
     \Hom\left(V_1, \dots, V_p;\, L\right) \iso
@@ -199,9 +211,9 @@
 \end{corollary}
 
 \begin{proof}
-  Let \(\ell \in \Hom(\bigotimes_{i=1}^p V_i, L)\), then \(f = \ell \circ t
+  Let \(\ell \in \Hom(\bigotimes_{i=1}^p V_i, L)\), then \(f = \ell \otimes
   \in \psi^{-1}(\ell)\) thus \(\psi\) is surjective. On the other hand, if
-  \(f \neq 0\), then \(\ell \circ t \neq 0\) and in particular \(\ell \neq 0\)
+  \(f \neq 0\), then \(\ell \otimes \neq 0\) and in particular \(\ell \neq 0\)
   hence \(\psi(f) = \ell \neq 0\), therefore \(\ker(\psi) = 0\). Since \(\psi\)
   is linear, then \(\psi\) is injective.
 \end{proof}
@@ -210,8 +222,8 @@
 
 \begin{proposition}
   Let \(\{V_i\}_{i \in I}\) be a finite collection of \(k\)-vector spaces. If
-  exists \(j \in I : V_j = 0\) is the null space then \(\bigotimes_{i \in I}
-  V_i = 0\), that is, the tensor product is the null space.
+  exists \(j \in I\) such that \(V_j = 0\) is the null space then \(\bigotimes_{i \in
+  I} V_i = 0\), that is, the tensor product is the null space.
 \end{proposition}
 
 \begin{proof}
@@ -220,10 +232,10 @@
   on \(V_j\), consider any element \((v_i)_{i \in I} \in \prod_{i \in I} V_i\)
   then necessarily \(v_j = 0\) and hence \(f((v_i)_{i \in I}) = 0\), since
   \(V_j\) has only one element, every element of the domain of \(f\) is mapped
-  to zero, which implies in \(f = 0\). Consider in particular the mapping \(t
+  to zero, which implies in \(f = 0\). Consider in particular the mapping \(\otimes
   \in \Hom(\prod_{i \in I} V_i ,\ \bigotimes_{i \in I} V_i)\) (\cref{lem: tensor
-  map}) then from the latter discussion we have \(t = 0\), since \(\bigotimes_{i
-  \in I} V_i = \mathrm{span}(\im(t))\), then we conclude that \(\bigotimes_{i
+  map}) then from the latter discussion we have \(\otimes = 0\), since \(\bigotimes_{i
+  \in I} V_i = \Span(\im(\otimes))\), then we conclude that \(\bigotimes_{i
   \in I} V_i = 0\).
 \end{proof}
 
@@ -349,7 +361,7 @@ products?}
   \dots \otimes v_{\sigma(p)}\). Then the following diagram commutes
   \[
     \begin{tikzcd}
-      \prod_{i=1}^p V_i \ar[r, "g_\sigma"] \ar[d, swap, "t"]
+      \prod_{i=1}^p V_i \ar[r, "g_\sigma"] \ar[d, swap, "\otimes"]
         &\bigotimes_{i=1}^p V_{\sigma(i)}\\
       \bigotimes_{i=1}^p V_i \ar[ur, swap, "f_\sigma"]
     \end{tikzcd}
@@ -366,8 +378,9 @@ products?}
   Let \(\{V_i\}_{i=1}^p\) be a collection of finite dimensional \(k\)-vector
   spaces. Then the \(k\)-linear morphism
   \[
-    \bigoplus_{i=1}^p V_i^* \to \left( \bigoplus_{i=1}^p V_i \right)^* :
-    f_1 \otimes \dots \otimes f_p \mapsto (v_1 \otimes \dots \otimes v_p \mapsto
+    \bigoplus_{i=1}^p V_i^* \overset{\sim}\longrightarrow \left[ \bigoplus_{i=1}^p V_i \right]^*
+    \text{ mapping }\
+    f_1 \otimes \dots \otimes f_p \longmapsto (v_1 \otimes \dots \otimes v_p \mapsto
     f_1(v_1) \dots f_p(v_p))
   \]
   is a natural isomorphism.
@@ -392,7 +405,7 @@ products?}
   Let \(V, L\) be finite dimensional \(k\)-vector spaces. Then the \(k\)-linear
   morphism
   \[
-    V^* \otimes L \to \Hom(V, L) : f \otimes \ell \mapsto (v \mapsto f(v)\ell)
+    V^* \otimes L \overset{\sim}\longrightarrow \Hom(V, L)\ \text{ mapping }\ f \otimes \ell \longmapsto (v \mapsto f(v)\ell)
   \]
   is a canonical isomorphism.
 \end{proposition}
@@ -443,7 +456,7 @@ where the last is a basis for \(V\), we have \(\Id_V(v_j) = \sum_{i=1}^n
   a_{ij} v_j^* \otimes v_i\). Now, from the definition of the trace it follows
   that
   \[
-    f \mapsto \sum_{i,j=1}^n a_{ij} v_j^* \otimes v_i \xmapsto{\Tr}
+    f \longmapsto \sum_{i,j=1}^n a_{ij} v_j^* \otimes v_i \overset{\Tr}\longmapsto
     \sum_{i=1}^n a_{ii}.
   \]
   As one can note, this is the sum of the diagonal of the matrix representation
@@ -590,6 +603,7 @@ where the last is a basis for \(V\), we have \(\Id_V(v_j) = \sum_{i=1}^n
   \begin{enumerate}[(a)]
     \item Tensors of type \((0,0)\) are called scalar tensors of rank \(0\).
     \item Tensors of type \((1, 0)\) are linear functionals on \(V\).
+    \item Tensors of type \((0, 1)\) are vectors of \(V\).
     \item Tensors of type \((1, 1)\) are elements of \(V^* \otimes V \iso
       \End_{\Vect_k}(V)\), that is, linear operators.
     \item Tensors of type \((2, 0)\) are elements of \(V^* \otimes V^* \iso
@@ -601,31 +615,33 @@ where the last is a basis for \(V\), we have \(\Id_V(v_j) = \sum_{i=1}^n
 \end{example}
 
 \begin{definition}[Mixed tensor multiplication]
-  Let \(V\) be a finite \(k\)-vector space, then \(T_p^q(V) = V^{*\otimes p}
-  \otimes V^{\otimes q} \iso (V^{\otimes p} \otimes V^{* \otimes q})^*\), which
-  in turn is isomorphic to the space of multilinear maps \(V^p \times V^{*q} \to
-  k\). Let the multilinear maps \(f: V^p \times V^{*q} \to k\) and \(g:
-  V^{p'} \times v^{*q'} \to k\), then we define their tensor multiplication as
+  Let \(V\) be a finite \(k\)-vector space, then
+  \[
+    T_p^q(V) = V^{*\otimes p} \otimes V^{\otimes q} \iso (V^{\otimes p} \otimes V^{* \otimes q})^*,
+  \]
+  which in turn is isomorphic to the space of multilinear maps \(V^p \times V^{*q} \to
+  k\). Let \(f: V^p \times V^{*q} \to k\) and \(g: V^{p'} \times v^{*q'} \to k\) be multilinear
+  maps, then we define their tensor multiplication as
   \[
     f \otimes g: V^{p + p'} \times V^{*(q + q')} \to k
   \]
-  mapping \((v_1, \dots, v_p, v_1', \dots, v_{p'}', \widetilde v_1^*, \dots,
-  \widetilde v_p^*, \widetilde v_1^{'*}, \dots, \widetilde v_{q'}^{'*})\) into
+  mapping \((v_1, \dots, v_p, v_1', \dots, v_{p'}', u_1^*, \dots, u_p^*,
+  u_1'^{*}, \dots, u_{q'}'^{*})\) into
   \[
-    f(v_1, \dots, v_p, \widetilde v_1^*, \dots, \widetilde v_p^*)
-    g(v_1', \dots, v_{p'}', \widetilde v_1^{'*}, \dots, \widetilde v_{q'}^{'*}),
+    f(v_1, \dots, v_p, u_1^*, \dots, u_p^*)
+    g(v_1', \dots, v_{p'}', u_1'^{*}, \dots, u_{q'}'^{*}),
   \]
-  where \(v_i, v_i' \in V\) and \(\widetilde v_j^*, \widetilde v_j^{'*} \in
-  V^*\). This shows that clearly this tensor multiplication is in gereral
-  non-commutative. However, it is
-  \begin{enumerate}[(i).]
+  where \(v_i, v_i' \in V\) and \(u_j^*, u_j'^{*} \in V^*\). This shows that clearly
+  this tensor multiplication is, in general, non-commutative. However, it is
+  \begin{itemize}
     \item (Bilinear) For all \(a, b \in k\), then
       \[
         (a f_1 + b f_2) \otimes g = a (f_1 \otimes g) + b (f_2 \otimes g)
         \ \text{ and }\
-        f \otimes (a g_1 + b g_2) = a (f \otimes g_1) + b (f \otimes g_2).\]
+        f \otimes (a g_1 + b g_2) = a (f \otimes g_1) + b (f \otimes g_2).
+      \]
     \item (Associative) \((f \otimes g) \otimes h = f \otimes (g \otimes h)\).
-  \end{enumerate}
+  \end{itemize}
 \end{definition}
 
 \begin{definition}[Tensor algebra]\label{def: tensor algebra vs}
@@ -635,3 +651,8 @@ where the last is a basis for \(V\), we have \(\Id_V(v_j) = \sum_{i=1}^n
     T(V) = \bigotimes_{p, q = 1}^\infty T_p^q(V).
   \]
 \end{definition}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../../deep-dive"
+%%% End:

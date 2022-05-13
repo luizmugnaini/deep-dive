@@ -11,7 +11,7 @@
    \Hom(A, F)\) for all given \(A \in \cat C\) and thus \(\Hom(A, F) = g\).
 \end{definition}
 
-\begin{proposition}
+\begin{proposition}\label{prop:initial-final-unique}
    Let a category \(\cat{C}\), then initial and final objects are said to be
    unique up to a unique isomorphism:
    \begin{enumerate}[I.]
@@ -39,7 +39,7 @@ construction is a terminal object of the category.
 \subsection{Quotients}
 
 Denote \(\sim\) an equivalence relation between elements of a given object
-\(A\) in the category \(\Set\). We say that the quotient \(A/\sim\) is
+\(A\) in the category \(\Set\). We say that the quotient \(A/{\sim}\) is
 universal with respect to the property that the image of equivalent elements
 under morphism is equal.
 
@@ -54,20 +54,20 @@ Z\) and \(\varphi' : A \to Z'\) is defined to be the commutative diagram
 \]
 
 \begin{proposition}
-   The canonical projection \(\pi : A \to A/\sim\) is an initial object of the
+   The canonical projection \(\pi : A \to A/{\sim}\) is an initial object of the
    category.
 \end{proposition}
 
 \begin{proof}
    Let a morphism \(\varphi: A \to Z\). The claim says that there exists a
-   unique morphism \(\tilde{\varphi} : A/\sim \to Z\) such that the diagram
+   unique morphism \(\tilde{\varphi} : A/{\sim} \to Z\) such that the diagram
    commutes
     \[
       \begin{tikzcd}
         A \ar[rr, "\varphi"] \ar[dr, swap, "\pi"]
           &
             & Z \\
-          & A/\sim \ar[ur, swap, "\widetilde \varphi"]
+          & A/{\sim} \ar[ur, swap, "\widetilde \varphi"]
       \end{tikzcd}
    \]
    From the imposition that such diagram commutes, we are inclined to define the
@@ -136,7 +136,7 @@ If we consider the case for \(\Set\), we can even find a definite morphism \(x
 \times x\), it is given by \((a, b) \xmapsto{x \times x} (x(a), x(b))\). In the
 proof given above, however, one would need to caution that the projections
 \(\pi_X\) and \(\pi_Y\) must project the same component --- if not, the diagram
-would not comute in \(\Set\).
+would not commute in \(\Set\).
 
 \begin{proposition}[Fibered products]
    Let \(X, Y, Z\) objects of a category \(\cat C\) and morphisms \(\varphi :X

@@ -2,7 +2,7 @@
 
 \begin{definition}[Subspace]\label{def: subspace}
    Let \(V\) be \(k\)-vector space. We say that \(W \subseteq  V\) is a subspace
-   of \(V\) if 
+   of \(V\) if
    \begin{enumerate}[I.]
      \item \(0 \in W\).
      \item \(v, u \in W\) implies \(v + u \in W\).
@@ -12,7 +12,7 @@
 
 \begin{definition}[Quotient]\label{def: quotient}
    Let \(V\) be a \(k\)-vector space and \(W \subseteq V\) a subspace. The
-   quotient of \(V\) by \(W\) is defined as \(V/W = V/\sim\) where \(v
+   quotient of \(V\) by \(W\) is defined as \(V/W = V/{\sim}\) where \(v
    \sim u \Leftrightarrow v - u \in W\).
 \end{definition}
 
@@ -28,7 +28,7 @@
        &V \ar["f", r] \ar["\pi", twoheadrightarrow, d] &L \\
        &V/W \ar[swap, dashed, "\ell", ru]
     \end{tikzcd}
-  \] 
+  \]
   Moreover, \(\ker \ell = \ker f / W\) and  \(\im(\ell) = \im(f)\).
 \end{theorem}
 
@@ -55,7 +55,7 @@
   \(k\)-linear morphism \(\ell : V / \ker f \hookrightarrow W\) is such that
   \[
      V / \ker f \iso \im(f).
-  \] 
+  \]
   is an isomorphism of \(k\)-vector spaces.
 \end{theorem}
 
@@ -68,11 +68,11 @@
    there is a natural isomorphism
    \[
      (W + U)/U \iso W/(W \cap U).
-   \] 
+   \]
 \end{theorem}
 
 \begin{proof}
-  Notice that this isomorphism needs to be the mapping 
+  Notice that this isomorphism needs to be the mapping
   \[
     (W + U)/U \ni [w + u] \longmapsto [w] \in W/(W \cap U)
   \]
@@ -96,10 +96,10 @@
   Let \(V\) be a \(k\)-vector space and let the subspaces \(U \subseteq W
   \subseteq V\). Then there exists an embedding \(W/U \hookrightarrow V/U\) with
   a mapping \([w] \mapsto [w]\) such that \(W/U\) can be regarded as a subspace
-  of \(V/U\). Moreover, we have a natural isomorphism 
+  of \(V/U\). Moreover, we have a natural isomorphism
   \[
     V/W \iso (V/U) \big / (W/U).
-  \] 
+  \]
 \end{theorem}
 
 \begin{proof}
@@ -122,6 +122,6 @@
   \(\ker \varphi = W/U\).  From the first isomorphism theorem we have that
   \[
     (V/U) \big / (W/U) \iso V/W
-  \] 
+  \]
   since the image of \(\varphi\) is equal to \(V/W\), settling the proof.
 \end{proof}

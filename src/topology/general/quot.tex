@@ -1,1 +1,105 @@
 \section{Quotient Space}
+
+The motivation for the construction of the quotient topology is the study of
+surjective set-functions \(\pi: X \epi S\) between topological spaces \(X\) and
+sets \(S\), which induce an equivalence relation on the initial topological
+space by means of arranging the points of \(X\) in classes where \(x \sim y\) for
+\(x, y \in X\) if and only if \(\pi(x) = \pi(y)\), that is, \(x\) and \(y\) are common
+points of a fiber \(\pi^{-1}(s)\) for some \(s \in S\).
+
+The geometrically appealing version of such construction would be the idea of
+gluing every element \(x \in \pi^{-1}(s)\) into a unique point --- this way we loose
+some initial information about the topological space \(X\). However, we would
+like to make this gluing process compatible with the theory of topology so far
+constructed. To achieve that, one may make the point that we should make \(S\)
+into a topological space for which its topology makes \(\pi\) a continuous
+map. The first idea that may come to mind is that we can simply force the
+continuity of \(\pi\) by defining a topology \(\mathcal T\) on \(S\) so that \(U \subseteq
+S\) is an open set if and only if \(\pi^{-1}(U)\) is open --- which is exactly the
+definition of a continuous map. Lets give this a formal definition.
+
+\begin{definition}\label{def:quotient-topology}
+Let \(X\) be a topological space and \(S\) be any set. Let also \(\pi: X \epi S\)
+be a set-function. The quotient topology on \(S\) induced by the map \(\pi\) is
+the finest topology such that \(\pi\) is a continuous map.
+\end{definition}
+
+\begin{proposition}
+The quotient topology is a topology.
+\end{proposition}
+
+\begin{proof}
+Let \(X /{\sim}\) be a topological space with the quotient topology induced by the
+map \(\pi: X \epi X /{\sim}\). Consider an arbitrary collection \({\{U_{j}\}}_j\) of
+open sets of \(X /{\sim}\). Notice that since \(\pi^{-1}(\bigcup_{j} U_{j}) = \bigcup_j
+\pi^{-1}(U_j)\) then since \(\pi^{-1}(U_j)\) is open for all index \(j\), we
+conclude that \(\bigcup_j \pi^{-1}(U_{j}) \subseteq X\) is open, hence the set \(\bigcup_j U_j \subseteq X
+/{\sim}\) is necessarily open --- since \(\pi\) is continuous. Let now \(A, B \subseteq X
+/{\sim}\) be any open sets, then \(\pi^{-1}(A \cap B) = \pi^{-1}(A) \cap \pi^{-1}(B) \subseteq X\),
+which is open and therefore \(A \cap B\) is open in \(X /{\sim}\). We conclude that
+the quotient topology indeed satisfies the properties of a topology.
+\end{proof}
+
+In other terms, let \(T_S\) be the collection of all topologies on \(S\) such
+that \(\pi\) is a continuous map. The above definition simply says that the
+quotient topology \(\mathcal T\) on the set \(S\) is the intersection \(\mathcal
+T = \bigcap_{T \in T_S}T\). Even better than that definition is the fact that we can
+determine the quotient topology by the following universal property.
+
+\begin{theorem}[Universal property of the quotient topology]
+\label{thm:universal-property-quotient-topology}
+Let \(X\) be a topological space and \(S\) be any set, together with a
+surjective set-function \(\pi: X \epi S\). The quotient topology \(\mathcal T\)
+on \(S\) induced by \(\pi\) is such that, for all topological spaces \(Z\) and
+every morphism \(g: X \to Z\) for which all \(x, y \in X\) such that \(\pi(x) =
+\pi(y)\) then \(g(x) = g(y)\) --- i.e. \(g\) is constant on the fibers of \(\pi\)
+---, there exists a unique morphism \(f: (S, \mathcal T) \to Z\) such that the
+diagram
+\[
+  \begin{tikzcd}
+    X \ar[r, "g"] \ar[d, two heads, swap, "\pi"] &Z\\
+    S \ar[ur, swap, bend right, dashed, "f"]
+  \end{tikzcd}
+\]
+commutes in \(\Top\). Moreover, if \(\mathcal T'\) is a topology on \(S\) such
+that the diagram commutes, then necessarily \(\mathcal T' = \mathcal T\).
+\end{theorem}
+
+\begin{proof}
+Since \(\pi\) is surjective, we can completely define a map \(f: S \to Z\) sending
+\(s \mapsto g(x)\) such that \(x \in \pi^{-1}(s)\), which is well defined because, for
+all \(x, y \in \pi^{-1}(s)\), we have \(g(x) = g(y)\), so that the image of each
+\(s \in S\) under the map \(f\) is uniquely defined. We now show that \(f\) is,
+in fact, continuous --- and hence a morphism. Let \(U \subseteq Z\) be any open set of
+\(Z\), then, since \(g^{-1}(U)\) is open and \((f \pi)^{-1}(U) = \pi^{-1}
+f^{-1}(U) = g^{-1}(U)\), \(f^{-1}(U)\) cannot be a closed set --- in fact, it
+needs to be an open set, because \(\pi^{-1}(f^{-1}(U)) \subseteq X\) must be open, since
+\(\pi\) is continuous. It follows that \(f\) is continuous and thus the said
+morphism indeed exists.
+
+For the uniqueness, let \(f\) and \(f'\) be two morphisms such that \(f\pi = g\)
+and \(f'\pi = g\). Let \(s \in S\) be any point. Since \(\pi\) is surjective, there
+exists \(x \in X\) for which \(x \in \pi^{-1}(s)\), therefore, \(f \pi(x) = f(s) =
+f'\pi(x) = f'(s)\) for every element of their domain --- hence \(f = f'\).
+
+Suppose now that both \((S, \mathcal T)\) and \((S, \mathcal T')\) satisfy the
+universal property, that is, the following diagrams commutes for unique
+morphisms \(f\) and \(h\)
+\[
+  \begin{tikzcd}
+    &Z & \\
+    (S, \mathcal T) \ar[ur, dashed, bend left, "f"]
+    &X \ar[l, two heads, "\pi"] \ar[r, swap, two heads, "\pi"] \ar[u, "g"]
+    &(S, \mathcal T') \ar[ul, dashed, bend right, swap, "f'"]
+  \end{tikzcd}
+\]
+Since the diagram commutes for all \(Z\), let \(Z = (S, \mathcal T)\), and
+consider the map \(f' = \Id': (S, \mathcal T') \to (S, \mathcal
+T)\). Then, given any \(U \in \mathcal T\) we find that since \(\Id'\) is
+continuous that \(\Id'^{-1}(U) = U \subseteq (S, \mathcal T')\) is open, hence
+\(\mathcal T \subseteq \mathcal T'\). Analogously, let \(Z = (S, \mathcal T')\) and
+consider \(f = \Id: (S, \mathcal T) \to (S, \mathcal T')\). Let \(U' \in \mathcal
+T'\) then from the continuity of \(\Id\) we find that \(\Id^{-1}(U') = U' \subseteq
+(S, \mathcal T)\) is open, therefore \(\mathcal T' \subseteq \mathcal T\). Thus indeed
+\(\mathcal T = \mathcal T'\) as wanted.
+\end{proof}

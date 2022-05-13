@@ -194,31 +194,3 @@ which the item one is obtained.
    isomorphic, that is \(L \iso V\), if there exists an isomorphism \(L \to V\)
    in \(\Hom(L, V)\).
 \end{definition}
-
-\subsection{Dual spaces}
-
-\begin{definition}[Linear functional]\label{def: linear functional}
-   Let \(L\) be a \(k\)-space. We define a function \(f : L \to k\) to be a
-   \emph{linear functional} if
-   \[
-      f(av + bu) = f(av) + f(bu) = af(v) + bf(u),\ \forall u, v \in L\ \forall
-      a, b \in k.
-   \]
-\end{definition}
-
-\begin{definition}[Dual Space]\label{def: dual space}
-   Let \(L\) be a \(k\)-space. We define the set \(L^\ast\) of linear
-   functionals that map \(L \to k\).
-\end{definition}
-
-\begin{proposition}
-   The dual space \(L^\ast\) is a linear \(k\)-subspace of the set consisting of
-   all functions from \(L \to k\).
-\end{proposition}
-
-\begin{proof}
-   Let \(f, g \in L^\ast\) and \(u, v \in L\) and \(a \in k\), then we have that
-   \[(f + g)(u + av) = f(u+v) + g(u+v) = f(u) + f(v) + g(u) + g(v) = (f + g)(u)
-   + (f + g)(v)\] and also \[(af)(u + v) = af(u + v) = af(u) + f(v) = (af)(u) +
-   (af)(v).\] This proves the statement.
-\end{proof}

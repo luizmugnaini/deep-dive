@@ -6,7 +6,7 @@
   we define the space \((S, \mathcal T_S)\) as a subspace of \(X\) if
   \[
     \mathcal T_S = \{U \subseteq S: U = S \cap V,\ V \in \mathcal T\}.
-  \] 
+  \]
   If so, we call \(\mathcal T_S\) the relative topology or subspace topology.
 \end{definition}
 
@@ -20,11 +20,11 @@
 
 \begin{proof}
   (\(\Rightarrow\)) Suppose \(A\) is a closed set in \(S\), then \(S \setminus
-  S = S \cap U\) is open and hence \(U\) is some open set of \(X\). Then 
+  S = S \cap U\) is open and hence \(U\) is some open set of \(X\). Then
   \[
     A = S \setminus (S \setminus A) = S \setminus (S \cap U)
     = S \cap (X \setminus U)
-  \] 
+  \]
   where \(X \setminus U\) is closed, hence \(A\) equals to the intersection of
   \(S\) with a closed set of \(X\).
   (\(\Leftarrow\)) Suppose that \(A = S \cap F\) for a closed set \(F\) in
@@ -46,7 +46,7 @@
   \begin{enumerate}[(a)]
     \item If \(U \subseteq S\) is open (resp. closed) and \(S\) is an open
       (resp. closed) subset of \(X\), then \(U\) is open (resp. closed) in
-      \(X\). 
+      \(X\).
     \item If \(U \subseteq S\) and \(U\) is open (resp. closed) in \(X\), then
       it is open (resp. closed) in \(S\).
   \end{enumerate}
@@ -104,19 +104,19 @@
         &S \ar[d, "\iota_S"] \\
         &X
     \end{tikzcd}
-  \] 
+  \]
   Moreover, on the converse, if \(S \subseteq X\) is a topological space such
   that the above property holds, then it is equipped with the subspace topology.
 \end{theorem}
 
 \begin{proof}
-  First we show that if \((S, \mathcal T_S)\) is a subspace of \((X, \mathcal
-  T)\) then it satisfies the universal property. Suppose then that \(S\) a
-  subspace of \(X\). (\(\Rightarrow\)) Let \(f\) be continuous. If \(V \subseteq
-  X\) is any open subset, we have that
+  First we show that if \((S, \mathcal T_S)\) is a subspace of \((X, \mathcal{T})\) then
+  it satisfies the universal property. Suppose then that \(S\) a subspace of
+  \(X\). (\(\Rightarrow\)) Let \(f\) be continuous. If \(V \subseteq X\) is any open subset, we have
+  that
   \[
     (\iota_S \circ f)^{-1}(V) = f^{-1}(\iota^{-1}(V)) = f^{-1}(S \cap V)
-  \] 
+  \]
   since \(V\) is said to be open, then \(S \cap V\) is open in \(S\), which
   implies that \(f^{-1}(S \cap V) = (\iota_S \circ f)^{-1}(V)\) is open. This
   shows that the map \(\iota_S \circ f\) is open. (\(\Leftarrow\)) Let \(\iota_S
@@ -125,7 +125,7 @@
   Then we have
   \[
     f^{-1}(U) = f^{-1}(\iota_S^{-1}(V)) = (\iota_S \circ f)^{-1}(V)
-  \] 
+  \]
   since \(\iota_S \circ f\) is continuous, then \(f^{-1}(U)\) is open, therefore
   \(f\) is continuous.
 
@@ -139,12 +139,12 @@
   \[
     \begin{tikzcd}
       (S, \mathcal T_S)
-      \ar[r, "\Id_S"] 
+      \ar[r, "\Id_S"]
       \ar[rd, swap, "\iota_S \circ \Id_S = \iota_S"]
         &(S, \mathcal T') \ar[d, "\iota_S"] \\
         &(X, \mathcal T)
     \end{tikzcd}
-  \] 
+  \]
   We know from \cref{def: second def subspace top} that \(\iota_S \circ \Id_S =
   \iota_S\) is continuous for the subspace topology \(\mathcal T_S\), hence the
   universal property implies that \(\Id_S\) is continuous. In particular, this
@@ -156,12 +156,12 @@
   following diagram commutes
   \[
     \begin{tikzcd}
-      (S, \mathcal T') \ar[r, "\Id_S'"] 
+      (S, \mathcal T') \ar[r, "\Id_S'"]
       \ar[rd, swap, "\iota_S \circ \Id_S' = \iota_S"]
         &(S, \mathcal T') \ar[d, "\iota_S"] \\
         &(X, \mathcal T)
     \end{tikzcd}
-  \] 
+  \]
   Notice that since \(\Id_S'\) is continuous (see \cref{prop: continuous maps
   properties}) then from the universal property the map \(\iota_S\) is
   continuous on \(\mathcal T'\). Since \(\mathcal T_S\) is the coarsest topology
@@ -194,7 +194,7 @@
   \[
     \begin{tikzcd}
       X \rar["f"] \ar[rd, swap, "\iota_T \circ f = f"] &T \dar["\iota_T"] \\ &Y
-    \end{tikzcd} 
+    \end{tikzcd}
     \qquad
     \begin{tikzcd}
       X \rar["f"] \ar[rd, swap, "\iota_Y \circ f"] &Y \dar["\iota_Y"] \\ &Z
@@ -227,22 +227,22 @@
   \(T\) and \(S\) in order to get
   \[
     \begin{tikzcd}
-      Z \ar[r,"f"] 
+      Z \ar[r,"f"]
       \ar[rd, swap, "g"]
       \ar[rdd, swap, bend right,
       "\iota_S \circ g = \iota_T' \circ f"]
-        &T \ar[d, hook, "\iota_T"] 
+        &T \ar[d, hook, "\iota_T"]
         \ar[dd, hook, bend left = 60, "\iota_S \circ \iota_T := \iota_T'"]\\
         &S \ar[d, hook, "\iota_S"] \\
         &X
     \end{tikzcd}
     \qquad \Leftrightarrow \qquad
     \begin{tikzcd}
-      Z \ar[dr, swap, "\iota_T' \circ f"] \ar[r, "f"] 
+      Z \ar[dr, swap, "\iota_T' \circ f"] \ar[r, "f"]
         &T \ar[d, hook, "\iota_T'"] \\
         &X
     \end{tikzcd}
-  \] 
+  \]
   Moreover, if \(f\) is continuous, from the universal property of \(T\) we find
   that \(g\) is continuous, but using the universal property of \(S\) that tells
   us that \(\iota_S \circ g = \iota_T' \circ f\) is continuous. The converse is
@@ -345,7 +345,7 @@
   \]
   This mapping is clearly continuous. Although not injective, we can choose any
   point \(p = (x, y)\) and find a neighbourhood of \(p\) such that the mapping
-  is injective. 
+  is injective.
 \end{example}
 
 \begin{lemma}[Gluing]
@@ -369,5 +369,5 @@
   which implies that \(f^{-1}(C)\) itself is closed. This shows us that the
   inverse of \(f\) maps closed sets to closed sets, which implies that \(f\) is
   continuous.  Since \(\mathcal U\) is a cover of \(X\), it is clear that \(f\)
-  is unique. \(\mathbb{Z}\)
+  is unique.
 \end{proof}

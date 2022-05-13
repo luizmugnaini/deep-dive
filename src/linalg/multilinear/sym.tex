@@ -2,14 +2,14 @@
 
 \begin{definition}[Symmetric tensor]
   Let \(V\) be a \(k\)-vector space and consider the mixed tensor product
-  \(T_0^q(V)\). For every permutation \(\sigma \in \mathcal S_q\) (where
-  \(\mathcal S_q\) denotes the symmetry group of \(q\) elements), define the
+  \(T_0^q(V)\). For every permutation \(\sigma \in S_q\) (where
+  \(S_q\) denotes the symmetry group of \(q\) elements), define the
   linear transformation
   \[
     f_\sigma: T_0^q(V) \to T_0^q(V),\ \otimes_{i=1}^q v_i \xmapsto{f_\sigma}
     \otimes_{i=1}^q v_{f_\sigma(i)}.
   \]
-  We say that a tensor \(T \in T_0^q(V)\) is symmetric if
+  We say that a tensor \(T \in T_0^q(V)\) is symmetric if for all \(\sigma \in S_q\)
   \[
      f_\sigma(T) = T.
   \]
@@ -22,20 +22,18 @@
 
 \begin{definition}[Symmetrization map]
   Let \(V\) be a \(k\)-vector space. We define the projection operator \(S:
-  T_0^q(V) \to T_0^q(V)\), which maps factorizable tensors to symmetric tensors.
+  T_0^q(V) \epi \Sym^q(V)\), which maps factorizable tensors to symmetric tensors.
 \end{definition}
 
 \begin{proposition}[Symmetric space universal property]
   Let \(V\) be a \(k\)-vector space. Given any \(k\)-vector space \(L\) and a
   multilinear symmetric map \(\mu: V^q \to L\), there exists a unique linear map
   \(\ell: \Sym^q(V) \to L\) such that \(\ell \circ S \circ \otimes = \mu\). That
-  is, the following diagram commmutes
+  is, the following diagram commutes
   \[
     \begin{tikzcd}
-      V^q \ar[rd, "\mu"] \ar[d, "\otimes"] \\
-      T_0^q(V) \ar[d, two heads, "S"]
-          &L \\
-      \Sym^q(V) \ar[ru, dashed, swap, "\ell"]
+      V^q \ar[r, "\mu"] \ar[d, "\otimes"] &L \\
+      T_0^q(V) \ar[r, two heads, "S"] &\Sym^q(V) \ar[u, dashed, swap, "\ell"]
     \end{tikzcd}
   \]
 \end{proposition}
@@ -48,7 +46,7 @@
 \begin{proposition}
   For \(\Char k \nmid q!\), we have that
   \[
-    S(T) = \frac{1}{q!} \sum_{\sigma \in \mathcal S_q} f_\sigma(T)
+    S(T) = \frac{1}{q!} \sum_{\sigma \in S_q} f_\sigma(T)
   \]
   and hence \(S^2 = S\), and \(S(T_0^q(V)) = \Sym^q(V)\).
 \end{proposition}
@@ -58,7 +56,7 @@
   T^{i_1, \dots, i_q} \in \Sym^q(V)\),
   then
   \[
-    S(T) = \frac{1}{q!} \sum_{\sigma \in \mathcal S_q} f_\sigma(T^{i_1, \dots,
+    S(T) = \frac{1}{q!} \sum_{\sigma \in S_q} f_\sigma(T^{i_1, \dots,
     i_q}) = \frac{1}{q!} (q! T^{i_1, \dots, i_q}) = T
   \]
   where we assumed that \(\Char k \nmid q!\) in order to obtain a nonzero tensor
@@ -108,7 +106,7 @@
   \leq i_1 \leq \dots \leq i_q \leq n\). For all \(v_j = \sum_{i=1}^n a_{ij} e_i
   \in V\) where \(1 \leq j \leq q\), let \(\mu_I: V^q \to k\) be the mapping
   \[
-    \mu_I(v_1, \dots, v_n) = \sum_{\sigma \in \mathcal S_q} \prod_{j=1}^q
+    \mu_I(v_1, \dots, v_n) = \sum_{\sigma \in S_q} \prod_{j=1}^q
     e_{i_{\sigma(j)}}^*(v_j).
   \]
   Then, from the universal property of tensor products we find a unique
@@ -123,7 +121,7 @@
   v_q) = f(v_1 \cdot \ldots \cdot v_n)\). Notice that if we have a monotonically
   increasing sequence of indices \(I' = (i_1', \dots, i_q') \neq I\), there must
   be an index \(i_{j_0}' \in I'\) such that \(i_{j_0}' \neq i_j\) for all \(i_j
-  \in I\). This way we find that for all \(\sigma \in \mathcal S_q\) the product
+  \in I\). This way we find that for all \(\sigma \in S_q\) the product
   \(\prod_{j=1}^q e_{i_{\sigma(j)}}^*(e_{i_j'}) = 0\) because
   \(e_{i_{\sigma(j)}}^*(e_{i_{j_0}'}) = 0\). In particular, this implies in
   \[
@@ -140,12 +138,12 @@
   \(\prod_{r=1}^Q (n_r!)\) permutations. Notice that all permutations of
   \(J_r\)'s are such that \(\sigma_{J_r}(I) = I\) (they change the position of
   equal elements, causing no alteration of the sequence), we'll denote such
-  permutations by \(\sigma_J \in \mathcal S_q\). Moreover, these are
+  permutations by \(\sigma_J \in S_q\). Moreover, these are
   all the possible permutations that leave \(I\) unaltered. Hence
   \[
     f_I(e_{i_1} \cdot \ldots \cdot e_{i_q}) = \mu_I(e_{i_1}, \dots, e_{i_q})
-    = \sum_{\sigma \in \mathcal S_q} \prod_{j=1}^q e_{i_{\sigma(j)}}^*(e_j)
-    = \sum_{\sigma_J \in \mathcal S_q} \prod_{j=1}^q e_{i_{\sigma_J(j)}}^*(e_j)
+    = \sum_{\sigma \in S_q} \prod_{j=1}^q e_{i_{\sigma(j)}}^*(e_j)
+    = \sum_{\sigma_J \in S_q} \prod_{j=1}^q e_{i_{\sigma_J(j)}}^*(e_j)
     = \prod_{r=1}^Q (n_r!) \in k.
   \]
   Therefore, if \(\Char k \nmid q!\), we find \(f_I(e_{i_1} \cdot \ldots \cdot
@@ -161,9 +159,9 @@
   \begin{align*}
     0 = f_I \left( \sum_{i_1', \dots, i_q'} c_{i_1', \dots, i_q'} (e_{i_1'} \cdot
     \ldots \cdot e_{i_q}) \right)
-    &= c_{i_1', \dots, i_q'} \sum_{\sigma \in \mathcal S_q} \prod_{j=1}^q
+    &= c_{i_1', \dots, i_q'} \sum_{\sigma \in S_q} \prod_{j=1}^q
     e_{i_{\sigma(j)}}^*(e_{i_j'}) \\
-    &= c_{i_1, \dots, i_q} \sum_{\sigma \in \mathcal S_q} \prod_{j=1}^q
+    &= c_{i_1, \dots, i_q} \sum_{\sigma \in S_q} \prod_{j=1}^q
     e_{i_{\sigma(j)}}^*(e_j) \\
     &=  c_{i_1, \dots, i_q} f_I(e_{i_1} \cdot \ldots \cdot e_{i_q})
   \end{align*}
@@ -227,16 +225,16 @@
 \begin{proof}
   Let \(T_1 \in T_0^q(V)\) and \(T_2 \in T_0^d(V)\), then we find that
   \[
-    S(T_1) \otimes T_2 = \left( \frac{1}{q!} \sum_{\sigma \in \mathcal S_q}
+    S(T_1) \otimes T_2 = \left( \frac{1}{q!} \sum_{\sigma \in S_q}
     f_\sigma(T_1) \right) \otimes T_2
   \]
   This way we find that
   \begin{align*}
-    S(S(T_1) \otimes T_2) = S \left( \frac{1}{q!} \sum_{\sigma \in \mathcal S_q}
+    S(S(T_1) \otimes T_2) = S \left( \frac{1}{q!} \sum_{\sigma \in S_q}
     f_\sigma(T_1) \otimes T_2 \right)
-    &= \frac{1}{q!} \sum_{\sigma \in \mathcal S_q} S(f_\sigma(T_1) \otimes T_2)
+    &= \frac{1}{q!} \sum_{\sigma \in S_q} S(f_\sigma(T_1) \otimes T_2)
     \\
-    &= \frac{1}{q!} \sum_{\sigma \in \mathcal S_q} S(T_1 \otimes T_2) \\
+    &= \frac{1}{q!} \sum_{\sigma \in S_q} S(T_1 \otimes T_2) \\
     &= S(T_1 \otimes T_2)
   \end{align*}
   where we used the fact that \(S(f_\sigma(T_1) \otimes T_2) = S(T_1 \otimes
@@ -257,7 +255,12 @@
   \]
 
   Finally, notice that from this multiplicative structure we have that the
-  multiplication of polynomials is given by \((e_1^{a_1} \cdots
-  e_n^{a_n}) (e_n^{b_1} \cdots e_n^{b_n}) = e_1^{a_1 + b_1} \cdots e_n^{a_n +
-  b_n}\), which shows the algebra isomorphism.
+  multiplication of polynomials is given by
+  \((e_1^{a_1} \cdots e_n^{a_n}) (e_n^{b_1} \cdots e_n^{b_n}) = e_1^{a_1 + b_1} \cdots e_n^{a_n
+  + b_n}\), which shows the algebra isomorphism.
 \end{proof}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../../deep-dive"
+%%% End:

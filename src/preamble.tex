@@ -63,6 +63,7 @@
 \DeclareMathOperator{\Sym}{Sym}
 \DeclareMathOperator{\Char}{char}
 \DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\Span}{span}
 
 % arrows
 \newcommand{\op}{\mathrm{op}}
@@ -78,8 +79,17 @@
 \newcommand{\Q}{\mathbf{Q}}
 \newcommand{\CC}{\mathbf{C}}
 \newcommand{\R}{\mathbf{R}}
+\renewcommand{\emptyset}{\varnothing}
 
-% cats
+
+% Differentiable structures
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\Hess}{Hess}
+\DeclarePairedDelimiterX{\norm}[1]{\lVert}{\rVert}{#1}
+\newcommand{\diff}{\mathrm{d}}
+\newcommand{\Diff}{\mathrm{D}}
+
+% Common categories
 \newcommand{\Set}{{\cat{S}\textit{et}}}
 \newcommand{\Vect}{{\cat{V}\textit{ect}}}
 \newcommand{\FinVect}{{\cat{F}\textit{in}\cat{V}\textit{ect}}}
@@ -87,7 +97,15 @@
 \newcommand{\Grp}{{\cat{G}\textit{rp}}}
 \newcommand{\Ab}{{\cat{A}\textit{b}}}
 \newcommand{\Graph}{{\cat{G}\textit{raph}}}
+\newcommand{\SimpGraph}{{\cat{S}\textit{imp}\cat{G}\textit{ph}}}
 \newcommand{\Rng}{{\cat{R}\textit{ing}}}
+
+% Graphs
+\DeclareMathOperator{\Circ}{circ}
+\DeclareMathOperator{\diam}{diam}
+\newcommand{\emptygraph}{\varnothing}
+\DeclarePairedDelimiterX{\size}[1]{\lVert}{\rVert}{#1}
+
 
 \author{Luiz G. Mugnaini A.}
 \date{Last modification: \today}

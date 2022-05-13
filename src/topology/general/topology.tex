@@ -1,247 +1,243 @@
 \section{Topology}
 
 \begin{definition}[Topology]
-  Let \(X\) be a set and \(\mathcal T \subseteq 2^X\). We say that \(\mathcal
-  T\) is a topology for \(X\) if
-  \begin{enumerate}[(T1)]
-    \item \(X, \emptyset \in \mathcal T\).
-    \item The arbitrary union of elements of \(\mathcal T\) is an element of
-      \(\mathcal T\). 
-    \item The finite intersection of elements of \(\mathcal T\) is an element of
-      \(\mathcal T\).
-  \end{enumerate}
-  The elements of \(\mathcal T\) are called open sets of \(X\).
+Let \(X\) be a set and \(\mathcal T \subseteq 2^X\). We say that \(\mathcal T\) is a
+topology for \(X\) if
+\begin{enumerate}[(T1)]
+  \item \(X, \emptyset \in \mathcal T\).
+  \item The arbitrary union of elements of \(\mathcal T\) is an element of
+    \(\mathcal T\).
+  \item The finite intersection of elements of \(\mathcal T\) is an element of
+    \(\mathcal T\).
+\end{enumerate}
+The elements of \(\mathcal T\) are called open sets of \(X\).
 \end{definition}
 
 \subsection{Some Examples of Topologies}
 
 \begin{example}
-  The collection \(\mathcal T_1 = \{U \subseteq X : U = \emptyset \text{ or } X
-  \setminus U \text{ is finite}\}\) is the cofinite topology on \(X\).
+The collection \(\mathcal T_1 = \{U \subseteq X : U = \emptyset \text{ or } X \setminus U \text{ is
+finite}\}\) is the cofinite topology on \(X\).
 \end{example}
 
 \begin{example}
-  The collection \(\mathcal T_2 = \{U \subseteq X : U = \emptyset \text{ or } X
-  \setminus U \text{ is countable}\}\) is the cocountable topology on \(X\).
+The collection \(\mathcal T_2 = \{U \subseteq X : U = \emptyset \text{ or } X \setminus U \text{ is
+countable}\}\) is the cocountable topology on \(X\).
 \end{example}
 
 \begin{example}
-  Let \(p \in X\), then \(\mathcal T_3 = \{U \subseteq X : U = \emptyset \text{
-  or } p \in U\}\) is the particular point topology on \(X\).
+Let \(p \in X\), then \(\mathcal T_3 = \{U \subseteq X : U = \emptyset \text{ or } p \in U\}\) is
+the particular point topology on \(X\).
 \end{example}
 
 \begin{example}
-  Let \(p \in X\), then \(\mathcal T_4 = \{U \subseteq X : U = X \text{
-  or } p \not\in U\}\) is the excluded point topology on \(X\).
+Let \(p \in X\), then \(\mathcal T_4 = \{U \subseteq X : U = X \text{ or } p \not\in U\}\)
+is the excluded point topology on \(X\).
 \end{example}
 
 \section{Closed and Open Sets}
 
 \begin{definition}[Closed set]
-  Let \(X\) be a topological space. We define a set \(A \subseteq X\) to be
-  closed if \(X \setminus A\) is open.
+Let \(X\) be a topological space. We define a set \(A \subseteq X\) to be
+closed if \(X \setminus A\) is open.
 \end{definition}
 
 \begin{proposition}
-  Let \(X\) be a topological space, then
-  \begin{enumerate}
-    \item The sets \(X\) and \(\emptyset\) are closed.
-    \item The finite union of closed sets is closed.
-    \item The arbitrary intersection of closed sets is closed.
-  \end{enumerate}
+Let \(X\) be a topological space, then
+\begin{enumerate}
+  \item The sets \(X\) and \(\emptyset\) are closed.
+  \item The finite union of closed sets is closed.
+  \item The arbitrary intersection of closed sets is closed.
+\end{enumerate}
 \end{proposition}
 
 \begin{definition}[Miscelaneous]
-  Let \(X\) be a topological space and \(A \subseteq X\) be a set. We define
-  \begin{enumerate}
-    \item\label{def: closure}
-      The closure of \(A\) is the least closed set, \(\overline A\), that
-      contains \(A\). This can be equivalently described as
+Let \(X\) be a topological space and \(A \subseteq X\) be a set. We define
+\begin{enumerate}
+  \item\label{def: closure}
+    The closure of \(A\) is the least closed set, \(\overline A\), that
+    contains \(A\). This can be equivalently described as
+    \[
+      \overline A = \bigcap \{F \subseteq X : A \subseteq F \text{ and } F
+      \text{ is closed}\}.
+    \]
+  \item\label{def: interior}
+    The interior of \(A\) is the biggest open set \(\Int(A)\) contained in
+    \(A\). That is
       \[
-        \overline A = \bigcap \{F \subseteq X : A \subseteq F \text{ and } F
-        \text{ is closed}\}.
-      \] 
-    \item\label{def: interior}
-      The interior of \(A\) is the biggest open set \(\Int(A)\) contained in
-      \(A\). That is 
-       \[
-         \Int(A) = \bigcup \{U \subseteq X : U \subseteq A, U \text{ is open}\}.
-      \] 
-    \item\label{def: exterior}
-      The exterior of \(A\) in \(X\) is defined as
-      \[
-        \Ext(A) = X \setminus \overline A.
-      \] 
-    \item\label{def: boundary}
-      The boundary of \(A\) in \(X\) is defined as
-      \[
-        \partial A = X \setminus (\Int(A) \cup \Ext(A)).
-      \] 
-  \end{enumerate}
+        \Int(A) = \bigcup \{U \subseteq X : U \subseteq A, U \text{ is open}\}.
+    \]
+  \item\label{def: exterior}
+    The exterior of \(A\) in \(X\) is defined as
+    \[
+      \Ext(A) = X \setminus \overline A.
+    \]
+  \item\label{def: boundary}
+    The boundary of \(A\) in \(X\) is defined as
+    \[
+      \partial A = X \setminus (\Int(A) \cup \Ext(A)).
+    \]
+\end{enumerate}
 \end{definition}
 
 \begin{proposition}\label{prop: closure equivalent prop}
-  Let \(A \subseteq X\) be a subset of the topological space \(X\). The
-  following propositions are equivalent
-  \begin{enumerate}[(i)]
-    \item \(x \in \overline A\).
-    \item Every neighbourhood \(U \subseteq X\) of \(x\) is such that \(U
-      \cap A \neq \emptyset\).
-    \item There exists a base \(\mathcal B_x\) at the point \(x\) (see
-      \cref{def: basis at a point}) such that for all \(U \in \mathcal B_x\) we
-      have \(U \cap A = \emptyset\).
-  \end{enumerate}
+Let \(A \subseteq X\) be a subset of the topological space \(X\). The
+following propositions are equivalent
+\begin{enumerate}[(i)]
+  \item \(x \in \overline A\).
+  \item Every neighbourhood \(U \subseteq X\) of \(x\) is such that \(U
+    \cap A \neq \emptyset\).
+  \item There exists a base \(\mathcal B_x\) at the point \(x\) (see
+    \cref{def: basis at a point}) such that for all \(U \in \mathcal B_x\) we
+    have \(U \cap A = \emptyset\).
+\end{enumerate}
 \end{proposition}
 
 \begin{proof}
-  (i \(\Rightarrow\) ii) Let \(x \in X\) and suppose that ii is false for \(x\),
-  so that \(\exists U \subseteq X\) neighbourhood of \(x\) such that \(U \cap A
-  = \emptyset\). Then \(A \subseteq X \setminus U\), that is, \(A\) is a subset
-  of the complement of \(U\). Since \(U\) is open, then \(X \setminus U \in C_A
-  := \{F \subseteq X : A \subseteq F,\ F \text{ is closed}\}\). From the
-  definition of closure, we have that \(\overline A \subseteq X \setminus U\)
-  and therefore \(x \not\in \overline A\). (ii \(\Rightarrow\) iii) From the
-  definition of a base at the point \(x\), we know that every \(U \in \mathcal
-  B_x\) is a neighbourhood of \(x\), hence if ii is true for \(x\), proposition
-  iii follows immediately. (\(\text{iii} \Rightarrow \text i\)) Let \(x \in X\)
-  such that \(x \not\in \overline A\), so that proposition i is false for \(x\).
-  From the definition of closure, there exists \(F \subseteq C_A\) such that \(x
-  \not\in F\). Consider the open complement \(V = X \setminus F\) so that \(x
-  \in V\) and \(V \cap A = \emptyset\). Hence, given any base at \(x\) there
-  exists a neighbourhood of \(x\), say \(U\), such that \(U \subseteq V\) and
-  hence \(U \cap A = \emptyset\), which implies that proposition iii is false
-  for \(x\).
+(i \(\Rightarrow\) ii) Let \(x \in X\) and suppose that ii is false for \(x\),
+so that \(\exists U \subseteq X\) neighbourhood of \(x\) such that \(U \cap A
+= \emptyset\). Then \(A \subseteq X \setminus U\), that is, \(A\) is a subset
+of the complement of \(U\). Since \(U\) is open, then \(X \setminus U \in C_A
+:= \{F \subseteq X : A \subseteq F,\ F \text{ is closed}\}\). From the
+definition of closure, we have that \(\overline A \subseteq X \setminus U\)
+and therefore \(x \not\in \overline A\). (ii \(\Rightarrow\) iii) From the
+definition of a base at the point \(x\), we know that every \(U \in \mathcal
+B_x\) is a neighbourhood of \(x\), hence if ii is true for \(x\), proposition
+iii follows immediately. (\(\text{iii} \Rightarrow \text i\)) Let \(x \in X\)
+such that \(x \not\in \overline A\), so that proposition i is false for \(x\).
+From the definition of closure, there exists \(F \subseteq C_A\) such that \(x
+\not\in F\). Consider the open complement \(V = X \setminus F\) so that \(x
+\in V\) and \(V \cap A = \emptyset\). Hence, given any base at \(x\) there
+exists a neighbourhood of \(x\), say \(U\), such that \(U \subseteq V\) and
+hence \(U \cap A = \emptyset\), which implies that proposition iii is false
+for \(x\).
 \end{proof}
 
 \begin{corollary}\label{cor: disjoint closure persistence}
-  If \(U\) is an open set and \(U \cap A = \emptyset\), then \(U \cap \overline
-  A = \emptyset\). Also, if \(U\) and \(V\) are disjoint sets, then \(U \cap
-  \overline V = \overline U \cap V = \emptyset\).
+If \(U\) is an open set and \(U \cap A = \emptyset\), then \(U \cap \overline
+A = \emptyset\). Also, if \(U\) and \(V\) are disjoint sets, then \(U \cap
+\overline V = \overline U \cap V = \emptyset\).
 \end{corollary}
 
 \begin{proof}
-  Suppose \(U \cap A = \emptyset\) and that there exists \(x \in U \cap
-  \overline A\), so that \(x \in \overline A\). Since \(U\) is open, it
-  is a neighbourhood of \(x\), hence from \cref{prop: closure equivalent prop}
-  we find that \(U \cap A \neq \emptyset\), which is false, thus \(U \cap
-  \overline A = \emptyset\).
+Suppose \(U \cap A = \emptyset\) and that there exists \(x \in U \cap
+\overline A\), so that \(x \in \overline A\). Since \(U\) is open, it
+is a neighbourhood of \(x\), hence from \cref{prop: closure equivalent prop}
+we find that \(U \cap A \neq \emptyset\), which is false, thus \(U \cap
+\overline A = \emptyset\).
 \end{proof}
 
 \begin{proposition}\label{prop: open set nbhd criterion}
-  Let be \(X\) a topological space and \(A \subseteq X\) be a subset. A point
-  \(x \in \Int(A)\) if and only if there exists a neighbourhood \(U \subseteq
-  X\) of \(x\) such that \(U \subseteq A\).
+Let be \(X\) a topological space and \(A \subseteq X\) be a subset. A point
+\(x \in \Int(A)\) if and only if there exists a neighbourhood \(U \subseteq
+X\) of \(x\) such that \(U \subseteq A\).
 \end{proposition}
 
 \begin{proof}
-  Let \(x \in A\) be any point. Suppose \(\exists U \subseteq X\) neighbourhood
-  of \(x\) such that \(U \subseteq A\), then from the fact that \(U\) is open we
-  conclude that \(U \subseteq \Int(A)\) from the definition of the interior
-  operator. Suppose \(x \in \Int A = \bigcup \{U \subseteq A : U \text{ is
-  open}\}\) then there exists \(U \subseteq A\) open such that \(x \in U\).
+Let \(x \in A\) be any point. Suppose \(\exists U \subseteq X\) neighbourhood
+of \(x\) such that \(U \subseteq A\), then from the fact that \(U\) is open we
+conclude that \(U \subseteq \Int(A)\) from the definition of the interior
+operator. Suppose \(x \in \Int A = \bigcup \{U \subseteq A : U \text{ is
+open}\}\) then there exists \(U \subseteq A\) open such that \(x \in U\).
 \end{proof}
 
 \begin{proposition}
-  Let \(X\) be a topological space and \(A \subseteq X\). Then \(\overline{X
-  \setminus A} = X \setminus \Int(A)\) and also \(\Int(X \setminus A) =
-  X \setminus \overline A\).
+Let \(X\) be a topological space and \(A \subseteq X\). Then \(\overline{X
+\setminus A} = X \setminus \Int(A)\) and also \(\Int(X \setminus A) =
+X \setminus \overline A\).
 \end{proposition}
 
 \begin{proof}
-  We prove the first equality. Let \(\mathcal A := \{U \subseteq A : U \text{ is
-  open}\}\), from definition we have that \(\Int(A) = \bigcup_{U \in \mathcal A}
-  U\), moreover, \(X \setminus \Int(A) = X \setminus \bigcup_{U \in \mathcal A}
-  U = \bigcap_{U \in \mathcal A} X \setminus U\) from de Morgan's Laws. Notice
-  that obviously \(X \setminus U \subseteq X\) and moreover since \(U\) is open,
-  then the complement \(X \setminus U\) is closed. This makes \(X \setminus
-  \Int(A) = \bigcap_{U \in \mathcal A} X \setminus U = \overline{X \setminus
-  A}\). Now we show the second equality. Define \(\mathcal{\widetilde A} := \{U
-  \subseteq A : U \text{ is closed}\}\), then \(\overline A = \bigcap_{U \in
-  \mathcal{\widetilde A}} U\) and hence \(X \setminus \overline A = X \setminus
-  \bigcap_{U \in \mathcal{\widetilde A}} U = \bigcup_{U \in \mathcal{\widetilde
-  A}} X \setminus U\). Notice that \(X\setminus U \subseteq X \setminus A\) and
-  since \(U\) is closed, then \(X \setminus U\) is open. From this we conclude
-  that \(X \setminus \overline A = \bigcup_{U \in \mathcal{\widetilde A}} X
-  \setminus U = \Int(X \setminus A)\).
+We prove the first equality. Let \(\mathcal A := \{U \subseteq A : U \text{ is
+open}\}\), from definition we have that \(\Int(A) = \bigcup_{U \in \mathcal A} U\),
+moreover, \(X \setminus \Int(A) = X \setminus \bigcup_{U \in \mathcal A} U = \bigcap_{U \in \mathcal A} X \setminus U\)
+from de Morgan's Laws. Notice that obviously \(X \setminus U \subseteq X\) and moreover since
+\(U\) is open, then the complement \(X \setminus U\) is closed. This makes \(X \setminus \Int(A)
+= \bigcap_{U \in \mathcal A} X \setminus U = \overline{X \setminus A}\). Now we show the second
+equality. Define \(\mathcal{\widetilde A} := \{U \subseteq A : U \text{ is closed}\}\),
+then \(\overline A = \bigcap_{U \in \mathcal{\widetilde A}} U\) and hence \(X \setminus
+\overline A = X \setminus \bigcap_{U \in \mathcal{\widetilde A}} U = \bigcup_{U \in \widetilde{\mathcal{A}}} X \setminus
+U\). Notice that \(X\setminus U \subseteq X \setminus A\) and since \(U\) is closed, then \(X \setminus U\) is
+open. From this we conclude that \(X \setminus \overline A = \bigcup_{U \in \mathcal{\widetilde
+A}} X \setminus U = \Int(X \setminus A)\).
 \end{proof}
 
 \begin{proposition}\label{prop: finite union of closures}
-  Let a finite collection of subsets \(\{A_i\}_{i = 1}^n \subseteq 2^X\), where
-  \(X\) is a topological space, then we have that
-  \[
-    \overline{\bigcup_{i = 0}^n A_i} = \bigcup_{i = 0}^n \overline{A_i}.
-  \] 
+Let a finite collection of subsets \(\{A_i\}_{i = 1}^n \subseteq 2^X\), where
+\(X\) is a topological space, then we have that
+\[
+  \overline{\bigcup_{i = 0}^n A_i} = \bigcup_{i = 0}^n \overline{A_i}.
+\]
 \end{proposition}
 
 \begin{proof}
-  It suffices to prove that for \(A, B \subseteq X\) we have \(\overline{A \cup
-  B} = \overline A \cup \overline B\). Notice that \(\overline A,
-  \overline B \subseteq \overline{A \cup B}\), hence \(\overline A \cup
-  \overline B \subseteq \overline{A \cup B}\). Now, since \(A \subseteq
-  \overline A\) and \(B \subseteq \overline B\), we find \(A \cup B \subseteq
-  \overline A \cup \overline B\), then \(\overline{A \cup B} \subseteq
-  \overline{\overline A \cup \overline B} = \overline A \cup \overline B\).
+It suffices to prove that for \(A, B \subseteq X\) we have \(\overline{A \cup
+B} = \overline A \cup \overline B\). Notice that \(\overline A,
+\overline B \subseteq \overline{A \cup B}\), hence \(\overline A \cup
+\overline B \subseteq \overline{A \cup B}\). Now, since \(A \subseteq
+\overline A\) and \(B \subseteq \overline B\), we find \(A \cup B \subseteq
+\overline A \cup \overline B\), then \(\overline{A \cup B} \subseteq
+\overline{\overline A \cup \overline B} = \overline A \cup \overline B\).
 \end{proof}
 
 \begin{definition}[Locally finite family]
-  A collection of subsets \(\{A_i\}_{i \in I} \subseteq 2^X\) of a topological
-  space \(X\) is said to be a locally finite family if for every point \(x\)
-  there exists a neighbourhood \(U \subseteq X\) for which the collection \(\{i
-  \in I: U \cap A_i \neq \emptyset\}\) is finite.
+A collection of subsets \(\{A_i\}_{i \in I} \subseteq 2^X\) of a topological
+space \(X\) is said to be a locally finite family if for every point \(x\)
+there exists a neighbourhood \(U \subseteq X\) for which the collection \(\{i
+\in I: U \cap A_i \neq \emptyset\}\) is finite.
 \end{definition}
 
 \begin{definition}[Discrete family]
-  A collection of subsets \(\{A_i\}_{i \in I} \subseteq 2^X\) of a topological
-  space \(X\) is said to be a discrete family if for all \(x \in X\) there
-  exists a neighbourhood \(U \subseteq X\) such that there exists at most one
-  \(A_i\) in the family such that \(U \cap A \neq \emptyset\). A discrete family
-  is also a locally finite family.
+A collection of subsets \(\{A_i\}_{i \in I} \subseteq 2^X\) of a topological
+space \(X\) is said to be a discrete family if for all \(x \in X\) there
+exists a neighbourhood \(U \subseteq X\) such that there exists at most one
+\(A_i\) in the family such that \(U \cap A \neq \emptyset\). A discrete family
+is also a locally finite family.
 \end{definition}
 
 \begin{proposition}
-  Given a locally finite family of sets \(\{A_i\}_{i \in I} \subseteq 2^X\),
-  where \(X\) is a topological space, we have that
-  \[
-    \overline{\bigcup_{i \in  I} A_i} = \bigcup_{i \in  I} \overline{A_i}.
-  \] 
+Given a locally finite family of sets \(\{A_i\}_{i \in I} \subseteq 2^X\),
+where \(X\) is a topological space, we have that
+\[
+  \overline{\bigcup_{i \in  I} A_i} = \bigcup_{i \in  I} \overline{A_i}.
+\]
 \end{proposition}
 
 \begin{proof}
-  Notice that clearly \(A_i \subseteq \overline{\bigcup_{i \in  I} A_i}\) for
-  all \(i \in I\), hence \(\bigcup_{i \in  I} \overline{A_i} \subseteq
-  \overline{\bigcup_{i \in I} A_i}\). Moreover, we have from hypothesis that
-  \(\{A_i\}_{i \in I}\) is a locally finite family, thus given \(x \in
-  \overline{\bigcup_{i \in  I} A_i}\) we can find a neighbourhood of \(x\), say
-  \(U \subset X\), such that \(I_0 := \{i \in I : U \cap A_i \neq \emptyset\}\) 
-  is finite. Notice that from \cref{prop: closure equivalent prop} we have that
-  \(x\) cannot be a limit point of any of the sets with index \(i \in I
-  \setminus I_0\), hence \(x \not\in \overline{\bigcup_{i \in  I \setminus I_0}
-  A_i}\). On the other hand, we have \(x \in \overline{\bigcup_{i \in  I} A_i} =
-  \overline{\bigcup_{i \in  I_0} A_i} \cup \overline{\bigcup_{i \in  I \setminus
-  I_0} A_i}\), which implies that \(x \in \overline{\bigcup_{i \in  I_0} A_i} =
-  \bigcup_{i \in  I_0} \overline{A_i} \subseteq \bigcup_{i \in  I}
-  \overline{A_i}\) (the equality comes from the fact that \(I_0\) is finite and
-  hence \cref{prop: finite union of closures} hold).
+Notice that clearly \(A_i \subseteq \overline{\bigcup_{i \in  I} A_i}\) for
+all \(i \in I\), hence \(\bigcup_{i \in  I} \overline{A_i} \subseteq
+\overline{\bigcup_{i \in I} A_i}\). Moreover, we have from hypothesis that
+\(\{A_i\}_{i \in I}\) is a locally finite family, thus given \(x \in
+\overline{\bigcup_{i \in  I} A_i}\) we can find a neighbourhood of \(x\), say
+\(U \subset X\), such that \(I_0 := \{i \in I : U \cap A_i \neq \emptyset\}\)
+is finite. Notice that from \cref{prop: closure equivalent prop} we have that
+\(x\) cannot be a limit point of any of the sets with index \(i \in I
+\setminus I_0\), hence \(x \not\in \overline{\bigcup_{i \in  I \setminus I_0}
+A_i}\). On the other hand, we have \(x \in \overline{\bigcup_{i \in  I} A_i} =
+\overline{\bigcup_{i \in  I_0} A_i} \cup \overline{\bigcup_{i \in  I \setminus
+I_0} A_i}\), which implies that \(x \in \overline{\bigcup_{i \in  I_0} A_i} =
+\bigcup_{i \in  I_0} \overline{A_i} \subseteq \bigcup_{i \in  I}
+\overline{A_i}\) (the equality comes from the fact that \(I_0\) is finite and
+hence \cref{prop: finite union of closures} hold).
 \end{proof}
 
 \begin{proposition}
-  If \(\{A_i\}_{i \in I}\) is a locally finite (resp. discrete) family, then the
-  family \(\{\overline{A_i}\}_{i \in I}\) is locally finite (resp. discrete).
+If \(\{A_i\}_{i \in I}\) is a locally finite (resp. discrete) family, then the
+family \(\{\overline{A_i}\}_{i \in I}\) is locally finite (resp. discrete).
 \end{proposition}
 
 \begin{proof}
-  Let the locally finite (resp. discrete) family \(\{A_i\}_{i \in I}\). Given
-  any element \(x \in X\) and a neighbourhood \(U\) of \(x\) such that the
-  indexing set \(I_0 := \{i \in I: U \cap A_i \neq \emptyset\}\) is finite
-  (resp. is either empty or a singleton). Notice that since \(U \cap A_i
-  \subseteq U \cap \overline{A_i}\), we find that \(\forall i \in I_0, U \cap
-  \overline{A_i} \neq \emptyset\), so that \(I_0 = I_0' := \{i \in I: U \cap
-  \overline{A_i} \neq \emptyset\}\). Since \(U\) is an open set, from \cref{cor:
-  disjoint closure persistence} we find that \(U \cap \overline{A_i} = U \cap
-  A_i = \emptyset\) for all \(i \in I \setminus I_0\). Which finishes the proof.
+Let the locally finite (resp. discrete) family \(\{A_i\}_{i \in I}\). Given
+any element \(x \in X\) and a neighbourhood \(U\) of \(x\) such that the
+indexing set \(I_0 := \{i \in I: U \cap A_i \neq \emptyset\}\) is finite
+(resp. is either empty or a singleton). Notice that since \(U \cap A_i
+\subseteq U \cap \overline{A_i}\), we find that \(\forall i \in I_0, U \cap
+\overline{A_i} \neq \emptyset\), so that \(I_0 = I_0' := \{i \in I: U \cap
+\overline{A_i} \neq \emptyset\}\). Since \(U\) is an open set, from \cref{cor:
+disjoint closure persistence} we find that \(U \cap \overline{A_i} = U \cap
+A_i = \emptyset\) for all \(i \in I \setminus I_0\). Which finishes the proof.
 \end{proof}
 
 \subsection{Dense, Derived, and Borel Sets}
 
 \todo[inline]{Write}
-
