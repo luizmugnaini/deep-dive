@@ -124,7 +124,7 @@
 \end{proof}
 
 \begin{proposition}[Group morphism properties]
-  Let \((G, \circledast), (H, \circledcirc) \in \Grp\) and \(\varphi \in
+  Let \((G, \circledast), (H, \circledcirc)\) be groups and consider \(\varphi \in
   \Hom_\Grp(G, H)\). Define \(\operatorname{inv}_G: G \isoto G\) and
   \(\operatorname{inv}_H: H \isoto H\) as the maps \(g \xmapsto
   {\operatorname{inv}_G} g^{-1}\) and \(h \xmapsto {\operatorname{inv}_H}
@@ -150,11 +150,11 @@
   \[
     e_H = \varphi(g) \circledcirc \varphi(g^{-1}).
   \]
-  Hence \(\varphi(g^{-1}) = \varphi(g)^{-1}\). Moreover, this implies that \(e_G
+  Hence \(\varphi(g^{-1}) = {\varphi(g)}^{-1}\). Moreover, this implies that \(e_G
   \xmapsto \varphi e_H\) since
   \[
     \varphi(e_G) = \varphi(g \circledast g^{-1}) = \varphi(g) \circledcirc
-    \varphi(g^{-1}) = \varphi(g) \circledcirc \varphi(g)^{-1} = e_H.
+    \varphi(g^{-1}) = \varphi(g) \circledcirc {\varphi(g)}^{-1} = e_H.
   \]
 \end{proof}
 
@@ -175,7 +175,7 @@ relies on arguments based on the order of elements of each group.
 \end{proposition}
 
 \begin{proof}
-  Notice that \(\phi(g)^{|g|} = \phi(g^{|g|}) = \phi(e_G) = e_H\), hence \(|g|\)
+  Notice that \({\phi(g)}^{|g|} = \phi(g^{|g|}) = \phi(e_G) = e_H\), hence \(|g|\)
   is a multiple of the order of \(\phi(g) \in H\).
 \end{proof}
 
@@ -185,7 +185,7 @@ relies on arguments based on the order of elements of each group.
   recall that \(|g|\) must be a divisor of \(7\) --- see \cref{prop:
   ord-cyclic-elem}. On the other hand, if \(h \in C_{15}\) then \(|h|\) divides
   \(15\). From \cref{prop: grp-morph-order} we see that if \(\phi(g) = h\), then
-  \(|h|\) must divide \(|g|\), but \(\operatorname{gcd}(7, 15) = 1\), hence
+  \(|h|\) must divide \(|g|\), but \(\gcd(7, 15) = 1\), hence
   \(|h| = 1\) --- that is \(h = e_H\) and \(\phi\) is the trivial morphism
   \(\phi(g) = e_H\) for all \(g \in C_7\). This shows that there is no
   non-trivial morphism between \(C_7\) and \(C_{15}\).
@@ -204,9 +204,9 @@ relies on arguments based on the order of elements of each group.
   Let \(\phi: G \to H\) be any morphism. If \(\phi\) is injective then clearly
   \(\ker\phi = \{e_G\}\). On the other hand, if \(\ker\phi = \{e_G\}\), then,
   given elements \(g, g' \in G\) such that \(\phi(g) = \phi(g')\), then,
-  multiplying both sides by \(\phi(g')^{-1}\) we get
+  multiplying both sides by \(\phi{(g')}^{-1}\) we get
   \[
-    \phi(g)\phi(g')^{-1} = \phi(g) \phi(g'^{-1}) = \phi(gg'^{-1}) = e_G.
+    \phi(g) {\phi(g')}^{-1} = \phi(g) \phi(g'^{-1}) = \phi(gg'^{-1}) = e_G.
   \]
   That is, \(gg'^{-1} \in \ker\phi\), but since \(\ker\phi\) is trivial, then
   \(gg'^{-1} = e_G\) and hence \(g = g'\) --- in other words, \(\phi\) is
@@ -227,14 +227,14 @@ relies on arguments based on the order of elements of each group.
   between the elements of \(G\) and \(H\).
 
   On the other hand, if \(\phi\) is a bijection, consider its set-function
-  inverse \((F\phi)^{-1}: H \to G\). We now show that \((F\phi)^{-1}\) preserves
-  the structures of groups. Since \(\phi(e_G) = e_H\), then \((F\phi)^{-1}(e_H)
+  inverse \({(F\phi)}^{-1}: H \to G\). We now show that \({(F\phi)}^{-1}\) preserves
+  the structures of groups. Since \(\phi(e_G) = e_H\), then \({(F\phi)}^{-1}(e_H)
   = e_G\). Moreover, for any \(h, h' \in H\) --- since \(\phi\) is surjective
   ---, take elements \(g, g' \in G\) such that \(\phi(g) = h\) and \(\phi(g') =
-  h'\), then we find that \((F\phi)^{-1}(hh') = g g' = (F\phi)^{-1}(h) \cdot
-  (F\phi)^{-1}(h')\). This implies in the existence of a naturally induced
+  h'\), then we find that \({(F\phi)}^{-1}(hh') = g g' = {(F\phi)}^{-1}(h) \cdot
+  {(F\phi)}^{-1}(h')\). This implies in the existence of a naturally induced
   morphism of groups \(\phi^{-1}: H \to G\) defined by \(\phi^{-1}(h) =
-  (F\phi)^{-1}(h)\). It is clear that \(\phi^{-1}\) is the right and left
+  {(F\phi)}^{-1}(h)\). It is clear that \(\phi^{-1}\) is the right and left
   inverse of \(\phi\), thus \(\phi^{-1}\) is the inverse of \(\phi\) in \(\Grp\)
   and \(\phi\) is an isomorphism.
 \end{proof}
@@ -279,8 +279,7 @@ relies on arguments based on the order of elements of each group.
   bijection --- hence an isomorphism, so \(\gamma_g \in \Aut_\Grp(G)\).
 \end{proof}
 
-\begin{lemma}[Inner automorphism correspondence]
-  \label{lem: grp-inner-aut-cor}
+\begin{lemma}[Inner automorphism correspondence]\label{lem: grp-inner-aut-cor}
   Let \(G \in \Grp\). The map \(\phi: G \to \Aut_\Grp(G)\) defined by the
   mapping \(\phi(g) = \gamma_g\) (where \(\gamma_g\) is defined in \cref{lem:
   grp-inner-aut}) is a morphism of groups.
@@ -289,7 +288,7 @@ relies on arguments based on the order of elements of each group.
 \begin{proof}
   Let \(g, g' \in G\) be any elements, then
   \[
-    \gamma_{gg'}(a) = (gg')a(gg')^{-1} = (g g') a (g'^{-1} g^{-1}
+    \gamma_{gg'}(a) = (gg')a{(gg')}^{-1} = (g g') a (g'^{-1} g^{-1})
     = g(g' a g'^{-1}) g^{-1} = \gamma_g \gamma_{g'}(a).
   \]
   This being said, its easy to see that \(\phi\) preserves the group structure:
@@ -315,12 +314,12 @@ follows:
 \begin{proof}
   Let \(G\) be a cyclic group of order \(n\). Since \(G\) is finite, then there
   exists an isomorphism \(\phi: G \isoto \Z/n\Z\). Consider the element \(g =
-  \phi^{-1}([1]_n) \in G\), from \cref{prop: iso-order-com} we see that \(|g| =
+  \phi^{-1}({[1]}_n) \in G\), from \cref{prop: iso-order-com} we see that \(|g| =
   n\).
 
   Let \(G\) be a finite group of order \(n\) and \(x \in G\) be such that \(|x|
   = n\). Let \(\phi: G \to \Z/n\Z\) be any morphism of groups sending \(x
-  \mapsto [1]_n\). Consider the collection \(G' = \{e_G, x, x^2, \dots,
+  \mapsto {[1]}_n\). Consider the collection \(G' = \{e_G, x, x^2, \dots,
   x^{n-1}\} \subseteq G\), and notice that, together with the binary operation
   of \(G\), \(G'\) becomes a group of \(n\) elements --- that is, \(G' = G\) and
   every element \(g \in G\) can be written as \(g = x^k\) for some \(1 \leq k
@@ -521,7 +520,6 @@ category.
   --- where \(F: \Grp \to \Set\) is a forgetful functor.
 \end{corollary}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Coproduct and Fiber Product}
 
 \begin{proposition}[Coproduct in \(\Ab\)]\label{prop: coprod-ab}
@@ -561,7 +559,7 @@ category.
 \end{proof}
 
 \begin{remark}[Coproducts in \(\Grp\)]
-  Proposition \ref{prop: coprod-ab} is not at all true for the category of
+  \cref{prop: coprod-ab} is not at all true for the category of
   groups. Consider for instance the cyclic groups \(C_2 = \{e_x, x\}\) and \(C_3
   = \{e_y, y, y^2\}\). Let \(\sigma_k \in S_3\), for \(0 \leq k \leq 2\) be the
   rotation of \(\{1, 2, 3\}\) by \(k\), that is, the permutations represented by
@@ -625,9 +623,8 @@ category.
   \Z^2\}\) and \(J = \{(c,d) \in \Z^2\}\) --- we have
   \begin{align*}
     \phi(q) \phi(p)
-    &= \phi\left( \prod_{(a, b) \in I} x^a y^b \right)
-    \phi\left( \prod_{(c, d) \in J} x^c y^d \right)
-    \\
+    = \phi\left[ \prod_{(a, b) \in I} x^a y^b \right]
+    \phi\left[ \prod_{(c, d) \in J} x^c y^d \right]
     &= \prod_{(a, b) \in I} f(x^a) k(y^b)
     \prod_{(c, d) \in J} f(x^c) k(y^d)
     \\
@@ -637,8 +634,7 @@ category.
     \\
     &= \phi\left(\prod_{(a, b) \in I} x^a y^b
       \prod_{(c, d) \in J} x^c y^d\right)
-    \\
-    &= \phi(qp)
+    = \phi(qp)
   \end{align*}
   that is, \(\phi\) is a morphism of groups --- where we define \(A\) as the
   concatenation of the coefficients \(I\) and \(J\). We have shown that the
@@ -666,11 +662,10 @@ category.
   \subseteq \Ab\)\footnote{As a reminder: \(\Ab_W\) is the category whose
   objects are morphisms \(f \in \Hom_\Ab(-, W)\). If \(f: G \to W\) and \(g: H
   \to W\) are objects of \(\Ab_W\), a morphism \(h \in \Hom_{\Ab_W}(f, g)\) is
-  such that \(hg = f\).}
-  --- for which exists natural projections \(\pi_G\) and \(\pi_H\). Let \(Q \in
-  \Ab\) be any abelian group and consider any morphisms \(f \in \Hom_\Ab(Q, G)\)
-  and \(k \in \Hom_\Ab(Q, H)\). Then there exists a unique morphism \(\varphi
-  \in \Hom_\Ab(Q, P)\) such that the following diagram commutes
+  such that \(hg = f\).} for which exists natural projections \(\pi_G\) and
+  \(\pi_H\). Let \(Q \in \Ab\) be any abelian group and consider any morphisms \(f \in
+  \Hom_\Ab(Q, G)\) and \(k \in \Hom_\Ab(Q, H)\). Then there exists a unique
+  morphism \(\varphi \in \Hom_\Ab(Q, P)\) such that the following diagram commutes
   \[
     \begin{tikzcd}
       Q \ar[dr, dashed, "\varphi"] \ar[ddr, bend right, swap, "f"]
@@ -690,13 +685,13 @@ category.
     \phi(g^{-1}) = \phi(g)^{-1} = \psi(h)^{-1} = \psi(h^{-1}),
   \]
   that is, \((g^{-1}, h^{-1}) \in G \times_W H\) exists and is the inverse of
-  \((g, h)\). Moreover, given any \((g, h), (g', h') \in G \times_W H\), the
+  \((g, h)\). Moreover, given any elements \((g, h), (g', h') \in G \times_W H\), the
   product \((g, h)(g', h') = (gg', hh')\) is such that
   \[
     \phi(gg') = \phi(g) \phi(g') = \psi(h) \psi(h') = \psi(hh'),
   \]
   thus \((gg', hh') \in G \times_W H\). This shows that \(G \times_W H\) is
-  indeed a group and since \(G \times H\) is aeolian, so is the fiber product
+  indeed a group and since \(G \times H\) is abelian, so is the fiber product
   defined above.
 
   From the forgetful functor \(\Ab \to \Set\) we know that there exists a unique
@@ -710,8 +705,7 @@ category.
   that is, \(\varphi \in \Mor(\Ab)\).
 \end{proof}
 
-
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: "../../deep-dive"
+%%% TeX-master: "../deep-dive"
 %%% End:

@@ -14,14 +14,14 @@
 
 \begin{proposition}
   A space \(X\) is \(T_1\) if and only if the constant sequence \((x)_{i \in
-  \mathbb{N}}\) converges to \(x\) and only to \(x\).
+ \N}\) converges to \(x\) and only to \(x\).
 \end{proposition}
 
 \begin{proof}
   (\(\Rightarrow\)) Suppose \(X\) is \(T_1\), then certainly \(x \to x\). Let
   \(y \in X\) be distinct of \(x\), then by the \(T_1\) property, there exists a
   neighbourhood \(U \ni y\) such that \(x \not\in U\), hence \((x)_{i \in
-  \mathbb{N}}\) does not converge to \(y\). (\(\Leftarrow\)) Suppose \(X\) is
+  \N}\) does not converge to \(y\). (\(\Leftarrow\)) Suppose \(X\) is
   not \(T_1\), then choose \(y \in X\) for which every neighbourhood \(U \ni y\)
   contains \(x\), then \(x \to y\).
 \end{proof}
@@ -67,8 +67,8 @@
   sequence. Since \(X\) is Hausdorff, if \(x \neq y\) implies that there exists
   neighbourhoods \(U_x, U_y \subseteq X\) for which \(U_x \cap U_y =
   \emptyset\). From the definition of convergence, there exists \(N \in
-  \mathbb{N}\) such that \(\forall i \geq N, x_i \in U_x\) and exists \(M \in
-  \mathbb{N}\) for which \(\forall i \geq M, x_i \in U_y\). Then, for \(i \geq
+  \N\) such that \(\forall i \geq N, x_i \in U_x\) and exists \(M \in \N\)
+  for which \(\forall i \geq M, x_i \in U_y\). Then, for \(i \geq
   \max(N, M), x_i \in U_x \cap U_y\), which cannot happen if \(x \neq y\), hence
   \(x = y\).
 \end{proof}
@@ -94,8 +94,8 @@
   \[
     A \cap U_p \cap (X \setminus (\{x_i\}_{i=1}^n \setminus \{p\}))
     = \{x_i\}_{i=1}^n \cap ((X \setminus \{x_i\}_{i=1}^n) \cup \{p\})
-    = \{p\} 
-  \] 
+    = \{p\}
+  \]
   which is a contradiction to the fact that \(p\) is a limit point of \(A\)
   (because any neighbourhood of \(p\) should also contain a point of \(A\) other
   than \(p\)). Hence we conclude that \(A \cap U_p\) must be infinite.

@@ -35,7 +35,7 @@
   all bases for the topology of \(X\). We define the weight of \(X\) as
   \[
     w(X) = \min_{\mathcal B \in \mathfrak B} |\mathcal B|.
-  \] 
+  \]
 \end{definition}
 
 \begin{proposition}[Basis criterion for open sets]
@@ -71,7 +71,7 @@
 
 \begin{proposition}\label{prop: basis image surjective}
   Let \(f: X \to Y\) be a morphism of topological spaces and \(\mathcal B\) be a
-  basis for the space \(X\). Then \(f(\mathcal B) = \{f(B): B \in \mathcal B\}\) 
+  basis for the space \(X\). Then \(f(\mathcal B) = \{f(B): B \in \mathcal B\}\)
   is a basis for the space \(Y\) if and only if \(f\) is surjective and open.
 \end{proposition}
 
@@ -101,7 +101,7 @@
   \[
     \chi(x, (X, \mathcal T)) = \min_{\mathcal B_x \in \mathfrak B_x} |\mathcal
     B_x|
-  \] 
+  \]
 \end{definition}
 
 \begin{definition}[First countable]\label{def: first countable}
@@ -119,20 +119,20 @@
 
 \begin{proof}
   Let \(x, y \in X\) be distinct points, and \(\mathcal B\) be a neighbourhood
-  basis at \(x\) and \(\mathcal A\) be a neighbourhood basis at \(y\). If \(X\) 
-  is not Hausdorff, then for all \(n \in \mathbb{N}\), choose a point \(x_n \in
+  basis at \(x\) and \(\mathcal A\) be a neighbourhood basis at \(y\). If \(X\)
+  is not Hausdorff, then for all \(n \in \N\), choose a point \(x_n \in
   B_n \cap A_n\), where \(B_n \in \mathcal B\) and \(A_n \in \mathcal A\) and
-  consider the sequence \(\{x_n\}_{n \in \mathbb{N}}\). Then there exists
-  subsequences \(\{x_k\}\) and \(\{x_j\}\) for which \(x_k \to x\) and \(x_j \to
+  consider the sequence \(\{x_n\}_{n \in \N}\). Then there exists
+  sub-sequences \(\{x_k\}\) and \(\{x_j\}\) for which \(x_k \to x\) and \(x_j \to
   y\).
 \end{proof}
 
 \begin{definition}[Nested neighbourhood basis]
   Let \(X\) be a topological space and a point \(p \in X\). The infinite sequence
-  of neighbourhoods of \(p\), namely \((U_i)_{i \in \mathbb{N}}\) is said to be
-  a nested neighbourhood basis at \(p\) if for all \(i \in \mathbb{N}, U_{i+1}
+  of neighbourhoods of \(p\), namely \((U_i)_{i \in \N}\) is said to be
+  a nested neighbourhood basis at \(p\) if for all \(i \in \N, U_{i+1}
   \subseteq U_i\) and for all neighbourhood \(V\) of \(p\), there exists \(i \in
-  \mathbb{N}\) for which \(U_i \subseteq V\).
+  \N\) for which \(U_i \subseteq V\).
 \end{definition}
 
 \begin{lemma}
@@ -143,17 +143,17 @@
 \begin{proof}
   Since \(X\) is first countable, let \(\mathcal V\) be a countable basis for the
   topology of \(X\) at \(p\). If \(|\mathcal V| < \infty\) then define \(U_i :=
-  V_1 \cap \dots \cap V_{|\mathcal V|}\) for all \(i \in \mathbb{N}\). If
-  \(|\mathcal V|\) is infinite, then define for all \(i \in \mathbb{N}\) the
+  V_1 \cap \dots \cap V_{|\mathcal V|}\) for all \(i \in \N\). If
+  \(|\mathcal V|\) is infinite, then define for all \(i \in \N\) the
   set \(U_i := V_1 \cap \dots \cap V_i\). For both cases, the sequence
-  \((U_i)_{i \in \mathbb{N}}\) is a nested neighbourhood basis.
+  \((U_i)_{i \in \N}\) is a nested neighbourhood basis.
 \end{proof}
 
 \begin{definition}[Eventually in]
-  Let \(X\) be a topological space, and a sequence \((x_i)_{i \in \mathbb{N}}
+  Let \(X\) be a topological space, and a sequence \((x_i)_{i \in \N}
   \subseteq X\), and a set \(A \subseteq X\). We say that \((x_i)_{i \in
-  \mathbb{N}}\) is eventually in \(A\) if \(x_i \in A\) for all but finitely
-  many \(i \in \mathbb{N}\).
+  \N}\) is eventually in \(A\) if \(x_i \in A\) for all but finitely
+  many \(i \in \N\).
 \end{definition}
 
 \begin{lemma}[Sequence lemma]\label{lem: sequence lemma}
@@ -166,7 +166,7 @@
       point of sequences in \(A\).
     \item \(p \in \Int(A)\) if and only if all sequences that converge to
       \(p\) are eventually in \(A\).
-    \item \(A\) is open in \(X\) if and only if every sequence in \(X\) 
+    \item \(A\) is open in \(X\) if and only if every sequence in \(X\)
       converging to a point of \(A\) is eventually in \(A\).
   \end{enumerate}
 \end{lemma}
@@ -175,40 +175,40 @@
   (a) (\(\Rightarrow\)) Let \(p \in \overline A\), then for all neighbourhoods
   \(V \subseteq A\) of \(p\), the set \(V \cap (A \setminus \{p\})\) is
   nonempty. Since \(X\) is first countable, consider \((U_i)_{i \in
-  \mathbb{N}}\) a nested neighbourhood basis at \(p\) and construct the sequence
-  \(x : \mathbb{N} \to \bigcup_{i \in \mathbb{N}} U_i \cap (A \setminus \{p\})
+  \N}\) a nested neighbourhood basis at \(p\) and construct the sequence
+  \(x : \N \to \bigcup_{i \in \N} U_i \cap (A \setminus \{p\})
   \) defined as \(i \mapsto x_i \in U_i \cap (A \setminus \{p\})\). We'll show
   that \(x_i \to p\). Consider \(V \subseteq X\) any neighbourhood of \(p\),
-  since \((U_i)_{i \in \mathbb{N}}\) is a basis then there exists an indexing set
-  \(I_{V} \subseteq \mathbb{N}\) for which \(V = \bigcup_{i \in  I_V} U_i\).
+  since \((U_i)_{i \in \N}\) is a basis then there exists an indexing set
+  \(I_{V} \subseteq \N\) for which \(V = \bigcup_{i \in  I_V} U_i\).
   Consider the index \(n := \min(I_V)\), then, from the definition of the nested
   basis, we have \(\forall i \geq n, x_i \in V \cap A\), hence \(x_i \to p\).
-  (\(\Leftarrow\)) Suppose that \((x_i)_{i \in \mathbb{N}}\) is a sequence of
+  (\(\Leftarrow\)) Suppose that \((x_i)_{i \in \N}\) is a sequence of
   points in \(A\) such that \(x_i \to p\). From definition, for all
-  neighbourhood \(V \subseteq X\) of \(p\), there exists \(n \in \mathbb{N}\)
+  neighbourhood \(V \subseteq X\) of \(p\), there exists \(n \in \N\)
   such that \(\forall i \geq N, x_i \in V\), moreover, since \(x_i \in A\) then
   \(x_i \in V \cap A\) which implies that \(p \not\in \Ext(A)\), hence \(p \in
   \overline A\).
 
   (b) (\(\Rightarrow\)) Suppose that \(A\) is closed, then \(A = \overline A\).
-  Consider any sequence \((x_i)_{i \in \mathbb{N}}\) of points in \(A\) and let
-  \(x_i \to p\). From item (a) we have that \(p \in A\). (\(\Leftarrow\)) 
+  Consider any sequence \((x_i)_{i \in \N}\) of points in \(A\) and let
+  \(x_i \to p\). From item (a) we have that \(p \in A\). (\(\Leftarrow\))
   Suppose the contrary, then given any \(p \in \overline A\) we have \(p \in
   A\), which implies that \(A\) is closed.
 
   (c) (\(\Rightarrow\)) Suppose \(p \in \Int(A)\). Let \((x_i)_{i \in
-  \mathbb{N}} \subseteq X\) be a sequence such that \(x_i \to p\). Consider any
+  \N} \subseteq X\) be a sequence such that \(x_i \to p\). Consider any
   neighbourhood \(V \subseteq A\) of \(p\), then from the definition of
-  convergence, exists \(N \in \mathbb{N}\) such that \(\forall i \geq N, x_i \in
+  convergence, exists \(N \in \N\) such that \(\forall i \geq N, x_i \in
   V_p\), then there exists at most \(N - 1\) points of \((x_i)_{i \in
-  \mathbb{N}}\) outside \(A\), hence the sequence is eventually in \(A\).
-  (\(\Leftarrow\)) Suppose \((x_i)_{i \in \mathbb{N}}\) is not-eventually in
+  \N}\) outside \(A\), hence the sequence is eventually in \(A\).
+  (\(\Leftarrow\)) Suppose \((x_i)_{i \in \N}\) is not-eventually in
   \(A\) and \(x_i \to p\). For the sake of contradiction, suppose that \(p \in
   \Int(A)\), then given a neighbourhood \(V \subseteq A\) of \(p\), there must
-  exist \(N \in \mathbb{N}\) such that \(\forall i \geq N, x_i \in V \subseteq
-  A\), which is a contradiction to the fact that \((x_i)_{i \in \mathbb{N}}\) is
+  exist \(N \in \N\) such that \(\forall i \geq N, x_i \in V \subseteq
+  A\), which is a contradiction to the fact that \((x_i)_{i \in \N}\) is
   not-eventually in \(A\), hence \(p \not\in \Int(A)\).
-  
+
   (d) (\(\Rightarrow\)) Let \(A\) be open, then \(A = \Int(A)\). Given any \(p
   \in A\) we have from item (c) that \(p\) is the limit of all of its converging
   sequences are eventually in \(A\). (\(\Leftarrow\)) Suppose the contrary, and
@@ -233,7 +233,7 @@
   Let \(\mathcal U\) be a cover of a space \(X\). If all elements \(U \in
   \mathcal U\) are opens in \(X\), then \(\mathcal U\) is said to be open. On
   the other hand, if all \(U \in \mathcal U\) are closed in \(X\), then
-  \(\mathcal U\) is said to be closed. 
+  \(\mathcal U\) is said to be closed.
 \end{definition}
 
 \begin{definition}[Subcover]
@@ -258,7 +258,7 @@
     \item A second countable space is first countable.
     \item A second countable space is separable.
     \item A second countable space is Lindelöf.
-  \end{enumerate}  
+  \end{enumerate}
 \end{proposition}
 
 \begin{proof}
@@ -298,27 +298,27 @@
 \end{proposition}
 
 \begin{proof}
-  (Separable \(\Rightarrow\) Lindelöf) Suppose \(M\) is separable and let \(A\) 
+  (Separable \(\Rightarrow\) Lindelöf) Suppose \(M\) is separable and let \(A\)
   be a countable dense set in \(M\). Let \(\mathcal U\) be a cover of \(M\) and
   define the collection \(\mathcal U' := \{U \in \mathcal U : U \supseteq B(a,
-  r),\ (a, r) \in A \times \mathbb{Q}\}\), where \(B(a,r)\) is the open ball of
+  r),\ (a, r) \in A \times \Q\}\), where \(B(a,r)\) is the open ball of
   radius \(r\) around \(a\). We show that \(\mathcal U'\) is a subcover of
   \(M\).
   Let \(x \in M\) be any point. Since \(\mathcal U\) covers \(M\) then there
   exists \(U_x \in \mathcal U\) such that \(x \in U_x\). Since \(M\) is a metric
   space, there exists an open ball \(B(x, \ell) \subseteq U_x\) for some \(\ell
-  \in \mathbb{R}\).
+  \in \R\).
   Since \(A\) is dense in \(M\), there exists a point \(a \in A\) such that \(a
-  \in B(x, \ell/2)\). Now, from the fact that \(\mathbb{Q}\) is dense in
-  \(\mathbb{R}\) we conclude that there exists an \(r \in \mathbb{Q}\) such that
+  \in B(x, \ell/2)\). Now, from the fact that \(\Q\) is dense in
+  \(\R\) we conclude that there exists an \(r \in \Q\) such that
   \(d(x, a) < r < \ell/2\). Notice that \(B(a, r) \subseteq B(x, r) \subseteq
   U_x\), hence \(U_x \in \mathcal U'\). Therefore \(\mathcal U'\) is a subcover
-  of \(\mathcal U\), and since \(|\mathcal U'| = |A \times \mathbb{Q}|\), we
+  of \(\mathcal U\), and since \(|\mathcal U'| = |A \times \Q|\), we
   find that \(\mathcal U'\) is countable.
 
   (Lindelöf \(\Rightarrow\) second countable) Suppose \(M\) is Lindelöf, then
   given a cover \(\mathcal U := \{B(x, \frac{1}{n}) \subseteq M : x \in M, n \in
-  \mathbb{N}\}\) of \(M\) there exists a countable subcover \(\mathcal U'\). Let
+  \N\}\) of \(M\) there exists a countable subcover \(\mathcal U'\). Let
   \(U \subseteq M\) be any open set and let \(x \in U\) be any point. Since
   \(M\) is a metric space, there exists \(r > 0\) such that \(B(x, r) \subseteq
   U\). Define now \(n \in N\) such that \(\frac 1 n < \frac r 2\). Since
@@ -329,7 +329,7 @@
   conclude that \(d(x, y) \leq d(x, p) + d(p, y) < \frac 2 n < r\). This implies
   in particular that \(y \in B(x, r)\) and in general that \(B(p, \frac 1 n)
   \subseteq B(x, r) \subseteq U\). Hence we conclude that \(U\) can be written
-  as a union of elements of \(\mathcal U'\), which implies that \(\mathcal U'\) 
+  as a union of elements of \(\mathcal U'\), which implies that \(\mathcal U'\)
   is a countable basis for \(M\).
 
   By means of \cref{prop: second countable properties} we conclude the
@@ -371,7 +371,7 @@
 \end{proposition}
 
 \begin{proof}
-  Suppose \(\mathbf m \geq \aleph_0\). Let \(\mathcal B := \{U_i\}_{i \in I}\) 
+  Suppose \(\mathbf m \geq \aleph_0\). Let \(\mathcal B := \{U_i\}_{i \in I}\)
   be any base for the space \(X\). Define a base \(\mathcal B_1 := \{W_t\}_{t
   \in T}\) for \(X\) such that \(|T| \leq \mathbf m\).
 
@@ -379,7 +379,7 @@
   W_t\}\). From the fact that \(W_t\) is open and \(\mathcal B\) is a base for
   \(X\), we have that \(W_t = \bigcup_{i \in  I(t)} U_i\).  From \cref{prop:
   weight m space subset union} we find that there exists \(I_0(t) \subseteq
-  I(t)\) for which \(|I_0(t)| \leq \mathbf m\) and 
+  I(t)\) for which \(|I_0(t)| \leq \mathbf m\) and
   \begin{equation}\label{eq: W_t I_0(t)}
     W_t = \bigcup_{i \in  I(t)} U_i = \bigcup_{i \in  I_0(t)} U_i
   \end{equation}

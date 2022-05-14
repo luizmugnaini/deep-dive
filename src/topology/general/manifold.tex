@@ -6,16 +6,16 @@
   Let \(M\) be a topological space. We say that \(M \) is locally euclidean of
   dimension \(n\) if for all points \(x \in X\) there exists a neighbourhood
   \(U_x \subseteq M\) of \(x\) such that exists an open set \(V \subseteq
-  \mathbb{R}^n\) for which \(U_x \iso V\), that is, \(U_x\) is homeomorphic to
+  \R^n\) for which \(U_x \iso V\), that is, \(U_x\) is homeomorphic to
   \(V\).
 \end{definition}
 
 \begin{proposition}\label{prop: open ball homeomorphic to Rn}
-  Let \(B^n \subseteq \mathbb{R}^n\) be any open ball, then the morphism
+  Let \(B^n \subseteq \R^n\) be any open ball, then the morphism
   \[
-    \varphi: B^n \to \mathbb{R}^n,\ x \longmapsto \frac{x}{1 - |x|}
-  \] 
-  is a homeomorphism \(B^n \iso \mathbb{R}^n\).
+    \varphi: B^n \to \R^n,\ x \longmapsto \frac{x}{1 - |x|}
+  \]
+  is a homeomorphism \(B^n \iso \R^n\).
 \end{proposition}
 
 \begin{lemma}
@@ -23,24 +23,24 @@
   if either of the following is true:
   \begin{enumerate}[(a)]
     \item Every point of \(M\) has a neighbourhood in \(M\) that is homeomorphic
-      to an open ball in \(\mathbb{R}^n\).
+      to an open ball in \(\R^n\).
     \item Every point of \(M\) has a neighbourhood in \(M\) that is homeomorphic
-      to \(\mathbb{R}^n\).
+      to \(\R^n\).
   \end{enumerate}
 \end{lemma}
 
 \begin{proof}
   From \cref{prop: open ball homeomorphic to Rn}, we find that the proof of one
   of the two statements proves the other. Lets prove the first one of them.
-  (\(\Leftarrow\)) Since \(B^n \subseteq \mathbb{R}^n\) is an open of
-  \(\mathbb{R}^n\) we conclude from the definition \cref{def: locally euclidean}
+  (\(\Leftarrow\)) Since \(B^n \subseteq \R^n\) is an open of
+  \(\R^n\) we conclude from the definition \cref{def: locally euclidean}
   that \(M\) is indeed locally euclidean.
   (\(\Rightarrow\)) Suppose \(M\) is a locally euclidean \(n\)-dimensional
   topological space, then let any point \(p \in M\) and define \(U_p \subseteq
-  M\) be a neighbourhood of \(p\) such that exists \(V \subseteq \mathbb{R}^n\)
+  M\) be a neighbourhood of \(p\) such that exists \(V \subseteq \R^n\)
   for which we can define a homeomorphism \(\phi : U_p \to V\). From the fact
-  that the collection of open balls in \(\mathbb{R}^n\) form a basis for
-  \(\mathbb{R}^n\), we conclude that there exists an open ball \(B^n \subseteq
+  that the collection of open balls in \(\R^n\) form a basis for
+  \(\R^n\), we conclude that there exists an open ball \(B^n \subseteq
   V\) for which \(p \in B^n\). Thus the open set \(\psi^{-1}[B] \subseteq M\) is
   a neighbourhood of \(p\). Since \(\phi\) is a homeomorphism, then the
   morphism \(\psi|_B^{-1} : B \to \phi^{-1}[B]\) is a homeomorphism, thus \(B
@@ -53,16 +53,16 @@
   \begin{enumerate}[(C1)]
     \item\label{def: coordinate domain}
       (Coordinate domain) An open set \(U \subseteq M\) is called a coordinate
-      domain of \(M\) if it is homeomorphic to an open set of \(\mathbb{R}^n\).
+      domain of \(M\) if it is homeomorphic to an open set of \(\R^n\).
     \item\label{def: coordinate map}
       (Coordinate map) A homeomorphism \(\phi\) from a coordinate domain to an
-      open set of \(\mathbb{R}^n\) is called a coordinate map.
+      open set of \(\R^n\) is called a coordinate map.
     \item\label{def: coordinate chart}
       (Coordinate chart) The pair \((U, \phi)\) of a coordinate domain and one
       of its coordinate maps is called a coordinate chart for \(M\).
     \item\label{def: coordinate ball}
       (Coordinate ball) A coordinate domain homeomorphic to an open ball of
-      \(\mathbb{R}^n\) is called a coordinate ball.
+      \(\R^n\) is called a coordinate ball.
     \item\label{def: euclidean neighbourhood}
       (Coordinate neighbourhood or euclidean neighbourhood) Given a point \(p
       \in M\), if \(U \subseteq M\) is a coordinate domain of \(M\) such that
@@ -85,7 +85,7 @@
   neighbourhood \(V_y \in f(\mathcal B)\), so that there exists a \(B \in
   \mathcal B\) such that \(f(B) = V_y\). Consider the homeomorphism \(f|_B: B
   \to V_y\). Since \(X\) is locally euclidean of dimension \(n\), there exists
-  an open set \(W \subseteq \mathbb{R}^n\) such that \(B \iso W\). Moreover,
+  an open set \(W \subseteq \R^n\) such that \(B \iso W\). Moreover,
   since \(B \iso V_y\), then \(V_y \iso W\). We conclude that \(Y\) is locally
   euclidean of dimension \(n\).
 \end{proof}
@@ -104,7 +104,7 @@
 \begin{proof}
   Consider \(U \subseteq M\) an open set and let \(p \in U\). Then consider \(V
   \subseteq M\) to be a coordinate neighbourhood of \(x\) such that \(V \iso B
-  \subseteq \mathbb{R}^n\), then the set \(U \cap V\) is open and homeomorphic
+  \subseteq \R^n\), then the set \(U \cap V\) is open and homeomorphic
   to a subset of \(B\) and hence \(V\) is \(n\)-dimensional locally euclidean.
   Moreover, since a subset of a Hausdorff space is Hausdorff and a subset of a
   second countable space is second countable, then \(U\) is indeed a
@@ -128,7 +128,7 @@
 \begin{proof}
   From \cref{prop: metric space properties}, since \(M\) is separable then it is
   also second countable. Moreover, from \cref{prop: metric space T2} we find
-  that \(M\) is Hausdorff. Hence \(M\) is an \(n\)-manifold. 
+  that \(M\) is Hausdorff. Hence \(M\) is an \(n\)-manifold.
 \end{proof}
 
 \begin{proposition}
@@ -137,7 +137,7 @@
 
 \begin{proof}
   Notice that since a manifold is second countable, then by \cref{prop: second
-  countable properties} we find that it is separable. 
+  countable properties} we find that it is separable.
   \todo[inline]{After proving Urysohn metrization theorem, prove the
   metrizability property}
 \end{proof}
@@ -145,18 +145,18 @@
 \subsection{Manifolds with Boundary}
 
 \begin{definition}
-  We define the closed \(n\)-dimensional upper half-space \(\mathbb H^n
-  \subseteq \mathbb{R}^n\) as \(\mathbb H^n := \{x \in \mathbb{R}^n : \pi_n(x) >
+  We define the closed \(n\)-dimensional upper half-space \(\mathbf{H}^n
+  \subseteq \R^n\) as \(\mathbf{H}^n := \{x \in \R^n : \pi_n(x) >
   0\}\) where \(\pi_n\) is the projection of the \(n\)-th coordinate. We define
-  the boundary of \(\mathbb H^n\) as \(\partial \mathbb H^n := \{x : \pi_n(x) =
-  0\}\), and the interior as \(\Int(\mathbb H^n) := \{x : \pi_n(x) > 0\}\).
+  the boundary of \(\mathbf{H}^n\) as \(\partial \mathbf{H}^n := \{x : \pi_n(x) =
+  0\}\), and the interior as \(\Int(\mathbf{H}^n) := \{x : \pi_n(x) > 0\}\).
 \end{definition}
 
 \begin{definition}[Manifold with boundary]
   \label{def: manifold with boundary}
   We define an \(n\)-dimensional topological manifold with boundary to be a
   second countable Hausdorff space such that each point has a neighbourhood
-  homeomophic to an open set of \(\mathbb{R}^n\) or \(\mathbb H^n\).
+  homeomophic to an open set of \(\R^n\) or \(\mathbf{H}^n\).
 \end{definition}
 
 \begin{definition}[Miscelaneous]
@@ -164,18 +164,18 @@
   \begin{enumerate}[(MB1)]
     \item A coordinate chart for \(M\) is a pair \((U, \phi)\), where \(U
       \subseteq M\) is an open set and \(\phi: U \xrightarrow{\iso} V\) is a
-      homeomorphism, where \(V \subseteq \mathbb{R}^n\) or \(V \subseteq
-      \mathbb H^n\). We say that the chart is an interior chart if \(V\) is an
-      open subset of \(\mathbb{R}^n\). A chart is said to be a boundary chart
-      if \(V\) is an open subset of \(\mathbb H^n\) with \(\im(\phi) \cap
-      \partial \mathbb H^n \neq \emptyset\).
+      homeomorphism, where \(V \subseteq \R^n\) or \(V \subseteq
+      \mathbf{H}^n\). We say that the chart is an interior chart if \(V\) is an
+      open subset of \(\R^n\). A chart is said to be a boundary chart
+      if \(V\) is an open subset of \(\mathbf{H}^n\) with \(\im(\phi) \cap
+      \partial \mathbf{H}^n \neq \emptyset\).
     \item A point \(p \in M\) is called an interior point of \(M\) if it is
       contained in the domain of an interior chart. The collection of such
       points is called the interior of \(M\), and is denoted \(\Int(M)\).
     \item A point \(p \in M\) is called a boundary point of \(M\) if it is in
-      the domain of a boundary chart that maps \(p\) to a point of \(\mathbb
-      H^n\). The boundary of \(M\), is defined as the collection of such points
-      and is denoted by \(\partial M\).
+      the domain of a boundary chart that maps \(p\) to a point of
+      \(\mathbf{H}^n\). The boundary of \(M\), is defined as the collection of
+      such points and is denoted by \(\partial M\).
   \end{enumerate}
 \end{definition}
 
@@ -188,16 +188,16 @@
 \begin{proof}
   Let \(p \in \Int(M)\) be any point, then by definition we have that \(p \in
   U\) where \((U, \phi)\) is an interior chart for \(M\) and therefore \(U \iso
-  V\) where \(V\) is some open subset of \(\mathbb{R}^n\), hence locally
+  V\) where \(V\) is some open subset of \(\R^n\), hence locally
   euclidean, which makes \(\Int(M)\) an \(n\)-dimensional manifold (since a
   subset of a Hausdorff space is Hausdorff and a subset of a second countable
   space is again second countable). To prove that \(\Int(M)\) is open, we can
   use the fact that \(M\) is first countable and lemma \cref{lem: sequence
-  lemma}. First, suppose the converse, so that \((x_i)_{i \in \mathbb{N}}\) is a
+  lemma}. First, suppose the converse, so that \((x_i)_{i \in \N}\) is a
   sequence of points in \(M\) that is not-eventually in \(\Int(M)\) and, for the
   sake of contradiction, \(x_i \to p\). Consider the open neighbourhood \(U\) of
   \(p\) (which happens to be the chart domain), if \(x_i \to p\) then \(\exists
-  N \in \mathbb{N}: x_i \in U\) for all \(i \geq N\), but notice that every
+  N \in \N: x_i \in U\) for all \(i \geq N\), but notice that every
   point of \(U\) is an interior point of \(M\), therefore \(x_i \in \Int(M)\),
   which is a contradiction to the hypothesis that the sequence is not-eventually
   in \(\Int(M)\). Hence such sequences cannot converge to \(p\), and \(\Int(M)\)
@@ -205,7 +205,7 @@
 \end{proof}
 
 \begin{theorem}[Boundary invariance]\label{thm: boundary invariance}
-  Let \(M\) be a manifold with boundary, then 
+  Let \(M\) be a manifold with boundary, then
   \[
     \partial M \cap \Int(M) = \emptyset
   \]

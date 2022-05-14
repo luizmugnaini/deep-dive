@@ -3,7 +3,7 @@
 \begin{definition}[Topology]
 Let \(X\) be a set and \(\mathcal T \subseteq 2^X\). We say that \(\mathcal T\) is a
 topology for \(X\) if
-\begin{enumerate}[(T1)]
+\begin{enumerate}[(T1)]\setlength\itemsep{0em}
   \item \(X, \emptyset \in \mathcal T\).
   \item The arbitrary union of elements of \(\mathcal T\) is an element of
     \(\mathcal T\).
@@ -13,38 +13,43 @@ topology for \(X\) if
 The elements of \(\mathcal T\) are called open sets of \(X\).
 \end{definition}
 
-\subsection{Some Examples of Topologies}
+\begin{example}\label{exp:some-topologies}
+We proceed by listing some examples of topologies that are somewhat interesting,
+they are included here in order to familiarize the reader with the possible
+contructions for the topology on a given set.
+\begin{itemize}\setlength\itemsep{0em}
+\item The collection \(\mathcal T_1 = \{U \subseteq X : U = \emptyset \text{ or } X \setminus U \text{
+is finite}\}\) is the cofinite topology on \(X\).
 
-\begin{example}
-The collection \(\mathcal T_1 = \{U \subseteq X : U = \emptyset \text{ or } X \setminus U \text{ is
-finite}\}\) is the cofinite topology on \(X\).
+\item The collection \(\mathcal T_2 = \{U \subseteq X : U = \emptyset \text{ or } X \setminus U \text{
+is countable}\}\) is the cocountable topology on \(X\).
+
+\item Let \(p \in X\), then \(\mathcal T_3 = \{U \subseteq X : U = \emptyset \text{ or } p \in U\}\)
+is the particular point topology on \(X\).
+
+\item Let \(p \in X\), then \(\mathcal T_4 = \{U \subseteq X : U = X \text{ or } p \not\in
+U\}\) is the excluded point topology on \(X\).
+\end{itemize}
 \end{example}
 
-\begin{example}
-The collection \(\mathcal T_2 = \{U \subseteq X : U = \emptyset \text{ or } X \setminus U \text{ is
-countable}\}\) is the cocountable topology on \(X\).
-\end{example}
+\subsection{Closed and Open Sets}
 
-\begin{example}
-Let \(p \in X\), then \(\mathcal T_3 = \{U \subseteq X : U = \emptyset \text{ or } p \in U\}\) is
-the particular point topology on \(X\).
-\end{example}
-
-\begin{example}
-Let \(p \in X\), then \(\mathcal T_4 = \{U \subseteq X : U = X \text{ or } p \not\in U\}\)
-is the excluded point topology on \(X\).
-\end{example}
-
-\section{Closed and Open Sets}
+The notion of a closed set and an open set are closedly related --- pardon for the
+pun. They have somewhat of a dual relationship, allowing for us to define the
+notion of topology via either of them. Lets first define the closed set.
 
 \begin{definition}[Closed set]
 Let \(X\) be a topological space. We define a set \(A \subseteq X\) to be
 closed if \(X \setminus A\) is open.
 \end{definition}
 
+The following proposition realizes the idea that the duality of open and closed
+sets allow us to work with topological spaces by analysing both open and closed
+elements of the space of interest.
+
 \begin{proposition}
 Let \(X\) be a topological space, then
-\begin{enumerate}
+\begin{enumerate}\setlength\itemsep{0em}
   \item The sets \(X\) and \(\emptyset\) are closed.
   \item The finite union of closed sets is closed.
   \item The arbitrary intersection of closed sets is closed.
@@ -53,7 +58,7 @@ Let \(X\) be a topological space, then
 
 \begin{definition}[Miscelaneous]
 Let \(X\) be a topological space and \(A \subseteq X\) be a set. We define
-\begin{enumerate}
+\begin{enumerate}\setlength\itemsep{0em}
   \item\label{def: closure}
     The closure of \(A\) is the least closed set, \(\overline A\), that
     contains \(A\). This can be equivalently described as

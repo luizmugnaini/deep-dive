@@ -334,13 +334,15 @@ is continuous at \(x_0\) --- that is, \(\lim_{x \to x_0} s(x) = s(x_0)\).
   That is, \(\norm{y_n - y_0} \leq \frac{\norm{y_1 - y_0}}{1 - q}\), hence --- since
   \((y_j)_{j=1}^{\infty}\) converges to the fixed point of \(f_x\), we have
   \begin{align*}
-    \norm{s(x) - s(x_0)} &= \norm{f(s(x)) - f(s(x_0))}
-    &\leq \frac{\norm{y_1 - y_0}}{1-q}
-    &= \frac{\norm{f_x(s(x_0)) - f_{x_0}(s(x_0))}}{1 - q}.
+    \norm{s(x) - s(x_0)} = \norm{f(s(x)) - f(s(x_0))}
+    \leq \frac{\norm{y_1 - y_0}}{1-q}
+    = \frac{\norm{f_x(s(x_0)) - f_{x_0}(s(x_0))}}{1 - q}.
   \end{align*}
   On the other hand we also know that \(\lim_{x \to x_0}f_x(y) = f_{x_0}(y)\) thus
-  \(\lim_{x \to x_0} \norm{f_x(s(x_0)) - f_{x_0}(s(x_0))} = 0\). This shows that
-  \(\lim_{x \to x_0} \norm{s(x) - s(x_0)} = 0\) and thus
+  \[
+    \lim_{x \to x_0} \norm{f_x(s(x_0)) - f_{x_0}(s(x_0))} = 0.
+  \]
+  This shows that \(\lim_{x \to x_0} \norm{s(x) - s(x_0)} = 0\) and therefore
   \[
     \lim_{x \to x_0} s(x) = s(x_0).
   \]

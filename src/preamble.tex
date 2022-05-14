@@ -1,29 +1,44 @@
-\documentclass[11pt, reqno, openany]{memoir}
+\documentclass[11pt, a4paper, reqno, openany]{memoir}
 \usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
+\usepackage[T1]{fontenc} % lualatex does not like this
+
+% Page geometry
+%\usepackage{fullpage}
+ \usepackage[
+   margin=1.5cm,
+   includefoot,
+   footskip=30pt,
+ ]{geometry}
+
 \usepackage{microtype}
 \usepackage[english]{babel}
-\usepackage{fullpage}
-\usepackage{mathpazo}
-\usepackage{marginnote}
-\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools, stmaryrd}
-\usepackage{upgreek}
-\usepackage{enumerate}
-\usepackage[all]{xy}
+\usepackage{newpxtext, newpxmath} % last: mathpazo
+
+\let\openbox\relax
+\let\Bbbk\relax
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage{mathtools}
+\usepackage{stmaryrd}
+
 \usepackage{tikz-cd}
-\usepackage{tikz}
-\usepackage{comment}
+
+% Utilities
+\usepackage{enumerate}
 \usepackage{todonotes}
+
+% Color
 \usepackage{xcolor}
 \definecolor{brightmaroon}{rgb}{0.76, 0.13, 0.28}
+
+% References
 \usepackage{hyperref}
 \hypersetup{
   colorlinks = true,
   linkcolor  = brightmaroon
 }
 \usepackage[capitalize,nameinlink]{cleveref}
-\linespread{1.05}
 
+\linespread{1.05}
 \vfuzz=14pt % No more shitty ass vbox errors all over the place
 
 \theoremstyle{definition}
@@ -44,7 +59,6 @@
 \renewcommand{\leq}{\leqslant}
 \renewcommand{\geq}{\geqslant}
 \renewcommand{\setminus}{\smallsetminus}
-\newcommand{\dual}{\vee}
 
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\Obj}{Obj}
@@ -64,6 +78,8 @@
 \DeclareMathOperator{\Char}{char}
 \DeclareMathOperator{\sign}{sign}
 \DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\Cone}{C}
+\DeclareMathOperator{\Proj}{proj} % Projective space
 
 % arrows
 \newcommand{\op}{\mathrm{op}}
@@ -79,8 +95,8 @@
 \newcommand{\Q}{\mathbf{Q}}
 \newcommand{\CC}{\mathbf{C}}
 \newcommand{\R}{\mathbf{R}}
-\renewcommand{\emptyset}{\varnothing}
 
+\renewcommand{\emptyset}{\varnothing}
 
 % Differentiable structures
 \DeclareMathOperator{\grad}{grad}
@@ -93,6 +109,7 @@
 \newcommand{\Set}{{\cat{S}\textit{et}}}
 \newcommand{\Vect}{{\cat{V}\textit{ect}}}
 \newcommand{\FinVect}{{\cat{F}\textit{in}\cat{V}\textit{ect}}}
+\let\Top\relax
 \newcommand{\Top}{{\cat{T}\textit{op}}}
 \newcommand{\Grp}{{\cat{G}\textit{rp}}}
 \newcommand{\Ab}{{\cat{A}\textit{b}}}
@@ -109,3 +126,4 @@
 
 \author{Luiz G. Mugnaini A.}
 \date{Last modification: \today}
+\title{Deep Dive}

@@ -16,7 +16,7 @@ quite happy to have some feedback.
 
 For the compilation of the notes:
 #+BEGIN_SRC shell
-  git clone https://github.com/luizmugnaini/algebra
+  git clone https://github.com/luizmugnaini/deep-dive
   cd deep-dive
   latexmk -pvc
 #+END_SRC
