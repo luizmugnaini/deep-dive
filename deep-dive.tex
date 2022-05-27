@@ -1,9 +1,27 @@
 \input{src/preamble}
 
 \begin{document}
+\frontmatter
+
 \maketitle
 \tableofcontents
 \listoftodos
+
+\chapter{Preface}
+
+The following text is a compilation of notes for my studies in mathematics, that
+being said, it is clear that the collection of mathematical and linguistic
+errors is non-empty. My main references are
+\begin{itemize}\setlength\itemsep{0em}
+\item Category Theory:~\cite{Rie16}.
+\item Algebra:~\cite{Yu89},~\cite{Kim20},~\cite{Aluf09} and~\cite{Lang93}.
+\item Topology:~\cite{Lee11},~\cite{Tai20},~\cite{Mun00} and~\cite{Eng89}.
+\item Differential Structures:~\cite{Zor15},~\cite{Zor16},~\cite{Rud76}
+  and~\cite{Jost06}.
+\item Combinatorics:~\cite{Die16}.
+\end{itemize}
+
+\mainmatter
 
 % part 1
 \part{Category theory}
@@ -57,24 +75,11 @@
 \input{src/topology/general/baseCount}
 \input{src/topology/general/filter}
 \input{src/topology/general/manifold}
-
-\chapter{Generating Topologies}
-
 \input{src/topology/general/sub}
 \input{src/topology/general/prod}
 \input{src/topology/general/quot}
 
-
 % part 5
-\part{Differentiable Structures}
-
-\chapter{Calculus on Several Variables}
-
-\input{src/diff/multvar/func}
-\input{src/diff/multvar/diff}
-\input{src/diff/multvar/imp}
-
-% % part 6
 \part{Graph Theory}
 
 \chapter{A Short Toy-Manual of Graphs}
@@ -83,6 +88,18 @@
 \input{src/combinatorics/graphs/simpgph}
 \input{src/combinatorics/graphs/loopless}
 \input{src/combinatorics/graphs/uniprop_ll}
+
+% part 6
+\part{Differentiable Structures}
+
+\chapter{Calculus on Several Variables}
+
+\input{src/diff/multvar/func}
+\input{src/diff/multvar/diff}
+\input{src/diff/multvar/imp}
+\input{src/diff/multvar/riem-int}
+
+\printbibliography
 
 \end{document}
 %%% Local Variables:

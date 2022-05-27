@@ -1,4 +1,4 @@
-\section{Subspaces}
+\section{Subspace Topology}
 
 \begin{definition}[Subspace topology]
   \label{def: subspace topology}
@@ -96,11 +96,11 @@
 \begin{theorem}[Universal property of the subspace topology]
   Let \(X\) be a topological space and \(S\) be a subspace. Given any
   topological space \(Y\), a map \(f: Y \to S\) is continuous if and only if
-  \(\iota_S \circ f : Y \to X\) is continuous, where \(\iota_S: S
+  \(\iota_S  f : Y \to X\) is continuous, where \(\iota_S: S
   \hookrightarrow X\) is the inclusion map. Hence the following diagram commutes
   \[
     \begin{tikzcd}
-      Y \ar[r, "f"] \ar[rd, swap, "\iota_S \circ f"]
+      Y \ar[r, "f"] \ar[rd, swap, "\iota_S  f"]
         &S \ar[d, "\iota_S"] \\
         &X
     \end{tikzcd}
@@ -115,18 +115,18 @@
   \(X\). (\(\Rightarrow\)) Let \(f\) be continuous. If \(V \subseteq X\) is any open subset, we have
   that
   \[
-    (\iota_S \circ f)^{-1}(V) = f^{-1}(\iota^{-1}(V)) = f^{-1}(S \cap V)
+    (\iota_S  f)^{-1}(V) = f^{-1}(\iota^{-1}(V)) = f^{-1}(S \cap V)
   \]
   since \(V\) is said to be open, then \(S \cap V\) is open in \(S\), which
-  implies that \(f^{-1}(S \cap V) = (\iota_S \circ f)^{-1}(V)\) is open. This
-  shows that the map \(\iota_S \circ f\) is open. (\(\Leftarrow\)) Let \(\iota_S
-  \circ f\) be continuous. Consider \(U = S \cap V = \iota_S^{-1}(V)\) to be any
+  implies that \(f^{-1}(S \cap V) = (\iota_S  f)^{-1}(V)\) is open. This
+  shows that the map \(\iota_S  f\) is open. (\(\Leftarrow\)) Let \(\iota_S
+   f\) be continuous. Consider \(U = S \cap V = \iota_S^{-1}(V)\) to be any
   open set of the subspace \(S\) (that is \(V\) is an open of the space \(X\)).
   Then we have
   \[
-    f^{-1}(U) = f^{-1}(\iota_S^{-1}(V)) = (\iota_S \circ f)^{-1}(V)
+    f^{-1}(U) = f^{-1}(\iota_S^{-1}(V)) = (\iota_S  f)^{-1}(V)
   \]
-  since \(\iota_S \circ f\) is continuous, then \(f^{-1}(U)\) is open, therefore
+  since \(\iota_S  f\) is continuous, then \(f^{-1}(U)\) is open, therefore
   \(f\) is continuous.
 
   We now show that if an object satisfies such the property, then it is the
@@ -134,30 +134,30 @@
   property. In particular we can take the subspace \((S, \mathcal T_S)\) of
   \((X, \mathcal T)\) and the identity map \(\Id_S: (S, \mathcal T_S) \to (S,
   \mathcal T')\). Since \((S, \mathcal T')\) satisfies the universal property,
-  we have that \(\Id_S\) is continuous if and only if \(\iota_S \circ \Id_S =
+  we have that \(\Id_S\) is continuous if and only if \(\iota_S  \Id_S =
   \iota_S\) is continuous. That is
   \[
     \begin{tikzcd}
       (S, \mathcal T_S)
       \ar[r, "\Id_S"]
-      \ar[rd, swap, "\iota_S \circ \Id_S = \iota_S"]
+      \ar[rd, swap, "\iota_S  \Id_S = \iota_S"]
         &(S, \mathcal T') \ar[d, "\iota_S"] \\
         &(X, \mathcal T)
     \end{tikzcd}
   \]
-  We know from \cref{def: second def subspace top} that \(\iota_S \circ \Id_S =
+  We know from \cref{def: second def subspace top} that \(\iota_S  \Id_S =
   \iota_S\) is continuous for the subspace topology \(\mathcal T_S\), hence the
   universal property implies that \(\Id_S\) is continuous. In particular, this
   says that \(\mathcal T' \subseteq \mathcal T_S\). In order to show the other
   side of the equality, consider now the space \((S, \mathcal T')\) and the
   identity map \(\Id_S': (S, \mathcal T') \to (S, \mathcal T')\) so that from the
   universal property of \((S, \mathcal T')\) the map \(\Id_S'\) is continuous if
-  and only if \(\iota_S \circ \Id_S' = \iota_S\) is continuous. That is, the
+  and only if \(\iota_S  \Id_S' = \iota_S\) is continuous. That is, the
   following diagram commutes
   \[
     \begin{tikzcd}
       (S, \mathcal T') \ar[r, "\Id_S'"]
-      \ar[rd, swap, "\iota_S \circ \Id_S' = \iota_S"]
+      \ar[rd, swap, "\iota_S  \Id_S' = \iota_S"]
         &(S, \mathcal T') \ar[d, "\iota_S"] \\
         &(X, \mathcal T)
     \end{tikzcd}
@@ -185,19 +185,19 @@
 \end{corollary}
 
 \begin{proof}
-  (a) Notice that \(f|_S = f \circ \iota_S\). Applying the universal property,
+  (a) Notice that \(f|_S = f  \iota_S\). Applying the universal property,
   we find that since \(f\) is continuous, so is \(f|_S\). (b) From the universal
-  property we have that \(\iota_T \circ f = f\) is continuous, so is \(f: X \to
-  T\). (c) Notice that from the universal property we have \(\iota_Y \circ f: X
+  property we have that \(\iota_T  f = f\) is continuous, so is \(f: X \to
+  T\). (c) Notice that from the universal property we have \(\iota_Y  f: X
   \to Z\) continuous, since \(f\) is continuous. The following are the universal
   property diagrams for items (b) and (c):
   \[
     \begin{tikzcd}
-      X \rar["f"] \ar[rd, swap, "\iota_T \circ f = f"] &T \dar["\iota_T"] \\ &Y
+      X \rar["f"] \ar[rd, swap, "\iota_T  f = f"] &T \dar["\iota_T"] \\ &Y
     \end{tikzcd}
     \qquad
     \begin{tikzcd}
-      X \rar["f"] \ar[rd, swap, "\iota_Y \circ f"] &Y \dar["\iota_Y"] \\ &Z
+      X \rar["f"] \ar[rd, swap, "\iota_Y  f"] &Y \dar["\iota_Y"] \\ &Z
     \end{tikzcd}
   \]
 \end{proof}
@@ -223,29 +223,29 @@
 
 \begin{proof}
   (SP1) Let \(Z\) be some topological space, we can choose maps \(f: Z \to T\)
-  and \(g = \iota_T \circ f : Z \to S\) and apply the universal property on both
+  and \(g = \iota_T  f : Z \to S\) and apply the universal property on both
   \(T\) and \(S\) in order to get
   \[
     \begin{tikzcd}
       Z \ar[r,"f"]
       \ar[rd, swap, "g"]
       \ar[rdd, swap, bend right,
-      "\iota_S \circ g = \iota_T' \circ f"]
+      "\iota_S  g = \iota_T'  f"]
         &T \ar[d, hook, "\iota_T"]
-        \ar[dd, hook, bend left = 60, "\iota_S \circ \iota_T := \iota_T'"]\\
+        \ar[dd, hook, bend left = 60, "\iota_S  \iota_T := \iota_T'"]\\
         &S \ar[d, hook, "\iota_S"] \\
         &X
     \end{tikzcd}
     \qquad \Leftrightarrow \qquad
     \begin{tikzcd}
-      Z \ar[dr, swap, "\iota_T' \circ f"] \ar[r, "f"]
+      Z \ar[dr, swap, "\iota_T'  f"] \ar[r, "f"]
         &T \ar[d, hook, "\iota_T'"] \\
         &X
     \end{tikzcd}
   \]
   Moreover, if \(f\) is continuous, from the universal property of \(T\) we find
   that \(g\) is continuous, but using the universal property of \(S\) that tells
-  us that \(\iota_S \circ g = \iota_T' \circ f\) is continuous. The converse is
+  us that \(\iota_S  g = \iota_T'  f\) is continuous. The converse is
   true by using the same argumentation. Hence \(T\) satisfies the universal
   property and therefore is a subspace of \(X\).
 

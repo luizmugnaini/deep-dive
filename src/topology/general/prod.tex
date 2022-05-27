@@ -55,12 +55,12 @@
   \prod_{i \in I} X_i \epi  X_i\) be the projection map. For all given
   topological space \(Z\) and a map \(f: Z \to \prod_{i \in I} X_i\). If
   \(\prod_{i \in I} X_i\) is endowed with the product topology, then the map
-  \(f\) is continuous if and only if for every \(i \in I\) the map \(\pi_i \circ
+  \(f\) is continuous if and only if for every \(i \in I\) the map \(\pi_i
   f: Z \to \prod_{i \in I} X_i\). That is, the following diagram commutes in
   \(\Top\)
   \[
     \begin{tikzcd}
-      Z \ar[d, "f"] \ar[dr, bend left, "\pi_i \circ f"] \\
+      Z \ar[d, "f"] \ar[dr, bend left, "\pi_i  f"] \\
       \prod_{i \in I} X_i \ar[r, two heads, "\pi_i"] &X_i
     \end{tikzcd}
   \]
@@ -73,8 +73,8 @@
   (\(\Rightarrow\)) Let \(f\) be a continuous map and \(U \subseteq Z\) be any
   open set. Since \(\pi_i\) is continuous for all \(i \in I\) from hypothesis
   then \(\pi_i^{-1}(U) = V \subseteq \prod_{i \in I} X_i\) is open, we conclude
-  that \((\pi_i \circ f)^{-1}(U) = f^{-1}(\pi_i^{-1}(U)) = f^{-1}(V)\) is open,
-  hence \(\pi_i \circ f\) is continuous. (\(\Leftarrow\)) Suppose \(\pi_i \circ
+  that \((\pi_i  f)^{-1}(U) = f^{-1}(\pi_i^{-1}(U)) = f^{-1}(V)\) is open,
+  hence \(\pi_i  f\) is continuous. (\(\Leftarrow\)) Suppose \(\pi_i
   f\) is continuous, then for all given open set \(U \subseteq \prod_{i \in I}
   X_i\) we have \(f^{-1}(\pi_i^{-1}(U)) \subseteq Z\) open. Notice that since
   \(\pi_i^{-1}(U)\) is open in the product topology of \(\prod_{i \in I} X_i\)
@@ -89,7 +89,7 @@
     \begin{tikzcd}
       (\prod_{i \in I} X_i, \mathcal T')
       \ar[d, "\Id"]
-      \ar[dr, bend left, "\pi_i \circ \Id = \pi_i"] \\
+      \ar[dr, bend left, "\pi_i  \Id = \pi_i"] \\
       (\prod_{i \in I} X_i, \mathcal T')
       \ar[r, two heads, "\pi_i"]
         &X_i
@@ -105,7 +105,7 @@
     \begin{tikzcd}
       (\prod_{i \in I} X_i, \mathcal T')
       \ar[d, "\Id'"]
-      \ar[dr, bend left, "\pi_i \circ \Id' = \pi_i'"] \\
+      \ar[dr, bend left, "\pi_i  \Id' = \pi_i'"] \\
       (\prod_{i \in I} X_i, \mathcal T)
       \ar[r, two heads, "\pi_i"]
         &X_i
@@ -124,9 +124,12 @@
 
 \begin{lemma}
   Let \(\{X_i\}_{i \in I} \) be a collection of topological spaces. Then the
-  projections \(\pi_j: \prod_{i \in I} X_i \epi X_j\) is an open map (see
-  \cref{def: open/closed maps}) under the product topology. Moreover, such
-  projections are not in general closed maps.
+  projections
+  \[
+    \pi_j: \prod_{i \in I} X_i \epi X_j
+  \]
+  are open maps (see \cref{def: open/closed maps}) under the product
+  topology. Moreover, such projections are not in general closed maps.
 \end{lemma}
 
 \begin{proof}
@@ -221,12 +224,12 @@
 \end{theorem}
 
 \begin{proof}
-  (Uniqueness) Suppose that \(f \circ \iota_j = f_j\), then from definition
+  (Uniqueness) Suppose that \(f  \iota_j = f_j\), then from definition
   \(f_j(x) = f(\iota(x)) = f(x, j)\) for each \(j \in I\), which is clearly
   unique.
   (Existence) Suppose now that \(f_j\) is continuous for all \(j \in I\). Let
   \(U \subseteq Z\) be any open set. Notice that since \(f_j^{-1} = \iota_j^{-1}
-  \circ f^{-1}\) then \(f_j^{-1}(U) = \iota_j^{-1}(f^{-1}(U))\). Now, if
+   f^{-1}\) then \(f_j^{-1}(U) = \iota_j^{-1}(f^{-1}(U))\). Now, if
   \(f^{-1}(U) \subseteq \coprod_{i \in I} X_i\) is closed then its preimage
   under \(\iota_j\) would be closed (from the continuity of \(\iota_j\)), hence
   \(f^{-1}(U)\) is open, which implies in \(f\) continuous.
@@ -249,13 +252,12 @@
         &(\coprod_{i \in I} X_i, \mathcal T')
     \end{tikzcd}
   \]
-  and hence \(f\) and \(g\) are both identities on \(\End(\coprod_{i \in I}
-  X_i)\). From the first diagram, if \(U \subseteq (\coprod_{i \in I} X_i,
-  \mathcal T)\) is open, then \(g^{-1}(U) = U \subseteq (\coprod_{i \in I} X_i,
-  \mathcal T')\) is also open. On the other hand, from the second diagram, if
-  \(V \subseteq (\coprod_{i \in I} X_i, \mathcal T')\) is open, then \(f^{-1}(V)
-  = V \subseteq (\coprod_{i \in I} X_i, \mathcal T)\) is open. This concludes
-  that \(\mathcal T' = \mathcal T\) and hence the coproduct topology is unique.
+  and hence \(f\) and \(g\) are both identities on \(\End(\coprod_{i \in I} X_i)\). If
+  \(U \subseteq (\coprod_{i \in I} X_i, \mathcal T)\) is open, then \(g^{-1}(U) = U \subseteq (\coprod_{i \in I}
+  X_i, \mathcal T')\) is also open. On the other hand, from the second diagram,
+  if \(V \subseteq (\coprod_{i \in I} X_i, \mathcal T')\) is open, then \(f^{-1}(V) = V \subseteq (\coprod_{i \in
+  I} X_i, \mathcal T)\) is open. This concludes that \(\mathcal T' = \mathcal T\)
+  and hence the coproduct topology is unique.
 \end{proof}
 
 \begin{proposition}

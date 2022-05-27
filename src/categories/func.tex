@@ -1,216 +1,293 @@
 \section{Functors}
 
 \begin{definition}[Functor]\label{def: functor}
-  Let \(\cat C\) and \(\cat D\) be categories. A functor \(F: \cat C \to \cat
-  D\) has the following data:
-  \begin{enumerate}[({DF}1)]
-    \item For all \(c \in \cat C\) exists a corresponding \(F c \in \cat D\).
-    \item For all \(f: c \to c' \in \Mor(\cat C)\) there exists a morphism \(F
-      f: F c \to F c' \in \Mor(\cat D)\).
-  \end{enumerate}
-  Such data satisfies the two following axioms:
-  \begin{enumerate}[({AF}1)]
-    \item For all composable \(f, g \in \Mor(\cat C)\), we have \(F g \cdot F f
-      = F (g \cdot f)\).
-    \item For all \(c \in \cat C\) we have \(F \Id_c = \Id_{F c} \in \Mor(\cat
-      D)\).
-  \end{enumerate}
-  This definition is sometimes called covariant functor (in contrast with
-  contravariant functor, see \cref{def: contravariant functor}).
+Let \(\cat C\) and \(\cat D\) be categories. A functor \(F: \cat C \to \cat
+D\) has the following data:
+\begin{enumerate}[({DF}1)]
+  \item For all \(c \in \cat C\) exists a corresponding \(F c \in \cat D\).
+  \item For all \(f: c \to c' \in \Mor(\cat C)\) there exists a morphism \(F
+    f: F c \to F c' \in \Mor(\cat D)\).
+\end{enumerate}
+Such data satisfies the two following axioms:
+\begin{enumerate}[({AF}1)]
+  \item For all composable \(f, g \in \Mor(\cat C)\), we have \(F g \cdot F f
+    = F (g \cdot f)\).
+  \item For all \(c \in \cat C\) we have \(F \Id_c = \Id_{F c} \in \Mor(\cat
+    D)\).
+\end{enumerate}
+This definition is sometimes called covariant functor (in contrast with
+contravariant functor, see \cref{def: contravariant functor}).
 \end{definition}
 
 \begin{definition}[Forgetful functor]
-  A functor is said to be forgetful if the functor ``forgets'' some object,
-  structure or property of its domain category.
+A functor is said to be forgetful if the functor ``forgets'' some object,
+structure or property of its domain category.
 \end{definition}
 
 \begin{example}
-  We have some classical examples of forgetful functors, for instance, the
-  following are functors that forget the structure of their domain categories:
-  \begin{itemize}
-    \item The functor \(G: \Grp \to \Set\) mapping groups to its
-      corresponding underlying set.
-    \item The functor \(T: \Top \to \Set\) maps any topological space
-      to its corresponding set of points.
-    \item The functor \(V, E: \Graph \to \Set\) maps the vertices and
-      edges of a graph to the set of such vertices an edges.
-  \end{itemize}
+We have some classical examples of forgetful functors, for instance, the
+following are functors that forget the structure of their domain categories:
+\begin{itemize}
+  \item The functor \(G: \Grp \to \Set\) mapping groups to its
+    corresponding underlying set.
+  \item The functor \(T: \Top \to \Set\) maps any topological space
+    to its corresponding set of points.
+  \item The functor \(V, E: \Graph \to \Set\) maps the vertices and
+    edges of a graph to the set of such vertices an edges.
+\end{itemize}
 \end{example}
 
 \begin{definition}[Contravariant functor]
-  \label{def: contravariant functor}
-  A contravariant functor from categories \(\cat C\) to \(\cat D\) is a functor
-  \(F: \cat C^\op \to \cat D\) together with the following data:
-  \begin{enumerate}[({DCF}1)]
-    \item For all \(c \in \cat C\) exists \(F c \in \cat D\).
-    \item For all \(f: c \to c' \in \Mor(\cat C)\) we have \(F f: F c' \to F c
-      \in \Mor(\cat D)\).
-  \end{enumerate}
-  Moreover, a contravariant functor satisfies the following axioms:
-  \begin{enumerate}[({ACF}1)]
-    \item For all composable \(f, g \in \Mor(\cat C)\) we have \(F f \cdot F g =
-      F (g \cdot f)\).
-    \item For all \(c \in \cat C\) we have \(F \Id_c = \Id_{F c}\).
-  \end{enumerate}
-  This can all be comprised diagrammatically as:
-  \[
-    \begin{tikzcd}
-      \cat C^\op \ar[rr, "F"] & &\cat D
-      \\
-      c \ar[d, "f"] \ar[dd, bend right = 60, swap, "g f"]
-      \ar[rr, mapsto]
-      & &F c
-      \\
-      c' \ar[d, "g"] \ar[rr, mapsto]
-      & &F c' \ar[u, "F f"]
-      \\
-      c'' \ar[rr, mapsto]
-      & & F c''
-      \ar[u, "F g"]
-      \ar[uu, bend right = 60, swap, "F f \cdot F g = F (g \cdot f)"]
-    \end{tikzcd}
-  \]
+\label{def: contravariant functor}
+A contravariant functor from categories \(\cat C\) to \(\cat D\) is a functor
+\(F: \cat C^\op \to \cat D\) together with the following data:
+\begin{enumerate}[({DCF}1)]
+  \item For all \(c \in \cat C\) exists \(F c \in \cat D\).
+  \item For all \(f: c \to c' \in \Mor(\cat C)\) we have \(F f: F c' \to F c
+    \in \Mor(\cat D)\).
+\end{enumerate}
+Moreover, a contravariant functor satisfies the following axioms:
+\begin{enumerate}[({ACF}1)]
+  \item For all composable \(f, g \in \Mor(\cat C)\) we have \(F f \cdot F g =
+    F (g \cdot f)\).
+  \item For all \(c \in \cat C\) we have \(F \Id_c = \Id_{F c}\).
+\end{enumerate}
+This can all be comprised diagrammatically as:
+\[
+  \begin{tikzcd}
+    \cat C^\op \ar[rr, "F"] & &\cat D
+    \\
+    c \ar[d, "f"] \ar[dd, bend right = 60, swap, "g f"]
+    \ar[rr, mapsto]
+    & &F c
+    \\
+    c' \ar[d, "g"] \ar[rr, mapsto]
+    & &F c' \ar[u, "F f"]
+    \\
+    c'' \ar[rr, mapsto]
+    & & F c''
+    \ar[u, "F g"]
+    \ar[uu, bend right = 60, swap, "F f \cdot F g = F (g \cdot f)"]
+  \end{tikzcd}
+\]
 \end{definition}
 
 \begin{example}[\(\Top^\op \to \Rng\)]
-  Let \(C: \Top^\op \to \Rng\) be a contravariant functor such that
-  for all \(X \in \Top\), let \(C X\) be the ring of continuous functions
-  \(X \to \R\). The ring operations on \(C X\) are defined pointwise,
-  that is, given \(p, q: X \to \R \in C X\) we have \((p \cdot q) (x) =
-  p(x) \cdot q(x)\) and \((p + q)(x) = p(x) + q(x)\) for all \(x \in X\).
-  Moreover, given a morphism \(f: X \to Y \in \Mor(\Top)\) we define \(C f:
-  C Y \to C X\) as the composition \((C f)(q) = q f \in \Mor(C X)\) for all \(q
-  \in C Y\), that is
-  \[
-    \begin{tikzcd}
-      X \ar[r, "f"] \ar[rr, bend right = 40, swap, "C f(q) = q f"]
-      & Y \ar[r, "q"] & \R
-    \end{tikzcd}
-  \]
+Let \(C: \Top^\op \to \Rng\) be a contravariant functor such that
+for all \(X \in \Top\), let \(C X\) be the ring of continuous functions
+\(X \to \R\). The ring operations on \(C X\) are defined pointwise,
+that is, given \(p, q: X \to \R \in C X\) we have \((p \cdot q) (x) =
+p(x) \cdot q(x)\) and \((p + q)(x) = p(x) + q(x)\) for all \(x \in X\).
+Moreover, given a morphism \(f: X \to Y \in \Mor(\Top)\) we define \(C f:
+C Y \to C X\) as the composition \((C f)(q) = q f \in \Mor(C X)\) for all \(q
+\in C Y\), that is
+\[
+  \begin{tikzcd}
+    X \ar[r, "f"] \ar[rr, bend right = 40, swap, "C f(q) = q f"]
+    & Y \ar[r, "q"] & \R
+  \end{tikzcd}
+\]
 
-  We now show that the axioms for the contravariant functor are satisfied by
-  \(C\). Let \(f: X \to Y\) and \(g: Y \to Z\), then given any \(p \in C Z\) we
-  have
-  \[
-    \begin{tikzcd}
-      X \ar[r, "f"]
-      \ar[rrr, bend left = 60, "C f(C g (p))"]
-      \ar[rrr, bend right, swap, "C (g f)(p)"]
-      & Y \ar[r, "g"]
-      \ar[rr, bend left = 35, "C g(p)"]
-      & Z \ar[r, "p"] & \R
-    \end{tikzcd}
-  \]
-  hence \(C (f) C (g) = C (g f)\). Moreover, given any \(X \in \Top^\op\)
-  we find that \(C \Id_X: C X \to C X\) is such that for all \(q \in C X\), \(C
-  \Id_X (q) = q \Id_X = q\) hence \(C \Id_X = \Id_{C X}\). This finishes the
-  proof that \(C: \Top^\op \to \Rng\) is a contravariant functor.
+We now show that the axioms for the contravariant functor are satisfied by
+\(C\). Let \(f: X \to Y\) and \(g: Y \to Z\), then given any \(p \in C Z\) we
+have
+\[
+  \begin{tikzcd}
+    X \ar[r, "f"]
+    \ar[rrr, bend left = 60, "C f(C g (p))"]
+    \ar[rrr, bend right, swap, "C (g f)(p)"]
+    & Y \ar[r, "g"]
+    \ar[rr, bend left = 35, "C g(p)"]
+    & Z \ar[r, "p"] & \R
+  \end{tikzcd}
+\]
+hence \(C (f) C (g) = C (g f)\). Moreover, given any \(X \in \Top^\op\)
+we find that \(C \Id_X: C X \to C X\) is such that for all \(q \in C X\), \(C
+\Id_X (q) = q \Id_X = q\) hence \(C \Id_X = \Id_{C X}\). This finishes the
+proof that \(C: \Top^\op \to \Rng\) is a contravariant functor.
 \end{example}
 
 \begin{definition}[Presheaf]\label{def: presheaf}
-  Let \(\cat C\) be a small category. A contravariant functor \(\cat C^\op \to
-  \Set\) is called a presheaf on \(\cat C\).
+Let \(\cat C\) be a small category. A contravariant functor \(\cat C^\op \to
+\Set\) is called a presheaf on \(\cat C\).
 \end{definition}
 
 \begin{example}[\(\mathcal O(X)^\op \to \Set\)]
-  Let \(X \in \Top\) we define \(\mathcal O(X)\) to be the poset category
-  whose objects are open sets of \(X\). That is, for sets \(U, U' \in \mathcal
-  O(X)\), if \(U \subseteq U'\), then there exists a morphism \(U \to U'\) in
-  \(\Mor(\mathcal O(X))\). A presheaf on the category \(\mathcal O(X)\) is a
-  functor \(F: \mathcal O(X)^\op \to \Set\) that assigns \(F U = \{f: U \to
-  \R: f \text{ continuous}\}\) for all \(U \in \mathcal O(X)\).
-  Moreover, for maps \(g: U \to U'\) (that is \(U \subseteq U'\)) we have \(F g:
-  F U' \to F U\) such that \(F g(f) = f|_U: U \to \R\) for all \(f: U'
-  \to \R\) continuous. Since the restriction of a continuous map is
-  continuous, then \(f|_U \in F U\)
+Let \(X \in \Top\) we define \(\mathcal O(X)\) to be the poset category
+whose objects are open sets of \(X\). That is, for sets \(U, U' \in \mathcal
+O(X)\), if \(U \subseteq U'\), then there exists a morphism \(U \to U'\) in
+\(\Mor(\mathcal O(X))\). A presheaf on the category \(\mathcal O(X)\) is a
+functor \(F: \mathcal O(X)^\op \to \Set\) that assigns \(F U = \{f: U \to
+\R: f \text{ continuous}\}\) for all \(U \in \mathcal O(X)\).
+Moreover, for maps \(g: U \to U'\) (that is \(U \subseteq U'\)) we have \(F g:
+F U' \to F U\) such that \(F g(f) = f|_U: U \to \R\) for all \(f: U'
+\to \R\) continuous. Since the restriction of a continuous map is
+continuous, then \(f|_U \in F U\)
+\end{example}
+
+\begin{example}[Simplex category]
+\label{exp:simplex-category}
+The simplex category \(\Delta\) comprises objects that are finite non-empty
+ordinals and order-preserving morphisms. Simplicial sets are defined as
+presheaves \(\Delta^{\op} \to \Set\).
 \end{example}
 
 \begin{lemma}\label{lem: functor preserve iso}
-  Functors preserve isomorphisms. Let \(\cat C\) and \(\cat D\) be categories
-  and \(F: \cat C \to \cat D\) be a functor. Given an isomorphism \(f: c \isoto
-  c' \in \Mor(\cat C)\), we have that \(F f : F c \isoto c'\) is an isomorphism.
+Functors preserve isomorphisms. Let \(\cat C\) and \(\cat D\) be categories
+and \(F: \cat C \to \cat D\) be a functor. Given an isomorphism \(f: c \isoto
+c' \in \Mor(\cat C)\), we have that \(F f : F c \isoto c'\) is an isomorphism.
 \end{lemma}
 
 \begin{proof}
-  Denote by \(f^{-1}: c' \isoto c\) the inverse of \(f\). By the composition
-  axiom we have
-  \begin{gather*}
-    F (f^{-1}) F (f) = F (f^{-1} f) = F \Id_c    = \Id_{F c}, \\
-    F (f) F (f^{-1}) = F (f f^{-1}) = F \Id_{c'} = \Id_{F c'}.
-  \end{gather*}
-  This shows that \(F f^{-1}\) is the right and left inverse of \(F f\), hence
-  \(F f: F c \isoto F c'\) is indeed an isomorphism.
+Denote by \(f^{-1}: c' \isoto c\) the inverse of \(f\). By the composition
+axiom we have
+\begin{gather*}
+  F (f^{-1}) F (f) = F (f^{-1} f) = F \Id_c    = \Id_{F c}, \\
+  F (f) F (f^{-1}) = F (f f^{-1}) = F \Id_{c'} = \Id_{F c'}.
+\end{gather*}
+This shows that \(F f^{-1}\) is the right and left inverse of \(F f\), hence
+\(F f: F c \isoto F c'\) is indeed an isomorphism.
 \end{proof}
 
+\begin{example}[Group action]\label{exp:grp-action}
+Let \(G\) be any group and consider the category \(\cat{B}G\) generated by \(G\)
+--- that is, \(\cat BG\) consists of a unique object \(*\) and the morphisms of
+the category are endomorphisms \(* \to *\) given by the elements of \(G\). Given
+a category \(\cat C\), a functor \(X: \cat BG \to \cat C\) --- given by mapping
+\(X* \coloneq X \in \cat C\) and each object \(g \in G\) to an endomorphism \(Xg
+\coloneq g_{*}: X \to X\) --- is said to define a left group action on the
+object \(X \in \cat C\). Moreover, the functor \(X\) has to obey
+\begin{itemize}\setlength\itemsep{0em}
+\item Composition preserving: for any \(h, g \in G\), we have \((h g)_{*} =
+  h_{*} g_{*}\).
+\item Identity: \(e_{*} = \Id_X\).
+\end{itemize}
+Since functors preserve isomorphisms and every morphism of \(\cat BG\) is an
+automorphism, it follows that, for all \(g \in G\), the map \(g_{*}: X \to X\)
+is an automorphism --- in particular, this implies that \((g^{-1})_{*} =
+g_{*}^{-1}\).
+
+Some particular cases of interest are the following:
+\begin{itemize}\setlength\itemsep{0em}
+\item If \(\cat C = \Set\), then the set \(X\) together with the actions
+  \(\{g_{*} : g \in G\}\) is called a \(G\)-set.
+\item If \(\cat C = \Vect_k\), then the \(k\)-vector space \(X\) together with
+  the actions generated by \(G\) is said to be a \(G\)-representation.
+\item If \(\cat C = \Top\), then the topological space \(X\) endowed with the
+  actions generated by \(G\) is called a \(G\)-space.
+\end{itemize}
+
+A right group action is nothing more than a contravariant functor \(X: \cat
+BG^{\op} \to \cat C\) such that \(X* \coloneq X\) and \(Xg \coloneq g^{*}: X \to
+X\) are endomorphisms. The rules for such a functor are the contravariant
+preservation of compositions, that is, \((h g)_{*} = g_{*} h_{*}\), and that
+\(e^{*} = \Id_X\) as before.
+\end{example}
+
 \begin{lemma}\label{lem: func-preserve-split}
-  Functors preserve split monomorphisms and split epimorphisms.
+Functors preserve split monomorphisms and split epimorphisms.
 \end{lemma}
 
 \begin{proof}
-  Let \(\cat C\) and \(\cat D\) be categories and consider a functor \(F: \cat C
-  \to \cat D\). Define morphisms \(x \xrightarrow s y \xrightarrow r x\) in
-  \(\Mor(\cat C)\) such that \(r s = \Id_x\), that is, \(s\) is a split
-  monomorphism and \(r\) is a split epimorphism. Consider the morphisms \(F s: F
-  x \to F y\) and \(F r: F y \to F x\) in \(\Mor(\cat D)\). Notice that \(F (s)
-  F(r) = F(s r) = F(\Id_x) = \Id_{F x}\). Hence \(F s\) is a split monomorphism
+Let \(\cat C\) and \(\cat D\) be categories and consider a functor \(F: \cat C
+\to \cat D\). Define morphisms \(x \xrightarrow s y \xrightarrow r x\) in
+\(\Mor(\cat C)\) such that \(r s = \Id_x\), that is, \(s\) is a split
+monomorphism and \(r\) is a split epimorphism. Consider the morphisms \(F s: F
+x \to F y\) and \(F r: F y \to F x\) in \(\Mor(\cat D)\). Notice that \(F (s)
+F(r) = F(s r) = F(\Id_x) = \Id_{F x}\). Hence \(F s\) is a split monomorphism
 and \(F r\) is a split epimorphism.
 \end{proof}
 
-\begin{definition}
-  Let \(\cat C\) be a locally small category. Given any \(c \in \cat C\), there
-  exists a pair of covariant and contravariant functors, \(\cat C(c, -)\) and
-  \(\cat C(-, c)\) respectively, represented by the object \(c\). That is:
-  \[
-    \begin{tikzcd}
-      \cat C \ar[rr, "\cat C{(c, -)}"] & & \Set
-      \\
-      x \ar[rr, maps to] \ar[d, swap, "f"]
-      & & \cat C(c, x) \ar[d, "f_*"]
-      \\
-      y \ar[rr, maps to] & & \cat C(c, y)
-    \end{tikzcd}
-    \qquad
-    \begin{tikzcd}
-      \cat C^\op \ar[rr, "\cat C{(-, c)}"] & & \Set
-      \\
-      x \ar[rr, maps to] \ar[d, swap, "f"]
-      & & \cat C(x, c)
-      \\
-      y \ar[rr, maps to] & & \cat C(y, c) \ar[u, swap, "f^*"]
-    \end{tikzcd}
-  \]
+\begin{definition}[\(\Hom\) functors]\label{def:hom-functors}
+Let \(\cat C\) be a locally small category. Given any \(c \in \cat C\), there
+exists a pair of covariant and contravariant functors, \(\Hom(c, -)\) and
+\(\Hom(-, c)\), respectively --- represented by the object \(c\). That is:
+\[
+  \begin{tikzcd}
+    \cat C \ar[rr, "\Hom{(c, -)}"] & & \Set
+    \\
+    x \ar[rr, maps to] \ar[d, swap, "f"]
+    & & \Hom(c, x) \ar[d, "f_*"]
+    \\
+    y \ar[rr, maps to] & & \Hom(c, y)
+  \end{tikzcd}
+  \qquad
+  \begin{tikzcd}
+    \cat C^\op \ar[rr, "\Hom{(-, c)}"] & & \Set
+    \\
+    x \ar[rr, maps to] \ar[d, swap, "f"]
+    & & \Hom(x, c)
+    \\
+    y \ar[rr, maps to] & & \cat \Hom(y, c) \ar[u, swap, "f^*"]
+  \end{tikzcd}
+\]
 \end{definition}
 
 We now prove that such definition indeed satisfies the axioms for covariant and
 contravariant functors. Given morphisms \(f: x \to y\) and \(g: y \to z\) in
 \(\Mor(\cat C)\), we see that \(g_* f_* = (g f)_*\), moreover \(f^* g^* = (f
-g)^*\). Let \(x \in \cat C\) be any object, then \(\Id_{x *} = \Id_{\cat C(c,
-x)} = \Id_x^*\). This proves that \(\cat C(c, -)\) is covariant and \(\cat C(-,
-c)\) is contravariant.
+g)^*\). Let \(x \in \cat C\) be any object, then \(\Id_{x *} = \Id_{\Hom(c, x)}
+= \Id_x^*\). This proves that \(\Hom(c, -)\) is covariant and \(\Hom(-, c)\) is
+contravariant.
 
 \begin{definition}[Faithful]\label{def: faithful}
-  Let \(\cat C\) and \(\cat D\) be categories. A functor \(F: \cat C \to \cat
-  D\) is said to be faithful if for all \(x, y \in \cat C\) the map \(\cat C(x,
-  y) \to \cat D(F x, F y)\) is injective.
+Let \(\cat C\) and \(\cat D\) be categories. A functor \(F: \cat C \to \cat D\)
+is said to be faithful if for all \(x, y \in \cat C\) the map \(\cat C(x, y) \to
+\cat D(F x, F y)\) is injective.
 \end{definition}
 
 \begin{definition}[Full]\label{def: full}
-  Let \(\cat C\) and \(\cat D\) be categories. A functor \(F: \cat C \to \cat
-  D\) is said to be full if for all \(x, y \in \cat C\) the map \(\cat C(x,
-  y) \to \cat D(F x, F y)\) is surjective.
+Let \(\cat C\) and \(\cat D\) be categories. A functor \(F: \cat C \to \cat D\)
+is said to be full if for all \(x, y \in \cat C\) the map \(\cat C(x, y) \to
+\cat D(F x, F y)\) is surjective.
 \end{definition}
 
-\begin{definition}[Product category]
-  Given categories \(\cat C\) and \(\cat D\), we define their product \(\cat C
-  \times \cat D\) to be a category whose objects are ordered pairs \((c, d)\)
-  such that \(c \in \cat C\) and \(d \in \cat D\), and morphisms are ordered
-  pairs \((f, g): (c, d) \to (c', d')\), where \(f: c \to c' \in \Mor(\cat C)\)
-  and \(g: d \to d' \in \Mor(\cat D)\).
+\begin{definition}[Product category]\label{def:product-category}
+Given categories \(\cat C\) and \(\cat D\), we define their product \(\cat C
+\times \cat D\) to be a category whose objects are ordered pairs \((c, d)\) such
+that \(c \in \cat C\) and \(d \in \cat D\), and morphisms are ordered pairs
+\((f, g): (c, d) \to (c', d')\), where \(f: c \to c' \in \Mor(\cat C)\) and \(g:
+d \to d' \in \Mor(\cat D)\). Composable morphisms \((f, g)\) and \((h, q)\) have
+composition defined componentwise, that is, \((f, g) (h, q) = (fh, gq)\).
 \end{definition}
+
+\begin{definition}[Two sided represented functor]
+\label{def:two-sided-represented-functor}
+Let \(\cat C\) be a locally small category, then there is a functor \(\Hom(-,
+-): \cat C^{\op} \times \cat C \to \Set\) defined by mapping objects \((x, y)
+\mapsto \Hom(x, y)\) and morphisms \((f, g): (a, y) \to (x, b)\) to a
+set-function \((f^{*}, g_{*}): \Hom(x, y) \to \Hom(a, b)\) given by the mapping
+\(g \mapsto h g f\).
+\end{definition}
+
+Categories also form a category, whose objects are categories and morphisms are
+functors between them --- but this gives rise to size \todo{describe}issues, so
+we have to distinguish between two kinds of categories, the ones that are
+\emph{small} and \emph{locally small}. This gives rise to two categories,
+\(\Cat\) and \(\CAT\), comprised of objects that are small and locally small,
+respectively.
+
+\begin{definition}[Isomorphism of categories]
+\label{def:isomorphism-categories}
+Let \(\cat C\) and \(\cat D\) be categories. We say that \(\cat C\) is
+isomorphic to \(\cat D\) if there exists morphisms \(F: \cat C \to \cat D\) and
+\(G: \cat D \to \cat C\) such that \(GF = \Id_{\cat C}\) and \(FG = \Id_{\cat D}\).
+\end{definition}
+
+\begin{example}[Orbit category]
+\label{exp:orbit-category}
+Let \(G\) be a group. We define the orbit category associated to \(G\) as
+\(\mathcal{O}_G\) whose objects are subgroups \(H \subseteq G\), identified by
+the left \(G\)-set \(G/H\) of left costs of \(H\). The morphisms \(\phi: G/H \to
+G/Q\) are maps commuting with the left \(G\)-action, that is, \(\phi(g_{*}h) =
+g_{*} \phi(h)\) --- such maps are called \(G\)-equivariant.
+\end{example}
+
+
 
 %\begin{proposition}[Bifunctor]
-  %Let categories \(\cat A, \cat B\) and \(\cat C\). There exists a uniquely
-  %defined functor \(F: \cat A \times \cat B \to \cat C\).
+%Let categories \(\cat A, \cat B\) and \(\cat C\). There exists a uniquely
+%defined functor \(F: \cat A \times \cat B \to \cat C\).
 %\end{proposition}
 
 \todo[inline]{Bifunctor and two sided represented functor!}

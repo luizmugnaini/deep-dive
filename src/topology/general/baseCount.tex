@@ -1,113 +1,9 @@
-\section{Bases and Countability}
-
-\begin{definition}[Base]\label{def: base}
-  Let \(X\) be a topological space. A collection \(\mathcal B \subseteq 2^X\) is
-  said to be a basis for the topology of \(X\) if it satisfies the following
-  \begin{enumerate}[(B1)]
-    \item Every element of \(\mathcal B\) is an open set of \(X\).
-    \item Every open subset \(U \subseteq X\) can be written as a union of
-      elements of \(B\), that is, exists \(\{B_i\}_{i \in I} \subseteq \mathcal
-      B\) for which \(U = \bigcup_{i \in  I} B_i\).
-  \end{enumerate}
-\end{definition}
-
-\begin{proposition}[Necessary and sufficient condition for a basis]
-  Let \(X\) be a set and \(\mathcal B \subseteq 2^X\). Then \(\mathcal B\) is a
-  basis for some topology of \(X\) if and only if it satisfies
-  \begin{enumerate}[(1)]
-    \item \(X = \bigcup_{B \in \mathcal B} B\).
-    \item If \(x \in A \cap B\), where \(A, B \in \mathcal B\), then there
-      exists \(C \in \mathcal B\) such that \(x \in C \subseteq A \cap B\).
-  \end{enumerate}
-\end{proposition}
-
-\todo[inline]{write proof}
-
-\begin{definition}[Subbase]\label{def: subbase}
-  Let \((X, \mathcal T)\) be a topological space. A collection \(\mathcal S
-  \subseteq \mathcal T\) is called a subbase for \((X, \mathcal T)\) if the
-  collection of all finite intersections \(U_1 \cap \dots \cap U_n\), where
-  \(U_i \in \mathcal S\), is a base for \((X, \mathcal T)\).
-\end{definition}
-
-\begin{definition}[Weight]\label{def: weight}
-  Let \(X\) be a topological space and \(\mathfrak B\) be the collection of
-  all bases for the topology of \(X\). We define the weight of \(X\) as
-  \[
-    w(X) = \min_{\mathcal B \in \mathfrak B} |\mathcal B|.
-  \]
-\end{definition}
-
-\begin{proposition}[Basis criterion for open sets]
-  Let \(X\) a topological space and \(\mathcal B\) a base for the topology of
-  \(X\). A set \(A \subseteq X\) is open if and only if for all points \(p \in
-  A\) there exists a neighbourhood of \(p\), \(B_p \in \mathcal B\), such that
-  \(B_p \subseteq A\).
-\end{proposition}
-
-\begin{proposition}[Basis criterion for continuity]
-  Let \(f: X \to Y\) be a map between topological spaces, and \(\mathcal B\) be
-  a basis for the topology of \(Y\). Then, \(f\) is continuous (hence a
-  morphism) if and only if for all \(B \in \mathcal B\) we have \(f^{-1}(B)
-  \subseteq X\) open.
-\end{proposition}
-
-\begin{proof}
-  (\(\Rightarrow\)) If \(f\) is continuous, then certainly \(f^{-1}(B)\) is
-  open. (\(\Leftarrow\)) On the other hand, if \(A \subseteq X\) is any open
-  set, then \(A = \bigcup_{p \in A} B_p\) for \(B_p \in \mathcal B\)
-  neighbourhood of \(p\). Hence \(f^{-1}(A) = f^{-1} \left( \bigcup_{p \in A}
-  B_p \right) = \bigcup_{p \in A} f^{-1}(B_p)\) is the union of open sets, thus
-  \(f^{-1}(A)\) is open and therefore \(f\) is continuous.
-\end{proof}
-
-\begin{definition}[Basis at a point]\label{def: basis at a point}
-  Let \(X\) be a topological space and \(p \in X\) be any fixed point. We define
-  the collection \(\mathcal B_p \subseteq 2^X\) of neighbourhoods of \(p\) to be
-  the \emph{neighbourhood basis for the topology of \(X\) at \(p\)} if for any
-  neighbourhood \(U_p \subseteq X\), there exists \(B \in \mathcal B_p\) such
-  that \(B \subseteq U_p\).
-\end{definition}
-
-\begin{proposition}\label{prop: basis image surjective}
-  Let \(f: X \to Y\) be a morphism of topological spaces and \(\mathcal B\) be a
-  basis for the space \(X\). Then \(f(\mathcal B) = \{f(B): B \in \mathcal B\}\)
-  is a basis for the space \(Y\) if and only if \(f\) is surjective and open.
-\end{proposition}
-
-\begin{proof}
-  (\(\Rightarrow\)) Suppose \(f(\mathcal B)\) is a basis for \(Y\), then for all
-  \(V \subseteq Y\) open, there exists an indexing set \(I\) such that \(V =
-  \bigcup_{i \in  I} U_i\), where \(U_i \in f(\mathcal B)\). This implies in the
-  existence of \(B \in \mathcal B\) such that \(U_i = f(B)\) hence \(f\) is
-  open. Consider now any point \(y \in Y\) and any neighbourhood \(V_y\) of
-  \(y\). From the same argument as above we have \(V_y = \bigcup_{i \in  I_y}
-  U_i\), where there exists some \(i \in I_y\) such that \(y \in U_i\) and hence
-  \(y \in U_i = f(B)\) for some \(B \in \mathcal B\).
-  (\(\Leftarrow\)) Suppose \(f\) is surjective and open. Let \(V \subseteq Y\)
-  be any open set. Since \(f\) is continuous and surjective, we have that
-  \(U = f^{-1}(V)\) is a nonempty open set. Since \(\mathcal B\) is a basis, we
-  can write \(U = \bigcup_{i \in  I} B_i\) where \(B_i \in B\), and then \(f(U)
-  = f\left( \bigcup_{i \in  I} B_i \right) = \bigcup_{i \in I} f(B_i)\), where
-  \(f(B_i) \in f(\mathcal B)\) and \(f(U) = V\) from the fact that \(f\) is
-  surjective. Since \(f\) is open, \(f(B)\) is open for all \(B \in \mathcal
-  B\). Hence \(f(\mathcal B)\) is a basis for the space \(Y\).
-\end{proof}
-
-\begin{definition}\label{def: character}
-  Let \((X, \mathcal T)\) be a topological space. Let \(x \in X\) be any point
-  and consider \(\mathfrak B_x\) the collection of all bases at \(x\). Then we
-  define the character of \(X\) at the point \(x\) as
-  \[
-    \chi(x, (X, \mathcal T)) = \min_{\mathcal B_x \in \mathfrak B_x} |\mathcal
-    B_x|
-  \]
-\end{definition}
+\section{Countability}
 
 \begin{definition}[First countable]\label{def: first countable}
   Let \(X\) be a topological space. We say that \(X\) is first countable if for
-  all points \(p \in X\) there exists a countable basis of neighbourhoods at
-  \(p\). Equivalently \(\chi(x, X) \leq \aleph_0\).
+  all points \(p \in X\) there exists a countable basis of \(X\) composed of
+  neighbourhoods of \(p\). Equivalently \(\chi(p, X) \leq \aleph_0\).
 \end{definition}
 
 \subsection{Convergence on First Countable Spaces}
@@ -242,6 +138,46 @@
   U\).
 \end{definition}
 
+Altough formally we should always write down if the cover is either open or
+closed, I'll slip here and there and every time that I use the term ``cover''
+and do not specify its type, it should be understood that I'm talking about open
+covers --- otherwise I'll specifically write ``closed cover'' in order to avoid
+any confusion.
+
+\begin{proposition}[Basis out of covers]
+\label{prop:union-cover-basis}
+Let \(\mathcal U\) be an open cover of the space \(X\). For all \(U \in \mathcal
+U\), define \(\mathcal{B}_U\) as the basis for the subspace \(U\). Then union
+\(\bigcup_{U \in \mathcal U} \mathcal{B}_U\) is a basis for \(X\).
+\end{proposition}
+
+\begin{proof}
+Define \(\mathcal B \coloneq \bigcup_{U \in \mathcal U} \mathcal B_{U}\).
+Clearly \(\bigcup_{B \in \mathcal B} B = \bigcup_{U \in \mathcal U} \bigcup_{B
+\in \mathcal B_U} B = X\) --- since every element of \(X\) can be found in
+\(\mathcal U\) and \(\mathcal B_U \subseteq 2^U \subseteq 2^{X}\). Let \(x \in
+X\) be any point and let \(U \in \mathcal U\) be a neighbourhood of
+\(x\). Notice that on \(U\) the basis \(\mathcal B_U\) satisfies the local
+intersecting condition (see \cref{item:basis-intersection-property}). Since \(x
+\in X\) is any point, then the condition is true globally for \(\mathcal B\),
+thus \(\mathcal B\) is a basis for \(X\).
+\end{proof}
+
+\begin{corollary}[Second countable out of a cover]
+\label{cor:second-countable-out-of-cover}
+Let \(\mathcal U\) be a countable open cover of the space \(X\). If every \(U
+\in \mathcal U\) is second countable, then \(X\) is second countable.
+\end{corollary}
+
+\begin{proof}
+We consider \(\mathcal B\) as in \cref{prop:union-cover-basis}, the union of the
+basis \(\mathcal B_U\) for the cover elements \(U \in \mathcal U\) --- and since
+\(U\) is second countable, we choose \(\mathcal B_U\) to be a countable
+cover. Since \(\mathcal U\) is countable and so is every basis contained in the
+basis \(\mathcal B\), we conclude that \(\mathcal B\) itself is countable and by
+\cref{prop:union-cover-basis} we find that \(\mathcal B\) is a basis for \(X\).
+\end{proof}
+
 \begin{definition}[Lindelöf space]
   A space \(X\) is said to be Lindelöf if every open cover of \(X\) has a
   countable subcover.
@@ -334,6 +270,17 @@
 
   By means of \cref{prop: second countable properties} we conclude the
   equivalence chain.
+\end{proof}
+
+\begin{corollary}
+\label{cor:euclidean-space-second-countable}
+Euclidean spaces are countable.
+\end{corollary}
+
+\begin{proof}
+Lets consider \(\R^n\), notice that \(\Q^n\) is dense in \(\R^n\) and countable,
+thus \(\R^n\) is separable, which by \cref{prop: metric space properties}
+implies that \(\R^n\) is second countable.
 \end{proof}
 
 \subsection{Weights and Cardinality}

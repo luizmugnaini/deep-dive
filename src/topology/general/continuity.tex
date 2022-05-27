@@ -1,154 +1,306 @@
 \section{Morphisms of Topological Spaces}
 
 \begin{definition}[Continuous map]\label{def: continuous map}
-  Let \(X\) and \(Y\) be topological spaces and consider the map \(f : X \to
-  Y\). We say that \(f\) is continuous if for all \(U \subseteq Y\) open, the
-  preimage \(f^{-1}(U)\) is open in \(X\).
+Let \(X\) and \(Y\) be topological spaces and consider the map \(f : X \to Y\). We
+say that \(f\) is continuous if for all \(U \subseteq Y\) open, the preimage
+\(f^{-1}(U)\) is open in \(X\).
 \end{definition}
 
 \begin{proposition}
-  A map \(f : X \to Y\) is continuous if and only if the preimage of every
-  closed subset is closed.
+A map \(f : X \to Y\) is continuous if and only if the preimage of every closed
+subset is closed.
 \end{proposition}
 
 \begin{proof}
-  (\(\Leftarrow\)) Suppose that \(f\) satisfies the latter, the given any \(U
-  \subseteq Y\) there exists a closed set \(C \subseteq Y\) such that \(U = Y
-  \setminus C\), thus \(f^{-1}(C)\) is closed, then \(f^{-1}(X \setminus C) =
-  f^{-1}(U)\) is open. \(\Rightarrow\) The analogous argument is used.
+Suppose that \(f\) satisfies the latter, the given any \(U \subseteq Y\) there
+exists a closed set \(C \subseteq Y\) such that \(U = Y \setminus C\), thus
+\(f^{-1}(C)\) is closed, then \(f^{-1}(X \setminus C) = f^{-1}(U)\) is open. For
+the contrary, the analogous argument is used.
 \end{proof}
 
 \begin{proposition}\label{prop: continuous maps properties}
-  Let \(X, Y, Z\) be topological spaces. The following properties of continuous
-  maps between topological spaces hold
-  \begin{enumerate}[(CM1)]
-    \item Every constant map \(f: X \to Y\) is continuous.
-    \item The identity map is continuous.
-    \item If \(f: X \to Y\) is continuous, then for all open set \(U \subseteq
-      X\) we have \(f|_U\) continuous.
-    \item If \(f: X \to Y\) and \(g: Y \to Z\) are continuous maps, then \(g
-      \circ f : X \to Z\).
-  \end{enumerate}
+Let \(X, Y, Z\) be topological spaces. The following properties of continuous
+maps between topological spaces hold
+\begin{enumerate}[(CM1)]
+  \item Every constant map \(f: X \to Y\) is continuous.
+  \item The identity map is continuous.
+  \item If \(f: X \to Y\) is continuous, then for all open set \(U \subseteq X\)
+    we have \(f|_U\) continuous.
+  \item If \(f: X \to Y\) and \(g: Y \to Z\) are continuous maps, then \(g f : X
+    \to Z\).
+\end{enumerate}
 \end{proposition}
 
 \begin{proof}
-  (a) Let any point \(a \in Y\) and consider the constant map \(x \xmapsto f a\)
+\begin{enumerate}[(1)]\setlength\itemsep{0em}
+\item Let any point \(a \in Y\) and consider the constant map \(x \xmapsto f a\)
   for all \(x \in X\). Then, for all \(U \subseteq Y \setminus \{a\}\) open, we
   have that \(f^{-1}(U) = \emptyset\), thus have open preimage. On the other
   hand, the fiber \(f^{-1}(a) = X\), hence also open, thus \(f\) is continuous.
-  (b) Notice that if \(U \subseteq Y\) is any open set, then \(\Id_X^{-1}(U) =
+
+\item Notice that if \(U \subseteq Y\) is any open set, then \(\Id_X^{-1}(U) =
   U\) and thus open.
-  (c) Let \(g : X \to Y\) be a continuous map, and \(U \subseteq X\) be any open
+
+\item Let \(g : X \to Y\) be a continuous map, and \(U \subseteq X\) be any open
   set, then we can take any open \(V \subseteq g(U)\) and conclude that
   \(g^{-1}(V)\) is open (from the hypothesis that \(g\) is continuous); let now
   an open \(H \subseteq Y \setminus g(U)\), then certainly \(g|_U^{-1}(H) =
   \emptyset\), thus open. Hence \(g|_U : U \to Y\) is indeed continuous.
-  (d) Let \(U \subseteq Z\) be open, then \((g \circ f)^{-1}(U) = f^{-1}
+
+\item Let \(U \subseteq Z\) be open, then \((g f)^{-1}(U) = f^{-1}
   (g^{-1}(U))\). Moreover, since from hypothesis \(g\) is continuous, then
   \(g^{-1}(U)\) is open, now, from the continuity of \(f\) we conclude that
-  \(f^{-1}(g^{-1}(U))\) is open, hence \(g \circ f\) is continuous.
+  \(f^{-1}(g^{-1}(U))\) is open, hence \(g f\) is continuous.
+\end{enumerate}
 \end{proof}
 
-\begin{definition}
-  We define the category \(\Top\) as a collection of topological spaces as
-  objects and continuous maps as morphisms between the topological spaces.
+\begin{definition}[Category of topological spaces]
+We define the category of topological spaces to be composed of objects named
+topological spaces and morphisms being continuous maps between them --- we'll
+denote such category by \(\Top\).
 \end{definition}
 
 \begin{proposition}[Local criterion for continuity]
-  \label{prop: local criterion for continuity}
-  Let \(f: X \to Y\) be a map between topological spaces. Then \(f\) is
-  continuous if and only if for all points \(x \in X\) there exists a
-  neighbourhood \(U_x \subseteq X\) of \(x\) such that \(f|_{U_x}\) is
-  continuous.
-\end{proposition}
-
-\todo[inline]{add proof}
-
-\begin{definition}[Homeomorphism]\label{def: homeomorphism}
-  Let \(f \in \Mor(\Top)\). If \(f\) is bijective and has a continuous
-  inverse, that is, \(f^{-1} \in \Mor(\Top)\), then we say that \(f\) is a
-  homeomorphism (isomorphism of topological spaces). We say that \(X\) and
-  \(Y\) are homeomorphic topological spaces, and write \(X \iso Y\), if there
-  exists a homeomorphism between them.
-\end{definition}
-
-\begin{definition}[Open/Closed maps]
-  \label{def: open/closed maps}
-  Let \(f : X \to Y\) be any map between topological spaces. We have the
-  following definitions:
-  \begin{enumerate}[(a)]
-    \item We say that \(f\) is an open map if for all \(U \subseteq X\) open the
-      image \(f(U) \subseteq Y\) is open.
-    \item We say that \(f\) is a closed map if for all \(C \subseteq X\) closed,
-      the image \(f(C) \subseteq Y\) is closed.
-  \end{enumerate}
-\end{definition}
-
-\begin{proposition}
-  Let \(f: X \to Y\) be a map of topological spaces and consider that \(f\) is a
-  homeomorphism, then \(f\) is an open and a closed map.
+\label{prop: local criterion for continuity}
+Let \(f: X \to Y\) be a map between topological spaces. Then \(f\) is continuous
+if and only if for all points \(x \in X\) there exists a neighbourhood \(U_x
+\subseteq X\) of \(x\) such that \(f|_{U_x}\) is continuous.
 \end{proposition}
 
 \begin{proof}
-  Let \(U \subseteq X\) be an open (resp. closed) set and consider \(V := f(U)
-  \subseteq Y\).  Since \(f\) is a bijection, we find that \(f(U) = V\) is open
-  (resp. closed) by the continuity of \(f^{-1}\). Hence \(f\) is an open (resp.
-  closed) map.
+If \(f\) is a morphism, then for any \(x \in X\) we can take the whole space
+\(X\) as a neighbourhood of \(x\) and the proposition follows. On the other hand
+If \(f\) is locally continuous for every point of \(X\), let \(V \subseteq Y\)
+be any open set and consider, for every \(x \in f^{-1}(V)\) a neighbourhood
+\(U_x\) such that \(f|_{U_x}\) is continuous --- and hence \(f|_{U_x}^{-1}(V)\)
+is open for all \(x \in f^{-1}(V)\). Notice that \(f^{-1}(V) \cap U_x =
+f|_{U_x}^{-1}(V)\), which has to be open on \(X\). Moreover, from construction
+\(f^{-1}(V) = \bigcup_{x \in f^{-1}(V)} f^{-1}(V) \cap U_x\) is the union of
+open sets, thus \(f^{-1}(V)\) is open --- and therefore \(f\) is continuous.
 \end{proof}
+
+\begin{proposition}[Basis criterion for continuity]
+Let \(f: X \to Y\) be a map between topological spaces, and \(\mathcal B\) be
+a basis for the topology of \(Y\). Then, \(f\) is continuous (hence a
+morphism) if and only if for all \(B \in \mathcal B\) we have \(f^{-1}(B)
+\subseteq X\) open.
+\end{proposition}
+
+\begin{proof}
+(\(\Rightarrow\)) If \(f\) is continuous, then certainly \(f^{-1}(B)\) is
+open. (\(\Leftarrow\)) On the other hand, if \(A \subseteq X\) is any open
+set, then \(A = \bigcup_{p \in A} B_p\) for \(B_p \in \mathcal B\)
+neighbourhood of \(p\). Hence \(f^{-1}(A) = f^{-1} (\bigcup_{p \in A}
+B_p) = \bigcup_{p \in A} f^{-1}(B_p)\) is the union of open sets, thus
+\(f^{-1}(A)\) is open and therefore \(f\) is continuous.
+\end{proof}
+
+\begin{proposition}\label{prop: basis image surjective}
+Let \(f: X \to Y\) be a morphism of topological spaces and \(\mathcal B\) be a
+basis for the space \(X\). Then \(f(\mathcal B) = \{f(B): B \in \mathcal B\}\)
+is a basis for the space \(Y\) if and only if \(f\) is surjective and open.
+\end{proposition}
+
+\begin{proof}
+(\(\Rightarrow\)) Suppose \(f(\mathcal B)\) is a basis for \(Y\), then for all
+\(V \subseteq Y\) open, there exists an indexing set \(I\) such that \(V =
+\bigcup_{i \in  I} U_i\), where \(U_i \in f(\mathcal B)\). This implies in the
+existence of \(B \in \mathcal B\) such that \(U_i = f(B)\) hence \(f\) is
+open. Consider now any point \(y \in Y\) and any neighbourhood \(V_y\) of
+\(y\). From the same argument as above we have \(V_y = \bigcup_{i \in  I_y}
+U_i\), where there exists some \(i \in I_y\) such that \(y \in U_i\) and hence
+\(y \in U_i = f(B)\) for some \(B \in \mathcal B\).
+(\(\Leftarrow\)) Suppose \(f\) is surjective and open. Let \(V \subseteq Y\)
+be any open set. Since \(f\) is continuous and surjective, we have that
+\(U = f^{-1}(V)\) is a nonempty open set. Since \(\mathcal B\) is a basis, we
+can write \(U = \bigcup_{i \in  I} B_i\) where \(B_i \in B\), and then \(f(U)
+= f\left( \bigcup_{i \in  I} B_i \right) = \bigcup_{i \in I} f(B_i)\), where
+\(f(B_i) \in f(\mathcal B)\) and \(f(U) = V\) from the fact that \(f\) is
+surjective. Since \(f\) is open, \(f(B)\) is open for all \(B \in \mathcal
+B\). Hence \(f(\mathcal B)\) is a basis for the space \(Y\).
+\end{proof}
+
+\begin{definition}[Isomorphism]\label{def: homeomorphism}
+Let \(f\) be a morphism of topological spaces. If \(f\) is bijective and has a
+continuous inverse, then we say that \(f\) is an isomorphism of topological
+spaces --- which can also be called an homeomorphism.
+\end{definition}
+
+\begin{definition}[Open \& Closed maps]\label{def: open/closed maps}
+Let \(f : X \to Y\) be any set-function between topological spaces.
+\begin{itemize}\setlength\itemsep{0em}
+  \item We say that \(f\) is an open map if for all \(U \subseteq X\) open the
+    image \(f(U) \subseteq Y\) is open.
+  \item We say that \(f\) is a closed map if for all \(C \subseteq X\) closed,
+    the image \(f(C) \subseteq Y\) is closed.
+\end{itemize}
+\end{definition}
+
+\begin{proposition}\label{prop:homeomorphism-is-open-closed}
+Let \(f: X \to Y\) be a map of topological spaces and consider that \(f\) is an
+isomorphism, then \(f\) is an open and a closed map.
+\end{proposition}
+
+\begin{proof}
+Let \(U \subseteq X\) be an open (resp. closed) set and consider \(V := f(U)
+\subseteq Y\).  Since \(f\) is a bijection, we find that \(f(U) = V\) is open
+(resp. closed) by the continuity of \(f^{-1}\). Hence \(f\) is an open (resp.
+closed) map.
+\end{proof}
+
+\begin{corollary}\label{cor:bij-iso-open-closed}
+Let \(f: X \to Y\) be a bijective set-function, where \(X\) and \(Y\) are
+topological spaces. The following propositions are equivalent
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item \(f\) is an isomorphism of topological spaces.
+\item \(f\) is open.
+\item \(f\) is closed.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+(a) \(\Rightarrow\) (b): Suppose \(f\) is an isomorphism, then since \(f^{-1}\)
+is also an isomorphism, it follows that, given any \(U \subseteq X\) the image
+\(f(U)\) is open --- hence \(f\) is open. (b) \(\Rightarrow\) (c): Let \(f\) be
+open, then given any closed set \(C \subseteq X\), we have that \(f(X \setminus
+C) \subseteq Y\) is open, moreover, since \(f\) is injective, \(f(X \setminus C)
+= f(X) \setminus f(C)\) and since \(f(X) = Y\) from the surjectivity of \(f\),
+we conclude that \(f(C)\) is closed. (c) \(\Rightarrow\) (a) Let \(f\) be
+closed, then given any \(V \subseteq Y\) open, we know that \(Y \setminus V\) is
+closed and since \(f\) is a bijection, \(f^{-1}(Y \setminus V) = f^{-1}(Y)
+\setminus f^{-1}(V) = X \setminus f^{-1}(V) \subseteq X\) is closed, thus
+\(f^{-1}(V)\) is open --- which implies in the continuity of \(f\). Moreover,
+since \(f\) is a bijection, \(f^{-1}\) is also closed, and therefore continuous
+by the same analogous proof, thus \(f\) is an isomorphism.
+\end{proof}
+
+\begin{proposition}\label{prop:classification-maps-interior-closure}
+Let \(X\) and \(Y\) be topological spaces and \(f: X \to Y\) be a
+set-function. We can classify the behaviour of \(f\) by the following conditions
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item \(f\) is a morphism of topological spaces if and only if \(f(\overline{A})
+  \subseteq \overline{f(A)}\) for every set \(A \subseteq X\).
+\item \(f\) is a morphism of topological spaces if and only if \(f^{-1}(\Int B)
+  \subseteq \Int f^{-1}(B)\) for every set \(B \subseteq Y\).
+\item \(f\) is closed if and only if \(f(\overline{A}) \supseteq
+  \overline{f(A)}\) for every set \(A \subseteq X\).
+\item \(f\) is open if and only if \(f^{-1}(\Int B) \supseteq \Int f^{-1}(B)\)
+  for every set \(B \subseteq Y\).
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\todo[inline]{prove}
+\end{proof}
+
+\begin{definition}[Local isomorphism]
+\label{def:local-homeomorphism}
+Let \(f: X \to Y\) be a set-function between topological spaces \(X\) and
+\(Y\). We say that \(f\) is a local isomorphism of topological spaces if, for
+all \(x \in X\), there exists a neighbourhood \(U \subseteq X\) such that \(f(U)
+\subseteq Y\) is open and the induced map \(f: U \isoto f(U)\) is an isomorphism
+of topological spaces.
+\end{definition}
+
+\begin{proposition}\label{prop:properties-local-homeomorphism}
+The following are properties pertaining to local isomorphisms
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Every isomorphism is a local isomorphism.
+\item Every local isomorphism is continuous and open.
+\item Every bijective local isomorphism is an isomorphism.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Let \(f: X \isoto Y\) be an isomorphism, then for all \(x \in X\) we can
+  choose the neighbourhood \(X\) and the restriction \(f|_X = f: X \isoto f(X) =
+  Y\) is an isomorphism.
+\item Let \(g: X \to Y\) be a local isomorphism. Let \(x \in X\) be any element
+  and consider \(U \subseteq X\) such that \(g|_U: U \isoto g(U)\) is an
+  isomorphism, then in particular \(g|_U\) is continuous --- by \cref{prop:
+  local criterion for continuity} we find that \(g\) is continuous. Now let \(U
+  \subseteq X\) be any open set, for each \(x \in U\) take \(U_x \subseteq X\)
+  neighbourhood of \(x\) such that \(g|_{U_x}: U_x \to g(U_x)\) is an
+  isomorphism. Notice that the restriction \(g|_{U \cap U_x}: U \cap U_x \isoto
+  f(U \cap U_x)\) is also an isomorphism which implies in \(f(U \cap U_x)
+  \subseteq Y\) being open --- moreover, \(V = \bigcup_{x \in U} f(U \cap
+  U_{x})\) thus \(V\) is open.
+\item Let \(f: X \to V\) be a bijective local isomorphism, then by the last item,
+  \(f\) is open. Using \cref{cor:bij-iso-open-closed} we see that \(f\) is an
+  isomorphism.
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}\label{prop:homeomorphism-equivalence}
+Let \(X\) and \(Y\) be topological spaces. A morphism \(f: X \to Y\) is an
+isomorphism if and only if, for all \(U \subseteq X\) open we have \(f(U)
+\subseteq Y\) open, and if \(f(U)\) is open, then \(U\) is open.
+\end{proposition}
+
+\begin{proof}
+\todo[inline]{prove}
+\end{proof}
+
+\begin{definition}[Embedding]\label{def:top-embedding}
+Let \(f: X \mono Y\) be an injective morphism of topological spaces. If the
+induced morphism \(f: X \to f(X)\) is an isomorphism, then we say that \(f\) is a
+topological embedding of \(X\) in \(Y\).
+\end{definition}
 
 \subsection{Topology Generated by Mappings}
 
 \begin{proposition}[Topology generated by a collection of mappings]
-  \label{prop: top generated by collection of maps}
-  Let \(X\) be a topological space and \(\{Y_i\}_{i \in I}\) be a collection of
-  topological spaces. Let \(\{f_i : X \to Y_i\}_{i \in I}\) be the collection of
-  mappings between such topological spaces. Then there exists a coarsest
-  topology on \(X\) such that \(f_i\) is continuous, for all \(i \in I\). Such
-  topology is generated by the base
-  \[
-    \mathcal B = \left\{ \bigcap_{j \in J} f_j^{-1}(U_j) : U_i \subseteq Y_i
-    \text{ is open, } J \subseteq I \text{ is finite}\right\}.
-  \]
-  We call such topology as the topology generated by the collection of mappings
-  \(\{f_i\}_{i \in I}\).
+\label{prop: top generated by collection of maps}
+Let \(X\) be a topological space and \(\{Y_i\}_{i \in I}\) be a collection of
+topological spaces. Let \(\{f_i : X \to Y_i\}_{i \in I}\) be the collection of
+mappings between such topological spaces. Then there exists a coarsest
+topology on \(X\) such that \(f_i\) is continuous, for all \(i \in I\). Such
+topology is generated by the base
+\[
+  \mathcal B = \left\{ \bigcap_{j \in J} f_j^{-1}(U_j) : U_i \subseteq Y_i
+  \text{ is open, } J \subseteq I \text{ is finite}\right\}.
+\]
+We call such topology as the topology generated by the collection of mappings
+\(\{f_i\}_{i \in I}\).
 \end{proposition}
 
 \begin{proof}
-  First we show that \(\mathcal B\) is indeed a basis for \(X\). Let \(x \in X\)
-  be any point, then clearly \(x \in f_i^{-1}(Y_i)\) for all \(i \in I\), hence
-  \(x \in \bigcap_{j \in  J} f_j^{-1}(Y_j) \in \mathcal B\) for a finite
-  indexing set \(J \subseteq I\).
-  Let \(J, S \subseteq I\) be finite indexing sets, then consider the sets
-  \(A := \bigcap_{j \in J} f_j^{-1}(U_j), B := \bigcap_{s \in S} f_s^{-1}(V_s) \in
-  \mathcal B\) and let any point \(x \in A \cap B\). Then in particular we can
-  let an nonempty indexing set \(T = J \cap S\) so that \(x \in f_t^{-1}(U_t)\)
-  for all \(t \in T\) and therefore \(C := \bigcap_{t \in  T} f_t^{-1}(U_t)\) is
-  such that \(x \in C \subseteq A \cap B\). This shows that \(\mathcal B\)
-  indeed satisfies the basis properties.
+First we show that \(\mathcal B\) is indeed a basis for \(X\). Let \(x \in X\)
+be any point, then clearly \(x \in f_i^{-1}(Y_i)\) for all \(i \in I\), hence
+\(x \in \bigcap_{j \in  J} f_j^{-1}(Y_j) \in \mathcal B\) for a finite
+indexing set \(J \subseteq I\).
+Let \(J, S \subseteq I\) be finite indexing sets, then consider the sets
+\(A := \bigcap_{j \in J} f_j^{-1}(U_j), B := \bigcap_{s \in S} f_s^{-1}(V_s) \in
+\mathcal B\) and let any point \(x \in A \cap B\). Then in particular we can
+let an nonempty indexing set \(T = J \cap S\) so that \(x \in f_t^{-1}(U_t)\)
+for all \(t \in T\) and therefore \(C := \bigcap_{t \in  T} f_t^{-1}(U_t)\) is
+such that \(x \in C \subseteq A \cap B\). This shows that \(\mathcal B\)
+indeed satisfies the basis properties.
 
-  Now we show the coarsest topology property. Let \(\mathcal T\) be the topology
-  generated by \(\mathcal B\) and consider \(\mathcal T'\) to be any other
-  topology on \(X\) for which the functions \(f_i\) are continuous for all \(i
-  \in I\). Trivially we must have \(\mathcal B \subseteq \mathcal T'\) and
-  therefore \(\mathcal T \subseteq \mathcal T'\). This says that \(\mathcal T\)
-  is coarser than \(\mathcal T'\), which proves the proposition.
+Now we show the coarsest topology property. Let \(\mathcal T\) be the topology
+generated by \(\mathcal B\) and consider \(\mathcal T'\) to be any other
+topology on \(X\) for which the functions \(f_i\) are continuous for all \(i
+\in I\). Trivially we must have \(\mathcal B \subseteq \mathcal T'\) and
+therefore \(\mathcal T \subseteq \mathcal T'\). This says that \(\mathcal T\)
+is coarser than \(\mathcal T'\), which proves the proposition.
 \end{proof}
 
 \begin{proposition}
-  Let \(X\) and \(Y\) be topological spaces, and the topology of \(Y\) be
-  generated by the collection of maps \(\{f_i : Y \to Y_i\}_{i \in I}\), where
-  \(\{Y_i\}_{i \in I}\) is a collection of topological spaces. Then a map \(f :
-  X \to Y\) is continuous if and only if the composition \(f_i \circ f : X \to
-  Y_i\) is continuous for every \(i \in I\).
+Let \(X\) and \(Y\) be topological spaces, and the topology of \(Y\) be
+generated by the collection of maps \(\{f_i : Y \to Y_i\}_{i \in I}\), where
+\(\{Y_i\}_{i \in I}\) is a collection of topological spaces. Then a map \(f :
+X \to Y\) is continuous if and only if the composition \(f_i f : X \to
+Y_i\) is continuous for every \(i \in I\).
 \end{proposition}
 
 \begin{proof}
-  (\(\Leftarrow\)) Suppose \(f_i \circ f\) is continuous for all \(i \in I\),
-  then since \(f_i\) is continuous on the topology of \(Y\) it follows that for
-  any given open set \(U \subseteq Y_i\) we have \(f_i^{-1}(U) = V \subseteq Y\)
-  open. In particular, notice that \((f_i \circ f)^{-1}(U) = f^{-1}(f_i^{-1}(U))
-  = f^{-1}(V) \subseteq X\) which must be open from the hypothesis of the
-  continuity of \(f_i \circ f\). (\(\Rightarrow\)) Moreover, if \(f\) is
-  continuous, then clearly the composition of continuous functions is
-  continuous.
+(\(\Leftarrow\)) Suppose \(f_i f\) is continuous for all \(i \in I\),
+then since \(f_i\) is continuous on the topology of \(Y\) it follows that for
+any given open set \(U \subseteq Y_i\) we have \(f_i^{-1}(U) = V \subseteq Y\)
+open. In particular, notice that \((f_i f)^{-1}(U) = f^{-1}(f_i^{-1}(U))
+= f^{-1}(V) \subseteq X\) which must be open from the hypothesis of the
+continuity of \(f_i f\). (\(\Rightarrow\)) Moreover, if \(f\) is
+continuous, then clearly the composition of continuous functions is
+continuous.
 \end{proof}

@@ -1,26 +1,19 @@
 \documentclass[11pt, a4paper, reqno, openany]{memoir}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc} % lualatex does not like this
+\usepackage[english]{babel}
 
 % Page geometry
-%\usepackage{fullpage}
- \usepackage[
-   margin=1.5cm,
-   includefoot,
-   footskip=30pt,
- ]{geometry}
+\usepackage{fullpage}
 
-\usepackage{microtype}
-\usepackage[english]{babel}
-\usepackage{newpxtext, newpxmath} % last: mathpazo
-
-\let\openbox\relax
-\let\Bbbk\relax
-\usepackage{amsmath, amsfonts, amssymb, amsthm}
+% Math stuff: do not mess with the ordering!
 \usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
 \usepackage{stmaryrd}
-
 \usepackage{tikz-cd}
+
+% Font
+\usepackage[no-math]{newpxtext} % last: mathpazo
+\usepackage{newpxmath}
 
 % Utilities
 \usepackage{enumerate}
@@ -34,19 +27,25 @@
 \usepackage{hyperref}
 \hypersetup{
   colorlinks = true,
-  linkcolor  = brightmaroon
+  allcolors  = brightmaroon,
 }
 \usepackage[capitalize,nameinlink]{cleveref}
+\usepackage[
+backend=biber,
+style=alphabetic,
+]{biblatex}
+\addbibresource{src/bibliography.bib}
 
 \linespread{1.05}
-\vfuzz=14pt % No more shitty ass vbox errors all over the place
+\vfuzz=14pt % No more vbox errors all over the place
 
+% Environments
 \theoremstyle{definition}
 \newtheorem{theorem}{Theorem}[section]
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{axiom}[theorem]{Axiom}
 \newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{axiom}[theorem]{Axiom}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{example}[theorem]{Example}
@@ -59,7 +58,9 @@
 \renewcommand{\leq}{\leqslant}
 \renewcommand{\geq}{\geqslant}
 \renewcommand{\setminus}{\smallsetminus}
+\renewcommand{\coloneq}{\coloneqq}
 
+% General
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\Obj}{Obj}
 \DeclareMathOperator{\Mor}{Mor}
@@ -69,17 +70,26 @@
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\dom}{dom}
 \DeclareMathOperator{\codom}{codom}
+
+% Algebra
 \DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\coker}{coker}
-\DeclareMathOperator{\Int}{Int}
-\DeclareMathOperator{\Ext}{Ext}
 \DeclareMathOperator{\Tr}{tr}
 \DeclareMathOperator{\Sym}{Sym}
 \DeclareMathOperator{\Char}{char}
 \DeclareMathOperator{\sign}{sign}
 \DeclareMathOperator{\Span}{span}
+
+% Topology
 \DeclareMathOperator{\Cone}{C}
-\DeclareMathOperator{\Proj}{proj} % Projective space
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\Ext}{Ext}
+
+% Differentiable structures
+\DeclareMathOperator{\Vol}{vol}
+\DeclareMathOperator{\Mesh}{mesh}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\Hess}{Hess}
 
 % arrows
 \newcommand{\op}{\mathrm{op}}
@@ -90,32 +100,35 @@
 \newcommand{\cat}{\mathcal}
 \newcommand{\iso}{\simeq} % changed from simeq
 
+% Common collections
 \newcommand{\Z}{\mathbf{Z}}
 \newcommand{\N}{\mathbf{N}}
 \newcommand{\Q}{\mathbf{Q}}
 \newcommand{\CC}{\mathbf{C}}
 \newcommand{\R}{\mathbf{R}}
+\newcommand{\Uhs}{\mathbf{H}} % Upper half space
+\newcommand{\Proj}{\mathbf{P}} % Projective space
 
 \renewcommand{\emptyset}{\varnothing}
 
 % Differentiable structures
-\DeclareMathOperator{\grad}{grad}
-\DeclareMathOperator{\Hess}{Hess}
 \DeclarePairedDelimiterX{\norm}[1]{\lVert}{\rVert}{#1}
 \newcommand{\diff}{\mathrm{d}}
 \newcommand{\Diff}{\mathrm{D}}
 
 % Common categories
-\newcommand{\Set}{{\cat{S}\textit{et}}}
-\newcommand{\Vect}{{\cat{V}\textit{ect}}}
-\newcommand{\FinVect}{{\cat{F}\textit{in}\cat{V}\textit{ect}}}
+\newcommand{\Set}{{\textbf{Set}}}   %{{\cat{S}\textit{et}}}
+\newcommand{\Vect}{{\textbf{Vect}}}      %{{\cat{V}\textit{ect}}}
+\newcommand{\FinVect}{{\textbf{FinVect}}}   %{{\cat{F}\textit{in}\cat{V}\textit{ect}}}
 \let\Top\relax
-\newcommand{\Top}{{\cat{T}\textit{op}}}
-\newcommand{\Grp}{{\cat{G}\textit{rp}}}
-\newcommand{\Ab}{{\cat{A}\textit{b}}}
-\newcommand{\Graph}{{\cat{G}\textit{raph}}}
-\newcommand{\SimpGraph}{{\cat{S}\textit{imp}\cat{G}\textit{ph}}}
-\newcommand{\Rng}{{\cat{R}\textit{ing}}}
+\newcommand{\Top}{{\textbf{Top}}}       %{{\cat{T}\textit{op}}}
+\newcommand{\Grp}{{\textbf{Grp}}}       %{{\cat{G}\textit{rp}}}
+\newcommand{\Ab}{{\textbf{Ab}}}       %{{\cat{A}\textit{b}}}
+\newcommand{\Graph}{{\textbf{Graph}}}     %{{\cat{G}\textit{raph}}}
+\newcommand{\SimpGraph}{{\textbf{sGraph}}} %{{\cat{S}\textit{imp}\cat{G}\textit{ph}}}
+\newcommand{\Rng}{{\textbf{Ring}}}       %{{\cat{R}\textit{ing}}}
+\newcommand{\Cat}{{\textbf{Cat}}}       %{{\cat{C}\textit{at}}}
+\newcommand{\CAT}{{\textbf{CAT}}}       %{{\cat{C}\textit{AT}}}
 
 % Graphs
 \DeclareMathOperator{\Circ}{circ}

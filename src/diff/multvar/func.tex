@@ -7,37 +7,37 @@ I would like to point out some really important definitions for classifying the
 behavior of maps --- of which we'll use extensively.
 
 \begin{definition}[Ultimately]
-  We say that a property \(P\) is ultimately satisfied by a function \(f\) over
-  a filter base \(\mathcal B\) if there exists a \(B \in \mathcal B\) such that
-  \(P(f|_B)\).
+We say that a property \(P\) is ultimately satisfied by a function \(f\) over
+a filter base \(\mathcal B\) if there exists a \(B \in \mathcal B\) such that
+\(P(f|_B)\).
 \end{definition}
 
 \begin{definition}[Little-oh]\label{def: little oh}
-  A function \(f\) is said to be little-oh (or infinitesimal) of another
-  function \(g\), which we write as \(f =_{\mathcal B} o(g)\), if there exists
-  a function \(\alpha\) such that \(f(x) = \alpha(x) g(x)\) holds ultimately
-  over \(\mathcal B\), and \(\alpha\) is infinitesimal over \(\mathcal B\).
+A function \(f\) is said to be little-oh (or infinitesimal) of another
+function \(g\), which we write as \(f =_{\mathcal B} o(g)\), if there exists
+a function \(\alpha\) such that \(f(x) = \alpha(x) g(x)\) holds ultimately
+over \(\mathcal B\), and \(\alpha\) is infinitesimal over \(\mathcal B\).
 \end{definition}
 
 \begin{definition}[Big-oh]\label{def: big oh}
-  Given functions \(f\) and \(g\), we say that \(f\) is big-oh of \(g\), and
-  write \(f =_{\mathcal B} O(g)\), if there exists a function \(\beta\) such
-  that ultimately over \(\mathcal B\) we have \(f(x) = \beta(x) g(x)\), and
-  \(\beta\) is ultimately bounded over \(\mathcal B\).
+Given functions \(f\) and \(g\), we say that \(f\) is big-oh of \(g\), and
+write \(f =_{\mathcal B} O(g)\), if there exists a function \(\beta\) such
+that ultimately over \(\mathcal B\) we have \(f(x) = \beta(x) g(x)\), and
+\(\beta\) is ultimately bounded over \(\mathcal B\).
 \end{definition}
 
 \begin{definition}[Order over base]\label{def: asymp-order}
-  We say that functions \(f\) and \(g\) have the same order over \(\mathcal
-  B\), and write \(f \asymp_{\mathcal B} g\), if \(f =_{\mathcal B} O(g)\) and
-  \(g =_{\mathcal B} O(f)\), or equivalently, if exists \(a, b > 0\) such that
-  for some \(B \in \mathcal B\) we have \(a |g(x)| \leq |f(x)| \leq b|g(x)|\).
+We say that functions \(f\) and \(g\) have the same order over \(\mathcal
+B\), and write \(f \asymp_{\mathcal B} g\), if \(f =_{\mathcal B} O(g)\) and
+\(g =_{\mathcal B} O(f)\), or equivalently, if exists \(a, b > 0\) such that
+for some \(B \in \mathcal B\) we have \(a |g(x)| \leq |f(x)| \leq b|g(x)|\).
 \end{definition}
 
 \begin{definition}
-  Given functions \(f, g\), we say that \(f\) behaves asymptotically like \(g\)
-  over \(\mathcal B\), and write \(f \sim_{\mathcal B} g\), if there exists a
-  function \(\gamma\) such that \(\lim_{\mathcal B} \gamma(x) = 1\) and \(f(x) =
-  \gamma(x) g(x)\) ultimately over \(\mathcal B\).
+Given functions \(f, g\), we say that \(f\) behaves asymptotically like \(g\)
+over \(\mathcal B\), and write \(f \sim_{\mathcal B} g\), if there exists a
+function \(\gamma\) such that \(\lim_{\mathcal B} \gamma(x) = 1\) and \(f(x) =
+\gamma(x) g(x)\) ultimately over \(\mathcal B\).
 \end{definition}
 
 \subsection{Fundamental Inequalities}
@@ -46,221 +46,221 @@ Now we take a look at some fundamental inequalities that are used in some of the
 proofs of \cref{sec:differentiable-maps}.
 
 \begin{lemma}\label{lem: CI}
-  For \(x > 0\) we have
-  \begin{gather}
-    \label{eq: CI-1}
-    x^\alpha - \alpha x + \alpha - 1 \leq 0,\ \text{ for } 0 < \alpha < 1, \\
-    \label{eq: CI-2}
-    x^\alpha - \alpha x + \alpha - 1 \geq 0,\ \text{ for } \alpha < 0 \text{ or
-    } 1 < \alpha.
-  \end{gather}
+For \(x > 0\) we have
+\begin{gather}
+\label{eq: CI-1}
+x^\alpha - \alpha x + \alpha - 1 \leq 0,\ \text{ for } 0 < \alpha < 1, \\
+\label{eq: CI-2}
+x^\alpha - \alpha x + \alpha - 1 \geq 0,\ \text{ for } \alpha < 0 \text{ or
+} 1 < \alpha.
+\end{gather}
 \end{lemma}
 
 \begin{proof}
-  Let \(f(x) = x^\alpha - \alpha x + \alpha - 1\), then \(f'(x) =
-  \alpha(x^{\alpha - 1} - 1)\). Notice that \(f'(1) = 0\) and that for \(\alpha
-  \in (0, 1)\) we have that for some \(\delta > 0\), \(f'(1 - \delta) > 0\) and
-  \(f'(1 + \delta) < 0\), which shows that \(x = 1\) is a strict maximum. In the
-  case where \(\alpha < 0\) or \(\alpha > 1\), \(f'(1 - \delta) < 0\) and \(f'(1
-  + \delta) > 0\), showing that \(x = 1\) is a strict minimum. The strictness
-  comes from the fact that \(f\) is monotone in the intervals \(x \in (0, 1)\)
-  and \(x > 1\). Since \(f(1) = 0\), then for \(\alpha \in (0, 1)\) the function
-  is non-positive, and for \(\alpha < 0\) or \(\alpha > 1\) the function is
-  non-negative.
+Let \(f(x) = x^\alpha - \alpha x + \alpha - 1\), then \(f'(x) =
+\alpha(x^{\alpha - 1} - 1)\). Notice that \(f'(1) = 0\) and that for \(\alpha
+\in (0, 1)\) we have that for some \(\delta > 0\), \(f'(1 - \delta) > 0\) and
+\(f'(1 + \delta) < 0\), which shows that \(x = 1\) is a strict maximum. In the
+case where \(\alpha < 0\) or \(\alpha > 1\), \(f'(1 - \delta) < 0\) and \(f'(1
++ \delta) > 0\), showing that \(x = 1\) is a strict minimum. The strictness
+comes from the fact that \(f\) is monotone in the intervals \(x \in (0, 1)\)
+and \(x > 1\). Since \(f(1) = 0\), then for \(\alpha \in (0, 1)\) the function
+is non-positive, and for \(\alpha < 0\) or \(\alpha > 1\) the function is
+non-negative.
 \end{proof}
 
 \begin{proposition}[Young's inequalities]\label{prop: young-ineq}
-  Let \(a, b >0\) and \(p, q \not\in \{0, 1\}\) such that \(p^{-1} + q^{-1} =
-  1\). Then
-  \begin{gather}
-    \label{eq: young-1}
-    a^{p^{-1}} b^{q^{-1}} \leq \frac a p  + \frac b q,\ \text{ if } p > 1,
-    \\
-    \label{eq: young-2}
-    a^{p^{-1}} b^{q^{-1}} \geq \frac a p  + \frac b q,\ \text{ if } p < 1.
-  \end{gather}
-  The equality of such relations hold only when \(a = b\).
+Let \(a, b >0\) and \(p, q \not\in \{0, 1\}\) such that \(p^{-1} + q^{-1} =
+1\). Then
+\begin{gather}
+\label{eq: young-1}
+a^{p^{-1}} b^{q^{-1}} \leq \frac a p  + \frac b q,\ \text{ if } p > 1,
+\\
+\label{eq: young-2}
+a^{p^{-1}} b^{q^{-1}} \geq \frac a p  + \frac b q,\ \text{ if } p < 1.
+\end{gather}
+The equality of such relations hold only when \(a = b\).
 \end{proposition}
 
 \begin{proof}
-  Let \(\alpha = p^{-1}\) and set \(x = \frac a b\). From \cref{eq: CI-1} we
-  have
-  \begin{align*}
-    0 &\geq \left(\frac a b\right)^{\frac 1 p} - \frac 1 p \frac a b + \frac 1 p
-    - 1 = \left(\frac a b \right)^{\frac 1 p} - \frac 1 p \frac a b - \frac 1 q
-    \\
-    \frac 1 p \frac a b + \frac 1 q
-      &\geq \left( \frac a b \right)^{\frac 1 p}
-    \\
-    \frac a p + \frac b q
-      &\geq a^{\frac 1 p} b^{1 - \frac 1 p} = a^{p^{-1}} b^{q^{-1}}.
-  \end{align*}
-  Now, from \cref{eq: CI-1} we have equivalently that
-  \begin{align*}
-    \frac a p + \frac b q \geq a^{p^{-1}} b^{q^{-1}}.
-  \end{align*}
+Let \(\alpha = p^{-1}\) and set \(x = \frac a b\). From \cref{eq: CI-1} we
+have
+\begin{align*}
+0 &\geq \left(\frac a b\right)^{\frac 1 p} - \frac 1 p \frac a b + \frac 1 p
+- 1 = \left(\frac a b \right)^{\frac 1 p} - \frac 1 p \frac a b - \frac 1 q
+\\
+\frac 1 p \frac a b + \frac 1 q
+    &\geq \left( \frac a b \right)^{\frac 1 p}
+\\
+\frac a p + \frac b q
+    &\geq a^{\frac 1 p} b^{1 - \frac 1 p} = a^{p^{-1}} b^{q^{-1}}.
+\end{align*}
+Now, from \cref{eq: CI-1} we have equivalently that
+\begin{align*}
+\frac a p + \frac b q \geq a^{p^{-1}} b^{q^{-1}}.
+\end{align*}
 \end{proof}
 
 \begin{proposition}[H\H{o}lder's inequalities]\label{prop: holder-ineq}
-  Let \(x_j, y_j \geq 0\) for \(1 \leq j \leq n\) and \(p^{-1} + q^{-1} = 1\).
-  Then
-  \begin{gather}
-    \label{eq: holder-1}
-    \sum_{1 \leq j \leq n} x_j y_j \leq \left( \sum_{1 \leq j \leq n} x_j^p
-    \right)^{\frac 1 p} \left( \sum_{1 \leq j \leq n} y_j^q \right)^{\frac 1 q}\
-    \text{ for } p > 1, \\
-    \label{eq: holder-2}
-    \sum_{1 \leq j \leq n} x_j y_j \geq \left( \sum_{1 \leq j \leq n} x_j^p
-    \right)^{\frac 1 p} \left( \sum_{1 \leq j \leq n} y_j^q \right)^{\frac 1 q}\
-    \text{ for } p < 1 \text{ and } p \neq 0.
-  \end{gather}
-  If \(p < 0\), then we need the strictness \(x_j > 0\) for all \(1 \leq j \leq
-  n\). Equality is obtained for the case where \((x_j^p)_{j=1}^n\) and
-  \((y_j^q)_{j=1}^n\) are linearly dependent.
+Let \(x_j, y_j \geq 0\) for \(1 \leq j \leq n\) and \(p^{-1} + q^{-1} = 1\).
+Then
+\begin{gather}
+\label{eq: holder-1}
+\sum_{1 \leq j \leq n} x_j y_j \leq \left( \sum_{1 \leq j \leq n} x_j^p
+\right)^{\frac 1 p} \left( \sum_{1 \leq j \leq n} y_j^q \right)^{\frac 1 q}\
+\text{ for } p > 1, \\
+\label{eq: holder-2}
+\sum_{1 \leq j \leq n} x_j y_j \geq \left( \sum_{1 \leq j \leq n} x_j^p
+\right)^{\frac 1 p} \left( \sum_{1 \leq j \leq n} y_j^q \right)^{\frac 1 q}\
+\text{ for } p < 1 \text{ and } p \neq 0.
+\end{gather}
+If \(p < 0\), then we need the strictness \(x_j > 0\) for all \(1 \leq j \leq
+n\). Equality is obtained for the case where \((x_j^p)_{j=1}^n\) and
+\((y_j^q)_{j=1}^n\) are linearly dependent.
 \end{proposition}
 
 \begin{proof}
-  Define \(x = \sum_{j=1}^n x_j > 0\) and \(y = \sum_{j=1}^n y_j > 0\). We can
-  use \cref{eq: young-1} with \(a = \frac {x_j^p} x\) and \(b = \frac {y_j^q}
-  y\), for which we find that
-  \[
-    \frac{x_j}{x^{p^{-1}}} \frac{y_j}{y^{q^{-1}}} \leq \frac 1 p \frac{x_j^p} x
-    + \frac 1 q \frac{y_j^q} y
-  \]
-  hence, summing such inequality over \(1 \leq j \leq n\) we find
-  \[
-    \frac{\sum_{j=1}^n x_j y_j}{x^{p^{-1}} y^{q^{-1}}} \leq \frac 1 p
-    \frac{\sum_{j=1}^n x_j^p} x + \frac 1 q \frac{\sum_{j=1}^n y_j^p} y = \frac
-    1 p + \frac 1 q = 1
-  \]
-  and finally \cref{eq: holder-1} is shown
-  \[
-    \sum_{j=1}^n x_j y_j \leq x^{p^{-1}} y^{q^{-1}}
-    = \left(\sum_{j=1}^n x_j^p\right)^{\frac 1 p}
-    \left(\sum_{j=1}^n y_j^q\right)^{\frac 1 q}.
-  \]
-  The same equivalent proof can be made with \cref{eq: young-2} for \cref{eq:
-  holder-2}. Since the equality of the Young's inequalities occurs only for \(a
-  = b\), we find that the linear dependence \(x_j^p = \frac x y y_j^q\) implies
-  in the equality of H\H{o}lder's inequalities.
+Define \(x = \sum_{j=1}^n x_j > 0\) and \(y = \sum_{j=1}^n y_j > 0\). We can
+use \cref{eq: young-1} with \(a = \frac {x_j^p} x\) and \(b = \frac {y_j^q}
+y\), for which we find that
+\[
+\frac{x_j}{x^{p^{-1}}} \frac{y_j}{y^{q^{-1}}} \leq \frac 1 p \frac{x_j^p} x
++ \frac 1 q \frac{y_j^q} y
+\]
+hence, summing such inequality over \(1 \leq j \leq n\) we find
+\[
+\frac{\sum_{j=1}^n x_j y_j}{x^{p^{-1}} y^{q^{-1}}} \leq \frac 1 p
+\frac{\sum_{j=1}^n x_j^p} x + \frac 1 q \frac{\sum_{j=1}^n y_j^p} y = \frac
+1 p + \frac 1 q = 1
+\]
+and finally \cref{eq: holder-1} is shown
+\[
+\sum_{j=1}^n x_j y_j \leq x^{p^{-1}} y^{q^{-1}}
+= \left(\sum_{j=1}^n x_j^p\right)^{\frac 1 p}
+\left(\sum_{j=1}^n y_j^q\right)^{\frac 1 q}.
+\]
+The same equivalent proof can be made with \cref{eq: young-2} for \cref{eq:
+holder-2}. Since the equality of the Young's inequalities occurs only for \(a
+= b\), we find that the linear dependence \(x_j^p = \frac x y y_j^q\) implies
+in the equality of H\H{o}lder's inequalities.
 \end{proof}
 
 \begin{proposition}[Minkowski's inequalities]\label{prop: minkowski-ineq}
-  Let \(x_j, y_j \geq 0\) for \(1 \leq j \leq n\). Then
-  \begin{gather}
-    \label{eq: minkowski-1}
-    \left(\sum_{1 \leq j \leq n} (x_j + y_j)^p \right)^{\frac 1 p}
-    \leq \left(\sum_{1 \leq j \leq n} x_j^p \right)^{\frac 1 p}
-    + \left(\sum_{1 \leq j \leq n} y_j^p\right)^{\frac 1 p}
-    \text{ for } p > 1,
-    \\ \label{eq: minkowski-2}
-    \left(\sum_{1 \leq j \leq n} (x_j + y_j)^p \right)^{\frac 1 p}
-    \geq \left(\sum_{1 \leq j \leq n} x_j^p \right)^{\frac 1 p}
-    + \left(\sum_{1 \leq j \leq n} y_j^p\right)^{\frac 1 p}
-    \text{ for } p < 1 \text{, and } p \neq 0
-  \end{gather}
-  The equality occurs when \((x_j)_{1 \leq j \leq n}\) and \((y_j)_{1 \leq j
-  \leq n}\) are linearly dependent.
+Let \(x_j, y_j \geq 0\) for \(1 \leq j \leq n\). Then
+\begin{gather}
+\label{eq: minkowski-1}
+\left(\sum_{1 \leq j \leq n} (x_j + y_j)^p \right)^{\frac 1 p}
+\leq \left(\sum_{1 \leq j \leq n} x_j^p \right)^{\frac 1 p}
++ \left(\sum_{1 \leq j \leq n} y_j^p\right)^{\frac 1 p}
+\text{ for } p > 1,
+\\ \label{eq: minkowski-2}
+\left(\sum_{1 \leq j \leq n} (x_j + y_j)^p \right)^{\frac 1 p}
+\geq \left(\sum_{1 \leq j \leq n} x_j^p \right)^{\frac 1 p}
++ \left(\sum_{1 \leq j \leq n} y_j^p\right)^{\frac 1 p}
+\text{ for } p < 1 \text{, and } p \neq 0
+\end{gather}
+The equality occurs when \((x_j)_{1 \leq j \leq n}\) and \((y_j)_{1 \leq j
+\leq n}\) are linearly dependent.
 \end{proposition}
 
 \begin{proof}
-  Notice that
-  \[
-    \sum_{j=1}^n (x_j + y_j)^p = \sum_{j=1}^n (x_j + y_j)(x_j + y_j)^{p-1}
-    = \sum_{j=1}^n x_j (x_j + y_j)^{p-1} \sum_{j=1}^n y_j (x_j + y_j)^{p-1}
-  \]
-  If \(p > 0\), then applying \cref{eq: holder-1} we find (noting that \(q =
-  \frac p {p - 1}\))
-  \[
-    \sum_{j=1}^n (x_j + y_j)^p \leq \left[
-      \left(\sum_{j=1}^n x_j^p\right)^{\frac 1 p}
-      + \left(\sum_{j=1}^n y_j^p\right)^{\frac 1 p}
-    \right] \left(\sum_{j=1}^n (x_j + y_j)^p\right)^{\frac 1 q}.
-  \]
-  For \(p < 1\) with \(p \neq 0\), from \cref{eq: holder-2} we get
-  \[
-    \sum_{j=1}^n (x_j + y_j)^p \geq \left[
-      \left(\sum_{j=1}^n x_j^p\right)^{\frac 1 p}
-      + \left(\sum_{j=1}^n y_j^p\right)^{\frac 1 p}
-    \right] \left(\sum_{j=1}^n (x_j + y_j)^p\right)^{\frac 1 q}.
-  \]
-  Now, dividing both inequalities by the term \(\left(\sum_{j=1} (x_j + y_j)^p
-  \right)^{\frac 1 q}\) we find respectively \cref{eq: minkowski-1} and
-  \cref{eq: minkowski-2}. The equality occurs the same as with H\H{o}lder
-  inequalities.
+Notice that
+\[
+\sum_{j=1}^n (x_j + y_j)^p = \sum_{j=1}^n (x_j + y_j)(x_j + y_j)^{p-1}
+= \sum_{j=1}^n x_j (x_j + y_j)^{p-1} \sum_{j=1}^n y_j (x_j + y_j)^{p-1}
+\]
+If \(p > 0\), then applying \cref{eq: holder-1} we find (noting that \(q =
+\frac p {p - 1}\))
+\[
+\sum_{j=1}^n (x_j + y_j)^p \leq \left[
+    \left(\sum_{j=1}^n x_j^p\right)^{\frac 1 p}
+    + \left(\sum_{j=1}^n y_j^p\right)^{\frac 1 p}
+\right] \left(\sum_{j=1}^n (x_j + y_j)^p\right)^{\frac 1 q}.
+\]
+For \(p < 1\) with \(p \neq 0\), from \cref{eq: holder-2} we get
+\[
+\sum_{j=1}^n (x_j + y_j)^p \geq \left[
+    \left(\sum_{j=1}^n x_j^p\right)^{\frac 1 p}
+    + \left(\sum_{j=1}^n y_j^p\right)^{\frac 1 p}
+\right] \left(\sum_{j=1}^n (x_j + y_j)^p\right)^{\frac 1 q}.
+\]
+Now, dividing both inequalities by the term \(\left(\sum_{j=1} (x_j + y_j)^p
+\right)^{\frac 1 q}\) we find respectively \cref{eq: minkowski-1} and
+\cref{eq: minkowski-2}. The equality occurs the same as with H\H{o}lder
+inequalities.
 \end{proof}
 
 \subsection{Fixed Points and Banach Spaces}
 
 \begin{definition}[Fixed point]\label{def:fixed-point}
-  Let \(f: X \to X\) be any map. A fixed point of \(f\) is an element \(x \in X\)
-  such that \(f(x) = x\).
+Let \(f: X \to X\) be any map. A fixed point of \(f\) is an element \(x \in X\)
+such that \(f(x) = x\).
 \end{definition}
 
 \begin{theorem}[Fixed point theorem]\label{thm: fixed point}
-  Let \(I \subseteq \R\) be a closed set and \(f: I \to \R\) a
-  function such that \(f(I) \subseteq \R\) and for some fixed \(\theta
-  \in [0, 1)\) we have, for all \(x, y \in \R\):
-  \[
-    |f(x) - f(y)| \leq \theta |x - y|.
-  \]
-  Then there exists a unique fixed point \(c \in I\), that is \(f(c) = c\).
+Let \(I \subseteq \R\) be a closed set and \(f: I \to \R\) a
+function such that \(f(I) \subseteq \R\) and for some fixed \(\theta
+\in [0, 1)\) we have, for all \(x, y \in \R\):
+\[
+|f(x) - f(y)| \leq \theta |x - y|.
+\]
+Then there exists a unique fixed point \(c \in I\), that is \(f(c) = c\).
 \end{theorem}
 
 \begin{proof}
-  Let \(x_0 \in I\) and define the sequence \(x_n := f(x_{n-1})\) for all \(n
-  \geq 1\). We first show that \((x_n)_{n \in \N}\) is Cauchy. Let \(n >
-  m \geq 1\), then
-  \begin{equation}\label{eq: fixed point 1}
-    |x_n - x_m| = \left| \sum_{k=m}^n x_{k+1} - x_k \right|
-    \leq \sum_{k=m}^n |x_{k+1} - x_k| = \sum_{k=m}^n |f(x_k) - f(x_{k-1})|
-  \end{equation}
-  Since \(|f(x_k) - f(x_{k-1})| \leq \theta |x_k - x_{k-1}|\) and \(f(x_k) =
-  x_{k+1}\), we can make  \(\prod_{i=1}^k |f(x_i) - f(x_{i-1})| \leq \theta^k
-  \prod_{i=1}^n |x_i - x_{i-1}|\) and divide both the inequality by
-  \(\prod_{i=1}^k |f(x_i) - f(x_{i-1})| = \prod_{i=1}^k |x_i - x_{i-1}|\) in
-  order to obtain
-  \begin{equation}\label{eq: fixed point 2}
-    |f(x_k) - f(x_{k-1})| \leq \theta^k |x_1 - x_0|.
-  \end{equation}
-  Now we can substitute \cref{eq: fixed point 2} in \cref{eq: fixed point 1},
-  then
-  \[
-    |x_n - x_m| \leq \sum_{k=m}^{n-1} \theta^k |x_1 - x_0|
-  \]
-  Moreover, since \(\theta \in [0, 1)\) we have from the geometric series that
-  \(\sum_{k=0}^\infty \theta^k = \frac{1}{1-\theta}\), so we can conclude that
-  \[
-    |x_n - x_m| \leq \frac{\theta^m}{1 - \theta} |x_1 - x_0|.
-  \]
-  and thus \((x_n)_{n \in \N}\) is indeed a Cauchy sequence.
+Let \(x_0 \in I\) and define the sequence \(x_n := f(x_{n-1})\) for all \(n
+\geq 1\). We first show that \((x_n)_{n \in \N}\) is Cauchy. Let \(n >
+m \geq 1\), then
+\begin{equation}\label{eq: fixed point 1}
+|x_n - x_m| = \left| \sum_{k=m}^n x_{k+1} - x_k \right|
+\leq \sum_{k=m}^n |x_{k+1} - x_k| = \sum_{k=m}^n |f(x_k) - f(x_{k-1})|
+\end{equation}
+Since \(|f(x_k) - f(x_{k-1})| \leq \theta |x_k - x_{k-1}|\) and \(f(x_k) =
+x_{k+1}\), we can make  \(\prod_{i=1}^k |f(x_i) - f(x_{i-1})| \leq \theta^k
+\prod_{i=1}^n |x_i - x_{i-1}|\) and divide both the inequality by
+\(\prod_{i=1}^k |f(x_i) - f(x_{i-1})| = \prod_{i=1}^k |x_i - x_{i-1}|\) in
+order to obtain
+\begin{equation}\label{eq: fixed point 2}
+|f(x_k) - f(x_{k-1})| \leq \theta^k |x_1 - x_0|.
+\end{equation}
+Now we can substitute \cref{eq: fixed point 2} in \cref{eq: fixed point 1},
+then
+\[
+|x_n - x_m| \leq \sum_{k=m}^{n-1} \theta^k |x_1 - x_0|
+\]
+Moreover, since \(\theta \in [0, 1)\) we have from the geometric series that
+\(\sum_{k=0}^\infty \theta^k = \frac{1}{1-\theta}\), so we can conclude that
+\[
+|x_n - x_m| \leq \frac{\theta^m}{1 - \theta} |x_1 - x_0|.
+\]
+and thus \((x_n)_{n \in \N}\) is indeed a Cauchy sequence.
 
-  Let \(x_n \to c \in I\), since \(I\) is closed and thus \(\overline I = I\).
-  Since \(|f(x) - f(y)| \leq \theta |x - y|\) the function is Lipschitz
-  continuous, hence
-  \[
-    \lim_{n \to \infty} f(x_n) = f(c) = \lim_{n \to \infty} x_{n+1} = c
-  \]
-  and therefore \(c\) is a fixed point of \(f\).
+Let \(x_n \to c \in I\), since \(I\) is closed and thus \(\overline I = I\).
+Since \(|f(x) - f(y)| \leq \theta |x - y|\) the function is Lipschitz
+continuous, hence
+\[
+\lim_{n \to \infty} f(x_n) = f(c) = \lim_{n \to \infty} x_{n+1} = c
+\]
+and therefore \(c\) is a fixed point of \(f\).
 
-  For the uniqueness of the fixed point, let \(c_1, c_2\) be fixed points of
-  \(f\), then \(|f(c_1) - f(c_2)| = |c_1 - c_2| \leq \theta |c_1 - c_2|\) and
-  thus \((1 - \theta)|c_1 - c_2| \leq 0\), but \(\theta \in [0, 1)\), hence
-  \(c_1 = c_2\).
+For the uniqueness of the fixed point, let \(c_1, c_2\) be fixed points of
+\(f\), then \(|f(c_1) - f(c_2)| = |c_1 - c_2| \leq \theta |c_1 - c_2|\) and
+thus \((1 - \theta)|c_1 - c_2| \leq 0\), but \(\theta \in [0, 1)\), hence
+\(c_1 = c_2\).
 \end{proof}
 
 \begin{corollary}
-  Let \(I \subseteq \R\) be closed and \(f : I \to I\) be a
-  differentiable function such that exists \(\theta \in [0, 1)\) for which
-  \(|f'(x)| \leq \theta\), for all \(x \in I\). Then there exists a unique fixed
-  point of \(f\).
+Let \(I \subseteq \R\) be closed and \(f : I \to I\) be a
+differentiable function such that exists \(\theta \in [0, 1)\) for which
+\(|f'(x)| \leq \theta\), for all \(x \in I\). Then there exists a unique fixed
+point of \(f\).
 \end{corollary}
 
 \begin{proof}
-  Choose any distict points \(x, y \in I\), from the mean value theorem, there
-  exists \(x_0 \in (x, y)\) such that \(f(x) - f(y) = f'(x_0)(x - y)\), then
-  \(|f(x) - f(y)| \leq \theta |x - y|\), which satisfies the condition of
-  \cref{thm: fixed point}, hence the proposition holds.
+Choose any distict points \(x, y \in I\), from the mean value theorem, there
+exists \(x_0 \in (x, y)\) such that \(f(x) - f(y) = f'(x_0)(x - y)\), then
+\(|f(x) - f(y)| \leq \theta |x - y|\), which satisfies the condition of
+\cref{thm: fixed point}, hence the proposition holds.
 \end{proof}
 
 \begin{definition}
@@ -272,32 +272,32 @@ have \(\norm{x_n - x_m} < \varepsilon\).
 
 
 \begin{definition}[Banach space]\label{def: Banach space}
-  A normed vector space \((V, \norm \cdot)\) is a Banach space if every Cauchy
-  sequence converges with respect to \(\norm \cdot\).
+A normed vector space \((V, \norm \cdot)\) is a Banach space if every Cauchy
+sequence converges with respect to \(\norm \cdot\).
 \end{definition}
 
 \begin{definition}
-  Let \(B\) be a Banach space. A subset \(A \subseteq B\) is said to be closed
-  if the limit of every convergent sequence in \(A\) belongs to \(A\).
+Let \(B\) be a Banach space. A subset \(A \subseteq B\) is said to be closed
+if the limit of every convergent sequence in \(A\) belongs to \(A\).
 \end{definition}
 
 \begin{definition}[Contraction]
 \label{def:contraction}
-  Let \(B\) be a Banach space and \(0 < \theta < 1\), then a map \(f: B \to B\)
-  is said to be a \(\theta\)-contraction if for all \(v, w \in B\) we have
-  \[
-    \norm{f(v) - f(w)} \leq \theta \norm{v - w}.
-  \]
+Let \(B\) be a Banach space and \(0 < \theta < 1\), then a map \(f: B \to B\)
+is said to be a \(\theta\)-contraction if for all \(v, w \in B\) we have
+\[
+\norm{f(v) - f(w)} \leq \theta \norm{v - w}.
+\]
 \end{definition}
 
 \begin{theorem}[Banach fixed point]\label{thm: Banach fixed point}
-  Let \(B\) be a Banach space and \(A \subseteq B\) be a closed subset. Let \(f:
-  A \to A\) be a \(\theta\)-contraction. Then \(f\) has a unique fixed point.
+Let \(B\) be a Banach space and \(A \subseteq B\) be a closed subset. Let \(f:
+A \to A\) be a \(\theta\)-contraction. Then \(f\) has a unique fixed point.
 \end{theorem}
 
 \begin{proof}
-  The proof of the Banach fixed point is merely the same analogous proof as the
-  one developed in \cref{thm: fixed point}.
+The proof of the Banach fixed point is merely the same analogous proof as the
+one developed in \cref{thm: fixed point}.
 \end{proof}
 
 \begin{proposition}[Fixed point stability]
@@ -314,38 +314,38 @@ is continuous at \(x_0\) --- that is, \(\lim_{x \to x_0} s(x) = s(x_0)\).
 \end{proposition}
 
 \begin{proof}
-  We know from \cref{thm: Banach fixed point} that --- given any \(x \in \Omega\) ---
-  the fixed point (unique) solution can be obtained as the limit of
-  a sequece recursively defined as \(y_j = f_x(y_{j-1})\) and \(y_0 \in A\) being
-  any element. This way, consider such sequence \((y_j)_{j=1}^{\infty}\) but define
-  \(y_0 = s(x_0)\). Notice that since \(\sum_{j=1}^n y_j - y_{j-1} = y_n - y_0\),
-  then we can write \(y_n\) in the following form
-  \[
-    y_n = \sum_{j=1}^n (y_j - y_{j-1}) + y_0
-    = \sum_{j=2}^n (f_x(y_{j-1}) - f_x(y_{j-2}))
-    + y_0 = \sum_{j=1}^n \left(f_x^{j-1}(y_1) - f_x^{j-1}(y_0)\right) + y_{0}.
-  \]
-  Now observe that
-  \[
-    \sum_{j=1}^n \norm{f_x^{j-1}(y_1) - f_x^{j-1}(y_0)}
-    \leq \sum_{j=1}^n \theta^{j-1} \norm{y_1 -
-    y_0} = \frac{\norm{y_1 - y_0}}{1 - q}.
-  \]
-  That is, \(\norm{y_n - y_0} \leq \frac{\norm{y_1 - y_0}}{1 - q}\), hence --- since
-  \((y_j)_{j=1}^{\infty}\) converges to the fixed point of \(f_x\), we have
-  \begin{align*}
-    \norm{s(x) - s(x_0)} = \norm{f(s(x)) - f(s(x_0))}
-    \leq \frac{\norm{y_1 - y_0}}{1-q}
-    = \frac{\norm{f_x(s(x_0)) - f_{x_0}(s(x_0))}}{1 - q}.
-  \end{align*}
-  On the other hand we also know that \(\lim_{x \to x_0}f_x(y) = f_{x_0}(y)\) thus
-  \[
-    \lim_{x \to x_0} \norm{f_x(s(x_0)) - f_{x_0}(s(x_0))} = 0.
-  \]
-  This shows that \(\lim_{x \to x_0} \norm{s(x) - s(x_0)} = 0\) and therefore
-  \[
-    \lim_{x \to x_0} s(x) = s(x_0).
-  \]
+We know from \cref{thm: Banach fixed point} that --- given any \(x \in \Omega\) ---
+the fixed point (unique) solution can be obtained as the limit of
+a sequece recursively defined as \(y_j = f_x(y_{j-1})\) and \(y_0 \in A\) being
+any element. This way, consider such sequence \((y_j)_{j=1}^{\infty}\) but define
+\(y_0 = s(x_0)\). Notice that since \(\sum_{j=1}^n y_j - y_{j-1} = y_n - y_0\),
+then we can write \(y_n\) in the following form
+\[
+y_n = \sum_{j=1}^n (y_j - y_{j-1}) + y_0
+= \sum_{j=2}^n (f_x(y_{j-1}) - f_x(y_{j-2}))
++ y_0 = \sum_{j=1}^n \left(f_x^{j-1}(y_1) - f_x^{j-1}(y_0)\right) + y_{0}.
+\]
+Now observe that
+\[
+\sum_{j=1}^n \norm{f_x^{j-1}(y_1) - f_x^{j-1}(y_0)}
+\leq \sum_{j=1}^n \theta^{j-1} \norm{y_1 -
+y_0} = \frac{\norm{y_1 - y_0}}{1 - q}.
+\]
+That is, \(\norm{y_n - y_0} \leq \frac{\norm{y_1 - y_0}}{1 - q}\), hence --- since
+\((y_j)_{j=1}^{\infty}\) converges to the fixed point of \(f_x\), we have
+\begin{align*}
+\norm{s(x) - s(x_0)} = \norm{f(s(x)) - f(s(x_0))}
+\leq \frac{\norm{y_1 - y_0}}{1-q}
+= \frac{\norm{f_x(s(x_0)) - f_{x_0}(s(x_0))}}{1 - q}.
+\end{align*}
+On the other hand we also know that \(\lim_{x \to x_0}f_x(y) = f_{x_0}(y)\) thus
+\[
+\lim_{x \to x_0} \norm{f_x(s(x_0)) - f_{x_0}(s(x_0))} = 0.
+\]
+This shows that \(\lim_{x \to x_0} \norm{s(x) - s(x_0)} = 0\) and therefore
+\[
+\lim_{x \to x_0} s(x) = s(x_0).
+\]
 \end{proof}
 
 \begin{definition}
@@ -357,445 +357,480 @@ collection of all linear maps \(f: V \to W\).
 \section{Continuity}
 
 \begin{remark}
-  This part will be mainly concerned with the euclidean metric space given by
-  \(\R^n\) and the metric
-  \[
-    d(x, y) = \sqrt{\sum_{j=1}^n (x_j - y_j)^2}
-  \]
-  where \(x = (x_j)_{j=1}^n, y = (y_j)_{j=1}^n \in \R\).
+This part will be mainly concerned with the euclidean metric space given by
+\(\R^n\) and the metric
+\[
+d(x, y) = \sqrt{\sum_{j=1}^n (x_j - y_j)^2}
+\]
+where \(x = (x_j)_{j=1}^n, y = (y_j)_{j=1}^n \in \R\).
 \end{remark}
 
 \subsection{Compact sets in \texorpdfstring{\(\R^n\)}{Rn}}
 
 \begin{definition}
-  A set \(K \subseteq \R^n\) is compact if for every open cover \(\mathcal C\)
-  of \(K\) there exists a finite subcover \(\mathcal U \subseteq \mathcal C\).
+A set \(K \subseteq \R^n\) is compact if for every open cover \(\mathcal C\)
+of \(K\) there exists a finite subcover \(\mathcal U \subseteq \mathcal C\).
 \end{definition}
 
 \begin{definition}[General closed interval]
-  We define a closed interval \(I\) in \(\R^n\) to be the set
-  \[
-    I = \{x \in R^n : x_j \in [a_j, b_j], 1 \leq j \leq n\}.
-  \]
-  where \(a, b \in \R^n\) are the boundaries of the interval \(I\).
+We define a closed interval \(I\) in \(\R^n\) to be the set
+\[
+I = \{x \in R^n : x_j \in [a_j, b_j], 1 \leq j \leq n\}.
+\]
+where \(a, b \in \R^n\) are the boundaries of the interval \(I\).
 \end{definition}
 
 \begin{proposition}\label{prop: closed-interval compact}
-  A closed interval in \(\R^n\) is compact.
+A closed interval in \(\R^n\) is compact.
 \end{proposition}
 
 \begin{proof}
-  Suppose for the sake of contradiction that \(\mathcal U\) is a cover of \(I\),
-  closed interval in \(\R^n\), such that \(\mathcal U\) doesn't admit a finite
-  subcover. Consider the set of bisections of \(I\) in which for each component
-  of the vectors \(x \in I\), that is, we create the sets \(I_j^1 = \{x \in I:
-  x_j \in [a_j, (a_j + b_j)/2]\}\) and \(I_j^2 = \{x \in I: x_j \in [(a_j +
-  b_j)/2, b_j]\}\) for each \(1 \leq j \leq n\), generating \(2^n\) subsets of
-  \(I\). Notice that since these sets are contained in \(I\), at least one of
-  those should not admit a finite subcover from \(\mathcal U\), otherwise \(I\)
-  would be compact. Hence define such set as \(I_1\). Now recursively do the
-  same bisection process for \(I_1\). We end up with a chain of nested intervals
-  \[
-    I \supset I_1 \supset I_2 \supset \dots
-  \]
-  each of which does not admit a finite subcover from \(\mathcal U\). Consider
-  the interval \(I_m = \{x \in \R^n: x_j \in [a^m_j, b_j^m], 1 \leq j \leq n\}\)
-  from the nested chain. Notice that for each \(1 \leq j \leq n\) we have that
-  the coordinate closed intervals form again a chain of nested intervals
-  \[
-    [a_j, b_j] \supseteq [a_j^1, b_j^1] \supseteq [a_j^2, b_j^2] \supseteq \dots
-  \]
-  hence \(\lim_{t \to \infty} d(a_j^t, b_j^t) = 0\). Since they form a nested
-  chain, their intersection is nonempty and therefore there exists a point
-  \(\zeta_j \in  [a_j^m, b_j^m]\) common to all such intervals. In doing so for
-  \(1 \leq j \leq n\) we find a point \(\zeta = (\zeta_j)_{j=1}^n \in \R^n\)
-  such that \(\zeta \in I_i\) for all \(i \geq 1\) and \(\zeta \in I\). From the
-  last assertion one sees that there must exist \(U \in \mathcal U\) with
-  \(\zeta \in U\), hence exists \(\varepsilon > 0\) such that
-  \(B_\zeta(\varepsilon) \subseteq U\). Now, since \(\lim_{t \to \infty}
-  d(a_j^t, b_j^t) = 0\), it must be true that there exists \(M > 0\) such that
-  for all \(m > M\) we have \(I_m \subseteq B_\zeta(\varepsilon) \subseteq U\),
-  which clearly covers finitely \(I_m\). This contradicts the assumption that
-  all \(I_m\) couldn't be finitely covered by a subcover of \(\mathcal U\). This
-  shows that we cannot pick a subset of \(I\) with such property, implying that
-  \(I\) itself should be compact.
+Suppose for the sake of contradiction that \(\mathcal U\) is a cover of \(I\),
+closed interval in \(\R^n\), such that \(\mathcal U\) doesn't admit a finite
+subcover. Consider the set of bisections of \(I\) in which for each component
+of the vectors \(x \in I\), that is, we create the sets \(I_j^1 = \{x \in I:
+x_j \in [a_j, (a_j + b_j)/2]\}\) and \(I_j^2 = \{x \in I: x_j \in [(a_j +
+b_j)/2, b_j]\}\) for each \(1 \leq j \leq n\), generating \(2^n\) subsets of
+\(I\). Notice that since these sets are contained in \(I\), at least one of
+those should not admit a finite subcover from \(\mathcal U\), otherwise \(I\)
+would be compact. Hence define such set as \(I_1\). Now recursively do the
+same bisection process for \(I_1\). We end up with a chain of nested intervals
+\[
+I \supset I_1 \supset I_2 \supset \dots
+\]
+each of which does not admit a finite subcover from \(\mathcal U\). Consider
+the interval \(I_m = \{x \in \R^n: x_j \in [a^m_j, b_j^m], 1 \leq j \leq n\}\)
+from the nested chain. Notice that for each \(1 \leq j \leq n\) we have that
+the coordinate closed intervals form again a chain of nested intervals
+\[
+[a_j, b_j] \supseteq [a_j^1, b_j^1] \supseteq [a_j^2, b_j^2] \supseteq \dots
+\]
+hence \(\lim_{t \to \infty} d(a_j^t, b_j^t) = 0\). Since they form a nested
+chain, their intersection is nonempty and therefore there exists a point
+\(\zeta_j \in  [a_j^m, b_j^m]\) common to all such intervals. In doing so for
+\(1 \leq j \leq n\) we find a point \(\zeta = (\zeta_j)_{j=1}^n \in \R^n\)
+such that \(\zeta \in I_i\) for all \(i \geq 1\) and \(\zeta \in I\). From the
+last assertion one sees that there must exist \(U \in \mathcal U\) with
+\(\zeta \in U\), hence exists \(\varepsilon > 0\) such that
+\(B_\zeta(\varepsilon) \subseteq U\). Now, since \(\lim_{t \to \infty}
+d(a_j^t, b_j^t) = 0\), it must be true that there exists \(M > 0\) such that
+for all \(m > M\) we have \(I_m \subseteq B_\zeta(\varepsilon) \subseteq U\),
+which clearly covers finitely \(I_m\). This contradicts the assumption that
+all \(I_m\) couldn't be finitely covered by a subcover of \(\mathcal U\). This
+shows that we cannot pick a subset of \(I\) with such property, implying that
+\(I\) itself should be compact.
 \end{proof}
 
 \begin{proposition}\label{prop: compact-close}
-  Let \(K\) be a compact set of \(\R^n\), then
-  \begin{enumerate}[(a)]
-    \item \(K\) is closed in \(\R^n\).
-    \item Any closed subset of \(K\) is compact.
-  \end{enumerate}
+Let \(K\) be a compact set of \(\R^n\), then
+\begin{enumerate}[(a)]
+\item \(K\) is closed in \(\R^n\).
+\item Any closed subset of \(K\) is compact.
+\end{enumerate}
 \end{proposition}
 
 \begin{proof}
-  \begin{enumerate}[(a)]
-    \item Let \(y \in \R^n\) be any limit point of \(K\). Suppose that \(y
-      \not\in K\). For each point in \(K\), say \(x\), denote \(U_x\) a
-      neighbourhood. Consider the collection \(\mathcal U = \{U_x: x \in K\}\),
-      which covers the set \(K\). Since \(K\) is said to be compact, there
-      exists a finite subcover \(\mathcal U' = \{U_{x_1}, \dots, U_{x_m}\}
-      \subseteq \mathcal U\). From the hypothesis \(y\) does not belong to
-      \(K\), we can find a neighbourhood \(V_j\) of \(y\) for \(1 \leq j \leq
-      m\) such that \(U_{x_j} \cap V_j = \emptyset\). Consider now the
-      neighbourhood \(V = \bigcap_{1 \leq j \leq m} V_j\) of \(y\). Since \(K =
-      \bigcup \mathcal U'\), we have \(K \cap V = \emptyset\), therefore \(y\)
-      cannot be a limit point of \(K\), which is a contradiction. This implies
-      that \(y \in K\), if not, problematic neighbourhoods \(V_j\) can be
-      choosen.
-    \item Let \(C \subseteq \R^n\) be a closed set and \(C \subseteq K\). Let
-      \(\mathcal G\) be an open cover of \(C\) in \(\R^n\). Notice that
-      \(\mathcal U = \mathcal G \cup (\R^n \setminus C)\) is an open cover of
-      \(\R^n\), which clearly covers \(K\). Therefore there exists a finite
-      subcover of \(K\), \(\mathcal U' \subseteq \mathcal U\), but since \(C
-      \subseteq K\), then \(\mathcal U'\) also covers \(C\). Since \((\R^n
-      \setminus C) \cap C = \emptyset\), then \(\mathcal U' \setminus \{\R^n
-      \setminus C\}\) is a finite subcover of \(C\) from \(\mathcal G\),
-      therefore \(C\) is a compact set.
-  \end{enumerate}
+\begin{enumerate}[(a)]
+\item Let \(y \in \R^n\) be any limit point of \(K\). Suppose that \(y
+    \not\in K\). For each point in \(K\), say \(x\), denote \(U_x\) a
+    neighbourhood. Consider the collection \(\mathcal U = \{U_x: x \in K\}\),
+    which covers the set \(K\). Since \(K\) is said to be compact, there
+    exists a finite subcover \(\mathcal U' = \{U_{x_1}, \dots, U_{x_m}\}
+    \subseteq \mathcal U\). From the hypothesis \(y\) does not belong to
+    \(K\), we can find a neighbourhood \(V_j\) of \(y\) for \(1 \leq j \leq
+    m\) such that \(U_{x_j} \cap V_j = \emptyset\). Consider now the
+    neighbourhood \(V = \bigcap_{1 \leq j \leq m} V_j\) of \(y\). Since \(K =
+    \bigcup \mathcal U'\), we have \(K \cap V = \emptyset\), therefore \(y\)
+    cannot be a limit point of \(K\), which is a contradiction. This implies
+    that \(y \in K\), if not, problematic neighbourhoods \(V_j\) can be
+    choosen.
+\item Let \(C \subseteq \R^n\) be a closed set and \(C \subseteq K\). Let
+    \(\mathcal G\) be an open cover of \(C\) in \(\R^n\). Notice that
+    \(\mathcal U = \mathcal G \cup (\R^n \setminus C)\) is an open cover of
+    \(\R^n\), which clearly covers \(K\). Therefore there exists a finite
+    subcover of \(K\), \(\mathcal U' \subseteq \mathcal U\), but since \(C
+    \subseteq K\), then \(\mathcal U'\) also covers \(C\). Since \((\R^n
+    \setminus C) \cap C = \emptyset\), then \(\mathcal U' \setminus \{\R^n
+    \setminus C\}\) is a finite subcover of \(C\) from \(\mathcal G\),
+    therefore \(C\) is a compact set.
+\end{enumerate}
 \end{proof}
 
-\begin{definition}
-  The diameter of a set \(A \subseteq \R^n\) is defined to be
-  \[
-    d(A) = \sup_{x, y \in A} d(x, y).
-  \]
+\begin{definition}\label{def:Rn-diameter}
+The diameter of a set \(A \subseteq \R^n\) is defined to be
+\[
+d(A) = \sup_{x, y \in A} d(x, y).
+\]
 \end{definition}
 
 \begin{definition}\label{def: bounded}
-  A set \(A \subseteq \R^n\) is said to be bounded if \(d(A)\) is finite.
+A set \(A \subseteq \R^n\) is said to be bounded if \(d(A)\) is finite.
 \end{definition}
 
 \begin{proposition}\label{prop: compact then bounded}
-  If \(K \subseteq \R^n\) is compact, then \(K\) is also bounded in \(\R^n\).
+If \(K \subseteq \R^n\) is compact, then \(K\) is also bounded in \(\R^n\).
 \end{proposition}
 
 \begin{proof}
-  Let \(\mathcal B\) be the collection of all open balls around a given point
-  \(x \in \R^n\), the set \(\mathcal B\) covers \(\R^n\) and therefore also
-  covers \(K\). Notice that since \(K\) is compact, there exists a finite number
-  of open balls \(\mathcal B' \subseteq \mathcal B\) that cover \(K\), hence the
-  distance between any elements of \(K\) must be finite.
+Let \(\mathcal B\) be the collection of all open balls around a given point
+\(x \in \R^n\), the set \(\mathcal B\) covers \(\R^n\) and therefore also
+covers \(K\). Notice that since \(K\) is compact, there exists a finite number
+of open balls \(\mathcal B' \subseteq \mathcal B\) that cover \(K\), hence the
+distance between any elements of \(K\) must be finite.
 \end{proof}
 
 \begin{theorem}[Heine-Borel]\label{heine-borel}
-  Let \(K \subseteq \R^n\) be any set. The following statements are equivalent:
-  \begin{enumerate}[(a)]
-    \item \(K\) is closed and bounded.
-    \item \(K\) is compact.
-  \end{enumerate}
+Let \(K \subseteq \R^n\) be any set. The following statements are equivalent:
+\begin{enumerate}[(a)]
+\item \(K\) is closed and bounded.
+\item \(K\) is compact.
+\end{enumerate}
 \end{theorem}
 
 \begin{proof}
-  Notice that the implication (b) \(\Rightarrow\) (a) is already proven by the
-  last two propositions (\cref{prop: compact-close} and \ref{prop: compact then
-  bounded}). Suppose now that \(K\) is a closed and bounded set. Since \(K\) is
-  bounded, there exists a closed interval \(I \supset K\). Since \(I\) is
-  compact (\cref{prop: closed-interval compact}) and \(K\) is closed we find
-  that \(K\) itself is compact (\cref{prop: compact-close}).
+Notice that the implication (b) \(\Rightarrow\) (a) is already proven by the
+last two propositions (\cref{prop: compact-close} and \cref{prop: compact then
+bounded}). Suppose now that \(K\) is a closed and bounded set. Since \(K\) is
+bounded, there exists a closed interval \(I \supset K\). Since \(I\) is
+compact (\cref{prop: closed-interval compact}) and \(K\) is closed we find
+that \(K\) itself is compact (\cref{prop: compact-close}).
 \end{proof}
 
 \subsection{Limits}
 
 \begin{remark}
-  In this subsection we shall denote a general set as \(X\).
+In this subsection we shall denote a general set as \(X\).
 \end{remark}
 
 \begin{definition}[Limit]\label{def: limit-several}
-  Let \(f: X \to \R^n\) be a map. We say that \(x \in \R^n\) is the limit of
-  \(f\) over a filter base \(\mathcal B \subseteq  2^X\) if for every
-  neighbourhood \(V\) of \(x\) there exists \(B \in \mathcal B\) for which
-  \(f(B) \subseteq V\).
+Let \(f: X \to \R^n\) be a map. We say that \(x \in \R^n\) is the limit of
+\(f\) over a filter base \(\mathcal B \subseteq  2^X\) if for every
+neighbourhood \(V\) of \(x\) there exists \(B \in \mathcal B\) for which
+\(f(B) \subseteq V\).
 \end{definition}
 
 \begin{definition}[Bounded]\label{def: bounded-several}
-  A map \(f: X \to \R^n\) is said to be bounded if \(f(X) \subseteq \R^n\) is
-  bounded.
+A map \(f: X \to \R^n\) is said to be bounded if \(f(X) \subseteq \R^n\) is
+bounded.
 \end{definition}
 
 \begin{definition}[Ultimately bounded]\label{def: ulti-bounded-several}
-  Given a filter base \(\mathcal B \subseteq 2^X\), a map \(f: X \to \R^n\) is
-  ultimately bounded over the base \(\mathcal B\) if there exists \(B \in
-  \mathcal B\) for which \(f\) is bounded.
+Given a filter base \(\mathcal B \subseteq 2^X\), a map \(f: X \to \R^n\) is
+ultimately bounded over the base \(\mathcal B\) if there exists \(B \in
+\mathcal B\) for which \(f\) is bounded.
 \end{definition}
 
 \begin{proposition}[Unique limit]
-  A map can have at most one limit over a filter base.
+A map can have at most one limit over a filter base.
 \end{proposition}
 
 \begin{proof}
-  Let \(f: X \to \R^n\) be a map and suppose that \(\lim_\mathcal{B} f(x) = a\)
-  and \(\lim_\mathcal{B} f(x) = b\), where \(a \neq b\). Since they are distinct
-  points, there must exist neighbourhoods \(V_a\) and \(V_b\) for which \(V_a
-  \cap V_b = \emptyset\). Now, remember from the definition that there must
-  exist \(B_a, B_b \in \mathcal B\) such that \(f(B_a) \subseteq V_a\) and
-  \(f(B_b) \subseteq V_b\). From the downward direction property of filter
-  bases, there exists \(B \subseteq B_a \cap B_b\) in \(\mathcal B\). Since
-  \(\emptyset \not\in \mathcal B\), then \(B \neq \emptyset\), hence \(f(B)
-  \subseteq V_a \cap V_b\) is nonempty, contradicting the assumption that there
-  could be chosen non-intersecting neighbourhoods of \(a\) and \(b\), which
-  implies that \(a = b\) in \(\R^n\).
+Let \(f: X \to \R^n\) be a map and suppose that \(\lim_\mathcal{B} f(x) = a\)
+and \(\lim_\mathcal{B} f(x) = b\), where \(a \neq b\). Since they are distinct
+points, there must exist neighbourhoods \(V_a\) and \(V_b\) for which \(V_a
+\cap V_b = \emptyset\). Now, remember from the definition that there must
+exist \(B_a, B_b \in \mathcal B\) such that \(f(B_a) \subseteq V_a\) and
+\(f(B_b) \subseteq V_b\). From the downward direction property of filter
+bases, there exists \(B \subseteq B_a \cap B_b\) in \(\mathcal B\). Since
+\(\emptyset \not\in \mathcal B\), then \(B \neq \emptyset\), hence \(f(B)
+\subseteq V_a \cap V_b\) is nonempty, contradicting the assumption that there
+could be chosen non-intersecting neighbourhoods of \(a\) and \(b\), which
+implies that \(a = b\) in \(\R^n\).
 \end{proof}
 
 \begin{proposition}
-  If a map has a limit over a given filter base, then the map is ultimately
-  bounded over that filter base.
+If a map has a limit over a given filter base, then the map is ultimately
+bounded over that filter base.
 \end{proposition}
 
 \begin{proof}
-  Let \(f: X \to \R^n\) be a map and \(\mathcal B \subseteq 2^X\) be a filter
-  base. Assume that \(\lim_\mathcal{B} f(x) = \ell \in \R^n\). For the sake of
-  contradiction, suppose that \(f\) is not ultimately bounded over \(\mathcal
-  B\). Let \(B_\ell(\varepsilon)\) be an open ball centered at \(\ell\) with
-  radius \(\varepsilon > 0\). From the definition of a limit over a filter,
-  there exists \(B \in \mathcal B\) for which \(f(B) \subseteq
-  B_\ell(\varepsilon)\), but \(\sup_{x, y \in B_\ell(\varepsilon)} d(x, y) = 2
-  \varepsilon\), which contradicts the fact that \(d(f(B))\) is not bounded in
-  \(\R\). Therefore, \(f\) needs to be ultimately bounded over \(\mathcal B\).
+Let \(f: X \to \R^n\) be a map and \(\mathcal B \subseteq 2^X\) be a filter
+base. Assume that \(\lim_\mathcal{B} f(x) = \ell \in \R^n\). For the sake of
+contradiction, suppose that \(f\) is not ultimately bounded over \(\mathcal
+B\). Let \(B_\ell(\varepsilon)\) be an open ball centered at \(\ell\) with
+radius \(\varepsilon > 0\). From the definition of a limit over a filter,
+there exists \(B \in \mathcal B\) for which \(f(B) \subseteq
+B_\ell(\varepsilon)\), but \(\sup_{x, y \in B_\ell(\varepsilon)} d(x, y) = 2
+\varepsilon\), which contradicts the fact that \(d(f(B))\) is not bounded in
+\(\R\). Therefore, \(f\) needs to be ultimately bounded over \(\mathcal B\).
 \end{proof}
 
 \begin{corollary}\label{cor: flattening-limit}
-  Let \(f: X \to \R^n\) and \(\mathcal B\) be a filter base over \(X\). The map
-  has a limit \(y\) over \(\mathcal B\) if and only if each of the projection
-  functions \(\pi_j  f\) have limit \(y_j\). That is,
-  \[
-    \lim_\mathcal{B} f(x) = y \Leftrightarrow \lim_\mathcal{B} \pi_j  f(x)
-    = y_j,\ \text{ for } 1 \leq j \leq n
-  \]
+Let \(f: X \to \R^n\) and \(\mathcal B\) be a filter base over \(X\). The map
+has a limit \(y\) over \(\mathcal B\) if and only if each of the projection
+functions \(\pi_j  f\) have limit \(y_j\). That is,
+\[
+\lim_\mathcal{B} f(x) = y \Leftrightarrow \lim_\mathcal{B} \pi_j  f(x)
+= y_j,\ \text{ for } 1 \leq j \leq n
+\]
 \end{corollary}
 
 \begin{definition}[Cauchy sequence]
-  A sequence \((x_j)_{j \in \N}\) of points in \(\R^n\) is a Cauchy sequence
-  if for every \(\varepsilon > 0\) there exists an index \(N \in \N\) for which
-  \(d(x_i, x_j) < \varepsilon\) for all \(i, j > N\).
+A sequence \((x_j)_{j \in \N}\) of points in \(\R^n\) is a Cauchy sequence
+if for every \(\varepsilon > 0\) there exists an index \(N \in \N\) for which
+\(d(x_i, x_j) < \varepsilon\) for all \(i, j > N\).
 \end{definition}
 
 \begin{proposition}
-  A sequence \((x_j)_{j \in \N}\) of points in \(\R^n\) is Cauchy if and only if
-  \((x_j^i)_{j \in \N}\) is Cauchy for all \(1 \leq i \leq n\), where \(x_j =
-  (x_j^i)_{i=1}^n\).
+A sequence \((x_j)_{j \in \N}\) of points in \(\R^n\) is Cauchy if and only if
+\((x_j^i)_{j \in \N}\) is Cauchy for all \(1 \leq i \leq n\), where \(x_j =
+(x_j^i)_{i=1}^n\).
 \end{proposition}
 
 \begin{proof}
-  Notice that since
-  \[
-    d(x_j^i, x_k^i) \leq d(x_j, x_k) \leq \sqrt{n} \max_{1 \leq i \leq n}
-    d(x_j^i, x_k^i)
-  \]
-  then, if \((x_j)_{j \in \N}\) is Cauchy, we have that the inequality
-  \(d(x_j^i, x_k^k) \leq d(x_j, x_k)\) implies that \((x_j^i)_{j \in \N}\) is
-  Cauchy for each \(1 \leq i \leq n\). Now, if in turn we have that for each
-  component the sequence \((x_j^i)_{j \in \N}\) is Cauchy, then since \(d(x_j,
-  x_k) \leq \sqrt{n} \max_{1 \leq i \leq n} d(x_j^i, x_k^i)\) we find that
-  \((x_j)_{j \in \N}\) is Cauchy.
+Notice that since
+\[
+d(x_j^i, x_k^i) \leq d(x_j, x_k) \leq \sqrt{n} \max_{1 \leq i \leq n}
+d(x_j^i, x_k^i)
+\]
+then, if \((x_j)_{j \in \N}\) is Cauchy, we have that the inequality
+\(d(x_j^i, x_k^k) \leq d(x_j, x_k)\) implies that \((x_j^i)_{j \in \N}\) is
+Cauchy for each \(1 \leq i \leq n\). Now, if in turn we have that for each
+component the sequence \((x_j^i)_{j \in \N}\) is Cauchy, then since \(d(x_j,
+x_k) \leq \sqrt{n} \max_{1 \leq i \leq n} d(x_j^i, x_k^i)\) we find that
+\((x_j)_{j \in \N}\) is Cauchy.
 \end{proof}
 
 \begin{proposition}
-  A sequence in \(\R^n\) is convergent if and only if the sequence is Cauchy.
+A sequence in \(\R^n\) is convergent if and only if the sequence is Cauchy.
 \end{proposition}
 
 \begin{proof}
-  Suppose that \((x_j)_{j \in \N}\) is a convergent sequence in \(\R^n\) with
-  \(x_j \to x\). Let \(\varepsilon > 0\), choose any neighbourhood \(U\) of
-  \(x\) such that \(d(U) = \varepsilon\). Since the sequence converges, there
-  exists \(N \in \N\) for which \(x_j \in U\) for all \(j \geq N\), that is, for
-  all \(j, k \geq N\) we have \(d(x_j, x_k) < \varepsilon\). Hence we conclude
-  that \((x_j)_{j \in \N}\) is Cauchy. For the opposite case, let \((x_j)_{j \in
-  \N}\) be a Cauchy sequence. Then clearly there exists an element \(x\) for
-  which every neighbourhood contains infinitely many points of \((x_j)_{j \in
-  \N}\).
+Suppose that \((x_j)_{j \in \N}\) is a convergent sequence in \(\R^n\) with
+\(x_j \to x\). Let \(\varepsilon > 0\), choose any neighbourhood \(U\) of
+\(x\) such that \(d(U) = \varepsilon\). Since the sequence converges, there
+exists \(N \in \N\) for which \(x_j \in U\) for all \(j \geq N\), that is, for
+all \(j, k \geq N\) we have \(d(x_j, x_k) < \varepsilon\). Hence we conclude
+that \((x_j)_{j \in \N}\) is Cauchy. For the opposite case, let \((x_j)_{j \in
+\N}\) be a Cauchy sequence. Then clearly there exists an element \(x\) for
+which every neighbourhood contains infinitely many points of \((x_j)_{j \in
+\N}\).
 \end{proof}
 
 \begin{definition}[Oscillation]
-  The oscillation of \(f: X \to \R^n\) on \(E \subseteq X\) is given by
-  \[
-    \omega(f, E) = d(f(E)).
-  \]
+The oscillation of \(f: X \to \R^n\) on \(E \subseteq X\) is given by
+\[
+\omega(f, E) = d(f(E)).
+\]
 \end{definition}
 
 \begin{theorem}[Cauchy criterion for several variables]
-  \label{thm: cauchy-criterion several}
-  Let \(f: X \to \R^n\) be a map and \(\mathcal B\) be a filter base over \(X\).
-  The map \(f\) has a limit over \(\mathcal B\) if and only if for all
-  \(\varepsilon > 0\) there exist \(B \in \mathcal B\) such that \(\omega(f, B)
-  < \varepsilon\).
+\label{thm: cauchy-criterion several}
+Let \(f: X \to \R^n\) be a map and \(\mathcal B\) be a filter base over \(X\).
+The map \(f\) has a limit over \(\mathcal B\) if and only if for all
+\(\varepsilon > 0\) there exist \(B \in \mathcal B\) such that \(\omega(f, B)
+< \varepsilon\).
 \end{theorem}
 
 \begin{proof}
-  Apply the Cauchy criterion for single variable maps on each of \(\pi_j  f\) for
-  \(1 \leq j \leq n\), now, using \cref{cor: flattening-limit}, we see that theorem
-  is true for \(f\).
+Apply the Cauchy criterion for single variable maps on each of \(\pi_j  f\) for
+\(1 \leq j \leq n\), now, using \cref{cor: flattening-limit}, we see that theorem
+is true for \(f\).
 \end{proof}
 
 \begin{theorem}
-  Let \(g: Y \to R^n\) and \(f: X \to Y\) be mappings. Let filter basis
-  \(\mathcal B_Y\) on \(Y\) --- such that \(g\) has a limit over \(\mathcal
-  B_Y\) --- and \(\mathcal B_X\) on \(X\) such that for all \(B_Y \in \mathcal
-  B_Y\) there exists \(B_X \in \mathcal B_X\) for which \(f(B_X) \subseteq
-  B_Y\). Then the composition \(g  f: X \to \R^n\) has a limit over
-  \(\mathcal B_X\) and we have the relation
-  \[
-    \lim_{\mathcal B_X} g  f (x) = \lim_{\mathcal B_Y} g(y).
-  \]
+Let \(g: Y \to R^n\) and \(f: X \to Y\) be mappings. Let filter basis
+\(\mathcal B_Y\) on \(Y\) --- such that \(g\) has a limit over \(\mathcal
+B_Y\) --- and \(\mathcal B_X\) on \(X\) such that for all \(B_Y \in \mathcal
+B_Y\) there exists \(B_X \in \mathcal B_X\) for which \(f(B_X) \subseteq
+B_Y\). Then the composition \(g  f: X \to \R^n\) has a limit over
+\(\mathcal B_X\) and we have the relation
+\[
+\lim_{\mathcal B_X} g  f (x) = \lim_{\mathcal B_Y} g(y).
+\]
 \end{theorem}
 
 \begin{proof}
-  Apply the property of the limit of the composition of single variable maps to
-  each of the \(\pi_j  g\) and \(\pi_j  f\). From \cref{cor: flattening-limit} we
+Apply the property of the limit of the composition of single variable maps to
+each of the \(\pi_j  g\) and \(\pi_j  f\). From \cref{cor: flattening-limit} we
 see that the theorem is true for \(g\) and \(f\).
 \end{proof}
 
 \begin{definition}[Limit at infinity]
-  Let \(f: E \to \R^n\), where \(E \subseteq \R^m\). The filter base that yields
-  the limit \(x \to \infty\) is given by \(\mathcal B_\infty = \{\R^m \setminus
-  B_a(r) : r \in \R\}\) for any fixed point \(a \in \R^m\).
+Let \(f: E \to \R^n\), where \(E \subseteq \R^m\). The filter base that yields
+the limit \(x \to \infty\) is given by \(\mathcal B_\infty = \{\R^m \setminus
+B_a(r) : r \in \R\}\) for any fixed point \(a \in \R^m\).
 \end{definition}
 
 \begin{definition}[Limit to infinity]
-  Let \(f: E \to \R^n\), where \(E \subseteq \R^m\), and a filter base
-  \(\mathcal B\) on \(E\). We say that \(f(x) \to_\mathcal{B} \infty\) if ---
-  given any fixed point \(y \in \R^n\) --- any open ball \(B_y(r) \subseteq
-  \R^n\) is such that there exists \(B \in \mathcal B\) for which \(f(B)
-  \subseteq \R^n \setminus B_y(r)\).
+Let \(f: E \to \R^n\), where \(E \subseteq \R^m\), and a filter base
+\(\mathcal B\) on \(E\). We say that \(f(x) \to_\mathcal{B} \infty\) if ---
+given any fixed point \(y \in \R^n\) --- any open ball \(B_y(r) \subseteq
+\R^n\) is such that there exists \(B \in \mathcal B\) for which \(f(B)
+\subseteq \R^n \setminus B_y(r)\).
 \end{definition}
 
 \subsection{Continuity}
 
 \begin{remark}
-  Throughout this subsection we shall assume that \(E\) is a subset of \(\R^m\).
+Throughout this subsection we shall assume that \(E\) is a subset of \(\R^m\).
 \end{remark}
 
 \begin{definition}[Continuous]\label{def: continuous-several}
- A map \(f: E \to \R^n\) is said to be continuous at a point \(x \in E\) if for
- every neighbourhood \(V\) of \(f(x)\) there exists a neighbourhood \(U
- \subseteq E\) of \(x\) such that \(f(U) \subseteq V\).
+A map \(f: E \to \R^n\) is said to be continuous at a point \(x \in E\) if for
+every neighbourhood \(V\) of \(f(x)\) there exists a neighbourhood \(U
+\subseteq E\) of \(x\) such that \(f(U) \subseteq V\).
 \end{definition}
 
 \begin{corollary}
-  A map \(f: E \to \R^n\) is continuous at a point \(x\) if and only if
-  \(\pi_j  f\) is continuous at \(x\) for each \(1 \leq j \leq n\).
+A map \(f: E \to \R^n\) is continuous at a point \(x\) if and only if
+\(\pi_j  f\) is continuous at \(x\) for each \(1 \leq j \leq n\).
 \end{corollary}
 
 \begin{definition}[Path]
-  We define a path in \(\R^n\) to be a continuous map between an interval \(I
-  \subseteq \R\) and \(\R^n\).
+We define a path in \(\R^n\) to be a continuous map between an interval \(I
+\subseteq \R\) and \(\R^n\).
 \end{definition}
 
 \begin{definition}[Support]
-  We define the support of a path \(\gamma: I \to \R^n\) to be the image
-  \(\gamma(I)\).
+We define the support of a path \(\gamma: I \to \R^n\) to be the image
+\(\gamma(I)\).
 \end{definition}
 
 \begin{definition}[Oscillation at a point]
-  Let \(f: E \to \R^n\) be a map and \(x \in E\). We define the oscillation of
-  \(f\) at the point \(x\) as the limit
-  \[
-    \omega(f, x) = \lim_{r \to +0} \omega(f, B_a(r) \cap E).
-  \]
+Let \(f: E \to \R^n\) be a map and \(x \in E\). We define the oscillation of
+\(f\) at the point \(x\) as the limit
+\[
+\omega(f, x) = \lim_{r \to +0} \omega(f, B_a(r) \cap E).
+\]
 \end{definition}
 
 \begin{proposition}[Local properties]
-  Let \(f: E \to \R^n\) be a map.
-  \begin{enumerate}[(a)]
-    \item \(f\) is continuous at \(x \in E\) if and only if \(\omega(f, x) =
-      0\).
-    \item If \(f\) is continuous at a point \(x \in E\), then \(f\) is bounded
-      in some neighbourhood \(U_x \cap E\) of \(x\).
-    \item Let set \(X \subseteq \R^m\) and \(Y \in \R^n\). Let \(g: Y \to \R^k\)
-      be a continuous map at \(y \in Y\). Let \(f: X \to Y\) be continuous at
-      \(x \in X\) and \(f(x) = y\). Then the map \(g  f: X \to R^k\) is
-      continuous at \(x\).
-  \end{enumerate}
-  If the map is real valued, we also have more properties. Let \(f, g: E \to
-  \R\), then
-  \begin{enumerate}[(a)]
-    \item If \(f\) is continuous at a point \(\bar x \in E\), there exists a
-      neighbourhood \(U \cap E\) of \(\bar x\) such that \(f(x)f(\bar x) > 0\)
-      for all \(x \in U \cap E\).
-    \item If \(f\) and \(g\) are continuous at a point \(x \in E\), then for any
-      \(\alpha, \beta \in \R\) we have that the linear combination \(\alpha f +
-      \beta g: E \to \R\), their product \(f \cdot g: E \to \R\) and --- if \(g(x)
-      \neq 0\) --- the quotient \(\frac f g: E \to \R\) are all continuous at
-      the point \(x\).
-  \end{enumerate}
+Let \(f: E \to \R^n\) be a map.
+\begin{enumerate}[(a)]
+\item \(f\) is continuous at \(x \in E\) if and only if \(\omega(f, x) =
+    0\).
+\item If \(f\) is continuous at a point \(x \in E\), then \(f\) is bounded
+    in some neighbourhood \(U_x \cap E\) of \(x\).
+\item Let set \(X \subseteq \R^m\) and \(Y \in \R^n\). Let \(g: Y \to \R^k\)
+    be a continuous map at \(y \in Y\). Let \(f: X \to Y\) be continuous at
+    \(x \in X\) and \(f(x) = y\). Then the map \(g  f: X \to R^k\) is
+    continuous at \(x\).
+\end{enumerate}
+If the map is real valued, we also have more properties. Let \(f, g: E \to
+\R\), then
+\begin{enumerate}[(a)]
+\item If \(f\) is continuous at a point \(\bar x \in E\), there exists a
+    neighbourhood \(U \cap E\) of \(\bar x\) such that \(f(x)f(\bar x) > 0\)
+    for all \(x \in U \cap E\).
+\item If \(f\) and \(g\) are continuous at a point \(x \in E\), then for any
+    \(\alpha, \beta \in \R\) we have that the linear combination \(\alpha f +
+    \beta g: E \to \R\), their product \(f \cdot g: E \to \R\) and --- if \(g(x)
+    \neq 0\) --- the quotient \(\frac f g: E \to \R\) are all continuous at
+    the point \(x\).
+\end{enumerate}
 \end{proposition}
 
 \begin{proof}
-  \todo[inline]{Write proofs: local properties}
+\todo[inline]{Write proofs: local properties}
 \end{proof}
 
-\begin{definition}[Uniformly continuous]
-  Let \(f: E \to \R^n\) be a map. We say that \(f\) is uniformly continuous on
-  \(E\) if for every \(\varepsilon > 0\) there exists \(\delta > 0\) such that
-  if \(d(x, y) < \delta\), then \(d(f(x), f(y)) < \varepsilon\), for any given
-  \(x, y \in E\).
+\begin{definition}[Uniformly continuous]\label{def:uniformly-continuous}
+Let \(f: X \to Y\) be a map between metric spaces. We say that \(f\) is
+uniformly continuous on \(X\) if for every \(\varepsilon > 0\) there exists
+\(\delta > 0\) such that, for every subset \(E \subseteq X\) of diameter \(d(E)
+< \delta\), we have an oscillation \(\omega(f, E) < \varepsilon\).
 \end{definition}
 
+\begin{theorem}[Heine-Cantor theorem]
+\label{thm:heine-cantor}
+Let \(f: X \to Y\) be a continous map between matric spaces \(X\) and \(Y\). If
+\(X\) is compact, then \(f\) is uniformly continuous.
+\end{theorem}
+
+\begin{proof}
+Let any \(\varepsilon > 0\). Since \(f\) is continuous, there exists, for any
+\(x \in X\) a \(\delta_x > 0\) for which, if \(d_X(x, y) < \delta_x\), then
+\(d_Y(f(x), f(y)) < \varepsilon/2\). Lets consider the open cover \(\mathcal U\)
+of \(X\) consisting of the neighbourhoods \(U_x \coloneq \{y \in X : d_{X}(x, y)
+< \frac {\delta_{x}} 2\}\) for each \(x \in X\). From definition, if \(X\) is
+compact, then there exists a finite subcover \(\{U_{x_j}\}_{j=1}^n \subseteq
+\mathcal U\) of \(X\). Define the minimum radius of the given neighbourhoods as
+\(\delta \coloneq \min_{1 \leq j \leq n} \delta_{x_j}/2\).
+
+Let \(x, y \in X\) be any points such that \(d_X(x, y) < \delta\). From the
+finite subcover, we have that there exists \(1 \leq j_0 \leq n\) such that \(x
+\in U_{x_{j_0}}\), which implies that \(d_X(x, x_{j_0}) < \delta_{x_{j_0}}/2\),
+thus \(d_Y(f(x), f(x_{j_0})) < \varepsilon/2\), from construction. Notice however
+that
+\[
+  d_X(y, x_{j_0}) \leq d_X(y, x) + d_X(x, x_{j_0})
+  < \delta + \delta_{x_{j_0}}
+  \leq \delta_{x_{j_0}},
+\]
+therefore it follows that \(d_Y(f(x_{j_0}), f(y)) < \varepsilon/2\). Using again
+the triangle inequality we observe that
+\[
+  d_Y(f(x), f(y)) \leq d_Y(f(x), f(x_{j_0})) + d_Y(f(x_{j_0}), f(y))
+  < \varepsilon.
+\]
+Therefore, \(f\) is indeed uniformly continuous with constant \(\delta\).
+\end{proof}
+
 \begin{definition}[Pathwise connected]\label{def: path-connected}
-  A set \(X \subseteq \R^n\) is pathwise connected if for all \(x, y \in E\)
-  there exists a path \(\gamma: I \to E\) with endpoints at \(x\) and \(y\) and
-  support in \(E\).
+A set \(X \subseteq \R^n\) is pathwise connected if for all \(x, y \in E\)
+there exists a path \(\gamma: I \to E\) with endpoints at \(x\) and \(y\) and
+support in \(E\).
 \end{definition}
 
 \begin{definition}[Domain]\label{def: domain}
-  A domain in \(\R^n\) is an open pathwise connected subset of \(\R^n\).
+A domain in \(\R^n\) is an open pathwise connected subset of \(\R^n\).
 \end{definition}
 
 \begin{proposition}[Global properties]
-  \label{prop:global-properties-continuous-on-compact}
-  The following are global properties on continuous maps of several
-  variables. Let \(K \subseteq \R^m\) be a compact set and \(E \subseteq \R^m\)
-  be pathwise connected.
-  \begin{enumerate}[(a)]
-    \item A continuous map \(f: K \to \R^n\) is uniformly continuous.
-    \item A continuous map \(f: K \to \R^n\) is bounded on \(K\).
-    \item A continuous map \(f: K \to \R\) assumes its maximal and minimal
-      values at least once in \(K\).
-    \item Let \(f: E \to \R\) be a continuous map and assume \(f(a) = A\) and
-      \(f(b) = B\) at \(a, b \in E\). For any \(C \in [A, B] \subseteq \R\)
-      there exists \(c \in E\) such that \(f(c) = C\).
-  \end{enumerate}
+\label{prop:global-properties-continuous-on-compact}
+The following are global properties on continuous maps of several
+variables. Let \(K \subseteq \R^m\) be a compact set and \(E \subseteq \R^m\)
+be pathwise connected.
+\begin{enumerate}[(a)]
+\item A continuous map \(f: K \to \R^n\) is uniformly continuous.
+\item A continuous map \(f: K \to \R^n\) is bounded on \(K\).
+\item A continuous map \(f: K \to \R\) assumes its maximal and minimal
+    values at least once in \(K\).
+\item Let \(f: E \to \R\) be a continuous map and assume \(f(a) = A\) and
+    \(f(b) = B\) at \(a, b \in E\). For any \(C \in [A, B] \subseteq \R\)
+    there exists \(c \in E\) such that \(f(c) = C\).
+\end{enumerate}
 \end{proposition}
 
 \begin{proof}
-  \todo[inline]{Write proofs: global properties}
-  (d) From the connectedness of \(E\), let \(\gamma: [x, y] \to E\) be a
-  continuous path such that \(\gamma(x) = a\) and \(\gamma(y) = b\). Consider
-  the composition of continuous maps \(f  \gamma: I \to \R\). Since \(f
-   \gamma(a) = A\) and \(f  \gamma(b) = B\), for any given \(C \in [A,
-  B]\), there exists \(z \in [x, y]\) such that \(f  \gamma(z) = C\), hence
-  there exists \(c = \gamma(z) \in E\) for which \(f(c) = C\).
+\todo[inline]{Write proofs: global properties}
+(d) From the connectedness of \(E\), let \(\gamma: [x, y] \to E\) be a
+continuous path such that \(\gamma(x) = a\) and \(\gamma(y) = b\). Consider
+the composition of continuous maps \(f  \gamma: I \to \R\). Since \(f
+\gamma(a) = A\) and \(f  \gamma(b) = B\), for any given \(C \in [A,
+B]\), there exists \(z \in [x, y]\) such that \(f  \gamma(z) = C\), hence
+there exists \(c = \gamma(z) \in E\) for which \(f(c) = C\).
 \end{proof}
 
 \begin{proposition}\label{prop: linear-continuous}
-  Every linear map of the form \(L: \R^m \to \R^n\) is continuous. Moreover, it
-  is uniformly continuous.
+Every linear map of the form \(L: \R^m \to \R^n\) is continuous. Moreover, it
+is uniformly continuous.
 \end{proposition}
 
 \begin{proof}
-  Let \(f: E \to \R^n\) be any map, then for all \(1 \leq j \leq n\) we have
-  \[
-    \norm{\pi_j  f(x)}_\R \leq \norm{f(x)}_{\R^n} \leq \sum_{j=1}^n
-    \norm{\pi_j  f(x)}_\R
-  \]
-  In particular, for the linear map \(L\) we have that --- given any \(x \in
-  \R^m\)
-  \[
-    \norm{L(x)}_{\R^n} = \norm{\sum_{j=1}^m x_j L(e_j)}_{\R^n}
-    \leq \sum_{j=1}^m \norm{x_j}_\R \norm{L(e_j)}_{\R^n}
-    \leq \norm{x}_{\R^m} \left( \sum_{j=1}^m \norm{L(e_j)}_{\R^n} \right).
-  \]
-  Hence \(L = O(\Id)\) --- where \(\Id: \R^m \to \R^m\) mapping \(x \mapsto x\). It
-  follows from this that as \(x \to x_0\), we have \(L(x - x_0) = L(x) - L(x_0) \to
-  0\). This shows that \(L\) is continuous at any point of \(\R^m\). Notice that
-  given any \(\varepsilon > 0\) if \(\norm{x - y}_{\R^m} < \frac \varepsilon \ell\) --- where \(\ell :=
-  \sum_{j=1}^m L(e_j)\) --- then
-  \[
-    \norm{L(x) - L(y)}_{\R^n} = \norm{\sum_{j=1}^m (x_j - y_j) L(e_j) }_{\R^n}
-    \leq \sum_{j=1}^m \norm{L(e_j)}_{\R^n} \norm{x_j - y_j}_\R
-    \leq \ell \norm{x - y}_{\R^m}
-    < \ell \frac \varepsilon \ell = \varepsilon
-  \]
-  where we conclude that \(L\) is uniformly continuous.
+Let \(f: E \to \R^n\) be any map, then for all \(1 \leq j \leq n\) we have
+\[
+\norm{\pi_j  f(x)}_\R \leq \norm{f(x)}_{\R^n} \leq \sum_{j=1}^n
+\norm{\pi_j  f(x)}_\R
+\]
+In particular, for the linear map \(L\) we have that --- given any \(x \in
+\R^m\)
+\[
+\norm{L(x)}_{\R^n} = \norm{\sum_{j=1}^m x_j L(e_j)}_{\R^n}
+\leq \sum_{j=1}^m \norm{x_j}_\R \norm{L(e_j)}_{\R^n}
+\leq \norm{x}_{\R^m} \left( \sum_{j=1}^m \norm{L(e_j)}_{\R^n} \right).
+\]
+Hence \(L = O(\Id)\) --- where \(\Id: \R^m \to \R^m\) mapping \(x \mapsto x\). It
+follows from this that as \(x \to x_0\), we have \(L(x - x_0) = L(x) - L(x_0) \to
+0\). This shows that \(L\) is continuous at any point of \(\R^m\). Notice that
+given any \(\varepsilon > 0\) if \(\norm{x - y}_{\R^m} < \frac \varepsilon \ell\) --- where \(\ell :=
+\sum_{j=1}^m L(e_j)\) --- then
+\[
+\norm{L(x) - L(y)}_{\R^n} = \norm{\sum_{j=1}^m (x_j - y_j) L(e_j) }_{\R^n}
+\leq \sum_{j=1}^m \norm{L(e_j)}_{\R^n} \norm{x_j - y_j}_\R
+\leq \ell \norm{x - y}_{\R^m}
+< \ell \frac \varepsilon \ell = \varepsilon
+\]
+where we conclude that \(L\) is uniformly continuous.
 \end{proof}

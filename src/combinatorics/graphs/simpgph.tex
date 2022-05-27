@@ -1,8 +1,8 @@
 \section{The Simple Graph --- Looping All Over}
 
 \begin{definition}[Simple Graph]\label{def: simp-graph}
-  A simple graph --- or more commonly named a ``graph'' ---  is defined to be a
-  graph \(G = (V, E, d)\) (in the sense of \cref{def: general-graph}) where
+  A simple graph is defined to be a graph \(G = (V, E, d)\) (in the sense of
+  \cref{def: general-graph}) where
   \[
     d: E \to V^2/_{(x, y) \sim (y, x)}
     \text{, mapping }
@@ -63,8 +63,7 @@ following category.
       E')\) is a map \(f: V \to V'\) such that \(E(x, y)\) implies \(E(f(x),
       f(y))\).
     \item Let \(G = (V, E, s, t)\) and \(H = (V', E', s', t')\) be simple
-      graphs. A morphism of simple graphs \(G \to H\) is a natural
-      transformation \(\alpha: G \Rightarrow H\)
+      graphs. A morphism \(G \to H\) is a natural transformation \(\alpha: G \Rightarrow H\)
       \[
         \begin{tikzcd}
           \cat S^\op
@@ -117,7 +116,7 @@ following category.
 \end{definition}
 
 \begin{definition}[Simple graphs category]
-  The category of simple graphs, denoted by \(\SimpGraph\), is the consisting of
+  The category of simple graphs, denoted by \(\SimpGraph\), consisists of
   simple graphs and morphisms between them. That is, \(\SimpGraph = \Set^{\cat
   S^\op}\) --- the category of presheaves on the walking simple graphs category
   \(\cat S\).

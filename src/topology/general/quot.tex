@@ -107,55 +107,237 @@ then from the continuity of \(\Id\) we find that \(\Id^{-1}(U') = U' \subseteq
 indeed \(\mathcal T = \mathcal T'\) as wanted.
 \end{proof}
 
+To ease the way in which we refer to quotients and surjective morphisms that
+induce quotients between topological spaces, we define the following terminology.
+
+\begin{definition}[Quotient morphism]
+\label{def:quotient-morphism}
+A surjective morphism \(\pi: X \to Y\) of topological spaces \(X\) and \(Y\) is
+said to be a quotient morphism if \(\pi\) induces the universal property of
+quotients --- in other words, open sets of \(Y\) are exactly those that have
+open preimage on \(\pi\), that is, \(V \subseteq Y\) is open if and only if
+\(\pi^{-1}(V) \subseteq X\) is open.
+\end{definition}
+
+\subsection{Some Examples And Applications}
+
 Many important spaces can be obtained with the inclusion of the quotient
 topology to our toolkit, I'll now briefly discuss some of those, which will most
 probably come up further into this text.
 
 \begin{example}[Projective space]\label{exp:real-projective-space}
-Let \(\sim\) be the equivalence relation for which \(x \sim y\) if and only if \(x = \gamma
-y\), where \(x, y \in \R^{n+1} \ \{0\}\) and \(\gamma \in \R\). We define the
-\(n\)-dimensional real projective space as the quotient \((\R^{n+1} \setminus
-\{0\})/{\sim}\), which is denoted by \(\Proj^{n}(\R)\).
+Let \(\sim\) be the equivalence relation for which \(x \sim y\) if and only if
+\(x = \gamma y\), where \(x, y \in \R^{n+1} \ \{0\}\) and \(\gamma \in \R\). We
+define the \(n\)-dimensional real projective space as the quotient \((\R^{n+1}
+\setminus \{0\})/{\sim}\), which is denoted by \(\R \Proj^{n}\).
 \end{example}
 
 \begin{example}[Cone]\label{exp:cone}
 Let \(X\) be any topological space and \(I\) be the standard interval. The
-topological space \(X \times I\) is known as the cylinder on \(X\). Via a quotienting
-operation, we can collapse regions of this cylinder. For instance, we can create
-a cone by collapsing one of the sides of the cylinder, such as \((X \times I) / (X \times
-\{0\})\). Such object is denoted \(\Cone(X)\), the cone on \(X\).
+topological space \(X \times I\) is known as the cylinder on \(X\). Via a
+quotienting operation, we can collapse regions of this cylinder. For instance,
+we can create a cone by collapsing one of the sides of the cylinder, such as
+\((X \times I) / (X \times \{1\})\). Such object is denoted \(\Cone X\), the
+cone on \(X\).
 \end{example}
 
 \begin{example}
 \label{exp:wedge-sum-space}
 Let \(J\) be an indexing set and \(\{X_j\}_{j \in J}\) be a collection of
-non-empty topological spaces. For each \(j \in J\), choose any \(p_j \in X_j\) as a
-base point. We define the wedge sum of the collection \(\{X_{j}\}_{j \in J}\) with
-respect to the base points \(\{p_{j}\}_{j \in J}\) as the topological space
+non-empty topological spaces. For each \(j \in J\), choose any \(p_j \in X_j\)
+as a base point. We define the wedge sum of the collection \(\{X_{j}\}_{j \in
+J}\) with respect to the base points \(\{p_{j}\}_{j \in J}\) as the topological
+space
 \[
   \bigvee_{j \in J} X_j = \coprod_{j \in J} X_j / \{p_{j}\}_{j \in J}
 \]
 \end{example}
 
+An interesting fact about wedge sums of topological spaces preserve the
+Hausdorff property if every component is Hausdorff.
+
 \begin{proposition}
 \label{prop:hausdorff-wedge-sum}
 Let \(\{X_{j}\}_{j \in J}\) be an indexed collection of Hausdorff topological
-spaces. Then the wedge sum \(\bigvee_{j \in J} X_j\) with respect to any choice of base
-points is Hausdorff.
+spaces. Then the wedge sum \(\bigvee_{j \in J} X_j\) with respect to any choice
+of base points is Hausdorff.
 \end{proposition}
 
 \begin{proof}
 Let \(\{p_j \in X_j\}_{j \in J}\) be any choice of base points for the given
-collection. Let \(x, y \in \bigvee_{j \in J} X_j\) be any distinct points in the wedge sum
-space. If \(x, y \in X_j\) for some \(j \in J\), then it is clear that there exists
-non-intersecting neighbourhoods of \(x\) and \(y\) on \(X_j\) --- of which we can
-take their intersection with the disjoint union \(\coprod_{j \in J} X_j\) and the
-proposition will hold for \(\bigvee_{j \in J} X_j\). On the other hand, if \(i, j \in J\)
-are distinct indices and \(x \in X_i\) while \(y \in X_j\), then there exists \(U_x
-\subseteq X_i\) and \(U_y \subseteq X_j\) neighbours of \(x\) and \(y\), respectively, such that
-\(U_x \cap X_j = \emptyset\) and \(U_y \cap X_i = \emptyset\), which in particular imply in \(U_x \cap
-U_y= \emptyset\). For our end, we just need to consider the neighbourhoods \(U_x' = U_x
-\cap \coprod_{j \in J} X_j\) and \(U_y' = U_y \coprod_{j \in J} X_j\) so that \(U_x' = U_y'\).
+collection. Let \(x, y \in \bigvee_{j \in J} X_j\) be any distinct points in the
+wedge sum space. If \(x, y \in X_j\) for some \(j \in J\), then it is clear that
+there exists non-intersecting neighbourhoods of \(x\) and \(y\) on \(X_j\) ---
+of which we can take their intersection with the disjoint union \(\coprod_{j \in
+J} X_j\) and the proposition will hold for \(\bigvee_{j \in J} X_j\). On the
+other hand, if \(i, j \in J\) are distinct indices and \(x \in X_i\) while \(y
+\in X_j\), then there exists \(U_x \subseteq X_i\) and \(U_y \subseteq X_j\)
+neighbours of \(x\) and \(y\), respectively, such that \(U_x \cap X_j =
+\emptyset\) and \(U_y \cap X_i = \emptyset\), which in particular imply in \(U_x
+\cap U_y= \emptyset\). For our end, we just need to consider the neighbourhoods
+\(U_x' = U_x \cap \coprod_{j \in J} X_j\) and \(U_y' = U_y \cap \coprod_{j \in J}
+X_j\) so that \(U_x' = U_y'\).
 \end{proof}
 
-\section{Testing}
+\begin{proposition}
+\label{prop:quot-second-count-locall-euclidean}
+Let \(X\) be a second countable space and \(M = X / {\sim}\) be a quotient. If
+\(M\) is locally Euclidean, then \(M\) is second countable.
+\end{proposition}
+
+\begin{proof}
+Let \(\pi: X \epi M\) be the quotienting map that induces the equivalence
+relation \(\sim\) in \(X\). If we assume that \(M\) is locally euclidean, we can
+let \(\mathcal{C}\) be a cover of \(M\) composed of coordinate balls. Since
+\(\pi\) is surjective, \(\mathcal H \coloneq \{\pi^{-1}(U): U \in
+\mathcal{C}\}\) is a cover for the space \(X\). Moreover, since \(X\) is second
+countable, any cover of \(X\) contains a countable subcover --- in particular,
+let \(\mathcal U \subseteq \mathcal H\) be a countable subcover. Define the
+countable set \(\mathcal{C}' = \{U \in \mathcal{C} : \pi^{-1}(U) \in
+\mathcal{U}\}\). Since \(\mathcal{U}\) covers \(X\) and \(\pi\) is surjective,
+it follows that \(\mathcal{C}' \subseteq \mathcal{C}\) is a countable subcover
+of \(M\) composed of coordinate balls --- that is, \(M\) is Lindelöf. Better
+than that, since coordinate balls are second countable (see
+\cref{prop:coordinate-ball-second-countable}) we can apply
+\cref{cor:second-countable-out-of-cover} to see that \(M\) is second
+countable.
+\end{proof}
+
+\begin{corollary}[Manifold from a quotient]
+\label{cor:manifold-from-quotient}
+In the context of the preceeding proposition, if \(M\) is both locally Euclidean
+and Hausdorff, then \(M\) is a topological manifold.
+\end{corollary}
+
+\begin{proposition}[Hausdorff from open quotientings]
+\label{prop:open-quotient-hausdorff}
+Let \(\pi: X \epi Y\) be a surjective morphism of topological spaces \(X\) and
+\(Y\). Then \(Y\) is Hausdorff if and only if the collection of pairs of points
+with common fiber, \(C \coloneqq \{(p, q) \in X \times X : \pi(p) = \pi(q)\}\),
+is closed in \(X \times X\).
+\end{proposition}
+
+\begin{proof}
+Let \(Y\) be Hausdorff, then, given any \((p, q) \in X \setminus C\), there are
+neighbourhoods \(V_p, V_q \subseteq Y\) of \(\pi(p)\) and \(\pi(q)\),
+respectively, such that \(V_p \cap V_q = \emptyset\). Since these neighbourhoods
+are disjoint, then in particular the collection fibers \(\pi^{-1}(V_p) \times
+\pi^{-1}(V_q)\) is contained in \(X \times X \setminus C\), that is, \(X \times
+X \setminus C\) is open --- hence \(C\) is closed.
+
+Let \(C\) be closed, then given any distinct points \(a, b \in Y\), the
+surjectivity of \(\pi\) implies that there exists \(p, q \in X\) such that
+\(\pi(p) = a\) and \(\pi(q) = b\) --- in particular \((p, q) \in X \times X
+\setminus C\) and since \(C\) is closed, there exists a neighbourhood \(U_p
+\times U_q \subseteq X \times X\) of \((p, q)\) such that \(U_p \times U_q
+\subseteq X \times X \setminus C\), that is, \(\pi(U_p), \pi(U_q) \subseteq Y\)
+are non intersecting open sets (from the fact that \(\pi\) is open) that are
+neighbourhoods of \(a\) and \(b\), respectively --- thus \(Y\) is Hausdorff.
+\end{proof}
+
+\subsection{Quotient Morphisms In More Depth}
+
+So far we've been studying the construction of quotients out of surjective
+set-functions, but what about being able to classifying a surjective morphisms
+between given topological spaces as inducing the universal property of the
+quotient space? This will be our goal with this subsection --- identifying
+quotienting morphisms. For that end, we shall profit from the main idea behind
+quotients: fibers. For that, we define a set given by fibers of \(f\) as being
+saturated.
+
+\begin{definition}[Saturated set]
+\label{def:saturated-fiber}
+Let \(f: X \to Y\) be a set-function. We say that a set \(U \subseteq X\) is
+saturated with respect to \(f\) if there exists \(V \subseteq Y\) such that
+\(U = f^{-1}(V)\).
+\end{definition}
+
+\begin{proposition}[Equivalences for saturated sets]
+\label{prop:equivalences-saturated-fiber}
+Let \(f: X \to Y\) be a set-function and \(U \subseteq X\) be any subset. The
+following propositions are equivalent
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The set \(U\) is saturated with respect to \(f\).
+\item \(U = f^{-1}(f(U))\).
+\item Let \(p \in U\) be any point, \(U\) contains every element \(x \in X\)
+  with common fiber to \(p\) --- that is, \(f(x) = f(p)\) implies \(x \in U\).
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(c) \(\Rightarrow\) (b): Suppose \(U\) satisfies proposition (c), it is clear
+that \(U \subseteq f^{-1}(f(U))\), on the other hand, given \(x \in
+f^{-1}(f(U))\), it follows that \(x\) has a common fiber with some point of
+\(U\), which implies that \(x \in U\). (b) \(\Rightarrow\) (a): Trivial from the
+definition. (a) \(\Rightarrow\) (c): Let \(V \subseteq Y\) be such that \(U =
+f^{-1}(V)\), then, given any \(p \in f^{-1}(V)\), it is clear that \(f(p) \in
+V\), hence every point \(x \in X\) such that \(f(x) = f(p) \in V\) then \(x \in
+U\), which finishes the equivalence chain.
+\end{proof}
+
+\begin{proposition}[Classification of surjective morphisms]
+\label{prop:surjective-saturated-is-quotient}
+Let \(\pi: X \epi Y\) be a surjective morphism of topological spaces. The map
+\(\pi\) is a quotient morphism --- that is, induces the universal property of
+quotients for \(X\) and \(Y\) --- if and only if every saturated open (or
+closed) set of \(X\) has an open (or closed) image in \(Y\).
+\end{proposition}
+
+\begin{proof}
+Let \(\pi\) be any surjective morphism taking saturated open sets to open
+images. Let \(V \subseteq Y\) be an open set. Since \(\pi\) is surjective and
+continuous, then \(\pi^{-1}(V) \subseteq X\) is open. On the other hand, let \(V
+\subseteq Y\) be any set of \(Y\) (not necessarily open), such that
+\(\pi^{-1}(V) \coloneq U \subseteq X\) is open. This implies directly that \(U\)
+is saturated with respect to \(\pi\) and from our initial hypothesis, \(\pi(U) =
+V \subseteq Y\) is open. Thus \(\pi\) is a quotient morphism.
+
+For the contrary, let \(\pi\) be a quotient morphism. Then, given any \(U
+\subseteq X\) open set, saturated with respect to \(\pi\), define \(V \subseteq
+Y\) such that \(U = \pi^{-1}(V)\). Since \(\pi\) is a quotient morphism, it
+follows that \(V\) is necessarily open in \(Y\), thus \(\pi(U) = V\) is open.
+
+The proof for the closed set case is completely analogous.
+\end{proof}
+
+\begin{proposition}[Properties of quotient morphisms]
+\label{prop:properties-quotient-morphism}
+The following properties pertain to quotient morphisms between topological
+spaces.
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The composition of quotient morphisms is a quotient morphism.
+\item Injective quotient morphisms are isomorphisms.
+\item Let \(\pi: X \epi Y\) be a quotient morphism. Then, \(C \subseteq Y\) is
+  closed if and only if \(\pi^{-1}(C) \subseteq X\) is closed.
+\item Let \(\pi: X \epi Y\) be a quotient morphism and \(U \subseteq X\) be any
+  saturated set (open or closed) with respect to \(\pi\). Then, the restriction
+  \(\pi|_U: U \epi \pi(U)\) is a quotient map.
+\item Let \(J\) be an indexing set and \(\{\pi_j: X_j \epi Y_j\}_{j \in J}\) be
+  an indexed collection of quotient morphisms. The map \(\pi: \coprod_{j \in J}
+  X_j \epi \coprod_{j \in J} Y_j\) defined by the restrictions \(\pi(x_{j}) =
+  \pi_{j}(x_j)\) for every \(x_j \in X_{j} \cap \coprod_{j \in J} X_j\).
+\end{enumerate}
+\end{proposition}
+
+\todo[inline]{Prove properties of the quotient morphism}
+
+\begin{example}[Cones]
+\label{exp:remove-section-cone-isomorphism}
+An application of the last proposition takes us back to \cref{exp:cone}, where
+we defined the cone \(\Cone X\) of a topological space \(X\) as \((X \times I) /
+(X \times \{1\})\) --- the collapse the top of the cylinder. Notice that, given
+any point \((x, t) \in (X \times I) \setminus (X \times \{1\})\), there exists a
+neighbourhood \(U \subseteq (X \times I) \setminus (X \times \{1\})\) of \((x,
+t)\), therefore \(X \times \{1\}\) is closed in \(X \times I\). If we consider
+the quotient morphism of the cone \(\pi: X \times I \epi \Cone X\), any element
+of the bottom \(p \in X \times \{1\}\) is mapped to a single element of the
+cone, say \(p \xmapsto \pi * \in \Cone X\) --- and since \(U\) is a closed
+saturated set of \(X\) with respect to \(\pi\), its image \(\pi(U) = * \subseteq
+\Cone X\) is closed. Notice that \(X \iso X \times \{1\}\) by the natural
+identification \(x \xmapsto \sim (x, 1)\), thus we can define a quotient map
+\(q: X \isoto X \times \{0\} \epi *\) is
+\todo[inline]{\(q\) is injective??}
+\end{example}
+
+
+\subsubsection{Sufficient But Not Necessary Conditions}

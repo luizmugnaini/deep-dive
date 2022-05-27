@@ -3,10 +3,11 @@
 \begin{definition}
   Let \(X\) be a topological space. We define
   \begin{enumerate}[(1)]
-    \item \(X\) is \(T_0\) (or Kolmogorov) if and only if for every pair of
-      points \(x, y \in X\) there exists an open set containing one, but not
-      both, of them.
-    \item \(X\) is \(T_1\) (or Fréchet) if and only if for every pair or points
+  \item\label{def:T0-space-kolmogorov}
+    \(X\) is \(T_0\) (or Kolmogorov) if and only if for every pair of points
+    \(x, y \in X\) there exists an open set containing one, but not both, of them.
+  \item\label{def:T1-space-frechet}
+      \(X\) is \(T_1\) (or Fréchet) if and only if for every pair or points
       \(x, y \in X\) there exists open sets \(U, V \subseteq X\) such that \(x
       \in U\) and \(y \in V\), but \(x \not\in V\) and \(y \not\in U\)
   \end{enumerate}
@@ -131,8 +132,8 @@
   respectively, such that \(U_1 \cap U_2 = \emptyset\). Since \(U_1, U_2\) are
   open, then \(f^{-1}(U_1), g^{-1}(U_2)\) are both open, hence \(f^{-1}(U_1)
   \cap g^{-1}(U_2)\) is a neighbourhood of \(x\) such that \(f^{-1}(U_1) \cap
-  g^{-1}(U_2) \subseteq A\). From \cref{prop: open set nbhd criterion} we find
-  that \(A\) is open.
+  g^{-1}(U_2) \subseteq A\). From \cref{prop:classification-int-ext-boundary-points} we
+  find that \(A\) is open.
 \end{proof}
 
 \begin{proposition}\label{prop: metric space T2}

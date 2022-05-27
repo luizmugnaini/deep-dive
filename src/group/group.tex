@@ -1,323 +1,373 @@
-\section{Group definitions}
+\section{Toy Manual}
 
 Lets recall \cref{def: group} and demystify it in the following definition.
 
 \begin{definition}[Group]
-  A group \(G\) is a groupoid \(\cat G\) with one object \(*\). The elements of
-  the group are the morphisms \(\Aut_{\cat G}(*)\). From axioms of \cref{def:
-  category}:
-  \begin{enumerate}[(G1)]
-    \item An identity element \(e = \Id_*\).
-    \item An associative binary operation \(G \times G \to G\), commonly denoted
-      by juxtaposition.
-    \item For all \(g \in G\) there exists an inverse element \(g^{-1} \in G\)
-      such that \(g g^{-1} = e = g^{-1} g\).
-  \end{enumerate}
+A group \(G\) is a groupoid \(\cat G\) with one object \(*\). The elements of
+the group are the morphisms \(\Aut_{\cat G}(*)\). From the axioms contained in
+\cref{def: category}, the graph \(G\) contains the following data:
+\begin{enumerate}[(G1)]
+  \item An identity element \(e = \Id_*\).
+  \item An associative binary operation \(G \times G \to G\), commonly denoted
+    by juxtaposition.
+  \item For all \(g \in G\) there exists an inverse element \(g^{-1} \in G\)
+    such that \(g g^{-1} = e = g^{-1} g\).
+\end{enumerate}
 \end{definition}
 
+\subsection{Some Basic Laws}
+
+The following three propositions where already proved in a more general setting,
+but I'll rewrite them in this particular context for the sake of completeness.
+
 \begin{proposition}
-  The identity element of a group is unique.
+The identity element of a group is unique.
 \end{proposition}
 
 \begin{proof}
-  See \cref{cor: unique identity}.
+See \cref{cor: unique identity}.
 \end{proof}
 
 \begin{proposition}
-  The inverse of an element of a group is unique.
+The inverse of an element of a group is unique.
 \end{proposition}
 
 \begin{proof}
-  See \cref{prop: iso unique inverse}.
+See \cref{prop: iso unique inverse}.
 \end{proof}
 
 \begin{proposition}
-  Let \(G\) be a group and \(g, h \in G\), then \((g h)^{-1} = h^{-1} g^{-1}\).
+Let \(G\) be a group and \(g, h \in G\), then \((g h)^{-1} = h^{-1} g^{-1}\).
 \end{proposition}
 
 \begin{proof}
-  \((h^{-1} g^{-1})(g h) = h^{-1} (g^{-1} g) h = h^{-1} e h = h^{-1} h = e\)
-  hence \(h^{-1} g^{-1} = (g h)^{-1}\).
+\((h^{-1} g^{-1})(g h) = h^{-1} (g^{-1} g) h = h^{-1} e h = h^{-1} h = e\)
+hence \(h^{-1} g^{-1} = (g h)^{-1}\).
 \end{proof}
 
 \begin{proposition}[Cancellation]
-  Let \(G\) be a group and elements \(a, b, c \in G\). If \(a c = b c\) then
-  \(a = b\).
+Let \(G\) be a group and elements \(a, b, c \in G\). If \(a c = b c\) then
+\(a = b\).
 \end{proposition}
 
 \begin{proof}
-  Notice that \(a = a e = (a c) c^{-1} = (b c) c^{-1} = b e = b\).
+Notice that \(a = a e = (a c) c^{-1} = (b c) c^{-1} = b e = b\).
 \end{proof}
 
 \begin{proposition}
-  Let \(G\) be a group. If \(g \in G\), then the collection \(\{g h: h \in G\}\)
-  is equal to \(G\).
+Let \(G\) be a group. If \(g \in G\), then the collection \(\{g h: h \in G\}\)
+is equal to \(G\).
 \end{proposition}
 
 \begin{proof}
-  Denote \(G' := \{g h: h \in G\}\). Clearly we have \(G' \subseteq G\). On the
-  other hand, if \(\ell \in G\), the element \(g (g^{-1} \ell) = e \ell = \ell
-  \in G'\), hence \(G \subseteq G'\). Thus \(G = G'\).
+Denote \(G' := \{g h: h \in G\}\). Clearly we have \(G' \subseteq G\). On the
+other hand, if \(\ell \in G\), the element \(g (g^{-1} \ell) = e \ell = \ell
+\in G'\), hence \(G \subseteq G'\). Thus \(G = G'\).
 \end{proof}
 
 \begin{definition}[Commutative group]
-  A group \(G\) is said to be commutative (or abelian) if for all \(g, h \in G\)
-  we have \(g h = h g\).
+A group \(G\) is said to be commutative (or abelian) if for all \(g, h \in G\)
+we have \(g h = h g\).
 \end{definition}
 
 \begin{corollary}
-  Let \(G\) be a group such that for all \(g \in G\), \(g^2 = e\). Then \(G\) is
-  a commutative group.
+Let \(G\) be a group such that for all \(g \in G\), \(g^2 = e\). Then \(G\) is
+a commutative group.
 \end{corollary}
 
 \begin{proof}
-  Let \(g, h \in G\) be any elements, then \((g h) (h g) = g h^2 g = g e g = g^2
-  = e = (g h) (g h)\) and from cancellation law we find that \(g h = h g\).
+Let \(g, h \in G\) be any elements, then \((g h) (h g) = g h^2 g = g e g = g^2
+= e = (g h) (g h)\) and from cancellation law we find that \(g h = h g\).
 \end{proof}
+
+\subsection{Subgroups}
+
+\begin{definition}[Subgroup]
+\label{def:subgroup}
+Let \(G\) be a group. A subgroup \(H\) of \(G\) is a collection of elements \(H
+\subseteq G\) containing the identity element, and such that composition of
+elements of \(H\) and inverses are closed in \(H\) --- that is, given \(x, y \in
+H\), then \(xy \in H\) and \(x^{-1}, y^{-1} \in H\). We say that a subgroup is
+trivial if it consists only of the identity element.
+\end{definition}
+
+\begin{corollary}[Intersection of subgroups]
+\label{cor:intersection-subgroups}
+Let \(G\) be a group and consider a non-empty collection of subgroups
+\(\{G_{j}\}_{j \in J}\). Then, the intersection \(\bigcap_{j \in J} G_j\) together with
+the group operation inherited from \(G\) is a subgroup of \(G\).
+\end{corollary}
+
+\begin{proof}
+Let \(g \in \bigcap_{j \in J} G_j\) be any element, then \(g \in G_j\) for every
+\(j \in J\), and since \(G_j\) is a subgroup, then \(g^{-1} \in G_j\) --- that
+is, \(g^{-1} \in \bigcap_{j \in J} G_j\). Let \(g, h \in \bigcap_{j \in J} G_j\) be
+any two elements, then \(gh \in G_j\) for each \(j \in G\) and hence \(g h \in
+\bigcap_{j \in J} G_j\).
+\end{proof}
+
+The following notion will accompany us for the whole journey, the idea of taking
+elements of any set and inducing a group structure from it, using the set
+elements to \emph{generate} this new group.
+
+\begin{definition}[Generators]
+\label{def:generator-group}
+Let \(G\) be any group and \(S \subseteq G\) be any set of elements. If every
+element of \(G\) can be written as a product of elements or inverses of elements
+of \(S\), then we say that \(S\) \emph{generates} the group \(G\) --- moreover,
+the elements of \(S\) are called \emph{generators} of \(G\).
+
+Whether \(S\) generates \(G\) or not, the collection of elements formed by
+multiplications and inverses of \(S\) is denoted by \(\langle S \rangle\), which
+inherits from \(G\) a group structure and is itself a subgroup of \(G\). In
+fact, we can use this to equivalently define define a generating set: the set
+\(S\) generates \(G\) if and only if the smallest subgroup of \(G\) containing
+\(S\) is \(G\) proper.
+\end{definition}
 
 \subsection{Orders}
 
 \begin{definition}[Order of an element]\label{def: group elem order}
-  Let \(G\) be a group and \(g \in G\) be any element. We say that \(g\) has
-  finite order if there exists \(n \in \Z_{> 0}\) such that \(g^n = e\).
-  The order \(|g|\) of the element \(g\) is defined as the smallest such
-  positive integer. If \(g\) does not have a finite order, it is common to write
-   \(|g| = \infty\).
+Let \(G\) be a group and \(g \in G\) be any element. We say that \(g\) has
+finite order if there exists \(n \in \Z_{> 0}\) such that \(g^n = e\).
+The order \(|g|\) of the element \(g\) is defined as the smallest such
+positive integer. If \(g\) does not have a finite order, it is common to write
+  \(|g| = \infty\).
 \end{definition}
 
 \begin{lemma}\label{lem: order and multiples}
-  Let \(G\) be a group and \(g \in G\) be an element with finite order. Then
-  \(g^n = e\) for some \(n \in \Z_{> 0}\) if and only if \(|g|\) divides
-  \(n\).
+Let \(G\) be a group and \(g \in G\) be an element with finite order. Then
+\(g^n = e\) for some \(n \in \Z_{> 0}\) if and only if \(|g|\) divides
+\(n\).
 \end{lemma}
 
 \begin{proof}
-  Since \(|g| \leq n\), define \(m \in \Z_{> 0}\) such that \(n - m |g|
-  \geq 0\) and \(n - (m + 1) |g| < 0\). Define \(r = n - m |g|\) to be the
-  remainder, hence \(r < |g|\). Our goal is to show that \(r = 0\). Notice that
-  \(g^r = g^n g^{-|g| m} = e e^{-m} = e\), which can only be the case for \(r =
-  0\), since \(|g|\) is defined to be the least positive integer such that
-  \(g^{|g|} = e\). This proves that \(m |g| = n\).
+Since \(|g| \leq n\), define \(m \in \Z_{> 0}\) such that \(n - m |g|
+\geq 0\) and \(n - (m + 1) |g| < 0\). Define \(r = n - m |g|\) to be the
+remainder, hence \(r < |g|\). Our goal is to show that \(r = 0\). Notice that
+\(g^r = g^n g^{-|g| m} = e e^{-m} = e\), which can only be the case for \(r =
+0\), since \(|g|\) is defined to be the least positive integer such that
+\(g^{|g|} = e\). This proves that \(m |g| = n\).
 
-  For the second part, suppose \(n\) is a multiple of \(|g|\) and denote it by
-  \(m|g| = n\). Then \(g^{m |g|} = e^m = e\).
+For the second part, suppose \(n\) is a multiple of \(|g|\) and denote it by
+\(m|g| = n\). Then \(g^{m |g|} = e^m = e\).
 \end{proof}
 
 \begin{definition}[Order of a group]
-  Let \(G\) group of finite number of elements. We define the order of \(G\) to
-  be the number of its elements and denote it by \(|G|\). If \(G\) is an
-  infinite group, then \(|G| = \infty\).
+Let \(G\) group of finite number of elements. We define the order of \(G\) to
+be the number of its elements and denote it by \(|G|\). If \(G\) is an
+infinite group, then \(|G| = \infty\).
 \end{definition}
 
 \subsubsection{Order of Products}
 
 \begin{proposition}[Order of the power]\label{prop: order of the power}
-  Let \(G\) be a group and \(g \in G\) be an element with finite order. Then for
-  all \(m \in \Z_{\geq 0}\) the element \(g^m\) has finite order. For
-  \(m = 0\) we have \(|g^m| = 1\), for \(m > 0\) we have
-  \[
-    |g^m| = \frac{\operatorname{lcm}(m, |g|)}{m} =
-    \frac{|g|}{\operatorname{gcd}(m, |g|)}.
-  \]
+Let \(G\) be a group and \(g \in G\) be an element with finite order. Then for
+all \(m \in \Z_{\geq 0}\) the element \(g^m\) has finite order. For
+\(m = 0\) we have \(|g^m| = 1\), for \(m > 0\) we have
+\[
+  |g^m| = \frac{\operatorname{lcm}(m, |g|)}{m} =
+  \frac{|g|}{\operatorname{gcd}(m, |g|)}.
+\]
 \end{proposition}
 
 \begin{proof}
-  From divisibility arguments, we have \(\operatorname{lcm}(a, b)
-  \operatorname{gcd}(a, b) = ab\) for integers \(a\) and \(b\), hence the second
-  equality is justified. We prove the equality \(|g^m| =
-  \frac{\operatorname{lcm}(m, |g|)} m\). For the sake of notation, let \(d :=
-  |g^m|\). Notice that \(g^{m d} = e\) and hence \(|g|\) divides \(m d\). Since
-  \(d\) is the least positive integer with such property, it follows that \(m
-  d\) is the least common multiple of \(m\) and \(|g|\). Therefore \(m |g^m| =
-  \operatorname{lcm}(m, |g|)\), which proves the equation.
+From divisibility arguments, we have \(\operatorname{lcm}(a, b)
+\operatorname{gcd}(a, b) = ab\) for integers \(a\) and \(b\), hence the second
+equality is justified. We prove the equality \(|g^m| =
+\frac{\operatorname{lcm}(m, |g|)} m\). For the sake of notation, let \(d :=
+|g^m|\). Notice that \(g^{m d} = e\) and hence \(|g|\) divides \(m d\). Since
+\(d\) is the least positive integer with such property, it follows that \(m
+d\) is the least common multiple of \(m\) and \(|g|\). Therefore \(m |g^m| =
+\operatorname{lcm}(m, |g|)\), which proves the equation.
 \end{proof}
 
 \begin{proposition}\label{prop: order-prod-commutes}
-  Let \(G\) be a group, then for any \(g, h \in G\) we have \(|gh| = |hg|\).
+Let \(G\) be a group, then for any \(g, h \in G\) we have \(|gh| = |hg|\).
 \end{proposition}
 
 \begin{proof}
-  First, let \(x, y \in G\) be any elements, we prove that \(|y x y^{-1}| =
-  |x|\). Notice that for any \(n \geq 1\) we have \((y x y^{-1})^n = y x^n
-  y^{-1}\), hence the least element that annihilates the product \(y x y^{-1}\)
-  is the order of \(x\) --- that is, \(|y x y^{-1}| = x\). In particular, \(hg =
-  g^{-1} gh g\), hence \(|hg| = |g^{-1} (gh) g| = |gh|\).
+First, let \(x, y \in G\) be any elements, we prove that \(|y x y^{-1}| =
+|x|\). Notice that for any \(n \geq 1\) we have \((y x y^{-1})^n = y x^n
+y^{-1}\), hence the least element that annihilates the product \(y x y^{-1}\)
+is the order of \(x\) --- that is, \(|y x y^{-1}| = x\). In particular, \(hg =
+g^{-1} gh g\), hence \(|hg| = |g^{-1} (gh) g| = |gh|\).
 \end{proof}
 
 \begin{proposition}\label{prop: commutative-order-of-prod}
-  Let \(G\) be a group and \(g, h \in G\) be such that \(g h = h g\). Then \(|g
-  h|\) divides \(\operatorname{lcm}(|g|, |h|)\).
+Let \(G\) be a group and \(g, h \in G\) be such that \(g h = h g\). Then \(|g
+h|\) divides \(\operatorname{lcm}(|g|, |h|)\).
 \end{proposition}
 
 \begin{proof}
-  Let \(n\) be a common multiple of \(|g|\) and \(|h|\), then \(g^n = h^n = e\)
-  from \cref{lem: order and multiples}. Notice that the commutative property \(g
-  h = h g\) allow us to permute the terms of \(g^n h^n = e\) in order to obtain
-  \(g^n h^n = (g h)^n = e\). In particular, since \(\operatorname{lcm}(|g|,
-  |h|)\) is a common multiple of \(|g|\) and \(|h|\), we find that \((g
-  h)^{\operatorname{lcm}(|g|, |h|)} = e\) and again from \cref{lem: order and
-  multiples} we find that \(|g h|\) divides \(\operatorname{lcm}(|g|, |h|)\)
+Let \(n\) be a common multiple of \(|g|\) and \(|h|\), then \(g^n = h^n = e\)
+from \cref{lem: order and multiples}. Notice that the commutative property \(g
+h = h g\) allow us to permute the terms of \(g^n h^n = e\) in order to obtain
+\(g^n h^n = (g h)^n = e\). In particular, since \(\operatorname{lcm}(|g|,
+|h|)\) is a common multiple of \(|g|\) and \(|h|\), we find that \((g
+h)^{\operatorname{lcm}(|g|, |h|)} = e\) and again from \cref{lem: order and
+multiples} we find that \(|g h|\) divides \(\operatorname{lcm}(|g|, |h|)\)
 \end{proof}
 
 \begin{lemma}\label{lem: ord-prod-rel-prime}
-  Let \(G\) be a group and \(g, h \in G\) commute --- \(gh = hg\). If
-  \(\operatorname{gcd}(|g|, |h|) = 1\), then \(|gh| = |g| |h|\).
+Let \(G\) be a group and \(g, h \in G\) commute --- \(gh = hg\). If
+\(\operatorname{gcd}(|g|, |h|) = 1\), then \(|gh| = |g| |h|\).
 \end{lemma}
 
 \begin{proof}
-  Let \(|gh| = \ell, |g| = m\) and \(|h| = n\). From \cref{prop:
-  commutative-order-of-prod}, we have that \(\ell \mid \operatorname{lcm}(m,
-  n)\), and since \(m n = \operatorname{lcm}(m, n) \operatorname{gcd}(m, n) =
-  \operatorname{lcm}(m, n)\), then \(\ell \mid mn\), which implies that \(\ell
-  \leq mn\). Moreover, since the elements commute, \((g h)^\ell = g^\ell h^\ell
-  = e\) hence \(g^\ell = (h^\ell)^{-1}\). From \cref{prop: order of the power},
-  \(|g^\ell| = \frac{|g|}{\operatorname{gcd}(\ell, |g|)} = \frac m m = 1 \) and
-  equivalently for \(h\) we have \(|h^\ell| = 1\). This shows that \(g^\ell =
-  h^\ell = e\) and therefore both \(m\) and \(n\) divide \(\ell\), hence so does
-  the product \(mn\), thus \(mn \leq \ell\). This completes the proof that
-  \(\ell = mn\).
+Let \(|gh| = \ell, |g| = m\) and \(|h| = n\). From \cref{prop:
+commutative-order-of-prod}, we have that \(\ell \mid \operatorname{lcm}(m,
+n)\), and since \(m n = \operatorname{lcm}(m, n) \operatorname{gcd}(m, n) =
+\operatorname{lcm}(m, n)\), then \(\ell \mid mn\), which implies that \(\ell
+\leq mn\). Moreover, since the elements commute, \((g h)^\ell = g^\ell h^\ell
+= e\) hence \(g^\ell = (h^\ell)^{-1}\). From \cref{prop: order of the power},
+\(|g^\ell| = \frac{|g|}{\operatorname{gcd}(\ell, |g|)} = \frac m m = 1 \) and
+equivalently for \(h\) we have \(|h^\ell| = 1\). This shows that \(g^\ell =
+h^\ell = e\) and therefore both \(m\) and \(n\) divide \(\ell\), hence so does
+the product \(mn\), thus \(mn \leq \ell\). This completes the proof that
+\(\ell = mn\).
 \end{proof}
 
 \begin{definition}[Maximal finite order]\label{def: maximal-finite-order}
-  Let \(G\) be a group. An element \(g \in G\) is said to be of maximal finite
-  order if its order is finite and for all \(h \in G\) with finite order, we
-  have \(|h| \leq |g|\).
+Let \(G\) be a group. An element \(g \in G\) is said to be of maximal finite
+order if its order is finite and for all \(h \in G\) with finite order, we
+have \(|h| \leq |g|\).
 \end{definition}
 
 \begin{proposition}
-  Let \(G\) be a commutative group and \(g \in G\) be of maximal finite order.
-  If \(h \in G\) has finite order, then \(|h|\) divides \(|g|\).
+Let \(G\) be a commutative group and \(g \in G\) be of maximal finite order.
+If \(h \in G\) has finite order, then \(|h|\) divides \(|g|\).
 \end{proposition}
 
 \begin{proof}
-  Define the notation \(|g| = m\) and \(|h| = n\). Let \(P = (p_j)_j\) be a
-  finite sequence containing all primes such that less than or equal to \(m\)
-  and define a finite sequence of integers of same length \(A = (a_j)_j\) such
-  that \(m = \prod_j p_j^{a_j}\). Since \(n \leq m\) it follows that there also
-  exists a finite sequence of integers \(B = (b_j)_j\) such that \(n = \prod_j
-  p_j^{b_j}\). Suppose for the sake of contradiction that \(n\) doesn't divide
-  \(m\), so that there exists an index \(k\) such that \(a_{k} < b_{k}\)
-  --- from the fact that \(\frac m n = \prod_j p_j^{a_j - b_j}\). Consider now
-  the order --- following from \cref{lem: ord-prod-rel-prime}:
-  \[
-    |g^{\left( p_k^{a_k} \right)} h^{\left(n / p_k^{b_k}\right)}|
-    = |g^{\left( p_k^{a_k} \right)}| |h^{\left(n / p_k^{b_k}\right)}|
-    = \frac m {\operatorname{gcd}(m, p_k^{a_k})}
-    \frac n {\operatorname{gcd}(n, n / p_k^{b_k})}
-    = \frac m {p_k^{a_k}} \frac n {n / p_k^{b_k}}
-    = m p_k^{b_k - a_k}
-  \]
-  and since \(b_k > a_k\), it follows that \(m p_k^{b_k - a_k} > m\) and hence
-  there is a contradiction since we assumed that \(m\) was the the maximal
-  finite order of the group. We conclude that there does not exist \(k\) for
-  which \(b_k\) is less than \(a_k\) --- thus \(n\) divides \(m\).
+Define the notation \(|g| = m\) and \(|h| = n\). Let \(P = (p_j)_j\) be a
+finite sequence containing all primes such that less than or equal to \(m\)
+and define a finite sequence of integers of same length \(A = (a_j)_j\) such
+that \(m = \prod_j p_j^{a_j}\). Since \(n \leq m\) it follows that there also
+exists a finite sequence of integers \(B = (b_j)_j\) such that \(n = \prod_j
+p_j^{b_j}\). Suppose for the sake of contradiction that \(n\) doesn't divide
+\(m\), so that there exists an index \(k\) such that \(a_{k} < b_{k}\)
+--- from the fact that \(\frac m n = \prod_j p_j^{a_j - b_j}\). Consider now
+the order --- following from \cref{lem: ord-prod-rel-prime}:
+\[
+  |g^{\left( p_k^{a_k} \right)} h^{\left(n / p_k^{b_k}\right)}|
+  = |g^{\left( p_k^{a_k} \right)}| |h^{\left(n / p_k^{b_k}\right)}|
+  = \frac m {\operatorname{gcd}(m, p_k^{a_k})}
+  \frac n {\operatorname{gcd}(n, n / p_k^{b_k})}
+  = \frac m {p_k^{a_k}} \frac n {n / p_k^{b_k}}
+  = m p_k^{b_k - a_k}
+\]
+and since \(b_k > a_k\), it follows that \(m p_k^{b_k - a_k} > m\) and hence
+there is a contradiction since we assumed that \(m\) was the the maximal
+finite order of the group. We conclude that there does not exist \(k\) for
+which \(b_k\) is less than \(a_k\) --- thus \(n\) divides \(m\).
 \end{proof}
 
 \subsubsection{Finite Groups and Elements of Order 2}
 
 \begin{lemma}[Order 2 elements implies commutative]\label{lem: order2-commutes}
-  Let \(G\) be a group such that all non-identity elements have order \(2\).
-  Then \(G\) is commutative.
+Let \(G\) be a group such that all non-identity elements have order \(2\).
+Then \(G\) is commutative.
 \end{lemma}
 
 \begin{proof}
-  Let \(g, h \in G\), notice that \(|gh| = 2\) from \cref{prop:
-  commutative-order-of-prod} hence \(gh \in G\), then \((gh)^2 = e\) and
-  therefore \(gh = g^{-1} h^{-1} = g^{-1}(ghgh)h^{-1} = hg\) commutes.
+Let \(g, h \in G\), notice that \(|gh| = 2\) from \cref{prop:
+commutative-order-of-prod} hence \(gh \in G\), then \((gh)^2 = e\) and
+therefore \(gh = g^{-1} h^{-1} = g^{-1}(ghgh)h^{-1} = hg\) commutes.
 \end{proof}
 
 \begin{lemma}
-  Let \(G\) be a finite group such that any element has order at most \(2\). Let
-  \(H\) be any subgroup of \(G\), for any \(t \in G \setminus H\) consider the
-  collection \(T = H \cup \{h t : h \in H\}\), then \(T\) is a subgroup of \(G\)
-  with \(|T| = 2|H|\).
+Let \(G\) be a finite group such that any element has order at most \(2\). Let
+\(H\) be any subgroup of \(G\), for any \(t \in G \setminus H\) consider the
+collection \(T = H \cup \{h t : h \in H\}\), then \(T\) is a subgroup of \(G\)
+with \(|T| = 2|H|\).
 \end{lemma}
 
 \begin{proof}
-  Since \(t \not\in H\), any element \(ht \in T\) with \(h \in H\) is such that
-  \(ht \not\in H\). The number of distinct elements of the form is \(|H|\) ---
-  one for each \(h \in H\) ---, hence \(|T| = |H| + |H| = 2|H|\).
+Since \(t \not\in H\), any element \(ht \in T\) with \(h \in H\) is such that
+\(ht \not\in H\). The number of distinct elements of the form is \(|H|\) ---
+one for each \(h \in H\) ---, hence \(|T| = |H| + |H| = 2|H|\).
 \end{proof}
 
 \begin{lemma}[Order \(2^n\)]\label{lem: order-2n}
-  Let \(G\) be a finite group such that any element has order at most \(2\). The
-  order of \(G\) is of the form \(2^n\) for some \(n \geq 0\). Moreover, if
-  \(|G| > 1\), then there exists a subgroup \(H\) of \(G\) with order \(|H| =
-  2^{n-1}\).
+Let \(G\) be a finite group such that any element has order at most \(2\). The
+order of \(G\) is of the form \(2^n\) for some \(n \geq 0\). Moreover, if
+\(|G| > 1\), then there exists a subgroup \(H\) of \(G\) with order \(|H| =
+2^{n-1}\).
 \end{lemma}
 
 \begin{proof}
-  We create a recursive algorithm to find the collection of elements of \(G\)
-  that generate any other element contained in \(G\):
-  \begin{enumerate}
-    \item (Base case) If \(G = H_j\), return \(H_j\).
-    \item (Recursion) Let \(g \in G \setminus H_j\) and construct \(H_{j + 1} =
-      H_j \cup \{h g: h \in H_j\}\), recursively call the algorithm with \(H_{j
-      + 1}\).
-  \end{enumerate}
-  Such algorithm is certain to terminate since \(|G|\) is finite. Notice that
-  the second step always doubles the order of the set \(H_j\), so that --- if
-  \(H_n\) is the result of the algorithm --- then \(|H_n| = 2^n\). This shows
-  that \(|G| = |H_n| = 2^n\). The second part of the statement follows
-  immediately from the construction of the algorithm.
+We create a recursive algorithm to find the collection of elements of \(G\)
+that generate any other element contained in \(G\):
+\begin{enumerate}
+  \item (Base case) If \(G = H_j\), return \(H_j\).
+  \item (Recursion) Let \(g \in G \setminus H_j\) and construct \(H_{j + 1} =
+    H_j \cup \{h g: h \in H_j\}\), recursively call the algorithm with \(H_{j
+    + 1}\).
+\end{enumerate}
+Such algorithm is certain to terminate since \(|G|\) is finite. Notice that
+the second step always doubles the order of the set \(H_j\), so that --- if
+\(H_n\) is the result of the algorithm --- then \(|H_n| = 2^n\). This shows
+that \(|G| = |H_n| = 2^n\). The second part of the statement follows
+immediately from the construction of the algorithm.
 \end{proof}
 
 \begin{proposition}
-  Let \(G\) be a commutative group, if there exists exactly one element of order
-  \(2\) --- say \(f \in G\) --- then the product of all elements of the group is
-  \[
-    \prod_{g \in G} g = f.
-  \]
-  Otherwise, we have \(\prod_{g \in G} g = e\).
+Let \(G\) be a commutative group, if there exists exactly one element of order
+\(2\) --- say \(f \in G\) --- then the product of all elements of the group is
+\[
+  \prod_{g \in G} g = f.
+\]
+Otherwise, we have \(\prod_{g \in G} g = e\).
 \end{proposition}
 
 \begin{proof}
-  Since \(G\) is finite, let \(G = \{e, g_1, g_1^{-1}, \dots, g_n, g_n^{-1}\}\).
-  Suppose there exists one and only one element of order \(2\) and denote it by
-  \(f\) --- that is, \(f = f^{-1}\). Since the group is commutative, we can
-  rearrange the product of elements so that we can take the pairwise product of
-  each element and its inverse --- this being possible only in the case where
-  \(g \neq g^{-1}\) ---, taking the product we find
-  \[
-    \prod_{g \in G} g = e (g_1 g_1^{-1}) \dots (g_j g_j^{-1}) f \dots (g_{j + 2}
-    g_{j + 2}^{-1}) (g_n g_n^{-1}) = e^{j + 1} f e^{n - (j + 1)} = f
-  \]
-  since \(f\) has no inverse in \(G \setminus \{f\}\).
+Since \(G\) is finite, let \(G = \{e, g_1, g_1^{-1}, \dots, g_n, g_n^{-1}\}\).
+Suppose there exists one and only one element of order \(2\) and denote it by
+\(f\) --- that is, \(f = f^{-1}\). Since the group is commutative, we can
+rearrange the product of elements so that we can take the pairwise product of
+each element and its inverse --- this being possible only in the case where
+\(g \neq g^{-1}\) ---, taking the product we find
+\[
+  \prod_{g \in G} g = e (g_1 g_1^{-1}) \dots (g_j g_j^{-1}) f \dots (g_{j + 2}
+  g_{j + 2}^{-1}) (g_n g_n^{-1}) = e^{j + 1} f e^{n - (j + 1)} = f
+\]
+since \(f\) has no inverse in \(G \setminus \{f\}\).
 
-  Let there be no element with order \(2\) in \(G\), then the rearrangement of
-  pairwise element and respective inverse is possible with each \(g \in G\),
-  making
-  \[
-    \prod_{g \in G} g = e (g_1 g_1^{-1}) \dots (g_j g_j^{-1}) \dots (g_n
-    g_n^{-1}) = e^{n + 1} = e.
-  \]
+Let there be no element with order \(2\) in \(G\), then the rearrangement of
+pairwise element and respective inverse is possible with each \(g \in G\),
+making
+\[
+  \prod_{g \in G} g = e (g_1 g_1^{-1}) \dots (g_j g_j^{-1}) \dots (g_n
+  g_n^{-1}) = e^{n + 1} = e.
+\]
 
-  Suppose there exists \(m > 1\) distinct elements in \(G\) with order \(2\) and
-  define \(T = \{f \in G: |f| \leq 2\}\) and \(S = G \setminus T\). From the
-  last case we know that \(\prod_{s \in S} s = e\). Note that \(T\) forms a
-  subgroup of \(G\):
-  \begin{itemize}
-    \item \(e \in T\).
-    \item If \(g, h \in T\), then from \cref{prop: commutative-order-of-prod}
-      \(|gh|\) divides \(\operatorname{lcm}(|g|, |h|) \leq 2\) hence \(|gh| \leq
-      2\) and \(gh \in T\).
-    \item Since \(g \in T\) implies \(g g = e\) then \(g = g^{-1}\) and
-      \(|g^{-1}| = 2\), so \(g^{-1} \in T\).
-  \end{itemize}
-  Moreover, the order of the group \(T\) has to be of the form \(2^k\) for some
-  \(k \geq 2\), from \cref{lem: order-2n}. From the same lemma, choose a
-  subgroup \(H\) with order \(2^{k-1}\) and take \(u \in T \setminus H\), so
-  that \(T = H \cup \{hu: h \in H\}\) --- such \(u\) exists from the algorithm
-  constructed in the lemma. Since \(T\) is commutative (see \cref{lem:
-  order2-commutes}), we can write
-  \[
-    \prod_{t \in T} t = \prod_{h \in H} h \prod_{h \in H} hu = \prod_{h \in H} u
-    h^2 = \prod_{h \in H} u = u^{2^{k-1}} = (u^2)^{2^{k-2}} = e.
-  \]
-  Therefore we can finally conclude that
-  \[
-    \prod_{g \in G} g = \prod_{s \in S} s \prod_{t \in T} t = e.
-  \]
+Suppose there exists \(m > 1\) distinct elements in \(G\) with order \(2\) and
+define \(T = \{f \in G: |f| \leq 2\}\) and \(S = G \setminus T\). From the
+last case we know that \(\prod_{s \in S} s = e\). Note that \(T\) forms a
+subgroup of \(G\):
+\begin{itemize}
+  \item \(e \in T\).
+  \item If \(g, h \in T\), then from \cref{prop: commutative-order-of-prod}
+    \(|gh|\) divides \(\operatorname{lcm}(|g|, |h|) \leq 2\) hence \(|gh| \leq
+    2\) and \(gh \in T\).
+  \item Since \(g \in T\) implies \(g g = e\) then \(g = g^{-1}\) and
+    \(|g^{-1}| = 2\), so \(g^{-1} \in T\).
+\end{itemize}
+Moreover, the order of the group \(T\) has to be of the form \(2^k\) for some
+\(k \geq 2\), from \cref{lem: order-2n}. From the same lemma, choose a
+subgroup \(H\) with order \(2^{k-1}\) and take \(u \in T \setminus H\), so
+that \(T = H \cup \{hu: h \in H\}\) --- such \(u\) exists from the algorithm
+constructed in the lemma. Since \(T\) is commutative (see \cref{lem:
+order2-commutes}), we can write
+\[
+  \prod_{t \in T} t = \prod_{h \in H} h \prod_{h \in H} hu = \prod_{h \in H} u
+  h^2 = \prod_{h \in H} u = u^{2^{k-1}} = (u^2)^{2^{k-2}} = e.
+\]
+Therefore we can finally conclude that
+\[
+  \prod_{g \in G} g = \prod_{s \in S} s \prod_{t \in T} t = e.
+\]
 \end{proof}
 
 \section{Examples of Groups}
@@ -325,404 +375,404 @@ Lets recall \cref{def: group} and demystify it in the following definition.
 \subsection{Symmetry Group}
 
 \begin{definition}[Symmetric groups]\label{def: sym-group}
-  Let \(A \in \Set\). The symmetric group of \(A\) --- also referred to as the
-  permutation group of \(A\) ---, \(\Aut_\Set(A)\), is denoted by \(S_A\). The
-  symmetric group of the range set \(\{1, \dots, n\}\) is denoted \(S_n\).
+Let \(A \in \Set\). The symmetric group of \(A\) --- also referred to as the
+permutation group of \(A\) ---, \(\Aut_\Set(A)\), is denoted by \(S_A\). The
+symmetric group of the range set \(\{1, \dots, n\}\) is denoted \(S_n\).
 \end{definition}
 
 \begin{notation}[Permutations]
-  A permutation \(\sigma \in S_n\) is denoted by a table of the form
-  \[
-    \sigma =
-    \begin{pmatrix}
-      1 &2 &\dots &n-1 &n \\
-      \sigma(1) &\sigma(2) &\dots &\sigma(n-1) &\sigma(n)
-    \end{pmatrix}
-  \]
+A permutation \(\sigma \in S_n\) is denoted by a table of the form
+\[
+  \sigma =
+  \begin{pmatrix}
+    1 &2 &\dots &n-1 &n \\
+    \sigma(1) &\sigma(2) &\dots &\sigma(n-1) &\sigma(n)
+  \end{pmatrix}
+\]
 \end{notation}
 
 \begin{remark}[Convention]\label{rem: convention-perm}
-  If \(\sigma, \tau \in S_n\), we write the composition \(\sigma \tau\)
-  to denote the permutation
-  \[
-    i \xmapsto{\sigma\tau} \sigma(\tau(i)).
-  \]
-  That is, it follows the same order of composition for maps.
+If \(\sigma, \tau \in S_n\), we write the composition \(\sigma \tau\)
+to denote the permutation
+\[
+  i \xmapsto{\sigma\tau} \sigma(\tau(i)).
+\]
+That is, it follows the same order of composition for maps.
 \end{remark}
 
 \begin{proposition}
-  There exists an embedding \(f: S_n \mono M_{n \times n}(\{0, 1\})\)
-  --- where \(M_{n \times n}(\{0, 1\})\) is the collection of \(n \times n\)
-  matrices with entries assuming the value of \(1\) or \(0\). Moreover, if
-  \(f(\sigma) = M_\sigma\) and \(f(\tau) = M_\tau\) then \(f(\sigma \tau) =
-  M_\sigma M_\tau\).
+There exists an embedding \(f: S_n \mono M_{n \times n}(\{0, 1\})\)
+--- where \(M_{n \times n}(\{0, 1\})\) is the collection of \(n \times n\)
+matrices with entries assuming the value of \(1\) or \(0\). Moreover, if
+\(f(\sigma) = M_\sigma\) and \(f(\tau) = M_\tau\) then \(f(\sigma \tau) =
+M_\sigma M_\tau\).
 \end{proposition}
 
 \begin{proof}
-  Let \(\sigma \in S_n\) be any permutation. We define \(f\) as the
-  mapping
-  \[
-    \sigma \overset f \longmapsto M_\sigma =
-    \begin{bmatrix}
-      \delta_{1 \sigma(1)} &\dots &\delta_{1 \sigma(n)} \\
-      \vdots &\ddots &\vdots \\
-      \delta_{n \sigma(1)} &\dots &\delta_{n \sigma(n)}
-    \end{bmatrix}
-  \]
-  It should be noted that since \(\sigma\) is injective, \(\delta_{i
-  \sigma(j)}\) assumes the value \(1\) only once in the \(j\)-th column. If
-  \(\sigma = \tau\) then clearly \(\delta_{i \sigma(j)} = \delta_{i \tau(j)}\)
-  for every \(1 \leq i, j \leq n\), thus \(f(\sigma) = f(\tau)\) --- \(f\) is
-  injective.
+Let \(\sigma \in S_n\) be any permutation. We define \(f\) as the
+mapping
+\[
+  \sigma \overset f \longmapsto M_\sigma =
+  \begin{bmatrix}
+    \delta_{1 \sigma(1)} &\dots &\delta_{1 \sigma(n)} \\
+    \vdots &\ddots &\vdots \\
+    \delta_{n \sigma(1)} &\dots &\delta_{n \sigma(n)}
+  \end{bmatrix}
+\]
+It should be noted that since \(\sigma\) is injective, \(\delta_{i
+\sigma(j)}\) assumes the value \(1\) only once in the \(j\)-th column. If
+\(\sigma = \tau\) then clearly \(\delta_{i \sigma(j)} = \delta_{i \tau(j)}\)
+for every \(1 \leq i, j \leq n\), thus \(f(\sigma) = f(\tau)\) --- \(f\) is
+injective.
 
-  Consider now the composition of permutations \(\sigma \tau \in S_n\).
-  Suppose we want to check where the \(j\)-th element goes to from the action of
-  \(\sigma \tau\). Notice that for all possible new positions \(1 \leq i \leq
-  n\) we have \(\delta_{i \sigma\tau(j)} = \sum_{k = 1}^n \delta_{i \sigma(k)}
-  \delta_{k \tau(j)}\) --- that is, \(j\) belongs to \(i\) after \(\sigma \tau\)
-  if and only if \(\tau(j) = k\) and \(\sigma(k) = i\) for some \(1 \leq k \leq
-  n\). We have
-  \[
-    f(\sigma \tau) = M_{\sigma \tau} =
-    \begin{bmatrix}
-      \delta_{1 \sigma\tau(1)} &\dots &\delta_{1 \sigma\tau(n)} \\
-      \vdots &\ddots &\vdots \\
-      \delta_{n \sigma\tau(1)} &\dots &\delta_{n \sigma\tau(n)}
-    \end{bmatrix}
-    =
-    \begin{bmatrix}
-      \delta_{1 \sigma(1)} &\dots &\delta_{1 \sigma(n)} \\
-      \vdots &\ddots &\vdots \\
-      \delta_{n \sigma(1)} &\dots &\delta_{n \sigma(n)}
-    \end{bmatrix}
-    \begin{bmatrix}
-      \delta_{1 \tau(1)} &\dots &\delta_{1 \tau(n)} \\
-      \vdots &\ddots &\vdots \\
-      \delta_{n \tau(1)} &\dots &\delta_{n \tau(n)}
-    \end{bmatrix}
-    = M_\sigma M_\tau.
-  \]
+Consider now the composition of permutations \(\sigma \tau \in S_n\).
+Suppose we want to check where the \(j\)-th element goes to from the action of
+\(\sigma \tau\). Notice that for all possible new positions \(1 \leq i \leq
+n\) we have \(\delta_{i \sigma\tau(j)} = \sum_{k = 1}^n \delta_{i \sigma(k)}
+\delta_{k \tau(j)}\) --- that is, \(j\) belongs to \(i\) after \(\sigma \tau\)
+if and only if \(\tau(j) = k\) and \(\sigma(k) = i\) for some \(1 \leq k \leq
+n\). We have
+\[
+  f(\sigma \tau) = M_{\sigma \tau} =
+  \begin{bmatrix}
+    \delta_{1 \sigma\tau(1)} &\dots &\delta_{1 \sigma\tau(n)} \\
+    \vdots &\ddots &\vdots \\
+    \delta_{n \sigma\tau(1)} &\dots &\delta_{n \sigma\tau(n)}
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    \delta_{1 \sigma(1)} &\dots &\delta_{1 \sigma(n)} \\
+    \vdots &\ddots &\vdots \\
+    \delta_{n \sigma(1)} &\dots &\delta_{n \sigma(n)}
+  \end{bmatrix}
+  \begin{bmatrix}
+    \delta_{1 \tau(1)} &\dots &\delta_{1 \tau(n)} \\
+    \vdots &\ddots &\vdots \\
+    \delta_{n \tau(1)} &\dots &\delta_{n \tau(n)}
+  \end{bmatrix}
+  = M_\sigma M_\tau.
+\]
 \end{proof}
 
 \begin{proposition}\label{prop: sym-n-all-orders}
-  The symmetry group \(S_n\) contains elements of all orders \(d\) for
-  \(1 \leq d \leq n\).
+The symmetry group \(S_n\) contains elements of all orders \(d\) for
+\(1 \leq d \leq n\).
 \end{proposition}
 
 \begin{proof}
-  Let \(d\) be any integer in the range \(1 \leq d \leq n\). Consider the
-  subgroup \(S_d \subseteq \Aut_{\Set}(\Z/n\Z)\), composed of permutations
-  \(\sigma \in S_d\) such that \(\sigma([i]_n) = [i]_n\) for all \(i > d\).
-  Notice that the permutation \(\tau\) given by \(\tau([i]_n) = [i + 1]_n\) for
-  all \(i \leq d\) and \(\tau([j]_n) = [j]_n\) is an element of \(S_d\) and
-  \(|\tau| = d\). Thus \(\tau\) is an element of order \(d\) in \(S_n\).
+Let \(d\) be any integer in the range \(1 \leq d \leq n\). Consider the
+subgroup \(S_d \subseteq \Aut_{\Set}(\Z/n\Z)\), composed of permutations
+\(\sigma \in S_d\) such that \(\sigma([i]_n) = [i]_n\) for all \(i > d\).
+Notice that the permutation \(\tau\) given by \(\tau([i]_n) = [i + 1]_n\) for
+all \(i \leq d\) and \(\tau([j]_n) = [j]_n\) is an element of \(S_d\) and
+\(|\tau| = d\). Thus \(\tau\) is an element of order \(d\) in \(S_n\).
 \end{proof}
 
 \begin{corollary}
-  For every \(n \in \N\), there exists an element \(x \in S_\N\) with
-  order \(|x| = n\).
+For every \(n \in \N\), there exists an element \(x \in S_\N\) with
+order \(|x| = n\).
 \end{corollary}
 
 \begin{proof}
-  Let any \(n \in \N\) and choose \(m \in \N\) with \(m \geq n\). From
-  \cref{prop: sym-n-all-orders} we find that the group \(S_m\) contains
-  an element \(\sigma \in S_m\) with order \(|\sigma| = n\). We can now
-  construct an element \(\tau \in S_\N\) --- defined by
-  \[
-    \tau(a) =
-    \begin{cases}
-      \sigma(a), &a \leq m \\
-      a, &a > m
-    \end{cases}
-  \]
-  So clearly \(|\tau| = n\).
+Let any \(n \in \N\) and choose \(m \in \N\) with \(m \geq n\). From
+\cref{prop: sym-n-all-orders} we find that the group \(S_m\) contains
+an element \(\sigma \in S_m\) with order \(|\sigma| = n\). We can now
+construct an element \(\tau \in S_\N\) --- defined by
+\[
+  \tau(a) =
+  \begin{cases}
+    \sigma(a), &a \leq m \\
+    a, &a > m
+  \end{cases}
+\]
+So clearly \(|\tau| = n\).
 \end{proof}
 
 \subsubsection{Permutations, Transpositions and Sign}
 
 \begin{definition}[Transposition]
-  \label{def: transposition}
-  We define a transposition on a collection \(\{1, \dots, n\}\) to be a map
-  \(\tau \in S_n\) such that exists indices \(1 \leq i < j \leq n\)
-  for which \(\tau(i) = j\) and \(\tau(j) = i\), and \(\tau(k) = k\) for all
-  \(k \neq i, j\).
+\label{def: transposition}
+We define a transposition on a collection \(\{1, \dots, n\}\) to be a map
+\(\tau \in S_n\) such that exists indices \(1 \leq i < j \leq n\)
+for which \(\tau(i) = j\) and \(\tau(j) = i\), and \(\tau(k) = k\) for all
+\(k \neq i, j\).
 \end{definition}
 
 \begin{proposition}\label{prop: permutations to transpositions}
-  Every permutation can be written as a composition of finitely many
-  transpositions.
+Every permutation can be written as a composition of finitely many
+transpositions.
 \end{proposition}
 
 \begin{proof}
-  We proceed via induction on the number of points of \(\{1, \dots, n\}\). For
-  the base case \(n = 2\) the composition is trivial. Assume as the induction
-  hypothesis that for \(n - 1 > 2\) the statement is true. Now, consider
-  \(\sigma \in S_n\) and \(i \in \{1, \dots, n\}\) be any element in
-  the ordered collection \(I_n := \{1, \dots, n\}\). Denote \(\tau_{i, j}\) the
-  transposition that changes \(i\) with \(j\) and maintains unchanged the
-  remainder of the points. Assume that \(\sigma(i) = j\), then clearly
-  \(\tau_{i, j} \sigma(i) = \tau_{i, j}(j) = i\). Notice that since \(\tau_{i,
-  j} \sigma\) maintains \(i\) unchanged, we can see it as a permutation of \(n
-  - 1\) points (by simply ignoring the point \(i\)), hence it can be written as
-  a composition of finitely many transpositions by the induction hypothesis.
-  Notice that since \(\sigma = \tau_{i, j} (\tau_{i, j} \sigma)\) we find that
-  \(\sigma\) can also be written as a composition of finitely many
-  transpositions.
+We proceed via induction on the number of points of \(\{1, \dots, n\}\). For
+the base case \(n = 2\) the composition is trivial. Assume as the induction
+hypothesis that for \(n - 1 > 2\) the statement is true. Now, consider
+\(\sigma \in S_n\) and \(i \in \{1, \dots, n\}\) be any element in
+the ordered collection \(I_n := \{1, \dots, n\}\). Denote \(\tau_{i, j}\) the
+transposition that changes \(i\) with \(j\) and maintains unchanged the
+remainder of the points. Assume that \(\sigma(i) = j\), then clearly
+\(\tau_{i, j} \sigma(i) = \tau_{i, j}(j) = i\). Notice that since \(\tau_{i,
+j} \sigma\) maintains \(i\) unchanged, we can see it as a permutation of \(n
+- 1\) points (by simply ignoring the point \(i\)), hence it can be written as
+a composition of finitely many transpositions by the induction hypothesis.
+Notice that since \(\sigma = \tau_{i, j} (\tau_{i, j} \sigma)\) we find that
+\(\sigma\) can also be written as a composition of finitely many
+transpositions.
 \end{proof}
 
 \begin{definition}[Elementary transpositions]
-  Let \(\tau \in S_n\) be a transposition. We say that \(\tau\) is an
-  elementary transposition if exists \(i \in \{1, \dots, n\}\) for which
-  \(\tau(i) = i + 1\) and \(\tau(i + 1) = i\), and for all \(j \neq i\) we have
-  \(\tau(j) = j\).
+Let \(\tau \in S_n\) be a transposition. We say that \(\tau\) is an
+elementary transposition if exists \(i \in \{1, \dots, n\}\) for which
+\(\tau(i) = i + 1\) and \(\tau(i + 1) = i\), and for all \(j \neq i\) we have
+\(\tau(j) = j\).
 \end{definition}
 
 \begin{proposition}
-  Every transposition can be written as a composition of finitely many
-  elementary transpositions.
+Every transposition can be written as a composition of finitely many
+elementary transpositions.
 \end{proposition}
 
 \begin{proof}
-  Let \(\sigma \in S_n\) be any transposition. Denote by \(\tau_k\) the
-  elementary transposition \(\tau_k(k) = k + 1\) and \(\tau(k + 1) k\). Let
-  \(x\) be the transposed element of \(\sigma\), and \(\sigma(x) = y\). Without
-  loss of generality we can assume that \(y > x\). Now we write \(\sigma\) as
-  the composition --- beware of \cref{rem: convention-perm}
-  \[
-    \sigma = \left(\tau_x \tau_{x + 1} \cdots \tau_{y - 3} \tau_{y - 2} \right)
-    \left( \tau_{y - 1} \tau_{y - 1} \cdots \tau_{x + 1} \tau_{x} \right)
-    = \left( \prod_{k = x}^{y-2} \tau_k \right)
-    \left( \prod_{k = 0}^{(y - 1) - x} \tau_{(y-1) - k} \right)
-  \]
-  Which follows from the fact that
-  \begin{gather*}
-    \left( \prod_{k = 0}^{(y - 1) - x} \tau_{(y-1) - k} \right)(i) =
-    \begin{cases}
-      y, &i = x \\
-      i - 1, &x < i \leq y \\
-      i, &i < x \text{ or } y < i
-    \end{cases}
-    \\
-    \left( \prod_{k = x}^{y-2} \tau_k \right)(i) =
-    \begin{cases}
-      x, &i = y \\
-      i + 1, &x \leq i < y \\
-      i, &i < x \text{ or } y < i
-    \end{cases}
-  \end{gather*}
-  Hence the composition of both gives
-  \[
-    \left( \prod_{k = x}^{y-2} \tau_k \right)
-    \left( \prod_{k = 0}^{(y - 1) - x} \tau_{(y-1) - k} \right)(i) =
-    \begin{cases}
-      y, &i = x \\
-      x, &i = y \\
-      i, &i \not\in \{x, y\}
-    \end{cases}
-  \]
-  which is equivalent to the transposition \(\sigma\).
+Let \(\sigma \in S_n\) be any transposition. Denote by \(\tau_k\) the
+elementary transposition \(\tau_k(k) = k + 1\) and \(\tau(k + 1) k\). Let
+\(x\) be the transposed element of \(\sigma\), and \(\sigma(x) = y\). Without
+loss of generality we can assume that \(y > x\). Now we write \(\sigma\) as
+the composition --- beware of \cref{rem: convention-perm}
+\[
+  \sigma = \left(\tau_x \tau_{x + 1} \cdots \tau_{y - 3} \tau_{y - 2} \right)
+  \left( \tau_{y - 1} \tau_{y - 1} \cdots \tau_{x + 1} \tau_{x} \right)
+  = \left( \prod_{k = x}^{y-2} \tau_k \right)
+  \left( \prod_{k = 0}^{(y - 1) - x} \tau_{(y-1) - k} \right)
+\]
+Which follows from the fact that
+\begin{gather*}
+  \left( \prod_{k = 0}^{(y - 1) - x} \tau_{(y-1) - k} \right)(i) =
+  \begin{cases}
+    y, &i = x \\
+    i - 1, &x < i \leq y \\
+    i, &i < x \text{ or } y < i
+  \end{cases}
+  \\
+  \left( \prod_{k = x}^{y-2} \tau_k \right)(i) =
+  \begin{cases}
+    x, &i = y \\
+    i + 1, &x \leq i < y \\
+    i, &i < x \text{ or } y < i
+  \end{cases}
+\end{gather*}
+Hence the composition of both gives
+\[
+  \left( \prod_{k = x}^{y-2} \tau_k \right)
+  \left( \prod_{k = 0}^{(y - 1) - x} \tau_{(y-1) - k} \right)(i) =
+  \begin{cases}
+    y, &i = x \\
+    x, &i = y \\
+    i, &i \not\in \{x, y\}
+  \end{cases}
+\]
+which is equivalent to the transposition \(\sigma\).
 \end{proof}
 
 \begin{corollary}
-  Every permutation can be written as a composition of finitely many elementary
-  transpositions.
+Every permutation can be written as a composition of finitely many elementary
+transpositions.
 \end{corollary}
 
 \begin{definition}[Sign]
-  \label{def: sign}
-  Let \(\sigma \in S_n\) be a permutation on \(n\) objects. We define
-  the sign of \(\sigma\) as a map \(\sign: S_n \to
-  \{1, -1\}\) such that
-  \[
-    \sign(\sigma) = (-1)^m, \text{ where }
-    m := |\{(i, j) : 1 \leq i < j \leq n,\ \sigma(i) > \sigma(j)\}|.
-  \]
-  Equivalently, if \(x_1, \dots, x_n \in k\) then we can define the
-  sign of \(\sigma\) as
-  \[
-    \sign(\sigma) = \prod_{i < j} \frac{x_{\sigma(i)} -
-    x_{\sigma(j)}}{x_i - x_j}.
-  \]
+\label{def: sign}
+Let \(\sigma \in S_n\) be a permutation on \(n\) objects. We define
+the sign of \(\sigma\) as a map \(\sign: S_n \to
+\{1, -1\}\) such that
+\[
+  \sign(\sigma) = (-1)^m, \text{ where }
+  m := |\{(i, j) : 1 \leq i < j \leq n,\ \sigma(i) > \sigma(j)\}|.
+\]
+Equivalently, if \(x_1, \dots, x_n \in k\) then we can define the
+sign of \(\sigma\) as
+\[
+  \sign(\sigma) = \prod_{i < j} \frac{x_{\sigma(i)} -
+  x_{\sigma(j)}}{x_i - x_j}.
+\]
 \end{definition}
 
 \begin{corollary}
-  If \(\sigma\) can be written as an odd number of transpositions, then
-  \(\sign(\sigma) = -1\). Otherwise, if it is an even number of
-  transpositions, we have \(\sign(\sigma) = 1\).
+If \(\sigma\) can be written as an odd number of transpositions, then
+\(\sign(\sigma) = -1\). Otherwise, if it is an even number of
+transpositions, we have \(\sign(\sigma) = 1\).
 \end{corollary}
 
 \begin{proposition}\label{prop: sign is a group homomorphism}
-  Let \(\sigma, \tau \in S_n\), then
-  \[
-    \sign(\sigma \tau) = \sign(\sigma)
-    \sign(\tau).
-  \]
-  This implies that \(\sign: S_n \to \{1, -1\}\) is a
-  group homomorphism.
+Let \(\sigma, \tau \in S_n\), then
+\[
+  \sign(\sigma \tau) = \sign(\sigma)
+  \sign(\tau).
+\]
+This implies that \(\sign: S_n \to \{1, -1\}\) is a
+group homomorphism.
 \end{proposition}
 
 \begin{proof}
-  Consider the composition \(\sigma \tau\), then we have
-  \begin{equation}\label{eq: sign sigma tau}
-     \sign(\sigma \tau) = \prod_{i < j} \frac{x_{\sigma\tau(i)} -
-     x_{\sigma\tau(j)}}{x_i - x_j}.
-  \end{equation}
-  Define the following: when \(\tau(i) < \tau(j)\) then \(\tau(i) := p\) and
-  \(\tau(j) := q\); on the other hand, when \(\tau(j) < \tau(i)\) let \(\tau(i)
-  := q\) and \(\tau(j) := p\). This way we find that
-  \begin{equation}\label{eq: sigma term}
-    \frac{x_{\sigma\tau(i)} - x_{\sigma\tau(j)}}{x_{\tau(i)} - x_{\tau(j)}}
-    = \frac{x_{\sigma(p)} - x_{\sigma(q)}}{x_p - x_q}.
-  \end{equation}
-  From construction of the above, \cref{eq: sigma term} yields
-  \begin{equation}\label{eq: sign sigma}
-    \sign(\sigma) = \prod_{p < q} \frac{x_{\sigma(p)} -
-    x_{\sigma(q)}}{x_p - x_q}.
-  \end{equation}
-  Notice that we can write \cref{eq: sign sigma tau} (using \cref{eq: sign
-  sigma}) as the product
-  \[
-    \sign(\sigma \tau) = \prod_{i < j}
-    \frac{x_{\sigma \tau(i)} - x_{\sigma \tau(j)}}{x_{\tau(i)} - x_{\tau(j)}}
-    \frac{x_{\tau(i)} - x_{\tau(j)}}{x_i - x_j}
-    = \sign(\sigma) \sign(\tau)
-  \]
-  as wanted.
+Consider the composition \(\sigma \tau\), then we have
+\begin{equation}\label{eq: sign sigma tau}
+    \sign(\sigma \tau) = \prod_{i < j} \frac{x_{\sigma\tau(i)} -
+    x_{\sigma\tau(j)}}{x_i - x_j}.
+\end{equation}
+Define the following: when \(\tau(i) < \tau(j)\) then \(\tau(i) := p\) and
+\(\tau(j) := q\); on the other hand, when \(\tau(j) < \tau(i)\) let \(\tau(i)
+:= q\) and \(\tau(j) := p\). This way we find that
+\begin{equation}\label{eq: sigma term}
+  \frac{x_{\sigma\tau(i)} - x_{\sigma\tau(j)}}{x_{\tau(i)} - x_{\tau(j)}}
+  = \frac{x_{\sigma(p)} - x_{\sigma(q)}}{x_p - x_q}.
+\end{equation}
+From construction of the above, \cref{eq: sigma term} yields
+\begin{equation}\label{eq: sign sigma}
+  \sign(\sigma) = \prod_{p < q} \frac{x_{\sigma(p)} -
+  x_{\sigma(q)}}{x_p - x_q}.
+\end{equation}
+Notice that we can write \cref{eq: sign sigma tau} (using \cref{eq: sign
+sigma}) as the product
+\[
+  \sign(\sigma \tau) = \prod_{i < j}
+  \frac{x_{\sigma \tau(i)} - x_{\sigma \tau(j)}}{x_{\tau(i)} - x_{\tau(j)}}
+  \frac{x_{\tau(i)} - x_{\tau(j)}}{x_i - x_j}
+  = \sign(\sigma) \sign(\tau)
+\]
+as wanted.
 \end{proof}
 
 \subsection{Dihedral Group}
 
 \begin{definition}[Dihedral group]\label{def: dihedral}
-  A dihedral group is defined as the group of isometric symmetries of regular
-  polygons --- which are rotations and reflections about a line. Given a
-  \(n\)-sided regular polygon, its group of symmetries have \(2n\) elements ---
-  \(n\) rotations and \(n\) reflections --- and we denote it by \(D_{2n}\).
+A dihedral group is defined as the group of isometric symmetries of regular
+polygons --- which are rotations and reflections about a line. Given a
+\(n\)-sided regular polygon, its group of symmetries have \(2n\) elements ---
+\(n\) rotations and \(n\) reflections --- and we denote it by \(D_{2n}\).
 \end{definition}
 
 \begin{proposition}\label{prop: dihetral-to-sym}
-  There exists an embedding \(D_{2n} \mono S_n\).
+There exists an embedding \(D_{2n} \mono S_n\).
 \end{proposition}
 
 \begin{proof}
-  Label the vertices of the \(n\)-gon by \(V = \{[1]_n, \dots, [n]_n\} =
-  \Z/n\Z\). Notice that any element \(x \in D_{2n}\) can be described as \(x \in
-  \Aut_\Set(V)\) --- where the automorphism is restricted to the adjacency of
-  the vertices, that is, if \(x([i]_n) = [k]_n\), then \(x([i - 1]_n), x([i +
-  1]_n) \in \{[k - 1]_n, [k + 1]_n\}\). This shows the existence of the
-  embedding \(D_{2n} \mono \Aut_\Set(V) = S_V = S_n\).
+Label the vertices of the \(n\)-gon by \(V = \{[1]_n, \dots, [n]_n\} =
+\Z/n\Z\). Notice that any element \(x \in D_{2n}\) can be described as \(x \in
+\Aut_\Set(V)\) --- where the automorphism is restricted to the adjacency of
+the vertices, that is, if \(x([i]_n) = [k]_n\), then \(x([i - 1]_n), x([i +
+1]_n) \in \{[k - 1]_n, [k + 1]_n\}\). This shows the existence of the
+embedding \(D_{2n} \mono \Aut_\Set(V) = S_V = S_n\).
 \end{proof}
 
 \begin{proposition}
-  Any symmetry \(x \in D_{2n}\) can be written as \(y^a z^b\) --- where we
-  choose any \(y, z \in D_{2n}\) which are, respectively, a rotation and a
-  reflection about a line --- with \(0 \leq a < 2\) and \(0 \leq b < n\).
+Any symmetry \(x \in D_{2n}\) can be written as \(y^a z^b\) --- where we
+choose any \(y, z \in D_{2n}\) which are, respectively, a rotation and a
+reflection about a line --- with \(0 \leq a < 2\) and \(0 \leq b < n\).
 \end{proposition}
 
 \begin{proof}
-  Notice that if \(y\) is any rotation, then \(|y| = n\) and if \(z\) is any
-  reflection, then \(|z| = 2\).
+Notice that if \(y\) is any rotation, then \(|y| = n\) and if \(z\) is any
+reflection, then \(|z| = 2\).
 
-  We first show that \(y\) and \(z\) are independent. We'll work with the
-  injection \(D_{2n} \mono \Aut_\Set(V)\), where we have the collection of
-  vertices \(V = \Z/n\Z\). Let \(j \in V\) be any vertex and suppose \(z(j) =
-  k\), then by the adjacency of the vertices are maintained, implying in \(z(j -
-  1) = k - 1\) and \(z(j + 1) = k + 1\). On the other hand, if \(y(j) = k\),
-  then the adjacency of the vertices is inverted, that is, \(y(j - 1) = k + 1\)
-  and \(y(j + 1) = k - 1\). Hence clearly reflections and rotations cannot be
-  dependent.
+We first show that \(y\) and \(z\) are independent. We'll work with the
+injection \(D_{2n} \mono \Aut_\Set(V)\), where we have the collection of
+vertices \(V = \Z/n\Z\). Let \(j \in V\) be any vertex and suppose \(z(j) =
+k\), then by the adjacency of the vertices are maintained, implying in \(z(j -
+1) = k - 1\) and \(z(j + 1) = k + 1\). On the other hand, if \(y(j) = k\),
+then the adjacency of the vertices is inverted, that is, \(y(j - 1) = k + 1\)
+and \(y(j + 1) = k - 1\). Hence clearly reflections and rotations cannot be
+dependent.
 
-  The only possible symmetries of \(D_{2n}\) involve the maintenance or the
-  inversion of the adjacency of each vertex --- we cannot break nor deform the
-  edges that connect each of the vertices ---, thus if \(x \in D_{2n}\), then
-  \(x = \prod_{(\alpha, \beta) \in I} z^\alpha y^\beta\) for some finite set
-  \(I\) with \(0 \leq \alpha < 2\) and \(0 \leq \beta < n\). We now show that such
-  product can be reduced. Let \(j \in V\) be any vertex and assume
-  \[
-    z(j) = k
-    \quad\text{ and }\quad
-    y(k) = \ell,
-  \]
-  We now analyse the symmetries \(y z\) and \(z y^m\) --- for \(0 \leq m < n\).
-  \begin{itemize}
-    \item The adjacent vertices of \(j\) --- when subjected to the symmetry \(y
-      z\) --- are obtained as
-      \[
-        y z(j - 1) = y(k + 1) = \ell + 1
-        \quad\text{ and }\quad
-        y z(j + 1) = y(k - 1) = \ell - 1
-      \]
-    \item Since \(y(k) = \ell\), \(y\) is the action rotating the vertex \(k\)
-      an amount of \(\ell - k\) times  --- where we'll adopt the convention that
-      if \(\ell - k < 0\), the rotation is counter-clockwise, if \(\ell + k >
-      0\) the rotation is clockwise. Therefore
-      \[
-        y(j) = j + (\ell - k).
-      \]
-      Notice that this implies in \(y^m(j) = j + m(\ell - k)\) --- we now define
-      \(t = y^m(j)\). Since \(z(j) = k\), then \(z(t) = k - m(\ell - k)\).
-      Therefore, adjacent vertices of \(j\) --- when subjected to the symmetry
-      \(z y^m\) --- are given by
-      \begin{gather*}
-        \text{Vertex } j - 1: \quad
-        z y^m(j - 1) = z(j + m (\ell - k) - 1) = k - m(\ell - k) + 1 \\
-        \text{Vertex } j + 1: \quad
-        z y^m(j + 1) = z(j + m (\ell - k) + 1) = k - m (\ell - k) - 1
-      \end{gather*}
-      In particular, for the case \(m = n - 1\) --- beware of the modularity of
-      the vertices, they lie on \(\Z/n\Z\) --- we get
-      \begin{align*}
-        &\text{Vertex } j - 1\text{:}\
-        zy^{n-1}(j - 1)
-        = k - (n - 1) (\ell - k) + 1
-        = k n - n \ell + \ell + 1
-        = \ell + 1
-        \\
-        &\text{Vertex } j\text{:} \qquad
-        zy^{n-1}(j)
-        = k - (n - 1) (\ell - k)
-        = kn - n \ell + \ell
-        = \ell
-        \\
-        &\text{Vertex } j + 1\text{:}\
-        zy^{n-1}(j + 1)
-        = k - (n - 1) (\ell - k) - 1
-        = k n - n \ell + \ell - 1
-        = \ell + 1
-      \end{align*}
-  \end{itemize}
-  From this analysis we conclude the general relation \(y z = z y^{n-1}\).
+The only possible symmetries of \(D_{2n}\) involve the maintenance or the
+inversion of the adjacency of each vertex --- we cannot break nor deform the
+edges that connect each of the vertices ---, thus if \(x \in D_{2n}\), then
+\(x = \prod_{(\alpha, \beta) \in I} z^\alpha y^\beta\) for some finite set
+\(I\) with \(0 \leq \alpha < 2\) and \(0 \leq \beta < n\). We now show that such
+product can be reduced. Let \(j \in V\) be any vertex and assume
+\[
+  z(j) = k
+  \quad\text{ and }\quad
+  y(k) = \ell,
+\]
+We now analyse the symmetries \(y z\) and \(z y^m\) --- for \(0 \leq m < n\).
+\begin{itemize}
+  \item The adjacent vertices of \(j\) --- when subjected to the symmetry \(y
+    z\) --- are obtained as
+    \[
+      y z(j - 1) = y(k + 1) = \ell + 1
+      \quad\text{ and }\quad
+      y z(j + 1) = y(k - 1) = \ell - 1
+    \]
+  \item Since \(y(k) = \ell\), \(y\) is the action rotating the vertex \(k\)
+    an amount of \(\ell - k\) times  --- where we'll adopt the convention that
+    if \(\ell - k < 0\), the rotation is counter-clockwise, if \(\ell + k >
+    0\) the rotation is clockwise. Therefore
+    \[
+      y(j) = j + (\ell - k).
+    \]
+    Notice that this implies in \(y^m(j) = j + m(\ell - k)\) --- we now define
+    \(t = y^m(j)\). Since \(z(j) = k\), then \(z(t) = k - m(\ell - k)\).
+    Therefore, adjacent vertices of \(j\) --- when subjected to the symmetry
+    \(z y^m\) --- are given by
+    \begin{gather*}
+      \text{Vertex } j - 1: \quad
+      z y^m(j - 1) = z(j + m (\ell - k) - 1) = k - m(\ell - k) + 1 \\
+      \text{Vertex } j + 1: \quad
+      z y^m(j + 1) = z(j + m (\ell - k) + 1) = k - m (\ell - k) - 1
+    \end{gather*}
+    In particular, for the case \(m = n - 1\) --- beware of the modularity of
+    the vertices, they lie on \(\Z/n\Z\) --- we get
+    \begin{align*}
+      &\text{Vertex } j - 1\text{:}\
+      zy^{n-1}(j - 1)
+      = k - (n - 1) (\ell - k) + 1
+      = k n - n \ell + \ell + 1
+      = \ell + 1
+      \\
+      &\text{Vertex } j\text{:} \qquad
+      zy^{n-1}(j)
+      = k - (n - 1) (\ell - k)
+      = kn - n \ell + \ell
+      = \ell
+      \\
+      &\text{Vertex } j + 1\text{:}\
+      zy^{n-1}(j + 1)
+      = k - (n - 1) (\ell - k) - 1
+      = k n - n \ell + \ell - 1
+      = \ell + 1
+    \end{align*}
+\end{itemize}
+From this analysis we conclude the general relation \(y z = z y^{n-1}\).
 
-  Lets analyse the product \((z^a y^b)(z^c y^d)\) for the different cases of \(0
-  \leq a, c < 2\) and \(0 \leq b, d < n\).
-  \begin{itemize}
-    \item If \(a = 1\) and \(c = 0\) then \((z^a y^b)(z^c y^d) = z y^{b + d}\).
-    \item If \(a, c = 0\) then
-      \[
-        (z^a y^b)(z^c y^d) = y^{b + d}.
-      \]
-    \item If \(a = 0\) and \(c = 1\) then \((z^a y^b)(z^c y^d) = y^b z^c y^d =
-      y^{b-1} z y^{d + (n - 1)}\), by recurrence we find find finally that
-      \[
-        (z^a y^b)(z^c y^d) = z y^{d + b(n - 1)}.
-      \]
-    \item If \(a, c = 1\) then \((z^a y^b)(z^c y^d) = z y^b z y^d = z y^{b-1} z
-      y^{d + (n - 1)}\) and, by recurrence
-      \[
-        (z^a y^b)(z^c y^d) = z^2 y^{d + b(n - 1)} = y^{d + b(n - 1)}.
-      \]
-  \end{itemize}
-  This shows that the finite product \(x = \prod_{(\alpha, \beta) \in I}
-  z^\alpha y^\beta\) can be reduced --- for some \(0 \leq a < 2\) and \(0 \leq b
-  < n\) --- to \(x = z^a y^b\).
+Lets analyse the product \((z^a y^b)(z^c y^d)\) for the different cases of \(0
+\leq a, c < 2\) and \(0 \leq b, d < n\).
+\begin{itemize}
+  \item If \(a = 1\) and \(c = 0\) then \((z^a y^b)(z^c y^d) = z y^{b + d}\).
+  \item If \(a, c = 0\) then
+    \[
+      (z^a y^b)(z^c y^d) = y^{b + d}.
+    \]
+  \item If \(a = 0\) and \(c = 1\) then \((z^a y^b)(z^c y^d) = y^b z^c y^d =
+    y^{b-1} z y^{d + (n - 1)}\), by recurrence we find find finally that
+    \[
+      (z^a y^b)(z^c y^d) = z y^{d + b(n - 1)}.
+    \]
+  \item If \(a, c = 1\) then \((z^a y^b)(z^c y^d) = z y^b z y^d = z y^{b-1} z
+    y^{d + (n - 1)}\) and, by recurrence
+    \[
+      (z^a y^b)(z^c y^d) = z^2 y^{d + b(n - 1)} = y^{d + b(n - 1)}.
+    \]
+\end{itemize}
+This shows that the finite product \(x = \prod_{(\alpha, \beta) \in I}
+z^\alpha y^\beta\) can be reduced --- for some \(0 \leq a < 2\) and \(0 \leq b
+< n\) --- to \(x = z^a y^b\).
 \end{proof}
 
 \begin{corollary}
-  Let \(y, z \in D_{2n}\) be, respectively, a rotation and a reflection. The
-  following relation are satisfied:
-  \[
-    |y| = n \text{, } |z| = 2 \text{, and}\ yz = z y^{n-1}.
-  \]
-  The set \(\{y, z\}\) generates any element of \(D_{2n}\).
+Let \(y, z \in D_{2n}\) be, respectively, a rotation and a reflection. The
+following relation are satisfied:
+\[
+  |y| = n \text{, } |z| = 2 \text{, and}\ yz = z y^{n-1}.
+\]
+The set \(\{y, z\}\) generates any element of \(D_{2n}\).
 \end{corollary}
 
 \subsection{Cyclic Group}
@@ -732,26 +782,26 @@ with a relation \(x^n = e\) for some \(n \in \N\). We'll denote such groups by
 \(C_n\) --- for a formal definition, see \cref{def: cyclic-grp}.
 
 \begin{example}
-  An example of a cyclic group is \((\Z/n\Z, +)\), where \([1]_n \in \Z/n\Z\) is
-  the element generating any elements of \(\Z/n\Z\).
+An example of a cyclic group is \((\Z/n\Z, +)\), where \([1]_n \in \Z/n\Z\) is
+the element generating any elements of \(\Z/n\Z\).
 \end{example}
 
 \begin{proposition}\label{prop: ord-cyclic-elem}
-  Given an element \(y \in C_n\) --- where \(x\) is the generating element of
-  \(C_n\) ---, assume \(y = x^m\). We have that
-  \[
-    |y| = \frac n {\operatorname{gcd}(m, n)}.
-  \]
+Given an element \(y \in C_n\) --- where \(x\) is the generating element of
+\(C_n\) ---, assume \(y = x^m\). We have that
+\[
+  |y| = \frac n {\operatorname{gcd}(m, n)}.
+\]
 \end{proposition}
 
 \begin{proof}
-  Notice that \(|y| = |x^m| = \frac{|x|}{\operatorname{gcd}(m, |x|)} = \frac n
-  {\operatorname{gcd}(m, n)}\).
+Notice that \(|y| = |x^m| = \frac{|x|}{\operatorname{gcd}(m, |x|)} = \frac n
+{\operatorname{gcd}(m, n)}\).
 \end{proof}
 
 \begin{corollary}
-  The element \(x \in C_n\) is the generator of the cyclic group if and only if
-  \[
-    \operatorname{gcd}(|x|, n) = 1.
-  \]
+The element \(x \in C_n\) is the generator of the cyclic group if and only if
+\[
+  \operatorname{gcd}(|x|, n) = 1.
+\]
 \end{corollary}
