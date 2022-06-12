@@ -1,0 +1,176 @@
+\section{Normed Vector Spaces}
+
+\todo[inline]{Define normed vector space and stuff\dots}
+
+\subsection{Properties of Normed Vector Spaces}
+
+\begin{proposition}
+\label{prop:continous-linear-thus-bounded}
+Let \(f: X \to Y\) be an \(\R\)-linear map between normed \(\R\)-vector spaces
+\(X\) and \(Y\). Then, \(f\) is continous if and only if there exists a scalar
+\(C > 0\), called \emph{bound}, for which \(\norm{f(x)}_Y \leq C \norm{x}_{X}\)
+for all \(x \in X\).
+\end{proposition}
+
+\begin{proof}
+If \(f\) is bounded by \(C\), let \(B\) be a basis for \(X\) and consider any
+element \(x \coloneq \sum_{v \in B} a_{v} v\). From linearity we have \(f(x) =
+\sum_{v \in B} a_v f(v)\), thus
+\[
+  \norm{f(x)}_Y = \norm{\sum_{v \in B} a_v f(v)}_{Y}
+  \leq \sum_{v \in B} \norm{a_v}_{\R} \norm{f(v)}_{Y}
+  \leq C \norm{x}_{X} \sum_{v \in B} \norm{a_v}_{\R}.
+\]
+This boild down to \(f = O(\Id_{X})\) --- which implies in \(f(x - x_0) = f(x) -
+f(x_0) \to 0\) as \(x \to x_0\), where \(x_0 \in X\) is any point, that is,
+\(f\) is continous at any point of \(X\). Even better than that, we can show
+that \(f\) is uniformly continous (I won't carry it out since it's equivalent to
+what we wrote in \cref{prop: linear-continuous}).
+
+For the opposite, suppose \(f\) is continous at \(0\), then there will surely
+exist \(\delta > 0\) for which \(\norm{x}_X < \delta\) implies in
+\(\norm{f(x)}_Y < 1\). Therefore, for any choice of non-zero \(x \in X\), we
+find
+\[
+  \norm{f\left( \frac{\delta}{\norm{x}_X} x \right)}_Y
+  = \frac{\delta}{\norm{x}_X} \norm{f(x)}_{Y} < 1,
+\]
+therefore \(\norm{f(x)} < \frac{\norm{x}_{X}}{\delta}\), thus \(f\) is indeed
+bounded.
+\end{proof}
+
+\begin{proposition}
+\label{prop:composition-banach-morphisms}
+Let \(E, F\) and \(G\) be normed vector spaces, and let \(u: E \to F\) and \(v:
+F \to G\) be continous linear maps. Then, \(v u: E \to G\) is also a continuous
+linear map, and
+\[
+  \norm{v u} \leq \norm{v} \norm{u},
+\]
+where \(\norm{f} \coloneq \sup_{x \in X} \norm{f(x)}\) for a continous linear
+map \(f: X \to Y\) between normed vector spaces\footnote{Beware! This is not the
+norm we shall adopt for our studies on banachable topological vector spaces. For
+the latter, see \cref{def:norm-morphism-TopVect}}.
+\end{proposition}
+
+\begin{proof}
+The first assertion is trivial, since the composition of continous maps is
+continous, and the same is true for linear maps. Let \(x \in E\) be any element,
+notice that
+\[
+  \norm{vu(x)}_G
+  \leq \norm{v} \norm{u(x)}_F
+  \leq \norm{v} \norm{u} \norm{x}_{E},
+\]
+thus the inequality holds.
+\end{proof}
+
+\begin{proposition}
+\label{prop:multilinear-continous-iff-bounded}
+A multilinear map \(\phi: \prod_{j=1}^n E_j \to F\) between normed vector spaces
+\(E_1, \dots, E_n\), and \(F\), is continous if and only if there exists a bound
+\(C > 0\) such that, for every \(x \in \prod_{j = 1}^n E_j\),
+\[
+  \norm{\phi(x)}_{F} \leq C \prod_{j=1}^n \norm{x_j}_{E_j}.
+\]
+\end{proposition}
+
+\begin{proposition}
+\label{prop:canonical-iso-banach-multilinear}
+Let \(E_1, \dots, E_r\), and \(F\) be normed vector spaces. There exists a
+canonical map from repeated continous linear maps to the continous multilinear
+maps, which is a continuous linear isomorphism, and is norm-preserving --- that
+is, the canonical map
+\[
+  \Phi: L(E_1, L(E_2, \dots, L(E_r, F), \dots)) \isoto L^n(E_1, \dots, E_n; F)
+\]
+is a \emph{Banach isomorphism}.
+\end{proposition}
+
+\begin{proof}
+We define \(\Phi\) by the following: if \(\lambda \in L(E_1, L(E_2, \dots,
+L(E_n, F) \dots))\) is given by
+\[
+  \lambda(x_1) = \lambda_2,\ \text{ where }\ \lambda_2(x_2) = \lambda_3, \
+  \dots, \ \lambda_n(x_n) = y \in F,
+\]
+we define \(\Phi(\lambda) \coloneq \overline{\lambda} \in L(E_1, \dots, E_n;
+F)\) by the mapping
+\[
+  \overline\lambda(x_1, \dots, x_n) \coloneq \lambda(x_1)(x_2) \dots (x_n),
+\]
+where \(\lambda_j(x_j)(x_{j+1}) \dots (x_n) \coloneq \lambda_{j-1}(x_{j-1})
+\dots (x_n)\) for every \(1 \leq j \leq n\) --- where \(\lambda_1 \coloneq
+\lambda\).
+
+Given \(\lambda \in L(E_1, L(E_2, \dots, L(E_n, F), \dots))\), the map
+\(\overline\lambda\) is surely multilinear since each of the recursive arguments
+are linear. Moreover, notice that, for any \(x \in \prod_{j=1}^n E_j\), we have
+\[
+  \norm{\overline\lambda(x)}_{F}
+  \leq \norm{\lambda(x_1) (x_2) \dots (x_n)}_{F}
+  \leq \norm{\lambda} \prod_{j=1}^n \norm{x_{j}}_{E_j},
+\]
+thus \(\norm{\overline\lambda} \leq \norm{\lambda}\).
+
+On the other hand, given \(\overline\phi \in L(E_1, \dots, E_n; F)\), define the
+map \(\phi = \Phi^{-1}(\overline\phi)\) by
+\[
+  \phi(x_1)(x_2) \dots (x_n) \coloneq \overline\phi(x_1, \dots, x_n).
+\]
+Therefore
+\[
+  \norm{\phi(x_1)(x_2) \dots (x_n)}_{F}
+  \leq \norm{\overline\phi} \prod_{j=1}^n \norm{x_j}_{E_j},
+\]
+which shows that \(\norm{\phi} \leq \norm{\overline\phi}\). We conclude that
+\(\Phi(\lambda) = \overline\lambda\) for all repeating map \(\lambda\).
+\end{proof}
+
+\begin{theorem}[Hahn-Banach]
+\label{thm:Hahn-Banach}
+Let \(E\) be a normed \(\R\)-vector space, and \(F \subseteq E\) be a
+subspace. Let \(\lambda \in F^{*}\) be a functional with bound \(C > 0\). Then
+there exist an extension of \(\lambda\) to a functional on \(E\) with the same
+bound \(C\) --- that is, a map \(\overline \lambda: E \to \R\) such that
+\(\overline\lambda|_F = \lambda\) and \(\norm{\overline\lambda(x)}_\R \leq C
+\norm{x}_{E}\) for all \(x \in E\).
+\end{theorem}
+
+\begin{corollary}[Hahn-Banach]
+\label{cor:Hahn-Banach}
+Let \(E\) be a Banach space and \(x \in E\) be a non-zero element. There exists
+a continuous linear map \(\phi \in E^{*}\) such that \(\phi(x) \neq 0\).
+\end{corollary}
+
+\subsection{Properties of Banach Spaces}
+
+\begin{definition}
+\label{def:banach-isomorphism}
+We define a \emph{Banach isomorphism} to be a continuous linear map \(u: E \to
+F\), between Banach spaces \(E\) and \(F\), that is both invertible (there
+exists a continous linear map \(u^{-1}: F \to E\) that is the two-sided inverse
+of \(u\)), and norm preserving --- that is, given any \(x \in E\), we have
+\(\norm{u(x)}_F = \norm{x}_E\). Banach isomorphisms may also be refered to
+isometries in the literature.
+\end{definition}
+
+\begin{proposition}[Bijections are isomorphisms]
+\label{prop:continuous-bijective-linear-is-isomorphism}
+Every continuous bijective \(\R\)-linear map between topological vector spaces
+is an isomorphism.
+\end{proposition}
+
+\begin{proposition}[Splitting]
+\label{prop:banach-split}
+Let \(E\) be a Banach space, and \(F\) and \(G\) be complementary closed
+subspaces of \(E\) --- that is, \(E = F + G\) and \(F \cap G = 0\). Then the
+morphism \(F \times G \to E\) given by \((f, g) \mapsto f + g\) is a continuous
+linear isomorphism.
+\end{proposition}
+
+\todo[inline]{Continue, there are tons of things to study on Banach spaces\dots}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../../deep-dive"
+%%% End:

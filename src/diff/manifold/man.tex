@@ -1,0 +1,202 @@
+\section{Topological Vector Spaces}
+
+\begin{definition}
+\label{def:topological-vector-space}
+A topological vector space is a \(k\)-vector space together with a topology
+such that addition of vectors and the product by scalars are both continuous
+\(k\)-linear maps.
+
+We denote by \(\TVect_{\R}\) the category consisting of topological
+\(\R\)-vector spaces together with morphisms, which are continuous \(\R\)-linear
+maps (which may also be refered to by the term ``toplinear'').
+
+Let \(E\) be a topological vector space. The continuous \(\R\)-linear maps
+corresponding to the dual space \(E^{*} = \Hom_{\TVect_{\R}}(E, \R)\), of a
+topological \(\R\)-vector space \(E\), are called \(\R\) \emph{forms}. The
+collection of forms of the form \(E \to \R\) will be conveniently separated in
+classes and denoted:
+\begin{itemize}\setlength\itemsep{0em}
+\item \(L(E)\): the collection of continuous linear maps \(E \to \R\).
+\item \(L^r(E)\): the collection of continuous \(r\)-multilinear maps \(E^r \to \R\).
+\item \(L^r_{\Sym}(E)\): the collection of continuous \(r\)-multilinear
+  symmetric maps \(E^r \to \R\).
+\item \(L^r_{\Alt}(E)\): the collection of continuous \(r\)-multilinear
+  alternating maps \(E^r \to \R\).
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Locally convex]
+\label{def:locally-convex}
+A topological vector space \(E\) is said to be locally convex if, for every open
+set \(U \subseteq E\), any pair of points \(x, y \in U\) are such that \(t x +
+(1 - t) y \in U\) for all \(t \in [0, 1]\).
+\end{definition}
+
+\begin{definition}[Banachable]
+\label{def:banachable}
+A topological \(\R\)-vector space \(E\) is said to be banachable if \(E\) is
+complete and its topology can be defined by a norm.
+\end{definition}
+
+As a point of order, \emph{everytime} we mention a topological \(\R\)-vector
+space in the course of this chapter, we shall mean a \emph{banachable space}.
+
+\begin{definition}[Norm of a morphism]
+\label{def:norm-morphism-TopVect}
+Let \(E\) and \(F\) be topological \(\R\)-vector spaces. In order to make
+\(\Hom_{\TVect_{\R}}(E, F)\) into a topological \(\R\)-vector space, we can
+construct a norm for which, given a morphism \(A: E \to F\), define \(K \coloneq
+\{k \in \R : \norm{Ax}_{F} \leq k \norm{x}_E \text{, for all } x \in E\}\), the
+norm of \(A\) is
+\[
+  \norm{A} \coloneq \sup_{k \in K} k.
+\]
+
+If \(\Hom_{\TVect_{\R}}(E_1, \dots, E_n; F)\) is the collection of continuous
+\(\R\)-multilinear maps, then we define similarly the norm of a continous
+multilinear map \(B: \prod_{j=1}^n E_j \to F\) as
+\[
+  \norm{B} \coloneq \sup_{m \in M} m,
+\]
+where \(M \coloneq \{m \in \R : \norm{Bx}_F \leq m \prod_{j=1}^n
+\norm{x_j}_{E_j} \text{, for all } x \in E\}\).
+\end{definition}
+
+\begin{remark}
+\label{rm:Cp-morphism}
+From now on, \emph{\(C^p\)-morphism} will refer to a map \(f: U \to V\) between
+open subsets of Banach spaces such that \(f\) is a continuous map of class
+\(C^p\), where \(p \leq \infty\).
+\end{remark}
+
+\section{Manifolds}
+
+\subsection{Morphisms}
+
+\begin{definition}[Atlas]
+\label{def:Cp-atlas}
+Let \(X\) be a set. An atlas of class \(C^p\) on \(X\) is a collection of charts
+\(\{(U_{j}, \phi_j)\}_{j \in J}\) such that
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item \(U_j \subseteq X\) for all \(j \in J\), and the collection \(\{U_{j}\}_{j
+  \in J}\) is a cover for \(X\).
+
+\item For all \(j \in J\), the map \(\phi_j: X \to E_j\) induces a bijection
+  \(\phi_j|_{U_j}: U_j \to \phi_j(U_j)\), where \(\phi_j(U_j) \subseteq E_j\) is
+  open. Moreover, for each pair \(i, j \in J\), the image \(\phi_j(U_j \cap U_i)
+  \subseteq E_j\) is open.
+
+\item For each pair \(i, j \in J\), the induced map \(\phi_j \phi_i^{-1}:
+  \phi_i(U_i \cap U_j) \isoto \phi_j(U_i \cap U_j)\) is a \(C^p\)-isomorphism.
+\end{enumerate}
+\end{definition}
+
+\begin{proposition}
+\label{prop:unique-topology-charts}
+In the context of the last definition, there exists a unique topology on \(X\)
+for which \(U_j\) is open in \(X\), and \(\phi_j\) is a topological isomorphism,
+for all \(j \in J\).
+\end{proposition}
+
+\begin{proposition}
+If for every \(i, j \in J\) the corresponding charts are such that \(U_i \cap
+U_j = \emptyset\), then \(E_i \iso E_j\).
+\end{proposition}
+
+\begin{definition}
+\label{def:compatible-chart}
+Let \(X\) be a topological space and \(E\) a Banach space. Given a topological
+isomorphism \(\phi: U \isoto U'\), where \(U \subseteq X\) and \(U' \subseteq
+E\) are both open, we say that the chart \((U, \phi)\) is \emph{compatible} with
+some given atlas \(\{(U_{j}, \phi_j)\}_{j \in J}\) if the induced map
+\[
+  \phi_j \phi^{-1}: \phi_j(U_j \cap U) \isoto \phi(U_j \cap U)
+\]
+is a \(C^p\)-isomorphism for each \(j \in J\).
+
+Given two atlases, we say that they are compatible if every chart of one is
+compatible with the other atlas.
+\end{definition}
+
+\begin{proposition}
+\label{prop:compatible-atlas-equivalence-relation}
+The compatibility of atlases form an \emph{equivalence} relation.
+\end{proposition}
+
+\begin{proof}
+Clearly reflexivity and symmetry are satisfied (since the maps of interest
+are isomorphisms and we can take their inverses to prove the symmetric
+property). Let \(\{(U_{j}, \phi_j)\}_{j \in J}\) and \(\{(V_{i}, \psi_i)\}_{i
+  \in I}\) be two compatible atlases for some topological space \(X\). If
+\(\{(A_{s}, \mu_s)\}_{s \in S}\) is another atlas for \(X\), which happens to be
+compatible to \(\{(U_{j}, \phi_j)\}_{j \in J}\), then, for every \(s \in S\) we
+have from definition that \(\phi_j \mu_{s}^{-1}\) and \(\psi_i \phi_j^{-1}\) are
+\(C^p\)-isomorphisms for every \(j \in J\) and \(i \in I\), then, composing both
+we obtain an isomorphism \(\psi_i \mu_s^{-1}\), which is what we wanted.
+\end{proof}
+
+\begin{definition}[\(C^p\)-manifold structure on \(X\)]
+\label{def:Cp-manifold}
+The equivalence classes of atlases of class \(C^p\) on a topological space \(X\)
+define what is called a \emph{structure of \(C^p\)-manifold on} \(X\).
+\end{definition}
+
+If all of the corresponding Banach spaces \(E_j\) of some atlas are isomorphic
+in \(\TVect_{\R}\), then there exists a Banach space \(E\) for which there
+exists a compatible atlas, whose maps are of the form \(U_j \to E\). In such
+case we say that \(X\) is an \emph{\(E\)-manifold} or even that \(X\) is
+\emph{modeled} on \(E\). Moreover, if \(E = \R^n\), for some \(n \in \N\), then
+we say that \(X\) is an \(n\)-dimensional manifold --- in such case we define
+what are called \emph{local coordinates}.
+
+\begin{definition}
+\label{def:local-coordinates}
+If \(X\) is an \(\R^n\) modeled manifold, and \(\phi: U \to \R^n\) is a chart,
+where \(U \subseteq X\) is open, then, we say that the collection
+\(\{\phi_{j}\}_{j=1}^n\) are \emph{local coordinates} for \(X\) on \(U\).
+\end{definition}
+
+\begin{definition}[Product of manifolds]
+\label{def:product-Cp-manifold}
+Given two manifolds \(X\) and \(Y\), let \(\{(U_{i}, \phi_j)\}_{j \in J}\) and
+\(\{V_{i}, \psi_{i}\}_{i \in I}\) be atlases for \(X\) and \(Y\), respectively.
+We define a manifold structure on the product space \(X \times Y\) as being
+defined by the equivalence relation on the atlases of the form
+\[
+  {\{(U_{j} \times V_{i}, \phi_j \times \psi_i)\}}_{(j, i) \in J \times I}.
+\]
+\end{definition}
+
+\begin{definition}[Morphism of manifolds]
+\label{def:morphism-manifolds}
+Let \(X\) an \(Y\) be \(C^p\)-manifolds. A map \(\Psi: X \to Y\) is said to be a
+\emph{\(C^p\)-morphism of manifolds} if, given any \(x \in X\), there are charts
+\((U, \phi)\) at \(x\) and \((V, \psi)\) at \(\Psi(x)\) --- such that \(\Psi(U)
+\subseteq V\) ---, for which the map
+\[
+  \psi \Psi \phi^{-1}: \phi(U) \isoto \psi(V)
+\]
+is a \(C^p\)-morphism (recall \cref{rm:Cp-morphism}).
+\end{definition}
+
+\begin{corollary}
+\label{cor:composition-Cp-morphisms}
+Given any two \(C^p\)-morphisms of manifolds \(\Phi: X \to Y\) and \(\Psi: Y \to
+Z\), the composition \(\Psi \Phi: X \to Z\) is also a \(C^p\)-morphism of
+manifolds.
+\end{corollary}
+
+\begin{definition}
+\label{def:Cp-manifold-category}
+The category of \(C^p\)-manifolds is denoted by \(\Man^p\), and consists of
+objects which are \(C^p\)-manifolds, and \(C^p\)-morphisms of manifolds.
+\end{definition}
+
+\subsection{Submanifolds, Immersions, and Summersions}
+
+\todo[inline]{Continue: submanifolds}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../../deep-dive"
+%%% End:

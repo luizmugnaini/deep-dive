@@ -13,7 +13,7 @@ The following text is a compilation of notes for my studies in mathematics, that
 being said, it is clear that the collection of mathematical and linguistic
 errors is non-empty. My main references are
 \begin{itemize}\setlength\itemsep{0em}
-\item Category Theory:~\cite{Rie16}.
+\item Category Theory:~\cite{Rie16} and \cite{Shap06}.
 \item Algebra:~\cite{Yu89},~\cite{Kim20},~\cite{Aluf09} and~\cite{Lang93}.
 \item Topology:~\cite{Lee11},~\cite{Tai20},~\cite{Mun00} and~\cite{Eng89}.
 \item Differential Structures:~\cite{Zor15},~\cite{Zor16},~\cite{Rud76}
@@ -23,7 +23,6 @@ errors is non-empty. My main references are
 
 \mainmatter
 
-% part 1
 \part{Category theory}
 
 \chapter{Categories}
@@ -31,9 +30,11 @@ errors is non-empty. My main references are
 \input{src/categories/cat}
 \input{src/categories/dual}
 \input{src/categories/func}
+
+\chapter{Limits}
+
 \input{src/categories/univprop}
 
-% part 2
 \part{Linear Algebra}
 
 \chapter{Vector Spaces}
@@ -55,17 +56,16 @@ errors is non-empty. My main references are
 \input{src/linalg/multilinear/det}
 \input{src/linalg/multilinear/inv}
 
-% part 3
 \part{Group Theory}
 
 \chapter{Group Therapy}
 
 \input{src/group/group}
 \input{src/group/grp_cat}
+\input{src/group/ab_cat}
 \input{src/group/free}
 
-% part 4
-\part{General Topology}
+\part{Topology}
 
 \chapter{Topological Spaces}
 
@@ -78,8 +78,8 @@ errors is non-empty. My main references are
 \input{src/topology/general/sub}
 \input{src/topology/general/prod}
 \input{src/topology/general/quot}
+\input{src/topology/general/conncomp}
 
-% part 5
 \part{Graph Theory}
 
 \chapter{A Short Toy-Manual of Graphs}
@@ -88,8 +88,8 @@ errors is non-empty. My main references are
 \input{src/combinatorics/graphs/simpgph}
 \input{src/combinatorics/graphs/loopless}
 \input{src/combinatorics/graphs/uniprop_ll}
+\input{src/combinatorics/ramsey/ramsey}
 
-% part 6
 \part{Differentiable Structures}
 
 \chapter{Calculus on Several Variables}
@@ -98,6 +98,18 @@ errors is non-empty. My main references are
 \input{src/diff/multvar/diff}
 \input{src/diff/multvar/imp}
 \input{src/diff/multvar/riem-int}
+\input{src/diff/multvar/surf}
+
+\chapter{Normed Vector Spaces}
+
+\input{src/diff/func/normed}
+
+\chapter{Differentiable Manifolds}
+
+\input{src/diff/manifold/man}
+\input{src/diff/manifold/forms}
+
+\backmatter
 
 \printbibliography
 

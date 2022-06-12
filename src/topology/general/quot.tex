@@ -29,17 +29,16 @@ The quotient topology is a topology.
 \end{proposition}
 
 \begin{proof}
-Let \(X /{\sim}\) be a topological space with the quotient topology induced by
-the map \(\pi: X \epi X /{\sim}\). Consider an arbitrary collection
-\({\{U_{j}\}}_j\) of open sets of \(X /{\sim}\). Notice that since
-\(\pi^{-1}(\bigcup_{j} U_{j}) = \bigcup_j \pi^{-1}(U_j)\) then since
-\(\pi^{-1}(U_j)\) is open for all index \(j\), we conclude that \(\bigcup_j
-\pi^{-1}(U_{j}) \subseteq X\) is open, hence the set \(\bigcup_j U_j \subseteq X
-/{\sim}\) is necessarily open --- since \(\pi\) is continuous. Let now \(A, B
-\subseteq X /{\sim}\) be any open sets, then \(\pi^{-1}(A \cap B) = \pi^{-1}(A)
-\cap \pi^{-1}(B) \subseteq X\), which is open and therefore \(A \cap B\) is open
-in \(X /{\sim}\). We conclude that the quotient topology indeed satisfies the
-properties of a topology.
+Let \(X /{\sim}\) be a space with the topology induced by the map \(\pi: X \epi
+X /{\sim}\). Consider an arbitrary collection \({\{U_{j}\}}_j\) of open sets of
+\(X /{\sim}\). Notice that since \(\pi^{-1}(\bigcup_{j} U_{j}) = \bigcup_j
+\pi^{-1}(U_j)\) then since \(\pi^{-1}(U_j)\) is open for all index \(j\), we
+conclude that \(\bigcup_j \pi^{-1}(U_{j}) \subseteq X\) is open, hence the set
+\(\bigcup_j U_j \subseteq X /{\sim}\) is necessarily open --- since \(\pi\) is
+continuous. Let now \(A, B \subseteq X /{\sim}\) be any open sets, then
+\(\pi^{-1}(A \cap B) = \pi^{-1}(A) \cap \pi^{-1}(B) \subseteq X\), which is open
+and therefore \(A \cap B\) is open in \(X /{\sim}\). We conclude that the
+quotient topology indeed satisfies the properties of a topology.
 \end{proof}
 
 In other terms, let \(T_S\) be the collection of all topologies on \(S\) such
@@ -149,7 +148,7 @@ as a base point. We define the wedge sum of the collection \(\{X_{j}\}_{j \in
 J}\) with respect to the base points \(\{p_{j}\}_{j \in J}\) as the topological
 space
 \[
-  \bigvee_{j \in J} X_j = \coprod_{j \in J} X_j / \{p_{j}\}_{j \in J}
+  \bigvee_{j \in J} X_j = \bigatt_{j \in J} X_j / \{p_{j}\}_{j \in J}
 \]
 \end{example}
 
@@ -168,14 +167,14 @@ Let \(\{p_j \in X_j\}_{j \in J}\) be any choice of base points for the given
 collection. Let \(x, y \in \bigvee_{j \in J} X_j\) be any distinct points in the
 wedge sum space. If \(x, y \in X_j\) for some \(j \in J\), then it is clear that
 there exists non-intersecting neighbourhoods of \(x\) and \(y\) on \(X_j\) ---
-of which we can take their intersection with the disjoint union \(\coprod_{j \in
+of which we can take their intersection with the disjoint union \(\bigatt_{j \in
 J} X_j\) and the proposition will hold for \(\bigvee_{j \in J} X_j\). On the
 other hand, if \(i, j \in J\) are distinct indices and \(x \in X_i\) while \(y
 \in X_j\), then there exists \(U_x \subseteq X_i\) and \(U_y \subseteq X_j\)
 neighbours of \(x\) and \(y\), respectively, such that \(U_x \cap X_j =
 \emptyset\) and \(U_y \cap X_i = \emptyset\), which in particular imply in \(U_x
 \cap U_y= \emptyset\). For our end, we just need to consider the neighbourhoods
-\(U_x' = U_x \cap \coprod_{j \in J} X_j\) and \(U_y' = U_y \cap \coprod_{j \in J}
+\(U_x' = U_x \cap \bigatt_{j \in J} X_j\) and \(U_y' = U_y \cap \bigatt_{j \in J}
 X_j\) so that \(U_x' = U_y'\).
 \end{proof}
 
@@ -313,13 +312,40 @@ spaces.
   saturated set (open or closed) with respect to \(\pi\). Then, the restriction
   \(\pi|_U: U \epi \pi(U)\) is a quotient map.
 \item Let \(J\) be an indexing set and \(\{\pi_j: X_j \epi Y_j\}_{j \in J}\) be
-  an indexed collection of quotient morphisms. The map \(\pi: \coprod_{j \in J}
-  X_j \epi \coprod_{j \in J} Y_j\) defined by the restrictions \(\pi(x_{j}) =
-  \pi_{j}(x_j)\) for every \(x_j \in X_{j} \cap \coprod_{j \in J} X_j\).
+  an indexed collection of quotient morphisms. The map \(\pi: \bigatt_{j \in J}
+  X_j \epi \bigatt_{j \in J} Y_j\) defined by the restrictions \(\pi(x_{j}) =
+  \pi_{j}(x_j)\) for every \(x_j \in X_{j} \cap \bigatt_{j \in J} X_j\) is a
+  quotient map.
 \end{enumerate}
 \end{proposition}
 
-\todo[inline]{Prove properties of the quotient morphism}
+\begin{proof}
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Let \(\pi: X \epi Y\) and \(\pi': Y \epi Z\) be quotient morphisms, and
+  consider the map \(\pi' \pi: X \epi Z\), which is clearly surjective. From
+  hypothesis a subset \(U \subseteq Z\) is open if and only if \(\pi'^{-1}(U)\)
+  is open, moreover, \(\pi'^{-1}(U) \subseteq Y\) is open if and only if
+  \(\pi^{-1}(\pi'^{-1}(U)) \subseteq X\) is open --- the proposition follows.
+\item If the quotient morphism \(\pi: X \epi Y\) is injective, then \(\pi\) is a
+  bijection. Let \(U \subseteq X\) be any open set, since \(\pi\) is bijective,
+  there exists a set \(V \subseteq Y\) such that \(\pi^{-1}(V) = U\) ---
+  moreover, such set must be open on \(Y\) from the quotient topology. This
+  shows that \(\pi(U) = V\) is open and hence \(\pi\) is a topological
+  isomorphism.
+\item Let \(C \subseteq Y\) be any set, notice that \(Y \setminus C\) is open
+  if and only if \(\pi^{-1}(Y \setminus C) = \pi^{-1}(Y) \setminus \pi^{-1}(C)
+  \subseteq X\) is open --- thus the proposition follows.
+\item Let \(V \subseteq \pi(U)\) be any set. Since \(\pi\) is a quotient
+  morphism, \(V\) is open if and only if \(\pi^{-1}(V) \subseteq U \subseteq
+  X\) --- moreover, since \(U\) is saturated, the whole set can have its subsets
+  classified by \(\pi|_U\) into open or closed sets, thus \(\pi|_U\) is a
+  quotient map.
+\item Let \(U \subseteq \bigatt_{j \in J} Y_j\) be any set and let \(j_{0} \in
+  J\) be such that \(U \subseteq Y_{j_0}\). From the mappings, \(U\) is open if
+  and only if \(\pi^{-1}_{j_0}(U) \subseteq X_{j_0}\) is open --- but since
+  \(\pi^{-1}(U) = \pi^{-1}_{j_0}(U)\), the proposition follows.
+\end{enumerate}
+\end{proof}
 
 \begin{example}[Cones]
 \label{exp:remove-section-cone-isomorphism}
@@ -329,15 +355,27 @@ we defined the cone \(\Cone X\) of a topological space \(X\) as \((X \times I) /
 any point \((x, t) \in (X \times I) \setminus (X \times \{1\})\), there exists a
 neighbourhood \(U \subseteq (X \times I) \setminus (X \times \{1\})\) of \((x,
 t)\), therefore \(X \times \{1\}\) is closed in \(X \times I\). If we consider
-the quotient morphism of the cone \(\pi: X \times I \epi \Cone X\), any element
-of the bottom \(p \in X \times \{1\}\) is mapped to a single element of the
-cone, say \(p \xmapsto \pi * \in \Cone X\) --- and since \(U\) is a closed
-saturated set of \(X\) with respect to \(\pi\), its image \(\pi(U) = * \subseteq
-\Cone X\) is closed. Notice that \(X \iso X \times \{1\}\) by the natural
-identification \(x \xmapsto \sim (x, 1)\), thus we can define a quotient map
-\(q: X \isoto X \times \{0\} \epi *\) is
-\todo[inline]{\(q\) is injective??}
+the quotient morphism of the cone \(\pi: X \times I \epi \Cone X\), the
+restriction \(\pi|_{X \times \{0\}}: X \times \{0\} \epi \pi(X \times \{0\})\)
+is also a quotient map --- moreover, such quotient map is injective, thus
+\(\pi|_{X \times \{0\}}\) is an isomorphism. Therefore we have a sequence of
+isomorphisms
+\[
+  X \isoto X \times \{0\} \isoto \pi(X \times \{0\}) \subseteq \Cone X,
+\]
+thus we can identify \(X\) as a subspace of \(\Cone X\).
 \end{example}
 
+The following is a \emph{sufficient}, but \emph{not} necessary condition for a
+quotient morphism.
 
-\subsubsection{Sufficient But Not Necessary Conditions}
+\begin{proposition}
+Let \(\pi: X \epi Y\) be a surjective topological morphism. If \(\pi\) is either
+open or closed, then \(\pi\) is a quotient morphism.
+\end{proposition}
+
+\begin{proof}
+If \(\pi\) is open (respectively, closed), in particular we have that saturated
+sets open (respectively, closed) of \(X\) are mapped to open (respectively,
+closed) sets of \(Y\), hence \(\pi\) is a quotient morphism.
+\end{proof}

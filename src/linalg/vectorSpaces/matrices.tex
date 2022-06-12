@@ -97,22 +97,22 @@ visually as a system of equations
   \(k\)-dimensional vector spaces, and choose basis \(\{v_j\}, \{w_k\}, \{l_i\}\)
   to be basis of \(V, W, L\) respectively, and let \(A_g\) and \(A_f\) be the
   matrix representation of the morphisms \(g\) and \(f\) with respect to the
-  given basis. Then the matrix representation of the composition \(f \circ g: V
-  \to L\) is given by \(A_{f \circ g} = A_f A_g\).
+  given basis. Then the matrix representation of the composition \(f  g: V
+  \to L\) is given by \(A_{f  g} = A_f A_g\).
 \end{proposition}
 
 \begin{proof}
-  Let \(A_f := [a_{i, k}]\), and \(A_g := [b_{k, j}]\), and \(A_{f \circ g} =
+  Let \(A_f := [a_{i, k}]\), and \(A_g := [b_{k, j}]\), and \(A_{f  g} =
   [c_{i, j}]\). Then, since from definition we have \(g(v_j) = \sum_k b_{k, j}
   w_k\), hence
   \[
-    f \circ g(v_j) =
+    f  g(v_j) =
     \sum_k b_{k, j} f(w_k) =
     \sum_k \bigg( b_{k, j} \bigg( \sum_i a_{i, k} l_i \bigg) \bigg)
     = \sum_i \bigg( \sum_k a_{i, k} b_{k, j} \bigg) l_i
     = \sum_i c_{i, j} l_i
   \]
-  thus \(c_{i, j} = \sum_k a_k{i, k} b_{k, j}\) and thus \(A_{f \circ g} = A_f
+  thus \(c_{i, j} = \sum_k a_k{i, k} b_{k, j}\) and thus \(A_{f  g} = A_f
   A_g\) as wanted.
 \end{proof}
 

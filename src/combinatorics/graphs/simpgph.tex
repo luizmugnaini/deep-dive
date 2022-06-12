@@ -20,17 +20,17 @@ following category.
   A walking simple graph is defined as a category \(\cat S\) consisting of
   \begin{itemize}
     \setlength\itemsep{0.0em}
-    \item One object \(V\), called the set of vertices --- containg elements
+    \item An object \(V\), called the set of vertices --- containg elements
       \(x\).
-    \item One object \(E\), called the set of edges --- containing ordered pairs
+    \item An object \(E\), called the set of edges --- containing ordered pairs
       \(e = (x, y)\), where \(x, y \in V\).
     \item Morphisms \(s, t: E \to V\) called source and target, respectively ---
-      given an edge \(e = (x, y)\) we have \(e \xmapsto s x\) and \(e \xmapsto
-      t y\). We also impose that the map defined by \(e \mapsto (s(e), t(e))\)
+      given an edge \(e = (x, y)\) we have \(e \xmapsto{s} x\) and \(e \xmapsto{t}
+      y\). We also impose that the map defined by \(e \mapsto (s(e), t(e))\)
       in \(\End_{\Set}(E)\) is injective.
     \item Identity morphisms \(\Id_V: V \to V\) and \(\Id_E: E \to E\)
       (reflexivity of vertices and edges).
-    \item An automorphism \(\sigma: E \to E\) called symmetry --- mapping \(e =
+    \item An automorphism \(\sigma: E \isoto E\) called symmetry --- mapping \(e =
       (x, y) \xmapsto\sigma (y, x)\).
   \end{itemize}
 \end{definition}

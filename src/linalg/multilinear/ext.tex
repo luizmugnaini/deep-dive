@@ -48,7 +48,8 @@
 
 \begin{remark}
   Notice that \cref{prop: alternating map property} is not sufficient to
-  characterize alternating maps, it is but a necessary property.
+  characterize alternating maps, it is but a necessary property. A
+  counterexample to that is the field with characteristic \(2\).
 \end{remark}
 
 \subsection{Alternating Tensor and Exterior Powers}
@@ -127,14 +128,6 @@
 \begin{proof}
   Since \(\Lambda^q V\) is a subspace of \(T_0^q(V)\), then we can use the
   universal property \cref{thm: universal property of tensor products}.
-  %(Uniqueness) Let \(\ell, f: \Lambda^q(V) \to L\) be \(k\)-linear maps such
-  %that \(\ell \circ A \circ \otimes = f \circ A \circ \otimes = \mu\). Let
-  %\((v_1, \dots, v_q) \in V^q\) be any element, then since \(A \circ \otimes
-  %(v_1, \dots, v_q) = v_1 \wedge \dots \wedge v_q\) we conclude that \(f(v_1
-  %\wedge \dots \wedge v_q) = \ell(v_1 \wedge \dots \wedge v_q)\) and hence \(f =
-  %\ell\).
-  %(Existence) We must show that \(\ell\) is indeed a \(k\)-linear map. Notice
-  %that making \(\ell \circ A \circ \otimes = \mu\)
 \end{proof}
 
 Now we get some geometric motivation behind the algebraic structure of the
@@ -269,7 +262,7 @@ basis for symmetric power}.
   We interpret \(\Lambda^0 V = k\).
 \end{definition}
 
-\begin{proposition}
+\begin{proposition}\label{prop:exterior-algebra-associative-skew-commutative}
   The multiplicative structure of the tensor algebra \(\Lambda^\bullet V\) is
   associative and skew-commutative, that is, for all \(\alpha \in \Lambda^d V\)
   and \(\beta \in \Lambda^q V\) we have \(\alpha \wedge \beta = (-1)^{d q} \beta
@@ -380,18 +373,20 @@ basis for symmetric power}.
 \end{proof}
 
 Therefore one can trivially see that the kernel of the alternating projection
-\(A\) is simply the collection of all decomposable tensors \(v_1 \otimes \dots \otimes v_d\)
-such that the collection \(\{v_{1}, \dots, v_d\} \subseteq V\) is linerly dependent.
+\(A\) is simply the collection of all decomposable tensors \(v_1 \otimes \dots
+\otimes v_d\) such that the collection \(\{v_{1}, \dots, v_d\} \subseteq V\) is
+linerly dependent.
 
 \begin{corollary}\label{cor:kernel-alternating-projection}
-  The kernel of the alternating projection \(A: T^d_0(V) \epi \Lambda^d V\) is given
-  by the collection \(\{v_{1} \otimes \dots v_d \in T^d_0(V)\}\) such that \(\{v_{1} \otimes
-  \dots v_d\}\) is linearly dependent on \(V\).
+The kernel of the alternating projection \(A: T^d_0(V) \epi \Lambda^d V\) is
+given by the collection \(\{v_{1} \otimes \dots \otimes v_d \in T^d_0(V)\}\)
+such that \(\{v_{1} \otimes \dots \otimes v_d\}\) is linearly dependent on
+\(V\).
 \end{corollary}
 
 \begin{theorem}\label{thm:iso-measure-volume-ext}
-Let \(V\) be a finite dimensional \(k\)-vector space. The map \(\phi: \Lambda^d V^{*}
-\isoto (\Lambda^dV)^{*}\) given by the mapping
+Let \(V\) be a finite dimensional \(k\)-vector space. The map \(\phi: \Lambda^d
+V^{*} \isoto (\Lambda^dV)^{*}\) given by the mapping
 \[
   f_1 \wedge \dots \wedge f_d \overset{\phi}\longmapsto \left(
     v_1 \wedge \dots \wedge v_d \mapsto
@@ -403,45 +398,53 @@ is a \(k\)-linear isomorphism.
 
 \begin{proof}
 First of all, we show that \(\phi\) is a \(k\)-linear map. For each \(f \in
-\Lambda^d V^{*}\), define the map \(\psi_{f} \in (\Lambda^dV)^{*}\) for which \(\phi(f) =
-\psi_f\). Notice that if \(a \in k\) and \(f, g \in \Lambda^d(V^{*})\), then \(\phi(f + a g) =
-\psi_{f + a g}\). Notice that
+\Lambda^d V^{*}\), define the map \(\psi_{f} \in (\Lambda^dV)^{*}\) for which
+\(\phi(f) = \psi_f\). Notice that if \(a \in k\) and \(f, g \in
+\Lambda^d(V^{*})\), then \(\phi(f + a g) = \psi_{f + a g}\). Notice that
 \begin{align*}
   \psi_{f + ag}(v_1 \wedge \dots \wedge v_d)
-  &= \sum_{\sigma \in S_d} \sign(\sigma) \prod_{j=1}^d (f_{j} + a g_{j})(v_{\sigma(j)}) \\
-  &= \sum_{\sigma \in S_d} \sign(\sigma) \prod_{j=1}^d f_j(v_{\sigma(j)}) + a g_j(v_{\sigma(j)}) \\
+  &= \sum_{\sigma \in S_d} \sign(\sigma)
+    \prod_{j=1}^d (f_{j} + a g_{j})(v_{\sigma(j)}) \\
+  &= \sum_{\sigma \in S_d} \sign(\sigma)
+    \prod_{j=1}^d f_j(v_{\sigma(j)}) + a g_j(v_{\sigma(j)}) \\
   &= \sum_{\sigma \in S_d} \sign(\sigma) \prod_{j=1}^d f_j(v_{\sigma(j)})
   + a \sum_{\sigma \in S_d} \sign(\sigma) \prod_{j=1}^d g_j(v_{\sigma(j)}) \\
   &= \psi_f + a \psi_g
 \end{align*}
-Thus \(\phi(f + ag) = \phi(f) + a \phi(g)\) and therefore \(\phi\) is indeed linear.
+Thus \(\phi(f + ag) = \phi(f) + a \phi(g)\) and therefore \(\phi\) is indeed
+linear.
 
 Suppose \(\dim V = n\) and let \(\{e_{j}\}_{j=1}^n\) be a base for \(V\). Define
 the collection of strictly increasing \(d\)-tuples \(\mathcal I = \{I =
-(i_{j})_{j=1}^d : 1 \leq i_1 < \dots < i_d \leq n\}\). From \cref{prop: exterior power
-basis}, we know that \(\{e_{i_{1}} \wedge \dots \wedge e_{i_{d}} \in \Lambda^d V: i_j \in I \text{
-and } I \in \mathcal I\}\) is a basis for \(\Lambda^d V\). Moreover,
-\(\{e_{j}^{*}\}_{j=1}^n\) is a basis for the dual space \(V^{*}\), thus the
-collection \(\{e_{i_{1}}^{*} \wedge \dots \wedge e_{i_{d}}^{*} \in \Lambda^d V: i_j \in I \text{
-  and } I \in \mathcal I\}\) is a basis for \(\Lambda^d V^{*}\).
+(i_{j})_{j=1}^d : 1 \leq i_1 < \dots < i_d \leq n\}\). From \cref{prop: exterior
+power basis}, we know that \(\{e_{i_{1}} \wedge \dots \wedge e_{i_{d}} \in
+\Lambda^d V: i_j \in I \text{ and } I \in \mathcal I\}\) is a basis for
+\(\Lambda^d V\). Moreover, \(\{e_{j}^{*}\}_{j=1}^n\) is a basis for the dual
+space \(V^{*}\), thus the collection \(\{e_{i_{1}}^{*} \wedge \dots \wedge
+e_{i_{d}}^{*} \in \Lambda^d V: i_j \in I \text{ and } I \in \mathcal I\}\) is a
+basis for \(\Lambda^d V^{*}\).
 
 Let \(I \in \mathcal I\) be any strictly increasing \(d\)-tuple, and define the
-notation \(e_I^{*} \coloneq e_{i_1}^{*} \wedge \dots \wedge e_{i_d}^{*}\), so that
+notation \(e_I^{*} \coloneq e_{i_1}^{*} \wedge \dots \wedge e_{i_d}^{*}\), so
+that
 \begin{equation}
   \label{eq:basislambda*}
   e_I^{*} \overset{\phi}\longmapsto
   \psi_{e_I^{*}}(v_1 \wedge \dots \wedge v_d)
   = \sum_{\sigma \in S_{d}} \sign(\sigma) \prod_{j=1}^d e_{i_j}^{*}(v_{\sigma(j)}) =
   \begin{cases}
-    1, &\text{if }\ v_1 \wedge \dots \wedge v_d = e_{i_1} \wedge \dots \wedge e_{i_d} \\
+    1, &\text{if }\ v_1 \wedge \dots \wedge v_d
+         = e_{i_1} \wedge \dots \wedge e_{i_d} \\
     0, &\text{otherwise}
   \end{cases}
 \end{equation}
-Notice that we mapped a basis of \(\Lambda^d V^{*}\) into a basis of \((\Lambda^d V)^{*}\),
-since any map \(\psi \in (\Lambda^d V)^{*}\) can be obtained by a unique linear combination
-of maps of the collection \(\{\psi_{e_{I}^{*}} \in (\Lambda^d V)^{*} : I \in \mathcal I\}\)
---- which, together with \cref{eq:basislambda*}, makes it a basis. This shows that
-the morphism \(\phi\) stablishes an isomorphism \(\Lambda^dV^{*} \iso (\Lambda^d V)\).
+Notice that we mapped a basis of \(\Lambda^d V^{*}\) into a basis of
+\((\Lambda^d V)^{*}\), since any map \(\psi \in (\Lambda^d V)^{*}\) can be
+obtained by a unique linear combination of maps of the collection
+\(\{\psi_{e_{I}^{*}} \in (\Lambda^d V)^{*} : I \in \mathcal I\}\) --- which,
+together with \cref{eq:basislambda*}, makes it a basis. This shows that the
+morphism \(\phi\) stablishes an isomorphism \(\Lambda^dV^{*} \iso (\Lambda^d
+V)\).
 \end{proof}
 
 \todo[inline]{
@@ -449,7 +452,8 @@ Add cool propositions for the exterior algebra: the Hodge Star Operator; the
 isomorphisms
 \begin{gather*}
   \Sym^d(V \oplus W) \iso \bigoplus_{i=0}^d \Sym^i(V) \otimes \Sym^{d-i}(W) \\
-  \Lambda^d(V \oplus W) \iso \bigoplus_{i=0}^d \Lambda^i(V) \otimes \Lambda^{d-i}(W)
+  \Lambda^d(V \oplus W) \iso
+  \bigoplus_{i=0}^d \Lambda^i(V) \otimes \Lambda^{d-i}(W)
 \end{gather*}
 }
 

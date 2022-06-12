@@ -1,4 +1,4 @@
-\section{Product Topology}
+\section{Product Space}
 
 \begin{definition}[Product topology]
   \label{def: prod top}
@@ -186,40 +186,40 @@
   prod top universal prop}.
 \end{definition}
 
-\section{Coproduct Topology}
+\section{Coproduct Space}
 
 \begin{definition}[First definition]
   Let \(\{X_i\}_{i \in I}\) be any collection of topological spaces and consider
-  the disjoint union \(\coprod_{i \in I} X_i = \bigcup_{i \in  I} X_i \times
-  \{i\}\). We define the coproduct topology on \(\coprod_{i \in I} X_i\) via the
-  following property. A set \(U \subseteq \coprod_{i \in I} X_i\) is open if and
-  only if it is of the form \(U = \coprod_{i \in I} U_i\), where each \(U_i
+  the disjoint union \(\bigatt_{i \in I} X_i = \bigcup_{i \in  I} X_i \times
+  \{i\}\). We define the coproduct topology on \(\bigatt_{i \in I} X_i\) via the
+  following property. A set \(U \subseteq \bigatt_{i \in I} X_i\) is open if and
+  only if it is of the form \(U = \bigatt_{i \in I} U_i\), where each \(U_i
   \subseteq X_i\) is open.
 \end{definition}
 
 \begin{definition}[Coproduct topology]\label{def: coproduct top}
   Let \(\{X_i\}_{i \in I}\) be a collection of topological spaces. The coproduct
-  topology on the set \(\coprod_{i \in I} X_i\) is defined to be the finest
+  topology on the set \(\bigatt_{i \in I} X_i\) is defined to be the finest
   topology such that for all \(j \in I\) we have that the inclusions \(\iota_j:
-  X_j \mono \coprod_{i \in I} X_i\) are continuous.
+  X_j \mono \bigatt_{i \in I} X_i\) are continuous.
 \end{definition}
 
 \begin{theorem}[Coproduct topology universal property]
   \label{thm: coprod top universal property}
   Let \(\{X_i\}_{i \in I}\) be a collection of topological spaces and let
-  \(\iota_j: X_j \to \coprod_{i \in I} X_i\) be the \(j\)th inclusion. The
-  coproduct topology on \(\coprod_{i \in I} X_i\) satisfies the following
+  \(\iota_j: X_j \to \bigatt_{i \in I} X_i\) be the \(j\)th inclusion. The
+  coproduct topology on \(\bigatt_{i \in I} X_i\) satisfies the following
   property. Let \(Z\) be a topological space and a collection of continuous maps
   \(\{f_i: X_i \to Z\}_{i \in I}\). Then there exists a unique map \(f:
-  \coprod_{i \in I} X_i \to Z\) such that the following diagram commutes in the
+  \bigatt_{i \in I} X_i \to Z\) such that the following diagram commutes in the
   category \(\Top\) for all \(j \in I\):
   \[
     \begin{tikzcd}
       X_j \ar[r, "\iota_j"]  \ar[rd, swap, bend right, "f_j"]
-      & \coprod_{i \in I} X_i \ar[d, dashed, "f"] \\ &Z
+      & \bigatt_{i \in I} X_i \ar[d, dashed, "f"] \\ &Z
     \end{tikzcd}
   \]
-  On the other hand, if \((\coprod_{i \in I} X_i, \mathcal T')\) satisfies such
+  On the other hand, if \((\bigatt_{i \in I} X_i, \mathcal T')\) satisfies such
   property, then \(\mathcal T'\) is the coproduct topology.
 \end{theorem}
 
@@ -230,32 +230,32 @@
   (Existence) Suppose now that \(f_j\) is continuous for all \(j \in I\). Let
   \(U \subseteq Z\) be any open set. Notice that since \(f_j^{-1} = \iota_j^{-1}
    f^{-1}\) then \(f_j^{-1}(U) = \iota_j^{-1}(f^{-1}(U))\). Now, if
-  \(f^{-1}(U) \subseteq \coprod_{i \in I} X_i\) is closed then its preimage
+  \(f^{-1}(U) \subseteq \bigatt_{i \in I} X_i\) is closed then its preimage
   under \(\iota_j\) would be closed (from the continuity of \(\iota_j\)), hence
   \(f^{-1}(U)\) is open, which implies in \(f\) continuous.
 
-  Suppose that \((\coprod_{i \in I} X_i, \mathcal T')\) satisfies the universal
+  Suppose that \((\bigatt_{i \in I} X_i, \mathcal T')\) satisfies the universal
   property and denote by \(\mathcal T\) the coproduct topology. Then in
   particular we have
   \[
     \begin{tikzcd}
       X_j \ar[r, "\iota_j"] \ar[rd, bend right, swap, "\iota_j"]
-        &\left( \coprod_{i \in I} X_i, \mathcal T' \right)
+        &\left( \bigatt_{i \in I} X_i, \mathcal T' \right)
         \ar[d, dashed, "g"] \\
-        &(\coprod_{i \in I} X_i, \mathcal T)
+        &(\bigatt_{i \in I} X_i, \mathcal T)
     \end{tikzcd}
     \qquad \qquad
     \begin{tikzcd}
       X_j \ar[r, "\iota_j"] \ar[rd, bend right, swap, "\iota_j"]
-        &\left( \coprod_{i \in I} X_i, \mathcal T \right)
+        &\left( \bigatt_{i \in I} X_i, \mathcal T \right)
         \ar[d, dashed, "f"] \\
-        &(\coprod_{i \in I} X_i, \mathcal T')
+        &(\bigatt_{i \in I} X_i, \mathcal T')
     \end{tikzcd}
   \]
-  and hence \(f\) and \(g\) are both identities on \(\End(\coprod_{i \in I} X_i)\). If
-  \(U \subseteq (\coprod_{i \in I} X_i, \mathcal T)\) is open, then \(g^{-1}(U) = U \subseteq (\coprod_{i \in I}
+  and hence \(f\) and \(g\) are both identities on \(\End(\bigatt_{i \in I} X_i)\). If
+  \(U \subseteq (\bigatt_{i \in I} X_i, \mathcal T)\) is open, then \(g^{-1}(U) = U \subseteq (\bigatt_{i \in I}
   X_i, \mathcal T')\) is also open. On the other hand, from the second diagram,
-  if \(V \subseteq (\coprod_{i \in I} X_i, \mathcal T')\) is open, then \(f^{-1}(V) = V \subseteq (\coprod_{i \in
+  if \(V \subseteq (\bigatt_{i \in I} X_i, \mathcal T')\) is open, then \(f^{-1}(V) = V \subseteq (\bigatt_{i \in
   I} X_i, \mathcal T)\) is open. This concludes that \(\mathcal T' = \mathcal T\)
   and hence the coproduct topology is unique.
 \end{proof}
@@ -264,16 +264,16 @@
   Let \(\{X_i\}_{i \in I}\) be a collection of topological spaces. The following
   are properties of the coproduct space.
   \begin{enumerate}[(a)]
-    \item A subset \(C \subseteq \coprod_{i \in I} X_i\) is closed if and only
+    \item A subset \(C \subseteq \bigatt_{i \in I} X_i\) is closed if and only
       if for all \(X_i\), we have that \(C \cap X_i\) is closed.
-    \item The canonical injection \(\iota_j: X_j \to \coprod_{i \in I} X_i\) is
+    \item The canonical injection \(\iota_j: X_j \to \bigatt_{i \in I} X_i\) is
       a topological embedding and an open and closed map.
-    \item If \(X_i\) is Hausdorff for all \(i \in I\), then \(\coprod_{i \in
+    \item If \(X_i\) is Hausdorff for all \(i \in I\), then \(\bigatt_{i \in
       I} X_i\) is Hausdorff.
-    \item If \(X_i\) is first countable for all \(i \in I\), then \(\coprod_{i
+    \item If \(X_i\) is first countable for all \(i \in I\), then \(\bigatt_{i
       \in I} X_i\) is first countable.
     \item If \(X_i\) is second countable for all \(i \in I\) and \(I\) is a
-      countable indexing set, then \(\coprod_{i \in I} X_i\) is second
+      countable indexing set, then \(\bigatt_{i \in I} X_i\) is second
       countable.
   \end{enumerate}
 \end{proposition}

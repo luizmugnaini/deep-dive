@@ -211,11 +211,11 @@ special conditions, allowing for additional properties for the implicit map
 
 \subsection{Inverse Map Theorem}
 
-\begin{definition}
+\begin{definition}[Diffeomorphisms]
   \label{def:diffeormorphism-on-R}
   Let \(U\) and \(V\) be open subsets of \(\R^m\). A map \(f: U \to V\) is said to
-  be a isomorphism of manifolds of class \(C^p\) --- for \(p \in \N \cup \{\infty\}\) --- if the
-  following conditions are satisfied
+  be a isomorphism of manifolds of class \(C^p\) (or diffeomorphism) --- for \(p \in
+  \N \cup \{\infty\}\) --- if the following conditions are satisfied
   \begin{itemize}\setlength\itemsep{0em}
     \item \(f \in C^p(U, V)\).
     \item \(f\) is bijective and \(f^{-1} \in C^p(V, U)\).
@@ -311,11 +311,12 @@ special conditions, allowing for additional properties for the implicit map
       map \(g: \Omega_{y_0} \to \R^m\) such that the following diagram commutes
       \[
         \begin{tikzcd}
-          \Omega_{x_{0}} \ar[rr, "f"] \ar[dr, hook, swap, "\iota"]  & &\Omega_{y_0} \ar[dl, "g"] \\
+          \Omega_{x_{0}} \ar[rr, "f"] \ar[dr, hook, swap, "\iota"]
+          & &\Omega_{y_0} \ar[dl, "g"] \\
           &\R^m &
         \end{tikzcd}
       \]
-      Where \(\iota: \R^n \hookrightarrow \R^m\) is the canonical inclusion map.
+      Where \(\iota: \R^n \emb \R^m\) is the canonical inclusion map.
     \item Suppose \(n \geq m\) and that \(\diff f(x_0)\) has maximal
       \(\rank(\diff f(x_0)) = m\). Then there exists \(\Omega_{x_0} \subseteq \Omega \subseteq \R^n\),
       neighbourhood of \(x_0\), and a differentiable map \(g: \Omega_{x_{0}} \to \Omega\)
@@ -545,8 +546,6 @@ special conditions, allowing for additional properties for the implicit map
   extremum at \(t = 0\) --- and with the same analogous arguments as before, we
   argue that \(L\) has no extrema at \(x_0\) and neither does \(f\).
 \end{proof}
-
-\section{Tangent Space}
 
 \todo[inline]{Write about tangent space, tangent to the domain, tangent to the
   graph, etc.}

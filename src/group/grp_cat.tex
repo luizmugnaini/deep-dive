@@ -247,6 +247,18 @@ That is, \(gg'^{-1} \in \ker\phi\), but since \(\ker\phi\) is trivial, then
 injective.
 \end{proof}
 
+\begin{proposition}
+\label{prop:injective-morphism-abelian}
+Let \(G\) be a group and \(H\) be an abelian group. If there exists an injective
+group morphism \(\iota: G \mono H\), then \(G\) is abelian.
+\end{proposition}
+
+\begin{proof}
+Let \(x, y \in G\) be any pair of elements, then \(\phi(x y) = \phi(x) \phi(y) =
+\phi(y) \phi(x) = \phi(y x)\), thus \(x y = y x\) --- since \(\phi\) is
+injective.
+\end{proof}
+
 The following proposition is a trivial one, but it is a really useful tool to
 prove the non-existence of non-trivial morphisms between certain groups --- it
 relies on arguments based on the order of elements of each group.
@@ -274,7 +286,7 @@ ord-cyclic-elem}. On the other hand, if \(h \in C_{15}\) then \(|h|\) divides
 non-trivial morphism between \(C_7\) and \(C_{15}\).
 \end{example}
 
-\subsubsection{Isomorphism of Groups}
+\subsection{Isomorphism of Groups}
 
 \begin{proposition}[Isomorphisms are bijections]\label{prop: grp-iso-bij}
 Let \(\phi \in \Mor(\Grp)\). Then \(\phi\) is an isomorphism if and only if it
@@ -363,7 +375,7 @@ This being said, its easy to see that \(\phi\) preserves the group structure:
 \(\phi\) is a morphism of groups.
 \end{proof}
 
-\subsubsection{More Thoughts On Cyclic Groups}
+\subsection{More Thoughts On Cyclic Groups}
 
 We can now state the definition of a cyclic group in a formal manner, it goes as
 follows:
@@ -472,7 +484,10 @@ hence the set-function \(F \varphi\) is unique.
 \begin{remark}
 We now show that if \(G, H \in \Grp\) are such that \(G \iso H \times G\),
 \emph{it does not follow that} \(H\) is trivial.
-\todo[inline]{Find counterexample}
+Let \(G \coloneq \prod_{j=0}^{\infty} \Z\) and \(H \coloneq \Z\) be abelian
+groups under the natural structure of addition. Notice that \(G \iso H \times
+G\) by the natural assignment of each element of \(G\) to itself in \(H \times
+G\). Since \(H\) is non-trivial, we found a counterexample.
 \end{remark}
 
 \begin{proposition}
@@ -492,6 +507,8 @@ surjective. Now, let \((h, q)\) be in the kernel of the morphism, then \(hq =
 e\) which implies in \(h = q^{-1}\) but then \(h \in H \cap Q\) and by
 hypothesis \(h = e\) --- thus the morphism is injective.
 \end{proof}
+
+\section{Quotient Groups --- The Birth of Normal Subgroups}
 
 \subsection{Cosets}
 
@@ -537,29 +554,29 @@ h' h^{-1})H = y(h' h^{-1})H = y H\).
 \begin{definition}[Index]
 \label{def:grp-index}
 Let \(G\) be a group and \(H \subseteq G\) be a subgroup. The number of left
-cosets of \(H\) in \(G\) is denoted by \((G : H)\), which will be commonly
+cosets of \(H\) in \(G\) is denoted by \([G : H]\), which will be commonly
 refered to as the \emph{index} of \(H\) in \(G\).
 \end{definition}
 
 \begin{corollary}
 \label{cor:order-as-index}
 If we denote by \(*\) the trivial group, the \emph{order} of a group
-\(G\) is the same as \((G : *)\) --- that is, \(|G| = (G : *)\).
+\(G\) is the same as \([G : *]\) --- that is, \(|G| = [G : *]\).
 \end{corollary}
 
 \begin{proof}
 One can view the trivial group \(*\) as a subgroup of \(G\) containing only the
 identity. Notice that the number of left cosets of \(*\) will be exactly the
-number of elements of \(G\), that is \((G : *) = |G|\).
+number of elements of \(G\), that is \([G : *] = |G|\).
 \end{proof}
 
 \begin{proposition}
 \label{prop:grp-index-subgroup}
 Let \(G\) be a group, and \(H \subseteq G\) be a subgroup, and \(Q \subseteq H\)
-be a subgroup. Then, if any two of the quantities \(\{(G : H), (H : Q), (G :
-Q)\}\) is finite, the third is also finite and the following equality holds
+be a subgroup. Then, if any two of the quantities \(\{[G : H], [H : Q], [G :
+Q]\}\) is finite, the third is also finite and the following equality holds
 \[
-  (G : H) (H : Q) = (G : Q).
+  [G : H] [H : Q] = [G : Q].
 \]
 \end{proposition}
 
@@ -576,7 +593,7 @@ x_{i'} Q\). Since \(x_j, x_{j'} \in H\), we have \(y_j x_i Q H = y_j x_i H = y_j
 H\) and analogously \(y_{j'} x_{i'} Q H = y_{j'} H\) --- thus \(y_j H = y_{j'}
 H\), which implies in \(y_j = y_{j'}\). This shows that the collection \(\{y_{j}
 x_i\}_{(i, j) \in I \times J} \subseteq G\) are coset representatives for \(Q\)
-and therefore \((G : H) (H : Q) = (G : Q)\).
+and therefore \([G : H] [H : Q] = [G : Q]\).
 \end{proof}
 
 \begin{corollary}
@@ -586,16 +603,16 @@ divides the order \(|G|\).
 \end{corollary}
 
 \begin{proof}
-Since \(|G| = (G : *)\) is finite, any subgroup \(H\) of \(G\) is also finite
-and therefore \((G : H) (H : *) = (G : *)\), which is exactly the same as \((G :
-H) |H| = |G|\).
+Since \(|G| = [G : *]\) is finite, any subgroup \(H\) of \(G\) is also finite
+and therefore \([G : H] [H : *] = [G : *]\), which is exactly the same as \([G :
+H] |H| = |G|\).
 \end{proof}
 
 \begin{example}[Prime order]
 \label{exp:grp-prime-order-cyclic}
 Let \(G\) be a group with order \(|G| \coloneq p\) prime. Choose any \(g \in G\)
 with \(g \neq e\), and consider the subgroup \(H \coloneq \langle g
-\rangle\). From \cref{prop:grp-index-subgroup} we find that \((G : H) |H| = p\),
+\rangle\). From \cref{prop:grp-index-subgroup} we find that \([G : H] |H| = p\),
 hence \(|H|\) divides \(p\), but since \(|H| \leq p\), then \(|H| = p\) and
 therefore \(H = G\). This implies that any non-identity element of \(G\)
 generates the whole group, which is the same as to say that \(G\) is cyclic.
@@ -683,7 +700,7 @@ following groups:
 \item The \emph{normalizer} of \(S\) is defined as the group \(N(S) \coloneq \{g
   \in G : g S g^{-1} = S\}\).
 \item A \emph{centralizer} of \(S\) is defined as the group \(Z(S) \coloneq \{g
-  \in G : g s g^{-1} = g \text{, for all } s \in S\}\). The centralizer \(Z(G)\)
+  \in G : g s g^{-1} = s \text{, for all } s \in S\}\). The centralizer \(Z(G)\)
   is commonly called the \emph{center} of \(G\).
 \end{enumerate}
 \end{definition}
@@ -691,7 +708,7 @@ following groups:
 The normalizer and centralizer are indeed groups, notice that if \(g \in N(S)\),
 then \(g^{-1} \in N(S)\) since \(g S g^{-1} = S\) it follows, by multiplying on
 the left by \(g^{-1}\) and on the right by \(g\), that \(S = g^{-1} S
-g\). Moreover, given any two \(g, h \in N(S)\), we have
+g\). Moreover, given any two elements \(g, h \in N(S)\), we have
 \[
   (g h)^{-1} N (g h) = (h^{-1} g ^{-1}) N (g h) = (h^{-1}N h) (g^{-1} N g) = S.
 \]
@@ -699,479 +716,385 @@ For the case of the centralizer the proof is analogous as the one just made for
 normalizers, where instead of \(S\) we would be considering any element \(s \in
 S\).
 
-\todo[inline]{Continue: Lang page 30}
+In the following lemmas, let \(G\) be a group and \(H\) be a subgroup of \(G\).
 
-\section{\texorpdfstring{\(\Ab\)}{Ab} --- Category of Abelian Groups}
+\begin{lemma}
+If \(Q \subseteq G\) is any subgroup containing \(H\), and \(H\) is normal in
+\(Q\), then \(Q \subseteq N_G(H)\) --- that is, the normalizer \(N_G(H)\) of
+\(H\) is the largest subgroup of \(G\) such that \(H\) is normal.
+\end{lemma}
 
-\begin{definition}[Category of abelian groups]
-We define the category of abelian groups, denoted \(\Ab\), to be the category
-whose objects are abelian groups and group morphisms between them.
-\end{definition}
+\begin{proof}
+Let \(K\) be a group and \(\phi: Q \to K\) be a morphism of groups such that
+\(\ker \phi = H\), then given any \(q \in Q\), and any \(h \in H\), we have
+\(\phi(q h q^{-1}) = \phi(q) \phi(h) \phi(q)^{-1} = \phi(q) \phi(q)^{-1} = e_K\)
+--- thus \(q h q^{-1} \in H\) and since \(q H q^{-1} = H\) from hypothesis, then
+\(q \in N(H)\). The last statement follows clearly from the proposition.
+\end{proof}
 
-In the following propositions we are going to describe ways of telling if the
-group you might be interested is abelian or not.
+\begin{lemma}
+If \(Q \subseteq N_G(H)\) is a subgroup, then \(Q H\) is a group and \(H\) is
+normal in \(Q H\).
+\end{lemma}
+
+\begin{proof}
+First we verify that \(Q H\) is indeed a group. Let \(q h \in Q H\) be any
+element. Since \(Q \subseteq N_G(H)\), then \(Q H Q^{-1} = H\) and therefore \(Q
+H = H Q\) --- hence there exists \(q' h' \in Q H\) such that \(q' h' = q^{-1}
+h^{-1}\) so that \(Q H\) is closed under inverses. Moreover, given any two
+elements \(q h, q' h' \in Q H\), we have \((q h)(q' h') = q (h q') h'\), but
+since there exists \(q'' h'' \in Q H\) such that \(q'' h'' = h q'\) then \(q(h
+q') h' = q (q'' h'') h' = (q q'') (h'' h') \in Q H\) --- thus \(Q H\) is also
+closed under products, and therefore \(Q H\) is a group.
+
+Let \(q h \in Q H\) be any element and consider the group \((q h) H (h^{-1}
+q^{-1})\). Given any element \(h' \in H\), we have that \((q^{-1} h^{-1}) h' (q
+h) \in H\), thus \((q h) [(q^{-1} h^{-1}) h' (q h)] (h^{-1} q ^{-1}) = h'\) thus
+\(H \subseteq (q h) H (h^{-1} q^{-1})\). Moreover, clearly \((q h) H (h^{-1}
+q^{-1}) \subseteq H\) thus the equality holds --- which implies that \(H\) is
+normal on the group \(Q H\).
+\end{proof}
+
+\subsection{Sequences of Groups}
+
+Now that we know a bit about normal groups, we can study the properties of
+factorization of maps between groups and sequences of maps. One interesting
+immediate example is when \(H \subseteq G\) is a subgroup of a group \(G\), then
+\[
+  \begin{tikzcd}
+    H \ar[r, tail, "\iota"] &G \ar[r, two heads, "\pi"] &G/H
+  \end{tikzcd}
+\]
+which is a short exact sequence. Moreover, given any groups \(G\), \(Q\) and
+\(K\), if we have an exact sequence
+\[
+  \begin{tikzcd}
+    * \ar[r] &Q \ar[r, "f"] &G \ar[r, "g"] &K \ar[r] &*
+  \end{tikzcd}
+\]
+we can conclude that \(f\) is injective, and \(g\) is surjective --- this comes
+from the fact that \(\ker f = e_Q\) and, since the kernel of \(K \to 0\) is the
+whole group \(K\), we necessarily have \(g(G) = K\). Moreover, if we define \(H
+\coloneq \ker g\), there exists a natural identification
+\[
+  \begin{tikzcd}
+    * \ar[r]
+    &Q \ar[d, swap, "\iso"] \ar[r, tail, "f"]
+    &G \ar[r, two heads, "g"] \ar[d, "\iso"]
+    &K \ar[r] \ar[d, "\iso"]
+    &* \\
+    * \ar[r] &H \ar[r] &G \ar[r] &G/H \ar[r] &* \\
+  \end{tikzcd}
+\]
 
 \begin{proposition}
-A group \(G\) is abelian if and only either one of the following conditions
-are satisfied:
-\begin{itemize}
-  \setlength\itemsep{0em}
-  \item The map \(G \to G\) mapping \(g \mapsto g^{-1}\) is a morphism of
-    groups.
-  \item The map \(G \to G\) mapping \(g \mapsto g^2\) is a morphism of groups.
-\end{itemize}
-\end{proposition}
-
-\begin{proof}
-Denote the first map by \(\phi\) and the second by \(\psi\). If \(G\) is
-abelian, then for any \(g, g' \in G\) we have:
-\begin{gather*}
-  \phi(gg') = (gg')^{-1} = g'^{-1} g^{-1} = g^{-1}g'^{-1} = \phi(g) \phi(g'),
-  \\
-  \psi(gg') = (gg')^2 = (gg')(gg') = g^2g'^2 = \psi(g)\psi(g').
-\end{gather*}
-That is, \(\phi\) and \(\psi\) are morphisms. Now suppose \(\phi\) and
-\(\psi\) are morphisms and consider any elements \(g, g' \in G\) --- we get
-the following relations from each of the morphisms:
-\begin{gather*}
-  gg' = \phi(g^{-1})\phi(g'^{-1}) = \phi(g^{-1}g'^{-1})
-  = \phi((g'g)^{-1}) = g'g,
-  \\
-  (gg')^2 = \phi(gg') = \phi(g) \phi(g') = g^2 g'^2.
-\end{gather*}
-Using cancellation law for the second relation we find \(g'g = gg'\). This
-shows that \(G\) is abelian.
-\end{proof}
-
-\begin{proposition}
-Let \(\phi \in \Hom_\Grp(G, \Aut_\Grp(G))\) be the morphism of groups mapping
-\(g \xmapsto \phi \gamma_g\) --- as defined in \cref{lem: grp-inner-aut-cor}.
-\(G\) is an abelian group if and only if \(\phi\) is trivial.
-\end{proposition}
-
-\begin{proof}
-Let \(G\) be an abelian group, then for all \(g \in G\) the corresponding inner
-automorphism \(\gamma_g\) maps \(a \xmapsto{\gamma_g} g a g^{-1} = a (g g^{-1}) = a\)
-hence \(\gamma_g = \Id_G\), thus \(\phi\) is indeed trivial. Let \(\phi\) be trivial,
-then for all \(g \in G\) the map \(\gamma_g = \Id_G\) and therefore for all \(a \in G\)
-we have \(g a g^{-1} = a\), which implies in \(g a g^{-1} = a g g^{-1} = a
-g^{-1} g = g g^{-1} a = g^{-1} g a\) --- that is, the group \(G\) is abelian.
-\end{proof}
-
-Now that we know some ways of identifying abelian groups, we dive deep again
-into the categorical foundations of the category of abelian groups \(\Ab\).
-
-\begin{proposition}[\(\Hom_\Ab\) abelian group]\label{prop: hom-ab-grp}
-Let \(G, H \in \Ab\) be any two commutative groups. The collection of
-morphisms \(\Hom_\Ab(G, H)\) forms an abelian group with a binary operation
-defined by \((\phi + \psi)(g) = \phi(g) +_H \psi(g)\) --- where \(+_H\) is the
-binary operation of \(H\).
-\end{proposition}
-
-\begin{proof}
-Let \(\phi, \psi \in \Hom_\Ab(G, H)\) be any morphisms and consider elements
-\(g, g' \in G\). From the commutativity of \(H\) it follows that
-\begin{align*}
-  (\phi + \psi)(g +_G g')
-  &= \phi(g +_G g') +_H \psi(g +_G g')
-  \\
-  &= \left(\phi(g) +_H \phi(g')\right) +_H \left(\psi(g) +_H \psi(g')\right)
-  \\
-  &= \left(\phi(g) +_H \psi(g)\right) +_H \left(\phi(g') +_H \psi(g')\right)
-  \\
-  &= (\phi + \psi)(g) +_H (\phi + \psi)(g').
-\end{align*}
-That is, \(\phi + \psi \in \Hom_\Ab(G, H)\). Moreover, given a morphism \(f
-\in \Hom_\Ab(G, H)\), define the map \(k: G \to H\) mapping \(k(g) =
-f(g)^{-1}\). Notice that \(k\) is a morphism:
-\begin{align*}
-  k(g +_G g')
-  &= f(g +_G g')^{-1} \\
-  &= (f(g) +_H f(g'))^{-1} \\
-  &= f(g')^{-1} +_H f(g)^{-1} \\
-  &= f(g)^{-1} +_H f(g')^{-1} \\
-  &= k(g) +_H k(g').
-\end{align*}
-Moreover, \((f + k)(g) = f(g) +_H k(g) = f(g) +_H f(g)^{-1} = e_H\) --- that
-is, \(f + k\) is the trivial morphism \(g \mapsto e_H\), i.e. \(k\) is the
-inverse of \(f\). This finishes the proof that \(\Hom_\Ab(G, H)\) is a group.
-For the commutativity, it follows directly from the commutativity of \(H\):
-for all \(\phi, \psi \in \Hom_\Ab(G, H)\) we have
+\label{prop:universal-property-quotients-grp}
+Let \(G\) be a group and \(N\) be a normal subgroup of \(G\). Then, given a
+group \(Q\) toghether with a morphism of groups \(\phi: G \to Q\) such that
+\(N\) is the kernel of \(\phi\), there exists a unique morphism \(\phi_{*}: G/N
+\to Q\) such that the diagram
 \[
-  (\phi + \psi)(g) = \phi(g) +_H \psi(g) = \psi(g) +_H \phi(g) = (\psi +
-  \phi)(g).
+  \begin{tikzcd}
+    G \ar[d, two heads, swap, "\pi"] \ar[r, "\phi"] &Q \\
+    G/N \ar[ur, dashed, swap, bend right, tail, "\phi_{*}"] &
+  \end{tikzcd}
 \]
-\end{proof}
+is commutative. Moreover, the map \(\phi_*\) is injective. The morphism
+\(\phi_{*}\) induces an isomorphism of groups \(\psi: G/N \isoto \im \phi\) and
+therefore we have the following factorization
+\[
+  \begin{tikzcd}
+    G \ar[r, two heads, "\pi"] &G/N \ar[r, "\psi"]
+    &\im f \ar[r, hook, "\iota"] &Q
+  \end{tikzcd}
+\]
+\end{proposition}
 
-The following corollaries follow immediately from the construction of the
-category.
+\begin{proof}
+Define \(\phi_{*}\) simply as the mapping \(gH \to \phi(g)\), then clearly
+\(\phi_{*} \pi = \phi\). Moreover, given any \(x \in G/N\), the fiber
+\(\pi^{-1}(x)\) is non-empty, thus \(\phi_{*}\) cannot assume any other values
+beside those specified by \(\phi\), which implies in its uniqueness. Moreover,
+since \(\ker \phi = N\), if \(n \in N\) then \(\phi_{*} \pi(n) = \phi_{*}(n N) =
+e_{Q}\) but \(n N = N\) thus \(N \in \ker \phi_{*}\), moreover, if \(x N \in
+\ker \phi_{*}\) it follows that \(\phi(x) = e_Q\) then \(x \in N\) and therefore
+\(x N = N\) --- this implies that \(\ker \phi_{*} = N\), which is the identity
+element of \(G/N\), thus \(\phi_{*}\) is injective.
+\end{proof}
 
 \begin{corollary}
-Let \(G \in \Grp\) and \(H \in \Ab\). The collection of morphisms
-\(\Hom_\Grp(G, H)\) forms a group under the binary operation defined above.
+\label{cor:universal-property-quotients-grp}
+Let \(G\) be a group and \(H\) be a subgroup of \(G\). Define \(S\) to be the
+subgroup of \(G\) consisting of the intersection of all \emph{normal} subgroups
+of \(G\) containing \(H\). Then \(S\) is normal in \(G\) and is the smallest
+normal subgroup of \(G\) containing \(H\). Let \(Q\) be a group and \(\phi: G
+\to Q\) be a morphism of groups such that \(H \subseteq \ker \phi\). Then we
+have \(S \subseteq \ker \phi\), and there exists a unique morphism \(\phi_{*}:
+G/S \mono Q\) such that the following diagram commutes
+\[
+  \begin{tikzcd}
+    G \ar[d, two heads, swap, "\pi"] \ar[r, "\phi"] &Q \\
+    G/S \ar[ur, dashed, swap, bend right, tail, "\phi_{*}"] &
+  \end{tikzcd}
+\]
+moreover, \(\phi_{*}\) is injective.
 \end{corollary}
 
-\begin{corollary}
-Let \(A \in \Set\) and \(H \in \Ab\). The collection of morphisms
-\(\Hom_\Set(A, FH)\) forms a group under the binary operation defined above
---- where \(F: \Grp \to \Set\) is a forgetful functor.
-\end{corollary}
-
-\subsection{Coproduct and Fiber Product}
-
-\begin{proposition}[Coproduct in \(\Ab\)]\label{prop: coprod-ab}
-The direct product of abelian groups is a coproduct in \(\Ab\). That is, for
-any \(G, H, W \in \Ab\) and morphisms \(f \in \Hom_\Ab(W, G)\) and \(k \in
-\Hom_\Ab(W, H)\), there exists a unique morphism \(\varphi \in \Hom_\Ab(W, G
-\times H)\) such that the following diagram commutes
-\[
-  \begin{tikzcd}
-    G \ar[dr, "\iota_G"] \ar[ddr, bend right, swap, "f"] &
-    &H \ar[dl, swap, "\iota_H"] \ar[ddl, bend left, "k"] \\
-    &G \times H \ar[d, dashed, "\varphi"]  & \\
-    &W &
-  \end{tikzcd}
-\]
-Where we define inclusion morphisms \(g \xmapsto{\iota_G} (g, e_H)\) and \(h
-\xmapsto{\iota_H} (e_G, h)\).
-\end{proposition}
-
 \begin{proof}
-Since \(\Ab \subset \Grp\) --- that is, the category of abelian groups is a
-subcategory of \(\Grp\) --- then, from \cref{prop: forgetful-func-grp-set}
-there exists a functor \(\Ab \to \Set\). Since coproducts exists in \(\Set\)
-and are unique, a set-function \(\varphi\) exists and is unique, commuting the
-diagram in \(\Set\). We now show that we can extend such set-function into a
-morphism of groups. Let \(\varphi: G \times H \to W\) be the mapping \((g, h)
-\xmapsto \varphi f(g) k(h)\). Notice that
-\begin{align*}
-  \varphi((g, h)(g', h'))
-  = \varphi(gg', hh')
-  = f(g g') k(hh')
-  = f(g) f(g') k(h) k(h')
-  &= f(g) k(h) f(g') k(h') \\
-  &= \varphi(g, h) \varphi(g', h')
-\end{align*}
-that is, \(\varphi\) is a morphism of groups.
-\end{proof}
-
-\begin{remark}[Coproducts in \(\Grp\)]\label{rem:coprod-grp}
-\cref{prop: coprod-ab} is not at all true for the category of
-groups. Consider for instance the cyclic groups \(C_2 = \{e_x, x\}\) and \(C_3
-= \{e_y, y, y^2\}\). Let \(\sigma_k \in S_3\), for \(0 \leq k \leq 2\) be the
-rotation of \(\{1, 2, 3\}\) by \(k\), that is, the permutations represented by
-\[
-  M_{\sigma_0} =
-  \begin{bmatrix}
-    1 &0 &0 \\ 0 &1 &0 \\ 0 &0 &1
-  \end{bmatrix}
-  \qquad
-  M_{\sigma_1} =
-  \begin{bmatrix}
-    0 &0 &1 \\ 1 &0 &0 \\ 0 &1 &0
-  \end{bmatrix}
-  \qquad
-  M_{\sigma_2} =
-  \begin{bmatrix}
-    0 &1 &0 \\ 0 &0 &1 \\ 1 &0 &0
-  \end{bmatrix}
-\]
-Consider the embeddings \(f: C_2 \mono S_3\) mapping \(x^k \xmapsto f
-\sigma_k\) for \(k \in \{0, 1\}\), and \(g: C_3 \mono S_3\) mapping \(y^k
-\xmapsto g \sigma_k\) for \(k \in \{0, 1, 2\}\).
-
-Suppose, for the sake of contradiction, that \(C_2 \times C_3\) is a coproduct
-in \(\Grp\), that is, exists a unique morphism \(\varphi: C_2 \times C_3 \to
-S_3\) such that \(f = \varphi \iota_{C_2}\) and \(g = \varphi \iota_{C_3}\).
-Since \(\varphi\) is supposedly a morphism of groups,
-\begin{gather*}
-  \varphi(x, y) = \varphi(x, e_y) \varphi(e_x, y) = \sigma_1 \sigma_1 =
-  \sigma_2 \\
-  \varphi(x, y^2) = \varphi(x, e_y) \varphi(e_x, y^2) = \sigma_1 \sigma_2
-  = \sigma_0
-\end{gather*}
-However, \(\varphi(e_x, e_y) = \sigma_0\) and on the other hand we have
-\(\varphi(x, y) \varphi(x, y^2) = \sigma_2\), which contradicts the properties
-of a group morphism. This shows that there exists no such \(\varphi\) in
-\(\Grp\) and hence \(C_2 \times C_3\) is not a coproduct in \(\Grp\).
-
-Although \(C_2 \times C_3\) is not a coproduct in \(\Grp\), that doesn't mean
-that \(\Grp\) has no coproducts, they just behave differently when compared
-with \(\Ab\). For instance, let \(C_2 * C_3 \in \Grp\) be defined to be the
-group generated by elements \(x\) and \(y\), such that \(x^2 = e\) and \(y^3 =
-e\). We'll now show that \(C_2 * C_3\) is a coproduct of \(C_2\) and \(C_3\)
-in \(\Grp\). Let \(G\) be any group and consider morphisms \(f: C_2 \to G\)
-and \(k: C_3 \to G\). The inclusions \(\iota_{C_2}: C_2 \to C_2 * C_3\) and
-\(\iota_{C_3}: C_3 \to C_2 * C_3\) will be naturally given maps by taking each
-element to itself.
-
-Let \(q \in C_2 * C_3\) be any element. We know that there exists a finite
-collection of coefficients \(I = \{(a, b) \in \Z^2\}\) such that \(q =
-\prod_{(a, b) \in I} x^a y^b\). Define \(\phi: C_2 * C_3 \to G\) as the
-mapping
-\[
-  \phi(q) = \phi\left(\prod_{(a, b) \in I} x^a y^b\right)
-  = \prod_{(a, b) \in I} f(x^a) k(y^b)
-  = \prod_{(a, b) \in I} f(x)^a k(y)^b
-\]
-It should be clear that this definition implies \(\phi \iota_{C_2} = f\) and
-\(\phi \iota_{C_3} = g\). Notice that \(\phi(e) = f(e) k(e) = e_G\) and for
-all \(q, p \in C_2 * C_3\) --- with respective coefficients \(I = \{(a, b) \in
-\Z^2\}\) and \(J = \{(c,d) \in \Z^2\}\) --- we have
-\begin{align*}
-  \phi(q) \phi(p)
-  = \phi\left[ \prod_{(a, b) \in I} x^a y^b \right]
-  \phi\left[ \prod_{(c, d) \in J} x^c y^d \right]
-  &= \prod_{(a, b) \in I} f(x^a) k(y^b)
-  \prod_{(c, d) \in J} f(x^c) k(y^d)
-  \\
-  &= \prod_{(\alpha, \beta) \in A} f(x^\alpha) g(y^\beta)
-  \\
-  &= \phi\left(\prod_{(\alpha, \beta) \in A} f(x^\alpha) g(y^\beta) \right)
-  \\
-  &= \phi\left(\prod_{(a, b) \in I} x^a y^b
-    \prod_{(c, d) \in J} x^c y^d\right)
-  = \phi(qp)
-\end{align*}
-that is, \(\phi\) is a morphism of groups --- where we define \(A\) as the
-concatenation of the coefficients \(I\) and \(J\). We have shown that the
-following diagram commutes
-\[
-  \begin{tikzcd}
-    C_2 \ar[dr, "\iota_{C_2}"] \ar[ddr, swap, bend right, "f"]
-    & &C_3 \ar[dl, swap, "\iota_{C_3}"] \ar[ddl, bend left, "g"] \\
-    &C_2 * C_3 \ar[d, dashed, "\phi"] & \\
-    &G &
-  \end{tikzcd}
-\]
-We can then conclude that \(C_2 * C_3\), as defined above, is the coproduct of
-\(C_2\) and \(C_3\) in \(\Grp\).
-\end{remark}
-
-\begin{proposition}[Fiber products]
-Fiber products exist in \(\Ab\). That is, given abelian groups \(G, H, W \in
-\Ab\) and group morphisms \(\phi \in \Hom_\Ab(G, W)\) and \(\psi \in
-\Hom_\Ab(H, W)\). Let
-\[
-  G \times_W H \in \Ab_W
-\]
-be the fiber product of \(\phi\) and \(\psi\) in the category \(\Ab_W
-\subseteq \Ab\)\footnote{As a reminder: \(\Ab_W\) is the category whose
-objects are morphisms \(f \in \Hom_\Ab(-, W)\). If \(f: G \to W\) and \(g: H
-\to W\) are objects of \(\Ab_W\), a morphism \(h \in \Hom_{\Ab_W}(f, g)\) is
-such that \(hg = f\).} for which exists natural projections \(\pi_G\) and
-\(\pi_H\). Let \(Q \in \Ab\) be any abelian group and consider any morphisms \(f \in
-\Hom_\Ab(Q, G)\) and \(k \in \Hom_\Ab(Q, H)\). Then there exists a unique
-morphism \(\varphi \in \Hom_\Ab(Q, P)\) such that the following diagram commutes
-\[
-  \begin{tikzcd}
-    Q \ar[dr, dashed, "\varphi"] \ar[ddr, bend right, swap, "f"]
-    \ar[drr, bend left, "k"]
-    & & \\
-    &G \times_W H \ar[r, "\pi_H"] \ar[d, swap, "\pi_G"] &H \ar[d, "\psi"] \\
-    &G \ar[r, swap, "\phi"] &W
-  \end{tikzcd}
-\]
-\end{proposition}
-
-\begin{proof}
-Define \(G \times_W H = \{(g, h) \in G \times H : \phi(g) = \psi(h)\}\). Since
-\(\phi\) and \(\psi\) are group morphisms, given \((g, h) \in G \times_W H\),
-we have
-\[
-  \phi(g^{-1}) = \phi(g)^{-1} = \psi(h)^{-1} = \psi(h^{-1}),
-\]
-that is, \((g^{-1}, h^{-1}) \in G \times_W H\) exists and is the inverse of
-\((g, h)\). Moreover, given any elements \((g, h), (g', h') \in G \times_W H\), the
-product \((g, h)(g', h') = (gg', hh')\) is such that
-\[
-  \phi(gg') = \phi(g) \phi(g') = \psi(h) \psi(h') = \psi(hh'),
-\]
-thus \((gg', hh') \in G \times_W H\). This shows that \(G \times_W H\) is
-indeed a group and since \(G \times H\) is abelian, so is the fiber product
-defined above.
-
-From the forgetful functor \(\Ab \to \Set\) we know that there exists a unique
-set-function \(\varphi\) such that the diagram commutes in \(\Set\). If we
-define \(\varphi\) as the mapping \(q \overset \varphi \longmapsto (f(q),
-k(q))\) we can see that it preserves the group structure, since
-\[
-  \varphi(qq') = (f(qq'), k(qq')) = (f(q)f(q'), k(q)k(q'))
-  = (f(q), k(q))(f(q'), k(q')) = \varphi(q) \varphi(q'),
-\]
-that is, \(\varphi \in \Mor(\Ab)\).
-\end{proof}
-
-\subsection{Direct Sums}
-
-\begin{definition}[Direct sum of abelian groups]
-\label{def:Ab-direct-sum}
-Let \(\{G_j\}_{j \in J}\) be an indexed collection of abelian groups. We define
-their direct sum as the collection of tuples \((g_j)_{j \in J}\) such that \(g_j
-\neq e_{G_j}\) for only finitely many indexes \(j \in J\) --- that is, set of
-tuples with finite support. We denote the direct sum of \(\{G_{j}\}_{j \in J}\)
-as \(\bigoplus_{j \in J} G_j\) and the group structure of the direct sum is
-defined naturally as \((x_j)_{j \in J} + (y_j)_{j \in J} = (x_j +_{G_{j}}
-y_j)_{j \in J}\).
-\end{definition}
-
-\begin{proposition}[Direct sum universal property]
-\label{prop:Ab-direct-sum-universal-property}
-The direct sum defined in \cref{def:Ab-direct-sum} satisfies the universal
-property of direct sums. In other words, let \(\{G_{j}\}_{j \in J}\) be a
-collection of abelian groups and \(H\) be any abelian group, in addition,
-consider the collection of morphisms \(\{\phi_j \in \Hom_{\Grp}(G_j,
-H)\}\). There exists a unique morphism \(\psi: \bigoplus_{j \in J} G_j \to H\)
-such that the following diagram commutes
-\[
-  \begin{tikzcd}
-    G_j \ar[rd, bend left, "\phi_j"] \ar[d, hook, "\iota"] &\\
-    \bigoplus_{j \in J} G_j \ar[r, dashed, "\psi"] &H
-  \end{tikzcd}
-\]
-for every \(j \in J\) --- where \(\iota_{j}: G_j \to \bigoplus_{j \in J} G_j\)
-is the natural inclusion, mapping \(x_{j_0} \xmapsto{\iota_{j}} (x_j)_{j \in
-J}\) such that \(x_j = x_{j_0}\) for \(j = j_0\) and \(x_j = e_{G_j}\) for \(j
-\neq j_0\).
-\end{proposition}
-
-\begin{proof}
-Let \(\psi: \bigoplus_{j \in J} G_j \to H\) be the map defined by \(\psi(x) =
-\prod_{j \in J} \phi_{j}(x_j)\), where \(x = (x_j)_{j \in J} \in \bigoplus_{j
-\in J} G_j\) is any element. Notice that \(\psi(x)\) is therefore a finite
-product of elements of \(H\) and from the group structure of the direct sum, we
-find that \(\psi\) is clearly a group morphism. Moreover, \(\psi\) satisfies the
-commutativity \(\psi \iota_j = \phi_j\) for each \(j \in J\). Since such
-definition of \(\psi\) defines the image of every element of its domain,
-\(\psi\) is the unique morphism making the diagram commute.
-\end{proof}
-
-If \(G\) is an abelian group and \(A, B \subseteq G\) are subgroups such that
-\(A \cap B = 0\) and \(A + B = G\) --- that is, every \(g \in G\) can be
-written as \(g = a + b\) for some \(a \in A\) and \(b \in B\) --- then, in the
-context of abelian groups, we'll denote this fact shortly by \(G = A \oplus B\).
-
-Just like a vector space, we can define a basis of an abelian group by means of
-the ring \(\Z\). Moreover, if an abelian group has a basis, then we say that it
-is free.
-
-\begin{definition}[Basis]
-\label{def:Ab-basis}
-Let \(G\) be an abelian group. We say tha a non-empty collection \(\{g_j\}_{j
-\in J}\) is a basis for \(G\) if, given an element \(g \in G\), there exists a
-unique tuple of coefficients \((a_j)_{j \in J} \in \bigoplus_{j \in J} \Z\) such
-that \(g = \sum_{j \in J} a_j g_j\).
-\end{definition}
-
-Therefore the existence of a basis allow us to couple the coefficients coming
-from \(\bigoplus_{j \in J} \Z\) to any element of \(G\) in a unique way, which
-induces a natural isomorphism
-\[
-  G \iso \bigoplus_{j \in J} \Z.
-\]
-
-\begin{definition}[Abelian free group]\label{def:Ab-free}
-An abelian group is said to be free if it allows a basis.
-\end{definition}
-
-Equivalently as we did with free vector spaces, we can build free abelian groups
-out of sets, say \(S\), by analysing maps \(S \to \Z\) with finite support ---
-the collection of those will be likewise denoted by \(\Z^{\oplus S}\), which is
-a group under pointwise addition. For each \(s \in S\) we define a map
-\(\mathbf{s} \in \Z^{\oplus}\) by the mapping
-\[
-  \mathbf{s}(x) \coloneq
-  \begin{cases}
-    1, &\text{for } x = s \\
-    0, &\text{otherwise}
-  \end{cases}
-\]
-Then, any element \(\phi \in \Z^{\oplus S}\) can be written as a linear
-combination of finitely many maps \(\mathbf{s}\) (which is possible because of
-the finite support of \(\phi\)) that is, for some \(a_j \in \Z\) for each \(1
-\leq j \leq n\), we have
-\[
-  \phi = \sum_{j=1}^n a_j \mathbf{s}_j,\ \text{ mapping }\
-  s \xmapsto \phi
-  \begin{cases}
-    a_j, &\text{ if } s = s_j \text{ for some } 1 \leq j \leq n \\
-    0, &\text{otherwise}
-  \end{cases}
-\]
-Moreover, such choice of coefficients \(a_j \in \Z\) is unique. Let
-\(\{b_{j}\}_{j=1}^n \subseteq \Z\) be another set of coefficients with the same
-property, then in particular \(\sum_{j=1}^n (a_j - b_j) \mathbf{s}_j = 0\) and
-since \(\mathbf{s}_j\) are all non-zero maps, we find that \(b_j = a_j\). We
-also define a map \(\iota_S: S \mono \Z^{\oplus S}\) by pairing \(s \mapsto
-\mathbf{s}\).
-
-\begin{proposition}[Free \(\Ab\) universal property]
-\label{prop:free-abelian-group-universal-property}
-Let \(S\) be a set. Consider \(G\) to be any abelian group and a set-function
-\(g: S \to G\), then there exists a unique morphism of groups \(g_{*}:
-\Z^{\oplus S} \to G\) such that
-\[
-  \begin{tikzcd}
-    S \ar[d, hook, "\iota_S"] \ar[r, "g"] &G \\
-    \Z^{\oplus S} \ar[ru, bend right, dashed, "g_{*}"']  &
-  \end{tikzcd}
-\]
-is a commutative diagram.
-\end{proposition}
-
-\begin{proof}
-Define \(g_{*}\) by \(g_{*}(\sum_{s \in S} a_s \mathbf{s}) \coloneq \sum_{s \in
-S} a_s g(s)\). Then \(g_{*}\iota_S(s) = g_{*}(\mathbf{s}) = g(s)\). Moreover, it
-follows from the construction that \(g_{*}(\sum_{s \in S} a_s \mathbf{s}) =
-\sum_{s \in S} a_s g_{*}(\mathbf{s})\) thus \(g_{*}\) is a group morphism. If we
-let \(f: \Z^{\oplus S} \to G\) be a morphism satisfying such commutativity,
-we'll see that, since \(f_{*}(\mathbf{s}) = g(s) = g_{*}(\mathbf{s})\), since
-any element of \(\Z^{\oplus S}\) can be written uniquely as a linear combination
-of the basis \(\{\mathbf{s}\}_{s \in S}\), then \(f_{*}\) and \(g_{*}\) agree in
-every point of the domain --- hence \(f_{*} = g_{*}\).
+As before, we just define \(\phi_{*}(x S) \coloneq \phi(x)\). The commutativity
+follow from construction, uniqueness follows from the universal
+property. Moreover, \(S\) is given by the intersection of arbitrarily many
+normal subgroups of \(G\) containing \(H\), thus in particular \(H \subseteq S\)
+and, for every \(g \in G\), we have \(g S g^{-1} = S\) --- thus \(S\) is indeed
+normal.
 \end{proof}
 
 \begin{corollary}
-Let \(f: X \to Y\) be a set-function between sets \(X\) and \(Y\). Then, there
-exists a unique morphism \(\overline{f}: \Z^{\oplus X} \to \Z^{\oplus Y}\) such
-that the following diagram commutes
+\label{cor:quotient-isomorphism}
+Let \(G\) be a group and \(H \subseteq G\) be a \emph{normal} subgroup of
+\(G\). Let \(Q \subseteq G\) be a subgroup \emph{containing} \(H\). Then,
+\(Q/H\) is normal in \(G/H\) if and only if \(Q\) is normal in \(G\), if that is
+the case, then we have a canonical isomorphism
 \[
-  \begin{tikzcd}
-    X \ar[d, "f"'] \ar[r, hook, "\iota_X"]
-    &\Z^{\oplus X} \ar[d, dashed, swap, "\overline f"] \\
-    Y \ar[r, hook, "\iota_Y"] &\Z^{\oplus Y}
-  \end{tikzcd}
+  (G/H) \big/ (Q/H) \iso G/Q.
 \]
 \end{corollary}
 
 \begin{proof}
-Let \(\overline f\) be defined by \(\overline f(\sum a_x \mathbf{x}) \coloneq
-\sum a_x \iota_Y f(x)\) --- so that, in particular, \(\overline f(\mathbf{x}) =
-\iota_Y f(x)\), that is, the diagram commutes. Let \(\overline g: \Z^{\oplus X}
-\to \Z^{\oplus Y}\) be a morphism such that the diagram commutes, then
-necessarily \(\overline g(\mathbf{x}) = \iota_Y f(x) = \overline
-f(\mathbf{x})\), that is, \(\overline g\) and \(\overline f\) agree on the basis
-of \(\Z^{\oplus X}\), thus \(\overline g = \overline f\).
+Suppose \(Q\) is normal in \(G\). Since \(H\) is contained in \(Q\), and \(\ker(G
+\epi G/Q) = Q\), we can apply the universal property of quotients
+\cref{cor:universal-property-quotients-grp} to the subgroup \(H\) of the kernel
+and find a unique induced injective morphism \(G/H \mono G/Q\) --- whose kernel,
+on the other hand, is \(Q/H\), thus \(Q/H\) is normal in \(G/H\).
+
+For the converse, let \(Q/H\) be normal in \(G/H\), and consider the morphism
+given by the composition of the canonical projections
+\[
+  \begin{tikzcd}
+    G \ar[r, two heads] &G/H \ar[r, two heads] &(G/H) \big/ (Q/H)
+  \end{tikzcd}
+\]
+which has a kernel given by \(Q\) --- thus \(Q\) is normal in \(G\). With that,
+using \cref{cor:universal-property-quotients-grp}, the induced map is the wanted
+canonical isomorphism.
 \end{proof}
 
-\begin{notation}
-When it's not confusing, we can even drop the notation \(\mathbf{s}\) and
-instead identify the elements as \(s \in \Z^{\oplus S}\), so that \(\sum a_s s
-\coloneq \sum a_s \mathbf{s}\). Moreover, for now on, we'll refer to the
-\emph{free abelian group generated by} \(S\), that is, \(\Z^{\oplus S}\), as
-\(F_{\Ab}(S)\) --- this is motivated by the fact that the notation \(\Z^{\oplus
-S}\), although cool, may be a rather obscure way of talking about a group. The
-elements of \(S\), in particular, will be refered to as the \emph{free
-generators}.
-\end{notation}
+In the context of the last corollary, we can visualize the propositions by the
+following diagram, which commutes
+\[
+  \begin{tikzcd}
+    * \ar[r] &Q \ar[r, tail] \ar[d, "\iso"'] &G \ar[r, two heads] \ar[d, "\iso"]
+    &G/Q \ar[r] \ar[d, "\Id"] &*
+    \\
+    * \ar[r] &Q/H \ar[r, tail] &G/H \ar[r, two heads] &G/Q \ar[r] &*
+  \end{tikzcd}
+\]
 
-\begin{proposition}
-\label{prop:Ab-isomorphic-factor-of-free}
-Let \(G\) be any abelian group
-\todo[inline]{Continue: mini exercises on free ab grp}
+\begin{corollary}
+\label{cor:grp-intersection-coset-isomorphism}
+Let \(G\) be a group, and let \(H\) and \(Q\) be subgroups of \(G\) such that
+\(H \subseteq N_G(Q)\) --- that is, \(H\) is contained in the normalizer of
+\(Q\). Then we have the following canonical isomorphism
+\[
+  H/(H \cap Q) \iso H Q / Q.
+\]
+\end{corollary}
+
+\begin{proof}
+Since \(H \subseteq N_G(Q)\), then \(hQh^{-1} = Q\) for every \(h \in H\), so
+that \(Q\) is normal in \(H\). Since both \(H\) and \(Q\) are normal in \(H\),
+their intersection \(H \cap Q\) is also normal in \(H\). Moreover, \(HQ = QH\)
+and, given \(hq \in HQ\), the element \(q^{-1} h^{-1} \in Q H = H Q\) exists, thus
+\(HQ\) is closed under inverses, and clearly closed under products, thus \(HQ\)
+is a subgroup of \(G\). Consider now the surjective morphism \(H \epi H Q / Q\)
+given by the mapping \(h \mapsto h Q\) --- whose kernel is \(H \cap Q\), and
+therefore, by the quotient universal property, there exists a unique injective
+morphism \(H/(H \cap Q) \mono HQ/Q\), which is also surjective by the
+construction of \(H \epi H Q / Q\).
+\end{proof}
+
+\begin{proposition}[Morphism preimage preserve normality]
+\label{prop:morphisms-preserve-normality}
+Let \(G\) and \(H\) be groups and \(N \subseteq H\) be a normal subgroup. If
+\(f: G \to H\) is a morphism, then \(f^{-1}(N) \subseteq G\) is a normal
+subgroup of \(G\).
 \end{proposition}
 
-\todo[inline]{Continue direct products}
+\begin{proof}
+Let \(x \in G\) and \(y \in f^{-1}(N)\) be any two element of \(G\). We have
+\(f(x y x^{-1}) = f(x) f(y) f(x)^{-1} \in N\), thus \(x y x^{-1} \in f^{-1}(N)\).
+\end{proof}
+
+Notice that the previous proposition gets us the following commutative diagram
+\[
+  \begin{tikzcd}
+    G \ar[r, "f"] &H \ar[r, two heads, "\pi"] &H/N \\
+    f^{-1}(N) \ar[u, hook] \ar[r, "f"] &N \ar[u, hook]
+  \end{tikzcd}
+\]
+Moreover, since \(\ker \pi f = f^{-1}(N)\), we can use the universal property to
+obtain
+\[
+  \begin{tikzcd}
+    G \ar[d, two heads] \ar[r, "\pi f"] &H/N \\
+    G/f^{-1}(N) \ar[ru, swap, tail, bend right, dashed, "\phi"] &
+  \end{tikzcd}
+\]
+If we now impose surjectivity to the morphism \(f\), we find that \(\phi\) must
+also be surjective, giving rise to an isomorphism \(G/f^{-1}(N) \iso H/N\). The
+last two diagrams can be encoded in a single commutative diagram:
+\[
+  \begin{tikzcd}
+    0 \ar[r]
+    &f^{-1}(N) \ar[d, "f"] \ar[r, tail]
+    &G \ar[d, "f"] \ar[r, two heads]
+    &G/f^{-1}(N) \ar[r] \ar[d, dashed, tail, "\phi"]
+    &0 \\
+    0 \ar[r]
+    &N \ar[r, tail]
+    &H \ar[r, two heads]
+    &H/N \ar[r]
+    &0
+  \end{tikzcd}
+\]
+
+\subsection{Group Towers \& Solvability}
+
+\begin{definition}[Tower of subgroups]
+\label{def:tower-subgroups}
+Let \(G\) be a group. A finite sequence of groups \((G_0, \dots, G_n)\) is said
+to be a \emph{tower of subgroups} of \(G\) if
+\[
+  G = G_0 \supsetneq G_1 \supsetneq \dots \supsetneq G_n.
+\]
+The tower may be classified as a \emph{normal tower} if \(G_{j + 1}\) is normal
+in \(G_j\) for every \(0 \leq j \leq n - 1\). The tower is said to be
+\emph{abelian} (respectively, \emph{cyclic}) if it is a normal tower and each
+quotient \(G_j/G_{j+1}\) is abelian (respectively, cyclic).
+\end{definition}
+
+A direct corollary of \cref{prop:morphisms-preserve-normality} goes as follows.
+
+\begin{corollary}
+\label{cor:morphism-normal-towers}
+Let \(f: G \to H\) be a group morphism, and \(H \supsetneq H_0 \supsetneq \dots
+\supsetneq H_n\) be a normal tower in \(H\). Then, if we define subgroups \(G_j
+\coloneq f^{-1}(H_j)\) for every \(0 \leq j \leq n\), the sequence \((G_0,
+\dots, G_n)\) forms a normal tower in \(G\).
+
+Moreover, if \((H_0, \dots, H_n)\) is an abelian tower (respectively, cyclic
+tower) in \(H\), then \((G_0, \dots, G_n)\) is an abelian tower (respectively,
+cyclic tower) in \(G\).
+\end{corollary}
+
+\begin{proof}
+The first part is clear. For the second, notice that since for all \(0 \leq j
+\leq n-1\) we have the following commutative diagram
+\[
+  \begin{tikzcd}
+    G_j \ar[d, two heads] \ar[r, "f"] &H_j \ar[r, two heads] & H_j/H_{j+1} \\
+    G_j/G_{j+1} \ar[rru, bend right, tail, dashed]
+  \end{tikzcd}
+\]
+then the injection \(G_j/G_{j+1} \mono H_j/H_{j+1}\) allow us to view
+\(G_j/G_{j+1}\) as a subgroup of \(H_j/H_{j+1}\) --- thus necessarily abelian
+(respectively, cyclic).
+\end{proof}
+
+\begin{definition}[Refinement]
+\label{def:refinement-tower}
+Given a tower \(G = G_0 \supsetneq \dots \supsetneq G_n\) of subgroups of \(G\),
+a \emph{refinement} of such tower is given by the insertion of a finite
+sequence of subgroups \((G_{n+1}, \dots, G_m)\) to the end of the tower --- that
+is,
+\[
+  G = G_{0} \supsetneq \dots \supsetneq G_n \supsetneq G_{n+1} \supsetneq \dots
+  \supsetneq G_{m}.
+\]
+\end{definition}
+
+\begin{definition}[Solvable group]
+\label{def:solvable-group}
+A group \(G\) is said to be \emph{solvable}, if there exists an \emph{abelian
+tower} in \(G\) such that the last element is the trivial subgroup.
+\end{definition}
+
+\begin{proposition}
+\label{prop:finite-grp-cyclic-refinement}
+The following propositions regard implications of the solvability of finite
+groups:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Let \(G\) be a \emph{finite} group. An abelian tower of \(G\) admits a
+  \emph{cyclic refinement}.
+\item Let \(G\) be a \emph{finite solvable} group. Then \(G\) admits a
+  \emph{cyclic tower} whose last element is the trivial subgroup.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Let \(G\) be a finite abelian group. We'll set out to prove that \(G\) admits a
+cyclic tower ending with the trivial subgroup. We proceed by induction on the
+order of \(G\). If \(|G| = 1\), then the proposition follows trivially. Suppose,
+as the hypothesis of induction, that the proposition is true for \(1 \leq |G| <
+n\). Let now \(|G| = n\) and consider any element \(x \neq e\) of \(G\). Define
+the group \(X \coloneq \langle x \rangle\), and \(H \coloneq G/X\) --- since
+\(|H| < |G| = n\) it must be true, from hypothesis, that there exists a cyclic
+tower
+\[
+  H \supsetneq H_0 \supsetneq \dots \supsetneq H_m = \{e\}.
+\]
+Let \(\pi: G \epi H\) be the canonical projection. From
+\cref{cor:morphism-normal-towers}, the sequence of subgroups \(G_0 \coloneq G\),
+and \(G_j \coloneq f^{-1}(H_j)\) for \(1 \leq j \leq m\) form a cyclic tower in
+\(G\), thus
+\[
+  G = G_0 \supsetneq G_1 \supsetneq \dots \supsetneq G_m \supsetneq \{e\}.
+\]
+is the desired cyclic tower on \(G\). This proves both the first statement and
+the second.
+\end{proof}
+
+For the time being, the following theorem is a classic but probably still beyond
+the scope of this text, so I shall only mention it.
+
+\begin{theorem}[Feit-Thompson]
+\label{thm:feit-thompson}
+All finite groups of odd order are solvable.
+\end{theorem}
+
+\begin{theorem}
+\label{thm:solvable-iff-normal-and-quotient-solvable}
+Let \(N \subseteq G\) be a normal subgroup of the group \(G\). Then \(G\) is
+solvable if and only if both \(N\) and \(G/N\) are solvable.
+\end{theorem}
+
+\begin{proof}
+(\(\Rightarrow\)) Suppose \(G\) is solvable, and let \(G = G_0 \supsetneq \dots
+\supsetneq G_n = \{e\}\) be an abelian tower in \(G\).  For each \(1 \leq j \leq
+n\), define \(N_{j} \coloneq N \cap G_j\), and let \(\phi_j: G_j \to Q\) be a
+group morphism with kernel \(G_{j+1}\), then the induced morphism \(\phi_j|_{N
+\cap G_j}: N \cap G_j \to Q\) has kernel \(N \cap G_{j+1} = N_{j+1}\) --- which
+proves that \(N_{j+1}\) is normal in \(N_j\). Moreover, there exists a canonical
+embedding \(N_j/N_{j+1} \emb G_j/G_{j+1}\), which implies that \(N_j/N_{j+1}\)
+is abelian by \cref{prop:injective-morphism-abelian}. Therefore \(N = N_0
+\supsetneq \dots \supsetneq N_n = \{e\}\) is an abelian tower and hence \(N\) is
+solvable. For the group \(G/N\) we can simply consider the tower \(G/N = (G_0
+N)/N \supsetneq \dots \supsetneq (G_n N)/N = (\{e\} N)/N = N\) --- where
+\((G_{j+1} N)/N\) is surely normal in \((G_j N)/N\). Moreover, \([(G_j N)/N]
+\big/ [(G_{j+1} N)/N] \iso (G_j N)/(G_{j+1} N)\) which inherits the commutative
+structure from \(G_j/G_{j+1}\) --- thus the tower is abelian and \(G/N\) is
+solvable.
+
+(\(\Leftarrow\)) Let both \(N\) and \(G/N\) be solvable and consider the abelian
+towers \(G/N = H_0 \supsetneq \dots \supsetneq H_n = N\), and \(N = Q_0
+\supsetneq \dots \supsetneq Q_m = \{e\}\). Since \(H_j \coloneq \{g N : g \in
+G\}\) we can consider the isomorphic group \(H_j' \iso H_j\) given by the image
+of the morphism \(H_{j} \isoto H_j'\) mapping \(g N \mapsto g\). Thus clearly
+\[
+  G = H_0' \supsetneq \dots \supsetneq H_n' = N
+\]
+\todo[inline]{Continue proof}
+\end{proof}
 
 %%% Local Variables:
 %%% mode: latex

@@ -20,23 +20,23 @@
    Let sets \(S, S'\) and a map \(\alpha : S \to S'\), then
    \[
       \alpha^\ast : k^{S'} \to k^S \ \text{ mapping }\ (f : S' \to k) \mapsto
-      (f \circ \alpha : S \to k)
+      (f  \alpha : S \to k)
    \]
    is a morphism of \(k\)-vector spaces. Moreover if \(\beta : S' \to S''\) then
-   \((\beta \circ \alpha)^\ast = \alpha^\ast \circ \beta^\ast\).
+   \((\beta  \alpha)^\ast = \alpha^\ast  \beta^\ast\).
 \end{proposition}
 
 \begin{proof}
    Let maps \(f, g : S' \to k\), then
    \[
-      (f + g : S' \to k) \xmapsto{\alpha^\ast} \left( (f + g)\circ \alpha : S
+      (f + g : S' \to k) \xmapsto{\alpha^\ast} \left( (f + g) \alpha : S
       \to k \right),
    \]
    but \(\forall s \in S\) we have \((f + g)(\alpha(s)) = f(\alpha(s)) +
    g(\alpha(s))\), which shows the first property. For the second property, let
    \(a \in k\), then we get the map
    \[
-      ((a \cdot f) : S' \to k) \xmapsto{\alpha^\ast} ( (a \cdot f) \circ \alpha
+      ((a \cdot f) : S' \to k) \xmapsto{\alpha^\ast} ( (a \cdot f)  \alpha
       : S \to k),
    \]
    but \(\forall s \in S\) we have \((a \cdot f)(\alpha(s)) = a \cdot
@@ -119,11 +119,11 @@ combination, with non-zero scalars \(a_i \in k\), of the form
    finiteness comes from the fact that only finitely may \(\mathbf s\) will
    actually appear, since there are only finite non-zero values under
    \(\alpha\)). Let now  \(L : k^{\oplus S} \to V\) be a morphism of
-   \(k\)-vector spaces such that \(f = L \circ \iota\) for a given \(f : S \to
+   \(k\)-vector spaces such that \(f = L  \iota\) for a given \(f : S \to
    V\). Then
    \[
       L(\alpha) = \sum_{s \in S} L(\alpha(s) \mathbf{s}) = \sum_{s \in S}
-      \alpha(s) L(\mathbf s) = \sum_{s \in S} \alpha(s) (L \circ \iota)(s)
+      \alpha(s) L(\mathbf s) = \sum_{s \in S} \alpha(s) (L  \iota)(s)
       = \sum_{s \in S} \alpha(s) f(s),
    \]
    which implies that the morphism \(L\) is indeed unique.
@@ -154,11 +154,11 @@ k^{\oplus S}\), where \(S, S'\) are sets, just as we've done for the case
 S'\), and the inclusion maps \(\iota_S : S \to k^{\oplus S}\) and \(\iota_{S'} :
 S' \hookrightarrow k^{\oplus S'}\), and construct the map
 \[
-   \ell = \iota_{S'} \circ \alpha : S \to k^{\oplus S'}.
+   \ell = \iota_{S'}  \alpha : S \to k^{\oplus S'}.
 \]
 Then, by means of the universal property for free vector spaces, we find that
 there exists a unique morphism of \(k\)-vector spaces \(\alpha_\ast : k^{\oplus
-S} \to k^{\oplus S'} \) such that \(\ell = \alpha_\ast \circ \iota_S\), that is,
+S} \to k^{\oplus S'} \) such that \(\ell = \alpha_\ast  \iota_S\), that is,
 the following diagram commutes
 \[
    \begin{tikzcd}
@@ -230,7 +230,7 @@ the following diagram commutes
 \begin{proof}
    Notice that this is simply the product universal product restricted for only
    one branch of the product \(V_j \times \prod_{i \neq j} V_i\). For the
-   uniqueness, notice that since we want \(\varphi_j = \pi_j \circ \ell\), then
+   uniqueness, notice that since we want \(\varphi_j = \pi_j  \ell\), then
    it ought to be the case that
    \[
       L \ni x \overset{\ell}\longmapsto (\varphi_j(x))_{i \in I} \in \prod_{i
@@ -313,7 +313,7 @@ the following diagram commutes
 \end{proposition}
 
 \begin{proof}
-   Since we want to have \(\ell \circ \iota_j = f_j\), it must be the case for
+   Since we want to have \(\ell  \iota_j = f_j\), it must be the case for
    any \(v \in v_j\) that, being \(\iota_j(v) := (v_i)_i\), then
    \[
       \ell((v_i)_{i \in i}) = \ell \left( \sum_{i \in i} \iota_i(v_i) \right) =
@@ -368,7 +368,7 @@ the following diagram commutes
   mapping  \(((a_i)_{i=1}^m, (b_i)_{i=1}^\ell) = (c_i)_{i=1}^{m+\ell}\) where
   \(c_i := a_i\) for all \(1 \leq i \leq m\) and \(c_i := b_i\) for all  \(m+1
   \leq i \leq m+\ell\). Notice then that the morphism \(M\) is induced by the
-  morphism \(T, S\) so that \(T = \pi_m \circ M\) and \(S = \pi_\ell \circ M\),
+  morphism \(T, S\) so that \(T = \pi_m  M\) and \(S = \pi_\ell  M\),
   so that we need to have \(M(v) = (T(v), S(v))\) for all \(v \in k^m\), but
   notice that \(M : k^n \to k^m\times k^\ell\) is in fact isomorphic to a
   \(k\)-linear map \(k^n \to k^{m+\ell}\), so that we can encode the
@@ -445,7 +445,7 @@ the following diagram commutes
       b_{\ell 1} &\dots & b_{\ell m}
     \end{bmatrix}
    \]
-   Then from the construction \(T = M \circ \iota_n\) and \(S = M \circ
+   Then from the construction \(T = M  \iota_n\) and \(S = M
    \iota_m\) we conclude that for all element \(a = (a_i)_{i=1}^n \in k^n\) and
    every \(b = (b_i)_{i=1}^m \in k^m\), will be such that
    \begin{gather*}

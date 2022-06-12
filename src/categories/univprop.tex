@@ -1,41 +1,5 @@
 \section{Universal Properties}
 
-\subsection{Initial and final objects}
-
-\begin{definition}[Initial and Final]\label{def: initial and final objects}
-   Given a category \(\cat C\), an object \(I \in \cat C\) is said to be an
-   \emph{initial object} in the category \(\cat{C}\) if for all \(A \in
-   \cat C\), there exists exactly one morphism \(f \in \Hom(I, A)\) so that
-   \(\Hom(I, A) = f\). Conversely, an object \(F \in \cat C\) is said to be an
-   \emph{final object} in \(\cat C\) if there is exactly one morphism \(g \in
-   \Hom(A, F)\) for all given \(A \in \cat C\) and thus \(\Hom(A, F) = g\).
-\end{definition}
-
-\begin{proposition}\label{prop:initial-final-unique}
-   Let a category \(\cat{C}\), then initial and final objects are said to be
-   unique up to a unique isomorphism:
-   \begin{enumerate}[I.]
-      \item If \(I',I'' \in \Obj(\cat{C})\) are initial objects of the
-         category, then \(I' \iso I''\), where the isomorphism \(\varphi_I: I'
-         \to I''\) is unique.
-      \item If \(F',F'' \in \Obj(\cat{C})\) are initial objects of the
-         category, then \(F' \iso F''\), where the isomorphism \(\varphi_F: F'
-         \to F''\) is unique.
-   \end{enumerate}
-\end{proposition}
-
-\begin{proof}
-   Since \(I', I''\) are both initial objects of  \(\cat{C}\) then exists a
-   unique morphism \(f \in \Hom(I', I'')\) and \(\exists! g \in \Hom(I'', I')\)
-   from which we can compose and conclude that \(f g = \Id_{I''}\) and \(gf =
-   \Id_{I'}\) and thus \(f\) and \(g\) are isomorphisms and also \(f^{-1} = g\)
-   and \(g^{-1} = f\).  For final objects the same reasoning works and thus the
-   proof will be omitted.
-\end{proof}
-
-We normally say that a given construction satisfies a universal property if such
-construction is a terminal object of the category.
-
 \subsection{Quotients}
 
 Denote \(\sim\) an equivalence relation between elements of a given object
@@ -47,89 +11,89 @@ Moreover, the objects of the category we'll be dealing will be objects
 \(\varphi \in \Hom(A, Z)\) and the morphisms between objects \(\varphi : A \to
 Z\) and \(\varphi' : A \to Z'\) is defined to be the commutative diagram
 \[
-  \begin{tikzcd}
-      &A \ar[dl, swap, "\varphi"] \ar[dr, "\varphi'"] & \\
-    Z \ar[rr, "\psi"] & &Z'
-  \end{tikzcd}
+\begin{tikzcd}
+  &A \ar[dl, swap, "\varphi"] \ar[dr, "\varphi'"] & \\
+Z \ar[rr, "\psi"] & &Z'
+\end{tikzcd}
 \]
 
 \begin{proposition}
-   The canonical projection \(\pi : A \to A/{\sim}\) is an initial object of the
-   category.
+The canonical projection \(\pi : A \to A/{\sim}\) is an initial object of the
+category.
 \end{proposition}
 
 \begin{proof}
-   Let a morphism \(\varphi: A \to Z\). The claim says that there exists a
-   unique morphism \(\tilde{\varphi} : A/{\sim} \to Z\) such that the diagram
-   commutes
-    \[
-      \begin{tikzcd}
-        A \ar[rr, "\varphi"] \ar[dr, swap, "\pi"]
-          &
-            & Z \\
-          & A/{\sim} \ar[ur, swap, "\widetilde \varphi"]
-      \end{tikzcd}
-   \]
-   From the imposition that such diagram commutes, we are inclined to define the
-   morphism \(\tilde\varphi\) such that for every element \(a \in A\) it
-   satisfies \(\tilde\varphi(\overline{a}) = \varphi(a)\), so that
-   \(\tilde\varphi  \pi (a) = \varphi(a)\). Since the projection and
-   \(\varphi\) are essentially unique, it is clear that if \(\tilde\varphi\)
-   exists, then it should also be unique. We now show that we can construct the
-   morphism \(\tilde\varphi\). Notice that if \(\overline{a} = \overline{a'}\)
-   then \(\tilde\varphi(\overline{a}) = \varphi(a)= \varphi(a') =
-   \tilde\varphi(\overline{a'})\) thus indeed the morphism is well defined.
+Let a morphism \(\varphi: A \to Z\). The claim says that there exists a
+unique morphism \(\tilde{\varphi} : A/{\sim} \to Z\) such that the diagram
+commutes
+\[
+  \begin{tikzcd}
+    A \ar[rr, "\varphi"] \ar[dr, swap, "\pi"]
+      &
+        & Z \\
+      & A/{\sim} \ar[ur, swap, "\widetilde \varphi"]
+  \end{tikzcd}
+\]
+From the imposition that such diagram commutes, we are inclined to define the
+morphism \(\tilde\varphi\) such that for every element \(a \in A\) it
+satisfies \(\tilde\varphi(\overline{a}) = \varphi(a)\), so that
+\(\tilde\varphi  \pi (a) = \varphi(a)\). Since the projection and
+\(\varphi\) are essentially unique, it is clear that if \(\tilde\varphi\)
+exists, then it should also be unique. We now show that we can construct the
+morphism \(\tilde\varphi\). Notice that if \(\overline{a} = \overline{a'}\)
+then \(\tilde\varphi(\overline{a}) = \varphi(a)= \varphi(a') =
+\tilde\varphi(\overline{a'})\) thus indeed the morphism is well defined.
 \end{proof}
 
 \subsection{Products}
 
 \begin{proposition}\label{universal property for products}
-   Let objects \(X, Y\) in a given category \(\cat{C}\) and projections \(\pi_X
-   \in \Hom(X \times Y, X)\) and \(\pi_Y \in \Hom(X \times Y, Y)\). Let any
-   object \(Z\) in the category and set \(\varphi \in \Hom(Z, X)\) and \(\psi
-   \in \Hom(Z, Y)\). Then there exists a unique morphism \(\ell \in \Hom(Z, X
-   \times Y)\) such that the following diagram commutes
-   \[
-      \begin{tikzcd}
-          & Z
-          \ar[d, dashed, "\ell"]
-          \ar[ddl, bend right, swap, "\varphi"]
-          \ar[ddr, bend left, "\psi"]
-            & \\
-          & X \times Y \ar[dl, "\pi_X"] \ar[dr, swap, "\pi_Y"] \\
-        X
-          &
-            & Y
-      \end{tikzcd}
-   \]
-   this is the so called \emph{universal property for products}.
+Let objects \(X, Y\) in a given category \(\cat{C}\) and projections \(\pi_X
+\in \Hom(X \times Y, X)\) and \(\pi_Y \in \Hom(X \times Y, Y)\). Let any
+object \(Z\) in the category and set \(\varphi \in \Hom(Z, X)\) and \(\psi
+\in \Hom(Z, Y)\). Then there exists a unique morphism \(\ell \in \Hom(Z, X
+\times Y)\) such that the following diagram commutes
+\[
+  \begin{tikzcd}
+      & Z
+      \ar[d, dashed, "\ell"]
+      \ar[ddl, bend right, swap, "\varphi"]
+      \ar[ddr, bend left, "\psi"]
+        & \\
+      & X \times Y \ar[dl, "\pi_X"] \ar[dr, swap, "\pi_Y"] \\
+    X
+      &
+        & Y
+  \end{tikzcd}
+\]
+this is the so called \emph{universal property for products}.
 \end{proposition}
 
 \begin{proof}
-   Define the morphism \(\ell(z) := (\varphi(z), \psi(z))\) for any  \(z \in
-   Z\), then \(\pi_X  \ell (z) = \pi_X(\varphi(z), \psi(z)) = \varphi(z)\)
-   and the same being true for the left branch. Notice that trivially there is a
-   unique mapping with such property because it need to imitate the image of
-   both \(\varphi\) and \(\psi\).
+Define the morphism \(\ell(z) \coloneq (\varphi(z), \psi(z))\) for any  \(z \in
+Z\), then \(\pi_X  \ell (z) = \pi_X(\varphi(z), \psi(z)) = \varphi(z)\)
+and the same being true for the left branch. Notice that trivially there is a
+unique mapping with such property because it need to imitate the image of
+both \(\varphi\) and \(\psi\).
 \end{proof}
 
 \begin{proposition}\label{prop: product-morphism}
-  Let \(\cat C\) be a category with products, and \(x \in \Hom_{\cat C}(X, Y)\).
-  Then there exists a unique morphism \(x \times x: X \times X \to Y \times Y\).
+Let \(\cat C\) be a category with products, and \(x \in \Hom_{\cat C}(X, Y)\).
+Then there exists a unique morphism \(x \times x: X \times X \to Y \times Y\).
 \end{proposition}
 
 \begin{proof}
-  Let \(\pi_X: X \times X \to X\), and \(\pi_Y: Y \times Y \to Y\) denote any
-  projection. Define a morphism \(f \in \Hom_{\cat C}(X \times X, Y)\) by \(f =
-  \phi \pi_X\). From \cref{universal property for products} we find that there
-  exists a unique morphism \(X \times X \to Y \times Y\) --- which we'll denote
-  by \(x \times x\) --- such that the following diagram commutes
-  \[
-    \begin{tikzcd}
-      X \times X \ar[d, dashed, swap, "x \times x"] \ar[dr, bend left, "f"] \\
-      Y \times Y \ar[r, "\pi_Y"] &Y
-    \end{tikzcd}
-  \]
+Let \(\pi_X: X \times X \to X\), and \(\pi_Y: Y \times Y \to Y\) denote any
+projection. Define a morphism \(f \in \Hom_{\cat C}(X \times X, Y)\) by \(f =
+\phi \pi_X\). From \cref{universal property for products} we find that there
+exists a unique morphism \(X \times X \to Y \times Y\) --- which we'll denote
+by \(x \times x\) --- such that the following diagram commutes
+\[
+\begin{tikzcd}
+  X \times X \ar[d, dashed, swap, "x \times x"] \ar[dr, bend left, "f"] \\
+  Y \times Y \ar[r, "\pi_Y"] &Y
+\end{tikzcd}
+\]
 \end{proof}
 
 If we consider the case for \(\Set\), we can even find a definite morphism \(x
@@ -139,51 +103,51 @@ proof given above, however, one would need to caution that the projections
 would not commute in \(\Set\).
 
 \begin{proposition}[Fibered products]
-   Let \(X, Y, Z\) objects of a category \(\cat C\) and morphisms \(\varphi :X
-   \to Z\) and \(\psi : Y \to Z\). Define \(P\) to be an object such that the
-   morphism  \(\pi_X : P \to X\) and  \(\pi_Y : P \to Y\) are such that, for any
-   morphisms \(f : L \to X\) and  \(g : L \to Y\), where \(L\) is another object
-   of the category \(\cat C\), there exists a unique morphism \(\ell: L \to P\)
-   for which the diagram commutes
-   \[
-     \begin{tikzcd}
-       L
-       \ar[dr, dashed, "\ell"]
-       \ar[drr, bend left, "g"]
-       \ar[ddr, bend right, swap, "f"]
-        &
-          & \\
-        &P
-        \ar[r, "\pi_Y"]
-        \ar[d, swap, "\pi_X"]
-          &Y
-          \ar[d, "\psi"]
-          \\
-        &X
-        \ar[r, swap, "\varphi"]
-          &Z
-     \end{tikzcd}
-   \]
-   We call the object \(P\) the \emph{fiber product of \(X\) and \(Y\) over
-   \(Z\)}.
+Let \(X, Y, Z\) objects of a category \(\cat C\) and morphisms \(\varphi :X
+\to Z\) and \(\psi : Y \to Z\). Define \(P\) to be an object such that the
+morphism  \(\pi_X : P \to X\) and  \(\pi_Y : P \to Y\) are such that, for any
+morphisms \(f : L \to X\) and  \(g : L \to Y\), where \(L\) is another object
+of the category \(\cat C\), there exists a unique morphism \(\ell: L \to P\)
+for which the diagram commutes
+\[
+  \begin{tikzcd}
+    L
+    \ar[dr, dashed, "\ell"]
+    \ar[drr, bend left, "g"]
+    \ar[ddr, bend right, swap, "f"]
+    &
+      & \\
+    &P
+    \ar[r, "\pi_Y"]
+    \ar[d, swap, "\pi_X"]
+      &Y
+      \ar[d, "\psi"]
+      \\
+    &X
+    \ar[r, swap, "\varphi"]
+      &Z
+  \end{tikzcd}
+\]
+We call the object \(P\) the \emph{fiber product of \(X\) and \(Y\) over
+\(Z\)}.
 \end{proposition}
 
 \begin{proof}
-   Indeed we can construct such object \(P\), for instance, notice that firstly
-   the morphisms \(\varphi  \pi_X = \psi  \pi_Y\). Thus for any
-   given element \(p \in P\), we need \(\pi_X(p) = x \in X\) such that
-   \(\varphi(x) = \psi(\pi_Y(p))\), and also the converse should be true.
-   Therefore, we simply need to define the object \(P\) as
-   \[
-      P := \{(a, b) \in X \times Y : \varphi(a) = \psi(b)\}
-   \]
-   and the morphisms as simply projections of such set into the respective
-   object \(X\) or \(Y\).
+Indeed we can construct such object \(P\), for instance, notice that firstly
+the morphisms \(\varphi  \pi_X = \psi  \pi_Y\). Thus for any
+given element \(p \in P\), we need \(\pi_X(p) = x \in X\) such that
+\(\varphi(x) = \psi(\pi_Y(p))\), and also the converse should be true.
+Therefore, we simply need to define the object \(P\) as
+\[
+  P \coloneq \{(a, b) \in X \times Y : \varphi(a) = \psi(b)\}
+\]
+and the morphisms as simply projections of such set into the respective
+object \(X\) or \(Y\).
 
-   With this description, we can see that \(\ell\) should be constructed in such
-   a way that for any given morphism \(f, g\) shown in the diagram the following
-   holds: \(\pi_X  \ell = \pi_Y  \ell\) thus, it is simply necessary
-   to impose \(\ell(u) = (f(u), g(u))\) for all \(u \in L\).
+With this description, we can see that \(\ell\) should be constructed in such
+a way that for any given morphism \(f, g\) shown in the diagram the following
+holds: \(\pi_X  \ell = \pi_Y  \ell\) thus, it is simply necessary
+to impose \(\ell(u) = (f(u), g(u))\) for all \(u \in L\).
 \end{proof}
 
 \subsection{Coproduct}
@@ -192,84 +156,84 @@ Since products are seen as final objects in the category of interest, we see
 coproducts (or disjoint unions) as initial objects of the category.
 
 \begin{proposition}
-   Let objects \(X, Y\) in a category \(\cat C\) and let the morphisms
-   \(\iota_X : X \to X \amalg Y\) and \(\iota_Y : Y \to X \amalg Y\). Let now
-   another object \(Z\) and assume the morphisms \(\varphi : X \to Z\) and
-   \(\psi : Y \to Z\). Then there exists a unique morphism \(\ell : X \amalg Y
-   \to Z\) such that the diagram commutes:
-    \[
-      \begin{tikzcd}
-        X
-        \ar[ddr, bend right, swap,  "\varphi"]
-        \ar[dr, "\iota_X"]
-          &
-            &Y
-            \ar[dl, swap, "\iota_Y"]
-            \ar[ddl, bend left, "\psi"]
-            \\
-          &X \amalg Y
-          \ar[d, dashed, "\ell"]
-            &\\
-          &Z
-      \end{tikzcd}
-   \]
+Let objects \(X, Y\) in a category \(\cat C\) and let the morphisms
+\(\iota_X : X \to X \amalg Y\) and \(\iota_Y : Y \to X \amalg Y\). Let now
+another object \(Z\) and assume the morphisms \(\varphi : X \to Z\) and
+\(\psi : Y \to Z\). Then there exists a unique morphism \(\ell : X \amalg Y
+\to Z\) such that the diagram commutes:
+\[
+  \begin{tikzcd}
+    X
+    \ar[ddr, bend right, swap,  "\varphi"]
+    \ar[dr, "\iota_X"]
+      &
+        &Y
+        \ar[dl, swap, "\iota_Y"]
+        \ar[ddl, bend left, "\psi"]
+        \\
+      &X \amalg Y
+      \ar[d, dashed, "\ell"]
+        &\\
+      &Z
+  \end{tikzcd}
+\]
 \end{proposition}
 
 \begin{proof}
-   \todo[inline]{Coproduct universal property}
+\todo[inline]{Coproduct universal property}
 \end{proof}
 
 \begin{proposition}
-   The disjoint union is a coproduct in \(\Set\).
+The disjoint union is a coproduct in \(\Set\).
 \end{proposition}
 
 \begin{proof}
-    Since the disjoint union of sets \(X, Y\) is said to be the union of,
-    respectively, isomorphic copies \(X', Y'\) we can proceed by defining  \(X'
-    := \{0\} \times X\) and \(Y' := \{1\} \times Y\), which will do the work
-    for us. Next we simply define the inclusions \(\iota_X(a) := (0, a)\) and
-    \(\iota_Y(b) := (1, b)\) for all \(a \in X\) and \(b \in Y\). For the final
-    step, we define the unique function \(\ell\) as \(\ell((0,a)) := \varphi(a)
-    \in Z\) for \(a \in X\) and \(\ell((1, b)) := \psi(b) \in Z\)  for \(b \in
-    Y\). All defined functions are clearly well defined and \(\ell\) needs to be
-    unique because it imitates the image of \(\varphi\) and \(\psi\).
+Since the disjoint union of sets \(X, Y\) is said to be the union of,
+respectively, isomorphic copies \(X', Y'\) we can proceed by defining \(X'
+\coloneq \{0\} \times X\) and \(Y' \coloneq \{1\} \times Y\), which will do the
+work for us. Next we simply define the inclusions \(\iota_X(a) \coloneq (0, a)\)
+and \(\iota_Y(b) \coloneq (1, b)\) for all \(a \in X\) and \(b \in Y\). For the
+final step, we define the unique function \(\ell\) as \(\ell((0,a)) \coloneq
+\varphi(a) \in Z\) for \(a \in X\) and \(\ell((1, b)) \coloneq \psi(b) \in Z\)
+for \(b \in Y\). All defined functions are clearly well defined and \(\ell\)
+needs to be unique because it imitates the image of \(\varphi\) and \(\psi\).
 \end{proof}
 
 \begin{proposition}[Cofibered Product]
-   Let objects \(X, Y, Z\) in a category \(\cat C\) and morphisms \(\varphi : Z
-   \to X\) and \(\psi : Z \to Y\). Let the inclusions \(\iota_A : A \to A \amalg
-   B\) and  \(\iota_B: B \to A \amalg B\) and define the object
-    \[
-       P := A \amalg B / (\iota  \varphi(z) \sim \iota  \psi(z),\
-       \forall z \in Z).
-   \]
-   With maps \(j_A : A \xrightarrow{\iota_A} A \amalg B \to P\) and  \(j_B : B
-   \xrightarrow{\iota_B} A \amalg B \to P\). Then there exists a unique morphism
-    \(\ell : P \to L\) for which the diagram commutes
-     \[
-       \begin{tikzcd}
-         Z
-         \ar[r, "\psi"]
-         \ar[d, swap, "\varphi"]
-           &Y
-           \ar[d, "j_Y"]
-           \ar[ddr, bend left, "g"]
-             &\\
-         X
-         \ar[r, "j_X"]
-         \ar[drr, bend right, swap, "f"]
-           &P
-           \ar[dr, dashed, "\ell"]
-             &\\
-           &
-             &L
-       \end{tikzcd}
-    \]
-    We call \(P\) the fiber coproduct of \(X\) and \(Y\) over \(Z\)
+Let objects \(X, Y, Z\) in a category \(\cat C\) and morphisms \(\varphi : Z
+\to X\) and \(\psi : Z \to Y\). Let the inclusions \(\iota_A : A \to A \amalg
+B\) and  \(\iota_B: B \to A \amalg B\) and define the object
+\[
+    P \coloneq A \amalg B / (\iota  \varphi(z) \sim \iota  \psi(z),\
+    z \in Z).
+\]
+With maps \(j_A : A \xrightarrow{\iota_A} A \amalg B \to P\) and  \(j_B : B
+\xrightarrow{\iota_B} A \amalg B \to P\). Then there exists a unique morphism
+\(\ell : P \to L\) for which the diagram commutes
+  \[
+    \begin{tikzcd}
+      Z
+      \ar[r, "\psi"]
+      \ar[d, swap, "\varphi"]
+        &Y
+        \ar[d, "j_Y"]
+        \ar[ddr, bend left, "g"]
+          &\\
+      X
+      \ar[r, "j_X"]
+      \ar[drr, bend right, swap, "f"]
+        &P
+        \ar[dr, dashed, "\ell"]
+          &\\
+        &
+          &L
+    \end{tikzcd}
+\]
+We call \(P\) the fiber coproduct of \(X\) and \(Y\) over \(Z\)
 \end{proposition}
 
 \begin{proof}
-   Notice that we are imposing \(\ell  j_X = f\) and \(\ell  j_Y =
-   g\), thus
-   \todo[inline]{Cofibered product universal property}
+Notice that we are imposing \(\ell  j_X = f\) and \(\ell  j_Y =
+g\), thus
+\todo[inline]{Cofibered product universal property}
 \end{proof}

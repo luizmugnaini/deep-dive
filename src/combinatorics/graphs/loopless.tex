@@ -95,7 +95,7 @@ that \(G'\) is a \emph{spanning subgraph} of \(G\).
 \end{definition}
 
 \begin{definition}[Embedding of graphs]\label{def: graph-embedding}
-Let \(G\) and \(H\) be graphs. A morphism of graphs \(\iota: H \mono G\) is
+Let \(G\) and \(H\) be graphs. A morphism of graphs \(\iota: H \emb G\) is
 said to be an embedding of \(H\) into \(G\) if its underlying map \(V(H) \mono
 V(G)\) is injective.
 \end{definition}
@@ -279,7 +279,7 @@ vertices \((v_0, v_1, \dots, v_n)\) \emph{up to isomorphism} of graphs.
 
 Given a graph \(G\), we define a path of size \(n + 1\) \emph{on} \(G\) to be
 the \emph{induced subgraph} of \(G\) given by \(G[\iota(P_n)]\), where
-\(\iota: P_n \mono G\) is an \emph{embedding of graphs} --- see \cref{def:
+\(\iota: P_n \emb G\) is an \emph{embedding of graphs} --- see \cref{def:
 graph-embedding}. The underlying labelling is now given by the composition
 \(\iota \ell_n: [n] \to V(G)\).
 \end{definition}
@@ -346,7 +346,7 @@ and hence \(i \sim_\ell j\) --- thus \(\overline i = \overline j\). This shows t
 is indeed a path joining \(\overline x\) and \(\overline y\).
 
 For the last part we just need to consider the embedding of graphs \(\iota: W/{\sim}\
-\mono W\) such that \(E_{W/{\sim}}(\overline v, \overline u)\) implies
+\emb W\) such that \(E_{W/{\sim}}(\overline v, \overline u)\) implies
 \(E_W(\iota(\overline v), \iota(\overline u))\). The sequence of vertices
 \[
   \iota(W/{\sim}) \coloneqq (\iota(\overline x), \iota\ell'(\overline 1), \dots,
@@ -409,8 +409,8 @@ depicted as follows
   &\overline v_1 & &\overline v_3 & &\overline y
 \end{tikzcd}
 \]
-Now for the embedding of graphs \(\iota: W/{\sim}\, \mono W\), we can view \(P =
-W[\im\iota]\) as the subgraph consisting of the red edges and their end-vertices
+Now for the embedding of graphs \(\iota: W/{\sim}\, \emb W\), we can view \(P =
+W[\im \iota]\) as the subgraph consisting of the red edges and their end-vertices
 --- that is, the collection of vertices \(\{x, v_1, v_2, v_6, v_{12}, y\}\) ---
 which can be visualised as follows
 \[

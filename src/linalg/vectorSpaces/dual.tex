@@ -18,14 +18,11 @@
 \end{proposition}
 
 \begin{proof}
-  %Let the morphism \(\delta : k^S \to (k^{\oplus S})^*\) be defined as mapping \(f
-  %\xmapsto \delta f^*\). We now show that such morphism is indeed an
-  %isomorphims.
   This result comes directly from the free vector space universal property, that
   is
   \[
     \begin{tikzcd}
-      S \ar[r, "f"] \ar[d, hook] & k \\
+      S \ar[r, "f"] \ar[d, tail] & k \\
       k^{\oplus S} \ar[ur, dashed, swap, "\ell"]
     \end{tikzcd}
   \]
@@ -50,7 +47,7 @@
   have that \(k^n \iso (k^n)^\ast\), thus we are done, since
   \[
     \begin{tikzcd}
-      V \ar[r, "\varphi"] & k^n \iso (k^n)^\ast \ar[r, "f \mapsto f \circ
+      V \ar[r, "\varphi"] & k^n \iso (k^n)^\ast \ar[r, "f \mapsto f
       \varphi"] &V^\ast
     \end{tikzcd}
   \]
@@ -92,7 +89,7 @@
   V^\ast\). This is a particular case of the induced \(\Hom\) \(k\)-linear
   morphism, by taking the \(k\)-vector space \(k\), so that
   \[
-    f^\ast : \Hom(W, k) \to \Hom(V, k),\ \alpha \mapsto \alpha \circ f
+    f^\ast : \Hom(W, k) \to \Hom(V, k),\ \alpha \mapsto \alpha  f
   \]
 \end{definition}
 
@@ -111,14 +108,14 @@
 \begin{proof}
   Let \(f: V_1 \to V_2\) and \(g: V_2 \to V_3\) be such that \(\im(f) =
   \ker(g)\). Then, given any \(\alpha \in V_3^\ast\) and consider
-  \(g^\ast(\alpha) = \alpha \circ g\), we then have \(f^\ast(\alpha \circ g) =
-  (\alpha \circ g) \circ f = \alpha \circ (g \circ f) = 0\) from the
+  \(g^\ast(\alpha) = \alpha  g\), we then have \(f^\ast(\alpha  g) =
+  (\alpha  g)  f = \alpha  (g  f) = 0\) from the
   construction of \(f, g\), thus \(\im(g^\ast) \subseteq \ker(f^\ast)\). On the
   other hand, let \(\beta \in \ker(f^\ast) \subseteq V_2^\ast\) so that
-  \(f^\ast(\beta) = \beta \circ f = 0\), which is the same thing as requiring
+  \(f^\ast(\beta) = \beta  f = 0\), which is the same thing as requiring
   \(\beta|_{\im(f)} = 0\); this way we can see that for any element \(\alpha \in
-  V_3^\ast\) we have \(g^\ast(\alpha) = \alpha \circ g\) be such that \(\alpha
-  \circ g|_{\im(f)} = 0\) since \(\ker(g) = \im(f)\) and thus already satisfies
+  V_3^\ast\) we have \(g^\ast(\alpha) = \alpha  g\) be such that \(\alpha
+   g|_{\im(f)} = 0\) since \(\ker(g) = \im(f)\) and thus already satisfies
   as an element of the kernel of \(f^\ast\), therefore \(\ker(f^\ast) \subseteq
   \im(g^\ast)\).
 \end{proof}
@@ -147,7 +144,7 @@
 
 \begin{proof}
   The proof only diverges from the above because we have the mappings
-  \(g_\ast(\alpha) = g \circ \alpha\) and \(f_\ast(\beta) = f \circ \beta\).
+  \(g_\ast(\alpha) = g  \alpha\) and \(f_\ast(\beta) = f  \beta\).
 \end{proof}
 
 \begin{proposition}
@@ -157,10 +154,10 @@
 \end{proposition}
 
 \begin{proof}
-  Notice that if \(f : V \twoheadrightarrow U \hookrightarrow W\) is the
+  Notice that if \(f : V \epi U \mono W\) is the
   decomposition of \(f\), then we can consider the dual \(f^\ast: W^\ast \to
-  V^\ast\) as having a decomposition \(W^\ast \twoheadrightarrow U^\ast
-  \hookrightarrow V^\ast\), since the dual of an injective map is surjective and
+  V^\ast\) as having a decomposition \(W^\ast \epi U^\ast
+  \mono V^\ast\), since the dual of an injective map is surjective and
   the dual of a surjective map is injective. Therefore, given a basis \(B\) for
   \(U\), since \(\forall b \in B\) there exists \(v \in V\) for which \(f(v) =
   b\) we can say that \(b \in \im(f)\) and, moreover, \(\rank(f) \geq
@@ -199,13 +196,13 @@
     \end{bmatrix}
   \]
   By definition of the dual linear morphism, we have \(L^\ast(w_j^\ast) =
-  w_j^\ast \circ L\). When this transformation is thought of as a \(k^n \to
+  w_j^\ast  L\). When this transformation is thought of as a \(k^n \to
   k^m\) matrix, the definition of a matrix for a linear transformation with
   respect to the given dual basis for \(W^\ast\) and \(V^\ast\) is defined such
   that \(L^\ast(w_j^\ast) = \sum_{r = 1}^n d_{r, j} v_r^\ast\). Hence, given any
   element \(v_k \in (v_j)_{j=1}^n \subseteq V\), from the first definition:
   \begin{equation}
-    w_j^\ast \circ L (v_k)
+    w_j^\ast  L (v_k)
     = w_j^\ast \left( \sum_{r=1}^m t_{r, k} w_r \right)
     = \sum_{r=1}^m t_{r, k} w_j^\ast(w_r)
     = t_{j, k}
@@ -315,9 +312,9 @@ This defines a rather interesting canonical \(k\)-linear morphism
 \end{proposition}
 
 \begin{proof}
-  Let the inclusion \(\iota : W \hookrightarrow V\), then its dual \(\iota^\ast :
-  V^\ast \twoheadrightarrow W^\ast\) is surjective. Moreover, let \(\alpha \in
-  W^0\) then, \(\iota^\ast(\alpha) = \alpha \circ \iota\), since \(\im(\iota)
+  Let the inclusion \(\iota : W \emb V\), then its dual \(\iota^\ast :
+  V^\ast \epi W^\ast\) is surjective. Moreover, let \(\alpha \in
+  W^0\) then, \(\iota^\ast(\alpha) = \alpha  \iota\), since \(\im(\iota)
   \subseteq W\) we conclude that \(\iota^\ast(\alpha) = 0\) and thus \(\alpha
   \in \ker(\iota^\ast)\), so that \(W^0 \subseteq \ker(\iota^\ast)\). Moreover,
   if \(\alpha \in \ker(\iota^\ast)\) then, in particular, \(\alpha(W) = 0\)

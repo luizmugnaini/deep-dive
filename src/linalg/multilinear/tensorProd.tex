@@ -15,8 +15,10 @@ important generalization of what we've been studying so far.
   is a multilinear map if for a given \(1 \leq t \leq n\) we have that, for all
   collections \(\{v_i : v_i \in V_i, i \neq t\}\), the map
   \[
-    \varphi(v_1, \dots, v_{t-1}, -, v_{t+1}, \dots, v_n): V_t \longrightarrow W
-    \text{, mapping } x \overset{\varphi}\longmapsto \varphi(v_1, \dots, v_{t-1}, x, v_t, \dots, v_n)
+    \varphi(v_1, \dots, v_{t-1}, -, v_{t+1}, \dots, v_n):
+    V_t \longrightarrow W
+    \text{, mapping }
+    x \overset{\varphi}\longmapsto \varphi(v_1, \dots, v_{t-1}, x, v_t, \dots, v_n)
   \]
   is a \(k\)-linear morphism.
 \end{definition}
@@ -135,7 +137,7 @@ constructed it, is the space \(\mathcal M / \mathcal M_{0}\)!
 
 \begin{proof}
   Let \(|I| = n\). (Uniqueness) Suppose that for any \(L\) and \(f\), the
-  morphism \(\ell\) exists, so that \(f = \ell \otimes\) and therefore
+  morphism \(\ell\) exists, so that \(f = \ell \circ \otimes\) and therefore
   \[
     \ell \otimes (v_1, \dots, v_n) = \ell(v_1 \otimes \dots \otimes v_n)
     = f(v_1, \dots, v_n)
@@ -178,12 +180,12 @@ constructed it, is the space \(\mathcal M / \mathcal M_{0}\)!
         &
     \end{tikzcd}
   \]
-  then \(g = \ell \circ \pi\) and therefore for all \((v_1, \dots, v_n) \in
+  then \(g = \ell \pi\) and therefore for all \((v_1, \dots, v_n) \in
   \prod_{i=1}^n V_i\) we have
   \[
     f(v_1, \dots, v_n)
     = g(v_1, \dots, v_n)
-    = \ell \circ \pi (v_1, \dots, v_n)
+    = \ell \pi (v_1, \dots, v_n)
     = \ell(v_1 \otimes \dots \otimes v_n)
   \]
   then indeed \(\ell \otimes = f\) as wanted.
@@ -351,7 +353,7 @@ products?}
     \text{ mapping }\ v_1 \otimes \dots \otimes v_p \mapsto v_{\sigma(1)}
     \otimes \dots \otimes v_{\sigma(p)}
   \]
-  where \(f_{\tau\sigma} = f_\tau \circ f_\sigma\), for any permutation \(\tau\)
+  where \(f_{\tau\sigma} = f_\tau f_\sigma\), for any permutation \(\tau\)
   on \(\{1, \dots, p\}\). Then \(f_\sigma\) is a canonical isomorphism.
 \end{proposition}
 
@@ -547,12 +549,12 @@ where the last is a basis for \(V\), we have \(\Id_V(v_j) = \sum_{i=1}^n
   \xmapsto F L \otimes M\) and the mapping of morphisms \(f \xmapsto F f \otimes
   \Id_M\). Hence we have \(\Id_L \mapsto \Id_L \otimes \Id_M = \Id_{L \otimes
   M}\) and given composable morphisms \(f, g \in \Mor(\FinVect_k)\) we have
-  \(f \circ g \mapsto (f \circ g) \otimes \Id_M = (f \otimes \Id_M) \circ (g
+  \(f g \mapsto (f g) \otimes \Id_M = (f \otimes \Id_M) (g
   \otimes \Id_M)\) as wanted.
 \end{definition}
 
 \begin{proposition}[Exactness]
-  Let \(0 \to V \overset{f}\hookrightarrow L \overset{g}\twoheadrightarrow W \to
+  Let \(0 \to V \overset{f}\mono L \overset{g}\epi W \to
   0\) be a short exact sequence, where \(V, L, W \in \FinVect_k\). Let \(M
   \in \FinVect_k\), then following sequence is exact
   \[

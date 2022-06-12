@@ -1,0 +1,371 @@
+\section{An Elementary Construction of Differential Forms}
+
+\begin{notation}
+For the purposes of this section, we are going to define the collection
+\[
+  \Delta_c^k \coloneq \left\{
+    (t_{1}, \dots, t_k) \in \R^k :
+    \sum_{j=1}^k t_j \leq 1 \text{, and }
+    t_j \geq 0 \text{ for all } 1 \leq j \leq k
+  \right\}.
+\]
+which represents the \emph{simplex} obtained by the corner of a
+\(k\)-dimensional unit cube.
+\end{notation}
+
+\begin{definition}[\(k\)-surface]
+\label{def:k-surface-Rn}
+Let \(E \subseteq \R^n\) be an open set. We define a \emph{\(k\)-surface in}
+\(E\) to be a \(C^1\) \emph{map} \(\Phi: D \to E\), where \(D \subseteq \R^k\)
+is a \emph{compact} set --- this set is commonly refered to as the parameter
+domain of \(\Phi\).
+\end{definition}
+
+\begin{definition}[Differential \(k\)-form]
+Let \(E \subseteq \R^n\) be an open set. A \emph{differential \(k\)-form} in
+\(E\), for \(k > 0\), is a multilinear map \(\omega\) given by
+\[
+  \omega \coloneq \sum a_{j_1 \dots j_k}\,
+  \diff x_{j_1} \wedge \dots \wedge \diff x_{j_n},
+\]
+where the sum runs over the sequence of indices \((j_1, \dots, j_k)\), where \(1
+\leq j_r \leq n\) for each \(1 \leq r \leq k\), and \(a_{j_1 \dots j_k}: E \to
+\R\) are continuous maps --- that is, \(0\)-forms. A differential \(k\)-form is
+said to be of class \(C^p\) if each map \(a_{j_1 \dots j_k}\) is of class
+\(C^p\).
+
+The form \(\omega\) is said to be a \emph{basic} \(k\)-form if we have the
+ordering \(1 \leq j_1 < \dots < j_k \leq n\) for its indices --- in this case we
+commonly denote each sequence of indexes as \(I \coloneq (j_1, \dots, j_k)\) and
+write
+\[
+  \omega = \sum_I a_{I}\, \diff x_{I}.
+\]
+\end{definition}
+
+\begin{definition}[Line integral]
+\label{def:line-integral}
+The integrals of \(1\)-forms are called \emph{line integrals}.
+\end{definition}
+
+\begin{example}
+Lets calculate a line integral on the \(1\)-surface (\(C^1\) curve)
+\(\gamma: [0, 2 \pi] \to \R^2\) defined by \(t \mapsto (a \cos(t), b \sin(t))\),
+for constants \(a, b > 0\). Let \(\omega = x\, \diff y\) be a \(1\)-form on
+\(\R^2\). Measurin this curve with respect to \(\omega\) yields
+\[
+  \int_{\gamma} \omega = \int_0^{2\pi} a \cos(t) [b \cos(t)]\, \diff t
+  = ab \int_0^{2 \pi} \frac{\cos(2t) - 1}{2} = - ab \pi.
+\]
+\end{example}
+
+\begin{definition}[Surface area]
+\label{def:k-surface-area}
+Let \(\Phi: D \to E\) be a \(k\)-surface on the open set \(E \subseteq
+\R^n\). We define the area of the surface \(\Phi\) to be given by
+\[
+  \int_{\Phi} \omega
+  = \int_D \sum a_{j_1 \dots j_k}(\Phi(t))
+  \det {\left[ \partial_i \Phi_{j_r}(t) \right]}_{1 \leq i, r \leq k}
+  \, \diff t
+\]
+\end{definition}
+
+\begin{definition}[Piecewise smooth]
+\label{def:piecewise-smooth-surface}
+We define the concept of a piecewise smooth surface in an inductive manner. A
+poit is a zero dimensional surface of any smoothness class. A surface \(S
+\subseteq \R^n\) of dimension \(k\) is piecewise smooth if, after a countable
+collection of at most \((k-1)\)-dimensional piecewise smooth surfaces can be
+removed from \(S\), the resulting surface can be decomposed into a countable
+collection of \(k\)-dimensional smooth surfaces.
+\end{definition}
+
+\begin{theorem}[A zero form has null coefficients]
+\label{thm:zero-form-standard-representation}
+Let \(\omega \coloneq \sum_J b_J\, \diff x_J\) be a \(k\)-form in an open set
+\(E \subseteq \R^{n}\), in its standard representation. If \(\omega = 0\) in
+\(E\) (that is \(\omega(\Phi) = 0\) for all \(k\)-surface \(\Phi\) in \(E\)),
+then \(b_J(x) = 0\) for all \(x \in E\).
+\end{theorem}
+
+\begin{proof}
+Suppose, for the sake of contradiction, that there exists an index sequence \(S
+\coloneq (s_1, \dots, s_{k})\) such that \(b_{S}(y) \neq 0\) for some \(y \in
+E\). Since \(b_{S}\) is continous, let \(\delta > 0\) be such that \(b_J(x) >
+0\) whenever \(\norm{x_i - y_i} \leq \delta\), for all \(1 \leq i \leq n\). Let
+\(D \subseteq \R^k\) be the compact set given by
+\[
+  D \coloneq \{t \in \R^{k} : \norm{t_j} \leq \delta
+  \text{ for all } 1 \leq j \leq k\}.
+\]
+Define a \(k\)-surface \(\Phi: D \to E\) to be given by
+\[
+  \Phi(t) \coloneq v + \sum_{j=1}^k t_j e_{s_j}\text{, for all } t \in D.
+\]
+Notice that \(D\) was choosen so that \(b_S(\Phi(t)) > 0\) for all \(t \in
+D\). Notice that
+\[
+  \int_{\Phi} \omega = \int_D \sum_J b_J(\Phi(t))
+  \det[\partial_i \Phi_{j_r}(t)]_{1 \leq i, r \leq k}\, \diff t
+  = \int_D b_S(\Phi(t)) \det[\partial_i \Phi_{s_r}]_{1 \leq i, r \leq k}\, \diff t
+\]
+since for all indexing sequence \(J \coloneq (j_1, \dots, j_k) \neq S\)
+the matrix \([\partial_i \Phi_{j_r}(t)]_{1 \leq i, r \leq k}\) has at least one
+column equal to zero --- since there must exists at least one \(j_{r_0} \in J
+\setminus S\), thus \(\Phi_{j_0}(t) = y_{j_0}\) for all \(t \in D\) and thus the
+column \([\partial_i \Phi_{j_0}(t)]_{1 \leq i \leq k} = 0\), which implies in
+\(\det [\partial_i \Phi_{j_r}(t)]_{1 \leq i, r \leq k} = 0\). On the other hand,
+notice that \(\partial_i \Phi_{s_r}(t) = \delta_{i r}\) for all \(1 \leq i, r
+\leq k\), thus \(\det [\partial_i \Phi_{s_r}(t)]_{1 \leq i, r \leq k} = 1\). We
+conclude that
+\[
+  \int_{\Phi} \omega = \int_D b_S(t)\, \diff t,
+\]
+which is strictly positive since \(b_S(y) > 0\). Therefore \(\omega(\Phi) \neq
+0\), which is a contradiction --- thus there must exist no indexing sequence
+\(S\) and therefore every coefficient is the zero-map.
+\end{proof}
+
+\subsection{Differential Operator}
+
+\begin{definition}
+\label{def:differential-operator-form}
+Let \(f: E \to \R\) be a map of class \(C^1\), we define an operator \(\diff\)
+which transforms any \(0\)-form \(f\) into
+\[
+  \diff f \coloneq \sum_{j=1}^n \partial_j f\, \diff x_j.
+\]
+Now, for any \(k\)-form \(\omega \coloneq \sum_J b_J\, \diff x_J\), where \(k
+\geq 1\) and \(b_J: E \to \R\) is again a map of class \(C^1\) (a \(0\)-form) we
+associate the \((k+1)\)-form \(\diff \omega\) --- which is defined by
+\[
+  \diff \omega \coloneq \sum_J \diff b_J \wedge \diff x_{J}.
+\]
+\end{definition}
+
+\begin{example}
+\label{exp:curve-integral}
+Let \(E \subseteq \R^n\) be an open set, and \(\gamma: [0, 1] \to E\) be a
+\(1\)-surface (that is, a continuous differentiable curve). If we let \(f: E \to
+\R\) be a \(C^1\) map, we have from the definition that the integral over the
+curve \(\gamma\) of \(\diff f\) is given by --- recalling \cref{thm:
+multi-comp-diff},
+\[
+  \int_{\gamma} \diff f =
+  \int_0^1 \sum_{j=1}^n \partial_j f (\gamma(t)) \gamma_j'(t)\, \diff t
+  = \int_0^1 \diff (f \gamma)(t)\, \diff t
+  = f \gamma(1) - f \gamma(0).
+\]
+since \(f \gamma: [0, 1] \to \R\) is a continuously differentiable map.
+\end{example}
+
+\begin{theorem}
+\label{thm:differential-operator-forms-properties}
+The following are properties of the differential operator on forms. Let \(E
+\subseteq \R^n\) be some open set.
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item (Skew-product rule) Let \(\omega\) be a \(k\)-form and \(\gamma\) be a
+  \(m\)-form, both of class \(C^1(E)\). Then
+  \[
+    \diff (\omega \wedge \gamma)
+    = (\diff \omega) \wedge \gamma + (-1)^k \omega\, \diff \gamma.
+  \]
+\item If \(\omega\) is a \(k\)-form of class \(C^2(E)\), then \(\diff(\diff
+  \omega) = 0\).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Let \(\omega \coloneq \sum_I f_{I} \diff x_I\) and \(\gamma(x)
+  \coloneq \sum_J g_{J} \diff x_{J}\) for \(C^1\) coefficients \(f_I, g_J: E
+  \rightrightarrows \R\) --- if \(k\) or \(m\) are zero, we just omit the
+  \(1\)-forms from the definitions. From the wedge product we have
+  \[
+    \diff(\omega \wedge \gamma)
+    = \sum_{I, J} \diff\left( f_I \cdot g_J\, \diff x_I \wedge \diff x_J \right)
+    = \sum_{I, J} \diff(f_I \cdot g_J) \wedge \diff x_I \wedge \diff x_J.
+  \]
+  Define, for each pair \(I\) and \(J\), the indexing sequence \(S\)
+  consisting of the increasing ordered union of the sequences \(I\) and
+  \(J\). Moreover, for each \(S\), define
+  \[
+    \alpha_S \coloneq |\{j - i : j - i < 0 \text{ for }
+    (i, j) \in I \times J\}|,
+  \]
+  that is, the number of times the indices of \(J\) is greater than the ones
+  from \(I\). From the skew-commutativity property
+  (\cref{prop:exterior-algebra-associative-skew-commutative}),
+  \begin{align*}
+    \diff (\omega \wedge \gamma)
+    &= \sum_S (-1)^{\alpha_S} \diff(f_{I} \cdot g_{J}) \wedge \diff x_{S} \\
+    &= \sum_S (-1)^{\alpha_S}
+    \left( \diff f_I \cdot g_J + f_I \cdot \diff g_J \right)
+    \wedge \diff x_{S} \\
+    &= \sum_{I, J} \left( \diff f_I \cdot g_J + f_I \cdot \diff g_J \right)
+    \wedge \diff x_I \wedge \diff x_J.
+  \end{align*}
+  From the distributive property, associativity and skew-commutativity we get
+  \begin{align*}
+    \diff(\omega \wedge \gamma)
+    &= \sum_{I, J} (g_J\, \diff f_I \wedge \diff x_I \wedge \diff x_J
+    +  f_I\, \diff g_J \wedge \diff x_I \wedge \diff x_J) \\
+    &= \sum_{I, J} (\diff f_I \wedge \diff x_I) \wedge (g_J\, \diff x_J)
+      + (-1)^k (f_I\, \diff x_I) \wedge (\diff g_J \wedge \diff x_J) \\
+    &= \sum_{I, J} (\diff f_I \wedge \diff x_I) \wedge (g_J\, \diff x_J)
+      + (-1)^k \sum_{I, J} (f_I\, \diff x_I) \wedge (\diff g_J \wedge \diff x_J)
+    \\
+    &= \bigg( \sum_I \diff f_I \wedge \diff x_I\bigg) \wedge
+      \bigg( \sum_J g_J\, \diff x_J \bigg)
+      + (-1)^k \bigg( \sum_I f_I\, \diff x_I \bigg) \wedge
+      \bigg( \sum_J \diff g_J \wedge \diff x_J \bigg) \\
+    &= \diff \omega \wedge \lambda + (-1)^k \omega \wedge \diff \lambda.
+  \end{align*}
+\item For the case of a zero form \(f: E \to \R\), of class \(C^2\), we have
+  \[
+    \diff(\diff f) =
+    \diff \bigg( \sum_{j=1}^n \partial_j f\, \diff x_j \bigg)
+    = \sum_{j = 1}^n \diff (\partial_j f)\, \diff x_j
+    = \sum_{i, j = 1}^n \partial_{i j} f\, \diff x_i \wedge \diff x_j
+  \]
+  Notice however that \(\partial_{i j} f = \partial_{j i} f\) for any \(1 \leq
+  i, j \leq n\), thus each pair \((i, j)\) and \((j, i)\) of the sum cancel with
+  each other --- since \(\diff x_i \wedge \diff x_j = - \diff x_j \wedge \diff
+  x_i\) --- which implies in \(\diff(\diff f) = 0\).
+
+  For the general case, if \(\omega = \sum_I f_I\, \diff x_I\) is any \(C^2\)
+  \(k\)-form, since \(\diff^2 \omega = \sum_I \diff^2 f_I\, \diff x_I\) and
+  \(\diff^2 f_I = 0\), for all \(I\), it follows immediatly that \(\diff^2
+  \omega = 0\).
+\end{enumerate}
+\end{proof}
+
+Let \(\omega \coloneq \sum_I f_I\, \diff x_I\) be a \(k\)-form in an open set
+\(E \subseteq \R^n\) and \(\phi: V \to E\) be a map from another open set \(V
+\subseteq \R^m\). Notice that there arises a natural pullback operation
+\(\phi^{*}\) that allows for a change of variables
+\[
+  \phi^{*} \omega = \sum_I f_I \phi\, \diff v_I,
+\]
+where \(v_I\) represents the coordinates coming form \(V\). In particular, this
+change of variables allow us to write
+
+\todo[inline]{continue integration of forms}
+
+% \begin{definition}[Area]
+% \label{def:surface-area}
+% Let \(S\) be a smooth \(k\)-dimensional surface on \(\R^n\) defined by the
+% parametric representation \(r: D \to S\), where \(D \subseteq \R^k\) is a
+% domain --- called parameter space. We define the \emph{area} of \(S\) to be
+% \[
+%   A_k(S) \coloneq \int_D
+%   \sqrt{\det{\left[ \langle \diff r_i(t), \diff r_j(t) \rangle
+%       \right]}_{i, j}} \diff t,
+% \]
+% where \({[\langle \diff r_i(t), \diff r_j(t) \rangle]}_{i, j}\) is the inner
+% product \((n \times k)\)-matrix resulting from the multiplication of the
+% Jacobian of \(r\), evaluated at a point \(t \in D\), with its transpose
+
+% Moreover, let \(X\) is an arbitrary piecewise smooth \(k\)-dimensional surface in
+% \(\R^n\). If, after a countable collection of piecewise smooth surfaces of
+% dimension at most \(k-1\) are removed from \(X\), the surface is decomposed into
+% a countable collection of smooth parametrized surfaces \(\{X_{j}\}_{j \in J}\),
+% then the area of \(X\) is defined to be given by
+% \[
+%   A_k(X) \coloneq \sum_{j \in J} A_k(X_j).
+% \]
+% \end{definition}
+
+% \begin{corollary}[Area is coordinate agnostic]
+% \label{cor:surface-area-coordinate-agnostic}
+% Let \(e\) and \(e'\) be two coordinate representations for a domain \(D
+% \subseteq \R^k\), which we'll distinguish by \(D_e\) and \(D_{e'}\),
+% respectively. Let \(r: D_e \to S\) and \(r': D_{e'} \to S\) be two parametric
+% representations of a \(k\)-dimensional smooth surface \(S\) lying on
+% \(\R^n\). Then we have the following equality
+% \[
+%   \int_{D_e} \sqrt{
+%     \det {[\langle \diff r_i(t), \diff r_j(t) \rangle]}_{i, j}
+%   }\, \diff t
+%   =
+%   \int_{D_{e'}} \sqrt{
+%     \det {[\langle \diff r'_i(t'), \diff r'_j(t') \rangle]}_{i, j}
+%   }\, \diff t',
+% \]
+% that is, the area \(A_k(S)\) is independent of the choice of coordinate
+% system.
+% \end{corollary}
+
+% \begin{proof}
+% Let \(\phi: D_e \to D_{e'}\) be a \(C^1\)-automorphism taking the coordinate
+% representation \(e\) of \(D\) to the coordinate representation \(e'\) of \(D\)
+% --- that is, the Jacobian \(\Jac \phi\) is a change of basis for the tangent
+% space \(T_t D\) for every point \(t \in D\), therefore we can write inner
+% product of the Jacobian of \(r'\) evaluated at any point as follows
+% \[
+%   [\langle \diff r'_i, \diff r'_j \rangle]_{i, j}
+%   = \Jac(\phi) [\langle \diff r_i, \diff r_j \rangle]_{i, j}
+%   {\Jac(\phi)}^{*}.
+% \]
+% Thus, we find \( \det{(\langle \diff r'_i, \diff r'_{j} \rangle)} =
+% \det{(\langle \diff r_i, \diff r_j \rangle)}_{i, j} {\det}^2(\Jac \phi)\).
+% Applying \cref{thm:change-variables}, we obtain
+% \begin{align*}
+%   \int_{D_e} \sqrt{
+%     \det{[\langle \diff r_i(t), \diff r_j(t) \rangle]}_{i, j}
+%   }\, \diff t
+%   &= \int_{D_e} \sqrt{
+%     \det{[\langle \diff r_i(\phi(t)), \diff r_j(\phi(t)) \rangle]}_{i, j}
+%   }
+%   \det(\Jac \phi(t))\, \diff t \\
+%   &= \int_{D_e} \sqrt{
+%     \det{[\langle \diff r_i(\phi(t)), \diff r_j(\phi(t)) \rangle]}_{i, j}
+%     {\det}^2(\Jac \phi(t))
+%   }\, \diff t \\
+%   &= \int_{D_{e'}} \sqrt{
+%     \det{[\langle \diff r'_i(t'), \diff r'_j(t') \rangle]}_{i, j}
+%   }\, \diff t'.
+% \end{align*}
+% \end{proof}
+
+% \begin{definition}[Measure zero]
+% \label{def:surface-measure-zero}
+% Let \(E\) be a set embedded in a \(k\)-dimensional piecewise-smooth surface
+% \(S\). We say that \(E\) is a set of \(k\)-dimensional measure zero if for every
+% \(\varepsilon > 0\), there exists a coutable cover of surfaces \(\{S_{j}
+% \subseteq S\}_{j \in J}\) such that \(\sum_{j \in J} A_k(S_j) < \varepsilon\).
+% \end{definition}
+
+% Identifying sets of measure zero on a piecewise-smooth surface are particularly
+% important in the computational side of the theory --- if one has a
+% piecewise-smooth surface \(S\) and wants to calculate its area, if there can be
+% removed from \(S\) a set of measure zero \(E\), resulting in the surface \(S'\),
+% we find that \(A_k(S) = A_k(S')\), which sometimes can be more attainable.
+
+% \subsection{Line Integral}
+
+% \begin{definition}[Line integral]
+% \label{def:line-integral}
+% Let \(F: G \to \R^n\) be a vector field acting on a domain \(G \subseteq \R^n\),
+% and \(\gamma: I \to \gamma(I) \subseteq G\) be a smooth path --- where \(I
+% \subseteq \R\) is some closed interval. The \emph{line integral} along the path
+% \(\gamma\) is given by
+% \[
+%   \int_I \langle F\gamma(t), \diff \gamma(t) \rangle\, \diff t
+%   = \int_{\gamma} \omega_F^1,
+% \]
+% where \(\omega_F^1\) is the \(1\)-form associated with the vector field \(F\)
+% --- that is, \(\omega_F^1(x) = \sum_{j=1}^n F_j(x) \diff x_j\), where \(x_j\)
+% represent the coordinates of the space.
+% \end{definition}
+
+% It will be commonly better to work with the parameters \(t \in I\) instead of
+% the coordinates \((x_1, \dots, x_n)\). For that, we can simply apply the change
+% of variables to our integral. For that, let \(\phi: \)
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../../deep-dive"
+%%% End:

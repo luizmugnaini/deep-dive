@@ -1,0 +1,190 @@
+\section{Connectedness and Compactness}
+
+\begin{definition}[Connected space]
+\label{def:connected-space}
+Let \(X\) be a topological space. We say that \(X\) is \emph{connected} if and
+only if one of the following conditions hold:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The space \(X\) cannot be expressed as the union of two disjoint non-empty
+  open sets.
+\item Every morphism \(f: X \to \{0, 1\}\) is constant --- where \(\{0, 1\}\) is a
+  space endowed with the discrete topology.
+\end{enumerate}
+\end{definition}
+
+\begin{corollary}
+The two conditions in \cref{def:connected-space} are equivalent.
+\end{corollary}
+
+\begin{proof}
+Assume \(X\) satisfies the condition (a), and let \(x \in X\) be any
+point. Suppose \(f(x) = 0\) (or \(f(x) = 1\), we do not loose generality by
+choosing a point of the domain), and consider \(f^{-1}(0) \subseteq X\), which
+must be open from the continuity of \(f\), thus \(f^{-1}(0)\) is a neighbourhood
+of \(x\) in \(X\). If we suppose, for the sake of contradiction, that there
+exists \(y \in X\) such that \(f(y) = 1\), then \(f^{-1}(1)\) is also open and
+is a neighbourhood of \(y\) --- notice however that \(f^{-1}(0) \cap f^{-1}(1) =
+\emptyset\), thus we arrive at a contradiction, there must be no point \(y\)
+with image different than zero.
+
+We prove the counter positive: not (b) implies not (a). Suppose \(f: X
+\to \{0, 1\}\) is not constant, so that there exists two points \(x, y \in X\)
+such that \(f(x) = 0\) and \(f(y) = 1\) (and therefore \(f\) is surjective),
+notice however that, since \(f\) is continous,
+\end{proof}
+
+\begin{definition}[Connected components]
+\label{def:connected-components}
+Let \(X\) be a topological space. Define an equivalence relation \(\sim\) by,
+given \(x, y \in X\), we have \(x \sim y\) if and only if there exists a
+connected subspace of \(X\) containing both \(x\) and \(y\). The collection of
+equivalence classes \(X/{\sim}\) is called \emph{connected components} of \(X\).
+\end{definition}
+
+\begin{notation}[Standard interval]
+From now on, when talking about \emph{paths} and \emph{homotopies}, we shall
+reserve the symbol \(I\) to denote the \emph{standard topological interval},
+which is defined by
+\[
+  I \coloneq [0, 1] \subseteq \R.
+\]
+\end{notation}
+
+\begin{definition}[Paths \& loops]
+\label{def:path-loop}
+A \emph{path} in a topological space \(X\) is any continuous map \(\gamma: I \to
+X\). A \emph{loop} in \(X\) is a continuous map \(\ell: I \to X\) such that
+\(\ell(0) = \ell(1)\).
+\end{definition}
+
+\begin{definition}[Path connected space]
+\label{def:path-connected}
+A topological space \(X\) is said to be \emph{path connected} if and only if
+for all \(x, y \in X\) there exists a \emph{path} connecting \(x\) and \(y\).
+\end{definition}
+
+\begin{proposition}[Path connected equivalence relation]
+\label{prop:path-connected-equiv-relation}
+There exists an equivalence relation \(\sim\) on the topological \(X\) defined
+by: given \(x, y \in X\), we have \(x \sim y\) if and only if there exists a
+path in \(X\) connecting \(x\) and \(y\).
+\end{proposition}
+
+\begin{proof}
+The constant path \(x: I \to X\) given by \(t \mapsto x\) is a path on
+\(X\), thus \(x \sim x\). Let \(x \sim y\) and \(\gamma\) be a path from
+\(\gamma(0) = x\) to \(\gamma(1) = y\), then we can define a map \(\lambda: [0,
+1] \to X\) given by \(\lambda(t) \coloneq \gamma(1 - t)\), so that \(\lambda\)
+is both continuous, and \(\lambda(0) = y\) while \(\lambda(1) = x\) --- thus
+\(\lambda\) is a path between \(y\) and \(x\), therefore \(y \sim x\). Suppose
+now \(y \sim z\) and let \(\eta\) be a path connecting \(y\) to \(z\). We
+define a map \(\phi: I \to X\) given by
+\[
+  \phi(t) \coloneq
+  \begin{cases}
+    \lambda(2t), &\text{ for } t \in [0, 1/2] \\
+    \eta(2t - 1), &\text{ for } t \in [1/2, 1]
+  \end{cases}
+\]
+which is surely continuous and connects both \(x\) and \(z\) --- thus \(x \sim
+z\).
+\end{proof}
+
+\begin{definition}[Path connected components]
+\label{def:path-connected-components}
+Let \(X\) be a path connected topological space, and \(\sim\) be the equivalence
+relation described in \cref{prop:path-connected-equiv-relation}. The collection
+\(X/{\sim}\) is called the \emph{path connected components} of the space
+\(X\). We denote the collection of all path components of \(X\) by \(\pi_0(X)\)
+--- the collection of homotopy classes between maps \(* \to X\).
+\end{definition}
+
+\begin{definition}[\(\pi_0\) functor]
+\label{def:pi0-functor}
+The concept of connected components of a space induce a covariant functor
+\(\pi_0: \Top \to \Set\) defined by mapping objects \(X \mapsto \pi_0 X\), and
+morphisms \(f: X \to Y\) to \(\pi_0 f: \pi_0 X \to \pi_0 Y\) --- which is a well
+defined map since, given a path component \(P\) of \(X\), the set \(f(X)
+\subseteq Y\) is connected and therefore contained in a unique path component of
+\(Y\).
+\end{definition}
+
+\begin{theorem}[Morphisms preserve connectivity]
+\label{thm:morphisms-preserve-connectivity}
+Let \(X\) be a (path) connected space and \(f: X \to Y\) be a topological
+morphism. Then \(f(X) \subseteq Y\) is (path) connected.
+\end{theorem}
+
+\begin{proof}
+Suppose that \(f(X)\) is not connected, and let \(g: f(X) \to \{0, 1\}\) be a
+non-constant morphism --- in particular, this is equivalent to the condition of
+\(gf: X \to \{0, 1\}\) being a non-constant morphism, thus implying in the
+non-connectedness of \(X\).
+
+On the other hand, assume now that \(X\) is path connected and let \(u, v \in
+f(X)\) --- define \(x, y \in X\) so that \(f(x) = u\) and \(f(y) = v\). Let
+\(\gamma: I \to X\) be a path connecting \(x\) and \(y\) --- then \(f\gamma: I
+\to f(X)\) is a path connecting \(u\) and \(v\), which proves the proposition.
+\end{proof}
+
+\begin{corollary}
+\label{cor:connectedness-top-property}
+Connectedness and path connectedness are both topological properties.
+\end{corollary}
+
+\begin{corollary}
+\label{cor:quotient-path-connected-is-path-connected}
+The quotient of a (path) connected topological space is (path) connected.
+\end{corollary}
+
+\begin{proposition}
+\label{prop:connectivity-quotients}
+Let \(f: X \epi Y\) be a morphism of topological spaces \(X\) and \(Y\). If
+\(Y\) is connected and, for all \(y \in Y\), the fiber \(f^{-1}(y)\) is
+connected, then \(X\) is connected.
+\end{proposition}
+
+\begin{proof}
+Let \(g: X \to \{0, 1\}\) be a morphism. From the connectedness condition on the
+fibers of \(f\), it follows that \(g\) must be constant throughout the fibers of
+\(f\) --- this implies in the existence of a morphism \(g^{*}: Y \to \{0, 1\}\)
+such that \(g = g^{*} f\). Since \(Y\) is connected, \(g^{*}\) must be constant,
+therefore the composition \(g^{*} f\) is constant and so is \(g\) --- that is,
+\(X\) is connected.
+\end{proof}
+
+\begin{proposition}
+\label{prop:union-path-connected}
+Let \(J\) be an indexing set associated to a collection \(\{X_{j}\}_{j \in J}\)
+of (path) connected topological spaces. Define the space \(X \coloneq \bigcup_{j
+\in J} X_j\). If the intersection \(\bigcap_{j \in J} X_j\) is non-empty, then
+\(X\) is (path) connected.
+\end{proposition}
+
+\begin{proof}
+Suppose the intersection is non empty and let \(x \in \bigcup_{j \in J}
+X_j\) be any point. We split the proposition into the two given cases.
+
+Suppose \(X_j\) is connected for all \(j \in J\). Let \(f: X \to \{0, 1\}\) be a
+morphism --- we want to show that it has to be constant. Since \(X_j\) is
+connected, it follows tha the restriction \(f|_{X_j}\) has to be constant, and,
+since \(x \in X_j\), then \(f(x) = f(y)\) for all \(y \in X_j\). The fact that
+this must be true for all \(X_j\) shows that \(f\) must be constant throughout
+the whole set \(X\).
+
+Suppose \(X_j\) is path connected for all \(j \in J\) --- that is, from
+hypothesis, \(X_j\) is a path connected component of \(X\). We now prove that
+the intersection is connected to each of the path connected components. For each
+\(j \in J\), choose any point \(y \in X_j\). Since \(x \in X_j\), then \(x \sim
+y\) and therefore every point of \(X\) is connected by a path.
+\end{proof}
+
+
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../../deep-dive"
+%%% End:

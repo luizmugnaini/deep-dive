@@ -1,99 +1,99 @@
 \section{Ramsey and Schur theorem}
 
 \begin{theorem}[Ramsey theorem on graphs]\label{ramseyThmGraphs}
-   Given \(r \in \N_{\geqslant 1}\) we have that the colouring function
-   \(\mathcal{C}: \binom{\N}{2} \to [r]\) is such that there exists an
-   infinite monochromatic subset \(A \subseteq \N\), that is, \(\forall a, b
-   \in A,\ \mathcal{C}(ab) = i \in [r]\).
+Given \(r \in \N_{\geq 1}\) we have that the colouring function
+\(\mathcal{C}: \binom{\N}{2} \to [r]\) is such that there exists an
+infinite monochromatic subset \(A \subseteq \N\), that is, for all \(a, b
+\in A\), we have \(\mathcal{C}(ab) = i \in [r]\).
 \end{theorem}
 
 \begin{proof}
-   Firstly, define the sets \(\Gamma_k(x) := \{y \in \N : \mathcal{C}(x
-   y) = k \in [r]\}\). We know that for any element \(x \in \N\) the
-   coloring function \(\mathcal{C}\) provides at most \(r\) of such sets. Notice
-   that for every vertex \(v_i \in \N\) there are infinitely many edges
-   connecting to other vertices of \(\N\) this way we conclude that
-   since \([r]\) partitions \(\N\) only into a finite number of subsets,
-   by the pigeonhole principle, we can conclude that there is one set, which
-   we'll denote by \(\Gamma_{k_i}\), that is infinite.
+Firstly, define the sets \(\Gamma_k(x) \coloneq \{y \in \N : \mathcal{C}(x
+y) = k \in [r]\}\). We know that for any element \(x \in \N\) the
+colouring function \(\mathcal{C}\) provides at most \(r\) of such sets. Notice
+that for every vertex \(v_i \in \N\) there are infinitely many edges
+connecting to other vertices of \(\N\) this way we conclude that
+since \([r]\) partitions \(\N\) only into a finite number of subsets,
+by the pigeonhole principle, we can conclude that there is one set, which
+we'll denote by \(\Gamma_{k_i}\), that is infinite.
 
-   Let now the sequence \(\left( v_n \right)_{n \in \N}\) such that
-   \(\forall n \in \N,\ v_n \in \Gamma_{k_{n-1}}(v_{n-1})\) for some
-   color \(k_{n-1} \in [r]\). A trivial result of such construction is that
-   given any \(n \in N\) we have \(\mathcal{C}(v_n v_{n-1}) = k_{n-1}\). In fact
-   we can extend such result by simply recalling that since we are always taking
-   the infinite sets, surely we'll get the sequence
-   \[
-      \left( \Gamma_{k_{n}}(v_n) \right)_{n \in \N} \text{ such that }
-      \N \supseteq \Gamma_{k_{1}}(v_1) \supseteq  \Gamma_{k_{2}}(v_2)
-      \supseteq \dots
-   \]
-   What this means is that given any pair \(\{v_i, v_j\}\) of elements of such
-   sequence, we have that \(\mathcal{C}(v_i, v_j) = k_{\min \{i, j\}}\). Define
-   now the sequence \(\left( k_{\min \{i, j\}} \right)_{\{i, j\} \in
-   \binom{\N}{2}}\), since this is a sequence with infinitely many
-   elements, we can say that the finite coloring \([r]\) induces a finite
-   partitioning of such sequence. By the pigeonhole principle we conclude
-   finally that there exists an infinite monochromatic subsequence. With this we
-   conclude the proof since this construction is obtained directly from \(\left(
-   v_n \right)_{n \in \N}\).
+Let now the sequence \(\left( v_n \right)_{n \in \N}\) such that for all
+\(n \in \N,\ v_n \in \Gamma_{k_{n-1}}(v_{n-1})\) for some
+colour \(k_{n-1} \in [r]\). A trivial result of such construction is that
+given any \(n \in N\) we have \(\mathcal{C}(v_n v_{n-1}) = k_{n-1}\). In fact
+we can extend such result by simply recalling that since we are always taking
+the infinite sets, surely we'll get the sequence
+\[
+    \left( \Gamma_{k_{n}}(v_n) \right)_{n \in \N} \text{ such that }
+    \N \supseteq \Gamma_{k_{1}}(v_1) \supseteq  \Gamma_{k_{2}}(v_2)
+    \supseteq \dots
+\]
+What this means is that given any pair \(\{v_i, v_j\}\) of elements of such
+sequence, we have that \(\mathcal{C}(v_i, v_j) = k_{\min \{i, j\}}\). Define
+now the sequence \(\left( k_{\min \{i, j\}} \right)_{\{i, j\} \in
+\binom{\N}{2}}\), since this is a sequence with infinitely many
+elements, we can say that the finite colouring \([r]\) induces a finite
+partitioning of such sequence. By the pigeonhole principle we conclude
+finally that there exists an infinite monochromatic subsequence. With this we
+conclude the proof since this construction is obtained directly from \(\left(
+v_n \right)_{n \in \N}\).
 \end{proof}
 
 We actually didn't stated the general version of Ramsey theorem, which extends
-for the coloring of the set \(\binom{X}{k}\) where \(X\) is a countably infinite
+for the colouring of the set \(\binom{X}{k}\) where \(X\) is a countably infinite
 poset and \(k \in \N\).
 
 \begin{definition}[Hypergraph]
-   An ordered pair \(H = (V, E)\) of sets, where \(V\) are the vertices and
-   \(E\) the hyperedges, is called an \textbf{hypergraph} if \(E \subseteq
-   \binom{V}{k}\), thus an edge connect two or more vertices.
+An ordered pair \(H = (V, E)\) of sets, where \(V\) are the vertices and
+\(E\) the hyperedges, is called an \textbf{hypergraph} if \(E \subseteq
+\binom{V}{k}\), thus an edge connect two or more vertices.
 \end{definition}
 
 \begin{theorem}[Ramsey theorem on Hypergraphs]
-   Let \(X\) a countably infinite poset. Then \(\forall k, r \in \N\),
-   the coloring \(\mathcal{C} : \binom{X}{k} \to [r]\) is such that there exists
-   an infinite subset \(A \subseteq X : \forall a, b \in A,\ \mathcal{C}(a b) =
-   i \in [r]\).
+Let \(X\) a countably infinite poset. Then, for all \(k, r \in \N\), the
+colouring \(\mathcal{C} : \binom{X}{k} \to [r]\) is such that there exists an
+infinite subset \(A \subseteq X\) such that, for all \(a, b \in A\), we
+have \(\mathcal{C}(a b) = i \in [r]\).
 \end{theorem}
 
 \begin{proof}
-   We proceed via induction on \(k\). For the case \(k = 1\) we have that
-   \(\binom{X}{1} = X\) and thus the coloring \(\mathcal{C}\) induces a
-   partition of the infinite set \(X\) into a finite number of subsets. By the
-   pigeonhole principle we conclude that there is one of such subsets that is
-   infinite and also monochromatic.
+We proceed via induction on \(k\). For the case \(k = 1\) we have that
+\(\binom{X}{1} = X\) and thus the colouring \(\mathcal{C}\) induces a
+partition of the infinite set \(X\) into a finite number of subsets. By the
+pigeonhole principle we conclude that there is one of such subsets that is
+infinite and also monochromatic.
 
-   For the inductive step, let \(\theta \in X\) be the smallest element of \(X\)
-   (we can do such a thing since we said \(X\) was a poset), let the coloring
-   \(\mathcal{C} : \binom{X}{k + 1} \to [r]\) and another coloring
-   \[
-      \mathcal{C}_0 : \binom{X \setminus \{\theta\} }{k} \to [r]
-      \text{ such that }
-      \mathcal{C}_0(E) := \mathcal{C}(E \cup \{\theta\} ),\ \forall E \in
-      \binom{X}{k}.
-   \]
-   By the inductive hypothesis we say that there exists an infinite subset
-   \(X_0 \subseteq X : \forall E_0 \in \binom{X_0}{k},\ \mathcal{C}_0(E_0) = c_0
-   \in [r]\).
+For the inductive step, let \(\theta \in X\) be the smallest element of \(X\)
+(we can do such a thing since we said \(X\) was a poset), let the colouring
+\(\mathcal{C} : \binom{X}{k + 1} \to [r]\) and another colouring
+\[
+    \mathcal{C}_0 : \binom{X \setminus \{\theta\} }{k} \longrightarrow [r]
+    \ \text{ such that }
+    \mathcal{C}_0(E) \coloneq \mathcal{C}(E \cup \{\theta\} ), \text{ for all }
+    E \in \binom{X}{k}.
+\]
+By the inductive hypothesis we say that there exists an infinite subset \(X_0
+\subseteq X\) such that, for all \(E_0 \in \binom{X_0}{k}\), we have
+\(\mathcal{C}_0(E_0) = c_0 \in [r]\).
 
-   Now let \(X'_0 := \{x \in X_0: \theta < x\}\) and define \(x_1 :=
-   \min(X_0)\). As before, set the coloring \(\mathcal{C}_1 : \binom{X'_0}{k}
-   \to [r]\) such that \(\mathcal{C}_1(E) := \mathcal{C}(E \cup \{x_1\})\).
-   Since \(X'_0\) is an infinite set by construction, we know from the pigeonhole
-   principle that there exists an infinite subset \(X_1 \subseteq X'_0 : \forall
-   E_1 \in \binom{X_1}{k},\ \mathcal{C}_1 (E_1) = c_1 \in [r]\).
+Now let \(X'_0 \coloneq \{x \in X_0: \theta < x\}\) and define \(x_1 \coloneq
+\min(X_0)\). As before, set the colouring \(\mathcal{C}_1 : \binom{X'_0}{k} \to
+[r]\) such that \(\mathcal{C}_1(E) \coloneq \mathcal{C}(E \cup \{x_1\})\).  Since
+\(X'_0\) is an infinite set by construction, we know from the pigeonhole
+principle that there exists an infinite subset \(X_1 \subseteq X'_0\) such that,
+for all \(E_1 \in \binom{X_1}{k}\), we have \(\mathcal{C}_1 (E_1) = c_1 \in
+[r]\).
 
-   We go on continue constructing such sequence of elements \((\theta, x_1, x_2,
-   \dots)\) in such a way that we have a corresponding sequence  \((c_0, c_1,
-   c_2, \dots)\) of colors. Note now that we can construct a new and final
-   coloring function
-    \[
-       \mathcal{C}' : \{\theta, x_1, x_2, \dots\} \to [r] \text{ such that }
-       \mathcal{C}'(x_j) := c_j \in [r].
-   \]
-   There are countably infinite elements on the domain and only finite colors,
-   the partitioning is such that the pigeonhole principle is applicable and thus
-   there is a infinite subset \(A \subseteq \{\theta, x_1, x_2, \dots\}
-   \subseteq X\) such that \(\forall x \in A, \mathcal{C}'(x) = c \in [r]\).
-   This concludes the proof.
+We continue constructing a sequence of elements \((\theta, x_1, x_2, \dots)\)
+in such a way that we have a corresponding sequence \((c_0, c_1, c_2, \dots)\)
+of colours. Note now that we can construct a new and final colouring function
+\[
+    \mathcal{C}' : \{\theta, x_1, x_2, \dots\} \to [r] \text{ such that }
+    \mathcal{C}'(x_j) \coloneq c_j \in [r].
+\]
+There are countably infinite elements on the domain and only finite colours, the
+partitioning is such that the pigeonhole principle is applicable and thus there
+is a infinite subset \(A \subseteq \{\theta, x_1, x_2, \dots\} \subseteq X\)
+such that for all \(x \in A\) we have \(\mathcal{C}'(x) = c \in [r]\).  This
+concludes the proof.
 \end{proof}

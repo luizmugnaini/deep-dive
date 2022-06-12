@@ -2,7 +2,7 @@
 
 \begin{definition}
   Let \(V\) a \(k\)-vector space and \(S \subseteq V\) a subset. By the
-  universal property of free vector spaces, the inclusion \(S \hookrightarrow
+  universal property of free vector spaces, the inclusion \(S \emb
   V\) induces the unique \(k\)-linear morphism \(f : k^{\oplus S} \to V\). Then
   we can classify the set \(S\) in terms of \(f\) as:
   \begin{enumerate}[I.]
@@ -34,7 +34,7 @@
   \(a_s \neq 0\) and \(\sum_{s \in S} a_s s = v\).
 \end{proposition}
 
-\begin{lemma}[Zorn's Lemma]
+\begin{lemma}[Zorn's Lemma]\label{lem:zorn}
   Let \(X\) be a set and consider the partial order relation \((\vdash)
   \subseteq X \times X\), so that \(\vdash\) is reflexive for all \(x \in X\),
   antisymmetric for all \(x, y \in X\), and transitive for all \(x, y, z \in
@@ -149,35 +149,35 @@
 \end{proof}
 
 \begin{proposition}
-  Let the surjective \(k\)-linear morphism \(f: V \hookrightarrow W\). There
-  exists an injective \(k\)-linear morphism \(g: W \twoheadrightarrow V\) such
-  that \(f \circ g = \Id_{W}\).
+  Let the surjective \(k\)-linear morphism \(f: V \epi W\). There
+  exists an injective \(k\)-linear morphism \(g: W \mono V\) such
+  that \(f  g = \Id_{W}\).
 \end{proposition}
 
 \begin{proof}
   Just take the mapping \(w \overset g \longmapsto v \in f^{-1}(w) \in V\), then
-  \(w \xmapsto g v \xmapsto f w\) and thus \(f \circ g = \Id_W\).
+  \(w \xmapsto g v \xmapsto f w\) and thus \(f  g = \Id_W\).
 \end{proof}
 
 \begin{proposition}
-  Let the injective \(k\)-linear morphism \(f: V \hookrightarrow W\). There
-  exists a surjective morphism \(g : W \twoheadrightarrow V\) such that \(g
-  \circ f = \Id_V\).
+  Let the injective \(k\)-linear morphism \(f: V \mono W\). There
+  exists a surjective morphism \(g : W \epi V\) such that \(g
+   f = \Id_V\).
 \end{proposition}
 
 \begin{proof}
   Given any \(v \in V\), we want \(g(f(v)) = g(w) = v\), but since \(f^{-1}(w)\)
   is a singleton, we can simply make the well defined mapping \(w \xmapsto g v\)
   for all \(w \in \im(f)\). With this unique condition we already have the
-  wanted \(g \circ f = \Id_V\). Moreover, given any \(v \in V\), there must
+  wanted \(g  f = \Id_V\). Moreover, given any \(v \in V\), there must
   exist \(w \in W\) (in fact we could specify \(w \in \im(f)\), but here we can
   be more general) such that \(g(w) = v\), thus \(g\) is surjective.
 \end{proof}
 
 \begin{proposition}
   Let \(k\)-vector spaces \(V\) and \(W\). There exists injective linear
-  morphism \(V \hookrightarrow W\) if and only if there exists a surjective
-  morphism \(W \twoheadrightarrow V\).
+  morphism \(V \mono W\) if and only if there exists a surjective
+  morphism \(W \epi V\).
 \end{proposition}
 
 \begin{proof}
@@ -187,12 +187,12 @@
 \begin{theorem}\label{thm: iso of basis}
   Let sets \(S\) and \(T\). The following propositions are equivalent:
   \begin{enumerate}[I.]
-    \item There exists injective linear morphism \(k^{\oplus S} \hookrightarrow
+    \item There exists injective linear morphism \(k^{\oplus S} \mono
       k^{\oplus T}\).
     \item There exists surjective linear morphism \(k^{\oplus T}
-      \twoheadrightarrow k^{\oplus S}\).
-    \item There exists an injection \(S \hookrightarrow T\).
-    \item There exists a surjective map \(T \twoheadrightarrow S\) or \(S =
+      \epi k^{\oplus S}\).
+    \item There exists an injection \(S \mono T\).
+    \item There exists a surjective map \(T \epi S\) or \(S =
       \varnothing\).
   \end{enumerate}
 \end{theorem}
@@ -227,8 +227,8 @@
 
 \begin{proof}
   From \cref{thm: iso of basis} we see that since exists injective
-  \(k\)-linear morphism \(V \hookrightarrow V\), then exists injective map \(B
-  \hookrightarrow B'\) and also surjective map \(B \twoheadrightarrow B'\). From
+  \(k\)-linear morphism \(V \mono V\), then exists injective map \(B
+  \mono B'\) and also surjective map \(B \epi B'\). From
   Cantor-Schröder-Bernstein theorem we see that there exists bijection \(B \iso
   B'\).
 \end{proof}
@@ -278,7 +278,7 @@
 \end{proposition}
 
 \begin{proof}
-  Consider the function \(\mathcal{C}_{S, S'}^{-1} \circ f \circ \mathcal{C}_{B,
+  Consider the function \(\mathcal{C}_{S, S'}^{-1}  f  \mathcal{C}_{B,
   B'} : V \to W\), then we have the mapping
   \[
     [v]_B \xmapsto{\mathcal{C}_{B, B'}} [v]_{B'}

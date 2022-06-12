@@ -1,56 +1,39 @@
 \section{Functors}
 
-\begin{definition}[Functor]\label{def: functor}
-Let \(\cat C\) and \(\cat D\) be categories. A functor \(F: \cat C \to \cat
-D\) has the following data:
+\begin{definition}[Covariant functor]\label{def: functor}
+Let \(\cat C\) and \(\cat D\) be categories. A covariant functor \(F: \cat C \to
+\cat D\) has the following data:
 \begin{enumerate}[({DF}1)]
-  \item For all \(c \in \cat C\) exists a corresponding \(F c \in \cat D\).
-  \item For all \(f: c \to c' \in \Mor(\cat C)\) there exists a morphism \(F
-    f: F c \to F c' \in \Mor(\cat D)\).
+\item For all \(c \in \cat C\) exists a corresponding \(F c \in \cat
+  D\)\footnote{When convenient, we may discard the use of parenthesis, but in
+    occasions where the use of parenthesis brings more clarity to the
+    situation, we shall use it.}.
+\item For all \(f: c \to c' \in \Mor(\cat C)\) there exists a morphism \(F
+  f: F c \to F c' \in \Mor(\cat D)\).
 \end{enumerate}
 Such data satisfies the two following axioms:
 \begin{enumerate}[({AF}1)]
-  \item For all composable \(f, g \in \Mor(\cat C)\), we have \(F g \cdot F f
-    = F (g \cdot f)\).
-  \item For all \(c \in \cat C\) we have \(F \Id_c = \Id_{F c} \in \Mor(\cat
-    D)\).
+\item For all composable \(f, g \in \Mor(\cat C)\), we have \(F g \circ F f
+  = F (g \circ f)\).
+\item For all \(c \in \cat C\) we have \(F \Id_c = \Id_{F c} \in \Mor(\cat
+  D)\).
 \end{enumerate}
-This definition is sometimes called covariant functor (in contrast with
-contravariant functor, see \cref{def: contravariant functor}).
 \end{definition}
-
-\begin{definition}[Forgetful functor]
-A functor is said to be forgetful if the functor ``forgets'' some object,
-structure or property of its domain category.
-\end{definition}
-
-\begin{example}
-We have some classical examples of forgetful functors, for instance, the
-following are functors that forget the structure of their domain categories:
-\begin{itemize}
-  \item The functor \(G: \Grp \to \Set\) mapping groups to its
-    corresponding underlying set.
-  \item The functor \(T: \Top \to \Set\) maps any topological space
-    to its corresponding set of points.
-  \item The functor \(V, E: \Graph \to \Set\) maps the vertices and
-    edges of a graph to the set of such vertices an edges.
-\end{itemize}
-\end{example}
 
 \begin{definition}[Contravariant functor]
 \label{def: contravariant functor}
 A contravariant functor from categories \(\cat C\) to \(\cat D\) is a functor
 \(F: \cat C^\op \to \cat D\) together with the following data:
 \begin{enumerate}[({DCF}1)]
-  \item For all \(c \in \cat C\) exists \(F c \in \cat D\).
-  \item For all \(f: c \to c' \in \Mor(\cat C)\) we have \(F f: F c' \to F c
-    \in \Mor(\cat D)\).
+\item For all \(c \in \cat C\) exists \(F c \in \cat D\).
+\item For all \(f: c \to c' \in \Mor(\cat C)\) we have \(F f: F c' \to F c
+  \in \Mor(\cat D)\).
 \end{enumerate}
 Moreover, a contravariant functor satisfies the following axioms:
 \begin{enumerate}[({ACF}1)]
-  \item For all composable \(f, g \in \Mor(\cat C)\) we have \(F f \cdot F g =
-    F (g \cdot f)\).
-  \item For all \(c \in \cat C\) we have \(F \Id_c = \Id_{F c}\).
+\item For all composable \(f, g \in \Mor(\cat C)\) we have \(F f \circ F g =
+  F (g \circ f)\).
+\item For all \(c \in \cat C\) we have \(F \Id_c = \Id_{F c}\).
 \end{enumerate}
 This can all be comprised diagrammatically as:
 \[
@@ -67,10 +50,43 @@ This can all be comprised diagrammatically as:
     c'' \ar[rr, mapsto]
     & & F c''
     \ar[u, "F g"]
-    \ar[uu, bend right = 60, swap, "F f \cdot F g = F (g \cdot f)"]
+    \ar[uu, bend right = 60, swap, "F f \circ F g = F (gf)"]
   \end{tikzcd}
 \]
 \end{definition}
+
+\begin{definition}[Composition of functors]
+\label{def:composition-functors}
+Let \(F: \cat C \to \cat D\) and \(G: \cat D \to \cat B\) be functors. We define
+their composition \(G F: \cat C \to \cat B\) by \((GF)(x) = G(F(x))\), for all
+\(x \in \cat C\), and \((G F)(f) = G(F(f))\) for all morphism \(f \in \Mor(\cat
+C)\).
+\end{definition}
+
+\begin{example}
+\label{exp:opposite-category}
+An important example of contravariant functor is \(\op: \cat C \to \cat
+C^{\op}\), where \(\cat C\) is some category, defined by the identity on objects
+and morphisms.
+\end{example}
+
+\begin{definition}[Forgetful functor]
+A functor is said to be forgetful if the functor ``forgets'' some object,
+structure or property of its domain category.
+\end{definition}
+
+\begin{example}
+We have some classical examples of forgetful functors, for instance, the
+following are functors that forget the structure of their domain categories:
+\begin{itemize}
+\item The functor \(G: \Grp \to \Set\) mapping groups to its corresponding
+  underlying set.
+\item The functor \(T: \Top \to \Set\) maps any topological space
+  to its corresponding set of points.
+\item The functor \(V, E: \Graph \to \Set\) maps the vertices and
+  edges of a graph to the set of such vertices an edges.
+\end{itemize}
+\end{example}
 
 \begin{example}[\(\Top^\op \to \Rng\)]
 Let \(C: \Top^\op \to \Rng\) be a contravariant functor such that
@@ -108,8 +124,8 @@ proof that \(C: \Top^\op \to \Rng\) is a contravariant functor.
 \end{example}
 
 \begin{definition}[Presheaf]\label{def: presheaf}
-Let \(\cat C\) be a small category. A contravariant functor \(\cat C^\op \to
-\Set\) is called a presheaf on \(\cat C\).
+Let \(\cat C\) be a \(\mathcal U\)-small category. A contravariant functor
+\(\cat C^\op \to \Set\) is called a presheaf on \(\cat C\).
 \end{definition}
 
 \begin{example}[\(\mathcal O(X)^\op \to \Set\)]
@@ -152,7 +168,7 @@ This shows that \(F f^{-1}\) is the right and left inverse of \(F f\), hence
 \begin{example}[Group action]\label{exp:grp-action}
 Let \(G\) be any group and consider the category \(\cat{B}G\) generated by \(G\)
 --- that is, \(\cat BG\) consists of a unique object \(*\) and the morphisms of
-the category are endomorphisms \(* \to *\) given by the elements of \(G\). Given
+the category are automorphisms \(* \to *\) given by the elements of \(G\). Given
 a category \(\cat C\), a functor \(X: \cat BG \to \cat C\) --- given by mapping
 \(X* \coloneq X \in \cat C\) and each object \(g \in G\) to an endomorphism \(Xg
 \coloneq g_{*}: X \to X\) --- is said to define a left group action on the
@@ -199,7 +215,7 @@ and \(F r\) is a split epimorphism.
 \end{proof}
 
 \begin{definition}[\(\Hom\) functors]\label{def:hom-functors}
-Let \(\cat C\) be a locally small category. Given any \(c \in \cat C\), there
+Let \(\cat C\) be a \(\mathcal U\)-category. Given any \(c \in \cat C\), there
 exists a pair of covariant and contravariant functors, \(\Hom(c, -)\) and
 \(\Hom(-, c)\), respectively --- represented by the object \(c\). That is:
 \[
@@ -230,67 +246,480 @@ g)^*\). Let \(x \in \cat C\) be any object, then \(\Id_{x *} = \Id_{\Hom(c, x)}
 = \Id_x^*\). This proves that \(\Hom(c, -)\) is covariant and \(\Hom(-, c)\) is
 contravariant.
 
-\begin{definition}[Faithful]\label{def: faithful}
+\begin{definition}[Faithful, full \& its friends]
+\label{def:faithful-full-fully-faithful-essencially-surjective-conservative}
 Let \(\cat C\) and \(\cat D\) be categories. A functor \(F: \cat C \to \cat D\)
-is said to be faithful if for all \(x, y \in \cat C\) the map \(\cat C(x, y) \to
-\cat D(F x, F y)\) is injective.
+is said to be
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item \emph{Faithful} if for all \(x, y \in \cat C\) the map \(\Hom_{\cat C}(x,
+  y) \mono \Hom_{\cat D}(F x, F y)\) is injective.
+\item \emph{Full} if for all \(x, y \in \cat C\) the map \(\Hom_{\cat C}(x, y)
+  \epi \Hom_{\cat D}(F x, F y)\) is surjective.
+\item \emph{Fully faithful} if for all \(x, y \in \cat C\) the map \(\Hom_{\cat
+    C}(x, y) \isoto \Hom_{\cat D}(F x, F y)\) is a bijection.
+\item \emph{Essencially surjective} if for each \(y \in \cat D\) there exists
+  \(x \in \cat C\) and an isomorphism \(F x \isoto y\) in \(\cat D\).
+\item \emph{Conservative} if, given a morphism \(f\) in \(\cat C\), if \(F f\)
+  is an isomorphism in \(\cat D\), then \(f\) is an isomorphism in \(\cat C\).
+\end{enumerate}
 \end{definition}
 
-\begin{definition}[Full]\label{def: full}
-Let \(\cat C\) and \(\cat D\) be categories. A functor \(F: \cat C \to \cat D\)
-is said to be full if for all \(x, y \in \cat C\) the map \(\cat C(x, y) \to
-\cat D(F x, F y)\) is surjective.
-\end{definition}
-
-\begin{definition}[Product category]\label{def:product-category}
-Given categories \(\cat C\) and \(\cat D\), we define their product \(\cat C
-\times \cat D\) to be a category whose objects are ordered pairs \((c, d)\) such
-that \(c \in \cat C\) and \(d \in \cat D\), and morphisms are ordered pairs
-\((f, g): (c, d) \to (c', d')\), where \(f: c \to c' \in \Mor(\cat C)\) and \(g:
-d \to d' \in \Mor(\cat D)\). Composable morphisms \((f, g)\) and \((h, q)\) have
-composition defined componentwise, that is, \((f, g) (h, q) = (fh, gq)\).
+\begin{definition}[Product \& disjoint union categories]
+\label{def:product-disjoint-categories}
+Let \(I\) be an indexing set and \(\{\cat C_{i}\}_{i \in I}\) be a collection of
+categories associated with \(I\). We define the following categories:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The \emph{product} category \(\prod_{i \in I} \cat C_i\) consists of objects
+  \(\Obj(\prod_{i \in I} \cat C_i) \coloneq \prod_{i \in I} \Obj(\cat C_i)\),
+  and morphisms \(\Hom_{\prod_{i \in I} \cat C_i}((x_i)_{i \in I}, (y_i)_{i \in
+    I}) \coloneq \prod_{i \in I} \Hom_{\cat C_i}(x_i, y_i)\) between any two
+  objects \((x_i)_{i \in I}\) and \((y_i)_{i \in I}\) in the category. Composable
+  morphisms \((f_i)_{i \in I}\) and \((g_i)_{i \in I}\) have composition defined
+  componentwise --- that is, \((f_i)_{i \in I} (g_i)_{i \in I} \coloneq
+  (f_i g_i)_{i \in I}\).
+\item The \emph{disjoint union} category \(\coprod_{i \in I} \cat C_i\) consists
+  of objects
+  \[
+    \Obj\bigg(\coprod_{i \in I} \cat C_i\bigg) \coloneq
+    \coprod_{i \in I} \{(x, i) : i \in I \text{ and } x \in \cat C_i\},
+  \]
+  and morphisms
+  \[
+    \Hom_{\coprod_{i \in I} \cat C_i}((x, i), (y, j)) \coloneq
+    \begin{cases}
+      \Hom_{\cat C_i}(x, y), &\text{if } i = j \\
+      \emptyset, &\text{otherwise}
+    \end{cases}
+  \]
+  for any objects \((x, i)\) and \((y, j)\) in the category.
+\end{enumerate}
+Moreover, if \(\{\cat D_{i}\}_{i \in I}\) is another collection of categories,
+and \(\{F_{i}: \cat C_i \to \cat D_i\}_{i \in I}\) is a collection of functors,
+we associate to each of the above categories the functors \(\prod_{i \in I}
+F_i\) and \(\coprod_{i \in I} F_i\).
 \end{definition}
 
 \begin{definition}[Two sided represented functor]
 \label{def:two-sided-represented-functor}
-Let \(\cat C\) be a locally small category, then there is a functor \(\Hom(-,
+Let \(\cat C\) be a \(\mathcal U\)-category, then there is a functor \(\Hom(-,
 -): \cat C^{\op} \times \cat C \to \Set\) defined by mapping objects \((x, y)
 \mapsto \Hom(x, y)\) and morphisms \((f, g): (a, y) \to (x, b)\) to a
 set-function \((f^{*}, g_{*}): \Hom(x, y) \to \Hom(a, b)\) given by the mapping
 \(g \mapsto h g f\).
 \end{definition}
 
-Categories also form a category, whose objects are categories and morphisms are
-functors between them --- but this gives rise to size \todo{describe}issues, so
-we have to distinguish between two kinds of categories, the ones that are
-\emph{small} and \emph{locally small}. This gives rise to two categories,
-\(\Cat\) and \(\CAT\), comprised of objects that are small and locally small,
-respectively.
-
-\begin{definition}[Isomorphism of categories]
-\label{def:isomorphism-categories}
-Let \(\cat C\) and \(\cat D\) be categories. We say that \(\cat C\) is
-isomorphic to \(\cat D\) if there exists morphisms \(F: \cat C \to \cat D\) and
-\(G: \cat D \to \cat C\) such that \(GF = \Id_{\cat C}\) and \(FG = \Id_{\cat D}\).
-\end{definition}
-
 \begin{example}[Orbit category]
 \label{exp:orbit-category}
 Let \(G\) be a group. We define the orbit category associated to \(G\) as
 \(\mathcal{O}_G\) whose objects are subgroups \(H \subseteq G\), identified by
-the left \(G\)-set \(G/H\) of left costs of \(H\). The morphisms \(\phi: G/H \to
+the left \(G\)-set \(G/H\) of left cosets of \(H\). The morphisms \(\phi: G/H \to
 G/Q\) are maps commuting with the left \(G\)-action, that is, \(\phi(g_{*}h) =
 g_{*} \phi(h)\) --- such maps are called \(G\)-equivariant.
 \end{example}
 
+\begin{proposition}[Bifunctor]\label{def:bifunctor}
+Let \(\cat A, \cat B\) and \(\cat C\) be any categories. A functor
+\[
+  F: \cat A \times \cat B \longrightarrow \cat C
+\]
+is called a \emph{bifunctor}. The functor \(F\) is defined so that, given any
+objects \(x \in \cat A\) and \(y \in \cat B\),
+\[
+  F(x, -): \cat B \longrightarrow \cat C\ \text{ and }\
+  F(-, y): \cat A \longrightarrow \cat C
+\]
+are both functors. Moreover, given any morphisms \(f: x \to y\) in \(\cat A\)
+and \(g: x' \to y'\) in \(\cat B\), the following diagram commutes
+\[
+  \begin{tikzcd}
+    F(x, x') \ar[rr, "F{(x, g)}"] \ar[d, swap, "F{(f, x')}"]
+      & &F(x, y') \ar[d, "F{(f, y')}"] \\
+    F(y, x') \ar[rr, "F{(y, g)}"]
+      & &F(y, y')
+  \end{tikzcd}
+\]
+\end{proposition}
 
+\begin{definition}
+Let \(F: \cat C \to \cat D\) be a functor between categories \(\cat C\) and
+\(\cat D\), and let \(y \in \cat D\). We define the following two categories:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The category \(\cat C_y\) is defined to consist of objects
+  \[
+    \Obj(\cat C_y) \coloneq
+    \{(x, s) : x \in \cat C \text{ and } s: F x \to y \text{ in } \cat D\},
+  \]
+  and morphisms between any objects \((a, s), (b, t) \in \cat C_{y}\) are
+  defined to be
+  \[
+    \Hom_{\cat C_y}\left( (a, s), (b, t) \right) \coloneq
+    \{f \in \Hom_{\cat C}(a, b) : s = t F(f) \text{ in } \cat D\},
+  \]
+  that is, a morphism \(f: (a, s) \to (b, t)\) makes to following diagram
+  commute
+  \[
+    \begin{tikzcd}
+      F a \ar[r, "s"] \ar[dr, swap, "Ff"] &y \\
+      &F b \ar[u, swap, "t"]
+    \end{tikzcd}
+  \]
+  Together with such category, we define a faithful functor \(j_y: \cat C_y \to
+  \cat C\) by \(j_y(x, s) \coloneq x\), acting as a projection.
+\item The category \(\cat C^y\) is defined to consist of objects
+  \[
+    \Obj(\cat C^y) \coloneq
+    \{(x, s) : x \in \cat C \text{ and } s: y \to F x \text{ in } \cat D\},
+  \]
+  and morphisms between any objects \((a, s), (b, t) \in \cat C^{y}\) are
+  defined to be
+  \[
+    \Hom_{\cat C^y}\left( (a, s), (b, t) \right) \coloneq
+    \{f \in \Hom_{\cat C}(a, b) : t = F(f) s \text{ in } \cat D\},
+  \]
+  that is, a morphism \(f: (a, s) \to (b, t)\) makes to following diagram
+  commute
+  \[
+    \begin{tikzcd}
+      y \ar[r, "s"] \ar[d, swap, "t"] &Fa \ar[dl, "F f"] \\
+      F b &
+    \end{tikzcd}
+  \]
+  Together with such category, we define a faithful functor \(j^y: \cat C^y \to
+  \cat C\) by \(j^y(x, s) \coloneq x\), which acts as a projection.
+\end{enumerate}
+\end{definition}
 
-%\begin{proposition}[Bifunctor]
-%Let categories \(\cat A, \cat B\) and \(\cat C\). There exists a uniquely
-%defined functor \(F: \cat A \times \cat B \to \cat C\).
-%\end{proposition}
+\begin{definition}[Equivalence classes]
+\label{def:equivalence-class-category}
+Let \(\cat C\) be a category and \(\sim\) denote an equivalence relation on the
+objects of \(\cat C\) --- where \(x \sim y\) if \(\Hom_{\cat C}(x, y) \neq
+\emptyset\). We denote the collection of all equivalence classes on the objects
+of \(\cat C\) by \(\pi_0(\cat C)\).
+\end{definition}
 
-\todo[inline]{Bifunctor and two sided represented functor!}
+\begin{corollary}
+\label{cor:connected-iff-class-point}
+A category \(\cat C\) is \emph{connected} if and only if \(\pi_0(\cat C)\)
+consists of a single element.
+\end{corollary}
 
-\todo[inline]{After solving some problems on functors, next topic: natural
-transformations}
+\begin{proof}
+If \(\pi_0(\cat C)\) is a single object, every equivalence class on \(\cat C\)
+is such that every element is equivalent to each other, which implies that the
+collection of morphisms \(\Hom_{\cat C}(x, y)\), between any two elements \(x, y
+\in \cat C\), is non-empty --- thus clearly \(\cat C\) is connected.
+\end{proof}
+
+\begin{definition}[Isomorphisms of monomorphisms \& epimorphisms]
+\label{def:iso-mono-epi}
+Let \(\cat C\) be a category and \(x, y, z \in \cat C\) be any objects. We
+define the following concepts:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Two monomorphisms \(f: x \mono z\) and \(g: y \mono z\) in \(\cat C\) are
+  said to be \emph{isomorphic} in \(\cat C\) if there exists an isomorphism \(h:
+  x \isoto y\) for which the following diagram commutes in
+  \[
+    \begin{tikzcd}
+      &z & \\
+      x \ar[rr, "h", "\iso"'] \ar[ur, tail, "f"] &
+      &y \ar[ul, tail, swap, "g"]
+    \end{tikzcd}
+  \]
+  This is equivalent to \(f\) and \(g\) being isomorphic in \(\cat C_z\).
+\item Two epimorphisms \(f: x \epi z\) and \(g: y \epi z\) in \(\cat C\) are
+  said to be \emph{isomorphic} in \(\cat C\) if there exists an isomorphism \(h:
+  x \isoto y\) for which the following diagram commutes in
+  \[
+    \begin{tikzcd}
+      x \ar[rr, "h", "\iso"'] \ar[dr, two heads, swap, "f"] &
+      &y \ar[dl, two heads, "g"] \\
+      &z &
+    \end{tikzcd}
+  \]
+  This is equivalent to \(f\) and \(g\) being isomorphic in \(\cat C^z\).
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+\label{def:subobject-quotient}
+Let \(\cat C\) be a category and \(x \in \cat C\) be any object. We define the
+following:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item An isomorphism class of a monomorphism with \emph{target} \(x\) is called a
+  \emph{subobject} of \(x\).
+\item An isomorphism class of an epimorphim with \emph{source} \(x\) is called a
+  \emph{quotient} of \(x\).
+\end{enumerate}
+These isomorphism classes are given in the sense of \cref{def:iso-mono-epi}.
+\end{definition}
+
+\begin{example}[Ordering subobjects]
+\label{exp:order-subobject}
+One can \emph{order} the collection of subobjects of a given object \(x \in \cat
+C\) by defining a relation \([f: y \mono x] \leq [g: z \mono x]\) if there
+exists \(h: y \to z\) such that
+\[
+  \begin{tikzcd}
+    y \ar[r, tail, "f"] \ar[rd, dashed, swap, "h"] &x \\
+    &z \ar[u, tail, swap, "g"]
+  \end{tikzcd}
+\]
+Moreover, \emph{if} \(h\) exists, then it's unique.
+\end{example}
+
+\begin{definition}[Comma category]
+\label{def:comma-category}
+\todo[inline]{Comma category}
+\end{definition}
+
+\section{Natural Transformations}
+
+\begin{definition}[Natural transformation]
+\label{def:natural-transformation}
+Let \(\cat C\) and \(\cat D\) be categories, and consider functors \(F, G:
+\cat C \rightrightarrows \cat D\). A \emph{natural transformation} \(\alpha: F
+\nat G\) consists of morphisms \(\alpha_x: F x \to G x\), for all \(x \in \cat
+C\), such that, for any morphism \(f: x \to y\) in \(\cat C\), the following
+diagram commutes
+\[
+  \begin{tikzcd}
+    F x \ar[r, "\alpha_x"] \ar[d, swap, "F f"]
+    &G x \ar[d, "G f"] \\
+    F y \ar[r, "\alpha_y"] &Gy
+  \end{tikzcd}
+\]
+Moreover, if \(L: \cat C \to \cat D\) is another functor, and \(\beta: G \nat
+L\) is a natural transformation, we define the \emph{composition} of natural
+transformations \(\alpha\) and \(\beta\) as the map \(\beta \alpha: F \nat L\)
+such that \((\beta \alpha)_x \coloneq \beta_x \alpha_x\) for every \(x \in \cat
+C\).
+\end{definition}
+
+\begin{definition}[Functor category]
+\label{def:functor-category}
+Let \(\cat C\) and \(\cat D\) be categories. We define a category \(\Fct(\cat C,
+\cat D)\) whose objects are functors \(\cat C \to \cat D\), and morphisms are
+natural transformations between functors.
+\end{definition}
+
+\begin{definition}[Horizontal composition]
+\label{def:horizontal-composition-natural-transformation}
+Let \(\cat A, \cat B\) and \(\cat C\) be categories. Consider functors \(F, F':
+\cat A \rightrightarrows \cat B\), and \(G, G': \cat B \rightrightarrows \cat
+C\).  Let \(\alpha: F \nat F'\) and \(\beta: G \nat G'\) be natural
+transformations --- that is,
+\[
+  \begin{tikzcd}
+    \cat A \ar[r, bend left, "F"{name=F}]
+    \ar[r, bend right, "{F'}"'{name=FF}]
+    &\cat B \ar[r, bend left, "G"{name=G}]
+    \ar[r, bend right, "{G'}"'{name=GG}]
+    & \cat C
+    \ar[Rightarrow, from=F, to=FF, "\alpha"]
+    \ar[Rightarrow, from=G, to=GG, "\beta"]
+  \end{tikzcd}
+\]
+We define the \emph{horizontal composition} of \(\beta\) with \(\alpha\) as the
+natural transformation \(\beta \alpha: G F \nat G' F'\) so that
+\[
+  \begin{tikzcd}
+    \cat A \ar[r, bend left=40, "G F"{name=s}]
+    \ar[r, bend right=40, swap, "{G' F'}"{name=t}]
+    &\cat C
+    \ar[Rightarrow, from=s, to=t, "\beta \alpha"]
+  \end{tikzcd}
+\]
+\end{definition}
+
+\begin{definition}[Vertical composition]
+\label{def:vertical-compostion-natural-transformation}
+Let \(\cat C\) and \(\cat D\) be categories, and consider functors and natural
+transformations given in the following diagram
+\[
+  \begin{tikzcd}
+  \cat C \ar[rr, bend left=60, "F"{name=F}]
+  \ar[rr, "H"{near start, description}, ""'{name=H}, ""{name=HH}]
+  \ar[rr, bend right=60, swap, "G"{name=G}]
+  & &\cat D
+  \ar[Rightarrow, "\alpha", from=F, to=H]
+  \ar[Rightarrow, "\beta", from=HH, to=G]
+  \end{tikzcd}
+\]
+We define the \emph{vertical compostion} of \(\beta\) with \(\alpha\) as the
+natural transformation \(\beta \alpha: F \nat G\) --- diagrammatically,
+\[
+  \begin{tikzcd}
+  \cat C \ar[r, bend left=50, "F"{name=F}]
+  \ar[r, bend right=50, swap, "G"{name=G}]
+  &\cat D
+  \ar[Rightarrow, "\beta\alpha", from=F, to=G]
+  \end{tikzcd}
+\]
+\end{definition}
+
+Notice that, given a functor \(\phi: \cat C \to \cat D\) between categories
+\(\cat C\) and \(\cat D\), for every category \(\cat A\), there arises a natural
+functor
+\[
+  \phi^{*}: \Fct(\cat A, \cat C) \longrightarrow \Fct(\cat I, \cat D)\text{,}
+  \ \text{ mapping }\
+  F \longmapsto \phi F.
+\]
+
+\begin{lemma}
+\label{lem:faithful-pushforward-functor}
+If \(\phi\) is a faithful functor (respectively, fully faithful), then so is the
+functor \(\phi^{*}\) for any category \(\cat A\).
+\end{lemma}
+
+\begin{proof}
+Given any two functors \(F, G: \cat A \rightrightarrows \cat C\), let \(\eta: F
+\nat G\) be any natural transformation. If we apply \(\phi^{*}\), we get the
+following commutative diagram --- for every pair \(x, y \in \cat A\) and every
+morphism \(f: x \to y\) in \(\cat A\),
+\[
+  \begin{tikzcd}
+    \phi F x \ar[r, "\phi \eta_x"] \ar[d, swap, "\phi F(f)"]
+    &\phi G x \ar[d, "\phi G(f)"] \\
+    \phi F y \ar[r, "\phi \eta_y"]
+    &\phi G y
+  \end{tikzcd}
+\]
+Since \(\phi\) is faithful (or fully faithful), the mappings \(\eta_x \mapsto
+\phi \eta_x\) and \(\eta_y \mapsto \phi \eta_y\) are both injective (or
+bijective), thus the natural map
+\[
+  \Hom_{\Fct(\cat A, \cat C)}(F, G) \longrightarrow
+  \Hom_{\Fct(\cat A, \cat D)}(\phi F, \phi G)\text{,}
+  \ \text{ mapping }\ \eta \mapsto \phi^{*} \eta,
+\]
+is ensured to be injective (or bijective).
+\end{proof}
+
+We consider now the category consisting of \(\mathcal U\)-small categories and
+the morphisms are functors between them, we denote this category by
+\(\UCat\). Notice that, given any two \(\mathcal U\)-small categories \(\cat C\)
+and \(\cat D\), the collection of functors between them also forms a category
+\(\Hom_{\UCat}(\cat C, \cat D) = \Fct(\cat C, \cat D)\) --- this emergent
+structure gives birth to the concept of a \(2\)-category.
+
+\begin{definition}[Isomorphism of categories]
+\label{def:isomorphism-categories}
+Let \(\cat C\) and \(\cat D\) be categories. We say that \(\cat C\) is
+isomorphic to \(\cat D\) if there are morphisms \(F: \cat C \to \cat D\) and
+\(G: \cat D \to \cat C\) such that \(GF = \Id_{\cat C}\), and \(FG = \Id_{\cat
+D}\).
+\end{definition}
+
+A weaker and even more important concept it that of an equivalence between
+categories.
+
+\begin{definition}[Equivalence of categories]
+\label{def:equivalence-categories}
+Let \(\cat C\) and \(\cat D\) be categories. We say that a functor \(F: \cat C
+\isoto \cat D\) is an \emph{equivalence} of the categories \(\cat C\) and \(\cat
+D\) if there exists a functor \(G: \cat D \to \cat C\), and two natural
+isomorphisms \(\alpha: G F \isonat \Id_{\cat C}\) and \(\beta: F G \isonat
+\Id_{\cat D}\). If this is the case, we say that \(F\) and \(G\) are
+\emph{quasi-inverses} of each other.
+\end{definition}
+
+\begin{lemma}
+\label{lem:quasi-inverse}
+Let \(F: \cat C \isoto \cat D\) and \(G: \cat D \isoto \cat C\) be equivalences
+of given categories \(\cat C\) and \(\cat D\), and suppose that \(F\) and \(G\)
+are quasi-inverses. Then there are natural isomorphisms \(\alpha: G F \isonat
+\Id_{\cat C}\) and \(\beta: F G \isonat \Id_{\cat D}\) for which
+\[
+  F \alpha = \beta F\quad \text{ and } \quad \alpha G = G \beta.
+\]
+\end{lemma}
+
+\begin{proof}
+Let \(x \in \cat C\) be any object. Notice that, since \(\Id_{\cat C} x = x\)
+and \(\Id_{\cat D} F x = F x\), it follows that
+\[
+  \begin{tikzcd}
+    G F x \ar[r, "\alpha_x", "\dis"'] \ar[d, swap, "F"] &x \ar[d, "F"] \\
+    FG(Fx) \ar[r, "\beta_{Fx}"', "\dis"] &Fx
+  \end{tikzcd}
+\]
+is commutative --- thus indeed \(F \alpha = \beta F\). Now if we let \(y \in
+\cat D\) be any other object, since \(\Id_{\cat D} y = y\) and \(\Id_{\cat C} G
+y = G y\), we get the following commutative diagram
+\[
+  \begin{tikzcd}
+    G F (G y) \ar[r, "\alpha_{G_y}", "\dis"'] &G y \\
+    F G y \ar[u, "G"] \ar[r, "\beta_y"', "\dis"] &y \ar[u, swap, "G"]
+  \end{tikzcd}
+\]
+therefore \(\alpha G = G \beta\) as wanted.
+\end{proof}
+
+\begin{lemma}
+\label{lem:full-subcategory-functor-correspondence}
+Let \(F: \cat C \to \cat D\) be a functor, and \(\cat D_0\) be a full
+subcategory of \(\cat D\) such that, for all \(x \in \cat C\), there exists \(y
+\in \cat D_0\) and an isomorphism \(Fx \iso y\).
+
+Denote by \(\iota: \cat D_0 \emb \cat D\) the canonical embedding functor. Then
+there exists a functor \(F_0: \cat C \to \cat D_0\) and a natural isomorphism
+\(\alpha: F \isonat \iota F_0\).  Moreover, \(F_0\) is unique up to
+unique isomorphism\footnote{We say that \(F_0\) is \emph{unique up to unique
+isomorphism} when, given another functor \(G: \cat C \to \cat D_0\) and natural
+isomorphism \(\beta: F \isonat \iota G\), there exists a \emph{unique} natural
+isomorphism \(\eta: G \isonat F_0\) for which \(\alpha = \iota \eta
+\beta\).}. This can be diagrammatically expressed by the
+following quasi-commutative diagram\footnote{A diagram whose nodes are
+categories an arrows are morphisms is said to be \emph{quasi-commutative} if it
+commutes up to natural isomorphism of functors.}
+\[
+  \begin{tikzcd}
+    \cat C \ar[r, "F"] \ar[dr, swap, dashed, bend right, "F_0"] &\cat D \\
+    &\cat D_0 \ar[u, hook, swap, "\iota"]
+  \end{tikzcd}
+\]
+\end{lemma}
+
+\begin{proof}
+We first build the functor \(F_0: \cat C \to \cat D_0\):
+\begin{itemize}\setlength\itemsep{0em}
+\item Let \(x \in \cat C\) be any object. By means of Zorn's Lemma (see
+  \cref{lem:zorn}), we choose \(a \in \cat \cat D_0\) for which exists an
+  isomorphism \(\phi_x: a \isoto F(x)\) in \(\cat D\) --- and consequently we let
+  \(F_0 x \coloneq a\).
+\item Given any morphism \(f: x \to y\) in \(\cat C\), we know from construction
+  that the objects \(F_0 x \coloneq a\) and \(F_0 y \coloneq b\) are defined so
+  that there exists isomorphisms \(\phi_x: a \isoto F x\) and \(\phi_y: b \isoto
+  F y\) in the category \(\cat D\). This allows us to define the morphism \(F_0
+  f: F_0 x \to F_0 y\) in \(\cat D\) as the mapping \(F f \coloneq \phi_y^{-1} (F
+  f) \phi_x\) --- that is, so that the following diagram commutes
+  \[
+    \begin{tikzcd}
+      F_0 x \ar[r, "F_0 f"] \ar[d, "\dis", "\phi_x"']
+      &F_0 y \ar[d, "\dis"', "\phi_y"] \\
+      F x \ar[r, swap, "F f"] &F y
+    \end{tikzcd}
+  \]
+  Notice that from this definition we find naturally that the composition
+  condition is met --- given any other morphism \(g: y \to z\) in \(\cat C\) we
+  have that \(F_0(g f) = (F_0 g)(F_0 f)\).
+\end{itemize}
+This proves the existence of \(F_0\) as a functor. For the isomorphism
+\(\alpha\), we can define for each pair \(x, y \in \cat C\) the morphisms
+\(\alpha_x \coloneq \phi_x^{-1}\) and \(\alpha_y \coloneq \phi_y^{-1}\), so that
+the following diagram commutes
+\[
+  \begin{tikzcd}
+    F x \ar[rr, "\alpha_x", "\dis"'] \ar[d, swap, "F f"]
+    & &\iota F_0(x) = a \ar[d, "\iota F_0 (f)"] \\
+    F y \ar[rr, "\alpha_y"', "\dis"]
+    & &\iota F_0(y) = b
+  \end{tikzcd}
+\]
+For the uniqueness of \(F_0\) up to unique isomorphism, let \(G: \cat C \to \cat
+D_0\) be another functor, together with a natural isomorphism \(\beta: F \isonat
+\iota G\). Define \(\eta: G \isonat F_0\) so that, for each \(x \in \cat C\), we
+have \(\eta_x \coloneq \alpha_x \beta_{x}^{-1}\) --- then, \(\eta\) is clearly an
+isomorphism and also uniquely defined, thus the proposition follows.
+\end{proof}

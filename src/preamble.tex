@@ -1,8 +1,14 @@
 \documentclass[11pt, a4paper, reqno, openany]{memoir}
+% \documentclass[11pt, a4paper, reqno, final]{article}
 \usepackage[english]{babel}
 
 % Page geometry
 \usepackage{fullpage}
+% \usepackage[
+%   margin=1cm,
+%   includefoot,
+%   footskip=30pt,
+% ]{geometry}
 
 % Math stuff: do not mess with the ordering!
 \usepackage{mathtools}
@@ -14,6 +20,10 @@
 % Font
 \usepackage[no-math]{newpxtext} % last: mathpazo
 \usepackage{newpxmath}
+% Set arrow tip to that of newpxmath
+\tikzset{>=Straight Barb, commutative diagrams/arrow style=tikz}
+
+% \usepackage{mathpazo}
 
 % Utilities
 \usepackage{enumerate}
@@ -53,15 +63,25 @@ style=alphabetic,
 
 %\parskip=5pt plus 1pt
 
+% Allow paired delimeters with \left and \right
+\newcommand{\DeclareAutoPairedDelimiter}[3]{%
+  \expandafter\DeclarePairedDelimiter\csname Auto\string#1\endcsname{#2}{#3}%
+  \begingroup\edef\x{\endgroup
+    \noexpand\DeclareRobustCommand{\noexpand#1}{%
+      \expandafter\noexpand\csname Auto\string#1\endcsname*}}%
+  \x}
+
 % symbols
-\renewcommand{\qedsymbol}{\(\blacklozenge\)}
+\renewcommand{\qedsymbol}{\(\natural\)}% blacklozenge
 \renewcommand{\leq}{\leqslant}
 \renewcommand{\geq}{\geqslant}
 \renewcommand{\setminus}{\smallsetminus}
-\renewcommand{\coloneq}{\coloneqq}
+% \newcommand{\coloneq}{\coloneqq}
+% \DeclareMathSymbol{:}{\mathpunct}{operators}{"3A}
 
 % General
-\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Hom}{Mor}
+\DeclareMathOperator{\Fct}{Fct}
 \DeclareMathOperator{\Obj}{Obj}
 \DeclareMathOperator{\Mor}{Mor}
 \DeclareMathOperator{\End}{End}
@@ -69,13 +89,15 @@ style=alphabetic,
 \DeclareMathOperator{\Id}{id}
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\dom}{dom}
-\DeclareMathOperator{\codom}{codom}
+\DeclareMathOperator{\codom}{cod}
+\DeclareMathOperator{\supp}{supp}
 
 % Algebra
 \DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\coker}{coker}
 \DeclareMathOperator{\Tr}{tr}
 \DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Alt}{Alt}
 \DeclareMathOperator{\Char}{char}
 \DeclareMathOperator{\sign}{sign}
 \DeclareMathOperator{\Span}{span}
@@ -90,15 +112,21 @@ style=alphabetic,
 \DeclareMathOperator{\Mesh}{mesh}
 \DeclareMathOperator{\grad}{grad}
 \DeclareMathOperator{\Hess}{Hess}
+\DeclareMathOperator{\Jac}{Jac}
 
 % arrows
 \newcommand{\op}{\mathrm{op}}
-\newcommand{\isoto}{\xrightarrow{\raisebox{-.5ex}[0ex][0ex]{$\sim$}}}
+\newcommand{\isoto}{\xrightarrow{\raisebox{-.6ex}[0ex][0ex]{$\sim$}}}
+\newcommand{\isonat}{\xRightarrow{\raisebox{-.8ex}[0ex][0ex]{$\sim$}}}
 \newcommand{\To}{\Rightarrow}
-\newcommand{\mono}{\hookrightarrow}
+\newcommand{\mono}{\rightarrowtail}
 \newcommand{\epi}{\twoheadrightarrow}
-\newcommand{\cat}{\mathcal}
 \newcommand{\iso}{\simeq} % changed from simeq
+\newcommand{\dis}{\iso} % diagram isomorphism
+\newcommand{\nat}{\Rightarrow}
+\newcommand{\emb}{\hookrightarrow}
+\newcommand{\cat}{\mathcal}
+\renewcommand{\implies}{\Rightarrow}
 
 % Common collections
 \newcommand{\Z}{\mathbf{Z}}
@@ -106,29 +134,38 @@ style=alphabetic,
 \newcommand{\Q}{\mathbf{Q}}
 \newcommand{\CC}{\mathbf{C}}
 \newcommand{\R}{\mathbf{R}}
+\renewcommand{\emptyset}{\varnothing}
 \newcommand{\Uhs}{\mathbf{H}} % Upper half space
 \newcommand{\Proj}{\mathbf{P}} % Projective space
 
-\renewcommand{\emptyset}{\varnothing}
+% Topology
+\newcommand{\att}{\sqcup} % attaching spaces
+\newcommand{\bigatt}{\bigsqcup}
 
 % Differentiable structures
-\DeclarePairedDelimiterX{\norm}[1]{\lVert}{\rVert}{#1}
+\DeclareAutoPairedDelimiter{\norm}{\lVert}{\rVert}
 \newcommand{\diff}{\mathrm{d}}
 \newcommand{\Diff}{\mathrm{D}}
 
 % Common categories
-\newcommand{\Set}{{\textbf{Set}}}   %{{\cat{S}\textit{et}}}
-\newcommand{\Vect}{{\textbf{Vect}}}      %{{\cat{V}\textit{ect}}}
-\newcommand{\FinVect}{{\textbf{FinVect}}}   %{{\cat{F}\textit{in}\cat{V}\textit{ect}}}
+\newcommand{\Set}{{\textbf{Set}}}         %{{\cat{S}\textit{et}}}
+\newcommand{\FinSet}{{\textbf{FinSet}}}         %{{\cat{S}\textit{et}}}
+\newcommand{\pSet}{{\textbf{pSet}}}         %{{\cat{S}\textit{et}}}
+\newcommand{\Vect}{{\textbf{Vec}}}       %{{\cat{V}\textit{ect}}}
+\newcommand{\FinVect}{{\textbf{FinVec}}} %{{\cat{F}\textit{in}\cat{V}\textit{ect}}}
+\newcommand{\TVect}{{\textbf{TVec}}}
+\newcommand{\Ban}{{\textbf{Ban}}}
+\newcommand{\Man}{{\textbf{Man}}}
 \let\Top\relax
-\newcommand{\Top}{{\textbf{Top}}}       %{{\cat{T}\textit{op}}}
-\newcommand{\Grp}{{\textbf{Grp}}}       %{{\cat{G}\textit{rp}}}
-\newcommand{\Ab}{{\textbf{Ab}}}       %{{\cat{A}\textit{b}}}
+\newcommand{\Top}{{\textbf{Top}}}         %{{\cat{T}\textit{op}}}
+\newcommand{\Grp}{{\textbf{Grp}}}         %{{\cat{G}\textit{rp}}}
+\newcommand{\Ab}{{\textbf{Ab}}}           %{{\cat{A}\textit{b}}}
 \newcommand{\Graph}{{\textbf{Graph}}}     %{{\cat{G}\textit{raph}}}
-\newcommand{\SimpGraph}{{\textbf{sGraph}}} %{{\cat{S}\textit{imp}\cat{G}\textit{ph}}}
-\newcommand{\Rng}{{\textbf{Ring}}}       %{{\cat{R}\textit{ing}}}
-\newcommand{\Cat}{{\textbf{Cat}}}       %{{\cat{C}\textit{at}}}
-\newcommand{\CAT}{{\textbf{CAT}}}       %{{\cat{C}\textit{AT}}}
+\newcommand{\SimpGraph}{{\textbf{sGraph}}}%{{\cat{S}\textit{imp}\cat{G}\textit{ph}}}
+\newcommand{\Rng}{{\textbf{Ring}}}        %{{\cat{R}\textit{ing}}}
+\newcommand{\Cat}{{\textbf{Cat}}}         %{{\cat{C}\textit{at}}}
+\newcommand{\CAT}{{\textbf{CAT}}}         %{{\cat{C}\textit{AT}}}
+\newcommand{\UCat}{{\mathcal{U}\text{-}\textbf{Cat}}}
 
 % Graphs
 \DeclareMathOperator{\Circ}{circ}

@@ -1,4 +1,4 @@
-\section{Subspace Topology}
+\section{Subspace Space}
 
 \begin{definition}[Subspace topology]
   \label{def: subspace topology}
@@ -97,11 +97,11 @@
   Let \(X\) be a topological space and \(S\) be a subspace. Given any
   topological space \(Y\), a map \(f: Y \to S\) is continuous if and only if
   \(\iota_S  f : Y \to X\) is continuous, where \(\iota_S: S
-  \hookrightarrow X\) is the inclusion map. Hence the following diagram commutes
+  \emb X\) is the inclusion map. Hence the following diagram commutes
   \[
     \begin{tikzcd}
       Y \ar[r, "f"] \ar[rd, swap, "\iota_S  f"]
-        &S \ar[d, "\iota_S"] \\
+        &S \ar[d, hook, "\iota_S"] \\
         &X
     \end{tikzcd}
   \]
@@ -298,15 +298,15 @@
 \subsection{Topological Embeddings}
 
 \begin{definition}[Embedding]\label{def: topological embedding}
-  Let \(f: Y \to X\) be a continuous injective map of topological spaces. We
+  Let \(f: Y \mono X\) be a continuous injective map of topological spaces. We
   call \(f\) an embedding when \(f': Y \isoto f(Y)\) is a homeomorphism.
 \end{definition}
 
 \begin{example}
   Let \(X\) be a topological space and \(S\) be a subspace of \(X\). We show
-  that \(\iota_S: S \hookrightarrow X\) is an embedding. Notice that
-  \(\iota_S(S) = S\) and hence \(\iota_S': S \to \iota(S) = S\) is equal to the
-  identity map \(\Id_S\), which clearly establishes a homeomorphism.
+  that \(\iota_S: S \emb X\) is an embedding. Notice that
+  \(\iota_S(S) = S\) and hence \(\iota_S': S \isoto \iota(S) = S\) is equal to
+  the identity map \(\Id_S\), which clearly establishes a homeomorphism.
 \end{example}
 
 \begin{proposition}

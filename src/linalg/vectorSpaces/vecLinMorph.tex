@@ -10,7 +10,7 @@
   (\(\Rightarrow\)) Suppose \(\varphi\) is injective, then, since \(0 \xmapsto
   \varphi 0\), it follows that \(\ker \varphi = \{0\}\). (\(\Leftarrow\))
   Suppose now that \(\ker \varphi = \{0\}\), then from the universal property
-  of quotients we find that \(V/\ker \varphi \hookrightarrow W\) is injective,
+  of quotients we find that \(V/{\ker \varphi} \mono W\) is injective,
   since the only possible element in \(V\) that generates the zero class is \(0
   \in V\), therefore, we can regard the above mapping as \([v] \mapsto
   \varphi(v)\), therefore we conclude that \(\varphi\) is injective.
@@ -18,9 +18,9 @@
 
 \begin{theorem}[Universal property for kernels]
   Let \(V, W\) be \(k\)-vector spaces and consider the \(k\)-linear morphism
-  \(\varphi : V \to W\). Denote \(\iota : \ker \varphi \hookrightarrow V\) the
+  \(\varphi : V \to W\). Denote \(\iota : \ker \varphi \emb V\) the
   embedding morphism. Then, for any given \(k\)-vector space \(L\) and
-  \(k\)-linear morphism \(\psi : L \to V\) such that \(\varphi \circ \psi = 0\),
+  \(k\)-linear morphism \(\psi : L \to V\) such that \(\varphi  \psi = 0\),
   there exists a unique \(k\)-linear morphism \(\ell : L \to \ker \varphi\) such
   that the following diagram commutes
   \[
@@ -33,10 +33,10 @@
 \end{theorem}
 
 \begin{proof}
-  The condition for the commutativity of the diagram is \(\psi = \iota \circ
+  The condition for the commutativity of the diagram is \(\psi = \iota
   \ell\). Notice that since the definition of \(\psi\) depends uniquely in the
-  condition \(\varphi \circ \psi = 0\), we find that since \(\im(\ell)
-  \subseteq \ker \varphi\) it follows that indeed \(\varphi \circ (\iota \circ
+  condition \(\varphi  \psi = 0\), we find that since \(\im(\ell)
+  \subseteq \ker \varphi\) it follows that indeed \(\varphi  (\iota
   \ell) = 0\) and therefore the uniqueness of \(\ell\) comes by defining it as
   \(\ell(l) = \psi(l)\) and the existence comes merely by the fact that \(\psi\)
   is already a \(k\)-linear morphism.
@@ -54,7 +54,7 @@
    Let \(k\)-vector spaces \(V\) and \(W\) and the linear morphism \(\varphi : V
    \to W\). Denote by \(\pi : W \to \coker \varphi\) the projection morphism.
    For any given \(k\)-vector space \(L\) and linear morphism \(\psi : W \to L\)
-   such that  \(\psi \circ \varphi = 0\), then there exists a unique linear
+   such that  \(\psi  \varphi = 0\), then there exists a unique linear
    morphism  \(\ell : \coker \varphi \to L\) such that the diagram commutes
    \[
      \begin{tikzcd}
@@ -67,11 +67,11 @@
 \end{theorem}
 
 \begin{proof}
-  The condition for the diagram to commute is that \(\ell \circ \pi = \psi\).
+  The condition for the diagram to commute is that \(\ell  \pi = \psi\).
   For that, notice that since \(\coker \varphi = W/\im(\varphi)\) it follows
-  that \(\ell \circ \pi \circ \varphi (v) = \ell([\varphi(v)])\) but notice that
+  that \(\ell  \pi  \varphi (v) = \ell([\varphi(v)])\) but notice that
   obviously \(\varphi(v) \in \im(\varphi)\) thus \([\varphi(v)] = 0 \in \coker
-  \varphi\) thus indeed \(\ell \circ \pi \circ \varphi = 0\). Moreover, in order
+  \varphi\) thus indeed \(\ell  \pi  \varphi = 0\). Moreover, in order
   to define \(\ell\) we ought to have \(\ell([w]) = \psi(w)\), which is well
   defined since \([w] = w + \im(\varphi)\) and \(\forall w' \in \im(\varphi)\)
   we have \(\psi(w') = 0\) and therefore \(\psi(w + w') = \psi(w)\), which ends
@@ -113,15 +113,15 @@ that for any index \(i\) the following diagram commutes
 By defining the morphisms \(\iota_i : \ker f_i \to V\) and \(\pi_i : W \to
 \coker f_i\) we find that since
 \[
-  f_{i+1} \circ \varphi_i \circ \iota_i
-  = \psi_i \circ f_i \circ \iota_i
-  = \psi_i \circ 0 = 0
+  f_{i+1}  \varphi_i  \iota_i
+  = \psi_i  f_i  \iota_i
+  = \psi_i  0 = 0
 \]
 then we can use the universal property of kernels in order to find the existence
 of a unique morphism \(\ker f_i \to \ker f_{i+1}\), that is
 \[
   \begin{tikzcd}
-    \ker f_i \dar[dashed] \ar[dr, "\varphi_i \circ \iota_i"] \ar[drr, bend
+    \ker f_i \dar[dashed] \ar[dr, "\varphi_i  \iota_i"] \ar[drr, bend
     left, "0"] & &
     \\
     \ker f_{i+1} \rar[hook, "\iota_{i+1}"] &V_{i+1} \rar["f_{i+1}"] &W_{i+1}
@@ -130,16 +130,16 @@ of a unique morphism \(\ker f_i \to \ker f_{i+1}\), that is
 
 On the other hand we have that
 \[
-  \pi_{i+1} \circ \psi_i \circ f_i
-  = \pi_{i+1} \circ f_{i+1} \circ \varphi_i
-  = 0 \circ \varphi_i = 0
+  \pi_{i+1}  \psi_i  f_i
+  = \pi_{i+1}  f_{i+1}  \varphi_i
+  = 0  \varphi_i = 0
 \]
 thus by means of the universal property for cokernels we find that there exists
 a unique morphism \(\coker f_i \to \coker f_{i+1}\), that is
 \[
   \begin{tikzcd}
     V_i \rar["f_i"] \ar[drr, bend right, "0" description]
-      &W_i \rar["\pi_i"] \ar[dr, "\pi_{i+1} \circ \psi_i" description]
+      &W_i \rar["\pi_i"] \ar[dr, "\pi_{i+1}  \psi_i" description]
     &\coker f_i \dar[dashed]
     \\
     & &\coker f_{i+1}
@@ -209,7 +209,7 @@ diagram
   Let the \(k\)-vector spaces \(V, W\) and \(L\). A exact sequence
   \[
     \begin{tikzcd}
-      0 \rar &W \rar[hook, "f"] &V \rar[two heads, "g"] &L \rar &0
+      0 \rar &W \rar[tail, "f"] &V \rar[two heads, "g"] &L \rar &0
     \end{tikzcd}
   \]
   that is, with \(\ker g = \im(f)\), is said to be a short exact sequence of
@@ -219,13 +219,13 @@ diagram
 \begin{proposition}
   In the short exact sequence
   \begin{tikzcd}[cramped, sep = small]
-    0 \rar &W \rar[hook, "f"] &V \rar[two heads, "g"] &L \rar &0
+    0 \rar &W \rar[tail, "f"] &V \rar[two heads, "g"] &L \rar &0
   \end{tikzcd}
   we have \(L \iso V/W\).
 \end{proposition}
 
 \begin{proof}
-  Firstly, notice that since \(W \hookrightarrow V\) is an embedding, we can
+  Firstly, notice that since \(W \mono V\) is injective, we can
   regard \(W\) as a subspace of \(V\), so that taking the quotient \(V/W\) is
   possible. Moreover, notice that since \(g\) is surjective, from the first
   isomorphism theorem we find that \(V/\ker g \iso L\) which from the fact that
@@ -316,18 +316,18 @@ diagram
   \prod V_i) \longmapsto (0 : L \to V_i)_i\). Next we may consider the functions
   \(g : L \to \prod V_i\), defined as \(g(l) = (f_1(l), f_2(l), \dots)\) for all
   \(l \in L\), where \(f_i : L \to V_i\); then we can simply make the mapping
-  \(g \longmapsto (\pi_i \circ f_i)_i\).
+  \(g \longmapsto (\pi_i  f_i)_i\).
 
   For the second proposition, consider the morphism \(\psi : \Hom\left(
-  \bigoplus_{i \in I} V_i,\ L \right) \) with the mapping \(f \mapsto (f \circ
-  \iota_i)_{i \in I}\) where \(\iota_j: V_j \hookrightarrow \bigoplus_{i \in
+  \bigoplus_{i \in I} V_i,\ L \right) \) with the mapping \(f \mapsto (f
+  \iota_i)_{i \in I}\) where \(\iota_j: V_j \emb \bigoplus_{i \in
   I} V_i\) is the inclusion map. For the injectivity, consider \(f \in
   \Hom\left( \bigoplus_{i \in I} V_i,\ L \right), f \neq 0\) be a morphism,
-  then \(f \circ \iota_i \neq 0\) and therefore \(\ker(\psi) = 0\), which
+  then \(f  \iota_i \neq 0\) and therefore \(\ker(\psi) = 0\), which
   implies in the injectivity of \(\psi\). Now, let any tuple of morphisms
   \((g_i)_{i \in I} \in \prod_{i \in I} \Hom(V_i, L)\), then we can define a
   morphism \(f \in \Hom\left( \bigoplus_{i \in I} V_i,\ L \right)\) such that
-  \(f \circ \iota_i = g_i\) then definitely \(\psi(f) = (g_i)_{i \in I}\).
+  \(f  \iota_i = g_i\) then definitely \(\psi(f) = (g_i)_{i \in I}\).
 \end{proof}
 
 \begin{definition}[Induced \(\Hom\) \(k\)-linear morphism]
@@ -335,23 +335,23 @@ diagram
   \(W\), there are induced, uniquely defined, \(k\)-linear morphisms
   \begin{enumerate}[(a)]
     \item (Pushforward) \(f_\ast : \Hom(W, V) \to \Hom(W, L)\) with the mapping
-      \(\alpha \mapsto f \circ \alpha\), so that the diagram commutes
+      \(\alpha \mapsto f  \alpha\), so that the diagram commutes
       \[
         \begin{tikzcd}
           V \ar[r, "f"]
             &L \\
           W \ar[u, "\alpha"]
-          \ar[ur, dashed, swap, "f_\ast(\alpha) := f \circ \alpha"]
+          \ar[ur, dashed, swap, "f_\ast(\alpha) := f  \alpha"]
         \end{tikzcd}
       \]
     \item (Pullback) \(f^\ast : \Hom(L, W) \longrightarrow \Hom(V, W)\) with
-      the mapping \(\alpha \longmapsto \alpha \circ f\), so that the diagram
+      the mapping \(\alpha \longmapsto \alpha  f\), so that the diagram
       commutes
       \[
         \begin{tikzcd}
           V \ar[r, "f"]
             &L \ar[d, "\alpha"] \\
-            &W \ar[ul, dashed, "f^\ast(\alpha) := \alpha \circ f"]
+            &W \ar[ul, dashed, "f^\ast(\alpha) := \alpha  f"]
         \end{tikzcd}
       \]
   \end{enumerate}
@@ -381,23 +381,23 @@ diagram
   For the first proposition, let \(0 \to V_1 \to V_2 \to V_3\) be a an exact
   sequence, and consider the sequence \(0 \to \Hom(L, V_1) \xrightarrow{f_*}
   \Hom(L, V_2) \xrightarrow{g_*} \Hom(L, V_3)\). Let \(\beta \in \im f_*\), then
-  there exists \(\alpha \in \Hom(L, V_1)\) such that \(f_*(\alpha) = f \circ
-  \alpha = \beta\), hence \(g_*(\beta) = g \circ \beta = g \circ f \circ \alpha
+  there exists \(\alpha \in \Hom(L, V_1)\) such that \(f_*(\alpha) = f
+  \alpha = \beta\), hence \(g_*(\beta) = g  \beta = g  f  \alpha
   = 0\) since \(\ker g = \im f\), which implies in \(\im f_* \subseteq \ker
   g_*\).  Suppose now that \(\beta \in \ker g_*\), so that \(g_*(\beta) = g
-  \circ \beta = 0\), then we find that \(\im \beta \subseteq \ker g = \im f\)
+   \beta = 0\), then we find that \(\im \beta \subseteq \ker g = \im f\)
   and hence \(\beta \in \im f_*\), which implies in \(\ker g_* \subseteq \im
   f_*\).  Therefore \(\ker g_* = \im f_*\).
 
   For the second proposition, let \(V_1 \to V_2 \to V_3 \to 0\) be a an exact
   sequence and consider the sequence \(0 \to \Hom(V_3, L) \xrightarrow{g^*}
   \Hom(V_2, L) \xrightarrow{f^*} \Hom(V_1, L)\). Let \(\gamma \in \im g_*\) and
-  consider \(\lambda \in \Hom(V_3, L)\) such that \(g^*(\lambda) = \lambda \circ
-  g = \gamma\). Then we find that \(f^*(\gamma) = \gamma \circ f = \lambda \circ
-  g \circ f = \lambda \circ 0 = 0\) hence \(\gamma \in \ker f^*\), which implies
+  consider \(\lambda \in \Hom(V_3, L)\) such that \(g^*(\lambda) = \lambda
+  g = \gamma\). Then we find that \(f^*(\gamma) = \gamma  f = \lambda
+  g  f = \lambda  0 = 0\) hence \(\gamma \in \ker f^*\), which implies
   in \(\im g^* \subseteq \ker f^*\).
 
-  Let \(\gamma \in \ker f^*\) so that \(f^*(\gamma) = \gamma \circ f = 0\), this
+  Let \(\gamma \in \ker f^*\) so that \(f^*(\gamma) = \gamma  f = 0\), this
   implies in \(\im f = \ker g \subseteq \ker \gamma\). From \cref{thm: universal
   property for quotients} we find that \(\gamma\) induces a morphism
   \(\overline\gamma\) such that the following diagram commutes
@@ -407,7 +407,7 @@ diagram
       V/\ker g \ar[ur, swap, "\overline\gamma"]
     \end{tikzcd}
   \]
-  so that \(\gamma = \overline\gamma \circ \pi\). Moreover, since \(g\) is
+  so that \(\gamma = \overline\gamma  \pi\). Moreover, since \(g\) is
   surjective we have \(\im g = V_3\), and from \cref{thm: first isomorphism} we
   find that \(g\) induces an isomorphism \(\overline g: V_2/\ker g \isoto
   V_3\), so that the following diagram commutes
@@ -417,10 +417,10 @@ diagram
       V_2/\ker g \ar[ru, swap, "\overline g"]
     \end{tikzcd}
   \]
-  so that \(g = \overline g \circ \pi\) and since \(\overline g\) is an
-  isomorphism, then \(\pi = g \circ \overline g^{-1}\). Notice now that
-  \(g^*(\overline \gamma \circ \overline g^{-1}) = \overline\gamma \circ
-  \overline g^{-1} \circ g = \overline\gamma \circ \pi = \gamma\) and therefore
+  so that \(g = \overline g  \pi\) and since \(\overline g\) is an
+  isomorphism, then \(\pi = g  \overline g^{-1}\). Notice now that
+  \(g^*(\overline \gamma  \overline g^{-1}) = \overline\gamma
+  \overline g^{-1}  g = \overline\gamma  \pi = \gamma\) and therefore
   \(\gamma \in \im g^*\). This shows that \(\ker f^* \subseteq \im g^*\) and
   therefore \(\ker f^* = \im g^*\).
 \end{proof}
