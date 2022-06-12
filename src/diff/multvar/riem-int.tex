@@ -967,11 +967,11 @@ theorem. For the proof of the theorem, head to
 Let \(D_x, D_t \subseteq \R^n\) be bounded open domains, and \(\phi: D_t \isoto
 D_x\) a \(C^1\)-isomorphism. Let \(f: D_x \to \R\) be a Riemann integrable map
 over \(D_x\) for which \(\supp f\) is compact on \(D_x\). Then the map given by
-\(t \mapsto f \phi(t) \norm{\det(\Jac \phi_t)}\) is Riemann integrable on
+\(t \mapsto f \phi(t) \norm{\det(\Jac \phi(t))}\) is Riemann integrable on
 \(D_t\) and
 \[
   \int_{D_x} f(x)\, \diff x
-  = \int_{D_t} f \phi(t) \norm{\det(\Jac \phi_t)}\, \diff t.
+  = \int_{D_t} f \phi(t) \norm{\det(\Jac \phi(t))}\, \diff t.
 \]
 \end{theorem}
 
@@ -1000,7 +1000,7 @@ true:
 \begin{enumerate}[(a)]\setlength\itemsep{0em}
 \item Let \(I \subseteq D_t\) be a closed interval with \(E_t \subseteq
 I\). Since \(\phi\) is continuously differentiable, there exists \(M > 0\) such
-that \(\norm{\diff \phi_t(x)} \leq M\) for all \(x \in I\). Using \cref{thm:
+that \(\norm{\diff \phi(t)(x)} \leq M\) for all \(x \in I\). Using \cref{thm:
 several-mvt-Rn-val}, we obtain that for all pairs \(x, y \in I\), we have the
 relation \(\norm{f(x) - f(y)}_{\R^n} \leq M \norm{x - y}_{\R^n}\). Given any
 \(\varepsilon > 0\), since \(E_t\) is of Lebesgue measure zero, let
@@ -1045,13 +1045,13 @@ measure zero.
 \begin{corollary}
 \label{cor:existence-right-int-change-variables}
 In the context of \cref{thm:change-variables}, the integral \(\int_{D_t}
-f\phi(t) \norm{\det(\Jac \phi_t)}\, \diff t\) exists.
+f\phi(t) \norm{\det(\Jac \phi(t))}\, \diff t\) exists.
 \end{corollary}
 
 \begin{proof}
-Since \(\phi\) is a \(C^1\)-isomorphism, its Jacobian \(\Jac \phi_t\) is invertible
-for every \(t \in D_t\), thus \(\det(\Jac \phi_t) \neq 0\). If \(g: D_t \to \R\)
-is defined as \(g(t) \coloneq f \phi(t) \norm{\det(\Jac \phi_t)}\), then for
+Since \(\phi\) is a \(C^1\)-isomorphism, its Jacobian \(\Jac \phi(t)\) is invertible
+for every \(t \in D_t\), thus \(\det(\Jac \phi(t)) \neq 0\). If \(g: D_t \to \R\)
+is defined as \(g(t) \coloneq f \phi(t) \norm{\det(\Jac \phi(t))}\), then for
 every \(t \in D_t\) such that \(\phi(t) \not\in \supp f\) we have \(t \not\in
 \supp g\) --- thus \(\supp g = \supp(f \phi \phi^{-1}(\supp f))\), and \(\supp
 g\) is a compact subset of \(D_t\) since it is closed. From this we can conclude
@@ -1238,16 +1238,16 @@ of \(I_x\) by closed intervals \(I_{x'}^0 \subseteq \R^{k-1}\), \(I_{x_k}
   \label{eq:elem-diff-cv-one-dim}
   &= \int_{I_{t'}^0 \times I_{t'}^1} \left(
     \int_{I_{t_k}} f\phi_{\chi_{D_t}}(t_1', \dots, t_k, \dots, t_n')
-    \norm{\det\left( \Jac {(\phi_{\chi_{D_t}})}_{(t_1', \dots, t_k, \dots,
-    t_n')} \right)}\, \diff t_k \right)\, \diff t' \\
+    \norm{\det\left( \Jac \phi_{\chi_{D_t}}(t_1', \dots, t_k, \dots, t_n')
+    \right)}\, \diff t_k \right)\, \diff t' \\
   \label{eq:elem-diff-cv-fubini-2}
   &= \int_{I_{t'}^0 \times I_{t_k} \times I_{t'}^1}
-    f \phi_{\chi_{D_t}}(t) \norm{\det(\Jac (\phi_{\chi_{D_t}})_{t})}\, \diff t
+    f \phi_{\chi_{D_t}}(t) \norm{\det(\Jac \phi_{\chi_{D_t}}(t))}\, \diff t
   = \int_{I_t}
-    f \phi_{\chi_{D_t}}(t) \norm{\det(\Jac (\phi_{\chi_{D_t}})_{t})}\, \diff t
+    f \phi_{\chi_{D_t}}(t) \norm{\det(\Jac \phi_{\chi_{D_t}}(t))}\, \diff t
   \\
   \label{eq:elem-diff-cv-def-2}
-  &= \int_{D_t} f \phi(t) \norm{\det(\Jac \phi_t)}\, \diff t
+  &= \int_{D_t} f \phi(t) \norm{\det(\Jac \phi(t))}\, \diff t
 \end{align}
 where we have the following use of theorems and definitions for each of the
 equations: \cref{eq:elem-diff-cv-fubini} used \cref{thm:fubini},
@@ -1262,11 +1262,11 @@ proves the lemma.
 \label{prop:decomposition-elementary-C1}
 Let \(f: E \to \R^n\) be a \(C^1\) map on the open set \(E \subseteq \R^n\),
 with \(0 \in E\) --- moreover, we impose that \(f(0) \coloneq 0\) and \(\diff
-f_0: T_0\R^n \to T_0\R^n\) is an \(\R\)-linear isomorphism. Then there exists a
+f(0): T_0\R^n \to T_0\R^n\) is an \(\R\)-linear isomorphism. Then there exists a
 neighbourhood \(U \subseteq E\) of \(0 \in \R^n\), with mappings:
 \begin{itemize}\setlength\itemsep{0em}
 \item \(\{\phi_{j}: U \to \R^n\}_{j=1}^n\) of elementary \(C^1\)-isomorphisms,
-  such that \(\phi_j(0) = 0\) and \(\diff \phi_0\) is an \(\R\)-linear
+  such that \(\phi_j(0) = 0\) and \(\diff \phi(0)\) is an \(\R\)-linear
   isomorphism.
 \item We define, for each \(1 \leq k \leq n\), the map \(\tau_k: \R^n \to \R^n\)
   as \(\tau_k(\sum_{j=1}^n x_j e_j) \coloneq \sum_{j=1}^n x_{\tau(j)} e_{j}\),
@@ -1286,7 +1286,7 @@ Define, for every \(0 \leq k \leq n\), the map \(p_k: \R^n \to \R^n\) by
 We do induction in the following proposition, where \(1 \leq m \leq n - 1\)
 \begin{itemize}\setlength\itemsep{0em}
 \item There exists a neighbourhood \(V_m \subseteq \R^n\) of zero, a map \(f_m
-  \in C^1(V_m)\) --- with \(f_m(0) = 0\) and \({(\diff f_m)_0}\) linear
+  \in C^1(V_m)\) --- with \(f_m(0) = 0\) and \(\diff f_m(0)\) linear
   isomorphism (we define \(f_1 \coloneq f\))--- for which
   \[
     p_{m-1} f_m(x) = p_{m-1}(x)\text{, for all } x \in V_m.
@@ -1303,9 +1303,9 @@ x_{n}\) variables of its input, which allows us to write it as
 where \(\alpha_j: V_m \to \R\) is a \(C^1(V_m)\) map for all \(m \leq j \leq
 n\), moreover, this implies in
 \[
-  {(\diff f_m)}_0(e_m) = \sum_{j = m}^n \partial_{m} \alpha_j(0) e_{j}.
+  \diff f_m(0)(e_m) = \sum_{j = m}^n \partial_{m} \alpha_j(0) e_{j}.
 \]
-Since \({(\diff f_{m})}_{0}\) is an isomorphism, it cannot be the zero-map, thus
+Since \(\diff f_{m}(0)\) is an isomorphism, it cannot be the zero-map, thus
 there must exist some \(m \leq k_0 \leq n\) for which \(\partial_m
 \alpha_{k_0}(0) \neq 0\). Define \(\tau_m\) to be the trasposition interchanging
 the \(m\)-th and \(k_0\)-th values of its input. Define a map \(\phi_m: V_m \to
@@ -1314,15 +1314,15 @@ the \(m\)-th and \(k_0\)-th values of its input. Define a map \(\phi_m: V_m \to
   \phi_m(x) \coloneq x + (\alpha_{k_0}(x) - x_m) e_m,
 \]
 so that \(\phi_{m} \in C^1(V_m)\), and only changes the \(m\)-th coordinate of
-its input. Moreover \((\diff \phi_m)_{0}\) is an isomorphism, thus there must
+its input. Moreover \(\diff \phi_m(0)\) is an isomorphism, thus there must
 exist a neighbourhood \(U_m \subseteq V_m\) of zero for which the induced map
 \(\phi_m: U_m \to \phi_m(U_m)\) is a \(C^1\)-isomorphism (which, in fact, is
 elementary). We define \(V_{m + 1} \coloneq \phi_m(U_m)\), and also
 \[
   f_{m+1}(y) \coloneq \tau_m f_m\phi^{-1}_m(y)\text{, for all } y \in V_{m+1},
 \]
-which makes \(f_{m+1} \in C^{1}(V_{m+1})\), also \(f_{m+1}(0) = 0\), and \((\diff
-f_{m+1})_0\) is an isomorphism. Notice that, for all \(x \in U_m\) we have
+which makes \(f_{m+1} \in C^{1}(V_{m+1})\), also \(f_{m+1}(0) = 0\), and \(\diff
+f_{m+1}(0)\) is an isomorphism. Notice that, for all \(x \in U_m\) we have
 \begin{align*}
   p_m f_{m+1}(\phi_m(x))
   &= p_m \tau_m f_m \phi_m^{-1}(\phi_m(x)) \\
@@ -1375,18 +1375,18 @@ D_x\).
 \end{lemma}
 
 \begin{proof}
-Notice that, for every \(s \in D_s\), \(\Jac {(\phi \psi)}_s = \Jac
-\phi_{\psi(s)} \Jac \psi_s\), then
+Notice that, for every \(s \in D_s\), \(\Jac (\phi \psi)(s) = \Jac
+\phi(\psi(s)) \Jac \psi(s)\), then
 \[
-  \det(\Jac {(\phi \psi)}_s) = \det(\Jac \phi_{\psi(s)}) \det(\Jac \psi_s).
+  \det(\Jac {(\phi \psi)}(s)) = \det(\Jac \phi(\psi(s))) \det(\Jac \psi(s)).
 \]
 Therefore we can write
 \begin{align*}
   \int_{D_x} f(x)\, \diff x
-  = \int_{D_t} f \phi(t) \norm{\det(\Jac \phi_{t})}\, \diff t
-  &= \int_{D_s} f \phi \psi(s) \norm{\det(\Jac \phi_{\psi(s)})}
-  \norm{\det(\Jac \psi_s)}\, \diff s \\
-  &= \int_{D_s} f \phi \psi(s) \norm{\det(\Jac{(\phi \psi)}_s)}\, \diff s,
+  = \int_{D_t} f \phi(t) \norm{\det(\Jac \phi(t))}\, \diff t
+  &= \int_{D_s} f \phi \psi(s) \norm{\det(\Jac \phi(\psi(s)))}
+  \norm{\det(\Jac \psi(s))}\, \diff s \\
+  &= \int_{D_s} f \phi \psi(s) \norm{\det(\Jac{(\phi \psi)}(s))}\, \diff s,
 \end{align*}
 which proves the proposition.
 \end{proof}
@@ -1395,7 +1395,7 @@ Now we are ready for the proof of \cref{thm:change-variables}.
 
 \begin{proof}
 Define the compact set \(K_t \coloneq \supp(t \mapsto f \phi(t) \norm{\det(\Jac
-\phi_t)})\), and, for every \(t \in K_t\), let \(U(t) \subseteq D_t\) be a
+\phi(t))})\), and, for every \(t \in K_t\), let \(U(t) \subseteq D_t\) be a
 neighbourhood of \(t\) with diameter less than \(\delta(t)\), for some
 \(\delta(t) > 0\) --- for which \(\phi|_{U(t)}\) can be decomposed into
 elementary \(C^1\)-isomorphisms. For each \(t \in K_t\), let \(U'(t) \subseteq
@@ -1416,10 +1416,10 @@ Let \(I \subseteq \R^n\) be an interval containing \(D_t\), and \(P \coloneq
 if and only if \(s \in S'\) --- the set indices of intervals of the partition
 \(P\) with non-empty intersection with the support. Then
 \[
-  \int_{D_t} f\phi(t) \norm{\det(\Jac \phi_t)}\, \diff t
+  \int_{D_t} f\phi(t) \norm{\det(\Jac \phi(t))}\, \diff t
   = \int_I f \phi_{\chi_{D_t}}(t)
-  \norm{\det(\Jac (\phi_{\chi_{D_t}})_t)}\, \diff t
-  = \sum_{s' \in S'} \int_{I_{s'}} f \phi(t) \norm{\det(\Jac \phi_t)}\, \diff t.
+  \norm{\det(\Jac \phi_{\chi_{D_t}}(t))}\, \diff t
+  = \sum_{s' \in S'} \int_{I_{s'}} f \phi(t) \norm{\det(\Jac \phi(t))}\, \diff t.
 \]
 
 Since \(I_s \in P\) are Jordan-measurable sets, so is their image \(\phi(I_s)
@@ -1427,7 +1427,7 @@ Since \(I_s \in P\) are Jordan-measurable sets, so is their image \(\phi(I_s)
 \cref{lem:C1-isomorphisms-preserve-measure-properties}. Define the
 Jordan-measurable set \(E \coloneq \bigcup_{s' \in S'} I_{s'}\) so that, by our
 construction, given any \(x \in \supp f\), let \(t \coloneq \phi^{-1}(x)\), then
-\(f\phi(t) \norm{\det(\Jac \phi_{t})} \neq 0\) thus \(t \in K_t\) --- therefore,
+\(f\phi(t) \norm{\det(\Jac \phi(t))} \neq 0\) thus \(t \in K_t\) --- therefore,
 \(t \in \bigcup_{s' \in S'} I_{s'}\), which implies in \(x \in E\), that is,
 \(\supp f \subseteq E\). Notice that, if \(I_x \subseteq \R^n\) is an interval
 containing \(D_x\), then
@@ -1450,7 +1450,7 @@ every \(s' \in S'\)
 \begin{equation}
 \label{eq:cv-diff-2}
   \int_{\phi(I_{s'})} f(x)\, \diff x = \int_{I_{s'}} f\phi(t) \norm{\det(\Jac
-    \phi_t)}\, \diff t.
+    \phi(t))}\, \diff t.
 \end{equation}
 Thus, merging both \cref{eq:cv-diff-1} and \cref{eq:cv-diff-2}, we obtain the
 desired equality.
