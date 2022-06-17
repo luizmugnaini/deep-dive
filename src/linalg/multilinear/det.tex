@@ -120,7 +120,7 @@ Let \(V\) be an \(n\)-dimensional \(k\)-vector space and \(f \in \End(V)\).
 Let \(A: k^n \to k^n\) be the matrix representation of \(f\) and \(a_{i, j}
 \in k\) be the entries of \(A\), where \(1 \leq i, j \leq n\). Then
 \[
-  \det A = \sum_{\sigma \in \mathcal S_n} \sign(\sigma) a_{\sigma(1), 1}
+  \det A = \sum_{\sigma \in S_n} \sign(\sigma) a_{\sigma(1), 1}
   a_{\sigma(2), 2} \dots a_{\sigma(n), n}.
 \]
 \end{proposition}
@@ -150,14 +150,14 @@ Therefore we can write \cref{eq: det sum} as a sum of permutations of the set
 \(\{i_1, \dots, i_n\} = \{1, \dots, n\}\), that is
 \begin{align*}
   \det(A) v_1 \wedge \dots \wedge v_n
-  &= \sum_{\sigma \in \mathcal S_n} a_{\sigma(1), 1} \dots a_{\sigma(n), n}
+  &= \sum_{\sigma \in S_n} a_{\sigma(1), 1} \dots a_{\sigma(n), n}
   (v_{\sigma(1)} \wedge \dots \wedge v_{\sigma(n)}) \\
-  &= \sum_{\sigma \in \mathcal S_n} \sign(\sigma) a_{\sigma(1), 1} \dots
+  &= \sum_{\sigma \in S_n} \sign(\sigma) a_{\sigma(1), 1} \dots
   a_{\sigma(n), n} (v_1 \wedge \dots \wedge v_n).
 \end{align*}
 Since \(v_1 \wedge \dots \wedge v_n \neq 0\), it follows that
 \[
-  \det A = \sum_{\sigma \in \mathcal S_n} \sign(\sigma) a_{\sigma(1), 1}
+  \det A = \sum_{\sigma \in S_n} \sign(\sigma) a_{\sigma(1), 1}
   a_{\sigma(2), 2} \dots a_{\sigma(n), n}.
 \]
 \end{proof}
@@ -165,7 +165,7 @@ Since \(v_1 \wedge \dots \wedge v_n \neq 0\), it follows that
 \begin{corollary}
 Another equivalent way of writing the determinant of \(A\) is
 \[
-  \det A = \sum_{\sigma \in \mathcal S_n} \sign(\sigma) a_{1, \sigma(1)} a_{2,
+  \det A = \sum_{\sigma \in S_n} \sign(\sigma) a_{1, \sigma(1)} a_{2,
   \sigma(2)} \dots a_{n, \sigma(n)}.
 \]
 \end{corollary}

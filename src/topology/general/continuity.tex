@@ -97,8 +97,9 @@ B_p) = \bigcup_{p \in A} f^{-1}(B_p)\) is the union of open sets, thus
 
 \begin{proposition}\label{prop: basis image surjective}
 Let \(f: X \to Y\) be a morphism of topological spaces and \(\mathcal B\) be a
-basis for the space \(X\). Then \(f(\mathcal B) = \{f(B): B \in \mathcal B\}\)
-is a basis for the space \(Y\) if and only if \(f\) is surjective and open.
+basis for the space \(X\). Then \(f(\mathcal B) = \{f(B) \colon B \in \mathcal
+B\}\) is a basis for the space \(Y\) if and only if \(f\) is surjective and
+open.
 \end{proposition}
 
 \begin{proof}
@@ -142,7 +143,7 @@ isomorphism, then \(f\) is an open and a closed map.
 \end{proposition}
 
 \begin{proof}
-Let \(U \subseteq X\) be an open (resp. closed) set and consider \(V := f(U)
+Let \(U \subseteq X\) be an open (resp. closed) set and consider \(V \coloneq f(U)
 \subseteq Y\).  Since \(f\) is a bijection, we find that \(f(U) = V\) is open
 (resp. closed) by the continuity of \(f^{-1}\). Hence \(f\) is an open (resp.
 closed) map.
@@ -271,10 +272,10 @@ be any point, then clearly \(x \in f_i^{-1}(Y_i)\) for all \(i \in I\), hence
 \(x \in \bigcap_{j \in  J} f_j^{-1}(Y_j) \in \mathcal B\) for a finite
 indexing set \(J \subseteq I\).
 Let \(J, S \subseteq I\) be finite indexing sets, then consider the sets
-\(A := \bigcap_{j \in J} f_j^{-1}(U_j), B := \bigcap_{s \in S} f_s^{-1}(V_s) \in
+\(A \coloneq \bigcap_{j \in J} f_j^{-1}(U_j), B \coloneq \bigcap_{s \in S} f_s^{-1}(V_s) \in
 \mathcal B\) and let any point \(x \in A \cap B\). Then in particular we can
 let an nonempty indexing set \(T = J \cap S\) so that \(x \in f_t^{-1}(U_t)\)
-for all \(t \in T\) and therefore \(C := \bigcap_{t \in  T} f_t^{-1}(U_t)\) is
+for all \(t \in T\) and therefore \(C \coloneq \bigcap_{t \in  T} f_t^{-1}(U_t)\) is
 such that \(x \in C \subseteq A \cap B\). This shows that \(\mathcal B\)
 indeed satisfies the basis properties.
 

@@ -90,7 +90,7 @@ Let \(M\) be a locally euclidiean \(n\)-dimensional topological space and let
 isomorphism. From \cref{cor:euclidean-space-second-countable} we find that there
 exists a countable basis \(\mathcal B \subseteq 2^{\R^n}\) for \(B^n\). Since
 \(\phi\) is an isomorphism, then the collection of preimages \(\{\phi^{-1}(B)
-\subseteq U : B \in \mathcal B\}\) is also a basis for \(U\) and is clearly
+\subseteq U \colon B \in \mathcal B\}\) is also a basis for \(U\) and is clearly
 countable --- hence \(U\) is second countable.
 \end{proof}
 
@@ -193,11 +193,11 @@ metrizability property}
 We define the closed \(n\)-dimensional upper half-space \(\Uhs^n \subseteq
 \R^n\) as
 \[
-  \Uhs^n \coloneq \{x \in \R^n : \pi_n(x) \geq 0\}
+  \Uhs^n \coloneq \{x \in \R^n \colon \pi_n(x) \geq 0\}
 \]
 where \(\pi_n\) is the projection of the \(n\)-th coordinate. We define the
-boundary of \(\Uhs^n\) as \(\partial \Uhs^n \coloneqq \{x : \pi_n(x) = 0\}\),
-and the interior as \(\Int(\Uhs^n) \coloneqq \{x : \pi_n(x) > 0\}\).
+boundary of \(\Uhs^n\) as \(\partial \Uhs^n \coloneq \{x \colon \pi_n(x) = 0\}\),
+and the interior as \(\Int(\Uhs^n) \coloneq \{x \colon \pi_n(x) > 0\}\).
 \end{definition}
 
 \begin{definition}[Manifold with boundary]
@@ -243,8 +243,8 @@ use the fact that \(M\) is first countable and lemma \cref{lem: sequence
 lemma}. First, suppose the converse, so that \((x_i)_{i \in \N}\) is a
 sequence of points in \(M\) that is not-eventually in \(\Int(M)\) and, for the
 sake of contradiction, \(x_i \to p\). Consider the open neighbourhood \(U\) of
-\(p\) (which happens to be the chart domain), if \(x_i \to p\) then \(\exists
-N \in \N: x_i \in U\) for all \(i \geq N\), but notice that every
+\(p\) (which happens to be the chart domain), if \(x_i \to p\) then there exists
+\(N \in \N\) such that \(x_i \in U\) for all \(i \geq N\), but notice that every
 point of \(U\) is an interior point of \(M\), therefore \(x_i \in \Int(M)\),
 which is a contradiction to the hypothesis that the sequence is not-eventually
 in \(\Int(M)\). Hence such sequences cannot converge to \(p\), and \(\Int(M)\)

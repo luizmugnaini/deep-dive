@@ -13,7 +13,7 @@ important generalization of what we've been studying so far.
     \varphi: \prod_{i=1}^n V_i \to W
   \]
   is a multilinear map if for a given \(1 \leq t \leq n\) we have that, for all
-  collections \(\{v_i : v_i \in V_i, i \neq t\}\), the map
+  collections \(\{v_i \colon v_i \in V_i, i \neq t\}\), the map
   \[
     \varphi(v_1, \dots, v_{t-1}, -, v_{t+1}, \dots, v_n):
     V_t \longrightarrow W
@@ -45,7 +45,7 @@ linear combination of the tuples of \(\prod_{i \in I} V_i\), that is
 \[
   \mathcal M =
   \left\{
-    \sum a_v v : v \in \prod_{i \in I} V_i \text{ and } a_v \in k
+    \sum a_v v \colon v \in \prod_{i \in I} V_i \text{ and } a_v \in k
   \right\}.
 \]
 Thus, if \(\Char k = 0\) and exists \(i \in I\) such that \(\dim_k(V_i) >
@@ -311,11 +311,11 @@ products?}
   \(\delta_{(s_i)_{i \in I}} \mapsto \otimes_{i \in I} \delta_{s_i}\), where
   \(\delta\) is the Kronecker delta function, is an isomorphism. First, from
   \cref{prop: universal property free vs} we find that \(\{\delta_{(s_i)_{i \in
-  I}} : (s_i)_{i \in I} \in \prod_{i \in I} S_i\}\) is a base for the space
+  I}} \colon (s_i)_{i \in I} \in \prod_{i \in I} S_i\}\) is a base for the space
   \(k^{\oplus \left( \prod_{i \in I} S_i \right)}\) and, in particular,
-  \(\{\delta_{s_i} : s_i \in S_i\}\) is a base for the space \(k^{\oplus S_i}\).
+  \(\{\delta_{s_i} \colon s_i \in S_i\}\) is a base for the space \(k^{\oplus S_i}\).
   From \cref{lem: tensor basis} we find that \(\{\otimes_{i \in I} \delta_{s_i}
-  : s_i \in S_i\}\) is a basis for \(\bigotimes_{i \in I} k^{\oplus S_i}\).
+  \colon s_i \in S_i\}\) is a basis for \(\bigotimes_{i \in I} k^{\oplus S_i}\).
 \end{proof}
 
 \section{Canonical Isomorphisms and Tensor Products}
@@ -335,9 +335,9 @@ products?}
 
 \begin{proof}
   Let \(B_V, B_W, B_L\) be basis for the vector spaces \(V, W, L\) respectively.
-  Notice that \(\{(v \otimes w) \otimes \ell : (v, w, \ell) \in B_V \times B_W
+  Notice that \(\{(v \otimes w) \otimes \ell \colon (v, w, \ell) \in B_V \times B_W
   \times L\}\) is a basis for \((V \otimes W) \otimes L\) and \(\{v \otimes (w
-  \otimes \ell) : (v, w, \ell) \in B_V \times B_W \times B_L\}\) is a basis for
+  \otimes \ell) \colon (v, w, \ell) \in B_V \times B_W \times B_L\}\) is a basis for
   \(V \otimes (W \otimes L)\) (from \cref{lem: tensor basis}). Therefore, the
   map \((v \otimes w) \otimes \ell \mapsto v \otimes (w \otimes \ell)\)
   transforms one base into another, which implies that it is a canonical

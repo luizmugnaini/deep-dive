@@ -102,7 +102,7 @@
     = (\pi_j \circ \diff f(x))(t) + o(t).
   \end{equation}
   Assume that \(\pi_j \circ \diff f(x)\) has the general form of \((\pi_j \circ
-  \diff f(x))(t) := \sum_{j=1}^m a_x^j t_j\), where \(a_x^j \in \R\) are scalars
+  \diff f(x))(t) \coloneq \sum_{j=1}^m a_x^j t_j\), where \(a_x^j \in \R\) are scalars
   dependent on \(x \in E\) for all \(1 \leq j \leq m\). Consider, for each \(1
   \leq j \leq m\), the displacements \(t = t_j e_j\) so that \(\norm{t}_{\R^m} =
   \norm{t_j}_{\R}\). For such displacements, we find --- as \(t_j \to 0\)
@@ -171,7 +171,7 @@ stand as a clever notation for the differential of the projection maps.
 
 \begin{notation}
   For the sake of brevity --- given a function \(f: E \to R^n\) --- we define
-  \(f_j := \pi_j \circ f\) for each \(1 \leq j \leq n\).
+  \(f_j \coloneq \pi_j \circ f\) for each \(1 \leq j \leq n\).
 \end{notation}
 
 \subsection{Differential of a Map \texorpdfstring{\(\R^m \to \R^n\)}{Rm to Rn}}
@@ -247,7 +247,7 @@ functions of the type \(E \to \R^n\).
   point. However, the converse does not hold. For instance, consider the map
   \(g: \R^2 \to \R\) given by
   \[
-    g(x, y) :=
+    g(x, y) \coloneq
     \begin{cases}
       \frac{x y}{x^2 + y^2}, &x^2 + y^2 \neq 0 \\
       0, &x^2 + y^2 = 0
@@ -413,7 +413,7 @@ functions of the type \(E \to \R^n\).
 \begin{proof}
   Consider the filter base given by \(h \to 0\), where \(f(x + h) - f(x) = \diff
   f(x)(h) + o(h)\), and as \(t \to 0\) we find \(g(f(x) + t) - g(f(x)) = \diff
-  g(f(x)) + o(t)\). Therefore by defining \(t := f(x + h) - f(x)\) we can write ---
+  g(f(x)) + o(t)\). Therefore by defining \(t \coloneq f(x + h) - f(x)\) we can write ---
   as \(h, t \to 0\)
   \begin{align*}
     g(f(x + h)) - g(f(x)) &= g(f(x) + t) - g(f(x)) \\
@@ -452,7 +452,7 @@ functions of the type \(E \to \R^n\).
   Let \(f: E \to \R\) and \(x \in  \Int E\), and \(v \in T\R^m_x\). If the
   following limit exists
   \begin{equation}
-    \Diff_v f(x) := \lim_{t \to 0} \frac{f(x + v t) - f(x)}{t}
+    \Diff_v f(x) \coloneq \lim_{t \to 0} \frac{f(x + v t) - f(x)}{t}
   \end{equation}
   then the real quantity \(\Diff_v f(x) \in T\R_{f(x)}\) is called the
   directional derivative of \(f\) at the point \(x\) evaluated at the vector
@@ -631,7 +631,7 @@ Lets analyse the implication of certain choices of \(u\):
     g(1) - g(0) = g'(\overline t).
   \]
   Since \(g'(\overline t) = [\diff f(h(\overline t))](h'(\overline t)) = \diff
-  f((1 -\overline t) x + \overline t y)(y - x)\), making \(z := (1 - \overline
+  f((1 -\overline t) x + \overline t y)(y - x)\), making \(z \coloneq (1 - \overline
   t)x + \overline t y \in (x, y)\) and substituting the values for \(g\) in
   terms of \(f\) we prove the theorem.
 \end{proof}
@@ -661,7 +661,7 @@ Lets analyse the implication of certain choices of \(u\):
   Let \(x, y \in G\) be any points. Since \(G\) is path-connected, there exists
   a continuous map \(\gamma: [0, 1] \to G\) such that \(\gamma(0) = x\) and
   \(\gamma(1) = y\). Consider any open ball \(B_x(r) \subseteq G\) centered in
-  \(x\). Let \(\Delta = \{\delta \in [0, 1] : \gamma([0, \delta]) \in
+  \(x\). Let \(\Delta = \{\delta \in [0, 1] \colon \gamma([0, \delta]) \in
   B_x(r)\}\). From the continuity of \(\gamma\) and the fact that \(\gamma(0) =
   x \in B_x(r)\), the collection \(\Delta\) is non-empty. If \(\delta \in
   \Delta\) --- from \cref{eq: sev-const} --- we find that \((f \circ \gamma)([0,
@@ -874,7 +874,7 @@ such that
   Let \(E \subseteq \R^m\) be an open set and \(f: E \to \R\) be a map with
   existing partial derivatives \(\partial_i f\) and \(\partial_{ji} f\) at every
   point of \(E\). Let \(y \in E\) and a map \(\phi_{ji}: V \to \R\) --- where
-  \(V = \{(t, h) \in \R^2 : y + t e_i + h e_j \in E\} \) --- being defined by
+  \(V = \{(t, h) \in \R^2 \colon y + t e_i + h e_j \in E\} \) --- being defined by
   \[
     \phi_{ji}(t, h) = f(y + t e_i + h e_j) - f(y + t e_i) + f(y + h e_j) - f(y).
   \]
@@ -1243,7 +1243,7 @@ such that
   is positive definite.
 
   Suppose \(A\) is positive definite. Consider the unitary \(n-1\)-sphere
-  \(S^{n-1} = \{v \in \R^{n} : \norm{v} = 1\}\). Since \(S^{n-1}\) is closed and
+  \(S^{n-1} = \{v \in \R^{n} \colon \norm{v} = 1\}\). Since \(S^{n-1}\) is closed and
   bounded, we conclude that \(S^{n-1}\) is compact by
   \cref{heine-borel}. Consider the map \(f: S^{n-1} \to \R\) given by the mapping
   \(v \mapsto \left\langle v, Av \right\rangle\) which is continuous. Therefore, from the global

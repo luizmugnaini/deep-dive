@@ -1,373 +1,374 @@
 \section{Subspace Space}
 
 \begin{definition}[Subspace topology]
-  \label{def: subspace topology}
-  Given a topological space \((X, \mathcal T)\) and a subset \(S \subseteq X\),
-  we define the space \((S, \mathcal T_S)\) as a subspace of \(X\) if
-  \[
-    \mathcal T_S = \{U \subseteq S: U = S \cap V,\ V \in \mathcal T\}.
-  \]
-  If so, we call \(\mathcal T_S\) the relative topology or subspace topology.
+\label{def: subspace topology}
+Given a topological space \((X, \mathcal T)\) and a subset \(S \subseteq X\),
+we define the space \((S, \mathcal T_S)\) as a subspace of \(X\) if
+\[
+  \mathcal T_S = \{U \subseteq S \colon U = S \cap V,\ V \in \mathcal T\}.
+\]
+If so, we call \(\mathcal T_S\) the relative topology or subspace topology.
 \end{definition}
 
 \begin{proposition}\label{prop: closed in subspace}
-  Let \(X\) be a topological space and \(S\) be a subspace of \(X\). A set \(A
-  \subseteq S\) is closed in \(S\) if and only if \(A = S \cap F\) for some
-  closed set \(F \subseteq X\) with respect to \(X\). The closure of \(A\) with
-  respect to \(S\), denoted \(\widetilde A\), is such that \(\widetilde A = S
-  \cap \overline A\).
+Let \(X\) be a topological space and \(S\) be a subspace of \(X\). A set \(A
+\subseteq S\) is closed in \(S\) if and only if \(A = S \cap F\) for some
+closed set \(F \subseteq X\) with respect to \(X\). The closure of \(A\) with
+respect to \(S\), denoted \(\widetilde A\), is such that \(\widetilde A = S
+\cap \overline A\).
 \end{proposition}
 
 \begin{proof}
-  (\(\Rightarrow\)) Suppose \(A\) is a closed set in \(S\), then \(S \setminus
-  S = S \cap U\) is open and hence \(U\) is some open set of \(X\). Then
-  \[
-    A = S \setminus (S \setminus A) = S \setminus (S \cap U)
-    = S \cap (X \setminus U)
-  \]
-  where \(X \setminus U\) is closed, hence \(A\) equals to the intersection of
-  \(S\) with a closed set of \(X\).
-  (\(\Leftarrow\)) Suppose that \(A = S \cap F\) for a closed set \(F\) in
-  \(X\). Then we have
-  \[
-    S \setminus A = S \setminus (S \cap F) = S \cap (X \setminus F)
-  \]
-  Since \(X\setminus F\) is open, then \(S \setminus A\) is open. We conclude
-  that \(A\) is closed in \(S\).
+(\(\Rightarrow\)) Suppose \(A\) is a closed set in \(S\), then \(S \setminus
+S = S \cap U\) is open and hence \(U\) is some open set of \(X\). Then
+\[
+  A = S \setminus (S \setminus A) = S \setminus (S \cap U)
+  = S \cap (X \setminus U)
+\]
+where \(X \setminus U\) is closed, hence \(A\) equals to the intersection of
+\(S\) with a closed set of \(X\).
+(\(\Leftarrow\)) Suppose that \(A = S \cap F\) for a closed set \(F\) in
+\(X\). Then we have
+\[
+  S \setminus A = S \setminus (S \cap F) = S \cap (X \setminus F)
+\]
+Since \(X\setminus F\) is open, then \(S \setminus A\) is open. We conclude
+that \(A\) is closed in \(S\).
 
-  For the last proposition, notice that \(\widetilde A = \bigcap \{F \subseteq S
-  : F \supseteq A, F \text{ is closed in } S\}\), that is, the intersection of
-  sets \(S \cap C\) such that \(C\) is closed in \(X\) and \(C \supseteq A\), so
-  that \(\widetilde A = S \cap \overline A\).
+For the last proposition, notice that \(\widetilde A = \bigcap \{F \subseteq S
+\colon F \supseteq A, F \text{ is closed in } S\}\), that is, the intersection of
+sets \(S \cap C\) such that \(C\) is closed in \(X\) and \(C \supseteq A\), so
+that \(\widetilde A = S \cap \overline A\).
 \end{proof}
 
 \begin{proposition}\label{prop: relative open to open}
-  Let \(X\) be a topological space and \(S\) be a subspace. Then
-  \begin{enumerate}[(a)]
-    \item If \(U \subseteq S\) is open (resp. closed) and \(S\) is an open
-      (resp. closed) subset of \(X\), then \(U\) is open (resp. closed) in
-      \(X\).
-    \item If \(U \subseteq S\) and \(U\) is open (resp. closed) in \(X\), then
-      it is open (resp. closed) in \(S\).
-  \end{enumerate}
+Let \(X\) be a topological space and \(S\) be a subspace. Then
+\begin{enumerate}[(a)]
+  \item If \(U \subseteq S\) is open (resp. closed) and \(S\) is an open
+    (resp. closed) subset of \(X\), then \(U\) is open (resp. closed) in
+    \(X\).
+  \item If \(U \subseteq S\) and \(U\) is open (resp. closed) in \(X\), then
+    it is open (resp. closed) in \(S\).
+\end{enumerate}
 \end{proposition}
 
 \begin{proof}
-  (a) Suppose that \(U\) is open in \(S\) and \(S\) is open in \(X\). From the
-  definition of the relative topology, there exists an open \(V \subseteq X\) in
-  \(X\) such that \(U = S \cap V\). Since \(S\) and \(V\) are both open in
-  \(X\), then \(U\) is open in \(X\). From \cref{prop: closed in subspace} we
-  find that if \(U\) is closed in \(S\) then \(B = S \cap F\) for some closed
-  set \(F \subseteq X\). Moreover, if \(S\) is closed in \(X\), then clearly
-  \(B\) is closed in \(X\).
+(a) Suppose that \(U\) is open in \(S\) and \(S\) is open in \(X\). From the
+definition of the relative topology, there exists an open \(V \subseteq X\) in
+\(X\) such that \(U = S \cap V\). Since \(S\) and \(V\) are both open in
+\(X\), then \(U\) is open in \(X\). From \cref{prop: closed in subspace} we
+find that if \(U\) is closed in \(S\) then \(B = S \cap F\) for some closed
+set \(F \subseteq X\). Moreover, if \(S\) is closed in \(X\), then clearly
+\(B\) is closed in \(X\).
 
-  (b) If \(B \subseteq S\) then clearly \(B \cap S = B\), hence if \(B\) is open
-  in \(X\), so it is in \(S\). Moreover, if \(B\) is closed in \(X\), from
-  \cref{prop: closed in subspace} \(B\) is closed in \(S\).
+(b) If \(B \subseteq S\) then clearly \(B \cap S = B\), hence if \(B\) is open
+in \(X\), so it is in \(S\). Moreover, if \(B\) is closed in \(X\), from
+\cref{prop: closed in subspace} \(B\) is closed in \(S\).
 \end{proof}
 
 \begin{definition}[Second definition of the subspace topology]
-  \label{def: second def subspace top}
-  Let \(X\) be a topological space and \(S \subseteq X\) be any set. The
-  subspace topology on \(S\) is the coarsest topology on the set such that the
-  inclusion \(\iota_S: S \to X\) is continuous.
+\label{def: second def subspace top}
+Let \(X\) be a topological space and \(S \subseteq X\) be any set. The
+subspace topology on \(S\) is the coarsest topology on the set such that the
+inclusion \(\iota_S: S \to X\) is continuous.
 \end{definition}
 
 \begin{corollary}
-  Definitions \ref{def: subspace topology} and \ref{def: second def subspace
-  top} are equivalent.
+Definitions \ref{def: subspace topology} and \ref{def: second def subspace
+top} are equivalent.
 \end{corollary}
 
 \begin{proof}
-  Suppose \(\mathcal T_{\iota_S}\) is the coarsest topology such that
-  \(\iota_S\) is continuous and \(\mathcal T_S\) be the subspace topology. Our
-  goal is to show that they are, in fact, equal. Given any \(U = S \cap V \in
-  \mathcal T_S\) we have \(\iota_S^{-1}(V) = S \cap V = U\), since \(V\) is
-  open, we find that \(U\) is open in \(\mathcal T_{\iota_S}\). This implies in
-  \(\mathcal T_S \subseteq \mathcal T_{\iota_S}\). Moreover, let \(O \in
-  \mathcal T_{\iota_S}\), then there must exist some \(A \subseteq X\) open set
-  for which \(\iota_S^{-1}(A) = A \cap S = O\) (this comes directly from the
-  fact that \(\mathcal T_{\iota_S}\) was solely constructed for the purpose of
-  making \(\iota_S\) continuous), since \(A\) is open, then \(O = A \cap S \in
-  \mathcal T_S\). This implies that \(\mathcal T_{\iota_S} \subseteq \mathcal
-  T_S\). We conclude finally that both definitions are indeed equivalent.
+Suppose \(\mathcal T_{\iota_S}\) is the coarsest topology such that
+\(\iota_S\) is continuous and \(\mathcal T_S\) be the subspace topology. Our
+goal is to show that they are, in fact, equal. Given any \(U = S \cap V \in
+\mathcal T_S\) we have \(\iota_S^{-1}(V) = S \cap V = U\), since \(V\) is
+open, we find that \(U\) is open in \(\mathcal T_{\iota_S}\). This implies in
+\(\mathcal T_S \subseteq \mathcal T_{\iota_S}\). Moreover, let \(O \in
+\mathcal T_{\iota_S}\), then there must exist some \(A \subseteq X\) open set
+for which \(\iota_S^{-1}(A) = A \cap S = O\) (this comes directly from the
+fact that \(\mathcal T_{\iota_S}\) was solely constructed for the purpose of
+making \(\iota_S\) continuous), since \(A\) is open, then \(O = A \cap S \in
+\mathcal T_S\). This implies that \(\mathcal T_{\iota_S} \subseteq \mathcal
+T_S\). We conclude finally that both definitions are indeed equivalent.
 \end{proof}
 
 \begin{theorem}[Universal property of the subspace topology]
-  Let \(X\) be a topological space and \(S\) be a subspace. Given any
-  topological space \(Y\), a map \(f: Y \to S\) is continuous if and only if
-  \(\iota_S  f : Y \to X\) is continuous, where \(\iota_S: S
-  \emb X\) is the inclusion map. Hence the following diagram commutes
-  \[
-    \begin{tikzcd}
-      Y \ar[r, "f"] \ar[rd, swap, "\iota_S  f"]
-        &S \ar[d, hook, "\iota_S"] \\
-        &X
-    \end{tikzcd}
-  \]
-  Moreover, on the converse, if \(S \subseteq X\) is a topological space such
-  that the above property holds, then it is equipped with the subspace topology.
+Let \(X\) be a topological space and \(S\) be a subspace. Given any
+topological space \(Y\), a map \(f: Y \to S\) is continuous if and only if
+\(\iota_S  f : Y \to X\) is continuous, where \(\iota_S: S
+\emb X\) is the inclusion map. Hence the following diagram commutes
+\[
+  \begin{tikzcd}
+    Y \ar[r, "f"] \ar[rd, swap, "\iota_S  f"]
+      &S \ar[d, hook, "\iota_S"] \\
+      &X
+  \end{tikzcd}
+\]
+Moreover, on the converse, if \(S \subseteq X\) is a topological space such
+that the above property holds, then it is equipped with the subspace topology.
 \end{theorem}
 
 \begin{proof}
-  First we show that if \((S, \mathcal T_S)\) is a subspace of \((X, \mathcal{T})\) then
-  it satisfies the universal property. Suppose then that \(S\) a subspace of
-  \(X\). (\(\Rightarrow\)) Let \(f\) be continuous. If \(V \subseteq X\) is any open subset, we have
-  that
-  \[
-    (\iota_S  f)^{-1}(V) = f^{-1}(\iota^{-1}(V)) = f^{-1}(S \cap V)
-  \]
-  since \(V\) is said to be open, then \(S \cap V\) is open in \(S\), which
-  implies that \(f^{-1}(S \cap V) = (\iota_S  f)^{-1}(V)\) is open. This
-  shows that the map \(\iota_S  f\) is open. (\(\Leftarrow\)) Let \(\iota_S
-   f\) be continuous. Consider \(U = S \cap V = \iota_S^{-1}(V)\) to be any
-  open set of the subspace \(S\) (that is \(V\) is an open of the space \(X\)).
-  Then we have
-  \[
-    f^{-1}(U) = f^{-1}(\iota_S^{-1}(V)) = (\iota_S  f)^{-1}(V)
-  \]
-  since \(\iota_S  f\) is continuous, then \(f^{-1}(U)\) is open, therefore
-  \(f\) is continuous.
+First we show that if \((S, \mathcal T_S)\) is a subspace of \((X, \mathcal{T})\) then
+it satisfies the universal property. Suppose then that \(S\) a subspace of
+\(X\). (\(\Rightarrow\)) Let \(f\) be continuous. If \(V \subseteq X\) is any open subset, we have
+that
+\[
+  (\iota_S  f)^{-1}(V) = f^{-1}(\iota^{-1}(V)) = f^{-1}(S \cap V)
+\]
+since \(V\) is said to be open, then \(S \cap V\) is open in \(S\), which
+implies that \(f^{-1}(S \cap V) = (\iota_S  f)^{-1}(V)\) is open. This
+shows that the map \(\iota_S  f\) is open. (\(\Leftarrow\)) Let \(\iota_S
+  f\) be continuous. Consider \(U = S \cap V = \iota_S^{-1}(V)\) to be any
+open set of the subspace \(S\) (that is \(V\) is an open of the space \(X\)).
+Then we have
+\[
+  f^{-1}(U) = f^{-1}(\iota_S^{-1}(V)) = (\iota_S  f)^{-1}(V)
+\]
+since \(\iota_S  f\) is continuous, then \(f^{-1}(U)\) is open, therefore
+\(f\) is continuous.
 
-  We now show that if an object satisfies such the property, then it is the
-  subspace. Let \((S, \mathcal T')\) be a space satisfying the universal
-  property. In particular we can take the subspace \((S, \mathcal T_S)\) of
-  \((X, \mathcal T)\) and the identity map \(\Id_S: (S, \mathcal T_S) \to (S,
-  \mathcal T')\). Since \((S, \mathcal T')\) satisfies the universal property,
-  we have that \(\Id_S\) is continuous if and only if \(\iota_S  \Id_S =
-  \iota_S\) is continuous. That is
-  \[
-    \begin{tikzcd}
-      (S, \mathcal T_S)
-      \ar[r, "\Id_S"]
-      \ar[rd, swap, "\iota_S  \Id_S = \iota_S"]
-        &(S, \mathcal T') \ar[d, "\iota_S"] \\
-        &(X, \mathcal T)
-    \end{tikzcd}
-  \]
-  We know from \cref{def: second def subspace top} that \(\iota_S  \Id_S =
-  \iota_S\) is continuous for the subspace topology \(\mathcal T_S\), hence the
-  universal property implies that \(\Id_S\) is continuous. In particular, this
-  says that \(\mathcal T' \subseteq \mathcal T_S\). In order to show the other
-  side of the equality, consider now the space \((S, \mathcal T')\) and the
-  identity map \(\Id_S': (S, \mathcal T') \to (S, \mathcal T')\) so that from the
-  universal property of \((S, \mathcal T')\) the map \(\Id_S'\) is continuous if
-  and only if \(\iota_S  \Id_S' = \iota_S\) is continuous. That is, the
-  following diagram commutes
-  \[
-    \begin{tikzcd}
-      (S, \mathcal T') \ar[r, "\Id_S'"]
-      \ar[rd, swap, "\iota_S  \Id_S' = \iota_S"]
-        &(S, \mathcal T') \ar[d, "\iota_S"] \\
-        &(X, \mathcal T)
-    \end{tikzcd}
-  \]
-  Notice that since \(\Id_S'\) is continuous (see \cref{prop: continuous maps
-  properties}) then from the universal property the map \(\iota_S\) is
-  continuous on \(\mathcal T'\). Since \(\mathcal T_S\) is the coarsest topology
-  such that \(\iota_S\) is continuous (see \cref{def: second def subspace top}),
-  then clearly \(\mathcal T_S \subseteq \mathcal T'\). This finishes the proof
-  that \(\mathcal T' = \mathcal T_S\) and hence the space \((S, \mathcal T') =
-  (S, \mathcal T_S)\) is the subspace of \((X, \mathcal T)\).
+We now show that if an object satisfies such the property, then it is the
+subspace. Let \((S, \mathcal T')\) be a space satisfying the universal
+property. In particular we can take the subspace \((S, \mathcal T_S)\) of
+\((X, \mathcal T)\) and the identity map \(\Id_S: (S, \mathcal T_S) \to (S,
+\mathcal T')\). Since \((S, \mathcal T')\) satisfies the universal property,
+we have that \(\Id_S\) is continuous if and only if \(\iota_S  \Id_S =
+\iota_S\) is continuous. That is
+\[
+  \begin{tikzcd}
+    (S, \mathcal T_S)
+    \ar[r, "\Id_S"]
+    \ar[rd, swap, "\iota_S  \Id_S = \iota_S"]
+      &(S, \mathcal T') \ar[d, "\iota_S"] \\
+      &(X, \mathcal T)
+  \end{tikzcd}
+\]
+We know from \cref{def: second def subspace top} that \(\iota_S  \Id_S =
+\iota_S\) is continuous for the subspace topology \(\mathcal T_S\), hence the
+universal property implies that \(\Id_S\) is continuous. In particular, this
+says that \(\mathcal T' \subseteq \mathcal T_S\). In order to show the other
+side of the equality, consider now the space \((S, \mathcal T')\) and the
+identity map \(\Id_S': (S, \mathcal T') \to (S, \mathcal T')\) so that from the
+universal property of \((S, \mathcal T')\) the map \(\Id_S'\) is continuous if
+and only if \(\iota_S  \Id_S' = \iota_S\) is continuous. That is, the
+following diagram commutes
+\[
+  \begin{tikzcd}
+    (S, \mathcal T') \ar[r, "\Id_S'"]
+    \ar[rd, swap, "\iota_S  \Id_S' = \iota_S"]
+      &(S, \mathcal T') \ar[d, "\iota_S"] \\
+      &(X, \mathcal T)
+  \end{tikzcd}
+\]
+Notice that since \(\Id_S'\) is continuous (see \cref{prop: continuous maps
+properties}) then from the universal property the map \(\iota_S\) is
+continuous on \(\mathcal T'\). Since \(\mathcal T_S\) is the coarsest topology
+such that \(\iota_S\) is continuous (see \cref{def: second def subspace top}),
+then clearly \(\mathcal T_S \subseteq \mathcal T'\). This finishes the proof
+that \(\mathcal T' = \mathcal T_S\) and hence the space \((S, \mathcal T') =
+(S, \mathcal T_S)\) is the subspace of \((X, \mathcal T)\).
 \end{proof}
 
 \begin{corollary}\label{cor: subspace maps properties}
-  Let \(X, Y\) be topological spaces and \(f: X \to Y\) be a continuous map.
-  Then the following hold
-  \begin{enumerate}[(a)]
-    \item (Domain restriction) Let \(S\) be a subspace of \(X\). Then \(f|_S\)
-      is continuous.
-    \item (Codomain restriction) Let \(T\) be a subspace of \(Y\) such that
-      \(f(X) \subseteq T\). Then \(f: X \to T\) is continuous.
-    \item (Codomain expansion) Let \(Y\) be a subspace of \(Z\). Then the map
-      \(f : X \to Z\) is continuous.
-  \end{enumerate}
+Let \(X, Y\) be topological spaces and \(f: X \to Y\) be a continuous map.
+Then the following hold
+\begin{enumerate}[(a)]
+  \item (Domain restriction) Let \(S\) be a subspace of \(X\). Then \(f|_S\)
+    is continuous.
+  \item (Codomain restriction) Let \(T\) be a subspace of \(Y\) such that
+    \(f(X) \subseteq T\). Then \(f: X \to T\) is continuous.
+  \item (Codomain expansion) Let \(Y\) be a subspace of \(Z\). Then the map
+    \(f : X \to Z\) is continuous.
+\end{enumerate}
 \end{corollary}
 
 \begin{proof}
-  (a) Notice that \(f|_S = f  \iota_S\). Applying the universal property,
-  we find that since \(f\) is continuous, so is \(f|_S\). (b) From the universal
-  property we have that \(\iota_T  f = f\) is continuous, so is \(f: X \to
-  T\). (c) Notice that from the universal property we have \(\iota_Y  f: X
-  \to Z\) continuous, since \(f\) is continuous. The following are the universal
-  property diagrams for items (b) and (c):
-  \[
-    \begin{tikzcd}
-      X \rar["f"] \ar[rd, swap, "\iota_T  f = f"] &T \dar["\iota_T"] \\ &Y
-    \end{tikzcd}
-    \qquad
-    \begin{tikzcd}
-      X \rar["f"] \ar[rd, swap, "\iota_Y  f"] &Y \dar["\iota_Y"] \\ &Z
-    \end{tikzcd}
-  \]
+(a) Notice that \(f|_S = f  \iota_S\). Applying the universal property,
+we find that since \(f\) is continuous, so is \(f|_S\). (b) From the universal
+property we have that \(\iota_T  f = f\) is continuous, so is \(f: X \to
+T\). (c) Notice that from the universal property we have \(\iota_Y  f: X
+\to Z\) continuous, since \(f\) is continuous. The following are the universal
+property diagrams for items (b) and (c):
+\[
+  \begin{tikzcd}
+    X \rar["f"] \ar[rd, swap, "\iota_T  f = f"] &T \dar["\iota_T"] \\ &Y
+  \end{tikzcd}
+  \qquad
+  \begin{tikzcd}
+    X \rar["f"] \ar[rd, swap, "\iota_Y  f"] &Y \dar["\iota_Y"] \\ &Z
+  \end{tikzcd}
+\]
 \end{proof}
 
 \begin{proposition}[Subspace propeties]\label{prop: subspace properties}
-  Let \((X, \mathcal T)\) be a topological space and \((S, \mathcal T_S)\) be a
-  subspace of \(X\). The following are properties concerning the subspace
-  topology
-  \begin{enumerate}[(SP1)]
-    \item\label{prop: subspace transitivity}
-      Let \(T\) be a subspace of \(S\). Then \(T\) is a subspace of \(X\).  \item\label{prop: basis for subspace} Let \(\mathcal B\) be a basis for \(X\). Then the collection \(\mathcal B_S = \{B \cap S : B \in \mathcal B\}\) is a basis for \(S\).
-    \item\label{prop: convergence subspace}
-      Let \((p_i)_{i \in \N} \subseteq S\) be a sequence and \(p \in
-      S\). Then \(p_i \to p\) in \(S\) if and only if \(p_i \to p\) in \(X\).
-    \item\label{prop: Hausdorff implies Hausdorff subspace}
-      A subspace of a Hausdorff space is Hausdorff.
-    \item\label{prop: firs count implies first count subspace}
-      A subspace of a first countable space is first countable.
-    \item\label{prop: sec count implies sec count subspace}
-      A subspace of a second countable space is second countable.
-  \end{enumerate}
+Let \((X, \mathcal T)\) be a topological space and \((S, \mathcal T_S)\) be a
+subspace of \(X\). The following are properties concerning the subspace
+topology
+\begin{enumerate}[(SP1)]
+  \item\label{prop: subspace transitivity}
+    Let \(T\) be a subspace of \(S\). Then \(T\) is a subspace of \(X\).  \item\label{prop: basis for subspace} Let \(\mathcal B\) be a basis for \(X\). Then the collection \(\mathcal B_S = \{B \cap S \colon B \in \mathcal B\}\) is a basis for \(S\).
+  \item\label{prop: convergence subspace}
+    Let \((p_i)_{i \in \N} \subseteq S\) be a sequence and \(p \in
+    S\). Then \(p_i \to p\) in \(S\) if and only if \(p_i \to p\) in \(X\).
+  \item\label{prop: Hausdorff implies Hausdorff subspace}
+    A subspace of a Hausdorff space is Hausdorff.
+  \item\label{prop: firs count implies first count subspace}
+    A subspace of a first countable space is first countable.
+  \item\label{prop: sec count implies sec count subspace}
+    A subspace of a second countable space is second countable.
+\end{enumerate}
 \end{proposition}
 
 \begin{proof}
-  (SP1) Let \(Z\) be some topological space, we can choose maps \(f: Z \to T\)
-  and \(g = \iota_T  f : Z \to S\) and apply the universal property on both
-  \(T\) and \(S\) in order to get
-  \[
-    \begin{tikzcd}
-      Z \ar[r,"f"]
-      \ar[rd, swap, "g"]
-      \ar[rdd, swap, bend right,
-      "\iota_S  g = \iota_T'  f"]
-        &T \ar[d, hook, "\iota_T"]
-        \ar[dd, hook, bend left = 60, "\iota_S  \iota_T := \iota_T'"]\\
-        &S \ar[d, hook, "\iota_S"] \\
-        &X
-    \end{tikzcd}
-    \qquad \Leftrightarrow \qquad
-    \begin{tikzcd}
-      Z \ar[dr, swap, "\iota_T'  f"] \ar[r, "f"]
-        &T \ar[d, hook, "\iota_T'"] \\
-        &X
-    \end{tikzcd}
-  \]
-  Moreover, if \(f\) is continuous, from the universal property of \(T\) we find
-  that \(g\) is continuous, but using the universal property of \(S\) that tells
-  us that \(\iota_S  g = \iota_T'  f\) is continuous. The converse is
-  true by using the same argumentation. Hence \(T\) satisfies the universal
-  property and therefore is a subspace of \(X\).
+(SP1) Let \(Z\) be some topological space, we can choose maps \(f: Z \to T\)
+and \(g = \iota_T  f : Z \to S\) and apply the universal property on both
+\(T\) and \(S\) in order to get
+\[
+  \begin{tikzcd}
+    Z \ar[r,"f"]
+    \ar[rd, swap, "g"]
+    \ar[rdd, swap, bend right,
+    "\iota_S  g = \iota_T'  f"]
+      &T \ar[d, hook, "\iota_T"]
+      \ar[dd, hook, bend left = 60, "\iota_S  \iota_T \coloneq \iota_T'"]\\
+      &S \ar[d, hook, "\iota_S"] \\
+      &X
+  \end{tikzcd}
+  \qquad \Leftrightarrow \qquad
+  \begin{tikzcd}
+    Z \ar[dr, swap, "\iota_T'  f"] \ar[r, "f"]
+      &T \ar[d, hook, "\iota_T'"] \\
+      &X
+  \end{tikzcd}
+\]
+Moreover, if \(f\) is continuous, from the universal property of \(T\) we find
+that \(g\) is continuous, but using the universal property of \(S\) that tells
+us that \(\iota_S  g = \iota_T'  f\) is continuous. The converse is
+true by using the same argumentation. Hence \(T\) satisfies the universal
+property and therefore is a subspace of \(X\).
 
-  (SP2) First notice that since \(B \in \mathcal B\) is open in \(X\), then
-  \(\mathcal B_S \subseteq \mathcal T_S\). Let \(s \in S\) be any element, then
-  in particular we have \(s \in B_s \in \mathcal B\) for some element of the
-  basis. Then \(s \in S \cap B_s \in \mathcal B_S\). Let \(A = S \cap B_1, B = S
-  \cap B_2 \in \mathcal B_S\) and \(x \in A \cap B\). Then in particular \(x \in
-  B_1 \cap B_2\). Since \(\mathcal B\) is a basis for \(X\), then exists \(B_3
-  \in \mathcal B\) such that \(x \in B_3 \subseteq B_1 \cap B_2\). Hence the
-  corresponding set \(C = S \cap B_3 \in \mathcal B_S\) is such that \(x \in C
-  \subseteq A \cap B\). This proves that \(\mathcal B_S\) is a basis.
+(SP2) First notice that since \(B \in \mathcal B\) is open in \(X\), then
+\(\mathcal B_S \subseteq \mathcal T_S\). Let \(s \in S\) be any element, then
+in particular we have \(s \in B_s \in \mathcal B\) for some element of the
+basis. Then \(s \in S \cap B_s \in \mathcal B_S\). Let \(A = S \cap B_1, B = S
+\cap B_2 \in \mathcal B_S\) and \(x \in A \cap B\). Then in particular \(x \in
+B_1 \cap B_2\). Since \(\mathcal B\) is a basis for \(X\), then exists \(B_3
+\in \mathcal B\) such that \(x \in B_3 \subseteq B_1 \cap B_2\). Hence the
+corresponding set \(C = S \cap B_3 \in \mathcal B_S\) is such that \(x \in C
+\subseteq A \cap B\). This proves that \(\mathcal B_S\) is a basis.
 
-  (SP3) (\(\Rightarrow\)) Suppose \(p_i \to p\) in \(S\), that is, for all \(U_p
-  = S \cap V_p \in \mathcal T_S\), where \(V_p \in \mathcal T\), we have some
-  \(N \in \N\) such that \(\forall n \geq N, p_n \in U_p\). In
-  particular, this implies that \(\forall n \geq N, p_n \in V_p\), hence \(p_i
-  \to p\) in \(X\).
-  (\(\Leftarrow\)) Suppose that \(p_i \to p\) in \(X\). Let \(V_p \subseteq X\)
-  be a neighbourhood of \(p\), then since \(p \in S\) we have that \(V_p \cap S
-  \neq \emptyset\) is an element of \(\mathcal T_S\). Let \(U_p \in
-  \mathcal T_S\) be any neighbourhood of \(p\), then there exists \(V \in
-  \mathcal T\) such that \(U_p = S \cap V\) (from the definition of the subspace
-  topology) and also \(p \in V\), so that \(V\) is a neighbourhood of \(p\).
-  Therefore there exists \(M \in \N\) such that \(\forall n \geq M, p_n
-  \in S \cap V = U_p \subseteq V\). This implies that \(p_i \to p\) in \(S\).
+(SP3) (\(\Rightarrow\)) Suppose \(p_i \to p\) in \(S\), that is, for all \(U_p =
+S \cap V_p \in \mathcal T_S\), where \(V_p \in \mathcal T\), we have some \(N
+\in \N\) such that for all \(n \geq N\) we have \(p_n \in U_p\). In particular,
+this implies that for each \(n \geq N\) we get \(p_n \in V_p\), hence \(p_i \to
+p\) in \(X\).
+(\(\Leftarrow\)) Suppose that \(p_i \to p\) in \(X\). Let \(V_p \subseteq X\)
+be a neighbourhood of \(p\), then since \(p \in S\) we have that \(V_p \cap S
+\neq \emptyset\) is an element of \(\mathcal T_S\). Let \(U_p \in
+\mathcal T_S\) be any neighbourhood of \(p\), then there exists \(V \in
+\mathcal T\) such that \(U_p = S \cap V\) (from the definition of the subspace
+topology) and also \(p \in V\), so that \(V\) is a neighbourhood of \(p\).
+Therefore there exists \(M \in \N\) such that, for all \(n \geq M\) we have
+\(p_n \in S \cap V = U_p \subseteq V\). This implies that \(p_i \to p\) in
+\(S\).
 
-  (SP4) Let \(X\) be Hausdorff. Let \(x, y \in S\) be distinct points. In
-  particular, there exits \(A, B \in X\) neighbourhoods of \(x\) and \(y\),
-  respectively, such that \(A \cap B = \emptyset\). Hence the sets \(U = S \cap
-  A, V = S \cap B \in \mathcal T_S\) are neighbourhoods of \(x\) and \(y\)
-  respectively and since \(U \subseteq A\) and \(V \subseteq B\) we find that
-  \(U \cap V = \emptyset\). Hence \(S\) is Hausdorff.
+(SP4) Let \(X\) be Hausdorff. Let \(x, y \in S\) be distinct points. In
+particular, there exits \(A, B \in X\) neighbourhoods of \(x\) and \(y\),
+respectively, such that \(A \cap B = \emptyset\). Hence the sets \(U = S \cap
+A, V = S \cap B \in \mathcal T_S\) are neighbourhoods of \(x\) and \(y\)
+respectively and since \(U \subseteq A\) and \(V \subseteq B\) we find that
+\(U \cap V = \emptyset\). Hence \(S\) is Hausdorff.
 
-  (SP5) Let \(X\) be a first countable space. Let \(p \in S\) be any point.
-  Define a countable base \(\mathcal B_p\) of neighbourhoods of \(p\) for \(X\).
-  Define the, clearly countable, collection \(\mathcal B_p' = \{S \cap B_p: B_p
-  \in \mathcal B_p\} \subseteq 2^S\). From \cref{prop: basis for subspace} we
-  have that \(\mathcal B_p'\) is a basis for \(S\). Moreover, every element of
-  \(\mathcal B_p'\) is clearly a neighbourhood of \(p\). This proves the
-  property.
+(SP5) Let \(X\) be a first countable space. Let \(p \in S\) be any point.
+Define a countable base \(\mathcal B_p\) of neighbourhoods of \(p\) for \(X\).
+Define the, clearly countable, collection \(\mathcal B_p' = \{S \cap B_p \colon B_p
+\in \mathcal B_p\} \subseteq 2^S\). From \cref{prop: basis for subspace} we
+have that \(\mathcal B_p'\) is a basis for \(S\). Moreover, every element of
+\(\mathcal B_p'\) is clearly a neighbourhood of \(p\). This proves the
+property.
 
-  (SP6) Let \(X\) be second countable and \(\mathcal B\) be a countable basis
-  for the topology of \(X\). Define the, clearly countable, collection
-  \(\mathcal B' := \{S \cap B : B \in \mathcal B\}\). Since \(\mathcal B\) is a
-  basis for \(X\), we use \cref{prop: basis for subspace} to conclude that
-  \(\mathcal B'\) is a basis for \(S\).
+(SP6) Let \(X\) be second countable and \(\mathcal B\) be a countable basis
+for the topology of \(X\). Define the, clearly countable, collection
+\(\mathcal B' \coloneq \{S \cap B \colon B \in \mathcal B\}\). Since \(\mathcal B\) is a
+basis for \(X\), we use \cref{prop: basis for subspace} to conclude that
+\(\mathcal B'\) is a basis for \(S\).
 \end{proof}
 
 \subsection{Topological Embeddings}
 
 \begin{definition}[Embedding]\label{def: topological embedding}
-  Let \(f: Y \mono X\) be a continuous injective map of topological spaces. We
-  call \(f\) an embedding when \(f': Y \isoto f(Y)\) is a homeomorphism.
+Let \(f: Y \mono X\) be a continuous injective map of topological spaces. We
+call \(f\) an embedding when \(f': Y \isoto f(Y)\) is a homeomorphism.
 \end{definition}
 
 \begin{example}
-  Let \(X\) be a topological space and \(S\) be a subspace of \(X\). We show
-  that \(\iota_S: S \emb X\) is an embedding. Notice that
-  \(\iota_S(S) = S\) and hence \(\iota_S': S \isoto \iota(S) = S\) is equal to
-  the identity map \(\Id_S\), which clearly establishes a homeomorphism.
+Let \(X\) be a topological space and \(S\) be a subspace of \(X\). We show
+that \(\iota_S: S \emb X\) is an embedding. Notice that
+\(\iota_S(S) = S\) and hence \(\iota_S': S \isoto \iota(S) = S\) is equal to
+the identity map \(\Id_S\), which clearly establishes a homeomorphism.
 \end{example}
 
 \begin{proposition}
-  Let \(f\) be a continuous injective map between topological spaces. If \(f\)
-  is either open or closed, then \(f\) is an embedding.
+Let \(f\) be a continuous injective map between topological spaces. If \(f\)
+is either open or closed, then \(f\) is an embedding.
 \end{proposition}
 
 \begin{proof}
-  Let \(f: X \to Y\). Since \(f\) is injective, the codomain restricted map
-  \(f': X \xrightarrow f f(X)\) is a bijection and continuous by \cref{cor:
-  subspace maps properties}. Suppose \(f\) is open (resp. closed) and consider
-  any open (resp. closed) set \(U \subseteq X\), then \(f(U) \subseteq f(X)\) is
-  open (resp. closed) in \(f(X)\) this shows that \(f'\) is a homeomorphism.
+Let \(f: X \to Y\). Since \(f\) is injective, the codomain restricted map
+\(f': X \xrightarrow f f(X)\) is a bijection and continuous by \cref{cor:
+subspace maps properties}. Suppose \(f\) is open (resp. closed) and consider
+any open (resp. closed) set \(U \subseteq X\), then \(f(U) \subseteq f(X)\) is
+open (resp. closed) in \(f(X)\) this shows that \(f'\) is a homeomorphism.
 \end{proof}
 
 \begin{proposition}
-  A surjective embedding is a homeomorphism.
+A surjective embedding is a homeomorphism.
 \end{proposition}
 
 \begin{proof}
-  Let \(f: X \to Y\) be a surjective embedding. Notice that in a surjective map
-  we have \(f(X) = Y\), hence \(f' = f : X \isoto f(X) = Y\).
+Let \(f: X \to Y\) be a surjective embedding. Notice that in a surjective map
+we have \(f(X) = Y\), hence \(f' = f : X \isoto f(X) = Y\).
 \end{proof}
 
 \begin{example}[2-torus surface]
-  Consider first a circle \((x - d)^2 + z^2 = r^2\), with center at \((d, 0)\).
-  Let \(\phi\) be the angle going up from the \(x\) to the \(z\) axis, then we
-  can parametrize such circle as \(x = r \cos(\phi) + d,\ z = r\sin(\phi)\).
-  Lets now consider the revolution of such circle around the \(z\) axis. If
-  \(\theta\) is the angle going up from the \(x\) axis to the \(y\) axis, we
-  find the new equation \((\sqrt{x^2 + y^2} - d)^2 + z^2 = r^2\) has a
-  parametrization given by
-  \[
-    (x, y, z) = ((r \cos(\phi) + d)\cos(\theta), (r\cos(\phi) + d)\sin(\theta),
-    r\sin(\phi)).
-  \]
-  This mapping is clearly continuous. Although not injective, we can choose any
-  point \(p = (x, y)\) and find a neighbourhood of \(p\) such that the mapping
-  is injective.
+Consider first a circle \((x - d)^2 + z^2 = r^2\), with center at \((d, 0)\).
+Let \(\phi\) be the angle going up from the \(x\) to the \(z\) axis, then we
+can parametrize such circle as \(x = r \cos(\phi) + d,\ z = r\sin(\phi)\).
+Lets now consider the revolution of such circle around the \(z\) axis. If
+\(\theta\) is the angle going up from the \(x\) axis to the \(y\) axis, we
+find the new equation \((\sqrt{x^2 + y^2} - d)^2 + z^2 = r^2\) has a
+parametrization given by
+\[
+  (x, y, z) = ((r \cos(\phi) + d)\cos(\theta), (r\cos(\phi) + d)\sin(\theta),
+  r\sin(\phi)).
+\]
+This mapping is clearly continuous. Although not injective, we can choose any
+point \(p = (x, y)\) and find a neighbourhood of \(p\) such that the mapping
+is injective.
 \end{example}
 
 \begin{lemma}[Gluing]
-  Let \(X\) and \(Y\) be topological spaces and consider \(\mathcal U =
-  \{U_i\}_i\) an open cover (or finite closed cover) of \(X\). Let \(\{f_i: U_i
-  \to Y\}_i\) be a collection of continuous maps such that \(f_i|_{U_i \cap U_j}
-  = f_j|_{U_i \cap U_j}\) for all indices \(i\) and \(j\). Then there exists a
-  unique continuous map \(f: X \to Y\) such that \(f|_{U_i} = f_i\) for all \(i\).
+Let \(X\) and \(Y\) be topological spaces and consider \(\mathcal U =
+\{U_i\}_i\) an open cover (or finite closed cover) of \(X\). Let \(\{f_i: U_i
+\to Y\}_i\) be a collection of continuous maps such that \(f_i|_{U_i \cap U_j}
+= f_j|_{U_i \cap U_j}\) for all indices \(i\) and \(j\). Then there exists a
+unique continuous map \(f: X \to Y\) such that \(f|_{U_i} = f_i\) for all \(i\).
 \end{lemma}
 
 \begin{proof}
-  Let \(\mathcal U\) be open, then given any point \(p \in X\), \(f|_{U_p} =
-  f_p\) is continuous for some neighbourhood \(U_p \in \mathcal U\) of \(p\),
-  which implies that \(f\) is continuous. On the other hand, if \(\mathcal U\)
-  is a finite closed cover of \(X\), then consider \(C \subseteq Y\) to be any
-  closed set, then we have \(f_i^{-1}(C) = f^{-1}(V) \cap U_i\) is closed in
-  \(U_i\) (since \(f_i\) is continuous). Since \(U_i\) is closed in \(X\), we
-  find that \(f_i^{-1}(C)\) is closed in \(X\) (see \cref{prop: relative open to
-  open}).  Notice that, if \(|\mathcal U| = n\), then \(f^{-1}(C) =
-  \bigcup_{i=1}^n f_i^{-1}(C)\) is the finite union of closed sets in \(X\),
-  which implies that \(f^{-1}(C)\) itself is closed. This shows us that the
-  inverse of \(f\) maps closed sets to closed sets, which implies that \(f\) is
-  continuous.  Since \(\mathcal U\) is a cover of \(X\), it is clear that \(f\)
-  is unique.
+Let \(\mathcal U\) be open, then given any point \(p \in X\), \(f|_{U_p} =
+f_p\) is continuous for some neighbourhood \(U_p \in \mathcal U\) of \(p\),
+which implies that \(f\) is continuous. On the other hand, if \(\mathcal U\)
+is a finite closed cover of \(X\), then consider \(C \subseteq Y\) to be any
+closed set, then we have \(f_i^{-1}(C) = f^{-1}(V) \cap U_i\) is closed in
+\(U_i\) (since \(f_i\) is continuous). Since \(U_i\) is closed in \(X\), we
+find that \(f_i^{-1}(C)\) is closed in \(X\) (see \cref{prop: relative open to
+open}).  Notice that, if \(|\mathcal U| = n\), then \(f^{-1}(C) =
+\bigcup_{i=1}^n f_i^{-1}(C)\) is the finite union of closed sets in \(X\),
+which implies that \(f^{-1}(C)\) itself is closed. This shows us that the
+inverse of \(f\) maps closed sets to closed sets, which implies that \(f\) is
+continuous.  Since \(\mathcal U\) is a cover of \(X\), it is clear that \(f\)
+is unique.
 \end{proof}

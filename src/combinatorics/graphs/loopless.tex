@@ -106,7 +106,7 @@ Let \(G = (V, E)\) be a graph and \(V' \subseteq V\) a subset of the
 vertices of \(G\). The deletion of the parts of \(G\) associated with the
 vertices \(V'\) is defined as the graph \(G[V \setminus V']\) --- which we'll
 shortly identify as \(G \setminus V'\). Equivalently we define the deletion
-of edges \(E' \subseteq E\) as the graph \(G - E' := (V, E \setminus E')\).
+of edges \(E' \subseteq E\) as the graph \(G - E' \coloneq (V, E \setminus E')\).
 \end{definition}
 
 Notice that the non-connected vertices are not deleted from the resulting graph
@@ -136,7 +136,7 @@ Given a graph \(G\), the line graph of \(G\), denoted by \(L(G)\), is the
 graph such that, if \(e = (x, y), e' = (y, z) \in E(G)\) are adjacent edges
 then \(E_{L(G)}(x, z)\) --- that is \(L(G) = (V(G), E)\) where
 \[
-  E = \{(x, z) \in \langle V \rangle^2 : E_G(x, y) \text{ and } E_G(y, z)
+  E = \{(x, z) \in \langle V \rangle^2 \colon E_G(x, y) \text{ and } E_G(y, z)
   \text{ for some } y \in V(G)\}.
 \]
 \end{definition}
@@ -145,7 +145,7 @@ then \(E_{L(G)}(x, z)\) --- that is \(L(G) = (V(G), E)\) where
 Let \(G = (V, E), G' = (V', E') \in \Graph\) be disjoint --- \(G \cap G' =
 \emptyset\). We define their join as the graph \(G * G'\) with vertices \(V
 \cup V'\) and edges \(E \cup E' \cup E^*\), where \(E^*\) is defined as \(E^*
-= \{(x, y) : x \in G, y \in G'\}\) --- that is, the collection of all edges
+= \{(x, y) \colon x \in G, y \in G'\}\) --- that is, the collection of all edges
 connecting the vertices of \(G\) and \(G'\).
 \end{definition}
 

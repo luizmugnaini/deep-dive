@@ -214,7 +214,7 @@ hence \(\phi\) is closed under products.
 
 \begin{definition}[Kernel]
 We define the kernel of a morphism of groups \(\phi \in \Hom_\Grp(G, H)\) as
-the collection \(\ker \phi = \{g \in G: \phi(g) = e_H\}\).
+the collection \(\ker \phi = \{g \in G \colon \phi(g) = e_H\}\).
 \end{definition}
 
 \begin{lemma}[Kernel subgroup]
@@ -554,29 +554,30 @@ h' h^{-1})H = y(h' h^{-1})H = y H\).
 \begin{definition}[Index]
 \label{def:grp-index}
 Let \(G\) be a group and \(H \subseteq G\) be a subgroup. The number of left
-cosets of \(H\) in \(G\) is denoted by \([G : H]\), which will be commonly
+cosets of \(H\) in \(G\) is denoted by \([G \colon H]\), which will be commonly
 refered to as the \emph{index} of \(H\) in \(G\).
 \end{definition}
 
 \begin{corollary}
 \label{cor:order-as-index}
 If we denote by \(*\) the trivial group, the \emph{order} of a group
-\(G\) is the same as \([G : *]\) --- that is, \(|G| = [G : *]\).
+\(G\) is the same as \([G \colon *]\) --- that is, \(|G| = [G \colon *]\).
 \end{corollary}
 
 \begin{proof}
 One can view the trivial group \(*\) as a subgroup of \(G\) containing only the
 identity. Notice that the number of left cosets of \(*\) will be exactly the
-number of elements of \(G\), that is \([G : *] = |G|\).
+number of elements of \(G\), that is \([G \colon *] = |G|\).
 \end{proof}
 
 \begin{proposition}
 \label{prop:grp-index-subgroup}
 Let \(G\) be a group, and \(H \subseteq G\) be a subgroup, and \(Q \subseteq H\)
-be a subgroup. Then, if any two of the quantities \(\{[G : H], [H : Q], [G :
-Q]\}\) is finite, the third is also finite and the following equality holds
+be a subgroup. Then, if any two of the quantities \(\{[G \colon H], [H \colon
+Q], [G \colon Q]\}\) is finite, the third is also finite and the following
+equality holds
 \[
-  [G : H] [H : Q] = [G : Q].
+  [G \colon H] [H \colon Q] = [G \colon Q].
 \]
 \end{proposition}
 
@@ -593,7 +594,7 @@ x_{i'} Q\). Since \(x_j, x_{j'} \in H\), we have \(y_j x_i Q H = y_j x_i H = y_j
 H\) and analogously \(y_{j'} x_{i'} Q H = y_{j'} H\) --- thus \(y_j H = y_{j'}
 H\), which implies in \(y_j = y_{j'}\). This shows that the collection \(\{y_{j}
 x_i\}_{(i, j) \in I \times J} \subseteq G\) are coset representatives for \(Q\)
-and therefore \([G : H] [H : Q] = [G : Q]\).
+and therefore \([G \colon H] [H \colon Q] = [G \colon Q]\).
 \end{proof}
 
 \begin{corollary}
@@ -603,17 +604,17 @@ divides the order \(|G|\).
 \end{corollary}
 
 \begin{proof}
-Since \(|G| = [G : *]\) is finite, any subgroup \(H\) of \(G\) is also finite
-and therefore \([G : H] [H : *] = [G : *]\), which is exactly the same as \([G :
-H] |H| = |G|\).
+Since \(|G| = [G \colon *]\) is finite, any subgroup \(H\) of \(G\) is also
+finite and therefore \([G \colon H] [H \colon *] = [G \colon *]\), which is
+exactly the same as \([G \colon H] |H| = |G|\).
 \end{proof}
 
 \begin{example}[Prime order]
 \label{exp:grp-prime-order-cyclic}
 Let \(G\) be a group with order \(|G| \coloneq p\) prime. Choose any \(g \in G\)
 with \(g \neq e\), and consider the subgroup \(H \coloneq \langle g
-\rangle\). From \cref{prop:grp-index-subgroup} we find that \([G : H] |H| = p\),
-hence \(|H|\) divides \(p\), but since \(|H| \leq p\), then \(|H| = p\) and
+\rangle\). From \cref{prop:grp-index-subgroup} we find that \([G \colon H] |H| =
+p\), hence \(|H|\) divides \(p\), but since \(|H| \leq p\), then \(|H| = p\) and
 therefore \(H = G\). This implies that any non-identity element of \(G\)
 generates the whole group, which is the same as to say that \(G\) is cyclic.
 \end{example}
@@ -698,10 +699,10 @@ Let \(G\) be a group and \(S \subseteq G\) be any set of elements. We define the
 following groups:
 \begin{enumerate}[(a)]\setlength\itemsep{0em}
 \item The \emph{normalizer} of \(S\) is defined as the group \(N(S) \coloneq \{g
-  \in G : g S g^{-1} = S\}\).
+  \in G \colon g S g^{-1} = S\}\).
 \item A \emph{centralizer} of \(S\) is defined as the group \(Z(S) \coloneq \{g
-  \in G : g s g^{-1} = s \text{, for all } s \in S\}\). The centralizer \(Z(G)\)
-  is commonly called the \emph{center} of \(G\).
+  \in G \colon g s g^{-1} = s \text{, for all } s \in S\}\). The centralizer
+  \(Z(G)\) is commonly called the \emph{center} of \(G\).
 \end{enumerate}
 \end{definition}
 
@@ -1087,9 +1088,10 @@ solvable.
 
 (\(\Leftarrow\)) Let both \(N\) and \(G/N\) be solvable and consider the abelian
 towers \(G/N = H_0 \supsetneq \dots \supsetneq H_n = N\), and \(N = Q_0
-\supsetneq \dots \supsetneq Q_m = \{e\}\). Since \(H_j \coloneq \{g N : g \in
-G\}\) we can consider the isomorphic group \(H_j' \iso H_j\) given by the image
-of the morphism \(H_{j} \isoto H_j'\) mapping \(g N \mapsto g\). Thus clearly
+\supsetneq \dots \supsetneq Q_m = \{e\}\). Since \(H_j \coloneq \{g N \colon g
+\in G\}\) we can consider the isomorphic group \(H_j' \iso H_j\) given by the
+image of the morphism \(H_{j} \isoto H_j'\) mapping \(g N \mapsto g\). Thus
+clearly
 \[
   G = H_0' \supsetneq \dots \supsetneq H_n' = N
 \]

@@ -208,7 +208,7 @@ Then there exists a unique fixed point \(c \in I\), that is \(f(c) = c\).
 \end{theorem}
 
 \begin{proof}
-Let \(x_0 \in I\) and define the sequence \(x_n := f(x_{n-1})\) for all \(n
+Let \(x_0 \in I\) and define the sequence \(x_n \coloneq f(x_{n-1})\) for all \(n
 \geq 1\). We first show that \((x_n)_{n \in \N}\) is Cauchy. Let \(n >
 m \geq 1\), then
 \begin{equation}\label{eq: fixed point 1}
@@ -303,7 +303,7 @@ one developed in \cref{thm: fixed point}.
 \begin{proposition}[Fixed point stability]
 \label{prop:fixed-point-stability}
 Let \(A \subseteq B\) be a closed subspace of the Banach space \(B\). Let \(\Omega \subseteq B\) e
-an open subspace of \(B\). Consider the collection \(\{f_{x} \in B(A, A) : x \in
+an open subspace of \(B\). Consider the collection \(\{f_{x} \in B(A, A) \colon x \in
 \Omega\}\)   of \(\theta\)-contractions such that the map \(x \mapsto f_x(y)\) is continuous ---
 that is, \(\lim_{x\to x_0} f_x(y) = f_{x_0}(y)\).
 Then the solution map \(s: \Omega \to A\) defined as
@@ -375,7 +375,7 @@ of \(K\) there exists a finite subcover \(\mathcal U \subseteq \mathcal C\).
 \begin{definition}[General closed interval]
 We define a closed interval \(I\) in \(\R^n\) to be the set
 \[
-I = \{x \in R^n : x_j \in [a_j, b_j], 1 \leq j \leq n\}.
+I = \{x \in R^n \colon x_j \in [a_j, b_j], 1 \leq j \leq n\}.
 \]
 where \(a, b \in \R^n\) are the boundaries of the interval \(I\).
 \end{definition}
@@ -388,8 +388,8 @@ A closed interval in \(\R^n\) is compact.
 Suppose for the sake of contradiction that \(\mathcal U\) is a cover of \(I\),
 closed interval in \(\R^n\), such that \(\mathcal U\) doesn't admit a finite
 subcover. Consider the set of bisections of \(I\) in which for each component
-of the vectors \(x \in I\), that is, we create the sets \(I_j^1 = \{x \in I:
-x_j \in [a_j, (a_j + b_j)/2]\}\) and \(I_j^2 = \{x \in I: x_j \in [(a_j +
+of the vectors \(x \in I\), that is, we create the sets \(I_j^1 = \{x \in I \colon
+x_j \in [a_j, (a_j + b_j)/2]\}\) and \(I_j^2 = \{x \in I \colon x_j \in [(a_j +
 b_j)/2, b_j]\}\) for each \(1 \leq j \leq n\), generating \(2^n\) subsets of
 \(I\). Notice that since these sets are contained in \(I\), at least one of
 those should not admit a finite subcover from \(\mathcal U\), otherwise \(I\)
@@ -399,7 +399,7 @@ same bisection process for \(I_1\). We end up with a chain of nested intervals
 I \supset I_1 \supset I_2 \supset \dots
 \]
 each of which does not admit a finite subcover from \(\mathcal U\). Consider
-the interval \(I_m = \{x \in \R^n: x_j \in [a^m_j, b_j^m], 1 \leq j \leq n\}\)
+the interval \(I_m = \{x \in \R^n \colon x_j \in [a^m_j, b_j^m], 1 \leq j \leq n\}\)
 from the nested chain. Notice that for each \(1 \leq j \leq n\) we have that
 the coordinate closed intervals form again a chain of nested intervals
 \[
@@ -433,7 +433,7 @@ Let \(K\) be a compact set of \(\R^n\), then
 \begin{enumerate}[(a)]
 \item Let \(y \in \R^n\) be any limit point of \(K\). Suppose that \(y
     \not\in K\). For each point in \(K\), say \(x\), denote \(U_x\) a
-    neighbourhood. Consider the collection \(\mathcal U = \{U_x: x \in K\}\),
+    neighbourhood. Consider the collection \(\mathcal U = \{U_x \colon x \in K\}\),
     which covers the set \(K\). Since \(K\) is said to be compact, there
     exists a finite subcover \(\mathcal U' = \{U_{x_1}, \dots, U_{x_m}\}
     \subseteq \mathcal U\). From the hypothesis \(y\) does not belong to
@@ -649,7 +649,7 @@ see that the theorem is true for \(g\) and \(f\).
 \begin{definition}[Limit at infinity]
 Let \(f: E \to \R^n\), where \(E \subseteq \R^m\). The filter base that yields
 the limit \(x \to \infty\) is given by \(\mathcal B_\infty = \{\R^m \setminus
-B_a(r) : r \in \R\}\) for any fixed point \(a \in \R^m\).
+B_a(r) \colon r \in \R\}\) for any fixed point \(a \in \R^m\).
 \end{definition}
 
 \begin{definition}[Limit to infinity]
@@ -742,7 +742,7 @@ Let \(f: X \to Y\) be a continous map between metric spaces \(X\) and \(Y\). If
 Let any \(\varepsilon > 0\). Since \(f\) is continuous, there exists, for any
 \(x \in X\) a \(\delta_x > 0\) for which, if \(d_X(x, y) < \delta_x\), then
 \(d_Y(f(x), f(y)) < \varepsilon/2\). Lets consider the open cover \(\mathcal U\)
-of \(X\) consisting of the neighbourhoods \(U_x \coloneq \{y \in X : d_{X}(x, y)
+of \(X\) consisting of the neighbourhoods \(U_x \coloneq \{y \in X \colon d_{X}(x, y)
 < \frac {\delta_{x}} 2\}\) for each \(x \in X\). From definition, if \(X\) is
 compact, then there exists a finite subcover \(\{U_{x_j}\}_{j=1}^n \subseteq
 \mathcal U\) of \(X\). Define the minimum radius of the given neighbourhoods as
@@ -824,7 +824,7 @@ In particular, for the linear map \(L\) we have that --- given any \(x \in
 Hence \(L = O(\Id)\) --- where \(\Id: \R^m \to \R^m\) mapping \(x \mapsto x\). It
 follows from this that as \(x \to x_0\), we have \(L(x - x_0) = L(x) - L(x_0) \to
 0\). This shows that \(L\) is continuous at any point of \(\R^m\). Notice that
-given any \(\varepsilon > 0\) if \(\norm{x - y}_{\R^m} < \frac \varepsilon \ell\) --- where \(\ell :=
+given any \(\varepsilon > 0\) if \(\norm{x - y}_{\R^m} < \frac \varepsilon \ell\) --- where \(\ell \coloneq
 \sum_{j=1}^m L(e_j)\) --- then
 \[
 \norm{L(x) - L(y)}_{\R^n} = \norm{\sum_{j=1}^m (x_j - y_j) L(e_j) }_{\R^n}

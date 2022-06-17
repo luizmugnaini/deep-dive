@@ -1,147 +1,148 @@
 \section{Implict Map Theorem}
 
 \begin{definition}[Level curve]
-  \label{def:level-curve}
-  Let \(f: \Omega \to \R\), where \(\Omega \subseteq \R^n\), be any map. For every \(c \in \R\) we
-  define the set \(N_f(c) = \{x \in \Omega : f(x) = c\}\) to be the \(c\)-level curve of
-  \(f\). Moreover, if \(n = 2\), we can call \(N_f(c)\) the \(c\)-contour line of
-  \(f\) with value \(c\).
+\label{def:level-curve}
+Let \(f: \Omega \to \R\), where \(\Omega \subseteq \R^n\), be any map. For every \(c \in \R\) we
+define the set \(N_f(c) = \{x \in \Omega \colon f(x) = c\}\) to be the \(c\)-level
+curve of \(f\). Moreover, if \(n = 2\), we can call \(N_f(c)\) the \(c\)-contour
+line of \(f\) with value \(c\).
 \end{definition}
 
 \begin{theorem}[Implicit Theorem]
-  \label{thm:implicit-map}
-  Let \(V\) and \(L\) be normed vector spaces and \(W\) be a Banach
-  space. Define \(\Omega \subseteq V \times W\) to be an open set and \((x_0, y_0) \in \Omega\). Consider
-  \(F: \Omega \to L\) to be a mapping such that
-  \begin{itemize}\setlength\itemsep{0em}
-    \item \(F(x_0, y_0) = c\) for some \(c \in L\).
-    \item \(F\) is continuous at \((x_0, y_0)\).
-    \item \(F\) is differentiable and its differential \(\diff F: \Omega \to L\)
-      is continuous at \((x_0, y_0)\).
-    \item \(\partial_2F(x_0, y_0): W \to L\) is an isomorphism, that is, it is invertible.
-  \end{itemize}
-  Then there exists neighbourhoods \(U_{x_0} \subseteq V\) and \(U_{y_0} \subseteq W\) such that
-  \(U_{x_0} \times U_{y_0} \subseteq \Omega\), and a map \(f: U_{x_0} \to U_{y_0}\) such that
-  \begin{itemize}\setlength\itemsep{0em}
-    \item \(f(x_0) = y_0\).
-    \item \(f\) is continuous at \(x_0\).
-    \item \(F(x, y) = 0\) if and only if \(f(x) = y\), for \(x, y \in U_{x_0} \times
-    U_{y_0}\).
-  \end{itemize}
+\label{thm:implicit-map}
+Let \(V\) and \(L\) be normed vector spaces and \(W\) be a Banach
+space. Define \(\Omega \subseteq V \times W\) to be an open set and \((x_0, y_0) \in \Omega\). Consider
+\(F: \Omega \to L\) to be a mapping such that
+\begin{itemize}\setlength\itemsep{0em}
+  \item \(F(x_0, y_0) = c\) for some \(c \in L\).
+  \item \(F\) is continuous at \((x_0, y_0)\).
+  \item \(F\) is differentiable and its differential \(\diff F: \Omega \to L\)
+    is continuous at \((x_0, y_0)\).
+  \item \(\partial_2F(x_0, y_0): W \to L\) is an isomorphism, that is, it is invertible.
+\end{itemize}
+Then there exists neighbourhoods \(U_{x_0} \subseteq V\) and \(U_{y_0} \subseteq W\) such that
+\(U_{x_0} \times U_{y_0} \subseteq \Omega\), and a map \(f: U_{x_0} \to U_{y_0}\) such that
+\begin{itemize}\setlength\itemsep{0em}
+  \item \(f(x_0) = y_0\).
+  \item \(f\) is continuous at \(x_0\).
+  \item \(F(x, y) = 0\) if and only if \(f(x) = y\), for \(x, y \in U_{x_0} \times
+  U_{y_0}\).
+\end{itemize}
 \end{theorem}
 
 \begin{proof}
-  To ease our lives, lets assume that \(\Omega\) has the following form
-  \[
-    \Omega = \{(x, y) \in V \times W : \norm{x - x_{0}}_{V} < \alpha \text{ and } \norm{y - y_0}_W < \beta\}.
-  \]
-  If that is not the case, since \(\Omega\) is open --- and hence \((x_{0}, y_0)\) is
-  an internal point --- we can merely choose an open set contained in \(\Omega\) that
-  satisfyies the above form.
+To ease our lives, lets assume that \(\Omega\) has the following form
+\[
+  \Omega = \{(x, y) \in V \times W \colon \norm{x - x_{0}}_{V} < \alpha
+  \text{ and } \norm{y - y_0}_W < \beta\}.
+\]
+If that is not the case, since \(\Omega\) is open --- and hence \((x_{0}, y_0)\) is
+an internal point --- we can merely choose an open set contained in \(\Omega\) that
+satisfyies the above form.
 
-  Define a collection \(\{g_{x} : x \in B_{x_0}(\alpha)\}\) of maps
-  \[
-    g_{x}(y) = y - [\partial_2F(x_0, y_0)]^{-1} (F(x, y))
-  \]
-  The domain of each \(g_x\) is defined to be the collection \(B_{y_0}(\beta) = \{y
-  \in W : \norm{y - y_0}_W < \beta\}\). The maps \(g_{x}\) are well defined since
-  \([\partial_2F(x_0, y_0)]^{-1}\) exists and is a continuous linear map --- moreover, the
-  domain of \(g_x\) is the normed vector space \(W\) --- that is \(g_x: B_{y_0}(\beta) \to
-  W\).
+Define a collection \(\{g_{x} \colon x \in B_{x_0}(\alpha)\}\) of maps
+\[
+  g_{x}(y) = y - [\partial_2F(x_0, y_0)]^{-1} (F(x, y))
+\]
+The domain of each \(g_x\) is defined to be the collection \(B_{y_0}(\beta) = \{y
+\in W \colon \norm{y - y_0}_W < \beta\}\). The maps \(g_{x}\) are well defined since
+\([\partial_2F(x_0, y_0)]^{-1}\) exists and is a continuous linear map --- moreover, the
+domain of \(g_x\) is the normed vector space \(W\) --- that is \(g_x: B_{y_0}(\beta) \to
+W\).
 
-  Suppose \(y_x\) is a fixed point of \(g_x\), then \(g_x(y_x) = y_x -
-  [\partial_2F(x_0, y_0)]^{-1}(F(x, y_x)) = y_{x}\) hence clearly \(y_x\) is indeed a
-  fixed point of \(g_x\) if and only if \([\partial_2F(x_0, y_0)]^{-1}(F(x, y_x)) =
-  0\), that is, \(F(x, y_x) \in \ker [\partial_2F(x_0, y_0)]^{-1}\) --- but \(\partial_2 F(x_0,
-  y_0)\) is an isomorphism, so clearly \(F(x, y_x) = 0\).
+Suppose \(y_x\) is a fixed point of \(g_x\), then \(g_x(y_x) = y_x -
+[\partial_2F(x_0, y_0)]^{-1}(F(x, y_x)) = y_{x}\) hence clearly \(y_x\) is indeed a
+fixed point of \(g_x\) if and only if \([\partial_2F(x_0, y_0)]^{-1}(F(x, y_x)) =
+0\), that is, \(F(x, y_x) \in \ker [\partial_2F(x_0, y_0)]^{-1}\) --- but \(\partial_2 F(x_0,
+y_0)\) is an isomorphism, so clearly \(F(x, y_x) = 0\).
 
-  Let \(x \in B_{x_0}(\alpha)\) be any element and consider the map \(g_x\). Notice
-  that since \(F\) is differentiable and \(g_{x}\) is therefore a composition of
-  differentiable maps, it follows that \(g_x\) is differentiable and since \(\partial_2
-  F(x_0, y_0)\) is continuous and linear we get
-  \begin{align*}
-    \partial_2 \left( [\partial_2F(x_0, y_0)]^{-1}(F(x, y)) \right)
-    &= \lim_{t \to 0} \frac{[\partial_{2}F(x_0, y_0)]^{-1}(F(x, y + t)) - [\partial_2F(x_0,
-      y_0)]^{-1}(F(x, y))}{t}
-    \\
-    &= \lim_{t \to 0} \frac{[\partial_2F(x_0, y_{0})]^{-1}(F(x, y + t) - F(x, y))}{t}
-    \\
-    &= \lim_{t \to 0} [\partial_2F(x_0, y_0)]^{-1}
-      \left( \frac{F(x, y + t) - F(x, y)}{t} \right)
-    \\
-    &= [\partial_2F(x_0, y_0)]^{-1}
-      \left( \lim_{t \to 0} \frac{F(x, y + t) - F(x, y)}{t} \right)
-    \\
-    &= [\partial_{2}F(x_0, y_0)]^{-1}(\partial_2 F(x, y))
-  \end{align*}
-  Therefore we can write the differential of \(g_{x}\) as
-  \[
-    \diff g_x(y) = 1_W - \partial_{2}\left([\partial_2F(x_0, y_0)]^{-1}(F(x, y))\right)
-    = [\partial_2F(x_0, y_0)]^{-1}(\partial_2F(x_0, y_0) - \partial_2F(x, y)).
-  \]
-  By the continuity of the map \(\partial_2F(x_0, y_0)\) at the point \((x_0, y_0)\),
-  we find that there exists \(0 < \gamma < \min(\alpha, \beta)\) such that in the neighbourhood
-  \(B_{x_0}(\gamma) \times B_{y_0}(\gamma) \subseteq \Omega\) we have
-  \[
-    \norm{\diff g_x(y)} \leq \norm{[\partial_{2}F(x_0, y_0)]^{-1}} \cdot \norm{\partial_2F(x_0, y_0) -
-      \partial_2F(x, y)} < \frac{1}{2}.
-  \]
+Let \(x \in B_{x_0}(\alpha)\) be any element and consider the map \(g_x\). Notice
+that since \(F\) is differentiable and \(g_{x}\) is therefore a composition of
+differentiable maps, it follows that \(g_x\) is differentiable and since \(\partial_2
+F(x_0, y_0)\) is continuous and linear we get
+\begin{align*}
+  \partial_2 \left( [\partial_2F(x_0, y_0)]^{-1}(F(x, y)) \right)
+  &= \lim_{t \to 0} \frac{[\partial_{2}F(x_0, y_0)]^{-1}(F(x, y + t)) - [\partial_2F(x_0,
+    y_0)]^{-1}(F(x, y))}{t}
+  \\
+  &= \lim_{t \to 0} \frac{[\partial_2F(x_0, y_{0})]^{-1}(F(x, y + t) - F(x, y))}{t}
+  \\
+  &= \lim_{t \to 0} [\partial_2F(x_0, y_0)]^{-1}
+    \left( \frac{F(x, y + t) - F(x, y)}{t} \right)
+  \\
+  &= [\partial_2F(x_0, y_0)]^{-1}
+    \left( \lim_{t \to 0} \frac{F(x, y + t) - F(x, y)}{t} \right)
+  \\
+  &= [\partial_{2}F(x_0, y_0)]^{-1}(\partial_2 F(x, y))
+\end{align*}
+Therefore we can write the differential of \(g_{x}\) as
+\[
+  \diff g_x(y) = 1_W - \partial_{2}\left([\partial_2F(x_0, y_0)]^{-1}(F(x, y))\right)
+  = [\partial_2F(x_0, y_0)]^{-1}(\partial_2F(x_0, y_0) - \partial_2F(x, y)).
+\]
+By the continuity of the map \(\partial_2F(x_0, y_0)\) at the point \((x_0, y_0)\),
+we find that there exists \(0 < \gamma < \min(\alpha, \beta)\) such that in the neighbourhood
+\(B_{x_0}(\gamma) \times B_{y_0}(\gamma) \subseteq \Omega\) we have
+\[
+  \norm{\diff g_x(y)} \leq \norm{[\partial_{2}F(x_0, y_0)]^{-1}} \cdot \norm{\partial_2F(x_0, y_0) -
+    \partial_2F(x, y)} < \frac{1}{2}.
+\]
 
-  Let \(x \in B_{x_0}(\gamma)\) be any element and take any two \(y_1, y_2 \in
-  B_{y_0}(\gamma)\). Then we have by the generalization of the mean value theorem
-  that
-  \[
-    \norm{g_x(y_1) - g_x(y_{2})}_{W} \leq \sup_{t \in (y_1, y_2)} \norm{\diff g(t)}
-    \norm{y_1 - y_2}_W < \frac{1}{2} \norm{y_1 - y_2}.
-  \]
-  That is, \(g_x\) is Lipschitz continuous.
+Let \(x \in B_{x_0}(\gamma)\) be any element and take any two \(y_1, y_2 \in
+B_{y_0}(\gamma)\). Then we have by the generalization of the mean value theorem
+that
+\[
+  \norm{g_x(y_1) - g_x(y_{2})}_{W} \leq \sup_{t \in (y_1, y_2)} \norm{\diff g(t)}
+  \norm{y_1 - y_2}_W < \frac{1}{2} \norm{y_1 - y_2}.
+\]
+That is, \(g_x\) is Lipschitz continuous.
 
-  From the definition of \(g_x\) and the fact that \(g_{x_0}(y_0) = y_0\) ---
-  since \(F(x_0, y_0) = 0\) ---, we have
-  \begin{align*}
-    \norm{g_x(y) - y_0}_W
-    &= \norm{g_x(y) - g_{x_0}(y_0)}_W \\
-    &\leq \norm{g_x(y) - g_{x}(y_0)}_W + \norm{g_x(y_0) - g_{x_0}(y_0)}_W \\
-    &\leq \frac{1}{2} \norm{y - y_0}_W + \norm{[\partial_2F(x_0, y_0)]^{-1}(F(x, y_0) -
-      F(x_0, y_0))}_W \\
-    &= \frac{1}{2} \norm{y - y_0}_W
-      + \norm{[\partial_{2}F(x_{0}, y_{0})]^{-1}(F(x, y_0))}_W
-  \end{align*}
-  Since \(F\) is continuous at \((x_{0}, y_0)\) --- so is the projection
-  map \(x \mapsto F(x, y_0)\) ---, then for all \(\varepsilon' \in (0, \gamma)\) there
-  exists \(\delta \in (0, \gamma)\) such that \(\norm{x - x_0}_V < \delta\) implies \(\norm{F(x, y_0) -
-    F(x_0, y_0)}_L = \norm{F(x, y_0)}_L < \varepsilon'\). In particular, choose \(\varepsilon' =
-  \frac{\varepsilon}{2 \norm{[\partial_{2}F(x_0, y_0)]^{-1}}}\) for any given \(\varepsilon > 0\), then for
-  all \(\norm{x - x_0}_V < \delta\) and for all \(\norm{y - y_0}_W \leq \varepsilon\) we have --- using
-  the property that the norm of linear maps is sub-multiplicative
-  \begin{align*}
-    \norm{g_x(y) - y_0}_{W}
-    &\leq \frac{1}{2} \norm{y - y_0}_{W} + \norm{[\partial_2F(x_0, y_0)]^{-1}(F(x, y_0))}_W
-    \\
-    &\leq \frac{1}{2} \varepsilon + \norm{[\partial_2F(x_0, y_0)]^{-1}} \cdot \norm{F(x, y_0)}_W
-    \\
-    &\leq \frac{1}{2}\varepsilon
-      + \norm{[\partial_2F(x_0, y_0)]^{-1}} \frac{\varepsilon}{2 \norm{[\partial_2F(x_0, y_0)]^{-1}}}
-    \\
-    &= \frac{1}{2} \varepsilon + \frac{1}{2}\varepsilon = \varepsilon
-  \end{align*}
-  The relation above is equivalent to: for all \(\norm{x - x_0}_V < \delta\) we have
-  \[
-    g_x(\overline{B}_{y_0}(\varepsilon)) \subseteq B_{y_0}(\varepsilon)
-  \]
+From the definition of \(g_x\) and the fact that \(g_{x_0}(y_0) = y_0\) ---
+since \(F(x_0, y_0) = 0\) ---, we have
+\begin{align*}
+  \norm{g_x(y) - y_0}_W
+  &= \norm{g_x(y) - g_{x_0}(y_0)}_W \\
+  &\leq \norm{g_x(y) - g_{x}(y_0)}_W + \norm{g_x(y_0) - g_{x_0}(y_0)}_W \\
+  &\leq \frac{1}{2} \norm{y - y_0}_W + \norm{[\partial_2F(x_0, y_0)]^{-1}(F(x, y_0) -
+    F(x_0, y_0))}_W \\
+  &= \frac{1}{2} \norm{y - y_0}_W
+    + \norm{[\partial_{2}F(x_{0}, y_{0})]^{-1}(F(x, y_0))}_W
+\end{align*}
+Since \(F\) is continuous at \((x_{0}, y_0)\) --- so is the projection
+map \(x \mapsto F(x, y_0)\) ---, then for all \(\varepsilon' \in (0, \gamma)\) there
+exists \(\delta \in (0, \gamma)\) such that \(\norm{x - x_0}_V < \delta\) implies \(\norm{F(x, y_0) -
+  F(x_0, y_0)}_L = \norm{F(x, y_0)}_L < \varepsilon'\). In particular, choose \(\varepsilon' =
+\frac{\varepsilon}{2 \norm{[\partial_{2}F(x_0, y_0)]^{-1}}}\) for any given \(\varepsilon > 0\), then for
+all \(\norm{x - x_0}_V < \delta\) and for all \(\norm{y - y_0}_W \leq \varepsilon\) we have --- using
+the property that the norm of linear maps is sub-multiplicative
+\begin{align*}
+  \norm{g_x(y) - y_0}_{W}
+  &\leq \frac{1}{2} \norm{y - y_0}_{W} + \norm{[\partial_2F(x_0, y_0)]^{-1}(F(x, y_0))}_W
+  \\
+  &\leq \frac{1}{2} \varepsilon + \norm{[\partial_2F(x_0, y_0)]^{-1}} \cdot \norm{F(x, y_0)}_W
+  \\
+  &\leq \frac{1}{2}\varepsilon
+    + \norm{[\partial_2F(x_0, y_0)]^{-1}} \frac{\varepsilon}{2 \norm{[\partial_2F(x_0, y_0)]^{-1}}}
+  \\
+  &= \frac{1}{2} \varepsilon + \frac{1}{2}\varepsilon = \varepsilon
+\end{align*}
+The relation above is equivalent to: for all \(\norm{x - x_0}_V < \delta\) we have
+\[
+  g_x(\overline{B}_{y_0}(\varepsilon)) \subseteq B_{y_0}(\varepsilon)
+\]
 
-  Since \(B_{y_0}(\varepsilon) \subseteq W\) is a closed Banach subspace, it follows from
-  \cref{thm: Banach fixed point} that there exists a unique fixed point \(y_x
-  \in \overline{B}_{y_0}(\varepsilon)\) of \(g_{x}\). Define now the map \(f: B_{x_0}(\delta) \to
-  B_{y_0}(\varepsilon)\) where \(f(x) = y_{x}\) and \(y_x\) is the corresponding fixed
-  point of each \(g_x\).
+Since \(B_{y_0}(\varepsilon) \subseteq W\) is a closed set, it follows from
+\cref{thm: Banach fixed point} that there exists a unique fixed point \(y_x
+\in \overline{B}_{y_0}(\varepsilon)\) of \(g_{x}\). Define now the map \(f: B_{x_0}(\delta) \to
+B_{y_0}(\varepsilon)\) where \(f(x) = y_{x}\) and \(y_x\) is the corresponding fixed
+point of each \(g_x\).
 
-  From construction \(B_{x_0}(\delta) \times B_{y_0}(\varepsilon) \subseteq \Omega\). Clearly, for all \(x \in
-  B_{x_0}(\delta)\) and \(y \in B_{y_0}(\varepsilon)\), \(F(x, y) = 0\) if and only if \(f(x) =
-  y\). Moreover, we have immediatly that \(f(x_0) = y_0\). For the continuity of
-  \(f\) at the point \(x_0\), we can observe that for all \(\varepsilon \in (0, \gamma)\) there
-  exists a \(\delta \in (0, \gamma)\) such that \(\norm{g_x(y_x) - y_0} = \norm{f(x) - y_0}
-  < \varepsilon\), thus we are finally done.
+From construction \(B_{x_0}(\delta) \times B_{y_0}(\varepsilon) \subseteq \Omega\). Clearly, for all \(x \in
+B_{x_0}(\delta)\) and \(y \in B_{y_0}(\varepsilon)\), \(F(x, y) = 0\) if and only if \(f(x) =
+y\). Moreover, we have immediatly that \(f(x_0) = y_0\). For the continuity of
+\(f\) at the point \(x_0\), we can observe that for all \(\varepsilon \in (0, \gamma)\) there
+exists a \(\delta \in (0, \gamma)\) such that \(\norm{g_x(y_x) - y_0} = \norm{f(x) - y_0}
+< \varepsilon\), thus we are finally done.
 \end{proof}
 
 We'll now extend the Implict Map Theorem for cases 3 where we have more
@@ -149,12 +150,12 @@ special conditions, allowing for additional properties for the implicit map
 \(f\).
 
 \begin{lemma}[Continuity of the implicit map]
-  \label{lem:continuity-implicit-map}
-  Let \(F\) satisfy the properties described in \cref{thm:implicit-map} and
-  additionally suppose that there exists a neighbourhood of \((x_0, y_0)\) where
-  the map \(\partial_2F(x_0, y_0): W \to L\) is continuous. Then the implicit map \(f: U
-  \to V\) is such that there exists a neighbourhood of \(x_0\) such that \(f\) is
-  continuous.
+\label{lem:continuity-implicit-map}
+Let \(F\) satisfy the properties described in \cref{thm:implicit-map} and
+additionally suppose that there exists a neighbourhood of \((x_0, y_0)\) where
+the map \(\partial_2F(x_0, y_0): W \to L\) is continuous. Then the implicit map \(f: U
+\to V\) is such that there exists a neighbourhood of \(x_0\) such that \(f\) is
+continuous.
 \end{lemma}
 
 \begin{proof}
@@ -163,14 +164,14 @@ special conditions, allowing for additional properties for the implicit map
 
 
 \begin{lemma}[Differentiability of the implicit map]
-  \label{lem:differential-implicit-map}
-  Let \(F\) satisfy the properties described in \cref{thm:implicit-map} and
-  additionally suppose that the partial derivative \(\partial_1F(x, y): V \to L\)
-  exists in some neighbourhood of the point \((x_0, y_0)\) and is continuous at
-  \((x_0, y_0)\). Then the implicit map \(f\) is differentiable at \(x_0\) and
-  \[
-    \diff f(x_0) = - [\partial_2F(x_0, y_0)]^{-1} \partial_1 F(x_{0}, y_0).
-  \]
+\label{lem:differential-implicit-map}
+Let \(F\) satisfy the properties described in \cref{thm:implicit-map} and
+additionally suppose that the partial derivative \(\partial_1F(x, y): V \to L\)
+exists in some neighbourhood of the point \((x_0, y_0)\) and is continuous at
+\((x_0, y_0)\). Then the implicit map \(f\) is differentiable at \(x_0\) and
+\[
+  \diff f(x_0) = - [\partial_2F(x_0, y_0)]^{-1} \partial_1 F(x_{0}, y_0).
+\]
 \end{lemma}
 
 \begin{proof}
@@ -178,15 +179,15 @@ special conditions, allowing for additional properties for the implicit map
 \end{proof}
 
 \begin{lemma}[Continuous differentiability of the implicit map]
-  \label{lem:continuous-diff-implicit-map}
-  Let \(F\) satisfy the properties described in \cref{thm:implicit-map} and
-  additionally suppose that the partial derivatives of \(F\) are continuous in
-  some neighbourhood of \((x_0, y_0)\). Then the map \(f\) is continuously
-  differentiable in some neighbourhood of \(x_0\) and its differential in this
-  neighbourhood is given by
-  \[
-    \diff f(x) = - [\partial_1F(x, f(x))]^{-1} \partial_1F(x, f(x)).
-  \]
+\label{lem:continuous-diff-implicit-map}
+Let \(F\) satisfy the properties described in \cref{thm:implicit-map} and
+additionally suppose that the partial derivatives of \(F\) are continuous in
+some neighbourhood of \((x_0, y_0)\). Then the map \(f\) is continuously
+differentiable in some neighbourhood of \(x_0\) and its differential in this
+neighbourhood is given by
+\[
+  \diff f(x) = - [\partial_1F(x, f(x))]^{-1} \partial_1F(x, f(x)).
+\]
 \end{lemma}
 
 \begin{proof}
@@ -194,10 +195,10 @@ special conditions, allowing for additional properties for the implicit map
 \end{proof}
 
 \begin{lemma}[\(C^k\) implicit map]
-  \label{lem:Ck-implicit-map}
-  Let \(F\) satisfy the properties described in \cref{thm:implicit-map} and
-  additionally suppose that \(F \in C^k(\Omega, L)\). Then the implicit map \(f\) is
-  a member of the class \(C^k(U, W)\) in some neighbourhood \(U \subseteq V\) of \(x_0\).
+\label{lem:Ck-implicit-map}
+Let \(F\) satisfy the properties described in \cref{thm:implicit-map} and
+additionally suppose that \(F \in C^k(\Omega, L)\). Then the implicit map \(f\) is
+a member of the class \(C^k(U, W)\) in some neighbourhood \(U \subseteq V\) of \(x_0\).
 \end{lemma}
 
 \begin{proof}
@@ -205,347 +206,344 @@ special conditions, allowing for additional properties for the implicit map
 \end{proof}
 
 \todo[inline]{Write down the proof of the extensions of the basic Implicit Map
-  Theorem}
+Theorem}
 
 \subsection{Corollaries of the Implicit Map Theorem}
 
 \subsection{Inverse Map Theorem}
 
 \begin{definition}[Diffeomorphisms]
-  \label{def:diffeormorphism-on-R}
-  Let \(U\) and \(V\) be open subsets of \(\R^m\). A map \(f: U \to V\) is said to
-  be a isomorphism of manifolds of class \(C^p\) (or diffeomorphism) --- for \(p \in
-  \N \cup \{\infty\}\) --- if the following conditions are satisfied
-  \begin{itemize}\setlength\itemsep{0em}
-    \item \(f \in C^p(U, V)\).
-    \item \(f\) is bijective and \(f^{-1} \in C^p(V, U)\).
-  \end{itemize}
+\label{def:diffeormorphism-on-R}
+Let \(U\) and \(V\) be open subsets of \(\R^m\). A map \(f: U \to V\) is said to
+be a isomorphism of manifolds of class \(C^p\) (or diffeomorphism) --- for \(p \in
+\N \cup \{\infty\}\) --- if the following conditions are satisfied
+\begin{itemize}\setlength\itemsep{0em}
+  \item \(f \in C^p(U, V)\).
+  \item \(f\) is bijective and \(f^{-1} \in C^p(V, U)\).
+\end{itemize}
 \end{definition}
 
 \begin{theorem}[Inverse Map Theorem]
-  \label{thm:inverse-map}
-  Let \(V\) and \(W\) be Banach spaces and \(\Omega \subseteq V\) be an open
-  subspace. Consider a point \(x_0 \in \Omega\) and a map \(f: \Omega \to W\) such that the
-  following conditions are satisfied
-  \begin{itemize}\setlength\itemsep{0em}
-    \item \(f \in C^1(\Omega, W)\).
-    \item \(\diff f(x_0)\) is invertible and \([\diff f(x_{0})]^{-1}\) is a
-    continuous map.
-  \end{itemize}
-  Then there exists an open neighbourhood \(X \subseteq \Omega\) of \(x_0\) and an open
-  neighbourhood \(Y \subseteq W\) of the point \(y_0 = f(x_0)\), for which the
-  restriction \(f: X \to Y\) is bijective. The inverse map \(f^{-1}: Y \to X\)
-  is differentiable and its differential is given by
-  \[
-    \diff f^{-1}(y_0) = [\diff f(x_{0})]^{-1}.
-  \]
+\label{thm:inverse-map}
+Let \(V\) and \(W\) be Banach spaces and \(\Omega \subseteq V\) be an open
+set. Consider a point \(x_0 \in \Omega\) and a map \(f: \Omega \to W\) such that the
+following conditions are satisfied
+\begin{itemize}\setlength\itemsep{0em}
+  \item \(f \in C^1(\Omega, W)\).
+  \item \(\diff f(x_0)\) is invertible and \([\diff f(x_{0})]^{-1}\) is a
+  continuous map.
+\end{itemize}
+Then there exists an open neighbourhood \(X \subseteq \Omega\) of \(x_0\) and an open
+neighbourhood \(Y \subseteq W\) of the point \(y_0 = f(x_0)\), for which the
+restriction \(f: X \to Y\) is bijective. The inverse map \(f^{-1}: Y \to X\)
+is differentiable and its differential is given by
+\[
+  \diff f^{-1}(y_0) = [\diff f(x_{0})]^{-1}.
+\]
 \end{theorem}
 
 \begin{proof}
-  Let \(F: N \to W\) be a map defined on \(N \subseteq V \times W\) where \(N\) is a
-  neighbourhood of \((x_0, y_0)\) and let \(F(x, y) = f(x) - y\). Since \(F\) is
-  the composition of the restriction of maps that are continuously
-  differentiable, it follows that \(F\) is continuously differentiable, moreover,
-  \(\partial_1F(x_0, y_0) = \diff f(x_0)\).  Moreover, since \(\diff f(x_0)\) is
-  invertible then \(\partial_1F(x_0, y_0)\) is also invertible. We have \(F(x_0, y_0) =
-  0\) by construction, since \(f(x_{0}) = y_0\).
+Let \(F: N \to W\) be a map defined on \(N \subseteq V \times W\) where \(N\) is a
+neighbourhood of \((x_0, y_0)\) and let \(F(x, y) = f(x) - y\). Since \(F\) is
+the composition of the restriction of maps that are continuously
+differentiable, it follows that \(F\) is continuously differentiable, moreover,
+\(\partial_1F(x_0, y_0) = \diff f(x_0)\).  Moreover, since \(\diff f(x_0)\) is
+invertible then \(\partial_1F(x_0, y_0)\) is also invertible. We have \(F(x_0, y_0) =
+0\) by construction, since \(f(x_{0}) = y_0\).
 
-  We can now see that \(F\) satisfies the requirements for the Implicit Map
-  Theorem, thus there exists a neighbourhood \(Y\) of \(y_0\) and a
-  continuously differentiable map \(g: Y \to V\) (where we use extension
-  \cref{lem:Ck-implicit-map}) for which \(g(Y)\) is contained in a
-  neighbourhood \(X' \subseteq V\) of \(x_{0}\). Moreover, \(F(x, y) = 0\) if and only
-  if \(g(y) = x\), that is, \(F(g(y), y) = 0\) and therefore \(f g(y) = y\) for
-  any \(y \in Y\), that is, \(g\) is injective on \(Y\) --- also \(g(y_0) =
-  x_0\). The map \(g\) has a differential given by (using the extension
-  \cref{lem:differential-implicit-map})
-  \[
-    \diff g(y) = [\partial_{1} F(x, y)]^{-1} [\partial_2 F(x, y)] \text{, for all } (x, y) \in
-    X' \times Y.
-  \]
-  From the definition of \(F\) we find that
-  \[
-    \diff g(y) = [\diff f(x)]^{-1} \text{, for all } (x, y) \in X' \times Y.
-  \]
+We can now see that \(F\) satisfies the requirements for the Implicit Map
+Theorem, thus there exists a neighbourhood \(Y\) of \(y_0\) and a
+continuously differentiable map \(g: Y \to V\) (where we use extension
+\cref{lem:Ck-implicit-map}) for which \(g(Y)\) is contained in a
+neighbourhood \(X' \subseteq V\) of \(x_{0}\). Moreover, \(F(x, y) = 0\) if and only
+if \(g(y) = x\), that is, \(F(g(y), y) = 0\) and therefore \(f g(y) = y\) for
+any \(y \in Y\), that is, \(g\) is injective on \(Y\) --- also \(g(y_0) =
+x_0\). The map \(g\) has a differential given by (using the extension
+\cref{lem:differential-implicit-map})
+\[
+  \diff g(y) = [\partial_{1} F(x, y)]^{-1} [\partial_2 F(x, y)] \text{, for all } (x, y) \in
+  X' \times Y.
+\]
+From the definition of \(F\) we find that
+\[
+  \diff g(y) = [\diff f(x)]^{-1} \text{, for all } (x, y) \in X' \times Y.
+\]
 
-  Lets consider the restriction \(f: g(Y) \to W\). Since \(g\) is injective, the
-  restriction \(g: Y \to g(Y)\) is a bijection. Since \(f\) is continuous and
-  \(Y\) is open, then \(f^{-1}(Y) = g(Y)\) is open. Define \(X = g(Y)\), so that
-  \(f: X \to Y\) is a bijection and clearly \(g = f^{-1}\) for such
-  restriction. Hence we conclude that
-  \[
-    \diff f^{-1}(y) = [\diff f(x)]^{-1} \text{, for all } (x, y) \in X \times Y.
-  \]
+Lets consider the restriction \(f: g(Y) \to W\). Since \(g\) is injective, the
+restriction \(g: Y \to g(Y)\) is a bijection. Since \(f\) is continuous and
+\(Y\) is open, then \(f^{-1}(Y) = g(Y)\) is open. Define \(X = g(Y)\), so that
+\(f: X \to Y\) is a bijection and clearly \(g = f^{-1}\) for such
+restriction. Hence we conclude that
+\[
+  \diff f^{-1}(y) = [\diff f(x)]^{-1} \text{, for all } (x, y) \in X \times Y.
+\]
 \end{proof}
 
 \begin{theorem}[Open Map Theorem]
-  \label{thm:open-map-theorem}
-  Let \(\Omega \subseteq \R^n\) be an open set and \(f: \Omega \to \R^{n}\) be a continuously
-  differentiable map. If \(\diff f(x)\) is invertible for all \(x \in \Omega\), then
-  the map \(f\) is an open mapping --- that is, maps open subsets of \(\Omega\) to
-  open subsets of \(\R^n\).
+\label{thm:open-map-theorem}
+Let \(\Omega \subseteq \R^n\) be an open set and \(f: \Omega \to \R^{n}\) be a continuously
+differentiable map. If \(\diff f(x)\) is invertible for all \(x \in \Omega\), then
+the map \(f\) is an open mapping --- that is, maps open subsets of \(\Omega\) to
+open subsets of \(\R^n\).
 \end{theorem}
 
 \begin{proof}
-  Let \(x \in \Omega\) be any point. From hypothesis, \(\diff f(x)\) is invertible,
-  hence we can apply \cref{thm:inverse-map} in order to obtain an open
-  neighbourhood \(V_{x} \subseteq \Omega\) of \(x\) and \(V_{f(x)} \subseteq \R^n\) such that the map
-  \(f: V_{x} \to V_{f(x)}\) is a local bijection and hence \(f(V_x)\) is
-  open. With this in our hands, we can create an open cover \(\mathcal U =
-  \{V_{x} \subseteq \Omega : x \in \Omega\}\) of such neighbourhoods --- that is, given any open set
-  \(U \subseteq \Omega\), there exists a collection of open sets \(\mathcal V \subseteq \mathcal U\)
-  such that \(U = \bigcup_{V \in \mathcal V} V\) and since \(f(U) = \bigcup_{V \in \mathcal V}
-  f(V)\) is the union of open sets, then \(f(U)\) is open.
+Let \(x \in \Omega\) be any point. From hypothesis, \(\diff f(x)\) is invertible,
+hence we can apply \cref{thm:inverse-map} in order to obtain an open
+neighbourhood \(V_{x} \subseteq \Omega\) of \(x\) and \(V_{f(x)} \subseteq \R^n\) such that the map
+\(f: V_{x} \to V_{f(x)}\) is a local bijection and hence \(f(V_x)\) is
+open. With this in our hands, we can create an open cover \(\mathcal U =
+\{V_{x} \subseteq \Omega \colon x \in \Omega\}\) of such neighbourhoods --- that is, given any open set
+\(U \subseteq \Omega\), there exists a collection of open sets \(\mathcal V \subseteq \mathcal U\)
+such that \(U = \bigcup_{V \in \mathcal V} V\) and since \(f(U) = \bigcup_{V \in \mathcal V}
+f(V)\) is the union of open sets, then \(f(U)\) is open.
 \end{proof}
 
 \begin{theorem}[Maximal Rank Theorem]
-  \label{thm:maximal-rank-theorem}
-  Let \(\Omega \subseteq \R^n\) be an open set and \(x_0 \in \Omega\). Let \(f: \Omega \to \R^m\) be a
-  continuously differentiable map. Define \(y_0 \in \R^m\) so that \(f(x_0) =
-  y_0\). The following holds
-  \begin{enumerate}[(a).]\setlength\itemsep{0em}
-    \item Suppose \(n \leq m\) and that \(\diff f(x_0)\) has maximal
-      \(\rank(\diff f(x_{0})) = n\). Then there exists open sets \(\Omega_{y_0} \subseteq
-      \R^m\) and \(\Omega_{x_0} \subseteq \Omega \subseteq \R^n\), respectively neighbourhoods of the points
-      \(y_0\) and \(x_0\) with \(f(\Omega_{x_0}) \subseteq \Omega_{y_0}\), and a differentiable
-      map \(g: \Omega_{y_0} \to \R^m\) such that the following diagram commutes
-      \[
-        \begin{tikzcd}
-          \Omega_{x_{0}} \ar[rr, "f"] \ar[dr, hook, swap, "\iota"]
-          & &\Omega_{y_0} \ar[dl, "g"] \\
-          &\R^m &
-        \end{tikzcd}
-      \]
-      Where \(\iota: \R^n \emb \R^m\) is the canonical inclusion map.
-    \item Suppose \(n \geq m\) and that \(\diff f(x_0)\) has maximal
-      \(\rank(\diff f(x_0)) = m\). Then there exists \(\Omega_{x_0} \subseteq \Omega \subseteq \R^n\),
-      neighbourhood of \(x_0\), and a differentiable map \(g: \Omega_{x_{0}} \to \Omega\)
-      such that the following diagram commutes
-      \[
-        \begin{tikzcd}
-          &\Omega_{x_0} \ar[dr, two heads, "\pi"] \ar[ld, swap, "g"] & \\
-          \Omega \ar[rr, "f"] & &\R^m
-        \end{tikzcd}
-      \]
-      Where \(\pi: \R^n \twoheadrightarrow \R^m\) is the canonical projection map.
-  \end{enumerate}
+\label{thm:maximal-rank-theorem}
+Let \(\Omega \subseteq \R^n\) be an open set and \(x_0 \in \Omega\). Let \(f: \Omega \to \R^m\) be a
+continuously differentiable map. Define \(y_0 \in \R^m\) so that \(f(x_0) =
+y_0\). The following holds
+\begin{enumerate}[(a).]\setlength\itemsep{0em}
+  \item Suppose \(n \leq m\) and that \(\diff f(x_0)\) has maximal
+    \(\rank(\diff f(x_{0})) = n\). Then there exists open sets \(\Omega_{y_0} \subseteq
+    \R^m\) and \(\Omega_{x_0} \subseteq \Omega \subseteq \R^n\), respectively neighbourhoods of the points
+    \(y_0\) and \(x_0\) with \(f(\Omega_{x_0}) \subseteq \Omega_{y_0}\), and a differentiable
+    map \(g: \Omega_{y_0} \to \R^m\) such that the following diagram commutes
+    \[
+      \begin{tikzcd}
+        \Omega_{x_{0}} \ar[rr, "f"] \ar[dr, hook, swap, "\iota"]
+        & &\Omega_{y_0} \ar[dl, "g"] \\
+        &\R^m &
+      \end{tikzcd}
+    \]
+    Where \(\iota: \R^n \emb \R^m\) is the canonical inclusion map.
+  \item Suppose \(n \geq m\) and that \(\diff f(x_0)\) has maximal
+    \(\rank(\diff f(x_0)) = m\). Then there exists \(\Omega_{x_0} \subseteq \Omega \subseteq \R^n\),
+    neighbourhood of \(x_0\), and a differentiable map \(g: \Omega_{x_{0}} \to \Omega\)
+    such that the following diagram commutes
+    \[
+      \begin{tikzcd}
+        &\Omega_{x_0} \ar[dr, two heads, "\pi"] \ar[ld, swap, "g"] & \\
+        \Omega \ar[rr, "f"] & &\R^m
+      \end{tikzcd}
+    \]
+    Where \(\pi: \R^n \twoheadrightarrow \R^m\) is the canonical projection map.
+\end{enumerate}
 \end{theorem}
 
 \begin{proof}
-  \begin{enumerate}\setlength\itemsep{0em}
-    \item Since \(\rank(\diff f(x_0)) = n\), then, from the rank plus nullity
-      theorem we find that \(\ker (\diff f(x_0)) = 0\) and therefore \(\diff
-      f(x_{0})\) is injective. Consider the matrix representation \(f'(x_0)\)
-      of the differential \(\diff f(x_0)\). From the injective property of
-      \(f\), there must exist \(n\) linearly independent rows in
-      \(f'(x_0)\). Let \(A\) be the \((n \times n)\)-matrix containing these linearly
-      indepent rows and \(C\) the \(((m - n) \times n)\)-matrix containing the
-      remaining rows of \(f'(x_0)\). Do row operations on \(f'(x_0)\) so that we
-      see it as equivalent to the matrix
-      \[
-        \begin{bmatrix}
-          A \\ C
-        \end{bmatrix}
-      \]
-      Notice that the collection of rows of \(A\) form a basis for \(\R^n\),
-      thus \(A\) is invertible and hence \(\det A \neq 0\). Define a map \(F: \Omega \times
-      \R^{m-n} \to \R^m\) given by the mapping \((x, y) \mapsto f(x) + (0, y)\), then we
-      obtain
-      \[
-        F'(x_0, 0) =
-        \begin{bmatrix}
-          A &0 \\ C &I_{m - n}
-        \end{bmatrix}
-      \]
-      which in particular makes the, otherwise dependent, rows of \(C\) into a
-      collection of linearly independent vectors, by attaching the canonical
-      base of the space \(\R^{m-n}\) into each of them. This makes \(F'(x_0,
-      0)\) an invertible matrix. By applying \cref{thm:inverse-map} we obtain a
-      neighbourhood \(U \subseteq \Omega \times \R^{m-n}\) of \((x_0, 0)\) and a neighbourhood
-      \(\Omega_{y_0} \subseteq \R^m\) of \(F(x_0, 0) = f(x_{0}) = y_0\) for which the
-      restriction map \(F: U \to \Omega_{y_0}\) is an isomorphism of manifolds. Let \(g:
-      \Omega_{y_0} \to U\) be the continuously differentiable inverse of \(F\), and
-      define \(\Omega_{x_0} = f^{-1}(\Omega_{y_0}) \cap \Omega\), which is clearly a neighbourhood
-      of \(x_0\). Notice that the composition \(g f(x) = g F (x, 0) = (x, 0) =
-      \iota(x)\), thus we are done.
+\begin{enumerate}\setlength\itemsep{0em}
+  \item Since \(\rank(\diff f(x_0)) = n\), then, from the rank plus nullity
+    theorem we find that \(\ker (\diff f(x_0)) = 0\) and therefore \(\diff
+    f(x_{0})\) is injective. Consider the matrix representation \(f'(x_0)\)
+    of the differential \(\diff f(x_0)\). From the injective property of
+    \(f\), there must exist \(n\) linearly independent rows in
+    \(f'(x_0)\). Let \(A\) be the \((n \times n)\)-matrix containing these linearly
+    indepent rows and \(C\) the \(((m - n) \times n)\)-matrix containing the
+    remaining rows of \(f'(x_0)\). Do row operations on \(f'(x_0)\) so that we
+    see it as equivalent to the matrix
+    \[
+      \begin{bmatrix}
+        A \\ C
+      \end{bmatrix}
+    \]
+    Notice that the collection of rows of \(A\) form a basis for \(\R^n\),
+    thus \(A\) is invertible and hence \(\det A \neq 0\). Define a map \(F: \Omega \times
+    \R^{m-n} \to \R^m\) given by the mapping \((x, y) \mapsto f(x) + (0, y)\), then we
+    obtain
+    \[
+      F'(x_0, 0) =
+      \begin{bmatrix}
+        A &0 \\ C &I_{m - n}
+      \end{bmatrix}
+    \]
+    which in particular makes the, otherwise dependent, rows of \(C\) into a
+    collection of linearly independent vectors, by attaching the canonical
+    base of the space \(\R^{m-n}\) into each of them. This makes \(F'(x_0,
+    0)\) an invertible matrix. By applying \cref{thm:inverse-map} we obtain a
+    neighbourhood \(U \subseteq \Omega \times \R^{m-n}\) of \((x_0, 0)\) and a neighbourhood
+    \(\Omega_{y_0} \subseteq \R^m\) of \(F(x_0, 0) = f(x_{0}) = y_0\) for which the
+    restriction map \(F: U \to \Omega_{y_0}\) is an isomorphism of manifolds. Let \(g:
+    \Omega_{y_0} \to U\) be the continuously differentiable inverse of \(F\), and
+    define \(\Omega_{x_0} = f^{-1}(\Omega_{y_0}) \cap \Omega\), which is clearly a neighbourhood
+    of \(x_0\). Notice that the composition \(g f(x) = g F (x, 0) = (x, 0) =
+    \iota(x)\), thus we are done.
 
-    \item Since \(\rank(\diff f(x_0))\) equals the dimension of its codomain, it
-      follows that \(\diff f(x_0)\) is a surjective linear map. Since \(\diff
-      f(x_0)\) has rank \(m\), then its matrix representation \(f'(x_0)\) has
-      \(m\) linearly independent columns. Let \(D\) be the \((m \times m)\)-matrix
-      whose columns
-      are those of \(f'(x_0)\) that are linearly independent and \(C\) be the
-      \((m \times (n - m))\)-matrix composed of the remaining columns of
-      \(f'(x_0)\). Operate on the matrix \(f'(x_0)\) via column operations so
-      that its final equivalent matrix is
-      \[
-        \begin{bmatrix}
-          D & C
-        \end{bmatrix}
-      \]
-      Since \(D\) is composed of linearly independent vectors, \(D\) is
-      invertible. Define the map \(F: \Omega \to \R^m \times \R^{n-m}\) by \((x, y) \mapsto (f(x),
-      y)\). Clearly, \(F\) is differentiable at \(x_0\) and its matrix
-      representation is
-      \[
-        F'(x_0) =
-        \begin{bmatrix}
-          0 & I_{n - m}\\
-          D & C
-        \end{bmatrix}
-      \]
-      which is invertible since the attachment of the canonical basis of
-      \(\R^{n-m}\) into the column vectors of \(C\) transforms the collection of
-      the last \(n - m\) column vectors of \(F'(x_{0})\) into a linearly
-      independent set. Applying \cref{thm:inverse-map} we are able to obtain a
-      neighbourhood \(\Omega_{x_0} \subseteq \Omega\) such that the restriction map \(F: \Omega_{x_0} \to
-      \R^m \times\R^{n-m}\) is an isomorphism of manifolds. Let \(g: \R^m \times \R^{n-m} \to
-      \Omega_{x_0}\) be its continuously differentiable inverse map, then the
-      composition \(f g(x, y) = x = \pi(x, y)\) is merely the canonical projection
-      map, as we expected.
-  \end{enumerate}
+  \item Since \(\rank(\diff f(x_0))\) equals the dimension of its codomain, it
+    follows that \(\diff f(x_0)\) is a surjective linear map. Since \(\diff
+    f(x_0)\) has rank \(m\), then its matrix representation \(f'(x_0)\) has
+    \(m\) linearly independent columns. Let \(D\) be the \((m \times m)\)-matrix
+    whose columns
+    are those of \(f'(x_0)\) that are linearly independent and \(C\) be the
+    \((m \times (n - m))\)-matrix composed of the remaining columns of
+    \(f'(x_0)\). Operate on the matrix \(f'(x_0)\) via column operations so
+    that its final equivalent matrix is
+    \[
+      \begin{bmatrix}
+        D & C
+      \end{bmatrix}
+    \]
+    Since \(D\) is composed of linearly independent vectors, \(D\) is
+    invertible. Define the map \(F: \Omega \to \R^m \times \R^{n-m}\) by \((x, y) \mapsto (f(x),
+    y)\). Clearly, \(F\) is differentiable at \(x_0\) and its matrix
+    representation is
+    \[
+      F'(x_0) =
+      \begin{bmatrix}
+        0 & I_{n - m}\\
+        D & C
+      \end{bmatrix}
+    \]
+    which is invertible since the attachment of the canonical basis of
+    \(\R^{n-m}\) into the column vectors of \(C\) transforms the collection of
+    the last \(n - m\) column vectors of \(F'(x_{0})\) into a linearly
+    independent set. Applying \cref{thm:inverse-map} we are able to obtain a
+    neighbourhood \(\Omega_{x_0} \subseteq \Omega\) such that the restriction map \(F: \Omega_{x_0} \to
+    \R^m \times\R^{n-m}\) is an isomorphism of manifolds. Let \(g: \R^m \times \R^{n-m} \to
+    \Omega_{x_0}\) be its continuously differentiable inverse map, then the
+    composition \(f g(x, y) = x = \pi(x, y)\) is merely the canonical projection
+    map, as we expected.
+\end{enumerate}
 \end{proof}
 
 \section{Extrema With Constraints}
 
 \begin{theorem}[Existence of Lagrange multipliers]
-  \label{thm:existence-lagrange-multipliers}
-  Let \(f: \Omega \to \R\) be a map, where \(\Omega \subseteq \R^d\), and a map \(F: \Omega \to \R^m\),
-  where \(m < d\) ---  which will be called constraint map. Suppose \(x_0\) is a
-  local extremum of \(f\) in the surface \(S \subseteq \Omega\) defined by the constraint \(S
-  = \{x \in \Omega : F(x) = 0\}\). Suppose additionally that \(\rank F'(x) = m\) for
-  every \(x \in \Omega\). Then, there exists a vector \(\lambda \in \R^m\) --- whose components
-  are called Lagrange multipliers --- such that
-  \[
-    f'(x_0) = F'(x_0) \lambda.
-  \]
-  In the particular case where \(m = 1\), the constraint map generates a \(1\)
-  dimensional surface and therefore \(\grad f(x_0) = \lambda \grad F(x_0)\), where
-  \(\lambda \in \R\).
+\label{thm:existence-lagrange-multipliers}
+Let \(f: \Omega \to \R\) be a map, where \(\Omega \subseteq \R^d\), and a map \(F: \Omega \to \R^m\),
+where \(m < d\) ---  which will be called constraint map. Suppose \(x_0\) is a
+local extremum of \(f\) in the surface \(S \subseteq \Omega\) defined by the constraint \(S
+= \{x \in \Omega \colon F(x) = 0\}\). Suppose additionally that \(\rank F'(x) = m\) for
+every \(x \in \Omega\). Then, there exists a vector \(\lambda \in \R^m\) --- whose components
+are called Lagrange multipliers --- such that
+\[
+  f'(x_0) = F'(x_0) \lambda.
+\]
+In the particular case where \(m = 1\), the constraint map generates a \(1\)
+dimensional surface and therefore \(\grad f(x_0) = \lambda \grad F(x_0)\), where
+\(\lambda \in \R\).
 \end{theorem}
 
 \begin{proof}
-  Since \(F'(x_0)\) has rank \(m\), let \(D\) be the \((m \times m)\)-matrix whose
-  columns are the \(m\) linearly independent columns of \(F'(x_0)\). Define
-  \(C\) to be the \((m \times d - m)\)-matrix whose columns are the remaining columns
-  of \(F'(x_0)\). By means of column operations, arrange \(F'(x_0)\) into an
-  equivalent matrix of the form
-  \[
-    \begin{bmatrix}
-      C & D
-    \end{bmatrix}
-  \]
-  That is, the equivalent matrix has an invertible principal minor \(D\) defined
-  on its last \(m\) columns. If we now identify points \(x \in \R^d\) with points
-  \((x_1, x_2) = x \in \R^{d-m} \times \R^m\), we find that \(\partial_2 F(x_0^1, x_0^2)\) is an
-  invertible map (it corresponds to the matrix \(D\)).
+Since \(F'(x_0)\) has rank \(m\), let \(D\) be the \((m \times m)\)-matrix whose
+columns are the \(m\) linearly independent columns of \(F'(x_0)\). Define
+\(C\) to be the \((m \times d - m)\)-matrix whose columns are the remaining columns
+of \(F'(x_0)\). By means of column operations, arrange \(F'(x_0)\) into an
+equivalent matrix of the form
+\[
+  \begin{bmatrix}
+    C & D
+  \end{bmatrix}
+\]
+That is, the equivalent matrix has an invertible principal minor \(D\) defined
+on its last \(m\) columns. If we now identify points \(x \in \R^d\) with points
+\((x_1, x_2) = x \in \R^{d-m} \times \R^m\), we find that \(\partial_2 F(x_0^1, x_0^2)\) is an
+invertible map (it corresponds to the matrix \(D\)).
 
-  We can now apply the Implicit Map Theorem to find neighbouhoods \(\Omega_{x_{0}^1}
-  \subseteq \R^{d-m}\) and \(\Omega_{x_0^2} \subseteq \R^m\) of \(x_0^1\) and \(x_0^2\), respectively,
-  and a map \(g: \Omega_{x_0^1} \to \Omega_{x_0^2}\) for which \(F(x_{1}, x_2) = 0\) if and
-  only if \(g(x_1) = x_2\). In particular, the mapping \(x_1 \mapsto F(x_1, g(x_1))\)
-  is identically zero and therefore \(\Omega_{x_0^1} \times g(\Omega_{x_0^1}) \subseteq S\). From the
-  fact that \(x_0 = (x_0^1, x_0^2) = (x_0^1, g(x_0^1))\) is a local extremum of
-  \(f\), defining \(\phi: \Omega_{x_0^{1}} \to \R\) by \(\phi(x_1) = f(x_1, g(x_1))\), we
-  conclude that \(x_0^1\) is a local maximum of \(\phi\). In particular, it is
-  necessary that \(\diff \phi(x_0^1) = 0\) and therefore
-  \[
-    \diff \phi(x_0^{1}) = \sum_{j=1}^{d-m} \partial_j f(x_0^1, g(x_0^1)) + \sum_{i = d - m +
-      1}^{m} \partial_i f(x_0^1, g(x_0^1)) \partial_i g(x_0^1) = 0.
-  \]
-  If we now regard \(f\) as map of the form \(\R^{d-m} \times \R^m \to \R^m\), then we
-  see that
-  \[
-    \diff \phi(x_0^1) = \partial_1 f(x_0^1, g(x_0^1)) + \partial_{2} f(x_0^1, g(x_0^1)) \diff
-    g(x_0^1) = 0.
-  \]
+We can now apply the Implicit Map Theorem to find neighbouhoods \(\Omega_{x_{0}^1}
+\subseteq \R^{d-m}\) and \(\Omega_{x_0^2} \subseteq \R^m\) of \(x_0^1\) and \(x_0^2\), respectively,
+and a map \(g: \Omega_{x_0^1} \to \Omega_{x_0^2}\) for which \(F(x_{1}, x_2) = 0\) if and
+only if \(g(x_1) = x_2\). In particular, the mapping \(x_1 \mapsto F(x_1, g(x_1))\)
+is identically zero and therefore \(\Omega_{x_0^1} \times g(\Omega_{x_0^1}) \subseteq S\). From the
+fact that \(x_0 = (x_0^1, x_0^2) = (x_0^1, g(x_0^1))\) is a local extremum of
+\(f\), defining \(\phi: \Omega_{x_0^{1}} \to \R\) by \(\phi(x_1) = f(x_1, g(x_1))\), we
+conclude that \(x_0^1\) is a local maximum of \(\phi\). In particular, it is
+necessary that \(\diff \phi(x_0^1) = 0\) and therefore
+\[
+  \diff \phi(x_0^{1}) = \sum_{j=1}^{d-m} \partial_j f(x_0^1, g(x_0^1)) + \sum_{i = d - m +
+    1}^{m} \partial_i f(x_0^1, g(x_0^1)) \partial_i g(x_0^1) = 0.
+\]
+If we now regard \(f\) as map of the form \(\R^{d-m} \times \R^m \to \R^m\), then we
+see that
+\[
+  \diff \phi(x_0^1) = \partial_1 f(x_0^1, g(x_0^1)) + \partial_{2} f(x_0^1, g(x_0^1)) \diff
+  g(x_0^1) = 0.
+\]
 
-  From the Implicit Map Theorem, \(g\) was constructed so that
-  \[
-    \diff g(x_0^1) = - [\partial_2F(x_0^1, g(x_0^1))]^{-1} \partial_1 F(x_0^1, g(x_{0}^1)).
-  \]
-  Hence, substituting into the above equation we find
-  \[
-    \partial_1 f(x_0^1, g(x_0^1)) - \partial_2 f(x_0^1, g(x_0^1)) [\partial_2 F(x_0^1,
-    g(x_0^1))]^{-1} \partial_1 F(x_0^1, g(x_0^1)) = 0
-  \]
-  Now, if we define \(\lambda \in \R^m\) by \(\lambda = \partial_2f(x_0^{1}, g(x_{0}^{1})) [\partial_2
-  F(x_{0}^1, g(x_0^1))]^{-1}\), we find that
-  \begin{gather*}
-    \partial_1 f(x_0^{1}, g(x_0^1)) = \partial_1 F(x_0^1, g(x_0^1)) \lambda \\
-    \partial_2 f(x_0^{1}, g(x_0^1)) = \partial_2 F(x_0^1, g(x_0^1)) \lambda \\
-  \end{gather*}
-  So that we can conclude
-  \[
-    \diff f(x_0) = \diff F(x_0) \lambda.
-  \]
+From the Implicit Map Theorem, \(g\) was constructed so that
+\[
+  \diff g(x_0^1) = - [\partial_2F(x_0^1, g(x_0^1))]^{-1} \partial_1 F(x_0^1, g(x_{0}^1)).
+\]
+Hence, substituting into the above equation we find
+\[
+  \partial_1 f(x_0^1, g(x_0^1)) - \partial_2 f(x_0^1, g(x_0^1)) [\partial_2 F(x_0^1,
+  g(x_0^1))]^{-1} \partial_1 F(x_0^1, g(x_0^1)) = 0
+\]
+Now, if we define \(\lambda \in \R^m\) by \(\lambda = \partial_2f(x_0^{1}, g(x_{0}^{1})) [\partial_2
+F(x_{0}^1, g(x_0^1))]^{-1}\), we find that
+\begin{gather*}
+  \partial_1 f(x_0^{1}, g(x_0^1)) = \partial_1 F(x_0^1, g(x_0^1)) \lambda \\
+  \partial_2 f(x_0^{1}, g(x_0^1)) = \partial_2 F(x_0^1, g(x_0^1)) \lambda \\
+\end{gather*}
+So that we can conclude
+\[
+  \diff f(x_0) = \diff F(x_0) \lambda.
+\]
 \end{proof}
 
 \begin{theorem}[Sufficient condition for a constraint extremum]
-  \label{thm:sufficient-extremum}
-  Let \(\Omega \subseteq \R^d\) and maps \(f: \Omega \to \R\), and  \(F: \Omega \to \R^m\), both of which
-  are \(C^2(\Omega, \R)\). Let \(S \subseteq \Omega\) be the surface defined by \(S = \{x \in \Omega :
-  F(x) = 0\}\). Consider \(x_0 \in S\) as a possible candidate of local extremum
-  of \(f\) in the surface \(S\). Suppose additionally that \(\rank F'(x) =
-  m\) for every \(x \in \Omega\). Define the lagrange multipliers \(\lambda \in \R^m\) so that
-  the map \(L: S \to \R\) given by
-  \[
-    L(x) = f(x) - \left\langle \lambda, F(x) \right\rangle,
-  \]
-  satisfy \(\grad L(x) = 0\) for all \(x \in S\) and \(\partial_{\lambda} L(x) = 0\).
+\label{thm:sufficient-extremum}
+Let \(\Omega \subseteq \R^d\) and maps \(f: \Omega \to \R\), and  \(F: \Omega \to \R^m\), both of which
+are \(C^2(\Omega, \R)\). Let \(S \subseteq \Omega\) be the surface defined by \(S = \{x \in \Omega \colon
+F(x) = 0\}\). Consider \(x_0 \in S\) as a possible candidate of local extremum
+of \(f\) in the surface \(S\). Suppose additionally that \(\rank F'(x) =
+m\) for every \(x \in \Omega\). Define the lagrange multipliers \(\lambda \in \R^m\) so that
+the map \(L: S \to \R\) given by
+\[
+  L(x) = f(x) - \left\langle \lambda, F(x) \right\rangle,
+\]
+satisfy \(\grad L(x) = 0\) for all \(x \in S\) and \(\partial_{\lambda} L(x) = 0\).
 
-  It's sufficient for \(x_0 \in S\) to be a local extremum in \(S\) if \(\Hess
-  L(x_0)\) is either positive definite or negative definite. If \(\Hess L(x_0)\)
-  is not definite, then \(x_0\) cannot be an extremum point. Moreover, if \(\Hess
-  L(x_0)\) is positive definite, then \(x_0\) is a local minimum on \(S\), on the
-  other hand, if \(\Hess L(x_0)\) is negative definite, then \(x_0\) is a local
-  maximum on \(S\).
+It's sufficient for \(x_0 \in S\) to be a local extremum in \(S\) if \(\Hess
+L(x_0)\) is either positive definite or negative definite. If \(\Hess L(x_0)\)
+is not definite, then \(x_0\) cannot be an extremum point. Moreover, if \(\Hess
+L(x_0)\) is positive definite, then \(x_0\) is a local minimum on \(S\), on the
+other hand, if \(\Hess L(x_0)\) is negative definite, then \(x_0\) is a local
+maximum on \(S\).
 \end{theorem}
 
 \begin{proof}
-  Since \(x_0 \in S\), then in particular \(\grad L(x_0) = 0\), thus, as \(S \ni x \to
-  x_0\) we have the polynomial approximation
-  \begin{align*}
-    L(x) - L(x_0)
-    &= \frac{1}{2!} \sum_{i, j = 1}^{d} \partial_{i j} L(x_0) (x_i - x_0^i) (x_j - x_0^j)
-    + o(\norm{x - x_0}^2) \\
-    &= \frac{1}{2!} \left\langle x - x_{0}, \Hess(L(x_0)) (x - x_0) \right\rangle
-    + o(\norm{x - x_0}_{\R^d}^2).
-  \end{align*}
+Since \(x_0 \in S\), then in particular \(\grad L(x_0) = 0\), thus, as \(S \ni x \to
+x_0\) we have the polynomial approximation
+\begin{align*}
+  L(x) - L(x_0)
+  &= \frac{1}{2!} \sum_{i, j = 1}^{d} \partial_{i j} L(x_0) (x_i - x_0^i) (x_j - x_0^j)
+  + o(\norm{x - x_0}^2) \\
+  &= \frac{1}{2!} \left\langle x - x_{0}, \Hess(L(x_0)) (x - x_0) \right\rangle
+  + o(\norm{x - x_0}_{\R^d}^2).
+\end{align*}
 
-  We'll assume that \(S\) --- which is a \((d - m)\)-dimensional surface, since
-  \(\rank F(x) = m\) --- can be parametrically defined in some neighbourhood of
-  \(x_0 \in S\) by a smooth map \(\R^{d - m} \ni t \mapsto x(t) \in \R^d\) such that \(x(0)
-  = x_0\) and that exists a neighbourhood of \(0 \in \R^{d-m}\) for which the
-  parametrization is bijective. Since the mapping is smooth, as \(t \to 0\) we
-  have
-  \[
-    x(t) - x(0) = \diff x(0)(t) + o(\norm{t}_{\R^{d-m}}).
-  \]
-  Which implies that as \(t \to 0\) we have \(\norm{x(t) - x(0)}_{\R^d} =
-  O(\norm{t}_{\R^{d}})\).
+We'll assume that \(S\) --- which is a \((d - m)\)-dimensional surface, since
+\(\rank F(x) = m\) --- can be parametrically defined in some neighbourhood of
+\(x_0 \in S\) by a smooth map \(\R^{d - m} \ni t \mapsto x(t) \in \R^d\) such that \(x(0)
+= x_0\) and that exists a neighbourhood of \(0 \in \R^{d-m}\) for which the
+parametrization is bijective. Since the mapping is smooth, as \(t \to 0\) we
+have
+\[
+  x(t) - x(0) = \diff x(0)(t) + o(\norm{t}_{\R^{d-m}}).
+\]
+Which implies that as \(t \to 0\) we have \(\norm{x(t) - x(0)}_{\R^d} =
+O(\norm{t}_{\R^{d}})\).
 
-  We can now exploit the parametrization of the surface \(S\) so that, as \(t \to
-  0\) we have
-  \begin{align*}
-    L(x(t)) - L(x_0)
-    &= \frac{1}{2!} \left\langle t, \Hess(L(x(0))) t \right\rangle +
-    o(O(\norm{t}_{\R^d})) \\
-    &= \frac{1}{2!} \left\langle t, \Hess(L(x(0))) t \right\rangle +
-    o(\norm{t}_{\R^d}).
-  \end{align*}
-  Where the entries of the Hessian are of the form \(\partial_{ij} L(x(0)) = \partial_{i j}
-  L(x(0)) \partial_i x(0) \partial_j x(0)\). Then, if \(\Hess L(x(0))\) is positive or negative
-  definite, by \cref{thm:classification-critical-points}, we obtain that \(t =
-  0\) is an extremum of \(L(x(t))\). On the other hand, since there exists a
-  neighbourhood of \(t = 0\) for which \(x(t)\) is a bijective parametrization,
-  it follows that \(L\) has an extremum at \(x_0\) --- and hence \(x_0\) is an
-  extremum of \(f\) in \(S\) and the classifications of maximum or minimum come
-  again from the same theorem. If \(\Hess L(x(0))\) is indefinite, by
-  \cref{thm:classification-critical-points} we conclude that \(L(x(t))\) has no
-  extremum at \(t = 0\) --- and with the same analogous arguments as before, we
-  argue that \(L\) has no extrema at \(x_0\) and neither does \(f\).
+We can now exploit the parametrization of the surface \(S\) so that, as \(t \to
+0\) we have
+\begin{align*}
+  L(x(t)) - L(x_0)
+  &= \frac{1}{2!} \left\langle t, \Hess(L(x(0))) t \right\rangle +
+  o(O(\norm{t}_{\R^d})) \\
+  &= \frac{1}{2!} \left\langle t, \Hess(L(x(0))) t \right\rangle +
+  o(\norm{t}_{\R^d}).
+\end{align*}
+Where the entries of the Hessian are of the form \(\partial_{ij} L(x(0)) = \partial_{i j}
+L(x(0)) \partial_i x(0) \partial_j x(0)\). Then, if \(\Hess L(x(0))\) is positive or negative
+definite, by \cref{thm:classification-critical-points}, we obtain that \(t =
+0\) is an extremum of \(L(x(t))\). On the other hand, since there exists a
+neighbourhood of \(t = 0\) for which \(x(t)\) is a bijective parametrization,
+it follows that \(L\) has an extremum at \(x_0\) --- and hence \(x_0\) is an
+extremum of \(f\) in \(S\) and the classifications of maximum or minimum come
+again from the same theorem. If \(\Hess L(x(0))\) is indefinite, by
+\cref{thm:classification-critical-points} we conclude that \(L(x(t))\) has no
+extremum at \(t = 0\) --- and with the same analogous arguments as before, we
+argue that \(L\) has no extrema at \(x_0\) and neither does \(f\).
 \end{proof}
-
-\todo[inline]{Write about tangent space, tangent to the domain, tangent to the
-  graph, etc.}

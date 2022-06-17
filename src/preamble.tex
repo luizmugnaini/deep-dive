@@ -77,7 +77,11 @@ style=alphabetic,
 \renewcommand{\geq}{\geqslant}
 \renewcommand{\setminus}{\smallsetminus}
 % \newcommand{\coloneq}{\coloneqq}
-% \DeclareMathSymbol{:}{\mathpunct}{operators}{"3A}
+
+% ':' for maps and '\colon' for relations on collections
+\DeclareMathSymbol{:}{\mathpunct}{operators}{"3A}
+\let\colon\relax
+\DeclareMathSymbol{\colon}{\mathrel}{operators}{"3A}
 
 % General
 \DeclareMathOperator{\Hom}{Mor}

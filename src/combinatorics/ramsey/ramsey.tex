@@ -8,7 +8,7 @@ infinite monochromatic subset \(A \subseteq \N\), that is, for all \(a, b
 \end{theorem}
 
 \begin{proof}
-Firstly, define the sets \(\Gamma_k(x) \coloneq \{y \in \N : \mathcal{C}(x
+Firstly, define the sets \(\Gamma_k(x) \coloneq \{y \in \N \colon \mathcal{C}(x
 y) = k \in [r]\}\). We know that for any element \(x \in \N\) the
 colouring function \(\mathcal{C}\) provides at most \(r\) of such sets. Notice
 that for every vertex \(v_i \in \N\) there are infinitely many edges
@@ -76,13 +76,13 @@ By the inductive hypothesis we say that there exists an infinite subset \(X_0
 \subseteq X\) such that, for all \(E_0 \in \binom{X_0}{k}\), we have
 \(\mathcal{C}_0(E_0) = c_0 \in [r]\).
 
-Now let \(X'_0 \coloneq \{x \in X_0: \theta < x\}\) and define \(x_1 \coloneq
-\min(X_0)\). As before, set the colouring \(\mathcal{C}_1 : \binom{X'_0}{k} \to
-[r]\) such that \(\mathcal{C}_1(E) \coloneq \mathcal{C}(E \cup \{x_1\})\).  Since
-\(X'_0\) is an infinite set by construction, we know from the pigeonhole
-principle that there exists an infinite subset \(X_1 \subseteq X'_0\) such that,
-for all \(E_1 \in \binom{X_1}{k}\), we have \(\mathcal{C}_1 (E_1) = c_1 \in
-[r]\).
+Now let \(X'_0 \coloneq \{x \in X_0 \colon \theta < x\}\) and define \(x_1
+\coloneq \min(X_0)\). As before, set the colouring \(\mathcal{C}_1 :
+\binom{X'_0}{k} \to [r]\) such that \(\mathcal{C}_1(E) \coloneq \mathcal{C}(E
+\cup \{x_1\})\).  Since \(X'_0\) is an infinite set by construction, we know
+from the pigeonhole principle that there exists an infinite subset \(X_1
+\subseteq X'_0\) such that, for all \(E_1 \in \binom{X_1}{k}\), we have
+\(\mathcal{C}_1 (E_1) = c_1 \in [r]\).
 
 We continue constructing a sequence of elements \((\theta, x_1, x_2, \dots)\)
 in such a way that we have a corresponding sequence \((c_0, c_1, c_2, \dots)\)

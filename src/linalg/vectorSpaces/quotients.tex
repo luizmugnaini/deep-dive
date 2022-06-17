@@ -1,127 +1,127 @@
 \section{Quotients and Subspaces}
 
 \begin{definition}[Subspace]\label{def: subspace}
-   Let \(V\) be \(k\)-vector space. We say that \(W \subseteq  V\) is a subspace
-   of \(V\) if
-   \begin{enumerate}[I.]
-     \item \(0 \in W\).
-     \item \(v, u \in W\) implies \(v + u \in W\).
-     \item \(\forall c \in k\) and \(\forall v \in W\), then \(cv \in W\).
-   \end{enumerate}
+Let \(V\) be \(k\)-vector space. We say that \(W \subseteq  V\) is a subspace
+of \(V\) if
+\begin{enumerate}[I.]
+  \item \(0 \in W\).
+  \item If \(v, u \in W\) then \(v + u \in W\).
+  \item For all \(c \in k\) and for all \(v \in W\), we have \(cv \in W\).
+\end{enumerate}
 \end{definition}
 
 \begin{definition}[Quotient]\label{def: quotient}
-   Let \(V\) be a \(k\)-vector space and \(W \subseteq V\) a subspace. The
-   quotient of \(V\) by \(W\) is defined as \(V/W = V/{\sim}\) where \(v
-   \sim u \Leftrightarrow v - u \in W\).
+  Let \(V\) be a \(k\)-vector space and \(W \subseteq V\) a subspace. The
+  quotient of \(V\) by \(W\) is defined as \(V/W = V/{\sim}\) where \(v
+  \sim u \Leftrightarrow v - u \in W\).
 \end{definition}
 
 \begin{theorem}[Universal property for quotients]
-  \label{thm: universal property for quotients}
-  Let \(V\) be a \(k\)-vector space and \(W \subseteq V\) be a subspace. Let
-  also \(L\) be any \(k\)-vector space and a \(k\)-linear morphism \(f : V \to L
-  \) such that \(\forall w \in W, f(w) = 0\), that is \(W \subseteq \ker f\).
-  There exists a unique \(k\)-linear morphism \(\ell: V/W \to L\) such that the
-  following diagram commutes
-  \[
-    \begin{tikzcd}
-       &V \ar["f", r] \ar["\pi", twoheadrightarrow, d] &L \\
-       &V/W \ar[swap, dashed, "\ell", ru]
-    \end{tikzcd}
-  \]
-  Moreover, \(\ker \ell = \ker f / W\) and  \(\im(\ell) = \im(f)\).
+\label{thm: universal property for quotients}
+Let \(V\) be a \(k\)-vector space and \(W \subseteq V\) be a subspace. Let
+also \(L\) be any \(k\)-vector space and a \(k\)-linear morphism \(f : V \to L
+\) such that for all \(w \in W\) we have \(f(w) = 0\), that is \(W \subseteq \ker f\).
+There exists a unique \(k\)-linear morphism \(\ell: V/W \to L\) such that the
+following diagram commutes
+\[
+  \begin{tikzcd}
+      &V \ar["f", r] \ar["\pi", twoheadrightarrow, d] &L \\
+      &V/W \ar[swap, dashed, "\ell", ru]
+  \end{tikzcd}
+\]
+Moreover, \(\ker \ell = \ker f / W\) and  \(\im(\ell) = \im(f)\).
 \end{theorem}
 
 \begin{proof}
-  Since we need \(\ell  \pi = f\) then \(\ell  \pi : v \xmapsto \pi
-  [v] \xmapsto \ell f(v)\). We first show that it is indeed well
-  defined. For that, suppose \(v \sim u\), that is \([v] =
-  [u]\), then we know that since they belong to the same class, they must have the
-  same image under the mapping \(\ell\). Notice that since \(v \sim u
-  \Leftrightarrow v - u \in W \subseteq \ker f\) then \(f(v - u) = f(v) - f(u) =
-  0\) and therefore indeed \(f(v) = f(u)\) whenever \([v] =
-  [u]\). The uniqueness of \(\ell\) comes from the fact that its image depends
-  strictly on the unique image of \(f\).
+Since we need \(\ell  \pi = f\) then \(\ell  \pi : v \xmapsto \pi
+[v] \xmapsto \ell f(v)\). We first show that it is indeed well
+defined. For that, suppose \(v \sim u\), that is \([v] =
+[u]\), then we know that since they belong to the same class, they must have the
+same image under the mapping \(\ell\). Notice that since \(v \sim u
+\Leftrightarrow v - u \in W \subseteq \ker f\) then \(f(v - u) = f(v) - f(u) =
+0\) and therefore indeed \(f(v) = f(u)\) whenever \([v] =
+[u]\). The uniqueness of \(\ell\) comes from the fact that its image depends
+strictly on the unique image of \(f\).
 
-  Now we show the last two propositions. For the first one, notice that \(\ker
-  \ell = \{[v] \in V/W : v \in \ker f\} = \ker f / W\). For the last
-  statement of the theorem we have that since \(\ell  \pi = f\) then
-  \(\im(f) \subseteq \im(\ell)\) and also \(\pi\) is surjective, thus
-  \(\im(\ell) \subseteq \im(f)\), which proves what is proposed at last.
+Now we show the last two propositions. For the first one, notice that \(\ker
+\ell = \{[v] \in V/W \colon v \in \ker f\} = \ker f / W\). For the last
+statement of the theorem we have that since \(\ell  \pi = f\) then
+\(\im(f) \subseteq \im(\ell)\) and also \(\pi\) is surjective, thus
+\(\im(\ell) \subseteq \im(f)\), which proves what is proposed at last.
 \end{proof}
 
 \begin{theorem}[First Isomorphism]\label{thm: first isomorphism}
-  Let \(f : V \to W\) be a \(k\)-linear morphism, then the injective
-  \(k\)-linear morphism \(\ell : V / \ker f \hookrightarrow W\) is such that
-  \[
-     V / \ker f \iso \im(f).
-  \]
-  is an isomorphism of \(k\)-vector spaces.
+Let \(f : V \to W\) be a \(k\)-linear morphism, then the injective
+\(k\)-linear morphism \(\ell : V / \ker f \hookrightarrow W\) is such that
+\[
+    V / \ker f \iso \im(f).
+\]
+is an isomorphism of \(k\)-vector spaces.
 \end{theorem}
 
 \begin{proof}
-   This is just a special case of the universal property.
+  This is just a special case of the universal property.
 \end{proof}
 
 \begin{theorem}[Second Isomorphism]\label{thm: second isomorphism}
-   Let \(V\) be a \(k\)-vector space and \(U, W \subseteq V\) be subspaces. Then
-   there is a natural isomorphism
-   \[
-     (W + U)/U \iso W/(W \cap U).
-   \]
+  Let \(V\) be a \(k\)-vector space and \(U, W \subseteq V\) be subspaces. Then
+  there is a natural isomorphism
+  \[
+    (W + U)/U \iso W/(W \cap U).
+  \]
 \end{theorem}
 
 \begin{proof}
-  Notice that this isomorphism needs to be the mapping
-  \[
-    (W + U)/U \ni [w + u] \longmapsto [w] \in W/(W \cap U)
-  \]
-  Notice that we have the mappings
-  \begin{gather*}
-    [w + u] + [w' + u'] = [(w + w')+(u+u')] \longmapsto [w + w'] = [w] + [w']
-    \\
-    c[w + u] = [cw + cu] \longmapsto [cw] = c[w]
-  \end{gather*}
-  which shows the conditions for the mapping to be a \(k\)-linear morphism. Now
-  notice that the mapping is clearly surjective, since given any class \([w] \in
-  W/(W\cap U)\) we have the element \([w + u] \in (W + U)/U\), where \(u\) is
-  any element of \(U\) and moreover \([w + u] \mapsto [w]\) from construction,
-  showing the surjective character of the mapping. Moreover, notice that \([w]
-  \in W/(W\cap U) \Leftrightarrow w \in U\), thus the kernel of the mapping is
-  equal to \(U\). Now by means of the first isomorphism theorem shows that the
-  mapping is also injective.
+Notice that this isomorphism needs to be the mapping
+\[
+  (W + U)/U \ni [w + u] \longmapsto [w] \in W/(W \cap U)
+\]
+Notice that we have the mappings
+\begin{gather*}
+  [w + u] + [w' + u'] = [(w + w')+(u+u')] \longmapsto [w + w'] = [w] + [w']
+  \\
+  c[w + u] = [cw + cu] \longmapsto [cw] = c[w]
+\end{gather*}
+which shows the conditions for the mapping to be a \(k\)-linear morphism. Now
+notice that the mapping is clearly surjective, since given any class \([w] \in
+W/(W\cap U)\) we have the element \([w + u] \in (W + U)/U\), where \(u\) is
+any element of \(U\) and moreover \([w + u] \mapsto [w]\) from construction,
+showing the surjective character of the mapping. Moreover, notice that \([w]
+\in W/(W\cap U) \Leftrightarrow w \in U\), thus the kernel of the mapping is
+equal to \(U\). Now by means of the first isomorphism theorem shows that the
+mapping is also injective.
 \end{proof}
 
 \begin{theorem}[Third Isomorphism]\label{thm: third isomorphism}
-  Let \(V\) be a \(k\)-vector space and let the subspaces \(U \subseteq W
-  \subseteq V\). Then there exists an embedding \(W/U \hookrightarrow V/U\) with
-  a mapping \([w] \mapsto [w]\) such that \(W/U\) can be regarded as a subspace
-  of \(V/U\). Moreover, we have a natural isomorphism
-  \[
-    V/W \iso (V/U) \big / (W/U).
-  \]
+Let \(V\) be a \(k\)-vector space and let the subspaces \(U \subseteq W
+\subseteq V\). Then there exists an embedding \(W/U \hookrightarrow V/U\) with
+a mapping \([w] \mapsto [w]\) such that \(W/U\) can be regarded as a subspace
+of \(V/U\). Moreover, we have a natural isomorphism
+\[
+  V/W \iso (V/U) \big / (W/U).
+\]
 \end{theorem}
 
 \begin{proof}
-  Consider the morphism \(\varphi : V/U \to V/W\) with the mapping \([v]
-  \xmapsto \varphi [v]\). Since \(U \subseteq W\) then we have that \([v] = [v']
-  \in V/U\) implies \([v] = [v'] \in V/W\), which shows that \(\varphi\) is well
-  defined.  Moreover, given a class \([v] \in V/W\) we have the corresponding
-  class \([v] \in V/U\) such that \([v] \xmapsto \varphi [v]\), thus
-  \(\varphi\) is surjective.
+Consider the morphism \(\varphi : V/U \to V/W\) with the mapping \([v]
+\xmapsto \varphi [v]\). Since \(U \subseteq W\) then we have that \([v] = [v']
+\in V/U\) implies \([v] = [v'] \in V/W\), which shows that \(\varphi\) is well
+defined.  Moreover, given a class \([v] \in V/W\) we have the corresponding
+class \([v] \in V/U\) such that \([v] \xmapsto \varphi [v]\), thus
+\(\varphi\) is surjective.
 
-  Moreover, notice that if \([w] \in W/U\) then from the embedding we have the
-  corresponding class \([w] \in V/U\), we'll have two possibilities, if \([w] =
-  [0]\), then the \(k\)-linear morphism \(\varphi\) will map it to \([0]\), on
-  the other hand, if \([w] \neq [0]\) then \(w \in W\) implies that \([w]
-  \xmapsto \varphi [w] = [0] \in V/W\) so that in both cases we have \([w] \in
-  W/U \Rightarrow [w] \in \ker \varphi\) so that \(W/U \subseteq \ker \varphi\).
-  Moreover, if \(V/U \ni [v] \in \ker \varphi\), then \([v] = [0] \in V/W\)
-  which means that \(v \in W\) and therefore we have the corresponding class
-  \([v] \in W/U\), which sums up to \(\ker \varphi \subseteq W/U\) and thus
-  \(\ker \varphi = W/U\).  From the first isomorphism theorem we have that
-  \[
-    (V/U) \big / (W/U) \iso V/W
-  \]
-  since the image of \(\varphi\) is equal to \(V/W\), settling the proof.
+Moreover, notice that if \([w] \in W/U\) then from the embedding we have the
+corresponding class \([w] \in V/U\), we'll have two possibilities, if \([w] =
+[0]\), then the \(k\)-linear morphism \(\varphi\) will map it to \([0]\), on
+the other hand, if \([w] \neq [0]\) then \(w \in W\) implies that \([w]
+\xmapsto \varphi [w] = [0] \in V/W\) so that in both cases we have \([w] \in
+W/U \Rightarrow [w] \in \ker \varphi\) so that \(W/U \subseteq \ker \varphi\).
+Moreover, if \(V/U \ni [v] \in \ker \varphi\), then \([v] = [0] \in V/W\)
+which means that \(v \in W\) and therefore we have the corresponding class
+\([v] \in W/U\), which sums up to \(\ker \varphi \subseteq W/U\) and thus
+\(\ker \varphi = W/U\).  From the first isomorphism theorem we have that
+\[
+  (V/U) \big / (W/U) \iso V/W
+\]
+since the image of \(\varphi\) is equal to \(V/W\), settling the proof.
 \end{proof}

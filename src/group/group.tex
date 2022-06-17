@@ -55,12 +55,12 @@ Notice that \(a = a e = (a c) c^{-1} = (b c) c^{-1} = b e = b\).
 \end{proof}
 
 \begin{proposition}
-Let \(G\) be a group. If \(g \in G\), then the collection \(\{g h: h \in G\}\)
+Let \(G\) be a group. If \(g \in G\), then the collection \(\{g h \colon h \in G\}\)
 is equal to \(G\).
 \end{proposition}
 
 \begin{proof}
-Denote \(G' := \{g h: h \in G\}\). Clearly we have \(G' \subseteq G\). On the
+Denote \(G' \coloneq \{g h \colon h \in G\}\). Clearly we have \(G' \subseteq G\). On the
 other hand, if \(\ell \in G\), the element \(g (g^{-1} \ell) = e \ell = \ell
 \in G'\), hence \(G \subseteq G'\). Thus \(G = G'\).
 \end{proof}
@@ -175,7 +175,7 @@ all \(m \in \Z_{\geq 0}\) the element \(g^m\) has finite order. For
 From divisibility arguments, we have \(\operatorname{lcm}(a, b)
 \operatorname{gcd}(a, b) = ab\) for integers \(a\) and \(b\), hence the second
 equality is justified. We prove the equality \(|g^m| =
-\frac{\operatorname{lcm}(m, |g|)} m\). For the sake of notation, let \(d :=
+\frac{\operatorname{lcm}(m, |g|)} m\). For the sake of notation, let \(d \coloneq
 |g^m|\). Notice that \(g^{m d} = e\) and hence \(|g|\) divides \(m d\). Since
 \(d\) is the least positive integer with such property, it follows that \(m
 d\) is the least common multiple of \(m\) and \(|g|\). Therefore \(m |g^m| =
@@ -279,7 +279,7 @@ therefore \(gh = g^{-1} h^{-1} = g^{-1}(ghgh)h^{-1} = hg\) commutes.
 \begin{lemma}
 Let \(G\) be a finite group such that any element has order at most \(2\). Let
 \(H\) be any subgroup of \(G\), for any \(t \in G \setminus H\) consider the
-collection \(T = H \cup \{h t : h \in H\}\), then \(T\) is a subgroup of \(G\)
+collection \(T = H \cup \{h t \colon h \in H\}\), then \(T\) is a subgroup of \(G\)
 with \(|T| = 2|H|\).
 \end{lemma}
 
@@ -302,7 +302,7 @@ that generate any other element contained in \(G\):
 \begin{enumerate}
   \item (Base case) If \(G = H_j\), return \(H_j\).
   \item (Recursion) Let \(g \in G \setminus H_j\) and construct \(H_{j + 1} =
-    H_j \cup \{h g: h \in H_j\}\), recursively call the algorithm with \(H_{j
+    H_j \cup \{h g \colon h \in H_j\}\), recursively call the algorithm with \(H_{j
     + 1}\).
 \end{enumerate}
 Such algorithm is certain to terminate since \(|G|\) is finite. Notice that
@@ -343,7 +343,7 @@ making
 \]
 
 Suppose there exists \(m > 1\) distinct elements in \(G\) with order \(2\) and
-define \(T = \{f \in G: |f| \leq 2\}\) and \(S = G \setminus T\). From the
+define \(T = \{f \in G \colon |f| \leq 2\}\) and \(S = G \setminus T\). From the
 last case we know that \(\prod_{s \in S} s = e\). Note that \(T\) forms a
 subgroup of \(G\):
 \begin{itemize}
@@ -357,7 +357,7 @@ subgroup of \(G\):
 Moreover, the order of the group \(T\) has to be of the form \(2^k\) for some
 \(k \geq 2\), from \cref{lem: order-2n}. From the same lemma, choose a
 subgroup \(H\) with order \(2^{k-1}\) and take \(u \in T \setminus H\), so
-that \(T = H \cup \{hu: h \in H\}\) --- such \(u\) exists from the algorithm
+that \(T = H \cup \{hu \colon h \in H\}\) --- such \(u\) exists from the algorithm
 constructed in the lemma. Since \(T\) is commutative (see \cref{lem:
 order2-commutes}), we can write
 \[
@@ -508,7 +508,7 @@ We proceed via induction on the number of points of \(\{1, \dots, n\}\). For
 the base case \(n = 2\) the composition is trivial. Assume as the induction
 hypothesis that for \(n - 1 > 2\) the statement is true. Now, consider
 \(\sigma \in S_n\) and \(i \in \{1, \dots, n\}\) be any element in
-the ordered collection \(I_n := \{1, \dots, n\}\). Denote \(\tau_{i, j}\) the
+the ordered collection \(I_n \coloneq \{1, \dots, n\}\). Denote \(\tau_{i, j}\) the
 transposition that changes \(i\) with \(j\) and maintains unchanged the
 remainder of the points. Assume that \(\sigma(i) = j\), then clearly
 \(\tau_{i, j} \sigma(i) = \tau_{i, j}(j) = i\). Notice that since \(\tau_{i,
@@ -585,7 +585,7 @@ the sign of \(\sigma\) as a map \(\sign: S_n \to
 \{1, -1\}\) such that
 \[
   \sign(\sigma) = (-1)^m, \text{ where }
-  m := |\{(i, j) : 1 \leq i < j \leq n,\ \sigma(i) > \sigma(j)\}|.
+  m \coloneq |\{(i, j) \colon 1 \leq i < j \leq n,\ \sigma(i) > \sigma(j)\}|.
 \]
 Equivalently, if \(x_1, \dots, x_n \in k\) then we can define the
 sign of \(\sigma\) as
@@ -617,9 +617,9 @@ Consider the composition \(\sigma \tau\), then we have
     \sign(\sigma \tau) = \prod_{i < j} \frac{x_{\sigma\tau(i)} -
     x_{\sigma\tau(j)}}{x_i - x_j}.
 \end{equation}
-Define the following: when \(\tau(i) < \tau(j)\) then \(\tau(i) := p\) and
-\(\tau(j) := q\); on the other hand, when \(\tau(j) < \tau(i)\) let \(\tau(i)
-:= q\) and \(\tau(j) := p\). This way we find that
+Define the following: when \(\tau(i) < \tau(j)\) then \(\tau(i) \coloneq p\) and
+\(\tau(j) \coloneq q\); on the other hand, when \(\tau(j) < \tau(i)\) let \(\tau(i)
+\coloneq q\) and \(\tau(j) \coloneq p\). This way we find that
 \begin{equation}\label{eq: sigma term}
   \frac{x_{\sigma\tau(i)} - x_{\sigma\tau(j)}}{x_{\tau(i)} - x_{\tau(j)}}
   = \frac{x_{\sigma(p)} - x_{\sigma(q)}}{x_p - x_q}.

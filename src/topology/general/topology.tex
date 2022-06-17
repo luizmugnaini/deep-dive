@@ -1,7 +1,5 @@
 \section{Topology}
 
-\todo[inline]{Brush up this section, it's too bare bones.}
-
 \begin{definition}[Topology]\label{def:topology}
 Let \(X\) be a set and \(\mathcal T \subseteq 2^X\). We say that \(\mathcal T\)
 is a topology for \(X\) if the following properties are satisfied
@@ -25,16 +23,16 @@ We proceed by listing some examples of topologies that are somewhat interesting,
 they are included here in order to familiarize the reader with the possible
 contructions for the topology on a given set \(X\):
 \begin{itemize}\setlength\itemsep{0em}
-\item \(\mathcal T_1 = \{U \subseteq X : U = \emptyset \text{ or
+\item \(\mathcal T_1 = \{U \subseteq X \colon U = \emptyset \text{ or
   } X \setminus U \text{ is finite}\}\) is the \emph{cofinite topology} on \(X\).
 
-\item \(\mathcal T_2 = \{U \subseteq X : U = \emptyset \text{ or } X \setminus U
+\item \(\mathcal T_2 = \{U \subseteq X \colon U = \emptyset \text{ or } X \setminus U
   \text{ is countable}\}\) is the \emph{cocountable topology} on \(X\).
 
-\item Let \(p \in X\), then \(\mathcal T_3 = \{U \subseteq X : U = \emptyset
+\item Let \(p \in X\), then \(\mathcal T_3 = \{U \subseteq X \colon U = \emptyset
   \text{ or } p \in U\}\) is the \emph{particular point topology} on \(X\).
 
-\item Let \(p \in X\), then \(\mathcal T_4 = \{U \subseteq X : U = X \text{ or }
+\item Let \(p \in X\), then \(\mathcal T_4 = \{U \subseteq X \colon U = X \text{ or }
   p \not\in U\}\) is the \emph{excluded point topology} on \(X\).
 \item The collection \(2^X\) forms what is called the \emph{discrete topology}
   on \(X\).
@@ -203,7 +201,7 @@ Let \(X\) be a topological space and \(A \subseteq X\) be a set. We define
   The closure of \(A\) is the least closed set, \(\overline A\), that
   contains \(A\). This can be equivalently described as
   \[
-    \overline A = \bigcap \{F \subseteq X : A \subseteq F \text{ and } F
+    \overline A = \bigcap \{F \subseteq X \colon A \subseteq F \text{ and } F
     \text{ is closed}\}.
   \]
 
@@ -211,7 +209,7 @@ Let \(X\) be a topological space and \(A \subseteq X\) be a set. We define
   The interior of \(A\) is the biggest open set \(\Int A\) contained in
   \(A\). That is
     \[
-      \Int A = \bigcup \{U \subseteq X : U \subseteq A, U \text{ is open}\}.
+      \Int A = \bigcup \{U \subseteq X \colon U \subseteq A, U \text{ is open}\}.
   \]
 
 \item\label{def: exterior}
@@ -278,14 +276,14 @@ The following are equivalences on the definitions of open and closed sets.
 \begin{proof}
 \begin{enumerate}[(a)]\setlength\itemsep{0em}
 \item Let \(A\) be open, then, in particular, \(A \in \{U \subseteq X
-  : U \subseteq A, U \text{ is open}\}\), thus \(A = \Int A\). Moreover, from
+  \colon U \subseteq A, U \text{ is open}\}\), thus \(A = \Int A\). Moreover, from
   the definition of \(\partial A\) it follows that \(A \cap \partial A = \Int A
   \cap A \setminus (\Int A \cup \Ext A) = \emptyset\). On the other hand, if \(p
   \in A\) is any point, then \(A\) itself is a neighbourhood of \(p\).
 
   In order to finish the equivalence chain, let \(A\) be such that all of its
   points have a neighbourhood contained in \(A\). We can then define the
-  collection of neighbourhoods \(\mathcal U = \{U_p \subseteq A : p \in A, p \in
+  collection of neighbourhoods \(\mathcal U = \{U_p \subseteq A \colon p \in A, p \in
   U\}\). Notice that \(A \subseteq \bigcup_{U \in \mathcal U} U\) and the
   opposite inclusion is clearly true --- thus \(A\) is the union of a collection
   of open sets of \(X\), hence \(A\) is open.
@@ -335,7 +333,7 @@ set \(A\)
 that there exists \(U \subseteq X\) neighbourhood of \(x\) such that \(U \cap A
 = \emptyset\). Then \(A \subseteq X \setminus U\), that is, \(A\) is a subset of
 the complement of \(U\). Since \(U\) is open, then \(X \setminus U \in C_A
-\coloneq \{F \subseteq X : A \subseteq F,\ F \text{ is closed}\}\). From the
+\coloneq \{F \subseteq X \colon A \subseteq F,\ F \text{ is closed}\}\). From the
 definition of closure, we have that \(\overline A \subseteq X \setminus U\) and
 therefore \(x \not\in \overline A\). (b) implies (c): From the definition of a
 basis at the point \(x\), we know that every \(U \in \mathcal B_x\) is a
@@ -434,14 +432,14 @@ X \setminus \overline A\).
 \end{proposition}
 
 \begin{proof}
-We prove the first equality. Let \(\mathcal A := \{U \subseteq A : U \text{ is
+We prove the first equality. Let \(\mathcal A \coloneq \{U \subseteq A \colon U \text{ is
 open}\}\), from definition we have that \(\Int A = \bigcup_{U \in \mathcal A}
 U\), moreover, \(X \setminus \Int A = X \setminus \bigcup_{U \in \mathcal A} U
 = \bigcap_{U \in \mathcal A} X \setminus U\) from de Morgan's Laws. Notice that
 obviously \(X \setminus U \subseteq X\) and moreover since \(U\) is open, then
 the complement \(X \setminus U\) is closed. This makes \(X \setminus \Int(A) =
 \bigcap_{U \in \mathcal A} X \setminus U = \overline{X \setminus A}\). Now we
-show the second equality. Define \(\mathcal{\widetilde A} := \{U \subseteq A : U
+show the second equality. Define \(\mathcal{\widetilde A} \coloneq \{U \subseteq A \colon U
 \text{ is closed}\}\), then \(\overline A = \bigcap_{U \in \mathcal{\widetilde
 A}} U\) and hence \(X \setminus \overline A = X \setminus \bigcap_{U \in
 \mathcal{\widetilde A}} U = \bigcup_{U \in \widetilde{\mathcal{A}}} X \setminus
@@ -473,7 +471,7 @@ B} = \overline A \cup \overline B\). Notice that \(\overline A,
 A collection of subsets \(\{A_i\}_{i \in I} \subseteq 2^X\) of a topological
 space \(X\) is said to be a locally finite family if for every point \(x\)
 there exists a neighbourhood \(U \subseteq X\) for which the collection \(\{i
-\in I: U \cap A_i \neq \emptyset\}\) is finite.
+\in I \colon U \cap A_i \neq \emptyset\}\) is finite.
 \end{definition}
 
 \begin{definition}[Discrete family]
@@ -498,7 +496,7 @@ all \(i \in I\), hence \(\bigcup_{i \in  I} \overline{A_i} \subseteq
 \overline{\bigcup_{i \in I} A_i}\). Moreover, we have from hypothesis that
 \(\{A_i\}_{i \in I}\) is a locally finite family, thus given \(x \in
 \overline{\bigcup_{i \in  I} A_i}\) we can find a neighbourhood of \(x\), say
-\(U \subset X\), such that \(I_0 := \{i \in I : U \cap A_i \neq \emptyset\}\)
+\(U \subset X\), such that \(I_0 \coloneq \{i \in I \colon U \cap A_i \neq \emptyset\}\)
 is finite. Notice that from \cref{prop: closure equivalent prop} we have that
 \(x\) cannot be a limit point of any of the sets with index \(i \in I
 \setminus I_0\), hence \(x \not\in \overline{\bigcup_{i \in  I \setminus I_0}
@@ -518,10 +516,10 @@ family \(\{\overline{A_i}\}_{i \in I}\) is locally finite (resp. discrete).
 \begin{proof}
 Let the locally finite (resp. discrete) family \(\{A_i\}_{i \in I}\). Given
 any element \(x \in X\) and a neighbourhood \(U\) of \(x\) such that the
-indexing set \(I_0 := \{i \in I: U \cap A_i \neq \emptyset\}\) is finite
+indexing set \(I_0 \coloneq \{i \in I \colon U \cap A_i \neq \emptyset\}\) is finite
 (resp. is either empty or a singleton). Notice that since \(U \cap A_i
-\subseteq U \cap \overline{A_i}\), we find that \(\forall i \in I_0, U \cap
-\overline{A_i} \neq \emptyset\), so that \(I_0 = I_0' := \{i \in I: U \cap
+\subseteq U \cap \overline{A_i}\), we find that for all \(i \in I_0, U \cap
+\overline{A_i} \neq \emptyset\), so that \(I_0 = I_0' \coloneq \{i \in I \colon U \cap
 \overline{A_i} \neq \emptyset\}\). Since \(U\) is an open set, from \cref{cor:
 disjoint closure persistence} we find that \(U \cap \overline{A_i} = U \cap
 A_i = \emptyset\) for all \(i \in I \setminus I_0\). Which finishes the proof.

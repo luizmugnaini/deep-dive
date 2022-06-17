@@ -3,118 +3,119 @@
 \subsection{Vector Spaces}
 
 \begin{definition}[Vector Space]\label{def: vector space}
-   A set \(V\) is called a \emph{vector space} over a field \(k\) (or
-   \(k\)-space) if it is equipped with an internal operation \(+ : V \times V
-   \to V\) where \((a, b) \mapsto a + b\) and the external operation \(\cdot : k
-   \times V \to V\) where \((r, a) \mapsto r \cdot a\). We normally call the
-   elements of \(V\) as vectors, and the elements of \(k\) as scalars. Also,
-   these operations satisfy
-   \begin{enumerate}[I.]
-      \item \((V, +)\) is an abelian group.
-      \item Multiplication of vectors by scalars is associative and distributive
-        and is unitary (that is, \(1 \cdot a = a\) for every \(a \in V\)).
-   \end{enumerate}
+A set \(V\) is called a \emph{vector space} over a field \(k\) (or
+\(k\)-space) if it is equipped with an internal operation \(+ : V \times V
+\to V\) where \((a, b) \mapsto a + b\) and the external operation \(\cdot : k
+\times V \to V\) where \((r, a) \mapsto r \cdot a\). We normally call the
+elements of \(V\) as vectors, and the elements of \(k\) as scalars. Also,
+these operations satisfy
+\begin{enumerate}[I.]
+  \item \((V, +)\) is an abelian group.
+  \item Multiplication of vectors by scalars is associative and distributive
+    and is unitary (that is, \(1 \cdot a = a\) for every \(a \in V\)).
+\end{enumerate}
 \end{definition}
 
 \subsection{Subspaces}
 
 \begin{definition}[Subspaces]\label{def: subspaces}
-   Let \(V\) be a vector space. A set \(S \subseteq V\) is called a
-   \emph{subspace} of \(V\) if it satisfies all properties of a vector space.
-   Also \(S\) is called a \emph{proper subspace} if it is not equal to the
-   original vector space.
+Let \(V\) be a vector space. A set \(S \subseteq V\) is called a
+\emph{subspace} of \(V\) if it satisfies all properties of a vector space.
+Also \(S\) is called a \emph{proper subspace} if it is not equal to the
+original vector space.
 \end{definition}
 
 \begin{theorem}[Cover Avoidance]\label{thm: cover avoidance in infinite field}
-   A non-zero vector space \(V\) over an infinite field \(k\) is not the union
-   of a finite number of proper subspaces.
+A non-zero vector space \(V\) over an infinite field \(k\) is not the union
+of a finite number of proper subspaces.
 \end{theorem}
 
 \begin{proof}
-   Suppose, for the sake of contradiction, that \(V = \bigcup_{i \in  I} S_i\)
-   where \(I\) is a finite indexing set and \(S_i\) are all proper subspaces of
-   \(V\). Then, let \(S_1\) be such that it is not contained in any other
-   subspace \(S_i\). Define elements \(a \in S_1 \setminus \bigcup_{i \in
-   I \setminus \{1\} } S_i \) and \(b \in V \setminus S_1\) and construct the
-   set \(A := \{ra + b : r \in k\}\). Notice that if we have that one element
-   \(ra + b \in S_1\), the fact that \(a \in S_1\) makes \((ra + b) - ra = b
-   \in S_1\), contradicting the assumption of \(b \not\in S_1\) thus, we can't
-   have \(ra + b \in S_1\). Suppose now that we let \(ra + b, r'a + b \in S_i\)
-   different elements, for some \(i > 1\), then \((ra + b) - (r'a + b) = (r -
-   r')a \in S_i\) but since \(k\) is a field, then \(a \in S_i\) contradicting
-   again the construction and therefore we cannot have more than one element of
-   \(A\) contained in \(S_i\). Now, since \(A\) is an infinite set and is
-   contained in \(V\), then we cannot have the equality between \(V\) and the
-   finite union \(\bigcup_{i \in  I} S_i\).
+Suppose, for the sake of contradiction, that \(V = \bigcup_{i \in  I} S_i\)
+where \(I\) is a finite indexing set and \(S_i\) are all proper subspaces of
+\(V\). Then, let \(S_1\) be such that it is not contained in any other
+subspace \(S_i\). Define elements \(a \in S_1 \setminus \bigcup_{i \in
+I \setminus \{1\} } S_i \) and \(b \in V \setminus S_1\) and construct the
+set \(A \coloneq \{ra + b \colon r \in k\}\). Notice that if we have that one element
+\(ra + b \in S_1\), the fact that \(a \in S_1\) makes \((ra + b) - ra = b
+\in S_1\), contradicting the assumption of \(b \not\in S_1\) thus, we can't
+have \(ra + b \in S_1\). Suppose now that we let \(ra + b, r'a + b \in S_i\)
+different elements, for some \(i > 1\), then \((ra + b) - (r'a + b) = (r -
+r')a \in S_i\) but since \(k\) is a field, then \(a \in S_i\) contradicting
+again the construction and therefore we cannot have more than one element of
+\(A\) contained in \(S_i\). Now, since \(A\) is an infinite set and is
+contained in \(V\), then we cannot have the equality between \(V\) and the
+finite union \(\bigcup_{i \in  I} S_i\).
 \end{proof}
 
 \begin{definition}[Lattice]\label{def: lattice}
-   A poset \(P\) is called a \emph{lattice} if for every pair of
-   elements of \(P\) there exists a \emph{join} (or a least upper bound) and a
-   \emph{meet} (greatest lower bound). The set \(P\) is called a \emph{complete
-   lattice} if there exists a join and a meet for every collection of sets and
-   also every collection contains smallest and larger elements under the partial
-   order.
+A poset \(P\) is called a \emph{lattice} if for every pair of
+elements of \(P\) there exists a \emph{join} (or a least upper bound) and a
+\emph{meet} (greatest lower bound). The set \(P\) is called a \emph{complete
+lattice} if there exists a join and a meet for every collection of sets and
+also every collection contains smallest and larger elements under the partial
+order.
 \end{definition}
 
 \begin{proposition}[Intersection of subspaces]\label{prop: intersection of subspaces}
-   The intersection of any collection of subspaces of a given vector space is a
-   subspace of the original vector space. This intersection contains the
-   greatest lower bound of subspace that is contained in every subspace of the
-   intersection, then, we denote it by
-   \[
-      \bigcap_{i \in  I} S_i = \mathrm{Glb}\{S_i : i \in I\}.
-   \]
+The intersection of any collection of subspaces of a given vector space is a
+subspace of the original vector space. This intersection contains the
+greatest lower bound of subspace that is contained in every subspace of the
+intersection, then, we denote it by
+\[
+  \bigcap_{i \in  I} S_i = \mathrm{Glb}\{S_i \colon i \in I\}.
+\]
 \end{proposition}
 
 \begin{proof}
-   Let \(V\) be a \(k\)-space and \(S_i\) be an arbitrary subspace. Notice that
-   \(0 \in \bigcup_{i \in  I} S_i\). Let elements \(u, v \in \bigcap_{i \in  I}
-   S_i\) so that for all subspace we have that the element \(u + vt \in S_i\)
-   for any given \(t \in k\), thus \(u + vt \in \bigcap_{i \in  I} S_i\), which
-   makes the union a vector space by itself. The claim follows.
+Let \(V\) be a \(k\)-space and \(S_i\) be an arbitrary subspace. Notice that
+\(0 \in \bigcup_{i \in  I} S_i\). Let elements \(u, v \in \bigcap_{i \in  I}
+S_i\) so that for all subspace we have that the element \(u + vt \in S_i\)
+for any given \(t \in k\), thus \(u + vt \in \bigcap_{i \in  I} S_i\), which
+makes the union a vector space by itself. The claim follows.
 \end{proof}
 
 \begin{definition}[Sum of subspaces]\label{def: sum of subspaces}
-   Let \(V\) be a vector space and \(S_i\) be subspaces of \(V\). We define the
-   sum of such subspaces as
-   \[
-      \sum_{i \in I} S_i := \left\{\sum_j s_j : s_j \in \bigcup_{i \in  I}
-      S_i\right\}.
-   \]
-   Therefore the least upper bound under set inclusion as
-   \[
-      \mathrm{Lub}\{S_i : i \in I\} = \sum_{i \in I} S_i.
-   \]
+Let \(V\) be a vector space and \(S_i\) be subspaces of \(V\). We define the
+sum of such subspaces as
+\[
+  \sum_{i \in I} S_i \coloneq \left\{\sum_j s_j \colon s_j \in \bigcup_{i \in  I}
+  S_i\right\}.
+\]
+Therefore the least upper bound under set inclusion as
+\[
+  \mathrm{Lub}\{S_i \colon i \in I\} = \sum_{i \in I} S_i.
+\]
 \end{definition}
 
-\begin{theorem}[Subspaces form a complete lattice]\label{thm: subspaces form a lattice}
-   The set containing all subspaces of \(V\), denoted by \(\mathcal{S}(V)\), is
-   a complete lattice under set inclusion (partial order of the set), with
-   smallest element \(\{0\}\) (the zero subspace) and largest element \(V\). The
-   meet of any collection of sets \(\{S_i : i \in I\}\), where \(I\) is a finite
-   indexing set, is
-   \[
-      \bigcap_{i \in  I} S_i = \mathrm{Glb}\{S_i : i \in I\}
-   \]
-   and the join is defined as
-   \[
-      \sum_{i \in I} S_i = \mathrm{Lub}\{S_i : i \in I\}.
-   \]
+\begin{theorem}[Subspaces form a complete lattice]
+\label{thm: subspaces form a lattice}
+The set containing all subspaces of \(V\), denoted by \(\mathcal{S}(V)\), is
+a complete lattice under set inclusion (partial order of the set), with
+smallest element \(\{0\}\) (the zero subspace) and largest element \(V\). The
+meet of any collection of sets \(\{S_i \colon i \in I\}\), where \(I\) is a finite
+indexing set, is
+\[
+  \bigcap_{i \in  I} S_i = \mathrm{Glb}\{S_i \colon i \in I\}
+\]
+and the join is defined as
+\[
+  \sum_{i \in I} S_i = \mathrm{Lub}\{S_i \colon i \in I\}.
+\]
 \end{theorem}
 
 \subsection{Morphisms of Vector Spaces}
 
 \begin{definition}[Morphisms]\label{def: k-linear morphism}
-   Let \(V, L\) be \(k\)-vector spaces. We say that \(\varphi : V \to L\) is a
-   morphism of vector spaces if it satisfies
-   \begin{enumerate}[I.]
-      \item \(\varphi(0) = 0\), that is \(V \ni 0 \mapsto 0 \in L\).
-      \item For all \(u, v \in V\), \(\varphi(u + b) = \varphi(u) +
-         \varphi(v)\).
-      \item For all \(a \in k\) and \(u \in V\) we have \(\varphi(au) =
-         a\varphi(u)\).
-   \end{enumerate}
+Let \(V, L\) be \(k\)-vector spaces. We say that \(\varphi : V \to L\) is a
+morphism of vector spaces if it satisfies
+\begin{enumerate}[I.]
+  \item \(\varphi(0) = 0\), that is \(V \ni 0 \mapsto 0 \in L\).
+  \item For all \(u, v \in V\), \(\varphi(u + b) = \varphi(u) +
+      \varphi(v)\).
+  \item For all \(a \in k\) and \(u \in V\) we have \(\varphi(au) =
+      a\varphi(u)\).
+\end{enumerate}
 \end{definition}
 
 Notice in fact that the first property of the morphism is in fact redundant. By
@@ -122,75 +123,75 @@ means of item two we can see that \(\varphi(0) = \varphi(0) + \varphi(0)\), for
 which the item one is obtained.
 
 \begin{definition}\label{def: linear operator}
-  A \(k\)-linear morphism \(f : V \to V\) is called a linear operator.
+A \(k\)-linear morphism \(f : V \to V\) is called a linear operator.
 \end{definition}
 
 \begin{proposition}\label{prop: category of vector spaces}
-   The \(k\)-vector spaces, together with morphism between such vector spaces,
-   form a category, of which we'll denote by \(\Vect_k\).
+The \(k\)-vector spaces, together with morphism between such vector spaces,
+form a category, of which we'll denote by \(\Vect_k\).
 \end{proposition}
 
 \begin{proof}
-   Certainly, the identity map \(\Id_V : V \to V\) is a morphism of \(k\)-vector
-   spaces and all of the properties come directly from the fact that \(V\) is a
-   vector space.
+Certainly, the identity map \(\Id_V : V \to V\) is a morphism of \(k\)-vector
+spaces and all of the properties come directly from the fact that \(V\) is a
+vector space.
 
-   Another important feature of morphism between vector spaces is that they are
-   closed under composition. Let \(\varphi : V \to L\) and \(\psi : L \to U\) be
-   morphism between \(k\)-vector spaces, then the composition \(\psi
-   \varphi : V \to U\) is such that, given any \(u, v \in V\) then
-   \[
-      \psi(\varphi(u+v)) = \psi(\varphi(u) + \varphi(v)) = \psi(\varphi(u)) +
-      \psi(\varphi(v))
-   \]
-   and also, being \(a \in k\), we have
-   \[
-      \psi(\varphi(au)) = \psi(a\varphi(u)) = a \psi(\varphi(u)).
-   \]
-   Which proves the closure under composition.
+Another important feature of morphism between vector spaces is that they are
+closed under composition. Let \(\varphi : V \to L\) and \(\psi : L \to U\) be
+morphism between \(k\)-vector spaces, then the composition \(\psi
+\varphi : V \to U\) is such that, given any \(u, v \in V\) then
+\[
+  \psi(\varphi(u+v)) = \psi(\varphi(u) + \varphi(v)) = \psi(\varphi(u)) +
+  \psi(\varphi(v))
+\]
+and also, being \(a \in k\), we have
+\[
+  \psi(\varphi(au)) = \psi(a\varphi(u)) = a \psi(\varphi(u)).
+\]
+Which proves the closure under composition.
 
-   We now prove that the composition of morphism of vector spaces is
-   associative. Let the morphisms be as before and define yet another morphism
-   \(\ell : W \to V\), then
-   \[
-      (\psi  (\varphi  \ell)) (w) = \psi(\varphi(\ell(w)) = (\psi
-      \varphi)(\ell(w)) = ((\psi  \varphi)  \ell) (w).
-   \]
+We now prove that the composition of morphism of vector spaces is
+associative. Let the morphisms be as before and define yet another morphism
+\(\ell : W \to V\), then
+\[
+  (\psi  (\varphi  \ell)) (w) = \psi(\varphi(\ell(w)) = (\psi
+  \varphi)(\ell(w)) = ((\psi  \varphi)  \ell) (w).
+\]
 
-   Consider the morphism \(\varphi : V \to L\), then clearly \(\varphi
-   \Id_V = \varphi = \Id_L  \varphi\). Together with the fact that the
-   collection of morphisms between \(k\)-vector spaces \(V, L\) and the
-   collection of morphisms between \(k\)-vector spaces \(U, W\), these two
-   collections are clearly disjoint for \(V \neq U\) and \(L \neq W\). This
-   finishes the proof of the properties needed for a category.
+Consider the morphism \(\varphi : V \to L\), then clearly \(\varphi
+\Id_V = \varphi = \Id_L  \varphi\). Together with the fact that the
+collection of morphisms between \(k\)-vector spaces \(V, L\) and the
+collection of morphisms between \(k\)-vector spaces \(U, W\), these two
+collections are clearly disjoint for \(V \neq U\) and \(L \neq W\). This
+finishes the proof of the properties needed for a category.
 \end{proof}
 
 \begin{proposition}[Initial and Final object]
-   The \(k \)-vector space \(0\) is a initial and final object of
-   \(\Vect_k\).
+The \(k \)-vector space \(0\) is a initial and final object of
+\(\Vect_k\).
 \end{proposition}
 
 \begin{proof}
-   Essentially, we need to prove that for all \(V \in \Obj(\Vect_k)\) there
-   exists unique morphisms \(\varphi\) and \(\psi\) where
-   \[
-     \begin{tikzcd}
-       0
-       \ar[r, bend left, dashed, "\psi"]
-         &V
-         \ar[l, bend left, dashed, "\varphi"]
-     \end{tikzcd}
-   \]
-   Notice that, since \(\varphi\) is a morphism of \(k\)-vector spaces, we'll
-   need to impose \(\varphi(0) = 0\) and thus this morphism is clearly unique
-   and satisfies the properties needed for a morphism. Moreover, the morphism
-   has a unique target element, thus the image of \(\psi\) is the singleton
-   \(\{0\}\) which is also clearly unique and satisfies the properties of
-   morphism.
+Essentially, we need to prove that for all \(V \in \Obj(\Vect_k)\) there
+exists unique morphisms \(\varphi\) and \(\psi\) where
+\[
+  \begin{tikzcd}
+    0
+    \ar[r, bend left, dashed, "\psi"]
+      &V
+      \ar[l, bend left, dashed, "\varphi"]
+  \end{tikzcd}
+\]
+Notice that, since \(\varphi\) is a morphism of \(k\)-vector spaces, we'll
+need to impose \(\varphi(0) = 0\) and thus this morphism is clearly unique
+and satisfies the properties needed for a morphism. Moreover, the morphism
+has a unique target element, thus the image of \(\psi\) is the singleton
+\(\{0\}\) which is also clearly unique and satisfies the properties of
+morphism.
 \end{proof}
 
 \begin{definition}[Isomorphism]
-   Let \(V, L \in \Obj(\Vect_k)\). We say that \(L\) and \(V\) are
-   isomorphic, that is \(L \iso V\), if there exists an isomorphism \(L \to V\)
-   in \(\Hom(L, V)\).
+Let \(V, L \in \Obj(\Vect_k)\). We say that \(L\) and \(V\) are
+isomorphic, that is \(L \iso V\), if there exists an isomorphism \(L \to V\)
+in \(\Hom(L, V)\).
 \end{definition}
