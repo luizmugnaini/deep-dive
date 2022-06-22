@@ -1,0 +1,400 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage[brazilian]{babel}
+
+% Page geometry
+\usepackage{fullpage}
+
+% Math stuff: do not mess with the ordering!
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{stmaryrd}
+\usepackage{tikz-cd}
+
+% Font
+\usepackage[no-math]{newpxtext} % last: mathpazo
+\usepackage{newpxmath}
+% Set arrow tip to that of newpxmath
+\tikzset{>=Straight Barb, commutative diagrams/arrow style=tikz}
+
+% Utilities
+\usepackage{enumerate}
+\usepackage{todonotes}
+
+% Color
+\usepackage{xcolor}
+\definecolor{brightmaroon}{rgb}{0.76, 0.13, 0.28}
+
+% References
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks = true,
+  allcolors  = brightmaroon,
+}
+\usepackage{cleveref}
+\usepackage[
+backend=biber,
+style=alphabetic,
+]{biblatex}
+\addbibresource{../src/bibliography.bib}
+
+% this is NEEDED in order to use babel with the brazilian module!!
+\tikzset{
+  every picture/.prefix style={
+    execute at begin picture=\shorthandoff{"}
+  }
+}
+
+\linespread{1.05}
+\vfuzz=14pt % No more vbox errors all over the place
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Horizontal rule
+\usepackage{multirow}
+
+% Environments
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{notation}[theorem]{Notation}
+
+% symbols
+\renewcommand{\qedsymbol}{\(\natural\)}% blacklozenge
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\setminus}{\smallsetminus}
+% \newcommand{\coloneq}{\coloneqq}
+
+% ':' for maps and '\colon' for relations on collections
+\DeclareMathSymbol{:}{\mathpunct}{operators}{"3A}
+\let\colon\relax
+\DeclareMathSymbol{\colon}{\mathrel}{operators}{"3A}
+
+% General
+\DeclareMathOperator{\Hom}{Mor}
+\DeclareMathOperator{\Fct}{Fct}
+\DeclareMathOperator{\Obj}{Obj}
+\DeclareMathOperator{\Mor}{Mor}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Id}{id}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\codom}{cod}
+
+% arrows
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\isoto}{\xrightarrow{\raisebox{-.6ex}[0ex][0ex]{$\sim$}}}
+\newcommand{\isonat}{\xRightarrow{\raisebox{-.8ex}[0ex][0ex]{$\sim$}}}
+\newcommand{\To}{\Rightarrow}
+\newcommand{\mono}{\rightarrowtail}
+\newcommand{\epi}{\twoheadrightarrow}
+\newcommand{\iso}{\simeq} % changed from simeq
+\newcommand{\dis}{\iso} % diagram isomorphism
+\newcommand{\nat}{\Rightarrow}
+\newcommand{\emb}{\hookrightarrow}
+\newcommand{\cat}{\mathcal}
+\renewcommand{\implies}{\Rightarrow}
+
+% Common collections
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\Q}{\mathbf{Q}}
+\newcommand{\CC}{\mathbf{C}}
+\newcommand{\R}{\mathbf{R}}
+\renewcommand{\emptyset}{\varnothing}
+\newcommand{\Uhs}{\mathbf{H}} % Upper half space
+\newcommand{\Proj}{\mathbf{P}} % Projective space
+
+% Common categories
+\newcommand{\Set}{{\textbf{Set}}}         %{{\cat{S}\textit{et}}}
+\newcommand{\Vect}{{\textbf{Vec}}}       %{{\cat{V}\textit{ect}}}
+\let\Top\relax
+\newcommand{\Top}{{\textbf{Top}}}         %{{\cat{T}\textit{op}}}
+\newcommand{\Grp}{{\textbf{Grp}}}         %{{\cat{G}\textit{rp}}}
+\newcommand{\Ab}{{\textbf{Ab}}}           %{{\cat{A}\textit{b}}}
+\newcommand{\Graph}{{\textbf{Graph}}}     %{{\cat{G}\textit{raph}}}
+
+\begin{document}
+\begin{titlepage}
+ \vfill
+  \begin{center}
+       \textsc{\LARGE \textbf{Universidade de São Paulo}} \\[2.0cm]
+
+       \vskip 0.5cm
+       \textsc{\large Luiz Gustavo Mugnaini Anselmo}
+
+       {\normalsize Curso de Ciências Moleculares \\
+         Turma 30, n\(^{\text{o}}\)
+         USP 11809746
+
+       E-mail: \texttt{luizmugnaini@usp.br}}\\[2.0cm]
+
+       \HRule\\
+       \vskip 0.5cm
+       {\LARGE \textbf{Teoria de Homotopia Dendroidal \& Operads}}
+       \HRule\\[1.5cm]
+
+       \hspace{.45\textwidth}
+       \begin{minipage}{.5\textwidth}
+         \normalsize \textbf{Projeto de Iniciação à Pesquisa:
+           Ciclo Avançado do Curso de Ciências
+           Moleculares}\\[0.5cm]
+
+       \textsc{\large Prof.~Ivan Struchiner}\\
+       Universidade de São Paulo \\
+       Instituto de Matemática e Estatística \\
+       E-mail: \texttt{ivanstru@ime.usp.br}\\[1cm]
+
+       \normalsize São Paulo, Julho de 2022
+       \end{minipage}
+  \end{center}
+\end{titlepage}
+
+% Title stuff
+\title[Teoria de Homotopia Dendroidal \& Operads]{%
+{\footnotesize\sl Projeto para o Ciclo Avançado} \\ \smallskip
+  Teoria de Homotopia Dendroidal \& Operads
+}%
+
+\author{%
+  Luiz Gustavo Mugnaini Anselmo e Ivan Struchiner
+}%
+
+\address{%
+  Instituto de Matemática e Estatística, Universidade de São
+  Paulo, Rua do Matão 1010, 05508--090~São Paulo, SP
+}%
+
+\email{luizmugnaini@usp.br, ivanstru@ime.usp.br}
+
+\begin{abstract}
+Este é o projeto de pesquisa para o Ciclo Avançado de Luiz Gustavo Mugnaini
+Anselmo, a ser desenvolvido sob a supervisão de Ivan Struchiner, no Instituto de
+Matemática e Estatística, USP, no período de agosto de 2022 a junho de
+2024. Tendo como objetivo estudar espaços topológicos por meio de métodos
+combinatórios, o projeto será desenvolvido por meio do estudo de teoria de
+homotopia simplicial e dendroidal, operads e teoria de categorias. Um dos
+objetivos do projeto é assegurar uma boa preparação do aluno para o ingresso em
+um programa de pós-graduação.
+\end{abstract}
+\maketitle
+
+
+\section{Introdução}\label{sec:intro}
+
+O projeto para o Ciclo Avançado, do Curso de Ciências Moleculares, de Luiz
+Gustavo Mugnaini Anselmo terá como principais grandes áreas o estudo de teoria
+de homotopia e teoria de categorias. Objetiva-se um estudo coerente da
+literatura central básica das áreas supracitadas, possibilitando ao aluno uma
+sólida formação fundamental em tais áreas, favorecendo o seu ingresso em um
+futuro programa de pós-graduação na área que se destina o atual projeto.
+
+A teoria de homotopia se baseia no estudo de estruturas equipadas com a noção de
+\emph{deformações} entre morfismos --- o que leva o nome de
+\emph{homotopia}. Historicamente, o objetivo inicial de tal construção foi de
+estudar espaços topológicos não mais por meio de isomorfismos topológicos, mas
+por noções mais fracas de isomorfismo, que deram origem a \emph{equivalências
+fracas homotópicas}. No contexto da categoria \(\Top\), dados espaços
+topológicos \(X\) e \(Y\) e morfismos topológicos \(f, g: X \rightrightarrows
+Y\), definimos uma homotopia \(\eta: f \To g\) entre \(f\) e \(g\) como um
+morfismo topológico entre o cilindro de \(X\) em \(Y\), isto é \(\eta: X \times
+I \to Y\) --- onde \(I \coloneq [0, 1] \emb \R\) é o intervalo unitário --- tal
+que o seguinte diagrama comute
+\[
+  \begin{tikzcd}
+    X \ar[r, "\Id_X \times\, \delta_0"] \ar[dr, swap, "f"]
+    &X \times I \ar[d, "\eta"]
+    &X \ar[l, swap, "\Id_X \times\, \delta_1"] \ar[dl, "g"] \\
+    &Y &
+  \end{tikzcd}
+\]
+onde \(\delta_0, \delta_1: X \rightrightarrows I\) são os mapas \(\delta_{0}(x)
+\coloneq 0\) e \(\delta_1(x) \coloneq 1\) para todo \(x \in X\).
+
+A \emph{abstração} de tal construção para espaços topológicos nos possibilita
+estudar contextos mais abrangentes, tal como o estudo de
+\emph{\(\infty\)-categorias} e \emph{categorias modelo} --- essa última sendo
+introduzida pelos trabalhos de D. Quillen. Uma categoria modelo é axiomatizada
+como possuindo três classes de morfismos, sendo estas: \emph{equivalências
+fracas}, \emph{fibrações} e \emph{cofibrações}. O objetivo da construção é de
+obter um ambiente \emph{``modelo''} para se trabalhar com teorias de homotopia.
+
+A fim de se estudar teoria de homotopia por métodos \emph{combinatórios}, temos
+a clássica abordagem por meio de \emph{conjuntos simpliciais} e, mais
+recentemente, \emph{conjuntos dendroidais}. A categoria simplicial \(\Delta\) é
+definida por objetos que são \emph{ordinais finitos} não-vazios e morfismos
+preservando \emph{ordem} --- enquanto isso, conjuntos simpliciais são pré-feixes
+\(\Delta^{\op} \to \Set\). A partir de um conjunto simplicial, podemos construir
+um modelo combinatório de espaços topológicos pelo processo de colagem de
+faces de simplices --- este processo leva o nome de \emph{realização geométrica}
+do conjunto simplicial. Por outro lado, no contexto dendroidal, construímos a
+categoria \(\mathbf{\Omega}\) de árvores, onde, em oposição à \(\Delta\), a
+coleção de ordinais é substituída por \emph{árvores} e morfismos entre árvores
+são mapas entre \emph{operads} livremente gerados por tais árvores. Dessa
+categoria, definimos um \emph{conjunto dendroidal} como um pré-feixe
+\(\mathbf{\Omega}^{\op} \to \Set\). Uma vantagem do tratamento dendroidal é a
+\emph{generalização natural} da abordagem simplicial de \(\infty\)-categorias,
+por meio do uso da teoria de \emph{\(\infty\)-operads} --- isto é, a teoria de
+conjuntos dendroidais extende a teoria de conjuntos simpliciais, principalmente
+se valendo da presença de uma grande quantidade de automorfismos entre árvores,
+propriedade essa não contemplada pela abordagem simplicial.
+
+\section{Literatura}
+
+O tópico do projeto em questão requer uma vasta compreensão da literatura, sendo
+ambicioso cobrí-la no período de 4~semestres --- dessa forma, diversas das obras
+fundamentais para o desenvolvimento atual de teoria de homotopia não serão
+incluídas na literatura base que será utilizada durante os estudos do ciclo
+avançado. Os recursos de estudo serão divididos em duas partes:
+\begin{itemize}\setlength\itemsep{0em}
+\item Literatura elementar, constituída pelas obras que serão utilizadas na
+  formação do conhecimento básico necessário para o estudo do projeto. O
+  acompanhamento desta literatura será feita nos primeiros momentos do ciclo
+  avançado --- progredindo para tópicos mais específicos posteriormente.
+
+\item Literatura específica, englobando principais duas obras essenciais ao
+  contexto do projeto --- as quais assumem o conhecimento do leitor dos tópicos
+  abordados na literatura elementar.
+\end{itemize}
+
+\subsection{Literatura Elementar}\label{sub:lit-elem}
+
+\subsubsection{\textbf{Topology} --- J. Munkres~\cite{Mun00}}
+
+O conhecimento de topologia \textit{point-set} é essencial para a motivação das
+contruções envolvidas no projeto em questão.
+
+\subsubsection{\textbf{Algebra} --- S. Lang~\cite{Lang93}}
+
+O livro de Lang é a referência clássica no estudo elementar de álgebra geral,
+cobrindo áreas como: teoria de grupos, teoria de anéis, módulos e corpos. O
+livro de P. Aluffi~\cite{Aluf09} também será utilizado como referência
+complementar.
+
+\subsubsection{%
+  \textbf{Categories and Sheaves} --- M. Kashiwara \& P. Shapira~\cite{Shap06}
+}%
+
+Os tópicos abordados por M. Kashiwara e P. Shapira são base da linguagem
+empregada em todas as áreas da matemática moderna --- sendo, portanto, uma
+leitura essencial. Outros textos de apoio também são~\cite{Rie16}
+e~\cite{MacLane78}.
+
+\subsubsection{
+  \textbf{Commutative Algebra with a View Towards Algebraic Geometry}
+  --- D. Eisenbud~\cite{Eisen95}
+}
+
+Álgebra comutativa é uma ferramenta essencial para o estudo das mais diversas
+áreas da matemática, tornando-se imprescindível o seu domínio, o livro de
+D. Eisenbud é um detalhado e extenso texto básico na área. Outra referência
+clássica que será utilizada como apoio será o livro de I.G. MacDonald e
+M.F. Atyah~\cite{MacDAty69}
+
+\subsubsection{%
+  \textbf{An Introduction to Homological Algebra} --- C.A. Weibel~\cite{Wei95}
+}%
+
+Álgebra homológica é uma ferramenta básica para o estudo de topologia algébrica
+e diversas outras áreas da matemática, portanto, se torna imprescindível seu
+conhecimento.
+
+\subsubsection{%
+  \textbf{Algebraic Topology} --- T.T. Dieck~\cite{Die08}
+}%
+
+Uma introdução à área de topologia algébrica, homologia e teoria de homotopia em
+espaços topológicos. Como referências adicionais, serão utilizados os livros de
+P. May~\cite{May99Concise} e~\cite{MayPonto12More}, esse último sendo escrito em
+colaboração com K. Ponto.
+
+\subsection{Literatura Específica}\label{sub:lit-esp}
+
+\subsubsection{%
+  \textbf{Simplicial and dendroidal homotopy theory}
+  --- G. Heuts \& I. Moerdijk~\cite{HeuMoer22}
+}
+
+O livro de Heuts e Moerdijk será a referência principal para o estudo do
+projeto, contando com uma exposição da teoria simplicial e dendroidal de
+homotopia e suas conexões com operads topológicos e \textit{infinite loop
+spaces}. Os autores se utilizam do formalismo proporcionado pelas categorias
+modelo de Quillen, estrutura modelo de Kan-Quillen e a estrutura modelo de Joyal
+para a contrução de teorias de homotopia para \(\infty\)-categorias.
+
+\subsubsection{%
+  \textbf{Simplicial Homotopy Theory}
+  --- P.G. Goerss \& J.F. Jardine~\cite{GoeJar09}
+}
+
+O livro de Goerss e Jardine é exposição moderna da teoria básica envolvendo a
+vasta área de métodos simpliciais em teoria de homotopia. Ele servirá como
+referência complementar, sendo utilizado de forma paralela aos estudos do
+livro de Heuts e Moerdijk.
+
+\appendix
+
+\section{Planejamento de grade de disciplinas}\label{sec:disciplinas}
+
+\begin{table}[h!]\label{tab:disc}
+  \centering
+  \caption{Proposta de grade de disciplinas para o ciclo avançado. Os tipos são
+    divididos em graduação (G) e pós-graduação (PG).}
+  \begin{tabular}{ |c|c|c|c|c| }
+    \hline
+    Ano e semestre & Código & Disciplina & Tipo & Créditos \\
+    \hline
+
+    \multirow{4}{*}{2022} & CCM0318 & Iniciação à Pesquisa I & G & 12 \\
+                   & MAT6680 &Tópicos de Anéis e Módulos & PG & 10 \\
+                   & MAT0431 & Introdução à Topologia Algébrica & G & 4 \\
+                   & MAT0225 & Funções Analíticas & G & 4 \\
+    \hline
+
+    \multirow{4}{*}{2023 / 1} & CCM0328 & Iniciação à Pesquisa II & G & 12 \\
+                   & MAT5737  & Introdução à Álgebra Comutativa & PG & 10 \\
+                   & MAT6684 & Topologia Algébrica & PG & 10 \\
+                   & MAT6603 & Introdução à Teoria de Categorias & PG & 10 \\
+    \hline
+
+    \multirow{3}{*}{2023 / 2} & CCM0418 & Iniciação à Pesquisa III & G & 12 \\
+                   & MAT5797  & Tópicos em Álgebra & PG & 10 \\
+    \hline
+
+    \multirow{3}{*}{2024} & CCM0428 & Iniciação à Pesquisa IV & G & 12 \\
+                   & MAT5771 & Geometria Riemanniana & PG & 10 \\
+                   & MAT5721 & Introdução à Análise Funcional & PG & 10 \\
+    \hline
+
+    \multicolumn{4}{|c|}{Total de créditos} & 128 \\
+    \hline
+\end{tabular}
+\end{table}
+
+\subsection{Outras Disciplinas}
+Além disso, a depender do desenvolvimento do projeto e do oferecimento de
+disciplinas, poderão ser cursadas algumas das seguintes disciplinas:
+\begin{enumerate}[1.]
+\item Introdução à Geometria Algébrica (MAT5761 --- pós-graduação).
+\item Topologia Algébrica II (MAT5866 --- pós-graduação).
+\item Teoria dos Toposes e Aplicações (MAT6668 --- pós-graduação).
+\item Variedades Diferenciáveis e Grupos de Lie (MAT5799 --- pós-graduação).
+\item Introdução às Álgebras de Hopf (MAT6016 --- pós-graduação).
+\item Introdução à Teoria dos Conjuntos (MAT6202 --- pós-graduação).
+\item Teoria de Galois (MAT6643 --- pós-graduação).
+\item Representações de Grupos (MAT6681 --- pós-graduação).
+\end{enumerate}
+
+\printbibliography
+
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

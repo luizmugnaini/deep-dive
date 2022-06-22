@@ -1,14 +1,26 @@
 \documentclass[11pt, a4paper, reqno, openany]{memoir}
-% \documentclass[11pt, a4paper, reqno, final]{article}
 \usepackage[english]{babel}
 
 % Page geometry
-\usepackage{fullpage}
-% \usepackage[
-%   margin=1cm,
-%   includefoot,
-%   footskip=30pt,
-% ]{geometry}
+% \usepackage{fullpage}
+\usepackage{layout}
+\usepackage{afterpage}
+\usepackage[
+asymmetric,
+textheight=673pt,
+marginparsep=7pt,
+footskip=27pt,
+hoffset=0pt,
+paperwidth=597pt,
+textwidth=452pt,
+marginparwidth=101pt,
+voffset=0pt,
+paperheight=845pt,
+]{geometry}
+
+\newcommand{\changegeometry}{\newgeometry{includehead,headheight=89pt}%
+  \afterpage{\aftergroup\restoregeometry}%
+}
 
 % Math stuff: do not mess with the ordering!
 \usepackage{mathtools}
@@ -23,11 +35,10 @@
 % Set arrow tip to that of newpxmath
 \tikzset{>=Straight Barb, commutative diagrams/arrow style=tikz}
 
-% \usepackage{mathpazo}
-
 % Utilities
 \usepackage{enumerate}
 \usepackage{todonotes}
+\usepackage{graphicx}
 
 % Color
 \usepackage{xcolor}
@@ -48,6 +59,7 @@ style=alphabetic,
 
 \linespread{1.05}
 \vfuzz=14pt % No more vbox errors all over the place
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Horizontal rule
 
 % Environments
 \theoremstyle{definition}
@@ -63,13 +75,13 @@ style=alphabetic,
 
 %\parskip=5pt plus 1pt
 
-% Allow paired delimeters with \left and \right
-\newcommand{\DeclareAutoPairedDelimiter}[3]{%
-  \expandafter\DeclarePairedDelimiter\csname Auto\string#1\endcsname{#2}{#3}%
-  \begingroup\edef\x{\endgroup
-    \noexpand\DeclareRobustCommand{\noexpand#1}{%
-      \expandafter\noexpand\csname Auto\string#1\endcsname*}}%
-  \x}
+% % Allow paired delimeters with \left and \right
+% \newcommand{\DeclareAutoPairedDelimiter}[3]{%
+%   \expandafter\DeclarePairedDelimiter\csname Auto\string#1\endcsname{#2}{#3}%
+%   \begingroup\edef\x{\endgroup
+%     \noexpand\DeclareRobustCommand{\noexpand#1}{%
+%       \expandafter\noexpand\csname Auto\string#1\endcsname*}}%
+%   \x}
 
 % symbols
 \renewcommand{\qedsymbol}{\(\natural\)}% blacklozenge
@@ -117,6 +129,7 @@ style=alphabetic,
 \DeclareMathOperator{\grad}{grad}
 \DeclareMathOperator{\Hess}{Hess}
 \DeclareMathOperator{\Jac}{Jac}
+\DeclareMathOperator{\Curl}{Curl}
 
 % arrows
 \newcommand{\op}{\mathrm{op}}
@@ -147,7 +160,7 @@ style=alphabetic,
 \newcommand{\bigatt}{\bigsqcup}
 
 % Differentiable structures
-\DeclareAutoPairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
 \newcommand{\diff}{\mathrm{d}}
 \newcommand{\Diff}{\mathrm{D}}
 
