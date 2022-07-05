@@ -1042,14 +1042,14 @@ the group \(X \coloneq \langle x \rangle\), and \(H \coloneq G/X\) --- since
 \(|H| < |G| = n\) it must be true, from hypothesis, that there exists a cyclic
 tower
 \[
-  H \supsetneq H_0 \supsetneq \dots \supseteq H_m = \{e\}.
+  H \supsetneq H_0 \supsetneq \dots \supsetneq H_m = \{e\}.
 \]
 Let \(\pi: G \epi H\) be the canonical projection. From
 \cref{cor:morphism-normal-towers}, the sequence of subgroups \(G_0 \coloneq G\),
 and \(G_j \coloneq f^{-1}(H_j)\) for \(1 \leq j \leq m\) form a cyclic tower in
 \(G\), thus
 \[
-  G = G_0 \supsetneq G_1 \supsetneq \dots \supsetneq G_m \supseteq \{e\}.
+  G = G_0 \supsetneq G_1 \supsetneq \dots \supsetneq G_m \supsetneq \{e\}.
 \]
 is the desired cyclic tower on \(G\). This proves both the first statement and
 the second.
@@ -1080,7 +1080,7 @@ embedding \(N_j/N_{j+1} \emb G_j/G_{j+1}\), which implies that \(N_j/N_{j+1}\)
 is abelian by \cref{prop:injective-morphism-abelian}. Therefore \(N = N_0
 \supsetneq \dots \supsetneq N_n = \{e\}\) is an abelian tower and hence \(N\) is
 solvable. For the group \(G/N\) we can simply consider the tower \(G/N = (G_0
-N)/N \supsetneq \dots \supseteq (G_n N)/N = (\{e\} N)/N = N\) --- where
+N)/N \supsetneq \dots \supsetneq (G_n N)/N = (\{e\} N)/N = N\) --- where
 \((G_{j+1} N)/N\) is surely normal in \((G_j N)/N\). Moreover, \([(G_j N)/N]
 \big/ [(G_{j+1} N)/N] \iso (G_j N)/(G_{j+1} N)\) which inherits the commutative
 structure from \(G_j/G_{j+1}\) --- thus the tower is abelian and \(G/N\) is
@@ -1088,7 +1088,7 @@ solvable.
 
 (\(\Leftarrow\)) Let both \(N\) and \(G/N\) be solvable and consider the abelian
 towers \(G/N = H_0 \supsetneq \dots \supsetneq H_n = N\), and \(N = Q_0
-\supsetneq \dots \supseteq Q_m = \{e\}\). Since \(H_j \coloneq \{g N \colon g
+\supsetneq \dots \supsetneq Q_m = \{e\}\). Since \(H_j \coloneq \{g N \colon g
 \in G\}\) we can consider the isomorphic group \(H_j' \iso H_j\) given by the
 image of the morphism \(H_{j} \isoto H_j'\) mapping \(g N \mapsto g\). Thus
 clearly

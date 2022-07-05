@@ -9,6 +9,7 @@
 \usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{stmaryrd}
+\usepackage{tikz}
 \usepackage{tikz-cd}
 
 % Font
@@ -86,6 +87,7 @@ style=alphabetic,
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\dom}{dom}
 \DeclareMathOperator{\codom}{cod}
+\DeclareMathOperator{\Sing}{Sing}
 
 % arrows
 \newcommand{\op}{\mathrm{op}}
@@ -108,17 +110,18 @@ style=alphabetic,
 \newcommand{\CC}{\mathbf{C}}
 \newcommand{\R}{\mathbf{R}}
 \renewcommand{\emptyset}{\varnothing}
-\newcommand{\Uhs}{\mathbf{H}} % Upper half space
-\newcommand{\Proj}{\mathbf{P}} % Projective space
 
 % Common categories
-\newcommand{\Set}{{\textbf{Set}}}         %{{\cat{S}\textit{et}}}
-\newcommand{\Vect}{{\textbf{Vec}}}       %{{\cat{V}\textit{ect}}}
+\newcommand{\Set}{{\textbf{Set}}}
+\newcommand{\sSet}{{\textbf{sSet}}}
+\newcommand{\Vect}{{\textbf{Vec}}}
 \let\Top\relax
-\newcommand{\Top}{{\textbf{Top}}}         %{{\cat{T}\textit{op}}}
-\newcommand{\Grp}{{\textbf{Grp}}}         %{{\cat{G}\textit{rp}}}
-\newcommand{\Ab}{{\textbf{Ab}}}           %{{\cat{A}\textit{b}}}
-\newcommand{\Graph}{{\textbf{Graph}}}     %{{\cat{G}\textit{raph}}}
+\newcommand{\Top}{{\textbf{Top}}}
+\newcommand{\HoTop}{{\textbf{Ho}(\textbf{Top})}}
+\newcommand{\Trees}{{\mathbf{\Omega}}}
+\newcommand{\Grp}{{\textbf{Grp}}}
+\newcommand{\Ab}{{\textbf{Ab}}}
+\newcommand{\Graph}{{\textbf{Graph}}}
 
 \begin{document}
 \begin{titlepage}
@@ -196,53 +199,97 @@ sólida formação fundamental em tais áreas, favorecendo o seu ingresso em um
 futuro programa de pós-graduação na área que se destina o atual projeto.
 
 A teoria de homotopia se baseia no estudo de estruturas equipadas com a noção de
-\emph{deformações} entre morfismos --- o que leva o nome de
-\emph{homotopia}. Historicamente, o objetivo inicial de tal construção foi de
-estudar espaços topológicos não mais por meio de isomorfismos topológicos, mas
-por noções mais fracas de isomorfismo, que deram origem a \emph{equivalências
-fracas homotópicas}. No contexto da categoria \(\Top\), dados espaços
-topológicos \(X\) e \(Y\) e morfismos topológicos \(f, g: X \rightrightarrows
-Y\), definimos uma homotopia \(\eta: f \To g\) entre \(f\) e \(g\) como um
-morfismo topológico entre o cilindro de \(X\) em \(Y\), isto é \(\eta: X \times
-I \to Y\) --- onde \(I \coloneq [0, 1] \emb \R\) é o intervalo unitário --- tal
-que o seguinte diagrama comute
+\emph{deformações} entre morfismos --- o que leva o nome de \emph{homotopia}. No
+contexto da categoria \(\Top\), dados espaços topológicos \(X\) e \(Y\) e
+morfismos topológicos \(f, g: X \rightrightarrows Y\), definimos uma homotopia
+\(\eta: f \To g\) entre \(f\) e \(g\) como um morfismo topológico entre o
+cilindro de \(X\) em \(Y\), isto é \(\eta: X \times I \to Y\) --- onde \(I
+\coloneq [0, 1] \emb \R\) é o intervalo unitário --- tal que o seguinte diagrama
+comute
 \[
-  \begin{tikzcd}
-    X \ar[r, "\Id_X \times\, \delta_0"] \ar[dr, swap, "f"]
-    &X \times I \ar[d, "\eta"]
-    &X \ar[l, swap, "\Id_X \times\, \delta_1"] \ar[dl, "g"] \\
-    &Y &
-  \end{tikzcd}
+\begin{tikzcd}
+  X \ar[r, "\Id_X \times\, \delta_0"] \ar[dr, swap, "f"]
+  &X \times I \ar[d, "\eta"]
+  &X \ar[l, swap, "\Id_X \times\, \delta_1"] \ar[dl, "g"] \\
+  &Y &
+\end{tikzcd}
 \]
 onde \(\delta_0, \delta_1: X \rightrightarrows I\) são os mapas \(\delta_{0}(x)
-\coloneq 0\) e \(\delta_1(x) \coloneq 1\) para todo \(x \in X\).
+\coloneq 0\) e \(\delta_1(x) \coloneq 1\) para todo \(x \in X\). A noção de
+homotopia gera uma relação de equivalência, a qual podemos denotar por \(\sim\),
+entre morfismos --- possibilitando a criação de uma categoria homotópica,
+constituída de espaços topológicos e classes de morfismos topológicos
+homotópicos, isto é, \(\Mor(\Top)/{\sim}\). Os isomorfismos dessa categoria,
+chamados \emph{equivalências homotópicas}, foram a primeira tentativa de buscar
+uma relação de equivalência entre espaços topológicos que substituísse
+isomorfismos em \(\Top\). Equivalências homotópicas, todavia, não foram
+suficientes para a viabilização do programa de classificação de espaços
+topológicos.
 
-A \emph{abstração} de tal construção para espaços topológicos nos possibilita
-estudar contextos mais abrangentes, tal como o estudo de
-\emph{\(\infty\)-categorias} e \emph{categorias modelo} --- essa última sendo
-introduzida pelos trabalhos de D. Quillen. Uma categoria modelo é axiomatizada
-como possuindo três classes de morfismos, sendo estas: \emph{equivalências
-fracas}, \emph{fibrações} e \emph{cofibrações}. O objetivo da construção é de
-obter um ambiente \emph{``modelo''} para se trabalhar com teorias de homotopia.
+A fim de se enfraquecer ainda mais a noção de equivalência entre espaços
+topológicos, surgem as equivalências \emph{fracas} homotópicas, consistindo de
+morfismos topológicos \(f: X \to Y\) tais que \(f\) induz uma bijeção entre as
+componentes conexas por caminhos, \(\pi_0(X) \isoto \pi_0(Y)\), de \(X\) e
+\(Y\), e isomorfismos de grupo \(\pi_n(X, x) \isoto \pi_n(Y, f(x))\) para todo
+\(x \in X\) e \(n \in \Z_{\geq 1}\) entre os grupos the homotopia de \(X\) e
+\(Y\). Tais morfismos, entretanto, não possuem inversas bem definidas, portanto,
+a fim de construir uma categorias onde isomorfismos são equivalências fracas,
+precisamos \emph{adicionar} em \(\Top\) inversas \emph{formais} para estes
+morfismos --- este processo leva o nome de \emph{localização} de \(\Top\) com
+relação às equivalências fracas homotópicas, e a categoria resultante é
+comumente denotada por \(\HoTop\). Em 1949, J.H.C. Whitehead apresentou um
+teorema que diz que equivalências fracas homotópicas entre espaços CW são
+equivalências homotópicas --- fortalecendo a visão de que equivalências fracas
+são uma ferramenta fundamental para a classificação de espaços topológicos.
+
+A \emph{abstração} de tal construção, feita inicialmente no contexto de espaços
+topológicos, nos possibilita estudar contextos mais abrangentes, tal como o
+estudo de \emph{categorias modelo} --- introduzida pelos trabalhos de
+D. Quillen. Uma categoria modelo é axiomatizada como possuindo três classes de
+morfismos, sendo estas: \emph{equivalências fracas}, \emph{fibrações} e
+\emph{cofibrações}. O objetivo da construção é de obter um ambiente
+\emph{``modelo''} para se trabalhar com teorias de homotopia.
 
 A fim de se estudar teoria de homotopia por métodos \emph{combinatórios}, temos
 a clássica abordagem por meio de \emph{conjuntos simpliciais} e, mais
-recentemente, \emph{conjuntos dendroidais}. A categoria simplicial \(\Delta\) é
-definida por objetos que são \emph{ordinais finitos} não-vazios e morfismos
-preservando \emph{ordem} --- enquanto isso, conjuntos simpliciais são pré-feixes
-\(\Delta^{\op} \to \Set\). A partir de um conjunto simplicial, podemos construir
-um modelo combinatório de espaços topológicos pelo processo de colagem de
-faces de simplices --- este processo leva o nome de \emph{realização geométrica}
-do conjunto simplicial. Por outro lado, no contexto dendroidal, construímos a
-categoria \(\mathbf{\Omega}\) de árvores, onde, em oposição à \(\Delta\), a
-coleção de ordinais é substituída por \emph{árvores} e morfismos entre árvores
-são mapas entre \emph{operads} livremente gerados por tais árvores. Dessa
-categoria, definimos um \emph{conjunto dendroidal} como um pré-feixe
-\(\mathbf{\Omega}^{\op} \to \Set\). Uma vantagem do tratamento dendroidal é a
-\emph{generalização natural} da abordagem simplicial de \(\infty\)-categorias,
-por meio do uso da teoria de \emph{\(\infty\)-operads} --- isto é, a teoria de
-conjuntos dendroidais extende a teoria de conjuntos simpliciais, principalmente
-se valendo da presença de uma grande quantidade de automorfismos entre árvores,
+recentemente, \emph{conjuntos dendroidais}. A categoria simplicial
+\(\mathbf{\Delta}\) é definida por objetos que são \emph{ordinais finitos}
+não-vazios e morfismos preservando \emph{ordem} --- enquanto isso, conjuntos
+simpliciais são pré-feixes \(\mathbf{\Delta}^{\op} \to \Set\), que dão origem à
+categoria de conjuntos simpliciais \(\sSet\). A partir de um conjunto
+simplicial, podemos construir um modelo combinatório de espaços topológicos pelo
+processo de colagem de faces de simplices --- isto leva o nome de
+\emph{realização geométrica} do conjunto simplicial, que é definido como um
+funtor covariante \(|-|: \sSet \to \Top\). Um funtor \emph{adjunto} à direita de
+\(|-|\) é o funtor de \emph{complexo singular} \(\Sing: \Top \to \sSet\). O par
+\(|-|\) e \(\Sing\) define uma \emph{equivalência de Quillen} entre as estruras
+modelo destas categorias.
+
+Toda categoria pequena \(\cat C\) induz um funtor \emph{nervo} \(N: \cat C \to
+\sSet\) --- possibilitanto, por meio do funtor de realização geométrica \(|-|\),
+a formação de um espaço topológico \(B\cat{C}\), chamado espaço de
+\emph{classificação} de \(\cat C\). O espaço de classificação, todavia, é uma
+ferramenta rudimentar para o estudo de \(\cat C\), uma vez que a direção dos
+morfismos são \emph{esquecidas} --- fazendo com que diversas categorias tenham
+realizações homotopicamente equivalentes, comportamento muitas vezes indesejável.
+
+\emph{Operads} são uma generalização da noção de uma categoria, onde
+anteriormente interpretavamos morfismos como setas de \emph{um} objeto a outro,
+substituímos por \emph{operações} --- o \textit{input} de mapas são coleções
+finitas de objetos e o \textit{output} é um único objeto, portanto, a
+\emph{composição} de mapas no contexto de operads pode ser interpretada como
+\emph{árvores com raíz}. A fim de construir uma teoria para operads que se
+assemelhe à relação entre categorias e conjuntos simpliciais, surge a abordagem
+\emph{dendroidal}. Neste novo contexto, construímos a categoria \(\Trees\) de
+árvores, onde, em oposição à \(\mathbf{\Delta}\), a coleção de ordinais é
+substituída por \emph{árvores} e morfismos entre árvores são mapas entre operads
+livremente gerados por tais árvores. Dessa categoria, definimos um
+\emph{conjunto dendroidal} como um pré-feixe \(\Trees^{\op} \to \Set\). Uma
+vantagem do tratamento dendroidal é a \emph{generalização natural} da abordagem
+simplicial de \emph{\(\infty\)-categorias}, por meio do uso da teoria de
+\emph{\(\infty\)-operads} --- isto é, a teoria de conjuntos dendroidais
+\emph{extende} a teoria de conjuntos simpliciais, principalmente se valendo da
+presença de uma grande quantidade de \emph{automorfismos} entre árvores,
 propriedade essa não contemplada pela abordagem simplicial.
 
 \section{Literatura}
@@ -317,7 +364,7 @@ colaboração com K. Ponto.
 \subsection{Literatura Específica}\label{sub:lit-esp}
 
 \subsubsection{%
-  \textbf{Simplicial and dendroidal homotopy theory}
+  \textbf{Simplicial and Dendroidal Homotopy Theory}
   --- G. Heuts \& I. Moerdijk~\cite{HeuMoer22}
 }
 
@@ -338,6 +385,22 @@ vasta área de métodos simpliciais em teoria de homotopia. Ele servirá como
 referência complementar, sendo utilizado de forma paralela aos estudos do
 livro de Heuts e Moerdijk.
 
+\subsubsection{%
+  \textbf{Algebraic Operads}
+  --- J.L Loday \& B. Vallete~\cite{LodayVall12}
+}
+
+O livro de Loday e Vallete servirá como referência no estudo de teorias
+algébricas por meio de operads, tendo também aplicações à teoria de homotopia.
+
+\subsubsection{%
+  \textbf{Modules Over Operads and Functors}
+  --- B. Fresse~\cite{Fresse09}
+}
+
+O livro de Fresse tem o objetivo de estudar generalizações de teorias algébricas
+por meio do estudo de álgebras sobre operads.
+
 \appendix
 
 \section{Planejamento de grade de disciplinas}\label{sec:disciplinas}
@@ -354,17 +417,17 @@ livro de Heuts e Moerdijk.
     \multirow{4}{*}{2022} & CCM0318 & Iniciação à Pesquisa I & G & 12 \\
                    & MAT6680 &Tópicos de Anéis e Módulos & PG & 10 \\
                    & MAT0431 & Introdução à Topologia Algébrica & G & 4 \\
-                   & MAT0225 & Funções Analíticas & G & 4 \\
+                   & MAT0463 & Tópicos de Matemática IV & G & 4 \\
     \hline
 
     \multirow{4}{*}{2023 / 1} & CCM0328 & Iniciação à Pesquisa II & G & 12 \\
-                   & MAT5737  & Introdução à Álgebra Comutativa & PG & 10 \\
+                   & MAT5797  & Tópicos em Álgebra & PG & 10 \\
                    & MAT6684 & Topologia Algébrica & PG & 10 \\
                    & MAT6603 & Introdução à Teoria de Categorias & PG & 10 \\
     \hline
 
-    \multirow{3}{*}{2023 / 2} & CCM0418 & Iniciação à Pesquisa III & G & 12 \\
-                   & MAT5797  & Tópicos em Álgebra & PG & 10 \\
+    \multirow{2}{*}{2023 / 2} & CCM0418 & Iniciação à Pesquisa III & G & 12 \\
+                   & MAT5737  & Introdução à Álgebra Comutativa & PG & 10 \\
     \hline
 
     \multirow{3}{*}{2024} & CCM0428 & Iniciação à Pesquisa IV & G & 12 \\
@@ -372,7 +435,7 @@ livro de Heuts e Moerdijk.
                    & MAT5721 & Introdução à Análise Funcional & PG & 10 \\
     \hline
 
-    \multicolumn{4}{|c|}{Total de créditos} & 128 \\
+    \multicolumn{4}{|c|}{Total de créditos} & 126 \\
     \hline
 \end{tabular}
 \end{table}

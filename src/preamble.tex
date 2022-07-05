@@ -1,4 +1,4 @@
-\documentclass[11pt, a4paper, reqno, openany]{memoir}
+\documentclass[12pt, a4paper, reqno, openany]{memoir}
 \usepackage[english]{babel}
 
 % Page geometry
@@ -30,7 +30,7 @@ paperheight=845pt,
 \usepackage{tikz-cd}
 
 % Font
-\usepackage[no-math]{newpxtext} % last: mathpazo
+\usepackage[no-math]{newpxtext}
 \usepackage{newpxmath}
 % Set arrow tip to that of newpxmath
 \tikzset{>=Straight Barb, commutative diagrams/arrow style=tikz}
@@ -59,7 +59,6 @@ style=alphabetic,
 
 \linespread{1.05}
 \vfuzz=14pt % No more vbox errors all over the place
-\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Horizontal rule
 
 % Environments
 \theoremstyle{definition}
@@ -138,7 +137,7 @@ style=alphabetic,
 \newcommand{\To}{\Rightarrow}
 \newcommand{\mono}{\rightarrowtail}
 \newcommand{\epi}{\twoheadrightarrow}
-\newcommand{\iso}{\simeq} % changed from simeq
+\newcommand{\iso}{\simeq}
 \newcommand{\dis}{\iso} % diagram isomorphism
 \newcommand{\nat}{\Rightarrow}
 \newcommand{\emb}{\hookrightarrow}
@@ -165,23 +164,25 @@ style=alphabetic,
 \newcommand{\Diff}{\mathrm{D}}
 
 % Common categories
-\newcommand{\Set}{{\textbf{Set}}}         %{{\cat{S}\textit{et}}}
-\newcommand{\FinSet}{{\textbf{FinSet}}}         %{{\cat{S}\textit{et}}}
-\newcommand{\pSet}{{\textbf{pSet}}}         %{{\cat{S}\textit{et}}}
-\newcommand{\Vect}{{\textbf{Vec}}}       %{{\cat{V}\textit{ect}}}
-\newcommand{\FinVect}{{\textbf{FinVec}}} %{{\cat{F}\textit{in}\cat{V}\textit{ect}}}
+\newcommand{\Set}{{\textbf{Set}}}
+\newcommand{\FinSet}{{\textbf{FinSet}}}
+\newcommand{\pSet}{{\textbf{pSet}}}
+\newcommand{\sSet}{{\textbf{sSet}}}
+\newcommand{\Vect}{{\textbf{Vec}}}
+\newcommand{\FinVect}{{\textbf{FinVec}}}
 \newcommand{\TVect}{{\textbf{TVec}}}
 \newcommand{\Ban}{{\textbf{Ban}}}
 \newcommand{\Man}{{\textbf{Man}}}
 \let\Top\relax
-\newcommand{\Top}{{\textbf{Top}}}         %{{\cat{T}\textit{op}}}
-\newcommand{\Grp}{{\textbf{Grp}}}         %{{\cat{G}\textit{rp}}}
-\newcommand{\Ab}{{\textbf{Ab}}}           %{{\cat{A}\textit{b}}}
-\newcommand{\Graph}{{\textbf{Graph}}}     %{{\cat{G}\textit{raph}}}
-\newcommand{\SimpGraph}{{\textbf{sGraph}}}%{{\cat{S}\textit{imp}\cat{G}\textit{ph}}}
-\newcommand{\Rng}{{\textbf{Ring}}}        %{{\cat{R}\textit{ing}}}
-\newcommand{\Cat}{{\textbf{Cat}}}         %{{\cat{C}\textit{at}}}
-\newcommand{\CAT}{{\textbf{CAT}}}         %{{\cat{C}\textit{AT}}}
+\newcommand{\Top}{{\textbf{Top}}}
+\newcommand{\HoTop}{{\textbf{Ho}(\textbf{Top})}}
+\newcommand{\Grp}{{\textbf{Grp}}}
+\newcommand{\Ab}{{\textbf{Ab}}}
+\newcommand{\Graph}{{\textbf{Graph}}}
+\newcommand{\SimpGraph}{{\textbf{sGraph}}}
+\newcommand{\Rng}{{\textbf{Ring}}}
+\newcommand{\Cat}{{\textbf{Cat}}}
+\newcommand{\CAT}{{\textbf{CAT}}}
 \newcommand{\UCat}{{\mathcal{U}\text{-}\textbf{Cat}}}
 
 % Graphs

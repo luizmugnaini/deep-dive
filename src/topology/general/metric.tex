@@ -1,0 +1,25 @@
+\section{Metric Spaces}
+
+\todo[inline]{Write on metric spaces}
+
+\begin{definition}
+\label{def:premetric-and-metric-space}
+Let \(M\) be a set. We say that a map \(d: M \times M \to \R_{\geq 0}\) is a
+\emph{premetric} if for all points \(x, y, z \in M\) it satisfies
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Symmetry: \(d(x, y) = d(y, x)\).
+\item Triangle inequality: \(d(x, z) \leq d(x, y) + d(y, z)\).
+\end{enumerate}
+Moreover, if \(d\) happens to satisfy the condition that
+\begin{enumerate}[(a)]\setlength\itemsep{0em}\setcounter{enumi}{2}
+\item \(d(x, y) = 0\) implies in \(x = y\).
+\end{enumerate}
+then we say that \(d\) stablishes a \emph{metric} in \(M\).
+
+The set \(M\) together with the (pre)metric \(d\) is called a (pre)metric space.
+\end{definition}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../../deep-dive"
+%%% End:

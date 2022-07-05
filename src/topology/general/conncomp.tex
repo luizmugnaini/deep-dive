@@ -1,4 +1,4 @@
-\section{Connectedness and Compactness}
+\section{Connected Spaces}
 
 \begin{definition}[Connected space]
 \label{def:connected-space}
@@ -179,8 +179,95 @@ the intersection is connected to each of the path connected components. For each
 y\) and therefore every point of \(X\) is connected by a path.
 \end{proof}
 
+\todo[inline]{Continue on connected spaces}
 
+\section{Compact Spaces}
 
+\begin{definition}[Compact space]
+\label{def:compact-space}
+A topological space \(X\) is said to be \emph{compact} if for \emph{every} open
+cover there exists a \emph{finite subcover}.
+\end{definition}
+
+\begin{definition}[Sequentially compact space]
+\label{def:sequentially-compact}
+A topological space \(X\) is said to be \emph{sequentially compact} if every
+sequence of points \((x_j)_j\) in \(X\), there exists a subsequence \((x_j')_j
+\subseteq (x_j)_j\) that converges in \(X\).
+\end{definition}
+
+\begin{proposition}[Metric space compactness]
+\label{prop:metric-space-compactness-equivalences}
+Compactness, limit point compactness, and sequential compactness are
+\emph{equivalent} in \emph{metric spaces}.
+\end{proposition}
+
+\todo[inline]{Prove metric compactness and expand section}
+
+\begin{proposition}
+\label{prop:hausdorff-compact-implies-closed}
+Let \(X\) be a Hausdorff space. If \(A \subseteq X\) is compact then \(A\) is
+closed in \(X\).
+\end{proposition}
+
+\begin{proof}
+Let \(x_0 \in A'\) be any limit point of \(A\). We suppose, for the sake of
+contradiction, that \(x_0 \notin A\). Since \(X\) is Hausdorff, for every \(x
+\in A\) we let \(U_x\) be a neighbourhood of \(x\) such that there exists a
+neighbourhood of \(x_0\) that is disjoint from \(U_x\). Define now the
+collection \(\mathcal{U} \coloneq \{U_x : x \in A\}\) --- thus clearly
+\(\mathcal{U}\) covers \(A\) since it contains every point of \(A\), this being
+possible because we assumed that \(x_0\) does not belong to \(A\). Since \(A\)
+is compact, we let \(\mathcal{C} \coloneq \{U_{x_1}, \dots, U_{x_n}\} \subseteq
+\mathcal{U}\) be a finite subcover. Define \(\mathcal{O} \coloneq \{O_1, \dots,
+O_n\}\) of neighbourhoods of \(x_0\) such that \(U_{x_j} \cap O_j = \emptyset\)
+for all \(1 \leq j \leq n\) --- thus \(U_{x_j} \cap \bigcap_{j=1}^n O_j =
+\emptyset\), and therefore \(A \cap \bigcap_{j=1}^n O_j = \emptyset\) which by
+\cref{def:limit-point-derived-set} implies that \(x_0\) cannot be a limit point
+of \(A\), thus we arrived at a contradiction. Therefore, for \(x_0\) to be a
+limit point of \(A\), it must be the case that \(x_0 \in A\), that is, \(A\) is
+closed.
+\end{proof}
+
+\begin{corollary}
+\label{cor:metric-space-compact-implies-bounded-closed}
+In any metric space \(X\), if \(A \subseteq X\) is \emph{compact} then \(A\) is
+both \emph{bounded} and \emph{closed} in \(X\).
+\end{corollary}
+
+\begin{proof}
+Since every metric space is Hausdorff, \(A\) is closed by
+\cref{prop:hausdorff-compact-implies-closed}. Moreover, if \(x \in A\) is any
+point, we find that the collection of open balls \(\mathcal{B}_x \coloneq
+\{B_x(n)\}_{n \in \N}\) forms an open cover of \(A\) and, since \(A\) is
+compact, there exists a finite subcover of \(\mathcal{B}_x\). Therefore there
+exists a maximal \(m \in \N\) for which \(A \subseteq B_x(m)\) --- thus \(A\) is
+bounded.
+\end{proof}
+
+\begin{remark}
+\label{rem:closed-and-bounded-not-compact}
+Notice that a bounded and closed set in a metric space does \emph{not} need to
+be compact, for instance, consider the space \(\ell^2(\N)\) (see
+\cref{exp:p-norms}) and the subset \(A \coloneq \{f_n\}_{n \in \N}\) composed of
+sequences \(f_n \in \ell^2(\N)\) such that \(f_n(j) \coloneq \delta_{n j}\) ---
+that is, sequences where the only nonzero term is the \(n\)-th one, which equals
+\(1\). Clearly \(A\) is bounded since \(\| f_{n} \|_2 = 1\), moreover, \(A\) is
+closed because it has no limit points. However, since no subset of \(A\)
+contains a limit point of \(A\), we find that \(A\) is not limit point compact
+--- thus not compact (see \cref{prop:metric-space-compactness-equivalences})
+\end{remark}
+
+\begin{proposition}
+\label{prop:convergent-subsequence-implies-compact}
+Let \(X\) be a metric space and \(A \subseteq X\) be a subset. Then, \(A\) is
+compact if and only if every sequence of points in \(A\) has a convergent
+subsequence in \(A\).
+\end{proposition}
+
+\begin{proof}
+\todo[inline]{write proof}
+\end{proof}
 
 
 
