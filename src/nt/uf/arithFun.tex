@@ -1,0 +1,205 @@
+\subsection{Arithmetic functions}
+
+\begin{proposition}
+   If \(n \in \Z\), then \(\exists a, b \in \Z\) such that \(a\)
+   is square free for which  \(n = ab^2\).
+\end{proposition}
+
+\begin{proof}
+   Let \(n := \prod_k p_k^{a_k}\), where \(a_k := 2 b_k + \varepsilon(a_k)\),
+   where \(\varepsilon(a_k) := 0\) if \(a_k\) even and \(\varepsilon(a_k) := 1\)
+   otherwise. Now, let \(a := \prod_k p_k^{\varepsilon(a_k)}\) and \(b :=
+   \prod_k p_k^{b_k}\), thus from construction  \(n = a b^2\) and since
+   \(\varepsilon(a_k) \in \{0, 1\}\) we have \(a\) square-free.
+\end{proof}
+
+\begin{definition}
+   A function \(f\) with \(\mathrm{Dom}(f) = \Z_{>0}\) is said to be
+   \emph{multiplicative} if \(\forall a, b \in \Z_{>0}\) such that
+   \((a,b) = 1\) then  \(f(ab) = f(a)f(b)\). The function is said to be
+   \emph{totally multiplicative} if  \(\forall a, b \in \Z_{>0}\) then
+   \(f(ab) = f(a)f(b)\).
+\end{definition}
+
+\begin{definition}
+   The function \(\sigma_k: \Z \to \Z_{\geqslant 0}\) is defined
+   \(\forall k \in \Z_{\geqslant 0}\) as
+    \[
+       \sigma_k(n) = \sum_{d\mid n} d^k.
+   \]
+   Where \(\sigma_0\) denotes the number of positive divisors of a given integer
+   and \(\sigma_1\) denotes the sum of such divisors.
+\end{definition}
+
+\begin{proposition}
+   Let \(n \in \Z_{>0}\) and \(n := \prod_{k = 1}^\ell
+   p_k^{a_k}\). Then
+   \begin{enumerate}[I.]
+      \item \(\sigma_0(n) = \prod_{k = 1}^{\ell} (a_k + 1)\).
+      \item  \(\sigma_1(n) = \prod_{k=1}^\ell \frac{p_k^{a_k+1} - 1}{p_k - 1}\).
+   \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+   Let \(m := \prod_{k = 1}^\ell p_k^{b_k}\), then the condition for \(m \mid
+   n\) is that \(\forall k \in [0, \ell]\) we have satisfied \(0 \leqslant b_k
+   \leqslant a_k\), so that every prime gets divided in the unique factorization
+   of such integers. Notice then that for every \(b_k\) there are \(a_k + 1\)
+   possible values, thus, the total amount of combinations one can get in order
+   to make every divisor of \(n\) is simply  \(\prod_{k=1}^\ell (a_k + 1)\),
+   which proves item I.
+
+   For item II, notice that \(\sigma_1(n) := \sum_{j = 1}^{v(n)} \left( \prod_{k
+   = 1}^{\ell} p_k^{b_k} \right)_j\), then \(\sigma_1(n) =\prod_{k=1}^\ell \left(
+   \sum_{b_k = 0}^{a_k} p_k^{b_k}\right)\) but for each sum we have \(\sum_{b_k =
+   1}^{a_k} p_k^{b_k} = \frac{p_k^{a_k + 1} - 1}{p_k - 1}\), thus we just shown
+   what we intended.
+\end{proof}
+
+\subsubsection{Möbius function}
+
+\begin{definition}
+   We define the Möbius function, \(\mu: \Z_{>0} \to \Z\) as
+   \[
+      \mu(n) =
+      \begin{cases}
+         1,\ \text{ if } n = 1;\\
+         0,\ \text{ if } \exists a \in \Z_{> 1}: a^2 \mid n;\\
+         (-1)^\ell,\ \text{ if } n = \prod_{k = 1}^{\ell} p_k \text{
+         distinct primes. }
+      \end{cases}
+   \]
+   is a multiplicative function.
+\end{definition}
+
+\begin{proposition}
+   For all positive integer \(n\):
+    \[
+       \sum_{d \mid n} \mu(d) =
+       \begin{cases}
+          1,\ \text{ if } n = 1;\\
+          0,\ \text{ if } n > 1.
+       \end{cases}
+   \]
+\end{proposition}
+
+\begin{proof}
+   The case \(n = 1\) comes right from the definition of the function. For \(n
+   > 1\), lets just prove the case where \(n = p^k\) for some  \(p\) prime and
+   then we can extend this proof by means of the multiplicative property of the
+   Möbius function. We have
+    \[
+       \sum_{d \mid p^k} \mu(d) = \sum_{j = 0}^k \mu(p^j) =
+       \underbrace{(1)}_{\mu(1)} + \underbrace{(-1)}_{\mu(p)} = 0.
+   \]
+   For the general case where \(n = \prod_{k = 1}^\ell p_k^{a_k}\) we would
+   simply have  \(\mu(n) = (1 - 1)^\ell = 0\).
+\end{proof}
+
+\begin{definition}[Dirichlet Convolution]
+   Let functions \(f, g : \Z_{>0}\), we define the \emph{Dirichlet
+   convolution} (or \emph{product}) of such functions as
+   \[
+      f \ast g(n) := \sum_{d\mid n} f(d) g(n/d) = \sum_{d_1d_2=n} f(d_1)g(d_2).
+   \]
+\end{definition}
+
+Let the functions \(\mathbb{I}(n) := 0\) for \(n > 1\) and  \(\mathbb{I}(1) :=
+1\). Then we have
+\[
+   f \ast \mathbb{I}(n) = \mathbb{I} \ast f(n) = f(n)\mathbb{I}(1) = f(n).
+\]
+Also, define the function \(I(n) = 1,\ \forall  n \in \Z_{>0}\) then
+\[
+   f \ast I(n) = I \ast f(n) = \sum_{d \mid n} f(n).
+\]
+
+\begin{lemma}\label{dirichletConvLemma}
+   Given the functions \(I,\ \mathbb{I}\) just defined above, we have
+   \[
+      I \ast \mu = \mu \ast I = \mathbb{I}.
+   \]
+\end{lemma}
+
+\begin{proof}
+   For the case \(n = 1\) we simply have  \(I \ast \mu(1) = \mu(1) I(1) = \mu
+   \ast I(1) = 1 = \mathbb{I}(1)\). Now, for \(n > 1\) we have  \(I \ast \mu(n)
+   = \sum_{d \mid n} \mu(d) = \mu \ast I(n) = 0\) since the divisors \(d\) of
+   \(n\) are greater than \(1\).
+\end{proof}
+
+\begin{theorem}[Möbius inversion]\label{mobiusInversion}
+   Let \(f\) with domain  \(\Z_{>0}\) and \(F(n) := \sum_{d \mid n}
+   f(d)\), then, \(\forall n \in \Z_{>0}\)
+   \[
+      f(n) = \sum_{d\mid n} \mu(d) F(n/d).
+   \]
+\end{theorem}
+
+\begin{proof}
+   Notice that from its definition we have \(F = f \ast I\) and therefore, if we
+   use the lemma \ref{dirichletConvLemma} we get \(F \ast \mu = (f \ast I) \ast
+   \mu = f (I \ast \mu) = f \ast \mathbb{I}\) and thus, as already shown we have
+   \(f \ast \mathbb{I} = f\), then we conclude that  \(f = F \ast \mu\), which
+   proves the statement.
+\end{proof}
+
+\begin{proposition}
+   Consider Euler's totient function (\ref{eulerTotient}). Then we have
+   \[
+       \sum_{d \mid n} \varphi(d) = n.
+   \]
+\end{proposition}
+
+\begin{proof}
+   Write down the set of rational numbers \(A = \{\frac{1}{n}, \frac{2}{n},
+   \dots, \frac{n-1}{n}, 1\}\) and notice that \(\forall a/d \in A\) we have \(d
+   \mid n\) and \((a, d) = 1\) (we are considering that \(a/d\) is reduced to
+   lowest terms).
+
+   All the divisors of \(n\) of the form  \(d' = d \ell\), where
+   \((\ell, n/d) = 1\) and \(1 \leqslant \ell \leqslant n/d\) are such that
+   \(a/(d\ell) \in A\) thus \((a, d \ell) = 1 \implies (a,d) = 1\).
+
+   Then, we can find the number of all such \(d'\) divisors, which is simply
+   going to be \(\varphi(d)\), by definition (since we are looking for
+   numerators relatively prime with \(d\)). Notice also that if we divide the
+   set \(A\) into \(A(d) := \{\frac{a}{d\ell} : (\ell,n/d) = 1\text{ and } 1
+   \leqslant \ell \leqslant n/d \}\) then these sets are all disjoint and have
+   cardinality \(|A(d)| = \varphi(d)\) and thus \(\bigcup_{d \mid n} A(d) = A\),
+   which then implies in
+   \[
+      \sum_{d \mid n} |A(d)| = \sum_{d \mid n} \varphi(d) = n = |A|
+   \]
+   which turns out to be a really natural result.
+\end{proof}
+
+\begin{proposition}
+   Let \(n \in \Z\), then
+   \[
+      \varphi(n) = n \prod_{p \mid n} \left( 1 - \frac{1}{p} \right)
+   \]
+\end{proposition}
+
+\begin{proof}
+   Let \(n = \prod_{k = 1}^\ell p_k^{a_k}\). Since \(n = \sum_{d \mid n}
+   \varphi(d)\) then, using \ref{mobiusInversion} we get
+   \[
+      \varphi(n) = \sum_{d \mid n} \mu(d) \frac{n}{d}
+   \]
+   Notice that we'll be considering only divisors of the form \(d = \prod_{k =
+   1}^{t} p_k\), where \(t \leqslant \ell\), since for those \(\mu(d) =
+   (-1)^t\). Then, we have
+   \[
+      \sum_{d \mid n} \mu(d) \frac{n}{d} =
+      n - \sum_{i=1}^\ell \frac{n}{p_i} + \sum_{\substack{i,j \in [1, \ell] \\
+      i\neq j}} \frac{n}{p_i p_j} - \dots
+      =
+      \sum_{k=0}^\ell (-1)^k \sum_{\substack{\{i_j\} \subseteq [1, \ell], \\
+      |\{i_j\}| = k}} \frac{n}{\prod_{\{i_j\}} p_{i_j}}
+      =
+      n \prod_{k = 1}^\ell \left( 1 - \frac{1}{p_k} \right)
+   \]
+\end{proof}
+
+

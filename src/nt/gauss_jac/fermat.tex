@@ -1,0 +1,69 @@
+\section{\texorpdfstring{\(x^n + y^n = 1\)}{xn + yn = 1} in
+\texorpdfstring{\(\F_p\) }{F_p}}
+
+\begin{remark}
+   We assume \(p \equiv 1 \pmod{n}\).
+\end{remark}
+
+We now analyse the number of solutions of the equation \(x^n + y^n = 1\) in the
+field \(\F_p\). Notice that  \(N(x^n + y^n = 1) = \sum_{a + b = 1} N(x^n =
+a)N(y^n = b)\). Now, if \(\chi\) is a character on \(\F_p\) and has order 
+\(n\) (it does exist because if \(\lambda\) is the generator of the group, we
+may simply define \(\chi := \lambda^{\frac{p-1}{n}}\) since we are supposing
+\(p\equiv 1 \pmod{n}\)) then we have that 
+\[
+   N(x^n = a) = \sum_{\chi^n = \varepsilon} \chi(a) = \sum_{i = 0}^{n-1}
+   \chi^i(a)
+\] 
+and therefore we end up with 
+\[
+   N(x^n + y^n = 1) = \sum_{a+b=1} \bigg(\sum_{i = 0}^{n-1} \chi^i(a) \sum_{j =
+   0}^{n-1} \chi^j(b)\bigg)
+   = \sum_{0 \leqslant i, j \leqslant n-1 } J(\chi^i, \chi^j).
+\] 
+We now analyse what we got:  
+\begin{enumerate}[i.]
+   \item For the case \(i = j = 0\) we simply have \(J(\varepsilon, \varepsilon)
+      = p\).
+   \item For \(i + j = n\) then  \(\chi^i = (\chi^j)^{-1}\) since \(\chi^i
+      \chi^j = \chi^n = \varepsilon\) and therefore 
+      \[
+         J(\chi^j, \chi^i) = J(\chi^j, (\chi^j)^{-1}) = - \chi^j(-1) \Rightarrow
+         \sum_{i+j = n} J(\chi^i, \chi^j) = - \sum_{j = 1}^{n-1} \chi^j(-1).
+      \] 
+      Notice that (warning: look at the first index, it starts with \(0\) and
+      not a \(1\) as above, we'll deal with it later):
+      \[
+         N(x^n = -1) = \sum_{j=0}^{n-1} \chi^j(-1) =
+         \begin{cases}
+            n, &\text{if } x^n = -1  \text{ has solution}, \\
+            0, & \text{otherwise}.
+         \end{cases}
+      \] 
+      Therefore we have that 
+      \[
+         J(\chi^j, \chi^i) = -\sum_{j=1}^{n-1} \chi^j(-1)
+         = - \left( \sum_{j=0}^{n-1} \chi^j(-1) - \chi^0(-1) \right) 
+         = 1 - \delta_n(-1)n
+      \] 
+      where \(\delta_n(-1) := 1\) if  \(x^n = -1\) has solution and
+      \(\delta_n(-1) := 0\) if the equation has no solution. 
+   \item If \(i = 0\) and \(j \neq 0\) or the exact opposite, then we have
+      \(J(\chi^i, \chi^j) = J(\varepsilon, \chi^j) = 0\).
+\end{enumerate}
+
+Thus we conclude finally that 
+\[
+   N(x^n + y^n = 1) = p+1-\delta_n(-1)n 
+   + \sum_{\substack{1 \leqslant i, j \leqslant n-1 \\ i + j \neq  n}} J(\chi^i,
+   \chi^j)
+\] 
+where the last sum has \((n-1)^2 - (n-1)  = (n-1)(n-2)\) terms. Since all of
+these terms have norm \(|J(\chi^i, \chi^j)| \leqslant \sqrt{p}\) then we
+conclude that
+\[
+   |N(x^n + y^n = 1) + \delta_n(-1) -p -1| \leqslant (n-1)(n-2) |J(\chi^i,
+   \chi^j)| = (n-1)(n-2)\sqrt{p}.
+\] 
+Where we interpret \(\delta_n(-1)\) as the number of points at infinity of the
+curve.

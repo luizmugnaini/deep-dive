@@ -1,0 +1,91 @@
+\subsection{Gauss Sum and The Quadratic Reciprocity}
+
+Throughout this subsection we'll define \(\zeta := e^{\frac{2\pi i}{p}}\), the
+\(p\)th root of unity, where \(p > 2\) is prime.
+
+\begin{definition}
+   We define \[g_a := \sum_{0 \leqslant t \leqslant p-1} \left( \frac{t}{p}
+   \right) \zeta^{at}\] as the \emph{quadratic Gau{\ss} sum}.
+\end{definition}
+
+\begin{proposition}
+   The equality \(g_a = \left( \frac{a}{p} \right) g\) holds, where \(g:=g_1\).
+\end{proposition}
+
+\begin{proof}
+   For the case \(a \equiv 0 \pmod{p}\) we have that \(\zeta^{at} = 1^t = 1\)
+   and therefore \(g_a = \sum_{1 \leqslant t \leqslant p-1} \left( \frac{t}{p}
+   \right) \zeta^{at} = \sum_{1 \leqslant t \leqslant p-1} \left( \frac{t}{p}
+   \right) = 0\) and thus the equality holds.
+
+   Lets consider the case \(a \not\equiv 0 \pmod{p}\), in this case we can
+   analyse the product
+    \[
+       \left( \frac{a}{p} \right) g_a = \left( \frac{a}{p} \right) \sum_{1
+       \leqslant t \leqslant p-1} \left( \frac{t}{p} \right) \zeta^{at} =
+       \sum_{1 \leqslant t \leqslant p-1} \left( \frac{at}{p} \right) \zeta^{at}
+   \] 
+   but notice that \(\{\overline{0}, \overline{1}, \dots, \overline{p-1}\} =
+   \{\overline{0}, \overline{a}, \dots, \overline{(p-1)a}\}\) therefore we have
+   that
+   \[
+      \left( \frac{a}{p} \right) g_a = \sum_{1 \leqslant x \leqslant p-1} \left(
+      \frac{x}{p}\right) \zeta^x = g
+   \] 
+   then, since \(\left( \frac{a}{p} \right) = \pm 1\), we can simply multiply
+   both sides by \(\left( \frac{a}{p} \right)\) to get the desired equation.
+\end{proof}
+
+\begin{proposition}
+   \(g^2 = (-1)^{\frac{p-1}{2}} p\).
+\end{proposition}
+
+\begin{proof}
+   Consider the two following convergent ideas:
+   \begin{enumerate}[i.]
+      \item If \(a \not\equiv 0 \pmod{p}\) then we have that  
+         \[
+            g_{a}g_{-a} = \left( \frac{a}{p} \right) g \left( \frac{-a}{p}
+            \right) g 
+            = \left( \frac{-1}{p} \right) \left( \frac{a^2}{p} \right) g^2 
+            = \left( \frac{-1}{p} \right)g^2 
+         \]
+         Therefore, if we proceed by taking the sum, we end up getting:
+         \[
+            \sum_{1 \leqslant a \leqslant p-1} g_a g_{-a} = \sum_{1 \leqslant a
+            \leqslant p-1} \left( \frac{-1}{p} \right) g^2 = (p-1) \left(
+            \frac{-1}{p} \right) g^2.
+         \] 
+      \item Now we take another approach:
+         \[
+            g_a g_{-a} = \sum_{1 \leqslant x \leqslant p-1} \left( \frac{x}{p}
+            \right) \zeta^{xa} \sum_{1 \leqslant y \leqslant p-1} \left(
+            \frac{y}{p} \right) \zeta^{-ya}
+            = 
+            \sum_{\substack{1 \leqslant x \leqslant p-1\\ 1 \leqslant y
+            \leqslant p-1}} \left( \frac{x}{p} \right)  \left( \frac{y}{p}
+            \right) \zeta^{a(x-y)}
+         \] 
+         Now, denoting \(\delta(x, y) = 1\) if  \(x \equiv y \pmod{p}\) and
+         \(\delta(x,y)= 0\) if  \(x \not\equiv y\pmod{p}\) then we get 
+         \begin{align*}
+            \sum_{1 \leqslant a \leqslant p-1} g_a g_{-a} 
+            &= 
+            \sum_{1 \leqslant a \leqslant p-1} \sum_{\substack{1 \leqslant x
+            \leqslant p-1 \\ 1 \leqslant y \leqslant p-1}} \left( \frac{x}{p}
+            \right) \left( \frac{y}{p} \right) \zeta^{a(x-y)}\\
+            &= \sum_{\substack{1 \leqslant x \leqslant p-1 \\ 1 \leqslant y
+            \leqslant p-1}} \left( \frac{x}{p} \right) \left( \frac{y}{p}
+            \right) (\delta(x, y)p) \\
+            &= \sum_{1 \leqslant x = y \leqslant p-1} \left( \frac{xy}{p}
+            \right) p \\
+            &= (p-1)p
+         \end{align*}
+         Since the two sums must be equal to each other, we conclude that 
+         \[
+            \left( \frac{-1}{p} \right) g^2 = p \Rightarrow g^2 = \left(
+            \frac{-1}{p} \right) p = (-1)^{\frac{p-1}{2}} p.
+         \] 
+   \end{enumerate}
+\end{proof}
+

@@ -1,0 +1,374 @@
+\begin{lemma}
+   Let \(f \in k[x]\). If \(\deg(f) = n\) then \(f\) has at most \(n\) distinct
+   roots.
+\end{lemma}
+
+\begin{proof}
+   We do induction on \(n\). For \(n = 1\) then \(x = 0\) is the only solution
+   for \(f(x) = 0\). Now for \(\deg(f) = n-1\) suppose that the assertion is
+   true. Then, for the case where \(\deg(f) = n\), suppose \(\alpha \in k\) is a
+   root of \(f\) (if there is no such root, then the assertion is true from
+   vacuity), then by the division in \(k[x]\), let  \(f(x) = q(x)(x-\alpha)\)
+   (we can be certain that the remainder has degree less than \(1\) and because
+   \(f(\alpha) = 0\), the remainder must be equal to zero, which validates this
+   decomposition). Note now that \(\deg(f) = \deg(q) + \deg(x-\alpha)
+   \Rightarrow \deg(q) = n-1\) and therefore from the inductive hypothesis we
+   have that there exists at most \(n-1\) distinct roots of \(q\), then, if
+   \(\beta \in k : \beta \neq \alpha\) is a root of \(f\) it follows that
+   \(f(\beta) = q(\beta)(\beta - \alpha) = 0\) and therefore \(\beta\) is a root
+   of \(q\), and therefore we conclude that \(f\) has at most \(n\) distinct
+   roots (the bound was created by \(q\)).
+\end{proof}
+
+\begin{corollary}
+   Let \(f, g \in k[x]\) and \(\deg(f) = \deg(g) := n\). If there exists a set
+   \(\{a_1, \dots, a_{n+1}\} \subseteq k\) with \(n+1\) elements such that
+   \(f(a_j) = g(a_j)\) then \(f = g\).
+\end{corollary}
+
+\begin{proof}
+   Notice that \(h := f - g\) has degree \(\deg(h) \leqslant n\), then, if
+   \(\deg(h) \geqslant 0\) it must have at most \(n\) roots. Since there are
+   \(n+1\) distinct elements of \(k\) such that \(f(a_j) = g(a_j)\) then the
+   polynomial \(h\) has at least \(n+1\), which implies in \(h = 0\) and
+   therefore \(f = g\) as wanted.
+\end{proof}
+
+\begin{proposition}
+   Let \(p\) be a prime number, then  \(x^{p-1} - 1 = \prod_{j=1}^{p+1} (x - j)
+   \Mod{p}\).
+\end{proposition}
+
+\begin{proof}
+   Lets define \(f \in \mathbb{Z}/p\mathbb{Z}[k]\) such that \(f(x) := (x^{p-1}
+   - \overline{1}) - \prod_{\overline{j} = 1}^{\overline{p-1}}(x-\overline{j})\)
+   Now that we have a polynomial of degree \(\deg(f) < p-1\). Now, if also
+   \(\deg(f) \geqslant 0\) then there must exists less than \(p-1\) distinct
+   roots, but the case is that all the classes \(\overline{1},
+   \overline{2},\dots, \overline{p-1}\) are roots for \(f\) since \(x^{p-1} =
+   \overline{1}\) from Fermat's little theorem, and since all are distinct it
+   must be true that \(\deg(f) < 0\) and thus \(f = 0\), which implies in
+   \(x^{p-1} - \overline{1} = \prod_{\overline{j}=1}^{\overline{p-1}} (x -
+   \overline{j})\), proving the proposition.
+\end{proof}
+
+\begin{corollary}[Wilson's theorem]
+   Let \(p\) be a prime number. Then \((p-1)! \equiv -1 \Mod{p}\).
+\end{corollary}
+
+\begin{proof}
+   Notice that if we make \(x = 0\) for the proposition above we end up having
+   \(-1 \equiv \prod_{j=1}^{p-1}(-j) \Mod{p}\). For \(p = 2\) the proposition is
+   trivial, now, for \(p > 2\) we have that \(p-1\) is even and therefore
+   \(\prod_{j=1}^{p-1}(-j) = (p-1)!\), which proves the statement.
+\end{proof}
+
+\begin{proposition}[Wolstenholme theorem]
+   Let \(p > 3\) be a prime number. Then, the numerator of  
+   \[
+      1 + \frac{1}{2} + \frac{1}{3} + \dots + \frac{1}{p-1}
+   \] 
+   is divisible by \(p^2\).
+\end{proposition}
+
+\todo[inline]{Wolstenholme theorem as an application of Wilson theorem}
+
+\begin{proposition}
+   If \(d \mid p-1\) then \(x^d \equiv 1 \Mod{p}\) has exactly \(d\) solutions.
+\end{proposition}
+
+\begin{proof}
+   Since \(d \mid p-1\), let \(dq = p-1\), we want to make use of lemma 3.1
+   thus, one way of getting a polynomial of degree less than \(p-1\) from this
+   fact is that we can make
+   \[
+      \frac{x^{p-1} - 1}{x^d - 1} = \frac{(x^d - 1) \prod_{j=0}^{q-1}
+      (x^d)^j}{x^d - 1} = \prod_{j=0}^{q-1} (x^d)^{j} := f(x)
+   \] 
+   and thus \(\deg(f) = p-1-d\). From construction we simply have that \(x^{p-1}
+   - 1 = (x^d - 1)f(x)\), now, if we take this equality up to modulo \(p\) (why
+   would we do that? Well, just to use Fermat little theorem at our favor) we
+   get \(x^{p-1} - \overline{1} = (x^d - \overline{1}) \overline{f}(x)\). Notice
+   that \(x^{p-1} - 1\) has a total of \(p-1\) different solutions and therefore
+   the polynomial \((x^d - \overline{1}) \overline{f}(x)\) also has notice that
+   since \(f\) has at most \(p-1-d\) roots, then necessarily \((x^d -
+   \overline{1})\) has \(d\) roots. 
+\end{proof}
+
+\subsection{The group \texorpdfstring{\((\mathbb{Z}/p\mathbb{Z})^\ast\)}{(Z/pZ)*}}
+
+\begin{theorem}\label{unitCyclic}
+   The group \(((\mathbb{Z}/p\mathbb{Z})^\ast, \cdot)\) is cyclic.
+\end{theorem}
+
+\begin{proof}
+   Let a morphism \(\psi : \mathbb{Z} \to \mathbb{Z}_{\geqslant 0}\) be such
+   that, for \(d \mid p-1\), then \(\psi(d) := |\{u \in
+   (\mathbb{Z}/p\mathbb{Z})^\ast : u^d = \overline{1}\}|\) is the number of
+   elements of \((\mathbb{Z}/p\mathbb{Z})^\ast\) that have order \(d\). Now, if
+   we just apply the result of the proposition above, we see that there are
+   exactly \(d\) such elements and thus, the set \(\{u \in
+   (\mathbb{Z}/p\mathbb{Z})^\ast : u^d = \overline{1}\}\) form a group of order
+   \(d\). 
+
+   Notice that the roots of \(u^d = \overline{1}\) are the ones that have
+   order which divides \(d\) so that, if \(\ord(a) = c \mid d\) then  \(a^c =
+   \overline{1}\) and there exists an \(q \in \mathbb{Z} : cq = d\) then
+   \((a^c)^q = a^d = \overline{1}\). From this fact, we notice that all the
+   roots have this form and thus \(\sum_{c \mid d} \psi(c) = d\) because there
+   are \(d\) such roots and the union of all roots must have \(d\) elements. 
+
+   We can now apply Möbius inversion theorem to get \(\psi(d) = \sum_{c \mid d}
+   \mu(c) d/c\). We know from proposition \ref{eulerInversion} that \(\sum_{c
+   \mid d} \mu(c)d/c = \varphi(d)\). Now, for \(d = p-1\) we simply have
+   \(\psi(p-1) = \varphi(p-1) > 1\) for \(p > 2\) and the case \(p=2\) is
+   trivial. Therefore there are \(\varphi(p-1)\) elements of order \(p-1\), that
+   is, roots of \(u^{p-1} = \overline{1}\).
+\end{proof}
+
+\begin{definition}[Primitive roots]
+   We say that an element \(a\) is a primitive root of
+   \((\mathbb{Z}/p\mathbb{Z})^\ast\) if the residue class \(\overline{a}\)
+   generates the group of units, that is \((\mathbb{Z}/p\mathbb{Z})^\ast =
+   \langle \overline{a} \rangle\). Equivalently we may state that the order of
+   \(a\) is \(\varphi(p) = p-1\), so that \(\overline{a^{p-1}} = \overline{1}\).
+\end{definition}
+
+Now we give a second proof of \ref{unitCyclic}
+\begin{proof}
+   Lets define the prime factorization \(p-1 := \prod_{k=1}^{\ell} q_k^{a_k}\),
+   Now we consider the solutions to the congruences given by  \(x^{\left(
+   q_k^{a_k-1} \right)} \equiv 1 \Mod{p}\) and \(x^{\left( q_k^{a_k} \right) }
+   \equiv 1 \Mod{p}\). Suppose now that \(x_0\) is a solution for the first
+   congruence, thus 
+    \[
+       x_0^{\left( q_k^{a_k-1} \right) } \equiv 1 \Mod{p}
+       \Rightarrow 
+       x_0^{\left( q_k^{a_k-1} \right) } \cdot x_0^{\left( q_k^{a_k-1}
+       \right)(q_k-1) } 
+       = x_0^{\left( q_k^{a_k} \right) } \equiv 1 \Mod{p}
+   \] 
+   and therefore all solutions to the first congruence are solutions to the
+   congruence \(x^{\left( q_k^{a_k} \right) } \equiv 1 \Mod{p}\). Thus, we can
+   say that the second congruence has more solutions than the first. Let \(g_k\)
+   be a solution to the second congruence but not of the first, then, let \(g :=
+   \prod_{k=1}^\ell g_k\) be the product of all such solutions. Notice that
+   since \(g_k^{q_k^{a_k}} = 1 \Mod{p}\) then the subgroup \(\langle
+   \overline{g_k} \rangle \subseteq (\mathbb{Z}/p\mathbb{Z})^\ast\) has order
+   \(q_k^{a_k}\) by definition. Notice that \(\langle \overline{g} \rangle
+   \subseteq (\mathbb{Z}/p\mathbb{Z})^\ast\) has order \(\prod_{k=1}^\ell
+   q_k^{a_k} = p-1\) and thus, from the definition of primitive root, we have
+   that \(g\) is a primitive root modulo \(p\), this implies in
+   \((\mathbb{Z}/p\mathbb{Z})^\ast\) being cyclic. 
+\end{proof}
+
+\begin{definition}
+   Given \(n \in \mathbb{Z}\), we say that \(a\) is a primitive root modulo
+   \(n\) if  \(\langle \overline{a} \rangle = (\mathbb{Z}/n\mathbb{Z})^\ast\).
+   Equivalently, \((a, n) = 1\) and \(\varphi(n)\) is the smallest exponent such
+   that \(a^{\varphi(n)} \equiv 1 \Mod{n}\).
+\end{definition}
+
+\begin{remark}
+   In general, it is not true that \((\mathbb{Z}/n\mathbb{Z})^\ast\) is cyclic.
+   Therefore, not every integer has its primitive root.
+\end{remark}
+
+\begin{lemma}
+   Let \(p\) prime and  \(1 \leqslant k < p\), then \(p \mid \binom{p}{k}\).
+\end{lemma}
+
+\begin{proof}
+   Two proofs are given:
+   \begin{enumerate}[(a)]
+      \item From the definition we have that \(p! = k!(p-k)!\binom{p}{k}\) and
+         since \(k < p\), then the  product \(k! (p-k)!\) contains only elements
+         which are less than \(p\) and therefore \(p \nmid k! (p-k)!\). It
+         follows that \(p \mid \binom{p}{k}\).
+      \item Let \((a, p) = 1\), then, since \(a^{p-1} \equiv 1 \Mod{p}\) and
+         also  \(a^p \equiv a \Mod{p}\), then  \((1+a)^{p} \equiv 1+a \equiv 1 +
+         a^p \Mod{p}\).
+
+         Note that the polynomial \((1+x)^p - (1+x^p) \equiv 0 \Mod{p}\) have a
+         total of \(p\) distinct solutions but also, its degree is less than
+         \(p\) and therefore this is is only possible if \((\overline{1}+x)^p -
+         (\overline{1}+x^p) = \overline{0} \in \mathbb{Z}/p\mathbb{Z}[x]\).
+         Notice also that \((1+x)^p - (1+x^p) = \sum_{k=1}^{p-1}
+         \binom{p}{k}x^k\) and thus the class \(\overline{\binom{p}{k}} =
+         \overline{0}\) for all \(1 \leqslant k < p\) and therefore \(p \mid
+         \binom{p}{k}\) as wanted.
+   \end{enumerate}
+\end{proof}
+
+\begin{definition}[Frobenius endomorphism]
+   We define a function \(\pi : \mathbb{Z}/p\mathbb{Z} \to
+   \mathbb{Z}/p\mathbb{Z}\), given by \(\pi(x) = x^p\) as the \emph{Frobenius
+   endomorphism}.
+
+   Notice that the function is additive since  \(\pi(x + y) = (x+y)^p = x^p +
+   y^p = \pi(x) + \pi(y)\) since \((x + y)^p = x^p + \sum_{k=1}^{p-1}
+   \binom{p}{k} x^{p-k}y^{k} + y^p\) and  \(p \mid \binom{p}{k},\ 1
+   \leqslant k < p\).
+\end{definition}
+
+\begin{lemma}
+   If \(\ell \geqslant  1\)  and \(a \equiv b \Mod{p^\ell}\) then \(a^p \equiv
+   b^p \Mod{p^{\ell+1}}\).
+\end{lemma}
+
+\begin{proof}
+   Since \(p^\ell \mid a - b\), let \(c \in \mathbb{Z}\) such that \(a = b +
+   p^\ell c\) then \(a^p = b^p + \sum_{k=1}^{p} \binom{p}{k} b^{p-k}(p^\ell
+   c)^k = b^p + \binom{p}{1} b^{p-1} cp^\ell + \sum_{k=2}^{p} \binom{p}{k}
+   b^{p-k} (p^\ell c)^{k}\).
+
+   Now lets analyse what we got: notice that all of the terms in \(\sum_{k=2}^p
+   \binom{p}{k} b^{p-k} (p^{\ell} c)^k\) are divisible by \(p^{\ell+2}\),
+   moreover the term \(\binom{p}{1} b^{p-1} p^\ell c\) is divisible by
+   \(p^{\ell+1}\) from the fact that \(p \mid \binom{p}{1}\). With this at hand
+   we get \(a^p - b^p = \binom{p}{1} b^{p-1} p^\ell c + \sum_{k=2}^p
+   \binom{p}{k} b^{p-k} (p^\ell c)^k \equiv 0 \Mod{p^{\ell+1}}\), which shows
+   the proposition.
+\end{proof}
+
+\begin{corollary}
+   Let \(\ell \geqslant 2\) and let \(p > 2\) be a prime number. Then
+    \[
+       (1+ap)^{p^{\ell-2}} \equiv 1 + a p^{\ell-1} \Mod{p^\ell}
+   \] 
+   for all choices of \(a \in \mathbb{Z}\).
+\end{corollary}
+
+\begin{proof}
+   We do induction on \(\ell\). Let  \(\ell = 2\), then  \((1 + ap) \equiv 1 +
+   ap \Mod{p^2}\). Let it be true for some \(\ell > 2\). Notice that from the
+   last lemma on \((1+ap)^{p^{\ell-2}} \equiv 1 + ap^{\ell-1} \Mod{p^\ell}\) to
+   obtain  
+   \[
+      (1+ap)^{p^{\ell-2}p} = (1 + ap)^{p^{\ell-1}} \equiv (1 +
+      ap^{\ell-1})^p \Mod{p^{\ell+1}}
+   \]
+   Now, notice that 
+   \[
+      (1 + ap^{\ell-1})^{p}
+      = 1 + \binom{p}{1} ap^{\ell-1} + \sum_{k=2}^p \binom{p}{k} (ap^{\ell-1})^{k}
+      = 1 + ap^{\ell} + \sum_{k=2}^{p} \binom{p}{k} (ap^{\ell-1})^k
+   \]
+   Since \(\ell \geqslant 2\) it follows that  \(1 + 2(\ell - 1) \geqslant
+   \ell + 1\) , therefore, using the fact that trivially every element of
+   \(\sum_{k=2}^{p-1} \binom{p}{k} (ap^{\ell-1})^k\) is divisible by \(p^{2(\ell
+   - 1) + 1}\) (since \(p \mid \binom{p}{k}\)) then \(p^{\ell + 1} \mid
+   \sum_{k=2}^{p-1} (ap^{\ell-1})^k\); also, since we made \(p > 2\) then
+   \(p(\ell-1) \geqslant \ell+1\) and thus \(p^{\ell+1} \mid a^p p^{p(\ell-1)} =
+   \binom{p}{p} (ap^{\ell-1})^p\) is the last term of the expansion. Finally we
+   conclude that \(p^{\ell+1} \mid \sum_{k=2}^p \binom{p}{k} (a p^{\ell-1})^k\). 
+
+   With this we conclude that 
+   \[
+      (1 + ap)^{p^{\ell-1}} \equiv (1 + ap^{\ell-1})^p \equiv 1 + ap^\ell
+      \Mod{p^{\ell+1}}
+   \] 
+   which proves the final step of the induction.
+\end{proof}
+
+\begin{definition}[Order]
+   Let \(a, n \in \mathbb{Z}\) such that \((a, n) = 1\) and thus  \(\overline{a}
+   \in (\mathbb{Z}/n\mathbb{Z})^\ast\). The order of \(a\) modulo \(n\) is
+   defined to be the smallest exponent  \(\ord{n}(a)\) such that
+   \(a^{\ord{n}(a)} \equiv 1 \Mod{n}\).
+\end{definition}
+
+\begin{corollary}\label{cor2Cyclic}
+   Let \(p > 2\) be prime and \(a \in \mathbb{Z}\) such that \(p \nmid a\). Then
+   \(\ord{p^\ell}(1+ap) = p^{\ell-1}\).
+\end{corollary}
+
+\begin{proof}
+   Since \((1+ap)^{p^{\ell-1}} \equiv 1 + ap^{\ell} \Mod{p^{\ell+1}}\) then \((1
+   + ap)^{p^{\ell-1}} \equiv 1 \Mod{p^\ell}\), because \(p^\ell\) divides every
+   term that \(p^{\ell+1}\) divides and obviously \(p^{\ell} \mid ap^\ell\),
+   which implies that \(\ord{p^\ell}(1 + ap) \mid p^{\ell-1}\). Now, since \(p
+   \nmid a\) it follows that \((1+ap)^{p^{\ell-2}} \equiv 1+ap^{\ell-1}
+   \not\equiv 1 \Mod{p^\ell}\) and therefore \(\ord{p^\ell}(1 + ap) \neq
+   p^{\ell-2}\) and thus we conclude that \(\ord{p^\ell} (1+ap) = p^{\ell-1}\).
+\end{proof}
+
+\begin{theorem}
+   If \(p > 2\) is prime and  \(\ell \in \mathbb{Z}_{>0}\) then
+   \((\mathbb{Z}/p^\ell\mathbb{Z})\ast\) is cyclic or, equivalently, there exists
+   primitive root modulo \(p^\ell\).
+\end{theorem}
+
+\begin{proof}
+   From the theorem \ref{unitCyclic} we have proven that
+   \((\mathbb{Z}/p\mathbb{Z})^\ast\) is cyclic and thus have primitive roots.
+   Let \(g\) be such a primitive root and thus \(g + p\) is also a primitive
+   root. 
+   Now, suppose that \(g^{p-1} \equiv 1 \Mod{p^2}\), then we have 
+   \[
+      (g + p)^{p-1} = g^{p-1} + \binom{p-1}{1} g^{p-1}p + \sum_{k=2}^{p-1}
+      \binom{p-1}{k} g^{(p-1)-k}p^k
+      \equiv 1 + (p-1) g^{p-2}p \Mod{p^2}.
+   \]
+   and therefore we can use the fact that \(p^2 \nmid (p-1) g^{p-2} p\) because
+   \((g, p) = 1\) and thus we can assume \(g\) as a primitive root modulo \(p\)
+   and also  \(g^{p-1} \not\equiv 1 \Mod{p^2}\) since we already took a look at
+   this case.
+
+   We now claim that this \(g\) is a primitive root modulo \(p^\ell\) and to
+   make such proof we just need to show that if \(g^n \equiv 1 \Mod{p^\ell}\) then
+   \(\varphi(p^\ell) = p^{\ell-1}(p-1) \mid n\).
+
+   Lets firstly show that \(p^{\ell-1} \mid n\). Let \(g^{p-1} := 1 + ap\), with
+   \(p \nmid a\) (we can do this because we are assuming that \(g^{p-1} \equiv 1
+   \Mod{p} \Rightarrow p \mid g^{p-1} - 1\)). Therefore, from construction, we
+   can simply apply corollary \ref{cor2Cyclic} in order to get
+   \(\ord{p^\ell}(1+ap) = \ord{p^\ell}(g^{p-1}) = p^{\ell-1}\). Suppose now that
+   \(n \in \mathbb{Z}\) is such that \((g^{p-1})^n = (1+ap)^n \equiv 1
+   \Mod{p^\ell}\), then obviously \(p^{\ell-1} \mid n\) since \(p^{\ell-1}\) is
+   the order of \(1+ap\).
+
+   We want to show now that \(p-1 \mid n\). Since  \(p^{\ell-1} \mid n\), let
+   \(n' \in \mathbb{Z} : n = p^{\ell-1} n'\), then \(g^n = g^{(p^\ell-1)n'}
+   \equiv g^{n'} \equiv 1 \Mod{p}\). Since we already know that \(g\) is a
+   primitive root modulo \(p\) then \(\varphi(p) = p-1 \mid n'\) but since  \(n'
+   \mid n\) then \((p-1) \mid n\), now, since \((p^{\ell-1}, p-1) = 1\) then
+   \(p^{\ell-1}(p-1) = \varphi((p^\ell) \mid n\) which finishes the proof.
+\end{proof}
+
+\begin{proposition}
+   An integer has primitive roots if and only if it has the form  \(2,\ 4,\
+   p^a\) or \(2p^a\), where \(p > 2\) is a prime.
+\end{proposition}
+
+\subsection{\textit{n}th power residues}
+
+\begin{definition}
+   Let \(m, n \in \mathbb{Z}_{>0}\) and \((a, m) = 1\). Then \(a\) is said to be
+   an \(n\)th power residue modulo \(m\) if  \(x^n \equiv a \Mod{m}\) admits
+   solution.
+\end{definition}
+
+\begin{proposition}
+   Let \(m \in \mathbb{Z}_{>0}\) have primitive roots and \((a, m) = 1\) for
+   some given \(a \in \mathbb{Z}\). Then \(a\) is an  \(n \)th residue modulo
+   \(m\) if and only if, given \(d := (n, \varphi(m))\) we have
+   \(a^{\varphi(m)/d} \equiv 1 \Mod{m}\).
+\end{proposition}
+
+\begin{proof}
+   Let \(g\) be a primitive root of \(m\) and let \(a := g^b\) and \(x := g^y\)
+   for some \(b, y \in \mathbb{Z}_{\geqslant 0}\). Thus \(x^n \equiv a \Mod{m}
+   \iff g^{yn} \equiv g^b \Mod{m}\), from this, we can use the fact that \(g\)
+   is a primitive root to turn this Diophantine equation of degree \(n\) into
+   an equation of degree \(1\), that is \(y n \equiv b \Mod{\varphi(m)}\).
+   We know that there exists a solution for the latter congruence iff  \(d :=
+   (n, \varphi(m)) \mid b\) and, if so, there are exactly \(d\) solutions as we
+   already proved. (\(\Rightarrow\)) Now, if we assume that indeed \(d \mid b\),
+   it follows that \(a^{\varphi(m)/d} \equiv (g^{b})^{\varphi(m)/d} \equiv
+   g^{(b/d)\varphi(m)} \equiv 1 \Mod{m}\) since \(b/d \in \mathbb{Z}\).
+   \((\Leftarrow)\) Suppose now that \(a^{\varphi(m)/d} \equiv 1 \Mod{m}\) and
+   thus \((g^b)^{\varphi(m)d} \equiv 1 \Mod{m}\) thus, necessarily one of the
+   following is true: \(\varphi(m) \mid (b/d)\varphi(m)\) or \(d \mid b\).
+\end{proof}
+

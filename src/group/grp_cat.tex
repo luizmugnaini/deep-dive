@@ -1,14 +1,14 @@
 \section{\texorpdfstring{\(\Grp\)}{Grp} Category}
 
 \begin{definition}[Group morphism]\label{def: grp-morphism}
-Let \((G, \circledast)\) and \((H, \circledcirc)\) be groups together with
-their binary operation. A group morphism --- also called homomorphism --- is a
-map \(\varphi: (G, \circledast) \to (H, \circledcirc)\) such that the that the
-following diagram commutes
+Let \((G, \cdot_G)\) and \((H, \cdot_H)\) be groups together with their binary
+operation. A group morphism --- also called homomorphism --- is a map \(\varphi:
+(G, \cdot_G) \to (H, \cdot_H)\) such that the that the following diagram
+commutes
 \[
   \begin{tikzcd}
-    G \times G \ar[d, swap, "\circledast"] \ar[r, "\varphi \times \varphi"]
-    &H \times H \ar[d, "\circledcirc"] \\
+    G \times G \ar[d, swap, "\cdot_G"] \ar[r, "\varphi \times \varphi"]
+    &H \times H \ar[d, "\cdot_H"] \\
     G \ar[r, "\varphi"] &H
   \end{tikzcd}
 \]
@@ -18,7 +18,7 @@ Where \(\varphi \times \varphi\) is uniquely defined in \(\Set\) by
 be viewed as the requirement that \(\varphi\) preserves the structure coming
 from the binary operations --- that is, for any \(g, \ell \in G\)
 \[
-  \varphi(g \circledast \ell) = \varphi(g) \circledcirc \varphi(\ell).
+  \varphi(g \cdot_G \ell) = \varphi(g) \cdot_H \varphi(\ell).
 \]
 \end{definition}
 
@@ -32,9 +32,9 @@ called groups --- and group morphisms between them.
 \end{proposition}
 
 \begin{proof}
-Let \((G, \circledast)\), \((H, \circledcirc)\) and \((K, \star)\) be any
+Let \((G, \cdot_G)\), \((H, \cdot_H)\) and \((K, \cdot_K)\) be any
 groups. The identity \(\Id_G: G \to G\) is a group morphism since \(\Id_G(g
-\circledast \ell) = g \circledast \ell\) for any \(g, \ell \in G\). Moreover,
+\cdot_G \ell) = g \cdot_G \ell\) for any \(g, \ell \in G\). Moreover,
 we can define a map
 \[
   f: \Hom_{\Grp}(G, H) \times \Hom_{\Grp}(H, K) \to \Hom_{\Grp}(G, K)
@@ -44,11 +44,11 @@ the following diagram commutes
 \[
   \begin{tikzcd}
     G \times G \ar[r, "\varphi \times \varphi"]
-    \ar[d, swap, "\circledast"]
+    \ar[d, swap, "\cdot_G"]
     \ar[rr, bend left, "(\psi \varphi) \times (\psi \varphi)"]
     &H \times H \ar[r, "\psi \times \psi"]
-    \ar[d, "\circledcirc"]
-    &K \times K \ar[d, "\star"]
+    \ar[d, "\cdot_H"]
+    &K \times K \ar[d, "\cdot_K"]
     \\
     G \ar[r, "\varphi"]
     \ar[rr, bend right, swap, "\psi \varphi"]
@@ -57,11 +57,11 @@ the following diagram commutes
 \]
 In other words, for any \(g, \ell \in G\) we have
 \[
-  \psi \varphi (g \circledast \ell)
-  = \psi(\varphi(g \circledast \ell))
-  = \psi(\varphi(g) \circledcirc \varphi(\ell))
-  = \psi(\varphi(g)) \star \psi(\varphi(\ell))
-  = \psi \varphi(g) \star \psi \varphi(\ell).
+  \psi \varphi (g \cdot_G \ell)
+  = \psi(\varphi(g \cdot_G \ell))
+  = \psi(\varphi(g) \cdot_H \varphi(\ell))
+  = \psi(\varphi(g)) \cdot_K \psi(\varphi(\ell))
+  = \psi \varphi(g) \cdot_K \psi \varphi(\ell).
 \]
 Therefore \(\psi \varphi \in \Hom_\Grp(G, K)\). For the other part of the
 diagram, we have
@@ -69,7 +69,7 @@ diagram, we have
   (\psi \varphi) \times (\psi \varphi) (g, \ell)
   = (\psi \varphi(g), \psi \varphi(\ell))
   = \psi \times \psi(\varphi(g), \varphi(\ell))
-  =(\psi \times \psi) (\varphi \times \varphi) (g, \ell)
+  = (\psi \times \psi) (\varphi \times \varphi) (g, \ell)
 \]
 
 Since group morphisms are maps in \(\Set\), we have that associativity is
@@ -81,16 +81,15 @@ There exists a covariant forgetful functor \(F: \Grp \to \Set\).
 \end{proposition}
 
 \begin{proof}
-For objects, define \(F\) as \(F(G, \circledast) = G\) --- where we denoted
-\(G\) together with its binary operation only to express that the
-multiplicative structure is lost in the process. Let \(\varphi: (G,
-\circledast) \to (H, \circledcirc)\) be a group morphism, denote by
-\(\overline \varphi \in \Mor(\Set)\) the function \(\overline\varphi: G \to
-H\) such that \(\overline\varphi(g) = \varphi(g)\) for all \(g \in G\). For
-such morphisms we define \(F\) as \(F\varphi = \overline\varphi: F(G,
-\circledast) \to F(H, \circledcirc)\).
+For objects, define \(F\) as \(F(G, \cdot_G) = G\) --- where we denoted \(G\)
+together with its binary operation only to express that the multiplicative
+structure is lost in the process. Let \(\varphi: (G, \cdot_G) \to (H, \cdot_H)\)
+be a group morphism, denote by \(\overline \varphi \in \Mor(\Set)\) the function
+\(\overline\varphi: G \to H\) such that \(\overline\varphi(g) = \varphi(g)\) for
+all \(g \in G\). For such morphisms we define \(F\) as \(F\varphi =
+\overline\varphi: F(G, \cdot_G) \to F(H, \cdot_H)\).
 
-Let \(\psi \in \Hom_\Grp((H, \circledcirc), (K, \star))\), then we have
+Let \(\psi \in \Hom_\Grp(H K)\), then we have
 \(\overline{\psi \varphi} = \overline \psi \overline \varphi: H \to K\). Thus
 \[
   F(\psi \varphi) = \overline{\psi \varphi}
@@ -125,23 +124,9 @@ of \(\Grp\).
 
 \subsection{Properties of Morphisms}
 
-\begin{proposition}[Monomorphisms, epimorphisms and isomorphisms]
-\label{prop:mono-epi-iso-in-grp}
-Let \(\phi\) be a morphism of groups. Then
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item \(\phi\) is a monomorphism if and only if \(\phi\) is injective.
-\item \(\phi\) is an epimorphism if and only if \(\phi\) is surjective.
-\item \(\phi\) is an isomorphism if and only if \(\phi\) is bijective.
-\end{enumerate}
-\end{proposition}
-
-\begin{proof}
-\todo[inline]{Prove}
-\end{proof}
-
 \begin{proposition}[Commuting on inverses]
 \label{prop:grp-morphism-commute-inverse}
-Let \((G, \circledast), (H, \circledcirc)\) be groups and consider \(\varphi \in
+Let \((G, \cdot_G), (H, \cdot_H)\) be groups and consider \(\varphi \in
 \Hom_\Grp(G, H)\). Define \(\operatorname{inv}_G: G \isoto G\) and
 \(\operatorname{inv}_H: H \isoto H\) as the maps \(g \xmapsto
 {\operatorname{inv}_G} g^{-1}\) and \(h \xmapsto {\operatorname{inv}_H}
@@ -160,19 +145,19 @@ That is, \(\varphi(g^{-1}) = \varphi(g)^{-1}\) for every \(g \in G\).
 \begin{proof}
 Let \(g \in G\) be any element, then
 \[
-  \varphi(g^{-1}) = \varphi(g^{-1} e_G) = \varphi(g^{-1} \circledast g
-  \circledast g^{-1}) = \varphi(g^{-1}) \circledcirc \varphi(g) \circledcirc
+  \varphi(g^{-1}) = \varphi(g^{-1} e_G) = \varphi(g^{-1} \cdot_G g
+  \cdot_G g^{-1}) = \varphi(g^{-1}) \cdot_H \varphi(g) \cdot_H
   \varphi(g^{-1}),
 \]
 applying cancellation law on the equation above we find
 \[
-  e_H = \varphi(g) \circledcirc \varphi(g^{-1}).
+  e_H = \varphi(g) \cdot_H \varphi(g^{-1}).
 \]
 Hence \(\varphi(g^{-1}) = {\varphi(g)}^{-1}\). Moreover, this implies that \(e_G
 \xmapsto \varphi e_H\) since
 \[
-  \varphi(e_G) = \varphi(g \circledast g^{-1}) = \varphi(g) \circledcirc
-  \varphi(g^{-1}) = \varphi(g) \circledcirc {\varphi(g)}^{-1} = e_H.
+  \varphi(e_G) = \varphi(g \cdot_G g^{-1}) = \varphi(g) \cdot_H
+  \varphi(g^{-1}) = \varphi(g) \cdot_H {\varphi(g)}^{-1} = e_H.
 \]
 \end{proof}
 
@@ -230,21 +215,49 @@ is another element, then \(\phi(g u) = \phi(g) \phi(u) = e_H e_H = e_H\) and
 hence \(g u \in \ker \phi\) --- thus \(\ker \phi\) is a subgroup of \(G\).
 \end{proof}
 
-\begin{proposition}[Injectivity of morphisms]\label{prop: ker-trivial-inj}
-A morphism of groups is injective if and only if its kernel is trivial.
+\begin{proposition}[Monomorphisms, kernels and injectivity]
+\label{prop:monic-in-grp}
+Let \(\phi: G \to H\) be a morphism of groups. Then the following properties are
+equivalent:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item \(\phi\) is a monomorphism in \(\Grp\).
+
+\item \(\ker \phi = \{e_G\}\).
+
+\item \(\phi\) is injective in \(\Set\).
+\end{enumerate}
 \end{proposition}
 
 \begin{proof}
-Let \(\phi: G \to H\) be any morphism. If \(\phi\) is injective then clearly
-\(\ker\phi = \{e_G\}\). On the other hand, if \(\ker\phi = \{e_G\}\), then,
-given elements \(g, g' \in G\) such that \(\phi(g) = \phi(g')\), then,
-multiplying both sides by \(\phi{(g')}^{-1}\) we get
+\begin{enumerate}\setlength\itemsep{0em}
+\item (a) \(\implies\) (b). Suppose \(\phi\) is a monormophism and consider the
+following commutative diagram
+\[
+\begin{tikzcd}
+\ker \phi \ar[r, shift left, hook, "\iota"] \ar[r, shift right, swap, "e"]
+& G \ar[r, tail, "\phi"] & H
+\end{tikzcd}
+\]
+From the monomorphism definition we find \(\iota = e\) and therefore \(\ker \phi
+= \{e_G\}\).
+
+\item (b) \(\implies\) (c). If \(\ker\phi = \{e_G\}\), then, given elements \(g,
+g' \in G\) such that \(\phi(g) = \phi(g')\), then, multiplying both sides by
+\(\phi{(g')}^{-1}\) we get
 \[
   \phi(g) {\phi(g')}^{-1} = \phi(g) \phi(g'^{-1}) = \phi(gg'^{-1}) = e_G.
 \]
 That is, \(gg'^{-1} \in \ker\phi\), but since \(\ker\phi\) is trivial, then
 \(gg'^{-1} = e_G\) and hence \(g = g'\) --- in other words, \(\phi\) is
 injective.
+
+\item (c) \(\implies\) (a). Let \(\phi\) be injective --- that is, for any pair
+of \emph{set}-functions \(f, g: A \rightrightarrows G\) from a set \(A\), then
+\(\phi f = \phi g\) if and only if \(f = g\). In particular, if we impose a
+group structure in the set \(A\) and that both \(f\) and \(g\) preserve the
+group structure of \(A\), we find that the injectivity in \(\Set\) implies in
+the monomorphism \(\phi\) as a morphism in \(\Grp\).
+\end{enumerate}
 \end{proof}
 
 \begin{proposition}
@@ -296,14 +309,14 @@ is a bijection.
 \begin{proof}
 Consider an isomorphism \(\phi: G \to H\). Using the forgetful functor \(F:
 \Grp \to \Set\) we see that \(F\phi\) is a bijection of sets in \(\Set\) ---
-recall \cref{lem: functor preserve iso} ---, thus \(\phi\) defines a bijection
+recall \cref{lem: functor preserve iso} --- thus \(\phi\) defines a bijection
 between the elements of \(G\) and \(H\).
 
 On the other hand, if \(\phi\) is a bijection, consider its set-function
 inverse \({(F\phi)}^{-1}: H \to G\). We now show that \({(F\phi)}^{-1}\) preserves
 the structures of groups. Since \(\phi(e_G) = e_H\), then \({(F\phi)}^{-1}(e_H)
 = e_G\). Moreover, for any \(h, h' \in H\) --- since \(\phi\) is surjective
----, take elements \(g, g' \in G\) such that \(\phi(g) = h\) and \(\phi(g') =
+--- take elements \(g, g' \in G\) such that \(\phi(g) = h\) and \(\phi(g') =
 h'\), then we find that \({(F\phi)}^{-1}(hh') = g g' = {(F\phi)}^{-1}(h) \cdot
 {(F\phi)}^{-1}(h')\). This implies in the existence of a naturally induced
 morphism of groups \(\phi^{-1}: H \to G\) defined by \(\phi^{-1}(h) =
@@ -375,6 +388,7 @@ This being said, its easy to see that \(\phi\) preserves the group structure:
 \(\phi\) is a morphism of groups.
 \end{proof}
 
+
 \subsection{More Thoughts On Cyclic Groups}
 
 We can now state the definition of a cyclic group in a formal manner, it goes as
@@ -422,12 +436,288 @@ of distict elements of \(C_n\) is the same as the number of positive integers
 coprimes of \(n\).
 \end{proof}
 
+\begin{proposition}[Subgroup]
+\label{prop:subgroup-of-cyclic-group}
+Any subgroup of a cyclic group is cyclic.
+\end{proposition}
+
+\begin{proof}
+Let \(G = \langle g \rangle\) be a cyclic group and \(H \subseteq G\) be any
+subgroup of \(G\). If \(h \in H\) then there exists \(n \in \Z\) such that \(h =
+g^n\), thus \(g^n \in H\) --- but then, given any other \(h' \in H\), there must
+exist \(m \in \Z\) such that \(h' = g^{n + m} = h^m\), thus \(H = \langle h
+\rangle\) is cyclic.
+\end{proof}
+
+\begin{lemma}
+\label{lem:inner-aut-subgroup}
+Given a group \(G\), the collection of inner automorphisms, which we'll denote
+by \(\Inn(G)\), is a subgroup of \(\Aut(G)\). Moreover, the following statements
+are equivalent:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item \(\Inn(G)\) is cyclic.
+\item \(\Inn(G)\) is trivial.
+\item \(G\) is abelian.
+\end{enumerate}
+Therefore, if \(\Aut(G)\) is cyclic, the group \(G\) is abelian.
+\end{lemma}
+
+\begin{proof}
+From \cref{lem: grp-inner-aut} and \cref{lem: grp-inner-aut-cor} we find that
+\(\Inn(G) \subseteq \Aut(G)\) is indeed a subgroup. Now we prove the
+equivalences:
+\begin{itemize}\setlength\itemsep{0em}
+\item (a) \(\Leftrightarrow\) (b). If \(\Inn(G)\) is cyclic, then there must
+exist \(g \in G\) for which \(\Inn(G) = \langle \gamma_g \rangle\). Therefore,
+given any \(h \in G\), there exists \(n \in \Z\) for which \(\gamma_h =
+\gamma_g^n\) --- therefore \(h g h^{-1} = g^n g g^{-n} = g\), thus \(h g = g
+h\). We can thus conclude that \(\gamma_g\) is the identity morphism \(h \mapsto
+h\), which implies in \(\Inn(G)\) being trivial. Now, if we assume \(\Inn(G)\)
+to be trivial by hypothesis, then clearly \(\Inn(G)\) is cyclic.
+
+\item (b) \(\Leftrightarrow\) (c). If \(\Inn(G)\) is trivial, then given any
+pair of elements \(g, h \in G\) we have \(\gamma_g = \Id\) and thus \(g h g^{-1}
+= h\), which implies in \(g h = h g\), thus \(G\) is commutative. Now, if \(G\)
+is commutative by hypothesis, we find that \(g h g^{-1} = (g g^{-1}) h = h\)
+thus \(\Inn(G)\) is trivial.
+\end{itemize}
+Thus, if \(\Aut(G)\) is a cyclic group, we find that the subgroup \(\Inn(G)
+\subseteq \Aut(G)\) is also cyclic (from \cref{prop:subgroup-of-cyclic-group}),
+hence \(G\) is abelian.
+\end{proof}
+
+\subsection{Some Matrix Groups}
+
+\begin{example}[Important matrix groups]
+\label{exp:important-matrix-groups}
+Let \(k\) be a field and \(\Mat_{n \times n}(k) = \End_{\Vect_k}(k^n)\) be the
+collection of all \(n \times n\) matrices over \(k\), for any \(n \in \Z_{>
+0}\). We define the following important groups of square matrices:
+\begin{enumerate}\setlength\itemsep{0em}
+\item General linear group: \(\GL_n(k) \coloneq \{T \in \Mat_{n \times n}(k)
+\colon \det T \neq 0\}\), the group of invertible matrices.
+
+\item Special linear group: \(\SL_n(k) \coloneq \{T \in \GL_n(k) \colon \det T =
+1\}\).
+
+\item Orthogonal group: \(\Orth_n(k) \coloneq \{T \in \GL_n(k) \colon T T^{*} =
+T^{*} T = \Id_n\}\)\footnote{The matrix \(T^{*}\) denotes the transpose of
+\(T\), which is the same as the dual of \(T\).}.
+
+\item Special orthogonal group: \(\SO_n(k) \coloneq \{T \in \Orth_n(k) \colon
+\det T = 1\}\).
+
+\item Unitary group: \(\Unit_n(\CC) \coloneq \{T \in \GL_n(\CC) \colon T
+T^{\dag} = T^{\dag} T = \Id_n\}\)\footnote{The matrix \(T^{\dag}\) denotes the
+  complex transpose of \(T\).}.
+
+\item Special unitary group: \(\SU_n(\CC) \coloneq \{T \in \Unit_n(\CC) \colon
+\det T = 1\}\).
+
+\item Lie algebra of the general linear group: \(\lie{gl}_n(k) \subseteq
+\GL_n(k)\) such that
+\[
+[T, M] \coloneq T M - M T \in \lie{gl}_n(k)
+\]
+for all \(T, M \in \lie{gl}_n(k)\).
+
+\item Lie algebra of the special linear group: \(\lie{sl}_n(k) \coloneq \{T \in
+\lie{gl}_n(k) \colon \Tr T = 0\}\).
+
+\item Lie algebra of the orthogonal group: \(\lie{o}_n(k) \coloneq \{ T \in
+\lie{gl}_n(k) \colon T + T^{*} = 0\}\)
+
+\item Lie algebra of the unitary group: \(\lie{u}_n(\CC) \coloneq \{T \in
+\lie{gl}_n(\CC) \colon T + T^{\dag} = 0\}\).
+
+\item Lie algebra of the special unitary group: \(\lie{su}_n(\CC) \coloneq \{T
+\in \lie{gl}_n(\CC) \colon \Tr T = 0\}\).
+\end{enumerate}
+The proof that such examples are indeed groups come immediately from \cref{prop:
+comp det} and \cref{def:dual-morphism}. Notice that all of the above groups are
+subgroups of the general linear group \(\GL_n(k)\). It should be noted, however,
+that the Lie groups presented do \emph{not} form a group under multiplication.
+\end{example}
+
+\begin{example}[Upper triangular matrices]
+\label{exp:upper-triangular-GL-subgroup}
+The collection of upper triangular matrices over a field \(k\) is a subgroup of
+\(\GL_n(k)\). Let \(A\) be any upper triangular matrix, then from definition
+\([a_{ij}]_{1 \leq i, j \leq n}\) is such that \(a_{ij} = 0\) for all \(i > j\)
+and \(\prod_{j=1}^n a_{jj} \neq 0\) --- therefore, any permutation \(\sigma \in
+S_n\) other than the identity will have at least one element \(i_0 > j\). Hence
+\[
+\det A = \sum_{\sigma \in S_n} \sign(\sigma) \prod_{j=1}^n a_{\sigma(j)\, j}
+= \prod_{j=1}^n a_{j j}
+\neq 0,
+\]
+which implies in \(A \in \GL_n(k)\). Moreover, since the sum of two upper
+triangular matrices is upper triangular, clearly the sum is in \(\GL_n(k)\) ---
+which proves that the collection of upper triangular matrices is a subgroup,
+since the existence of inverses is immediate.
+\end{example}
+
+\begin{example}
+\label{exp:SL_2(C)-form}
+Notice that any matrix of the form
+\begin{equation}\label{eq:matrix-form-SL_2(C)}
+  A \coloneq
+  \begin{bmatrix}
+    a + bi   & c + di \\
+    - c + di & a - bi
+  \end{bmatrix}
+\end{equation}
+Is such that
+\begin{gather*}
+  A A^{\dag} =
+  \begin{bmatrix}
+    a + bi   & c + di \\
+    - c + di & a - bi
+  \end{bmatrix}
+  \begin{bmatrix}
+    a - bi & -c - di \\
+    c - di & a + bi
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    a^2 + b^2 + c^2 + d^2 & 0 \\
+    0                    & a^2 + b^2 + c^2 + d^2
+  \end{bmatrix},
+  \\%
+  A^{\dag} A =
+  \begin{bmatrix}
+    a - bi & -c - di \\
+    c - di & a + bi
+  \end{bmatrix}
+  \begin{bmatrix}
+    a + bi   & c + di \\
+    - c + di & a - bi
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    a^2 + b^2 + c^2 + d^2 & 0 \\
+    0                    & a^2 + b^2 + c^2 + d^2
+  \end{bmatrix}.
+\end{gather*}
+Therefore, imposing \(a^2 + b^2 + c^2 + d^2 = 1\) in
+\cref{eq:matrix-form-SL_2(C)} makes \(A\) into a matrix of the group
+\(\SL_2(\CC)\). Furthermore, if \(T \in \GL_n(\CC)\) is a matrix with a form
+other than that of \cref{eq:matrix-form-SL_2(C)}, then it cannot be the case
+that \(\det T\) equal \(1\) --- thus, every \(\SL_2(\CC)\) matrix has the form
+of \(A\).
+\end{example}
+
+\begin{proposition}
+\label{prop:SL_2(Z)-generator-matrices}
+The group \(\SL_2(\Z)\) is generated by the pair matrices
+\[
+A \coloneq
+\begin{bmatrix}
+  0 & -1 \\
+  1 & 0
+\end{bmatrix}
+\quad
+\text{ and }
+\quad
+B \coloneq
+\begin{bmatrix}
+  1 & 1 \\
+  0 & 1
+\end{bmatrix}
+\]
+\end{proposition}
+
+\begin{proof}
+It should be noted that \(B^n = \big[ \begin{smallmatrix} 1 & n \\ 0 &
+1 \end{smallmatrix} \big]\) and \(A^2 = \big[ \begin{smallmatrix} -1 & 0 \\ 0 &
+-1 \end{smallmatrix} \big]\) --- thus, given any matrix \(X =
+\big[ \begin{smallmatrix} a & b \\ c & d \end{smallmatrix} \big] \in \SL_2(\Z)\)
+we have
+\[
+  A X =
+  \begin{bmatrix}
+    -c & -d \\ a & b
+  \end{bmatrix}
+  \quad
+  \text{ and }
+  \quad
+  B^n X =
+  \begin{bmatrix}
+    a + n c & b + n d \\ c & d
+  \end{bmatrix}.
+\]
+If we assume that \(c \neq 0\), and \(|a| \geq |c|\) (otherwise, simply multiply
+from the left by \(A\)), we can apply the division algorithm to find \(q_0, r_0
+\in \Z\) for which \(a = q_0 c + r_0\), satisfying \(0 \leq r_0 \leq
+|c|\). Then we can apply
+\[
+A B^{-q_0}X = A
+\begin{bmatrix}
+  r_0 & b - q_0 d \\ c & d
+\end{bmatrix}
+=
+\begin{bmatrix}
+  - c & - d \\ r_0  & b - q_0 d
+\end{bmatrix} \coloneq X_0,
+\]
+Now, if \(r_0 \neq 0\), we can recursively apply the division algorithm (which
+I'll carry again just for the sake of clarity): we find \(q_1, r_1 \in \Z\) such
+that \(-c = q_1 r_0 + r_1\), where \(0 \leq r_1 \leq |r_0|\) --- we thus find a
+new power \(q_1\) for which
+\[
+A B^{-q_1} X_0 =
+\begin{bmatrix}
+  -r_0 & q_0 d - b \\
+  r_1  & (q_0 q_1 - 1) d - q_1 b
+\end{bmatrix}
+= X_1.
+\]
+This process is ensured to terminate at some point with a zero lower left
+entry. Since the group is acting on the left of \(\SL_2(\Z)\) and the
+determinant is always zero, the resulting matrix will be of the form
+\(\big[
+\begin{smallmatrix}
+  \pm 1 & m \\ 0 & \pm 1
+\end{smallmatrix}\big] \in \SL_2(\Z)\) --- which equals either \(B^m\) or
+\(-B^{-m}\). We conclude that there must exist some \(g \in \langle A, B
+\rangle\) such that \(g X = \pm B^t\) for some \(t \in \Z\) --- and since \(A^2
+= - I_2\), we obtain \(X = \pm g^{-1} B^t \in \SL_2(\Z)\) and \(\pm g^{-1} B^t
+\in \langle A, B \rangle\).
+\end{proof}
+
+\begin{proposition}[Union of subgroups]
+\label{prop:union-of-subgroups}
+Let \(G\) be any group, then:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Given subgroups \(H, Q \subseteq G\), the union \(H \cup Q\) is a subgroup
+of \(G\) if and only if either \(H \subseteq Q\) or \(Q \subseteq H\).
+
+\item If \(H_0 \subseteq H_1 \subseteq \dots\) is a collection of subgroups of
+\(G\), then the union \(\bigcup_{j \geq 0} H_j \subseteq G\) is a subgroup of
+\(G\).
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item If \(H \subseteq Q\) or \(Q \subseteq H\), then \(H \cup Q\) is clearly a
+subgroup. On the other hand, if \(H \cup Q\) is a subgroup, then for every \(h
+\in H\) and \(q \in Q\) we must have \(hq \in H \cup Q\) --- which implies that
+\(hq \in H\) or \(hq \in Q\), for the first case, we have \(h^{-1}(h q) = q
+\in H\) thus \(Q \subseteq H\), for the second case, \((h q) q^{-1} = h \in Q\)
+implying in \(H \subseteq Q\).
+
+\item Since the composition of elements is only defined for finitely many
+elements, the proposition follows immediatly.
+\end{enumerate}
+\end{proof}
+
 \subsection{Group Products}
 
-Let \((G, \circledast), (H, \circledcirc) \in \Grp\) be any objects. We define a
-binary operation \(\cdot: (G \times H)^2 \to G \times H\) as the mapping
+Let \((G, \cdot_G), (H, \cdot_H) \in \Grp\) be any objects. We define a
+binary operation \(\cdot\,: (G \times H)^2 \to G \times H\) as the mapping
 \begin{equation}\label{eq: grp-prod-bin}
-(g, h) \cdot (g', h') = (g \circledast g', h \circledcirc h').
+(g, h) \cdot (g', h') = (g \cdot_G g', h \cdot_H h').
 \end{equation}
 Such binary operation defines a group structure on \(G \times H\). Notice that,
 given an element \((g, h) \in G \times H\), there exists an element \((g^{-1},
@@ -484,7 +774,7 @@ hence the set-function \(F \varphi\) is unique.
 \begin{remark}
 We now show that if \(G, H \in \Grp\) are such that \(G \iso H \times G\),
 \emph{it does not follow that} \(H\) is trivial.
-Let \(G \coloneq \prod_{j=0}^{\infty} \Z\) and \(H \coloneq \Z\) be abelian
+Let \(G \coloneq \bigoplus_{j=0}^{\infty} \Z\) and \(H \coloneq \Z\) be abelian
 groups under the natural structure of addition. Notice that \(G \iso H \times
 G\) by the natural assignment of each element of \(G\) to itself in \(H \times
 G\). Since \(H\) is non-trivial, we found a counterexample.
@@ -494,7 +784,7 @@ G\). Since \(H\) is non-trivial, we found a counterexample.
 \label{prop:product-subgroups-isomorphism}
 Let \(G\) be a group and \(H, Q \subseteq G\) be subgroups for which \(H \cap Q
 = e\) and \(H Q = G\) --- that is, for every \(g \in G\), there exists \(h \in
-H\) and \(q \in Q\) such that \(g = h q\) ---, we also impose that \(h q = q h\)
+H\) and \(q \in Q\) such that \(g = h q\) --- we also impose that \(h q = q h\)
 for every \(h \in H\) and \(q \in Q\). Then, the morphism of groups \(H \times Q
 \isoto G\) defined by the mapping \((h, q) \mapsto hq\) is an isomorphism.
 \end{proposition}
@@ -631,8 +921,8 @@ is normal if there exists a morphism of groups \(\phi: G \to H\), for some group
 \(H\), for which \(\ker \phi = N\).
 \end{definition}
 
-\begin{definition}[Factor group]
-\label{def:factor-group}
+\begin{definition}[Quotient group]
+\label{def:quotient-group}
 Let \(G\) be a group and \(N\) be a normal subgroup of \(G\). We denote by
 \(G/N\) the collection of all left cosets of \(N\) in \(G\), on the other hand,
 \(G \backslash N\) denotes the collection of all right cosets of \(N\) in
@@ -646,8 +936,8 @@ Let \(G\) be a group and \(N\) be a normal subgroup of \(G\). We denote by
   \(x^{-1} N\) (respectively, \(N x^{-1}\)).
 \item The identity of the group is \(N\).
 \end{itemize}
-The group \(G/N\) is commonly refered to as the \emph{factor group} of \(G\) by
-\(H\).
+The group \(G/N\) is commonly refered to as the \emph{quoetient group} of \(G\)
+by \(H\).
 \end{definition}
 
 \begin{proposition}
@@ -679,6 +969,14 @@ In fact the morphism \(\pi: G \epi G/N\), defined above by the map \(g \xmapsto
 \psi g N\), is so important we are even going to distinguishly call it the
 \emph{canonical projection map} of \(G\) onto the factor group \(G/N\). It is
 trivial that such canonical projection \(\pi\) is surjective.
+
+\begin{corollary}
+\label{prop:normal-and-inner-automorphism-group}
+Let \(G\) be a group and \(H \subseteq G\) be a subgroup. Then \(H\) is normal
+in \(G\) if and only if, for all given \(\gamma \in \Inn(G)\), we have
+\(\gamma(H) \subseteq H\). Therefore, the morphism \(\Inn(G) \to \Aut(H)\)
+mapping \(\gamma_g \mapsto \gamma_g|_H\) is well defined.
+\end{corollary}
 
 \begin{corollary}[Intersection of normal subgroups is normal]
 \label{cor:intersection-normal-subgroups}
@@ -755,6 +1053,48 @@ h) \in H\), thus \((q h) [(q^{-1} h^{-1}) h' (q h)] (h^{-1} q ^{-1}) = h'\) thus
 q^{-1}) \subseteq H\) thus the equality holds --- which implies that \(H\) is
 normal on the group \(Q H\).
 \end{proof}
+
+\begin{proposition}[Modular group \(\PSL_2(\Z)\)]
+\label{prop:PSL_2(Z)-generators}
+Let \(\sim\) be an equivalence relation on \(\SL_2(\Z)\) for which \(A \sim B\)
+if and only if \(A = \pm B\). We define the \emph{modular group} as the quotient
+of \(\SL_2(\Z)\) by this equivalence relation, that is
+\[
+\PSL_2(\Z) \coloneq \SL_2(\Z)/{\sim}
+\]
+The modular group so constructed is generated by the cosets of the matrices
+\[
+\begin{bmatrix}
+  0 & -1 \\ 1 & 0
+\end{bmatrix}
+\quad
+\text{ and }
+\quad
+\begin{bmatrix}
+  0 & -1 \\ 1 & 1
+\end{bmatrix}.
+\]
+\end{proposition}
+
+\begin{proof}
+Let's consider the canonical projection morphism \(\pi: \SL_2(\Z) \epi
+\PSL_2(\Z)\) and let \(g \coloneq \big[
+\begin{smallmatrix}
+  0 & -1 \\ 1 & 0
+\end{smallmatrix} \big]
+\) and \(h \coloneq \big[
+\begin{smallmatrix}
+  1 & 1 \\ 0 & 1
+\end{smallmatrix} \big]\), then since \(g\) and \(g h = \big[
+\begin{smallmatrix}
+  0 & -1 \\ 1 & 1
+\end{smallmatrix} \big]\) generate \(\SL_2(\Z)\), the classes \(\pi(g)\) and
+\(\pi(gh)\) generate \(\PSL_2(\Z)\). Moreover, since \(g^2 = -I_2\), the order
+of \(\pi(g)\) is \(2\) --- on the other hand, \((g h)^3 = -I_2\) then
+\(\pi(gh)\) has order \(3\).
+\end{proof}
+
+\todo[inline]{Solve Aluffi problems from section 8 (quotient groups)}
 
 \subsection{Sequences of Groups}
 
@@ -1088,14 +1428,91 @@ solvable.
 
 (\(\Leftarrow\)) Let both \(N\) and \(G/N\) be solvable and consider the abelian
 towers \(G/N = H_0 \supsetneq \dots \supsetneq H_n = N\), and \(N = Q_0
-\supsetneq \dots \supsetneq Q_m = \{e\}\). Since \(H_j \coloneq \{g N \colon g
-\in G\}\) we can consider the isomorphic group \(H_j' \iso H_j\) given by the
-image of the morphism \(H_{j} \isoto H_j'\) mapping \(g N \mapsto g\). Thus
-clearly
+\supsetneq \dots \supsetneq Q_m = \{e\}\). Since every \(H_j\) is isomorphic to
+a subgroup \(H_j'\) of \(G\) containing \(N\), we see that
 \[
   G = H_0' \supsetneq \dots \supsetneq H_n' = N
 \]
-\todo[inline]{Continue proof}
+is an abelian tower. Moreover, we can append the abelian tower of \(N\) to
+obtain the abelian tower
+\[
+G = H_0' \supsetneq \dots \supsetneq H_n'
+= Q_0 \supsetneq \dots \supsetneq Q_m = \{e\}.
+\]
+This shows that \(G\) is a solvable group.
+\end{proof}
+
+\subsection{Commutator Group}
+
+\begin{definition}[Commutator group]
+\label{def:commutator-group}
+Let \(G\) be a group, we define the \emph{commutator} group \([G, G]\) of \(G\)
+to be the subgroup of \(G\) generated by all elements of the form \(x y x^{-1}
+y^{-1}\), for \(x, y \in G\).
+\end{definition}
+
+\begin{lemma}
+\label{lem:commutator-is-normal}
+The commutator group \([G, G]\) is \emph{normal} in \(G\).
+\end{lemma}
+
+\begin{proof}
+We show that \(g [G, G] g^{-1} = [G, G]\) for all \(g \in G\). Let \(g, x, y \in
+G\) be any triple of elements. If we let \(p \coloneq g x g^{-1}\) and \(q
+\coloneq g y g^{-1}\) we obtain
+\[
+p q p^{-1} q ^{-1}
+= (g x g^{-1}) (g y g^{-1}) (g x g^{-1}) (g y g^{-1})
+= g x y x^{-1} y^{-1} g^{-1},
+\]
+therefore \(g [G, G] g^{-1} \subseteq [G, G]\). Moreover, if \(a \coloneq g^{-1}
+x g\) and \(b \coloneq g^{-1} y g\), then
+\begin{align*}
+g [a b a^{-1} b^{-1}] g^{-1}
+&= g [
+    (g^{-1} x g) (g^{-1} y g) (g^{-1} x g)
+    (g^{-1} x^{-1} g) (g^{-1} y^{-1} g)
+  ] g^{-1} \\
+&= g [ g^{-1} x y x^{-1} y^{-1} g] g^{-1} \\
+&= x y x^{-1} y^{-1},
+\end{align*}
+which implies in \(x y x^{-1} y^{-1} \in g [G, G] g^{-1}\) and hence \([G, G]
+\subseteq g [G, G] g^{-1}\).
+\end{proof}
+
+\begin{lemma}
+\label{lem:grp-modulo-commutator-is-commutative}
+The quotient group \(G/[G, G]\) is commutative.
+\end{lemma}
+
+\begin{proof}
+Notice that \(x y = y x\) is equivalent to \(x y (y x)^{-1} = x y x^{-1} y^{-1}
+= e\), thus, for any given \(x, y \in G\), since \(x y x^{-1} y^{-1} \in [G,
+G]\), then \([x y] = [y x] \in G/[G, G]\) --- which shows the commmutativity.
+\end{proof}
+
+\begin{lemma}
+\label{lem:commutator-kernel}
+Let \(G\) be any group and \(H\) be a commutative group. Any morphism of groups
+\(f: G \to H\) has the commutator \([G, G]\) in its kernel. Therefore the
+following diagram commutes
+\[
+\begin{tikzcd}
+G \ar[r, "f"] \ar[d, two heads]            & H \\
+G/[G, G] \ar[ru, bend right, dashed, tail] &
+\end{tikzcd}
+\]
+\end{lemma}
+
+\begin{proof}
+If \(H\) is commutative, then given any pair \(x, y \in G\) we have
+\[
+f(x y x^{-1} y^{-1})
+= f(x) f(y) f(x^{-1}) f(y^{-1})
+= f(y) f(x) f(x)^{-1} f(y)^{-1}
+= e_H,
+\]
+thus indeed \([G, G] \subseteq \ker f\).
 \end{proof}
 
 %%% Local Variables:

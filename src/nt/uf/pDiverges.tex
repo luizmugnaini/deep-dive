@@ -1,0 +1,74 @@
+\subsection{\texorpdfstring{\(\sum_p 1/p\)}{1/p} diverges}
+
+\begin{theorem}
+   The sum over the inverse of all positive primes on \(\mathbb{Z}\), \(\sum_{p
+   \in \mathbb{Z}_{>0}}\frac{1}{p}\), diverges.
+\end{theorem}
+
+\begin{proof}
+   Let \(p_{\ell(n)}\) be the greatest prime \(p_{\ell(n)} \leqslant n\). We
+   define a function 
+   \[
+      \lambda(n) := \prod_{k = 1}^{\ell(n)} \left( 1 - \frac{1}{p_k}\right)^{-1}.
+   \]
+   Now, notice that we can also rewrite all terms as the infinite sum of the
+   geometric series of ratio \(1/p_k\):
+   \[
+       1 - \frac{1}{p_k} = \sum_{a_k = 0}^{\infty}\frac{1}{p_k^{a_k}} =
+       \frac{1}{1 - \frac{1}{p_k}}.
+   \] 
+   Thus we can substitute for the \(\lambda\) function
+   \begin{align*}
+       \lambda(n) 
+       &= \prod_{k=1}^{\ell(n)} \sum_{a_k = 0}^\infty \frac{1}{p_k^{a_k}}
+       \\
+       &= \left( 1 + \frac{1}{p_1} + \frac{1}{p_1^2} + \dots \right)  \dots
+       \left( 1 + \frac{1}{p_j} + \frac{1}{p_j^2} + \dots \right) \dots \left( 1
+       + \frac{1}{p_{\ell(n)}} + \frac{1}{p_{\ell(n)}^2} + \dots \right) 
+       \\
+       &= \sum_{(a_k)_{k=1}^{\ell(n)}} \prod_{k = 1}^{\ell(n)} \frac{1}{p_k^{a_k}}
+   \end{align*}
+   where \(\left( a_k \right)_{k = 1}^{\ell(n)}\), with \(a_k \in
+   \mathbb{Z}_{\geqslant 0}\), are all the possible tuples of coefficients for
+   \(\left( p_k \right)_{k = 1}^{\ell(n)}\). It is clear that \(\sum_{k=1}^n
+   k^{-1} < \lambda(n)\) and also we know that \(\lim_{n \to \infty}
+   \sum_{k=1}^n k^{-1} = 0\) diverges, thus \(\lim_{n \to \infty}
+   \lambda(n) = \infty\) diverges. This result will be important for the
+   last step of the proof, bear it in mind. 
+
+   Now we consider the \(\log(\lambda(n))\) in order to find some way of extract
+   the sum \(\sum_p 1/p\) from the function. It goes as follows:
+   \[
+      \log(\lambda(n)) 
+      = \log \left( \prod_{k=1}^{\ell(n)} \left(1 - \frac{1}{p_k}\right)^{-1} \right) 
+      = - \sum_{k=1}^{\ell(n)} \log \left( 1 - \frac{1}{p_k} \right) 
+   \] 
+   If now we take a Taylor series on \(\log(1 - p_k^{-1})\) we get
+   \(\log(1-p_k^{-1}) = -\sum_{m=1}^\infty \frac{1}{m p_k^m}\) thus, substituting
+   in the equation above we find out that 
+   \[
+      \log(\lambda(n)) = \sum_{k=1}^{\ell(n)} \sum_{m = 1}^\infty \frac{1}{mp_k^m}
+      = \sum_{k = 1}^{\ell(n)} \frac{1}{p_k} + \sum_{m = 1}^{\ell(n)}
+      \sum_{m=2}^\infty \frac{1}{mp_k^{m}}
+   \] 
+   Let's analyse this second term of the last equation, in fact, we have
+   \begin{gather*}
+      \sum_{m=2}^\infty \frac{1}{mp_k^{m}} < \sum_{m=2}^\infty \frac{1}{p_k^m} =
+      p_k^{-2} \underbrace{\frac{p_k}{p_k - 1}}_{\in (1, 2]} \leqslant 2 p_k^{-2}
+      \\
+      \text{Thus } \log(\lambda(n)) < \sum_{k=1}^{\ell(n)} p_k^{-1} + 2
+      \sum_{k=1}^{\ell(n)} p_k^{-2}
+   \end{gather*}
+   If we accept the fact that \(\sum_{k = 1}^\infty n^{-2}\) converges
+   (actually, it converges to \(\pi^2/6\) but we aren't going to prove it right
+   now), it's easy to accept that \(\sum_{k = 1}^\infty p_k^{-2}\) shows the
+   same behaviour and indeed converges just as the previous sum. Now, if the
+   first term,  \(\sum_{k=1}^\infty p_k^{-1}\) also converged, then there would
+   exist \(N \in \mathbb{Z}\) such that \(\lim_{n\to\infty}\log((\lambda(n))) <
+   N\) and thus \(\lambda(n) < e^N\). Notice now that this is a false claim
+   since we have shown that \(\lim_{n \to \infty} \lambda(n) = \infty\)
+   diverges. Thus, it is necessary for the first term to diverge, then
+   \[
+      \lim_{n \to \infty} \sum_{k=1}^{\ell(n)} \frac{1}{p_k} = \infty.
+   \] 
+\end{proof}

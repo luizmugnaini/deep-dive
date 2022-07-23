@@ -1,0 +1,251 @@
+\section{Algebraic Numbers and Algebraic Integers}
+
+\begin{definition}
+   We say that \(\alpha \in \mathbb{C}\) is an algebraic number if for some \(f
+   \in \mathbb{Q}[x],\ \deg(f) > 0\) we have \(f(\alpha) = 0\). 
+
+   On the other hand \(\omega \in \mathbb{C}\) is an algebraic integer if for
+   some monic polynomial \(g \in \mathbb{Z}[x]\) we have \(g(\omega) = 0\).
+\end{definition}
+
+\begin{proposition}
+   Let \(q \in \mathbb{Q}\). Then \(q\) is an algebraic integer if and only if
+   \(q \in \mathbb{Z}\).
+\end{proposition}
+
+\begin{proof}
+   (\(\Rightarrow\)) Let \(q := b/c \in \mathbb{Q}\), such that \(b, c \in
+   \mathbb{Z}\) and \((b, c) = 1\), be an algebraic integer, that is, for some
+   monic \(g(x) = x^n + a_{n-1}x^{n-1} + \dots + a_1 x + a_0 \in \mathbb{Z}[x]\)
+   we have 
+   \begin{gather*}
+      g(q) = q^n + a_{n-1}q^{n-1} + \dots + a_1 q + a_0 = 0 \\
+      \Rightarrow
+      b^n + a_{n-1} b^{n-1}c + \dots + a_1 b c^{n-1} + a_0 c^n = 0
+   \end{gather*}
+   Now, since \(c\) divides every term other than the leader, it should be such
+   that \(c \mid b^n\) bet from construction we had \((b, c) = 1 \Rightarrow c
+   \mid b^n\) and thus this can be true if and only if \(|c| = 1\), which
+   implies immediately that \(q = b/c \in \mathbb{Z}\).
+
+   (\(\Leftarrow\)) Suppose now that \(q \in \mathbb{Z}\) so that \(x - q \in
+   \mathbb{Z}[x]\) is such that \(q\) is a root and therefore is an algebraic
+   integer.
+\end{proof}
+
+\subsection{Algebraic numbers form a field}
+
+\begin{definition}[\(\mathbb{Q}\)-module]
+   We say that a set \(V \subseteq \mathbb{C}\) is a \(\mathbb{Q}\)-module if:
+   \begin{enumerate}[I.]
+      \item  \(\forall a, b \in V\) implies that \(a + b, a - b \in V\).
+      \item \(\forall a \in V\) and  \(\forall q \in \mathbb{Q}\) implies \(q a
+         \in V\).
+      \item \(\exists \{b_1, \dots, b_\ell\} \subseteq V\) such that \(\forall a
+         \in V\) there exists \(\{q_1, \dots, q_\ell\} \subseteq \mathbb{Q}\) 
+         such that \(a = \sum_{j=1}^{\ell} q_j b_j\).
+   \end{enumerate}
+   That is, \(V\) is a finite dimensional vector space over \(\mathbb{Q}\). Also,
+   from the last property, we denote \(V = [b_1, \dots, b_\ell]\).
+\end{definition}
+
+\begin{proposition}
+   Let \(V \subseteq \mathbb{C}\) be a \(\mathbb{Q}\)-module and suppose that
+   for a given \(\alpha \in \mathbb{C}\) we have that \(\forall \gamma \in V\)
+   then \(\alpha \gamma \in V\). Then \(\alpha\) is an algebraic number.
+\end{proposition}
+
+\begin{proof}
+   Since the statement holds for every element of \(V := [\gamma_1, \dots,
+   \gamma_\ell]\), let 
+   \[
+      \alpha\gamma_i = \sum_{j=1}^{\ell} a_{ij} \gamma_j 
+      \Rightarrow 
+      \sum_{j = 1}^\ell (a_{ij} - \delta_{ij}\alpha) \gamma_j = 0
+   \]
+   where \(\delta_{ij}\) is the Kronecker delta. Notice that we can write that
+   in matrix language as
+   \[
+      \begin{pmatrix} 
+         a_{11} & \dots & a_{1\ell} \\
+         \vdots & \ddots & \vdots \\
+         a_{\ell 1} & \dots & a_{\ell \ell}
+      \end{pmatrix} 
+      - \alpha \cdot \mathrm{Id}_{\ell \times \ell}
+   \] 
+   but notice that since all rows of such matrix are zero, we can use  column
+   reduction to show that there is an equivalent matrix with the last row equal
+   to \(0\) (we just sum all rows on the last row) and therefore the determinant
+   of such matrix is necessarily equal to \(0\). Since the determinant is a
+   polynomial of degree \(\ell\) on \(\alpha\) and has rational coefficients, we
+   conclude that \(\alpha\) is indeed an algebraic number.
+\end{proof}
+
+\begin{proposition}
+   The set of algebraic numbers form a field.
+\end{proposition}
+
+\begin{proof}
+   Let \(\alpha, \beta \in \mathbb{C}\) be algebraic numbers and by construction
+   let \(\sum_{i=0}^n a_i \alpha^i = 0\) and \(\sum_{j=0}^m b_j \beta^j = 0\) be
+   such that \(a_i, b_j \in \mathbb{Q}\). Then we can write \(\alpha^n =
+   -\sum_{i=0}^{n-1} (a_i/a_n)\alpha^i\) and \(\beta^n = - \sum_{j=0}^{n-1}
+   (b_j/b_n) \beta^j\).
+
+   Now we construct a \(\mathbb{Q}\)-module \(V\) with basis  \(\{\alpha^i
+   \beta^j : 1 \leqslant i \leqslant n-1 \text{ and } 1 \leqslant j \leqslant
+   m-1\}\). Then, given an element \(\gamma \in V\) we have \(c_{ij} \in
+   \mathbb{Q}\) such that
+   \[
+      \gamma = \sum_{\substack{1 \leqslant i \leqslant n-1 \\ 1 \leqslant j
+      \leqslant m-1}} c_{ij} \alpha^i \beta^j
+   \] 
+   and therefore we have that
+   \begin{align*}
+      \gamma \alpha 
+      &= \sum_{\substack{1 \leqslant i \leqslant n-1 \\ 1 \leqslant
+      j \leqslant m-1}} c_{ij} \alpha^{i+1} \beta^j 
+      \\
+      &= \sum_{\substack{1 \leqslant i \leqslant n - 2 \\ 1 \leqslant j \leqslant
+      m-1}} c_{ij}\alpha^i \beta^j 
+      + \sum_{\substack{i=n-1 \\ 1 \leqslant j \leqslant m-1}} c_{ij}
+      \alpha^{i+1} \beta^j 
+      \\
+      &= \sum_{\substack{1 \leqslant i \leqslant n - 2 \\ 1 \leqslant j
+      \leqslant m-1}} c_{ij} \alpha^i \beta^j \sum_{\substack{i = n-1 \\ 1
+      \leqslant j \leqslant m-1}} c_{ij} \beta^j \left( - \sum_{k=0}^{n-1} (a_k/a_n)
+      \alpha^k \right) 
+   \end{align*}
+   which is again a polynomial with \(1 \leqslant i \leqslant n-1\) and \(1
+   \leqslant j \leqslant m-1\) and therefore we conclude that \(\alpha \gamma
+   \in V\). The exact same proof shows that \(\beta \gamma \in V\) for all
+   \(\gamma \in V\). Notice therefore that \((\alpha\beta)\gamma \in V\) and
+   \((\alpha + \beta) \gamma \in V\) for all \(\gamma \in V\) and therefore from
+   the last proposition we conclude that \(\alpha\beta\) and  \(\alpha + \beta\)
+   are algebraic numbers.
+
+   Let now \(\lambda\) be a non-zero algebraic number, then let
+   \(\sum_{k=0}^\ell d_k \lambda^k = 0\), where \(d_k \in \mathbb{Q}\) for all
+   index \(k\). Dividing the polynomial by \(\lambda^n\) we get \(\sum_{k =
+   0}^\ell d_K \lambda^{n-k} = 0\) and therefore \(\lambda^{-1}\) is also an
+   algebraic number.
+\end{proof}
+
+\subsection{Algebraic integers form a ring}
+
+
+\begin{definition}[\(\mathbb{Z}\)-module]
+   A subset \(W \subseteq \mathbb{C}\) is a \(\mathbb{Z}\)-module if:
+   \begin{enumerate}[I.]
+      \item \(\forall a, b \in W\) implies \(a + b, a - b \in W\).
+      \item \(\exists \{b_1, \dots, b_\ell\} \subseteq W\) such that \(\forall a
+         \in W\) we have \(\{c_1, \dots, c_{\ell}\} \subseteq \mathbb{Z} \) in
+         such a way that \(a = \sum_{i = 1}^\ell c_i b_i\).
+   \end{enumerate}
+\end{definition}
+
+\begin{proposition}
+   Let \(W\) be a \(\mathbb{Z}\)-module and \(\omega \in \mathbb{C}\) be such
+   that \(\forall \gamma \in W\) the element \(\omega\gamma \in W\). Then
+   \(\omega\) is an algebraic integer.
+\end{proposition}
+
+\begin{proposition}
+   The set of algebraic integers forms a ring \(\Omega\).
+\end{proposition}
+
+I'll not write down the proofs formally since they are basically just the same
+proofs as for the algebraic numbers except that we deal with monic polynomials
+in \(\mathbb{Z}[x]\).
+
+\begin{proposition}
+   Let \(\omega_1, \omega_2 \in \Omega\) and \(p \in \mathbb{Z}\) a prime, then 
+   \[
+      (\omega_1 + \omega_2)^p \equiv \omega_1^p + \omega_2^p \pmod{p}
+   \] 
+\end{proposition}
+
+\begin{proof}
+   Trivially we have (since \(p \mid \binom{p}{k}\) for all \(1 \leqslant k
+   \leqslant p-1\)):
+   \[
+      (\omega_1 + \omega_2)^p = \binom{p}{0} \omega_1^p + \sum_{k=1}^{p-1}
+      \binom{p}{k} \omega_1^{k}\omega_2^{(p-1)-k} + \binom{p}{p} \omega_2^p
+      \equiv \omega_1^p + \omega_2^p.
+   \]
+\end{proof}
+
+\subsection{More on Algebraic Numbers}
+
+\begin{proposition}
+   Let \(\alpha\) be a root of a unique monic irreducible \(f \in
+   \mathbb{Q}[x]\) (minimal polynomial of \(\alpha\)). Furthermore if \(g \in
+   \mathbb{Q}[x]\) such that \(g(\alpha) = 0\) then \(f(x) \mid g(x)\).
+\end{proposition}
+
+\begin{proof}
+   Define \(f \in \mathbb{Q}[x]\) to be a monic irreducible polynomial with
+   \(f(\alpha) = 0\). Now, define \(g \in \mathbb{Q}[x]\) such that \(g(\alpha)
+   = 0\). Suppose \(f(x) \nmid g(x)\) then \(\exists s, r \in \mathbb{Q}[x]\) 
+   such that \(f(x)r(x) + g(x)s(x) = 1\) but \(f(\alpha) = g(\alpha) = 0\),
+   where we get a trivial contradiction, thus \(f(x) \mid g(x)\).
+
+   Let \(f, h \in \mathbb{Q}[x]\) be two monic irreducible polynomials such that
+   \(f(\alpha) = h(\alpha) = 0\), then, since \(\deg(h) = \deg(f)\) and both are
+   monic, we also have that \(f(\alpha) - h(\alpha) = 0\) which has degree
+   strictly less than \(h, f\), but as proved above we should have \(f(x), h(x)
+   \mid f(x) - h(x)\), which cannot be true by any means, therefore  \(f(x) -
+   h(x) = 0\), proving the uniqueness.
+\end{proof}
+
+\begin{definition}
+   If \(\alpha\) is an algebraic number and \(f \in \mathbb{Q}[x]\) is its
+   minimal polynomial, then if \(\deg(f) = n\) we say that \(\alpha\) is an
+   algebraic number of degree \(n\).
+\end{definition}
+
+\begin{definition}[Conjugate]
+   Let \(f \in \mathbb{Q}[x]\) be an irreducible polynomial of degree \(n\),
+   then \(f\) is the minimal polynomial of each of its roots. Let \(\alpha,
+   \beta\) be roots of \(f\), then we say that \(\alpha\) and \(\beta\) are
+   conjugate.
+\end{definition}
+
+\begin{definition}
+   Let \(\alpha \in \Omega\). We define the field \(\mathbb{Q}(\alpha)\) of
+   complex numbers to be composed of elements \(g(\alpha)/h(\alpha)\) where
+   \(g, h \in \mathbb{Q}[x]\) and \(h(\alpha) \neq 0\). 
+\end{definition}
+
+\begin{proposition}
+   If \(\alpha \in \Omega\) then \(\mathbb{Q}(\alpha) = \mathbb{Q}[\alpha]\).
+\end{proposition}
+
+\begin{proof}
+   Obviously we have that \(\mathbb{Q}[\alpha] \subseteq \mathbb{Q}(\alpha)\).
+   Define \(f \in \mathbb{Q}[x]\) to be the minimal polynomial of \(\alpha\).
+   Let \(h \in \mathbb{Q}[x]\) be such that \(h(\alpha) \neq 0\) then
+   we have that \(f(x) \nmid h(x)\), implying in the existence of \(s, r \in
+   \mathbb{Q}[x]\) such that \(f(x)r(x) + h(x)s(x) = 1\) and therefore we see
+   that \(f(\alpha)r(\alpha) + h(\alpha)s(\alpha) = h(\alpha)s(\alpha) = 1\)
+   then we conclude that \(s = h^{-1} \in \mathbb{Q}[\alpha]\). From this we can
+   trivially construct all elements of \(\mathbb{Q}(\alpha)\) on
+   \(\mathbb{Q}[\alpha]\) and thus \(\mathbb{Q}(\alpha) \subseteq
+   \mathbb{Q}[\alpha]\).
+\end{proof}
+
+\begin{corollary}
+   Let \(\alpha\) be an algebraic number of degree \(n\), then
+   \([\mathbb{Q}(\alpha) : \mathbb{Q}] = n\).
+\end{corollary}
+
+\begin{proof}
+   Let \(f(x) := x^n + \dots + a_0\) be the minimal polynomial of
+   \(\alpha\). Since \(f(\alpha) = 0\) we see that \(\alpha^n\) is a linear
+   combination of \(B = \{1,\dots,\alpha^{n-1}\}\) and also \(B\) is a base for
+   \(Q[\alpha]\) since \(B\) is linearly independent from construction of \(f\). 
+   This shows that \([\mathbb{Q}[\alpha] : \mathbb{Q}] = n\) but since
+   \(\mathbb{Q}[\alpha] = \mathbb{Q}(\alpha)\) then the proposition is already
+   proven.
+\end{proof}
+

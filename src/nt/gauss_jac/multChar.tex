@@ -1,0 +1,172 @@
+\section{Multiplicative Characters}
+
+\begin{definition}
+   We define \(\chi : \F_p^{\ast} \to \mathbb{C} \setminus \{0\}\) to be a
+   multiplicative character on \(\F_p\) if it satisfies for all \(a, b \in
+   \F_p\) that \(\chi(ab) = \chi(a)\chi(b)\). 
+\end{definition}
+
+\begin{proposition}
+   Let \(\chi\) be a multiplicative character on \(\F_p\) and \(a\) be an
+   element of the finite field, then 
+   \begin{enumerate}[i.]
+      \item \(\chi(1) = 1\).
+      \item  \(\chi(a)\) is a root of \(x^{p-1} - 1\) (that is, a "\(p-1\)st"
+         root of unity).
+      \item \(\chi(a^{-1}) = \chi(a)^{-1} = \overline{\chi(a)}\) (complex
+         conjugation).
+   \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+   We prove only the last two. Since \(a^{p-1} = 1\) then  \(\chi(a^{p-1}) =
+   \chi(1) = 1\) and also  \(\chi(a^{p-1}) = \chi^{p-1}(a) = 1\) and therefore
+   the claim follows.
+   For the third notice that \(1 = \chi(1) = \chi(a)\chi(a^{-1}) \Rightarrow
+   \chi(a^{-1}) = \chi(a)^{-1}\).
+\end{proof}
+
+\begin{definition}
+   We label \(\varepsilon : \F_p^\ast \to \{1\}\) mapping \(a \mapsto 1\) to be
+   a multiplicative character.
+\end{definition}
+
+In order to extend the domain of \(\chi\) for the whole finite field, we define
+\(\chi(0) := 0\) if  \(\chi \neq  \varepsilon\) and \(\varepsilon(0) := 1\).
+
+\begin{proposition}\label{prop: sum multiplicative characters}
+   Let \(\chi\) denote a multiplicative character. Then
+   \[
+      \sum_{a \in \F_p} \chi(a) = 
+      \begin{cases}
+         0, &\chi \neq \varepsilon \\
+         p, &\chi = \varepsilon
+      \end{cases}
+   \] 
+\end{proposition}
+
+\begin{proof}
+   Let \(b \in \F_p^\ast\) such that \(\chi(a) \neq 1\), then define \(S =
+   \sum_{a \in \F_p^\ast} \chi(a)\). Thus
+   \[
+      S\chi(b) = \sum_{a \in \F_p^\ast} \chi(a)\chi(b) = \sum_{ab \in \F_p^\ast}
+      \chi(ab) = S \Rightarrow S = 0.
+   \] 
+\end{proof}
+
+\begin{proposition}
+   The multiplicative characters form a group:
+   \begin{enumerate}[i.]
+      \item \(\chi\lambda : \F_p^\ast \to \mathbb{C} \setminus \{0\} \) where
+         \(a \mapsto \chi(a)\lambda(a)\).
+      \item  \(\chi^{-1}: \F_p^\ast \to \mathbb{C} \setminus \{0\} \) where \(a
+         \mapsto \chi(a)^{-1}\)
+   \end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+   The group of characters is a cyclic group of order \(p-1\). If \(a \in
+   \F_p^\ast\) and \(a \neq 1\) then there exists a character \(\chi\) such
+   that \(\chi(a) \neq 1\).
+\end{proposition}
+
+\begin{proof}
+   Let \(\langle g \rangle = \F_p^\ast\) and \(\forall a \in \F_p^\ast\) let \(a
+   := g^{\ell(a)}\), then if \(\chi\) is a character, we just need to know it's
+   value for \(g\) since any other will be simply this value to the power
+   \(\ell(a)\) where \(a\) is the element concerned. We know that  \(\chi(g)\)
+   is a  \(p-1\)st root of unity and therefore we have that the group of
+   characters have order less than or equal to \(p-1\).
+
+   We now wish to construct a generator for the group of multiplicative
+   characters. Notice that if we define a character  \(\lambda(g^k) :=
+   e^{\frac{2\pi i k}{p-1}}\) then we have that if \(\lambda^n = \varepsilon\) for
+   some \(n\) then \(\lambda^n(g) = e^{\frac{2\pi i n}{p-1}} = \varepsilon(g) = 1\)
+   and therefore the least element \(n\) such that such statement is true is
+   simply \(n = p-1\). Therefore, since \(\{\varepsilon,
+   \lambda,\dots,\lambda^{p-2}\}\) is a set with \(p-1\) distinct elements, we
+   conclude that there are exactly \(p-1\) possible constructible characters and
+   thus \(\langle \lambda \rangle \) is the group of characters.
+
+   We now focus on the second part of the statement. Let \(a = g^{\ell(a)} \in
+   \F_p^\ast\) be any element such that \(p-1 \nmid \ell(a)\), then
+   \(\lambda(g^{\ell(a)}) = \lambda(g)^{\ell(a)} = e^{\frac{2 \pi
+   i}{p-1}\ell(a)} \neq 1\) because we imposed \(p-1 \nmid \ell(a)\).
+\end{proof}
+
+\begin{proposition}
+   Let \(a \in \F_p \setminus \{1\} \), then 
+    \[
+       \sum_{\chi \in \langle \lambda \rangle} \chi(a) = 0.
+   \] 
+   Where \(\lambda\) is a generator for the group of multiplicative characters.
+\end{proposition}
+
+\begin{proof}
+   Just use that \(\lambda(a) \neq 1\) and then apply the same technique as in
+   \ref{prop: sum multiplicative characters}.
+\end{proof}
+
+\begin{proposition}[Criterion for solutions]
+   Let \(a \in \F_p^\ast\), suppose \(n \mid p-1\) and \(x^n = a\) is not a
+   solvable equation over \(\F_p\). Then, there exists a character \(\chi\)
+   such that 
+   \begin{enumerate}
+      \item \(\chi^n = \varepsilon\).
+      \item \(\chi(a) \neq  a\).
+   \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+   Just take \(\langle g \rangle = \F_p^\ast\) and set \(\chi :=
+   \lambda^{\frac{p-1}{n}}\) where \(\lambda(g^k) := e^{\frac{2 \pi i k}{p-1}}\)
+   is the generator of the characters group. From this we conclude trivially
+   that both assertions are true.
+\end{proof}
+
+\begin{proposition}
+   Let \(n \mid p-1\). The number of solutions to the equation \(x^n = a\) 
+   satisfies
+   \[
+      N(x^n=a) = \sum_{\chi^n = \varepsilon} \chi(a).
+   \] 
+   Notice that the imposition of summing over \(\chi^n = \varepsilon\) simply
+   states that the order of \(\chi\) is a divisor or \(n\).
+\end{proposition}
+
+\begin{proof}
+   Let \(\lambda\) be a character such that its order divides \(n\), that is
+   \(\lambda(g)^n = \varepsilon(g) = 1\) and therefore there are less than of
+   \(n\) such \(n\)th roots of unity, showing that there are at most \(n\) 
+   characters with order dividing \(n\). If for instance we take \(\lambda\) to
+   be the generator of the group, then we see that \(\{\varepsilon, \lambda,
+   \dots, \lambda^{n-1}\} \) are all characters that are \(n\)th roots of
+   unity and also distinct, thus there are exactly \(n\) characters for which
+   the order divides \(n\).
+
+   Now we inspect three cases
+   \begin{enumerate}[i.]
+      \item Consider \(a = 0\), then the only solution for  \(x^n = a\) is  \(x
+         =0\). Since we defined \(\chi(0) := 1\) for any \(\chi \neq
+         \varepsilon\) and \(\varepsilon(0) := 0\) we end up having
+         \(\sum_{\chi^n = \varepsilon} \chi(0) = \varepsilon(0) + 0 + \dots + 0
+         = 1\) and therefore we got the right number of solutions.
+      \item Let \(a \neq  0\) and suppose \(x^n = a\) is a solvable equation.
+         Then, suppose \(x_0\) is a solution, so that \(\chi(a) = \chi(x_0^n) =
+         \chi(x_0)^n = \varepsilon(x_0) = 1\) and therefore \(\sum_{\chi^n =
+         \varepsilon}\chi(a) = n\) which is the number of solutions for this
+         case.
+      \item Suppose \(a \neq  0\) and \(x^n = a\) is unsolvable. Define \(S :=
+         \sum_{\chi^n  = \varepsilon} \chi(a)\) and then let \(\lambda\) be a
+         character such that  \(\lambda(a) \neq  1\) and suppose also that
+         \(\lambda^n = \varepsilon\). Notice that 
+         \[
+            \lambda(a) S = \sum_{\chi^n = \varepsilon} \lambda(a)\chi(a) =
+            \sum_{(\lambda \chi)^n = \varepsilon} (\lambda\chi)(a) =  S
+            \Rightarrow S = 0, \text{ since } \lambda(a) \neq  1.
+         \] 
+         which yields the correct number of solutions.
+   \end{enumerate}
+\end{proof}
+
+

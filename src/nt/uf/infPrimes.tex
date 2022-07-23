@@ -1,0 +1,45 @@
+\subsection{Infinitely many primes in \texorpdfstring{\(\mathbb{Z}\)}{Z}}
+
+
+
+\begin{example}
+   An interesting example, in contrast of the ring \(\mathbb{Z}\), in which all
+   (infinitely many) primes are all non-associate, we can construct an integral
+   domain, \(\mathbb{Z}_p\) in which any two primes in \(\mathbb{Z}\) is now
+   associate in \(\mathbb{Z}_p\). 
+
+   It goes as follows: we define \(\mathbb{Z}_p\) to be the set consisting of
+   all rational elements \(a/b\) such that  \(p \nmid b\) (or equivalently
+   \(\ord{p}(b)=0\)). Let's routinely check that \(\mathbb{Z}_p\) is a ring: Let
+   \(a/b\) and \(c/d\) elements of \(\mathbb{Z}_p\) then their product
+   \((ac)/(bd)\) is such that  \(p \nmid b\) and  \(p \nmid d\), thus  \(p \nmid
+   bd\) then \(a/b \cdot c/d \in \mathbb{Z}_p\); also \(a/b + c/d = (ad +
+   bc)/(bd)\) so for the same reason, the sum is also element of
+   \(\mathbb{Z}_p\); the other properties come trivially from the ring
+   \(\mathbb{Z}\).
+
+   Let \(a/b \in \mathbb{Z}_p\) be a unit, then \(\exists
+   c/d \in \mathbb{Z}_p : a/b \cdot c/d = 1\) which implies in \(p \nmid a,\ p
+   \nmid b,\ p \nmid d\). Take any \(x/y \in \mathbb{Z}_p\) and write \(x =
+   p^k x'\), where  \(p \nmid x'\), then \(x/y = p^k x'/y\) but since \(x', y\)
+   are both non-divisible by \(p\), then as shown before, \(x'/y\) is a unit of
+   \(\mathbb{Z}_p\); this implies in \(x/y\) and  \(x'/y\) being associate (by
+   definition). Since we shown this behaviour for any element of the ring, we
+   can say that all elements of  \(\mathbb{Z}_p\) are the product of \(p\) and a
+   unit. This being said, we conclude that the only primes in  \(\mathbb{Z}_p\)
+   have the form \(p \cdot u\), where \(u \in \mathbb{Z}_p\) is a unit. This
+   shows that all primes of the ring are associate, the opposite behaviour shown
+   from \(\mathbb{Z}\).
+\end{example}
+
+The following proposition shows why Euclid's proof breaks down for rings that
+are integral domains.
+\begin{proposition}
+   If \(a/b \in \mathbb{Z}_p\) is not a unit, prove that \(a/b + 1\) is a unit. 
+\end{proposition}
+
+\begin{proof}
+   Suppose \(a/b\) is not a unit, thus \(p \mid a\). Then \(a/b + 1 = (a+b)/b\)
+   is such that \(p \nmid b\) thus  \(p \nmid a + b\) and then this show that
+   \(a/b + 1\) is indeed a unit, as expected.
+\end{proof}

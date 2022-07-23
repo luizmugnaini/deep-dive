@@ -1,0 +1,53 @@
+\section{Gau{\ss} Sums}
+
+\begin{definition}
+   Let \(\zeta := e^{\frac{2\pi i}{p}}\), the \(p\)th root of unity, and
+   \(\chi\) be a character on \(\F_p\). For any \(a \in \F_p\) we define 
+   \[
+      g_a(\chi) = \sum_{t \in \F_p} \chi(t) \zeta^{at}
+   \] 
+   to be the Gau{\ss} sum of \(a\) on \(\F_p\) belonging to the character
+   \(\chi\).
+\end{definition}
+
+\begin{proposition}
+   Some properties of the Gau{\ss} sum:
+   \begin{enumerate}[I.]
+      \item If \(a \in \F_p^\ast\) and \(\chi \neq \varepsilon\) then
+         \(g_a(\chi) = \chi(a^{-1})g_1(\chi)\).
+      \item If \(a \in \F_p^\ast\) and \(\chi = \varepsilon\) then
+         \(g_a(\varepsilon) = 0\).
+      \item If \(a = 0\) and  \(\chi \neq  \varepsilon\) then  we have
+         \(g_0(\chi) = 0\).
+      \item  If \(a = 0\) and \(\chi = \varepsilon\) then \(g_0(\varepsilon) =
+         p\).
+   \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+   We prove each case:
+   \begin{enumerate}
+      \item For \(a \neq  0\) we have that 
+         \[
+            \chi(a)g_a(\chi) = \chi(a) \sum_{t \in \F_p} \chi(t) \zeta^{at}
+            = \sum_{t \in \F_p} \chi(at) \zeta^{at} 
+            = \sum_{x = at \in \F_p} \chi(x) \zeta^x 
+            = g_1(\chi) 
+         \] 
+         Therefore \(g_a(\chi) = \chi(a)^{-1} g_1(\chi)\).
+      \item For \(a \neq  0\) and \(\chi = \varepsilon\) we have 
+         \[
+            g_a(\varepsilon) = \sum_{t \in \F_p} \varepsilon(t)\zeta^{at} =
+            \sum_{t \in \F_p}\zeta^{at} = \frac{\zeta^{ap} - 1}{\zeta^a - 1} = 0
+         \] 
+         since \(a \not\equiv 0 \pmod{p} \Rightarrow \zeta^{a} \neq 1\).
+      \item For \(a = 0\) we have  \(g_0(\chi) = \sum_{t \in \F_p} \chi(t)
+         \zeta^{0t} = \sum_{t \in \F_p} \chi(t) = 0\).
+      \item Now if \(a = 0\) and \(\chi = \varepsilon\) we have \(g_0(\chi) =
+         \sum_{t \in \F_p} \varepsilon(t) \zeta^{0t} = p\).
+   \end{enumerate}
+\end{proof}
+
+\begin{remark}
+   We'll use \(g(\chi) := g_1(\chi)\) as a notation.
+\end{remark}

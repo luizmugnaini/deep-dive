@@ -1,0 +1,113 @@
+\section{Existence of Finite fields}
+
+\begin{remark}
+   Our main goal of this section is to prove that, given a number \(p^n\), where
+   \(p\) is prime, there exists a finite field with cardinality \(p^n\).
+\end{remark}
+
+\begin{proposition}
+   Let \(f \in k[x]\) be a non-zero irreducible polynomial. There exists a field \(K
+   \supseteq k\) and an element \(\alpha \in K\) such that \(f(\alpha) = 0\).
+\end{proposition}
+
+\begin{proof}
+   Since \(k[x]\) is a principle ideal domain and \(f\) is irreducible and
+   non-zero we conclude that the prime ideal \((f(x))\) is a maximal ideal of
+   \(k[x]\). From this latter fact we conclude that \(k[x]/(f(x))\) is a
+   field (analogously on \(\mathbb{F}_p\)). Define \(\varphi : k[x] \to
+   k[x]/(f(x))\) be the homomorphism mapping \(g \mapsto g k[x]/(f(x))\) the
+   coset of \(g\) modulo \((f(x))\). Then \(\varphi(k) \subseteq k[x]/(f(x))\)
+   is a subfield, we want to show that \(\varphi(k) \simeq k\).
+   \todo[inline]{Finish proof, needs some understanding of algebra that I
+   currently do not have \dots}
+\end{proof}
+
+\begin{proposition}\label{prop: basis fini}
+   The set \(\{1, \alpha, \alpha^2, \dots, \alpha^n\} \) form a basis for
+   \(k(\alpha)\) as a linear \(k\)-space, where \(n := \deg(f)\).
+\end{proposition}
+
+\begin{proposition}
+   Let \(F_d(x)\) be the product of all monic irreducible polynomials of
+   \(\mathbb{F}_p[x]\) with degree \(d\). Then 
+   \[
+      x^{p^n} - x = \prod_{d \mid n} F_d(x)
+   \] 
+\end{proposition}
+
+\begin{proof}
+   Suppose firstly that \(f \in k[x]\) is such that \(f(x) \mid x^{p^n} - x\),
+   we ought to show that \(f^2(x) \nmid x^{p^n} - x\). Notice that if  \(f^2(x)
+   \mid x^{p^n} - x\) then  \(\exists g \in k[x]\) such that \(f^2(x)g(x) =
+   x^{p^n} - x\) and therefore 
+   \[
+       f(x)\left( 2f'(x)g(x)\right) + f(x) \left( f(x) g'(x) \right) = p^n
+       x^{p^n - 1} - 1 = -1 \Rightarrow f(x) \mid 1
+   \] 
+   which is a contradiction.
+
+   Let \(\alpha\) be a root of \(f\) and define \(\deg(f) := d\). Then, from
+   proposition \ref{prop: basis fini} we have that \(\mathbb{F}_p(\alpha)\) has
+   as a \(\mathbb{F}_p\)-space has dimension \(d\) and thus
+   \(|\mathbb{F}_p(\alpha)| = p^d\). Then, all \(\omega \in
+   \mathbb{F}_p(\alpha)\) satisfy \(x^{p^d} - x = 0\), we want to show that
+   these elements are roots of \(x^{p^n} - x\) either. 
+
+   Let again \(f(x) \mid x^{p^n} - x\) and suppose that  \(f(x)g(x) = x^{p^n} -
+   x\), then, since \(f(\alpha) = 0\) we need \(\alpha^{p^n} - \alpha = 0\).
+   Since \(\{1, \alpha, \alpha^2, \dots, \alpha^{d-1}\}\) is a basis for
+   \(\mathbb{F}_p(\alpha)\), let \(\omega = \sum_{j=0}^{d-1} b_j \alpha^j \in
+   \mathbb{F}_p(\alpha)\) be any element, where \(b_j \in \mathbb{F}_p\), we
+   want \(\omega^{p^n} - \omega = 0\), but notice that this is pretty direct
+   now, since
+    \[
+       (\omega)^{p^n} = \sum_{0 \leqslant j \leqslant d-1} b_j \alpha^{j(p^n)}
+   \] 
+   from the Frobenius endomorphism and also, since \(\alpha^{p^n} = \alpha\) we
+   have 
+    \[
+       (\omega)^{p^n} = \sum_{0 \leqslant j \leqslant d-1} b_j \alpha^j = \omega
+   \] 
+   as wanted, thus \(\forall \omega \in \mathbb{F}_p(\alpha)\) we have
+   \(\omega^{p^d} - \omega = 0\) and also  \(\omega^{p^n} - \omega = 0\), which
+   implies that  
+   \[
+      x^{p^d} - x \mid x^{p^n} - x \Rightarrow x^{p^d - 1} - 1 \mid
+      x^{p^n - 1} - 1 \Rightarrow p^d - 1 \mid p^n - 1
+      \Rightarrow d \mid n.
+   \]
+
+   Let on the opposite side \(d \mid n\). Since \(f\) is the minimal polynomial
+   of \(\alpha\) and \(f(x) \mid x^{p^d} - x\) (because \(\alpha^{p^d} -
+   \alpha = 0\)) and also \(x^{p^d} - x \mid x^{p^n} - x\) (because \(d \mid
+   n\)), then \(f(x) \mid x^{p^n} - x\), which means for every \(d \mid n\) we
+   have monic irreducible polynomials of degree \(d\) appearing in the
+   decomposition of \(x^{p^n} - x\) and also (from the first part of the proof)
+   each of these appear only once in the factorization.
+\end{proof}
+
+\begin{corollary}
+   Let \(N_d\) be the number of polynomials \(f \in \mathbb{F}_p[x]\) such that
+   \(\deg(f) = d\). Equating the degrees of the polynomials, we have
+   \[
+      p^n = \sum_{d \mid n} d N_d.
+   \] 
+\end{corollary}
+
+\begin{corollary}
+   From Möbius inversion formula we have
+   \[
+      N_n = \sum_{d \mid n} \mu(n/d) \frac{p^d}{n}.
+   \] 
+\end{corollary}
+
+\begin{corollary}
+   Let \(n \geqslant  1\). There exists an irreducible polynomial of degree
+   \(n\) in \(\mathbb{F}_p[x]\).
+\end{corollary}
+
+\begin{theorem}
+   For every \(n \geqslant 1\) and \(p\) a prime. Then there exists a finite
+   field \(\mathbb{F}_p(\alpha)\) with  \(p^n\) elements, where \(\alpha\) has
+   minimal polynomial \(f \in \mathbb{F}_p[x]\) with degree \(n\).
+\end{theorem}
