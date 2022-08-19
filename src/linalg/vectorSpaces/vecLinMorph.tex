@@ -51,19 +51,19 @@ Let \(k\)-vector spaces \(V\) and \(W\) and consider the linear morphism
 \end{definition}
 
 \begin{theorem}[Universal property for cokernels]
-  Let \(k\)-vector spaces \(V\) and \(W\) and the linear morphism \(\varphi : V
-  \to W\). Denote by \(\pi : W \to \coker \varphi\) the projection morphism.
-  For any given \(k\)-vector space \(L\) and linear morphism \(\psi : W \to L\)
-  such that  \(\psi  \varphi = 0\), then there exists a unique linear
-  morphism  \(\ell : \coker \varphi \to L\) such that the diagram commutes
-  \[
-    \begin{tikzcd}
-      V \ar[drr, bend right, "0" description] \ar[r, "\varphi"] &W \ar[r,
-      "\pi"] \ar[dr, "\psi"] &\coker \varphi \ar[d, dashed, "\ell"]
-      \\
-      & &L
-    \end{tikzcd}
-  \]
+Let \(k\)-vector spaces \(V\) and \(W\) and the linear morphism \(\varphi : V
+\to W\). Denote by \(\pi : W \to \coker \varphi\) the projection morphism.
+For any given \(k\)-vector space \(L\) and linear morphism \(\psi : W \to L\)
+for which \(\psi  \varphi = 0\), there exists a unique linear
+morphism \(\ell : \coker \varphi \to L\) such that the diagram commutes
+\[
+  \begin{tikzcd}
+    V \ar[drr, bend right, "0" description] \ar[r, "\varphi"] &W \ar[r,
+    "\pi"] \ar[dr, "\psi"] &\coker \varphi \ar[d, dashed, "\ell"]
+    \\
+    & &L
+  \end{tikzcd}
+\]
 \end{theorem}
 
 \begin{proof}

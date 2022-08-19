@@ -936,7 +936,7 @@ Let \(G\) be a group and \(N\) be a normal subgroup of \(G\). We denote by
   \(x^{-1} N\) (respectively, \(N x^{-1}\)).
 \item The identity of the group is \(N\).
 \end{itemize}
-The group \(G/N\) is commonly refered to as the \emph{quoetient group} of \(G\)
+The group \(G/N\) is commonly refered to as the \emph{quotient group} of \(G\)
 by \(H\).
 \end{definition}
 
@@ -991,29 +991,42 @@ Let \(n \in N\) and \(g \in G\) be any two elements, then \(n \in N_j\) for all
 for all \(j \in J\) as well --- which implies in \(g n g^{-1} \in N\).
 \end{proof}
 
+\begin{proposition}
+\label{prop:index-2-is-normal}
+If \(G\) is a group and \(N \subseteq G\) is a subgroup with index
+\([G \colon N] = 2\), then \(N\) is normal in \(G\).
+\end{proposition}
+
+\begin{proof}
+Suppose \(N \subseteq G\) is a subgroup with index \(2\) --- that is, \(G/N\)
+consists only of two cosets. Thus there must exist \(g \in G\) such that
+\(g N \neq N\) and consequently \(N g \neq N\) --- moreover, since
+\(G = N \cup g N = N \cup N g\), one concludes that \(g N = N g\).
+\end{proof}
+
 \begin{definition}[Centralizers and normalizers]
 \label{def:normalizer-centralizer}
 Let \(G\) be a group and \(S \subseteq G\) be any set of elements. We define the
 following groups:
 \begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item The \emph{normalizer} of \(S\) is defined as the group \(N(S) \coloneq \{g
-  \in G \colon g S g^{-1} = S\}\).
-\item A \emph{centralizer} of \(S\) is defined as the group \(Z(S) \coloneq \{g
-  \in G \colon g s g^{-1} = s \text{, for all } s \in S\}\). The centralizer
-  \(Z(G)\) is commonly called the \emph{center} of \(G\).
+\item The \emph{normalizer} of \(S\) is defined as the group
+  \(N(S) \coloneq \{g \in G \colon g S g^{-1} = S\}\).
+\item A \emph{centralizer} of \(S\) is defined as the group
+  \(Z(S) \coloneq \{g \in G \colon g s g^{-1} = s \text{, for all } s \in
+  S\}\). The centralizer \(Z(G)\) is commonly called the \emph{center} of \(G\).
 \end{enumerate}
 \end{definition}
 
 The normalizer and centralizer are indeed groups, notice that if \(g \in N(S)\),
 then \(g^{-1} \in N(S)\) since \(g S g^{-1} = S\) it follows, by multiplying on
-the left by \(g^{-1}\) and on the right by \(g\), that \(S = g^{-1} S
-g\). Moreover, given any two elements \(g, h \in N(S)\), we have
+the left by \(g^{-1}\) and on the right by \(g\), that
+\(S = g^{-1} S g\). Moreover, given any two elements \(g, h \in N(S)\), we have
 \[
   (g h)^{-1} N (g h) = (h^{-1} g ^{-1}) N (g h) = (h^{-1}N h) (g^{-1} N g) = S.
 \]
 For the case of the centralizer the proof is analogous as the one just made for
-normalizers, where instead of \(S\) we would be considering any element \(s \in
-S\).
+normalizers, where instead of \(S\) we would be considering any element
+\(s \in S\).
 
 In the following lemmas, let \(G\) be a group and \(H\) be a subgroup of \(G\).
 
@@ -1038,20 +1051,22 @@ normal in \(Q H\).
 
 \begin{proof}
 First we verify that \(Q H\) is indeed a group. Let \(q h \in Q H\) be any
-element. Since \(Q \subseteq N_G(H)\), then \(Q H Q^{-1} = H\) and therefore \(Q
-H = H Q\) --- hence there exists \(q' h' \in Q H\) such that \(q' h' = q^{-1}
-h^{-1}\) so that \(Q H\) is closed under inverses. Moreover, given any two
-elements \(q h, q' h' \in Q H\), we have \((q h)(q' h') = q (h q') h'\), but
-since there exists \(q'' h'' \in Q H\) such that \(q'' h'' = h q'\) then \(q(h
-q') h' = q (q'' h'') h' = (q q'') (h'' h') \in Q H\) --- thus \(Q H\) is also
-closed under products, and therefore \(Q H\) is a group.
+element. Since \(Q \subseteq N_G(H)\), then \(Q H Q^{-1} = H\) and therefore
+\(Q H = H Q\) --- hence there exists \(q' h' \in Q H\) such that
+\(q' h' = q^{-1} h^{-1}\) so that \(Q H\) is closed under inverses. Moreover,
+given any two elements \(q h, q' h' \in Q H\), we have
+\((q h)(q' h') = q (h q') h'\), but since there exists \(q'' h'' \in Q H\) such
+that \(q'' h'' = h q'\) then
+\(q(h q') h' = q (q'' h'') h' = (q q'') (h'' h') \in Q H\) --- thus \(Q H\) is
+also closed under products, and therefore \(Q H\) is a group.
 
-Let \(q h \in Q H\) be any element and consider the group \((q h) H (h^{-1}
-q^{-1})\). Given any element \(h' \in H\), we have that \((q^{-1} h^{-1}) h' (q
-h) \in H\), thus \((q h) [(q^{-1} h^{-1}) h' (q h)] (h^{-1} q ^{-1}) = h'\) thus
-\(H \subseteq (q h) H (h^{-1} q^{-1})\). Moreover, clearly \((q h) H (h^{-1}
-q^{-1}) \subseteq H\) thus the equality holds --- which implies that \(H\) is
-normal on the group \(Q H\).
+Let \(q h \in Q H\) be any element and consider the group
+\((q h) H (h^{-1} q^{-1})\). Given any element \(h' \in H\), we have that
+\((q^{-1} h^{-1}) h' (q h) \in H\), thus
+\((q h) [(q^{-1} h^{-1}) h' (q h)] (h^{-1} q ^{-1}) = h'\) thus
+\(H \subseteq (q h) H (h^{-1} q^{-1})\). Moreover, clearly
+\((q h) H (h^{-1} q^{-1}) \subseteq H\) thus the equality holds --- which
+implies that \(H\) is normal on the group \(Q H\).
 \end{proof}
 
 \begin{proposition}[Modular group \(\PSL_2(\Z)\)]
@@ -1077,8 +1092,8 @@ The modular group so constructed is generated by the cosets of the matrices
 \end{proposition}
 
 \begin{proof}
-Let's consider the canonical projection morphism \(\pi: \SL_2(\Z) \epi
-\PSL_2(\Z)\) and let \(g \coloneq \big[
+Let's consider the canonical projection morphism
+\(\pi: \SL_2(\Z) \epi \PSL_2(\Z)\) and let \(g \coloneq \big[
 \begin{smallmatrix}
   0 & -1 \\ 1 & 0
 \end{smallmatrix} \big]
@@ -1096,7 +1111,137 @@ of \(\pi(g)\) is \(2\) --- on the other hand, \((g h)^3 = -I_2\) then
 
 \todo[inline]{Solve Aluffi problems from section 8 (quotient groups)}
 
+\begin{definition}[Normal closure]
+\label{def:normal-closure}
+Given a group \(G\) and a subset \(S \subseteq G\), the \emph{normal closure} of
+\(S\) is the subgroup of \(G\) generated by all elements of the form \(g^{-1} s
+g\) --- for \(g \in G\) and \(s \in S\).
+\end{definition}
+
+\subsection{Epimorphisms}
+
+We lay out the most difficult part of \cref{prop:epic-in-grp} in the following
+lemma.
+
+\begin{lemma}[Epimorphisms are surjections]
+\label{lem:epimorphism-is-surjective-grp}
+In the category of groups, an epimorphism is a surjective set-function.
+\end{lemma}
+
+\begin{proof}
+Let \(\phi: H \epi G\) be an epimorphism in \(\Grp\) --- our goal will be to
+prove that \(\im \phi = G\).
+
+Suppose, for the sake of contradiction, that \([G \colon \im \phi] = 2\) --- so
+that, by \cref{prop:index-2-is-normal} \(\im \phi\) is normal in \(G\). Now, if
+we consider the canonical projection and the trivial morphism
+\(\pi, 0: G \rightrightarrows G/{\im \phi}\) we see that \(\pi \phi = 0 \phi\)
+--- however, since \(\phi\) is epic, this would imply in \(\pi = 0\) which
+cannot possibly be true. Hence \([G \colon \im \phi] \geq 3\) necessarily.
+
+Define \(\sigma: G/{\im \phi} \to G/{\im \phi}\) to be a permutation of the
+cosets \(G/\im \phi\) such that \(\sigma(\im \phi) \coloneq \im \phi\) is the
+\emph{only} fixed point of \(\sigma\). We now consider both the canonical
+projection \(\pi: G \epi G/{\im \phi}\) and a set-function
+\(\eta: G/{\im \phi} \to G\) defined so that \(\pi \eta = \Id_{G/{\im \phi}}\)
+and \(\eta(\im \phi) \coloneq e_G\) --- which is possible since \(\pi\) is
+surjective and hence has a right-inverse.
+
+One can define a morphism \(\alpha: G \to \im \phi\) for which every
+\(g \in G\) can be written uniquely as
+\begin{equation}\label{eq:write-uniquely-g}
+  g = \alpha(g) \eta \pi(g).
+\end{equation}
+The unicity of \(\alpha\) comes from the fact that if \(\beta: G \to \im \phi\)
+is another morphism such that \(g = \beta(g) \eta \pi(g)\), then by the
+injectivity of \(\eta\) we conclude that \(\beta = \alpha\). In the special case
+of \(g \in \im \phi\), then \(\eta\pi(g) = \eta(\im \phi) = e_G\), therefore
+\(\alpha(g) \coloneq g\).
+
+Define \(\lambda: G \to G\) to be the group morphism defined by
+\(\lambda(g) \coloneq \alpha(g) \eta (\sigma \pi(g))\), for all \(g \in
+G\). Notice that \(\lambda\) is nothing but a permutation on \(G\) since every
+element of \(G\) is uniquely written as in \cref{eq:write-uniquely-g} --- and
+\(\sigma\) merely permutes the cosets of \(G/\im \phi\). Let \(P\) be the group
+of all permutations of \(G\) and consider group morphisms
+\(k, \ell: G \rightrightarrows P\) defined by
+\begin{gather}
+  \label{gath:k-definition-gx}
+  k(g)(x)  \coloneq  g x, \text{ for all } g, x \in G, \\
+  \label{gath:ell-definition-g}
+  \ell(g) \coloneq \lambda^{-1} k(g) \lambda, \text{ for all } g \in G.
+\end{gather}
+The condition for \(k(g) = \ell(g)\) is the same as
+\(\lambda k(g) = k(g) \lambda\) --- that is, if \(x \in G\) is any element,
+this is equivalent to the equality of
+\begin{equation}\label{eq:k=l-any-x-in-G}
+  \lambda(g x) = g \lambda(x).
+\end{equation}
+
+For the case where \(g \in \im \phi\) and \(x \in G\) is any element, one has
+\(\pi(g x) = \pi(g) \pi(x) = \pi(x)\) and \(\alpha(g x) = g
+\alpha(x)\). Therefore,
+\[
+\lambda(g x)
+= \alpha(g x) \eta(\sigma \pi(g x))
+= g \alpha(x) \eta(\sigma \pi(x))
+= g \lambda(x).
+\]
+
+
+Using \cref{eq:k=l-any-x-in-G} one concludes that \(k(g) = \ell(g)\) for all
+\(g \in \im \phi\) --- which in turn implies in \(k \phi = \ell \phi\). Note
+however that since \(\phi\) is an epimorphism by hypothesis, we conclude that
+\(k = \ell\) in general --- thus \(\lambda(g x) = g \lambda(x)\) is true for all
+choices of \(g, x \in G\). In the particular case where \(x \coloneq e_G\), we
+have \(\lambda(g) = g \lambda(e_G) = g\) --- therefore,
+\(g = \lambda(g) = \alpha(g) \eta (\sigma \pi(g))\) from the definition of
+\(\lambda\), and \(g = \alpha(g) \eta \pi(g)\) from
+\cref{eq:write-uniquely-g}. We conclude that
+\(\eta (\sigma \pi(g)) = \eta \pi(g)\), which in turn implies in
+\(\sigma \pi(g) = \pi(g)\). Furthermore, \(\sigma\) was constructed so that
+\(\im \phi\) was its only fixed point, that is, \(\pi(g) = \im \phi\) and
+therefore \(g \in \im \phi\). This shows that \(\im \phi = G\) as wanted.
+\end{proof}
+
+\begin{remark}
+\label{rem:not-every-grp-epi-is-split}
+The clever reader may be tempted to think that every epimorphism in the category
+of groups is a split epimorphism --- so that the forgetful functor
+\(\Grp \to \Set\) still preserves it. However, things are not as bright as one
+might think.
+
+Consider for instance the natural projective group morphism
+\(\Z/5\Z \epi \Z/2\Z\) sending \([x]_5 \mapsto [x]_2\). Although an epimorphism,
+such projection is not a split epimorphism --- the lack of elements of order
+\(2\) in \(\Z/5\Z\) does not allow the existence of any non-trivial morphisms of
+groups \(\Z/2\Z \to \Z/5\Z\).
+\end{remark}
+
+\begin{proposition}[Epimorphisms in \(\Grp\)]
+\label{prop:epic-in-grp}
+Let \(\phi: G \to H\) be a group morphism. The following propositions are
+equivalent:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The morphism \(\phi\) is an epimorphism in \(\Grp\).
+\item The set function \(\phi\) is surjective in \(\Set\).
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+For (a) \(\implies\) (b), we have \cref{lem:epimorphism-is-surjective-grp}. On
+the other hand, the proof that (b) \(\implies\) (a) is straightforward: let
+\(f_1, f_2: H \rightrightarrows Q\) be any two group morphisms such that
+\(f_1 \phi = f_2 \phi\), then given any \(h \in H\) there exists \(g \in G\)
+such that \(\phi(g) = h\) and hence \(f_1\phi(g) = f_1(h) = f_2(h) = f_2
+\phi(g)\) --- since \(h\) was chosen arbitrarily over \(H\), we conclude that
+\(f_1 = f_2\).
+\end{proof}
+
 \subsection{Sequences of Groups}
+
+\todo[inline]{Change from ``sequences'' to ``series'' --- which is the modern
+  denomination.}
 
 Now that we know a bit about normal groups, we can study the properties of
 factorization of maps between groups and sequences of maps. One interesting
@@ -1128,12 +1273,12 @@ whole group \(K\), we necessarily have \(g(G) = K\). Moreover, if we define \(H
   \end{tikzcd}
 \]
 
-\begin{proposition}
+\begin{proposition}[Universal property of normal groups]
 \label{prop:universal-property-quotients-grp}
 Let \(G\) be a group and \(N\) be a normal subgroup of \(G\). Then, given a
 group \(Q\) toghether with a morphism of groups \(\phi: G \to Q\) such that
-\(N\) is the kernel of \(\phi\), there exists a unique morphism \(\phi_{*}: G/N
-\to Q\) such that the diagram
+\(N\) is the kernel of \(\phi\), there exists a unique morphism
+\(\phi_{*}: G/N \to Q\) such that the diagram
 \[
   \begin{tikzcd}
     G \ar[d, two heads, swap, "\pi"] \ar[r, "\phi"] &Q \\
@@ -1156,11 +1301,12 @@ Define \(\phi_{*}\) simply as the mapping \(gH \to \phi(g)\), then clearly
 \(\phi_{*} \pi = \phi\). Moreover, given any \(x \in G/N\), the fiber
 \(\pi^{-1}(x)\) is non-empty, thus \(\phi_{*}\) cannot assume any other values
 beside those specified by \(\phi\), which implies in its uniqueness. Moreover,
-since \(\ker \phi = N\), if \(n \in N\) then \(\phi_{*} \pi(n) = \phi_{*}(n N) =
-e_{Q}\) but \(n N = N\) thus \(N \in \ker \phi_{*}\), moreover, if \(x N \in
-\ker \phi_{*}\) it follows that \(\phi(x) = e_Q\) then \(x \in N\) and therefore
-\(x N = N\) --- this implies that \(\ker \phi_{*} = N\), which is the identity
-element of \(G/N\), thus \(\phi_{*}\) is injective.
+since \(\ker \phi = N\), if \(n \in N\) then
+\(\phi_{*} \pi(n) = \phi_{*}(n N) = e_{Q}\) but \(n N = N\) thus
+\(N \in \ker \phi_{*}\), moreover, if \(x N \in \ker \phi_{*}\) it follows that
+\(\phi(x) = e_Q\) then \(x \in N\) and therefore \(x N = N\) --- this implies
+that \(\ker \phi_{*} = N\), which is the identity element of \(G/N\), thus
+\(\phi_{*}\) is injective.
 \end{proof}
 
 \begin{corollary}
@@ -1224,7 +1370,8 @@ In the context of the last corollary, we can visualize the propositions by the
 following diagram, which commutes
 \[
   \begin{tikzcd}
-    * \ar[r] &Q \ar[r, tail] \ar[d, "\iso"'] &G \ar[r, two heads] \ar[d, "\iso"]
+    * \ar[r] &Q \ar[r, tail] \ar[d, "\iso"']
+    &G \ar[r, two heads] \ar[d, "\iso"]
     &G/Q \ar[r] \ar[d, "\Id"] &*
     \\
     * \ar[r] &Q/H \ar[r, tail] &G/H \ar[r, two heads] &G/Q \ar[r] &*

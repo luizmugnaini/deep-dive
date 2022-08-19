@@ -1,21 +1,19 @@
 \documentclass[12pt, a4paper, reqno, openany]{memoir}
 \usepackage[english]{babel}
 
-% Page geometry
-% \usepackage{fullpage}
 \usepackage{layout}
 \usepackage{afterpage}
 \usepackage[
-asymmetric,
-textheight=673pt,
-marginparsep=7pt,
-footskip=27pt,
-hoffset=0pt,
-paperwidth=597pt,
-textwidth=452pt,
-marginparwidth=101pt,
-voffset=0pt,
-paperheight=845pt,
+  asymmetric,
+  textheight     = 673pt,
+  marginparsep   = 7pt,
+  footskip       = 27pt,
+  hoffset        = 0pt,
+  paperwidth     = 597pt,
+  textwidth      = 452pt,
+  marginparwidth = 101pt,
+  voffset        = 0pt,
+  paperheight    = 845pt,
 ]{geometry}
 
 \newcommand{\changegeometry}{\newgeometry{includehead,headheight=89pt}%
@@ -52,15 +50,17 @@ paperheight=845pt,
 }
 \usepackage[capitalize,nameinlink]{cleveref}
 \usepackage[
-backend=biber,
-style=alphabetic,
+  backend = biber,
+  style   = alphabetic,
 ]{biblatex}
 \addbibresource{src/bibliography.bib}
 
 \linespread{1.05}
 \vfuzz=14pt % No more vbox errors all over the place
 
-% Environments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** Environments **
+
 \theoremstyle{definition}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
@@ -72,29 +72,106 @@ style=alphabetic,
 \newtheorem{example}[theorem]{Example}
 \newtheorem{notation}[theorem]{Notation}
 
-%\parskip=5pt plus 1pt
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** symbols **
 
-% % Allow paired delimeters with \left and \right
-% \newcommand{\DeclareAutoPairedDelimiter}[3]{%
-%   \expandafter\DeclarePairedDelimiter\csname Auto\string#1\endcsname{#2}{#3}%
-%   \begingroup\edef\x{\endgroup
-%     \noexpand\DeclareRobustCommand{\noexpand#1}{%
-%       \expandafter\noexpand\csname Auto\string#1\endcsname*}}%
-%   \x}
-
-% symbols
-\renewcommand{\qedsymbol}{\(\natural\)}% blacklozenge
+\renewcommand{\qedsymbol}{\(\natural\)}
 \renewcommand{\leq}{\leqslant}
 \renewcommand{\geq}{\geqslant}
 \renewcommand{\setminus}{\smallsetminus}
-% \newcommand{\coloneq}{\coloneqq}
 
 % ':' for maps and '\colon' for relations on collections
 \DeclareMathSymbol{:}{\mathpunct}{operators}{"3A}
 \let\colon\relax
 \DeclareMathSymbol{\colon}{\mathrel}{operators}{"3A}
 
-% General
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** arrows **
+
+% Alias for Rightarrow
+\newcommand{\To}{\Rightarrow}
+
+% Monomorphism arrow
+\newcommand{\mono}{\rightarrowtail}
+
+% Epimorphism arrow
+\newcommand{\epi}{\twoheadrightarrow}
+
+% Unique morphism
+\newcommand{\unique}{\dashrightarrow}
+\newcommand{\xdashrightarrow}[2][]{\ext@arrow 0359\rightarrowfill@@{#1}{#2}}
+
+% Isomorphism symbol
+\newcommand{\iso}{\simeq}
+
+% Isomorphism arrow
+\newcommand{\isoto}{\xrightarrow{\raisebox{-.6ex}[0ex][0ex]{\(\sim\)}}}
+
+% diagram isomorphism
+\newcommand{\dis}{\iso}
+
+\newcommand{\isounique}{%
+  \xdashrightarrow{\raisebox{-.6ex}[0ex][0ex]{\(\sim\)}}
+}%
+
+% Natural transformation arrow
+\newcommand{\nat}{\Rightarrow}
+
+% Natural isomorphism
+\newcommand{\isonat}{\xRightarrow{\raisebox{-.8ex}[0ex][0ex]{\(\sim\)}}}
+
+% Embedding arrow
+\newcommand{\emb}{\hookrightarrow}
+
+% Implication
+\renewcommand{\implies}{\Rightarrow}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** Common collections **
+
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\Q}{\mathbf{Q}}
+\newcommand{\CC}{\mathbf{C}}
+\newcommand{\R}{\mathbf{R}}
+
+\renewcommand{\emptyset}{\varnothing}
+
+\newcommand{\Uhs}{\mathbf{H}}  % Upper half space
+\newcommand{\Proj}{\mathbf{P}} % Projective space
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** Categories **
+
+% Font for categories
+\newcommand{\cat}{\mathcal}
+
+% Opposite category
+\newcommand{\op}{\mathrm{op}}
+
+% Common categories
+\newcommand{\Set}{{\textbf{Set}}}          % Sets
+\newcommand{\FinSet}{{\textbf{FinSet}}}    % Finite sets
+\newcommand{\pSet}{{\textbf{pSet}}}        % Pointed sets
+\newcommand{\sSet}{{\textbf{sSet}}}        % Simplicial sets
+\newcommand{\Vect}{{\textbf{Vect}}}        % Vector spaces
+\newcommand{\FinVect}{{\textbf{FinVect}}}  % Finite vector spaces
+\newcommand{\TVect}{{\textbf{TVect}}}      % Topological vector spaces
+\newcommand{\Ban}{{\textbf{Ban}}}          % Banach spaces
+\newcommand{\Man}{{\textbf{Man}}}          % Manifolds
+\let\Top\relax
+\newcommand{\Top}{{\textbf{Top}}}          % Topological spaces
+\newcommand{\HoTop}{{\textbf{Ho}(\textbf{Top})}} % Homotopy space
+\newcommand{\Grp}{{\textbf{Grp}}}          % Groups
+\newcommand{\Ab}{{\textbf{Ab}}}            % Abelian groups
+\newcommand{\Graph}{{\textbf{Graph}}}      % Graphs
+\newcommand{\SimpGraph}{{\textbf{sGraph}}} % Simple graphs
+\newcommand{\Rng}{{\textbf{Ring}}}         % Rings
+\newcommand{\Cat}{{\textbf{Cat}}}          % Small categories
+\newcommand{\CAT}{{\textbf{CAT}}}          % Big categories
+\newcommand{\UCat}{{\mathcal{U}\text{-}\textbf{Cat}}} % U-Categories
+
+% Operators
 \DeclareMathOperator{\Hom}{Mor}
 \DeclareMathOperator{\Fct}{Fct}
 \DeclareMathOperator{\Obj}{Obj}
@@ -102,22 +179,25 @@ style=alphabetic,
 \DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\Id}{id}
-\DeclareMathOperator{\im}{im}
-\DeclareMathOperator{\dom}{dom}
-\DeclareMathOperator{\codom}{cod}
-\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\im}{im}     % Image
+\DeclareMathOperator{\dom}{dom}   % Domain
+\DeclareMathOperator{\codom}{cod} % Codomain
+\DeclareMathOperator{\supp}{supp} % Support
 
-% Algebra
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** algebra **
 \DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\coker}{coker}
-\DeclareMathOperator{\Tr}{tr}
-\DeclareMathOperator{\Sym}{Sym}
-\DeclareMathOperator{\Alt}{Alt}
+\DeclareMathOperator{\Tr}{tr}   % Trace
+\DeclareMathOperator{\Sym}{Sym} % Symmetric space
+\DeclareMathOperator{\Alt}{Alt} % Alternating space
 \DeclareMathOperator{\Char}{char}
-\DeclareMathOperator{\sign}{sign}
 \DeclareMathOperator{\Span}{span}
-\DeclareMathOperator{\Inn}{Inn}
-\newcommand{\lie}{\mathfrak}
+\DeclareMathOperator{\Inn}{Inn} % Inner automorphisms
+\newcommand{\lie}{\mathfrak} % Font for Lie structures
+
+\DeclareMathOperator{\eval}{eval}
+\DeclareMathOperator{\sign}{sign}
 
 % Matrices
 \DeclareMathOperator{\Mat}{Mat}
@@ -129,80 +209,50 @@ style=alphabetic,
 \DeclareMathOperator{\Unit}{U}
 \DeclareMathOperator{\Orth}{O}
 
-% Topology
+% Symbol for the group of units --- for instance, the group of units of a ring
+% \(R\) will be denoted by \(R^{\unit}\).
+\newcommand{\unit}{*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** Topology **
+
+% attaching spaces
+\newcommand{\att}{\sqcup}       % Disjoint union
+\newcommand{\bigatt}{\bigsqcup} % Indexed disjoint union
+
+% Operators
 \DeclareMathOperator{\Cone}{C}
 \DeclareMathOperator{\Int}{Int}
 \DeclareMathOperator{\Ext}{Ext}
 
-% Differentiable structures
-\DeclareMathOperator{\Vol}{vol}
-\DeclareMathOperator{\Mesh}{mesh}
-\DeclareMathOperator{\grad}{grad}
-\DeclareMathOperator{\Hess}{Hess}
-\DeclareMathOperator{\Jac}{Jac}
-\DeclareMathOperator{\Curl}{Curl}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** Differentiable structures **
 
-% arrows
-\newcommand{\op}{\mathrm{op}}
-\newcommand{\isoto}{\xrightarrow{\raisebox{-.6ex}[0ex][0ex]{$\sim$}}}
-\newcommand{\isonat}{\xRightarrow{\raisebox{-.8ex}[0ex][0ex]{$\sim$}}}
-\newcommand{\To}{\Rightarrow}
-\newcommand{\mono}{\rightarrowtail}
-\newcommand{\epi}{\twoheadrightarrow}
-\newcommand{\iso}{\simeq}
-\newcommand{\dis}{\iso} % diagram isomorphism
-\newcommand{\nat}{\Rightarrow}
-\newcommand{\emb}{\hookrightarrow}
-\newcommand{\cat}{\mathcal}
-\renewcommand{\implies}{\Rightarrow}
-
-% Common collections
-\newcommand{\Z}{\mathbf{Z}}
-\newcommand{\N}{\mathbf{N}}
-\newcommand{\Q}{\mathbf{Q}}
-\newcommand{\CC}{\mathbf{C}}
-\newcommand{\R}{\mathbf{R}}
-\renewcommand{\emptyset}{\varnothing}
-\newcommand{\Uhs}{\mathbf{H}} % Upper half space
-\newcommand{\Proj}{\mathbf{P}} % Projective space
-
-% Topology
-\newcommand{\att}{\sqcup} % attaching spaces
-\newcommand{\bigatt}{\bigsqcup}
-
-% Differentiable structures
+% Norm
 \DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
-\newcommand{\diff}{\mathrm{d}}
-\newcommand{\Diff}{\mathrm{D}}
 
-% Common categories
-\newcommand{\Set}{{\textbf{Set}}}
-\newcommand{\FinSet}{{\textbf{FinSet}}}
-\newcommand{\pSet}{{\textbf{pSet}}}
-\newcommand{\sSet}{{\textbf{sSet}}}
-\newcommand{\Vect}{{\textbf{Vect}}}
-\newcommand{\FinVect}{{\textbf{FinVect}}}
-\newcommand{\TVect}{{\textbf{TVect}}}
-\newcommand{\Ban}{{\textbf{Ban}}}
-\newcommand{\Man}{{\textbf{Man}}}
-\let\Top\relax
-\newcommand{\Top}{{\textbf{Top}}}
-\newcommand{\HoTop}{{\textbf{Ho}(\textbf{Top})}}
-\newcommand{\Grp}{{\textbf{Grp}}}
-\newcommand{\Ab}{{\textbf{Ab}}}
-\newcommand{\Graph}{{\textbf{Graph}}}
-\newcommand{\SimpGraph}{{\textbf{sGraph}}}
-\newcommand{\Rng}{{\textbf{Ring}}}
-\newcommand{\Cat}{{\textbf{Cat}}}
-\newcommand{\CAT}{{\textbf{CAT}}}
-\newcommand{\UCat}{{\mathcal{U}\text{-}\textbf{Cat}}}
+\newcommand{\diff}{\mathrm{d}} % Differential 'd' symbol
+\newcommand{\Diff}{\mathrm{D}} % Differential 'D' symbol
 
-% Graphs
+% Operators
+\DeclareMathOperator{\Vol}{vol}   % Volume
+\DeclareMathOperator{\Mesh}{mesh} % Mesh
+\DeclareMathOperator{\grad}{grad} % Gradient
+\DeclareMathOperator{\Hess}{Hess} % Hessian
+\DeclareMathOperator{\Jac}{Jac}   % Jacobian
+\DeclareMathOperator{\Curl}{Curl} % Curl
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** Graphs **
+
 \DeclareMathOperator{\Circ}{circ}
 \DeclareMathOperator{\diam}{diam}
 \newcommand{\emptygraph}{\varnothing}
 \DeclarePairedDelimiterX{\size}[1]{\lVert}{\rVert}{#1}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** MACROS END HERE **
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \author{Luiz G. Mugnaini A.}
 \date{Last modification: \today}

@@ -1,2 +1,2 @@
-@default_files = ('deep-divek.tex');
+@default_files = ('deep-dive.tex');
 $pdf_mode = 1;

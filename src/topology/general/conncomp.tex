@@ -6,9 +6,9 @@ Let \(X\) be a topological space. We say that \(X\) is \emph{connected} if and
 only if one of the following conditions hold:
 \begin{enumerate}[(a)]\setlength\itemsep{0em}
 \item The space \(X\) cannot be expressed as the union of two disjoint non-empty
-  open sets.
-\item Every morphism \(f: X \to \{0, 1\}\) is constant --- where \(\{0, 1\}\) is a
-  space endowed with the discrete topology.
+open sets.
+\item Every morphism \(f: X \to \{0, 1\}\) is constant --- where \(\{0, 1\}\) is
+a space endowed with the discrete topology.
 \end{enumerate}
 \end{definition}
 
@@ -40,6 +40,17 @@ given \(x, y \in X\), we have \(x \sim y\) if and only if there exists a
 connected subspace of \(X\) containing both \(x\) and \(y\). The collection of
 equivalence classes \(X/{\sim}\) is called \emph{connected components} of \(X\).
 \end{definition}
+
+\begin{definition}[Totally disconnected]
+\label{def:totally-disconnected}
+A space is said to be totally disconnected if the only connected subsets are
+singletons.
+\end{definition}
+
+\begin{example}
+\label{exp:Q-is-totally-disconnected}
+The set of rational numbers \(\Q\) is totally disconnected.
+\end{example}
 
 \begin{notation}[Standard interval]
 From now on, when talking about \emph{paths} and \emph{homotopies}, we shall
@@ -179,7 +190,29 @@ the intersection is connected to each of the path connected components. For each
 y\) and therefore every point of \(X\) is connected by a path.
 \end{proof}
 
-\todo[inline]{Continue on connected spaces}
+\begin{theorem}
+\label{thm:connected-interval-real-space}
+In the real space \(\R\), the only connected sets are intervals.
+\end{theorem}
+
+\begin{proof}
+If \(A\) is not an interval, there must exist a pair \(x, y \in A\) for which
+there is \(z \notin A\) with \(x < z < y\). This way, we can write \(A\) as the
+union of two disjoint non-empty sets: \(A = [A \cap (-\infty, z)] \cup [A \cap
+(z, \infty)]\) --- that is, \(A\) is disconnected.
+
+We now show that intervals are connected. For the sake of contradiction, assume
+there exists an interval \(I\) such that there are disjoint and non-empty sets
+\(A\) and \(B\) for which \(I = A \cup B\) --- that is, we assume \(I\) is
+disconnected. Let \(x, y \in I\) be any two elements with \(x < y\) and \(x \in
+A\), while \(y \in B\). By the archimedian principle, valid in \(\R\), since the
+set \(C \coloneq [x, y) \cap A\) is both non-empty and bounded above, thus \(C\)
+has a supremum, let \(s \coloneq \sup C\) --- where \(x < s \leq y\). Notice
+that \(s \notin A\), since if so then \(s\) would not be the supremum of \(C\),
+therefore \(s \in B\) --- which also cannot be the case, since \(s\) would not,
+again, be the supremum of \(C\). We conclude that the sets \(A\) and \(B\)
+cannot be constructed at all, hence there is no disconnected interval in \(\R\).
+\end{proof}
 
 \section{Compact Spaces}
 
@@ -264,10 +297,6 @@ Let \(X\) be a metric space and \(A \subseteq X\) be a subset. Then, \(A\) is
 compact if and only if every sequence of points in \(A\) has a convergent
 subsequence in \(A\).
 \end{proposition}
-
-\begin{proof}
-\todo[inline]{write proof}
-\end{proof}
 
 
 
