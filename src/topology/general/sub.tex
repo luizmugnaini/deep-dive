@@ -207,8 +207,10 @@ Let \((X, \mathcal T)\) be a topological space and \((S, \mathcal T_S)\) be a
 subspace of \(X\). The following are properties concerning the subspace
 topology
 \begin{enumerate}[(SP1)]
-  \item\label{prop: subspace transitivity}
-    Let \(T\) be a subspace of \(S\). Then \(T\) is a subspace of \(X\).  \item\label{prop: basis for subspace} Let \(\mathcal B\) be a basis for \(X\). Then the collection \(\mathcal B_S = \{B \cap S \colon B \in \mathcal B\}\) is a basis for \(S\).
+\item\label{prop: subspace transitivity} Let \(T\) be a subspace of \(S\). Then
+  \(T\) is a subspace of \(X\).  \item\label{prop: basis for subspace} Let
+  \(\mathcal B\) be a basis for \(X\). Then the collection
+  \(\mathcal B_S = \{B \cap S \colon B \in \mathcal B\}\) is a basis for \(S\).
   \item\label{prop: convergence subspace}
     Let \((p_i)_{i \in \N} \subseteq S\) be a sequence and \(p \in
     S\). Then \(p_i \to p\) in \(S\) if and only if \(p_i \to p\) in \(X\).
@@ -245,34 +247,34 @@ and \(g = \iota_T  f : Z \to S\) and apply the universal property on both
 \]
 Moreover, if \(f\) is continuous, from the universal property of \(T\) we find
 that \(g\) is continuous, but using the universal property of \(S\) that tells
-us that \(\iota_S  g = \iota_T'  f\) is continuous. The converse is
+us that \(\iota_S  g = \iota_T' f\) is continuous. The converse is
 true by using the same argumentation. Hence \(T\) satisfies the universal
 property and therefore is a subspace of \(X\).
 
 (SP2) First notice that since \(B \in \mathcal B\) is open in \(X\), then
-\(\mathcal B_S \subseteq \mathcal T_S\). Let \(s \in S\) be any element, then
-in particular we have \(s \in B_s \in \mathcal B\) for some element of the
-basis. Then \(s \in S \cap B_s \in \mathcal B_S\). Let \(A = S \cap B_1, B = S
-\cap B_2 \in \mathcal B_S\) and \(x \in A \cap B\). Then in particular \(x \in
-B_1 \cap B_2\). Since \(\mathcal B\) is a basis for \(X\), then exists \(B_3
-\in \mathcal B\) such that \(x \in B_3 \subseteq B_1 \cap B_2\). Hence the
-corresponding set \(C = S \cap B_3 \in \mathcal B_S\) is such that \(x \in C
-\subseteq A \cap B\). This proves that \(\mathcal B_S\) is a basis.
+\(\mathcal B_S \subseteq \mathcal T_S\). Let \(s \in S\) be any element, then in
+particular we have \(s \in B_s \in \mathcal B\) for some element of the
+basis. Then \(s \in S \cap B_s \in \mathcal B_S\). Let
+\(A = S \cap B_1, B = S \cap B_2 \in \mathcal B_S\) and \(x \in A \cap B\). Then
+in particular \(x \in B_1 \cap B_2\). Since \(\mathcal B\) is a basis for \(X\),
+then exists \(B_3 \in \mathcal B\) such that
+\(x \in B_3 \subseteq B_1 \cap B_2\). Hence the corresponding set
+\(C = S \cap B_3 \in \mathcal B_S\) is such that \(x \in C \subseteq A \cap
+B\). This proves that \(\mathcal B_S\) is a basis.
 
-(SP3) (\(\Rightarrow\)) Suppose \(p_i \to p\) in \(S\), that is, for all \(U_p =
-S \cap V_p \in \mathcal T_S\), where \(V_p \in \mathcal T\), we have some \(N
-\in \N\) such that for all \(n \geq N\) we have \(p_n \in U_p\). In particular,
-this implies that for each \(n \geq N\) we get \(p_n \in V_p\), hence \(p_i \to
-p\) in \(X\).
-(\(\Leftarrow\)) Suppose that \(p_i \to p\) in \(X\). Let \(V_p \subseteq X\)
-be a neighbourhood of \(p\), then since \(p \in S\) we have that \(V_p \cap S
-\neq \emptyset\) is an element of \(\mathcal T_S\). Let \(U_p \in
-\mathcal T_S\) be any neighbourhood of \(p\), then there exists \(V \in
-\mathcal T\) such that \(U_p = S \cap V\) (from the definition of the subspace
-topology) and also \(p \in V\), so that \(V\) is a neighbourhood of \(p\).
-Therefore there exists \(M \in \N\) such that, for all \(n \geq M\) we have
-\(p_n \in S \cap V = U_p \subseteq V\). This implies that \(p_i \to p\) in
-\(S\).
+(SP3) (\(\Rightarrow\)) Suppose \(p_i \to p\) in \(S\), that is, for all
+\(U_p = S \cap V_p \in \mathcal T_S\), where \(V_p \in \mathcal T\), we have
+some \(N \in \N\) such that for all \(n \geq N\) we have \(p_n \in U_p\). In
+particular, this implies that for each \(n \geq N\) we get \(p_n \in V_p\),
+hence \(p_i \to p\) in \(X\).  (\(\Leftarrow\)) Suppose that \(p_i \to p\) in
+\(X\). Let \(V_p \subseteq X\) be a neighbourhood of \(p\), then since
+\(p \in S\) we have that \(V_p \cap S \neq \emptyset\) is an element of
+\(\mathcal T_S\). Let \(U_p \in \mathcal T_S\) be any neighbourhood of \(p\),
+then there exists \(V \in \mathcal T\) such that \(U_p = S \cap V\) (from the
+definition of the subspace topology) and also \(p \in V\), so that \(V\) is a
+neighbourhood of \(p\).  Therefore there exists \(M \in \N\) such that, for all
+\(n \geq M\) we have \(p_n \in S \cap V = U_p \subseteq V\). This implies that
+\(p_i \to p\) in \(S\).
 
 (SP4) Let \(X\) be Hausdorff. Let \(x, y \in S\) be distinct points. In
 particular, there exits \(A, B \in X\) neighbourhoods of \(x\) and \(y\),
@@ -283,24 +285,25 @@ respectively and since \(U \subseteq A\) and \(V \subseteq B\) we find that
 
 (SP5) Let \(X\) be a first countable space. Let \(p \in S\) be any point.
 Define a countable base \(\mathcal B_p\) of neighbourhoods of \(p\) for \(X\).
-Define the, clearly countable, collection \(\mathcal B_p' = \{S \cap B_p \colon B_p
-\in \mathcal B_p\} \subseteq 2^S\). From \cref{prop: basis for subspace} we
-have that \(\mathcal B_p'\) is a basis for \(S\). Moreover, every element of
-\(\mathcal B_p'\) is clearly a neighbourhood of \(p\). This proves the
-property.
+Define the, clearly countable, collection
+\(\mathcal B_p' = \{S \cap B_p \colon B_p \in \mathcal B_p\} \subseteq
+2^S\). From \cref{prop: basis for subspace} we have that \(\mathcal B_p'\) is a
+basis for \(S\). Moreover, every element of \(\mathcal B_p'\) is clearly a
+neighbourhood of \(p\). This proves the property.
 
-(SP6) Let \(X\) be second countable and \(\mathcal B\) be a countable basis
-for the topology of \(X\). Define the, clearly countable, collection
-\(\mathcal B' \coloneq \{S \cap B \colon B \in \mathcal B\}\). Since \(\mathcal B\) is a
-basis for \(X\), we use \cref{prop: basis for subspace} to conclude that
-\(\mathcal B'\) is a basis for \(S\).
+(SP6) Let \(X\) be second countable and \(\mathcal B\) be a countable basis for
+the topology of \(X\). Define the, clearly countable, collection
+\(\mathcal B' \coloneq \{S \cap B \colon B \in \mathcal B\}\). Since
+\(\mathcal B\) is a basis for \(X\), we use \cref{prop: basis for subspace} to
+conclude that \(\mathcal B'\) is a basis for \(S\).
 \end{proof}
 
 \subsection{Topological Embeddings}
 
 \begin{definition}[Embedding]\label{def: topological embedding}
 Let \(f: Y \mono X\) be a continuous injective map of topological spaces. We
-call \(f\) an embedding when \(f': Y \isoto f(Y)\) is an isomorphism.
+call \(f\) an embedding when \(f': Y \isoto f(Y)\), for \(f'(y) \coloneq f(y)\)
+for all \(y \in Y\), is an isomorphism.
 \end{definition}
 
 \begin{example}
@@ -350,25 +353,26 @@ is injective.
 \end{example}
 
 \begin{lemma}[Gluing]
-Let \(X\) and \(Y\) be topological spaces and consider \(\mathcal U =
-\{U_i\}_i\) an open cover (or finite closed cover) of \(X\). Let \(\{f_i: U_i
-\to Y\}_i\) be a collection of continuous maps such that \(f_i|_{U_i \cap U_j}
-= f_j|_{U_i \cap U_j}\) for all indices \(i\) and \(j\). Then there exists a
-unique continuous map \(f: X \to Y\) such that \(f|_{U_i} = f_i\) for all \(i\).
+Let \(X\) and \(Y\) be topological spaces and consider
+\(\mathcal U = \{U_i\}_i\) an open cover (or finite closed cover) of \(X\). Let
+\(\{f_i: U_i \to Y\}_i\) be a collection of continuous maps such that
+\(f_i|_{U_i \cap U_j} = f_j|_{U_i \cap U_j}\) for all indices \(i\) and
+\(j\). Then there exists a unique continuous map \(f: X \to Y\) such that
+\(f|_{U_i} = f_i\) for all \(i\).
 \end{lemma}
 
 \begin{proof}
-Let \(\mathcal U\) be open, then given any point \(p \in X\), \(f|_{U_p} =
-f_p\) is continuous for some neighbourhood \(U_p \in \mathcal U\) of \(p\),
-which implies that \(f\) is continuous. On the other hand, if \(\mathcal U\)
-is a finite closed cover of \(X\), then consider \(C \subseteq Y\) to be any
-closed set, then we have \(f_i^{-1}(C) = f^{-1}(V) \cap U_i\) is closed in
-\(U_i\) (since \(f_i\) is continuous). Since \(U_i\) is closed in \(X\), we
-find that \(f_i^{-1}(C)\) is closed in \(X\) (see \cref{prop: relative open to
-open}).  Notice that, if \(|\mathcal U| = n\), then \(f^{-1}(C) =
-\bigcup_{i=1}^n f_i^{-1}(C)\) is the finite union of closed sets in \(X\),
-which implies that \(f^{-1}(C)\) itself is closed. This shows us that the
-inverse of \(f\) maps closed sets to closed sets, which implies that \(f\) is
-continuous.  Since \(\mathcal U\) is a cover of \(X\), it is clear that \(f\)
+Let \(\mathcal U\) be open, then given any point \(p \in X\), \(f|_{U_p} = f_p\)
+is continuous for some neighbourhood \(U_p \in \mathcal U\) of \(p\), which
+implies that \(f\) is continuous. On the other hand, if \(\mathcal U\) is a
+finite closed cover of \(X\), then consider \(C \subseteq Y\) to be any closed
+set, then we have \(f_i^{-1}(C) = f^{-1}(V) \cap U_i\) is closed in \(U_i\)
+(since \(f_i\) is continuous). Since \(U_i\) is closed in \(X\), we find that
+\(f_i^{-1}(C)\) is closed in \(X\) (see \cref{prop: relative open to open}).
+Notice that, if \(|\mathcal U| = n\), then
+\(f^{-1}(C) = \bigcup_{i=1}^n f_i^{-1}(C)\) is the finite union of closed sets
+in \(X\), which implies that \(f^{-1}(C)\) itself is closed. This shows us that
+the inverse of \(f\) maps closed sets to closed sets, which implies that \(f\)
+is continuous.  Since \(\mathcal U\) is a cover of \(X\), it is clear that \(f\)
 is unique.
 \end{proof}

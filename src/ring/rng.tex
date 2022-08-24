@@ -676,7 +676,7 @@ which the corresponding coefficient is non-zero, that is
   \deg f \coloneq \max \{j \colon a_j \neq 0\}.
 \]
 This is well defined because \(a_j \neq 0\) for only finitely many indices.
-By convention, the zero-polynomial has degree \(\infty\).
+By convention, the zero-polynomial has degree \(-\infty\).
 \end{definition}
 %
 
@@ -751,6 +751,22 @@ right-unit), then \(\phi(u) \in S\) is again a left-unit (or right-unit).
 Let \(v \in R\) be such that \(v u = 1_R\), then \(\phi(v u) = \phi(v) \phi(u)\)
 but \(\phi(v u) = \phi(1_R) = 1_S\) thus \(\phi(v) \phi(u) = 1_S\) and
 \(\phi(u)\) is indeed a left-unit in \(S\).
+\end{proof}
+%
+
+%
+\begin{proposition}[Image of morphism is a subring]
+\label{prop:image-of-morphism-is-subring}
+The image of a ring morphism \(R \to S\) is a subring of \(S\).
+\end{proposition}
+%
+
+%
+\begin{proof}
+Let \(\phi: R \to S\) be any ring morphism. Since it is a ring morphism,
+\(\phi(1_R) = 1_S \in \im \phi\), moreover, if \(a, b \in R\) then \(\phi(a + b)
+= \phi(a) + \phi(b) \in \im \phi\) and \(\phi(a b) = \phi(a) \phi(b) \in \im
+\phi\) --- thus \(\im \phi\) is a subring of \(S\).
 \end{proof}
 %
 
@@ -1109,14 +1125,14 @@ A classical counterexample is the ring morphism given by the canonical inclusion
 &R
 \end{tikzcd}
 \]
-Since \(f|_{\Z} = g|_{\Z}\), we have, for any \(p/q \in \Q\) that
-\(f(p/q) = f(p) f(q)^{-1}\) and \(g(p/q) = g(p) g(q)^{-1}\) but since
-\(f(p) = g(p)\) and \(f(q) = g(q)\) then \(f(p/q) = g(p/q)\) --- that is,
-\(f = g\) in general, which implies that \(\iota\) is an epimorphism in
-\(\Rng\). For the shock of the reader, the same obviously not the case in
-\(\Set\). If we take the rings \(\Z\) and \(\Q\) as abelian groups, one sees
-that \(\coker \phi\) is non-trivial and by \cref{prop:epic-in-Ab} we arrive at
-the fact that \(\phi\) is not an epimorphism in \(\Ab\) neither.
+Since \(f|_{\Z} = g|_{\Z}\) we have, for any \(p/q \in \Q\), that
+\(f(p/q) = f(p) f(q)^{-1}\) and \(g(p/q) = g(p) g(q)^{-1}\), which implies in
+\(f(p/q) = g(p/q)\) --- that is, \(f = g\) in general, which implies that
+\(\iota\) is an epimorphism in \(\Rng\). For the shock of the reader, the same
+is obviously not the case in \(\Set\). If we take the rings \(\Z\) and \(\Q\) as
+abelian groups, one sees that \(\coker \phi\) is non-trivial and by
+\cref{prop:epic-in-Ab} we arrive at the fact that \(\phi\) is not an epimorphism
+in \(\Ab\) neither.
 \end{remark}
 %
 

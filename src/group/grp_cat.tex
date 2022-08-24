@@ -1137,28 +1137,31 @@ that, by \cref{prop:index-2-is-normal} \(\im \phi\) is normal in \(G\). Now, if
 we consider the canonical projection and the trivial morphism
 \(\pi, 0: G \rightrightarrows G/{\im \phi}\) we see that \(\pi \phi = 0 \phi\)
 --- however, since \(\phi\) is epic, this would imply in \(\pi = 0\) which
-cannot possibly be true. Hence \([G \colon \im \phi] \geq 3\) necessarily.
+cannot possibly be true. Hence \([G \colon \im \phi] \geq 3\) necessarily and
+thus \(\im \phi\) is .
 
-Define \(\sigma: G/{\im \phi} \to G/{\im \phi}\) to be a permutation of the
-cosets \(G/\im \phi\) such that \(\sigma(\im \phi) \coloneq \im \phi\) is the
-\emph{only} fixed point of \(\sigma\). We now consider both the canonical
-projection \(\pi: G \epi G/{\im \phi}\) and a set-function
-\(\eta: G/{\im \phi} \to G\) defined so that \(\pi \eta = \Id_{G/{\im \phi}}\)
-and \(\eta(\im \phi) \coloneq e_G\) --- which is possible since \(\pi\) is
-surjective and hence has a right-inverse.
+Define the \emph{set}-function \(\sigma: G/{\im \phi} \to G/{\im \phi}\) to be a
+permutation of the cosets of \(G/{\im \phi}\) such that
+\(\sigma(\im \phi) \coloneq \im \phi\) is the \emph{only} fixed point of
+\(\sigma\) --- which can occur only because \([G \colon \im \phi] > 2\). We now
+consider the \emph{set}-functions given by the canonical projection
+\(\pi: G \epi G/{\im \phi}\) and a map \(\eta: G/{\im \phi} \to G\) defined so
+that \(\pi \eta = \Id_{G/{\im \phi}}\) and \(\eta(\im \phi) \coloneq e_G\) ---
+which is possible since \(\pi\) is surjective and therefore has a right-inverse.
 
-One can define a morphism \(\alpha: G \to \im \phi\) for which every
+One can define a \emph{set}-function \(\alpha: G \to \im \phi\) for which every
 \(g \in G\) can be written uniquely as
 \begin{equation}\label{eq:write-uniquely-g}
   g = \alpha(g) \eta \pi(g).
 \end{equation}
-The unicity of \(\alpha\) comes from the fact that if \(\beta: G \to \im \phi\)
-is another morphism such that \(g = \beta(g) \eta \pi(g)\), then by the
-injectivity of \(\eta\) we conclude that \(\beta = \alpha\). In the special case
-of \(g \in \im \phi\), then \(\eta\pi(g) = \eta(\im \phi) = e_G\), therefore
-\(\alpha(g) \coloneq g\).
+Since \(G\) is a group, the existence of \(\alpha\) is ensured --- simply define
+\(\alpha(g) \coloneq g (\eta \pi(g))^{-1}\).  The unicity of \(\alpha\) comes
+from the fact that if \(\beta: G \to \im \phi\) is another map such that
+\(g = \beta(g) \eta \pi(g)\), then by the injectivity of \(\eta\) we conclude
+that \(\beta = \alpha\). In the special case of \(g \in \im \phi\) then
+\(\eta\pi(g) = \eta(\im \phi) = e_G\), and thus \(\alpha(g) \coloneq g\).
 
-Define \(\lambda: G \to G\) to be the group morphism defined by
+Define \(\lambda: G \to G\) to be the \emph{set}-function given by
 \(\lambda(g) \coloneq \alpha(g) \eta (\sigma \pi(g))\), for all \(g \in
 G\). Notice that \(\lambda\) is nothing but a permutation on \(G\) since every
 element of \(G\) is uniquely written as in \cref{eq:write-uniquely-g} --- and
@@ -1171,12 +1174,19 @@ of all permutations of \(G\) and consider group morphisms
   \label{gath:ell-definition-g}
   \ell(g) \coloneq \lambda^{-1} k(g) \lambda, \text{ for all } g \in G.
 \end{gather}
-The condition for \(k(g) = \ell(g)\) is the same as
-\(\lambda k(g) = k(g) \lambda\) --- that is, if \(x \in G\) is any element,
-this is equivalent to the equality of
+Indeed, given \(g, g' \in G\) we have
+\begin{gather*}
+k(g g')(x) = (g g') x = g (g' x) = k(g)(k(g')(x)), \\
+\ell(g g') = \lambda^{-1} k(g g') \lambda
+= \lambda^{-1} k(g) k(g') \lambda = \ell(g) \ell(g')
+\end{gather*}
+thus both are group morphisms. The condition for \(k(g) = \ell(g)\) is the same
+as \(\lambda k(g) = k(g) \lambda\), in turn if \(x \in G\) is any element,
+the requirement that
 \begin{equation}\label{eq:k=l-any-x-in-G}
-  \lambda(g x) = g \lambda(x).
+  \lambda(g x) = g \lambda(x)
 \end{equation}
+is also an equivalent condition.
 
 For the case where \(g \in \im \phi\) and \(x \in G\) is any element, one has
 \(\pi(g x) = \pi(g) \pi(x) = \pi(x)\) and \(\alpha(g x) = g
@@ -1191,17 +1201,19 @@ For the case where \(g \in \im \phi\) and \(x \in G\) is any element, one has
 
 Using \cref{eq:k=l-any-x-in-G} one concludes that \(k(g) = \ell(g)\) for all
 \(g \in \im \phi\) --- which in turn implies in \(k \phi = \ell \phi\). Note
-however that since \(\phi\) is an epimorphism by hypothesis, we conclude that
-\(k = \ell\) in general --- thus \(\lambda(g x) = g \lambda(x)\) is true for all
-choices of \(g, x \in G\). In the particular case where \(x \coloneq e_G\), we
-have \(\lambda(g) = g \lambda(e_G) = g\) --- therefore,
-\(g = \lambda(g) = \alpha(g) \eta (\sigma \pi(g))\) from the definition of
-\(\lambda\), and \(g = \alpha(g) \eta \pi(g)\) from
-\cref{eq:write-uniquely-g}. We conclude that
-\(\eta (\sigma \pi(g)) = \eta \pi(g)\), which in turn implies in
-\(\sigma \pi(g) = \pi(g)\). Furthermore, \(\sigma\) was constructed so that
-\(\im \phi\) was its only fixed point, that is, \(\pi(g) = \im \phi\) and
-therefore \(g \in \im \phi\). This shows that \(\im \phi = G\) as wanted.
+however that since \(\phi\) is an epimorphism of groups by hypothesis, we
+conclude that \(k = \ell\) in general --- thus \(\lambda(g x) = g \lambda(x)\)
+is true for all choices of \(g, x \in G\). Fix \(g_0 \in G\) and consider the
+particular case where \(x \coloneq e_G\), we thus have
+\(\lambda(g_0) = g_0 \lambda(e_G) = g_0\) --- therefore,
+\(g_0 = \lambda(g_0) = \alpha(g_0) \eta (\sigma \pi(g_0))\) from the definition
+of \(\lambda\), and \(g_0 = \alpha(g_0) \eta \pi(g_0)\) from
+\cref{eq:write-uniquely-g}. Combining both equations for \(g_0\) we conclude
+that \(\eta (\sigma \pi(g_0)) = \eta \pi(g_0)\), which in turn implies in
+\(\sigma \pi(g_0) = \pi(g_0)\) since \(\eta\) is injective. Furthermore,
+\(\sigma\) was constructed so that \(\im \phi\) was its only fixed point, that
+is, \(\pi(g_0) = \im \phi\) and therefore \(g_0 \in \im \phi\). This shows that
+\(\im \phi = G\) as wanted.
 \end{proof}
 
 \begin{remark}

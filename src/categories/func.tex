@@ -736,15 +736,343 @@ isomorphic elements in \(\cat C_0\) are equal to each other.
 
 \begin{proof}
 Let \(\sim\) be the equivalence relation on the set \(\Obj(\cat C)\) where
-\(x \sim y\) if and only if \(x \iso y\) in \(\cat C\). By means of Zorn's
-lemma, choose, for each equivalence class, a representative --- and define
-\(\cat C_0\) as the full subcategory of \(\cat C\) consisting of such
+\(x \sim y\) if and only if we have \(x \iso y\) in \(\cat C\). By means of
+Zorn's lemma, choose for each equivalence class a representative --- and
+define \(\cat C_0\) as the full subcategory of \(\cat C\) consisting of such
 representatives. In this way, if \(x, y \in \Obj(\cat C_0)\) satisfy
-\(x \iso y\), then necessarily \(x = y\).
+\(x \iso y\) in \(\cat C\), then necessarily \(x = y\).
 
 If we apply \cref{lem:full-subcategory-functor-correspondence} to the identity
 functor \(\Id_{\cat C}\), we find the existence of a unique functor
 \(F_0: \cat C \to \cat C_0\) and a natural isomorphism \(\alpha: \Id_{\cat C}
-\isonat \iota F_0\).
-\todo[inline]{I'm incapable of studying right now, finish this later}
+\isonat \iota F_0\) for which \(\iota F_0 \iso \Id_{\cat C}\). Moreover,
+we have the chain of isomorphisms:
+\[
+\iota (F_0 \iota) = (\iota F_0) \iota \iso \Id_{\cat{C}} \iota \iso \iota \iso
+\iota \Id_{\cat C_0}.
+\]
+From the fact that \(\iota\) is fully faithful, we obtain \(F_0 \iota \iso
+\Id_{\cat C_0}\).
 \end{proof}
+
+\begin{proposition}
+\label{prop:equiv-cats-iff-fully-faith-and-essen-surj}
+A functor \(F: \cat C \to \cat D\) is an \emph{equivalence} of categories if and
+only if \(F\) is \emph{fully faithful} and \emph{essentially surjective}.
+\end{proposition}
+
+\begin{proof}
+Suppose \(F\) is an equivalence of categories, then exists a quasi inverse
+\(G: \cat D \to \cat C\) and natural isomorphisms
+\(\alpha: G F \isonat \Id_{\cat C}\) and \(\beta: F G \isonat \Id_{\cat D}\). We
+now prove that \(F\) is both fully faithful and essencially surjective.
+
+\begin{itemize}\setlength\itemsep{0em}
+\item (Fully Faithful) Let \(g: Fx \to Fy\) be any morphism in \(\cat D\), thus
+  if there exists an \(f: x \to y\) in \(\cat C\) for which \(F f = g\), it must
+  be the case that
+  \(f = \alpha_y (G F f) \alpha_x^{-1} = \alpha_y (G g) \alpha_x^{-1}\). Indeed,
+  if \(f = \alpha_y (G g) \alpha_x^{-1}: x \to y\) is a morphism in \(\cat C\),
+  from the distributivity over composition, we have
+  \[
+  G F f = G F \alpha_y \circ G F (G g) \circ G F \alpha_x^{-1}
+  \]
+  then by the naturality of \(\alpha\) on the map \(\alpha_x^{-1}\) implies
+  \[
+  \begin{tikzcd}
+  G F x \ar[d, "G F \alpha_x^{-1}"] \ar[r, "\alpha_x"']
+  & x \ar[d, "\alpha_x^{-1}"] \\
+  G F (G F x) \ar[r, "\alpha_{G F x}"'] & G F x
+  \end{tikzcd}
+  \]
+  but since \(\alpha_x^{-1}\) is an isomorphism, then
+  \(G F \alpha_x^{-1} \alpha_x^{-1} = \alpha_{G F x}^{-1} \alpha_x^{-1}\)
+  implies in
+  \[
+  G F \alpha_x^{-1} = \alpha_{G F x}^{-1}.
+  \]
+  On the other hand, the same can be done for \(G F \alpha_y\), yielding
+  \(G F \alpha_y = \alpha_{G F y}\), therefore
+  \begin{equation}\label{eq:GFf=alphas}
+  G F f = \alpha_{G F y} (G F G g) \alpha_{G F x}^{-1}.
+  \end{equation}
+  The naturality of \(\alpha\) on the map \(G g\) gives
+  \[
+  \begin{tikzcd}
+  G F (G F x) \ar[r, "\alpha_{G F x}"] \ar[d, "G F (G g)"']
+  & G F x \ar[d, "G g"] \\
+  G F (G F y) \ar[r, "\alpha_{G F y}"'] & G F y
+  \end{tikzcd}
+  \]
+  that is, \(G F (G g) \alpha_{G F x}^{-1} = \alpha_{G F y}^{-1} G g\), thus
+  substituting in \cref{eq:GFf=alphas} we obtain finally that
+  \[
+  G F f = G g.
+  \]
+  From this we conclude that \(F\) is fully faithful.
+
+\item (Essencially surjective) Let \(a \in \cat D\) be any element and simply
+  consider \(x = G a \in \cat D\) then from \(\beta\) we obtain that
+  \(Fx = F G a \iso a\).
+\end{itemize}
+
+For the converse, suppose \(F\) is both fully faithful and essencially
+surjective. Using \cref{lem:full-subcategory-embedding-equivalence}, let
+\(\cat C_0\) be the full subcategory of \(\cat C\) such that
+\(\iota_{\cat C}: \cat C_0 \emb \cat C\) is an equivalence and if \(x \iso y\)
+in \(\cat C\) then \(x = y\) in \(\cat C_0\). Let \(\kappa_{\cat C}\) be a
+quasi-inverse of \(\iota_{\cat C}\). Apply
+\cref{lem:full-subcategory-embedding-equivalence} again, but now to the category
+\(\cat D\), yielding a category \(\cat D_0\), an embedding \(\iota_{\cat D}\)
+and a quasi-inverse \(\kappa_{\cat D}\). Notice that the composition of functors
+\(\kappa_{\cat D} F \iota_{\cat C}: \cat C_0 \isoto \cat D_0\) is an
+isomorphism. Let \(H\) be the inverse of \(\kappa_{\cat D} F \iota_{\cat C}\),
+and define \(G \coloneq \iota_{\cat C} H \kappa_{\cat D}\), then \(G\) is a
+quasi-inverse of \(F\).
+\end{proof}
+
+\begin{corollary}
+\label{cor:fully-faithful-induces-equivalence-to-full-subcategory}
+Let \(F: \cat C \to \cat D\) be a \emph{fully faithful} functor. Then there
+exists a \emph{full subcategory} \(\cat D_0\) of \(\cat D\) and an
+\emph{equivalence} of categories \(G: \cat C \isoto \cat D_0\) for which \(F\)
+is \emph{isomorphic} to \(\iota_{\cat D} G\) --- where
+\(\iota_{\cat D}: \cat D_0 \emb \cat D\) is the embedding functor.
+\end{corollary}
+
+\begin{proof}
+Define \(\cat D_0\) to be the full category with
+\(\Obj(\cat D_0) \coloneq \{F x \colon x \in \cat C\}\). Now define
+\(G: \cat D \to \cat D_0\) to be the functor \(G = F\), we find that clearly
+\(F \iso \iota_{\cat D} G\).
+\end{proof}
+
+\begin{example}
+\label{exp:equivalence-category-functor-opposite}
+For any two given categories \(\cat C\) and \(\cat D\), there is an isomorphism
+of categories \(\Fct(\cat C, \cat D)^{\op} \iso \Fct(\cat C^{\op}, \cat
+D^{\op})\). Explicitely, such isomorphism maps \(F \mapsto \op F \op\).
+\end{example}
+
+\begin{definition}[Essencially \(\mathcal{U}\)-small]
+\label{def:essencially-U-small}
+A category \(\cat C\) is said to be \emph{essencially \(\mathcal{U}\)-small} if
+it is equivalent to a \(\mathcal{U}\)-small category. Equivalently, \(\cat C\)
+is essencially \(\mathcal{U}\)-small if and only if \(\cat C\) is a
+\(\mathcal{U}\)-category and there exists a subset \(S \subseteq \Obj(\cat C)\)
+that is \(\mathcal{U}\)-small for which, given any \(x \in \cat C\), there
+exists \(y \in S\) such that \(x \iso y\).
+\end{definition}
+
+\begin{definition}[Half-full]
+\label{def:half-full}
+We define the concepts of \emph{half-fullness} for functors and subcategories:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item A functor \(F: \cat C \to \cat D\) is said to be \emph{half-full} if for
+  any two \(x, y \in \cat C\) for which \(F x \iso F y\) in \(\cat D\), there
+  exists \emph{an} isomorphism \(x \iso y\) in \(\cat C\).
+
+\item A subcategory \(\cat C_0\) of \(\cat C\) is said to be \emph{half-full} if
+  the embedding functor \(\iota: \cat C_0 \emb \cat C\) is half-full.
+\end{enumerate}
+\end{definition}
+
+An analogous but \emph{less strict} proposition when compared to
+\cref{cor:fully-faithful-induces-equivalence-to-full-subcategory} is done by
+substituting the condition of fully faithfulness to only that of faithful and
+half-full. It goes as follows.
+
+\begin{proposition}
+\label{prop:faithful-half-full-induces-equivalence-to-subcategory}
+Let \(F: \cat C \to \cat D\) be a \emph{faithful} and \emph{half-full}
+functor. Then there exists a subcategory \(\cat D_0\) of \(\cat D\) for which
+\[
+F(\Obj(\cat C)) \subseteq \Obj(\cat D_0),
+\text{ and }
+F(\Hom(\cat C)) \subseteq \Hom(\cat D_0).
+\]
+Moreover, \(F\) induces an \emph{equivalence} of categories
+\(\cat C \iso \cat D_0\) and the embedding
+\(\cat D_0 \emb \cat D\) is \emph{faithful} and
+\emph{half-full}.
+\end{proposition}
+
+\begin{proof}
+Let \(\cat D_0\) be the category with
+\(\Obj(\cat D_0) \coloneq \{F(x) \colon x \in \cat C\}\), and for each two
+\(x, y \in \cat C\) define
+\(\Hom_{\cat D_0}(F x, F y) \coloneq F(\Hom_{\cat C}(x, y))\) --- so that
+\(\Hom_{\cat D_0}(F x, F y) \subseteq \Hom_{\cat D}(F x, F y)\). Since \(F\) is
+half-full, the definition of \(\Hom_{\cat D_0}(F x, F y)\) is independent of the
+inicial choice of \(x, y \in \cat C\) --- indeed, if \(x', y' \in \cat C\) are
+such that \(F x' \iso F x\) and \(F y' \iso F y\) in \(\cat D_0\), then \(x'
+\iso x\) and \(y' \iso y\) in \(\cat C\), thus \(\Hom_{\cat C_0}(x, y) \iso
+\Hom_{\cat C_0}(x', y')\).
+
+Restricting the codomain of \(F\) to \(\cat D_0\), we find that the induced
+functor \(F: \cat C \to \cat D_0\) is fully faithful and essencially surjective
+--- thus by \cref{prop:equiv-cats-iff-fully-faith-and-essen-surj} \(F\) is an
+equivalence of categories.
+\end{proof}
+
+\section{Yoneda Lemma}
+
+\begin{remark}
+\label{rem:Set-is-U-Set}
+I again stress that \(\Set\), for us, is defined to be the category whose
+objects are \(\mathcal{U}\)-sets for a given universe \(\mathcal{U}\) and
+set-functions between these sets --- this is a relevant remark, since confusions
+with that would lead one to undesirable size issues.
+\end{remark}
+
+\begin{definition}[Category of presheaves \& Yoneda functors]
+\label{def:category-of-presheaves-and-yoneda-functors}
+Given a \(\mathcal{U}\)-category \(\cat C\), we define the \emph{big} category
+of \emph{presheaves} \([\cat C^{\op}, \Set]\) and a \emph{big} category of
+functors \([\cat C^{\op}, \Set^{\op}]\). Together with such category we define
+functors
+\begin{align*}
+  \yo_{\cat C}:& \cat C \to [\cat C^{\op}, \Set],
+    \text{ mapping } x \mapsto \Hom_{\cat C}(-, x), \\
+  \yo'_{\cat C}:& \cat C \to [\cat C^{\op}, \Set^{\op}],
+    \text{ mapping } x \mapsto \Hom_{\cat C}(x, -).
+\end{align*}
+The functors \(\yo_{\cat C}\) and \(\yo'_{\cat C}\) are called \emph{Yoneda
+  functors}.
+\end{definition}
+
+\begin{remark}
+\label{rem:presheaf-category-size-issues}
+Although \(\cat C\) is a \(\mathcal{U}\)-category, its categories of presheaves
+described above \emph{need not} be a \(\mathcal{U}\)-category --- however, if
+\(\cat C\) happens to be \emph{\(\mathcal{U}\)-small}, then
+\([\cat C^{\op}, \Set]\) and \([\cat C^{\op}, \Set^{\op}]\) are both
+\emph{\(\mathcal{U}\)-categories}.
+\end{remark}
+
+Notice that by \cref{exp:equivalence-category-functor-opposite} we have
+natural isomorphisms
+\begin{equation}\label{eq:nat-iso-presheaf-categories}
+[\cat C^{\op}, \Set^{\op}] \iso [\cat C, \Set]^{\op},
+\end{equation}
+that is, \([\cat C^{\op}, \Set^{\op}]\) is isomorphic to the category of
+presheaves of the opposite category \(\cat C^{\op}\), namely,
+\([\cat C, \Set]\).  Therefore, for every \(x \in \cat C\) we have
+\[
+\yo'_{\cat C}x = (\yo_{\cat C^{\op}}x^{\op})^{\op}.
+\]
+
+\begin{lemma}[Yoneda]
+\label{lem:yoneda}
+The Yoneda lemma states that:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item For all \(F \in [\cat C^{\op}, \Set]\) and \(x \in \cat C\), there is a
+  natural isomorphism:
+  \[
+  \Hom_{[\cat C^{\op}, \Set]}(\yo_{\cat C}x, F) \iso F x.
+  \]
+
+\item For all \(G \in [\cat C^{\op}, \Set^{\op}]\) and \(x \in \cat C\), there
+  is a natural isomorphism:
+  \[
+  \Hom_{[\cat C^{\op}, \Set^{\op}]}(G, \yo'_{\cat C}x) \iso G x.
+  \]
+\end{enumerate}
+These natural isomorphisms have a \emph{functorial} nature --- they define,
+respectively, functors \(\cat C^{\op} \times [\cat C^{\op}, \Set] \to \Set\) and
+\([\cat C^{\op}, \Set^{\op}]^{\op} \times \cat C \to \Set\)
+\end{lemma}
+
+\begin{proof}
+By means of \cref{eq:nat-iso-presheaf-categories} one only needs to prove one of
+the two statements, since the other follows from duality. We prove the item (a).
+
+Let \(\phi\) be the morphism making
+\[
+\begin{tikzcd}
+\Hom_{[\cat C^{\op}, \Set]}(\yo_{\cat C}x, F) \ar[r]
+\ar[rr, bend left, "\phi" description]
+&\Hom_{\Set}(\Hom_{\cat C}(x, x), F x) \ar[r]
+& F x \\
+\eta \ar[r, mapsto] &\eta_x \ar[r, mapsto] & \eta_x(\Id_x)
+\end{tikzcd}
+\]
+commute. Notice that the choice of
+\(\Id_x \in \Hom_{\cat C}(x, x) = \yo_{\cat C}x (x)\) is done so that we can
+define a distinguished point \(\eta_x(\Id_x)\) from the set \(F_x\).
+
+Define now \(\psi: \Hom_{[\cat C^{\op}, \Set]}(\yo_{\cat C}(x), F) \to F x\) to
+be the map \(F x \ni a \mapsto \eta^a: \yo_{\cat C} x \nat F\), where the
+natural transformation \(\eta^a\) associated to \(a\) is defined, for every
+object \(y \in \cat C\), by the map \(\eta_y^a: \Hom_{\cat C}(y, x) \to F x\)
+sending \(f \mapsto F (f) (a)\).
+
+Notice that any natural transformation
+\(\eta \in \Hom_{[\cat C^{\op}, \Set]}(\yo_{\cat C} x, F)\) is completely
+determined by \(\eta_x(\Id_x)\). Indeed, given \(f \in \Hom_{\cat C}(y, x)\) one
+has the following diagram, which comes from the naturality of \(\eta\):
+\[
+\begin{tikzcd}
+\Hom_{\cat C}(x, x) \ar[r, "\eta_x"] \ar[d, "f^{*}"']
+&F x \ar[d, "F f"] \\
+\Hom_{\cat C}(y, x) \ar[r, "\eta_y"] &F y
+\end{tikzcd}
+\]
+Thus we have \(\eta_y(f) = (F f)(\eta_x(\Id_x))\) since
+\(f^{*}(\Id_{x}) = \Id_x f = f\) --- which shows that \(\eta\) is determined by
+the distinguished map \(\Id_x\). That is, \(\psi\) is determined, for each
+\(a \in F x\) by \(\eta_x^a(\Id_x)\). This is thus sufficient to prove that
+\(\phi\) and \(\psi\) are mutual inverses and therefore stablish the wanted
+isomorphism.
+\end{proof}
+
+\begin{corollary}
+\label{cor:yoneda-fct-fully-faithful}
+The Yoneda functors \(\yo\) and \(\yo'\) are \emph{fully faithful}.
+\end{corollary}
+
+\begin{proof}
+From duality, we only check that the map
+\(\Hom_{\cat C}(x, y) \to \Mor_{[\cat C^{\op}, \Set]}(\yo_{\cat C}x, \yo_{\cat
+  C} y)\) sending \(f \mapsto \eta^f\), where
+\(\eta_z^f(g) = f_{*}(g) = f g\) for every \(z \in \cat C\) and map
+\(g \in \Hom_{\cat C}(z, x)\) --- is a bijection for all \(x, y \in \cat
+C\). Such map is certainly injective, since given two distinct maps
+\(f, h \in \Hom_{\cat C}(x, y)\) we have \(f_{*} \neq h_{*}\).  Moreover, we
+have the isomorphism
+\[
+\Hom_{[\cat C^{\op}, \Set]}(\yo_{\cat C} x, \yo_{\cat C} y)
+\iso \yo_{\cat C} y (x)
+= \Hom_{\cat C} (x, y)
+\]
+from \cref{lem:yoneda}. Let \(\eta: \yo_{\cat C} x \nat \yo_{\cat C} y\) be any
+natural transformation --- we wish to find \(f \in \Hom_{\cat C}(x, y)\) for
+which \(\eta_z(g) = f g\) for every \(z \in \cat C\) and
+\(g \in \Hom_{\cat C}(z, x)\). The natural choice is given by
+\(f \coloneq \eta_x(\Id_x)\). By the naturality of \(\eta\) we have, for any
+\(w \in \cat C\)
+\[
+\begin{tikzcd}
+\Hom_{\cat C}(w, x) \ar[r, "\eta_w"] \ar[d, "g^{*}"']
+&\Hom_{\cat C}(w, y) \ar[d, "g^{*}"] \\
+\Hom_{\cat C}(z, x) \ar[r, "\eta_z"] &\Hom_{\cat C}(z, y)
+\end{tikzcd}
+\]
+Thus given \(h: w \to x\) in \(\cat C\) we have the equality
+\[
+\eta_w(h) g = \eta_z(h g).
+\]
+Therefore, if we restrict \(w = x\) and \(h = \Id_x\) we get
+\(\eta_x(\Id_x)g = f g = \eta_z(g)\) --- which is what we wanted, because this
+means that \(f\) will have image \(\eta\) under our mapping.
+\end{proof}
+
+\begin{corollary}
+\label{cor:yoneda-obj-iso-iff-fct-iso}
+Given a category \(\cat C\) and two objects \(x, y \in \cat C\). Then there
+exists an isomorphism \(x \iso y\) if and only if there exists a natural
+isomorphism \(\Hom_{\cat C}(-, x) \iso \Hom_{\cat C}(-, y)\) (or
+\(\Hom_{\cat C}(x, -) \iso \Hom_{\cat C}(y, -)\) for the covariant version).
+\end{corollary}
+
+\todo[inline]{Continue section}

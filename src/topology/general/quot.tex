@@ -14,9 +14,10 @@ would like to make this gluing process compatible with the theory of topology so
 far constructed. To achieve that, one may make the point that we should make
 \(S\) into a topological space for which its topology makes \(\pi\) a continuous
 map. The first idea that may come to mind is that we can simply force the
-continuity of \(\pi\) by defining a topology \(\mathcal T\) on \(S\) so that \(U
-\subseteq S\) is an open set if and only if \(\pi^{-1}(U)\) is open --- which is
-exactly the definition of a continuous map. Lets give this a formal definition.
+continuity of \(\pi\) by defining a topology \(\mathcal T\) on \(S\) so that
+\(U \subseteq S\) is an open set if and only if \(\pi^{-1}(U)\) is open ---
+which is exactly the definition of a continuous map. Lets give this a formal
+definition.
 
 \begin{definition}\label{def:quotient-topology}
 Let \(X\) be a topological space and \(S\) be any set. Let also \(\pi: X \epi S\)
@@ -29,11 +30,12 @@ The quotient topology is a topology.
 \end{proposition}
 
 \begin{proof}
-Let \(X /{\sim}\) be a space with the topology induced by the map \(\pi: X \epi
-X /{\sim}\). Consider an arbitrary collection \({\{U_{j}\}}_j\) of open sets of
-\(X /{\sim}\). Notice that since \(\pi^{-1}(\bigcup_{j} U_{j}) = \bigcup_j
-\pi^{-1}(U_j)\) then since \(\pi^{-1}(U_j)\) is open for all index \(j\), we
-conclude that \(\bigcup_j \pi^{-1}(U_{j}) \subseteq X\) is open, hence the set
+Let \(X /{\sim}\) be a space with the topology induced by the map
+\(\pi: X \epi X /{\sim}\). Consider an arbitrary collection \({\{U_{j}\}}_j\) of
+open sets of \(X /{\sim}\). Notice that since
+\(\pi^{-1}(\bigcup_{j} U_{j}) = \bigcup_j \pi^{-1}(U_j)\) then since
+\(\pi^{-1}(U_j)\) is open for all index \(j\), we conclude that
+\(\bigcup_j \pi^{-1}(U_{j}) \subseteq X\) is open, hence the set
 \(\bigcup_j U_j \subseteq X /{\sim}\) is necessarily open --- since \(\pi\) is
 continuous. Let now \(A, B \subseteq X /{\sim}\) be any open sets, then
 \(\pi^{-1}(A \cap B) = \pi^{-1}(A) \cap \pi^{-1}(B) \subseteq X\), which is open
@@ -43,19 +45,20 @@ quotient topology indeed satisfies the properties of a topology.
 
 In other terms, let \(T_S\) be the collection of all topologies on \(S\) such
 that \(\pi\) is a continuous map. The above definition simply says that the
-quotient topology \(\mathcal T\) on the set \(S\) is the intersection \(\mathcal
-T = \bigcap_{T \in T_S}T\). Even better than that definition is the fact that we
-can determine the quotient topology by the following universal property.
+quotient topology \(\mathcal T\) on the set \(S\) is the intersection
+\(\mathcal T = \bigcap_{T \in T_S}T\). Even better than that definition is the
+fact that we can determine the quotient topology by the following universal
+property.
 
 \begin{theorem}[Universal property of the quotient topology]
 \label{thm:universal-property-quotient-topology}
 Let \(X\) be a topological space and \(S\) be any set, together with a
 surjective set-function \(\pi: X \epi S\). The quotient topology \(\mathcal T\)
 on \(S\) induced by \(\pi\) is such that, for all topological spaces \(Z\) and
-every morphism \(g: X \to Z\) for which all \(x, y \in X\) such that \(\pi(x) =
-\pi(y)\) then \(g(x) = g(y)\) --- i.e. \(g\) is constant on the fibers of
-\(\pi\) --- there exists a unique morphism \(f: (S, \mathcal T) \to Z\) such
-that the diagram
+every morphism \(g: X \to Z\) for which all \(x, y \in X\) such that
+\(\pi(x) = \pi(y)\) then \(g(x) = g(y)\) --- i.e. \(g\) is constant on the
+fibers of \(\pi\) --- there exists a unique morphism
+\(f: (S, \mathcal T) \to Z\) such that the diagram
 \[
   \begin{tikzcd}
     X \ar[r, "g"] \ar[d, two heads, swap, "\pi"] &Z\\
@@ -71,18 +74,18 @@ Since \(\pi\) is surjective, we can completely define a map \(f: S \to Z\)
 sending \(s \mapsto g(x)\) such that \(x \in \pi^{-1}(s)\), which is well
 defined because, for all \(x, y \in \pi^{-1}(s)\), we have \(g(x) = g(y)\), so
 that the image of each \(s \in S\) under the map \(f\) is uniquely defined. We
-now show that \(f\) is, in fact, continuous --- and hence a morphism. Let \(U
-\subseteq Z\) be any open set of \(Z\), then, since \(g^{-1}(U)\) is open and
-\((f \pi)^{-1}(U) = \pi^{-1} f^{-1}(U) = g^{-1}(U)\), \(f^{-1}(U)\) cannot be a
-closed set --- in fact, it needs to be an open set, because
+now show that \(f\) is, in fact, continuous --- and hence a morphism. Let
+\(U \subseteq Z\) be any open set of \(Z\), then, since \(g^{-1}(U)\) is open
+and \((f \pi)^{-1}(U) = \pi^{-1} f^{-1}(U) = g^{-1}(U)\), \(f^{-1}(U)\) cannot
+be a closed set --- in fact, it needs to be an open set, because
 \(\pi^{-1}(f^{-1}(U)) \subseteq X\) must be open, since \(\pi\) is continuous.
 It follows that \(f\) is continuous and thus the said morphism indeed exists.
 
 For the uniqueness, let \(f\) and \(f'\) be two morphisms such that \(f\pi = g\)
 and \(f'\pi = g\). Let \(s \in S\) be any point. Since \(\pi\) is surjective,
-there exists \(x \in X\) for which \(x \in \pi^{-1}(s)\), therefore, \(f \pi(x)
-= f(s) = f'\pi(x) = f'(s)\) for every element of their domain --- hence \(f =
-f'\).
+there exists \(x \in X\) for which \(x \in \pi^{-1}(s)\), therefore,
+\(f \pi(x) = f(s) = f'\pi(x) = f'(s)\) for every element of their domain ---
+hence \(f = f'\).
 
 Suppose now that both \((S, \mathcal T)\) and \((S, \mathcal T')\) satisfy the
 universal property, that is, the following diagrams commutes for unique
@@ -98,12 +101,13 @@ morphisms \(f\) and \(h\)
 Since the diagram commutes for all \(Z\), let \(Z = (S, \mathcal T)\), and
 consider the map \(f' = \Id': (S, \mathcal T') \to (S, \mathcal T)\). Then,
 given any \(U \in \mathcal T\) we find that since \(\Id'\) is continuous that
-\(\Id'^{-1}(U) = U \subseteq (S, \mathcal T')\) is open, hence \(\mathcal T
-\subseteq \mathcal T'\). Analogously, let \(Z = (S, \mathcal T')\) and consider
-\(f = \Id: (S, \mathcal T) \to (S, \mathcal T')\). Let \(U' \in \mathcal T'\)
-then from the continuity of \(\Id\) we find that \(\Id^{-1}(U') = U' \subseteq
-(S, \mathcal T)\) is open, therefore \(\mathcal T' \subseteq \mathcal T\). Thus
-indeed \(\mathcal T = \mathcal T'\) as wanted.
+\(\Id'^{-1}(U) = U \subseteq (S, \mathcal T')\) is open, hence
+\(\mathcal T \subseteq \mathcal T'\). Analogously, let \(Z = (S, \mathcal T')\)
+and consider \(f = \Id: (S, \mathcal T) \to (S, \mathcal T')\). Let
+\(U' \in \mathcal T'\) then from the continuity of \(\Id\) we find that
+\(\Id^{-1}(U') = U' \subseteq (S, \mathcal T)\) is open, therefore
+\(\mathcal T' \subseteq \mathcal T\). Thus indeed \(\mathcal T = \mathcal T'\)
+as wanted.
 \end{proof}
 
 To ease the way in which we refer to quotients and surjective morphisms that
@@ -112,11 +116,34 @@ induce quotients between topological spaces, we define the following terminology
 \begin{definition}[Quotient morphism]
 \label{def:quotient-morphism}
 A surjective morphism \(\pi: X \to Y\) of topological spaces \(X\) and \(Y\) is
-said to be a quotient morphism if \(\pi\) induces the universal property of
-quotients --- in other words, open sets of \(Y\) are exactly those that have
-open preimage on \(\pi\), that is, \(V \subseteq Y\) is open if and only if
-\(\pi^{-1}(V) \subseteq X\) is open.
+said to be a \emph{quotient morphism} (or quotient map) if \(\pi\) induces the
+universal property of quotients --- in other words, open sets of \(Y\) are
+exactly those that have open preimage on \(\pi\), that is, \(V \subseteq Y\) is
+open if and only if \(\pi^{-1}(V) \subseteq X\) is open.
 \end{definition}
+
+\begin{theorem}[Quotient descent]
+\label{thm:Top-quotient-descent}
+Let \(q: X \to Y\) be a quotient map between topological spaces. For any space
+\(Z\) together with a morphism \(f: X \to Z\) that is constant on the fibers of
+\(q\) --- that is, \(q(x_1) = q(x_2)\) implies \(f(x_1) = f(x_2)\) --- there
+exists a \emph{unique} morphism \(f_{*}: Y \unique Z\) sucht that the following
+diagram commutes
+\[
+\begin{tikzcd}
+X \ar[d, two heads, "q", swap] \ar[dr, "f"] & \\
+Y \ar[r, dashed, swap, "f_{*}"] &Z
+\end{tikzcd}
+\]
+\end{theorem}
+
+\begin{proof}
+Since \(q\) is surjective, for every \(y \in Y\) there exists \(x \in X\) such
+that \(q(x) = y\), hence we define \(f_{*}(y) \coloneq f_{*}(x)\) for every
+\(x \in q^{-1}(y)\). For the uniqueness, since \(f\) is constant on the fibers
+of \(q\) then \(f_{*}\) is fully defined by \(f\) --- thus unique. From the
+universal property we obtain that \(f_{*}\) is continuous.
+\end{proof}
 
 \subsection{Some Examples And Applications}
 
@@ -240,7 +267,42 @@ Every topological space is the quotient of a Hausdorff space.
 \end{proposition}
 
 \begin{proof}
-\todo[inline]{Shimrat}
+Let \(X\) be any topological space. Consider the product of real lines
+\(P \coloneq \prod_{x \in X} \R\) under the product topology and let \(Y\) be
+the subspace of \(P\) given by all points with one, and only one, rational
+coordinate --- such space \(Y\) is therefore Hausdorff. Furthermore, define a
+collection \(\{Y_{x}\}_{x \in X}\) to consist of subsets \(Y_x \subseteq Y\)
+given by the set of points whose rational coordinate has index \(x\) --- hence
+\(Y_x\) is dense in \(Y\). It should be noted that the above construction is
+not necessarily unique, so the reader may try to construct a different Hausdorff
+space \(Y\) and a collection of dense sets \(\{Y_{x}\}_{x \in X}\) in \(Y\).
+
+Define now the subspace of \(X \times Y\) given by
+\(Z \coloneq \bigcup_{x \in X} x \times Y_x\) --- endowed with the subspace
+topology. Let \(\sim\) be the equivalence relation on \(Z\) given by
+\((x_1, y_1) \sim (x_2, y_2)\) if and only if \(x_1 = x_2 = x\) for some
+\(x \in X\) and \(y_1, y_2 \in Y_x\). Define a map \(\phi: Z/{\sim} \to X\)
+sending \(x \times Y_x \mapsto x\) --- which is clearly both surjective and
+injective. We now show that \(\phi\) is a topological isomorphism.
+
+Let \(V \subseteq X\) be any open set, then
+\(\phi^{-1}(V) = \{x \times Y_x \colon x \in V\}\) --- which in turn is open in
+\(Z/{\sim}\). On the other hand, let
+\(U \coloneq \{x \times Y_{x} \colon x \in U'\}\) be any open set in
+\(Z/{\sim}\) given by some indexing set of points \(U' \subseteq X\) --- our
+goal will be to prove that \(U'\) is open, so that the inverse of \(\phi\) is
+continuous. Consider \(x_0 \in U'\) to be any point and likewise
+\((x_0, y_0) \in x_0 \times Y_{x_0}\). By the fact that
+\(\bigcup_{x \in U'} x \times Y_x \subseteq Z\) is open, we are able to find
+neighbourhoods \(O_X(x_0) \subseteq X\) and \(O_Y(y_0) \subseteq Y\) --- of
+\(x_0\) and \(y_0\), respectively --- such that
+\(N \coloneq Z \cap (O_X(x_0) \times O_Y(y_0))\) is a neighbourhood of
+\((x_0, y_0)\) in \(Z/{\sim}\). If \(x' \in O_X(x_0)\) is any point, then by the
+fact that \(Y_{x'}\) is dense in \(Y\), by
+\cref{prop:dense-non-empty-intersects}, the sets \(x' \times Y_{x'}\) and \(N\)
+have a non-empty intersection and thus \(x' \times Y_{x'}\) also intersects
+\(\bigcup_{x \in U'} x \times Y_x\). Therefore \(x' \times Y_{x'} \in U\) and
+hence \(x' \in U'\) --- wich implies that \(U'\) is open.
 \end{proof}
 
 \subsection{Quotient Morphisms In More Depth}
@@ -387,4 +449,39 @@ open or closed, then \(\pi\) is a quotient morphism.
 If \(\pi\) is open (respectively, closed), in particular we have that saturated
 sets open (respectively, closed) of \(X\) are mapped to open (respectively,
 closed) sets of \(Y\), hence \(\pi\) is a quotient morphism.
+\end{proof}
+
+
+\begin{proposition}
+\label{prop:map-open-or-closed-properties}
+Let \(f: X \to Y\) be a topological morphism that is either open or closed. The
+following are properties hold:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item If \(f\) is injective, it is a topological \emph{embedding}.
+
+\item If \(f\) is surjective, it is a \emph{quotient map}.
+
+\item If \(f\) is bijective, it is an \emph{isomorphism}.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+We work out the proof for the case where \(f\) is open, the closed case is
+equivalent:
+\begin{enumerate}\setlength\itemsep{0em}
+\item Consider the restriction of the codomain \(f': X \to f(X)\) --- which is
+  certainly surjective, thus bijective. Let \(g: f(X) \to X\) denote the inverse
+  of \(f\). Notice that since \(f\) is open then any \(U \subseteq X\) open
+  implies in \(f(U) \subseteq Y\) also open, therefore \(g(U) = f(U)\) is open
+  and hence \(g\) is continuous.
+
+\item Let \(U \subseteq Y\) be any set. Since \(f\) is surjective, there exists
+  \(V \subseteq X\) such that \(f(V) = U\). Moreover, since \(f\) is open, \(U\)
+  can only be open in \(Y\) if its preimage \(f^{-1}(U) = V\) is open in \(X\)
+  --- which implies that \(f\) is a quotient map.
+
+\item If \(f\) is bijective, then by the fist item \(f\) is an embedding, that
+  is, it yields an isomorphism \(X \iso f(X)\). Moreover since \(f\) is also
+  surjective then \(f(X) = Y\) and thus \(f\) is an isomorphism \(X \isoto Y\).
+\end{enumerate}
 \end{proof}

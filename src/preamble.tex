@@ -126,6 +126,11 @@
 % Implication
 \renewcommand{\implies}{\Rightarrow}
 
+% Limits
+\renewcommand{\projlim}{\varprojlim}
+\newcommand{\colim}{\varinjlim}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ** Common collections **
 
@@ -184,6 +189,12 @@
 \DeclareMathOperator{\codom}{cod} % Codomain
 \DeclareMathOperator{\supp}{supp} % Support
 
+% Yoneda embedding
+\newcommand{\yo}{\text{\usefont{U}{min}{m}{n}\symbol{'210}}}
+
+\DeclareFontFamily{U}{min}{}
+\DeclareFontShape{U}{min}{m}{n}{<-> udmj30}{}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ** algebra **
 \DeclareMathOperator{\rank}{rank}
@@ -194,7 +205,7 @@
 \DeclareMathOperator{\Char}{char}
 \DeclareMathOperator{\Span}{span}
 \DeclareMathOperator{\Inn}{Inn} % Inner automorphisms
-\newcommand{\lie}{\mathfrak} % Font for Lie structures
+\newcommand{\lie}[1]{\mathfrak{#1}} % Font for Lie structures
 
 \DeclareMathOperator{\eval}{eval}
 \DeclareMathOperator{\sign}{sign}
@@ -212,6 +223,9 @@
 % Symbol for the group of units --- for instance, the group of units of a ring
 % \(R\) will be denoted by \(R^{\unit}\).
 \newcommand{\unit}{*}
+
+% Ring ideals font
+\newcommand{\ideal}[1]{\mathfrak{#1}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ** Topology **
