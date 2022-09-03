@@ -70,7 +70,7 @@ following
   r \cdot 0 &= r \cdot (0 + 0) = r \cdot 0 + r \cdot 0, \\
   0 \cdot r &= (0 + 0) \cdot r = 0 \cdot r + 0 \cdot r.
 \end{align*}
-Further, since \((R, +)\) is a group, we envoke the cancellation to obtain
+Further, since \((R, +)\) is a group, we evoke the cancellation to obtain
 \(r \cdot 0 = 0\) and \(0 \cdot r = 0\).
 \end{proof}
 %
@@ -172,7 +172,7 @@ form \(S \to R\), together with the pointwise addition and multiplication make
 \begin{example}
 \label{exp:square-matrices-ring}
 Let \(M_n(R)\) denote the collection of all \(n \times n\) matrices with entries
-in the ring \(R\). If we endow \(M_n(R)\) with componentwise addition and matrix
+in the ring \(R\). If we endow \(M_n(R)\) with component-wise addition and matrix
 multiplication, then \((M_n(R), +, \cdot)\) is a ring.
 \end{example}
 %
@@ -506,8 +506,8 @@ division ring.
 \label{rem:field-and-integral-domain}
 By the item (b) of \cref{prop:unit-properties-ring}, we see that a unit is a
 non-zero-divisor, thus, if every non-zero element is a unit, then every non-zero
-element is also a non-zero-divisor. This implies direcly that \emph{every field
-is an integral domain}. On the other hand, \(\Z\) is an integral domain but fais
+element is also a non-zero-divisor. This implies directly that \emph{every field
+is an integral domain}. On the other hand, \(\Z\) is an integral domain but fails
 to be a field, hence \emph{not every integral domain is a field}. The concepts
 can however coincide in a special case, as we see in
 \cref{prop:commutative-field-iff-integral-domain}.
@@ -560,13 +560,13 @@ then \(R\) is a field.
 
 %
 \begin{proof}
-For the proof, we shall use the concepts of center and centralizer, developed in
+For the proof, we shall use the concepts of centre and centralizer, developed in
 \cref{def:ring-center} and \cref{def:ring-centralizer}. If we assume that \(R\)
-is non-commutative, the center \(Z(R)\) will be a proper subring of
+is non-commutative, the centre \(Z(R)\) will be a proper subring of
 \(R\). Moreover, since \(Z(R)\) is also a subgroup of \(R\) under
 multiplication, by \cref{cor:order-subgroup-divides-order-group} we conclude
 that \(|Z(R)| = p\). Let now \(r \in R \setminus Z(R)\), clearly the centralizer
-must contain both the center of the ring --- since by definition it must commute
+must contain both the centre of the ring --- since by definition it must commute
 with \(r\) --- and by symmetry, \(r \in Z(r)\), thus
 \(\{r\} \cup Z(R) \subseteq Z(r)\). Since the centralizer is a subgroup of \(R\)
 and \(|Z(r)| > p\), one concludes by
@@ -619,7 +619,7 @@ define
   f(x) + g(x) &\coloneq \sum_{j \geq 0} (a_j + b_j) x^j,\\
   f(x) \cdot g(x) &\coloneq \sum_{k \geq 0} \sum_{i + j = k} a_i b_j x^{i + j}.
 \end{align*}
-It should be noted immediatly that \(R[x] \iso R[\N]\), where \(\N\) is viewed
+It should be noted immediately that \(R[x] \iso R[\N]\), where \(\N\) is viewed
 as a monoid under addition.
 \end{definition}
 %
@@ -654,7 +654,7 @@ and \(g(x) \coloneq \sum_{j \geq 0} b_j x^j\) are elements of \(R[x]\) such that
 \[
   f(x) g(x) = \sum_{k \geq 0} \sum_{i + j = k} a_i b_j x^{i + j},
 \]
-which is merely a finite linear combination with coefficients, so that if
+which is merely a finite combination with coefficients, so that if
 \(f \cdot g = 0\), we necessarily have \(a_j = 0\) for all \(j \geq 0\) or
 \(b_j = 0\) for all \(j \geq 0\) since \(R\) is an integral domain --- thus
 either \(f = 0\) or \(g = 0\).
@@ -856,7 +856,7 @@ We can impose that \(\phi(x_j) \coloneq \beta(a_j)\) for every
 that is preserves both the additive and multiplicative structures of the
 rings. Since \(\Z\) is initial in \(\Rng\), we can uniquely determine that
 \(\phi(r) = \psi(r)\) --- where \(\psi: \Z \unique \R\) is a unique
-morphism. That is, we defineda morphism \(\phi\) given by
+morphism. That is, we defined morphism \(\phi\) given by
 \begin{align*}
   \phi\bigg( \sum m_{i_1 \dots i_n} x_1^{i_1} \dots x_n^{i_n} \bigg)
   &= \sum \phi(m_{i_1 \dots i_n}) \phi(x_1^{i_1}) \dots \phi(x_n^{i_n}) \\
@@ -1007,7 +1007,7 @@ is a subring of \(R\).
 %
 \begin{definition}[Center]
 \label{def:ring-center}
-Given a ring \(R\), we define its center to be
+Given a ring \(R\), we define its centre to be
 \[
 Z(R) \coloneq \{r \in R \colon r x = x r \text{ for all } x \in R\}.
 \]
@@ -1017,7 +1017,7 @@ Z(R) \coloneq \{r \in R \colon r x = x r \text{ for all } x \in R\}.
 %
 \begin{corollary}
 \label{cor:center-is-subring}
-The center of a ring is a subring.
+The centre of a ring is a subring.
 \end{corollary}
 %
 
@@ -1036,7 +1036,7 @@ Therefore \(Z(R)\) is indeed a subring of \(R\).
 %
 \begin{corollary}
 \label{cor:division-ring-center-is-field}
-If \(R\) is a division ring, then its center \(Z(R)\) is a field.
+If \(R\) is a division ring, then its centre \(Z(R)\) is a field.
 \end{corollary}
 %
 
@@ -1094,7 +1094,7 @@ non-commuting elements in \(Z(r)\).
 %
 \begin{corollary}
 \label{cor:center-is-intersection-of-all-centralizers}
-The center of a ring is the intersection of all centralizers of the ring.
+The centre of a ring is the intersection of all centralizers of the ring.
 \end{corollary}
 %
 
@@ -1104,7 +1104,7 @@ Let \(R\) be a ring. Certainly, if \(x \in Z(R)\) then it commutes with every
 element of \(R\) --- which is equivalent to \(x \in \bigcap_{r \in R}
 Z(r)\). Moreover, if an element belongs to the intersection of all centralizers,
 every element of the ring commutes with it and thus such element is also present
-in the center of the ring. Therefore \(Z(R) = \bigcap_{r \in R} Z(r)\).
+in the centre of the ring. Therefore \(Z(R) = \bigcap_{r \in R} Z(r)\).
 \end{proof}
 %
 
@@ -1178,7 +1178,7 @@ product in \(\Rng\).
 Let \(Z\) be any ring and let \(\phi: Z \to R\) and \(\psi: Z \to S\) be any two
 ring morphisms. Considering the canonical projections \(\pi_R: R \times S \epi
 R\) and \(\pi_S: R \times S \epi S\), we can construct a map \(\ell: Z \to R
-\times S\) sending \(z \mapsto (\phi(z), \psi(z))\). Such a map iherits the
+\times S\) sending \(z \mapsto (\phi(z), \psi(z))\). Such a map inherits the
 preservation of both the multiplicative and additive structures of \(Z\) and \(R
 \times S\) since \(\phi\) and \(\psi\) do so --- therefore \(\ell\) is a
 morphism of rings. Moreover, \(\ell\) is completely determined by the image of
@@ -1317,7 +1317,7 @@ R\). Consider the ring morphism \(m: R \to \End_{\Ab}(R)\) as defined in
 \cref{prop:left-multiplication-injective-ring-morphism}. Let
 \(f \in \End_{\Ab}(R)\) is completely defined by \(f(1_R)\), thus
 \({}_{f(1_r)}m = f\). Therefore \(m\) is surjective and hence a bijection ---
-\(m\) thus stablishes an isomorphism \(R \iso \End_{\Ab}(R)\). Moreover, by
+\(m\) thus establishes an isomorphism \(R \iso \End_{\Ab}(R)\). Moreover, by
 \cref{prop:Z-isomorphic-End(Z)-in-Ring} we have \(\End_{\Ab}(R) \iso \Z\), thus
 \[
 R \iso \End_{\Ab}(R) \iso \Z,
@@ -1330,7 +1330,7 @@ which proves the statement.
 \begin{proposition}
 \label{prop:center-ring-iso-center-End(R)}
 Let \(R\) be a ring and. There is a subring \(S \subseteq Z(R)\) of the
-center of \(R\) such that there exists a \emph{ring} isomorphism
+centre of \(R\) such that there exists a \emph{ring} isomorphism
 \[
 S \iso Z(\End_{\Ab}(R)).
 \]

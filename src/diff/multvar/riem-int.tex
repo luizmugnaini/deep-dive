@@ -30,7 +30,7 @@ the product of the interval sides, that is
 \begin{corollary}[Measure of intervals in \(\R^n\)]
 \label{cor:interval-measure-properties}
 Let \(I \coloneq [a, b] \subseteq \R^n\) be an \(n\)-dimensional closed
-interval, then the following properties are satiesfied concerning the measure
+interval, then the following properties are satisfied concerning the measure
 \(\Vol\):
 \begin{enumerate}[(a)]\setlength\itemsep{0em}
 \item (Homogeneity) Let \(\gamma \geq 0\) be a scalar and define the
@@ -83,7 +83,7 @@ P\).
 
 An important filter base \(\mathcal B \subseteq 2^{\mathcal P}\) is
 defined as the collection of sets \(B_d\), where \(d > 0\) is a scalar, such
-that \(B_d \coloneq \{(P, \xi) \in \mathcal P \colon \Mesh(P) < d\}\). We'll comonly
+that \(B_d \coloneq \{(P, \xi) \in \mathcal P \colon \Mesh(P) < d\}\). We'll commonly
 denote \(\mathcal B\) by \(\Mesh(P) \to 0\).
 
 \subsection{Riemann Sums and Integrals}
@@ -150,7 +150,7 @@ The Riemann integral of real valued maps is an \(\R\)-linear map \(\int:
 A set \(E \subseteq \R^n\) is said be of Lebesgue \emph{measure zero} if for
 every \(\varepsilon > 0\) there exists a \emph{countable open cover} \(\mathcal
 U\) of \(E\) by \(n\)-dimensional \emph{open} intervals whose total volume
-\(\sum_{I \in \mathcal U} \Vol \overline{I}\) does \emph{not} exceed
+\(\sum_{I \in \mathcal U} \Vol \Cl I\) does \emph{not} exceed
 \(\varepsilon\).
 \end{definition}
 
@@ -159,23 +159,23 @@ U\) of \(E\) by \(n\)-dimensional \emph{open} intervals whose total volume
 A compact subset \(E \subseteq \R^n\) is of measure zero if and only if, for all
 \(\varepsilon\), there exists a \emph{finite} open cover \(\mathcal U\) of \(E\)
 by open \(n\)-dimensional intervals such that \(\sum_{I \in \mathcal U} \Vol
-\overline{I} \leq \varepsilon\).
+\Cl I \leq \varepsilon\).
 \end{corollary}
 
 \begin{proof}
 If \(E\) satisfies the last property, then clearly \(E\) is a set of measure
 zero. On the other hand, if we assume that \(E\) is of measure zero, given any
 \(\varepsilon > 0\), let \(\mathcal C\) be a \emph{countable} cover of \(E\) for
-which \(\sum_{I \in \mathcal C} \Vol \overline{I} \leq \varepsilon\). Since
+which \(\sum_{I \in \mathcal C} \Vol \Cl I \leq \varepsilon\). Since
 \(E\) is compact, there exists a finite subcover \(\mathcal U \subseteq \mathcal
-C\) of \(E\), and since \(\sum_{I \in \mathcal U} \Vol \overline{I} \leq \sum_{I
-\in \mathcal C} \Vol \overline{I} \leq \varepsilon\), thus \(\mathcal U\) is the
+C\) of \(E\), and since \(\sum_{I \in \mathcal U} \Vol \Cl I \leq \sum_{I
+\in \mathcal C} \Vol \Cl I \leq \varepsilon\), thus \(\mathcal U\) is the
 wanted finite cover.
 \end{proof}
 
 \begin{lemma}
 \label{lem:measure-zero-properties}
-The following are preoperties of sets of measure zero:
+The following are properties of sets of measure zero:
 \begin{enumerate}[(a)]\setlength\itemsep{0em}
 \item A subset of a set of measure zero is of measure zero.
 \item The countable union of sets of measure zero is of measure zero.
@@ -253,7 +253,7 @@ The following are preoperties of sets of measure zero:
 
 \begin{example}
 \label{exp:graph-lebesgue-measure-zero}
-Let \(f: I \to \R\) be a continous map on the interval \(I \subseteq
+Let \(f: I \to \R\) be a continuous map on the interval \(I \subseteq
 \R^{n-1}\). The graph of \(f\) is a \(n\)-dimensional set of Lebesgue measure
 zero.
 
@@ -346,25 +346,25 @@ integrable.
 (\emph{Sufficiency}) Suppose that \(f\) is bounded and continuous almost
 everywhere on \(I\). Let \(\varepsilon > 0\) be any constant and consider the
 subset \(E_{\varepsilon} \coloneq \{x \in I \colon \omega(f, x) \geq \varepsilon\}\)
-of discontinous points of \(f\). If \(E\) is the set of points of discontinuity
+of discontinuous points of \(f\). If \(E\) is the set of points of discontinuity
 of \(f\), then by hypothesis \(E\) is of measure zero --- since
 \(E_{\varepsilon} \subseteq E\), then \(E_{\varepsilon}\) is also of measure
 zero. Moreover, \(E_{\varepsilon}\) is necessarily closed, which implies in
 \(E_{\varepsilon}\) compact. Let \(\{I_{j}\}_{j=1}^k\) be a \emph{finite} open
 cover of \(E_{\varepsilon}\) by open intervals \(I_j \subseteq \R^n\) such that
-\(\sum_{i=1}^k \Vol \overline{I} < \varepsilon\) (recall that this is possible
+\(\sum_{i=1}^k \Vol \Cl I < \varepsilon\) (recall that this is possible
 because of \cref{cor:compact-finite-cover-infinitesimal-volume}).
 
 We now define the \(\lambda\)-dilations of intervals of the cover
-\(\{I_{j}\}_{j=1}^k\) but with center unchanged --- that is, if \(I_j = (x,
+\(\{I_{j}\}_{j=1}^k\) but with centre unchanged --- that is, if \(I_j = (x,
 y)\), then the dilation \(I_{j}^{\lambda} \coloneq (z, w)\) must be such that
 \(w_i - z_i = \lambda^{1/n} (y_i - x_i)\) and \(w_i + z_i = y_i + x_i\), for all
 \(1 \leq i \leq n\). Solving such system we obtain \(z_i = \frac 1 2 [x_i(1 +
 \lambda^{1/n}) + y_i(1 - \lambda^{1/n})]\) and \(w_i = \frac 1 2 [x_i(1 -
 \lambda^{1/n}) + y_i(1 + \lambda^{1/n})]\). This way we have
 \[
-  \sum_{j=1}^k \Vol \overline{I_j^{\lambda}}
-  = \lambda^n \sum_{j=1}^k \Vol \overline{I_j}
+  \sum_{j=1}^k \Vol \Cl I_j^{\lambda}
+  = \lambda^n \sum_{j=1}^k \Vol \Cl I_j
   < \lambda^n \varepsilon.
 \]
 We'll define the sets \(C_{\lambda} \coloneq (\bigcup_{j=1}^k I_j^{\lambda})
@@ -470,7 +470,7 @@ the choice of the interval containing \(E\).
 
 \begin{proof}
 Let \(I, I' \subseteq \R^n\) be any two intervals containing \(E\). Define an
-auxiliar interval \(I_0 \coloneq I \cap I'\). It follows from construction that
+auxiliary interval \(I_0 \coloneq I \cap I'\). It follows from construction that
 every point of discontinuity of \(f_{\chi_E}\) is contained in \(I_0\). From
 \cref{thm:lebesgue-criterion-integrable} we see that, if the collection of
 points of discontinuity of \(f_{\chi_E}\) is not of measure zero, then both
@@ -504,7 +504,7 @@ points of \(E\).
 \begin{proof}
 Notice that the discontinuities of the corresponding map \(f_{\chi_E}\) are
 those of \(f\) and perhaps a collection of points of \(\partial E\), where
-\(\chi_E\) changes its value. Since \(\partial E\) is of measure zero, it dosn't
+\(\chi_E\) changes its value. Since \(\partial E\) is of measure zero, it doesn't
 interfere in the use of Lebesgue's criterion and thus the proposition follows.
 \end{proof}
 
@@ -644,7 +644,7 @@ maps. The following are miscellaneous immediate implications of
     \int_E f(x)\, \diff x = \theta \mu(E).
   \]
 
-\item If additionaly \(E\) is connected and \(f\) is continous, then \(f\) is
+\item If additionally \(E\) is connected and \(f\) is continuous, then \(f\) is
   Riemann integrable over \(E\) and there exists \(y \in E\) for which
   \[
     \int_E f(x)\, \diff x = f(y) \mu(E).
@@ -703,7 +703,7 @@ is a norm on the vector space \(\mathcal R(E)/{\sim}\).
 \subsubsection{Upper and Lower Darboux Integrals}
 
 In order to proceed to the theorem of Fubini type, we first need to define the
-concept of Darboux lower and upper intergrals.
+concept of Darboux lower and upper integrals.
 
 \begin{definition}[Darboux sums]
 \label{def:darboux-sums}
@@ -776,7 +776,7 @@ In order to prove the theorem, we first construct the following maps:
   the map \(f(-, y_0): X \to \R\) given by \(x \mapsto f(x, y_{0})\).
 \end{itemize}
 We'll carry the proof for the first equality, but, knowing the construction of
-\(F_Y\), the idea for the second equality is the exact analog.
+\(F_Y\), the idea for the second equality is the exact analogue.
 
 Let \(P \coloneq \{X_{i}\}_{i \in I} \times \{Y_{j}\}_{j \in J}\) be any
 partition of the interval \(X \times Y\). Notice that
@@ -830,7 +830,7 @@ Since \(s(f, P) \leq S(f, P)\) for all partitions \(P\) of \(X \times Y\), then
 therefore by \cref{lem:zero-integral-jordan-measure-zero} we conclude that the
 map \(x_0 \mapsto \overline{\int_Y} f(x_0, y)\, \diff y - \underline{\int_Y}
 f(x_0, y)\, \diff y\) equals zero for almost all \(x_0 \in X\) --- that is,
-\(\int_Y f(x_0, y)\, \diff y\) exists for almots all \(x_0 \in X\). The exact
+\(\int_Y f(x_0, y)\, \diff y\) exists for almost all \(x_0 \in X\). The exact
 same argument can be used to show this for \(\int_X f(x, y_0)\, \diff x\).
 \end{proof}
 
@@ -884,10 +884,10 @@ we have
 \end{align*}
 \end{proof}
 
-\begin{corollary}[Measuring the set between the graph of continous maps]
+\begin{corollary}[Measuring the set between the graph of continuous maps]
 \label{cor:measure-set-between-graphs-of-continuous-maps}
 Let \(D \subseteq \R^{n-1}\) be a Jordan-measurable set and \(g_1, g_2: D \to
-\R\) be continous maps such that \(g_1 \leq g_2\). Then the set \(E \coloneq
+\R\) be continuous maps such that \(g_1 \leq g_2\). Then the set \(E \coloneq
 \{(x, y) \in \R^{n-1} \times \R \colon x \in D \text{ and } g_1(x) \leq y \leq
 g_2(x)\} \subseteq \R^n\) is Jordan-measurable and its Jordan measure is
 \[
@@ -911,7 +911,7 @@ sets with total volume arbitrarily small --- in particular, smaller than
 measure zero. Notice that \(\partial E \subseteq \Gamma_{g_1} \cup
 \Gamma_{g_2} \cup Z\) and thus \(\partial E\) is a set of Jordan measure zero
 --- thus \(E\) is Jordan-measurable. The measure formula for \(E\) follows
-immediatly by \cref{cor:integral-over-graph-maps}
+immediately by \cref{cor:integral-over-graph-maps}
 \end{proof}
 
 \begin{corollary}
@@ -953,7 +953,7 @@ Given a map \(f: D \to \R\), where \(D \subseteq \R^n\) is a domain, the support
 of \(f\), denoted by \(\supp f\), is the closure of the collection of points of
 \(D\) with non-zero image under \(f\), that is
 \[
-  \supp f \coloneq \overline{\{x \in D \colon f(x) \neq 0\}}.
+  \supp f \coloneq \Cl(\{x \in D \colon f(x) \neq 0\}).
 \]
 \end{definition}
 
@@ -988,14 +988,14 @@ true:
 \item Given any subset \(E_t \subseteq D_t\) of Lebesgue measure zero, the image
   \(\phi(E_t) \subseteq D_x\) is also a set of Lebesgue measure zero.
 
-\item Let \(E_t \subseteq D_t\) be any open subset with closure \(\overline{E}_t
+\item Let \(E_t \subseteq D_t\) be any open subset with closure \(\Cl E_t
   \subseteq D_t\) of Jordan measure zero. Then its image \(\phi(E_t)\) and the
-  closure \(\overline{\phi(E_t)}\) are both contained in \(D_x\) and the closure
+  closure \(\Cl(\phi(E_t))\) are both contained in \(D_x\) and the closure
   is a set of Jordan measure zero.
 
-\item Let \(E_t \subseteq D_t\) be a Jordan-measurable set, and \(\overline E_t
+\item Let \(E_t \subseteq D_t\) be a Jordan-measurable set, and \(\Cl E_t
   \subseteq D_t\). The image \(\phi(E_t)\) is Jordan measurable and
-  \(\overline{\phi(E_t)} \subseteq D_x\).
+  \(\Cl(\phi(E_t)) \subseteq D_x\).
 \end{enumerate}
 \end{lemma}
 
@@ -1011,11 +1011,11 @@ relation \(\norm{f(x) - f(y)}_{\R^n} \leq M \norm{x - y}_{\R^n}\). Given any
 \(E_t\) with \(\sum_{j \in J} \Vol I_j < \varepsilon\) and we may assume that
 \(I_j \subseteq I\) for all \(j \in J\). Consider the countable collection
 \(\{\phi(I_{j})\}_{j \in J}\), which forms a cover for \(\phi(E_t)\). Let \(t_j
-\in I_j\) be the center point of the interval corresponding to the index \(j \in
+\in I_j\) be the centre point of the interval corresponding to the index \(j \in
 J\) --- notice that, since the image of pairs of points of \(D_t\) under
 \(\phi\) is bounded by the product of their distance and \(M\) --- defining
 \(x_j \coloneq \phi(t_j)\), we can consider the open interval \(I_j' \subseteq
-E_t\) with \(x_j\) being its center point, with dimension \(M\) times of
+E_t\) with \(x_j\) being its centre point, with dimension \(M\) times of
 \(I_j\), then clearly \(I_j'\) is able to cover the whole set \(\phi(I_j)\). Let
 \(\{I_{j}'\}_j\) be the collection of those intervals we constructed and notice
 that the image \(\phi(E_t)\) is completely encompassed by the union \(\bigcup_{j
@@ -1026,15 +1026,15 @@ can be covered by a collection of open intervals whose total volume can be
 chosen to be arbitrarily small volume --- thus \(\phi(E_t)\) is of Lebesgue
 measure zero.
 
-\item Since \(\overline E_t\) is a set of Jordan measure zero, it follows it
-  follows that \(\overline E_t\) is also of Lebesgue measure zero. Notice that,
-  by the above item, the image \(\phi(\overline E_t)\) will also be of Lebesgue
-  measure zero. Notice that \(\overline{\phi(\overline E_t)}\) is a compact set
+\item Since \(\Cl E_t\) is a set of Jordan measure zero, it follows it
+  follows that \(\Cl E_t\) is also of Lebesgue measure zero. Notice that,
+  by the above item, the image \(\phi(\Cl E_t)\) will also be of Lebesgue
+  measure zero. Notice that \(\Cl(\phi(\Cl E_t))\) is a compact set
   of \(\R^n\) and therefore we can apply
   \cref{cor:compact-finite-cover-infinitesimal-volume} to conclude that
-  \(\overline{\phi(\overline E_t)}\) is a set of Jordan measure zero. Since any
+  \(\Cl(\phi(\Cl E_t))\) is a set of Jordan measure zero. Since any
   subset of a set of Jordan measure zero also has measure zero, it follows that
-  \(\phi(\overline E_t)\) is of measure zero.
+  \(\phi(\Cl E_t)\) is of measure zero.
 
 \item Since \(E_t\) is Jordan-measurable, the boundary \(\partial E_t\) is of
   Jordan measure zero, therefore so is its image \(\phi(\partial E_t)\) by the
@@ -1060,7 +1060,7 @@ every \(t \in D_t\) such that \(\phi(t) \not\in \supp f\) we have \(t \not\in
 g\) is a compact subset of \(D_t\) since it is closed. From this we can conclude
 that the map \(g_{\chi_{D_t}}\) has points of discontinuity in the fibers
 \(\phi^{-1}(x)\), where \(x \in D_x\) is a point of discontinuity of
-\(f\). Sincxe \(f\) is Riemann integrable in \(D_x\), such points form a
+\(f\). Since \(f\) is Riemann integrable in \(D_x\), such points form a
 Lebesgue measure zero set --- thus the points of discontinuity of
 \(g_{\chi_{D_t}}\) are also of Lebesgue measure zero since \(\phi\) preserves
 Lebesgue measure zero sets by
@@ -1100,7 +1100,7 @@ they are both uniformly continuous --- thus, taking a sequence of partitions
 of \(I_x\) and the induced partitions of \(I_t\), we have \(\Mesh P_x \to 0\) if
 and only if \(\Mesh P_t \to 0\). Let \(\xi\) be a collection of distinguished
 points of \(P_x\) and \(\tau \coloneq \{\phi^{-1}(\xi_{j})\}_{j \in J}\) be the
-corresposponding collection of distinguishes points of \(P_t\). Notice that,
+corresponding collection of distinguishes points of \(P_t\). Notice that,
 from construction, we have the following
 \[
   \sum_{j \in J} f(\xi_{j}) \norm{x_j - x_{j-1}}
@@ -1181,7 +1181,7 @@ find that
   \overline{\int_{I_t}} f \phi(t) \norm{\phi'(t)}\, \diff t
   \leq \overline{\int_{I_x}} f(x)\, \diff x,
 \]
-thus the equality for the first relation has been stablished for non-negative
+thus the equality for the first relation has been established for non-negative
 \(f\). Notice, however, that \(f = \max(f, 0) - \max(-f, 0)\), for any map
 \(f\), thus the equality holds for the general case.
 \end{proof}
@@ -1310,7 +1310,7 @@ n\), moreover, this implies in
 \]
 Since \(\diff f_{m}(0)\) is an isomorphism, it cannot be the zero-map, thus
 there must exist some \(m \leq k_0 \leq n\) for which \(\partial_m
-\alpha_{k_0}(0) \neq 0\). Define \(\tau_m\) to be the trasposition interchanging
+\alpha_{k_0}(0) \neq 0\). Define \(\tau_m\) to be the transposition interchanging
 the \(m\)-th and \(k_0\)-th values of its input. Define a map \(\phi_m: V_m \to
 \R^n\) as
 \[

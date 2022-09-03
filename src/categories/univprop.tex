@@ -1,239 +1,540 @@
-\section{Universal Properties}
+\section{Products}
 
-\subsection{Quotients}
+\begin{definition}[Product]
+\label{def:product}
+Let \(J\) be a set, and \((C_j)_{j \in I}\) be a
+collection of objects in a category \(\cat C\).
 
-Denote \(\sim\) an equivalence relation between elements of a given object
-\(A\) in the category \(\Set\). We say that the quotient \(A/{\sim}\) is
-universal with respect to the property that the image of equivalent elements
-under morphism is equal.
+A \emph{product} of such collection, \emph{if it exists}, is a pair
+\((P, (\pi_j)_{j \in J})\) --- where \(P\) is an object of \(\cat C\), and for
+every \(j \in J\), \(\pi_j: P \to C_j\) is a morphism of \(\cat C\).
 
-Moreover, the objects of the category we'll be dealing will be objects
-\(\varphi \in \Hom(A, Z)\) and the morphisms between objects \(\varphi : A \to
-Z\) and \(\varphi' : A \to Z'\) is defined to be the commutative diagram
+Furthermore, this pair has to satisfy the following \emph{universal property}:
+for every pair \((Q, (q_j)_{j \in J})\) --- where \(Q \in \cat C\) and for every
+\(j \in J\), \(q_j: Q \to C_j\) is a morphism in \(\cat C\) --- there exists a
+\emph{unique morphism} \(f: Q \unique P\) of \(\cat C\) such that, for every
+\(j \in J\) the following diagram commutes
 \[
 \begin{tikzcd}
-  &A \ar[dl, swap, "\varphi"] \ar[dr, "\varphi'"] & \\
-Z \ar[rr, "\psi"] & &Z'
+Q \ar[rd, "q_j", bend left] \ar[d, dashed, "f"'] & \\
+P \ar[r, "\pi_j"'] & C_j
 \end{tikzcd}
 \]
+\end{definition}
 
-\begin{proposition}
-The canonical projection \(\pi : A \to A/{\sim}\) is an initial object of the
-category.
+\begin{proposition}[Uniqueness]
+\label{prop:product-unique-up-to-iso}
+The product of a collection of objects, if existent, is \emph{unique up to
+  isomorphism}.
 \end{proposition}
 
 \begin{proof}
-Let a morphism \(\varphi: A \to Z\). The claim says that there exists a
-unique morphism \(\tilde{\varphi} : A/{\sim} \to Z\) such that the diagram
+Let \(\cat C\) be a category admitting the product of a collection
+\((C_j)_{j \in J}\) of objects of \(\cat C\), and \(J\) is a set. Let
+\((P, (p_j)_{j \in J})\) and \((Q, (q_j)_{j \in J})\) be products of
+\((C_j)_{j \in J}\) in the category \(\cat C\). Since \(P\) and \(Q\) are
+products, there exists unique morphisms \(f: Q \to P\) and \(g: P \to Q\) such
+that, for all \(j \in J\), we have \(q_j = p_j f\) and \(p_j = q_j g\).
+
+Moreover, one can apply the product property of \(P\) to \(P\) itself: there
+exists a unique morphism \(h: P \to P\) such that, for all \(j \in J\), we have
+\(p_j = p_j h\). For that to be true, it is clear that we must have
+\(h = \Id_{P}\). Note, however, that for each \(j \in J\),
+\[
+p_j = q_j g = p_j f g.
+\]
+Since \(h\) is unique, we obtain \(f g = h = \Id_P\).  On the other hand,
+applying the product property of \(Q\) in \(Q\) will yield \(g f = \Id_Q\). This
+shows that \(Q \iso P\) in \(\cat C\), via \(f\) and \(g\).
+\end{proof}
+
+\begin{proposition}[Products are independent of ordering]
+\label{prop:product-ordering-independent}
+Let \(I\) be a set and \((J_k)_{k \in K}\) be a partition of \(I\) by disjoint
+subsets \(J_k \subseteq I\). Let \((C_i)_{i \in I}\) be a collection of objects
+in a category \(\cat C\). Then, if all the products presented below exist in
+\(\cat C\), they are isomorphic:
+\[
+\prod_{i \in I} C_i \iso \prod_{k \in K} \bigg(\prod_{j \in J_k} C_j \bigg).
+\]
+\end{proposition}
+
+\begin{proof}
+Define the following collections:
+\begin{itemize}\setlength\itemsep{0em}
+\item Let \((q_k)_{k \in K}\) be the collection of morphisms
+  \(q_{k_0}: \prod_{k \in K} \bigg( \prod_{j \in J_k} C_j \bigg) \to C_{k_0}\),
+  for each \(k_0 \in K\), associated with the product
+  \(\prod_{k \in K} \bigg( \prod_{j \in J_k} C_j \bigg)\) in \(\cat C\).
+
+\item For all \(k \in K\), let \((p_j)_{j \in J_k}\) be the collection of
+  morphisms \(p_{j_0}: \prod_{j \in J_k} C_j \to C_{j_0}\), for each
+  \(j_0 \in J_k\) associated with the product \(\prod_{j \in J_k} C_j\) in
+  \(\cat C\).
+\end{itemize}
+Let \((L, (\ell)_{i \in I})\) be a pair where \(L \in \cat C\) and
+\(\ell_i: L \to C_i\) is a morphism in \(\cat C\) for each \(i \in I\).
+
+Define a collection \((g_k)_{k \in K}\) where, for each \(k_0 \in K\), we let
+\(g_{k_0}: L \to \prod_{j \in J_{k_0}} C_j\) be the unique morphism of
+\(\cat C\) such that \(\ell_i = g_{k_0} p_i\) for every \(i \in J_k\). Let
+\(f: \prod_{k \in K} \bigg( \prod_{j \in J_k} C_j \bigg)\) be the unique
+morphism of \(\cat C\) such that \(g_k = q_k f\).
+
+We see that the following diagram commutes for every \(k_0 \in K\) and
+\(i \in J_k\):
+\[
+\begin{tikzcd}
+L \ar[rrrrdd, bend left, "\ell_i"]
+\ar[dd, dashed, "f"']
+\ar[rrdd, dashed, "g_{k_0}" description]
+& & & &\\ & & & & \\
+\prod_{k \in K} \bigg( \prod_{j \in J_k} C_j \bigg)
+\ar[rr, "q_{k_0}"']
+&
+&\prod_{j \in J_{k_0}} C_j \ar[rr, "p_i"']
+&
+&C_i
+\end{tikzcd}
+\]
+Since \(I = \bigcup_{k \in K} J_k\), the diagram commutes for any \(i \in I\)
+--- thus \(\prod_{k \in K} \bigg( \prod_{j \in J_k} C_j \bigg)\) is a product of
+the collection \((C_i)_{i \in I}\). Now, \cref{prop:product-unique-up-to-iso}
+finishes the proof.
+\end{proof}
+
+\section{Coproducts}
+
+\begin{definition}[Coproduct]
+\label{def:coproduct}
+Let \(J\) be a set, and \((C_j)_{j \in I}\) be a
+collection of objects in a category \(\cat C\).
+
+A \emph{coproduct} of such collection, \emph{if it exists}, is a pair
+\((P, (\iota_j)_{j \in J})\) --- where \(P\) is an object of \(\cat C\), and for
+every \(j \in J\), \(\iota_j: P \to C_j\) is a morphism of \(\cat C\).
+
+Furthermore, this pair has to satisfy the following \emph{universal property}:
+for every pair \((Q, (q_j)_{j \in J})\) --- where \(Q \in \cat C\) and for every
+\(j \in J\), \(q_j: C_j \to Q\) is a morphism in \(\cat C\) --- there exists a
+\emph{unique morphism} \(f: P \unique Q\) of \(\cat C\) such that, for every
+\(j \in J\) the following diagram commutes
+\[
+\begin{tikzcd}
+P \ar[d, dashed, "f"']
+&C_j \ar[l, "\iota_j"'] \ar[ld, bend left, "q_j"] \\
+Q &
+\end{tikzcd}
+\]
+\end{definition}
+
+We can see right away that coproducts are dual to products, yielding the
+following two dual properties.
+
+\begin{proposition}[Uniqueness]
+\label{prop:coproduct-unique-up-to-iso}
+If a coproduct of a collection of objects of a category exists, then this
+coproduct is \emph{unique up to isomorphism}.
+\end{proposition}
+
+\begin{proposition}[Coproducts are independent of ordering]
+\label{prop:coproduct-ordering-independent}
+Let \(I\) be a set and \((J_k)_{k \in K}\) be a partition of \(I\) by disjoint
+subsets \(J_k \subseteq I\). Let \((C_i)_{i \in I}\) be a collection of objects
+in a category \(\cat C\). Then, if all the coproducts presented below exist in
+\(\cat C\), they are isomorphic:
+\[
+\coprod_{i \in I} C_i \iso \coprod_{k \in K} \bigg(\coprod_{j \in J_k} C_j \bigg).
+\]
+\end{proposition}
+
+\begin{remark}[Duality]
+\label{rem:coproducts-dual-product}
+Coproducts are \emph{dual} to products in the following sense: if \(P\) is a
+product in a category \(\cat C\), then \(P^{\op}\) is a coproduct in the
+opposite category \(\cat C^{\op}\). Notice however that one \emph{cannot} simply
+reverses the arrows of a product in \(\cat C\) and end up with a coproduct in
+\(\cat C\) --- in fact, there are categories where product do exist, while
+coproducts do not.
+\end{remark}
+
+\section{Equalizers and Coequalizers}
+
+\begin{definition}[Equalizer]
+\label{def:equalizer}
+Let \(f, g: A \para B\) be parallel morphisms in a category \(\cat C\). An
+\emph{equalizer of \(f\) and \(g\)} is a pair \((K, k)\) --- where
+\(K \in \cat C\) is an object and \(k: K \to A\) is a morphism of \(\cat C\) for
+which \(f k = g k\) --- such that, for any object \(M \in \cat C\) and morphism
+\(m: M \to A\) of \(\cat C\) satisfying \(f m = g m\), there exists a
+\emph{unique} morphism \(n: M \to K\) such that the following diagram commutes
+\[
+\begin{tikzcd}
+M \ar[d, dashed, "n"'] \ar[rd, bend left, "m"] & &
+\\
+K \ar[r, "k"'] &A \ar[r, shift left, "f"] \ar[r, shift right, "g"'] &B
+\end{tikzcd}
+\]
+\end{definition}
+
+Just as with products and coproducts, one has a dual notion of an equalizer, we
+call it a \emph{coequalizer}. For the sake of later reference, we write down its
+definition.
+
+\begin{definition}[Coequalizer]
+\label{def:coequalizer}
+Let \(f, g: A \para B\) be parallel morphisms in a category \(\cat C\). An
+\emph{equalizer of \(f\) and \(g\)} is a pair \((C, c)\) --- where
+\(C \in \cat C\) is an object and \(c: B \to C\) is a morphism of \(\cat C\) for
+which \(c f = c g\) --- such that, for any object \(M \in \cat C\) and morphism
+\(m: B \to M\) of \(\cat C\) satisfying \(m f = m g\), there exists a
+\emph{unique} morphism \(n: C \to M\) such that the following diagram commutes
+\[
+\begin{tikzcd}
+C \ar[d, dashed, "n"]
+& B \ar[l, "c"'] \ar[ld, "m", bend left]
+& A \ar[l, shift left, "g"] \ar[l, shift right, "f"']
+\\
+M& &
+\end{tikzcd}
+\]
+
+\end{definition}
+
+\begin{proposition}[Uniqueness]
+\label{prop:(co)equalizer-unique-up-to-iso}
+Given two parallel morphisms \(f, g: A \para B\) in a category \(\cat C\), if
+the (co)equalizer of them exists, then it is \emph{unique up to isomorphism}. We
+denote \emph{the} equalizer of \(f\) and \(g\) by \(\Eq(f, g)\) and the
+coequalizer of \(f\) and \(g\) by \(\Coeq(f, g)\).
+\end{proposition}
+
+\begin{proof}
+We prove for equalizers. Let \((K, k)\) and \((K', k')\) be equalizers of \(f\)
+and \(g\). If we apply the equalizer property of \((K', k')\) in \((K, k)\) and
+vice versa, we obtain unique morphisms \(n': K \to K'\) and \(n: K' \to K\) such
+that \(k = k' n'\) and \(k' = k n\).
+
+Moreover, applying the equalizer property of \((K, k)\) in itself we obtain a
+unique \(t: K \to K\) such that \(k = k t\) --- therefore \(t = \Id_K\). Since
+\(k = k' n = k \Id_K\) and \(\Id_K\) is unique with such property, it follows
+that, since \(k = k' n' = (k n) n' = k (n n')\) we find that \(n n' =
+\Id_K\). On the other hand, doing the same for \((K', k')\) implies in \(n' n =
+\Id_{K'}\). Therefore \(K \iso K'\) in \(\cat C\), via \(n\) and \(n'\).
+\end{proof}
+
+\begin{corollary}
+\label{cor:self-(co)equalizer}
+Given a morphism \(f: A \to B\) in a category \(\cat C\), the (co)equalizer of
+\(f\) with itself always exists --- in fact \(\Eq(f, f) = (A, \Id_A)\) and
+\(\Coeq(f, f) = (B, \Id_{B})\).
+\end{corollary}
+
+\begin{proposition}
+\label{prop:eq-monic-coeq-epic}
+Let \(\cat C\) be a category and \(f, g: A \para B\) be parallel morphisms in
+\(\cat C\). The following are properties concerning equalizers and coequalizers:
+\begin{enumerate}\setlength\itemsep{0em}
+\item If \(f\) and \(g\) have an equalizer \(\Eq(f, g)\) in \(\cat C\), the
+  morphism \(\Eq(f, g) \mono A\) associated to the equalizer is a
+  \emph{monomorphism}.
+
+\item If \(f\) and \(g\) have an coequalizer \(\Coeq(f, g)\) in \(\cat C\), the
+  morphism \(B \epi \Coeq(f, g)\) associated to the coequalizer is an
+  \emph{epimorphism}.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+The properties are dual to each other, thus we may simply prove the one
+concerning equalizers. Let \(k: \Eq(f, g) \to A\) be the morphism in \(\cat C\)
+associated to the equalizer. Consider any two parallel morphisms \(x, y: C \para
+\Eq(f, g)\) such that \(k x = k y\) --- therefore, the following diagram
 commutes
 \[
-  \begin{tikzcd}
-    A \ar[rr, "\varphi"] \ar[dr, swap, "\pi"]
-      &
-        & Z \\
-      & A/{\sim} \ar[ur, swap, "\widetilde \varphi"]
-  \end{tikzcd}
-\]
-From the imposition that such diagram commutes, we are inclined to define the
-morphism \(\tilde\varphi\) such that for every element \(a \in A\) it
-satisfies \(\tilde\varphi(\overline{a}) = \varphi(a)\), so that
-\(\tilde\varphi  \pi (a) = \varphi(a)\). Since the projection and
-\(\varphi\) are essentially unique, it is clear that if \(\tilde\varphi\)
-exists, then it should also be unique. We now show that we can construct the
-morphism \(\tilde\varphi\). Notice that if \(\overline{a} = \overline{a'}\)
-then \(\tilde\varphi(\overline{a}) = \varphi(a)= \varphi(a') =
-\tilde\varphi(\overline{a'})\) thus indeed the morphism is well defined.
-\end{proof}
-
-\subsection{Products}
-
-\begin{proposition}\label{universal property for products}
-Let objects \(X, Y\) in a given category \(\cat{C}\) and projections \(\pi_X
-\in \Hom(X \times Y, X)\) and \(\pi_Y \in \Hom(X \times Y, Y)\). Let any
-object \(Z\) in the category and set \(\varphi \in \Hom(Z, X)\) and \(\psi
-\in \Hom(Z, Y)\). Then there exists a unique morphism \(\ell \in \Hom(Z, X
-\times Y)\) such that the following diagram commutes
-\[
-  \begin{tikzcd}
-      & Z
-      \ar[d, dashed, "\ell"]
-      \ar[ddl, bend right, swap, "\varphi"]
-      \ar[ddr, bend left, "\psi"]
-        & \\
-      & X \times Y \ar[dl, "\pi_X"] \ar[dr, swap, "\pi_Y"] \\
-    X
-      &
-        & Y
-  \end{tikzcd}
-\]
-this is the so called \emph{universal property for products}.
-\end{proposition}
-
-\begin{proof}
-Define the morphism \(\ell(z) \coloneq (\varphi(z), \psi(z))\) for any  \(z \in
-Z\), then \(\pi_X  \ell (z) = \pi_X(\varphi(z), \psi(z)) = \varphi(z)\)
-and the same being true for the left branch. Notice that trivially there is a
-unique mapping with such property because it need to imitate the image of
-both \(\varphi\) and \(\psi\).
-\end{proof}
-
-\begin{proposition}\label{prop: product-morphism}
-Let \(\cat C\) be a category with products, and \(x \in \Hom_{\cat C}(X, Y)\).
-Then there exists a unique morphism \(x \times x: X \times X \to Y \times Y\).
-\end{proposition}
-
-\begin{proof}
-Let \(\pi_X: X \times X \to X\), and \(\pi_Y: Y \times Y \to Y\) denote any
-projection. Define a morphism \(f \in \Hom_{\cat C}(X \times X, Y)\) by \(f =
-\phi \pi_X\). From \cref{universal property for products} we find that there
-exists a unique morphism \(X \times X \to Y \times Y\) --- which we'll denote
-by \(x \times x\) --- such that the following diagram commutes
-\[
 \begin{tikzcd}
-  X \times X \ar[d, dashed, swap, "x \times x"] \ar[dr, bend left, "f"] \\
-  Y \times Y \ar[r, "\pi_Y"] &Y
+C \ar[r, shift left, "x"] \ar[r, shift right, "y"']
+& \Eq(f, g) \ar[r, "k"]
+& A \ar[r, shift left, "f"] \ar[r, shift right, "g"']
+& B
 \end{tikzcd}
 \]
-\end{proof}
-
-If we consider the case for \(\Set\), we can even find a definite morphism \(x
-\times x\), it is given by \((a, b) \xmapsto{x \times x} (x(a), x(b))\). In the
-proof given above, however, one would need to caution that the projections
-\(\pi_X\) and \(\pi_Y\) must project the same component --- if not, the diagram
-would not commute in \(\Set\).
-
-\begin{proposition}[Fibered products]
-Let \(X, Y, Z\) objects of a category \(\cat C\) and morphisms \(\varphi :X
-\to Z\) and \(\psi : Y \to Z\). Define \(P\) to be an object such that the
-morphism  \(\pi_X : P \to X\) and  \(\pi_Y : P \to Y\) are such that, for any
-morphisms \(f : L \to X\) and  \(g : L \to Y\), where \(L\) is another object
-of the category \(\cat C\), there exists a unique morphism \(\ell: L \to P\)
-for which the diagram commutes
-\[
-  \begin{tikzcd}
-    L
-    \ar[dr, dashed, "\ell"]
-    \ar[drr, bend left, "g"]
-    \ar[ddr, bend right, swap, "f"]
-    &
-      & \\
-    &P
-    \ar[r, "\pi_Y"]
-    \ar[d, swap, "\pi_X"]
-      &Y
-      \ar[d, "\psi"]
-      \\
-    &X
-    \ar[r, swap, "\varphi"]
-      &Z
-  \end{tikzcd}
-\]
-We call the object \(P\) the \emph{fiber product of \(X\) and \(Y\) over
-\(Z\)}.
-\end{proposition}
-
-\begin{proof}
-Indeed we can construct such object \(P\), for instance, notice that firstly
-the morphisms \(\varphi  \pi_X = \psi  \pi_Y\). Thus for any
-given element \(p \in P\), we need \(\pi_X(p) = x \in X\) such that
-\(\varphi(x) = \psi(\pi_Y(p))\), and also the converse should be true.
-Therefore, we simply need to define the object \(P\) as
-\[
-  P \coloneq \{(a, b) \in X \times Y : \varphi(a) = \psi(b)\}
-\]
-and the morphisms as simply projections of such set into the respective
-object \(X\) or \(Y\).
-
-With this description, we can see that \(\ell\) should be constructed in such
-a way that for any given morphism \(f, g\) shown in the diagram the following
-holds: \(\pi_X  \ell = \pi_Y  \ell\) thus, it is simply necessary
-to impose \(\ell(u) = (f(u), g(u))\) for all \(u \in L\).
-\end{proof}
-
-\subsection{Coproduct}
-
-Since products are seen as final objects in the category of interest, we see
-coproducts (or disjoint unions) as initial objects of the category.
-
-\begin{proposition}
-Let objects \(X, Y\) in a category \(\cat C\) and let the morphisms
-\(\iota_X : X \to X \amalg Y\) and \(\iota_Y : Y \to X \amalg Y\). Let now
-another object \(Z\) and assume the morphisms \(\varphi : X \to Z\) and
-\(\psi : Y \to Z\). Then there exists a unique morphism \(\ell : X \amalg Y
-\to Z\) such that the diagram commutes:
-\[
-  \begin{tikzcd}
-    X
-    \ar[ddr, bend right, swap,  "\varphi"]
-    \ar[dr, "\iota_X"]
-      &
-        &Y
-        \ar[dl, swap, "\iota_Y"]
-        \ar[ddl, bend left, "\psi"]
-        \\
-      &X \amalg Y
-      \ar[d, dashed, "\ell"]
-        &\\
-      &Z
-  \end{tikzcd}
-\]
-\end{proposition}
-
-\begin{proof}
-\todo[inline]{Coproduct universal property}
+From the diagram we obtain the relation \(f (k x) = g (k x)\). Since \(k x: C
+\to A\), the universal property implies that \(x\) must be the unique --- hence
+\(y = x\).
 \end{proof}
 
 \begin{proposition}
-The disjoint union is a coproduct in \(\Set\).
+\label{prop:epi-and-eq-is-iso}
+Let \(f: A \to B\) be a morphism of a category \(\cat C\). If \(f\) is both an
+\emph{epimorphism and equalizer}\footnote{This is clearly an abuse of language,
+  the equalizer is in fact \(A\) and \(f\) is the morphism associated with
+  \(A\).}, then \(f\) is an \emph{isomorphism}.
 \end{proposition}
 
 \begin{proof}
-Since the disjoint union of sets \(X, Y\) is said to be the union of,
-respectively, isomorphic copies \(X', Y'\) we can proceed by defining \(X'
-\coloneq \{0\} \times X\) and \(Y' \coloneq \{1\} \times Y\), which will do the
-work for us. Next we simply define the inclusions \(\iota_X(a) \coloneq (0, a)\)
-and \(\iota_Y(b) \coloneq (1, b)\) for all \(a \in X\) and \(b \in Y\). For the
-final step, we define the unique function \(\ell\) as \(\ell((0,a)) \coloneq
-\varphi(a) \in Z\) for \(a \in X\) and \(\ell((1, b)) \coloneq \psi(b) \in Z\)
-for \(b \in Y\). All defined functions are clearly well defined and \(\ell\)
-needs to be unique because it imitates the image of \(\varphi\) and \(\psi\).
+Let \(x, y: B \para C\) be parallel morphisms in \(\cat C\) with \(\Eq(x, y) =
+f\), then
+\[
+\begin{tikzcd}
+A \ar[r, "f"] & B \ar[r, shift right, "g"'] \ar[r, shift left, "f"] &C
+\end{tikzcd}
+\]
+which implies in \(x f = y f\). By hypothesis \(f\) is an epimorphism, thus
+\(x = y\). Notice however that the equalizer of a morphism \(B \to C\) with
+itself is the identity on \(B\). Since equalizers are unique up to isomorphism,
+it follows that \(f \iso \Id_B\) --- thus \(f\) itself is an isomorphism (and
+\(A \iso B\)).
 \end{proof}
 
-\begin{proposition}[Cofibered Product]
-Let objects \(X, Y, Z\) in a category \(\cat C\) and morphisms \(\varphi : Z
-\to X\) and \(\psi : Z \to Y\). Let the inclusions \(\iota_A : A \to A \amalg
-B\) and  \(\iota_B: B \to A \amalg B\) and define the object
+\section{Pullbacks \& Pushouts}
+
+\begin{definition}[Pullback]
+\label{def:pullback}
+Let \(f: A \to C\) and \(g: B \to C\) be any two morphisms in a category
+\(\cat C\). A \emph{pullback of \((f, g)\)} is a triple \((P, f', g')\)
+where the diagram
 \[
-    P \coloneq A \amalg B / (\iota  \varphi(z) \sim \iota  \psi(z),\
-    z \in Z).
+\begin{tikzcd}
+P \ar[r, "f'"] \ar[d, "g'"'] &B \ar[d, "g"]
+\\
+A \ar[r, "f"'] &C
+\end{tikzcd}
 \]
-With maps \(j_A : A \xrightarrow{\iota_A} A \amalg B \to P\) and  \(j_B : B
-\xrightarrow{\iota_B} A \amalg B \to P\). Then there exists a unique morphism
-\(\ell : P \to L\) for which the diagram commutes
+commutes in \(\cat C\), and for every other triple \((Q, f'', g'')\) making the
+diagram
+\[
+\begin{tikzcd}
+Q \ar[r, "f''"] \ar[d, "g''"'] &B \ar[d, "g"]
+\\
+A \ar[r, "f"'] &C
+\end{tikzcd}
+\]
+commute in \(\cat C\), there exists a unique morphism \(\ell: Q \to P\) in
+\(\cat C\) such that the following diagram commutes
+\[
+\begin{tikzcd}
+Q \ar[dr, dashed, "\ell"]
+\ar[rrd, bend left, "f''"]
+\ar[drd, bend right, "g''"']
+& &
+\\
+&P \ar[r, "f'"] \ar[d, "g'"'] &B \ar[d, "g"]
+\\
+&A \ar[r, "f"'] &C
+\end{tikzcd}
+\]
+\end{definition}
+
+We usually denote that a square is a pullback in \(\cat C\) by marking it as
+follows
+\[
+\begin{tikzcd}
+P \ar[r, "f'"] \ar[d, "g'"'] \ar[dr, phantom, "\lrcorner", very near start]
+&B \ar[d, "g"]
+\\
+A \ar[r, "f"'] &C
+\end{tikzcd}
+\]
+
+The \emph{dual} notion of a pullback is that of a pushout, just as before,
+we'll write it down just for the sake of later reference.
+
+\begin{definition}[Pushout]
+\label{def:pushout}
+Let \(f: C \to A\) and \(g: C \to B\) be any two morphisms in a category
+\(\cat C\). A \emph{pushout of \((f, g)\)} is a triple \((P, f', g')\)
+where the diagram
+\[
+\begin{tikzcd}
+C \ar[r, "f"] \ar[d, "g"'] &A \ar[d, "g'"] \\
+B \ar[r, "f'"'] &P
+\end{tikzcd}
+\]
+commutes in \(\cat C\), and for every other triple \((Q, f'', g'')\) making the
+diagram
+\[
+\begin{tikzcd}
+C \ar[r, "f"] \ar[d, "g"'] &A \ar[d, "g''"] \\
+B \ar[r, "f''"'] &Q
+\end{tikzcd}
+\]
+commute in \(\cat C\), there exists a unique morphism \(\ell: P \to Q\) in
+\(\cat C\) such that the following diagram commutes
+\[
+\begin{tikzcd}
+C \ar[r, "f"] \ar[d, "g"']
+&A \ar[d, "g'"] \ar[drd, bend left, "g''"]
+&
+\\
+B \ar[r, "f'"'] \ar[rrd, bend right, "f''"']
+&P \ar[dr, dashed, "\ell"]
+&
+\\
+& &Q
+\end{tikzcd}
+\]
+\end{definition}
+
+Analogously, if we want to visually say that a square is a pushout in \(\cat
+C\), we mark it as follows
+\[
+\begin{tikzcd}
+C \ar[r, "f"] \ar[d, "g"'] &A \ar[d, "g'"] \\
+B \ar[r, "f'"'] &P \ar[lu, phantom, "\lrcorner", very near start]
+\end{tikzcd}
+\]
+
+\begin{proposition}[Uniqueness]
+\label{prop:pullback-pushout-uniqueness}
+The pullback (or pushout) of two morphisms, if existent, is \emph{unique up to
+  isomorphism}.
+\end{proposition}
+
+\begin{proof}
+Let \(f: A \to C\) and \(g: B \to C\) be two morphisms in a category \(\cat
+C\). Suppose there exists two pullbacks of \((f, g)\), namely \((P, f', g'')\)
+and \((Q, f'', g'')\). Let \(\phi: P \to Q\) and \(\psi: Q \to P\) be the
+uniquely defined morphisms given by the universal property of the
+pullback. Consider the following two commutative diagrams
+\[
+\begin{tikzcd}
+P \ar[rd, dashed, "\phi"]
+\ar[rrrdd, bend left=50, "f'"]
+\ar[ddrrd, bend right=50, "g'"']
+& & &
+\\
+&Q \ar[dr, dashed, "\psi"]
+\ar[rrd, bend left, "f''"]
+\ar[drd, bend right, "g''"']
+& &
+\\
+& &P \ar[r, "f'"] \ar[d, "g'"']
+&B \ar[d, "g"]
+\\
+& &A \ar[r, "f"'] &C
+\end{tikzcd}
+\qquad \qquad
+\begin{tikzcd}
+Q \ar[rd, dashed, "\psi"]
+\ar[rrrdd, bend left=50, "f''"]
+\ar[ddrrd, bend right=50, "g''"']
+& & &
+\\
+&P \ar[dr, dashed, "\phi"]
+\ar[rrd, bend left, "f'"]
+\ar[drd, bend right, "g'"']
+& &
+\\
+& &Q \ar[r, "f''"] \ar[d, "g''"']
+&B \ar[d, "g"]
+\\
+& &A \ar[r, "f"'] &C
+\end{tikzcd}
+\]
+Notice, however, that since \(\Id_P: P \to P\) and \(\Id_Q: Q \to Q\) also make
+them commute --- respectively, the left and right diagrams. From uniqueness we
+obtain \(\phi \psi = \Id_P\) and \(\psi \phi = \Id_Q\) --- therefore \(P \iso
+Q\) in \(\cat C\), via \(\phi\) and \(\psi\).
+\end{proof}
+
+\begin{proposition}
+\label{prop:preservation-monic-epic-iso-by-pull-push}
+Let \((P, f', g')\) be the pullback of a pair of morphisms \((f, g)\) in a
+category \(\cat C\), then:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item If \(g\) is a monomorphism, then \(g'\) is also a monomorphism.
+\item If \(g\) is an isomorphism, then \(g'\) is also an isomorphism.
+\end{enumerate}
+Dually, if \((B, f'', g'')\) is the pushout of the pair \((f, g)\), then:
+\begin{enumerate}[(a)]\setcounter{enumi}{2}\setlength\itemsep{0em}
+\item If \(g\) is an epimorphism, then \(g''\) is also an epimorphism.
+\item If \(g\) is an isomorphism, then \(g''\) is also an isomorphism.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+We only prove items (a) and (b), since (c) and (d) are merely dual consequences
+of the former items.
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Let \(g\) be a monomorphism and consider parallel morphisms \(u, v: Q
+  \para P\) such that \(g' u = g' v\) --- we want to prove that \(u = v\). Take
+  into account the following commutative diagram
   \[
-    \begin{tikzcd}
-      Z
-      \ar[r, "\psi"]
-      \ar[d, swap, "\varphi"]
-        &Y
-        \ar[d, "j_Y"]
-        \ar[ddr, bend left, "g"]
-          &\\
-      X
-      \ar[r, "j_X"]
-      \ar[drr, bend right, swap, "f"]
-        &P
-        \ar[dr, dashed, "\ell"]
-          &\\
-        &
-          &L
-    \end{tikzcd}
-\]
-We call \(P\) the fiber coproduct of \(X\) and \(Y\) over \(Z\)
-\end{proposition}
+  \begin{tikzcd}
+  Q \ar[rd, shift left, "u"] \ar[rd, shift right, "v"'] & & \\
+  &P \ar[r, "f'"] \ar[d, "g'"']
+  \ar[rd, phantom, very near start, "\lrcorner"]
+  &B \ar[d, "g"] \\
+  &A \ar[r, "f"'] &C
+  \end{tikzcd}
+  \]
 
-\begin{proof}
-Notice that we are imposing \(\ell  j_X = f\) and \(\ell  j_Y =
-g\), thus
-\todo[inline]{Cofibered product universal property}
+  Lets first consider the morphism \(u\). Notice that \(p \coloneq g' u\) and
+  \(q \coloneq f' u\) are such that \(f p = g q\). From the universal property
+  of the pullback we have that \(u\) is the unique morphism factorizing
+  \((p, q)\) through \((g, f)\).
+
+  On the other hand, if we consider the arrow \(v\), one can define
+  \(p' \coloneq g' v\) and \(q' \coloneq f' v\) so that \(f p' = g q'\) --- thus
+  \(v\) is the unique factorization of \((p', q')\) through \((g, f)\). Notice,
+  however, that from construction \(p' = g' v = g' u = p\). Moreover,
+  \[
+  g q' = f p' = f (g' v) = f (g' u) = f p = g q,
+  \]
+  since \(g\) is a monomorphism, it follows that \(g q' = g q\) implies
+  \(q' = q\). Therefore both \(u\) and \(v\) are factorizations of the same pair
+  of morphisms --- and from uniqueness, it can only be the case that \(u = v\).
+
+\item Suppose \(g\) is an isomorphism and consider the following commutative
+  diagram
+  \[
+  \begin{tikzcd}
+  A \ar[rrd, "g^{-1} f", bend left]
+  \ar[drd, "\Id_{A}"', bend right]
+  \ar[rd, "\ell", dashed]
+  & &
+  \\
+  &P \ar[r, "f'"] \ar[d, "g'"']
+  &B \ar[d, "g"]
+  \\
+  &A \ar[r, "f"'] &C
+  \end{tikzcd}
+  \]
+  Thus \(g' \ell = \Id_A\) is already given. We can now consider the diagram
+  \begin{equation}\label{eq:pullback-pres-iso}
+  \begin{tikzcd}
+  P \ar[rrd, "f' (\ell g')", bend left]
+  \ar[drd, "g' (\ell g')"', bend right]
+  \ar[rd, "\ell g'", dashed]
+  & &
+  \\
+  &P \ar[r, "f'"] \ar[d, "g'"']
+  &B \ar[d, "g"]
+  \\
+  &A \ar[r, "f"'] &C
+  \end{tikzcd}
+  \end{equation}
+  Moreover, we consider the following composition
+  \[
+  g' (\ell g') = (g' \ell) g' = \Id_A g' = g' = g' \Id_P,
+  \]
+  on the other hand we have
+  \[
+  f' (\ell g') = (f' \ell) g'
+  = (g^{-1} f) g' = g^{-1} (f g')
+  = g^{-1} (g f') = f' = f' \Id_P.
+  \]
+  Therefore \(g' (\ell g') = g' \Id_P\) and \(f' (\ell g') = f' \Id_P\) but by
+  uniqueness, since \(\Id_P\) also makes \cref{eq:pullback-pres-iso} commute, it
+  follows that \(\ell g' = \Id_P\). Thus \(g'\) is an isomorphism with inverse
+  \(\ell\).
+\end{enumerate}
 \end{proof}
+
+\begin{definition}[Kernel \& cokernel]
+\label{def:kernel-cokernel}
+Let \(f: A \to B\) be a morphism in a category \(\cat C\). The \emph{(co)kernel}
+of \(f\), if existent, is defined to be the pullback of \(f\) with itself --- or
+pushout in the case of cokernels.
+\end{definition}

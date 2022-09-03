@@ -56,7 +56,7 @@ many \(i \in \N\).
 Let \(X\) be a first countable space, and a set \(A \subseteq X\), and a point
 \(p \in X\). Then
 \begin{enumerate}[(a)]
-  \item \(p \in \overline A\) if and only if \(p\) is a limit of points of
+  \item \(p \in \Cl A\) if and only if \(p\) is a limit of points of
     \(A\).
   \item \(A\) is closed in \(X\) if and only if \(A\) contains every limit
     point of sequences in \(A\).
@@ -68,9 +68,9 @@ Let \(X\) be a first countable space, and a set \(A \subseteq X\), and a point
 \end{lemma}
 
 \begin{proof}
-(a) (\(\Rightarrow\)) Let \(p \in \overline A\), then for all neighbourhoods
+(a) (\(\Rightarrow\)) Let \(p \in \Cl A\), then for all neighbourhoods
 \(V \subseteq A\) of \(p\), the set \(V \cap (A \setminus \{p\})\) is
-nonempty. Since \(X\) is first countable, consider \((U_i)_{i \in \N}\) a nested
+non-empty. Since \(X\) is first countable, consider \((U_i)_{i \in \N}\) a nested
 neighbourhood basis at \(p\) and construct the sequence \(x : \N \to \bigcup_{i
 \in \N} U_i \cap (A \setminus \{p\}) \) defined as \(i \mapsto x_i \in U_i \cap
 (A \setminus \{p\})\). We'll show that \(x_i \to p\). Consider \(V \subseteq X\)
@@ -83,12 +83,12 @@ definition of the nested basis, we have for all \(i \geq n\) the elements \(x_i
 \(A\) such that \(x_i \to p\). From definition, for all neighbourhood \(V
 \subseteq X\) of \(p\), there exists \(n \in \N\) such that \(\forall i \geq N,
 x_i \in V\), moreover, since \(x_i \in A\) then \(x_i \in V \cap A\) which
-implies that \(p \not\in \Ext(A)\), hence \(p \in \overline A\).
+implies that \(p \not\in \Ext(A)\), hence \(p \in \Cl A\).
 
-(b) (\(\Rightarrow\)) Suppose that \(A\) is closed, then \(A = \overline A\).
+(b) (\(\Rightarrow\)) Suppose that \(A\) is closed, then \(A = \Cl A\).
 Consider any sequence \((x_i)_{i \in \N}\) of points in \(A\) and let
 \(x_i \to p\). From item (a) we have that \(p \in A\). (\(\Leftarrow\))
-Suppose the contrary, then given any \(p \in \overline A\) we have \(p \in
+Suppose the contrary, then given any \(p \in \Cl A\) we have \(p \in
 A\), which implies that \(A\) is closed.
 
 (c) (\(\Rightarrow\)) Suppose \(p \in \Int(A)\). Let \((x_i)_{i \in
@@ -137,7 +137,7 @@ Let \(\mathcal U\) be a cover of a space \(X\). If \(\mathcal U' \subseteq
 U\).
 \end{definition}
 
-Altough formally we should always write down if the cover is either open or
+Although formally we should always write down if the cover is either open or
 closed, I'll slip here and there and every time that I use the term ``cover''
 and do not specify its type, it should be understood that I'm talking about open
 covers --- otherwise I'll specifically write ``closed cover'' in order to avoid
@@ -205,11 +205,11 @@ B\) of neighbourhoods of \(p\) is a countable basis for \(X\) at \(p\).
 where \(|I| = |B|\) is an indexing set, and \(x \in X\) be any point, and any
 neighbourhood of \(V_x \subseteq X\) of \(x\). Since \(B\) is a basis, there
 exists an indexing set \(I_{V_x}\) such that \(V_x = \bigcup_{i \in  I_{V_x}}
-B_i\), hence \(V_x \cap A\) is nonempty. Moreover, define a sequence
+B_i\), hence \(V_x \cap A\) is non-empty. Moreover, define a sequence
 \((x_i)_{i \in I_{V_x}}\) such that \(x_i \in B_i\). Notice that clearly \(x_i
 \to x\), from the fact that \(V_x\) is a neighbourhood of \(x\), and \(x_i \in
-A\), from \cref{lem: sequence lemma} we have that \(x \in \overline{\im(f)}\).
-Hence we conclude that \(X = \overline{\im(f)}\) and thus \(\im(f)\) is a
+A\), from \cref{lem: sequence lemma} we have that \(x \in \Cl(\im(f))\).
+Hence we conclude that \(X = \Cl(\im(f))\) and thus \(\im(f)\) is a
 countable dense subset of \(X\).
 
 (SC3) Let \(\mathcal U\) be a cover for \(X\) and define \(\mathcal B' \coloneq
@@ -339,3 +339,7 @@ existence of an \(i \in I_0(t)\) such that \(U_i \subseteq W_t \subseteq U\).
 Since \(U_i \in \mathcal B_0\), we find that \(\mathcal B_0\) is indeed a
 basis for \(X\).
 \end{proof}
+
+%%% Local Variables:
+%%% TeX-master: "../../deep-dive"
+%%% End:

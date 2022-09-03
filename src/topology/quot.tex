@@ -1,5 +1,7 @@
 \section{Quotient Space}
 
+\subsection{Quotient Topology}
+
 The motivation for the construction of the quotient topology is the study of
 surjective set-functions \(\pi: X \epi S\) between topological spaces \(X\) and
 sets \(S\), which induce an equivalence relation on the initial topological
@@ -14,7 +16,7 @@ would like to make this gluing process compatible with the theory of topology so
 far constructed. To achieve that, one may make the point that we should make
 \(S\) into a topological space for which its topology makes \(\pi\) a continuous
 map. The first idea that may come to mind is that we can simply force the
-continuity of \(\pi\) by defining a topology \(\mathcal T\) on \(S\) so that
+continuity of \(\pi\) by defining a topology \(\tau\) on \(S\) so that
 \(U \subseteq S\) is an open set if and only if \(\pi^{-1}(U)\) is open ---
 which is exactly the definition of a continuous map. Lets give this a formal
 definition.
@@ -22,7 +24,7 @@ definition.
 \begin{definition}\label{def:quotient-topology}
 Let \(X\) be a topological space and \(S\) be any set. Let also \(\pi: X \epi S\)
 be a set-function. The quotient topology on \(S\) induced by the map \(\pi\) is
-the finest topology such that \(\pi\) is a continuous map.
+the final topology such that \(\pi\) is a continuous map.
 \end{definition}
 
 \begin{proposition}
@@ -45,28 +47,28 @@ quotient topology indeed satisfies the properties of a topology.
 
 In other terms, let \(T_S\) be the collection of all topologies on \(S\) such
 that \(\pi\) is a continuous map. The above definition simply says that the
-quotient topology \(\mathcal T\) on the set \(S\) is the intersection
-\(\mathcal T = \bigcap_{T \in T_S}T\). Even better than that definition is the
+quotient topology \(\tau\) on the set \(S\) is the intersection
+\(\tau = \bigcap_{T \in T_S}T\). Even better than that definition is the
 fact that we can determine the quotient topology by the following universal
 property.
 
 \begin{theorem}[Universal property of the quotient topology]
 \label{thm:universal-property-quotient-topology}
 Let \(X\) be a topological space and \(S\) be any set, together with a
-surjective set-function \(\pi: X \epi S\). The quotient topology \(\mathcal T\)
+surjective set-function \(\pi: X \epi S\). The quotient topology \(\tau\)
 on \(S\) induced by \(\pi\) is such that, for all topological spaces \(Z\) and
 every morphism \(g: X \to Z\) for which all \(x, y \in X\) such that
 \(\pi(x) = \pi(y)\) then \(g(x) = g(y)\) --- i.e. \(g\) is constant on the
 fibers of \(\pi\) --- there exists a unique morphism
-\(f: (S, \mathcal T) \to Z\) such that the diagram
+\(f: (S, \tau) \to Z\) such that the diagram
 \[
   \begin{tikzcd}
     X \ar[r, "g"] \ar[d, two heads, swap, "\pi"] &Z\\
     S \ar[ur, swap, bend right, dashed, "f"]
   \end{tikzcd}
 \]
-commutes in \(\Top\). Moreover, if \(\mathcal T'\) is a topology on \(S\) such
-that the diagram commutes, then necessarily \(\mathcal T' = \mathcal T\).
+commutes in \(\Top\). Moreover, if \(\tau'\) is a topology on \(S\) such
+that the diagram commutes, then necessarily \(\tau' = \tau\).
 \end{theorem}
 
 \begin{proof}
@@ -87,31 +89,76 @@ there exists \(x \in X\) for which \(x \in \pi^{-1}(s)\), therefore,
 \(f \pi(x) = f(s) = f'\pi(x) = f'(s)\) for every element of their domain ---
 hence \(f = f'\).
 
-Suppose now that both \((S, \mathcal T)\) and \((S, \mathcal T')\) satisfy the
+Suppose now that both \((S, \tau)\) and \((S, \tau')\) satisfy the
 universal property, that is, the following diagrams commutes for unique
 morphisms \(f\) and \(h\)
 \[
   \begin{tikzcd}
     &Z & \\
-    (S, \mathcal T) \ar[ur, dashed, bend left, "f"]
+    (S, \tau) \ar[ur, dashed, bend left, "f"]
     &X \ar[l, two heads, "\pi"] \ar[r, swap, two heads, "\pi"] \ar[u, "g"]
-    &(S, \mathcal T') \ar[ul, dashed, bend right, swap, "f'"]
+    &(S, \tau') \ar[ul, dashed, bend right, swap, "f'"]
   \end{tikzcd}
 \]
-Since the diagram commutes for all \(Z\), let \(Z = (S, \mathcal T)\), and
-consider the map \(f' = \Id': (S, \mathcal T') \to (S, \mathcal T)\). Then,
-given any \(U \in \mathcal T\) we find that since \(\Id'\) is continuous that
-\(\Id'^{-1}(U) = U \subseteq (S, \mathcal T')\) is open, hence
-\(\mathcal T \subseteq \mathcal T'\). Analogously, let \(Z = (S, \mathcal T')\)
-and consider \(f = \Id: (S, \mathcal T) \to (S, \mathcal T')\). Let
-\(U' \in \mathcal T'\) then from the continuity of \(\Id\) we find that
-\(\Id^{-1}(U') = U' \subseteq (S, \mathcal T)\) is open, therefore
-\(\mathcal T' \subseteq \mathcal T\). Thus indeed \(\mathcal T = \mathcal T'\)
+Since the diagram commutes for all \(Z\), let \(Z = (S, \tau)\), and
+consider the map \(f' = \Id': (S, \tau') \to (S, \tau)\). Then,
+given any \(U \in \tau\) we find that since \(\Id'\) is continuous that
+\(\Id'^{-1}(U) = U \subseteq (S, \tau')\) is open, hence
+\(\tau \subseteq \tau'\). Analogously, let \(Z = (S, \tau')\)
+and consider \(f = \Id: (S, \tau) \to (S, \tau')\). Let
+\(U' \in \tau'\) then from the continuity of \(\Id\) we find that
+\(\Id^{-1}(U') = U' \subseteq (S, \tau)\) is open, therefore
+\(\tau' \subseteq \tau\). Thus indeed \(\tau = \tau'\)
 as wanted.
 \end{proof}
 
+\begin{proposition}[Quotient topology as a coequalizer]
+\label{prop:quotient-top-as-coequalizer}
+Let \(X\) be a topological space and \(f: X \epi S\) be a surjective
+map, where \(S\) is some set. Define the equivalence relation set
+\[
+R \coloneq \{(x, y) \in X \times X \colon f(x) = f(y)\},
+\]
+together with two maps \(r_1, r_2: R \rightrightarrows X\) given by the
+following commutative diagram
+\[
+\begin{tikzcd}
+R \ar[r, hook] \ar[rr, bend left=50, "r_1" description]
+\ar[rr, bend right=50, "r_2" description]
+&X \times X \ar[r, two heads, shift left, "\pi_1"]
+\ar[r, two heads, shift right, "\pi_2"']
+&X
+\end{tikzcd}
+\]
+
+The \emph{quotient topology} is exactly the topology that makes \(S\) into the
+\emph{coequalizer} of \(r_1\) and \(r_2\).
+\end{proposition}
+
+\begin{proof}
+Let \(Y\) be any space and \(h: X \to Y\) be a continuous map such that
+\(h r_1 = h r_2\). Let \(x, x' \in X\) be any two points such that
+\(f(x) = f(y)\), then from construction \(x, x' \in R\). Then
+\(h(x) = h r_1(x, x') = h r_2(x, x') = h(x')\). Now by means of the universal
+property \cref{thm:universal-property-quotient-topology}, if \(\tau\) is the
+quotient topology on \(S\) induced by \(f\), we conclude that there
+exists a unique continuous map \(g: (S, \tau) \to Y\) such that the following
+diagram commutes
+\[
+\begin{tikzcd}
+Y & & \\
+(S, \tau) \ar[u, dashed, "g"]
+&X \ar[l, two heads, "f"]
+\ar[lu, bend right, "h"']
+&R \ar[l, shift right, "r_1"'] \ar[l, shift left, "r_2"]
+\end{tikzcd}
+\]
+Therefore \((S, \tau) = \Coeq(r_1, r_2)\), with associated morphism \(f\).
+\end{proof}
+
 To ease the way in which we refer to quotients and surjective morphisms that
-induce quotients between topological spaces, we define the following terminology.
+induce quotients between topological spaces, we define the following
+terminology.
 
 \begin{definition}[Quotient morphism]
 \label{def:quotient-morphism}
@@ -127,11 +174,11 @@ open if and only if \(\pi^{-1}(V) \subseteq X\) is open.
 Let \(q: X \to Y\) be a quotient map between topological spaces. For any space
 \(Z\) together with a morphism \(f: X \to Z\) that is constant on the fibers of
 \(q\) --- that is, \(q(x_1) = q(x_2)\) implies \(f(x_1) = f(x_2)\) --- there
-exists a \emph{unique} morphism \(f_{*}: Y \unique Z\) sucht that the following
+exists a \emph{unique} morphism \(f_{*}: Y \unique Z\) such that the following
 diagram commutes
 \[
 \begin{tikzcd}
-X \ar[d, two heads, "q", swap] \ar[dr, "f"] & \\
+X \ar[d, two heads, "q", swap] \ar[dr, bend left, "f"] & \\
 Y \ar[r, dashed, swap, "f_{*}"] &Z
 \end{tikzcd}
 \]
@@ -158,14 +205,28 @@ define the \(n\)-dimensional real projective space as the quotient \((\R^{n+1}
 \setminus \{0\})/{\sim}\), which is denoted by \(\R \Proj^{n}\).
 \end{example}
 
-\begin{example}[Cone]\label{exp:cone}
+\begin{definition}[Cone]\label{def:cone}
 Let \(X\) be any topological space and \(I\) be the standard interval. The
 topological space \(X \times I\) is known as the cylinder on \(X\). Via a
-quotienting operation, we can collapse regions of this cylinder. For instance,
+quotient operation, we can collapse regions of this cylinder. For instance,
 we can create a cone by collapsing one of the sides of the cylinder, such as
 \((X \times I) / (X \times \{1\})\). Such object is denoted \(\Cone X\), the
 cone on \(X\).
-\end{example}
+\end{definition}
+
+\begin{definition}[Suspension]
+\label{def:suspension}
+The \emph{suspension} of a topological space is an endofunctor \(\Susp: \Top \to
+\Top\) mapping each space \(X\) to the quotient space
+\[
+\Susp X \coloneq (X \times I)/(X \times \{0, 1\})
+\]
+and for each morphism \(f: X \to Y\) we have the naturally induced morphism
+\[
+\Susp f: \Susp X \to \Susp Y\ \text{ mapping }\ [x, t] \mapsto [f(x), t].
+\]
+\end{definition}
+
 
 \begin{example}
 \label{exp:wedge-sum-space}
@@ -212,7 +273,7 @@ Let \(X\) be a second countable space and \(M = X / {\sim}\) be a quotient. If
 \end{proposition}
 
 \begin{proof}
-Let \(\pi: X \epi M\) be the quotienting map that induces the equivalence
+Let \(\pi: X \epi M\) be the quotient map that induces the equivalence
 relation \(\sim\) in \(X\). If we assume that \(M\) is locally euclidean, we can
 let \(\mathcal{C}\) be a cover of \(M\) composed of coordinate balls. Since
 \(\pi\) is surjective, \(\mathcal H \coloneq \{\pi^{-1}(U) \colon U \in
@@ -231,16 +292,33 @@ countable.
 
 \begin{corollary}[Manifold from a quotient]
 \label{cor:manifold-from-quotient}
-In the context of the preceeding proposition, if \(M\) is both locally Euclidean
+In the context of the preceding proposition, if \(M\) is both locally Euclidean
 and Hausdorff, then \(M\) is a topological manifold.
 \end{corollary}
 
-\begin{proposition}[Hausdorff from open quotientings]
+\subsection{Hausdorffness \& Quotient Spaces}
+
+\begin{remark}
+\label{rem:quotient-doesnt-preserve-hausdorff}
+The quotient topology \emph{doesn't preserve} Hausdorffness.
+
+As an example, take the space \(\R \times \{-1, 1\}\) with the usual topology
+and define the equivalence relation \((x, 1) \sim (x, -1)\) if and only if
+\(x \neq 0\). The resulting space \((\R \times \{-1, 1\})/{\sim}\) is not
+Hausdorff: consider the sequence \((1/n, 1)_{n \in \Z_{>0}}\), we have that
+\(1/n \to 0\) but since \(1/n\) does never assume the value of zero, for all
+\(n \in \Z_{>0}\) we have \((1/n, 1) \sim (1/n, -1)\) --- thus the has two
+distinct limits \((0, 1)\) from one side and \((0, -1)\) from the other, thus
+\((\R \times \{-1, 1\})/{\sim}\) isn't Hausdorff.
+\end{remark}
+
+\begin{proposition}[Hausdorff from open quotients]
 \label{prop:open-quotient-hausdorff}
 Let \(\pi: X \epi Y\) be a surjective morphism of topological spaces \(X\) and
 \(Y\). Then \(Y\) is Hausdorff if and only if the collection of pairs of points
-with common fiber, \(C \coloneqq \{(p, q) \in X \times X \colon \pi(p) = \pi(q)\}\),
-is closed in \(X \times X\).
+with common fiber,
+\(C \coloneqq \{(p, q) \in X \times X \colon \pi(p) = \pi(q)\}\), is closed in
+\(X \times X\).
 \end{proposition}
 
 \begin{proof}
@@ -302,7 +380,7 @@ fact that \(Y_{x'}\) is dense in \(Y\), by
 \cref{prop:dense-non-empty-intersects}, the sets \(x' \times Y_{x'}\) and \(N\)
 have a non-empty intersection and thus \(x' \times Y_{x'}\) also intersects
 \(\bigcup_{x \in U'} x \times Y_x\). Therefore \(x' \times Y_{x'} \in U\) and
-hence \(x' \in U'\) --- wich implies that \(U'\) is open.
+hence \(x' \in U'\) --- which implies that \(U'\) is open.
 \end{proof}
 
 \subsection{Quotient Morphisms In More Depth}
@@ -311,7 +389,7 @@ So far we've been studying the construction of quotients out of surjective
 set-functions, but what about being able to classifying a surjective morphisms
 between given topological spaces as inducing the universal property of the
 quotient space? This will be our goal with this subsection --- identifying
-quotienting morphisms. For that end, we shall profit from the main idea behind
+quotient morphisms. For that end, we shall profit from the main idea behind
 quotients: fibers. For that, we define a set given by fibers of \(f\) as being
 saturated.
 
@@ -420,7 +498,7 @@ spaces.
 
 \begin{example}[Cones]
 \label{exp:remove-section-cone-isomorphism}
-An application of the last proposition takes us back to \cref{exp:cone}, where
+An application of the last proposition takes us back to \cref{def:cone}, where
 we defined the cone \(\Cone X\) of a topological space \(X\) as \((X \times I) /
 (X \times \{1\})\) --- the collapse the top of the cylinder. Notice that, given
 any point \((x, t) \in (X \times I) \setminus (X \times \{1\})\), there exists a
@@ -485,3 +563,7 @@ equivalent:
   surjective then \(f(X) = Y\) and thus \(f\) is an isomorphism \(X \isoto Y\).
 \end{enumerate}
 \end{proof}
+
+%%% Local Variables:
+%%% TeX-master: "../../deep-dive"
+%%% End:

@@ -130,7 +130,7 @@ Let \(\alpha : S \to T\) be a map between sets. Then the induced map
 \begin{proof}
 For the first, let \(\alpha\) be injective, then given \(f \in k^{\oplus S}\)
 and define the finite set \(S_f \coloneq S \setminus \ker f\). Now we construct a
-unique function \(g \in k^{\oplus T}\) defined such that \(g(t) \neq 0\) iff
+unique function \(g \in k^{\oplus T}\) defined such that \(g(t) \neq 0\) if and only if
 \(t \in \alpha(S_f)\) (well defined since \(\alpha(S_f)\) is finite by the
 injectivity of \(\alpha\)), and moreover the condition \(f(s) =
 g(\alpha(s))\) (uniqueness), then our mapping \(\alpha_{\ast}\) can be
@@ -140,7 +140,7 @@ For the second proposition, let \(\alpha\) be surjective, then from the same
 map as before, given any function \(g \in k^{\oplus T}\), let  \(T_g \coloneq T
 \setminus \ker g\) then for every \(t \in T_g\) we chose one \(s \in
 \alpha^{-1}(t)\) so that for some function \(f \in k^{\oplus T}\) defined by
-\(f(s) = g(\alpha(s)) = g(t)\) and moreover \(f(s) \neq 0\) iff \(s \in
+\(f(s) = g(\alpha(s)) = g(t)\) and moreover \(f(s) \neq 0\) if and only if \(s \in
 \alpha^{-1}(t)\) for some \(t \in T_g\) (thus \(f\) is well defined, since
 \(T_g\) is finite and we are taking only one corresponding \(s\) for each \(t
 \in T_g\)). Thus indeed \(f \xmapsto{\alpha_\ast} g\) is surjective.
@@ -366,7 +366,7 @@ k\); this implies that \([v] - \big[ \sum_{\ell=1}^t \alpha_\ell v_{j_\ell}
 thus \(A \cup B_W\) is a basis for \(V\).
 
 We'll now show that \(A \cap B_W = \emptyset\): suppose \(u \in A \cap B_W\),
-then ther exists \(i \in I\) and \(j \in J\) such that \(u = w_i\) and \(u =
+then there exists \(i \in I\) and \(j \in J\) such that \(u = w_i\) and \(u =
 v_j\) --- thus \(q_j = [v_j] = [w_i] = [0] \in V/W\) which cannot be true since
 \(B_{V/W}\) is a basis. Therefore \(|A \cup B_W| = |A| + |B_W| = |J| + |B_W| =
 |B_{V/W}| + |B_W| = \dim_k(V)\) as wanted.

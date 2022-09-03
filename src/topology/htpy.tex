@@ -1,0 +1,98 @@
+\section{Homotopy}
+
+\begin{definition}[Left homotopy in \(\Top\)]
+\label{def:left-homotopy-Top}
+Let \(f, g: X \para Y\) be parallel topological morphisms. We define a
+\emph{left homotopy} \(\eta: f \nat g\) between \(f\) and \(g\) to be a morphism
+\(\eta: X \times I \to Y\) such that the following diagram commutes
+\[
+\begin{tikzcd}
+X \ar[d, rd, "f"'] \ar[r, "i_0"]
+& X \times I \ar[d, "\eta"]
+& X \ar[l, "i_1"'] \ar[ld, "g"]
+\\
+& Y
+\end{tikzcd}
+\]
+where \(i_0, i_1: X \to X \times I\) are parallel morphisms with \(x
+\xmapsto{i_{0}} (x, 0)\) and \(x \xmapsto{i_{1}} (x, 1)\).
+\end{definition}
+
+To put concretely, left homotopy between \(f\) and \(g\) is a continuous map
+\(\eta\) such that \(\eta(-, 0) = f\) and \(\eta(-, 1) = g\) --- which can be
+visually thought of as a deformation of the morphism \(f\) to \(g\). If \(f\)
+and \(g\) are indeed homotopic, we denote this by \(f \simht g\).
+
+\begin{corollary}[Equivalence relation]
+\label{cor:htpy-equivalence-rel}
+Left homotopy induces an \emph{equivalence relation} \(\simht\) on the
+collection of topological morphisms. Moreover, homotopy respects composition of
+morphisms.
+\end{corollary}
+
+\begin{proof}
+First we prove that \(\simht\) is an equivalence relation:
+\begin{itemize}\setlength\itemsep{0em}
+\item (Reflexive) Given a continuous map \(f: X \to Y\), we explicitly define a
+  homotopy \(f \nat f\) by mapping \((x, t) \mapsto x\) for all
+  \((x, t) \in X \times I\).
+
+\item (Symmetric) Let \(g: X \to Y\) be another continous map and suppose that
+  there exists a homotopy \(\eta: f \nat g\). We can define a homotopy \(\eta':
+  g \nat f\) by mapping \((x, t) \mapsto \eta(x, 1 - t)\) --- so that \(\eta'(-,
+  0) = \eta(-, 1) = g\) and \(\eta'(-, 1) = \eta(-, 0) = f\).
+
+\item (Transitive) Consider yet another morphism \(h: X \to Y\) and suppose that
+  there exists a homotopy \(\sigma: g \nat h\). In order to construct a homotopy
+  \(\delta: f \nat h\), we define a \(X\)-parametrized path by concatenating
+  \(\eta\) and \(\sigma\) appropriately
+  \[
+  \delta(x, t) \coloneq
+  \begin{cases}
+    \eta(x, 2 t), & t \in [0, 1/2], \\
+    \sigma(x, 2 t - 1), & t \in [1/2, 1].
+  \end{cases}
+  \]
+  Indeed, \(\delta(-, 0) = \eta(-, 0) = f\) while
+  \(\delta(-, 1) = \sigma(-, 1) = h\). It remains to prove that \(\delta\) is
+  continuous. Notice that the sets \(A \coloneq X \times [0, 1/2]\) and
+  \(B \coloneq X \times [1/2, 1]\) are both closed in the product topology and
+  cover the whole space \(X \times I\). By
+  \cref{prop:continuous-from-covering-subspaces}, since \(\delta\)
+  is continuous on both \(A\) and \(B\) then \(\delta\) is continuous on
+  \(A \cup B = X \times I\).
+\end{itemize}
+\end{proof}
+
+Given any two topological spaces \(X\) and \(Y\), we denote the
+collection of continuous maps \(X \to Y\) \emph{up to homotopy equivalence} by
+\[
+[X, Y] \coloneq \Hom_{\Top}(X, Y)/{\simht}.
+\]
+We call a morphism \([f] \in [X, Y]\) a \emph{homotopy class}. Moreover, for any
+three spaces \(X, Y, Z \in \Top\), there exists a \emph{unique} compositional
+map
+\[
+[X, Y] \times [Y, Z] \to [X, Z]
+\]
+such that the following diagram commutes
+\[
+\begin{tikzcd}
+\Hom_{\Top}(X, Y) \times \Hom_{\Top}(Y, Z)
+\ar[rr] \ar[dd, two heads]
+&&\Hom_{\Top}(X, Z) \ar[dd, two heads]
+\\ && \\
+{[X, Y] \times [Y, Z]} \ar[rr, dashed]
+&& {[X, Z]}
+\end{tikzcd}
+\]
+That is, given morphisms \(X \xrightarrow{f} Y \xrightarrow{g} Z\), we have a
+composition of \([f]\) with \([g]\) uniquely defined as
+\[
+[g] \circ [f] \coloneq [g f].
+\]
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../deep-dive"
+%%% End:

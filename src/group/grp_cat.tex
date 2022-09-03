@@ -169,7 +169,7 @@ group and \(f: S \to H\) be a set-function. If there exists a morphism \(\phi: G
 \end{proposition}
 
 \begin{proof}
-Let \(\psi: G \to H\) be another morphism satisfiying the condition specified
+Let \(\psi: G \to H\) be another morphism satisfying the condition specified
 above --- then clearly \(\psi|_S = f = \phi|_{S}\), that is, \(\phi\) and
 \(\psi\) agree on \(S\). Since \(S\) generates \(G\), every element \(g \in G\)
 can be written as a finite product \(g = \prod_{j} s_j \in \langle S \rangle\)
@@ -432,8 +432,8 @@ than \(n\) that are relatively prime to \(n\).
 Let \(x \in C_n\) be a generator of the group --- that is, \(x^n = e\) --- then
 for all \(d < n\) such that \(\gcd(d, n) = 1\) we have \(x^d \neq x\) and
 \((x^d)^n = e\) thus \(x^d\) is a generator of \(C_n\). Therefore the number
-of distict elements of \(C_n\) is the same as the number of positive integers
-coprimes of \(n\).
+of distinct elements of \(C_n\) is the same as the number of positive integers
+coprime of \(n\).
 \end{proof}
 
 \begin{proposition}[Subgroup]
@@ -708,7 +708,7 @@ subgroup. On the other hand, if \(H \cup Q\) is a subgroup, then for every \(h
 implying in \(H \subseteq Q\).
 
 \item Since the composition of elements is only defined for finitely many
-elements, the proposition follows immediatly.
+elements, the proposition follows immediately.
 \end{enumerate}
 \end{proof}
 
@@ -732,10 +732,10 @@ H \to H\) define morphisms of groups.
 Let \(\{G_{j}\}_{j \in J}\) be a collection of groups. We define the direct
 product of this family as the group \(\prod_{j \in J} G_j\) given by elements
 \((x_j)_{j \in J}\) such that \(x_j \in G_j\). The composition of elements of
-the direct product is defined componentwise, that is, if \((x_j)_{j \in J},
+the direct product is defined component-wise, that is, if \((x_j)_{j \in J},
 (y_j)_{j \in J} \in \prod_{j \in J} G_j\), then \((x_j)_{j \in J} (y_j)_{j \in
 J} \coloneq (x_j y_j)_{j \in J}\). Moreover, inverses are also defined
-componentwise, \((x_j)_{j \in J}^{-1} \coloneq (x_j^{-1})_{j \in J}\).
+component-wise, \((x_j)_{j \in J}^{-1} \coloneq (x_j^{-1})_{j \in J}\).
 \end{definition}
 
 \begin{proposition}
@@ -845,7 +845,7 @@ h' h^{-1})H = y(h' h^{-1})H = y H\).
 \label{def:grp-index}
 Let \(G\) be a group and \(H \subseteq G\) be a subgroup. The number of left
 cosets of \(H\) in \(G\) is denoted by \([G \colon H]\), which will be commonly
-refered to as the \emph{index} of \(H\) in \(G\).
+referred to as the \emph{index} of \(H\) in \(G\).
 \end{definition}
 
 \begin{corollary}
@@ -936,7 +936,7 @@ Let \(G\) be a group and \(N\) be a normal subgroup of \(G\). We denote by
   \(x^{-1} N\) (respectively, \(N x^{-1}\)).
 \item The identity of the group is \(N\).
 \end{itemize}
-The group \(G/N\) is commonly refered to as the \emph{quotient group} of \(G\)
+The group \(G/N\) is commonly referred to as the \emph{quotient group} of \(G\)
 by \(H\).
 \end{definition}
 
@@ -966,7 +966,7 @@ implies that \(g \in N\), moreover, if \(n \in N\) is any element, then
 \end{proof}
 
 In fact the morphism \(\pi: G \epi G/N\), defined above by the map \(g \xmapsto
-\psi g N\), is so important we are even going to distinguishly call it the
+\psi g N\), is so important we are even going to distinguishably call it the
 \emph{canonical projection map} of \(G\) onto the factor group \(G/N\). It is
 trivial that such canonical projection \(\pi\) is surjective.
 
@@ -1285,10 +1285,10 @@ whole group \(K\), we necessarily have \(g(G) = K\). Moreover, if we define \(H
   \end{tikzcd}
 \]
 
-\begin{proposition}[Universal property of normal groups]
+\begin{proposition}[Universal property of quotient groups]
 \label{prop:universal-property-quotients-grp}
 Let \(G\) be a group and \(N\) be a normal subgroup of \(G\). Then, given a
-group \(Q\) toghether with a morphism of groups \(\phi: G \to Q\) such that
+group \(Q\) together with a morphism of groups \(\phi: G \to Q\) such that
 \(N\) is the kernel of \(\phi\), there exists a unique morphism
 \(\phi_{*}: G/N \to Q\) such that the diagram
 \[
@@ -1298,12 +1298,14 @@ group \(Q\) toghether with a morphism of groups \(\phi: G \to Q\) such that
   \end{tikzcd}
 \]
 is commutative. Moreover, the map \(\phi_*\) is injective. The morphism
-\(\phi_{*}\) induces an isomorphism of groups \(\psi: G/N \isoto \im \phi\) and
-therefore we have the following factorization
+\(\phi_{*}\) induces an isomorphism of groups
+\(\overline{\phi}: G/N \isoto \im \phi\) and therefore we have the following
+factorization
 \[
   \begin{tikzcd}
-    G \ar[r, two heads, "\pi"] &G/N \ar[r, "\psi"]
-    &\im f \ar[r, hook, "\iota"] &Q
+  G \ar[d, two heads] \ar[r, "\phi"] &Q \\
+  G/N \ar[r, "\overline{\phi}"', "\dis"]
+  &\im f \ar[u, hook]
   \end{tikzcd}
 \]
 \end{proposition}
@@ -1321,22 +1323,37 @@ that \(\ker \phi_{*} = N\), which is the identity element of \(G/N\), thus
 \(\phi_{*}\) is injective.
 \end{proof}
 
+\begin{corollary}[First isomorphism]
+\label{cor:first-iso-grp}
+Let \(\phi: G \epi H\) be a \emph{surjective} morphism of groups. There exists a
+canonical isomorphism of groups
+\[
+G/{\ker \phi} \iso H.
+\]
+\end{corollary}
+
+\begin{proof}
+By the universal property, the induced map \(\phi_{*}: G/{\ker \phi} \mono H\)
+is already injective. From hypothesis, \(\phi\) being surjective implies that
+\(\phi_{*}\) is surjective since \(\phi = \pi \phi_{*}\).
+\end{proof}
+
 \begin{corollary}
 \label{cor:universal-property-quotients-grp}
 Let \(G\) be a group and \(H\) be a subgroup of \(G\). Define \(S\) to be the
 subgroup of \(G\) consisting of the intersection of all \emph{normal} subgroups
 of \(G\) containing \(H\). Then \(S\) is normal in \(G\) and is the smallest
-normal subgroup of \(G\) containing \(H\). Let \(Q\) be a group and \(\phi: G
-\to Q\) be a morphism of groups such that \(H \subseteq \ker \phi\). Then we
-have \(S \subseteq \ker \phi\), and there exists a unique morphism \(\phi_{*}:
-G/S \mono Q\) such that the following diagram commutes
+normal subgroup of \(G\) containing \(H\). Let \(Q\) be a group and
+\(\phi: G \to Q\) be a morphism of groups such that \(H \subseteq \ker
+\phi\). Then we have \(S \subseteq \ker \phi\), and there exists a \emph{unique}
+morphism \(\phi_{*}: G/S \mono Q\) such that the following diagram commutes
 \[
   \begin{tikzcd}
     G \ar[d, two heads, swap, "\pi"] \ar[r, "\phi"] &Q \\
     G/S \ar[ur, dashed, swap, bend right, tail, "\phi_{*}"] &
   \end{tikzcd}
 \]
-moreover, \(\phi_{*}\) is injective.
+moreover, \(\phi_{*}\) is \emph{injective}.
 \end{corollary}
 
 \begin{proof}
@@ -1348,20 +1365,20 @@ and, for every \(g \in G\), we have \(g S g^{-1} = S\) --- thus \(S\) is indeed
 normal.
 \end{proof}
 
-\begin{corollary}
+\begin{corollary}[Third isomorphism]
 \label{cor:quotient-isomorphism}
 Let \(G\) be a group and \(H \subseteq G\) be a \emph{normal} subgroup of
 \(G\). Let \(Q \subseteq G\) be a subgroup \emph{containing} \(H\). Then,
 \(Q/H\) is normal in \(G/H\) if and only if \(Q\) is normal in \(G\), if that is
 the case, then we have a canonical isomorphism
 \[
-  (G/H) \big/ (Q/H) \iso G/Q.
+  \frac{G/H}{Q/H} \iso G/Q.
 \]
 \end{corollary}
 
 \begin{proof}
-Suppose \(Q\) is normal in \(G\). Since \(H\) is contained in \(Q\), and \(\ker(G
-\epi G/Q) = Q\), we can apply the universal property of quotients
+Suppose \(Q\) is normal in \(G\). Since \(H\) is contained in \(Q\), and
+\(\ker(G \epi G/Q) = Q\), we can apply the universal property of quotients
 \cref{cor:universal-property-quotients-grp} to the subgroup \(H\) of the kernel
 and find a unique induced injective morphism \(G/H \mono G/Q\) --- whose kernel,
 on the other hand, is \(Q/H\), thus \(Q/H\) is normal in \(G/H\).
@@ -1370,7 +1387,7 @@ For the converse, let \(Q/H\) be normal in \(G/H\), and consider the morphism
 given by the composition of the canonical projections
 \[
   \begin{tikzcd}
-    G \ar[r, two heads] &G/H \ar[r, two heads] &(G/H) \big/ (Q/H)
+    G \ar[r, two heads] &G/H \ar[r, two heads] &\frac{G/H}{Q/H}
   \end{tikzcd}
 \]
 which has a kernel given by \(Q\) --- thus \(Q\) is normal in \(G\). With that,
@@ -1390,13 +1407,13 @@ following diagram, which commutes
   \end{tikzcd}
 \]
 
-\begin{corollary}
+\begin{corollary}[Second isomorphism]
 \label{cor:grp-intersection-coset-isomorphism}
 Let \(G\) be a group, and let \(H\) and \(Q\) be subgroups of \(G\) such that
 \(H \subseteq N_G(Q)\) --- that is, \(H\) is contained in the normalizer of
 \(Q\). Then we have the following canonical isomorphism
 \[
-  H/(H \cap Q) \iso H Q / Q.
+  \frac{H}{H \cap Q} \iso \frac{H Q}{Q}.
 \]
 \end{corollary}
 
@@ -1647,7 +1664,7 @@ The quotient group \(G/[G, G]\) is commutative.
 \begin{proof}
 Notice that \(x y = y x\) is equivalent to \(x y (y x)^{-1} = x y x^{-1} y^{-1}
 = e\), thus, for any given \(x, y \in G\), since \(x y x^{-1} y^{-1} \in [G,
-G]\), then \([x y] = [y x] \in G/[G, G]\) --- which shows the commmutativity.
+G]\), then \([x y] = [y x] \in G/[G, G]\) --- which shows the commutativity.
 \end{proof}
 
 \begin{lemma}

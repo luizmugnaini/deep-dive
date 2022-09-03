@@ -9,7 +9,7 @@ to collect important results}
 
 Before we start our journey through differential calculus on several variables,
 I would like to point out some really important definitions for classifying the
-behavior of maps --- of which we'll use extensively.
+behaviour of maps --- of which we'll use extensively.
 
 \begin{definition}[Ultimately]
 We say that a property \(P\) is ultimately satisfied by a function \(f\) over
@@ -240,7 +240,7 @@ Moreover, since \(\theta \in [0, 1)\) we have from the geometric series that
 \]
 and thus \((x_n)_{n \in \N}\) is indeed a Cauchy sequence.
 
-Let \(x_n \to c \in I\), since \(I\) is closed and thus \(\overline I = I\).
+Let \(x_n \to c \in I\), since \(I\) is closed and thus \(\Cl I = I\).
 Since \(|f(x) - f(y)| \leq \theta |x - y|\) the function is Lipschitz
 continuous, hence
 \[
@@ -262,7 +262,7 @@ point of \(f\).
 \end{corollary}
 
 \begin{proof}
-Choose any distict points \(x, y \in I\), from the mean value theorem, there
+Choose any distinct points \(x, y \in I\), from the mean value theorem, there
 exists \(x_0 \in (x, y)\) such that \(f(x) - f(y) = f'(x_0)(x - y)\), then
 \(|f(x) - f(y)| \leq \theta |x - y|\), which satisfies the condition of
 \cref{thm: fixed point}, hence the proposition holds.
@@ -321,7 +321,7 @@ is continuous at \(x_0\) --- that is, \(\lim_{x \to x_0} s(x) = s(x_0)\).
 \begin{proof}
 We know from \cref{thm: Banach fixed point} that --- given any \(x \in \Omega\) ---
 the fixed point (unique) solution can be obtained as the limit of
-a sequece recursively defined as \(y_j = f_x(y_{j-1})\) and \(y_0 \in A\) being
+a sequence recursively defined as \(y_j = f_x(y_{j-1})\) and \(y_0 \in A\) being
 any element. This way, consider such sequence \((y_j)_{j=1}^{\infty}\) but define
 \(y_0 = s(x_0)\). Notice that since \(\sum_{j=1}^n y_j - y_{j-1} = y_n - y_0\),
 then we can write \(y_n\) in the following form
@@ -411,7 +411,7 @@ the coordinate closed intervals form again a chain of nested intervals
 [a_j, b_j] \supseteq [a_j^1, b_j^1] \supseteq [a_j^2, b_j^2] \supseteq \dots
 \]
 hence \(\lim_{t \to \infty} d(a_j^t, b_j^t) = 0\). Since they form a nested
-chain, their intersection is nonempty and therefore there exists a point
+chain, their intersection is non-empty and therefore there exists a point
 \(\zeta_j \in  [a_j^m, b_j^m]\) common to all such intervals. In doing so for
 \(1 \leq j \leq n\) we find a point \(\zeta = (\zeta_j)_{j=1}^n \in \R^n\)
 such that \(\zeta \in I_i\) for all \(i \geq 1\) and \(\zeta \in I\). From the
@@ -448,7 +448,7 @@ Let \(K\) be a compact set of \(\R^n\), then
     \bigcup \mathcal U'\), we have \(K \cap V = \emptyset\), therefore \(y\)
     cannot be a limit point of \(K\), which is a contradiction. This implies
     that \(y \in K\), if not, problematic neighbourhoods \(V_j\) can be
-    choosen.
+    chosen.
 \item Let \(C \subseteq \R^n\) be a closed set and \(C \subseteq K\). Let
     \(\mathcal G\) be an open cover of \(C\) in \(\R^n\). Notice that
     \(\mathcal U = \mathcal G \cup (\R^n \setminus C)\) is an open cover of
@@ -538,7 +538,7 @@ exist \(B_a, B_b \in \mathcal B\) such that \(f(B_a) \subseteq V_a\) and
 \(f(B_b) \subseteq V_b\). From the downward direction property of filter
 bases, there exists \(B \subseteq B_a \cap B_b\) in \(\mathcal B\). Since
 \(\emptyset \not\in \mathcal B\), then \(B \neq \emptyset\), hence \(f(B)
-\subseteq V_a \cap V_b\) is nonempty, contradicting the assumption that there
+\subseteq V_a \cap V_b\) is non-empty, contradicting the assumption that there
 could be chosen non-intersecting neighbourhoods of \(a\) and \(b\), which
 implies that \(a = b\) in \(\R^n\).
 \end{proof}
@@ -552,7 +552,7 @@ bounded over that filter base.
 Let \(f: X \to \R^n\) be a map and \(\mathcal B \subseteq 2^X\) be a filter
 base. Assume that \(\lim_\mathcal{B} f(x) = \ell \in \R^n\). For the sake of
 contradiction, suppose that \(f\) is not ultimately bounded over \(\mathcal
-B\). Let \(B_\ell(\varepsilon)\) be an open ball centered at \(\ell\) with
+B\). Let \(B_\ell(\varepsilon)\) be an open ball centred at \(\ell\) with
 radius \(\varepsilon > 0\). From the definition of a limit over a filter,
 there exists \(B \in \mathcal B\) for which \(f(B) \subseteq
 B_\ell(\varepsilon)\), but \(\sup_{x, y \in B_\ell(\varepsilon)} d(x, y) = 2
@@ -739,7 +739,7 @@ uniformly continuous on \(X\) if for every \(\varepsilon > 0\) there exists
 
 \begin{theorem}[Heine-Cantor theorem]
 \label{thm:heine-cantor}
-Let \(f: X \to Y\) be a continous map between metric spaces \(X\) and \(Y\). If
+Let \(f: X \to Y\) be a continuous map between metric spaces \(X\) and \(Y\). If
 \(X\) is compact, then \(f\) is uniformly continuous.
 \end{theorem}
 

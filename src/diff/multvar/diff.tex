@@ -235,7 +235,7 @@ functions of the type \(E \to \R^n\).
 
 \begin{proof}
   By definition, the differential of \(f\) at \(x\) exists and is a linear map.
-  By \cref{prop: linear-continuous} we find that \(\diff f(x)\) is continous and
+  By \cref{prop: linear-continuous} we find that \(\diff f(x)\) is continuos and
   hence \(\diff f(x)(t) \to 0\) as \(t \to 0\). Then as \(t \to 0\) we have
   \(f(x + t) - f(x) = \diff f(x)(t) + o(t) \to 0\) so \(\lim_{t \to 0} f(x + t)
   = f(x)\) --- the map is continuous at \(x\).
@@ -459,9 +459,9 @@ functions of the type \(E \to \R^n\).
   \(v\).
 \end{definition}
 
-\begin{definition}[Gradiant]
+\begin{definition}[Gradient]
   Let \(E \subseteq \R^m\) and \(f: E \to \R\) be a real map. We define the
-  gradiant of \(f\) as the vector field \(\grad f: \R^m \to \R^m\) written as
+  gradient of \(f\) as the vector field \(\grad f: \R^m \to \R^m\) written as
   \[
     \grad f = \left( \partial_1 f, \dots, \partial_m f \right).
   \]
@@ -649,7 +649,7 @@ Lets analyse the implication of certain choices of \(u\):
   exist --- where \(1 \leq j \leq m\) --- and \(\partial_j f(x) = 0\).
 
   Let \(x \in G\) be any point and consider \(B_x(r) \subseteq G\) an open ball
-  centered in \(x\). Let \(y \in B_x(r)\) be any point, then from \cref{thm:
+  centred in \(x\). Let \(y \in B_x(r)\) be any point, then from \cref{thm:
   several-mvt-real-val} --- since \([x, y] \subseteq B_x(r)\) --- we have the
   existence of \(z \in [x, y]\) such that
   \begin{equation}\label{eq: sev-const}
@@ -660,7 +660,7 @@ Lets analyse the implication of certain choices of \(u\):
 
   Let \(x, y \in G\) be any points. Since \(G\) is path-connected, there exists
   a continuous map \(\gamma: [0, 1] \to G\) such that \(\gamma(0) = x\) and
-  \(\gamma(1) = y\). Consider any open ball \(B_x(r) \subseteq G\) centered in
+  \(\gamma(1) = y\). Consider any open ball \(B_x(r) \subseteq G\) centred in
   \(x\). Let \(\Delta = \{\delta \in [0, 1] \colon \gamma([0, \delta]) \in
   B_x(r)\}\). From the continuity of \(\gamma\) and the fact that \(\gamma(0) =
   x \in B_x(r)\), the collection \(\Delta\) is non-empty. If \(\delta \in
@@ -993,7 +993,7 @@ such that
     = h_i h_j [\partial_{ij} f(x + \overline \theta_i h_i e_i + \overline
     \theta_j h_j e_j)]
   \]
-  Since \(h_i, h_j \neq 0\) and by , we have
+  Since \(h_i, h_j \neq 0\), we have
   \[
     \partial_{ji} f(x + \theta_i h_i e_i + \theta_j h_j e_j)
     = \partial_{ij} f(x + \overline \theta_i h_i e_i + \overline \theta_j h_j
@@ -1013,7 +1013,7 @@ such that
 \end{corollary}
 
 \begin{proof}
-  We procceed by induction on \(k\). If \(k = 2\) then the proposition is true,
+  We proceed by induction on \(k\). If \(k = 2\) then the proposition is true,
   from \cref{thm: order-var-partial}. Assume the proposition is true for some
   \(k > 2\). Let \(\sigma\) be any permutation on \(I_k\), since any permutation
   can be written as the composition of finitely many elementary transpositions,
@@ -1239,7 +1239,7 @@ such that
   Lets treat only the case for positive definite, the other is analogous and
   would be boring to repeat myself. Suppose there exists such \(\lambda > 0\) for
   which all \(v \in \R^n\) satisfy \(\left\langle v, Av \right\rangle \geq \lambda \norm{v}^2\). Then
-  since \(v \neq 0\) and hence \(\norm{v} > 0\), it follows immediatly that \(A\)
+  since \(v \neq 0\) and hence \(\norm{v} > 0\), it follows immediately that \(A\)
   is positive definite.
 
   Suppose \(A\) is positive definite. Consider the unitary \(n-1\)-sphere
@@ -1295,7 +1295,7 @@ such that
     \sum_{i, j = 1}^m \partial_{ij} f(x_0) h_i h_j
     = \left\langle h, \Hess(f(x_0)) h \right\rangle.
   \]
-  Thus we can now rewrite the Taylor polynomial in a way that lets us analyze
+  Thus we can now rewrite the Taylor polynomial in a way that lets us analyse
   the hessian of the map
   \[
     f(x_0 + h) - f(x_0) = \left\langle h, \Hess(f(x_0)) h \right\rangle + o(\norm{h}^2).

@@ -11,7 +11,7 @@
       (Upward closed) If \(A \in \mathcal F\) and \(A \subseteq B\) then \(B
       \in \mathcal F\).
     \item\label{def: filter F3}
-      \(\mathcal F\) is nonempty.
+      \(\mathcal F\) is non-empty.
   \end{enumerate}
 \end{definition}
 
@@ -22,7 +22,7 @@
   F\).
 \end{definition}
 
-\begin{proposition}[Evetuallity filter]
+\begin{proposition}[Eventuality filter]
   Let \(X\) be a topological space and \({(x_i)}_{i \in \N}\) be a
   sequence of points of \(X\). The collection of sets such that \((x_i)\) is
   eventually in, explicitly
@@ -34,7 +34,7 @@
 \end{proposition}
 
 \begin{definition}[Filter base]
-  A nonempty downward directed set is called a filter base.
+  A non-empty downward directed set is called a filter base.
 \end{definition}
 
 \begin{proposition}
@@ -46,7 +46,7 @@
 \end{proposition}
 
 \begin{proof}
-  Since \(\mathcal G\) is nonempty, \(\mathcal G^\uparrow\) is nonempty. Let
+  Since \(\mathcal G\) is non-empty, \(\mathcal G^\uparrow\) is non-empty. Let
   \(A, B \in \mathcal G^\uparrow\), then there are \(G, H \in \mathcal G\) such
   that \(G \subseteq A\) and \(H \subseteq B\). Since \(G \cap H \in \mathcal
   G\), then \(G \cap H \subseteq A \cap B\) and thus \(A \cap B \in \mathcal
@@ -69,7 +69,7 @@
 
 \begin{definition}[Convergence of filters]
   \label{def: convergence of filters}
-  Let \(\mathcal F\) be a filter on a topological space \((X, \mathcal T)\). We
+  Let \(\mathcal F\) be a filter on a topological space \((X, \tau)\). We
   say that \(\mathcal F\) converges to \(x\), \(\mathcal F \to x\), if and only
   if \(\mathcal B_x \subseteq \mathcal F\).
 \end{definition}
@@ -90,7 +90,7 @@
   \(x\) then \(U \in \mathcal F\), and analogously, \(V \in \mathcal F\), but
   from the downward directness, it follows that \(U \cap V = \emptyset \in
   \mathcal F\), which can't be the case since \(\mathcal F\) is supposed to be
-  proper. Hence \(\mathcal F\) cannot converge to distict points of \(X\).
+  proper. Hence \(\mathcal F\) cannot converge to distinct points of \(X\).
   (\(\Leftarrow\)) Suppose that \(X\) is not Hausdorff and choose distinct
   points \(x, y\) that are not separable by open sets. Consider the collection
   \(\mathcal B = \mathcal B_x \cap \mathcal B_y\), then given two sets \(A, B
@@ -101,20 +101,20 @@
 
 \begin{proposition}[Closed]\label{prop: closed from filter}
   Let \(X\) be a topological space and \(A \subseteq X\). A point \(p \in
-  \overline A\) if and only if there exists a proper filter \(\mathcal F\) with
+  \Cl A\) if and only if there exists a proper filter \(\mathcal F\) with
   \(A \in \mathcal F\) such that \(\mathcal F \to p\).
 \end{proposition}
 
 \begin{proof}
-  (\(\Rightarrow\)) Let \(p \in \overline A\), then for all neighbourhoods \(U
-  \in \mathcal B_p\) the set \(U \cap (A \setminus \{p\})\) is nonempty, in
+  (\(\Rightarrow\)) Let \(p \in \Cl A\), then for all neighbourhoods \(U
+  \in \mathcal B_p\) the set \(U \cap (A \setminus \{p\})\) is non-empty, in
   particular we have that \(\mathcal B \coloneq \{U \cap A \colon U \in \mathcal B_p\}\)
   does not contain the empty set. Hence the proper filter \(\mathcal
   B^\uparrow\)converges to \(p\). (\(\Leftarrow\)) Let \(\mathcal F\) be a
   proper filter with \(\mathcal F \to p\) and \(A \in \mathcal F\), then in
   particular we have that the downward directness implies \(\mathcal B \subseteq
   \mathcal F\) and thus \(\emptyset \not\in \mathcal B\), hence \(x \in
-  \overline A\).
+  \Cl A\).
 \end{proof}
 
 \begin{definition}[Pushforward of filters]\label{def: pushforward of filters}
@@ -161,3 +161,7 @@
 \end{proof}
 
 \todo[inline]{Write on nets later}
+
+%%% Local Variables:
+%%% TeX-master: "../../deep-dive"
+%%% End:

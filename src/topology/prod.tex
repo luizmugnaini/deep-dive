@@ -3,7 +3,7 @@
 \begin{definition}[Product topology]
   \label{def: prod top}
   Let \(\{X_i\}_{i \in I}\) be a collection of sets. The product topology on the
-  set \(\prod_{i \in I} X_i\) is defined to be the coarsest topology such that
+  set \(\prod_{i \in I} X_i\) is defined to be the initial topology such that
   for all \(i \in I\) the projection \(\pi_i : \prod_{i \in I} X_i \epi X_i\) is
   continuous.
 \end{definition}
@@ -25,7 +25,7 @@
 \end{corollary}
 
 \begin{proof}
-  To prove the equivalece, we first show that if \(\prod_{i \in I} X_i\) is
+  To prove the equivalence, we first show that if \(\prod_{i \in I} X_i\) is
   endowed with the product topology, then the collection \(\mathcal B\) is a
   basis for \(\prod_{i \in I} X_i\). (\(\Rightarrow\)) Let \(\prod_{i \in I} U_i
   \in \mathcal B\), then for all \(i_j \in I\) we have
@@ -82,42 +82,42 @@
   \(V \subseteq \prod_{i \in I} X_i\).
 
   For the second part of the theorem, suppose that \((\prod_{i \in I} X_i,
-  \mathcal T')\) be a space satisfying the property. In particular, consider a
-  space \(Z = (\prod_{i \in I} X_i, \mathcal T')\) and a map \(f = \Id\). Then
+  \tau')\) be a space satisfying the property. In particular, consider a
+  space \(Z = (\prod_{i \in I} X_i, \tau')\) and a map \(f = \Id\). Then
   the following diagram commutes
   \[
     \begin{tikzcd}
-      (\prod_{i \in I} X_i, \mathcal T')
+      (\prod_{i \in I} X_i, \tau')
       \ar[d, "\Id"]
       \ar[dr, bend left, "\pi_i  \Id = \pi_i"] \\
-      (\prod_{i \in I} X_i, \mathcal T')
+      (\prod_{i \in I} X_i, \tau')
       \ar[r, two heads, "\pi_i"]
         &X_i
     \end{tikzcd}
   \]
   We can now assert that \(\Id\) is continuous since both domain and codomain
-  have the same topology \(\mathcal T'\), hence \(\pi_i\) is continuous for all
+  have the same topology \(\tau'\), hence \(\pi_i\) is continuous for all
   \(i \in I\). Since \(\pi_i\) is continuous for all \(i \in I\) for the
-  topology \(\mathcal T'\) then we can use the \cref{def: prod top} to conclude
-  that \(\mathcal T' \subseteq \mathcal T\), where \(\mathcal T\) is the product
+  topology \(\tau'\) then we can use the \cref{def: prod top} to conclude
+  that \(\tau' \subseteq \tau\), where \(\tau\) is the product
   topology. For the second inclusion, consider the commutative diagram
   \[
     \begin{tikzcd}
-      (\prod_{i \in I} X_i, \mathcal T')
+      (\prod_{i \in I} X_i, \tau')
       \ar[d, "\Id'"]
       \ar[dr, bend left, "\pi_i  \Id' = \pi_i'"] \\
-      (\prod_{i \in I} X_i, \mathcal T)
+      (\prod_{i \in I} X_i, \tau)
       \ar[r, two heads, "\pi_i"]
         &X_i
     \end{tikzcd}
   \]
-  where \(\pi_i': (\prod_{i \in I} X_i, \mathcal T') \epi X_i\). We know from
-  the previous discussion that since \((\prod_{i \in I} X_i, \mathcal T')\)
+  where \(\pi_i': (\prod_{i \in I} X_i, \tau') \epi X_i\). We know from
+  the previous discussion that since \((\prod_{i \in I} X_i, \tau')\)
   satisfies the universal property, then \(\pi_i'\) is continuous and hence
   \(\Id'\) is continuous. In particular, this implies that if  \(U \subseteq
-  (\prod_{i \in I} X_i, \mathcal T)\) is open, then \(\Id'^{-1}(U) = U
-  \subseteq (\prod_{i \in I} X_i, \mathcal T')\) is open. This implies in
-  \(\mathcal T \subseteq \mathcal T'\). Hence we conclude that if an object
+  (\prod_{i \in I} X_i, \tau)\) is open, then \(\Id'^{-1}(U) = U
+  \subseteq (\prod_{i \in I} X_i, \tau')\) is open. This implies in
+  \(\tau \subseteq \tau'\). Hence we conclude that if an object
   satisfies the product topology universal property, then it is endowed with the
   product topology.
 \end{proof}
@@ -179,9 +179,9 @@
     \mathcal B_\text{box} = \left\{\prod_{i \in I} U_i \colon U_i \subseteq X_i
     \text{ is open}\right\}.
   \]
-  For the case where \(I\) is an infinite indexing set, we find that \(\mathcal
-  T_\text{box} \supsetneq \mathcal T_\text{prod}\) and from this we find that
-  certainly the projections are still continuous on \(\mathcal T_\text{box}\),
+  For the case where \(I\) is an infinite indexing set, we find that
+  \(\tau_\text{box} \supsetneq \tau_\text{prod}\) and from this we find that
+  certainly the projections are still continuous on \(\tau_\text{box}\),
   although the box topology fails to satisfy the universal product \cref{thm:
   prod top universal prop}.
 \end{definition}
@@ -199,7 +199,7 @@
 
 \begin{definition}[Coproduct topology]\label{def: coproduct top}
   Let \(\{X_i\}_{i \in I}\) be a collection of topological spaces. The coproduct
-  topology on the set \(\bigatt_{i \in I} X_i\) is defined to be the finest
+  topology on the set \(\bigatt_{i \in I} X_i\) is defined to be the final
   topology such that for all \(j \in I\) we have that the inclusions \(\iota_j:
   X_j \mono \bigatt_{i \in I} X_i\) are continuous.
 \end{definition}
@@ -219,8 +219,8 @@
       & \bigatt_{i \in I} X_i \ar[d, dashed, "f"] \\ &Z
     \end{tikzcd}
   \]
-  On the other hand, if \((\bigatt_{i \in I} X_i, \mathcal T')\) satisfies such
-  property, then \(\mathcal T'\) is the coproduct topology.
+  On the other hand, if \((\bigatt_{i \in I} X_i, \tau')\) satisfies such
+  property, then \(\tau'\) is the coproduct topology.
 \end{theorem}
 
 \begin{proof}
@@ -234,30 +234,32 @@
   under \(\iota_j\) would be closed (from the continuity of \(\iota_j\)), hence
   \(f^{-1}(U)\) is open, which implies in \(f\) continuous.
 
-  Suppose that \((\bigatt_{i \in I} X_i, \mathcal T')\) satisfies the universal
-  property and denote by \(\mathcal T\) the coproduct topology. Then in
+  Suppose that \((\bigatt_{i \in I} X_i, \tau')\) satisfies the universal
+  property and denote by \(\tau\) the coproduct topology. Then in
   particular we have
   \[
     \begin{tikzcd}
       X_j \ar[r, "\iota_j"] \ar[rd, bend right, swap, "\iota_j"]
-        &\left( \bigatt_{i \in I} X_i, \mathcal T' \right)
+        &\left( \bigatt_{i \in I} X_i, \tau' \right)
         \ar[d, dashed, "g"] \\
-        &(\bigatt_{i \in I} X_i, \mathcal T)
+        &(\bigatt_{i \in I} X_i, \tau)
     \end{tikzcd}
     \qquad \qquad
     \begin{tikzcd}
       X_j \ar[r, "\iota_j"] \ar[rd, bend right, swap, "\iota_j"]
-        &\left( \bigatt_{i \in I} X_i, \mathcal T \right)
+        &\left( \bigatt_{i \in I} X_i, \tau \right)
         \ar[d, dashed, "f"] \\
-        &(\bigatt_{i \in I} X_i, \mathcal T')
+        &(\bigatt_{i \in I} X_i, \tau')
     \end{tikzcd}
   \]
-  and hence \(f\) and \(g\) are both identities on \(\End(\bigatt_{i \in I} X_i)\). If
-  \(U \subseteq (\bigatt_{i \in I} X_i, \mathcal T)\) is open, then \(g^{-1}(U) = U \subseteq (\bigatt_{i \in I}
-  X_i, \mathcal T')\) is also open. On the other hand, from the second diagram,
-  if \(V \subseteq (\bigatt_{i \in I} X_i, \mathcal T')\) is open, then \(f^{-1}(V) = V \subseteq (\bigatt_{i \in
-  I} X_i, \mathcal T)\) is open. This concludes that \(\mathcal T' = \mathcal T\)
-  and hence the coproduct topology is unique.
+  and hence \(f\) and \(g\) are both identities on
+  \(\End(\bigatt_{i \in I} X_i)\). If
+  \(U \subseteq (\bigatt_{i \in I} X_i, \tau)\) is open, then
+  \(g^{-1}(U) = U \subseteq (\bigatt_{i \in I} X_i, \tau')\) is also open. On
+  the other hand, from the second diagram, if
+  \(V \subseteq (\bigatt_{i \in I} X_i, \tau')\) is open, then
+  \(f^{-1}(V) = V \subseteq (\bigatt_{i \in I} X_i, \tau)\) is open. This
+  concludes that \(\tau' = \tau\) and hence the coproduct topology is unique.
 \end{proof}
 
 \begin{proposition}
@@ -279,3 +281,7 @@
 \end{proposition}
 
 \todo[inline]{Properties for the coproduct top}
+
+%%% Local Variables:
+%%% TeX-master: "../../deep-dive"
+%%% End:

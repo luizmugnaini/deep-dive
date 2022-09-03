@@ -1,4 +1,5 @@
-\documentclass[12pt, a4paper, reqno, openany]{memoir}
+\documentclass[12pt, a4paper, reqno]{memoir}
+
 \usepackage[english]{babel}
 
 \usepackage{layout}
@@ -55,6 +56,9 @@
 ]{biblatex}
 \addbibresource{src/bibliography.bib}
 
+% Table of contents: show subsections
+\setcounter{tocdepth}{2}
+
 \linespread{1.05}
 \vfuzz=14pt % No more vbox errors all over the place
 
@@ -85,6 +89,12 @@
 \let\colon\relax
 \DeclareMathSymbol{\colon}{\mathrel}{operators}{"3A}
 
+\newcommand{\disj}{\squarecup}
+
+% Disjoint unions over sets
+\renewcommand{\disj}{\amalg}     % Disjoint union
+\newcommand{\bigdisj}{\coprod} % Indexed disjoint union
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ** arrows **
 
@@ -98,7 +108,7 @@
 \newcommand{\epi}{\twoheadrightarrow}
 
 % Unique morphism
-\newcommand{\unique}{\dashrightarrow}
+\newcommand{\unique}{\to}%{\dashrightarrow}
 \newcommand{\xdashrightarrow}[2][]{\ext@arrow 0359\rightarrowfill@@{#1}{#2}}
 
 % Isomorphism symbol
@@ -107,7 +117,7 @@
 % Isomorphism arrow
 \newcommand{\isoto}{\xrightarrow{\raisebox{-.6ex}[0ex][0ex]{\(\sim\)}}}
 
-% diagram isomorphism
+% How isomorphisms are depicted in diagrams: either \sim or \simeq
 \newcommand{\dis}{\iso}
 
 \newcommand{\isounique}{%
@@ -123,13 +133,20 @@
 % Embedding arrow
 \newcommand{\emb}{\hookrightarrow}
 
+% Parallel arrows
+\newcommand{\para}{\rightrightarrows}
+
+% Adjoint arrows
+\newcommand{\adj}{\rightleftarrows}
+
 % Implication
 \renewcommand{\implies}{\Rightarrow}
 
 % Limits
-\renewcommand{\projlim}{\varprojlim}
-\newcommand{\colim}{\varinjlim}
-
+\DeclareMathOperator{\Lim}{lim}     % Limit
+\DeclareMathOperator{\Colim}{colim} % Colimit
+\DeclareMathOperator{\Eq}{eq}       % Equalizer
+\DeclareMathOperator{\Coeq}{coeq}   % Coequalizer
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ** Common collections **
@@ -172,9 +189,18 @@
 \newcommand{\Graph}{{\textbf{Graph}}}      % Graphs
 \newcommand{\SimpGraph}{{\textbf{sGraph}}} % Simple graphs
 \newcommand{\Rng}{{\textbf{Ring}}}         % Rings
+\newcommand{\cRng}{{\textbf{CRing}}}       % Commutative rings
 \newcommand{\Cat}{{\textbf{Cat}}}          % Small categories
 \newcommand{\CAT}{{\textbf{CAT}}}          % Big categories
 \newcommand{\UCat}{{\mathcal{U}\text{-}\textbf{Cat}}} % U-Categories
+\newcommand{\Psh}[1]{{\textbf{Psh}(#1)}}   % Category of presheaves
+\newcommand{\rMod}[1]{{\textbf{Mod}_{#1}}}     % Right modules
+\newcommand{\lMod}[1]{{{}_{#1}\textbf{Mod}}}   % Left modules
+\newcommand{\Mod}[1]{{#1\text{-}\textbf{Mod}}} % Modules over comm. ring
+\newcommand{\Alg}[1]{{#1\text{-}\textbf{Alg}}} % Algebras
+\newcommand{\cAlg}[1]{{#1\text{-}\textbf{CAlg}}} % Commutative algebras
+\DeclareMathOperator{\El}{El}              % Category of elements
+\newcommand{\comma}{\downarrow} % Comma category separator
 
 % Operators
 \DeclareMathOperator{\Hom}{Mor}
@@ -204,8 +230,11 @@
 \DeclareMathOperator{\Alt}{Alt} % Alternating space
 \DeclareMathOperator{\Char}{char}
 \DeclareMathOperator{\Span}{span}
-\DeclareMathOperator{\Inn}{Inn} % Inner automorphisms
+\DeclareMathOperator{\Inn}{Inn}     % Inner automorphisms
+\DeclareMathOperator{\Spec}{Spec}   % Prime spectrum
+\DeclareMathOperator{\Specm}{Spec_m} % Maximal spectrum
 \newcommand{\lie}[1]{\mathfrak{#1}} % Font for Lie structures
+\DeclareMathOperator{\Rees}{Rees}   % Rees algebra
 
 \DeclareMathOperator{\eval}{eval}
 \DeclareMathOperator{\sign}{sign}
@@ -222,7 +251,7 @@
 
 % Symbol for the group of units --- for instance, the group of units of a ring
 % \(R\) will be denoted by \(R^{\unit}\).
-\newcommand{\unit}{*}
+\newcommand{\unit}{\times}
 
 % Ring ideals font
 \newcommand{\ideal}[1]{\mathfrak{#1}}
@@ -231,13 +260,22 @@
 % ** Topology **
 
 % attaching spaces
-\newcommand{\att}{\sqcup}       % Disjoint union
-\newcommand{\bigatt}{\bigsqcup} % Indexed disjoint union
+\newcommand{\att}{\amalg}       % Disjoint union
+\newcommand{\bigatt}{\coprod}   % Indexed disjoint union
 
-% Operators
-\DeclareMathOperator{\Cone}{C}
-\DeclareMathOperator{\Int}{Int}
-\DeclareMathOperator{\Ext}{Ext}
+% Homotopy
+\newcommand{\simht}{\sim_{\text{h}}}
+
+% Functors on topological spaces
+\DeclareMathOperator{\Cone}{C}  % Cone
+\DeclareMathOperator{\Susp}{S}  % Suspension
+\DeclareMathOperator{\rSusp}{S} % Reduced suspension
+
+% Set operators
+\DeclareMathOperator{\Cl}{Cl}       % Closure
+\DeclareMathOperator{\Bd}{\partial} % Boundary
+\DeclareMathOperator{\Int}{Int}     % Interior
+\DeclareMathOperator{\Ext}{Ext}     % Exterior
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ** Differentiable structures **
@@ -245,16 +283,17 @@
 % Norm
 \DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
 
-\newcommand{\diff}{\mathrm{d}} % Differential 'd' symbol
-\newcommand{\Diff}{\mathrm{D}} % Differential 'D' symbol
-
-% Operators
-\DeclareMathOperator{\Vol}{vol}   % Volume
-\DeclareMathOperator{\Mesh}{mesh} % Mesh
+% Differential operators
+\newcommand{\diff}{\mathrm{d}}
+\newcommand{\Diff}{\mathrm{D}}
 \DeclareMathOperator{\grad}{grad} % Gradient
 \DeclareMathOperator{\Hess}{Hess} % Hessian
 \DeclareMathOperator{\Jac}{Jac}   % Jacobian
 \DeclareMathOperator{\Curl}{Curl} % Curl
+
+% Set operators
+\DeclareMathOperator{\Vol}{vol}   % Volume
+\DeclareMathOperator{\Mesh}{mesh} % Mesh
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ** Graphs **

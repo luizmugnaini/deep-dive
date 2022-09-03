@@ -39,9 +39,9 @@ Every open subset of a Hausdorff space is Hausdorff.
 
 \begin{proof}
 Let \(X\) be Hausdorff and \(U \subseteq X\) be an open. Choose any
-distinct pair \(x, y \in U\) and let \(U_x, U_y \subseteq X\) be neighbouhoods
+distinct pair \(x, y \in U\) and let \(U_x, U_y \subseteq X\) be neighbourhoods
 of \(x, y\) such that \(U_x \cap U_y = \emptyset\). Since \(U_x \cap U, U_y
-\cap U \subseteq U\) are neighbouhoods of \(x\) and \(y\), respectively, then
+\cap U \subseteq U\) are neighbourhoods of \(x\) and \(y\), respectively, then
 \((U_x \cap U) \cap (U_y \cap U) = \emptyset\), hence \(U\) is Hausdorff.
 \end{proof}
 
@@ -61,7 +61,7 @@ Let \(X\) be a Hausdorff space. Then
 U_{p_0} = \emptyset\), hence  \(U_p \subseteq X \setminus \{p_0\}\). Since for all
 \(x \in X \setminus \{p_0\}\) there exists a neighbourhood \(U_x
 \subseteq X \setminus \{p\}\), hence \(\{p\}\) must be a closed set (every
-point of \(X \setminus A\) has a neighourhood in \(X \setminus A\) is
+point of \(X \setminus A\) has a neighbourhood in \(X \setminus A\) is
 equivalent of saying that \(A\) is closed).
 
 (b) Suppose that \(x_i \to x\) and \(x_i \to y\) are two limits of the
@@ -74,7 +74,8 @@ for which every \(i \geq M\), we have \(x_i \in U_y\). Then, for \(i \geq
 \(x = y\).
 \end{proof}
 
-\begin{proposition}
+\begin{proposition}[Neighbourhoods of limit points]
+\label{prop:nbhd-limit-pt}
 Let \(X\) be a Hausdorff space and \(A \subseteq X\). If \(p \in X\) is a
 limit point of \(A\), then every neighbourhood of \(p\) contains infinitely
 many points of \(A\).
@@ -88,7 +89,7 @@ points, \(n > 1\), in the set \(U_p \cap A = \{x_i\}_{i=1}^n\), which implies
 that \(U_p \cap A\) is closed. Consider now the non-empty closed set
 \(\{x_i\}_{i=1}^n \setminus \{p\}\), then \(X \setminus (\{x_i\}_{i=1}^n
 \setminus \{p\})\) is open and contains \(p\), thus is a neighbourhood of
-\(p\). Notice that since the insersecition of finitely many open sets is open,
+\(p\). Notice that since the intersection of finitely many open sets is open,
 then \(U_p \cap \left( X \setminus \left( \{x_i\}_{i=1}^n \setminus \{p\}
 \right) \right)\) is also open and is a neighbourhood of \(p\). However, notice
 that
@@ -162,3 +163,7 @@ element, then \(G = \{u \in X \colon u < y\} = \{u \in X \colon u \leq x\}\) and
 \(y\), respectively, and moreover \(G \cap V = \emptyset\). This shows that
 \(X\) is Hausdorff.
 \end{proof}
+
+%%% Local Variables:
+%%% TeX-master: "../../deep-dive"
+%%% End:

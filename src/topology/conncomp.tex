@@ -1,0 +1,1225 @@
+\section{Connected Spaces}
+
+\begin{definition}[Connected space]
+\label{def:connected-space}
+Let \(X\) be a topological space. We say that \(X\) is \emph{connected} if and
+only if one of the following conditions hold:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The space \(X\) cannot be expressed as the union of two disjoint non-empty
+open sets.
+\item Every morphism \(f: X \to \{0, 1\}\) is constant --- where \(\{0, 1\}\) is
+a space endowed with the discrete topology.
+\end{enumerate}
+\end{definition}
+
+\begin{corollary}
+The two conditions in \cref{def:connected-space} are equivalent.
+\end{corollary}
+
+\begin{proof}
+Assume \(X\) satisfies the condition (a), and let \(x \in X\) be any
+point. Suppose \(f(x) = 0\) (or \(f(x) = 1\), we do not loose generality by
+choosing a point of the domain), and consider \(f^{-1}(0) \subseteq X\), which
+must be open from the continuity of \(f\), thus \(f^{-1}(0)\) is a neighbourhood
+of \(x\) in \(X\). If we suppose, for the sake of contradiction, that there
+exists \(y \in X\) such that \(f(y) = 1\), then \(f^{-1}(1)\) is also open and
+is a neighbourhood of \(y\) --- notice however that \(f^{-1}(0) \cap f^{-1}(1) =
+\emptyset\), thus we arrive at a contradiction, there must be no point \(y\)
+with image different than zero.
+
+We prove the counter positive: not (b) implies not (a). Suppose \(f: X
+\to \{0, 1\}\) is not constant, so that there exists two points \(x, y \in X\)
+such that \(f(x) = 0\) and \(f(y) = 1\) (and therefore \(f\) is surjective),
+notice however that, since \(f\) is continous,
+\end{proof}
+
+\begin{definition}[Connected components]
+\label{def:connected-components}
+Let \(X\) be a topological space. Define an equivalence relation \(\sim\) by,
+given \(x, y \in X\), we have \(x \sim y\) if and only if there exists a
+connected subspace of \(X\) containing both \(x\) and \(y\). The collection of
+equivalence classes \(X/{\sim}\) is called \emph{connected components} of \(X\).
+\end{definition}
+
+\begin{definition}[Totally disconnected]
+\label{def:totally-disconnected}
+A space is said to be totally disconnected if the only connected subsets are
+singletons.
+\end{definition}
+
+\begin{example}
+\label{exp:Q-is-totally-disconnected}
+The set of rational numbers \(\Q\) is totally disconnected.
+\end{example}
+
+\begin{notation}[Standard interval]
+From now on, when talking about \emph{paths} and \emph{homotopies}, we shall
+reserve the symbol \(I\) to denote the \emph{standard topological interval},
+which is defined by
+\[
+  I \coloneq [0, 1] \emb \R.
+\]
+\end{notation}
+
+\begin{definition}[Paths \& loops]
+\label{def:path-loop}
+A \emph{path} in a topological space \(X\) is any continuous map \(\gamma: I \to
+X\). A \emph{loop} in \(X\) is a continuous map \(\ell: I \to X\) such that
+\(\ell(0) = \ell(1)\).
+\end{definition}
+
+\begin{definition}[Path connected space]
+\label{def:path-connected}
+A topological space \(X\) is said to be \emph{path connected} if and only if
+for all \(x, y \in X\) there exists a \emph{path} connecting \(x\) and \(y\).
+\end{definition}
+
+\begin{proposition}[Path connected equivalence relation]
+\label{prop:path-connected-equiv-relation}
+There exists an equivalence relation \(\sim\) on the topological \(X\) defined
+by: given \(x, y \in X\), we have \(x \sim y\) if and only if there exists a
+path in \(X\) connecting \(x\) and \(y\).
+\end{proposition}
+
+\begin{proof}
+The constant path \(x: I \to X\) given by \(t \mapsto x\) is a path on \(X\),
+thus \(x \sim x\). Let \(x \sim y\) and \(\gamma\) be a path from
+\(\gamma(0) = x\) to \(\gamma(1) = y\), then we can define a map
+\(\lambda: [0, 1] \to X\) given by \(\lambda(t) \coloneq \gamma(1 - t)\), so
+that \(\lambda\) is both continuous, and \(\lambda(0) = y\) while
+\(\lambda(1) = x\) --- thus \(\lambda\) is a path between \(y\) and \(x\),
+therefore \(y \sim x\). Suppose now \(y \sim z\) and let \(\eta\) be a path
+connecting \(y\) to \(z\). We define a map \(\phi: I \to X\) given by
+\[
+  \phi(t) \coloneq
+  \begin{cases}
+    \lambda(2t), &\text{ for } t \in [0, 1/2] \\
+    \eta(2t - 1), &\text{ for } t \in [1/2, 1]
+  \end{cases}
+\]
+which is surely continuous and connects both \(x\) and \(z\) --- thus \(x \sim
+z\).
+\end{proof}
+
+\begin{definition}[Path connected components]
+\label{def:path-connected-components}
+Let \(X\) be a path connected topological space, and \(\sim\) be the equivalence
+relation described in \cref{prop:path-connected-equiv-relation}. The collection
+\(X/{\sim}\) is called the \emph{path connected components} of the space
+\(X\). We denote the collection of all path components of \(X\) by \(\pi_0(X)\)
+--- the collection of homotopy classes between maps \(* \to X\).
+\end{definition}
+
+\begin{definition}[\(\pi_0\) functor]
+\label{def:pi0-functor}
+The concept of connected components of a space induce a covariant functor
+\(\pi_0: \Top \to \Set\) defined by mapping objects \(X \mapsto \pi_0 X\), and
+morphisms \(f: X \to Y\) to \(\pi_0 f: \pi_0 X \to \pi_0 Y\) --- which is a well
+defined map since, given a path component \(P\) of \(X\), the set \(f(X)
+\subseteq Y\) is connected and therefore contained in a unique path component of
+\(Y\).
+\end{definition}
+
+\begin{theorem}[Morphisms preserve connectivity]
+\label{thm:morphisms-preserve-connectivity}
+Let \(X\) be a (path) connected space and \(f: X \to Y\) be a topological
+morphism. Then \(f(X) \subseteq Y\) is (path) connected.
+\end{theorem}
+
+\begin{proof}
+Suppose that \(f(X)\) is not connected, and let \(g: f(X) \to \{0, 1\}\) be a
+non-constant morphism --- in particular, this is equivalent to the condition of
+\(gf: X \to \{0, 1\}\) being a non-constant morphism, thus implying in the
+non-connectedness of \(X\).
+
+On the other hand, assume now that \(X\) is path connected and let
+\(u, v \in f(X)\) --- define \(x, y \in X\) so that \(f(x) = u\) and
+\(f(y) = v\). Let \(\gamma: I \to X\) be a path connecting \(x\) and \(y\) ---
+then \(f\gamma: I \to f(X)\) is a path connecting \(u\) and \(v\), which proves
+the proposition.
+\end{proof}
+
+\begin{corollary}
+\label{cor:connectedness-top-property}
+Connectedness and path connectedness are both topological properties.
+\end{corollary}
+
+\begin{corollary}
+\label{cor:quotient-path-connected-is-path-connected}
+The quotient of a (path) connected topological space is (path) connected.
+\end{corollary}
+
+\begin{proposition}
+\label{prop:connectivity-quotients}
+Let \(f: X \epi Y\) be a morphism of topological spaces \(X\) and \(Y\). If
+\(Y\) is connected and, for all \(y \in Y\), the fiber \(f^{-1}(y)\) is
+connected, then \(X\) is connected.
+\end{proposition}
+
+\begin{proof}
+Let \(g: X \to \{0, 1\}\) be a morphism. From the connectedness condition on the
+fibers of \(f\), it follows that \(g\) must be constant throughout the fibers of
+\(f\) --- this implies in the existence of a morphism \(g^{*}: Y \to \{0, 1\}\)
+such that \(g = g^{*} f\). Since \(Y\) is connected, \(g^{*}\) must be constant,
+therefore the composition \(g^{*} f\) is constant and so is \(g\) --- that is,
+\(X\) is connected.
+\end{proof}
+
+\begin{proposition}
+\label{prop:union-path-connected}
+Let \(J\) be a set, and consider a collection \((X_j)_{j \in J}\) of (path)
+connected topological spaces. Define the space
+\(X \coloneq \bigcup_{j \in J} X_j\). If the intersection
+\(\bigcap_{j \in J} X_j\) is non-empty, then \(X\) is (path) connected.
+\end{proposition}
+
+\begin{proof}
+Suppose the intersection is non empty and let \(x \in \bigcup_{j \in J}
+X_j\) be any point. We split the proposition into the two given cases.
+
+Suppose \(X_j\) is connected for all \(j \in J\). Let \(f: X \to \{0, 1\}\) be a
+morphism --- we want to show that it has to be constant. Since \(X_j\) is
+connected, it follows that the restriction \(f|_{X_j}\) has to be constant, and,
+since \(x \in X_j\), then \(f(x) = f(y)\) for all \(y \in X_j\). The fact that
+this must be true for all \(X_j\) shows that \(f\) must be constant throughout
+the whole set \(X\).
+
+Suppose \(X_j\) is path connected for all \(j \in J\) --- that is, from
+hypothesis, \(X_j\) is a path connected component of \(X\). We now prove that
+the intersection is connected to each of the path connected components. For each
+\(j \in J\), choose any point \(y \in X_j\). Since \(x \in X_j\), then
+\(x \sim y\) and therefore every point of \(X\) is connected by a path.
+\end{proof}
+
+\begin{theorem}
+\label{thm:connected-interval-real-space}
+In the real space \(\R\), the only connected sets are intervals and singletons.
+\end{theorem}
+
+\begin{proof}
+If \(A\) is not an interval, there must exist a pair \(x, y \in A\) for which
+there is \(z \notin A\) with \(x < z < y\). This way, we can write \(A\) as the
+union of two disjoint non-empty sets:
+\(A = [A \cap (-\infty, z)] \cup [A \cap (z, \infty)]\) --- that is, \(A\) is
+disconnected.
+
+We now show that intervals are connected. For the sake of contradiction, assume
+there exists an interval \(I\) such that there are disjoint and non-empty sets
+\(A\) and \(B\) for which \(I = A \cup B\) --- that is, we assume \(I\) is
+disconnected. Let \(x, y \in I\) be any two elements with \(x < y\) and
+\(x \in A\), while \(y \in B\). By the archimedian principle, valid in \(\R\),
+since the set \(C \coloneq [x, y) \cap A\) is both non-empty and bounded above,
+thus \(C\) has a supremum, let \(s \coloneq \sup C\) --- where \(x < s \leq
+y\). Notice that \(s \notin A\), since if so then \(s\) would not be the
+supremum of \(C\), therefore \(s \in B\) --- which also cannot be the case,
+since \(s\) would not, again, be the supremum of \(C\). We conclude that the
+sets \(A\) and \(B\) cannot be constructed at all, hence there is no
+disconnected interval in \(\R\).
+\end{proof}
+
+\begin{proposition}
+\label{prop:path-connected-is-connected}
+Any path connected space is connected.
+\end{proposition}
+
+\begin{proof}
+Let \(X\) be a path connected space and \(f: X \to \{0, 1\}\) be any continuous
+map. Let \(x, y \in X\) be any two points. Since \(X\) is path connected, there
+exists a path \(\gamma: I \to X\) between \(x\) and \(y\). From the hypothesis
+that \(f\) is continuous, \(f\) must be continous on \(\gamma(I)\), therefore
+constant. Notice that, since this is true for all points of \(X\) we find that
+\(f(x) = f(y)\) for all \(x, y \in X\).
+\end{proof}
+
+\begin{proposition}
+\label{prop:path-conn-htpy-invariant}
+Connectedness and path connectedness are \emph{homotopy invariants}.
+\end{proposition}
+
+\begin{proof}
+Let \(f: X \isoto Y\) be a homotopy equivalence, and \(g: Y \isoto X\) be its
+homotopy inverse --- furthermore, consider a homotopy \(h: fg \to \Id_Y\).
+
+Suppose \(X\) is connected, we shall prove that \(Y\) is connected. Let
+\(k: Y \to \{0, 1\}\) be any continuous map and \(y, y' \in Y\) be any two
+points. Since \(X\) is connected, in particular the map \(k f: X \to \{0, 1\}\)
+is constant --- therefore, \(k f g(y) = k f g(y')\). Since \(h\) is a homotopy,
+then the induced maps \(h(y, -), h(y', -): I \para Y\) are such that
+\(h(y, 0) = f g(y)\) and \(h(y, 1) = y\), while \(h(y', 0) = f g(y')\) and
+\(h(y', 1) = y'\). We conclude that \(h(y, -)\) is a path from \(fg(y)\) to
+\(y\) and \(h(y', -)\) is a path from \(fg(y')\) to \(y'\). Since \(k\) is
+continuous, it follows that \(k f g(y) = k(y)\) and \(kfg(y') = k(y')\). Finally
+we obtain \(k(y) = k(y')\), showing that \(k\) is constant.
+
+Suppose \(X\) is path connected. Then \(f(X)\) is path connected and therefore
+\(k\) must be constant in every point of \(f(X)\). Now, if
+\(y \in Y \setminus f(X)\), we consider the induced map \(h(y, -): I \para Y\)
+--- which is a path from \(fg(y) \in f(X)\) to \(y\). Therefore, every point of
+\(Y \setminus f(X)\) can be connected by a path to a point of \(f(X)\), proving
+that \(Y\) itself is path connected.
+\end{proof}
+
+\begin{proposition}[Products preserve connectedness]
+\label{prop:products-preserve-connectedness}
+Let \((X_{j})_{j \in J}\) be a collection of (path) connected topological
+spaces. Then \(\prod_{j \in J} X_j\) is (path) connected.
+\end{proposition}
+
+\begin{proof}
+Lets define the notation \(X \coloneq \prod_{j \in J} X_j\).
+
+Suppose \((X_j)_{j \in J}\) is composed of connected spaces. Let
+\(k: X \to \{0, 1\}\) be any continuous map. For every \(j_0 \in J\), let
+\(p \in \prod_{j \in J \setminus j_0} X_j\) be any point --- which, from
+construction, excludes the \(j_0\)-th coordinate from the original product space
+\(X\). Consider the continuous map \(\iota_{j_0}: X_{j_0} \to X\) for which
+\(\pi_j \iota_{j_0}(x) \coloneq \pi_j(p)\) for \(j \neq j_0\) and
+\(\pi_{j_0}\iota_{j_0}(x) \coloneq x\) --- that is, \(\iota_{j_0}\) embedds
+\(X_{j_0}\) in \(X\) where every coordinate, but \(j_0\), is fixed using the
+pre-chosen point \(p\). Since \(k\) is continuous and \(X_j\) is connected, the
+continuous map \(k \iota_{j_0}: X_j \to \{0, 1\}\) has to be constant. Now, if
+we take any pair of points \(x, y \in X\), one sees that \(k(x) = k(y)\) from
+the fact that \(k \iota_j\) has to be constant for all \(j \in J\) --- for the
+suitable choice of inicial fixed point.
+
+Suppose \((X_j)_{j \in J}\) is a collection of path connected spaces. Let
+\(x, x' \in X\) be any two elements. For each \(j \in J\), let
+\(\gamma_j: I \to X\) be a path connecting \(\gamma_j(x)\) to
+\(\gamma_j(x')\). By the universal property of the product topology, there
+exists a unique continuous map \(\gamma: I \to X\) such that
+\(\pi_j \gamma = \gamma_j\) for every \(j \in J\). Since the product of the
+paths, \(\gamma\), is a path from \(x\) to \(x'\), we conclude that \(X\) is
+path connected.
+\end{proof}
+
+\begin{theorem}
+\label{thm:connected-iff-cov-preserves-coprod}
+A space \(X\) is \emph{connected} if and only if the covariant functor
+\(\Hom_{\Top}(X, -)\) \emph{preserves coproducts}.
+\end{theorem}
+
+\section{Compact Spaces}
+
+\begin{definition}[Compact space]
+\label{def:compact-space}
+A topological space \(X\) is said to be \emph{compact} if for \emph{every} open
+cover there exists a \emph{finite subcover}.
+\end{definition}
+
+\begin{proposition}[Image of compact space]
+\label{prop:image-of-compact-is-compact}
+If \(f: X \to Y\) is a topological morphism and \(X\) is compact, then \(f(X)\)
+is compact in \(Y\).
+\end{proposition}
+
+\begin{proof}
+Let \(\mathcal{C}\) be an open cover of \(f(X)\). Consider the preimage
+collection \(\mathcal{U} \coloneq \{f^{-1}(V)\}_{V \in \mathcal{C}}\), which by
+construction covers \(X\). Since \(X\) is compact, let \(\mathcal{U}'\) be the
+finite subcover given by \(\mathcal{U}\). If we now consider the image
+collection \(\mathcal{C}' \coloneq \{f(U)\}_{U \in \mathcal{C}'}\), we find that
+\(\mathcal{C}'\) covers \(f(X)\) and is contained in \(\mathcal{C}\), therefore
+a finite subcover.
+\end{proof}
+
+\begin{corollary}
+\label{cor:compactness-topological-invariant}
+Compactness is an \emph{invariant} property of topological spaces.
+\end{corollary}
+
+\begin{corollary}
+\label{cor:quotient-of-compact-space-is-compact}
+The quotient of a compact space is compact.
+\end{corollary}
+
+\begin{proof}
+Since any quotient space is the image of a continuous projection, the
+proposition follows from \cref{prop:image-of-compact-is-compact}.
+\end{proof}
+
+\begin{proposition}[Closed subset is compact]
+\label{prop:closed-subset-compact}
+In a compact space any closed subset is compact.
+\end{proposition}
+
+\begin{proof}
+Let \(X\) be a space and \(A \subseteq X\) any closed subset. If \(\mathcal{U}\)
+is an open cover of \(A\), then \(\mathcal{U} \cup \{X \setminus A\}\) is a
+cover of \(X\). Moreover, since \(X\) is compact, there exists a finite subcover
+\(\mathcal{U}' \subseteq \mathcal{U} \cup \{X \setminus A\}\). In particular,
+since \(\mathcal{U}'\) covers \(X\), it also covers \(A\).
+\end{proof}
+
+\subsection{Checking if a Space is Compact}
+
+\begin{definition}[Finite intersection property]
+\label{def:finite-intersection-property}
+A collection of sets \(\mathcal{A}\) is said to satisfy the
+\emph{finite intersection property} if and only if for every finite collection
+\(\{A_1, \dots, A_n\} \subseteq \mathcal{A}\), we have
+\(\bigcap_{j=1}^n A_j \neq \emptyset\), that is, the intersection is non-empty
+\end{definition}
+
+\begin{proposition}
+\label{prop:compact-iff-FIP}
+A space is compact if and only if every collection of closed subsets satisfying
+the finite intersection property has non-empty intersection.
+\end{proposition}
+
+\begin{proof}
+Let \(X\) be a compact space and \(\mathcal{C}\) be any collection of closed
+subsets satisfying the finite intersection property. Suppose, for the sake of
+contradiction, that \(\mathcal{C}\) has an empty intersection --- thus the
+complement of the intersection covers \(X\). Hence there must exist a finite
+collection \(\{A_1, \dots, A_n\} \subseteq \mathcal{C}\) whose corresponding
+complement covers \(X\) and therefore
+\(\bigcup_{j=1}^n (X \setminus A_j) = X \setminus \big( \bigcap_{j=1}^n A_j \big)
+= X\) --- then \(\bigcap_{j=1}^n A_j = \emptyset\), which contradicts the
+hypothesis that \(\mathcal{C}\) satisfies the finite intersection property.
+
+Suppose that the latter condition is true. Suppose there exists an open cover
+\(\mathcal{U}\) of \(X\) that has no finite subcover. In particular, the
+collection \(\mathcal{U}' \coloneq \{X \setminus U : U \in \mathcal{U}\}\) is
+composed of closed sets and satisfies the finite intersection property --- thus
+\(\bigcup_{U \in \mathcal{U}} (X \setminus U) = X \setminus \big( \bigcap_{U \in
+  \mathcal{U}} U \big) = X\), which immediately implies that the intersection of
+\(\mathcal{U}\) is empty, yielding a contradiction. Hence \(\mathcal{U}\) must
+have a finite subcover.
+\end{proof}
+
+\begin{lemma}[Non-empty countable intersection]
+\label{lem:cpct-countable-intersection-nested-non-empty}
+Let \(X\) be a compact space and \(\{C_j\}_{j \in \N}\) be a countable
+collection of non-empty subsets of \(X\) for which \(C_{j+1} \subseteq C_j\) for
+every \(j \in \N\) --- that is, the sets are nested. Then the countable
+intersection \(\bigcap_{j \in \N} C_j\) is non-empty.
+\end{lemma}
+
+\begin{proof}
+\todo[inline]{Prove, this is an exercise}
+\end{proof}
+
+\begin{definition}[Proper map]
+\label{def:proper-Top}
+A continuous map \(f: X \to Y\) is said to be \emph{proper} if for all compact
+sets \(C \subseteq Y\) the preimage \(f^{-1}(C) \subseteq X\) is compact.
+\end{definition}
+
+\begin{theorem}
+\label{thm:hausdorff-compact-set-disjoint-neighbourhoods}
+Let \(X\) be a Hausdorff space and \(x \in X\) any point. For every compact set
+\(K \subseteq X \setminus \{x\}\) there exists two disjoint open sets \(U\) and
+\(V\) such that \(x \in U\) and \(K \subseteq V\).
+\end{theorem}
+
+\begin{proof}
+Since \(X\) is Hausdorff and \(x \notin K\), for any \(k \in K\) there exists
+disjoint neighbourhoods \(U_x\) and \(V_k\) of \(x\) and \(k\),
+respectively. Let \(\{V_{k}\}_{k \in K}\) be a collection of such neighbourhoods
+--- which is also an open cover of \(K\). Since \(K\) is compact, there exists a
+finite collection of points such that \(\{V_{k_1}, \dots, V_{k_n}\}\) is a
+finite subcover. Defining \(V \coloneq \bigcup_{j=1}^n V_{k_j}\) and
+\(U \coloneq \bigcup_{j=1}^n U_{k_j}\), we find that \(K \subseteq V\) and
+\(x \in U\).
+\end{proof}
+
+\begin{corollary}[Hausdorff compact subsets]
+\label{cor:hausdorff-compact-subset-is-closed}
+Any \emph{compact} subset of a Hausdorff space is \emph{closed}.
+\end{corollary}
+
+\begin{proof}
+If \(X\) is Hausdorff and \(C \subseteq X\) is a compact set, let
+\(x \in X \setminus C\) be any point. From
+\cref{thm:hausdorff-compact-set-disjoint-neighbourhoods} we know the existence
+of a neighbourhood \(U\) of \(x\) that is disjoint from \(K\) --- thus
+\(U \subseteq X \setminus C\) and hence \(C\) is closed.
+\end{proof}
+
+\begin{corollary}[Maps from compact to Hausdorff spaces]
+\label{cor:map-compact-to-hausdorff-is-closed}
+Let \(X\) be compact and \(Y\) Hausdorff. Every continuous map \(f: X \to Y\) is
+\emph{closed} and \emph{proper}. Moreover, the following are consequential
+properties:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item If \(f\) is injective, then it is an \emph{embedding}.
+\item If \(f\) is surjective, then it is a \emph{quotient map}.
+\item If \(f\) is bijective, then it is an \emph{isomorphism}.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+We first prove that \(f\) is closed. Let \(C \subseteq X\) be any closed set of
+\(X\), which is therefore compact. From \cref{prop:image-of-compact-is-compact}
+we find that \(f(C)\) is compact and from
+\cref{cor:hausdorff-compact-subset-is-closed} we have that \(f(C)\) is closed.
+
+Now we prove that \(f\) is proper. Let \(K \subseteq Y\) be any compact set and
+consider the preimage \(f^{-1}(K)\). Since \(Y\) is Hausdorff, as pointed
+before, \(K\) is closed. Now since \(f\) is continuous, the preimage of closed
+sets is closed --- hence \(f^{-1}(K)\) is closed. From the fact that \(X\) is
+compact, we conclude that \(f^{-1}(K)\) is compact. For the last three
+consequences, they come from \cref{prop:map-open-or-closed-properties}.
+\end{proof}
+
+\begin{lemma}[Tube lemma]
+\label{lem:tube-lemma}
+Let \(X\) be any space and \(Y\) be compact. For every \(x \in X\) and open set
+\(U \subseteq X \times Y\) containing \(\{x\} \times Y\), there exists a
+neighbourhood \(V \subseteq X\) of \(x\) such that \(V \times Y \subseteq U\).
+\end{lemma}
+
+\begin{proof}
+Since the product of open sets form a basis for the product topology, for every
+\(y \in Y\) there exists a neighbourhood \(V \times W \subseteq U\) of
+\((x, y)\). Since \(\{x\} \times Y \iso Y\) and \(Y\) is compact, then
+\(\{x\} \times Y\) is compact and therefore must exist a finite collection
+\(\{V_j \times W_j\}_{j=1}^n\) of open sets of \(X \times Y\) covering
+\(\{x\} \times Y\). Then if \(V \coloneq \bigcap_{j=1}^n V_j\) we find that
+\(V \times Y \subseteq U\).
+\end{proof}
+
+\begin{theorem}[Closed projection]
+\label{prop:compact-iff-projection-closed}
+Given topological spaces \(X\) and \(Y\), the space \(X\) is compact if and only
+if the canonical projection \(\pi: X \times Y \epi Y\) is closed.
+\end{theorem}
+
+\begin{proof}
+Suppose \(X\) is compact, then if \(C \subseteq X \times Y\) is any closed set,
+let \(y \in Y \setminus \pi(C)\) be any point --- we shall show that there
+exists a neighbourhood of \(y\) outside of \(\pi(C)\). Consider the open set
+\(U \coloneq X \times (Y \setminus \pi(C))\), which certainly contains
+\(X \times \{y\}\). From \cref{lem:tube-lemma}, we find a neighbourhood
+\(V \subseteq Y\) of \(y\) such that \(X \times V \subseteq U\), that is,
+\(V \subseteq Y \setminus \pi(C)\), which settles that \(\pi(C) \subseteq Y\) is
+closed.
+
+Suppose now that \(X\) is a space such that \(\pi: X \times Y \epi Y\) is closed
+for any space \(Y\). Let \(\mathcal{C}\) be any collection of closed subsets of
+\(X\) satisfying the finite intersection property --- we'll show that
+\(\bigcap_{C \in \mathcal{C}} C\) is non-empty. Define \(Y\) to be the space to
+consisting of the underlying set \(X \cup \{*\}\) for some point \(*\) and the
+topology given by \(2^X\) and \(\{C \cup \{*\} \colon C \in \mathcal{C}\}\). Let
+\(K \subseteq X \times Y\) be the closure of the diagonal of \(X\) --- that is,
+\(K \coloneq \Cl \Delta_X\). From hypothesis, \(\pi(K) \subseteq Y\) is
+closed and from construction \(X \subseteq \pi(K)\).
+
+We now show that \(* \in \pi(K)\). Suppose on the contrary that
+\(* \notin \pi(K)\). Since \(\pi(K)\) is closed, we can find a neighbourhood
+\(V \subseteq Y \setminus \pi(K)\) of \(*\) --- and therefore
+\(V \cap X = \emptyset\). From the construction of the topology of \(Y\), one
+could only hope to write \(V\) as the intersection of finitely many sets of the
+form \(C \cup \{*\}\) for \(C \in \mathcal{C}\) --- on the other hand, since
+\(\mathcal{C}\) satisfies the finite intersection property, for any finite
+collection of sets of \(\mathcal{C}\) one can find \(x \in X\) such that
+\(x \in C_1 \cap \dots \cap C_n\), therefore
+\((C_1 \cup \{*\}) \cap \dots \cap (C_n \cup \{*\})\) still contains a point of
+\(X\). This shows that it is impossible to build \(V\) out of such sets ---
+hence we obtain a contradiction and thus \(* \in \pi(K)\) and there exists
+\((x_0, *) \in K\) for some \(x_0 \in X\).
+
+For every \(C \in \mathcal{C}\), any neighbourhood \(U \times (C \cup \{*\})\)
+of \((x_0, *)\) has a non-empty intersection with the diagonal \(\Delta_X\) ---
+thus \(C \cap U\) is non-empty. Moreover, \(x_0 \in C\) for all
+\(C \in \mathcal{C}\), otherwise, since \(C\) is closed, one can find a
+neighbourhood \(U \subseteq X \setminus C\) of \(x_0\), which should not be
+possible. Therefore \(x_0 \in \bigcap_{C \in \mathcal{C}} C\) and by
+\cref{prop:compact-iff-FIP} we conclude that \(X\) is compact.
+\end{proof}
+
+\subsection{Tychonoff Theorem}
+
+\begin{lemma}
+\label{lem:tychonoff-theorem-pre-lemma}
+Let \(J\) be a set, and \((X_{j})_{j \in J}\) be a collection of topological
+spaces. For any point \(x \in \prod_{j \in J} X_j\) and subset
+\(A \subseteq \prod_{j \in J} X\) of the product space, we have \(x \in \Cl A\)
+if, for every finite \(F \subseteq J\), we have \(\pi_F(x) \in \Cl(\pi_F(A))\)
+--- where \(\pi_F: \prod_{j \in J} X_j \epi \prod_{j \in F} X_j\) is the
+canonical projection map.
+\end{lemma}
+
+\begin{proof}
+Suppose, on the contrary, that \(x \notin \Cl A\) --- then there exists a
+neighbourhood \(U \subseteq \prod_{j \in J} X_j\) of \(x\) which is disjoint
+from \(A\). From the definition of the product topology, the collection of
+preimages \(\pi_j(U_j)\) for open sets \(U_j \subseteq X_j\) form a sub-basis of
+the product space. In particular, from the basis properties, this allows for the
+existence of an open set \(V \coloneq U_{j_1} \times \dots \times U_{j_n}\) such
+that, denoting \(F \coloneq \{j_1, \dots, j_n\} \subseteq J\), the basis element
+\(\pi^{-1}_F(V)\) of the product space is a neighbourhood of \(x\) and
+\(\pi_F^{-1}(V) \subseteq U\). Therefore \(\pi_F^{-1}\) and \(A\) are disjoint,
+which is equivalent to
+\[A \subseteq \bigg( \prod_{j \in J} X_j \bigg) \setminus \pi_F^{-1}(V) =
+\pi_F^{-1}\bigg( \prod_{j \in F} X_j \setminus V \bigg)
+\]
+that is, \(\pi_F(A) \subseteq \big( \prod_{j \in F} X_j \big) \setminus
+V\). Since \(V\) is a neighbourhood of \(\pi_F(x)\) which is disjoint from
+\(\pi_F(A)\) we conclude, by \cref{prop: closure equivalent prop}, that
+\(\pi_F(x) \notin \Cl(\pi_F(A))\) --- which proves the lemma.
+\end{proof}
+
+\begin{theorem}[Tychonoff]
+\label{thm:tychonoff-theorem}
+The Cartesian product of a \emph{set} of compact topological spaces, endowed
+with the product topology, is compact.
+\end{theorem}
+
+\begin{proof}
+Denote by \(\{X_{\alpha}\}_{\alpha < \kappa}\) a collection of compact spaces
+indexed by an ordinal \(\kappa\). We now show via induction on \(\kappa\) that,
+for any space \(Y\), the canonical projection
+\(Y \times \prod_{\alpha < \kappa} X_{\alpha} \epi Y\) is closed.
+
+For the ease of notation we define
+\(X^{\gamma} \coloneq Y \times \prod_{\alpha < \gamma} X_{\alpha}\) for all
+\(\gamma \leq \kappa\) --- moreover for \(\lambda \leq \gamma\) we denote by
+\(\pi_{\lambda}^{\gamma}: X^{\gamma} \epi X^{\lambda}\) the canonical projection
+between such spaces. We also define that if \(C \subseteq X^{\kappa}\) is a
+\emph{closed} set, then \(C_{\lambda} \coloneq \Cl(\pi_{\lambda}^{\kappa}(C))\)
+--- thus our goal is equivalent of showing that \(\pi_0^{\kappa}(C) = C_0\).
+
+Assume as inductive hypothesis that for all \(x_0 \in C_0\) there exists
+\(x_{\lambda} \in C_{\lambda}\) for every \(\lambda < \kappa\) such that, if
+\(\lambda < \gamma < \kappa\), then
+\[
+\pi_{\lambda}^{\gamma}(x_{\gamma}) = x_{\lambda},
+\]
+and in particular \(\pi_0^{\lambda}(x_{\lambda}) = x_0\). Again, equivalent to
+our goal is to show that \(\pi_0^{\kappa}(x_{\kappa}) = x_0\).
+
+If \(\kappa = \lambda + 1\) is a successor ordinal, then the projection
+\(\pi_{\lambda}^{\kappa}: X^{\lambda} \times X_{\lambda} \epi X^{\lambda}\) is
+closed from the fact that \(X_{\lambda}\) is compact, by
+\cref{prop:compact-iff-projection-closed}. In particular,
+\(\pi_{\lambda}^{\kappa}(C) \subseteq X^{\lambda}\) is closed and, by the
+inductive hypothesis, \(\pi_{\lambda}^{\kappa}(C) = C_{\lambda}\) --- thus there
+exists \(x_{\kappa} \in K\) for which
+\(\pi_{\lambda}^{\kappa}(x_{\kappa}) = x_{\lambda}\), hence
+\[
+\pi_0^{\kappa}(x_{\kappa})
+= \pi_0^{\lambda} \pi_{\lambda}^{\kappa}(x_k)
+= \pi_0^{\lambda}(x_{\lambda})
+= x_0,
+\]
+which was out goal.
+
+Now, if \(\kappa\) is a limit ordinal, then
+\(X^{\kappa} = \Lim_{\lambda < \kappa} X^{\lambda}\) together with
+transitions maps \(\pi_{\lambda}^{\gamma}\). The limit of the tuple
+\((x_{\lambda})_{\lambda < \kappa}\) defines a point
+\(x_{\kappa} \in X^\kappa\), we wish to show that \(x_{\kappa} \in C\). For
+every finite set of ordinals \(F\) below \(\kappa\) there exists
+\(\lambda < \kappa\) above all ordinals of \(F\), therefore
+\[
+\pi_F(x_{\kappa})
+= \pi_F^{\lambda}\pi_{\lambda}^{\kappa}(x_{\kappa})
+= \pi_F^{\lambda}(x_{\lambda}).
+\]
+Moreover \(\pi_F^{\lambda}(x_{\lambda}) \in \pi_F^{\lambda}(C_{\lambda})\),
+where from definition \(C_{\lambda} =
+\Cl(\pi_{\lambda}^{\kappa}(C))\). Since \(\pi_F^{\lambda}\) is a
+continuous map,
+\[
+\pi_F^{\lambda}(C_{\lambda})
+= \pi_F^{\lambda}(\Cl(\pi_{\lambda}^{\kappa}(C)))
+\subseteq \Cl(\pi_F^{\lambda} \pi_{\lambda}^{\kappa}(C))
+= \Cl(\pi_F(C)).
+\]
+This shows that \(\pi_F(x_{\kappa}) \in \Cl(\pi_F(C))\), which by
+\cref{lem:tychonoff-theorem-pre-lemma} shows that \(\pi(C)\) is closed.
+\end{proof}
+
+\subsubsection{Applications to Real \& Metric spaces}
+
+\begin{lemma}[Closed intervals are compact]
+\label{lem:closed-interval-is-compact}
+Every closed and bounded interval in \(\R\) is compact.
+\end{lemma}
+
+\begin{proof}
+Consider a closed interval \([a, b]\) in \(\R\) and let \(\mathcal{U}\) be a
+cover for \([a, b]\). Define \(S\) to be the set of all points \(x \in [a, b]\)
+for which the interval \([a, x]\) is covered by finitely many sets of
+\(\mathcal{U}\) --- since there must exist a set \(U \in \mathcal{U}\) for
+which \(a \in U\), then \(a \in S\). Since \(S\) is non-empty, by the
+least upper bound property one can define a point \(x_0 \coloneq \sup S\).
+
+Let \(U_0 \in \mathcal{U}\) be a set containing \(x_0\) and let
+\(\varepsilon > 0\) be such that \((x_0 - \varepsilon, x_0] \subseteq
+U_0\). Since \(x_0\) is the supremum of \(S\), there must also exist \(x \in S\)
+such that \(x \in (x_0 - \varepsilon, x_0]\) --- that is, the interval
+\([a, x_0]\) can be covered by finitely many sets of \(\mathcal{U}\), say
+\([a, x_0] \subseteq U_0 \cup U_1 \cup \dots \cup U_n\), therefore
+\(x_0 \in S\). If, for the sake of contradiction, \(x_0 < b\), then by the fact
+that \(U_0\) is an open set, there must exist \(x \in U_0\) with \(x > x_0\) and
+yet \(x \in [a, b]\) --- which implies that
+\([a, x] \subseteq \bigcup_{j=0}^n U_j\) and therefore \(x_0\)
+isn't the supremum of \(S\), leading to a contradiction. Thus \(x_0 = b\) and
+hence \([a, b] \subseteq \bigcup_{j=0}^n U_j\) --- which proves the
+proposition.
+\end{proof}
+
+\begin{corollary}[Heine-Borel]
+\label{cor:heine-borel}
+A subset of \(\R^n\) is compact if and only if it is both closed and bounded.
+\end{corollary}
+
+\begin{proof}
+Let \(K \subseteq \R^n\) be a compact set. If we let \(\mathcal{U}\) be the
+cover of \(\R^n\) by open balls centred at the origin --- with any real radius
+--- in particular \(\mathcal{U}\) will be a cover for \(K\) and since \(K\) is
+compact, there exists a finite subcover \(\mathcal{U}\) covering \(K\). From
+this we conclude that there are only finitely many balls of real radius that
+cover \(K\) --- hence \(K\) is necessarily bounded. From the Hausdorffness of
+\(\R^n\), we obtain from \cref{cor:hausdorff-compact-subset-is-closed} that
+\(K\) is closed.
+
+On the other hand, let \(C \subseteq \R^n\) be a closed and bounded set. Since
+\(C\) is a bounded set, its projection into each coordinate must also be
+bounded, therefore one can obtain a collection of intervals
+\(([a_j, b_j])_{j=1}^n\) in \(\R\) for which
+\[
+C \subseteq \prod_{j=1}^n [a_j, b_j].
+\]
+From \cref{lem:closed-interval-is-compact} we know that each \([a_j, b_j]\) is
+compact --- thus by \cref{thm:tychonoff-theorem} we conclude that
+\(\prod_{j=1}^n [a_j, b_j]\) is compact, but since \(C\) is a closed subset of a
+compact set, by \cref{prop:closed-subset-compact} we find that \(C\) is compact.
+\end{proof}
+
+\begin{corollary}[Extreme values on compact sets]
+\label{cor:extreme-values-on-compact-sets}
+Let \(X\) be a compact space and \(f: X \to \R\) be a continuous map. Then \(f\)
+is \emph{bounded} and attains its \emph{maximum} and \emph{minimum} values on
+\(X\).
+\end{corollary}
+
+\begin{proof}
+Since \(f(X) \subseteq \R\) is compact, then by \cref{cor:heine-borel} we obtain
+that \(f(X)\) is both closed and bounded --- thus in particular \(f(X)\)
+contains its supremum and infimum.
+\end{proof}
+
+We can even extend \cref{cor:heine-borel} to a more general context,
+encompassing all metric spaces --- this is what the following proposition does.
+
+\begin{proposition}
+\label{prop:metric-space-compact-implies-bounded-closed}
+In any metric space \(X\), if \(A \subseteq X\) is \emph{compact} then \(A\) is
+both \emph{bounded} and \emph{closed} in \(X\).
+\end{proposition}
+
+\begin{proof}
+Since every metric space is Hausdorff, \(A\) is closed by
+\cref{cor:hausdorff-compact-subset-is-closed}. Moreover, if \(x \in A\) is any
+point, we find that the collection of open balls
+\(\mathcal{B}_x \coloneq \{B_x(n)\}_{n \in \N}\) forms an open cover of \(A\)
+and, since \(A\) is compact, there exists a finite subcover of
+\(\mathcal{B}_x\). Therefore there exists a maximal \(m \in \N\) for which
+\(A \subseteq B_x(m)\) --- thus \(A\) is bounded.
+\end{proof}
+
+\begin{remark}
+\label{rem:closed-and-bounded-not-compact}
+Notice that a bounded and closed set in a metric space does \emph{not} need to
+be compact, for instance, consider the space \(\ell^2(\N)\) (see
+\cref{exp:p-norms}) and the subset \(A \coloneq \{f_n\}_{n \in \N}\) composed of
+sequences \(f_n \in \ell^2(\N)\) such that \(f_n(j) \coloneq \delta_{n j}\) ---
+that is, sequences where the only non-zero term is the \(n\)-th one, which equals
+\(1\). Clearly \(A\) is bounded since \(\| f_{n} \|_2 = 1\), moreover, \(A\) is
+closed because it has no limit points. However, since no subset of \(A\)
+contains a limit point of \(A\), we find that \(A\) is not limit point compact
+--- thus not compact (see \cref{thm:metric-2d-ctbl-hausdorff-equiv-compactness}).
+\end{remark}
+
+\subsubsection{Tychonoff \& The Axiom of Choice}
+
+\begin{theorem}[Tychonoff \& Choice]
+\label{thm:tychonoff-equivalent-choice}
+Tychonoff's theorem is \emph{equivalent} to the axiom of choice.
+\end{theorem}
+
+\todo[inline]{Prove}
+
+\subsection{Examples of Explicit Isomorphisms}
+
+\begin{example}[Torus \(T^2\)]
+\label{exp:T2-isomorphic-S1*S1}
+The \(2\)-torus \(T^2\) is defined as the quotient
+\(T^2 \coloneq (I \times I)/{\sim}\) where \(\sim\) is the smallest equivalence
+relation on \(I \times I\) for which \((0, t) \sim (1, t)\) and
+\((s, 0) \sim (s, 1)\) for all \(t, s \in I\). Let's prove that there exists a
+topological isomorphism
+\[
+T^2 \iso S^1 \times S^1.
+\]
+
+First, lets consider the interval \(I\) and the equivalence relation
+\(0 \sim_1 1\) so that \(I/{\sim_1}\) is just the interval with its ends glued to
+a common point. Consider the morphism \(f: I \epi S^1\) given by
+\(t \mapsto (\cos(2 \pi t), \sin(2 \pi t))\) and notice that \(f(1) = f(0) = 1\)
+--- that is, \(f\) is constant on the fibers of the canonical projection
+\(\pi: I \epi I/{\sim_1}\) --- moreover, \(f\) is certainly surjective since
+cosine and sine are both maps of period \(2 \pi\). By
+\cref{thm:universal-property-quotient-topology} we find a unique morphism
+\(g: I/{\sim_1} \to S^1\) such that the following diagram commutes
+\[
+\begin{tikzcd}
+I \ar[d, two heads] \ar[rd, bend left, "f"] & \\
+I/{\sim_1} \ar[r, dashed, "\dis", "g"']     &S^1
+\end{tikzcd}
+\]
+Notice that besides \(g\) being surjective, given \([t], [s] \in I/{\sim_1}\)
+such that \(g([t]) = g([s])\) then \(t - s \in \Z\) since cosine and sine have a
+period of \(2 \pi\) --- but since \(s, t \in I\), this can only be the case if
+\(t = s\), thus \(g\) is injective. We therefore conclude that \(g\) is a
+bijective map. Since \(I\) is compact, by
+\cref{cor:quotient-of-compact-space-is-compact} we know that \(I/{\sim_1}\) is
+compact. Moreover, the inclusion map \(S^1 \emb \R^2\) is continuous and induces
+the subspace topology on \(S^1\) --- since \(\R^2\) is Hausdorff, then \(S^1\)
+is Hausdorff. Therefore \(g\) is a bijective map from a compact space
+\(I/{\sim_1}\) to a Hausdorff space \(S^1\), which by
+\cref{cor:map-compact-to-hausdorff-is-closed} is an isomorphism.
+
+Therefore, we find a unique isomorphism
+\(g \times g: T^2 \isoto S^1 \times S^1\) such that the following diagram
+commutes
+\[
+\begin{tikzcd}
+I \times I \ar[d, two heads] \ar[rd, bend left, "f \times f"] & \\
+T^2 \ar[r, dashed, "\dis", "g \times g"']                     &S^1 \times S^1
+\end{tikzcd}
+\]
+which proves the isomorphism.
+
+Let \(\R^2 \times \Z^2 \to \R^2\) be a group action of \(\Z^2\) on \(\R^2\)
+given by
+\[
+((x, y), (n, m)) \mapsto (x + n, y + m),
+\]
+then the quotient of \(\R^2\) by such group action, which we'll denote by
+\(\R^2/\Z^2\) is such that there exists a topological isomorphism
+\[
+T^2 \iso \R^2/\Z^2.
+\]
+Indeed, one sees right away that \(\R^2/\Z \iso (I \times I)/{\sim}\), where we
+map \((x, y) + \Z^2 \mapsto (x - \lfloor x \rfloor, y - \lfloor y \rfloor)\) is
+the explicit isomorphism. For free we then obtain an isomorphism
+\[
+S^1 \times S^1 \iso \R^2/\Z^2.
+\]
+\end{example}
+
+% \begin{example}
+% \label{exp:bicone}
+% Consider the space \((I \times I)/{\sim}\) where \(\sim\) is the smallest
+% equivalence relation on \(I \times I\) such that \((0, t) \sim (1 - t, 1)\) and
+% \((s, 0) \sim (1, 1 - s)\) for every \(t, s \in I\). We'll prove that there
+% exists an isomorphism
+% \[
+% (I \times I)/{\sim} \iso S^2.
+% \]
+
+% First notice that there exists an isomorphism
+% \[
+% (I \times I)/{\sim} \iso (S^1 \times [-1, 1])/{\sim_1},
+% \]
+% where \(\sim_1\) is the smallest equivalence relation on \(S^1 \times I\) for
+% which \((p, 1) \sim_1 (q, 1)\) and \((p, -1) \sim (q, -1)\), for all
+% \(p, q \in S^1\).
+
+% Since translations in \(\R^2\) won't affect the topological properties of
+% \(S^2\), suppose \(S^2\) is centered at \((1/2, 1/2, )\) --- so that \(I \times
+% I\) Let \(f: I \times I \to S^2\) be the mapping
+% \(u \mapsto \frac{u}{\| u \|_{\R^{2}}}\), which is certainly
+% continuous. Moreover, for every \(t, s \in I\), one has
+% \(f(0, t) = (0, 1) = f(t - 1, 1)\)
+% \end{example}
+
+\begin{example}[Projective space \(\R \Proj^2\)]
+\label{exp:RP2-iso-S2-D2}
+Let \(\sim_1\) and \(\sim_2\) be the smallest equivalence relations on,
+respectively, \(S^2\) and \(D^2\) such that \(p \sim_1 -p\) for all
+\(p \in S^2\), and \(v \sim_2 u\) if \(v = \lambda u\) for some
+\(\lambda \in \R\), for all \(u, v \in D^2\). We'll show that there exists
+topological isomorphisms
+\[
+\R \Proj^2 \iso S^2/{\sim_1} \iso D^2/{\sim_2}.
+\]
+
+For the first isomorphism, consider the continuous mapping
+\(f_1: \R \Proj^2 \to S^2/{\sim_1}\) given by
+\(\R \ell \mapsto \big[ \frac{\ell}{\| \ell \|}\big]\) --- which collapses the
+line \(\R \ell\) to the class of the unitary vector \(\frac{\ell}{\| \ell \|}\)
+generating the line, which ensures that \(f_1\) is surjective. Notice that
+\(f_1\) is necessarily injective since, if \(f_1(\R \ell) = f_1(\R \ell')\),
+then the lines \(\R \ell\) and \(\R \ell'\) intersect both at \(0\) and at the
+common point of the sphere --- this implies in \(\R \ell = \R \ell'\). Notice
+that the inclusion \(i_1: S^2/{\sim_1} \emb \R \Proj^2\) is continuous and is
+the inverse of \(f_1\), sending each unitary vector \(v \in S^2/{\sim_1}\) of
+the sphere quotient to the respective line generated by \(v\), namely
+\(\R v \in \R \Proj^2\).
+
+For the second isomorphism we make an analogous construction, take the map
+\(f_2: D^2/{\sim_2} \to S^2/{\sim_1}\) given by the identification
+\([v]_{\sim_2} \mapsto \big[ \frac{v}{\| v \|} \big]_{\sim_1}\), which is both
+continuous and bijective. Moreover, the inclusion
+\(i_2: S^2/{\sim_1} \emb D^2/{\sim_2}\) is a continuous map which is inverse to
+\(f_2\), thus \(f_2\) establishes the required isomorphism.
+\end{example}
+
+\section{Sequential \& Limit Point Compactness}
+
+\begin{definition}[Limit point compactness]
+\label{def:limit-point-compact}
+A space \(X\) is said to be \emph{limit point compact} if every infinite subset
+of \(X\) has a limit point in \(X\).
+\end{definition}
+
+The following important theorem establishes that every compact space is limit
+point compact.
+
+\begin{theorem}[Bolzano-Weierstra{\ss}]
+\label{thm:bolzano-weierstrass}
+Let \(X\) be a compact space. Any \emph{infinite subset} \(S \subseteq X\) has a
+limit point.
+\end{theorem}
+
+\begin{proof}
+Suppose, for the sake of contradiction, that there exists \(S \subseteq X\),
+infinite, with no limit points --- from this hypothesis, any point \(x \in X\)
+is not a limit point of \(S\) and is either in or out of \(S\). In the former
+case \(x \in S\) there exists a neighbourhood of \(x\), say \(U_x\), for which
+\(U_x \cap S = \{x\}\). In the latter case \(x \notin S\), there must exist a
+neighbourhood \(U_x\) of \(x\) such that \(S\) and \(U_x\) are disjoint. From
+the law of excluded middle, the collection
+\(\mathcal{U} \coloneq \{U_x\}_{x \in X}\) is an open cover of \(X\) --- on the
+other hand, there exists no finite subcover of \(\mathcal{U}\) since each one
+must only intersect \(S\) at a unique point, but \(S\) is infinite, hence the
+contradiction. The infinite set \(S\) must therefore contain at least one limit
+point.
+\end{proof}
+
+\begin{remark}
+\label{rem:bolzano-weierstrass}
+One should beware that the converse of \cref{thm:bolzano-weierstrass} does not
+hold at all. A simple counterexample goes as follows: endow \(\R\) with the
+topology given by \(\{\emptyset, \R\}\) and the open intervals
+\(\{(x, \infty) \colon x \in \R\}\) --- in such a space \emph{any} set has a
+limit point, although the space itself is not compact.
+\end{remark}
+
+\begin{definition}[Sequential compactness]
+\label{def:sequentially-compact}
+A space \(X\) is said to be \emph{sequentially compact} if every
+sequence of points \((x_j)_j\) in \(X\), there exists a subsequence \((x_j')_j
+\subseteq (x_j)_j\) that converges in \(X\).
+\end{definition}
+
+\begin{lemma}[In first countable Hausdorff spaces]
+\label{lem:fst-countable-hausdorff-limit-pt-implies-seq-comp}
+Let \(X\) be a first countable Hausdorff space. If \(X\) is limit point compact,
+then \(X\) is sequentially compact.
+\end{lemma}
+
+\begin{proof}
+Suppose \(X\) is indeed limit point compact and let \((x_j)_{j \in \N}\) be any
+sequence of points in \(X\) and let \(S \coloneq \{x_j\}_{j \in \N}\) be the
+set of values that the sequence attains. If \(S\) is finite, then the sequence
+contains a constant subsequence --- which is therefore convergent in \(X\).
+
+On the other hand, if \(S\) is infinite, then by the limit point compactness
+property of \(X\) we find that there exists a limit point \(x \in X\) of
+\(S\). If it is the case that \(x_j = x\) for infinitely many \(j \in \N\), then
+the collection of such points form a constant sequence --- which converges to
+\(x\). If the former is not the case, then at most a finite amount of points
+\(x_j\) are equal to \(x\) --- therefore, one can discard these points from the
+sequence and only consider the subsequence
+\((x_j')_j \subseteq (x_j)_{j \in \N}\) such that \(x_j' \neq x\) for all
+indices \(j\). Since \(X\) is assumed to be first countable, there must exist a
+neighbourhood basis \((B_j)_{j \in \N}\) at \(x\).
+
+We'll now construct a sequence \((x_{j_i})_{i \in \N} \subseteq (x_j')_j\) such
+that \(x_{j_i} \in B_i\) and thus \(x_{j_i} \to x\). Since \(x\) is a limit
+point, one can choose \(x_{j_0} \in B_0\). For the hypothesis of induction,
+suppose we have chosen \(j_0 < j_1 < \dots < j_n\) indices so that \(x_{j_i} \in
+B_i\). By \cref{prop:nbhd-limit-pt} we find that, since \(B_{n + 1}\) is a
+neighbourhood of \(x\), then \(B_{x + 1}\) has infinitely many points of \(S\)
+--- therefore, one can certainly choose \(j_{n+1} > j_n\) for which
+\(x_{j_{n+1}} \in B_{n+1}\). Thus the sequence \((x_{j_i})_{i \in \N}\) was
+successfully constructed so that it converges to \(x\).
+\end{proof}
+
+\begin{lemma}
+\label{lem:metric-sequencially-comp-is-2nd-ctbl}
+Every sequentially compact metric space is second countable.
+\end{lemma}
+
+\begin{proof}
+Evoking \cref{prop: metric space properties} it's sufficient to show that a
+sequentially compact metric space \(M\) is separable. We first show that, for
+every \(\varepsilon > 0\), the open cover composed of \(\varepsilon\)-balls has
+a finite subcover. For the sake of contradiction, assume there exists some
+\(\varepsilon_0 > 0\) such that the statement is false.
+
+We now construct a sequence \((x_j)_{j \in \N}\): choose any \(x_0 \in M\), now
+since \(B_{\varepsilon_0}(x_0)\) does not cover \(M\), one can choose
+\(x_1 \in M \setminus B_{\varepsilon_0}(x_0)\) --- since no finite collection of
+\(\varepsilon_0\)-balls covers \(M\), we may proceed indefinitely for each
+\(j \in \N\), always choosing
+\(x_j \in M \setminus \bigcup_{i < j} B_{\varepsilon_0}(x_i)\).
+
+Since \(M\) is sequentially compact, there must exist a convergent subsequence
+\((x_{j_n})_{n \in \N}\) of \((x_j)_{j \in \N}\) --- with \(x_{j_n} \to x\) for
+some \(x \in M\). Since convergent sequences are Cauchy in metric spaces,
+for large enough \(j \in \N\), we have \(d(x_{j+1}, x_j) < \varepsilon_0\) ---
+which implies in \(x_{j+1} \in B_{\varepsilon_0}(x_j)\), a contradiction by the
+construction of the sequence. Therefore there must indeed exist a finite
+collection of \(\varepsilon_0\)-balls that cover \(M\).
+
+For the separability of \(M\), for each \(n \in \N\), define \(F_n\) to be a
+finite set of points of \(M\) for which the \(1/n\)-balls centred at each point
+of \(F_n\) covers \(M\). Since each \(F_n\) is finite, the union
+\(F \coloneq \bigcup_{n \in \N} F_n\) is countable. Now, if \(U \subseteq X\) is
+a non-empty open subset of \(X\) and \(p \in U\) is any point and let
+\(B_{\varepsilon}(p) \subseteq U\) be any neighbourhood of \(p\). Since \(\R\)
+is archimedian, there must exist \(n \in \N\) for which \(1/n < \varepsilon\)
+--- hence there exists \(q \in F_n\) for which
+\(p \in B_{1/n}(q)\) and \(q \in B_{\varepsilon}(p)\). We conclude that \(F\) is
+dense in \(M\) --- thus \(M\) is separable.
+\end{proof}
+
+\begin{proposition}[Metric \& second countable spaces]
+\label{prop:metric-2nd-ctbl-seq-comp-implies-comp}
+For second countable spaces and metric spaces, sequential compactness implies
+compactness.
+\end{proposition}
+
+\begin{proof}
+Let \(X\) be a second countable and sequentially compact space. Let
+\(\mathcal{U}\) be any open cover of \(X\). Since every second countable space
+is Lindel\"{o}f (see \cref{prop: second countable properties}), there exists a
+countable subcover
+\(\mathcal{U}' \coloneq \{U_j\}_{j \in \N} \subseteq \mathcal{U}\). For the sake
+of contradiction, suppose that there is no finite subcover of \(\mathcal{U}'\)
+--- that is, for every \(j \in \N\), there exists \(x_j \in X\) such that
+\(x_j \notin \bigcup_{j=0}^n U_j\). If \((x_j)_{j \in \N}\) is a sequence formed
+by points with such a property, since \(X\) is sequentially compact, there must
+exist a convergent subsequence \((x_{j_n})_{n \in \N}\) with \(x_{j_n} \to x\)
+for some point \(x \in X\). Let \(m \in \N\) be such that \(x \in U_m\) --- from
+the definition of limit point, there must exist only finitely many \(x_{j_n}\)
+not contained in \(U_m\). However, that cannot be the case since, for all
+\(j_n \geq m\), we must have \(x_{j_n} \notin \bigcup_{n=0}^m U_{n}\) thus in
+particular \(x_{j_n} \notin U_m\) --- this implies that \((x_{j_n})_{n \in \N}\)
+does not converge to \(x\), which is a contradiction.
+
+By \cref{lem:metric-sequencially-comp-is-2nd-ctbl} if \(M\) is sequentially
+compact then it's second countable --- therefore, by what was shown above we
+conclude that \(M\) is compact.
+\end{proof}
+
+\begin{theorem}
+\label{thm:metric-2d-ctbl-hausdorff-equiv-compactness}
+For metric spaces and second countable Hausdorff spaces, limit point
+compactness, sequential compactness and compactness are \emph{equivalent}
+properties.
+\end{theorem}
+
+\begin{proof}
+This is the result of \cref{thm:bolzano-weierstrass},
+\cref{lem:fst-countable-hausdorff-limit-pt-implies-seq-comp} and
+\cref{prop:metric-2nd-ctbl-seq-comp-implies-comp}.
+\end{proof}
+
+\begin{corollary}[Metric space completeness]
+\label{cor:compact-metric-space-is-complete}
+Every compact metric space is complete.
+\end{corollary}
+
+\begin{proof}
+Let \(M\) be compact and \((x_j)_{j \in \N}\) be any Cauchy sequence. Since
+\(M\) is compact, then it's also sequentially compact, which implies in the
+existence of a convergent subsequence \((x_j')_j \subseteq (x_j)_{j \in \N}\)
+for which \(x_j' \to x\) for some \(x \in M\). We'll show that, in fact,
+\(x_j \to x\). Let \(B_{\varepsilon}(x)\) be any open ball centred at
+\(x\). Since the sequence is Cauchy, there exists \(N \in \N\) such that
+\(d(x_m, x_n) < \varepsilon/2\) for every \(m, n > N\). On the other hand, there
+exists \(M \in \N\) such that \(d(x_{\ell}', x) < \varepsilon/2\) for every
+\(\ell > M\) --- therefore, for all \(n, \ell > \max(N, M)\) we have
+\(d(x_n, x) < d(x_n, x_{\ell}') + d(x_{\ell}', x) < \varepsilon\), thus
+\(x_n \in B_{\varepsilon}(x)\) for all \(n > \max(N, M)\). We conclude that all
+but finitely many points of \((x_j)_{j \in \N}\) are contained in
+\(B_{\varepsilon}(x)\) for an arbitrary \(\varepsilon > 0\) --- therefore
+\(x_j \to x\).
+\end{proof}
+
+\section{Local Compactness}
+
+\begin{definition}[Locally compact spaces]
+\label{def:locally-compact}
+A space \(X\) is said to be \emph{locally compact} if and only if, for every
+point \(x \in X\), there exists a compact set \(K \subseteq X\) and a
+neighbourhood \(U \subseteq X\) of \(x\) for which \(U \subseteq K\).
+\end{definition}
+
+\begin{definition}[Relatively compact]
+\label{def:relatively-compact}
+Given a space \(X\), a subset \(A \subseteq X\) is said to be \emph{relatively
+  compact in \(X\)} if its closure \(\Cl A\) is compact.
+\end{definition}
+
+\begin{proposition}[Local \& relative compactness in Hausdorff spaces]
+\label{prop:hausdorff-locally-and-relatively-compact}
+Let \(X\) be a \emph{Hausdorff} space. The following are equivalent properties:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item \(X\) is locally compact.
+\item Every point of \(X\) has a relatively compact neighbourhood in \(X\).
+\item \(X\) has a basis of relatively compact open sets.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+From the definition of local and relative compactness, it is clear that (c)
+implies (b) and that (b) implies (a). We therefore only prove that (a) implies
+(c). Let \(X\) be a locally compact Hausdorff space. Take \(x_0 \in X\) to be
+any point and let \(K \subseteq X\) be a compact set containing a neighbourhood
+\(U \subseteq X\) of \(x_0\). If we let \(\mathcal{B}\) be the collection of all
+neighbourhoods of \(x_0\) which are \emph{contained} in \(U\), then
+\(\mathcal{B}\) forms a neighbourhood basis at \(x_0\). Moreover, since \(X\) is
+Hausdorff, \(K\) is closed and every \(V \in \mathcal{B}\) is also contained in
+\(K\) --- therefore \(\Cl V \subseteq K\) and since a closed subset of a compact
+set is compact then \(\Cl V\) is compact. We conclude that \(V\) is relatively
+compact in \(X\) and thus \(\mathcal{B}\) is a basis composed of relatively
+compact open sets.
+\end{proof}
+
+% \begin{proposition}[Product of quotient morphisms]
+% \label{prop:product-of-quotient-maps-locally-cpct-hausdorff}
+% Let \(\pi: X \epi Y\) and \(\pi': X' \epi Y'\) be \emph{quotient morphisms}, and
+% both \(Y\) and \(X'\) be \emph{locally compact Hausdorff} spaces. The induced
+% map
+% \[
+% \pi \times \pi': X \times X' \epi Y \times Y'
+% \]
+% is a quotient morphism.
+% \end{proposition}
+
+\begin{lemma}
+\label{lem:loc-cpct-haus-rel-cpct-nbhd}
+Let \(X\) be a locally compact Hausdorff space. For every point \(x \in X\) and
+neighbourhood \(U \subseteq X\) of \(x\), there exists a relatively compact
+neighbourhood \(V\) of \(x\) for which \(\Cl V \subseteq U\).
+\end{lemma}
+
+\begin{proof}
+Since \(X\) is locally compact Hausdorff space, by
+\cref{prop:hausdorff-locally-and-relatively-compact} there exists a relatively
+compact neighbourhood \(W\) of \(x\). Since \(\Cl(W) \setminus U\) is closed in
+\(\Cl W\), it follows that it's compact. Evoking
+\cref{thm:hausdorff-compact-set-disjoint-neighbourhoods} one can find disjoint
+open sets \(T\) and \(Q\) such that \(x \in T\) and
+\(\Cl(W) \setminus U \subseteq Q\). Define a set \(V \coloneq T \cap W\), then
+\(\Cl V \subseteq \Cl W\) implies in \(\Cl V\) compact --- thus \(V\) is a
+relatively compact neighbourhood of \(x\), we just need to show that
+\(\Cl V \subseteq U\).
+
+Since \(T\) and \(Q\) are disjoint, then \(T \subseteq X \setminus Q\) and
+therefore \(V \subseteq X \setminus Q\) --- since \(X \setminus Q\) is closed,
+this implies in \(\Cl V \subseteq X \setminus Q\). Therefore, since
+\(\Cl V \subseteq \Cl W\), we find that \(\Cl V \subseteq \Cl(W) \setminus
+Q\). From construction, we have \(\Cl(W) \setminus U \subseteq Q\), which
+implies in \(\Cl(W) \setminus Q \subseteq U\) --- hence in particular
+\(\Cl V \subseteq U\).
+\end{proof}
+
+\begin{proposition}
+\label{prop:subset-loc-cpct-hausdorff}
+Any open or closed subset of a locally compact Hausdorff space is itself locally
+compact Hausdorff space.
+\end{proposition}
+
+\begin{proof}
+Let \(X\) be a locally compact Hausdorff space. If \(U \subseteq X\) is an open
+set, then by \cref{prop:hausdorff-locally-and-relatively-compact}, since \(U\)
+is also Hausdorff, any point \(x \in U\) has a relatively compact neighbourhood
+of \(x\) contained in \(U\) --- thus \(U\) is locally compact Hausdorff space.
+
+Let \(C \subseteq X\) be a closed set and let \(x \in C\) be any point. Since
+\(C\) is also Hausdorff, we argue analogously that \(x\) has a relatively
+compact neighbourhood \(K\) of \(x\) contained in \(C\). Since \(\Cl K\) is
+compact, the closed subset \(\Cl(K \cap C) \subseteq \Cl K\) is
+compact. Moreover, since \(C\) is closed, \(\Cl(K \cap C) \subseteq \Cl C = C\),
+therefore\(K \cap C\) is a relatively compact neighbourhood of \(x\) in \(C\)
+--- hence \(C\) is a locally compact Hausdorff space.
+\end{proof}
+
+\begin{lemma}[Product of locally compact spaces]
+\label{lem:product-loc-cpct}
+Any finite product of locally compact spaces is locally compact.
+\end{lemma}
+
+\begin{proof}
+Let \(\{X_1, \dots, X_n\}\) be a finite collection of locally compact spaces and
+consider the product space \(X \coloneq \prod_{j=1}^n X_j\). Let \(x \in X\) be
+any point and consider, for every index \(1 \leq j \leq n\), the projection
+\(\pi_j(x) \in X_j\). Since \(X_j\) is locally compact, there exists a compact
+set \(K_j \subseteq X_j\) containing a neighbourhood \(U_j \subseteq X_j\) of
+\(\pi_j(x)\). From this we consider the product sets
+\(K \coloneq \prod_{j=1}^n K_j\) and \(U \coloneq \prod_{j=1}^n\). By
+\cref{thm:tychonoff-theorem} we know that \(K\) is compact and by the product
+topology the set \(U\) is open and also a neighbourhood of \(x\). Since
+\(U_j \subseteq K_j\) for all \(1 \leq j \leq n\), it follows that
+\(U \subseteq K\) --- which proves that \(X\) is locally compact.
+\end{proof}
+
+\begin{theorem}[Baire category theorem]
+\label{thm:baire-category}
+In every locally compact Hausdorff space or complete metric space, each
+\emph{countable} collection of \emph{dense} open subsets has a \emph{dense
+  intersection}.
+\end{theorem}
+
+\begin{proof}
+Let \(X\) be either a locally compact Hausdorff space or a complete metric space
+and \(\{D_n\}_{n \in \N}\) be a countable collection of dense open subsets of
+\(X\). Evoking \cref{prop:dense-non-empty-intersects}, it suffices to prove that
+every non-empty subset \(U \subseteq X\) contains a point of
+\(D \coloneq \bigcap_{n \in \N} D_n\). We split the cases in two:
+\begin{enumerate}\setlength\itemsep{0em}
+\item If \(X\) is a locally compact Hausdorff space, we construct a nested
+  sequence of compact sets inductively as follows. From hypothesis, \(D_0\) is
+  dense, thus in particular \(U \cap D_0\) contains a point of \(X\), therefore
+  evoking \cref{prop:hausdorff-locally-and-relatively-compact} we can find a
+  non-empty relatively compact open set \(C_0 \subseteq X\) for which
+  \(\Cl(C_0) \subseteq U \cap D_0\). We proceed analogously, finding a
+  relatively compact set \(C_1 \subseteq X\) such that
+  \(\Cl(C_1) \subseteq C_0 \cap D_1 \subseteq U \cap D_0 \cap D_1\). By
+  induction we find a sequence of compact open sets \((\Cl(C_n))_{n \in \N}\)
+  such that \(\Cl(C_{n+1}) \subseteq \Cl(C_{n})\) and
+  \(\Cl(C_n) \subseteq U \cap \bigcap_{j=1}^n D_j\) for every \(n \in \N\). By
+  \cref{lem:cpct-countable-intersection-nested-non-empty}, there exists a point
+  \(x \in \bigcap_{n \in \N} \Cl(C_n) \subseteq U\) and from construction
+  \(x \in \bigcap_{n \in \N} D_n\).
+
+\item If \(X\) is a complete metric space, we use the inductive argument made
+  above to construct a Cauchy sequence. For every \(n \in \N\), we have a
+  non-empty open set \(C_{n-1} \cap D_n\) --- hence we may choose a point
+  \(x_n\) and a neighbourhood
+  \(B_{\varepsilon_n}(x_n) \subseteq C_{n-1} \cap D_n\) for some
+  \(\varepsilon_n > 0\). By choosing for each \(n \in \N\) a radius
+  \(r_n < \min(\varepsilon_n, 1/n)\), we construct a sequence of closed balls
+  \((\Cl(B_{r_n}(x_n)))_{n \in \N}\) for which
+  \(\Cl(B_{r_n}(x_n)) \subseteq U \cap \bigcap_{j=1}^n D_j\). In the limit
+  \(n \to \infty\) the radius \(r_n\) of the closed balls goes to zero and
+  \((x_n)_{n \in \N}\) form a Cauchy sequence. Since \(X\) is complete, such
+  sequence converges to a point of \(U \cap \bigcap_{n \in \N} D_n\).
+\end{enumerate}
+\end{proof}
+
+\todo[inline]{Continue Lee's page 106.}
+
+%%% Local Variables:
+%%% TeX-master: "../../deep-dive"
+%%% End:

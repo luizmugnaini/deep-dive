@@ -1,0 +1,1307 @@
+\section{Modules Over Rings}
+
+\subsection{Modules}
+
+\begin{definition}[Ring action]
+\label{def:ring-action}
+Let \(R\) be a ring and \(A\) an abelian group. A left-\(R\)-action on \(A\) is
+given a ring morphism
+\[
+\mu: R \to \End_{\Ab}(M).
+\]
+Less compactly, given \(r, s \in R\) and a group endomorphism \(\phi: A \to A\),
+the ring morphism satisfies, for every \(a, b \in A\):
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item \(\mu(r)(a + b) = \mu(r)(a) + \mu(r)(b)\).
+\item \(\mu(r + s)(a) = \mu(r)(a) + \mu(s)(a)\).
+\item \(\mu(r s)(a) = \mu(r)(\mu(s)(a))\).
+\item \(\mu(1)(a) = a\).
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[Module]
+\label{def:module}
+Given a ring \(R\), a \emph{left-\(R\)-module} is an \emph{abelian group} \(M\)
+endowed with a \emph{left-\(R\)-action} \(R \times M \to M\) mapping
+\((r, m) \mapsto r m\) satisfying the following properties, for every
+\(r, s \in R\) and \(m, n \in M\):
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item \(r (m + n) = r m + r n\).
+\item \((r + s) m = r m + s m\).
+\item \((r s) m = r (s m)\).
+\item \(1 m = m\).
+\end{enumerate}
+Right-\(R\)-modules are defined completely analogous, with a right-\(R\)-action.
+\end{definition}
+
+\begin{definition}[Opposite ring]
+\label{def:opposite-ring}
+Given a ring \((R, +, \cdot)\), we define its \emph{opposite ring} \(R^{\op}\)
+to be ring inheriting the elements and additive structure of \(R\), while its
+multiplicative structure is given by a map \(*: R \times R \to R\) defined by
+\(a * b \coloneq b a \in R\).
+\end{definition}
+
+\begin{corollary}
+\label{cor:id-ring-and-opposite}
+The identity map \(\Id: R \to R^{\op}\) is an \emph{isomorphism} of rings if and
+only if \(R\) is \emph{commutative}.
+\end{corollary}
+
+\begin{proof}
+If \(R\) is commutative, clearly the identity map is an isomorphism. Conversely,
+if \(\Id\) is a morphism of rings, then
+\(\Id(r s) = \Id(r) * \Id(s) = \Id(s) \Id(r) = s r\) but
+\(\Id(r s) = r s\) thus \(r s = s r\).
+\end{proof}
+
+\begin{example}
+\label{exp:ring-of-square-matrices}
+The ring of real \(n\)-square matrices, \(M_n(\R)\), is isomorphic as a ring to
+its opposite ring \(M_n(\R)^{\op}\).
+
+Indeed, if \(\phi: M_n(\R) \to M_n(R)^{\op}\) is the map sending \(A \mapsto
+A^T\) then, given \(A, B \in M_n(\R)\), we have
+\[
+\phi(A B) = (A B)^T = B^T A^T = A^T * B^T = \phi(A) * \phi(B).
+\]
+That is, \(\phi\) is a morphism of rings. Injectivity and surjectivity are
+clear, thus \(\phi\) is an isomorphism of rings.
+\end{example}
+
+\begin{example}
+\label{exp:right-module-to-left-module}
+For a \emph{commutative} ring \(R\), left-\(R\)-modules can be bijectively
+assigned to a right-\(R\)-modules. To see that given an abelian group \(M\), let
+\({}_RM\) be a left-\(R\)-module structure on \(M\), we proceed by constructing
+a bijection \({}_RM \isoto M_R\), where \(M_R\) denotes a right-\(R\)-module on
+\(M\). For every element \(r \in R\) and \(m \in M\), map \(r m \mapsto m
+r\). Since \(R\) is commutative, indeed
+\[
+(r s) m = r (s m) \longmapsto m (r s) = m (s r) = (m s) r,
+\]
+translating the multiplication by \(r s\) from a left-module to a right-module
+accordingly.
+\end{example}
+
+\subsection{Vector Spaces}
+
+\begin{example}[Vector spaces]
+\label{exp:vector-space-is-k-module}
+A module over a field \(k\) is nothing more than a \(k\)-vector space, thus
+\(\Mod{k} = \Vect_k\).
+\end{example}
+
+\begin{example}[\({k[x]}\)-module structure on \(V\)]
+\label{exp:k[x]-module-structure-on-V}
+Let \(k\) be a field, \(V\) be a \(k\)-vector space, and \(\phi: V \to V\) be an
+endomorphism. We consider the ring action \(\mu: k \emb \End_{\Vect_k}(V)\)
+given by \(a \mapsto a \Id_V\), which by
+\cref{prop:universal-property-polynomial-rings} implies in the existence of a
+unique morphism of rings \(\Psi: k[x] \unique \End_{\Vect_k}(V)\) such that the
+following diagram commutes
+\[
+\begin{tikzcd}
+k \ar[d, hook] \ar[r, "\mu"] & \End_{\Vect_k}{(V)} \\
+k[x] \ar[ru, dashed, bend right, "\Psi"']&
+\end{tikzcd}
+\]
+and that \(x \xmapsto{\Psi} \phi\). Since \(k\) and \(x\) generate \(k[x]\), for
+any \(f(x) \coloneq \sum_{j=1}^n a_j x^j \in k[x]\), we have a mapping
+\[
+\begin{tikzcd}
+f(x) = \sum_{j=1}^n a_j x^j \ar[r, mapsto, "\Psi"]
+& a_0 \Id_V + a_1 \phi + \dots + a_{n-1} \phi^{n-1} + a_n \phi^n \coloneq f(\phi).
+\end{tikzcd}
+\]
+
+The ring action \(\Psi: k[x] \to \End_{\Vect_k}(V)\) induces the structure of a
+left-\(k[x]\)-module on \(V\) as
+\[
+p(x) \cdot v \coloneq p(\phi)(v),
+\]
+for all \(p(x) \in k[x]\) and \(v \in V\).
+\end{example}
+
+\begin{corollary}
+\label{cor:k[x]-are-vector-spaces-with-endo}
+Given a field \(k\), there exists a bijection
+\[
+\{k[x]\text{-modules}\} \isoto
+\{(V, \phi) \colon V \in \Vect_k \text{ and } \phi \in \End_{\Vect_k}(V)\}.
+\]
+In other words, \(k[x]\)-modules are equivalent to \(k\)-vector spaces together
+with a uniquely determined \(k\)-linear endomorphism.
+\end{corollary}
+
+\begin{proof}
+As constructed in \cref{exp:k[x]-module-structure-on-V}, for every \(k\)-vector
+space \(V\) and \(k\)-linear endomorphism \(\phi: V \to V\), one has a unique
+left-\(k[x]\)-module structure induced on \(V\). On the other hand, let \(M\) be
+a left-\(k[x]\)-module and \(\psi: M \to M\) be the group morphism given by
+\(m \mapsto x m\) for all \(m \in M\). Notice that for any \(a \in k\) and
+\(m \in M\) we have
+\[
+\psi(a m) = x (a m) = (x a) m = (a x) m = a (x m) = a \psi(a m),
+\]
+therefore \(\psi\) is \(k\)-linear. Thus \((M, \phi)\) is the corresponding
+uniquely defined \(k\)-vector space together with a \(k\)-linear endomorphism.
+\end{proof}
+
+\subsection{Category of Modules}
+
+\begin{definition}[Morphism of modules]
+\label{def:morphisms-of-modules}
+Let \(R\) be a ring, and both \(M\) and \(N\) be abelian groups. Let \(M_R\) and
+\(N_R\) denote right-\(R\)-modules on \(M\) and \(N\), while \({}_RM\) and
+\({}_RN\) denote left-\(R\)-modules on \(M\) and \(N\). We define the the
+following:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item A \emph{morphism} between \emph{right}-\(R\)-modules \(\phi: M_R \to N_R\)
+  is a morphism of abelian groups such that, for all \(r \in R\) and \(m \in M\)
+  we have
+  \[
+  \phi(m r) = \phi(m) r.
+  \]
+\item A \emph{morphism} between \emph{left}-\(R\)-modules
+  \(\psi: {}_RM \to {}_RN\) is a morphism of abelian groups such that, for all
+  \(r \in R\) and \(m \in M\) we have
+  \[
+  \psi(r m) = r \psi(m).
+  \]
+\end{enumerate}
+Morphisms of \(R\)-modules can also be compactly named \(R\)-linear morphisms.
+\end{definition}
+
+\begin{definition}[Category of \(R\)-modules]
+\label{def:category-of-R-Mod}
+Given a ring \(R\), we denote by \(\rMod{R}\) the category whose objects are
+\emph{right-\(R\)-modules} and morphisms between them. Analogously, we define
+\(\lMod{R}\) to be the category whose objects are \emph{left-\(R\)-modules} and
+morphisms between them.
+
+If \(R\) is a \emph{commutative} ring, we simply denote the category of modules
+over \(R\) and morphisms between them by \(\Mod{R}\).
+\end{definition}
+
+\begin{proposition}[\(\Z\)-modules]
+\label{prop:abelian-groups-are-Z-modules}
+Abelian groups are \(\Z\)-modules in exactly one way. Therefore \(\lMod{\Z}\)
+and \(\Ab\) are isomorphic categories.
+\end{proposition}
+
+\begin{proof}
+Let \(G\) be an abelian group. Since \(\Z\) is initial in the category of rings
+and \(\End_{\Ab}(G)\) forms a ring, we find that there exists a unique morphism
+of rings
+\[
+\begin{tikzcd}
+\Z \ar[r, dashed] &\End_{\Ab}(G)
+\end{tikzcd}
+\]
+defining an action of \(\Z\) on the group \(G\).
+\end{proof}
+
+\begin{example}[\(\Q\)-vector space]
+\label{exp:Q-vector-space}
+Let \(G\) be an abelian group. If there exists a \(\Q\)-vector
+space structure on \(G\), this structure is \emph{unique}.
+
+Let \(\mu, \sigma: \Q \para \End_{\Ab}(G)\) be two \(Q\)-module structures on
+\(G\). Since the inclusion \(\iota: \Z \emb \Q\) is an epimorphism of
+\emph{rings}, it follows that, since there exists a \emph{unique} \(\Z\)-module
+structure \(\Z \to \End_{\Ab}(G)\) (see
+\cref{prop:abelian-groups-are-Z-modules}), it follows that
+\(\mu \iota = \sigma \iota\). On the other hand, since \(\iota\) is an
+epimorphism, then \(\mu = \sigma\).
+\end{example}
+
+\begin{proposition}[Zero object]
+\label{prop:zero-object-in-R-Mod}
+Let \(R\) be a ring. The trivial group \(0\) has a \emph{unique} \(R\)-module
+structure and defines a \emph{zero object} in the category of (left or right)
+\(R\)-modules.
+\end{proposition}
+
+\begin{proof}
+Notice that the only \(R\)-module structure on the trivial group \(0\) is given
+by \(r \cdot 0 \coloneq 0\) for all \(r \in R\). Moreover, for any \(R\)-module
+\(M\), we have unique \(R\)-linear morphisms \(0 \unique M\) mapping
+\(0 \mapsto 0_M\) and \(M \unique 0\) mapping \(m \mapsto 0\) for all
+\(m \in M\).
+\end{proof}
+
+\begin{proposition}[Isomorphisms]
+\label{prop:R-mod-iso-iff-bij}
+Let \(R\) be a ring. A morphism of (left or right) \(R\)-modules is an
+\emph{isomorphism} if and only if it is a \emph{bijective} set-function.
+\end{proposition}
+
+\begin{proof}
+We prove for right-\(R\)-modules, the proof for left-\(R\)-modules is completely
+analogous. Let \(\phi: M \to N\) be an isomorphism of \(R\)-modules and
+\(\psi: N \to M\) be its inverse. Since \(\phi \psi = \Id_N\), then
+\(\im \phi = N\), that is, \(\phi\) is surjective. On the other hand, since
+\(\psi \phi = \Id_M\) and \(\psi\) is a well defined set-function, it follows
+that \(\phi\) is injective.
+
+Conversely, let \(\phi: M \to N\) be an \(R\)-linear morphism and a bijective
+set-function. Let \(\psi: N \to M\) be its inverse as a set-function --- we
+shall prove that \(\psi\) is an \(R\)-linear morphism. Let \(n, n' \in N\) be any
+elements, if \(\phi(m) = n\) and \(\phi(m') = n'\) then
+\(\phi(m + m') = \phi(m) + \phi(m') = n + n'\) --- thus from construction
+\(\psi(n + n') = m + m' = \psi(n) + \psi(n')\). Now, if \(r \in R\) is any ring
+element, then since \(\phi(m r) = \phi(m) r = n r\), we find that
+\(\psi(n r) = m r = \psi(n) r\) --- therefore \(\psi\) is indeed a morphism of
+\(R\)-modules and hence an inverse morphism for \(\phi\).
+\end{proof}
+
+\begin{example}
+\label{exp:int-dom-iso-principal-ideal-R-mod}
+Let \(R\) be an integral domain, and \((a) \subseteq R\) be a non-zero principal
+ideal of \(R\). There exists a natural isomorphism of \(R\)-modules
+\(R \iso (a)\).
+
+Consider the map \(\phi: R \to (a)\) given by \(r \mapsto r a\). Then for any
+\(r, s \in R\) we have
+\begin{align*}
+  \phi(r + s) &= (r + s) a = r a + s a = \phi(r) + \phi(s) \\
+  \phi(r s)   &= (r s) a = r (s a) = r \phi(s)
+\end{align*}
+thus \(\phi\) is an \(R\)-module morphism. The morphism is also clearly
+surjective by the definition of an ideal. Moreover, one should note that
+\(\phi(1) = a\), which is, by hypothesis, non-zero. Given any two
+\(r, r' \in R\) such that \(\phi(r) = \phi(r')\) we obtain
+\[
+0 = \phi(r) - \phi(r') = r \phi(1) - r' \phi(1) = (r - r') \phi(1)
+= (r - r') a,
+\]
+and since \(R\) is an integral domain, it follows that \(r = r'\) --- therefore,
+\(\phi\) is injective. We conclude that \(\phi\) is a bijection between
+\(R\)-modules and therefore stablishes an isomorphism \(R \iso (a)\).
+\end{example}
+
+\begin{example}[Morphisms form an \(R\)-module]
+\label{exp:R-mod-hom-set-is-module}
+Given a ring \(R\) and left-\(R\)-modules \(M\) and \(N\), the
+collection of \(R\)-linear morphisms \(\Hom_{\lMod{R}}(M, N)\) can be endowed
+with the structure of an \emph{right-\(R\)-module}.
+
+Since \(\Hom(\lMod{R}) \subseteq \Hom(\Ab)\), it follows that
+\(\Hom_{\lMod{R}}(M, N)\) is an abelian group given by
+\[
+(f + g)(m) \coloneq f(m) + g(m)
+\]
+for any morphisms \(f, g: M \para N\) and element \(m \in M\). Moreover, one can
+endow \(\Hom_{\lMod{R}}(M, N)\) with the \emph{right} ring action
+\(\R \times \Hom_{\lMod{R}}(M, N) \to \Hom_{\lMod{R}}(M, N)\) given by
+\[
+(f \cdot r)(m) \coloneq f(r m)
+\]
+for every morphism \(f: M \to N\), and any elements \(r \in R\) and \(m \in M\).
+
+Notice that we've emphasized that, in general, we can \emph{only} give a
+\emph{right} \(R\)-module structure to \(\Hom_{\lMod{R}}(M, N)\), if on the
+contrary we defined an left-\(R\)-action by \((r \cdot f)(m) \coloneq f(r m)\),
+one would suffer from the following problem:
+\begin{equation}\label{eq:left-R-action-problem}
+((r s) f)(m) = (r(s f))(m) = (s f)(r m) = f(s (r m)) = f((s r) m) = ((s r) f)(m)
+\end{equation}
+where \(f: M \to N\) is a morphism, and \(r, s \in R\) and \(m \in M\) are any
+elements. Mind that \cref{eq:left-R-action-problem} \emph{does not yield a
+left-\(R\)-module structure unless \(R\) is commutative}.
+\end{example}
+
+\begin{proposition}
+\label{prop:Mor(R,M)-iso-M-for-commutative-R}
+Let \(R\) be a \emph{commutative} ring. Then there exists a canonical
+isomorphism of \(R\)-modules
+\[
+\Hom_{\Mod{R}}(R, M) \iso M.
+\]
+\end{proposition}
+
+\begin{proof}
+Notice that every \(R\)-module morphism \(R \to M\) has to be of the form
+\(r \mapsto r m\) for some fixed \(m \in M\) --- for convenience, name this
+morphism \(f_m\). We define a map \(\phi: \Hom_{\Mod{R}}(R, M) \to M\) by
+sending \(f_m \mapsto m\), which is certainly surjective. Moreover, if
+\(f_m = f_n\) then in particular \(m = f_m(1) = f_n(1) = n\), therefore \(\phi\)
+is injective. Notice that for any \(m, n \in M\) we have
+\[
+f_m(r) + f_n(r) = r m + r n = r(m + n) = f_{m + n}(r),
+\]
+thus \(f_m + f_n = f_{m + n}\). Also, given any \(s \in R\) we have
+\[
+s f_m(r) = s (r m) = (s r) m = (r s) m = r (s m) = f_{s m}(r),
+\]
+then \(s f_m = f_{s m}\).  The bijection \(\phi\) is also an \(R\)-module
+morphism since, given any two \(f_m, f_n \in \Hom_{\Mod{R}}(R, M)\) we have
+\[
+\phi(f_m + f_n) = \phi(f_{m + n}) = m + n = \phi(f_m) + \phi(f_n),
+\]
+and given \(r \in R\),
+\[
+\phi(r f_m) = \phi(f_{r m}) = r m = r \phi(f_m).
+\]
+Since bijective morphisms are isomorphisms in \(\Mod{R}\), it follows that
+\(\Hom_{\Mod{R}}(R, M) \iso M\) via \(\phi\).
+\end{proof}
+
+\begin{lemma}[Nakayama's lemma: a particular case]
+\label{lem:nakayama-particular-case}
+Let \(R\) be a \emph{commutative} ring, and \(a \in R\) be a \emph{nilpotent}
+element. Then \(M = 0\) if and only if \(a M = M\).
+\end{lemma}
+
+\begin{proof}
+If \(a = 0\) then the statement is true. Suppose that \(a\) is non-zero, and let
+\(n \in \Z_{>0}\) be the minimal positive integer such that \(a^n = 0\). If
+\(M = 0\) then obviously \(a M = a \cdot 0 = 0 = M\). On the converse, if we
+assume that \(a M = M\), let \(m \in M\) be any element. Let \(m_1 \in M\) be an
+element such that \(m = a m_1\). By induction, let \(m_j \in M\) be an element
+such that \(m_{j-1} = a m_j\), for \(1 < j \leq k\). If we consider the
+collection \((m_j)_{j=1}^k\) we get a chain of equalities
+\[
+m = a m_1 = a^2 m_2 = \dots = a^k m_k = 0.
+\]
+Therefore \(M = 0\).
+\end{proof}
+
+\subsection{Kernels \& Cokernels}
+
+\begin{lemma}
+\label{lem:ker-coker-exist-in-R-mod}
+Kernels and cokernels exist in \(\Mod{R}\).
+\end{lemma}
+
+\begin{proof}
+Let \(\phi: M \to N\) be any \(R\)-module and consider
+\(\ker \phi \coloneq \{m \in M \colon \phi(m) = 0\}\), together with the
+canonical inclusion \(\iota: \ker \phi \emb M\). Notice that
+\(\phi \iota = 0 \iota = 0\). We prove that \((\ker \phi, \iota)\) is the
+equalizer of \((\phi, 0)\): let \(P\) be any other \(R\)-module and
+\(f: P \to M\) be any \(R\)-module morphism such that \(\phi f = 0 f = 0\). We
+define a map \(\overline{f}: P \to \ker \phi\) given by \(\overline{f} = f\).
+Indeed, since \(\phi f = 0\), then \(\im f \subseteq \ker \phi\), and
+\(\overline{f}\) is a well defined and unique \(R\)-module morphism making the
+following diagram commute
+\[
+\begin{tikzcd}
+\ker \phi \ar[r, hook, "\iota"]
+&M \ar[r, shift left, "\phi"] \ar[r, shift right, "0"']
+&N \\
+&P \ar[u, "f"] \ar[ul, dashed, bend left, "\overline{f}"] &
+\end{tikzcd}
+\]
+Thus \((\ker \phi, \iota)\) is indeed the equalizer of \((f, 0)\).
+
+Now we prove that \(\coker \phi \coloneq N/{\im \phi}\) together with the
+natural projection \(\pi: N \epi \coker \phi\) is the coequalizer of
+\((\phi, 0)\). Let \(C\) be an \(R\)-module and \(g: N \to C\) be an
+\(R\)-module morphism such that \(g \phi = g 0 = 0\). We define a map
+\(\overline{g}: \coker \phi \to C\) to be given by \(n + \im \phi \mapsto
+g(n)\). This map is well defined since \(g(n) = 0\) for all \(n \in \im
+\phi\). Also, since \(g\) is a morphism, \(\overline{g}\) is trivially a
+morphism of \(R\)-modules too. Moreover, since \(\pi\) is an epimorphism,
+\(\overline{g}\) is the unique morphism for which the following diagram commutes
+\[
+\begin{tikzcd}
+M \ar[r, shift left, "\phi"] \ar[r, shift right, "0"']
+& N \ar[r, two heads, "\pi"] \ar[d, "g"]
+&\coker \phi \ar[dl, bend left, dashed, "\overline{g}"]
+\\
+&P &
+\end{tikzcd}
+\]
+That is, \((\coker \phi, \pi)\) is the coequalizer of \((\phi, 0)\).
+\end{proof}
+
+\begin{proposition}[Properties of kernels \& cokernels]
+\label{prop:ker-coker-in-R-mod-properties}
+Kernels and cokernels exist in \(\Mod{R}\). Let \(\phi: M \to N\) be an
+\(R\)-module morphism, then:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The following propositions are equivalent:
+  \begin{itemize}\setlength\itemsep{0em}
+  \item The \(R\)-module morphism \(\phi\) is a monomorphism.
+  \item The kernel of \(\phi\) is trivial, that is, \(\ker \phi = 0\).
+  \item The set-function induced by \(\phi\) is injective.
+  \end{itemize}
+\item The following propositions are equivalent:
+  \begin{itemize}\setlength\itemsep{0em}
+  \item The \(R\)-module morphism \(\phi\) is an epimorphism.
+  \item The cokernel of \(\phi\) is trivial, that is, \(\coker \phi = 0\).
+  \item The set-function induced by \(\phi\) is surjective.
+  \end{itemize}
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item
+  \begin{itemize}\setlength\itemsep{0em}
+\item Suppose \(\phi\) is a monomorphism, and consider
+  \(\iota: \ker \phi \emb M\) and \(0\), then \(\phi \iota = \phi 0 = 0\), thus
+  \(\iota = 0\) --- which implies in \(\ker \phi = 0\).
+
+\item If we now suppose that \(\ker \phi = 0\), given any two elements
+  \(m, m' \in M\) such that \(\phi(m) = \phi(m')\) we obtain
+  \(0 = \phi(m) - \phi(m') = \phi(m - m')\) then \(m - m' \in \ker \phi\),
+  implying in \(m = m'\).
+\item Lastly, if \(\phi\) is injective, then given any two morphisms
+  \(\alpha, \beta: P \para M\) such that \(\phi \alpha = \phi \beta\), we have
+  for all \(p \in P\) that \(\phi(\alpha(p)) = \phi(\beta(p))\) --- which
+  implies in \(\alpha(p) = \beta(p)\), thus \(\alpha = \beta\). We conclude that
+  \(\phi\) is a monomorphism.
+  \end{itemize}
+
+\item
+  \begin{itemize}\setlength\itemsep{0em}
+\item Suppose that \(\phi\) is an epimorphism, then if we consider the canonical
+  inclusiont \(\iota: \im \phi \emb N\) and the identity morphism
+  \(\Id_N: N \to N\), one has that \(\iota \phi = \Id_N \phi\). Since \(\phi\)
+  is an epimorphism, then \(\iota = \Id_N\) --- which is only possible if
+  \(\im \phi = N\). Therefore \(\coker \phi\) is trivial.
+
+\item If we suppose that \(\coker \phi\) is trivial, then \(\im \phi = N\) and
+  \(\phi\) is therefore surjective.
+
+\item Suppose that \(\phi\) is surjective, and let \(\alpha, \beta: N \to P\) be
+  \(R\)-module morphisms such that \(\alpha \phi = \beta \phi\). Then, for every
+  \(n \in N\), there exists \(m \in M\) such that \(\phi(m) = n\), thus
+  \(\alpha(n) = \alpha(\phi(m)) = \beta(\phi(m)) = \beta(n)\) --- therefore
+  \(\alpha = \beta\) and \(\phi\) is an epimorphism.
+  \end{itemize}
+\end{enumerate}
+\end{proof}
+
+\begin{example}[Right \& left inverses]
+\label{exp:right-left-inverse-monic-epic}
+One should not be deceived by the ideas permeating \(\Set\), just as in general
+categories, \(\Mod{R}\) monomorphisms and epimorphisms need \emph{not} have
+left-inverse and right-inverse, respectively. An example of a monomorphism
+without a left-inverse is \(\Z \mono \Z\) given by \(a \mapsto 2 a\). On the
+other hand, the projection \(\Z \epi \Z/2\Z\) is an epimorphism, although it
+does not have a right-inverse.
+\end{example}
+
+
+\subsection{\texorpdfstring{\(R\)}{R}-Algebras}
+
+\begin{example}[\(R\)-modules from ring morphisms]
+\label{exp:R-modules-induced-by-ring-morphism}
+Let \(\phi: R \to S\) be any ring morphism. We can induce on \(S\) a structure
+of left-\(R\)-module by defining a map \(\rho: R \times S \to S\) to map
+\((r, s) \mapsto \phi(r) s\) for every \(r \in R\) and \(s \in S\). In
+particular, this shows that we can endow \(R\) itself with a left-\(R\)-module
+structure. These constructions can be analogously done for right-\(R\)-modules
+as well.
+
+If \(R\) happens to be commutative and \(\im \phi \subseteq Z(S)\), then by
+\cref{exp:right-module-to-left-module} we find that the left and right
+\(R\)-module structures on \(S\) induced by \(\phi\) coincide. Moreover, notice
+that, given any \(s, s' \in S\) and \(r, r' \in R\), we have that
+\begin{align*}
+\rho(r, s) \rho(r', s')
+&= (\phi(r) s) (\phi(r') s')
+= \phi(r) (s \phi(r')) s'
+= \phi(r) (\phi(r') s) s' \\
+&= (\phi(r) \phi(r')) (s s')
+= \phi(r r') (s s') \\
+&= \rho(r r', s s').
+\end{align*}
+This shows that the \(R\)-module structure induced by \(\phi\) is compatible
+with the ring structure of \(S\). This kind of \(R\)-module receive the
+name of \(R\)-algebra, which we now define for later reference.
+\end{example}
+
+\begin{definition}[\(R\)-algebra]
+\label{def:R-algebra}
+Let \(R\) be a \emph{commutative} ring. We define an \emph{\(R\)-algebra} to be
+a \emph{ring morphism} \(\phi: R \to S\) such that the image of \(\phi\) is
+contained in the center of \(S\) --- inducing an \(R\)-module structure on
+\(S\). If the ring \(S\) itself is commutative, we say that it has a structure
+of a \emph{commutative \(R\)-algebra}.
+
+We define a morphism \(\gamma: \alpha \to \beta\) of \(R\)-algebras
+\(\alpha: R \to S\) and \(\beta: R \to Q\) to be a ring morphism
+\(\gamma: S \to Q\) such that for all \(r \in R\) and \(s \in S\) we have
+\(\phi(r s) = r \phi(s)\), and that the following diagram commutes in \(\Rng\)
+\[
+\begin{tikzcd}
+&R \ar[ld, "\alpha"'] \ar[rd, "\beta"] & \\
+S \ar[rr, "\gamma"']& &Q
+\end{tikzcd}
+\]
+
+We denote by \(\Alg{R}\) the category consisting of \(R\)-algebras and morphisms
+between them. A particularly important subcategory is that of the commutative
+\(R\)-algebras, which we shall denote by \(\cAlg{R}\).
+\end{definition}
+
+\begin{corollary}
+\label{cor:CAlg-subcat-CRing}
+Given a commutative ring \(R\), then \(\cAlg{R}\) is a subcategory of
+\(R/\cRng\) --- where \(R/\cRng\) denotes the slice category under \(R\).
+\end{corollary}
+
+\begin{example}
+\label{exp:CAlg-not-full-subcat-CRing}
+The category \(\cAlg{R}\), however, is \emph{not a full subcategory} of
+\(\cRng\). Notice for instance that the map \(\CC \to \CC\) given by
+the complex conjugation \(z \mapsto \overline{z}\) is a \emph{ring}
+automorphism, nonetheless it isn't a morphism of \(\CC\)-modules.
+\end{example}
+
+\begin{proposition}[Initial object]
+\label{prop:R-initial-R-alg}
+Given a ring \(R\), the module structure of \(R\) over itself is the
+\emph{initial} object of \(\Alg{R}\).
+\end{proposition}
+
+\begin{proof}
+Given any \(R\)-algebra \(\phi: R \to A\) we have, for all \(r, r' \in R\), that
+\(\phi(r r') = r \phi(r')\) --- thus \(\phi\) is an \(R\)-algebra morphism. In
+particular, for \(r' = 1_R\) we obtain \(\phi(r) = r \phi(1_R) = r 1_A = r\) ---
+thus \(\phi\) is the unique \(R\)-algebra morphism \(R \to A\).
+\end{proof}
+
+\begin{definition}[Field extension]
+\label{def:field-extension}
+Let \(k\) be a field. We define a \emph{field extension} of \(k\) to be a
+\emph{commutative \(k\)-algebra} \(K\) with injective ring morphisms
+\(\operatorname{inj}, \operatorname{inv}: k \para K\) such that
+\(\operatorname{inj}(a) \operatorname{inv}(a) = 1\) for all \(a \in k\).
+\end{definition}
+
+\begin{example}
+\label{exp:subfield-natural-field-extension}
+Let \(k\) be a subfield \(k \subseteq \ell\) of a field \(\ell\). Then \(\ell\)
+has a natural structure of field extension of \(k\). Indeed, we have a natural
+inclusion \(k \emb \ell\) mapping \(a \mapsto a\) and an inversion map
+\(k \emb \ell\) sending \(a \mapsto a^{-1}\).
+\end{example}
+
+\begin{definition}[Rees algebra]
+\label{def:rees-algebra}
+Let \(R\) be a \emph{commutative} ring and \(\ideal{a}\) ideal of \(R\). We
+define a ring
+\[
+\Rees_R(\ideal{a}) \coloneq \bigoplus_{j \geq 0} \ideal{a}^j,
+\]
+where \(\ideal{a}^0 \coloneq R\), with a multiplication given by
+\[
+(a_j)_{j \geq 0} \cdot (b_j)_{j \geq 0} \coloneq
+\bigg( \sum_{i + k = j} a_i b_k \bigg)_{j \geq 0}
+\in \Rees_R(\ideal{a}).
+\]
+The ring morphism \(R \to \Rees_R(\ideal{a})\) mapping
+\(r \mapsto (r, 0, \dots, 0, \dots)\) is called the \emph{Rees algebra of
+  \(\ideal{a}\)}.
+\end{definition}
+
+\begin{proposition}
+\label{prop:rees-algebra-iso-R[x]}
+Let \(R\) be a \emph{commutative} ring and \(a \in R\) be a
+non-zero-divisor. There exists a natural \emph{isomorphism of \(R\)-algebras}
+\[
+\Rees_R((a)) \iso R[x]
+\]
+\end{proposition}
+
+\begin{proof}
+Notice that \(R[x]\) is realized as an \(R\)-algebra by the inclusion
+\(\iota: R \emb R[x]\) mapping to constant polynomials. Denote, for every
+\(j \geq 0\), by \(e_j \in \Rees_R((a))\) the element whose \(j\)-th coordinate
+is \(a^j\) and zero elsewhere. Define a map \(\phi: R[x] \to \Rees_R((a))\) by
+mapping \(\phi(r) \coloneq r e_0\) and \(\phi(x) \coloneq e_1\).  Since
+\(\{R, x\}\) generate \(R[x]\), this completely defines \(\phi\) as a ring
+morphism, since \(\phi(r x^j) = r \phi(x)^j = r e_1^j = r e_j\). Moreover,
+given any \((a_j)_{j \geq 0} \in \Rees_R((a))\), since \(R\) is commutative, we
+have \(a_j = r_j a^j\) for some \(r_j \in R\). If we let \((r_j)_{j \geq 0}\) be
+the collection of these associated \(R\) terms, we can build a polynomial \(p(x)
+\coloneq \sum_{j \geq 0} r_j x^j\) so that
+\[
+\phi(p(x)) = \sum_{j \geq 0} \phi(r_j x^j) = \sum_{j \geq 0} r_j e_j
+= (r_j a^j)_{j \geq 0}
+= (a_j)_{j \geq 0}.
+\]
+Therefore \(\phi\) is surjective. Moreover, it is simple to see that if
+\(p(x) \coloneq \sum_{j \geq 0} b_j x^j\) and
+\(q(x) \coloneq \sum_{j \geq 0} c_j x^j\) are polynomials in \(R[x]\) such that
+\(\phi(p(x)) = \phi(q(x))\), then their coefficients match --- that is,
+\(b_j = c_j\) for all \(j \geq 0\), and then \(p(x) = q(x)\), making \(\phi\)
+injective. Therefore \(\phi\) is an isomorphism of \(R\)-algebras.
+\end{proof}
+
+\begin{proposition}
+\label{prop:rees-iso-ideal-a*ideal}
+Let \(R\) be a commutative ring, \(a \in R\) be a non-zero-divisor, and
+\(\ideal{b} \subseteq R\) be any ideal. Then there exists a natural isomorphism
+of \(R\)-algebras
+\[
+\Rees_R(a \ideal{b}) \iso \Rees_R(\ideal b).
+\]
+\end{proposition}
+
+\begin{proof}
+Define a map \(\phi: \Rees_R(\ideal b) \to \Rees_R(a \ideal b)\) by
+\((b_j)_{j \geq 0} \mapsto (a^j b_j)_{j \geq 0}\) --- since \(a\) is a
+non-zero-divisor, \(a^j b_j = 0\) if and only if \(b_j = 0\), therefore \(\phi\)
+is bijective. Notice that \(\phi\) satisfies \(\phi(r u) = r \phi(u)\) for any
+\(r \in R\) and \(u \in \Rees_R(\ideal b)\). Moreover for any two \((u_j)_{j
+  \geq 0}, (v_j)_{j \geq 0} \in \Rees_R(\ideal b)\), we have
+\begin{align*}
+\phi((u_j)_j \cdot (v_j)_j)
+&= \phi \bigg( \sum_{i + k = j} u_i v_k \bigg)_j
+= \bigg( a^j \sum_{i + k = j} u_i v_k \bigg)_j \\
+&= \bigg( \sum_{i + k = j} a^{i + k} u_i v_k \bigg)_j
+= (a^j u_j)_j \cdot (a^j v_j)_j \\
+&= \phi((u_j)_j) \cdot \phi((v_j)_j).
+\end{align*}
+Thus \(\phi\) is an \(R\)-algebra isomorphism between \(\Rees_R(a \ideal{b})\)
+and \(\Rees_R(\ideal b)\).
+\end{proof}
+
+\subsection{Submodules \& Quotients}
+
+\subsubsection{Submodules}
+
+\begin{definition}[Submodule]
+\label{def:submodule}
+Let \(R\) be a ring and \(M\) be an \(R\)-module. An \(R\)-module \(N\) is said
+to be a \emph{submodule} of \(R\) if \(N \subseteq M\) and the inclusion map
+\(N \emb M\) is a morphism of \(R\)-modules.
+\end{definition}
+
+\begin{example}[Ideals are the submodules of \(R\)]
+\label{exp:R-submodules-are-ideals}
+Let \(R\) be a ring endowed with the canonical left-\(R\)-module structure. The
+submodules of \(R\) are correspond exactly to the left-ideals of \(R\).
+\end{example}
+
+\begin{example}[Kernel and image are submodules]
+\label{exp:ker-im-are-submodules}
+Given a morphism \(\phi: M \to N\) of \(R\)-modules, the kernel of \(\phi\) is a
+submodule of \(M\), while the image of \(\phi\) is a submodule of \(N\).
+
+Suppose \(M\) and \(N\) are right-\(R\)-modules, for left-\(R\)-modules the
+proof is analogous. If \(m \in \ker \phi\), then for all \(r \in R\) we
+have \(\phi(m r) = \phi(m) r = 0 \cdot r = 0\) --- thus \(m r \in \ker \phi\),
+making \(\ker \phi \emb M\) a morphism of right-\(R\)-modules. Now, if \(n \in
+\im \phi\), there must exist \(m \in M\) such that \(\phi(m) = n\), therefore
+for all \(r \in R\) we have \(\phi(m r) = \phi(m) r = n r \in \im \phi\). We
+conclude that, indeed, \(\ker \phi\) and \(\im \phi\) are submodules of \(M\)
+and \(N\), respectively.
+\end{example}
+
+\begin{example}[Intersection \& sum of submodules]
+\label{exp:intersection-sum-submodules}
+Let \(M\) be an \(R\)-module and \((N_j)_{j \in J}\) be a collection of
+submodules of \(M\). We have the following:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The intersection \(\bigcap_{j \in J} N_j\) is a submodule of \(M\).
+\item The sum
+  \[
+  \sum_{j \in J} N_j \coloneq \bigg\{
+  \sum_{j \in F} n_j \colon F \subseteq J
+  \text{ is finite, and } n_j \in N_j \text{ for all } j \in F
+  \bigg\}
+  \]
+  is a submodule of \(R\).
+\end{enumerate}
+We show that each of these objects is indeed a submodule.
+
+For the intersection, given any two \(a, b \in \bigcap_{j \in J} N_j\) we have,
+for each \(j \in J\), that \(a, b \in N_j\) and therefore \(a + b \in N_j\) ---
+this implies in \(a + b \in \bigcap_{j \in J} N_j\). Moreover, given any element
+\(r \in R\) it is equally clear that \(a r \in N_j\) for every \(j \in J\),
+which implies in \(a r \in \bigcap_{j \in J} N_j\). Therefore
+\(\bigcap_{j \in J} N_j\) is indeed a submodule of \(M\).
+
+For the ease of notation, define \(N \coloneq \sum_{j \in J} N_j\). Notice that
+since every sum in \(N\) is finite, then \(N \subseteq M\). Given any two
+elements \(\sum_{j \in F} a_j, \sum_{j \in F'} b_j \in N\), we have that
+\(F \cup F' \subseteq J\) is finite, hence we have an element
+\(\sum_{j \in F \cup F'} m_j \in N\) given by
+\[
+m_j \coloneq
+\begin{cases}
+  a_j,  &j \in F \setminus F', \\
+  b_j, &j \in F' \setminus F, \\
+  a_j + b_j, &j \in F \cap F'. \\
+\end{cases}
+\]
+It is easy to see that this constructed element satisfies
+\[
+\sum_{j \in F \cup F'} m_j =
+\bigg( \sum_{j \in F} a_j \bigg) +
+\bigg( \sum_{j \in F'} b_j \bigg),
+\]
+therefore \(N\) is closed under finite addition. Since multiplication is
+distributive over finite sums, it follows that for any \(r \in R\) we have
+\[
+\bigg( \sum_{j \in F} a_j \bigg) r = \sum_{j \in F} a_j r
+\]
+and since \(a_j r \in N_j\) for each \(j \in F\), it follows that
+\(\big( \sum_{j \in F} a_j \big) r \in N\). Thus \(N\) is a submodule of
+\(M\).
+\end{example}
+
+\subsubsection{Simple \texorpdfstring{\(R\)}{R}-Modules}
+
+\begin{definition}[Simple module]
+\label{def:simple-module}
+Let \(R\) be a ring. An \(R\)-module \(M\) is said to be \emph{simple} if its
+only submodules are \(\{0\}\) and \(M\) itself.
+\end{definition}
+
+\begin{lemma}[Schur's]
+\label{lem:schur-lemma}
+Let \(M\) and \(N\) be \emph{simple} \(R\)-modules. If \(\phi: M \to N\) is an
+\(R\)-module morphism, then either \(\phi = 0\) or \(\phi\) is an isomorphism.
+\end{lemma}
+
+\begin{proof}
+Since \(\ker \phi\) is a submodule of \(M\), it can either be \(0\) or \(M\). If
+\(\ker \phi = M\), then \(\phi = 0\). On the other hand, if \(\ker \phi = 0\)
+then \(\phi\) is an injective morphism. Moreover, since \(\im \phi\) is a
+submodule of \(N\), it's either \(0\) or \(N\) --- since \(\ker \phi\) in
+trivial, then the only possibility is that \(\im \phi = N\), thus \(\phi\) is
+surjective.
+\end{proof}
+
+\begin{corollary}
+\label{cor:M-simple-Mor-division-ring}
+Let \(M\) and \(N\) be \(\Mod{R}\) and consider \(\Hom_{\Mod{R}}(M, N)\) as a
+\emph{ring}. If \(M\) is \emph{simple}, then \(\Hom_{\Mod{R}}(M, N)\) is a
+division ring.
+\end{corollary}
+
+\begin{proof}
+Let \(\ideal{a}\) be a left-ideal (or right-ideal) of \(\Hom_{\Mod{R}}(M,
+N)\). If there exists an isomorphism \(\phi \in \ideal{a}\), then
+\(\phi^{-1} \phi = \Id_M \in \ideal{a}\) and therefore, for all elements
+\(\psi \in \Hom_{\Mod{R}}(M, N)\) we have \(\psi \Id_M = \psi \in \ideal{a}\)
+--- thus \(\ideal{a} = \Hom_{\Mod{R}}(M, N)\) (the same equivalent arguement can
+be used for right-ideals, where instead we get \(\phi \phi^{-1} = \Id_N\) in the
+ideal). If there exist no isomorphism in \(\ideal{a}\), by
+\cref{lem:schur-lemma} it is only composed of the zero morphism, thus
+\(\ideal{a} = 0\). From \cref{prop:division-ring-ideals-are-0-or-ring} we
+conclude that \(\Hom_{\Mod{R}}(M, N)\) is a division ring.
+\end{proof}
+
+\begin{example}
+\label{exp:counterexp-schur-opposite}
+We now show a counterexample ilustrating why the opposite of
+\cref{cor:M-simple-Mor-division-ring} does not hold in general. Let \(k\) be a
+field and
+\[
+A \coloneq
+\begin{bmatrix}
+  1 & 1 \\
+  0 & 0
+\end{bmatrix}
+\qquad \qquad
+B \coloneq
+\begin{bmatrix}
+  0 & 0 \\
+  0 & 1
+\end{bmatrix}
+\]
+be matrices. Define \(R\) to be the \(k\)-algebra generated by \(A\) and
+\(B\). Consider the left-\(R\)-module \(M = k^2\), with left-multiplication by
+matrices. We'll show that \(\Hom_{\lMod{R}}(M, M)\) is a division ring, while
+\(M\) is not simple.
+
+Consider the principal ideal
+\(
+\ideal{a} \coloneq \big(\big[
+\begin{smallmatrix}
+  1 \\
+  0
+\end{smallmatrix}
+\big]\big)\) of \(M\). Notice that for any \(a, b \in k\) we have
+\[
+(a A + b B)
+\begin{bmatrix}
+  1 \\
+  0
+\end{bmatrix}
+=
+\begin{bmatrix}
+  a & a \\
+  0 & b
+\end{bmatrix}
+\begin{bmatrix}
+  1 \\
+  0
+\end{bmatrix}
+=
+\begin{bmatrix}
+  a \\
+  0
+\end{bmatrix},
+\]
+thus \(\ideal{a} \neq M\) and \(\ideal{a} \neq 0\), and \(M\) isn't
+simple.
+
+Let \(\ideal{h}\) be a left-ideal (or right-ideal) of the ring
+\(\Hom_{\lMod{R}}(M, M)\). If \(\ideal{h} \neq 0\), consider a non-zero morphism
+\(M =
+\big[
+\begin{smallmatrix}
+  a & b \\
+  c & d
+\end{smallmatrix}
+\big]
+\in \ideal{h}\). Since \(M\) is a left-\(R\)-module morphism, it must be the
+case that, for any
+\(x =
+\big[
+\begin{smallmatrix}
+  x_1 \\
+  x_2
+\end{smallmatrix}
+\big]
+\in M\), we have \(M(A x) = A M(x)\) and \(M(B x) = B M(x)\), but
+%
+\begin{align}
+  \label{eq:M(Ax)}
+  M(A x) &=
+  % \begin{bmatrix}
+  %   a & b \\
+  %   c & d
+  % \end{bmatrix}
+  % \bigg(
+  % \begin{bmatrix}
+  %   1 & 1 \\
+  %   0 & 0
+  % \end{bmatrix}
+  % \begin{bmatrix}
+  %   x_1 \\
+  %   x_2
+  % \end{bmatrix}
+  % \bigg)
+  % =
+  \begin{bmatrix}
+    a (x_1 + x_2) \\
+    c (x_1 + x_2)
+  \end{bmatrix}
+  \\ %%
+  \label{eq:M(Bx)}
+  M(B x) &=
+  % \begin{bmatrix}
+  %   a & b \\
+  %   c & d
+  % \end{bmatrix}
+  % \bigg(
+  % \begin{bmatrix}
+  %   0 & 0 \\
+  %   0 & 1
+  % \end{bmatrix}
+  % \begin{bmatrix}
+  %   x_1 \\
+  %   x_2
+  % \end{bmatrix}
+  % \bigg)
+  % =
+  \begin{bmatrix}
+    b x_2 \\
+    d x_2
+  \end{bmatrix}
+\end{align}
+while on the other hand we have
+\begin{align}
+  \label{eq:A(Mx)}
+  A M(x) &=
+  % \begin{bmatrix}
+  %   1 & 1 \\
+  %   0 & 0
+  % \end{bmatrix}
+  % \bigg(
+  % \begin{bmatrix}
+  %   a & b \\
+  %   c & d
+  % \end{bmatrix}
+  % \begin{bmatrix}
+  %   x_1 \\
+  %   x_2
+  % \end{bmatrix}
+  % \bigg)
+  % =
+  \begin{bmatrix}
+    (a + c) x_1 + (b + d) x_2 \\
+    0
+  \end{bmatrix}
+  \\ %%
+  \label{eq:B(Mx)}
+  B M(x) &=
+  % \begin{bmatrix}
+  %   0 & 0 \\
+  %   0 & 1
+  % \end{bmatrix}
+  % \bigg(
+  % \begin{bmatrix}
+  %   a & b \\
+  %   c & d
+  % \end{bmatrix}
+  % \begin{bmatrix}
+  %   x_1 \\
+  %   x_2
+  % \end{bmatrix}
+  % \bigg)
+  % =
+  \begin{bmatrix}
+    0 \\
+    c x_1 + d x_2
+  \end{bmatrix}
+\end{align}
+Since \cref{eq:M(Ax)} equals \cref{eq:A(Mx)}, while \cref{eq:M(Bx)} equals
+\cref{eq:B(Mx)} --- and since \(M\) is non-zero by hypothesis --- we obtain a
+solution \(a = d = 1\) and \(b = c = 0\), yielding
+\(M = \big[
+\begin{smallmatrix}
+  1 & 0 \\
+  0 & 1
+\end{smallmatrix}
+\big]\), which implies in \(\ideal{h} = \Hom_{\lMod{R}}(M, M)\).
+\end{example}
+
+\subsubsection{Quotient modules}
+
+\begin{definition}[Quotient module]
+\label{def:quotient-module}
+Let \(R\) be a ring, and \(M\) be a left-\(R\)-module. If \(N \subseteq M\) is a
+submodule, then in particular \(N\) is a \emph{normal} subgroup of \(M\) and
+therefore \(M/N\) is an \emph{abelian group}. We endow the group \(M/N\) with a
+left-\(R\)-action \(R \times (M/N) \to M/N\) given by
+\[
+r (m + N) \coloneq r m + N,
+\]
+for all \(r \in R\) and \(m \in M\). This action turns \(M/N\) into a
+left-\(R\)-module and the canonical projection \(\pi: M \epi M/N\) into an
+\(R\)-module morphism. Therefore, the submodule \(N\) is the \emph{kernel} of
+the canonical projection \(\pi\).
+\end{definition}
+
+\begin{example}
+\label{exp:R/ideal-is-always-module}
+Let \(R\) be a \emph{non-commutative} ring and \(\ideal{a}\) a left-submodule,
+then the \emph{set} of equivalence classes \(R/\ideal{a}\) is \emph{not a ring}
+--- since \(\ideal{a}\) is be required to be a two-sided-ideal for the quotient
+to be a ring. Although not a ring, \(R/\ideal{a}\) is is an abelian group and
+one can endow \(R/\ideal{a}\) with the canonical left-\(R\)-action given by
+\(r (a + \ideal{a}) = r a + \ideal{a}\) for every \(r \in R\) and
+\(a + \ideal{a} \in R/\ideal{a}\).
+\end{example}
+
+\begin{theorem}[Universal property of quotient modules]
+\label{thm:univ-prop-quotient-modules}
+Let \(R\) be a ring and \(N\) be a submodule of an \(R\)-module \(M\). For every
+module \(Z\) toghether with a morphism \(\psi: M \to Z\) of \(R\)-modules such
+that \(N \subseteq \ker \psi\), there exists a \emph{unique} morphism of rings
+\(\phi: M/N \unique Z\) for which the following diagram commutes
+\[
+\begin{tikzcd}
+M \ar[d, two heads] \ar[r, "\psi"] & Z \\
+M/N \ar[ru, dashed, bend right, "\phi"']
+\end{tikzcd}
+\]
+\end{theorem}
+
+\begin{proof}
+In particular, the existence and uniqueness of \(\phi\) as a \emph{group
+  morphism} is shown in \cref{prop:universal-property-quotients-grp} --- we only
+show that \(\phi\) is a morphism of \(R\)-modules. Let's assume that we are
+working with right-\(R\)-modules, the same analogous proof would work for the
+left modules. Let \(m + N \in M/N\) and \(r \in R\) be any elements, then
+\(\psi(m r) = \psi(m) r\) and since \(\psi = \phi \pi\) it follows that
+\[
+\phi((m + N) r) = \phi(m r + N) = \psi(m r) = \psi(m) r = \phi(m + N) r,
+\]
+which shows that \(\phi\) is indeed a morphism of right-\(R\)-modules.
+\end{proof}
+
+\begin{theorem}[Factorization of morphisms]
+\label{thm:R-module-morphism-factorization}
+Every \(R\)-module morphism \(\phi: M \to N\) factors as follows
+\[
+\begin{tikzcd}
+M \ar[r, "\phi"] \ar[d, two heads] &N \\
+M/{\ker \phi} \ar[r, "\dis", "\overline{\phi}"'] & \im \phi \ar[u, hook]
+\end{tikzcd}
+\]
+\end{theorem}
+
+\begin{proof}
+From the universal property \cref{thm:univ-prop-quotient-modules} we find that
+\(\phi\) induces a unique morphism \(\overline{\phi}: M/{\ker \phi} \to N\) ---
+being defined as \(\overline{\phi}(a + \ker \phi) = \phi(a)\) for any
+\(a + \ker \phi \in M/{\ker \phi}\). We simply restrict the codomain of
+\(\overline{\phi}\) to \(\im \phi\) so that it becomes surjective. Moreover,
+given any two classes \(a + \ker \phi, b + \ker \phi \in M/{\ker \phi}\), such
+that \(\overline{\phi}(a + \ker \phi) = \overline{\phi}(b + \ker \phi)\) then
+\(\phi(a) = \phi(b)\) and thus \(a - b \in \ker \phi\) --- therefore \(a + \ker
+\phi = b + \ker \phi\) and \(\overline{\phi}\) is injective.
+\end{proof}
+
+\begin{corollary}[First isomorphism]
+\label{cor:first-iso-theorem-R-modules}
+Let \(\phi: M \epi N\) be a surjective \(R\)-module morphism. There exists a
+canonical isomorphism of \(R\)-modules
+\[
+N \iso M/{\ker \phi}
+\]
+\end{corollary}
+
+\begin{proof}
+Since \(\phi\) is surjective, \(\im \phi = N\) and from
+\cref{thm:R-module-morphism-factorization} we conclude that the induced morphism
+\(\overline{\phi}: M/{\ker \phi} \isoto N\) stablishes the wanted canonical
+isomorphism.
+\end{proof}
+
+\begin{proposition}[Second isomorphism]
+\label{prop:second-iso-R-mod}
+Let \(M\) be an \(R\)-module and \(P, N \subseteq M\) be submodules. There
+exists a canonical isomorphism
+\[
+\frac{N + P}{N} \iso \frac{P}{N \cap P}
+\]
+\end{proposition}
+
+\begin{proof}
+Since \(N \emb N + P\) mapping \(n \mapsto n + 0 = n\) is clearly an
+\(R\)-module morphism, \(N\) is a submodule of \(N + P\). Moreover, the
+inclusion \(N \cap P \emb P\) mapping \(p \mapsto p\) is also a morphism since
+\(p \in P\) for all \(p \in N \cap P\).
+
+Consider the map \(\phi: N + P \to \frac{P}{N \cap P}\) given by
+\(n + p \mapsto p + N \cap P\), which is clearly an \(R\)-module morphism. Given
+any class \(p + N \cap P \in \frac{P}{N \cap P}\), one can choose a
+representative \(p \in P\) so that \(\phi(p) = p + N \cap P\) --- thus \(\phi\)
+is surjective. Moreover, \(\phi(n + p) = N \cap P\) if, and only if
+\(p \in N \cap P\), which in this case implies in \(n + p \in N\). Therefore
+\(\ker \phi = N\). By \cref{cor:first-iso-theorem-R-modules} we obtain
+\(\frac{N + P}{\ker \phi} \iso \frac{P}{N \cap P}\), which is the required
+isomorphism.
+\end{proof}
+
+\begin{proposition}[Third isomorphism]
+\label{prop:third-iso-R-mod}
+Let \(M\) be an \(R\)-module and \(N \subseteq M\) be a submodule. If
+\(P \subseteq M\) is a submodule \emph{containing} \(N\) --- then \(P/N\) is a
+\emph{submodule} of \(M/N\), and there exists a canonical isomorphism
+\[
+\frac{M/N}{P/N} \iso M/P
+\]
+\end{proposition}
+
+\begin{proof}
+Notice that since \(N \emb P\) is clearly an \(R\)-module morphism, thus \(N\)
+is a submodule of \(P\). Moreover, if we consider the inclusion
+\(i: P/N \emb M/N\) by mapping \(p + N \mapsto p + N\), since \(P \subseteq M\)
+this is well defined and is a morphism of groups --- furthermore, given any
+\(r \in R\), one has
+\[
+i((p + N) r) = i(p r + N) = p r + N = (p + N) r = i(p + N) r
+\]
+for any \(p + N \in P/N\), thus \(i\) is an \(R\)-module morphism. From the last
+inclusion we conclude that \(P/N\) is a submodule of \(M/N\).
+
+Let \(\phi: M/N \to M/P\) be defined by mapping \(m + N \mapsto m + P\) ---
+since \(N \subseteq P\), this map is well defined and and surjective. Moreover,
+for any \(p + N \in M/N\) where \(p \in P\), we have
+\(\phi(p + N) = p + P = P\). Moreover, if \(m + N \in \ker \phi\) then
+necessarily \(m \in P\). Therefore \(\ker \phi = P/N\) and by
+\cref{cor:first-iso-theorem-R-modules} \(\phi\) induces an isomorphism
+\(\frac{M/N}{\ker \phi} \iso M/P\).
+\end{proof}
+
+From \cref{prop:third-iso-R-mod} one concludes that there exists an
+\emph{inclusion preserving set bijection} between
+\[
+\{\text{submodule } P \text{ of } M \text{ containing } N\}
+\overset{\dis}\longrightarrow
+\{\text{submodules of } M/N\}.
+\]
+
+\begin{proposition}
+\label{prop:a*R/b-iso-a+b/b}
+Let \(R\) be a \emph{commutative} ring, and \(\ideal{a}, \ideal{b} \subseteq R\)
+be ideals. Then, there exists a natural \emph{\(R\)-module isomorphism}
+\[
+\ideal{a} \cdot \frac{R}{\ideal{b}}
+\iso \frac{\ideal{a} + \ideal{b}}{\ideal{b}}
+\]
+\end{proposition}
+
+\begin{proof}
+Define a map
+\(\phi: \ideal{a} + \ideal{b} \to \ideal{a} \cdot \frac{R}{\ideal{b}}\) given by
+\(\phi(a + b) = a + \ideal{b}\) for every \(a \in \ideal{a}\) and
+\(b \in \ideal{b}\). Clearly such a map stablishes an \(R\)-module
+morphism. Moreover, if
+\(p \coloneq \sum_{j=1}^n a_j r_j + \ideal{b} \in \ideal{a} \cdot
+\frac{R}{\ideal{b}}\) is any element, since \(R\) is commutative then
+\(\ideal a\) is a two-sided ideal, hence one can choose, for every
+\(1 \leq j \leq n\), an element \(a_j' \in \ideal{a}\) such that
+\(a_j r_j = a_j'\). Therefore if we consider
+\(q \coloneq \sum_{j=1}^n a_j' \in \ideal{a} + \ideal{b}\), one has
+\(\phi(q) = p\) --- thus \(\phi\) is surjective. Furthermore, an element
+\(a + b \in \ideal{a} + \ideal{b}\) belongs to \(\ker \phi\) if and only if
+\(a + b \in \ideal{b}\) --- therefore \(\ker \phi = \ideal{b}\). By
+\cref{cor:first-iso-theorem-R-modules} we obtain an isomorphism
+\(\frac{\ideal{a} + \ideal{b}}{\ker \phi} \iso \ideal{a} \cdot
+\frac{R}{\ideal{b}}\) as wanted.
+\end{proof}
+
+\subsection{Products \& Coproducts}
+
+\begin{definition}[Direct sum]
+\label{def:direct-sum-modules}
+Let \(R\) be a ring and \((M_j)_{j \in J}\) be a collection of \(R\)-modules
+(either right or left modules). We define the direct product of this family to
+be a module
+\[
+\bigoplus_{j \in J} M_j \coloneq
+\{(m_j) \colon m_j \in M_j \text{ and } m_j \neq 0
+\text{ for finitely many } j \in J\},
+\]
+with a natural component-wise addition, and multiplication by elements of
+\(R\). Along with the direct sum, one defines natural projections
+\(\pi_i: \bigoplus_{j \in J} M_j \epi M_i\) mapping and element to its \(i\)-th
+coordinate, and inclusions \(\iota_i: M_i \emb \bigoplus_{j \in J} M_j\) mapping
+\(m \mapsto (m_j)_{j \in J}\) with \(m_i \coloneq m\) and \(m_j = 0\) for
+\(j \neq i\).
+\end{definition}
+
+\begin{theorem}
+\label{thm:direct-sum-product-and-coproduct}
+The direct sum of \(R\)-modules is both a \emph{product and a coproduct} in the
+category of \(R\)-modules.
+\end{theorem}
+
+\begin{proof}
+Let \((M_j)_{j \in J}\) be a collection of \(R\)-modules (either left or right)
+and define the notation \(M \coloneq \bigoplus_{j \in J} M_j\). We prove each of
+the universal properties separately:
+\begin{itemize}\setlength\itemsep{0em}
+\item (Product) Given an \(R\)-module \(N\) and a family of morphisms
+  \((\phi_j: N \to M_j)_{j \in J}\), we define a map \(\phi: N \to M\) to be
+  given by \(n \mapsto (\phi_j(n))_{j \in J}\). Notice that since each
+  \(\phi_j\) is a morphism, then given any \(n, n' \in N\) we have
+  \begin{align*}
+    \phi(n + n')
+    &= (\phi_j(n + n'))_{j \in J}
+      = (\phi_j(n) + \phi_j(n'))_{j \in J}
+      = (\phi_j(n))_{j \in J} + (\phi_j(n'))_{j \in J} \\
+    &= \phi(n) + \phi(n'),
+  \end{align*}
+  moreover, if \(r \in R\) is any element then
+  \[
+    \phi(r n)
+      = (\phi_j(r n))_{j \in J}
+      = (r \phi_j(n))_{j \in J}
+      = r (\phi_j(n))_{j \in J}
+      = r \phi(n).
+  \]
+  That is, \(\phi\) is an \(R\)-module morphism and clearly \(\pi_j \phi =
+  \phi_j\) for all \(j \in J\). Moreover, uniqueness comes from the fact that
+  the natural projections are epimorphisms.
+
+\item (Coproduct) Given an \(R\)-module \(N\) and a family of morphisms
+  \((\psi_j: M_j \to N)_{j \in J}\), we define a map \(\psi: M \to N\) by
+  \((m_j)_{j \in J} \mapsto \sum_{j \in J} \psi_j(m_j)\) --- which is well
+  defined since \(m_j \neq 0\) only for finitely many \(j \in J\) and thus
+  \(\sum_{j \in J} \psi_j(m_j)\) constitutes only of finitely many terms, since
+  \(\psi_j(0) = 0\) for any \(j \in J\). This map clearly defines a morphism of
+  \(R\)-modules, and since \(\iota_j\) are monomorphisms, \(\psi\) is the unique
+  morphism such that \(\psi \iota_j = \psi_{j}\).
+\end{itemize}
+\end{proof}
+
+\subsection{Pullbacks \& Pushouts of \texorpdfstring{\(R\)}{R}-Modules}
+
+\begin{theorem}
+\label{thm:R-mod-pullback-pushouts}
+The category of \(R\)-modules has pullbacks and pushouts.
+\end{theorem}
+
+\begin{proof}
+Let \(M\), \(N\), and \(Z\) be \(R\)-modules.
+\begin{itemize}\setlength\itemsep{0em}
+\item (Pullback) Given \(R\)-module morphisms \(\mu: M \to Z\) and \(\lambda: N
+  \to Z\), we define a triple \((M \times_Z N, \pi_M, \pi_N)\) ---
+  where
+  \[
+  M \times_Z N \coloneq \{(m, n) \in M \times N \colon \mu(m) = \lambda(n)\},
+  \]
+  with the natural \(R\)-module structures inherited from \(M \times N\), and
+  \(\pi_M: M \times_Z N \epi M\) and \(\pi_N: M \times_Z N \epi N\) are
+  canonical projections. We claim that the following commutative square is a
+  pullback
+  \[
+  \begin{tikzcd}
+  M \times_Z N \ar[d, two heads, "\pi_M"'] \ar[r, two heads, "\pi_N"]
+  \ar[dr, phantom, "\lrcorner", very near start]
+  &N \ar[d, "\lambda"] \\
+  M \ar[r, "\mu"'] &Z
+  \end{tikzcd}
+  \]
+  From construction we have \(\mu \pi_M = \lambda \pi_N\), thus the diagram
+  commutes. Let \(W\) be any other \(R\)-module, and consider any two
+  \(R\)-module morphisms \(m: W \to M\) and \(n: W \to N\) such that
+  \(\mu m = \lambda n\). We define a map \(\phi: W \to M \times_Z N\) to be
+  given by \(\phi(w) = (m(w), n(w))\) --- since \(\mu m(w) = \mu n(w)\) then
+  indeed \(\phi(w) \in M \times_Z N\). Moreover, since \(m\) and \(n\) are
+  morphisms, it follows trivially that \(\phi\) is an \(R\)-module
+  morphism. Uniqueness of \(\phi\) comes from the fact that both \(\pi_M\) and
+  \(\pi_N\) are epimorphisms.
+
+\item (Pullback) Let \(\sigma: Z \to M\) and \(\varepsilon: Z \to N\) be
+  \(R\)-module morphisms. Consider the submodule
+  \[
+  W \coloneq \{(\sigma(z), -\varepsilon(z)) \in M \oplus N \colon
+  z \in Z\}.
+  \]
+  Define a triple \((M \oplus_Z N, \iota_M, \iota_N)\)
+  to be given by
+  \[
+  M \oplus_Z N \coloneq \frac{M \oplus N}{W},
+  \]
+  inheriting the natural \(R\)-module structure from \(M \oplus N\), and
+  canonical inclusions \(\iota_M: M \emb M \oplus_Z N\) and
+  \(\iota_N: N \emb M \oplus_Z N\). We claim that the following commutative
+  diagram is a pushout
+  \[
+  \begin{tikzcd}
+  Z \ar[r, "\varepsilon"] \ar[d, "\sigma"']
+  \ar[dr, very near end, phantom, "\lrcorner"]
+  &N \ar[d, hook, "\iota_N"] \\
+  M \ar[r, hook, "\iota_M"'] &M \oplus_Z N
+  \end{tikzcd}
+  \]
+  If \(z \in Z\) is any element, then  \(\iota_M\sigma(z) = (\sigma(z), 0) + W\)
+  and \(\iota_N \varepsilon(z) = (0, \varepsilon(z)) + W\) but notice that
+  \[
+  \iota_M \sigma(z) - \iota_N \varepsilon(z)
+  = (\sigma(z), - \varepsilon(z)) + W
+  = W.
+  \]
+  Thus \(\iota_M \sigma = \iota_N \varepsilon\). Moreover, \(P\) be any
+  \(R\)-module, together with morphisms \(n: N \to P\) and \(m: M \to P\) such
+  that \(m \sigma = n \varepsilon\).  We construct a map
+  \(\psi: M \oplus_Z N \to P\) given by \((a, b) + W \mapsto m(a) + n(b)\),
+  which clearly is such that \(\psi \iota_N = n\) and \(\psi \iota_M = m\) ---
+  moreover, \(\psi\) is an \(R\)-module morphism. Its uniqueness comes from the
+  fact that \(\iota_M\) and \(\iota_N\) are monomorphisms.
+\end{itemize}
+\end{proof}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../deep-dive"
+%%% End:

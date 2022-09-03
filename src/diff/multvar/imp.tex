@@ -1,4 +1,4 @@
-\section{Implict Map Theorem}
+\section{Implicit Map Theorem}
 
 \begin{definition}[Level curve]
 \label{def:level-curve}
@@ -38,7 +38,7 @@ To ease our lives, lets assume that \(\Omega\) has the following form
 \]
 If that is not the case, since \(\Omega\) is open --- and hence \((x_{0}, y_0)\) is
 an internal point --- we can merely choose an open set contained in \(\Omega\) that
-satisfyies the above form.
+satisfies the above form.
 
 Define a collection \(\{g_{x} \colon x \in B_{x_0}(\alpha)\}\) of maps
 \[
@@ -126,26 +126,30 @@ the property that the norm of linear maps is sub-multiplicative
   \\
   &= \frac{1}{2} \varepsilon + \frac{1}{2}\varepsilon = \varepsilon
 \end{align*}
-The relation above is equivalent to: for all \(\norm{x - x_0}_V < \delta\) we have
+The relation above is equivalent to: for all \(\norm{x - x_0}_V < \delta\) we
+have
 \[
-  g_x(\overline{B}_{y_0}(\varepsilon)) \subseteq B_{y_0}(\varepsilon)
+  g_x(\Cl(B_{y_0}(\varepsilon))) \subseteq B_{y_0}(\varepsilon)
 \]
 
 Since \(B_{y_0}(\varepsilon) \subseteq W\) is a closed set, it follows from
-\cref{thm: Banach fixed point} that there exists a unique fixed point \(y_x
-\in \overline{B}_{y_0}(\varepsilon)\) of \(g_{x}\). Define now the map \(f: B_{x_0}(\delta) \to
-B_{y_0}(\varepsilon)\) where \(f(x) = y_{x}\) and \(y_x\) is the corresponding fixed
-point of each \(g_x\).
+\cref{thm: Banach fixed point} that there exists a unique fixed point
+\(y_x \in \Cl(B_{y_0}(\varepsilon))\) of \(g_{x}\). Define now the map
+\(f: B_{x_0}(\delta) \to B_{y_0}(\varepsilon)\) where \(f(x) = y_{x}\) and
+\(y_x\) is the corresponding fixed point of each \(g_x\).
 
-From construction \(B_{x_0}(\delta) \times B_{y_0}(\varepsilon) \subseteq \Omega\). Clearly, for all \(x \in
-B_{x_0}(\delta)\) and \(y \in B_{y_0}(\varepsilon)\), \(F(x, y) = 0\) if and only if \(f(x) =
-y\). Moreover, we have immediatly that \(f(x_0) = y_0\). For the continuity of
-\(f\) at the point \(x_0\), we can observe that for all \(\varepsilon \in (0, \gamma)\) there
-exists a \(\delta \in (0, \gamma)\) such that \(\norm{g_x(y_x) - y_0} = \norm{f(x) - y_0}
-< \varepsilon\), thus we are finally done.
+From construction
+\(B_{x_0}(\delta) \times B_{y_0}(\varepsilon) \subseteq \Omega\). Clearly, for
+all \(x \in B_{x_0}(\delta)\) and \(y \in B_{y_0}(\varepsilon)\),
+\(F(x, y) = 0\) if and only if \(f(x) = y\). Moreover, we have immediately that
+\(f(x_0) = y_0\). For the continuity of \(f\) at the point \(x_0\), we can
+observe that for all \(\varepsilon \in (0, \gamma)\) there exists a
+\(\delta \in (0, \gamma)\) such that
+\(\norm{g_x(y_x) - y_0} = \norm{f(x) - y_0} < \varepsilon\), thus we are finally
+done.
 \end{proof}
 
-We'll now extend the Implict Map Theorem for cases 3 where we have more
+We'll now extend the Implicit Map Theorem for cases 3 where we have more
 special conditions, allowing for additional properties for the implicit map
 \(f\).
 
@@ -340,7 +344,7 @@ y_0\). The following holds
     of the differential \(\diff f(x_0)\). From the injective property of
     \(f\), there must exist \(n\) linearly independent rows in
     \(f'(x_0)\). Let \(A\) be the \((n \times n)\)-matrix containing these linearly
-    indepent rows and \(C\) the \(((m - n) \times n)\)-matrix containing the
+    independent rows and \(C\) the \(((m - n) \times n)\)-matrix containing the
     remaining rows of \(f'(x_0)\). Do row operations on \(f'(x_0)\) so that we
     see it as equivalent to the matrix
     \[
@@ -441,7 +445,7 @@ on its last \(m\) columns. If we now identify points \(x \in \R^d\) with points
 \((x_1, x_2) = x \in \R^{d-m} \times \R^m\), we find that \(\partial_2 F(x_0^1, x_0^2)\) is an
 invertible map (it corresponds to the matrix \(D\)).
 
-We can now apply the Implicit Map Theorem to find neighbouhoods \(\Omega_{x_{0}^1}
+We can now apply the Implicit Map Theorem to find neighbourhoods \(\Omega_{x_{0}^1}
 \subseteq \R^{d-m}\) and \(\Omega_{x_0^2} \subseteq \R^m\) of \(x_0^1\) and \(x_0^2\), respectively,
 and a map \(g: \Omega_{x_0^1} \to \Omega_{x_0^2}\) for which \(F(x_{1}, x_2) = 0\) if and
 only if \(g(x_1) = x_2\). In particular, the mapping \(x_1 \mapsto F(x_1, g(x_1))\)
@@ -488,7 +492,7 @@ Let \(\Omega \subseteq \R^d\) and maps \(f: \Omega \to \R\), and  \(F: \Omega \t
 are \(C^2(\Omega, \R)\). Let \(S \subseteq \Omega\) be the surface defined by \(S = \{x \in \Omega \colon
 F(x) = 0\}\). Consider \(x_0 \in S\) as a possible candidate of local extremum
 of \(f\) in the surface \(S\). Suppose additionally that \(\rank F'(x) =
-m\) for every \(x \in \Omega\). Define the lagrange multipliers \(\lambda \in \R^m\) so that
+m\) for every \(x \in \Omega\). Define the Lagrange multipliers \(\lambda \in \R^m\) so that
 the map \(L: S \to \R\) given by
 \[
   L(x) = f(x) - \left\langle \lambda, F(x) \right\rangle,

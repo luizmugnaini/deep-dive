@@ -257,35 +257,61 @@ is said to be
   \epi \Hom_{\cat D}(F x, F y)\) is surjective.
 \item \emph{Fully faithful} if for all \(x, y \in \cat C\) the map \(\Hom_{\cat
     C}(x, y) \isoto \Hom_{\cat D}(F x, F y)\) is a bijection.
-\item \emph{Essencially surjective} if for each \(y \in \cat D\) there exists
+\item \emph{Essentially surjective} if for each \(y \in \cat D\) there exists
   \(x \in \cat C\) and an isomorphism \(F x \isoto y\) in \(\cat D\).
 \item \emph{Conservative} if, given a morphism \(f\) in \(\cat C\), if \(F f\)
   is an isomorphism in \(\cat D\), then \(f\) is an isomorphism in \(\cat C\).
 \end{enumerate}
 \end{definition}
 
+\begin{proposition}[Fully faithful functors and isomorphisms]
+\label{prop:fully-faithful-image-iso-then-obj-iso}
+Let \(F: \cat C \to \cat D\) be a \emph{fully faithful} functor. If
+\(F x \iso F y\) in \(\cat D\), for some \(x, y \in \cat C\), then \(x \iso y\)
+in \(\cat C\) for a \emph{unique} isomorphism.
+\end{proposition}
+
+\begin{proof}
+If \(F x \iso F y\), let \(\phi: F x \isoto F y\) be an isomorphism in
+\(\cat D\). Since \(F\) is fully faithful, there exists unique morphisms
+\(f: x \to y\) and \(g: y \to x\) in \(\cat C\) for which \(F f = \phi\) and
+\(F g = \phi^{-1}\). In particular, one has
+\[
+\Id_{F x} =  \phi^{-1} \phi = F g \circ F f = F(g f).
+\]
+From the faithfulness of \(F\), since \(F \Id_x = \Id_{F x}\), then
+\(g f = \Id_x\). On the other hand, one also has
+\[
+\Id_{F y} = \phi \phi^{-1} = F f \circ F g = F(f g),
+\]
+therefore, since \(F \Id_y = \Id_{F y}\) we obtain \(f g = \Id_y\). We can now
+finally conclude that \(f\) is an isomorphism and its inverse is \(g\).
+\end{proof}
+
 \begin{definition}[Product \& disjoint union categories]
 \label{def:product-disjoint-categories}
 Let \(I\) be an indexing set and \(\{\cat C_{i}\}_{i \in I}\) be a collection of
 categories associated with \(I\). We define the following categories:
 \begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item The \emph{product} category \(\prod_{i \in I} \cat C_i\) consists of objects
+\item The \emph{product} category \(\prod_{i \in I} \cat C_i\) consists of
+  objects
   \(\Obj(\prod_{i \in I} \cat C_i) \coloneq \prod_{i \in I} \Obj(\cat C_i)\),
-  and morphisms \(\Hom_{\prod_{i \in I} \cat C_i}((x_i)_{i \in I}, (y_i)_{i \in
-    I}) \coloneq \prod_{i \in I} \Hom_{\cat C_i}(x_i, y_i)\) between any two
-  objects \((x_i)_{i \in I}\) and \((y_i)_{i \in I}\) in the category. Composable
+  and morphisms
+  \(\Hom_{\prod_{i \in I} \cat C_i}((x_i)_{i \in I}, (y_i)_{i \in I}) \coloneq
+  \prod_{i \in I} \Hom_{\cat C_i}(x_i, y_i)\) between any two objects
+  \((x_i)_{i \in I}\) and \((y_i)_{i \in I}\) in the category. Composable
   morphisms \((f_i)_{i \in I}\) and \((g_i)_{i \in I}\) have composition defined
-  componentwise --- that is, \((f_i)_{i \in I} (g_i)_{i \in I} \coloneq
-  (f_i g_i)_{i \in I}\).
-\item The \emph{disjoint union} category \(\coprod_{i \in I} \cat C_i\) consists
+  component-wise --- that is,
+  \((f_i)_{i \in I} (g_i)_{i \in I} \coloneq (f_i g_i)_{i \in I}\).
+\item The \emph{disjoint union} category \(\bigdisj_{i \in I} \cat C_i\) consists
   of objects
   \[
-    \Obj\bigg(\coprod_{i \in I} \cat C_i\bigg) \coloneq
-    \coprod_{i \in I} \{(x, i) \colon i \in I \text{ and } x \in \cat C_i\},
+    \Obj\bigg(\bigdisj_{i \in I} \cat C_i\bigg) \coloneq
+    \bigdisj_{i \in I} \{(x, i) \colon i \in I \text{ and } x \in \cat C_i\},
   \]
   and morphisms
   \[
-    \Hom_{\coprod_{i \in I} \cat C_i}((x, i), (y, j)) \coloneq
+    \Hom_{\bigdisj_{i \in I} \cat C_i}((x, i), (y, j)) \coloneq
     \begin{cases}
       \Hom_{\cat C_i}(x, y), &\text{if } i = j \\
       \emptyset, &\text{otherwise}
@@ -296,16 +322,7 @@ categories associated with \(I\). We define the following categories:
 Moreover, if \(\{\cat D_{i}\}_{i \in I}\) is another collection of categories,
 and \(\{F_{i}: \cat C_i \to \cat D_i\}_{i \in I}\) is a collection of functors,
 we associate to each of the above categories the functors \(\prod_{i \in I}
-F_i\) and \(\coprod_{i \in I} F_i\).
-\end{definition}
-
-\begin{definition}[Two sided represented functor]
-\label{def:two-sided-represented-functor}
-Let \(\cat C\) be a \(\mathcal U\)-category, then there is a functor \(\Hom(-,
--): \cat C^{\op} \times \cat C \to \Set\) defined by mapping objects \((x, y)
-\mapsto \Hom(x, y)\) and morphisms \((f, g): (a, y) \to (x, b)\) to a
-set-function \((f^{*}, g_{*}): \Hom(x, y) \to \Hom(a, b)\) given by the mapping
-\(g \mapsto h g f\).
+F_i\) and \(\bigdisj_{i \in I} F_i\).
 \end{definition}
 
 \begin{example}[Orbit category]
@@ -340,7 +357,8 @@ and \(g: x' \to y'\) in \(\cat B\), the following diagram commutes
 \]
 \end{proposition}
 
-\begin{definition}
+\begin{definition}[Functor-induced categories]
+\label{def:functor-induced-cats}
 Let \(F: \cat C \to \cat D\) be a functor between categories \(\cat C\) and
 \(\cat D\), and let \(y \in \cat D\). We define the following two categories:
 \begin{enumerate}[(a)]\setlength\itemsep{0em}
@@ -447,13 +465,13 @@ following:
 \begin{enumerate}[(a)]\setlength\itemsep{0em}
 \item An isomorphism class of a monomorphism with \emph{target} \(x\) is called a
   \emph{subobject} of \(x\).
-\item An isomorphism class of an epimorphim with \emph{source} \(x\) is called a
+\item An isomorphism class of an epimorphism with \emph{source} \(x\) is called a
   \emph{quotient} of \(x\).
 \end{enumerate}
 These isomorphism classes are given in the sense of \cref{def:iso-mono-epi}.
 \end{definition}
 
-\begin{example}[Ordering subobjects]
+\begin{example}[Ordering subobject]
 \label{exp:order-subobject}
 One can \emph{order} the collection of subobjects of a given object \(x \in \cat
 C\) by defining a relation \([f: y \mono x] \leq [g: z \mono x]\) if there
@@ -467,10 +485,6 @@ exists \(h: y \to z\) such that
 Moreover, \emph{if} \(h\) exists, then it's unique.
 \end{example}
 
-\begin{definition}[Comma category]
-\label{def:comma-category}
-\todo[inline]{Comma category}
-\end{definition}
 
 \section{Natural Transformations}
 
@@ -502,8 +516,8 @@ Let \(\cat C\) and \(\cat D\) be categories. We define a category \(\Fct(\cat C,
 natural transformations between functors.
 \end{definition}
 
-\begin{definition}[Horizontal composition]
-\label{def:horizontal-composition-natural-transformation}
+\begin{proposition}[Horizontal composition]
+\label{prop:horizontal-composition-natural-transformation}
 Let \(\cat A, \cat B\) and \(\cat C\) be categories. Consider functors \(F, F':
 \cat A \rightrightarrows \cat B\), and \(G, G': \cat B \rightrightarrows \cat
 C\).  Let \(\alpha: F \nat F'\) and \(\beta: G \nat G'\) be natural
@@ -519,17 +533,50 @@ transformations --- that is,
     \ar[Rightarrow, from=G, to=GG, "\beta"]
   \end{tikzcd}
 \]
-We define the \emph{horizontal composition} of \(\beta\) with \(\alpha\) as the
-natural transformation \(\beta \alpha: G F \nat G' F'\) so that
+There exists an induced natural transformation
+\(\beta * \alpha: G F \nat G' F'\) --- called the \emph{horizontal composition},
+also called \emph{Godement product}, of \(\alpha\) and \(\beta\) --- such that,
+for all \(a \in \cat A\),
+\[
+(\beta * \alpha)_a = \beta_{F' a} G(\alpha_a) = G'(\alpha_a) \beta_{F a}.
+\]
+The horizontal composition can be depicted by the following diagram
 \[
   \begin{tikzcd}
-    \cat A \ar[r, bend left=40, "G F"{name=s}]
-    \ar[r, bend right=40, swap, "{G' F'}"{name=t}]
-    &\cat C
-    \ar[Rightarrow, from=s, to=t, "\beta \alpha"]
+    \cat A \ar[rr, bend left=40, "G F"{name=s}]
+    \ar[rr, bend right=40, swap, "{G' F'}"{name=t}]
+    &&\cat C
+    \ar[Rightarrow, from=s, to=t, "\beta * \alpha"]
   \end{tikzcd}
 \]
-\end{definition}
+\end{proposition}
+
+\begin{proof}
+Notice that the naturality of \(\beta * \alpha\) solely depends on the
+naturality of both \(\alpha\) and \(\beta\). Indeed, for every \(a \in \cat A\)
+and morphism \(f: a \to a'\) in \(\cat A\) the following diagram
+\[
+\begin{tikzcd}
+G F a \ar[d, "G F f"'] \ar[r, "G \alpha_a"]
+\ar[rr, bend left=50, "{(\beta * \alpha)_{a}}"]
+&G F' a \ar[r, "\beta_{F' a}"] \ar[d, "G F' f"]
+& G' F' a \ar[d, "G' F' f"]
+\\
+G F a' \ar[r, "G \alpha_{a'}"']
+\ar[rr, bend right=50, "{(\beta * \alpha)_{a'}}"']
+&G F' a' \ar[r, "\beta_{F' a'}"']
+&G' F' a'
+\end{tikzcd}
+\]
+is commutative, which proves that \(\beta * \alpha\) is a natural
+transformation.
+\end{proof}
+
+\begin{notation}
+\label{not:horizontal-composition}
+For the ease of notation, we denote the vertical composition \(\alpha * \Id_F\)
+by \(\alpha * F\).
+\end{notation}
 
 \begin{definition}[Vertical composition]
 \label{def:vertical-compostion-natural-transformation}
@@ -545,17 +592,95 @@ transformations given in the following diagram
   \ar[Rightarrow, "\beta", from=HH, to=G]
   \end{tikzcd}
 \]
-We define the \emph{vertical compostion} of \(\beta\) with \(\alpha\) as the
-natural transformation \(\beta \alpha: F \nat G\) --- diagrammatically,
+We define the \emph{vertical composition} of \(\beta\) with \(\alpha\) as the
+natural transformation \(\beta \circ \alpha: F \nat G\) --- diagrammatically,
 \[
   \begin{tikzcd}
-  \cat C \ar[r, bend left=50, "F"{name=F}]
-  \ar[r, bend right=50, swap, "G"{name=G}]
-  &\cat D
-  \ar[Rightarrow, "\beta\alpha", from=F, to=G]
+  \cat C \ar[rr, bend left=50, "F"{name=F}]
+  \ar[rr, bend right=50, swap, "G"{name=G}]
+  &&\cat D
+  \ar[Rightarrow, "\beta \circ \alpha", from=F, to=G]
   \end{tikzcd}
 \]
 \end{definition}
+
+\begin{proposition}
+\label{prop:mixing-vertical-and-horizontal-compositions}
+Consider the following diagram, with categories \(\cat A\), \(\cat B\) and
+\(\cat C\), functors \(F\), \(G\), \(H\), \(K\), \(L\), \(M\), and natural
+transformations \(\alpha\), \(\beta\), \(\gamma\) and \(\delta\):
+\[
+\begin{tikzcd}
+\cat A
+\ar[rr, bend left=60, "F"{name=F}]
+\ar[rr, "H"{description, near start}, ""'{name=H}, ""{name=HH}]
+\ar[rr, bend right=60, "L"'{name=L}]
+&& \cat B
+\ar[rr, bend left=60, "G"{name=G}]
+\ar[rr, "K"{description, near start}, ""'{name=K}, ""{name=KK}]
+\ar[rr, bend right=60, "M"'{name=M}]
+&&\cat C
+\ar[Rightarrow, "\alpha", from=F, to=H]
+\ar[Rightarrow, from=HH, to=L, "\gamma"]
+\ar[Rightarrow, "\beta", from=G, to=K]
+\ar[Rightarrow, from=KK, to=M, "\delta"]
+\end{tikzcd}
+\]
+This diagram is such that the following equality holds:
+\[
+(\delta * \gamma) \circ (\beta * \alpha)
+= (\delta \circ \beta) * (\gamma \circ \alpha)
+\]
+Where by \(\circ\) we denote the \emph{vertical composition} and by \(*\) we
+denote the \emph{horizontal composition}.
+\end{proposition}
+
+\begin{proof}
+The composition \((\delta * \gamma) \circ (\beta * \alpha): GF \nat ML\) is
+given by the following diagrams
+\[
+\begin{tikzcd}
+\cat A \ar[rr, bend left=60, "GF"{name=GF}]
+\ar[rr, "HK"{description, near start}, ""'{name=HK}]
+\ar[rr, "ML"'{name=ML}, bend right=60]
+& &\cat C
+\ar[Rightarrow, "\beta * \alpha", from=GF, to=HK]
+\ar[Rightarrow, "\delta* \gamma", from=HK, to=ML]
+\end{tikzcd}
+\longmapsto
+\begin{tikzcd}
+\cat A \ar[rr, bend left=60, "GF"{name=GF}]
+\ar[rr, "ML"'{name=ML}, bend right=60]
+& &\cat C
+\ar[Rightarrow, "(\delta * \gamma) \circ (\beta * \alpha)" description, from=GF,
+to=ML]
+\end{tikzcd}
+\]
+On the other hand, the composition \((\delta \circ \beta) * (\gamma \circ
+\alpha): GF \nat ML\) is given by the following diagrams
+\[
+\begin{tikzcd}
+\cat A
+\ar[rr, "F"{name=F}, bend left=60]
+\ar[rr, "L"'{name=L}, bend right=60]
+&& \cat B
+\ar[rr, "G"{name=G}, bend left=60]
+\ar[rr, "M"'{name=M}, bend right=60]
+&& \cat C
+\ar[Rightarrow, "\gamma \circ \alpha", from=F, to=L]
+\ar[Rightarrow, "\delta \circ \beta", from=G, to=M]
+\end{tikzcd}
+\longmapsto
+\begin{tikzcd}
+\cat A \ar[rr, bend left=60, "GF"{name=GF}]
+\ar[rr, "ML"'{name=ML}, bend right=60]
+& &\cat C
+\ar[Rightarrow, "(\delta \circ \beta) * (\gamma \circ \alpha)" description,
+from=GF, to=ML]
+\end{tikzcd}
+\]
+This is sufficient to prove the assertion.
+\end{proof}
 
 Notice that, given a functor \(\phi: \cat C \to \cat D\) between categories
 \(\cat C\) and \(\cat D\), for every category \(\cat A\), there arises a natural
@@ -765,7 +890,7 @@ only if \(F\) is \emph{fully faithful} and \emph{essentially surjective}.
 Suppose \(F\) is an equivalence of categories, then exists a quasi inverse
 \(G: \cat D \to \cat C\) and natural isomorphisms
 \(\alpha: G F \isonat \Id_{\cat C}\) and \(\beta: F G \isonat \Id_{\cat D}\). We
-now prove that \(F\) is both fully faithful and essencially surjective.
+now prove that \(F\) is both fully faithful and essentially surjective.
 
 \begin{itemize}\setlength\itemsep{0em}
 \item (Fully Faithful) Let \(g: Fx \to Fy\) be any morphism in \(\cat D\), thus
@@ -851,7 +976,7 @@ Define \(\cat D_0\) to be the full category with
 \label{exp:equivalence-category-functor-opposite}
 For any two given categories \(\cat C\) and \(\cat D\), there is an isomorphism
 of categories \(\Fct(\cat C, \cat D)^{\op} \iso \Fct(\cat C^{\op}, \cat
-D^{\op})\). Explicitely, such isomorphism maps \(F \mapsto \op F \op\).
+D^{\op})\). Explicitly, such isomorphism maps \(F \mapsto \op F \op\).
 \end{example}
 
 \begin{definition}[Essencially \(\mathcal{U}\)-small]
@@ -904,7 +1029,7 @@ Let \(\cat D_0\) be the category with
 \(\Hom_{\cat D_0}(F x, F y) \coloneq F(\Hom_{\cat C}(x, y))\) --- so that
 \(\Hom_{\cat D_0}(F x, F y) \subseteq \Hom_{\cat D}(F x, F y)\). Since \(F\) is
 half-full, the definition of \(\Hom_{\cat D_0}(F x, F y)\) is independent of the
-inicial choice of \(x, y \in \cat C\) --- indeed, if \(x', y' \in \cat C\) are
+initial choice of \(x, y \in \cat C\) --- indeed, if \(x', y' \in \cat C\) are
 such that \(F x' \iso F x\) and \(F y' \iso F y\) in \(\cat D_0\), then \(x'
 \iso x\) and \(y' \iso y\) in \(\cat C\), thus \(\Hom_{\cat C_0}(x, y) \iso
 \Hom_{\cat C_0}(x', y')\).
@@ -914,6 +1039,153 @@ functor \(F: \cat C \to \cat D_0\) is fully faithful and essencially surjective
 --- thus by \cref{prop:equiv-cats-iff-fully-faith-and-essen-surj} \(F\) is an
 equivalence of categories.
 \end{proof}
+
+\section{Comma Categories}
+
+\begin{definition}[Comma category]
+\label{def:comma-category}
+Let \(F: \cat A \to \cat C\) and \(G: \cat B \to \cat C\) be two functors. The
+comma category \(F \comma G\) induced by the functors \(F\) and \(G\) is defined
+as follows:
+\begin{itemize}\setlength\itemsep{0em}
+\item The objects of \(F \comma G\) are triples \((a, f, b)\) --- where
+  \(a \in \cat A\), \(b \in \cat B\), and \(f: F a \to G b\) is a morphism of
+  \(\cat C\).
+
+\item A morphism \(\phi: (a, f, b) \to (a', f', b')\) in \(F \comma G\) is a
+  pair of \((\alpha, \beta)\) where \(\alpha: a \to a'\) is a morphism of
+  \(\cat A\), while \(\beta: b \to b'\) is a morphism of \(\cat B\) ---
+  moreover, such morphisms are such that the following diagram commutes
+  \[
+  \begin{tikzcd}
+  F a \ar[r, "f"] \ar[d, "F \alpha"'] & G b \ar[d, "G \beta"] \\
+  F a' \ar[r, "f'"'] & G b'
+  \end{tikzcd}
+  \]
+
+\item The composition of \emph{compatible} morphisms \((\alpha, \beta)\) and
+  \((\alpha', \beta')\) in \(F \comma G\) is induced by the composition law of
+  \(\cat A\) and \(\cat B\) as follows:
+  \[
+  (\alpha', \beta') \circ (\alpha, \beta)
+  \coloneq (\alpha' \alpha, \beta' \beta).
+  \]
+\end{itemize}
+\end{definition}
+
+\begin{proposition}[Projection functors in \(F \comma G\)]
+\label{prop:comma-cat-proj-functors}
+Let \(F: \cat A \to \cat C\) and \(G: \cat B \to \cat C\) be functors. There are
+two functors \(A: F \comma G \to \cat A\) and \(B: F \comma G \to \cat B\), and
+a canonical natural transformation \(\eta: F A \nat G B\). The scenario can be
+depicted in the following diagram
+\[
+\begin{tikzcd}
+F \comma G
+\ar[rrr, "B"]
+\ar[rrrdddd, bend left=18, "G B", ""'{name=GB}]
+\ar[rrrdddd, bend right=18, "F A"', ""{name=FA}]
+\ar[dddd, "A"]
+& & & \cat B \ar[dddd, "G"] \\ \\ \\ \\
+\cat A \ar[rrr, "F"] & & &\cat C
+\ar[Rightarrow, "\eta", from=FA, to=GB]
+\end{tikzcd}
+\]
+It is to be noted that such diagram \emph{does not commute in general} --- that
+is, we may have comma categories where \(FA \neq G B\).
+\end{proposition}
+
+\begin{proof}
+Define the functors \(A\) and \(B\) as follows --- for every object
+\((a, f, b) \in F \comma G\) and morphism
+\((\alpha, \beta) \in \Hom(F \comma G)\):
+\begin{itemize}\setlength\itemsep{0em}
+\item Map \(A(a, f, b) \coloneq a\), and \(A(\alpha, \beta) \coloneq \alpha\).
+\item Map \(B(a, f, b) \coloneq b\), and \(A(\alpha, \beta) \coloneq \beta\).
+\end{itemize}
+For the natural transformation, simply define
+\(\eta_{(a, f, b)} \coloneq f: F a \to F b\) which must be natural from the
+construction of comma categories.
+\end{proof}
+
+\begin{proposition}[Comma category property]
+\label{prop:comma-cat-univ-property}
+Let \(F: \cat A \to \cat C\) and \(G: \cat B \to \cat C\) be two functors. If
+there exists a category \(\cat D\) with two functors \(A': \cat D \to \cat A\)
+and \(B': \cat D \to \cat B\), and a natural transformation
+\(\eta': F A' \nat G B'\) --- then there \emph{exists a unique} functor
+\(W: \cat D \to F \comma G\) such that
+\[
+\alpha * W = \alpha',
+\]
+and that the following diagram commutes
+\[
+\begin{tikzcd}
+&\cat D \ar[drd, bend left, "B'"] \ar[dld, bend right, "A'"']
+\ar[d, dashed, "W"]
+& \\
+&F \comma G \ar[dr, "B"'] \ar[dl, "A"]& \\
+\cat A & &\cat B
+\end{tikzcd}
+\]
+\end{proposition}
+
+\begin{proof}
+For every \(d \in D\), define \(W d \coloneq (A' d, \eta'_d, B' d)\), and for
+each morphism \(f \in \Hom(\cat D)\), we define \(W f \coloneq (A' f, B'
+f)\). This completely determines \(W\) and thus shows that, if it exists, it is
+unique. To show that \(W: \cat D \to F \comma G\) is indeed a functor, we note
+that:
+\begin{itemize}\setlength\itemsep{0em}
+\item Given morphisms \(f: x \to y\) and \(g: x \to z\) of \(\cat D\), we have
+  \begin{align*}
+  W g \circ W f
+  &= (A' g, B' g) \circ (A' f, B' f) \\
+  &= (A' g \circ A' f, B' g \circ B' f) \\
+  &= (A' (g f), B' (g f)) \\
+  &= W (g f).
+  \end{align*}
+  Note that although we used the same symbol \(\circ\) for composition, one
+  should note that they have different laws.
+\item Moreover, for any \(d \in D\) we have
+  \[
+  W \Id_d
+  = (A' \Id_d, B' \Id_d)
+  = (\Id_{A' d}, \Id_{B' d})
+  = \Id_{W d}.
+  \]
+\end{itemize}
+\end{proof}
+
+\begin{definition}[Category of elements]
+\label{def:category-of-elements}
+Let \(F: \cat C \to \Set\) be a covariant functor. The \emph{category of
+  elements} of \(\cat C\) associated to \(F\) is denoted by \(\El_F(\cat C)\)
+whose objects are pairs \((c, s)\) for \(c \in \cat C\) and \(s \in F c\), and
+morphisms between any two objects \((c, s), (c', s') \in \El_F(\cat C)\) is
+defined as
+\[
+\Hom_{\El_F(\cat C)}((c, s), (c', s')) \coloneq
+\{u \in \Hom_{\cat C}(c, c') \colon F(u)(s) = s'\}.
+\]
+
+For a contravariant \(G: \cat C^{\op} \to \Set\), the category of elements of
+\(\cat C\) associated to \(G\) is composed of objects \((c, s)\) for
+\(c \in \cat C\) and \(s \in G c\), and the collection of morphisms between
+objects \((c, s), (c', s') \in \El_G(\cat C)\) is given by
+\[
+\Hom_{\El_G(\cat C)}((c, s), (c', s')) \coloneq
+\{u \in \Hom_{\cat C}(c', c) \colon F(u)(s') = s\}.
+\]
+\end{definition}
+
+\begin{corollary}
+\label{cor:cat-elements-is-comma-cat}
+Let \(F: \cat C \to \cat D\) be a functor. The category of elements \(\El_F(\cat
+C)\) is exactly the comma category \(1 \comma F\) --- where \(1: \mathbf{1} \to
+\Set\) is the functor from the discrete category \(\mathbf{1}\) with a single
+object \(\star\) to the category of sets, mapping \(\star \mapsto \{*\}\).
+\end{corollary}
 
 \section{Yoneda Lemma}
 
@@ -933,15 +1205,31 @@ functors \([\cat C^{\op}, \Set^{\op}]\). Together with such category we define
 functors
 \begin{align*}
   \yo_{\cat C}:& \cat C \to [\cat C^{\op}, \Set],
-    \text{ mapping } x \mapsto \Hom_{\cat C}(-, x), \\
+                 \text{ mapping } x \mapsto \Hom_{\cat C}(-, x)
+                 \text{ and } f \mapsto f_{*}, \\
   \yo'_{\cat C}:& \cat C \to [\cat C^{\op}, \Set^{\op}],
-    \text{ mapping } x \mapsto \Hom_{\cat C}(x, -).
+                  \text{ mapping } x \mapsto \Hom_{\cat C}(x, -)
+                  \text{ and } f \mapsto f^{*}.
 \end{align*}
 The functors \(\yo_{\cat C}\) and \(\yo'_{\cat C}\) are called \emph{Yoneda
   functors}.
 \end{definition}
 
-\begin{remark}
+\begin{remark}[\(f_{*}\) and \(f^{*}\) as natural transformations]
+\label{rem:yoneda-f*-notation}
+The attentive reader may note that setting \(\yo_{\cat C} f = f_{*}\) is not
+quite right since \(f_{*}\) is not a morphism in the category of presheaves
+\([\cat C^{\op}, \Set]\) according to our definition that roots from
+\cref{lem:f-iso-iff-f*-iso} --- you are right, but we are being sloppy here just
+to simplify how we treat our objects and notations. The arrow \(f_{*}\) (and
+\(f^{*}\)) is to be interpreted as the \emph{natural transformation}
+\(f_{*}: \yo_{\cat C} x \to \yo_{\cat C} y\), where \(f: x \to y\) --- for which
+we define, for every object \(z \in \cat C\), the morphism
+\(f_{*}: \Hom_{\cat C}(z, x) \to \Hom_{\cat C}(z, y)\) mapping
+\(g \mapsto f g\).
+\end{remark}
+
+\begin{remark}[Size issues]
 \label{rem:presheaf-category-size-issues}
 Although \(\cat C\) is a \(\mathcal{U}\)-category, its categories of presheaves
 described above \emph{need not} be a \(\mathcal{U}\)-category --- however, if
@@ -966,16 +1254,16 @@ presheaves of the opposite category \(\cat C^{\op}\), namely,
 \label{lem:yoneda}
 The Yoneda lemma states that:
 \begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item For all \(F \in [\cat C^{\op}, \Set]\) and \(x \in \cat C\), there is a
-  natural isomorphism:
+\item For all functors \(F: \cat C^{\op} \to \Set\) and \(x \in \cat C\), there
+  is a natural isomorphism:
   \[
   \Hom_{[\cat C^{\op}, \Set]}(\yo_{\cat C}x, F) \iso F x.
   \]
 
-\item For all \(G \in [\cat C^{\op}, \Set^{\op}]\) and \(x \in \cat C\), there
-  is a natural isomorphism:
+\item For all functors \(G: \cat C \to \Set\) and
+  \(x \in \cat C\), there is a natural isomorphism:
   \[
-  \Hom_{[\cat C^{\op}, \Set^{\op}]}(G, \yo'_{\cat C}x) \iso G x.
+  \Hom_{[\cat C, \Set]}(G, \yo'_{\cat C}x) \iso G x.
   \]
 \end{enumerate}
 These natural isomorphisms have a \emph{functorial} nature --- they define,
@@ -1001,7 +1289,7 @@ commute. Notice that the choice of
 \(\Id_x \in \Hom_{\cat C}(x, x) = \yo_{\cat C}x (x)\) is done so that we can
 define a distinguished point \(\eta_x(\Id_x)\) from the set \(F_x\).
 
-Define now \(\psi: \Hom_{[\cat C^{\op}, \Set]}(\yo_{\cat C}(x), F) \to F x\) to
+Define now \(\psi: F x \to \Hom_{[\cat C^{\op}, \Set]}(\yo_{\cat C}(x), F)\) to
 be the map \(F x \ni a \mapsto \eta^a: \yo_{\cat C} x \nat F\), where the
 natural transformation \(\eta^a\) associated to \(a\) is defined, for every
 object \(y \in \cat C\), by the map \(\eta_y^a: \Hom_{\cat C}(y, x) \to F x\)
@@ -1067,12 +1355,253 @@ Therefore, if we restrict \(w = x\) and \(h = \Id_x\) we get
 means that \(f\) will have image \(\eta\) under our mapping.
 \end{proof}
 
+\begin{remark}[Full subcategory of the presheaf category]
+\label{rem:C-is-full-subcategory-of-presheaf-cat}
+From \cref{cor:yoneda-fct-fully-faithful} one can conclude that \(\cat C\) can
+be viewed as a \emph{full subcategory} of the presheaf category
+\([\cat C^{\op}, \Set]\) (or of the category \([\cat C^{\op}, \Set^{\op}]\)).
+\end{remark}
+
+The following corollary establishes the main idea of the Yoneda lemma --- one
+knows about an object by knowing how it interacts with other objects.
+
 \begin{corollary}
 \label{cor:yoneda-obj-iso-iff-fct-iso}
 Given a category \(\cat C\) and two objects \(x, y \in \cat C\). Then there
-exists an isomorphism \(x \iso y\) if and only if there exists a natural
-isomorphism \(\Hom_{\cat C}(-, x) \iso \Hom_{\cat C}(-, y)\) (or
-\(\Hom_{\cat C}(x, -) \iso \Hom_{\cat C}(y, -)\) for the covariant version).
+exists an isomorphism \(x \iso y\) if and only if there exists an isomorphism
+\(\Hom_{\cat C}(-, x) \iso \Hom_{\cat C}(-, y)\) --- or, for the covariant
+version, \(\Hom_{\cat C}(x, -) \iso \Hom_{\cat C}(y, -)\).
 \end{corollary}
 
-\todo[inline]{Continue section}
+\begin{proof}
+Since functors preserve isomorphisms, if \(x \iso y\) for any two objects
+\(x, y \in \cat C\), we obtain that \(\yo_{\cat C} x \iso \yo_{\cat C} y\). From
+\cref{prop:fully-faithful-image-iso-then-obj-iso} and since \(\yo_{\cat C}\) is
+fully faithful we find that \(\yo_{\cat C} x \iso \yo_{\cat C} y\) implies
+\(x \iso y\).
+\end{proof}
+
+\begin{corollary}
+\label{cor:}
+Let \(F: \cat C \to \cat D\) be a functor of \(\mathcal{U}\)-categories and
+assume that \(\cat C\) is \(\mathcal{U}\)-small. For every \emph{functor}
+\(A \in [\cat C^{\op}, \Set]\), the category \(\cat C_A\)
+\emph{associated}\footnote{Recall \cref{def:functor-induced-cats}.} with the
+functor
+\[
+\begin{tikzcd}
+\cat C \ar[r, "F"] &\cat D \ar[r, "\yo_{\cat D}"] &{[\cat D^{\op}, \Set]}
+\end{tikzcd}
+\]
+is \emph{\(\mathcal{U}\)-small}. Analogously, given a \emph{functor} \(B \in
+[\cat C^{\op}, \Set^{\op}]\), the category \(\cat C^B\) \emph{associated} with
+the functor
+\[
+\begin{tikzcd}
+\cat C \ar[r, "F"] &\cat D \ar[r, "\yo_{\cat D}'"] &{[\cat D^{\op}, \Set^{\op}]}
+\end{tikzcd}
+\]
+is \emph{\(\mathcal{U}\)-small}.
+\end{corollary}
+
+\begin{proof}
+Recalling the definition, the category \(\cat C_A\) associated with \(\yo_{\cat
+  C} F\) is given by the following collections:
+\begin{gather*}
+\Obj(\cat C_A) = \{
+(x, \phi) \colon x \in \cat C \text{ and }
+\phi: \yo_{\cat C} F x \to A \text{ in } \cat D
+\}, \\
+\Hom_{\cat C_A}((x, \phi), (y, \psi)) = \{
+f \in \Hom_{\cat C}(x, y) \colon
+\phi = \psi \yo_{\cat C} F(f)
+\},
+\end{gather*}
+where \((x, \phi), (y, \psi) \in \cat C_A\) are any two objects, in other words,
+the collection of morphisms so that
+\[
+\begin{tikzcd}
+\yo_{\cat C} F x \ar[r, "\phi"] \ar[rd, bend right, "\yo_{\cat C} F(f)"'] & A \\
+&\yo_{\cat C} F y \ar[u, "\psi"']
+\end{tikzcd}
+\]
+commutes in \(\cat D\). Since \(\cat C\) is assumed to be \(\mathcal{U}\)-small
+by hypothesis, it follows that the collection of arrows
+\[
+\bigdisj_{x \in \cat C} \Hom_{\cat C}(F x, A)
+\]
+is a disjoint union of \(\mathcal{U}\)-small sets, thus is itself
+\(\mathcal{U}\)-small. The same proof can be analogously constructed for the
+covariant case \(\cat C^B\).
+\end{proof}
+
+\begin{corollary}
+\label{cor:f-iso-if-f*-iso}
+Let \(\cat C\) be a category and \(f: x \to y\) a morphism in \(\cat C\). If for
+every \(z \in \cat C\) the morphism
+\begin{align*}
+  f_{*}:& \Hom_{\cat C}(z, x) \to \Hom_{\cat C}(z, y) \\
+\end{align*}
+is an \emph{isomorphism} (or \(f^{*}: \Hom_{\cat C}(x, z) \to \Hom_{\cat C}(y,
+z)\) for the covariant case), then \(f\) is an \emph{isomorphism}.
+\end{corollary}
+
+\begin{proof}
+If the condition is met, then \(\yo_{\cat C} f: \yo_{\cat C} x \to \yo_{\cat C}
+y\) is an isomorphism. Since \(\yo_{\cat C}\) is fully faithful, then \(f\) is
+an isomorphism. Notice that we already stated this proposition back when we
+were studying dual categories, with the Yoneda lemma we were able to prove it
+functorially --- see \cref{lem:f-iso-iff-f*-iso}.
+\end{proof}
+
+\subsection{Functor Representation}
+
+\begin{definition}[Representable functor]
+\label{def:representable-functor}
+A presheaf \(F: \cat C^{\op} \to \Set\) (or a functor \(\cat C \to \Set\)) is
+said to be \emph{representable} if there exists a natural isomorphism
+\(\yo_{\cat C} x \isonat F\) (or \(F \isonat \yo_{\cat C}' x\)) for some
+\(x \in \cat C\) --- the object \(x\) is called a \emph{representative} of
+\(F\).
+\end{definition}
+
+\begin{corollary}[Representative uniqueness]
+\label{cor:representative-is-unique-up-to-unique-iso}
+The representative of a representable functor is \emph{unique up to
+unique isomorphism}.
+\end{corollary}
+
+\begin{proof}
+Since \(\yo_{\cat C}\) (and \(\yo_{\cat C}'\)) is fully faithful, it follows
+that, if \(x, y \in \cat C\) are representatives of \(F\), then there exists a
+natural isomorphism \(\yo_{\cat C} x \iso \yo_{\cat C} y\) hence, evoking
+\cref{prop:fully-faithful-image-iso-then-obj-iso}, we find a unique
+isomorphism \(x \iso y\).
+\end{proof}
+
+\begin{corollary}[Universal element]
+\label{cor:functor-universal-element}
+Let \(F: \cat C^{\op} \to \Set\) (or \(\cat C \to \Set\)) be any representable
+presheaf, with representative object \(x_0 \in \cat C\). Then the natural
+isomorphism
+\[
+\eta: \yo_{\cat C} x_0 \isonat F
+\]
+is uniquely determined by an element \(s_0 \in F x_0\) --- such an element is
+called a \emph{universal element} of \(F\).
+\end{corollary}
+
+\begin{proof}
+Indeed, if \(F\) is represented by \(x_0\), then by the Yoneda lemma we obtain
+an isomorphism
+\[
+\Hom_{[\cat C^{\op}, \Set]}(\yo_{\cat C} x_0, F) \iso F x_0,
+\]
+therefore for each \(s_0 \in F x_0\) there exists a unique corresponding natural
+transformation \(\eta: \yo_{\cat C} x_0 \nat F\) (notice we didn't require it to
+be an isomorphism) and \(\eta\) is completely determined by \(s_0\) in the sense
+that, for every \(y \in \cat C\) and element \(t \in F y\), there exists a
+unique morphism \(f: x_0 \to y\) such that \(F(f)(s_0) = t\).
+\end{proof}
+
+\begin{corollary}
+\label{cor:fct-to-presheaf-recover-fct-to-cat}
+Let \(F: \cat C \to [\cat D^{\op}, \Set]\) be a functor. If, for every
+\(c \in \cat C\), there exists an object \(d \in \cat D\) such that
+\(F c \iso d\), then there exists a \emph{unique} --- up to unique isomorphism
+--- functor \(F_0: \cat C \to \cat D\) for which
+\[
+F \iso \yo_{\cat D} F_0.
+\]
+\end{corollary}
+
+\begin{proof}
+From \cref{rem:C-is-full-subcategory-of-presheaf-cat} we know that \(\cat D\) is
+a full subcategory of the presheaf category \([\cat D^{\op}, \Set]\). Since
+\(\yo_{\cat D}: D \to [\cat D^{\op}, \Set]\) is fully faithful, by means of
+\cref{lem:full-subcategory-functor-correspondence} one finds that there exists a
+unique functor \(F_0: \cat C \to \cat D\) (up to unique isomorphism) and a
+natural isomorphism \(F \iso \yo_{\cat D} F_0\). In other words, the following
+diagram is quasi-commutative
+\[
+\begin{tikzcd}
+\cat C \ar[r, "F"] \ar[rd, bend right, "F_0"', dashed]
+&{[\cat D^{\op}, \Set]} \\
+&\cat D \ar[u, "\yo_{\cat D}"']
+\end{tikzcd}
+\]
+\end{proof}
+
+\subsection{Properties of the Category of Elements}
+
+\begin{proposition}
+\label{prop:representable-iff-El-has-final-object}
+Let \(F: \cat C^{\op} \to \Set\) be a functor (or \(F: \cat C \to \Set\) for the
+covariant case). Then \(F\) is \emph{representable} if and only if the category
+of elements \(\El_F(\cat C)\) has a \emph{final} object (or \emph{initial}
+object for the covariant case).
+\end{proposition}
+
+\begin{proof}
+We prove the proposition for the contravariant case, the covariant case has a
+completely analogous construction and can be obtained by duality. Let \(F\) be
+representable, with representative \(x_0 \in \cat C\), and universal element
+\(s_0\) --- that is, defining a natural isomorphism \(\yo_{\cat C} x_0 \iso
+F\). Consider any element \((x, s) \in \El_F(\cat C)\) --- the morphisms
+\((x, s) \to (x_0, s_0)\) in \(\El_F(\cat C)\) are arrows \(f: x \to x_0\) in
+\(\cat C\) for which \(F(f)(s_0) = s\). Nonetheless, since \(\yo_{\cat C}\) is
+fully faithful the morphism \(f\) satisfying such condition is unique ---
+therefore \((x_0, s_0)\) is final in the category of elements \(\El_F(\cat C)\).
+
+On the other hand, assume that \(\El_F(\cat C)\) has a final object
+\((x_0, s_0)\). We construct a natural transformation
+\(\theta: F \nat \yo_{\cat C} x_0\) by the maps
+\(\theta_x: F x \to \Hom_{\cat C}(x, x_0)\), for \(x \in \cat C\), sending
+\(s \mapsto f\) where \(F(f)(s_0) = s\) --- this is well defined since
+\((x_0, s_0)\) is final and thus \(f: x \to x_0\) is the unique morphism in
+\(\cat C\) with such property. Moreover, \(\theta_x\) is clearly injective: if
+\(s, s' \in F x\) are any two elements such that
+\(\theta_x(s) = \theta_x(s') = f\), then \(F(f)(s_0) = s\) and also
+\(F(f)(s_0) = s'\) --- which can only be the case for \(s = s'\). The
+surjectivity of \(\theta_x\) is ensured by the fact that, given a morphism
+\(f: x \to x_0\) in \(\cat C\), one can choose the element \(F(f)(s_0) \in F x\)
+so that \(\theta_x(F(f)(s_0)) = f\). We conclude that \(\theta_x\) is a
+bijection and hence \(\theta\) is a natural isomorphism
+\(F \iso \yo_{\cat C} x_0\).
+\end{proof}
+
+\begin{lemma}
+\label{lem:category-of-elements-iso-commute}
+Let \(\cat C\) be a category and consider a presheaf
+\(F: \cat C^{\op} \to \Set\). There exists a natural equivalence of \emph{big}
+categories
+\[
+[\El_F(\cat C)^{\op}, \Set] \iso \El_F([\cat C^{\op}, \Set])
+\]
+such that the following diagram quasi-commutes
+\[
+\begin{tikzcd}
+\El_F(\cat C) \ar[rr, "??"] \ar[rrdd, bend right, "\yo_{\El_F(\cat C)}"']
+& &{\El_F([\cat C^{\op}, \Set])} \ar[dd, "\dis"] \\ \\
+& &{[\El_F(\cat C)^{\op}, \Set]}
+\end{tikzcd}
+\]
+\end{lemma}
+
+% \begin{proof}
+% We construct a functor
+% \(\lambda: \El_F([\cat C^{\op}, \Set]) \to [\El_F(\cat C)^{\op}, \Set]\): fix
+% any presheaf \(G: \cat C^{\op} \to \Set\) and a natural transformation
+% \(\tau: G \nat F\), for every
+% \end{proof}
+
+\todo[inline]{I don't really understand this statement}
+
+\begin{definition}[Two sided represented functor]
+\label{def:two-sided-represented-functor}
+Let \(\cat C\) be a \(\mathcal U\)-category, then there is a functor
+\(\Hom(-, -): \cat C^{\op} \times \cat C \to \Set\) defined by mapping objects
+\((x, y) \mapsto \Hom(x, y)\) and morphisms \((f, g): (a, y) \to (x, b)\) to a
+set-function \((f^{*}, g_{*}): \Hom(x, y) \to \Hom(a, b)\) given by the mapping
+\(g \mapsto h g f\).
+\end{definition}

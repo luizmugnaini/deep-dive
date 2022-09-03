@@ -1,38 +1,38 @@
 \section{Topology}
 
 \begin{definition}[Topology]\label{def:topology}
-Let \(X\) be a set and \(\mathcal T \subseteq 2^X\). We say that \(\mathcal T\)
+Let \(X\) be a set and \(\tau \subseteq 2^X\). We say that \(\tau\)
 is a topology for \(X\) if the following properties are satisfied
 \begin{enumerate}[(T1)]\setlength\itemsep{0em}
 \item\label{item:topology-T1}
-  \(X, \emptyset \in \mathcal T\).
+  \(X, \emptyset \in \tau\).
 
 \item\label{item:topology-T2}
-  The arbitrary union of elements of \(\mathcal T\) is an element of
-  \(\mathcal T\).
+  The arbitrary union of elements of \(\tau\) is an element of
+  \(\tau\).
 
 \item\label{item:topology-T3}
-  The finite intersection of elements of \(\mathcal T\) is an element of
-  \(\mathcal T\).
+  The finite intersection of elements of \(\tau\) is an element of
+  \(\tau\).
 \end{enumerate}
-The elements of the topology \(\mathcal T\) are called open sets of \(X\).
+The elements of the topology \(\tau\) are called open sets of \(X\).
 \end{definition}
 
 \begin{example}\label{exp:some-topologies}
 We proceed by listing some examples of topologies that are somewhat interesting,
 they are included here in order to familiarize the reader with the possible
-contructions for the topology on a given set \(X\):
+constructions for the topology on a given set \(X\):
 \begin{itemize}\setlength\itemsep{0em}
-\item \(\mathcal T_1 = \{U \subseteq X \colon U = \emptyset \text{ or
+\item \(\tau_1 = \{U \subseteq X \colon U = \emptyset \text{ or
   } X \setminus U \text{ is finite}\}\) is the \emph{cofinite topology} on \(X\).
 
-\item \(\mathcal T_2 = \{U \subseteq X \colon U = \emptyset \text{ or } X \setminus U
+\item \(\tau_2 = \{U \subseteq X \colon U = \emptyset \text{ or } X \setminus U
   \text{ is countable}\}\) is the \emph{cocountable topology} on \(X\).
 
-\item Let \(p \in X\), then \(\mathcal T_3 = \{U \subseteq X \colon U = \emptyset
+\item Let \(p \in X\), then \(\tau_3 = \{U \subseteq X \colon U = \emptyset
   \text{ or } p \in U\}\) is the \emph{particular point topology} on \(X\).
 
-\item Let \(p \in X\), then \(\mathcal T_4 = \{U \subseteq X \colon U = X \text{ or }
+\item Let \(p \in X\), then \(\tau_4 = \{U \subseteq X \colon U = X \text{ or }
   p \not\in U\}\) is the \emph{excluded point topology} on \(X\).
 \item The collection \(2^X\) forms what is called the \emph{discrete topology}
   on \(X\).
@@ -41,16 +41,16 @@ contructions for the topology on a given set \(X\):
 
 \begin{definition}[Comparing topologies]
 \label{def:coarser-finer-topology}
-Let \(X\) be a set, and \(\mathcal T\) and \(\mathcal T'\) be topologies on
-\(X\). If \(\mathcal T' \supseteq \mathcal T\), then we say that
+Let \(X\) be a set, and \(\tau\) and \(\tau'\) be topologies on
+\(X\). If \(\tau' \supseteq \tau\), then we say that
 \begin{itemize}\setlength\itemsep{0em}
-\item \(\mathcal T'\) is finer than \(\mathcal T\). Moreover, if \(\mathcal T\)
-  is strictly contained in \(\mathcal T'\), we say that \(\mathcal T'\) is
-  strictly finer than \(\mathcal T\)
+\item \(\tau'\) is finer than \(\tau\). Moreover, if \(\tau\)
+  is strictly contained in \(\tau'\), we say that \(\tau'\) is
+  strictly finer than \(\tau\)
 
-\item \(\mathcal T\) is coarser than \(\mathcal T'\). Moreover, if \(\mathcal T\)
-  is strictly contained in \(\mathcal T'\), we say that \(\mathcal T'\) is
-  strictly coarser than \(\mathcal T\)
+\item \(\tau\) is coarser than \(\tau'\). Moreover, if \(\tau\)
+  is strictly contained in \(\tau'\), we say that \(\tau'\) is
+  strictly coarser than \(\tau\)
 \end{itemize}
 In general, we say that two topologies are comparable if either of them contains
 the other.
@@ -97,31 +97,31 @@ subcollection of open sets of the basis \(\mathcal B\) whose union equals \(A
 \in C\) and necessarily \(C \subseteq A \cap B\).
 
 Let \(\mathcal B \subseteq 2^X\) satisfying both conditions specified above. We
-first show that \(\mathcal B\) is a collection of open sets. Let \(\mathcal T\)
+first show that \(\mathcal B\) is a collection of open sets. Let \(\tau\)
 be the collection of all possible unions of sets of \(\mathcal B\). From the
-first property, \(X \in \mathcal T\) and clearly \(\emptyset \in \mathcal T\)
+first property, \(X \in \tau\) and clearly \(\emptyset \in \tau\)
 --- satisfying \cref{item:topology-T1}. From construction, unions of sets in
-\(\mathcal T\) are unions of unions of sets of \(\mathcal B\), which is
-certainly contained in \(\mathcal T\) --- hence the collection satisfies
-\cref{item:topology-T2}. Let \(T, T' \in \mathcal T\) be any intersecting sets
+\(\tau\) are unions of unions of sets of \(\mathcal B\), which is
+certainly contained in \(\tau\) --- hence the collection satisfies
+\cref{item:topology-T2}. Let \(T, T' \in \tau\) be any intersecting sets
 and, for every \(p \in T \cap T'\), choose any \(B, B' \subseteq \mathcal B\)
 such that \(p \in B \subseteq T\) and \(p \in B' \subseteq T'\) --- which are
 ensured to exist. From the second property of \(\mathcal B\), there exists \(C
 \in \mathcal B\) such that \(p \in C \subseteq B \cap B'\), thus \(C \subseteq B
 \cap B'\) and, in particular \(C \subseteq T \cap T'\). We can see that \(T \cap
 T'\) is again the union of a collection of elements of \(\mathcal B\), hence
-\(\mathcal T\) is closed under finite intersections, satisfying
-\cref{item:topology-T1}. We can now finally conclude that \(\mathcal T\) is a
+\(\tau\) is closed under finite intersections, satisfying
+\cref{item:topology-T1}. We can now finally conclude that \(\tau\) is a
 topology on \(X\) and hence \(\mathcal B\) is composed of open sets of \(X\) ---
-and, even better than that, \(\mathcal T\) is the unique topology generated by
+and, even better than that, \(\tau\) is the unique topology generated by
 \(\mathcal B\).
 \end{proof}
 
 \begin{definition}[Subbase]\label{def: subbase}
-Let \((X, \mathcal T)\) be a topological space. A collection \(\mathcal S
-\subseteq \mathcal T\) is called a subbase for \((X, \mathcal T)\) if the
+Let \((X, \tau)\) be a topological space. A collection \(\mathcal S
+\subseteq \tau\) is called a subbase for \((X, \tau)\) if the
 collection of all finite intersections \(U_1 \cap \dots \cap U_n\), where
-\(U_i \in \mathcal S\), is a base for \((X, \mathcal T)\).
+\(U_i \in \mathcal S\), is a base for \((X, \tau)\).
 \end{definition}
 
 \begin{definition}[Weight]\label{def: weight}
@@ -141,11 +141,11 @@ that \(B \subseteq U_p\).
 \end{definition}
 
 \begin{definition}\label{def: character}
-Let \((X, \mathcal T)\) be a topological space. Let \(x \in X\) be any point
+Let \((X, \tau)\) be a topological space. Let \(x \in X\) be any point
 and consider \(\mathfrak B_x\) the collection of all bases at \(x\). Then we
 define the character of \(X\) at the point \(x\) as
 \[
-  \chi(x, (X, \mathcal T))
+  \chi(x, (X, \tau))
   = \min_{\mathcal B_x \in \mathfrak B_x} |\mathcal B_x|
 \]
 \end{definition}
@@ -153,7 +153,7 @@ define the character of \(X\) at the point \(x\) as
 
 \subsection{Closed and Open Sets}
 
-The notion of a closed set and an open set are closedly related --- pardon for
+The notion of a closed set and an open set are closely related --- pardon for
 the pun. They have a dual relationship, allowing for us to define topologies via
 either of them. Lets first define what we mean by a closed set.
 
@@ -198,10 +198,10 @@ will accompany us for the rest of these notes on general point-set topology.
 Let \(X\) be a topological space and \(A \subseteq X\) be a set. We define
 \begin{enumerate}[(a)]\setlength\itemsep{0em}
 \item\label{def: closure}
-  The closure of \(A\) is the least closed set, \(\overline A\), that
+  The closure of \(A\) is the least closed set, \(\Cl A\), that
   contains \(A\). This can be equivalently described as
   \[
-    \overline A = \bigcap \{F \subseteq X \colon A \subseteq F \text{ and } F
+    \Cl A = \bigcap \{F \subseteq X \colon A \subseteq F \text{ and } F
     \text{ is closed}\}.
   \]
 
@@ -215,13 +215,13 @@ Let \(X\) be a topological space and \(A \subseteq X\) be a set. We define
 \item\label{def: exterior}
   The exterior of \(A\) in \(X\) is defined as
   \[
-    \Ext A = X \setminus \overline A.
+    \Ext A = X \setminus \Cl A.
   \]
 
 \item\label{def: boundary}
   The boundary of \(A\) in \(X\) is defined as
   \[
-    \partial A = X \setminus (\Int A \cup \Ext A).
+    \Bd A = X \setminus (\Int A \cup \Ext A).
   \]
 \end{enumerate}
 \end{definition}
@@ -232,16 +232,16 @@ For the remainder of this section, unless specified on the contrary, we let
 \end{remark}
 
 \begin{proposition}\label{prop:open-close-int-ext-closure-boundary}
-\(\Int A\) and \(\Ext A\) are open sets, while on the other hand \(\overline A\)
-and \(\partial A\) are closed sets.
+\(\Int A\) and \(\Ext A\) are open sets, while on the other hand \(\Cl A\)
+and \(\Bd A\) are closed sets.
 \end{proposition}
 
 \begin{proof}
 Since \(\Int A\) is the union of a collection of open sets, \(\Int A\) is
-open. \(\overline{A}\) is the intersection of a collection of closed sets, hence
-\(\overline{A}\) is closed. The exterior set \(\Ext A\) is simply the complement
+open. \(\Cl A\) is the intersection of a collection of closed sets, hence
+\(\Cl A\) is closed. The exterior set \(\Ext A\) is simply the complement
 of a closed set, hence it's open. The boundary of \(A\) is the complement of the
-union of open sets (which is open), hence \(\partial A\) is closed.
+union of open sets (which is open), hence \(\Bd A\) is closed.
 \end{proof}
 
 \begin{proposition}
@@ -254,7 +254,7 @@ The following are equivalences on the definitions of open and closed sets.
 
     \item \(A = \Int A\).
 
-    \item \(A\) contains none of its boudary points, i.e. \(A \cap \partial A =
+    \item \(A\) contains none of its boudary points, i.e. \(A \cap \Bd A =
       \emptyset\).
 
     \item For all \(x \in A\) there exists a neighbourhood \(U \subseteq A\)
@@ -265,7 +265,7 @@ The following are equivalences on the definitions of open and closed sets.
   \begin{itemize}\setlength\itemsep{0em}
     \item \(A\) is closed.
 
-    \item \(A = \overline{A}\).
+    \item \(A = \Cl A\).
 
     \item For all \(x \in X \setminus A\), there exists a neighbourhood \(U
       \subseteq X \setminus A\) of \(x\).
@@ -275,21 +275,23 @@ The following are equivalences on the definitions of open and closed sets.
 
 \begin{proof}
 \begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item Let \(A\) be open, then, in particular, \(A \in \{U \subseteq X
-  \colon U \subseteq A, U \text{ is open}\}\), thus \(A = \Int A\). Moreover, from
-  the definition of \(\partial A\) it follows that \(A \cap \partial A = \Int A
-  \cap A \setminus (\Int A \cup \Ext A) = \emptyset\). On the other hand, if \(p
-  \in A\) is any point, then \(A\) itself is a neighbourhood of \(p\).
+\item Let \(A\) be open, then, in particular,
+  \(A \in \{U \subseteq X \colon U \subseteq A, U \text{ is open}\}\), thus
+  \(A = \Int A\). Moreover, from the definition of \(\Bd A\) it follows that
+  \(A \cap \Bd A = \Int A \cap A \setminus (\Int A \cup \Ext A) =
+  \emptyset\). On the other hand, if \(p \in A\) is any point, then \(A\) itself
+  is a neighbourhood of \(p\).
 
   In order to finish the equivalence chain, let \(A\) be such that all of its
   points have a neighbourhood contained in \(A\). We can then define the
-  collection of neighbourhoods \(\mathcal U = \{U_p \subseteq A \colon p \in A, p \in
-  U\}\). Notice that \(A \subseteq \bigcup_{U \in \mathcal U} U\) and the
-  opposite inclusion is clearly true --- thus \(A\) is the union of a collection
-  of open sets of \(X\), hence \(A\) is open.
+  collection of neighbourhoods
+  \(\mathcal U = \{U_p \subseteq A \colon p \in A, p \in U\}\). Notice that
+  \(A \subseteq \bigcup_{U \in \mathcal U} U\) and the opposite inclusion is
+  clearly true --- thus \(A\) is the union of a collection of open sets of
+  \(X\), hence \(A\) is open.
 
 \item Let \(A\) be closed, then \(A\) is clearly the least closed set containing
-  itself, implying in \(A = \overline A\). Let \(x \in X \setminus A\) be any
+  itself, implying in \(A = \Cl A\). Let \(x \in X \setminus A\) be any
   point. Since \(X \setminus A\) is open, we use the previous equivalence for
   open sets to conclude that there exists \(U \subseteq X \setminus A\)
   neighbourhood of \(x\).  To conclude the equivalence chain, suppose the last
@@ -318,7 +320,7 @@ the corresponding neighbourhood \(p \in B \subseteq A\), then from
 The following propositions are equivalent, regarding points on the closure of a
 set \(A\)
 \begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item \(x \in \overline A\).
+\item \(x \in \Cl A\).
 
 \item Every neighbourhood \(U \subseteq X\) of \(x\) is such that \(U
   \cap A \neq \emptyset\).
@@ -334,11 +336,11 @@ that there exists \(U \subseteq X\) neighbourhood of \(x\) such that \(U \cap A
 = \emptyset\). Then \(A \subseteq X \setminus U\), that is, \(A\) is a subset of
 the complement of \(U\). Since \(U\) is open, then \(X \setminus U \in C_A
 \coloneq \{F \subseteq X \colon A \subseteq F,\ F \text{ is closed}\}\). From the
-definition of closure, we have that \(\overline A \subseteq X \setminus U\) and
-therefore \(x \not\in \overline A\). (b) implies (c): From the definition of a
+definition of closure, we have that \(\Cl A \subseteq X \setminus U\) and
+therefore \(x \not\in \Cl A\). (b) implies (c): From the definition of a
 basis at the point \(x\), we know that every \(U \in \mathcal B_x\) is a
 neighbourhood of \(x\), hence if (b) is true for \(x\), proposition (c) follows
-immediately. (c) implies (a): Let \(x \in X\) such that \(x \not\in \overline
+immediately. (c) implies (a): Let \(x \in X\) such that \(x \not\in \Cl
 A\), so that proposition (a) is false for \(x\).  From the definition of
 closure, there exists \(F \subseteq C_A\) such that \(x \not\in F\). Consider
 the open complement \(V = X \setminus F\) so that \(x \in V\) and \(V \cap A =
@@ -348,23 +350,23 @@ the open complement \(V = X \setminus F\) so that \(x \in V\) and \(V \cap A =
 \end{proof}
 
 \begin{corollary}\label{cor: disjoint closure persistence}
-If \(U\) is an open set and \(U \cap A = \emptyset\), then \(U \cap \overline
+If \(U\) is an open set and \(U \cap A = \emptyset\), then \(U \cap \Cl
 A = \emptyset\). Also, if \(U\) and \(V\) are disjoint sets, then \(U \cap
-\overline V = \overline U \cap V = \emptyset\).
+\Cl V = \Cl U \cap V = \emptyset\).
 \end{corollary}
 
 \begin{proof}
 Suppose \(U \cap A = \emptyset\) and that there exists \(x \in U \cap
-\overline A\), so that \(x \in \overline A\). Since \(U\) is open, it
+\Cl A\), so that \(x \in \Cl A\). Since \(U\) is open, it
 is a neighbourhood of \(x\), hence from \cref{prop: closure equivalent prop}
 we find that \(U \cap A \neq \emptyset\), which is false, thus \(U \cap
-\overline A = \emptyset\).
+\Cl A = \emptyset\).
 \end{proof}
 
 In order to classify points as being interior, exterior or on the boundary of a
 set, we may use the following important proposition.
 
-\begin{proposition}[Interior, exterior and boudary points]
+\begin{proposition}[Interior, exterior and boundary points]
 \label{prop:classification-int-ext-boundary-points}
 Classification of points:
 \begin{enumerate}[(a)]\setlength\itemsep{0em}
@@ -374,7 +376,7 @@ Classification of points:
 \item \(x \in \Ext A\) if and only if there exists \(U \subseteq X \setminus A\)
   neighbourhood of \(x\).
 
-\item \(x \in \partial A\) if and only if all neighbourhoods \(U \subseteq X\)
+\item \(x \in \Bd A\) if and only if all neighbourhoods \(U \subseteq X\)
   of \(x\) are such that \(U \cap A \neq \emptyset\) and \(U \cap (X \setminus
   A) \neq \emptyset\).
 \end{enumerate}
@@ -389,82 +391,85 @@ Classification of points:
   neighbourhood of \(x\) contained in \(A\).
 
 \item Suppose exists \(U \subseteq X \setminus A\) neighbourhood of \(x\). From
-  \cref{prop: closure equivalent prop} we find \(x \notin \overline{A}\) and
+  \cref{prop: closure equivalent prop} we find \(x \notin \Cl A\) and
   therefore \(x \in \Ext A\). The other side of the implication is trivial.
 
 \item Since all neighbourhoods of \(x\) contain a point of \(X \setminus A\),
   from the first item of this proposition we find that \(x\) cannot belong to
   the interior of \(A\). Moreover, every neighbourhood contains a point of
   \(A\), then \(x\) cannot be an element of \(\Ext A\). Therefore \(x \in
-  \partial A\).
+  \Bd A\).
 \end{enumerate}
 \end{proof}
 
 \begin{proposition}[Decomposition of the closure]
 \label{prop:closure-composition}
-\(\overline A = A \cup \partial A = \Int A \cup \partial A\).
+\(\Cl A = A \cup \Bd A = \Int A \cup \Bd A\).
 \end{proposition}
 
 \begin{proof}
 For the first equality we have
 \begin{align*}
-  A \cup \partial A
+  A \cup \Bd A
   &= A \cup [X \setminus (\Int A \cup \Ext A)] \\
   &= A \cup [(X \setminus \Int A) \cap (X \setminus \Ext A)] \\
-  &= A \cup [(X \setminus \Int A) \cap \overline{A}] \\
-  &= [A \cup (X \setminus \Int A)] \cap [A \cup \overline{A}] \\
-  &= X \cap \overline{A} = \overline{A}.
+  &= A \cup [(X \setminus \Int A) \cap \Cl A] \\
+  &= [A \cup (X \setminus \Int A)] \cap [A \cup \Cl A] \\
+  &= X \cap \Cl A = \Cl A.
 \end{align*}
 Analogously, for the second equality
 \begin{align*}
-  \Int A \cup \partial A
-  &= \Int A \cup [(X \setminus \Int A) \cap \overline A] \\
-  &= [\Int A \cup (X \setminus \Int A)] \cap [\Int A \cup \overline A] \\
-  &= X \cap \overline A = \overline A.
+  \Int A \cup \Bd A
+  &= \Int A \cup [(X \setminus \Int A) \cap \Cl A] \\
+  &= [\Int A \cup (X \setminus \Int A)] \cap [\Int A \cup \Cl A] \\
+  &= X \cap \Cl A = \Cl A.
 \end{align*}
 This proves the proposition.
 \end{proof}
 
 \begin{proposition}
-Let \(X\) be a topological space and \(A \subseteq X\). Then \(\overline{X
-\setminus A} = X \setminus \Int A\) and also \(\Int(X \setminus A) =
-X \setminus \overline A\).
+Let \(X\) be a topological space and \(A \subseteq X\). Then
+\(\Cl(X \setminus A) = X \setminus \Int A\) and also
+\(\Int(X \setminus A) = X \setminus \Cl A\).
 \end{proposition}
 
 \begin{proof}
-We prove the first equality. Let \(\mathcal A \coloneq \{U \subseteq A \colon U \text{ is
-open}\}\), from definition we have that \(\Int A = \bigcup_{U \in \mathcal A}
-U\), moreover, \(X \setminus \Int A = X \setminus \bigcup_{U \in \mathcal A} U
-= \bigcap_{U \in \mathcal A} X \setminus U\) from de Morgan's Laws. Notice that
-obviously \(X \setminus U \subseteq X\) and moreover since \(U\) is open, then
-the complement \(X \setminus U\) is closed. This makes \(X \setminus \Int(A) =
-\bigcap_{U \in \mathcal A} X \setminus U = \overline{X \setminus A}\). Now we
-show the second equality. Define \(\mathcal{\widetilde A} \coloneq \{U \subseteq A \colon U
-\text{ is closed}\}\), then \(\overline A = \bigcap_{U \in \mathcal{\widetilde
-A}} U\) and hence \(X \setminus \overline A = X \setminus \bigcap_{U \in
-\mathcal{\widetilde A}} U = \bigcup_{U \in \widetilde{\mathcal{A}}} X \setminus
-U\). Notice that \(X\setminus U \subseteq X \setminus A\) and since \(U\) is
-closed, then \(X \setminus U\) is open. From this we conclude that \(X \setminus
-\overline A = \bigcup_{U \in \mathcal{\widetilde A}} X \setminus U = \Int(X
-\setminus A)\).
+We prove the first equality. Let
+\(\mathcal A \coloneq \{U \subseteq A \colon U \text{ is open}\}\), from
+definition we have that \(\Int A = \bigcup_{U \in \mathcal A} U\), moreover,
+\(X \setminus \Int A = X \setminus \bigcup_{U \in \mathcal A} U = \bigcap_{U \in
+  \mathcal A} X \setminus U\) from de Morgan's Laws. Notice that obviously
+\(X \setminus U \subseteq X\) and moreover since \(U\) is open, then the
+complement \(X \setminus U\) is closed. This makes
+\(X \setminus \Int(A) = \bigcap_{U \in \mathcal A} X \setminus U = \Cl(X
+\setminus A)\). Now we show the second equality. Define
+\(\mathcal{\widetilde A} \coloneq \{U \subseteq A \colon U \text{ is
+  closed}\}\), then \(\Cl A = \bigcap_{U \in \mathcal{\widetilde A}} U\) and
+hence
+\(X \setminus \Cl A = X \setminus \bigcap_{U \in \mathcal{\widetilde A}} U =
+\bigcup_{U \in \widetilde{\mathcal{A}}} X \setminus U\). Notice that
+\(X\setminus U \subseteq X \setminus A\) and since \(U\) is closed, then
+\(X \setminus U\) is open. From this we conclude that
+\(X \setminus \Cl A = \bigcup_{U \in \mathcal{\widetilde A}} X \setminus U =
+\Int(X \setminus A)\).
 \end{proof}
 
 \begin{proposition}\label{prop: finite union of closures}
 Let a finite collection of subsets \(\{A_i\}_{i = 1}^n \subseteq 2^X\), where
 \(X\) is a topological space, then we have that
 \[
-  \overline{\bigcup_{i = 0}^n A_i} = \bigcup_{i = 0}^n \overline{A_i}.
+  \Cl\bigg(\bigcup_{i = 0}^n A_i\bigg) = \bigcup_{i = 0}^n \Cl A_i
 \]
 \end{proposition}
 
 \begin{proof}
-It suffices to prove that for \(A, B \subseteq X\) we have \(\overline{A \cup
-B} = \overline A \cup \overline B\). Notice that \(\overline A,
-\overline B \subseteq \overline{A \cup B}\), hence \(\overline A \cup
-\overline B \subseteq \overline{A \cup B}\). Now, since \(A \subseteq
-\overline A\) and \(B \subseteq \overline B\), we find \(A \cup B \subseteq
-\overline A \cup \overline B\), then \(\overline{A \cup B} \subseteq
-\overline{\overline A \cup \overline B} = \overline A \cup \overline B\).
+It suffices to prove that for \(A, B \subseteq X\) we have \(\Cl(A \cup
+B) = \Cl A \cup \Cl B\). Notice that \(\Cl A,
+\Cl B \subseteq \Cl(A \cup B)\), hence \(\Cl A \cup
+\Cl B \subseteq \Cl(A \cup B)\). Now, since \(A \subseteq
+\Cl A\) and \(B \subseteq \Cl B\), we find \(A \cup B \subseteq
+\Cl A \cup \Cl B\), then \(\Cl(A \cup B) \subseteq
+\Cl(\Cl A \cup \Cl B) = \Cl A \cup \Cl B\).
 \end{proof}
 
 \begin{definition}[Locally finite family]
@@ -486,31 +491,33 @@ is also a locally finite family.
 Given a locally finite family of sets \(\{A_i\}_{i \in I} \subseteq 2^X\),
 where \(X\) is a topological space, we have that
 \[
-\overline{\bigcup_{i \in  I} A_i} = \bigcup_{i \in  I} \overline{A_i}.
+\Cl\bigg(\bigcup_{i \in  I} A_i\bigg) = \bigcup_{i \in  I} \Cl A_i.
 \]
 \end{proposition}
 
 \begin{proof}
-Notice that clearly \(A_i \subseteq \overline{\bigcup_{i \in  I} A_i}\) for
-all \(i \in I\), hence \(\bigcup_{i \in  I} \overline{A_i} \subseteq
-\overline{\bigcup_{i \in I} A_i}\). Moreover, we have from hypothesis that
-\(\{A_i\}_{i \in I}\) is a locally finite family, thus given \(x \in
-\overline{\bigcup_{i \in  I} A_i}\) we can find a neighbourhood of \(x\), say
-\(U \subset X\), such that \(I_0 \coloneq \{i \in I \colon U \cap A_i \neq \emptyset\}\)
-is finite. Notice that from \cref{prop: closure equivalent prop} we have that
-\(x\) cannot be a limit point of any of the sets with index \(i \in I
-\setminus I_0\), hence \(x \not\in \overline{\bigcup_{i \in  I \setminus I_0}
-A_i}\). On the other hand, we have \(x \in \overline{\bigcup_{i \in  I} A_i} =
-\overline{\bigcup_{i \in  I_0} A_i} \cup \overline{\bigcup_{i \in  I \setminus
-I_0} A_i}\), which implies that \(x \in \overline{\bigcup_{i \in  I_0} A_i} =
-\bigcup_{i \in  I_0} \overline{A_i} \subseteq \bigcup_{i \in  I}
-\overline{A_i}\) (the equality comes from the fact that \(I_0\) is finite and
-hence \cref{prop: finite union of closures} hold).
+Notice that clearly \(A_i \subseteq \Cl\big(\bigcup_{i \in I} A_i\big)\) for all
+\(i \in I\), hence
+\(\bigcup_{i \in I} \Cl A_i \subseteq \Cl\big(\bigcup_{i \in I}
+A_i\big)\). Moreover, we have from hypothesis that \(\{A_i\}_{i \in I}\) is a
+locally finite family, thus given \(x \in \Cl\big(\bigcup_{i \in I} A_i\big)\)
+we can find a neighbourhood of \(x\), say \(U \subset X\), such that
+\(I_0 \coloneq \{i \in I \colon U \cap A_i \neq \emptyset\}\) is finite. Notice
+that from \cref{prop: closure equivalent prop} we have that \(x\) cannot be a
+limit point of any of the sets with index \(i \in I \setminus I_0\), hence
+\(x \not\in \Cl\big(\bigcup_{i \in I \setminus I_0} A_i\big)\). On the other
+hand, we have
+\(x \in \Cl\big(\bigcup_{i \in I} A_i\big) = \Cl\big(\bigcup_{i \in I_0}
+A_i\big) \cup \Cl\big(\bigcup_{i \in I \setminus I_0} A_i\big)\), which implies
+that
+\(x \in \Cl\big(\bigcup_{i \in I_0} A_i\big) = \bigcup_{i \in I_0} \Cl A_i
+\subseteq \bigcup_{i \in I} \Cl A_i\) (the equality comes from the fact
+that \(I_0\) is finite and hence \cref{prop: finite union of closures} hold).
 \end{proof}
 
 \begin{proposition}
 If \(\{A_i\}_{i \in I}\) is a locally finite (resp. discrete) family, then the
-family \(\{\overline{A_i}\}_{i \in I}\) is locally finite (resp. discrete).
+family \(\{\Cl A_i\}_{i \in I}\) is locally finite (resp. discrete).
 \end{proposition}
 
 \begin{proof}
@@ -518,10 +525,10 @@ Let the locally finite (resp. discrete) family \(\{A_i\}_{i \in I}\). Given
 any element \(x \in X\) and a neighbourhood \(U\) of \(x\) such that the
 indexing set \(I_0 \coloneq \{i \in I \colon U \cap A_i \neq \emptyset\}\) is finite
 (resp. is either empty or a singleton). Notice that since \(U \cap A_i
-\subseteq U \cap \overline{A_i}\), we find that for all \(i \in I_0, U \cap
-\overline{A_i} \neq \emptyset\), so that \(I_0 = I_0' \coloneq \{i \in I \colon U \cap
-\overline{A_i} \neq \emptyset\}\). Since \(U\) is an open set, from \cref{cor:
-disjoint closure persistence} we find that \(U \cap \overline{A_i} = U \cap
+\subseteq U \cap \Cl A_i\), we find that for all \(i \in I_0, U \cap
+\Cl A_i \neq \emptyset\), so that \(I_0 = I_0' \coloneq \{i \in I \colon U \cap
+\Cl A_i \neq \emptyset\}\). Since \(U\) is an open set, from \cref{cor:
+disjoint closure persistence} we find that \(U \cap \Cl A_i = U \cap
 A_i = \emptyset\) for all \(i \in I \setminus I_0\). Which finishes the proof.
 \end{proof}
 
@@ -536,14 +543,14 @@ collection of all limit points of \(A\), which we'll call derived set.
 
 \begin{proposition}
 \label{prop:equivalent-def-limit-point}
-A point \(p \in A\) is a limit point if and only if \(p \in \overline{A
-\setminus \{p\}}\).
+A point \(p \in A\) is a limit point if and only if \(p \in \Cl(A
+\setminus \{p\})\).
 \end{proposition}
 
 \begin{proof}
 If \(p\) is a limit point, then from \cref{prop: closure equivalent prop} we see
-that \(p \in \overline{A \setminus \{p\}}\). Moreover, if \(p \in \overline{A
-\setminus \{p\}}\), then again from \cref{prop: closure equivalent prop} we
+that \(p \in \Cl(A \setminus \{p\})\). Moreover, if \(p \in \Cl(A
+\setminus \{p\})\), then again from \cref{prop: closure equivalent prop} we
 see that there is a basis \(\mathcal{B}_p\) at \(p\) such that for all \(U \in
 \mathcal{B}_p\) we have \(U \cap (A \setminus \{p\}) \neq \emptyset\) --- thus
 \(p\) is a limit point of \(A\).
@@ -572,21 +579,21 @@ therefore \(p\) is a limit point.
 \begin{proposition}
 \label{prop:closure-set-plus-limit-points}
 The closure of a set is the union of the set with its limit points,
-i.e. \(\overline{A} = A \cup A'\).
+i.e. \(\Cl A = A \cup A'\).
 \end{proposition}
 
 \begin{proof}
 Let \(p \in A'\), then from definition any neighbourhood of \(p\) intersects
 \(A \setminus \{p\}\) --- and, in particular, intersects \(A\) --- therefore, by
 means of \cref{prop: closure equivalent prop} we see that \(p \in
-\overline{A}\), thus \(A' \subseteq \overline A\). It's obvious that \(A
-\subseteq \overline{A}\), thus \(A \cup A' \subseteq \overline{A}\). On the
-other hand, if \(q \in \overline{A}\), then we assume that \(q \notin A\) ---
+\Cl A\), thus \(A' \subseteq \Cl A\). It's obvious that \(A
+\subseteq \Cl A\), thus \(A \cup A' \subseteq \Cl A\). On the
+other hand, if \(q \in \Cl A\), then we assume that \(q \notin A\) ---
 since, on the contrary, it's clear that \(q \in A \cup A'\). Again using
 \cref{prop: closure equivalent prop} we get that every neighbourhood of \(q\)
 intersects \(A\), and since \(q \notin A\), then the intersection contains a
 point other than \(q\) --- that is, \(q\) is a limit point of \(A\). Hence
-\(\overline{A} \subseteq A \cup A'\), which finishes the proof.
+\(\Cl A \subseteq A \cup A'\), which finishes the proof.
 \end{proof}
 
 \begin{corollary}
@@ -596,15 +603,15 @@ that is, \(A = A'\).
 \end{corollary}
 
 \begin{proof}
-If \(A\) is closed, then \(A = \overline{A}\) and hence \(A' \subseteq A\) from
+If \(A\) is closed, then \(A = \Cl A\) and hence \(A' \subseteq A\) from
 \cref{prop:closure-set-plus-limit-points}. Otherwise, if \(A\) contains all of
-its limit points, then \(A \cup A' = A = \overline{A}\) --- that is, \(A\) is
+its limit points, then \(A \cup A' = A = \Cl A\) --- that is, \(A\) is
 closed.
 \end{proof}
 
 \begin{definition}[Dense set]
 \label{def:dense-set}
-A set \(A \subseteq X\) is said to be dense if \(\overline{A} = X\).
+A set \(A \subseteq X\) is said to be dense if \(\Cl A = X\).
 \end{definition}
 
 \begin{proposition}
@@ -617,11 +624,15 @@ A set \(A\) is dense in \(X\) if and only if for all non-empty open subsets of
 Let \(A\) be dense in \(X\) and let \(U \subseteq X\) be any non-empty
 open subset of the space. Suppose, for the sake of contradiction, that \(U \cap
 A = \emptyset\). Since \(U\) is non-empty, take any \(x \in U\), then from
-\cref{prop: closure equivalent prop} we find that \(x \notin \overline{A}\) but
-since \(\overline{A} = X\), then \(x \notin X\), which is a contradiction ---
+\cref{prop: closure equivalent prop} we find that \(x \notin \Cl A\) but
+since \(\Cl A = X\), then \(x \notin X\), which is a contradiction ---
 thus \(U \cap A\) is non-empty. On the other hand, if we suppose that every
 non-empty open set of the space intersects \(A\), then given any \(x \in X\) we
-see that \(x\) is a limit point of \(A\), hence \(x \in \overline{A}\), thus \(X
-\subseteq \overline{A}\), which proves the proposition since \(\overline{A}
+see that \(x\) is a limit point of \(A\), hence \(x \in \Cl A\), thus \(X
+\subseteq \Cl A\), which proves the proposition since \(\Cl A
 \subseteq X\).
 \end{proof}
+
+%%% Local Variables:
+%%% TeX-master: "../../deep-dive"
+%%% End:

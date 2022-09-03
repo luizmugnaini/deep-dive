@@ -11,7 +11,7 @@ of the vector spaces.
 \begin{definition}[(Pre)Norm and (pre)normed vector spaces]
 \label{def:prenorm-and-norm-normed-vect-space}
 Let \(E\) be a \(k\)-vector space. We say that a map \(\|-\|: E \to
-\R_{\geq 0}\) is a \emph{prenorm} in \(E\) if for all \(x, y \in E\) and
+\R_{\geq 0}\) is a \emph{pre-norm} in \(E\) if for all \(x, y \in E\) and
 \(\lambda \in k\) the map satisfies the following properties
 \begin{enumerate}[(a)]\setlength\itemsep{0em}
 \item Product by scalar: \(\|\lambda x\| = |\lambda|\, \|x\|\).
@@ -26,7 +26,7 @@ The vector space \(E\) endowed with the (pre)norm \(\| - \|\) is called a
 \emph{(pre)normed vector space}.
 \end{definition}
 
-It should be noted immediatly that the first condition for a prenorm implies in
+It should be noted immediately that the first condition for a pre-norm implies in
 \(\| 0 \| = 0\), hence the last condition for \(\| - \|\) to be a norm can be
 substituted equivalently by ``\(\| x \| = 0\) if and only if \(x =
 0\)''. Moreover, in a prenormed space, it's not possible to assert that a
@@ -41,7 +41,7 @@ inherited norm.
 \begin{example}[Norms from maps]
 \label{exp:norm-from-functional}
 Let \(E\) be a \(k\)-vector space and let's consider any functional \(f \in
-E^{*}\). We can build a \emph{prenorm} from the linear map \(f\) by defining a
+E^{*}\). We can build a \emph{pre-norm} from the linear map \(f\) by defining a
 map \(\| - \|_f: E \to \R_{\geq 0}\) given by \(\| x \|_f \coloneq |f(x)|\) ---
 which clearly satisfies all of the required conditions for a norm. Note however
 that for \(\| - \|_f\) to satisfy the last condition, it must be true that
@@ -55,7 +55,7 @@ Given a (pre)normed \(k\)-vector space \((E, \| - \|)\), we can naturally
 define a metric in \(E\) to be a map \(d: E \times E \to \R_{\geq 0}\) given by
 \(d(x, y) \coloneq \| x - y \|\) --- which makes \(E\) into a (pre)metric
 space (refer to \cref{def:premetric-and-metric-space}). We now verify each of
-the conditions for a premetric:
+the conditions for a pre-metric:
 \begin{enumerate}[(a)]\setlength\itemsep{0em}
 \item If \(x, y \in E\) are any elements, then
 \[
@@ -84,7 +84,7 @@ Let \((E, \| - \|)\) be a (pre)normed \(k\)-vector space, and \(d: E \times E
 \begin{proof}
 Suppose \(E\) is a Hausdorff space and let \(x, y \in E\) be such that \(\| x -
 y \| = 0\), then in particular \(d(x, y) = 0\) and therefore any open ball
-\(B_x(r)\) centered at \(x\), for \(r > 0\), does also contain \(y\) --- but
+\(B_x(r)\) centred at \(x\), for \(r > 0\), does also contain \(y\) --- but
 since \(E\) is Hausdorff, this can only be true if \(x = y\), thus \(x - y = 0\)
 and we obtain that \(\| - \|\) is a norm, and \(d\) is a metric.
 
@@ -188,7 +188,7 @@ Two norms are equivalent if and only if they induce the same topology.
 \begin{proof}
 Let \(E\) be a \(k\)-vector space and both \(\| - \|_1\) and \(\| - \|_2\) be
 norms on \(E\). Let \(U \subseteq (E, \| - \|_1)\) be open and, for any given
-\(x \in U\), let \(B_x(r) \subseteq (E, \| - \|_1)\) be an open ball centered at
+\(x \in U\), let \(B_x(r) \subseteq (E, \| - \|_1)\) be an open ball centred at
 \(x\). Notice that if \(b > 0\) is the right constant in
 \cref{def:equivalence-of-norms}, then by choosing the open ball \(B_x(r/b)
 \subseteq (E, \| - \|_2)\), we are able to obtain that for all \(y \in
@@ -204,16 +204,16 @@ thus we are done.
 
 \subsection{Quotient Space}
 
-\begin{example}[Prenorm on quotients of normed spaces]
+\begin{example}[Pre-norm on quotients of normed spaces]
 \label{exp:prenorm-quotient-space}
-Let \((E, \| - \|)\) be a \emph{prenormed} \(k\)-vector space and \(F
-\subseteq E\) a subspace. We can define a \emph{prenorm} \(\| - \|_{\sim}: E/F
+Let \((E, \| - \|)\) be a \emph{pre-normed} \(k\)-vector space and \(F
+\subseteq E\) a subspace. We can define a \emph{pre-norm} \(\| - \|_{\sim}: E/F
 \to \R_{\geq 0}\) on the quotient space \(E/F\) as
 \[
   \| [v] \|_{\sim} \coloneq \inf_{u \in [v]} \| u \|,
 \]
 that is, the infimum of the norm of the representatives of the class. This
-indeed defines a prenorm since, if \([v], [w] \in E/F\), then
+indeed defines a pre-norm since, if \([v], [w] \in E/F\), then
 \begin{align}\label{eq:quotient-norm-triang-ineq}
   \nonumber
   \| [v] + [w] \|_{\sim}
@@ -248,12 +248,12 @@ that
 \end{align*}
 thus satisfying the triangle inequality. The condition that \(\| \lambda v
 \|_{\sim} = |\lambda|\, \| v \|_{\sim}\) is trivially obtained --- hence \(\| -
-\|_{\sim}\) is a prenorm in \(E/F\).
+\|_{\sim}\) is a pre-norm in \(E/F\).
 \end{example}
 
 \begin{proposition}[Quotient norm]
 \label{prop:quotient-norm}
-The prenorm \(\| - \|_{\sim}\) described in \cref{exp:prenorm-quotient-space} is
+The pre-norm \(\| - \|_{\sim}\) described in \cref{exp:prenorm-quotient-space} is
 a \emph{norm} if and only if the subspace \(F\) is closed in \(E\).
 \end{proposition}
 
@@ -277,9 +277,9 @@ F\). Therefore, from this claim we obtain that \(\| [v] \|_{\sim} = 0\) implies
 \([v] = [0] = F\), the zero element of \(E/F\).
 \end{proof}
 
-\begin{proposition}[Norm out of prenorm]
+\begin{proposition}[Norm out of pre-norm]
 \label{prop:norm-out-of-prenorm}
-Let \((E, \| - \|)\) be a \emph{prenormed} \(k\)-vector space and \(E_0 \coloneq
+Let \((E, \| - \|)\) be a \emph{pre-normed} \(k\)-vector space and \(E_0 \coloneq
 \{x \in E \colon \| x \| = 0\}\). Then, the map \(\| - \|_{\sim}: E / E_0 \to
 \R_{\geq 0}\) defined by \(\| [x] \|_{\sim} \coloneq \| x \|\) is well defined
 and is a \emph{norm} for the space \(E / E_0\).
@@ -300,13 +300,13 @@ the proof.
 
 \begin{lemma}[Complex conjugate space norm]
 \label{lem:prenorm-complex-conjugate-space}
-Let \((E, \| - \|)\) be a prenormed \(\CC\)-vector space. Then the naturally
-induced map \(\| - \|: \overline{E} \to \R_{\geq 0}\) is a prenorm for the
+Let \((E, \| - \|)\) be a pre-normed \(\CC\)-vector space. Then the naturally
+induced map \(\| - \|: \overline{E} \to \R_{\geq 0}\) is a pre-norm for the
 complex conjugate space \(\overline{E}\).
 \end{lemma}
 
 \begin{proposition}
-Let \(E\) be a prenormed \(k\)-vector space, \(F \subseteq E\) be a closed
+Let \(E\) be a pre-normed \(k\)-vector space, \(F \subseteq E\) be a closed
 subspace, and \(x \in E \setminus F\). Then there exists a scalar \(C > 0\)
 for which, for every given scalar \(\lambda \in k\) and vector \(y \in F\), we
 have
@@ -398,7 +398,7 @@ thus \(\| \lambda f \| = |\lambda|\, \| f \|\). Moreover, we have \(\sup_t |f(t)
 0\), we conclude that \(h(t) = 0\) for every \(t \in J\) --- that is, \(h = 0\).
 \end{enumerate}
 \todo[inline]{Prove that the maps define norms for \(\ell^p\) and
-\(\ell^{\infty}\), moreover, prove that each of the mencioned spaces is
+\(\ell^{\infty}\), moreover, prove that each of the mentioned spaces is
 Banach.}
 \end{proof}
 
@@ -530,7 +530,7 @@ x\). Moreover, for each \(p'\) we have the inequality \(\| x \| \leq \| x -
 x_{p'} \| + \| x_{p} \| \leq \| x - x_{p'} \| + 1\), thus as \(p' \to \infty\)
 we have \(\| x - x_{p'} \| \to 0\) and therefore \(\| x \| \leq 1\) --- that
 is, every sequence in \(B_0(1)\) has a convergent subsequence in \(B_0(1)\),
-which by \cref{prop:convergent-subsequence-implies-compact} implies that
+which by \cref{thm:metric-2d-ctbl-hausdorff-equiv-compactness} implies that
 \(B_0(1)\) is compact in \(E\).
 \end{proof}
 
@@ -635,7 +635,7 @@ subsequence \((x_{p'})_{p'}\), for which \(x_{p'} \to \sum_i \lambda_i e_i
 \coloneq x\) --- but since \(\Omega\) is closed, we find \(x \in \Omega\). Thus
 any sequence in \(\Omega\) has a convergent subsequence in \(\Omega\) --- this
 shows that \(\Omega\) is compact (see
-\cref{prop:convergent-subsequence-implies-compact}).
+\cref{thm:metric-2d-ctbl-hausdorff-equiv-compactness}).
 \end{proof}
 
 \subsection{%
@@ -680,7 +680,7 @@ clear that \(\sup_{j \in \N} |x_j(p) - x_j(q)| < \varepsilon\) implies in
 \((x_{j_0}(p))_{p \in \N}\) is indeed Cauchy, and since \(k\) (either \(\R\) or
 \(\CC\)) is complete, there exists \(y_{j_0} \in k\) for which \(x_{j_0}(p) \to
 y_{j_0}\). Our candidate sequence will thus be formed by \(y \coloneq (y_j)_{j
-\in \N}\) --- where each \(y_j\) is contructed just as above. Indeed, \(y \in
+\in \N}\) --- where each \(y_j\) is constructed just as above. Indeed, \(y \in
 \ell^{\infty}(\N)\), since for every \(j \in \N\) we have \(|y_j| = \lim_{p \to
 \infty} |x_j(p)| \leq \lim_{p \to \infty} \| x^p \|_{\infty}\) and since
 \(x\) is Cauchy, from \cref{lem:cauchy-bounded}, we find that there exists \(C >
@@ -711,7 +711,7 @@ The space \(\ell^p(\N)\) is Banach for all \(1 \leq p < \infty\).
 \begin{proposition}
 \label{prop:continous-linear-thus-bounded}
 Let \(f: X \to Y\) be an \(\R\)-linear map between normed \(\R\)-vector spaces
-\(X\) and \(Y\). Then, \(f\) is continous if and only if there exists a scalar
+\(X\) and \(Y\). Then, \(f\) is contiguous if and only if there exists a scalar
 \(C > 0\), called \emph{bound}, for which \(\norm{f(x)}_Y \leq C \norm{x}_{X}\)
 for all \(x \in X\).
 \end{proposition}
@@ -725,13 +725,13 @@ element \(x \coloneq \sum_{v \in B} a_{v} v\). From linearity we have \(f(x) =
   \leq \sum_{v \in B} \| a_v \|_{\R} \| f(v) \|_{Y}
   \leq C \|x\|_{X} \sum_{v \in B} \|a_v\|_{\R}.
 \]
-This boild down to \(f = O(\Id_{X})\) --- which implies in \(f(x - x_0) = f(x) -
+This boils down to \(f = O(\Id_{X})\) --- which implies in \(f(x - x_0) = f(x) -
 f(x_0) \to 0\) as \(x \to x_0\), where \(x_0 \in X\) is any point, that is,
-\(f\) is continous at any point of \(X\). Even better than that, we can show
-that \(f\) is uniformly continous (I won't carry it out since it's equivalent to
+\(f\) is continuous at any point of \(X\). Even better than that, we can show
+that \(f\) is uniformly continuous (I won't carry it out since it's equivalent to
 what we wrote in \cref{prop: linear-continuous}).
 
-For the opposite, suppose \(f\) is continous at \(0\), then there will surely
+For the opposite, suppose \(f\) is continuous at \(0\), then there will surely
 exist \(\delta > 0\) for which \(\|x\|_X < \delta\) implies in
 \(\|f(x)\|_Y < 1\). Therefore, for any choice of non-zero \(x \in X\), we
 find
@@ -746,20 +746,20 @@ bounded.
 \begin{proposition}
 \label{prop:composition-banach-morphisms}
 Let \(E, F\) and \(G\) be normed vector spaces, and let \(u: E \to F\) and \(v:
-F \to G\) be continous linear maps. Then, \(v u: E \to G\) is also a continuous
+F \to G\) be continuous linear maps. Then, \(v u: E \to G\) is also a continuous
 linear map, and
 \[
   \|v u\| \leq \|v\|\, \|u\|,
 \]
-where \(\|f\| \coloneq \sup_{x \in X} \|f(x)\|\) for a continous linear
+where \(\|f\| \coloneq \sup_{x \in X} \|f(x)\|\) for a continuous linear
 map \(f: X \to Y\) between normed vector spaces\footnote{Beware! This is not the
 norm we shall adopt for our studies on banachable topological vector spaces. For
 the latter, see \cref{def:norm-morphism-TopVect}}.
 \end{proposition}
 
 \begin{proof}
-The first assertion is trivial, since the composition of continous maps is
-continous, and the same is true for linear maps. Let \(x \in E\) be any element,
+The first assertion is trivial, since the composition of continuous maps is
+continuous, and the same is true for linear maps. Let \(x \in E\) be any element,
 notice that
 \[
   \|vu(x)\|_G
@@ -772,7 +772,7 @@ thus the inequality holds.
 \begin{proposition}
 \label{prop:multilinear-continous-iff-bounded}
 A multilinear map \(\phi: \prod_{j=1}^n E_j \to F\) between normed vector spaces
-\(E_1, \dots, E_n\), and \(F\), is continous if and only if there exists a bound
+\(E_1, \dots, E_n\), and \(F\), is continuous if and only if there exists a bound
 \(C > 0\) such that, for every \(x \in \prod_{j = 1}^n E_j\),
 \[
   \|\phi(x)\|_{F} \leq C \prod_{j=1}^n \|x_j\|_{E_j}.
@@ -782,7 +782,7 @@ A multilinear map \(\phi: \prod_{j=1}^n E_j \to F\) between normed vector spaces
 \begin{proposition}
 \label{prop:canonical-iso-banach-multilinear}
 Let \(E_1, \dots, E_r\), and \(F\) be normed vector spaces. There exists a
-canonical map from repeated continous linear maps to the continous multilinear
+canonical map from repeated continuous linear maps to the continuous multilinear
 maps, which is a continuous linear isomorphism, and is norm-preserving --- that
 is, the canonical map
 \[
@@ -828,6 +828,7 @@ Therefore
   \leq \|\overline\phi\| \prod_{j=1}^n \|x_j\|_{E_j},
 \]
 which shows that \(\|\phi\| \leq \|\overline\phi\|\). We conclude that
+\(clude that
 \(\Phi(\lambda) = \overline\lambda\) for all repeating map \(\lambda\).
 \end{proof}
 
@@ -853,9 +854,9 @@ a continuous linear map \(\phi \in E^{*}\) such that \(\phi(x) \neq 0\).
 \label{def:banach-isomorphism}
 We define a \emph{Banach isomorphism} to be a continuous linear map \(u: E \to
 F\), between Banach spaces \(E\) and \(F\), that is both invertible (there
-exists a continous linear map \(u^{-1}: F \to E\) that is the two-sided inverse
+exists a continuous linear map \(u^{-2}: F \to E\) that is the two-sided inverse
 of \(u\)), and norm preserving --- that is, given any \(x \in E\), we have
-\(\|u(x)\|_F = \|x\|_E\). Banach isomorphisms may also be refered to
+\(\|u(x)\|_F = \|x\|_E\). Banach isomorphisms may also be referenced to
 isometries in the literature.
 \end{definition}
 
