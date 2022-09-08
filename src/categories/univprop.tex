@@ -381,7 +381,7 @@ C\), we mark it as follows
 \[
 \begin{tikzcd}
 C \ar[r, "f"] \ar[d, "g"'] &A \ar[d, "g'"] \\
-B \ar[r, "f'"'] &P \ar[lu, phantom, "\lrcorner", very near start]
+B \ar[r, "f'"'] &P \ar[lu, phantom, "\ulcorner", very near start]
 \end{tikzcd}
 \]
 
@@ -537,4 +537,355 @@ of the former items.
 Let \(f: A \to B\) be a morphism in a category \(\cat C\). The \emph{(co)kernel}
 of \(f\), if existent, is defined to be the pullback of \(f\) with itself --- or
 pushout in the case of cokernels.
+\end{definition}
+
+\begin{proposition}
+\label{prop:morphisms-kernel-cokernel}
+Let \(\cat C\) be a category and \(f: A \to B\) be a morphism of \(\cat C\). If
+the (co)kernel of \(f\) exists, its associated morphisms are both epimorphisms
+(monomorphisms for the case of cokernels).
+\end{proposition}
+
+\begin{proof}
+Let \(\ker f \coloneq (K, \alpha, \beta)\) and consider \(A\) itself, together
+with the identity morphisms. Since \(K\) is a pullback of \(f\) with itself,
+there exists a unique morphism \(\gamma: A \to K\) such that \(\beta \gamma =
+\Id_A = \alpha \gamma\) --- therefore \(\gamma\) is a split monomorphism and
+both \(\alpha\) and \(\beta\) are split epimorphisms.
+\end{proof}
+
+\begin{proposition}
+\label{prop:}
+Let \(f: A \to B\) be a morphism in a category \(\cat C\). Then the following
+properties are equivalent:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The morphism \(f\) is monic (conversely, epic).
+\item The kernel of \(f\) exists, furthermore \(\ker f = (A, \Id_A, \Id_A)\)
+  (conversely we have \(\coker f = (B, \Id_B, \Id_B)\)).
+\item The (co)kernel \((K, \alpha, \beta)\) of \(f\) exists, and
+  \(\alpha = \beta\).
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\begin{itemize}\setlength\itemsep{0em}
+\item (a) \(\implies\) (b): Since \(f\) is monic, if \(P\) is any object
+  together with morphisms \(\phi, \psi: P \para A\) such that
+  \(f \phi = f \psi\) then \(\phi = \psi\) and we may simply take \(A\) to be
+  the kernel of \(f\) together with the identity morphisms --- while the unique
+  morphism \(P \to A\) is given by \(\phi = \psi\).
+
+\item (b) \(\implies\) (c): If \((K, \alpha, \beta)\) is a kernel for \(f\) then
+  in particular there exists an isomorphism \(\phi: A \to K\) and therefore
+  \(\alpha \phi = \Id_A\) and \(\beta \phi = \Id_A\). Since \(\phi\) is
+  epic, it follows that \(\alpha = \beta\).
+
+\item (c) \(\implies\) (a): Suppose \((K, \alpha, \alpha)\) is kernel for \(f\),
+  then for all objects \(P\) and morphisms \(g, h: P \para A\) such that\(f g =
+  f h\), we have a unique \(\phi: P \to K\) such that \(\alpha \phi = g\) and
+  \(\alpha \phi = h\) --- thus \(g = h\).
+\end{itemize}
+\end{proof}
+
+\begin{proposition}[Coequalizers \& kernels]
+\label{prop:coeq-and-ker}
+Let \(\cat C\) be a category. The
+following properties relate coequalizers and kernels:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Consider parallel morphisms \(x, y: X \para A\). If the coequalizer
+  \(f = \Coeq(x, y)\) exists and has a kernel pair \(\ker f = (\alpha, \beta)\),
+  then \(\Coeq(x, y)\) is the coequalizer of \(\ker f\).
+
+\item Consider a morphism \(h: A \to B\). If the kernel
+  \(\ker h = (\varepsilon, \delta)\) exists and has a coequalizer
+  \(w = \Coeq(\varepsilon, \delta)\), then \(\ker h\) is the kernel of
+  \(\Coeq(\varepsilon, \delta)\).
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Since \(f\) is the coequalizer of \(x\) and \(y\), it cleartly satisfies
+  \(f x = f y\). Therefore, the triple \((X, x, y)\) can be used to apply the
+  universal property of the pullback of \(\ker f\) to obtain a unique
+  factorization \(\phi: X \to \ker f\) such that \(x = \alpha \phi\) and
+  \(y = \beta \phi\).
+
+  Notice that \(\alpha, \beta: \ker f \para A\) are parallel morphisms, so one
+  can be tempted to find its coequalizer --- we shall prove that
+  \(\Coeq(\alpha, \beta) = \Coeq(x, y)\). Let \(C\) be an object together with a
+  morphism \(g: A \to C\) such that \(g \alpha = g \beta\). We may precompose
+  this morphism with \(\phi\), obtaining \(g \alpha \phi = g \beta \phi\), but
+  using the result fro the last paragraph we conclude that \(g x = g y\). Using
+  the universal property for the coequalizer of \(x\) and \(y\), we find a
+  unique factorization morphism \(\psi: \Coeq(x, y) \to C\) such that
+  \(g = \psi f\). Therefore, \(\Coeq(x, y)\) satisfies the universal property
+  for the coequalizer of the kernel pair \((\alpha, \beta)\) of \(f\). The whole
+  construction of this item's proof can be seen in the following commutative
+  diagram:
+  \[
+  \begin{tikzcd}
+  X \ar[rd, dashed, "\phi"]
+  \ar[rrd, bend left, "x"]
+  \ar[drd, bend right, "y"'] & & &
+  \\
+  &\ker f \ar[r, "\alpha"]
+  \ar[rd, phantom, "\lrcorner", very near start]
+  \ar[d, "\beta"']
+  &A \ar[d, "f"] \ar[drd, bend left, "g"]
+  &
+  \\
+  &A \ar[r, "f"'] \ar[rrd, "g"', bend right]
+  &\Coeq(x, y) \ar[rd, dashed, "\psi"]
+  &
+  \\
+  & & &C
+  \end{tikzcd}
+  \]
+
+\item From the pullback definition, we know that \(h \varepsilon = h \delta\)
+  --- since \(w\) is the coequalizer of \((\varepsilon, \delta)\), it follows
+  that there exists a unique morphism
+  \(\gamma: B \to \Coeq(\varepsilon, \delta)\) such that \(\gamma w = h\).
+
+  Consider now two parallel morphisms \(a, b: Y \para A\) such that
+  \(w a = w b\). Then we have that \(h a = (\gamma w) a\), and
+  \(h b = (\gamma w) b\) since \(w b = w a\) by assumption, it follows that
+  \(h a = h b\). From the kernel property, there must exist a unique morphism
+  \(\eta: Y \to \ker h\) such that \(\varepsilon \eta = a\) and
+  \(\delta \eta = b\). Therefore \(\ker w = \ker h\). All constructions can be
+  visualized in the following commutative diagram:
+  \[
+  \begin{tikzcd}
+  Y \ar[rd, dashed, "\eta"]
+  \ar[rrd, bend left, "a"]
+  \ar[drd, bend right, "b"'] & & &
+  \\
+  &\ker h \ar[r, "\varepsilon"]
+  \ar[rd, phantom, "\lrcorner", very near start]
+  \ar[d, "\delta"']
+  &A \ar[d, "h"] \ar[drd, bend left, "w"]
+  &
+  \\
+  &A \ar[r, "h"'] \ar[rrd, "w"', bend right]
+  &B
+  &
+  \\
+  & & &\Coeq(\varepsilon, \delta) \ar[lu, dashed, "\gamma"']
+  \end{tikzcd}
+  \]
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}[Associativity property]
+\label{prop:associativity-pullbacks}
+Let \(\cat C\) be a category and consider the following commutative diagram in
+\(\cat C\):
+\[
+\begin{tikzcd}
+A \ar[r, "a"] \ar[d, "c"']
+&B \ar[r, "b"] \ar[d, "d"']
+&C \ar[d, "e"] \\
+D \ar[r, "f"']
+&E \ar[r, "g"']
+&F
+\end{tikzcd}
+\]
+The following are properties which regard pullbacks of such commutative squares:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item If both squares are pullbacks, then the outer-square
+  \begin{equation}\label{eq:assoc-outer-pullback}
+  \begin{tikzcd}
+  A \ar[r, "b a"] \ar[d, "c"']
+  \ar[rd, phantom, "\lrcorner", very near start]
+  &C \ar[d, "e"] \\
+  D \ar[r, "g f"']
+  &F
+  \end{tikzcd}
+  \end{equation}
+  is a pullback.
+
+\item If the second square is a pullback and the outer diagram
+  \cref{eq:assoc-outer-pullback} is a pullback, then the first square is a
+  pullback.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Let \(x: Z \to D\) and \(y: Z \to C\) be two morphisms of \(\cat C\) such
+  that \(g f x = e y\). From the pullback property of the second square, there
+  exists a unique morphism \(z: Z \to B\) such that \(b z = y\) and
+  \(d z = f x\). Using the pullback property of the first square on the
+  morphisms \(z\) and \(x\) we find a unique \(w: Z \to A\) such that
+  \(a w = z\) and \(c w = x\).
+
+  Notice that since \(a w = z\) then \(b (a w) = b z = y\) --- we'll show that
+  \(w\) is the unique morphism of \(\cat C\) such that \((b a) w = y\) and
+  \(c w = x\). Suppose the existence of another morphism \(w': Z \to A\) such
+  that \((b a) w' = y\) and \(c w' = x\). In particular, it follows that \(b (a
+  w') = b (a w)\), and
+  \[
+  d (a w') = f (c w') = f x = f (c w) = d (a w).
+  \]
+  By the uniqueness of the morphism \(Z \to B\) from the second pullback square
+  diagram, \(a w' = z = a w\). Using this last equality and the fact that
+  \(c w' = x = c w\), by the pullback property of the first square we obtain
+  \(w' = w\) --- which finally settles that \(w\) is unique and the outer-square
+  is indeed a pullback.
+
+\item We assume the existence of a pullback \((A', c', a')\) of \((f, d)\) and
+  show that \(A'\) must be isomorphic to \(A\). From the commutativity of the
+  diagram, since \(d a = c f\), we use the pullback property of \((A', c', a')\)
+  to get a unique morphism \(h: A \to A'\) --- we'll show that \(h\) is the
+  required isomorphism. Via the result of item (a), we know that
+  \((A', c, b a')\) is a pullback for the outer-square, therefore it follows
+  that \(c' h = c\) and \(b a' h = b a\). Hence from the last two equalities one
+  concludes that \(h\) is a factorization between two pullbacks of the
+  outer-square. Since \(h\) is unique and pullbacks are unique up to
+  isomorphism, it must be the case that \(h\) is an isomorphism --- thus
+  \(A \iso A'\), then \((A, c, a)\) is a pullback for the first square.
+\end{enumerate}
+\end{proof}
+
+\section{Limits \& Colimits}
+
+\begin{definition}[Cone]
+\label{def:cone-on-functor}
+Let \(F: \cat D \to \cat C\) be a functor. We define a \emph{cone} on \(F\) to
+consist of the following data:
+\begin{itemize}\setlength\itemsep{0em}
+\item An object \(C \in \cat C\).
+\item For each object \(D \in \cat D\), a corresponding morphism \(p_D: C \to F
+  D\) in \(\cat C\). Moreover, for every morphism \(d: D \to D'\) in \(\cat D\),
+  one has that \(p_{D'} = F (d p_D)\).
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Limit of a functor]
+\label{def:limit-of-functor}
+Let \(F: \cat D \to \cat C\) be a functor. We define a \emph{limit} of \(F\) to
+be a \emph{cone} \(\Lim F = (L, (p_{D})_{D \in \cat D})\) with the property
+that, for any cone \((M, (q_D)_{D \in \cat D})\) on \(F\), there exists a
+\emph{unique} morphism \(m: M \to L\) of \(\cat C\) such that, for every
+\(D \in \cat D\), the following diagram commutes
+\[
+\begin{tikzcd}
+M \ar[d, dashed, "m"'] \ar[rd, bend left, "q_D"] & \\
+\Lim F \ar[r, "p_D"'] &F D
+\end{tikzcd}
+\]
+\end{definition}
+
+\begin{proposition}[Uniqueness]
+\label{prop:limit-functor-uniqueness}
+The limit of a functor, when existent, is unique up to isomorphism.
+\end{proposition}
+
+\begin{proof}
+Let \(F: \cat D \to \cat C\) be a functor admitting limit cones
+\((L, (p_D)_{D \in \cat D})\) and \((L', (p_D')_{D \in \cat D})\). Then there
+exists unique morphisms \(m: L' \to L\) and \(m: L \to L'\) such that
+\(p_D m = p_D'\) and \(m' p_D' = p_D\). Stacking these two we find that
+\(m m': L \to L\) is such that \(p_D (m m') = p_D\), but since \(\Id_L\) has the
+same property, by the uniqueness of the factoring morphism, it follows that
+\(m m' = \Id_L\). The same analogous argument goes for \(m' m = \Id_{L'}\). We
+conclude that \(L \iso L'\) in \(\cat C\) via \(m\) and \(m'\).
+\end{proof}
+
+\begin{proposition}[Parallel factorizations]
+\label{prop:equal-parallel-factorizations}
+Let \(F: \cat D \to \cat C\) be a functor admiting a limit, and let \(M\) be any
+object in \(\cat C\). Two parallel morphisms \(f, g: M \para \Lim F\) in
+\(\cat C\) are \emph{equal} if, for every \(D \in \cat D\), one has
+\(p_D f = p_D g\).
+\end{proposition}
+
+\begin{proof}
+Notice that \((M, (p_D f)_{D \in \cat D})\) forms a cone on \(F\), therefore,
+from the universal property of the limit of \(F\), we obtain \(f = g\).
+\end{proof}
+
+\begin{definition}[Cocone]
+\label{def:cocone}
+Let \(F: \cat D \to \cat C\) be a functor. We define a \emph{cocone} on \(F\) to
+consist of the following data:
+\begin{itemize}\setlength\itemsep{0em}
+\item An object \(C \in \cat C\).
+
+\item For each object \(D \in \cat D\), a corresponding morphism \(s_C: F D \to
+  C\) of \(\cat C\) such that, for every morphism \(d: D' \to D\) in \(\cat D\),
+  we have that \(s_{D'} = s_D F d\).
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Colimit]
+\label{def:colimit}
+Let \(F: \cat D \to \cat C\) be a functor. We define a \emph{colimit} on \(F\)
+to be a \emph{cocone} \(\Colim F = (L, (s_D)_{D \in \cat D})\) such that, for
+every cocone \((M, (t_D)_{D \in \cat D})\) on \(F\), there exists a
+\emph{unique} morphism \(m: L \to M\) such that, for every \(D \in \cat D\), the
+following diagram commutes
+\[
+\begin{tikzcd}
+M \ar[r, "t_D"] &D \\
+L \ar[u, dashed, "m"] \ar[ru, bend right, "p_D"'] &
+\end{tikzcd}
+\]
+\end{definition}
+
+\begin{example}[Products]
+\label{exp:product-is-limit-over-indexing-set-diagram}
+Consider a set \(I\) as a discrete category (as in \cref{exp:index-category}),
+and any category \(\cat C\). The limit of a functor \(F: I \to \cat C\), if
+existent, is simply a \emph{product} in \(\cat C\), that is
+\[
+\Lim F \iso \prod_{i \in I} F i.
+\]
+\end{example}
+
+\section{Complete Categories}
+
+\begin{proposition}[All limits]
+\label{prop:all-limits-is-preorder}
+Let \(\cat C\) be a \(\mathcal{U}\)-category. If for all
+\(\mathcal{U}\)-categories \(\cat D\) and functors \(F: \cat D \to \cat C\), the
+limit of \(F\) exists in \(\cat C\) --- that is, the category \emph{admits all
+  limits} --- then \(\cat C\) is a \emph{preorder class}.
+\end{proposition}
+
+\begin{proof}
+For \(\cat C\) to be a preorder, there must exist at most one morphism between
+every pair of objects of \(\cat C\), so this is what we settle to do. Let
+\(A, B \in \cat C\) be any two objects and suppose there exists a pair of
+\emph{distinct} parallel morphisms \(f, g: A \para B\). Since every limit
+exists, then in particular the product \(B^{|\Hom(\cat C)|}\) is a well defined
+object of \(\cat C\). From \(f\) and \(g\), one can create
+\(2^{|\Hom(\cat C)|}\) distinct collections of morphisms
+\((h: A \to B)_{|\Hom(\cat C)|}\) --- where each \(h\) is either \(f\) or \(g\)
+--- which are cones over an ``inclusion'' functor \(F: \cat A \to \cat C\),
+where \(\cat A\) is composed of objects \(A\) and \(B\), and morphisms are
+\(f, g: A \para B\). The admittance of a limit over this functor is to state the
+existence of \(2^{|\Hom(\cat C)|}\) distinct factorizations of
+\(A \to B^{|\Hom(\cat C)|}\) in \(\cat C\). Since all of these factorizations
+are morphisms of \(\cat C\), it should be the case that
+\(2^{|\Hom(\cat C)|} < |\Hom(\cat C)|\), which contradicts Cantor's theorem (see
+\cref{thm:cantor-power-set-theorem}) since \(\cat C\) is a
+\(\mathcal{U}\)-category. If follows that there cannot exist more than one
+morphism between the objects of \(\cat C\), proving that it is a preorder.
+\end{proof}
+
+\begin{definition}[Completeness]
+\label{def:completeness-categories}
+We define the following notions concerning categories and the existence of
+limits:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item A category \(\cat C\) is said to be \emph{(co)complete} if, for every
+  \emph{small category} \(\cat D\), any functor \(F: \cat D \to \cat C\)
+  \emph{has a (co)limit} in \(\cat C\).
+
+\item A category \(\cat C\) is said to be \emph{finitely (co)complete} if, for
+  every \emph{finite category} \(\cat D\), any functor \(F: \cat D \to \cat C\)
+  \emph{has a (co)limit} in \(\cat C\).
+\end{enumerate}
 \end{definition}

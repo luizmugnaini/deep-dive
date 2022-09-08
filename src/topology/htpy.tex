@@ -62,6 +62,37 @@ First we prove that \(\simht\) is an equivalence relation:
   is continuous on both \(A\) and \(B\) then \(\delta\) is continuous on
   \(A \cup B = X \times I\).
 \end{itemize}
+To prove that homotopy preserves composition, consider the following commutative
+diagram in \(\Top\)
+\[
+\begin{tikzcd}
+X \ar[r, "f"]
+&Y \ar[r, shift left, "g"] \ar[r, shift right, "g'"']
+&Z \ar[r, "h"]
+&W
+\end{tikzcd}
+\]
+If there exists a homotopy \(\eta: g \nat g'\), we want to show that \(h g f\)
+is homotopy equivalent to \(h g' f\). To do that, consider the following
+commutative diagram
+\[
+\begin{tikzcd}
+X \ar[r, "i_0"] \ar[d, "f"']
+&X \times I \ar[d, "f \times \Id_I"]
+&X \ar[l, "i_1"'] \ar[d, "f"]
+\\
+Y \ar[r, "i_0"] \ar[dr, "g"']
+&Y \times I \ar[d, "\eta"]
+&Y \ar[l, "i_1"'] \ar[dl, "g'"]
+\\
+&Z \ar[d, "h"] &
+\\
+&W &
+\end{tikzcd}
+\]
+From the diagram we see that a natural choice of homotopy
+\(\sigma: h g f \nat h g' f\) is given by \(\sigma = h \eta (f \times \Id_I)\)
+thus indeed \(h g f \simht h g' f\).
 \end{proof}
 
 Given any two topological spaces \(X\) and \(Y\), we denote the
@@ -91,6 +122,297 @@ composition of \([f]\) with \([g]\) uniquely defined as
 \[
 [g] \circ [f] \coloneq [g f].
 \]
+
+\begin{definition}[Homotopy category]
+\label{def:Ho(Top)}
+We therefore define a category \(\HoTop\) composed of topological spaces ---
+which, viewed as an object of \(\HoTop\), is called a \emph{homotopy type} ---
+and classes of continuous morphisms between them up to homotopy.
+\end{definition}
+
+\begin{definition}[Homotopy equivalence]
+\label{def:homotopy-equivalence}
+Let \(X\) and \(Y\) be topological spaces. We say that a continuous map
+\(f: X \to Y\) is a \emph{homotopy equivalence} of \(X\) and \(Y\) if there
+exists a continuous map \(g: Y \to X\) and homotopies \(f g \nat \Id_Y\) and
+\(g f \nat \Id_X\).
+
+If there exists such homotopy equivalence, we write that \(X \isoht Y\) --- it
+is to be noted that homotopy equivalences are exactly the isomorphisms in the
+homotopy category \(\HoTop\).
+\end{definition}
+
+\begin{corollary}
+\label{cor:homeomorphism-is-homotopy-equivalence}
+Every topological isomorphism is a homotopy equivalence.
+\end{corollary}
+
+\begin{proof}
+Let \(f: X \isoto Y\) be a topological isomorphism. We consider its image
+under the functor \(\Top \to \HoTop\), which we'll name \([f]: X \to Y\). Then
+since \(f^{-1}: Y \isoto X\) is also a continuous morphism, we can consider its
+class \([f^{-1}]\) and notice that \([f] [f^{-1}] = [f f^{-1}] = [\Id_Y]\) and
+\([f^{-1}] [f] = [f^{-1} f] = [\Id_X]\). Therefore, there exists two homotopies
+\(f f^{-1} \nat \Id_Y\) and \(f^{-1} f \nat \Id_X\).
+\end{proof}
+
+\begin{corollary}
+\label{cor:htpy-equiv-is-equiv-relation}
+Homotopy equivalence is an equivalence relation on the class of topological
+spaces.
+\end{corollary}
+
+\begin{definition}[Contractible space]
+\label{def:contractible-space}
+A space \(X\) is said to be \emph{contractible} if the unique continuous map
+\(X \to *\) is a homotopy equivalence. From its construction, contractible
+spaces are the terminal objects of \(\HoTop\).
+\end{definition}
+
+\begin{example}[A ball is contractible]
+\label{exp:ball-contractible}
+Consider the open (or closed) ball \(B^n \subseteq \R^n\). Let \(f: B^n \to *\)
+be the unique continous map from the ball to the point space, and
+\(\iota: * \to B^n\) be the map \(* \mapsto 0\). We define a homotopy
+\(\eta: \iota f \nat \Id_{B^n}\) given by \((p, t) \mapsto t p\), and a homotopy
+\(\sigma: f \iota \nat \Id_{*}\) simply given by \((*, t) \mapsto *\) --- since
+\(f \iota = \Id_{*}\). Therefore \(B^n\) is contractible.
+
+Furthermore, since \(B^n \iso \R^n\) in \(\Top\), it follows that \(\R^n \isoht
+B^n\) and thus \(\R^n \isoht *\) --- the euclidean space is contractible.
+\end{example}
+
+\section{Fundamental Groupoid \& The Fundamental Group}
+
+\begin{notation}[Family of paths]
+\label{not:family-of-paths}
+Let \(X\) be a space and \(x, y \in X\) be any two points. We'll denote by
+\(\Path_X(x, y)\) the family of paths \(\gamma: I \to X\) with \(\gamma(0) = x\) and \(\gamma(1) = y\).
+\end{notation}
+
+\begin{definition}[Operations on paths]
+\label{def:operations-paths}
+Let \(X\) be a topological space. We define the following operations on the
+space of paths of \(X\):
+\begin{itemize}\setlength\itemsep{0em}
+\item Given a path \(\gamma: I \to X\) we define the \emph{reverse} path of
+  \(\gamma\) to be a path \(\gamma^{-1}: I \to X\) given by
+  \(\gamma^{-1}(t) \coloneq \gamma(1 - t)\).
+
+\item If \(p \in \Path_X(x, y)\) and \(q \in \Path_X(y, z)\) are paths in \(X\),
+  we define the \emph{concatenation} of \(p\) with \(q\) to be a path \(q \cdot
+  p: I \to X\) given by
+  \[
+  (q \cdot p)(t) \coloneq
+  \begin{cases}
+    p(2 t), &t \in [0, 1/2], \\
+    q(2 t - 1), &t \in [1/2, 1].
+  \end{cases}
+  \]
+  Yielding a path \(q \cdot p \in \Path_X(x, z)\).
+
+\item Moreover, we define \(\const_x: I \to X\) to be the unique constant path
+  on \(x\) --- that is, \(\const_x(t) = x\) for all \(t \in I\).
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Homotopy relative boundary]
+\label{def:htpy-relative-boundary}
+Let \(X\) be a space, and \(\gamma, \gamma': I \para X\) be paths with common
+endpoints:
+\begin{align*}
+ \gamma(0) = \gamma'(0) \eqqcolon p_0\quad \text{ and }\quad
+ \gamma(1) = \gamma'(1) \eqqcolon p_1.
+\end{align*}
+We define a \emph{homotopy relative boundary} between \(\gamma\) and \(\gamma'\)
+to be a homotopy \(\eta: \gamma \nat \gamma'\) such that \(\eta\) is constant on
+the endpoints \(p_0\) and \(p_1\) --- that is,
+\begin{align*}
+  \eta(0, -) = \const_{p_0}\quad \text{ and }\quad \eta(1, -) = \const_{p_1}.
+\end{align*}
+\end{definition}
+
+\begin{proposition}
+\label{prop:htpy-rel-boundary-is-equiv-relation}
+Homotopy relative boundary is an equivalence relation on the family of paths of
+a topological space.
+\end{proposition}
+
+\begin{proof}
+Let \(X\) be a topological space and \(x, y \in X\) be any two points --- we'll
+consider the family \(\Path_X(x, y)\). The constant homotopy \(\gamma \nat
+\gamma\) is clearly a homotopy relative boundary, thus the relation is
+reflexive.
+
+If \(\delta \in \Path_X(x, y)\) is another path, and \(\eta: \gamma \nat
+\delta\) is a homotopy relative boundary, then we can construct the a reverse
+homotopy \(\sigma: \delta \nat \gamma\) as \(\sigma(-, t) \coloneq \eta(-, 1 -
+t)\). Notice that \(\sigma(0, t) = \eta(0, 1 - t) = \const_x(1 - t)\) is
+constant on \(x\), while \(\sigma(1, t) = \eta(1, 1 - t) = \const_y(1 - t)\) is
+constant on \(y\). Therefore the relation is symmetric.
+
+Consider yet another path \(p \in \Path_X(x, y)\) and a homotopy relative
+boundary \(\eta: \delta \nat p\). We define a map \(\varepsilon: I \times I \to
+X\) given by
+\[
+\varepsilon(-, t) \coloneq
+\begin{cases}
+  \sigma(-, 2t), &t \in [0, 1/2], \\
+  \eta(-, 2 t - 1), &t \in [1/2, 1].
+\end{cases}
+\]
+This map is continous by the same argument used in
+\cref{cor:htpy-equivalence-rel} and thus stablishes a homotopy relative boundary
+\(\varepsilon: \gamma \nat p\).
+\end{proof}
+
+\begin{definition}[Fundamental groupoid]
+\label{def:fundamental-groupoid}
+Given a topological space \(X\), we define the \emph{fundamental groupoid} of
+\(X\) to be the category \(\Pi_1(X)\) whose objects are the points of \(X\), and
+whose morphisms are paths between those points up to homotopy relative boundary.
+That is, given \(x, y \in X\) we have
+\[
+\Hom_{\Pi_1(X)}(x, y) = \Path_X(x, y)/{\sim_{\text{hrb}}},
+\]
+where \(\sim_{\text{hrb}}\) is the equivalence relation on the family of paths
+\(x \to y\) given by homotopy relative boundary.
+
+Composition of morphisms in \(\Pi_1(X)\) is naturally defined by the
+concatenation of paths --- in other words, given points \(x, y, z \in X\) we
+have
+\[
+\begin{tikzcd}
+{\Path_X(x, y) \times \Path_X(y, z)}
+\ar[d, two heads] \ar[rr]
+&&{\Path_X(x, z)} \ar[d, two heads]
+\\
+{\Hom_{\Pi_1(X)}(x, y) \times \Hom_{\Pi_1(X)}(y, z)}
+\ar[rr, dashed]
+&&{\Hom_{\Pi_1(X)}(x, z)}
+\end{tikzcd}
+\]
+where, for any paths \(\gamma \in \Path_X(x, y)\) and \(\delta \in \Path_X(y,
+z)\), the concatenation of paths \((\gamma, \delta) \mapsto \delta \cdot \gamma\) induces
+a concatenation operation on the respective class paths
+\[
+([\gamma], [\delta]) \longmapsto
+[\delta] \cdot [\gamma] \coloneq [\delta \cdot \gamma].
+\]
+\end{definition}
+
+\begin{corollary}
+\label{cor:Pi1-is-groupoid}
+\(\Pi_1(X)\) is a groupoid.
+\end{corollary}
+
+\begin{proof}
+We show that \(\Pi_1(X)\) is a category whose morphisms are isomorphisms.
+\begin{itemize}\setlength\itemsep{0em}
+\item Given any point \(x \in X\) one has an identity map
+  \([\const_x] \in \Hom_{\Pi_1(X)}(x, x)\).
+
+\item Concatenation of class paths is unital with respect to constant paths:
+  given any path class \([\gamma] \in \Hom_{\Pi_1(X)}(x, y)\), we have
+  \[
+  [\const_y] \cdot [\gamma]
+  = [\const_y \cdot \gamma]
+  = [\gamma]
+  = [\gamma \cdot \const_x]
+  = [\gamma] \cdot [\const_x].
+  \]
+
+\item Concatenation is associative. Let \(x, y, z, w \in X\) be any four points
+  and consider class paths \([\alpha]: x \to y\), \([\beta]: y \to z\), and
+  \([\gamma]: z \to w\).
+
+  First we have to show that \(\gamma \cdot (\beta \cdot \alpha)\) and
+  \((\gamma \cdot \beta) \cdot \alpha\) are relative boundary homotopic. To that
+  end, define a continuous map \(\tau: I \to I\) by
+  \[
+  \tau(t) \coloneq
+  \begin{cases}
+    2 t, &t \in [0, 1/4], \\
+    t + \frac{1}{4}, &t \in [1/4, 1/2], \\
+    \frac{t}{2} + \frac{1}{2}, &t \in [1/2, 1].
+  \end{cases}
+  \]
+  Then, one sees right away that
+  \[
+  (\gamma \cdot (\beta \cdot \alpha))(\tau(t))
+  = ((\gamma \cdot \beta) \cdot \alpha)(t)
+  \]
+  for all \(t \in I\) --- hence \(\gamma \cdot (\beta \cdot \alpha)
+  \sim_{\text{hrb}} (\gamma \cdot \beta) \cdot \alpha\). From this, we finally
+  obtain the associativity of the path classes,
+  \[
+  [\gamma] \cdot ([\beta] \cdot [\alpha])
+  = [\gamma \cdot (\beta \cdot \alpha)]
+  = [(\gamma \cdot \beta) \cdot \alpha]
+  = ([\gamma] \cdot [\beta]) \cdot [\alpha].
+  \]
+
+\item Every path class \([\gamma] \in \Hom_{\Pi_1(X)}(x, y)\) is an isomorphism,
+  since it has an inverse \([\gamma^{-1}] \in \Hom_{\Pi_1(X)}(y, x)\). Indeed,
+  one has
+  \[
+  [\gamma] \cdot [\gamma^{-1}] = [\gamma \cdot \gamma^{-1}] = [\const_y]
+  \quad\text{ and }\quad
+  [\gamma^{-1}] \cdot [\gamma] = [\gamma^{-1} \cdot \gamma] = [\const_x].
+  \]
+\end{itemize}
+\end{proof}
+
+\begin{definition}[The category \(\bpTop\)]
+\label{def:base-point-preserving-Top-cat}
+A \emph{pointed topological space} is a pair \((X, x)\) consisting of a
+topological space \(X\) together with a base-point \(x \in X\). We define a
+category \(\bpTop\) whose objects are pointed topological spaces, and whose
+morphisms \(f: (X, x) \to (Y, y)\), for any \((X, x), (Y, y) \in \bpTop\), are
+continuous maps \(f: X \to Y\) such that \(f(x) = y\). We say that the morphisms
+of \(\bpTop\) preserve base-points.
+
+In \(\bpTop\), we define a \emph{pointed homotopy} \(\eta: f \nat g\) between
+parallel morphisms \(f, g: (X, x) \para (Y, y)\) to be a homotopy preserving
+base points, that is,
+\[
+\eta(x, -) = \const_y.
+\]
+Analogously to homotopies in \(\Top\), pointed homotopies define an equivalence
+relation \(\sim_{\text{ph}}\) in \(\bpTop\). We define the homotopy category of
+\(\bpTop\) to be the category \(\Ho{\bpTop}\) composed of pointed topological
+spaces and morphisms
+\[
+\Hom_{\Ho{\bpTop}}((X, x), (Y, y))
+\coloneq \Hom_{\bpTop}((X, x), (Y, y))/{\sim_{\text{ph}}}.
+\]
+\end{definition}
+
+\begin{definition}[Fundamental group]
+\label{def:fundamental-group}
+Let \(X\) be a topological space and \(x \in X\) be any point. We define
+the \emph{fundamental group} of \(X\) at the base point \(x\) as the family of
+\emph{loops}
+\[
+\pi_1(X, x) \coloneq \Aut_{\Pi_1(X)}(x),
+\]
+endowed with the operation of concatenation of paths. Therefore, we see that the
+fundamental group is a functor
+\[
+\pi_1: \bpTop \to \Grp.
+\]
+\end{definition}
+
+\begin{example}[\(\pi_1\) of the euclidean space]
+\label{exp:euclidean-space-pi1-is-trivial}
+Let \(x \in \R^n\) be any point. Given any loop \(\ell: x \to x\), one can
+define a homotopy relative boundary \(\eta: \ell \nat \const_x\) given by
+\(\eta(s, t) \coloneq (1 - t) \ell(s) + t x\). Therefore the fundamental group
+of the \(n\)-dimensional euclidean space is trivial,
+\[
+\pi_1(X, x) = *.
+\]
+\end{example}
 
 %%% Local Variables:
 %%% mode: latex

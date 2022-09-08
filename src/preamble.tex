@@ -175,32 +175,45 @@
 \newcommand{\Set}{{\textbf{Set}}}          % Sets
 \newcommand{\FinSet}{{\textbf{FinSet}}}    % Finite sets
 \newcommand{\pSet}{{\textbf{pSet}}}        % Pointed sets
-\newcommand{\sSet}{{\textbf{sSet}}}        % Simplicial sets
+
 \newcommand{\Vect}{{\textbf{Vect}}}        % Vector spaces
 \newcommand{\FinVect}{{\textbf{FinVect}}}  % Finite vector spaces
+
 \newcommand{\TVect}{{\textbf{TVect}}}      % Topological vector spaces
 \newcommand{\Ban}{{\textbf{Ban}}}          % Banach spaces
 \newcommand{\Man}{{\textbf{Man}}}          % Manifolds
+
 \let\Top\relax
 \newcommand{\Top}{{\textbf{Top}}}          % Topological spaces
+\newcommand{\pTop}{{\textbf{Top}^{*}}}
+\newcommand{\bpTop}{{\textbf{Top}^{*/}}}
+\newcommand{\Ho}[1]{{\textbf{Ho}(#1)}}
 \newcommand{\HoTop}{{\textbf{Ho}(\textbf{Top})}} % Homotopy space
+\newcommand{\Splx}{{\mathbf{\Delta}}} % Simplex category
+\newcommand{\sSet}{{\textbf{sSet}}}        % Simplicial sets
+\newcommand{\CoSimp}[1]{{\textbf{CoSimp}(#1)}} % Category of cosimplicial objects
+
 \newcommand{\Grp}{{\textbf{Grp}}}          % Groups
 \newcommand{\Ab}{{\textbf{Ab}}}            % Abelian groups
+
 \newcommand{\Graph}{{\textbf{Graph}}}      % Graphs
 \newcommand{\SimpGraph}{{\textbf{sGraph}}} % Simple graphs
+
 \newcommand{\Rng}{{\textbf{Ring}}}         % Rings
 \newcommand{\cRng}{{\textbf{CRing}}}       % Commutative rings
-\newcommand{\Cat}{{\textbf{Cat}}}          % Small categories
-\newcommand{\CAT}{{\textbf{CAT}}}          % Big categories
-\newcommand{\UCat}{{\mathcal{U}\text{-}\textbf{Cat}}} % U-Categories
-\newcommand{\Psh}[1]{{\textbf{Psh}(#1)}}   % Category of presheaves
 \newcommand{\rMod}[1]{{\textbf{Mod}_{#1}}}     % Right modules
 \newcommand{\lMod}[1]{{{}_{#1}\textbf{Mod}}}   % Left modules
 \newcommand{\Mod}[1]{{#1\text{-}\textbf{Mod}}} % Modules over comm. ring
 \newcommand{\Alg}[1]{{#1\text{-}\textbf{Alg}}} % Algebras
 \newcommand{\cAlg}[1]{{#1\text{-}\textbf{CAlg}}} % Commutative algebras
-\DeclareMathOperator{\El}{El}              % Category of elements
+
+\newcommand{\Cat}{{\textbf{Cat}}}          % Small categories
+\newcommand{\CAT}{{\textbf{CAT}}}          % Big categories
+\newcommand{\UCat}{{\mathcal{U}\text{-}\textbf{Cat}}} % U-Categories
+
+\newcommand{\Psh}[1]{{\textbf{Psh}(#1)}}   % Category of presheaves
 \newcommand{\comma}{\downarrow} % Comma category separator
+\DeclareMathOperator{\El}{El}              % Category of elements
 
 % Operators
 \DeclareMathOperator{\Hom}{Mor}
@@ -263,13 +276,18 @@
 \newcommand{\att}{\amalg}       % Disjoint union
 \newcommand{\bigatt}{\coprod}   % Indexed disjoint union
 
+% Constant map
+\DeclareMathOperator{\const}{cons}
+
 % Homotopy
-\newcommand{\simht}{\sim_{\text{h}}}
+\newcommand{\simht}{\sim_{\text{h}}}    % Homotopy between maps
+\newcommand{\isoht}{\iso_{\text{h}}} % Homotopy equivalence
 
 % Functors on topological spaces
 \DeclareMathOperator{\Cone}{C}  % Cone
 \DeclareMathOperator{\Susp}{S}  % Suspension
-\DeclareMathOperator{\rSusp}{S} % Reduced suspension
+\DeclareMathOperator{\rSusp}{\Sigma} % Reduced suspension
+\DeclareMathOperator{\Path}{Path} % Path object
 
 % Set operators
 \DeclareMathOperator{\Cl}{Cl}       % Closure

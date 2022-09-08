@@ -70,7 +70,7 @@ that \(\widetilde A = S \cap \Cl A\).
 
 \begin{proposition}\label{prop: relative open to open}
 Let \(X\) be a topological space and \(S\) be a subspace. Then
-\begin{enumerate}[(a)]
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
   \item If \(U \subseteq S\) is open (resp. closed) and \(S\) is an open
     (resp. closed) subset of \(X\), then \(U\) is open (resp. closed) in
     \(X\).
@@ -201,7 +201,7 @@ that \(\tau' = \tau_S\) and hence the space \((S, \tau') =
 \begin{corollary}\label{cor: subspace maps properties}
 Let \(X, Y\) be topological spaces and \(f: X \to Y\) be a continuous map.
 Then the following hold
-\begin{enumerate}[(a)]
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
   \item (Domain restriction) Let \(S\) be a subspace of \(X\). Then \(f|_S\)
     is continuous.
   \item (Codomain restriction) Let \(T\) be a subspace of \(Y\) such that
@@ -233,7 +233,7 @@ property diagrams for items (b) and (c):
 Let \((X, \tau)\) be a topological space and \((S, \tau_S)\) be a
 subspace of \(X\). The following are properties concerning the subspace
 topology
-\begin{enumerate}[(SP1)]
+\begin{enumerate}[(SP1)]\setlength\itemsep{0em}
 \item\label{prop: subspace transitivity} Let \(T\) be a subspace of \(S\). Then
   \(T\) is a subspace of \(X\).  \item\label{prop: basis for subspace} Let
   \(\mathcal B\) be a basis for \(X\). Then the collection
@@ -335,19 +335,59 @@ Let \(X\) be a topological space and \(A, B \subseteq X\) be subspaces such that
 \item They \emph{cover} \(X\), that is, \(X = A \cup B\).
 \end{itemize}
 Then the following commutative diagram is a \emph{pushout} in \(\Top\)
-\[
+\begin{equation}\label{eq:pushout-AcapB}
 \begin{tikzcd}
 A \cap B \ar[r] \ar[d] & A \ar[d, hook] \\
 B \ar[r, hook] & X
 \end{tikzcd}
-\]
+\end{equation}
 In other words, if \(f: X \to Y\) is any \emph{set-function} between topological
 spaces, then \(f\) is \emph{continuous} if the restrictions \(f|_A\) and
 \(f|_B\) are continuous.
 \end{proposition}
 
 \begin{proof}
-\todo[inline]{Come back to this}
+Since diagram \cref{eq:pushout-AcapB} is a pushout in \(\Set\), one just has to
+prove that \(X\) has the final topology induced by the natural inclusions
+\(\iota_A: A \emb X\) and \(\iota_B: B \emb X\) --- that is, \(U \subseteq X\)
+is open if and only if \(\iota_A^{-1}(U) = U \cap A\) is open in \(A\) and
+\(\iota_B^{-1}(B) = U \cap B\) is open in \(B\).
+
+Indeed, if \(U\) is an open set of \(X\), then by definition of the subspace
+topology we conclude that \(\iota_A^{-1}(U)\) is open in \(A\) and
+\(\iota_B^{-1}(U)\) is open in \(B\).
+
+On the other hand, assume that \(U \cap A\) is open in \(A\), while \(U \cap B\)
+is open in \(B\). We separate the proof in two cases:
+\begin{itemize}\setlength\itemsep{0em}
+\item Suppose that \(A\) and \(B\) are open subspaces of \(X\). Since \(A \cap
+  U\) is open, there must exist an open set \(V_A \subseteq X\) such that
+  \(\iota_A^{-1}(V_A) = V_A \cap A = U \cap A\) --- furthermore, since \(A\) and
+  \(V_A\) are open in \(X\), it follows that \(U \cap A\) is open in \(X\). The
+  same argument can be made for the subspace \(B\), concluding that \(U \cap B\)
+  is also open in \(X\). Finally, one notices that
+  \[
+  U = U \cap X = U \cap (A \cup B) = (U \cap A) \cup (U \cap B),
+  \]
+  which implies that \(U\) is open in \(X\) --- since it is a union of open
+  sets.
+
+\item Suppose that \(A\) and \(B\) are closed subspaces of \(X\). Since \(A\)
+  and \(B\) are subspaces, just as in the open subspace case, there exists open
+  sets \(V_A, V_B \subseteq X\) such that \(U \cap A = V_A \cap A\) and
+  \(U \cap B = V_B \cap B\). Notice that since \(A\) and \(B\) are closed in
+  \(X\), then both \(A \setminus U\) and \(B \setminus U\) are closed in \(X\)
+  --- therefore by definition both \(X \setminus (A \setminus U)\) and \(X
+  \setminus (B \setminus U)\) are open in \(X\). Furthermore, one can write
+  \begin{align*}
+    U &= X \setminus (X \setminus U) \\
+    &= X \setminus ((A \cup B) \setminus U) \\
+    &= X \setminus ((A \setminus U) \cup (B \setminus U)) \\
+    &= (X \setminus (A \setminus U)) \cap (X \setminus (B \setminus U))
+  \end{align*}
+  that is, \(U\) is the intersection of open sets, thus \(U\) is an open set of
+  \(X\).
+\end{itemize}
 \end{proof}
 
 \subsection{Topological Embeddings}

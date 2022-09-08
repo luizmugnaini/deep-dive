@@ -1,122 +1,137 @@
-\section{Topological Vector Spaces}
+% \section{Topological Vector Spaces}
 
-\begin{definition}
-\label{def:topological-vector-space}
-A topological vector space is a \(k\)-vector space together with a topology
-such that addition of vectors and the product by scalars are both continuous
-\(k\)-linear maps.
+% \begin{definition}
+% \label{def:topological-vector-space}
+% A topological vector space is a \(k\)-vector space together with a topology
+% such that addition of vectors and the product by scalars are both continuous
+% \(k\)-linear maps.
 
-We denote by \(\TVect_{\R}\) the category consisting of topological
-\(\R\)-vector spaces together with morphisms, which are continuous \(\R\)-linear
-maps (which may also be referenced to by the term ``top-linear'').
+% We denote by \(\TVect_{\R}\) the category consisting of topological
+% \(\R\)-vector spaces together with morphisms, which are continuous \(\R\)-linear
+% maps (which may also be referenced to by the term ``top-linear'').
 
-Let \(E\) be a topological vector space. The continuous \(\R\)-linear maps
-corresponding to the dual space \(E^{*} = \Hom_{\TVect_{\R}}(E, \R)\), of a
-topological \(\R\)-vector space \(E\), are called \(\R\) \emph{forms}. The
-collection of forms of the form \(E \to \R\) will be conveniently separated in
-classes and denoted:
-\begin{itemize}\setlength\itemsep{0em}
-\item \(L(E)\): the collection of continuous linear maps \(E \to \R\).
-\item \(L^r(E)\): the collection of continuous \(r\)-multilinear maps \(E^r \to \R\).
-\item \(L^r_{\Sym}(E)\): the collection of continuous \(r\)-multilinear
-  symmetric maps \(E^r \to \R\).
-\item \(L^r_{\Alt}(E)\): the collection of continuous \(r\)-multilinear
-  alternating maps \(E^r \to \R\).
-\end{itemize}
-\end{definition}
+% Let \(E\) be a topological vector space. The continuous \(\R\)-linear maps
+% corresponding to the dual space \(E^{*} = \Hom_{\TVect_{\R}}(E, \R)\), of a
+% topological \(\R\)-vector space \(E\), are called \(\R\) \emph{forms}. The
+% collection of forms of the form \(E \to \R\) will be conveniently separated in
+% classes and denoted:
+% \begin{itemize}\setlength\itemsep{0em}
+% \item \(L(E)\): the collection of continuous linear maps \(E \to \R\).
+% \item \(L^r(E)\): the collection of continuous \(r\)-multilinear maps \(E^r \to \R\).
+% \item \(L^r_{\Sym}(E)\): the collection of continuous \(r\)-multilinear
+%   symmetric maps \(E^r \to \R\).
+% \item \(L^r_{\Alt}(E)\): the collection of continuous \(r\)-multilinear
+%   alternating maps \(E^r \to \R\).
+% \end{itemize}
+% \end{definition}
 
-\begin{definition}[Locally convex]
-\label{def:locally-convex}
-A topological vector space \(E\) is said to be locally convex if, for every open
-set \(U \subseteq E\), any pair of points \(x, y \in U\) are such that \(t x +
-(1 - t) y \in U\) for all \(t \in [0, 1]\).
-\end{definition}
+% \begin{definition}[Locally convex]
+% \label{def:locally-convex}
+% A topological vector space \(E\) is said to be locally convex if, for every open
+% set \(U \subseteq E\), any pair of points \(x, y \in U\) are such that \(t x +
+% (1 - t) y \in U\) for all \(t \in [0, 1]\).
+% \end{definition}
 
-\begin{definition}[Banachable]
-\label{def:banachable}
-A topological \(\R\)-vector space \(E\) is said to be banachable if \(E\) is
-complete and its topology can be defined by a norm.
-\end{definition}
+% \begin{definition}[Banachable]
+% \label{def:banachable}
+% A topological \(\R\)-vector space \(E\) is said to be banachable if \(E\) is
+% complete and its topology can be defined by a norm.
+% \end{definition}
 
-As a point of order, \emph{every time} we mention a topological \(\R\)-vector
-space in the course of this chapter, we shall mean a \emph{banachable space}.
+% As a point of order, \emph{every time} we mention a topological \(\R\)-vector
+% space in the course of this chapter, we shall mean a \emph{banachable space}.
 
-\begin{definition}[Norm of a morphism]
-\label{def:norm-morphism-TopVect}
-Let \(E\) and \(F\) be topological \(\R\)-vector spaces. In order to make
-\(\Hom_{\TVect_{\R}}(E, F)\) into a topological \(\R\)-vector space, we can
-construct a norm for which, given a morphism \(A: E \to F\), define \(K \coloneq
-\{k \in \R \colon \norm{Ax}_{F} \leq k \norm{x}_E \text{, for all } x \in E\}\), the
-norm of \(A\) is
-\[
-  \norm{A} \coloneq \sup_{k \in K} k.
-\]
+% \begin{definition}[Norm of a morphism]
+% \label{def:norm-morphism-TopVect}
+% Let \(E\) and \(F\) be topological \(\R\)-vector spaces. In order to make
+% \(\Hom_{\TVect_{\R}}(E, F)\) into a topological \(\R\)-vector space, we can
+% construct a norm for which, given a morphism \(A: E \to F\), define \(K \coloneq
+% \{k \in \R \colon \norm{Ax}_{F} \leq k \norm{x}_E \text{, for all } x \in E\}\), the
+% norm of \(A\) is
+% \[
+%   \norm{A} \coloneq \sup_{k \in K} k.
+% \]
 
-If \(\Hom_{\TVect_{\R}}(E_1, \dots, E_n; F)\) is the collection of continuous
-\(\R\)-multilinear maps, then we define similarly the norm of a continuous
-multilinear map \(B: \prod_{j=1}^n E_j \to F\) as
-\[
-  \norm{B} \coloneq \sup_{m \in M} m,
-\]
-where \(M \coloneq \{m \in \R \colon \norm{Bx}_F \leq m \prod_{j=1}^n
-\norm{x_j}_{E_j} \text{, for all } x \in E\}\).
-\end{definition}
+% If \(\Hom_{\TVect_{\R}}(E_1, \dots, E_n; F)\) is the collection of continuous
+% \(\R\)-multilinear maps, then we define similarly the norm of a continuous
+% multilinear map \(B: \prod_{j=1}^n E_j \to F\) as
+% \[
+%   \norm{B} \coloneq \sup_{m \in M} m,
+% \]
+% where \(M \coloneq \{m \in \R \colon \norm{Bx}_F \leq m \prod_{j=1}^n
+% \norm{x_j}_{E_j} \text{, for all } x \in E\}\).
+% \end{definition}
 
-\begin{remark}
-\label{rm:Cp-morphism}
-From now on, \emph{\(C^p\)-morphism} will refer to a map \(f: U \to V\) between
-open subsets of Banach spaces such that \(f\) is a continuous map of class
-\(C^p\), where \(p \leq \infty\).
-\end{remark}
+% \begin{remark}
+% \label{rm:Cp-morphism}
+% From now on, \emph{\(C^p\)-morphism} will refer to a map \(f: U \to V\) between
+% open subsets of Banach spaces such that \(f\) is a continuous map of class
+% \(C^p\), where \(p \leq \infty\).
+% \end{remark}
 
-\section{Manifolds}
+\section{Differentiable Manifolds}
 
-\subsection{Morphisms}
+\subsection{Charts \& Atlases}
 
 \begin{definition}[Atlas]
 \label{def:Cp-atlas}
-Let \(X\) be a set. An atlas of class \(C^p\) on \(X\) is a collection of charts
-\(\{(U_{j}, \phi_j)\}_{j \in J}\) such that
+Let \(X\) be an \(n\)-dimensional topological manifold. An \emph{atlas} of class
+\(C^p\) on \(X\) is a collection of charts \(\{(U_j, \phi_j)\}_{j \in J}\) such
+that
 \begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item \(U_j \subseteq X\) for all \(j \in J\), and the collection \(\{U_{j}\}_{j
-  \in J}\) is a cover for \(X\).
+\item For all \(j \in J\), \(U_j \subseteq X\) is an open set, and
+  the collection \(\{U_j\}_{j \in J}\) is an \emph{open cover} for \(X\).
 
-\item For all \(j \in J\), the map \(\phi_j: X \to E_j\) induces a bijection
-  \(\phi_j|_{U_j}: U_j \to \phi_j(U_j)\), where \(\phi_j(U_j) \subseteq E_j\) is
-  open. Moreover, for each pair \(i, j \in J\), the image \(\phi_j(U_j \cap U_i)
-  \subseteq E_j\) is open.
+\item For every \(j \in J\), \(\phi_j: U_j \to V_j\) is a \emph{topological
+  isomorphism} from the open set \(U_j \subseteq X\) to an open set \(V_j
+  \subseteq R^n\).
 
-\item For each pair \(i, j \in J\), the induced map \(\phi_j \phi_i^{-1}:
-  \phi_i(U_i \cap U_j) \isoto \phi_j(U_i \cap U_j)\) is a \(C^p\)-isomorphism.
+\item For each pair \(i, j \in J\), the induced \emph{change of coordinates} map
+  \[
+  \phi_j \phi_i^{-1}: \phi_i(U_i \cap U_j) \isoto \phi_j(U_i \cap U_j)
+  \]
+  is of class \(C^p\) --- that is, every chart of the atlas with intersecting
+  domain is \emph{compatible}.
 \end{enumerate}
 \end{definition}
 
-\begin{proposition}
-\label{prop:unique-topology-charts}
-In the context of the last definition, there exists a unique topology on \(X\)
-for which \(U_j\) is open in \(X\), and \(\phi_j\) is a topological isomorphism,
-for all \(j \in J\).
-\end{proposition}
-
-\begin{proposition}
-If for every \(i, j \in J\) the corresponding charts are such that \(U_i \cap
-U_j = \emptyset\), then \(E_i \iso E_j\).
-\end{proposition}
-
-\begin{definition}
+\begin{definition}[Chart \& atlas compatibility]
 \label{def:compatible-chart}
-Let \(X\) be a topological space and \(E\) a Banach space. Given a topological
-isomorphism \(\phi: U \isoto U'\), where \(U \subseteq X\) and \(U' \subseteq
-E\) are both open, we say that the chart \((U, \phi)\) is \emph{compatible} with
-some given atlas \(\{(U_{j}, \phi_j)\}_{j \in J}\) if the induced map
+Let \(X\) be a topological \(n\)-manifold. If \((U, \phi: U \isoto V)\) and
+\((U', \psi: U' \isoto V')\) are \emph{charts} on \(X\), we say that they are
+\emph{\(C^p\)-compatible} if the two induced transition maps
 \[
-  \phi_j \phi^{-1}: \phi_j(U_j \cap U) \isoto \phi(U_j \cap U)
+\phi \psi^{-1}: \psi(U \cap U') \longrightarrow \phi(U \cap U')
+\quad\text{ and }\quad
+\psi \phi^{-1}: \phi(U \cap U') \longrightarrow \psi(U \cap U')
 \]
-is a \(C^p\)-isomorphism for each \(j \in J\).
+are of class \(C^p\).
 
-Given two atlases, we say that they are compatible if every chart of one is
-compatible with the other atlas.
+From this definition, we say that a chart is said to be compatible with a given
+atlas if it is compatible with every chart of the atlas.  Moreover, given two
+atlases, we say that they are compatible if every chart of one is compatible
+with the other atlas.
 \end{definition}
+
+\begin{lemma}
+\label{lem:compatible-charts-with-atlas-are-compatible}
+Let \(\mathcal{A} \coloneq \{(U_j, \phi_j)\}_{j \in J}\) be an atlas on a
+topological manifold \(X\). If both \((V, \psi)\) and \((W, \sigma)\) are charts
+of \(X\) compatible with the atlas \(\mathcal{A}\), then they are compatible
+with each other.
+\end{lemma}
+
+\begin{proof}
+Let \(p \in V \cap W\) be any point and let \(j \in J\) be such that
+\(p \in U_j\) --- thus \(p \in V \cap W \cap U_j\). Since \(\phi_j \psi^{-1}\)
+and \(\sigma \phi_j^{-1}\) are \(C^p\) maps, then
+\(\sigma \psi = (\sigma \phi_j^{-1}) \circ (\phi_j \psi^{-1})\) is \(C^p\) when
+restricted to \(\psi(V \cap W \cap U_j)\). Moreover, since
+\(\psi(p) \in \psi(V \cap W \cap U_j)\), it follows that \(\sigma \psi\) is
+\(C^p\) on \(\psi(p)\) --- therefore \(\sigma \psi\) is \(C^p\) on every point
+of its domain since \(p\) was chosen arbitrarily. The same analogous argument
+can be used to show that \(\psi \sigma^{-1}\) is \(C^p\).
+\end{proof}
 
 \begin{proposition}
 \label{prop:compatible-atlas-equivalence-relation}
@@ -124,77 +139,367 @@ The compatibility of atlases form an \emph{equivalence} relation.
 \end{proposition}
 
 \begin{proof}
-Clearly reflexivity and symmetry are satisfied (since the maps of interest
-are isomorphisms and we can take their inverses to prove the symmetric
-property). Let \(\{(U_{j}, \phi_j)\}_{j \in J}\) and \(\{(V_{i}, \psi_i)\}_{i
-  \in I}\) be two compatible atlases for some topological space \(X\). If
-\(\{(A_{s}, \mu_s)\}_{s \in S}\) is another atlas for \(X\), which happens to be
-compatible to \(\{(U_{j}, \phi_j)\}_{j \in J}\), then, for every \(s \in S\) we
-have from definition that \(\phi_j \mu_{s}^{-1}\) and \(\psi_i \phi_j^{-1}\) are
-\(C^p\)-isomorphisms for every \(j \in J\) and \(i \in I\), then, composing both
-we obtain an isomorphism \(\psi_i \mu_s^{-1}\), which is what we wanted.
+Clearly reflexivity and symmetry are satisfied. Let
+\(\mathcal{U} \coloneq \{(U_{j}, \phi_j)\}_{j \in J}\) and
+\(\mathcal{V} \coloneq \{(V_{i}, \psi_i)\}_{i \in I}\) be two compatible atlases
+for some topological manifold \(X\). If
+\(\mathcal{A} \coloneq \{(A_{s}, \mu_s)\}_{s \in S}\) is another atlas for
+\(X\), which happens to be compatible to \(\mathcal{U}\), then for every
+\(s \in S\) the maps \(\phi_j \mu_{s}^{-1}\) and \(\mu_s \phi_j^{-1}\)
+are of class \(C^p\) for any \(j \in J\). Since \(\phi_j \psi_i^{-1}\) and
+\(\psi_i \phi_j^{-1}\) are \(C^p\) for all \(i \in I\), then in particular
+\[
+\mu_s \psi_i^{-1} = (\mu_s \phi_j^{-1}) \circ (\phi_j \psi_i^{-1})
+\quad\text{ and }\quad
+\psi_i \mu_s^{-1} = (\psi_i \phi_j^{-1}) \circ (\phi_j \mu_s^{-1})
+\]
+are both maps of class \(C^p\). Therefore we conclude that \(\mathcal{A}\) is
+compatible with \(\mathcal{V}\).
 \end{proof}
+
+\begin{corollary}
+\label{cor:unique-maximal-atlas}
+Any atlas on a topological manifold is contained in a \emph{unique maximal
+  atlas} --- an atlas is said to be maximal if it isn't contained in any atlas
+other than itself.
+\end{corollary}
+
+\subsection{\texorpdfstring{\(C^p\)}{Cp}-Manifolds}
+
+In this chapter we shall mostly consider the case of \(C^{\infty}\)-manifolds,
+also called \emph{smooth} manifolds, but for generality we shall define
+differentiable manifolds for all \(p \in \N \cup \{\infty\}\).
 
 \begin{definition}[\(C^p\)-manifold structure on \(X\)]
 \label{def:Cp-manifold}
 The equivalence classes of atlases of class \(C^p\) on a topological space \(X\)
-define what is called a \emph{structure of \(C^p\)-manifold on} \(X\).
+define what is called a \emph{\(C^p\)-manifold structure on} \(X\).
 \end{definition}
 
-If all of the corresponding Banach spaces \(E_j\) of some atlas are isomorphic
-in \(\TVect_{\R}\), then there exists a Banach space \(E\) for which there
-exists a compatible atlas, whose maps are of the form \(U_j \to E\). In such
-case we say that \(X\) is an \emph{\(E\)-manifold} or even that \(X\) is
-\emph{modeled} on \(E\). Moreover, if \(E = \R^n\), for some \(n \in \N\), then
-we say that \(X\) is an \(n\)-dimensional manifold --- in such case we define
-what are called \emph{local coordinates}.
+We now give another definition of a \(C^p\)-manifold structure on topological
+spaces, to do that, we first introduce the following concept.
 
-\begin{definition}
-\label{def:local-coordinates}
-If \(X\) is an \(\R^n\) modeled manifold, and \(\phi: U \to \R^n\) is a chart,
-where \(U \subseteq X\) is open, then, we say that the collection
-\(\{\phi_{j}\}_{j=1}^n\) are \emph{local coordinates} for \(X\) on \(U\).
-\end{definition}
+\begin{definition}[Functionally structured space]
+\label{def:functionally-structured-space}
+Let \(X\) be a topological space. A \emph{functional structure} on \(X\) is a
+map \(F_X\) on the collection of open sets of \(X\) such that, for any open set
+\(U \subseteq X\), we have:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item \(F_X(U)\) is a
+  \emph{subalgebra} of \(C(U)\), the algebra of continuous real valued maps
+  on \(U\).
 
-\begin{definition}[Product of manifolds]
-\label{def:product-Cp-manifold}
-Given two manifolds \(X\) and \(Y\), let \(\{(U_{i}, \phi_j)\}_{j \in J}\) and
-\(\{V_{i}, \psi_{i}\}_{i \in I}\) be atlases for \(X\) and \(Y\), respectively.
-We define a manifold structure on the product space \(X \times Y\) as being
-defined by the equivalence relation on the atlases of the form
+\item \(F_X(U)\) contains all constant maps.
+
+\item If \(V \subseteq U\) is another open set of \(X\), and \(f \in F_X(U)\),
+  then \(f|_V \in F_X(V)\).
+
+\item If \(U = \bigcup_{j \in J} U_j\), and \(f: U \to \R\) is a continuous map
+  such that \(f|_{U_j} \in F_X(U_j)\) for each \(j \in J\), then it follows that
+  \(f \in F_X(U)\).
+\end{enumerate}
+The pair \((X, F_X)\) is called a \emph{functionally structured space}.
+
+Let \(U \subseteq X\) be open. For any open set \(V \subseteq U\) we define
 \[
-  {\{(U_{j} \times V_{i}, \phi_j \times \psi_i)\}}_{(j, i) \in J \times I}.
+F_U(V) \coloneq F_X(V),
 \]
+and hence \((U, F_U)\) is a functionally structured space.
 \end{definition}
 
-\begin{definition}[Morphism of manifolds]
-\label{def:morphism-manifolds}
-Let \(X\) an \(Y\) be \(C^p\)-manifolds. A map \(\Psi: X \to Y\) is said to be a
-\emph{\(C^p\)-morphism of manifolds} if, given any \(x \in X\), there are charts
-\((U, \phi)\) at \(x\) and \((V, \psi)\) at \(\Psi(x)\) --- such that \(\Psi(U)
-\subseteq V\) --- for which the map
+\begin{definition}[Morphisms of functionally structured spaces]
+\label{def:morphism-functionally-structured-spaces}
+A morphism
 \[
-  \psi \Psi \phi^{-1}: \phi(U) \isoto \psi(V)
+\phi: (X, F_X) \to (Y, F_Y)
 \]
-is a \(C^p\)-morphism (recall \cref{rm:Cp-morphism}).
+between functionally structured spaces is a map \(\phi: X \to Y\) such that, for
+any open set \(V \subseteq Y\) and \(f \in F_Y(V)\), we have
+\(f \phi \in F_X(\phi^{-1}(V))\).
+\end{definition}
+
+\begin{definition}[Second definition of a \(C^p\)-manifold]
+\label{def:second-def-Cp-manifold}
+An \(n\)-dimensional differentiable manifold is second countable functionally
+structured Hausdorff space \((M, F)\) which is locally isomorphic to
+\((\R^n, C^p)\).
+
+The local isomorphism is equivalent to the requirement that, for each
+point \(p \in M\), there exists a neighbourhood \(U \subseteq M\) of \(p\) such
+that \((U, F_U) \iso (V, C_V^p)\) as functionally structured spaces --- for
+some open set \(V \subseteq \R^n\).
+\end{definition}
+
+\begin{lemma}
+\label{lem:morphism-func-struc-is-Cp}
+Let \(U, V \subseteq R^n\) be open subspaces. An isomorphism between
+functionally structured spaces
+\[
+\phi: (U, C_U^p) \isoto (V, C_V^p)
+\]
+is a map \(\phi: U \to V\) of class \(C^p\) if and only if \(f \phi \in C^p(U)\)
+for all \(f \in C^p(V)\).
+\end{lemma}
+
+\begin{proof}
+Clearly, if \(\phi: U \to V\) is of class \(C^p\) then \(f \phi\) is a
+composition of \(C^p\) maps, thus \(f \phi \in C^p(U)\) for any \(f \in
+C^p(V)\).
+
+Conversely, if we have the hypothesis that \(f \phi \in C^p(U)\) for all
+\(f \in C^p(V)\), one may consider the canonical projections
+\(\pi_j: \R^n \epi \R\) and notice that \(\pi_j \phi \in C^p(U)\). Therefore
+each component of \(\phi\) is a \(C^p(U)\) map, implying that \(\phi\) itself is
+a \(C^p(U, V)\) map.
+\end{proof}
+
+\begin{lemma}[Equivalence of the definitions]
+\label{lem:equivalence-def-Cp-man}
+The constructions on \cref{def:Cp-manifold} and
+\cref{def:second-def-Cp-manifold} are equivalent.
+\end{lemma}
+
+\begin{proof}
+Let \((M, F)\) be a \(C^p\)-manifold in the sense of
+\cref{def:second-def-Cp-manifold}. A chart on \(M\) will be interpreted as a
+pair \((U, \phi: U \isoto V)\) such that \(\phi\) is an isomorphism
+\((U, F) \iso (V, C_V^p)\) of functionally structured spaces. Since every point
+of \(M\) has a neighbourhood from which one can define the above mencioned
+isomorphism, we see that these charts do cover the whole space \(M\).
+
+It remains to be proven that the transition maps are \(C^p\). From our
+interpretation of chart, given any two charts
+\(\phi: (U, F_U) \isoto (V, C_V^p)\) and
+\(\psi: (U', F_{U'}) \isoto (V', C_{V'}^p)\) in \(M\), since \(\phi \psi^{-1}\)
+and \(\psi \phi^{-1}\) are isomorphisms of functionally structured spaces
+\((V, C_V^p)\) and \((V', C_{V'}^p)\) --- by \cref{lem:morphism-func-struc-is-Cp}
+they are \(C^p\) maps. Therefore, our collection of charts match the
+requirements of \cref{def:Cp-atlas}.
+
+For the converse, let \(M\) be a \(C^p\)-manifold with an atlas
+\(\mathcal{A}\). For every chart \((U, \phi: U \isoto V) \in \mathcal{A}\)
+(where \(\phi\) is a topological morphism), define
+\[
+F(U) \coloneq \{f \phi \in C^{p}(U) \colon f \in C^p(V)\}.
+\]
+Let \(x \in M\) be any point and consider a chart \((U, \psi: U \isoto V)
+\in \mathcal{A}\), where \(U \subseteq M\) is a neighbourhood of \(x\). Notice
+that \(\phi\) naturally induces a morphism of functionally structured spaces
+\(\phi: (U, F_U) \to (V, C_V^p)\) --- moreover, since \(\phi\) is a topological
+isomorphism, then \(\phi\) is an isomorphism \((U, F_U) \iso (V, C_V^p)\).
+\end{proof}
+
+\begin{definition}[Smooth map]
+\label{def:smooth-map-between-manifolds}
+Let \(M\) and \(N\) be smooth manifolds of dimension \(m\) and \(n\),
+respectively. A map\(f: M \to N\) is said to be \emph{smooth at a point
+  \(p \in M\)} if there exists a chart \((V, \psi)\) about \(f(p)\) in \(N\),
+and a chart \((U, \phi)\) about \(p\) in \(M\) such that the map
+\[
+\psi f \phi^{-1}: \phi(f^{-1}(V) \cap U) \to \R^m
+\]
+is smooth at \(\phi(p)\). Naturally, \(f\) is said to be \emph{smooth} when
+\(f\) is smooth at every point of \(M\).
+\end{definition}
+
+\begin{lemma}
+\label{lem:equiv-smooth-map-definition}
+Let \((M, F_M)\) and \((N, F_N)\) be smooth manifolds. A map \(f: M \to N\) is
+smooth in the sense of \cref{def:smooth-map-between-manifolds} if and only if
+\(f\) is smooth in the sense of
+\cref{def:morphism-functionally-structured-spaces}.
+\end{lemma}
+
+\begin{proof}
+Assume that \(M\) and \(N\) are, respectively, \(m\) and \(n\)-dimensional
+spaces. First we consider \(f\) as a morphism of functionally structured spaces.
+Let \(p \in M\) be any point and consider charts, in the sense of isomorphisms
+of functionally structured spaces:
+\begin{itemize}\setlength\itemsep{0em}
+\item \(\phi: U \isoto V\) in \(M\) --- where \(U\) is a neighbourhood of \(p\)
+  and \(V \subseteq R^m\)
+
+\item \(\psi: U' \isoto V'\) in \(N\) --- where \(U'\) is a neighbourhood of
+  \(f(p)\) and \(V' \subseteq \R^n\).
+\end{itemize}
+Since \(\phi\) is an isomorphism, one can consider its inverse and use the
+property that, for any open set \(S \subseteq V\) and map \(g \in F_M(S)\), then
+\(g \phi^{-1} \in C^{\infty}(\phi(S))\). Since \(f\) is a morphism of functionally
+structured spaces, in particular \(\pi_j \psi \in F_N(U')\) for all \(1 \leq j
+\leq n\), then \(\pi_j \psi f \in F_M(f^{-1}(U'))\). Therefore, since \(p \in
+U\) and \(f(p) \in U'\), the intersection \(f^{-1}(U') \cap U \subseteq M\) is
+non-empty and we can conclude that
+\[
+\pi_j \psi f \phi^{-1} \in C^{\infty}(\phi(f^{-1}(U') \cap U)).
+\]
+Since this is the case for every \(1 \leq j \leq n\), it follows that
+\(\psi f \phi^{-1}\) is \(C^{\infty}\) --- therefore \(f\) is smooth in the
+sense of \cref{def:smooth-map-between-manifolds}.
+
+For the converse, suppose \(f: M \to N\) is smooth as in
+\cref{def:smooth-map-between-manifolds}. From the last property of the
+functional structures on spaces, we can simply consider a chart \(\psi: U' \to
+V'\) in \(N\) and define a functional structure on \(N\) as
+\[
+F_N(U') \coloneq \{g \phi \in C^{\infty}(U') \colon g \in C^{\infty}(V')\}.
+\]
+If \(h \in F_N(U')\) is any map, then the analogous structure \(F_M\) on \(M\)
+has
+\[
+F_M(f^{-1}(U')) = \{w f \in C^{\infty}(f^{-1}(U')) \colon w \in C^{\infty}(U')\},
+\]
+therefore \(h f \in F_M(f^{-1}(U'))\) as wanted.
+\end{proof}
+
+\begin{definition}[Category of \(C^{\infty}\)-manifolds]
+\label{def:smooth-manifolds-category}
+We define \(\Man\) to be the category of smooth manifolds and smooth morphisms
+between them.
 \end{definition}
 
 \begin{corollary}
-\label{cor:composition-Cp-morphisms}
-Given any two \(C^p\)-morphisms of manifolds \(\Phi: X \to Y\) and \(\Psi: Y \to
-Z\), the composition \(\Psi \Phi: X \to Z\) is also a \(C^p\)-morphism of
-manifolds.
+\label{cor:isomorphism-man}
+An isomorphism in the category \(\Man\) is a smooth morphism of manifolds with a
+smooth inverse. Some call these isomorphisms by ``diffeomorphisms'', we shall
+call them \(C^{\infty}\)-isomorphisms.
 \end{corollary}
 
-\begin{definition}
-\label{def:Cp-manifold-category}
-The category of \(C^p\)-manifolds is denoted by \(\Man^p\), and consists of
-objects which are \(C^p\)-manifolds, and \(C^p\)-morphisms of manifolds.
+\subsubsection{Local Coordinates}
+
+Let \(M\) be an smooth \(n\)-manifold and \(f: M \to \R\) be any real valued
+map. If \(x: U \to V\) is a chart of \(M\), we consider the induced map
+\(\overline{f} \coloneq f x^{-1}: V \to \R\), a multivariable real map from a
+subset of \(\R^n\) to \(\R\). For any \(p \in U\), one has
+\emph{``coordinates''} \(x(p) = (x_1(p), \dots, x_n(p))\). These coordinates can
+be used to compute \(f\) via
+\[
+f(p) = \overline{f}(x_1(p), \dots, x_n(p)),
+\]
+working as some kind of local coordinates on the open set \(U\). This an
+intuitive view of what the following definition states.
+
+\begin{definition}[Local coordinates]
+\label{def:local-coordinates}
+If \(X\) is an \(\R^n\) modeled manifold, and \(\phi: U \to \R^n\) is a chart,
+where \(U \subseteq X\) is open, then, we say that the collection
+\(\{\phi_j\}_{j=1}^n\) are \emph{local coordinates} for \(X\) on \(U\).
 \end{definition}
 
-\subsection{Submanifolds, Immersions, and Summersions}
+\section{Structures}
 
-\todo[inline]{Continue: submanifolds}
+\begin{definition}[Induced structure]
+\label{def:induced-functional-structure-space}
+Let \((X, F_X)\) be a functionally structured space, and \(\phi: X \to Y\) be a
+continuous map, where \(Y\) is a topological space. We define the \emph{induced
+  functional structure} on \(Y\) via \(F_X\) and \(\phi\) to be given by
+\[
+F_Y(U) \coloneq \{f \in C(U) \colon f \phi \in F_X(\phi^{-1}(U))\},
+\]
+for any open set \(U \subseteq Y\).
+\end{definition}
+
+\begin{definition}[Induced structure on subspace]
+\label{def:induced-func-struc-on-subspace}
+Let \((X, F)\) be a functionally structured space, and \(A \subseteq X\) be a
+subspace. We construct a functional structure \(F_A\) on \(A\) as follows: for
+all open sets \(U \subseteq A\), a continuous map \(f: U \to \R\) is contained
+in \(F_A(U)\) if and only if for every \(p \in U\) there exists a neighbourhood
+\(W \subseteq X\) of \(p\) such that \(f\) is the restriction to \(W \cap A\) of
+some map \(g \in F(W)\).
+\end{definition}
+
+\begin{definition}[Binary product of manifolds]
+\label{def:product-manifold}
+Let \(M\) and \(N\) be manifolds of dimension \(m\) and \(n\), respectively. If
+\(\phi: U \to \R^m\) is a chart for \(M\) and \(\psi: V \to \R^n\) is a chart
+for \(N\), we take \(\phi \times \psi: U \times V \to \R^{m + n}\) to be a chart
+for the product space \(M \times N\). The maximal atlas consisting of such
+product charts make \(M \times N\) into a product manifold of dimension
+\(m + n\).
+\end{definition}
+
+\begin{definition}[Submanifold]
+\label{def:submanifold}
+Let \(M\) be an \(n\)-manifold. A subset \(N \subseteq M\) is said to be a
+\emph{\(k\)-manifold} of \(M\) if for each \(p \in N\) there exists a chart
+\(\phi: U \to V\) of \(M\) about \(p\) for which
+\[
+\phi(U \cap N) = V \cap (\R^k \times \{0\}).
+\]
+Charts with this property are called \emph{adapted} to \(N\). The maximal atlas
+containing all adapted charts to \(N\) makes \(N\) into a manifold.
+
+We define the \emph{codimension} of \(N\) \emph{in} \(M\) to be the difference
+\(n - k\). The submanifold \(N\) is said to be \emph{smooth} exactly when about
+each point there exists an adapted smooth chart to \(N\) --- so that one can
+find a unique maximal smooth atlas for \(N\).
+\end{definition}
+
+\begin{definition}[Smooth embedding]
+\label{def:smooth-embedding}
+A \(C^{\infty}\)-morphism \(f: N \to M\) is said to be a \emph{smooth embedding}
+if the image \(f(N) \subseteq M\) is a \emph{smooth submanifold} of \(M\) and
+the induced restriction \(f: N \isoto f(N)\) is a \(C^{\infty}\)-isomorphism.
+\end{definition}
+
+\begin{example}[Sphere]
+\label{exp:sphere-smooth-manifold}
+Consider the sphere \(S^n \subseteq \R^{n+1}\), we'll define a smooth atlas on
+\(S^n\) using solely two charts. To that end, define two points
+\(n \coloneq (0, \dots, 0, 1)\) and \(s \coloneq (0, \dots, 0, -1)\) in
+\(\R^{n+1}\) --- these correspon to the north and south poles of \(S^n\),
+respectively. Consider the \emph{stereographic projection}
+\(\phi_n: S^n \setminus \{n\} \to \R^n\), from the sphere with its north pole
+cut out to the hyperplane \(R^n \iso \R^n \times \{0\}\) --- the stereographic
+projection maps each point \(x \in S^n\) to the intersection of the line passing
+through \(x\) and \(n\), and the hyperplane above-mencioned. The inverse map of
+\(\phi_n\) is \(\pi_n: \R^n \to S^n \setminus \{n\}\), mapping
+\[
+x \longmapsto \frac{(2 x, \| x \|^2 - 1)}{(1 + \| x \|)^2}.
+\]
+We define the south stereographic projection \(\phi_s: S^n \setminus \{s\} \to
+\R^n\) equivalently. This construction has a smooth transition map
+\[
+\phi_s \phi_n^{-1}(x) = \frac{y}{\| y \|^2}.
+\]
+\end{example}
+
+\begin{proposition}
+% \label{prop:}
+Let \(M\) be an \(n\)-manifold and \(\mathcal{U} \coloneq (U_j)_{j \in J}\) be
+an open covering of \(M\). Then there exists a collection of charts \((\phi_k:
+V_k \to B_k)_{k \in \N}\) such that the following properties hold:
+\begin{enumerate}\setlength\itemsep{0em}
+\item For all \(k \in \N\), the set \(V_k\) is contained in some member of
+  \(\mathcal{U}\).
+\item For all \(k \in \N\), we have \(B_k = \{x \in \R^n \colon \| x \| < 3\}\)
+  --- the open \(n\)-ball of radius \(3\).
+\item The collection of open sets \((V_k)_{k \in \N}\) is a locally finite
+  covering of \(M\).
+\end{enumerate}
+\end{proposition}
+
+\todo[inline]{Continue after some point-set topology}
+
+\section{Oriented Manifolds}
+
+\begin{definition}[Oriented manifold]
+\label{def:oriented-manifolds}
+A manifold \(M\) with atlas \(\mathcal{A}\) such that, for every pair of charts
+\(\phi, \psi \in \mathcal{A}\), the Jacobian of the transition map
+\(\phi \psi^{-1}\) has \emph{positive determinant} for all points of the domain,
+then \(M\) is called a \emph{oriented manifold}. A maximal atlas on \(M\) with
+such a property is said to be an \emph{orientation} of the manifold, and \(M\)
+is called \emph{orientable}.
+\end{definition}
+
+\begin{proposition}[Two orientations]
+\label{prop:two-orientations-man}
+Let \(M\) be a connected, orientable, smooth manifold. Then \(M\) admits exactly
+two orientations.
+\end{proposition}
+
+\todo[inline]{Prove}
 
 %%% Local Variables:
 %%% mode: latex

@@ -217,10 +217,17 @@ A category is said to be \emph{discrete} if all morphisms are the identity
 morphisms.
 \end{definition}
 
+\begin{example}
+\label{exp:index-category}
+Given a set \(I\), one can view \(I\) as a category whose objects are the
+elements of \(I\) and morphisms are identities --- that is, \(\Hom_I(x, y)\) is
+the identity when \(x = y\), while empty if \(x \neq y\).
+\end{example}
+
 \begin{definition}[Finite category]
 \label{def:finite-category}
 A category is said to be \emph{finite} if the collection of all morphisms is a
-finite set.
+finite set. This category will be of important use when dealing with limits.
 \end{definition}
 
 \begin{definition}[Connected category]

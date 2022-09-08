@@ -1160,6 +1160,20 @@ morphism. Moreover, if
 
 \subsection{Products \& Coproducts}
 
+\begin{definition}[Direct product]
+\label{def:direct-product-modules}
+Let \(R\) be a ring and \((M_j)_{j \in J}\) be a collection of \(R\)-modules
+(either right or left modules). We define the \emph{direct product} of
+\((M_j)_{j \in J}\) as the set
+\[
+\prod_{j \in J} M_j \coloneq \{(m_j)_{j \in J} \colon m_j \in M_j\},
+\]
+together with coordinate-wise addition and multiplication by elements of
+\(R\). This structure comes naturally with canonical projections
+\(\pi_i: \prod_{j \in J} M_j \epi M_i\) mapping \((m_j)_{j \in J} \mapsto m_i\)
+for all \(i \in J\).
+\end{definition}
+
 \begin{definition}[Direct sum]
 \label{def:direct-sum-modules}
 Let \(R\) be a ring and \((M_j)_{j \in J}\) be a collection of \(R\)-modules
@@ -1171,28 +1185,26 @@ be a module
 \text{ for finitely many } j \in J\},
 \]
 with a natural component-wise addition, and multiplication by elements of
-\(R\). Along with the direct sum, one defines natural projections
-\(\pi_i: \bigoplus_{j \in J} M_j \epi M_i\) mapping and element to its \(i\)-th
-coordinate, and inclusions \(\iota_i: M_i \emb \bigoplus_{j \in J} M_j\) mapping
-\(m \mapsto (m_j)_{j \in J}\) with \(m_i \coloneq m\) and \(m_j = 0\) for
-\(j \neq i\).
+\(R\). Such a structure also naturally induces canonical inclusions \(\iota_i:
+M_i \emb \bigoplus_{j \in J} M_j\) given by \(m \mapsto (m_j)_{j \in J}\)
+where \(m_i = m\) and \(m_j = 0\) for \(j \neq i\).
 \end{definition}
 
 \begin{theorem}
 \label{thm:direct-sum-product-and-coproduct}
-The direct sum of \(R\)-modules is both a \emph{product and a coproduct} in the
-category of \(R\)-modules.
+In the category of modules over a given ring, \emph{direct products} are
+\emph{products} and \emph{direct sums} are \emph{coproducts}.
 \end{theorem}
 
 \begin{proof}
-Let \((M_j)_{j \in J}\) be a collection of \(R\)-modules (either left or right)
-and define the notation \(M \coloneq \bigoplus_{j \in J} M_j\). We prove each of
-the universal properties separately:
+Let \((M_j)_{j \in J}\) be a collection of \(R\)-modules (either left or
+right).
 \begin{itemize}\setlength\itemsep{0em}
-\item (Product) Given an \(R\)-module \(N\) and a family of morphisms
-  \((\phi_j: N \to M_j)_{j \in J}\), we define a map \(\phi: N \to M\) to be
-  given by \(n \mapsto (\phi_j(n))_{j \in J}\). Notice that since each
-  \(\phi_j\) is a morphism, then given any \(n, n' \in N\) we have
+\item (Product) Define \(M \coloneq \prod_{j \in J} M_j\). Given an \(R\)-module
+  \(N\) and a family of morphisms \((\phi_j: N \to M_j)_{j \in J}\), we define a
+  map \(\phi: N \to M\) to be given by \(n \mapsto (\phi_j(n))_{j \in
+    J}\). Notice that since each \(\phi_j\) is a morphism, then given any
+  \(n, n' \in N\) we have
   \begin{align*}
     \phi(n + n')
     &= (\phi_j(n + n'))_{j \in J}
@@ -1212,7 +1224,8 @@ the universal properties separately:
   \phi_j\) for all \(j \in J\). Moreover, uniqueness comes from the fact that
   the natural projections are epimorphisms.
 
-\item (Coproduct) Given an \(R\)-module \(N\) and a family of morphisms
+\item (Coproduct) Define \(M \coloneq \bigoplus_{j \in J} M_j\). Given an
+  \(R\)-module \(N\) and a family of morphisms
   \((\psi_j: M_j \to N)_{j \in J}\), we define a map \(\psi: M \to N\) by
   \((m_j)_{j \in J} \mapsto \sum_{j \in J} \psi_j(m_j)\) --- which is well
   defined since \(m_j \neq 0\) only for finitely many \(j \in J\) and thus
@@ -1220,6 +1233,146 @@ the universal properties separately:
   \(\psi_j(0) = 0\) for any \(j \in J\). This map clearly defines a morphism of
   \(R\)-modules, and since \(\iota_j\) are monomorphisms, \(\psi\) is the unique
   morphism such that \(\psi \iota_j = \psi_{j}\).
+\end{itemize}
+\end{proof}
+
+\begin{proposition}
+\label{prop:direct-sums-isos-hom-sets}
+Let \(R\) be a ring, and consider a right-\(R\)-module \(M\), and a collection
+\((N_j)_{j \in J}\) of right-\(R\)-modules. The following propositions hold:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item There exists a canonical isomorphism of \emph{abelian groups}
+  \[
+  \Hom_{\rMod{R}}\bigg( \bigoplus_{j \in J} N_j, M \bigg) \iso
+  \prod_{j \in J} \Hom_{\rMod{R}}(N_j, M).
+  \]
+
+\item There exists a canonical isomorphism of \emph{abelian groups}
+  \[
+  \Hom_{\rMod{R}}\bigg( M, \prod_{j \in J} N_j \bigg) \iso
+  \prod_{j \in J} \Hom_{\rMod{R}}(M, N_j).
+  \]
+\item If \((M_i)_{i = 1}^n\) and \((N_j)_{j=1}^m\) are \emph{finite} collections
+  of right-\(R\)-modules, then there exists a canonical isomorphism of
+  \emph{abelian groups}
+  \[
+  \Hom_{\rMod{R}} \bigg( \bigoplus_{i=1}^n M_i, \bigoplus_{j=1}^m N_j \bigg)
+  \iso
+  \bigoplus_{i=1}^n \bigoplus_{j=1}^m \Hom_{\rMod{R}}(M_i, N_j).
+  \]
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Define a map
+  \(\Phi: \Hom_{\rMod{R}}(\bigoplus_{j \in J} N_j, M) \to \prod_{j \in J}
+  \Hom_{\rMod{R}}(N_j, M)\) by sending \(f \mapsto (f \iota_j)_{j \in J}\),
+  where \(\iota_j: N_j \emb \bigoplus_{j \in J} N_j\) is the canonical
+  inclusion. Notice that \(\Phi\) is indeed a group morphism. Also, morphisms
+  with equal image must agree on every element \(\iota_j(n_j)\) for any
+  \(j \in J\) and \(n_j \in N_j\), therefore, since these elements generate
+  \(\bigoplus_{j \in J} N_j\), it follows that the morphisms need to be equal
+  --- thus \(\Phi\) is injective. Moreover, if \((g_j: N_j \to M)_{j \in J}\) is
+  any collection of \(R\)-linear maps, then by the coproduct universal property
+  there exists a unique \(f: \bigoplus_{j \in J} N_j \to M\) such that
+  \(f \iota_j = g_j\) for all \(j \in J\).
+
+\item Define a map
+  \(\Psi: \Hom_{\rMod{R}}(M, \prod_{j \in J} N_j) \to \prod_{j \in J}
+  \Hom_{\rMod{R}}(M, N_j)\) by \(f \mapsto (\pi_j f)\) --- again
+  this product preserves additive stucture. Also, this map is injective since,
+  given \(f, g: M \para \prod_{j \in J} N_j\) such that \(\Psi(f) = \Psi(g)\),
+  we must have \(\pi_j f(m) = \pi_j g(m)\) for every \(j \in J\) and
+  \(m \in M\), therefore \(f(m) = g(m)\) and \(f = g\). Surjectivity comes from
+  the product universal property: given a collection
+  \((g_j: M \to N_j)_{j \in J}\) of morphisms, there exists a unique morphism
+  \(f: M \to \prod_{j \in J} N_j\) such that \(\pi_j f = g_j\) for all
+  \(j \in J\).
+
+\item For finite indexing sets direct sums and products are isomorphic, thus the
+  isomorphism follows directly from the last two items.
+\end{enumerate}
+\end{proof}
+
+\begin{lemma}
+\label{lem:module-iso-ker-im}
+Let \(M\) be an \(R\)-module, and \(p: M \to M\) be a projection (that is,
+\(p^2 = p\)). Then there exists a canonical isomorphisms
+\[
+M \iso \ker p \oplus \im p .
+\]
+\end{lemma}
+
+\begin{proof}
+% Define a map \(q: M \to \ker p\) as \(q|_{\ker p} = \Id_{\ker p}\) and
+% \(q|_{M \setminus \ker p} = 0\). We shall prove that this is an \(R\)-linear
+% map:
+% \begin{itemize}\setlength\itemsep{0em}
+% \item Let \(r \in R\) be any element. If \(m \in \ker p\) then clearly
+%   \(r m \in \ker p\) and thus \(q(r m) = r m = r q(m)\).
+
+%   Now, if \(m \in M \setminus \ker p\) one needs caution. If \(r = 0\) then
+%   \(r m = 0 \in \ker p\) thus \(q(r m) = 0 = r q(m)\). On the other hand, if
+%   \(r \neq 0\) then \(r m \notin \ker p\), thus \(q(r m) = 0 = r q(m)\). This
+%   shows that for all \(m \in M \setminus \ker p\) we have
+%   \(q(r m) = r q(m) = 0\).
+
+% \item Let \(m, n \in M\) be any two elements. If \(m + n \in \ker p\) then
+%   either both \(m, n \in \ker p\), so that \(q(m + n) = m + n = q(m) + q(n)\),
+%   or \(m, n \in M \setminus \ker p\), in which case \(p(m + n) = 0\) implies in
+%   \(p(m) = -p(n)\), but since \(p^2 = p\), then
+% \end{itemize}
+\todo[inline]{Prove, I'm stuck in this problem 6.3 from Aluffi}
+\end{proof}
+
+
+
+\begin{proposition}[Internal sum]
+\label{prop:internal-sum-modules}
+Given a ring \(R\), let \(M\) be an \(R\)-module (either right or left module)
+and \((N_j)_{j \in J}\) be a collection of submodules of \(M\). The following
+propositions are equivalent:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The map \(\bigoplus_{j \in J} N_j \to \sum_{j \in J} N_j\) given by
+  \(x \mapsto \sum_{j \in J} \pi_j(x)\) is a \emph{unique isomorphism} of
+  \(R\)-modules.
+
+\item For every \(i \in J\), we have
+  \(N_i \cap \sum_{j \in J \setminus i} N_j = 0\).
+
+\item If \(\sum_{j \in J} x_j \in \sum_{j \in J} N_j\) is \emph{zero}, then
+  \(x_j = 0\) for all \(j \in J\).
+
+\item Every element \(x \in \sum_{j \in J} N_j\) can be \emph{uniquely}
+  expressed as a sum \(x = \sum_{j \in J} x_j\) for \(x_j \in N_j\) and
+  \(x_j \neq 0\) for only finitely many \(j \in J\).
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\begin{itemize}\setlength\itemsep{0em}
+\item (a) \(\implies\) (b). Let
+  \(n_i \in N_i \cap \sum_{j \in J \setminus i} N_j\) be any element, then one
+  can express \(n_i\) as \(n_i = \sum_{j \in J \setminus i} a_j  n_j\) for,
+  therefore \(n_i - \sum_{j \in J \setminus i} a_j n_j = 0\). By (a) we find
+  that such an element has preimage \(0 \in \bigoplus_{j \in J} N_j\), which can
+  only be the case if \(n_i = 0\).
+
+\item (b) \(\implies\) (c). If \(\sum_{j \in J} x_j = 0\), then for every \(i
+  \in J\) we have \(x_i = - \sum_{j \in J \setminus i} x_j\) --- but assuming
+  (b) we conclude that \(x_i = 0\).
+
+\item (c) \(\implies\) (d). The condition of finitely many non-zero terms is
+  already satisfied from the definition of \(\sum_{j \in J} N_j\). Now, if
+  \(x = \sum_{j \in J} x_j = \sum_{j \in J} y_j\) are two representations of the
+  same element \(x \in \sum_{j \in J} N_j\), then
+  \(\sum_{j \in J}(x_j - y_j) = 0\). By (c) this implies in \(x_j = y_j\) for
+  all \(j \in J\).
+
+\item (d) \(\implies\) (a). Unicity of expression implies that the given map is
+  injective and unique. Moreover, the map is clearly surjective --- therefore it
+  stablishes a unique isomorphism.
 \end{itemize}
 \end{proof}
 
@@ -1261,7 +1414,7 @@ Let \(M\), \(N\), and \(Z\) be \(R\)-modules.
   morphism. Uniqueness of \(\phi\) comes from the fact that both \(\pi_M\) and
   \(\pi_N\) are epimorphisms.
 
-\item (Pullback) Let \(\sigma: Z \to M\) and \(\varepsilon: Z \to N\) be
+\item (Pushout) Let \(\sigma: Z \to M\) and \(\varepsilon: Z \to N\) be
   \(R\)-module morphisms. Consider the submodule
   \[
   W \coloneq \{(\sigma(z), -\varepsilon(z)) \in M \oplus N \colon
@@ -1279,7 +1432,7 @@ Let \(M\), \(N\), and \(Z\) be \(R\)-modules.
   \[
   \begin{tikzcd}
   Z \ar[r, "\varepsilon"] \ar[d, "\sigma"']
-  \ar[dr, very near end, phantom, "\lrcorner"]
+  \ar[dr, very near end, phantom, "\ulcorner"]
   &N \ar[d, hook, "\iota_N"] \\
   M \ar[r, hook, "\iota_M"'] &M \oplus_Z N
   \end{tikzcd}
@@ -1300,6 +1453,296 @@ Let \(M\), \(N\), and \(Z\) be \(R\)-modules.
   fact that \(\iota_M\) and \(\iota_N\) are monomorphisms.
 \end{itemize}
 \end{proof}
+
+\subsection{Free Modules}
+
+As always, if \(S\) is a set and \(M\) is an \(R\)-module, for some ring \(R\),
+we define \(M^{\oplus S}\) to be the collection of \emph{finitely supported
+  set-functions} \(S \to M\). We define on \(M^{\oplus S}\) an \(R\)-module
+structure as follows: for every \(\alpha \in M^{\oplus S}\) and \(r \in R\) we
+define
+\[
+(r \alpha)(s) \coloneq r (\alpha(s)).
+\]
+
+If we consider the module of \(R\) over itself, we can define a set-function
+\(\iota: S \to R^{\oplus S}\) by mapping \(s \mapsto \mathbf{s}\), where
+\[
+\mathbf{s}(x) \coloneq
+\begin{cases}
+  1, &\text{if } x = s, \\
+  0, &\text{if } x \neq s.
+\end{cases}
+\]
+
+For every set \(S\), we define a corresponding module module \(F_R S\) composed
+of of formal sums \(\sum_{s \in S} a_s s\) such that \(a_s \in R\) is non-zero
+only for finitely many \(s \in S\).
+
+\begin{proposition}
+\label{prop:free-module-structure-isomorphism}
+There exists a natural isomorphism of \(R\)-modules \(F_R S \iso R^{\oplus S}\).
+\end{proposition}
+
+\begin{proof}
+Let \(\Phi: F_R S \to R^{\oplus S}\) be a map given by
+\(\sum_{s \in S} a_s s \mapsto \sum_{s \in S} a_s \mathbf{s}\). Clearly, such
+map is injective and preserves both multiplicative and additive structures, thus
+\(\Phi\) is an \(R\)-module morphism. Moreover, if \(\alpha \in R^{\oplus S}\)
+is any function, since \(\alpha\) has finite support, the formal sum
+\(\sum_{s \in S} \alpha(s) s\) is a well defined element of \(F_R S\). Also,
+mapping this element under \(\Phi\) yields
+\(\sum_{s \in S} \alpha(s) \mathbf{s}\) and, for every \(x \in S\), we have
+\(\sum_{s \in S} \alpha(s) \mathbf{s}(x) = \alpha(s) \mathbf{x}(x) =
+\alpha(x)\). Therefore the map is surjective, hence an isomorphism.
+\end{proof}
+
+\begin{proof}
+Let \(A\) and \(B\) be two sets such that \(F_R A = F_R B\). In particular, it
+follows that for all \(a \in A\), there exists an element \(a = \sum_{j=1}^n r_j
+b_j \in F_R B\), moreover, each \(b_i \in B\) can be written as \(\sum_{j=1}^m
+r_j(b_i) a_j\)
+\end{proof}
+
+\begin{proposition}[Free module universal property]
+\label{prop:free-mod-univ-prop}
+Let \(R\) be a ring and \(S\) be any set. Given any \(R\)-module \(M\) and a
+\emph{set-function} \(f: S \to M\), there exists a \emph{unique \(R\)-module
+  morphism} \(\phi: F_R S \to M\) such that the following diagram commutes in
+\(\Set\):
+\[
+\begin{tikzcd}
+F_R S \ar[r, "\phi"] &M \\
+S \ar[u, "\iota"] \ar[ru, "f"', bend right] &
+\end{tikzcd}
+\]
+where \(\iota: S \to F_R S\) is the mapping \(s \mapsto s\).
+\end{proposition}
+
+\begin{proof}
+Let \(\phi: F_R S \to M\) be such that
+\(\phi(\sum_{s \in S} a_s s) \mapsto \sum_{s \in S} a_s f(s)\) for any
+\(\sum_{s \in S} a_s s \in F_R S\) so that clearly \(\phi \iota = f\) since
+\(\phi \iota(s) = \phi(s) = f(s)\). Moreover, for any two
+\(\sum_{s \in S} a_s s, \sum_{s \in S} b_s s \in F_R S\) we have
+\begin{align*}
+\phi\bigg( \sum_{s \in S} a_s s + \sum_{s \in S} b_s s \bigg)
+&= \phi\bigg( \sum_{s \in S} (a_s + b_s) s \bigg)
+= \sum_{s \in S} (a_s + b_s) f(s)
+= \sum_{s \in S} a_s f(s) + \sum_{s \in S} b_s f(s) \\
+&= \phi\bigg( \sum_{s \in S} a_s s \bigg)
++ \phi\bigg( \sum_{s \in S} b_s s \bigg).
+\end{align*}
+Furthermor, \(\phi\) certainly preserves the multiplicative structure by \(R\)
+elements. Therefore \(\phi\) is an \(R\)-module morphism. Since \(f\) completely
+determines the image of \(\phi\), it is the unique morphism such that
+\(\phi \iota = f\).
+\end{proof}
+
+\begin{corollary}
+\label{cor:set-to-module-injective}
+The mapping \(\iota: S \emb F_R S\) given by \(s \mapsto s\) is injective.
+\end{corollary}
+
+\begin{proof}
+For any pair \(s, s' \in S\) of distinct elements, consider the module
+\(M \coloneq F_R \{s, s'\}\) and a set-function \(f: S \to M\) with \(f(s) = s\)
+and \(f(s') = s'\). Then, by the universal of free modules, there exists a
+unique morphism of \(R\)-modules \(\phi: F_R S \to M\) such that \(\phi \iota =
+f\). If \(\iota(s)\) was equal to \(\iota(s')\), then \(f(s)\) \(f(s')\), which
+cannot be the case --- thus \(\iota(s) \neq \iota(s')\) for all \(s, s' \in S\)
+distinct, hence \(\iota\) is injective.
+\end{proof}
+
+\begin{proposition}
+\label{prop:ring-poly-is-free-commutative-R-algebra}
+Let \(A \coloneq \{1, \dots, n\}\) be a set of \(n\) elements and define a map
+\(\iota: A \to R[x_1, \dots, x_n]\) by \(j \mapsto x_j\). Then \(R[x_1, \dots,
+x_n]\) is a \emph{free commutative \(R\)-algebra on \(A\)}.
+\end{proposition}
+
+\begin{proof}
+We prove that \(R[x_1, \dots, x_n]\) satisfies the universal property for
+\(A\). Let \(\alpha: R \to M\) be any \(R\)-algebra and \(f: A \to M\) be a
+set-function. From \cref{prop:universal-property-polynomial-rings} we find a
+unique extension \(\overline{\alpha}: R[x_1, \dots, x_n] \to S\) such that
+\(\overline{\alpha}|_R = \alpha\) and \(\overline{\alpha}(x_j) \coloneq
+f(j)\). Therefore, \(\overline{\alpha}\) is the uniquely determined
+\(R\)-algebra morphism such that \(\overline{\alpha} \iota = f\).
+\end{proof}
+
+\subsection{Free Modules from Subsets}
+
+Given any \(R\)-module \(M\) and a subset \(S \subseteq M\) of its elements, one
+can define a free module \(R^{\oplus S}\) out of \(S\) and, from the universal
+property of free modules, there exist a unique \(R\)-map \(\phi: R^{\oplus S}
+\to M\) such that \(\phi \iota = i\), where \(\iota: S \emb R^{\oplus S}\) and
+\(i: S \emb M\) is the canonical inclusion.
+
+It is to be noted that the image \(\phi(R^{\oplus S}) \subseteq M\) is a
+submodule of \(M\) and its elements are of the form \(\sum_{s \in S} a_s s\) for
+\(a_s \in R\) non-zero only for finitely many \(s \in S\). We'll denote the
+submodule \emph{generated} by \(S\) on \(M\) by the notation
+\(\langle S \rangle\).
+
+
+\begin{definition}[Finitely generated module]
+\label{def:finitely-generated-module}
+An \(R\)-module \(M\) is said to be \emph{finitely generated} exactly when there
+exists a \emph{finite subset} \(S \subseteq M\) such that
+\(M = \langle S \rangle\). Equivalently, \(M\) is finitely generated if there
+exists a \emph{surjective} \(R\)-map \(R^{\oplus n} \epi M\) for a positive
+integer \(n \in \Z_{>0}\).
+\end{definition}
+
+\begin{remark}[Submodules]
+\label{rem:submodules-finitely-generated}
+The reader should be cautious when working with finitely generated modules, for
+instance, \emph{it is not true} that a finitely generated module has fininely
+generated modules.
+
+For instance, if we consider the ring of polynomials
+\(P \coloneq \Z[x_1, x_2, \dots]\) on infinitely many variables, then
+\(P = \langle 1 \rangle\) is finitely generated \emph{as a
+  \(P\)-module}. However, if we consider the ideal
+\(\ideal{a} \coloneq (x_1, x_2, \dots) \subseteq P\), one cannot take a finite
+collection of polynomials of \(P\) and generate all of \(\ideal{a}\). Indeed, if
+\(S \subseteq P\) is any finite collection, since polynomials have finitely many
+terms, there must exist, for all \(p(x_1, x_2, \dots) \in S\), a maximum index
+\(j \in \Z_{>0}\) such that \(x_j\) appears as a variable in \(p\) with a
+non-zero coefficient. Taking the maximum index over all polynomials of \(S\), we
+are still left with only a finite index, say \(n \in \Z_{>0}\), such that
+\(x_n\) is the highest-index variable appearing any of the polynomials of \(S\)
+--- hence \(x_{n+1}\) is not contemplated by any of the polynomials of \(S\),
+therefore this set cannot generate \(\ideal{a}\).
+\end{remark}
+
+\begin{definition}[Noetherian module]
+\label{def:noetherian-module}
+An \(R\)-module \(M\) is said to be a \emph{Noetherian module} if every
+submodule of \(M\) is \emph{finitely generated as an \(R\)-module}.
+\end{definition}
+
+We can state the definition for \emph{Noetherian rings} (see
+\cref{def:noetherian-ring}) equivalently as follows: a ring \(R\) is said to be
+a Noetherian if \(R\) is a Noetherian \(R\)-module.
+
+\begin{lemma}
+\label{lem:finitely-generated-from-submodule}
+Let \(M\) be an \(R\)-module, and \(N \subseteq M\) be a submodule. Then if both
+\(N\) and \(M/N\) are finitely generated, then \(M\) is finitely generated.
+\end{lemma}
+
+\begin{proof}
+Let \(N = \langle A \rangle\) and \(M/N = \langle B \rangle\) for finite sets
+\(A \subseteq N\) and \(B \subseteq M/N\). If \(m \in M\) is any element, then
+the class \(m + N \in M/N\) can be written as
+\(m + N = \sum_{b \in B} r_b b + N\) for \(r_b \in R\). Moreover, since
+\(m - \sum_{b \in B} r_b b \in N\), we can write
+\(m - \sum_{b \in B} r_b b = \sum_{a \in A} r_a a\) for \(r_a \in R\). Therefore
+\[
+m = \sum_{a \in A} r_a a + \sum_{b \in B} r_b b.
+\]
+This shows that \(A \cup B\) generates \(M\), thus \(M\) is finitely generated.
+\end{proof}
+
+\begin{proposition}
+\label{prop:noetherian-from-submodule}
+Let \(M\) be an \(R\)-module, and \(N \subseteq M\) be a submodule. Then \(M\)
+is Noetherian if and only if \emph{both} \(N\) and \(M/N\) are Noetherian.
+\end{proposition}
+
+\begin{proof}
+Analogous to the proof of \cref{prop:image-of-noetherian-is-noetherian}, if
+\(M\) is a Noetherian module, then the natural projection \(\pi: M \epi M/N\)
+shows that \(M/N\) is Noetherian. Since \(N\) is a submodule of \(M\), then
+\(N\) is finitely generated and every submodule \(P \subseteq N\) is also a
+submodule of \(M\), thus \(P\) must be finitely generated.
+
+For the converse, suppose both \(M/N\) and \(N\) are Noetherian. Fix any
+submodule \(P \subseteq M\). Consider the submodule \(P \cap N\) of both \(P\)
+and \(N\) --- from the hypothesis that \(N\) is Noetherian, \(P \cap N\) is
+finitely generated. By \cref{prop:second-iso-R-mod} we find that ther exists a
+canonical isomorphism \(P/(P \cap N) \iso (N + P)/N\). Since
+\((N + P)/N\) is a submodule of \(M/N\), by the hypothesis that \(M/N\) is
+Noetherian it follows that \(P/(P \cap N)\) is finitely generated. From
+\cref{lem:finitely-generated-from-submodule} we find that \(P\) itself is
+finitely generated, making \(M\) Noetherian.
+\end{proof}
+
+\begin{corollary}
+\label{cor:noetherian-ring-fg-module-is-noetherian}
+Given a \emph{Noetherian ring} \(R\), any \emph{finitely generated} \(R\)-module
+\(M\) is \emph{Noetherian}.
+\end{corollary}
+
+\begin{proof}
+Since \(M\) is finitely generated, there exists a surjective \(R\)-module
+morphism \(p: R^{\oplus n} \epi M\), for some \(n \in \Z_{> 0}\) --- therefore
+\(M \iso R^{\oplus n}/{\ker p}\). Now, if \(R^{\oplus n}\) is Noetherian, by
+\cref{prop:noetherian-from-submodule}, then \(\ker p\) and \(R^{\oplus n}/{\ker
+  p}\) are both Noetherian, and therefore \(M\) is Noetherian.
+
+We prove that \(R^{\oplus n}\) is Noetherian by induction on \(n\). For
+\(n = 1\) we have that \(R^{\oplus 1} \iso R\) is Noetherian. Assume that
+\(R^{\oplus(n - 1)}\) is Noetherian for some \(n > 1\). Notice that the
+inclusion \(\iota: R^{\oplus (n-1)} \emb R^{\oplus n}\) mapping
+\((r_1, \dots, r_{n-1}) \mapsto (r_1, \dots, r_{n-1}, 0)\) is an \(R\)-map and
+makes \(R^{\oplus (n-1)}\) into a submodule of \(R^{\oplus n}\). Considering the
+canonical projection of the \(n\)-th coordinate \(\pi_n: R^{\oplus n} \epi R\),
+we have \(\ker \pi_n = R^{\oplus (n - 1)}\). By the first isomorphism theorem we
+obtain an isomorphism
+\[
+R^{\oplus n}/R^{\oplus (n-1)} \iso R,
+\]
+therefore \(R^{\oplus n}/R^{\oplus (n-1)}\) is Noetherian. Applying
+\cref{prop:noetherian-from-submodule} we find that \(R^{\oplus n}\) is
+Noetherian --- thus \(M\) is Noetherian.
+\end{proof}
+
+\subsection{Finite Generation of \texorpdfstring{\(R\)}{R}-Algebras}
+
+\begin{definition}
+\label{def:finite-generation-algebras}
+Let \(A\) be an \(R\)-algebra. We define the following two distinct concepts
+regarding the finiteness of the generation of \(A\):
+\begin{itemize}[(a)]\setlength\itemsep{0em}
+\item The \(R\)-algebra \(A\) is said to be \emph{finite} if there exists a
+  \emph{surjective \(R\)-module morphism}
+  \[
+  \phi: R^{\oplus n} \epi A
+  \]
+  for some \(n \in \Z_{>0}\), so that
+  \[
+  A \iso R^{\oplus n}/{\ker \phi},
+  \]
+  where \(\ker \phi\) is a \emph{submodule} of \(R^{\oplus n}\). In other words,
+  \(A\) is finitely generated as a \emph{module over \(R\)}. This nomenclature
+  is unfortunatly misleading: even though we say that \(A\) is finite, \(A\) may
+  well be an \emph{infinite set}.
+
+\item The \(R\)-algebra \(A\) is said to be of \emph{finite type} if there
+  exists a \emph{surjective \(R\)-algebra morphism}
+  \[
+  \alpha: R[x_1, \dots, x_n] \epi A
+  \]
+  for some \(n \in \Z_{>0}\), so that
+  \[
+  A \iso R[x_1, \dots, x_n]/{\ker \alpha},
+  \]
+  where \(\ker \alpha\) is an \emph{ideal} of the ring \(R[x_1, \dots,
+  x_n]\). In other words, \(A\) is finitely generated as an \emph{algebra over
+    \(R\)}.
+\end{itemize}
+\end{definition}
+
+\begin{remark}[Finite type but not finite]
+\label{rem:finite-type-not-finite}
+Let \(A\) be an \(R\)-algebra. If \(A\) is finite, then \(A\) is also of finite
+type. On the other hand, if we consider the \(R\)-algebra \(R[x]\), we find that
+\(R[x]\) is clearly of finite type, but there exists no surjective \(R\)-map
+from \(R^{\oplus n}\) to \(R[x]\), therefore \(R[x]\) isn't finite.
+\end{remark}
 
 %%% Local Variables:
 %%% mode: latex

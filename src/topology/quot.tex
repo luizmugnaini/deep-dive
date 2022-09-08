@@ -529,7 +529,6 @@ sets open (respectively, closed) of \(X\) are mapped to open (respectively,
 closed) sets of \(Y\), hence \(\pi\) is a quotient morphism.
 \end{proof}
 
-
 \begin{proposition}
 \label{prop:map-open-or-closed-properties}
 Let \(f: X \to Y\) be a topological morphism that is either open or closed. The
@@ -561,6 +560,92 @@ equivalent:
 \item If \(f\) is bijective, then by the fist item \(f\) is an embedding, that
   is, it yields an isomorphism \(X \iso f(X)\). Moreover since \(f\) is also
   surjective then \(f(X) = Y\) and thus \(f\) is an isomorphism \(X \isoto Y\).
+\end{enumerate}
+\end{proof}
+
+\section{Attaching Space}
+
+\begin{definition}[Attaching space]
+\label{def:attaching-space}
+Let \(X\) and \(Y\) be topological spaces, and consider a subspace
+\(A \subseteq X\) together with a continuous map \(f: A \to X\). The
+\emph{attaching space of \(X\) and \(Y\) along \(f\)} is defined to be the
+pushout of the canonical inclusion \(\iota: A \emb X\) and \(f\), that is
+\[
+\begin{tikzcd}
+A \ar[r, hook, "\iota"] \ar[d, "f"']
+\ar[rd, phantom, very near end, "\ulcorner"]
+&X \ar[d] \\
+Y \ar[r] &X \cup_f Y
+\end{tikzcd}
+\]
+\end{definition}
+
+\begin{corollary}
+\label{cor:attaching-space-as-quotient}
+In the notation of \cref{def:attaching-space}, the attaching space of \(X\) and
+\(Y\) along \(f\) is given by the quotient space
+\[
+X \cup_f Y \iso (X \disj Y)/{\sim},
+\]
+where \(\sim\) is the smallest equivalence relation on \(X \disj Y\) such that
+\(x \sim f(x)\) for all \(x \in A\).
+\end{corollary}
+
+\begin{proof}
+Let \(Z\) be any space together with two continuous maps \(p: X \to Z\) and
+\(q: Y \to Z\) such that \(p \iota = q f\) --- that is, for every \(x \in A\) we
+have \(p(x) = q(f(x))\). We define a map \(\phi: (X \disj Y)/{\sim} \to Z\) by
+\([(x, X)] \mapsto p(x)\) and \([(y, Y)] \mapsto q(y)\). Indeed, the image of a
+class point under \(\phi\) does not depend on the representative since, for any
+\(x \in A\), we have \([(x, X)] \sim [(f(x), Y)]\), but \(p(x) =
+q(f(x))\). Also, since \([X] \coloneq \{[(x, X)]\}_{x \in X}\) and
+\([Y] \coloneq \{[(y, Y)]\}_{y \in Y}\) are open subspaces covering
+\((X \disj Y)/{\sim}\), since \(\phi|_{[X]} = p\) and \(\phi|_{[Y]} = q\) are
+continuous maps, by \cref{prop:continuous-from-covering-subspaces} we conclude
+that \(\phi\) is continuous.
+
+If we consider the inclusions \(\iota_X: X \emb (X \disj Y)/{\sim}\) and
+\(\iota_Y: Y \emb (X \disj Y)/{\sim}\), one has that \(\phi \iota_X = p\) and
+\(\phi \iota_Y = q\). On the other hand, since these inclusions are
+monomorphisms in \(\Top\), we conclude that \(\phi\) is the only continuous map
+making the following diagram commutative in \(\Top\)
+\[
+\begin{tikzcd}
+A \ar[r, hook, "\iota"] \ar[d, "f"']
+&X \ar[drd, bend left, "p"] \ar[d, hook, "\iota_X"]  &\\
+Y \ar[r, "\iota_Y", hook] \ar[rrd, "q"', bend right]
+&(X \disj Y)/{\sim} \ar[rd, "\phi"', dashed]  &\\
+& &Z
+\end{tikzcd}
+\]
+We conclude that \((X \disj Y)/{\sim}\) is the pushout of \(f\) with \(\iota\)
+and since pushouts are unique up to isomorphism, then
+\((X \disj Y)/{\sim} \iso X \cup_f Y\).
+\end{proof}
+
+\begin{proposition}[Attaching space properties]
+\label{prop:attaching-space-properties}
+Let \(A \subseteq Y\) be a \emph{closed} subspace, \(f: A \to X\) be a
+continuous map, and \(\pi: X \disj Y \epi X \cup_f Y\) be the canonical
+projection to the attaching space along \(f\). The following properties hold:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The restriction \(\pi|_X\) is a \emph{topological embedding}, and its
+  image \(\pi(X)\) is a \emph{closed subspace} of \(X \cup_f Y\).
+
+\item The restriction \(\pi|_{Y \setminus A}\) is a \emph{topological
+    embedding}, and its image \(\pi(Y \setminus A)\) is an \emph{open subspace}
+  of \(X \cup_f Y\).
+
+\item The attaching space \(X \cup_f Y\) is isomorphic to the disjoint union
+  \(\pi(X) \disj \pi(Y \setminus A)\).
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item
+  \todo[inline]{Continue here}
 \end{enumerate}
 \end{proof}
 

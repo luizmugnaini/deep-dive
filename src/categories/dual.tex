@@ -3,7 +3,7 @@
 \begin{definition}[Opposite category]\label{def: opposite cat}
   Let \(\cat C\) be a category. We define the opposite category of \(\cat C\) as
   \(\cat C^\op\), such that
-  \begin{enumerate}[(COP1)]
+  \begin{enumerate}[(COP1)]\setlength\itemsep{0em}
     \item \(\Obj(\cat C^\op) = \Obj(\cat C)\).
     \item Given a morphism \(f: x \to y\) in  \(\cat C\), there exists a
       corresponding morphism \(f^\op: y \to x\) in the \(\cat C^\op\). That is
@@ -20,7 +20,7 @@
 
 \begin{lemma}\label{lem:f-iso-iff-f*-iso}
   The following propositions are equivalent
-  \begin{enumerate}[(a)]
+  \begin{enumerate}[(a)]\setlength\itemsep{0em}
     \item \(f : x \isoto y\) is an isomorphism in \(\cat C\).
     \item For all \(c \in \cat C\), the map
       \[
@@ -83,10 +83,42 @@
   C\) the map \(g^*: \Hom_{\cat C}(y, c)\to \Hom_{\cat C}(x, c)\) is injective.
 \end{definition}
 
+\begin{proposition}
+\label{prop:}
+Let \(\cat C\) be a category. The following are properties regarding
+monomorphisms and epimorphisms in \(\cat C\):
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Every identity morphism is a monomorphism and an epimorphism
+\item The composite of two monomorphisms (or epimorphisms) is a monomorphism (or
+  epimorphism).
+\item If the composition \(k f\) is a monomorphism, then \(f\) is a
+  monomorphism. Conversely, if \(f k\) is an epimorphism, then \(f\) is an
+  epimorphism.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+We prove the assertions about monomorphisms, the respective ones for
+epimorphisms are dually true from the former.
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Identities are isomorphism, so clearly they are monomorphisms and
+  epimorphisms.
+
+\item Let \(f\) and \(g\) be composable monomorphisms, then if \(g f p = g f q\)
+  for two given morphisms \(p\) and \(q\), for since \(g\) is a monomorphism
+  then \(f p = f q\) --- then using the fact that \(f\) is a monomorphism we
+  obtain \(p = q\).
+
+\item Suppose \(k f\) is a monomorphism and consider morphisms \(g\) and \(h\)
+  such that \(f g = f h\). Composing with \(k\) one sees that \(k f g = k f h\)
+  but since \(k f\) is a monomorphism, it follows that \(g = h\).
+\end{enumerate}
+\end{proof}
+
 \begin{definition}
   Let \(x \xrightarrow s y \xrightarrow r x\) be morphisms such that \(r s =
   \Id_x\). We define the following terms
-  \begin{enumerate}[(a)]
+  \begin{enumerate}[(a)]\setlength\itemsep{0em}
     \item\label{def: split monomorphism}
       \(s\) is said to be a section of \(r\). The morphism \(s\) is always a
       monomorphism, being called a split monomorphism.
@@ -139,7 +171,7 @@
 
 \begin{lemma}
   Let \(f: x \to y\) and \(g: y \to z\). The following propositions hold
-  \begin{enumerate}[(a).]
+  \begin{enumerate}[(a).]\setlength\itemsep{0em}
     \item If \(f\) and \(g\) are monomorphisms, so is \(g f: x \mono z\).
       For the dual proposition, if \(f\) and \(g\) are epimorphisms, then \(g
       f: x \epi z\) is an epimorphism.
