@@ -873,6 +873,77 @@ morphism \(F \times G \to E\) given by \((f, g) \mapsto f + g\) is a continuous
 linear isomorphism.
 \end{proposition}
 
+\section{Topological Vector Spaces}
+
+\begin{definition}
+\label{def:topological-vector-space}
+A topological vector space is a \(k\)-vector space together with a topology
+such that addition of vectors and the product by scalars are both continuous
+\(k\)-linear maps.
+
+We denote by \(\TVect_{\R}\) the category consisting of topological
+\(\R\)-vector spaces together with morphisms, which are continuous \(\R\)-linear
+maps (which may also be referenced to by the term ``top-linear'').
+
+Let \(E\) be a topological vector space. The continuous \(\R\)-linear maps
+corresponding to the dual space \(E^{*} = \Hom_{\TVect_{\R}}(E, \R)\), of a
+topological \(\R\)-vector space \(E\), are called \(\R\) \emph{forms}. The
+collection of forms of the form \(E \to \R\) will be conveniently separated in
+classes and denoted:
+\begin{itemize}\setlength\itemsep{0em}
+\item \(L(E)\): the collection of continuous linear maps \(E \to \R\).
+\item \(L^r(E)\): the collection of continuous \(r\)-multilinear maps \(E^r \to \R\).
+\item \(L^r_{\Sym}(E)\): the collection of continuous \(r\)-multilinear
+  symmetric maps \(E^r \to \R\).
+\item \(L^r_{\Alt}(E)\): the collection of continuous \(r\)-multilinear
+  alternating maps \(E^r \to \R\).
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Locally convex]
+\label{def:locally-convex}
+A topological vector space \(E\) is said to be locally convex if, for every open
+set \(U \subseteq E\), any pair of points \(x, y \in U\) are such that \(t x +
+(1 - t) y \in U\) for all \(t \in [0, 1]\).
+\end{definition}
+
+\begin{definition}[Banachable]
+\label{def:banachable}
+A topological \(\R\)-vector space \(E\) is said to be banachable if \(E\) is
+complete and its topology can be defined by a norm.
+\end{definition}
+
+As a point of order, \emph{every time} we mention a topological \(\R\)-vector
+space in the course of this chapter, we shall mean a \emph{banachable space}.
+
+\begin{definition}[Norm of a morphism]
+\label{def:norm-morphism-TopVect}
+Let \(E\) and \(F\) be topological \(\R\)-vector spaces. In order to make
+\(\Hom_{\TVect_{\R}}(E, F)\) into a topological \(\R\)-vector space, we can
+construct a norm for which, given a morphism \(A: E \to F\), define \(K \coloneq
+\{k \in \R \colon \norm{Ax}_{F} \leq k \norm{x}_E \text{, for all } x \in E\}\), the
+norm of \(A\) is
+\[
+  \norm{A} \coloneq \sup_{k \in K} k.
+\]
+
+If \(\Hom_{\TVect_{\R}}(E_1, \dots, E_n; F)\) is the collection of continuous
+\(\R\)-multilinear maps, then we define similarly the norm of a continuous
+multilinear map \(B: \prod_{j=1}^n E_j \to F\) as
+\[
+  \norm{B} \coloneq \sup_{m \in M} m,
+\]
+where \(M \coloneq \{m \in \R \colon \norm{Bx}_F \leq m \prod_{j=1}^n
+\norm{x_j}_{E_j} \text{, for all } x \in E\}\).
+\end{definition}
+
+\begin{remark}
+\label{rm:Cp-morphism}
+From now on, \emph{\(C^p\)-morphism} will refer to a map \(f: U \to V\) between
+open subsets of Banach spaces such that \(f\) is a continuous map of class
+\(C^p\), where \(p \leq \infty\).
+\end{remark}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../../deep-dive"

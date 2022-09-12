@@ -239,7 +239,52 @@ independent set. There exists a set \(B \supseteq S\) such that \(B\) is a
 basis of \(V\).
 \end{proposition}
 
-\todo[inline]{Prove: linearly independent \(\to\) basis}
+\begin{proof}
+Let \(\mathcal{S}\) be the non-empty collection of linearly independent sets of
+\(V\) containing \(S\). Notice that a the union of a chain of elements of
+\(\mathcal{S}\) is again a linearly independent set containing \(S\) --- thus
+\(\mathcal{S}\) is closed under arbitrary unions. In other words, every chain of
+elements has an upper bound in \(\mathcal{S}\). By Zorn's lemma, it follows that
+the collection \(\mathcal{S}\) has a maximal element --- call it \(B\). We now
+prove that \(B\) is a basis for \(V\).
+
+Let \(v \in V\) be an element such that \(v \notin B\). Since \(B\) is maximal,
+it follows that the set \(B \cup \{v\}\) must not be linearly independent ---
+since it contains \(B\). This implies in the existence of a collection
+\((c_b)_{b \in B}\) of finitely many non-zero elements \(c_b \in k\), and \(c_0
+\in k\) such that
+\[
+c_0 v + \sum_{b \in B} c_b b = 0
+\]
+with not all coefficients equal to zero. Since \(v\) isn't a member of \(B\),
+it follows that \(c_0 \neq 0\), otherwise \(B\) wouldn't be linearly
+independent. It follows that
+\[
+v = \sum_{b \in B} - \frac{c_{b}}{c_{0}} b,
+\]
+therefore \(v\) belongs to the span of \(B\) in \(V\). Therefore \(B\) indeed
+generates \(V\), making it a basis.
+\end{proof}
+
+\begin{lemma}
+\label{lem:minimal-generating-is-basis}
+Let \(V\) be a \(k\)-vector space. If \(B \subseteq V\) is a \emph{minimal}
+generating set for \(V\), then \(B\) is a basis of \(V\).
+\end{lemma}
+
+\begin{proof}
+We must show that \(B\) is linearly independent. If, on the contrary, \(B\)
+where to be linearly dependent, let \((c_b)_{b \in B}\) be a collection of
+finitely many non-zero scalars, not all zero, such that \(\sum_{b \in B} c_b b =
+0\). Choose a non-zero scalar \(c_{b'}\) from this family, then
+\[
+b' = \sum_{b \in B \setminus \{b'\}} - \frac{c_{b}}{c_{b'}} b,
+\]
+which implies that \(b'\) can be written as a linear combination of the
+remaining elements of \(B\). This in particular implies that \(B \setminus
+\{b'\}\) is a generating set of \(V\), which contradicts the hypothesis that
+\(B\) is minimal.
+\end{proof}
 
 \subsection{Matrices and changes of base}
 

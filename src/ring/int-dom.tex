@@ -1,0 +1,103 @@
+\begin{remark}[Rings are commutative]
+\label{rem:commutative-rings-in-chapter-int-dom}
+In the \emph{entirety} of this chapter, if \(R\) is a \emph{ring}, we assume it
+is \emph{commutative} unless otherwise stated.
+\end{remark}
+
+\section{Noetherian Rings \& Modules}
+
+\begin{proposition}
+\label{prop:equiv-conditions-noetherian}
+Let \(R\) be a commutative ring, and \(M\) be an \(R\)-module. The following are
+equivalent propositions:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item \(M\) is a \emph{Noetherian} module.
+
+\item Every \emph{ascending chain} of submodules of \(M\) \emph{stabilizes}. In
+  other words, if \((N_j)_{j \in \N}\) is a collection of submodules of \(M\)
+  such that \(N_j \subseteq N_{j+1}\), then there exists an index \(j_0 \in \N\)
+  such that \(N_j = N_{j+1}\) for all \(j \geq j_0\).
+
+\item Every non-empty collection of submodules of \(M\) has a \emph{maximal}
+  element with respect to inclusion.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\begin{itemize}\setlength\itemsep{0em}
+\item (a) \(\implies\) (b). Let \(M\) be Noetherian and define the module
+  \(N \coloneq \bigcup_{j \in \N} N_j\), which is a submodule of \(M\). Since
+  submodules of Noetherian rings are finitely generated, it follows that \(N\)
+  is finitely generated. Let \(N = \langle n_1, \dots, n_k \rangle\) be its
+  generating set. For all \(1 \leq i \leq k\), there must exist \(j_i \in \N\)
+  such that \(n_i \in N_j\) for all \(j \geq j_i\). Taking the maximum
+  \(j_0 \coloneq \max(j_1, \dots, j_k)\), one finds that \(n_i \in N_j\) for
+  each \(1 \leq i \leq k\) and every \(j \geq j_0\). Therefore
+  \(N \subseteq N_j\) for all \(j \geq j_0\), which implies that \(N_j = N\) for
+  each of those indexes --- therefore the chain stabilizes.
+
+\item (b) \(\implies\) (c). We prove the contrapositive. Suppose there exists a
+  non-empty collection \(\mathcal{N}\) of submodules of \(M\) admitting no
+  maximal element. Let \(N_0 \in \mathcal{N}\) be any element. Inductively, for
+  all \(j \geq 1\), define \(N_j \in \mathcal{N}\) such that \(N_{j-1}
+  \subsetneq N_j\), that is, \(N_{j-1}\) is a \emph{proper} subset of \(N_j\)
+  --- this is possible since \(N_{j-1}\) isn't maximal. The collection
+  \((N_j)_{j \in \N}\) forms an ascending chain of submodules, but by
+  construction does not stabilize.
+
+\item (c) \(\implies\) (a). Let \(N \subseteq M\) be any submodule. Since
+  \((0) \subseteq N\) is a finitely generated submodule of \(N\), one can define
+  a non-empty collection \(\mathcal{N}\) of finitely generated submodules of
+  \(N\). From (c) one has that \(\mathcal{N}\) admits a maximum element, say
+  \(W \coloneq \langle n_1, \dots, n_k \rangle\). Let \(n \in N\) be any element
+  and consider the finitely generated submodule \(\langle n_1, \dots, n_k, n
+  \rangle \in \mathcal{N}\). Since \(W\) is maximal, we have \(\langle n_1,
+  \dots, n_k, n \rangle \subseteq W\) --- therefore \(n \in W\) and \(N
+  \subseteq W\). Therefore \(N = W\) is finitely generated, which proves that
+  \(M\) is Noetherian.
+\end{itemize}
+\end{proof}
+
+\begin{lemma}[Quotient of Noetherian rings is Noetherian]
+\label{lem:quotient-is-noetherian}
+Let \(R\) be a Noetherian ring, and \(\ideal{a} \subseteq R\) be an ideal. Then
+the quotient ring \(R/\ideal{a}\) is Noetherian.
+\end{lemma}
+
+\begin{proof}
+From \cref{prop:image-of-noetherian-is-noetherian} we find that the canonical
+projection \(R \epi R/\ideal{a}\) implies that \(R/\ideal{a}\) is Noetherian.
+\end{proof}
+
+\begin{theorem}[Generalized Hilbert's basis theorem]
+\label{thm:general-hilbert-basis}
+Let \(R\) be a ring. Then \(R\) is Noetherian if and only if the polynomial ring
+\(R[x_1, \dots, x_n]\).
+\end{theorem}
+
+\todo[inline]{Prove generalized Hilbert's basis theorem}
+
+\begin{corollary}
+\label{cor:noetherian-quotient-poly-ring}
+Let \(R\) be a Noetherian ring, and \(\ideal{a} \subseteq R[x_1, \dots, x_n]\)
+be an ideal of the polynomial ring. Then the quotient ring
+\(R[x_1, \dots, x_n]/\ideal{a}\) is Noetherian.
+\end{corollary}
+
+\begin{proof}
+Since \(R[x_1, \dots, x_n]\) is Noetherian by \cref{thm:general-hilbert-basis},
+applying \cref{lem:quotient-is-noetherian} we find that \(R[x_1, \dots,
+x_n]/\ideal a\) is Noetherian.
+\end{proof}
+
+\begin{corollary}
+\label{cor:finite-type-alg-noetherian}
+Every \emph{finite-type} algebra over a Noetherian ring is \emph{Noetherian}.
+\end{corollary}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../deep-dive"
+%%% End:

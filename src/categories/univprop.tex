@@ -555,7 +555,7 @@ both \(\alpha\) and \(\beta\) are split epimorphisms.
 \end{proof}
 
 \begin{proposition}
-\label{prop:}
+\label{prop:(co)kernel-properties}
 Let \(f: A \to B\) be a morphism in a category \(\cat C\). Then the following
 properties are equivalent:
 \begin{enumerate}[(a)]\setlength\itemsep{0em}
@@ -758,7 +758,7 @@ consist of the following data:
 \item An object \(C \in \cat C\).
 \item For each object \(D \in \cat D\), a corresponding morphism \(p_D: C \to F
   D\) in \(\cat C\). Moreover, for every morphism \(d: D \to D'\) in \(\cat D\),
-  one has that \(p_{D'} = F (d p_D)\).
+  one has that \(p_{D'} = F d \circ p_D\).
 \end{itemize}
 \end{definition}
 
@@ -815,7 +815,7 @@ consist of the following data:
 
 \item For each object \(D \in \cat D\), a corresponding morphism \(s_C: F D \to
   C\) of \(\cat C\) such that, for every morphism \(d: D' \to D\) in \(\cat D\),
-  we have that \(s_{D'} = s_D F d\).
+  we have that \(s_{D'} = s_D \circ F d\).
 \end{itemize}
 \end{definition}
 
@@ -844,7 +844,7 @@ existent, is simply a \emph{product} in \(\cat C\), that is
 \]
 \end{example}
 
-\section{Complete Categories}
+\subsection{Complete Categories}
 
 \begin{proposition}[All limits]
 \label{prop:all-limits-is-preorder}
@@ -889,3 +889,266 @@ limits:
   \emph{has a (co)limit} in \(\cat C\).
 \end{enumerate}
 \end{definition}
+
+\subsection{Existence Theorem for Limits}
+
+\begin{theorem}
+\label{thm:complete-category-prod-eq}
+A category \(\cat C\) is \emph{complete} if and only if each collection of
+objects, indexed by a set, has a \emph{product} and each pair of parallel
+morphisms has an \emph{equalizer}.
+\end{theorem}
+
+\begin{proof}
+Let \(\cat C\) be complete and \(I\) be any set, which defines a small
+category. If \((C_i)_{i \in I}\) is any collection of objects in \(\cat C\), one
+can define a functor \(F: I \to \cat C\) by \(F i \coloneq C_i\) and, since
+\(F\) has a limit by hypothesis, it follows that
+\(\prod_{i \in I} F i = \prod_{i \in I} C_i\) is a product in \(\cat C\). For
+the equalizer, let \(f, g: A \para B\) be two parallel morphisms in \(\cat
+C\). Define a category \(\cat D\) whose objects are \(A\) and \(B\), and
+morphisms are the identities together with both \(f\) and \(g\). Defining \(F:
+\cat D \to \cat C\) to be simply an inclusion, since \(F\) has a limit, then
+there exists \(\Lim F\) such that
+\[
+\begin{tikzcd}
+\Lim F \ar[r] &A \ar[r, shift left, "f"] \ar[r, shift right, "g"']
+&B
+\end{tikzcd}
+\]
+is an equalizer in \(\cat C\), which proves the first proposition.
+
+For the second proposition, suppose that \(\cat C\) admits products and
+equalizers. Let \(\cat D\) be a small category and \(F: \cat D \to \cat C\) be
+any functor. Define the following:
+
+\begin{itemize}\setlength\itemsep{0em}
+\item Consider two pairs of products
+  \[
+  \bigg(\prod_{D \in \cat D} F D, (r_D)_{D \in \cat D}\bigg)
+  \quad\text{ and }\quad
+  \bigg(\prod_{f \in \Hom(\cat D)} F(\codom f),
+    (q_f)_{f \in \Hom(\cat D)}\bigg),
+  \]
+  where \(r_{D'}: \prod_{D \in \cat D} F D \to F D'\) and
+  \(q_{f'}: \prod_{f \in \Hom(\cat D)} F (\codom f) \to F (\codom f')\) are the
+  projections associated with the products.
+
+\item Let
+  \(\alpha, \beta: \prod_{D \in \cat D} F D \para \prod_{f \in \Hom(\cat D)} F
+  (\codom f)\) be the \emph{unique} factorizations such that
+  \[
+  q_f \alpha = r_{\codom f}
+  \quad\text{ and }\quad
+  q_f \beta = F f \circ r_{\dom f}
+  \]
+  for all \(f \in \Hom(\cat D)\).
+\item Since equalizers always exist on \(\cat C\), let
+  \((L, \ell) \coloneq \Eq(\alpha, \beta)\). Define a collection
+  \((p_D)_{D \in \cat D}\) for which \(p_D \coloneq r_D \ell\). We shall prove
+  that \(\Lim F = (L, (p_D)_{D \in \cat D})\).
+\end{itemize}
+
+We first prove that \((L, (p_D)_{D \in \cat D})\) is a cone on \(F\). To that
+end, consider any morphism \(f: D \to D'\) in \(\cat D\). From the construction
+of the collection of morphisms, we have that
+\begin{align*}
+F f \circ p_D
+&= F f \circ (r_D \ell)
+= (F f \circ r_D) \ell \\
+&= (q_f \beta) \ell
+= q_f (\beta \ell) \\
+&= q_f (\alpha \ell)
+= (q_f \alpha) \ell \\
+&= r_{D'} \ell \\
+&= p_{D'}
+\end{align*}
+therefore, \((p_D)_{D \in \cat D}\) satisfies the conditions of a cone on \(F\).
+
+Let \((M, (h_D)_{D \in \cat D})\) be a cone on \(F\). From the product universal
+property, there exists a \emph{unique} factorization
+\(\gamma: M \to \prod_{D \in \cat D} F D\) such that \(r_D \gamma = h_D\). On
+the other hand, for any morphism \(f: D \to D'\) of \(\cat D\) we have
+\begin{align*}
+  (q_f \alpha) \gamma
+  = r_{D'} \gamma
+  = h_{D'}
+  = F f \circ h_D
+  = F f \circ (r_D \gamma)
+  = (F f \circ r_D) \gamma
+  = (q_f \beta) \gamma
+\end{align*}
+Since the factorization on the product \(\prod_{f \in \Hom(\cat C)} F(\codom
+f)\) is unique, it follows that \(\alpha \gamma = \beta \gamma\). Since \(L\) is
+the object of the equalizer of \(\Eq(\gamma, \beta)\), there must exist a unique
+factorization \(u: M \to L\) such that \(\ell u = \gamma\). Therefore, one has
+\[
+p_D u  = (r_D \ell) u = r_D (\ell u) = r_D \gamma = h_D,
+\]
+showing that \(u\) is a factorization of of the cone \(M\) via the cone \(L\) on
+\(F\).
+
+We must show that the factorization \(u\) is unique, so that \(L\) is the limit
+of \(F\). Suppose \(v: M \to L\) is another factorization, that is, \(p_D v =
+h_D\) for all \(D \in \cat D\). Notice that
+\[
+r_D (\ell u)
+= (r_D \ell) u
+= p_D u
+= h_D
+= p_D v
+= (r_D \ell) v
+= r_D (\ell v)
+\]
+holds for all \(D \in \cat D\), therefore both \(\ell u\) and \(\ell v\) are
+parallel factorizations factorizations --- which by
+\cref{prop:equal-parallel-factorizations} implies \(\ell u = \ell v\).
+From \cref{prop:eq-monic-coeq-epic} we know that \(\ell\) is monic, therefore
+\(u = v\). This shows the uniqueness of \(u\), thus we may conclude that
+\[
+\Lim F = (L, (p_D)_{D \in \cat D}).
+\]
+\end{proof}
+
+\begin{proposition}[Finite completeness]
+\label{prop:equiv-cat-finitely-complete}
+Let \(\cat C\) be a category. The following properties are equivalent:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The category \(\cat C\) is \emph{finitely complete}.
+\item The category \(\cat C\) has a \emph{terminal object, binary
+    products and equalizers}.
+\item The category \(\cat C\) has a \emph{terminal object, and pullbacks}.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\begin{itemize}\setlength\itemsep{0em}
+\item If \(\cat C\) is finitely complete, then from definition items (b) and (c)
+  hold.
+\item If (b) holds, then by \cref{prop:product-ordering-independent} we find
+  that any \emph{finite} collection has a product. Since \(\cat C\) has
+  equalizers, by \cref{thm:complete-category-prod-eq} and taking the particular
+  case where \(\cat D\) is a finite category, we conclude that \(\cat C\) is
+  finitely complete, therefore (b) implies (a).
+\item If (c) holds, let \(1 \in \cat C\) be the terminal object. For any two
+  objects \(A, B \in \cat C\), the pullback
+  \[
+  \begin{tikzcd}
+  P \ar[r] \ar[d] \ar[rd, phantom, very near start, "\lrcorner"]
+  &A \ar[d, dashed] \\
+  B \ar[r, dashed] &1
+  \end{tikzcd}
+  \]
+  is the product of \(A\) with \(B\) in \(\cat C\) --- thus binary products
+  exist. Now consider two parallel morphisms \(f, g: A \para B\) in \(\cat
+  C\). In this case, one can consider the pullback
+  \[
+  \begin{tikzcd}
+  E \ar[rr, "k"]  \ar[d, "\ell"']
+  \ar[rrd, phantom, very near start, "\lrcorner"]
+  &&A \ar[d, "\Id_A \times f"] \\
+  A \ar[rr, "\Id_A \times f"']
+  &&A \times B
+  \end{tikzcd}
+  \]
+  Then for \(E\) to be the equalizer of \((f,g)\) it suffices to show that
+  \(k = \ell\) and \(f k = g k\). For the former, notice that
+  \[
+  k = \pi_A \circ (\Id_A \times f) \circ k
+  = \pi_A \circ (\Id_A \times g) \circ \ell
+  = \ell.
+  \]
+  For the last equality, we proceed with a similar argument
+  \[
+  f k = \pi_B \circ (\Id_A \times f) \circ k
+  = \pi_B \circ (\Id_A \times g) \circ \ell
+  g \ell
+  = g k.
+  \]
+  Therefore \(\Eq(f, g) = (E, k)\), and \(\cat C\) has equalizers. This proves
+  that (c) implies (b).
+\end{itemize}
+\end{proof}
+
+\begin{proposition}
+\label{prop:equiv-def-cone-on-func-from-graph}
+Let \(F: \cat D \to \cat C\) be a functor, and suppose there exists a collection
+\((f_j)_{j \in J}\) of morphisms of \(\cat D\) \emph{generating} every other
+morphism of \(\cat D\) --- that is, if \(g\) is a morphism in \(\cat D\), then
+\(g\) can be written as the composition of \emph{finitely} many arrows of
+\((f_j)_{j \in J}\). A \emph{cone} on the functor \(F\) is a pair \((L, (p_D: L
+\to F D)_{D \in \cat D})\) such that, for any morphism \(f_j: D \to D'\), we
+have \(p_{D'} = F f_j \circ p_D\).
+\end{proposition}
+
+\begin{proof}
+To see that this is equivalent to the definition of a cone is simple since,
+given any \(g: D \to \cat D'\) in \(\cat D\), one has
+\(g = f_{j_n} \dots f_{j_1}\) for a finite collection of maps
+\(f_{j_i} \in (f_j)_{j \in J}\) where \(f_{j_i}: D_{i-1} \to D_i\) with
+\(D_0 = D\) and \(D_n = D'\). Then
+\begin{align*}
+F g \circ p_D
+&= F (f_{j_n} \dots f_{j_1}) \circ p_D \\
+&= (F f_{j_n} \circ \dots \circ F f_{j_1}) \circ p_D \\
+&= (F f_{j_n} \circ \dots \circ F f_{j_2}) \circ (F f_{j_1} \circ p_D) \\
+&= (F f_{j_n} \circ \dots \circ F f_{j_2}) \circ p_{D_1} \\
+&= \dots \\
+&= F f_{j_n} \circ p_{D_{n-1}}\\
+&= p_{D'},
+\end{align*}
+which proves the equivalence.
+\end{proof}
+
+\begin{definition}[Finitely generated categories]
+\label{def:finitely-generated-category}
+A category \(\cat C\) is said to be \emph{finitely generated} if \(\cat C\) is
+comprised of finitely many objects, and there exists a finite set of
+morphisms \(\{f_1, \dots, f_n\}\) of \(\cat C\) such that every morphism of
+\(\cat C\) can be written as a composition of finitely many arrows \(f_j\).
+\end{definition}
+
+\begin{proposition}
+\label{prop:fin-gen-to-fin-complete-has-limits}
+Let \(\cat D\) be \emph{finitely generated} and \(\cat C\) be \emph{finitely
+  complete}, then \emph{any} functor \(F: \cat D \to \cat C\) \emph{has a
+  limit}.
+\end{proposition}
+
+\begin{proof}
+Since \(\cat C\) is finitely complete, we can recycle the proof of
+\cref{thm:complete-category-prod-eq} replacing the pair of products with the
+\emph{finite} products \(\prod_{D \in \cat D} F D\) and
+\(\prod_{j=1}^n F(\codom f_j)\).
+\end{proof}
+
+\subsection{Limit Preserving Functors}
+
+\begin{definition}[Limit preserving functor]
+\label{def:limit-preserving-functor}
+A functor \(F: \cat B \to \cat C\) is said to \emph{preserve limits} if --- for
+every small category \(\cat A\) and functor \(G: \cat A \to \cat B\) --- the
+limit of \(G\) \emph{exists} and the limit of \(F G: \cat A \to \cat C\) exists
+and is given by
+\[
+\Lim(F G) = F(\Lim G).
+\]
+To put more concretely, if \((L, (p_A)_{A \in \cat A})\) is the limit of \(G\),
+then the limit of \(F G\) is given by \((F L, (F p_A)_{A \in \cat A})\).
+\end{definition}
+
+\subsection{Absolute limits}
+
+\begin{proposition}[Absolute pushout]
+\label{prop:absolute-pushout}
+Let \(\cat C\) be a category, and morphisms \(p: A \epi C\) and \(q: A
+\epi B\) in \(\cat C\) such that the following square commutes in \(\cat C\)
+\[
+\begin{tikzcd}
+A \ar[r, "q"] \ar[d, "p"'] &B \ar[d] \\
+C \ar[r] &D
+\end{tikzcd}
+\]
+If \(p\) is a \emph{split epimorphism} and \(q\) is an \emph{epimorphism},
+then the square is an \emph{absolute pushout}.
+\end{proposition}

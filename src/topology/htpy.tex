@@ -16,6 +16,18 @@ X \ar[d, rd, "f"'] \ar[r, "i_0"]
 \]
 where \(i_0, i_1: X \to X \times I\) are parallel morphisms with \(x
 \xmapsto{i_{0}} (x, 0)\) and \(x \xmapsto{i_{1}} (x, 1)\).
+
+If topological spaces are viewed as categories whose objects are its points and
+morphisms are the identities, then topological morphisms \(f, g: X \para Y\) are
+functors between the cagories \(X\) and \(Y\) and a homotopy \(\eta: f \nat g\)
+is a natural transformation between \(f\) and \(g\), where the following diagram
+commutes in the category \(Y\) for any two points \(x, x' \in X\):
+\[
+\begin{tikzcd}
+{f(x)}  \ar[r, "{\eta(x, -)}"] \ar[d, "f"'] &{g(x)} \ar[d, "g"] \\
+{f(x')} \ar[r, "\eta{(x', -)}"'] &{g(x')}
+\end{tikzcd}
+\]
 \end{definition}
 
 To put concretely, left homotopy between \(f\) and \(g\) is a continuous map
@@ -104,7 +116,7 @@ We call a morphism \([f] \in [X, Y]\) a \emph{homotopy class}. Moreover, for any
 three spaces \(X, Y, Z \in \Top\), there exists a \emph{unique} compositional
 map
 \[
-[X, Y] \times [Y, Z] \to [X, Z]
+[X, Y] \times [Y, Z] \longrightarrow [X, Z]
 \]
 such that the following diagram commutes
 \[
@@ -129,6 +141,12 @@ We therefore define a category \(\HoTop\) composed of topological spaces ---
 which, viewed as an object of \(\HoTop\), is called a \emph{homotopy type} ---
 and classes of continuous morphisms between them up to homotopy.
 \end{definition}
+
+This quotienting operation on the category of topological spaces induces a
+canonically defined projective functor
+\[
+\kappa: \Top \longrightarrow \HoTop.
+\]
 
 \begin{definition}[Homotopy equivalence]
 \label{def:homotopy-equivalence}
@@ -162,6 +180,8 @@ Homotopy equivalence is an equivalence relation on the class of topological
 spaces.
 \end{corollary}
 
+\subsection{Contractibility}
+
 \begin{definition}[Contractible space]
 \label{def:contractible-space}
 A space \(X\) is said to be \emph{contractible} if the unique continuous map
@@ -183,6 +203,8 @@ B^n\) and thus \(\R^n \isoht *\) --- the euclidean space is contractible.
 \end{example}
 
 \section{Fundamental Groupoid \& The Fundamental Group}
+
+\subsection{Paths}
 
 \begin{notation}[Family of paths]
 \label{not:family-of-paths}
@@ -265,6 +287,8 @@ This map is continous by the same argument used in
 \cref{cor:htpy-equivalence-rel} and thus stablishes a homotopy relative boundary
 \(\varepsilon: \gamma \nat p\).
 \end{proof}
+
+\subsection{The Fundamental Groupoid}
 
 \begin{definition}[Fundamental groupoid]
 \label{def:fundamental-groupoid}
@@ -374,7 +398,7 @@ of \(\bpTop\) preserve base-points.
 
 In \(\bpTop\), we define a \emph{pointed homotopy} \(\eta: f \nat g\) between
 parallel morphisms \(f, g: (X, x) \para (Y, y)\) to be a homotopy preserving
-base points, that is,
+base-points, that is,
 \[
 \eta(x, -) = \const_y.
 \]
@@ -386,12 +410,18 @@ spaces and morphisms
 \Hom_{\Ho{\bpTop}}((X, x), (Y, y))
 \coloneq \Hom_{\bpTop}((X, x), (Y, y))/{\sim_{\text{ph}}}.
 \]
+This quotienting induces a natural projective functor
+\[
+\kappa^{*/}: \bpTop \longrightarrow \Ho{\bpTop}.
+\]
 \end{definition}
+
+\subsection{The Fundamental Group}
 
 \begin{definition}[Fundamental group]
 \label{def:fundamental-group}
 Let \(X\) be a topological space and \(x \in X\) be any point. We define
-the \emph{fundamental group} of \(X\) at the base point \(x\) as the family of
+the \emph{fundamental group} of \(X\) at the base-point \(x\) as the family of
 \emph{loops}
 \[
 \pi_1(X, x) \coloneq \Aut_{\Pi_1(X)}(x),
@@ -399,9 +429,73 @@ the \emph{fundamental group} of \(X\) at the base point \(x\) as the family of
 endowed with the operation of concatenation of paths. Therefore, we see that the
 fundamental group is a functor
 \[
-\pi_1: \bpTop \to \Grp.
+\pi_1: \bpTop \longrightarrow \Grp.
 \]
 \end{definition}
+
+\begin{definition}[Pushforwards in \(\pi_1\)]
+\label{def:pushforward-pi1}
+Let \(f: (X, x) \to (Y, y)\) be a morphism of pointed topological spaces. There
+exists a naturally defined pushforward
+\[
+f_{*}: \pi_1(X, x) \longrightarrow \pi_1(Y, y)
+\]
+mapping \([\gamma] \mapsto [f \gamma]\), which stablishes a group morphism
+between the fundamental groups of the inicial pointed topological spaces.
+\end{definition}
+
+
+\begin{proposition}
+\label{prop:pointed-htpy-pushforward-agree}
+Let \(f, g: (X, x) \para (Y, y)\) be morphisms in \(\bpTop\). If there exists a
+\emph{pointed homotopy} \(\eta: f \nat g\), then \(f_{*} = g_{*}\).
+\end{proposition}
+
+\begin{proof}
+Let \(\gamma\) be a loop at \(x\) representing some class of \(\pi_1(X,
+x)\). The pointed homotopy \(\eta\) naturally induces a homotopy
+\(f \gamma \nat g \gamma\) --- thus \([f \gamma] = [g \gamma]\) in
+\(\pi_1(Y, y)\) --- therefore \(f_{*} = g_{*}\).
+\end{proof}
+
+By \cref{prop:pointed-htpy-pushforward-agree} we obtain a factorization of the
+fundamental group functor through the homotopy category of pointed topological
+spaces. To put briefly, the following diagram is quasi-commutative
+\[
+\begin{tikzcd}
+\bpTop \ar[r, "\pi_1"] \ar[d, "\kappa^{*/}"'] &\Grp \\
+\Ho{\bpTop} \ar[ru, bend right]
+\end{tikzcd}
+\]
+
+\begin{corollary}[Preserving isomorphisms]
+\label{cor:pushforward-preserve-isomorphism}
+If \(f: (X, x) \isoto (Y, y)\) is a \emph{homotopy equivalence} in \(\bpTop\),
+then \(f_{*}: \pi_1(X, x) \isoto \pi_1(Y, y)\) is an \emph{isomorphism} in
+\(\Grp\).
+\end{corollary}
+
+\begin{proof}
+If \(g\) is the homotopy inverse of \(f\), then for any
+\([\gamma] \in \pi_1(X, x)\) we have
+\(g_{*}f_{*} [\gamma] = g_{*}[f \gamma] = [g f \gamma] = [\gamma]\), therefore
+\(g_{*} f_{*} = \Id_{\pi_1(X, x)}\). Analogously we have
+\(f_{*} g_{*} = \Id_{\pi_1(Y, y)}\). Therefore \(f_{*}\) is an isomorphism of
+groups.
+\end{proof}
+
+\subsection{Simply Connected Spaces}
+
+\begin{definition}[Simply connected space]
+\label{def:simply-connected}
+A topological space \(X\) is said to be \emph{simply connected} if it is path
+connected --- that is, \(\pi_0(X) = *\) --- and its fundamental group is
+trivial, \(\pi_1(X, x) \iso 1\) for any base-point \(x \in X\).
+\end{definition}
+
+\todo[inline]{Continue on semi-locally simply connected spaces}
+
+\subsection{Examples of Fundamental Groups}
 
 \begin{example}[\(\pi_1\) of the euclidean space]
 \label{exp:euclidean-space-pi1-is-trivial}
@@ -413,6 +507,67 @@ of the \(n\)-dimensional euclidean space is trivial,
 \pi_1(X, x) = *.
 \]
 \end{example}
+
+\begin{proposition}
+\label{prop:pi1-manifold-is-countable}
+The fundamental group of a topological manifold is countable.
+\end{proposition}
+
+\begin{proof}
+Let \(\mathcal{B}\) be a countable open cover of \(M\) consisting of coordinate
+balls. Since \(M\) has countably many connected components (see
+\cref{prop:connectivity-manifolds}), those connected components are also path
+components. This implies that any two \(B, B' \in \mathcal{B}\) are such that
+the intersection \(B \cap B'\) are composed of at most countably many path
+components (since \(M\) is locally path connected). Let \(\mathcal{X}\) be a
+collection containing a single point from each \(B \cap B'\) for any pair
+\((B, B') \in \mathcal{B} \times \mathcal{B}\). For every \(B \in \mathcal{B}\)
+and points \(x, y \in \mathcal{X}\) with \(x, y \in B\), fix a path
+\(\gamma_{(x, y)}^B \in \Path_B(x, y)\).
+
+Clearly, the fundamental groups of a path connected component of \(M\) based at
+any two points are always isomorphic. Since \(\mathcal{X}\) contains at least
+one point of each path component of \(M\), we may choose a base-point
+\(p \in \mathcal{X}\). Let \(\Gamma_p\) denote the collection of loops based at
+\(p\) that are equal to a finite concatenation of paths of the form
+\(\gamma_{(x, y)}^B\), for some \(B \in \mathcal{B}\). Since \(\mathcal{B}\) is
+countable, so is \(\Gamma_p\). We'll settle to prove that every element of
+\(\pi_1(M, p)\) can be represented by a loop in \(\Gamma_p\).
+
+Let \(f\) be any loop based at \(p\). Consider the collection
+\((f^{-1}(B))_{B \in \mathcal{B}}\), which is an open cover of \(I\). Since
+\(I\) is compact, there exists a finite subcover out of such collection. The
+finite subcover gives rise to a finite collection of numbers
+\[
+0 \eqqcolon a_0 < a_1 < \dots < a_k \coloneq 1
+\]
+for which the closed interval \([a_{j-1}, a_j]\) is contained in some
+\(f^{-1}(B)\).
+
+For each \(0 < j \leq k\), define \(f_j: I \to M\) to be the path given by
+\[
+f_j(t) \coloneq f((1 - t) a_{j-1} + t a_j),
+\]
+that is, \(f_j\) is a path \(f(a_{j-1}) \to f(a_j)\) --- and let
+\(B_j \in \mathcal{B}\) be such that \(\im f_j \subseteq B_j\). From
+construction we have that \(f(a_j) \in B_j \cap B_{j+1}\) for each
+\(0 \leq j < k\).
+
+For each \(0 \leq j < k\) let \(g_j \in \Path_{B_j \cap B_{j+1}}(x_j, f(a_j))\),
+where \(x_j \in \mathcal{X}\) as in the first paragraph --- and \(x_0, x_k
+\coloneq p\), with constant paths \(g_0, g_k \coloneq \const_p\). Notice that
+\begin{align*}
+f &\simht f_k \dots f_1 \\
+  &\simht g_k^{-1} f_k (g_{k-1} g_{k-1}^{-1}) \dots (g_2 g_2^{-1}) f_2 (g_1 g_1^{-1})
+    f_1 g_0 \\
+  &\simht (g_k^{-1} f_k  g_{k-1}^{-1}) \dots (g_1^{-1} f_1 g_0), \\
+\end{align*}
+where \(g_j^{-1} f_j g_{j-1} \in \Path_{B_j}(x_{j-1}, x_j)\) for all
+\(0 < j \leq k\). Since each \(B_j\) is simply connected, then
+\(g_j^{-1} f_j g_{j-1}\) is relative boundary homotopic to chosen path
+\(\gamma_{(x_{j-1}, x_j)}^B\). This shows that \(f\) is homotopic to a path in
+\(\Gamma_p\) --- therefore \(\pi_1(M, p)\) is countable.
+\end{proof}
 
 %%% Local Variables:
 %%% mode: latex

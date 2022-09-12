@@ -1,74 +1,3 @@
-% \section{Topological Vector Spaces}
-
-% \begin{definition}
-% \label{def:topological-vector-space}
-% A topological vector space is a \(k\)-vector space together with a topology
-% such that addition of vectors and the product by scalars are both continuous
-% \(k\)-linear maps.
-
-% We denote by \(\TVect_{\R}\) the category consisting of topological
-% \(\R\)-vector spaces together with morphisms, which are continuous \(\R\)-linear
-% maps (which may also be referenced to by the term ``top-linear'').
-
-% Let \(E\) be a topological vector space. The continuous \(\R\)-linear maps
-% corresponding to the dual space \(E^{*} = \Hom_{\TVect_{\R}}(E, \R)\), of a
-% topological \(\R\)-vector space \(E\), are called \(\R\) \emph{forms}. The
-% collection of forms of the form \(E \to \R\) will be conveniently separated in
-% classes and denoted:
-% \begin{itemize}\setlength\itemsep{0em}
-% \item \(L(E)\): the collection of continuous linear maps \(E \to \R\).
-% \item \(L^r(E)\): the collection of continuous \(r\)-multilinear maps \(E^r \to \R\).
-% \item \(L^r_{\Sym}(E)\): the collection of continuous \(r\)-multilinear
-%   symmetric maps \(E^r \to \R\).
-% \item \(L^r_{\Alt}(E)\): the collection of continuous \(r\)-multilinear
-%   alternating maps \(E^r \to \R\).
-% \end{itemize}
-% \end{definition}
-
-% \begin{definition}[Locally convex]
-% \label{def:locally-convex}
-% A topological vector space \(E\) is said to be locally convex if, for every open
-% set \(U \subseteq E\), any pair of points \(x, y \in U\) are such that \(t x +
-% (1 - t) y \in U\) for all \(t \in [0, 1]\).
-% \end{definition}
-
-% \begin{definition}[Banachable]
-% \label{def:banachable}
-% A topological \(\R\)-vector space \(E\) is said to be banachable if \(E\) is
-% complete and its topology can be defined by a norm.
-% \end{definition}
-
-% As a point of order, \emph{every time} we mention a topological \(\R\)-vector
-% space in the course of this chapter, we shall mean a \emph{banachable space}.
-
-% \begin{definition}[Norm of a morphism]
-% \label{def:norm-morphism-TopVect}
-% Let \(E\) and \(F\) be topological \(\R\)-vector spaces. In order to make
-% \(\Hom_{\TVect_{\R}}(E, F)\) into a topological \(\R\)-vector space, we can
-% construct a norm for which, given a morphism \(A: E \to F\), define \(K \coloneq
-% \{k \in \R \colon \norm{Ax}_{F} \leq k \norm{x}_E \text{, for all } x \in E\}\), the
-% norm of \(A\) is
-% \[
-%   \norm{A} \coloneq \sup_{k \in K} k.
-% \]
-
-% If \(\Hom_{\TVect_{\R}}(E_1, \dots, E_n; F)\) is the collection of continuous
-% \(\R\)-multilinear maps, then we define similarly the norm of a continuous
-% multilinear map \(B: \prod_{j=1}^n E_j \to F\) as
-% \[
-%   \norm{B} \coloneq \sup_{m \in M} m,
-% \]
-% where \(M \coloneq \{m \in \R \colon \norm{Bx}_F \leq m \prod_{j=1}^n
-% \norm{x_j}_{E_j} \text{, for all } x \in E\}\).
-% \end{definition}
-
-% \begin{remark}
-% \label{rm:Cp-morphism}
-% From now on, \emph{\(C^p\)-morphism} will refer to a map \(f: U \to V\) between
-% open subsets of Banach spaces such that \(f\) is a continuous map of class
-% \(C^p\), where \(p \leq \infty\).
-% \end{remark}
-
 \section{Differentiable Manifolds}
 
 \subsection{Charts \& Atlases}
@@ -166,8 +95,10 @@ other than itself.
 
 \subsection{\texorpdfstring{\(C^p\)}{Cp}-Manifolds}
 
+\subsubsection{Classical Definition}
+
 In this chapter we shall mostly consider the case of \(C^{\infty}\)-manifolds,
-also called \emph{smooth} manifolds, but for generality we shall define
+also called \emph{smooth} manifolds, but for generality we'll define
 differentiable manifolds for all \(p \in \N \cup \{\infty\}\).
 
 \begin{definition}[\(C^p\)-manifold structure on \(X\)]
@@ -175,6 +106,8 @@ differentiable manifolds for all \(p \in \N \cup \{\infty\}\).
 The equivalence classes of atlases of class \(C^p\) on a topological space \(X\)
 define what is called a \emph{\(C^p\)-manifold structure on} \(X\).
 \end{definition}
+
+\subsubsection{Alternative Definition}
 
 We now give another definition of a \(C^p\)-manifold structure on topological
 spaces, to do that, we first introduce the following concept.
@@ -289,18 +222,243 @@ that \(\phi\) naturally induces a morphism of functionally structured spaces
 isomorphism, then \(\phi\) is an isomorphism \((U, F_U) \iso (V, C_V^p)\).
 \end{proof}
 
+
+\subsection{Smooth Morphisms}
+
+\subsubsection{Morphisms Between Manifolds}
+
+\begin{remark}
+\label{rem:manifolds-convention-are-smooth}
+From now on, unless stated otherwise, all manifolds are assumed to be endowed
+with a smooth structure.
+\end{remark}
+
+\begin{remark}[Chart notation]
+\label{rem:chart-notation}
+When convenient, a chart \((U, \phi: U \to V)\) shall simply be denoted by
+\(\phi: U \to V\).
+\end{remark}
+
 \begin{definition}[Smooth map]
 \label{def:smooth-map-between-manifolds}
 Let \(M\) and \(N\) be smooth manifolds of dimension \(m\) and \(n\),
-respectively. A map\(f: M \to N\) is said to be \emph{smooth at a point
-  \(p \in M\)} if there exists a chart \((V, \psi)\) about \(f(p)\) in \(N\),
-and a chart \((U, \phi)\) about \(p\) in \(M\) such that the map
+respectively. A \emph{continuous} map \(f: M \to N\) is said to be \emph{smooth
+  at a point \(p \in M\)} if there exists a chart \((V, \psi)\) about \(f(p)\)
+in \(N\), and a chart \((U, \phi)\) about \(p\) in \(M\) such that the map
 \[
-\psi f \phi^{-1}: \phi(f^{-1}(V) \cap U) \to \R^m
+\psi f \phi^{-1}: \phi(f^{-1}(V) \cap U) \to \R^n,
 \]
-is smooth at \(\phi(p)\). Naturally, \(f\) is said to be \emph{smooth} when
-\(f\) is smooth at every point of \(M\).
+where \(\phi(f^{-1}(V) \cap U) \subseteq \R^m\), is smooth at
+\(\phi(p)\). Naturally, \(f\) is said to be \emph{smooth} when \(f\) is smooth
+at every point of \(M\).
 \end{definition}
+
+\begin{remark}
+\label{rem:continuous-requirement-in-smooth-map-definition}
+The requirement of continuity of \(f: M \to N\) in
+\cref{def:smooth-map-between-manifolds} is necessary to ensure that
+\(f^{-1}(V) \subseteq M\) is open.
+\end{remark}
+
+\begin{lemma}[Smooth maps are choice-independent]
+\label{lem:smooth-maps-choice-independent}
+Let \(f: M \to N\) be a smooth map at \(p \in M\) between smooth manifolds. If
+\((U, \phi)\) is any chart about \(p\) in \(M\) and \((V, \psi)\) is any chart
+about \(f(p)\) in \(N\), then the composition map \(\psi f \phi^{-1}\) is
+\(C^{\infty}\) at \(\phi(p)\). Since both \(M\) and \(N\) are endowed with
+\(C^{\infty}\) compatible charts, it follows that the transition maps
+\(\phi_0 \phi^{-1}: \phi(U_0 \cap U) \to \phi_0(U_{0} \cap U)\) and
+\(\psi \psi_0^{-1}: \psi_0(V_0 \cap V) \to \psi(V_0 \cap V)\) are both
+\(C^{\infty}\) maps. Therefore the composition
+\[
+(\psi \psi_0^{-1}) \circ (\psi_0 f \phi_0^{-1}) \circ (\phi_0 \phi^{-1})
+= \psi f \phi^{-1}: \phi(U_0 \cap U) \longrightarrow \R^n,
+\]
+where \(n\) is the dimension of \(N\), is a \(C^{\infty}\) map. Since \(p \in
+U_0 \cap U\), then \(\psi f \phi^{-1}\) is \(C^{\infty}\) at \(\phi(p)\).
+\end{lemma}
+
+\begin{proof}
+From the definition of smoothness, let \((U_0, \phi_0)\) be a chart about \(p\)
+of \(M\) and \((V_0, \psi_0)\) be a chart about \(f(p)\) of \(N\) such that the
+map \(\psi_0 f \phi_0^{-1}\) is \(C^{\infty}\) at \(\phi_0(p)\).
+\end{proof}
+
+\begin{proposition}
+\label{prop:composition-smooth-maps-is-smooth}
+The composition of smooth maps is smooth.
+\end{proposition}
+
+\begin{proof}
+Let \(N\), \(M\) and \(W\) be any three manifolds, and consider two smooth maps
+\(f: N \to M\) and \(g: M \to W\). Take any three charts \((U, \phi)\) of \(N\),
+\((V, \psi)\) of \(M\), and \((E, \gamma)\) of \(W\). Notice that the
+composition
+\[
+(\gamma g \psi^{-1}) \circ (\psi f \phi^{-1})
+= \gamma (g f) \phi^{-1}: \phi(f^{-1}(V) \cap U)
+\longrightarrow \R^w,
+\]
+where \(w\) is the dimension of \(W\), is a \(C^{\infty}\) map since both
+\(\gamma g \psi^{-1}\) and \(\psi f \phi^{-1}\) are \(C^{\infty}\). Since the
+charts where chosen arbitrarily, it follows that \(g f\) is a smooth map. Notice
+that the last two conclusions came dictly from
+\cref{prop:equiv-conditions-for-smooth}.
+\end{proof}
+
+\subsubsection{Equivalent Conditions for Smoothness}
+
+\begin{proposition}[Equivalent conditions for smoothness]
+\label{prop:equiv-conditions-for-smooth}
+Let \(f: N \to M\) be a continuous map between manifolds \(N\) and \(M\), with
+respective dimensions \(n\) and \(m\). The following properties are equivalent:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The continuous map \(f: N \to M\) is a smooth map.
+
+\item There exists atlases \(\mathcal{N}\) for \(N\) and \(\mathcal{M}\) for
+  \(M\) such that, for every chart \((U, \phi) \in \mathcal{N}\) and
+  \((V, \psi) \in \mathcal{M}\), the composition
+  \[
+  \psi f \phi^{-1}: \phi(f^{-1}(V) \cap U) \to \R^m
+  \]
+  is a \(C^{\infty}\) map.
+
+\item For all pairs of charts \((U, \phi)\) on \(N\) and \((V, \psi)\) on \(M\),
+  the composition
+  \[
+  \psi f \phi^{-1}: (f^{-1}(V) \cap U) \to  \R^m
+  \]
+  is a \(C^{\infty}\) map.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\begin{itemize}\setlength\itemsep{0em}
+\item (a) \(\implies\) (c): Consider any pair of charts \((U, \phi)\) on \(N\)
+  and \((V, \psi)\) on \(M\) for which \(f^{-1}(V) \cap U\) is non-empty. Take
+  any \(p \in f^{-1}(V) \cap U\). Since \(f\) is \(C^{\infty}\), it follows that
+  the composition \(\psi f \phi^{-1}\) is \(C^{\infty}\) at \(\phi(p)\) --- thus
+  smooth for any point of its domain.
+
+\item (c) \(\implies\) (b): It suffices to choose atlases with \(C^{\infty}\)
+  compatible charts for \(N\) and \(M\).
+
+\item (b) \(\implies\) (a): If \(p \in N\) is any point, choose a chart \((U,
+  \phi)\) about \(p\) and \((V, \psi)\) about \(f(p)\). Property (b) ensures
+  that the composition \(\psi f \phi^{-1}\) is, in particular, continuous at
+  \(\phi(p)\), since \(p \in f^{-1}(V) \cap U\).
+\end{itemize}
+\end{proof}
+
+\begin{corollary}
+\label{cor:equiv-smooth-vec-val-map}
+Let \(M\) be an \(n\)-manifold and \(f: M \to \R^d\) be a continuous map. The
+following properties are equivalent:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The map \(f: M \to \R^d\) is a \(C^{\infty}\)-morphism.
+
+\item The manifold \(M\) is endowed with an atlas such that, for every chart
+  \(\phi: U \to V\) of \(M\), the map \(f \phi^{-1}: \phi(U) \to \R^d\) is a map
+  of class \(C^{\infty}\), where \(V \subseteq \R^n\).
+
+\item For all charts \(\phi: U \to V\) of \(M\), the map \(f \phi^{-1}: \phi(U)
+  \to \R^d\) is of class \(C^{\infty}\), where \(V \subseteq \R^n\).
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+The whole proposition is simply a particular case of
+\cref{lem:equiv-smooth-map-definition}.
+\end{proof}
+
+\begin{proposition}[Smoothness from projections]
+\label{prop:smoothness-from-components}
+Let \(M\) be an \(n\)-manifold. A map \(f: M \to \R^d\) is a smooth map if and
+only if its projections \(f_j: M \to \R\), for all \(1 \leq j \leq d\), are
+smooth maps.
+\end{proposition}
+
+\begin{proof}
+From definition, \(f\) is a smooth map if and only if, for each chart \(\phi: U
+\to V\) of \(M\), the map \(f \phi^{-1}: V \to \R^d\) is of class
+\(C^{\infty}\). Moreover, from the definition of continuity on real spaces, we
+find that \(f \phi^{-1}\) is \(C^{\infty}\) if and only if \(f_j \phi^{-1}\) is
+\(C^{\infty}\) for all \(1 \leq j \leq d\).
+\end{proof}
+
+\begin{proposition}
+\label{prop:smooth-morphisms-from-real-maps}
+Let \(f: N \to M\) be a continuous map between two manifolds of dimensions \(n\)
+and \(m\), respectively. The following properties are equivalent:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The map \(f: N \to M\) is a \(C^{\infty}\)-morphism.
+
+\item The manifold \(M\) is endowed with an atlas such that, for all charts
+  \((V, \psi)\) of \(M\), the map \(\psi f: f^{-1}(V) \to \R^m\) is a
+  \(C^{\infty}\)-morphism.
+
+\item For every chart \((V, \psi)\) of \(M\), the map \(\psi f: f^{-1}(V) \to
+  \R^m\) is a \(C^{\infty}\)-morphism.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(b) \(\implies\) (a): Together with the atlas of \(M\), the continuous map \(f\)
+induces a structure on \(N\) as follows. For each chart \((V, \psi)\) of \(M\),
+construct a collection \(\mathcal{F}_V\): for every chart \((U, \phi)\) in the
+atlas of \(N\), define a chart \((U \cap f^{-1}(V), \phi|_{U \cap f^{-1}(V)})\)
+--- define \(\mathcal{F}_V\) to be the collection of all such chart. Then
+\(\mathcal{F}_V\) is a smooth atlas for \(f^{-1}(V) \subseteq N\). From (b) we
+know that \(\psi f: f^{-1}(V) \to \R^m\) is of class \(C^{\infty}\), then by
+\cref{cor:equiv-smooth-vec-val-map} we have that the map
+\(\psi f \phi^{-1}: \phi(U \cap F^{-1}(V)) \to \R^m\) is of class
+\(C^{\infty}\). Now by \cref{prop:equiv-conditions-for-smooth} we obtain that
+\(f\) is a smooth morphism.
+
+(a) \(\implies\) (c): Coordinate charts are \(C^{\infty}\)-morphisms and \(f\)
+is a \(C^{\infty}\)-morphism by hypothesis. Therefore by
+\cref{prop:composition-smooth-maps-is-smooth} we find that \(\psi f\) is a
+\(C^{\infty}\)-morphism. The implication (c) \(\implies\) (b) is immediate.
+\end{proof}
+
+\begin{corollary}
+\label{prop:smoothness-from-components-manifolds}
+Let \(f: N \to M\) be a continuous map between manifolds of dimensions \(n\) and
+\(m\), respectively. The following properties are equivalent:
+\begin{enumerate}\setlength\itemsep{0em}
+\item The map \(f: N \to M\) is a \(C^{\infty}\)-morphism.
+
+\item The manifold \(M\) is endowed with an atlas such that, for all charts
+  \((V, \psi)\), the projections \(\psi_j f: f^{-1}(V) \to \R\) of \(f\)
+  relative to the chart, for \(1 \leq j \leq m\), are all
+  \(C^{\infty}\)-morphisms.
+
+\item For every chart \((V, \psi)\) of \(M\), the components of \(f\) with
+  respect to the chart are smooth maps, that is, \(\psi_j f: f^{-1}(V) \to \R\)
+  are \(C^{\infty}\)-morphisms.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+The proposition is consequence of \cref{prop:smoothness-from-components}
+together with \cref{prop:smooth-morphisms-from-real-maps}.
+\end{proof}
+
+\subsection{The Category of Smooth Manifolds}
+
+\begin{definition}[Category of \(C^{\infty}\)-manifolds]
+\label{def:smooth-manifolds-category}
+We define \(\Man\) to be the category of smooth manifolds and smooth morphisms
+between them, these will be interchangeably called \(C^{\infty}\)-morphisms.
+\end{definition}
+
+\begin{corollary}
+\label{cor:isomorphism-man}
+An isomorphism in the category \(\Man\) is a bijective \(C^{\infty}\)-morphism
+of manifolds with a smooth inverse. Some call these isomorphisms by
+``diffeomorphisms'', we shall call them \(C^{\infty}\)-isomorphisms or smooth
+isomorphisms.
+\end{corollary}
 
 \begin{lemma}
 \label{lem:equiv-smooth-map-definition}
@@ -351,20 +509,53 @@ F_M(f^{-1}(U')) = \{w f \in C^{\infty}(f^{-1}(U')) \colon w \in C^{\infty}(U')\}
 therefore \(h f \in F_M(f^{-1}(U'))\) as wanted.
 \end{proof}
 
-\begin{definition}[Category of \(C^{\infty}\)-manifolds]
-\label{def:smooth-manifolds-category}
-We define \(\Man\) to be the category of smooth manifolds and smooth morphisms
-between them.
+\begin{definition}[Lie group]
+\label{def:lie-group}
+A \emph{Lie group} is a \emph{smooth manifold} \(G\) together with a
+multiplicative structure \(G \times G \to G\) and an inverse map \(G \to G\),
+both of which are \emph{\(C^{\infty}\)-morphisms}, making \(G\) into a
+\emph{group}.
 \end{definition}
 
-\begin{corollary}
-\label{cor:isomorphism-man}
-An isomorphism in the category \(\Man\) is a smooth morphism of manifolds with a
-smooth inverse. Some call these isomorphisms by ``diffeomorphisms'', we shall
-call them \(C^{\infty}\)-isomorphisms.
-\end{corollary}
+\subsection{\texorpdfstring{\(C^{\infty}\)}{smooth}-Isomorphisms}
 
-\subsubsection{Local Coordinates}
+\begin{proposition}[Coordinate maps are \(C^{\infty}\)-isomorphisms]
+\label{prop:coord-maps-Cinfty-iso}
+Let \((U, \phi: U \to V)\) be a chart on an \(n\)-manifold \(M\), then \(\phi\)
+is a \(C^\infty\)-isomorphism.
+\end{proposition}
+
+\begin{proof}
+By the definition, the coordinate map \(\phi\) is a topological isomorphism, we
+thus show that both \(\phi\) and \(\phi^{-1}\) are smooth maps. Lets endow \(U\)
+with the natural structure of a manifold via the smooth atlas \(\{(U, \phi)\}\),
+now for \(V\) we canonically endow it with the smooth atlas
+\(\{(V, \Id_{V})\}\). For the smoothness of \(\phi\), it suffices to observe
+that \(\Id_V \phi \phi^{-1} = \Id_V\) is certainly \(C^{\infty}\), therefore by
+\cref{prop:equiv-conditions-for-smooth} we find that \(\phi\) is
+smooth. Analogously, for the smoothness of \(\phi^{-1}: V \to U\), we know that
+\(\phi \phi^{-1} \Id_V = \Id_V\), thus \(\phi^{-1}\) is smooth for the same
+reason.
+\end{proof}
+
+\begin{proposition}[\(C^{\infty}\)-isomorphisms are charts]
+\label{prop:smooth-iso-is-charts}
+Let \(M\) be an \(n\)-manifold and \(U \subseteq M\) be any subset. If
+\(f: U \to V\), where \(V \subseteq \R^n\), is a \(C^{\infty}\)-isomorphism, the
+induced pair \((U, f)\) is a \emph{chart} in the smooth structure of \(M\).
+\end{proposition}
+
+\begin{proof}
+Given any chart \((E, \phi)\) on \(M\) with non-empty \(E \cap U\), we have that
+\(f \phi^{-1}\) and \(\phi f\) are compositions of smooth maps (by
+\cref{prop:coord-maps-Cinfty-iso} and
+\cref{prop:composition-smooth-maps-is-smooth}), therefore both are smooth
+maps. This shows that \((U, f)\) is compatible with any intersecting chart of
+\(M\), therefore by the maximality of the smooth atlas of \(M\) we find that
+\((U, f)\) is a chart of \(M\).
+\end{proof}
+
+\subsection{Local Coordinates}
 
 Let \(M\) be an smooth \(n\)-manifold and \(f: M \to \R\) be any real valued
 map. If \(x: U \to V\) is a chart of \(M\), we consider the induced map
@@ -382,7 +573,73 @@ intuitive view of what the following definition states.
 \label{def:local-coordinates}
 If \(X\) is an \(\R^n\) modeled manifold, and \(\phi: U \to \R^n\) is a chart,
 where \(U \subseteq X\) is open, then, we say that the collection
-\(\{\phi_j\}_{j=1}^n\) are \emph{local coordinates} for \(X\) on \(U\).
+\((\phi_j)_{j=1}^n\) are \emph{local coordinates} for \(X\) on \(U\).
+\end{definition}
+
+\subsection{Partial Derivatives}
+
+\begin{definition}[Partial derivative]
+\label{def:partial-derivative-manifold}
+Let \(M\) be an \(n\)-manifold, and \((U, \phi)\) be a chart of \(M\). Given a
+\(C^{\infty}\)-morphism \(f: M \to \R\) we define, for all \(p \in U\), the
+\emph{partial derivative} of \(f\) with respect to \(\phi_j\) at \(p\) to be
+\[
+\frac{\partial}{\partial \phi_j} \bigg|_p f
+\coloneq \frac{\partial f}{\partial \phi_j}(p)
+\coloneq \frac{\partial (f \phi^{-1})}{\partial \pi_j}(\phi(p))
+\coloneq \frac{\partial}{\partial \pi_{j}} \bigg|_{\phi(p)} (f \phi^{-1}).
+\]
+where \(\phi_j\) is the \(j\)-th projection of \(\phi\), and
+\(\pi_j: \R^n \epi \R\) is the \(j\)-th canonical projection, for
+\(1 \leq j \leq n\). Since \(\phi\) is a bijective map, we have that
+\[
+\frac{\partial f}{\partial \phi_j} \circ \phi^{-1}
+= \frac{\partial (f \phi^{-1})}{\partial \pi_j}:
+\phi(U) \longrightarrow \R
+\]
+is a map of class \(C^{\infty}\) on \(\phi(U)\). Moreover, since its pullback is
+\(C^{\infty}\), then \(\partial f/\partial \phi_j\) is a \(C^{\infty}\)-morphism on \(U\).
+\end{definition}
+
+\begin{proposition}
+\label{prop:partial-derivative-distinct-projections}
+Let \(M\) be an \(n\)-manifold and \((U, \phi)\) be a chart of \(M\). Then we
+have that for all \(1 \leq i, j \leq n\), the projections of \(\phi\) satisfy
+\[
+\frac{\partial \phi_i}{\partial \phi_j} = \delta_{i j}.
+\]
+\end{proposition}
+
+\begin{proof}
+From the definiton, one has
+\[
+\frac{\partial \phi_{i}}{\partial \phi_j} (p)
+= \frac{\partial (\phi_{i} \phi^{-1})}{\partial \pi_j} (\phi(p))
+= \frac{\partial ((\pi_i \phi) \circ \phi^{-1})}{\partial \pi_j} (\phi(p))
+= \frac{\partial \pi_i}{\partial \pi_j} (\phi(p))
+= \delta_{i j}
+\]
+for any \(p \in U\).
+\end{proof}
+
+\begin{definition}[Jacobian]
+\label{def:}
+Let \(f: N \to M\) be a \(C^{\infty}\)-morphism --- assume \(n\) and \(m\) are
+the respective dimensions of \(N\) and \(M\) --- and consider a pair of charts
+\((U, \phi)\) of \(N\) and \((V, \psi)\) of \(M\), for which
+\(f(U) \subseteq V\). We define the \emph{\(i\)-th projection \(f\) in the chart
+  \((V, \psi)\)} to be the map
+\[
+f_i \coloneq \psi_i f: U \longrightarrow \R,
+\]
+for all \(1 \leq i \leq m\).  We also define the \emph{Jacobian matrix of \(f\)
+  in the chart \((V, \psi)\)} to be the \(m \times n\) matrix whose
+\((i, j)\)-th component is \(\partial f_i/\partial \phi_j\) --- for
+\(1 \leq i \leq m\) and \(1 \leq j \leq n\).
+
+If it is the case that \(N\) and \(M\) have the same dimension, we define the
+\emph{Jacobian of \(f\) in the chart \((V, \psi)\)} to be the determinant of its
+respective Jacobian matrix.
 \end{definition}
 
 \section{Structures}
@@ -464,42 +721,82 @@ We define the south stereographic projection \(\phi_s: S^n \setminus \{s\} \to
 \]
 \end{example}
 
-\begin{proposition}
-% \label{prop:}
-Let \(M\) be an \(n\)-manifold and \(\mathcal{U} \coloneq (U_j)_{j \in J}\) be
-an open covering of \(M\). Then there exists a collection of charts \((\phi_k:
-V_k \to B_k)_{k \in \N}\) such that the following properties hold:
-\begin{enumerate}\setlength\itemsep{0em}
-\item For all \(k \in \N\), the set \(V_k\) is contained in some member of
-  \(\mathcal{U}\).
-\item For all \(k \in \N\), we have \(B_k = \{x \in \R^n \colon \| x \| < 3\}\)
-  --- the open \(n\)-ball of radius \(3\).
-\item The collection of open sets \((V_k)_{k \in \N}\) is a locally finite
-  covering of \(M\).
-\end{enumerate}
-\end{proposition}
+\section{Tangent Space}
 
-\todo[inline]{Continue after some point-set topology}
+\subsection{Algebra of Germs}
 
-\section{Oriented Manifolds}
+Define an equivalence relation \(\sim_p\) on the set of real-valued
+\(C^{\infty}\)-morphisms in \(M\), where \(p \in M\) is any point, as follows:
+given neighbourhoods \(U\) and \(V\) of \(p\), and \(C^{\infty}\)-morphisms
+\(f: U \to \R\) and \(g: V \to \R\), we say that \(f \sim_p g\) if and only if
+there exists a neighbourhood \(Q \subseteq U \cap V\) of \(p\) such that
+\(f|_Q = g|_Q\).
 
-\begin{definition}[Oriented manifold]
-\label{def:oriented-manifolds}
-A manifold \(M\) with atlas \(\mathcal{A}\) such that, for every pair of charts
-\(\phi, \psi \in \mathcal{A}\), the Jacobian of the transition map
-\(\phi \psi^{-1}\) has \emph{positive determinant} for all points of the domain,
-then \(M\) is called a \emph{oriented manifold}. A maximal atlas on \(M\) with
-such a property is said to be an \emph{orientation} of the manifold, and \(M\)
-is called \emph{orientable}.
+\begin{definition}[Algebra of germs in a manifold]
+\label{def:algebra-of-germs-manifold}
+Given a manifold \(M\) and a point \(p \in M\), we define the \emph{germs of
+  real-valued \(C^{\infty}\)-morphisms at \(p\) in \(M\)}, to be the natural
+\(\R\)-algebra on the following quotient:
+\[
+C_p^{\infty}(M) \coloneq
+\{f \in \Hom_{\Man}(U, \R) \colon p \in U \subseteq M\}/{\sim_p}.
+\]
+
+A \emph{point-derivation} of \(C_p^{\infty}(M)\) is an \emph{\(\R\)-linear map}
+\(\diff: C_p^{\infty}(M) \to \R\) such that
+\[
+\diff(f g) = (\diff f) g(p) + f(p) (\diff g).
+\]
 \end{definition}
 
-\begin{proposition}[Two orientations]
-\label{prop:two-orientations-man}
-Let \(M\) be a connected, orientable, smooth manifold. Then \(M\) admits exactly
-two orientations.
-\end{proposition}
+\begin{definition}[Tangent vector \& tangent space]
+\label{def:tangent-vector-at-point-manifold}
+Let \(M\) be a manifold and \(p \in M\) be any point. A \emph{tangent vector} at
+\(p\) is a \emph{point-derivation} on \(C_p^{\infty}(M)\). The collection of
+tangent vectors at \(p\), denoted by \(T_p M\), together with a natural action
+\(\R \times T_p M \to T_p M\), forms the \(\R\)-vector space called
+\emph{tangent space of \(M\) at \(p\)}.
+\end{definition}
 
-\todo[inline]{Prove}
+\subsection{Differential of a Smooth Morphism}
+
+\begin{definition}[Differential at a point]
+\label{def:}
+Let \(f: N \to M\) be a \(C^{\infty}\)-morphism. At every point \(p \in N\), the
+morphism \(f\) induces a pushforward
+\[
+f_{*}: T_p N \longrightarrow T_{f(p)} M,
+\]
+called \emph{differential of \(f\) at \(p\)}, which is an \(\R\)-linear map
+between tangent spaces. For any tangent vector \(X_p: C_p^{\infty}(N) \to \R\) of
+\(T_p N\), we define the respective tangent vector
+\(f_{*}(X_p): C_{f(p)}^{\infty}(M) \to \R\) of \(T_{f(p)} M\) as the
+\(\R\)-linear map given by
+\[
+(f_{*}(X_p))(g) \coloneq X_p(g f) \in \R,
+\]
+for all \(g \in C_{f(p)}^{\infty}(M)\).
+\end{definition}
+
+% \section{Oriented Manifolds}
+
+% \begin{definition}[Oriented manifold]
+% \label{def:oriented-manifolds}
+% A manifold \(M\) with atlas \(\mathcal{A}\) such that, for every pair of charts
+% \(\phi, \psi \in \mathcal{A}\), the Jacobian of the transition map
+% \(\phi \psi^{-1}\) has \emph{positive determinant} for all points of the domain,
+% then \(M\) is called a \emph{oriented manifold}. A maximal atlas on \(M\) with
+% such a property is said to be an \emph{orientation} of the manifold, and \(M\)
+% is called \emph{orientable}.
+% \end{definition}
+
+% \begin{proposition}[Two orientations]
+% \label{prop:two-orientations-man}
+% Let \(M\) be a connected, orientable, smooth manifold. Then \(M\) admits exactly
+% two orientations.
+% \end{proposition}
+
+% \todo[inline]{Prove}
 
 %%% Local Variables:
 %%% mode: latex

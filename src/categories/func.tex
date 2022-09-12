@@ -1570,33 +1570,6 @@ bijection and hence \(\theta\) is a natural isomorphism
 \(F \iso \yo_{\cat C} x_0\).
 \end{proof}
 
-\begin{lemma}
-\label{lem:category-of-elements-iso-commute}
-Let \(\cat C\) be a category and consider a presheaf
-\(F: \cat C^{\op} \to \Set\). There exists a natural equivalence of \emph{big}
-categories
-\[
-[\El_F(\cat C)^{\op}, \Set] \iso \El_F([\cat C^{\op}, \Set])
-\]
-such that the following diagram quasi-commutes
-\[
-\begin{tikzcd}
-\El_F(\cat C) \ar[rr, "??"] \ar[rrdd, bend right, "\yo_{\El_F(\cat C)}"']
-& &{\El_F([\cat C^{\op}, \Set])} \ar[dd, "\dis"] \\ \\
-& &{[\El_F(\cat C)^{\op}, \Set]}
-\end{tikzcd}
-\]
-\end{lemma}
-
-% \begin{proof}
-% We construct a functor
-% \(\lambda: \El_F([\cat C^{\op}, \Set]) \to [\El_F(\cat C)^{\op}, \Set]\): fix
-% any presheaf \(G: \cat C^{\op} \to \Set\) and a natural transformation
-% \(\tau: G \nat F\), for every
-% \end{proof}
-
-\todo[inline]{I don't really understand this statement}
-
 \begin{definition}[Two sided represented functor]
 \label{def:two-sided-represented-functor}
 Let \(\cat C\) be a \(\mathcal U\)-category, then there is a functor

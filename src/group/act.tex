@@ -1,0 +1,233 @@
+\section{Group Actions on Sets}
+
+\begin{definition}[Group action]
+\label{def:group-action}
+Let \(G\) be a group and \(A \in \cat C\) be an object in some category
+\(\cat C\). An \emph{action} of \(G\) on the object \(A\) is a \emph{group
+  morphism}
+\[
+G \longrightarrow \Aut_{\cat C}(A),
+\]
+that is, the elements of \(G\), which are automorphisms in the category
+\(\cat{B}G\), define automorphisms in \(A\) --- this shows that group actions
+are functors \(\cat{B}G \to \cat C\) (see \cref{exp:grp-action} for more). Left
+actions are covariant functors, while right actions are contravariant.
+
+Naturally the action is said to be \emph{faithful} if the functor is faithful,
+that is, if \(G \mono \Aut_{\cat C}(A)\) is injective. The action is said to be
+\emph{free} if the identity \(e_G\) is the only element fixing \emph{any} of the
+elements of \(A\).
+\end{definition}
+
+\begin{definition}[Conjugation]
+\label{def:group-conjugation-action}
+Let \(G\) be a group. We define a \emph{conjugation} to be a group action of
+\(G\) on itself, \(G \times G \to G\), mapping
+\[
+(g, h) \longmapsto g h g^{-1}.
+\]
+\end{definition}
+
+\begin{theorem}[Cayley]
+\label{thm:cayley-faithful}
+Every group acts faithfully on \emph{some} set. That is, there exists a set
+\(A\) and an injective action \(G \mono \Aut_{\Set}(A) = S_A\) --- where \(S_A\)
+is the symmetry group of \(A\) --- making \(G\) a subgroup of \(S_A\).
+\end{theorem}
+
+\begin{proof}
+Simply consider the action \(G \to \Aut_{\Grp}(G)\) mapping \(g \mapsto f_g\),
+where \(f_g(x) = g x\) is the left-multiplication by \(g\). This action is
+certainly faithful, making \(G\) isomorphic to a subgroup of \(\Aut_{\Grp}(G)\).
+\end{proof}
+
+\begin{definition}[Opposite group]
+\label{def:opposite-group}
+Given a group \(G\), we define its \emph{opposite group} \(G^{\op}\) to be
+composed of the elements of \(G\), and endowed with a contravariant action \(G
+\times G \to G\) mapping \((g, h) \mapsto g \cdot h \coloneq h g\).
+\end{definition}
+
+\begin{corollary}
+\label{cor:Gop-iso-G-id-iff-commutative}
+The following are properties relating a group \(G\) with its opposite group:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The set-function \(\phi: G^{\op} \to G\) mapping \(g \mapsto g\) is an
+  isomorphism of groups \(G^{\op} \iso G\) if and only if \(G\) is commmutative.
+
+\item There exists a natural isomorphism of groups \(G \iso G^{\op}\) even when
+  \(G\) is non-commutative.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+We first prove item (a). If the said map is an isomorphism, then for all
+\(g, h \in G\) we have
+\[
+g h = \phi(g h) = \phi(h \cdot g) = \phi(h) \phi(g) = h g,
+\]
+thus \(G\) is commutative. Conversely, if we assume that \(G\) is commutative
+then the map, besides being bijective, is also a group morphism, since
+\[
+\phi(g \cdot h) = \phi(h g) = h g = g h = \phi(g) \phi(h).
+\]
+
+For item (b), define a map \(\psi: G \to G^{\op}\) to be given by
+\(g \mapsto g^{-1}\), which is bijective since inverses are unique. The
+set-function \(\psi\) is also a group morphism since
+\[
+\psi(g h) = (g h)^{-1} = h^{-1} g^{-1}
+= g^{-1} \cdot h^{-1} = \psi(g) \cdot \psi(h).
+\]
+Therefore \(G \iso G^{\op}\) via \(\psi\).
+\end{proof}
+
+\begin{proposition}[Left to right \& back]
+\label{prop:left-and-right-actions}
+Let \(G\) be a group and \(A\) be a set. Given any \emph{left-action}
+\(\sigma: G \to \Aut_{\cat C}(A)\), we can turn \(\sigma\) into a unique
+corresponding \emph{right-action} \(\sigma^{\op}: G \to \Aut_{\cat C}(A)\) given
+by \(\sigma^{\op}(g)(a) = \sigma(g^{-1})(a)\) for any \(g \in G\) and
+\(a \in A\). The conversion of a right-action into a left-action is also unique.
+\end{proposition}
+
+\begin{proof}
+Let \(g, h \in G\) and \(a \in A\) be any elements. The map \(\sigma^{\op}\) is
+indeed a right action:
+\[
+\sigma^{\op}(g h)(a)
+= \sigma((gh)^{-1})(a)
+= \sigma(h^{-1} g^{-1})(a)
+= \sigma(h^{-1})(\sigma(g^{-1})(a))
+= \sigma^{\op}(h)(\sigma^{\op}(g)(a)).
+\]
+The uniqueness comes from the fact that inverses are unique.
+\end{proof}
+
+\begin{definition}[Transitive action]
+\label{def:transitive-action}
+A group \(G\) is said to act \emph{transitively} on a set \(A\) if for all pairs
+of elements \(a, b \in A\), there exists a group element \(g\) such that
+\(g a = b\)
+\end{definition}
+
+\begin{definition}[Orbit \& Stabilizer]
+\label{def:orbit-and-stabilizer}
+Given a group action \(G \to \Aut_{\Set}(A)\) on a set \(A\), the \emph{orbit}
+of an element \(a \in A\) under the action of \(G\) is defined to be the
+set
+\[
+\Orb_G(a) \coloneq \{g a \colon g \in G\} \subseteq A.
+\]
+The \emph{stabilizer} of \(a\) under the action of \(G\) is the subgroup
+\[
+\Stab_G(a) \coloneq \{g \in G \colon g a = a\} \subseteq G.
+\]
+\end{definition}
+
+Let \(\sigma\) be any action of \(G\) on \(A\). Stabilizers indeed define a
+subgroup of \(G\), notice that if \(g, h \in \Stab_G(a)\), then
+\(\sigma(g h)(a) = \sigma(g)(\sigma(h)(a)) = \sigma(g)(a) = a\) thus
+\(g h \in \Stab_G(a)\). Moreover, since \(\sigma\) is a group morphism, we have
+\(\sigma(g^{-1})(a) = \sigma(g)^{-1}(a) = a\) thus \(g^{-1} \in
+\Stab_G(a)\).
+
+\begin{definition}[\(G\)-\(\Set\) category]
+\label{def:G-set-category}
+Given a group \(G\), we define a category \(G\)-\(\Set\) whose objects are pairs
+\((\sigma, A)\) --- where \(A\) is a set, and \(\sigma: G \to \Aut_{\Set}(A)\)
+is a group action on \(A\) --- and morphisms \(\phi: (\sigma, A) \to (\rho, B)\)
+are set-functions \(\phi: A \to B\) such that the following diagram commutes
+\[
+\begin{tikzcd}
+G \times A \ar[d, "\sigma"'] \ar[rr, "\Id_G \times \phi"]
+&&G \times B \ar[d, "\rho"] \\
+A \ar[rr, "\phi"'] &&B
+\end{tikzcd}
+\]
+That is, \(\phi(\sigma(g)(a)) = \rho(g)(\phi(a))\) --- or put even more simply
+as \(\phi(g a) = g \phi(a)\) when there is no chance of confusion. These
+functions are called \emph{\(G\)-equivariant}.
+\end{definition}
+
+\begin{proposition}
+\label{prop:transitive-G-set-iso-left-mul-G/Stab}
+Let \((\sigma, A) \in G\text{-}\Set\), where \(A\) is non-empty and \(\sigma\)
+is a \emph{transitive} left-action on \(A\). Then there exists an
+\emph{isomorphism}
+\[
+(\sigma, A) \iso (\ell, G/\Stab_{\ell}(a)),
+\]
+in \(G\text{-}\Set\), where \(\ell\) is the left-multiplication of \(G\)
+on \(G/\Stab_{\ell}(a)\), and \(a \in A\) is \emph{any} element.
+\end{proposition}
+
+\begin{proof}
+For the sake of brevity, define \(S_a \coloneq \Stab_{\ell}(a)\). Let
+\(a \in A\) be any element, and define a \emph{set}-function
+\(\phi: G/S_a \to A\) given by \(\phi(g S_a) \coloneq g a\). This function is
+well defined since, for any \(g S_a = g' S_a\) we have \(g'^{-1} g \in S_a\)
+thus \((g'^{-1} g) a = a\), which implies in \(g a = g' a\). To show that
+\(\phi\) is bijective, we construct its inverse: define \(\psi: A \to G/S_a\) by
+mapping \(g a \mapsto g S_a\), which is well defined because if \(g a = g' a\)
+then \(g'^{-1} g a = a\) thus \(g'^{-1} g \in S_a\) so that \(g S_a = g' S_a\)
+by definition. One sees easely that \(\phi\) and \(\psi\) are inverses of each
+other. Finally, the map \(\phi\) is also equivariant since
+\[
+\phi(g(g' S_a)) = \phi((g g') S_a) = (g g') a = g(g'a) = g \phi(g' S_a).
+\]
+\end{proof}
+
+\begin{corollary}
+\label{cor:orbit-divides-order-of-group}
+Let \(G\) be a \emph{finite group} and \(A\) be a set. For \emph{any} action of
+\(G\) on a group \(A\), the orbit \(\Orb_G(a)\) of \emph{any} element
+\(a \in A\) is a \emph{finite subset of \(A\)}. Moreover the we have that
+\(|\Orb_G(a)|\) \emph{divides} \(|G|\).
+\end{corollary}
+
+\begin{proof}
+Given a \(G\)-set \((\sigma, A)\) for any action \(\sigma\), if \(a \in A\) is
+any element, then the restriction
+\[
+\overline{\sigma}: G \longrightarrow \Aut_{\Set}(\Orb_G(a)),
+\]
+is a transitive action by the definition of the orbit --- where
+\(\overline{\sigma}(g)(g' a) \coloneq \sigma(g)(g a)\) for all \(g \in G\) and
+\(g' a \in \Orb_G(a)\).
+
+Therefore by \cref{prop:transitive-G-set-iso-left-mul-G/Stab} we have
+\((\overline{\sigma}, \Orb_G(a)) \iso (\ell, G/\Stab_G(g a))\) in
+\(G\)-\(\Set\), for any \(g a \in \Orb_G(a)\) --- which means the existence of a
+\(G\)-equivariant bijection between the sets \(\Orb_G(a)\) and
+\(G/\Stab_G(g a)\). From \cref{prop:grp-index-subgroup} we have
+\(|G/\Stab_G(g a)| = |G|/|\Stab_G(g a)|\) and therefore
+\[
+|\Orb_G(a)| \cdot |\Stab_G(g a)| = |G|.
+\]
+\end{proof}
+
+\begin{theorem}
+\label{thm:stabilizers-conjugation}
+Let \(G\) be a group acting on a set \(A\). Consider elements \(a \in A\),
+\(g \in G\), and define \(b \coloneq g a\). It follows that
+\[
+\Stab_G(b) = g \Stab_G(a) g^{-1}.
+\]
+\end{theorem}
+
+\begin{proof}
+Let \(h \in \Stab_G(a)\) be any element, then
+\[
+(g h g^{-1}) b = (g h) (g^{-1} b) = (g h) a = g (h a) = g a = b,
+\]
+therefore \(g h g^{-1} \in \Stab_G(a)\). Now if \(\ell \in \Stab_G(b)\), we have
+\(\ell b = b\) but since \(b = g a\) then \(\ell (g a) = g a\) thus multiplying
+by \(g^{-1}\) in both sides we obtain \((g^{-1} \ell g) a = a\). Therefore,
+\(\Stab_G(b) = g \Stab_G(a) g^{-1}\).
+\end{proof}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../deep-dive"
+%%% End:

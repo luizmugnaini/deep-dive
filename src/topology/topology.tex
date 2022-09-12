@@ -516,20 +516,24 @@ that \(I_0\) is finite and hence \cref{prop: finite union of closures} hold).
 \end{proof}
 
 \begin{proposition}
-If \(\{A_i\}_{i \in I}\) is a locally finite (resp. discrete) family, then the
-family \(\{\Cl A_i\}_{i \in I}\) is locally finite (resp. discrete).
+If \(\{A_i\}_{i \in I}\) is a locally finite (resp.\ discrete) family, then the
+family \(\{\Cl A_i\}_{i \in I}\) is locally finite (resp.\ discrete). Conversely,
+if \(\{\Cl A_i\}_{i \in I}\) is locally finite, then \(\{A_i\}_{i \in I}\) is
+locally finite.
 \end{proposition}
 
 \begin{proof}
-Let the locally finite (resp. discrete) family \(\{A_i\}_{i \in I}\). Given
-any element \(x \in X\) and a neighbourhood \(U\) of \(x\) such that the
-indexing set \(I_0 \coloneq \{i \in I \colon U \cap A_i \neq \emptyset\}\) is finite
-(resp. is either empty or a singleton). Notice that since \(U \cap A_i
-\subseteq U \cap \Cl A_i\), we find that for all \(i \in I_0, U \cap
-\Cl A_i \neq \emptyset\), so that \(I_0 = I_0' \coloneq \{i \in I \colon U \cap
-\Cl A_i \neq \emptyset\}\). Since \(U\) is an open set, from \cref{cor:
-disjoint closure persistence} we find that \(U \cap \Cl A_i = U \cap
-A_i = \emptyset\) for all \(i \in I \setminus I_0\). Which finishes the proof.
+Let the locally finite (resp.\ discrete) family \(\{A_i\}_{i \in I}\). Given any
+element \(x \in X\) and a neighbourhood \(U\) of \(x\) such that the indexing
+set \(I_0 \coloneq \{i \in I \colon U \cap A_i \neq \emptyset\}\) is finite
+(resp.\ is either empty or a singleton). Notice that since
+\(U \cap A_i \subseteq U \cap \Cl A_i\), we find that for all
+\(i \in I_0, U \cap \Cl A_i \neq \emptyset\), so that
+\(I_0 = I_0' \coloneq \{i \in I \colon U \cap \Cl A_i \neq \emptyset\}\). Since
+\(U\) is an open set, from \cref{cor: disjoint closure persistence} we find that
+\(U \cap \Cl A_i = U \cap A_i = \emptyset\) for all \(i \in I \setminus
+I_0\). For the converse, if the collection of closures is locally finite, then
+clearly \(\{A_{i}\}_{i \in I}\) is locally finite.
 \end{proof}
 
 \subsection{Derived and Dense Sets}

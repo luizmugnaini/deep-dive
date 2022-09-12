@@ -1,6 +1,6 @@
-\chapter{Simplicial Sets}
-
 \section{Simplex Category}
+
+\subsection{Construction}
 
 \begin{definition}[Skeletal simplex category]
 \label{def:skeletal-simplex-category}
@@ -74,7 +74,7 @@ identities correlate elementary faces and degeneracies:
 \item If \(i < j\) then
   \(\sigma_i^{n-1} \delta_j^n = \delta_{j-1}^{n-1} \sigma_i^{n-2}\).
 
-\item If \(i = j - 1\) or \(i = j\), then \(\sigma_i^n \delta_j^n = \Id_n\).
+\item If \(i = j - 1\) or \(i = j\), then \(\sigma_i^n \delta_j^{n+1} = \Id_n\).
 
 \item If \(i > j\) then
   \(\sigma_i^{n-1} \delta_j^n = \delta_j^{n-1} \sigma_{i-1}^{n-2}\).
@@ -127,8 +127,8 @@ of all cosimplicial objects of \(\cat C\) will be denoted by
 
 \subsection{Limits \& Colimits in \texorpdfstring{\(\Splx\)}{Delta}}
 
-\begin{lemma}
-\label{lem:}
+\begin{lemma}[Pushout of injections]
+\label{lem:splx-cat-pushout-injections}
 Let \(\iota: [k] \emb [n]\) and \(\tau: [k] \emb [m]\) be order-preserving
 inclusions where
 \[
@@ -194,6 +194,55 @@ is the colimit of a diagram consisting of \([0]\)'s and \([1]\)'s, since
 {[m]} \ar[r] &{[m + n]}
 \end{tikzcd}
 \]
+
+\begin{lemma}[Pushout of surjections]
+\label{lem:splx-cat-pushout-surjections}
+The following properties concern the pushout of pairs of surjective morphisms in
+\(\Splx\):
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Considering the cosimplicial identity (2) (see
+  \cref{cor:cosimplicial-identities}), where \(i < j\), there exists
+  \emph{sections} \(\alpha: [n] \to [n+1]\) of \(\sigma_i^n\), and
+  \(\beta: [n-1] \to [n]\) of \(\sigma_i^{n-1}\) such that the following diagram
+  commutes
+  \[
+  \begin{tikzcd}
+  {[n+1]} \ar[rr, "\sigma_j^n"] \ar[dd, bend left, "\sigma_i^n"]
+  &&{[n]} \ar[dd, bend right, "\sigma_i^{n-1}"'] \\ & &\\
+  {[n]} \ar[uu, bend left, "\alpha"] \ar[rr, "\sigma_{j-1}^{n-1}"']
+  &&{[n-1]} \ar[uu, bend right, "\beta"']
+  \end{tikzcd}
+  \]
+  that is, \(\sigma_j^n \alpha = \beta \sigma_{j-1}^{n-1}\) --- these sections
+  are said to be \emph{compatible} with the square. Therefore, the square is an
+  \emph{absolute pushout}.
+\item Let \(p: [n] \epi [k]\) and \(q: [n] \epi [\ell]\) be \emph{surjections}
+  in \(\Splx\). Then the \emph{pushout} of \(p\) and \(q\) exists and is
+  \emph{absolute}:
+  \[
+  \begin{tikzcd}
+  {[n]} \ar[r, two heads, "q"]
+  \ar[d, two heads, "p"']
+  \ar[rd, very near end, phantom, "\ulcorner"]
+  &{[\ell]} \ar[d] \\
+  {[k]} \ar[r] &{[m]}
+  \end{tikzcd}
+  \]
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+For the proof of item (a), proceed as follows. From the cosimplicial identity
+(3) we have \(\delta_i^{n+1} \sigma_i^n = \sigma_i^{n+1} \delta_{i+1}^{n+2}\),
+moreover, from (4) we obtain \(\sigma_i^{n+1} \delta_{i+1}^{n+2} = \Id_{n+1}\)
+--- thus \(\delta_i^{n+1}\) is a section of \(\sigma_i^n\). Analogously, we find
+that \(\delta_i^n\) is a section of \(\sigma_i^{n-1}\). For the
+compatibility condition, notice that since \(i < j\), then from (5) we know that
+\(\sigma_j^n \delta_i^{n+1} = \delta_i^n \sigma_{j-1}^{n-1}\). Therefore we may
+define \(\alpha \coloneq \delta_i^{n+1}\) and \(\beta \coloneq \delta_i^n\).
+
+\todo[inline]{Do absolutes}
+\end{proof}
 
 %%% Local Variables:
 %%% mode: latex

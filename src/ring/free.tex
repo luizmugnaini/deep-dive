@@ -1,0 +1,373 @@
+\section{Free Modules}
+
+\subsection{Construction}
+
+As always, if \(S\) is a set and \(M\) is an \(R\)-module, for some ring \(R\),
+we define \(M^{\oplus S}\) to be the collection of \emph{finitely supported
+  set-functions} \(S \to M\). We define on \(M^{\oplus S}\) an \(R\)-module
+structure as follows: for every \(\alpha \in M^{\oplus S}\) and \(r \in R\) we
+define
+\[
+(r \alpha)(s) \coloneq r (\alpha(s)).
+\]
+
+If we consider the module of \(R\) over itself, we can define a set-function
+\(\iota: S \to R^{\oplus S}\) by mapping \(s \mapsto \mathbf{s}\), where
+\[
+\mathbf{s}(x) \coloneq
+\begin{cases}
+  1, &\text{if } x = s, \\
+  0, &\text{if } x \neq s.
+\end{cases}
+\]
+
+For every set \(S\), we define a corresponding module module \(F_R S\) composed
+of of formal sums \(\sum_{s \in S} a_s s\) such that \(a_s \in R\) is non-zero
+only for finitely many \(s \in S\).
+
+\begin{proposition}
+\label{prop:free-module-structure-isomorphism}
+There exists a natural isomorphism of \(R\)-modules \(F_R S \iso R^{\oplus S}\).
+\end{proposition}
+
+\begin{proof}
+Let \(\Phi: F_R S \to R^{\oplus S}\) be a map given by
+\(\sum_{s \in S} a_s s \mapsto \sum_{s \in S} a_s \mathbf{s}\). Clearly, such
+map is injective and preserves both multiplicative and additive structures, thus
+\(\Phi\) is an \(R\)-module morphism. Moreover, if \(\alpha \in R^{\oplus S}\)
+is any function, since \(\alpha\) has finite support, the formal sum
+\(\sum_{s \in S} \alpha(s) s\) is a well defined element of \(F_R S\). Also,
+mapping this element under \(\Phi\) yields
+\(\sum_{s \in S} \alpha(s) \mathbf{s}\) and, for every \(x \in S\), we have
+\(\sum_{s \in S} \alpha(s) \mathbf{s}(x) = \alpha(s) \mathbf{x}(x) =
+\alpha(x)\). Therefore the map is surjective, hence an isomorphism.
+\end{proof}
+
+\begin{proof}
+Let \(A\) and \(B\) be two sets such that \(F_R A = F_R B\). In particular, it
+follows that for all \(a \in A\), there exists an element \(a = \sum_{j=1}^n r_j
+b_j \in F_R B\), moreover, each \(b_i \in B\) can be written as \(\sum_{j=1}^m
+r_j(b_i) a_j\)
+\end{proof}
+
+\begin{proposition}[Free module universal property]
+\label{prop:free-mod-univ-prop}
+Let \(R\) be a ring and \(S\) be any set. Given any \(R\)-module \(M\) and a
+\emph{set-function} \(f: S \to M\), there exists a \emph{unique \(R\)-module
+  morphism} \(\phi: F_R S \to M\) such that the following diagram commutes in
+\(\Set\):
+\[
+\begin{tikzcd}
+F_R S \ar[r, "\phi"] &M \\
+S \ar[u, "\iota"] \ar[ru, "f"', bend right] &
+\end{tikzcd}
+\]
+where \(\iota: S \to F_R S\) is the mapping \(s \mapsto s\).
+\end{proposition}
+
+\begin{proof}
+Let \(\phi: F_R S \to M\) be such that
+\(\phi(\sum_{s \in S} a_s s) \mapsto \sum_{s \in S} a_s f(s)\) for any
+\(\sum_{s \in S} a_s s \in F_R S\) so that clearly \(\phi \iota = f\) since
+\(\phi \iota(s) = \phi(s) = f(s)\). Moreover, for any two
+\(\sum_{s \in S} a_s s, \sum_{s \in S} b_s s \in F_R S\) we have
+\begin{align*}
+\phi\bigg( \sum_{s \in S} a_s s + \sum_{s \in S} b_s s \bigg)
+&= \phi\bigg( \sum_{s \in S} (a_s + b_s) s \bigg)
+= \sum_{s \in S} (a_s + b_s) f(s)
+= \sum_{s \in S} a_s f(s) + \sum_{s \in S} b_s f(s) \\
+&= \phi\bigg( \sum_{s \in S} a_s s \bigg)
++ \phi\bigg( \sum_{s \in S} b_s s \bigg).
+\end{align*}
+Furthermor, \(\phi\) certainly preserves the multiplicative structure by \(R\)
+elements. Therefore \(\phi\) is an \(R\)-module morphism. Since \(f\) completely
+determines the image of \(\phi\), it is the unique morphism such that
+\(\phi \iota = f\).
+\end{proof}
+
+\begin{corollary}
+\label{cor:set-to-module-injective}
+The mapping \(\iota: S \emb F_R S\) given by \(s \mapsto s\) is injective.
+\end{corollary}
+
+\begin{proof}
+For any pair \(s, s' \in S\) of distinct elements, consider the module
+\(M \coloneq F_R \{s, s'\}\) and a set-function \(f: S \to M\) with \(f(s) = s\)
+and \(f(s') = s'\). Then, by the universal of free modules, there exists a
+unique morphism of \(R\)-modules \(\phi: F_R S \to M\) such that \(\phi \iota =
+f\). If \(\iota(s)\) was equal to \(\iota(s')\), then \(f(s)\) \(f(s')\), which
+cannot be the case --- thus \(\iota(s) \neq \iota(s')\) for all \(s, s' \in S\)
+distinct, hence \(\iota\) is injective.
+\end{proof}
+
+\begin{proposition}
+\label{prop:ring-poly-is-free-commutative-R-algebra}
+Let \(A \coloneq \{1, \dots, n\}\) be a set of \(n\) elements and define a map
+\(\iota: A \to R[x_1, \dots, x_n]\) by \(j \mapsto x_j\). Then \(R[x_1, \dots,
+x_n]\) is a \emph{free commutative \(R\)-algebra on \(A\)}.
+\end{proposition}
+
+\begin{proof}
+We prove that \(R[x_1, \dots, x_n]\) satisfies the universal property for
+\(A\). Let \(\alpha: R \to M\) be any \(R\)-algebra and \(f: A \to M\) be a
+set-function. From \cref{prop:universal-property-polynomial-rings} we find a
+unique extension \(\overline{\alpha}: R[x_1, \dots, x_n] \to S\) such that
+\(\overline{\alpha}|_R = \alpha\) and \(\overline{\alpha}(x_j) \coloneq
+f(j)\). Therefore, \(\overline{\alpha}\) is the uniquely determined
+\(R\)-algebra morphism such that \(\overline{\alpha} \iota = f\).
+\end{proof}
+
+\subsection{Free Modules from Subsets}
+
+Given any \(R\)-module \(M\) and a subset \(S \subseteq M\) of its elements, one
+can define a free module \(R^{\oplus S}\) out of \(S\) and, from the universal
+property of free modules, there exist a unique \(R\)-map \(\phi: R^{\oplus S}
+\to M\) such that \(\phi \iota = i\), where \(\iota: S \emb R^{\oplus S}\) and
+\(i: S \emb M\) is the canonical inclusion.
+
+It is to be noted that the image \(\phi(R^{\oplus S}) \subseteq M\) is a
+submodule of \(M\) and its elements are of the form \(\sum_{s \in S} a_s s\) for
+\(a_s \in R\) non-zero only for finitely many \(s \in S\). We'll denote the
+submodule \emph{generated} by \(S\) on \(M\) by the notation
+\(\langle S \rangle\).
+
+
+\begin{definition}[Finitely generated module]
+\label{def:finitely-generated-module}
+An \(R\)-module \(M\) is said to be \emph{finitely generated} exactly when there
+exists a \emph{finite subset} \(S \subseteq M\) such that
+\(M = \langle S \rangle\). Equivalently, \(M\) is finitely generated if there
+exists a \emph{surjective} \(R\)-map \(R^{\oplus n} \epi M\) for a positive
+integer \(n \in \Z_{>0}\).
+\end{definition}
+
+\begin{remark}[Submodules]
+\label{rem:submodules-finitely-generated}
+The reader should be cautious when working with finitely generated modules, for
+instance, \emph{it is not true} that a finitely generated module has fininely
+generated modules.
+
+For instance, if we consider the ring of polynomials
+\(P \coloneq \Z[x_1, x_2, \dots]\) on infinitely many variables, then
+\(P = \langle 1 \rangle\) is finitely generated \emph{as a
+  \(P\)-module}. However, if we consider the ideal
+\(\ideal{a} \coloneq (x_1, x_2, \dots) \subseteq P\), one cannot take a finite
+collection of polynomials of \(P\) and generate all of \(\ideal{a}\). Indeed, if
+\(S \subseteq P\) is any finite collection, since polynomials have finitely many
+terms, there must exist, for all \(p(x_1, x_2, \dots) \in S\), a maximum index
+\(j \in \Z_{>0}\) such that \(x_j\) appears as a variable in \(p\) with a
+non-zero coefficient. Taking the maximum index over all polynomials of \(S\), we
+are still left with only a finite index, say \(n \in \Z_{>0}\), such that
+\(x_n\) is the highest-index variable appearing any of the polynomials of \(S\)
+--- hence \(x_{n+1}\) is not contemplated by any of the polynomials of \(S\),
+therefore this set cannot generate \(\ideal{a}\).
+\end{remark}
+
+\begin{definition}[Noetherian module]
+\label{def:noetherian-module}
+An \(R\)-module \(M\) is said to be a \emph{Noetherian module} if every
+submodule of \(M\) is \emph{finitely generated as an \(R\)-module}.
+\end{definition}
+
+We can state the definition for \emph{Noetherian rings} (see
+\cref{def:noetherian-ring}) equivalently as follows: a ring \(R\) is said to be
+a Noetherian if \(R\) is a Noetherian \(R\)-module.
+
+\begin{lemma}
+\label{lem:finitely-generated-from-submodule}
+Let \(M\) be an \(R\)-module, and \(N \subseteq M\) be a submodule. Then if both
+\(N\) and \(M/N\) are finitely generated, then \(M\) is finitely generated.
+\end{lemma}
+
+\begin{proof}
+Let \(N = \langle A \rangle\) and \(M/N = \langle B \rangle\) for finite sets
+\(A \subseteq N\) and \(B \subseteq M/N\). If \(m \in M\) is any element, then
+the class \(m + N \in M/N\) can be written as
+\(m + N = \sum_{b \in B} r_b b + N\) for \(r_b \in R\). Moreover, since
+\(m - \sum_{b \in B} r_b b \in N\), we can write
+\(m - \sum_{b \in B} r_b b = \sum_{a \in A} r_a a\) for \(r_a \in R\). Therefore
+\[
+m = \sum_{a \in A} r_a a + \sum_{b \in B} r_b b.
+\]
+This shows that \(A \cup B\) generates \(M\), thus \(M\) is finitely generated.
+\end{proof}
+
+\begin{proposition}
+\label{prop:noetherian-from-submodule}
+Let \(M\) be an \(R\)-module, and \(N \subseteq M\) be a submodule. Then \(M\)
+is Noetherian if and only if \emph{both} \(N\) and \(M/N\) are Noetherian.
+\end{proposition}
+
+\begin{proof}
+Analogous to the proof of \cref{prop:image-of-noetherian-is-noetherian}, if
+\(M\) is a Noetherian module, then the natural projection \(\pi: M \epi M/N\)
+shows that \(M/N\) is Noetherian. Since \(N\) is a submodule of \(M\), then
+\(N\) is finitely generated and every submodule \(P \subseteq N\) is also a
+submodule of \(M\), thus \(P\) must be finitely generated.
+
+For the converse, suppose both \(M/N\) and \(N\) are Noetherian. Fix any
+submodule \(P \subseteq M\). Consider the submodule \(P \cap N\) of both \(P\)
+and \(N\) --- from the hypothesis that \(N\) is Noetherian, \(P \cap N\) is
+finitely generated. By \cref{prop:second-iso-R-mod} we find that ther exists a
+canonical isomorphism \(P/(P \cap N) \iso (N + P)/N\). Since
+\((N + P)/N\) is a submodule of \(M/N\), by the hypothesis that \(M/N\) is
+Noetherian it follows that \(P/(P \cap N)\) is finitely generated. From
+\cref{lem:finitely-generated-from-submodule} we find that \(P\) itself is
+finitely generated, making \(M\) Noetherian.
+\end{proof}
+
+\begin{corollary}
+\label{cor:noetherian-ring-fg-module-is-noetherian}
+Given a \emph{Noetherian ring} \(R\), any \emph{finitely generated} \(R\)-module
+\(M\) is \emph{Noetherian}.
+\end{corollary}
+
+\begin{proof}
+Since \(M\) is finitely generated, there exists a surjective \(R\)-module
+morphism \(p: R^{\oplus n} \epi M\), for some \(n \in \Z_{> 0}\) --- therefore
+\(M \iso R^{\oplus n}/{\ker p}\). Now, if \(R^{\oplus n}\) is Noetherian, by
+\cref{prop:noetherian-from-submodule}, then \(\ker p\) and \(R^{\oplus n}/{\ker
+  p}\) are both Noetherian, and therefore \(M\) is Noetherian.
+
+We prove that \(R^{\oplus n}\) is Noetherian by induction on \(n\). For
+\(n = 1\) we have that \(R^{\oplus 1} \iso R\) is Noetherian. Assume that
+\(R^{\oplus(n - 1)}\) is Noetherian for some \(n > 1\). Notice that the
+inclusion \(\iota: R^{\oplus (n-1)} \emb R^{\oplus n}\) mapping
+\((r_1, \dots, r_{n-1}) \mapsto (r_1, \dots, r_{n-1}, 0)\) is an \(R\)-map and
+makes \(R^{\oplus (n-1)}\) into a submodule of \(R^{\oplus n}\). Considering the
+canonical projection of the \(n\)-th coordinate \(\pi_n: R^{\oplus n} \epi R\),
+we have \(\ker \pi_n = R^{\oplus (n - 1)}\). By the first isomorphism theorem we
+obtain an isomorphism
+\[
+R^{\oplus n}/R^{\oplus (n-1)} \iso R,
+\]
+therefore \(R^{\oplus n}/R^{\oplus (n-1)}\) is Noetherian. Applying
+\cref{prop:noetherian-from-submodule} we find that \(R^{\oplus n}\) is
+Noetherian --- thus \(M\) is Noetherian.
+\end{proof}
+
+\subsection{Finite Generation of \texorpdfstring{\(R\)}{R}-Algebras}
+
+\begin{definition}
+\label{def:finite-generation-algebras}
+Let \(A\) be an \(R\)-algebra. We define the following two distinct concepts
+regarding the finiteness of the generation of \(A\):
+\begin{itemize}[(a)]\setlength\itemsep{0em}
+\item The \(R\)-algebra \(A\) is said to be \emph{finite} if there exists a
+  \emph{surjective \(R\)-module morphism}
+  \[
+  \phi: R^{\oplus n} \epi A
+  \]
+  for some \(n \in \Z_{>0}\), so that
+  \[
+  A \iso R^{\oplus n}/{\ker \phi},
+  \]
+  where \(\ker \phi\) is a \emph{submodule} of \(R^{\oplus n}\). In other words,
+  \(A\) is finitely generated as a \emph{module over \(R\)}. This nomenclature
+  is unfortunatly misleading: even though we say that \(A\) is finite, \(A\) may
+  well be an \emph{infinite set}.
+
+\item The \(R\)-algebra \(A\) is said to be of \emph{finite type} if there
+  exists a \emph{surjective \(R\)-algebra morphism}
+  \[
+  \alpha: R[x_1, \dots, x_n] \epi A
+  \]
+  for some \(n \in \Z_{>0}\), so that
+  \[
+  A \iso R[x_1, \dots, x_n]/{\ker \alpha},
+  \]
+  where \(\ker \alpha\) is an \emph{ideal} of the ring \(R[x_1, \dots,
+  x_n]\). In other words, \(A\) is finitely generated as an \emph{algebra over
+    \(R\)}.
+\end{itemize}
+\end{definition}
+
+\begin{remark}[Finite type but not finite]
+\label{rem:finite-type-not-finite}
+Let \(A\) be an \(R\)-algebra. If \(A\) is finite, then \(A\) is also of finite
+type. On the other hand, if we consider the \(R\)-algebra \(R[x]\), we find that
+\(R[x]\) is clearly of finite type, but there exists no surjective \(R\)-map
+from \(R^{\oplus n}\) to \(R[x]\), therefore \(R[x]\) isn't finite.
+\end{remark}
+
+\section{Linear Independence \& Bases}
+
+\begin{remark}[Important]
+\label{rem:important-remark-integral-domain}
+\textbf{For the rest of the chapter, we'll assume that} \(R\) \textbf{is an
+  integral domain unless otherwise stated}.
+\end{remark}
+
+\begin{definition}[Linear independence]
+\label{def:linear-independent-R-mod}
+Let \(J\) be a set and \(M\) be an \(R\)-module. An indexed set \(j: J \to M\)
+is said to be \emph{linearly indepenedent} if the unique \(R\)-module morphism
+\(\phi: F_R J \to M\), making the diagram
+\[
+\begin{tikzcd}
+F_R J \ar[r, dashed, "\phi"] &M \\
+J \ar[u, hook, "\iota"] \ar[ru, bend right, "j"']
+\end{tikzcd}
+\]
+commute in \(\Set\), is \emph{injective}. The indexed set \(j\) is said to
+\emph{generate} \(M\) if \(\phi\) is \emph{surjective}. Finally, if \(\phi\) is
+an \emph{isomorphism}, then \(j\) is a \emph{basis} of \(M\) --- in this case,
+since \(F_R J \iso R^{\oplus J}\), then \(R^{\oplus J} \iso M\).
+\end{definition}
+
+\begin{corollary}
+\label{cor:free-iff-basis}
+An \(R\)-module is \emph{free} if and only if it admits a \emph{basis}.
+\end{corollary}
+
+\begin{proof}
+If \(M\) is free, then there exists a set \(S\) such that \(M \iso F_R S\), then
+\(S\) is a basis for \(M\). For the converse, if \(M\) admits a basis \(S\),
+then \(F_R S \iso M\).
+\end{proof}
+
+As with vector spaces we'll intentionally identify an indexed set \(j: J \to M\)
+simply by \(J\) itself and say that \(J\) is a \emph{subset} of \(M\). The good
+old abuse of notation.
+
+\begin{remark}[Singletons]
+\label{rem:singletons-arent-LI}
+Singletons do \emph{not} need to be linearly independent. A simple example is
+\(\{3\} \subseteq \Z/9\Z\).
+\end{remark}
+
+The following lemma regarding maximality of linearly independent sets is
+equivalent to the Axiom of Choice.
+
+\begin{lemma}[Maximality]
+\label{lem:maximal-LI-subset}
+Let \(M\) be an \(R\)-module and \(S \subseteq M\) be a linearly independent
+set. There exists a \emph{maximal linearly independent} subset of \(M\)
+containing \(S\).
+\end{lemma}
+
+\begin{proof}
+Let \(\mathcal{S}\) be the non-empty collection of linearly independent sets of
+\(M\) containing \(S\). Notice that a the union of a chain of elements of
+\(\mathcal{S}\) is again a linearly independent set containing \(S\) --- thus
+\(\mathcal{S}\) is closed under arbitrary unions. In other words, every chain of
+elements has an upper bound in \(\mathcal{S}\). By Zorn's lemma, it follows that
+the collection \(\mathcal{S}\) has a maximal element.
+\end{proof}
+
+\begin{remark}[Maximality, generation, and bases]
+\label{rem:maximality-not-generation}
+It should be noted right away that being a maximal linear independent set does
+\emph{not} imply that the set generated the module. For instance,
+\(\{2\} \subseteq \Z\) is a maximal linearly independent subset of \(\Z\)
+containing \(\{2\}\), but obviously it doesn't generate \(\Z\). This, however is
+true for the case of vector spaces.
+
+On the other hand, every base of a module is necessarily a maximal linearly
+independent set.
+\end{remark}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../deep-dive"
+%%% End:

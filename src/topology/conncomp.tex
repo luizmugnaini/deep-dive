@@ -1,5 +1,7 @@
 \section{Connected Spaces}
 
+\subsection{Connectedness}
+
 \begin{definition}[Connected space]
 \label{def:connected-space}
 Let \(X\) be a topological space. We say that \(X\) is \emph{connected} if and
@@ -51,6 +53,8 @@ singletons.
 \label{exp:Q-is-totally-disconnected}
 The set of rational numbers \(\Q\) is totally disconnected.
 \end{example}
+
+\subsection{Path Connectedness}
 
 \begin{notation}[Standard interval]
 From now on, when talking about \emph{paths} and \emph{homotopies}, we shall
@@ -120,6 +124,8 @@ defined map since, given a path component \(P\) of \(X\), the set \(f(X)
 \(Y\).
 \end{definition}
 
+\subsection{Properties of Connectivity}
+
 \begin{theorem}[Morphisms preserve connectivity]
 \label{thm:morphisms-preserve-connectivity}
 Let \(X\) be a (path) connected space and \(f: X \to Y\) be a topological
@@ -163,6 +169,40 @@ fibers of \(f\), it follows that \(g\) must be constant throughout the fibers of
 such that \(g = g^{*} f\). Since \(Y\) is connected, \(g^{*}\) must be constant,
 therefore the composition \(g^{*} f\) is constant and so is \(g\) --- that is,
 \(X\) is connected.
+\end{proof}
+
+\begin{proposition}
+\label{prop:properties-connectivity}
+Let \(X\) be a topological space. The following are properties concerning
+connectivity:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Let \(U\) and \(V\) be disjoint open subsets of \(X\). If
+  \(A \subseteq X\) is connected and is contained in \(U \cup V\), then either
+  \(A \subseteq U\) or \(A \subseteq V\).
+
+\item If \(X\) contains a dense connected set, then \(X\) is connected.
+
+\item Let \(A \subseteq X\) be a connected set. Then \(\Cl(A)\) is connected and
+  any subset \(B \subseteq X\) with \(A \subseteq B \subseteq \Cl(A)\) is
+  connected.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Suppose \(A\) has points in both sets, then \(A \cap U\) and \(A \cap V\)
+  would be two disjoint non-empty sets whose union is \(A\) --- which would
+  imply that \(A\) is not connected.
+
+\item Let \(D \subseteq X\) be a dense connected set and suppose there exists
+  non-empty disjoint open sets \(U\) and \(V\) whose union is \(X\). Therefore
+  \(D \subseteq U \cup V\) and by item (a) we have \(D \subseteq U\) or \(D
+  \subseteq V\). If \(D \subseteq U\), then \(X = \Cl(D) \subseteq \Cl(U)\) but
+  since \(\Cl(U) \subseteq X\) it follows that \(V = \emptyset\).
+
+\item Notice that since \(A \subseteq B \subseteq \Cl(A)\) then \(\Cl(A) = B\)
+  and from item (b) we conclude that \(B\) is connected.
+\end{enumerate}
 \end{proof}
 
 \begin{proposition}
@@ -215,6 +255,72 @@ supremum of \(C\), therefore \(s \in B\) --- which also cannot be the case,
 since \(s\) would not, again, be the supremum of \(C\). We conclude that the
 sets \(A\) and \(B\) cannot be constructed at all, hence there is no
 disconnected interval in \(\R\).
+\end{proof}
+
+\begin{proposition}[Partition by components]
+\label{prop:connected-components-partition}
+The (path) connected components of any topological space form a \emph{partition}
+of the space.
+\end{proposition}
+
+\begin{proof}
+Let \(X\) be a topological space. Let \(U\) and \(V\) be (path) connected
+components of \(X\) and supposet that \(U \cap V\) is non-empty. Since the union
+of (path) connected sets is (path) connected, it follows that \(U \cup V\) is
+(path) connected from \cref{prop:union-path-connected}. Since (path) connected
+components are maximal, it follows that \(U \cup V = U = V\). Therefore the
+intersection of (path) connected components is always empty.
+
+Let \(p \in X\) be any point. Considering the (path) connected set \(\{p\}\),
+one finds a maximal (path) connected component \(U\) containing
+\(\{p\}\). Therefore the collection of (path) connected components covers \(X\).
+\end{proof}
+
+\begin{corollary}
+\label{cor:components-contained-and-unions}
+Let \(X\) be a non-empty topological space. The following are properties
+concerning the components of \(X\):
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Any non-empty (\emph{path}) \emph{connected} subset of \(X\) is contained
+  in a \emph{single connected component}.
+
+\item Any non-empty \emph{path} connected subset of \(X\) is contained in a
+  \emph{single path connected component}.
+
+\item Each \emph{connected} component of \(X\) is the disjoint union of
+  \emph{path} components.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+For the proof of (a), let \(A \subseteq X\) be a non-empty (path) connected
+set. Let \(p \in A\) be any point. Since connected components cover \(X\), there
+exists a connected component \(C \subseteq X\) such that \(p \in C\). Since the
+union of connected sets is connected, then \(A \cup C\) is connected (if \(A\)
+is path connected, then it's also connected). Since \(A \cup C\) contains \(C\),
+by the maximality of the components it must be the case that \(A \cup C =
+C\). Therefore \(A \subseteq C\). For item (b) we have a completely analogous
+proof.
+
+For the proof of item (c), let \(C\) be a connected component of \(X\). For any
+point \(p \in C\), since path components cover \(X\), let \(P\) be a path
+component containing \(p\). Since path components are connected sets, the union
+\(P \cup C\) is connected and contains \(C\). Again, by the maximality of \(C\)
+this implies in \(P \subseteq C\). Since path components are also maximal and
+any point of \(C\) can be found in a path component contained in \(C\), it
+follows that \(C\) is the disjoint union of path components.
+\end{proof}
+
+\begin{lemma}
+\label{lem:conn-comp-are-closed}
+The connected components of a non-empty topological space are closed.
+\end{lemma}
+
+\begin{proof}
+Let \(C\) be a connected component of a topological space \(X\). Since \(C\) is
+dense in \(\Cl(C)\) it follows that \(\Cl(C)\) is connected (see
+\cref{prop:properties-connectivity} item (b)). Since connected components are
+maximal, it follows that \(\Cl(C) = C\), thus \(C\) is closed.
 \end{proof}
 
 \begin{proposition}
@@ -299,6 +405,107 @@ A space \(X\) is \emph{connected} if and only if the covariant functor
 \end{theorem}
 
 \todo[inline]{Prove connectedness iff preserves coproducts.}
+
+\subsection{Local Connectedness}
+
+\begin{definition}[Locally (path) connected space]
+\label{def:local-connected}
+A space \(X\) is said to be \emph{locally (path) connected} if it admits a basis
+of (path) connected open subsets. Equivalently, for every \(p \in X\) and
+neighbourhood \(U \subseteq X\) of \(p\), there exists a (path) connected
+neighbourhood \(V \subseteq U\) of \(p\).
+\end{definition}
+
+\begin{proposition}[Properties for locally (path) connected spaces]
+\label{prop:locally-conn-space-properties}
+Let \(X\) be a locally (path) connected space. Then the following properties
+hold:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Every open subset of \(X\) is locally (path) connected.
+
+\item Every (path) connected component of \(X\) is open.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Since any open subset \(A\) can be written as the union of elements of the
+basis, then the elements of the basis of \(X\) contained in \(A\) form a basis
+of (path) connected sets for \(A\). Therefore \(A\) is locally (path) connected.
+
+Let \(C\) be a (path) connected component of \(X\), and \(p \in C\) be any
+point. Since \(X\) is locally (path) connected, there exists a (path) connected
+neighbourhood \(U \subseteq X\) of \(p\). Therefore by
+\cref{cor:components-contained-and-unions} we find that \(U \subseteq
+C\). Therefore \(C\) is open.
+\end{proof}
+
+\begin{proposition}[Properties of locally path connected spaces]
+\label{prop:locally-conn-space-properties}
+Let \(X\) be a locally \emph{path} connected space. Then the following
+properties hold:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item \(X\) is locally connected.
+
+\item The path components of \(X\) are equal to its connected components.
+
+\item \(X\) is connected if and only if it is path connected.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item From \cref{prop:path-connected-is-connected} we find that the path
+  connected basis of \(X\) is also a connected basis, therefore \(X\) is locally connected.
+
+\item Let \(p \in X\) be any point and consider \(P\) and \(C\) to be,
+  respectively, the path component and the connected component containing
+  \(p\). Since \(P\) contains a point of \(C\), then \(P \subseteq C\) --- since
+  \(P \cup C\) is connected and contains \(C\). Moreover, by
+  \cref{cor:components-contained-and-unions} we know that \(C\) can be written
+  as the disjoint union of path components.
+
+  Moreover, it needs to be the case that \(P\) is the only path component in
+  \(C\). On the contrary, then \(P\) and \(C \setminus P\) would be non-empty
+  disjoint open sets whose union is \(C\) --- making \(C\)
+  disconnected. Therefore \(C = P\).
+
+\item \(X\) is connected if and only if it has a unique connected
+  component. Since path components equal connected components, it follows that
+  uniqueness of connected components is equivalent to uniqueness of path
+  components. Since \(X\) is path connected if and only if it has a unique path
+  component, the proposition follows.
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}[Connectivity of manifolds]
+\label{prop:connectivity-manifolds}
+Let \(M\) be an \(n\)-manifold with or without boundary. The following
+properties hold:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item \(M\) is \emph{locally path connected}.
+
+\item \(M\) has countably many connected components, each being an open subset
+  of \(M\) and a connected topological space.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Since \(M\) has a basis of coordinate balls and those are isomorphic to an
+  open subset of \(\R^n\), which are path connected, it follows that the
+  coordinate balls are path connected.
+
+\item By item (a) and \cref{prop:locally-conn-space-properties}, the collection
+  of connected components of \(M\) forms an \emph{open} cover of \(M\). Since
+  \(M\) is second countable, there exists a countable subcover. Since connected
+  components are disjoint, the subcover must be the cover itself, showing that
+  the collection of connected components of \(M\) is countable.
+
+  Since connected components are open, together with the initial topology
+  generated by the canonical inclusion --- that is, the subspace topology --- we
+  find that connected components are topological manifolds.
+\end{enumerate}
+\end{proof}
 
 \section{Compact Spaces}
 
@@ -1219,6 +1426,254 @@ every non-empty subset \(U \subseteq X\) contains a point of
   sequence converges to a point of \(U \cap \bigcap_{n \in \N} D_n\).
 \end{enumerate}
 \end{proof}
+
+\subsection{Manifolds}
+
+\begin{definition}[Regular coordinate ball]
+\label{def:regular-coordinate-ball}
+Let \(M\) be an \(n\)-manifold. We say that a coordinate ball \(B \subseteq M\)
+is \emph{regular} if there exists a neighbourhood \(U\) of \(\Cl(B)\) and a
+topological isomorphism \(\phi: U \isoto B_{r'}(x)\) --- for some \(r' > 0\) and
+\(x \in \R^n\) --- such that \(\phi(B) = B_r(x)\) and
+\(\phi(\Cl B) = \Cl(B_r(x))\) for some \(0 < r < r'\).
+\end{definition}
+
+\begin{corollary}
+\label{cor:reg-coord-balls-are-rel-cpct}
+Regular coordinate balls are relatively compact.
+\end{corollary}
+
+\begin{proof}
+Given a regular coordinate ball \(B\), let \(U \supseteq B\) be an open set such
+that there exists an isomorphism \(\phi: U \to B_{r'}(x)\). Let \(0 < r < r'\)
+be such that \(\phi(B) = B_r(x)\) and \(\phi(\Cl B) = \Cl(B_r(x))\). In
+particular, the restriction \(\phi|_{\Cl B}\) is a topological isomorphism, and
+since \(\Cl(B_r(x))\) is a compact set, so is \(\Cl B\).
+\end{proof}
+
+\begin{lemma}
+\label{lem:reg-coord-ball-from-iso}
+Let \(M\) be an \(n\)-manifold and \(B \subseteq M\) be a coordinate ball. If
+\(\phi: B \isoto B_{r'}(x)\) is a topological isomorphism --- for some
+\(r' > 0\) and \(x \in \R^n\) --- then \(\phi^{-1}(B_r(x)) \subseteq M\) is a
+\emph{regular coordinate ball for all \(0 < r < r'\)}.
+\end{lemma}
+
+\begin{proof}
+Let \(\phi: B \to B_{r'}(x)\) be an isomorphism, and define
+\(U \coloneq \phi^{-1}(B_r(x))\) for any \(0 < r < r'\). The induced restriction
+\(\phi: U \to B_r(x)\) is clearly an isomorphism.
+
+Consider the restriction \(\phi^{-1}: \Cl(B_r(x)) \to M\). From
+\cref{cor:map-compact-to-hausdorff-is-closed} we obtain that \(\phi^{-1}\) is a
+closed map. From \cref{prop:classification-maps-interior-closure} we find that
+\[
+\phi^{-1}(\Cl(B_r(x))) = \Cl(\phi^{-1}(B_r(x))) = \Cl(U).
+\]
+Therefore \(\phi(\Cl U) = \Cl(B_r(x))\), proving that \(U\) is a regular
+coordinate ball.
+\end{proof}
+
+\begin{proposition}
+\label{prop:man-countable-basis-reg-balls}
+Every manifold without boundary has a \emph{countable basis} of \emph{regular}
+coordinate balls.
+\end{proposition}
+
+\begin{proof}
+Let \(M\) be any \(n\)-manifold. Since \(M\) is second countable, let
+\(\{U_{j}\}_{j \in \N}\) be a countable open cover of \(M\) consisting of
+coordinate neighbourhoods. For each \(j \in \N\), let \(\phi_j: U_j \isoto V_j\)
+be a topological isomorphism, where \(V_j \subseteq \R^n\) is open. For every
+\(x \in V_j\), let \(r(x) > 0\) be such that \(B_{r(x)}(x) \subseteq V_j\).
+
+Define \(\mathcal{B}\) as the collection of all \(\phi_j^{-1}(B_{r}(x))
+\subseteq M\) such that \(x \in \R^n\) is a point consisting of \emph{rational
+  coordinates}, and \(0 < r < r(x)\) is also rational. From
+\cref{lem:reg-coord-ball-from-iso} we find that \(\phi_j^{-1}(B_r(x))\) is a
+regular coordinate ball of \(M\). Since the rationals are countable, for each
+\(j \in \N\), the collection of regular coordinate balls of the form
+\(\phi_j^{-1}(B_r(x))\) described above is countable. Therefore we conclude that
+\(\mathcal{B}\) is a countable set.
+
+Since each \(\phi_j\) is an isomorphism, for every \(p \in U_j\), if
+\(\phi(p) = x\), then \(\phi_j^{-1}(B_r(x))\) is a neighbourhood of
+\(p\). Therefore \(M = \bigcup_{B \in \mathcal{B}} B\). Moreover, if
+\(B, B' \in \mathcal{B}\) are any intersecting sets, let \(p \in B \cap B'\) be
+a point. Take \(U_j\) neighbourhood of \(p\) and consider the point
+\(y \coloneq \phi_j(p)\). Let \(U \subseteq (B \cap B') \cap U_j\) be any
+neighbourhood of \(p\). Let \(0 < r < r(y)\) be any rational number such that
+\(\phi_j(U) \subseteq B_r(y)\), then
+\(\phi_j^{-1}(B_r(y)) \subseteq U \subseteq B \cap B'\) and
+\(\phi_j^{-1}(B_r(y)) \in \mathcal{B}\) --- which proves that \(\mathcal{B}\) is
+a basis of \(M\).
+\end{proof}
+
+\begin{definition}[Regular coordinate half-ball]
+\label{def:reg-coord-half-ball}
+Let \(M\) be an \(n\)-manifold with boundary. A subset \(B \subseteq M\) is a
+\emph{regular coordinate half-ball} if there exists an open set
+\(U \supseteq \Cl(B)\) and a topological isomorphism
+\(\phi: U \to B_{r'}(0) \cap \Uhs^n\), for some \(r' > 0\), such that
+\(\phi(B) \subseteq B_r(0) \cap \Uhs^n\) and
+\(\phi(\Cl B) \subseteq \Cl(B_r(0)) \cap \Uhs^n\) for some \(0 < r < r'\).
+\end{definition}
+
+\begin{corollary}
+\label{cor:reg-coord-balls-are-rel-cpct}
+Regular coordinate half-balls are relatively compact.
+\end{corollary}
+
+\begin{proof}
+Follows from the same reasoning of the proof of
+\cref{cor:reg-coord-balls-are-rel-cpct}.
+\end{proof}
+
+\begin{proposition}
+\label{prop:man-with-bdry-ctbl-basis-half}
+Every manifold with boundary has a countable basis composed of regular
+coordinate balls and regular coordinate half-balls.
+\end{proposition}
+
+\begin{proof}
+The proof is analogous to \cref{prop:man-countable-basis-reg-balls}, one just
+needs to beware that \(V_j\) may be either an open subset of \(\R^n\) or an open
+subset of \(\Uhs^n\).
+\end{proof}
+
+\begin{proposition}
+\label{prop:manifold-locally-compact}
+Every manifold with or without boundary is locally compact.
+\end{proposition}
+
+\begin{proof}
+From \cref{cor:reg-coord-balls-are-rel-cpct} and
+\cref{prop:man-countable-basis-reg-balls} we find that manifolds without
+boundary are indeed locally compact.
+
+For manifolds with boundary we analogously use
+\cref{cor:reg-coord-balls-are-rel-cpct} and
+\cref{prop:man-with-bdry-ctbl-basis-half}.
+\end{proof}
+
+
+\section{Paracompactness}
+
+\begin{definition}[Cover refinement]
+\label{def:cover-refinement}
+Let \(X\) be a topological space and \(\mathcal{U}\) be a cover of
+\(X\). We say that a cover \(\mathcal{A}\) of \(X\) is a \emph{refinement} of
+\(\mathcal{U}\) if for each \(A \in \mathcal{A}\) there exists
+\(U \in \mathcal{U}\) such that \(A \subseteq U\) --- moreover, \(\mathcal{A}\)
+is said to be an \emph{open} refinement if each \(A \in \mathcal{A}\) is open in
+\(X\).
+\end{definition}
+
+\begin{corollary}
+\label{cor:open-cover-finite-intersection-is-locally-finite}
+Let \(\mathcal{U}\) be an \emph{open cover} of \(X\). If each element of
+\(\mathcal{U}\) intersects only finitely many others, then \(\mathcal{U}\) is
+\emph{locally finite}.
+\end{corollary}
+
+\begin{proof}
+Let \(p \in X\) be any element. Since \(\mathcal{U}\) covers \(X\), let
+\(U \in \mathcal{U}\) be a neighbourhood of \(p\). From hypothesis, \(U\)
+intersects only finitely many elements of \(\mathcal{U}\), therefore
+\(\mathcal{U}\) is locally finite.
+\end{proof}
+
+\begin{definition}[Paracompactness]
+\label{def:paracompact}
+A space \(X\) is said to be \emph{paracompact} if for \emph{every} open cover
+of \(X\) there exists al \emph{locally finite open refinement}.
+\end{definition}
+
+\begin{corollary}
+\label{cor:compact-is-paracompact}
+Every compact space is paracompact.
+\end{corollary}
+
+\begin{proof}
+Let \(X\) be compact and \(\mathcal{U}\) be an open cover. If
+\(\mathcal{C} \subseteq \mathcal{U}\) is a finite subcover, then in particular
+\(\mathcal{C}\) is a locally finite open refinement of \(\mathcal{U}\).
+\end{proof}
+
+\begin{definition}[Compact exhaustion]
+\label{def:compact-exhaustion}
+Let \(X\) be a space. We define a sequence \((K_j)_{j \in \N}\) to be a
+\emph{exhaustion of \(X\) by compact sets} if \(X = \bigcup_{j \in \N} K_j\)
+and, for all \(j \in \N\), each set \(K_j\) is compact in \(X\), and the
+sequence satisfies \(K_j \subseteq \Int K_{j + 1}\).
+\end{definition}
+
+\begin{lemma}
+\label{lem:2nd-loc-cpct-haus-exhaustion}
+Every second countable, locally compact Hausdorff topological space admits an
+exhaustion by compact sets.
+\end{lemma}
+
+\begin{proof}
+Let \(X\) be a second countable, locally compact Hausdorff space. Since \(X\) is
+locally compact Hausdorff, there exists a basis consisting of relatively compact
+open subsets of \(X\). Since \(X\) is second countable, one can consider a
+countable cover of \(X\) by relatively compact sets
+\(\mathcal{C} \coloneq \{C_j\}_{j \in \N}\). We proceed by induction for the
+construction of each \(K_j\). Define \(K_0 \coloneq \overline{U}_0\), and
+assume, for the inductive hypothesis, that we've constructed a sequence
+\((K_0, \dots, K_{n-1})\) of compact sets satisfying
+\(K_j \subseteq \Int K_{j+1}\) for \(j < n-1\). Since \(K_{n-1}\) is compact and
+\(\mathcal{C}\) covers \(K_{n-1}\), it follows that theres exist a finite
+\(k_{n-1} \in \N\) such that \(K_{n-1} \subseteq \bigcup_{j=0}^{k_{n-1}} C_j\)
+--- in particular, choose \(k_{n-1}\) so that \(k_{n-1} > n\). We thus define
+\(K_n \coloneq \bigcup_{j=0}^{k_{n-1}} \Cl(C_j)\) so that
+\(K_n \subseteq \Int K_{n-1}\). Moreover, since \(k_{n-1} > n\) then
+\(U_n \subseteq K_n\). Therefore the sequence \((K_j)_{j \in \N}\) is an
+exhaustion of \(X\) by compact sets.
+\end{proof}
+
+\begin{theorem}
+\label{thm:2nd-ctbl-loc-cpct-haus-is-paracompact}
+Every second countable, locally compact Hausdorff space is paracompact.
+\end{theorem}
+
+\begin{proof}
+Let \(X\) satisfy the above-mencioned hypothesis, and \(\mathcal{U}\) be an open
+cover of \(X\). By \cref{lem:2nd-loc-cpct-haus-exhaustion}, let
+\((K_j)_{j \in \N}\) be an exhaustion of \(X\) by compact sets. Define the
+following collections:
+\begin{itemize}\setlength\itemsep{0em}
+\item For all \(j \in \N\), let \(A_j \coloneq K_{j+1} \setminus \Int(K_j)\) ---
+  which is a closed compact set.
+\item Define \(W_0 \coloneq \Int K_2\) and, for each \(j > 0\), let
+  \(W_j \coloneq \Int(K_{j+2}) \setminus K_{j-1}\) --- forming a collection of
+  open sets.
+\end{itemize}
+Notice that \(A_j \subseteq W_j\) for all \(j \in \N\).
+
+For each point \(p \in A_j\), let \(U_p \in \mathcal{U}\) be a neighbourhood of
+\(p\), and define \(V_p \coloneq U_p \cap W_j\) --- which is again a
+neighbourhood of \(p\). The collection \(\{V_p\}_{p \in A_j}\) forms an open
+cover for the compact set \(A_j\), and from compactness there exists a finite
+subcover, say \(\mathcal{V}_j\). The union
+\(\mathcal{V} \coloneq \bigcup_{j \in \N} \mathcal{V}_j\) is an open refinement
+of \(\mathcal{U}\).
+
+
+Consider the open set \(W_j\) for each \(j \in \N\), notice that since \(W_{j+3}
+= \Int(K_{j+5}) \setminus K_{j+2}\), then \(W_k\) for \(k > j+3\) does not
+intersect \(W_j\). On the other hand \(W_{j-3} = \Int(K_{j - 1}) \setminus
+K_{j-4}\) also does not intersect \(W_j\) and neither do \(W_k\) for \(k < j -
+3\). Therefore \(W_j\) intersects \(W_k\) only for \(j - 2 \leq k \leq j + 2\)
+--- therefore every \(V \in \mathcal{V}\) intersects only finitely many members,
+showing that \(\mathcal{V}\) is locally finite.
+\end{proof}
+
+\begin{corollary}
+\label{cor:manifold-paracompact}
+Every manifold with or without boundary is paracompact.
+\end{corollary}
 
 %%% Local Variables:
 %%% TeX-master: "../../deep-dive"
