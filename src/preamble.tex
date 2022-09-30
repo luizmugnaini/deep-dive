@@ -114,21 +114,22 @@
 % Isomorphism symbol
 \newcommand{\iso}{\simeq}
 
+\newcommand{\arrowiso}{\iso}
 % Isomorphism arrow
-\newcommand{\isoto}{\xrightarrow{\raisebox{-.6ex}[0ex][0ex]{\(\sim\)}}}
+\newcommand{\isoto}{\xrightarrow{\raisebox{-.6ex}[0ex][0ex]{\(\arrowiso\)}}}
 
 % How isomorphisms are depicted in diagrams: either \sim or \simeq
 \newcommand{\dis}{\iso}
 
 \newcommand{\isounique}{%
-  \xdashrightarrow{\raisebox{-.6ex}[0ex][0ex]{\(\sim\)}}
+  \xdashrightarrow{\raisebox{-.6ex}[0ex][0ex]{\(\arrowiso\)}}
 }%
 
 % Natural transformation arrow
 \newcommand{\nat}{\Rightarrow}
 
 % Natural isomorphism
-\newcommand{\isonat}{\xRightarrow{\raisebox{-.8ex}[0ex][0ex]{\(\sim\)}}}
+\newcommand{\isonat}{\xRightarrow{\raisebox{-.8ex}[0ex][0ex]{\(\arrowiso\)}}}
 
 % Embedding arrow
 \newcommand{\emb}{\hookrightarrow}
@@ -211,6 +212,7 @@
 \newcommand{\CAT}{{\textbf{CAT}}}          % Big categories
 \newcommand{\UCat}{{\mathcal{U}\text{-}\textbf{Cat}}} % U-Categories
 
+\newcommand{\Simp}[1]{{\textbf{Simp}(#1)}}   % Simplicial category
 \newcommand{\Psh}[1]{{\textbf{Psh}(#1)}}   % Category of presheaves
 \newcommand{\comma}{\downarrow} % Comma category separator
 \DeclareMathOperator{\El}{El}              % Category of elements
@@ -227,6 +229,8 @@
 \DeclareMathOperator{\dom}{dom}   % Domain
 \DeclareMathOperator{\codom}{cod} % Codomain
 \DeclareMathOperator{\supp}{supp} % Support
+
+\DeclareMathOperator{\Sing}{Sing} % Singular complex functor
 
 % Yoneda embedding
 \newcommand{\yo}{\text{\usefont{U}{min}{m}{n}\symbol{'210}}}
@@ -248,6 +252,7 @@
 \DeclareMathOperator{\Specm}{Spec_m} % Maximal spectrum
 \newcommand{\lie}[1]{\mathfrak{#1}} % Font for Lie structures
 \DeclareMathOperator{\Rees}{Rees}   % Rees algebra
+\DeclareMathOperator{\Frac}{Frac}   % Field of fractions
 
 \DeclareMathOperator{\eval}{eval}
 \DeclareMathOperator{\sign}{sign}
@@ -285,13 +290,23 @@
 
 % Homotopy
 \newcommand{\simht}{\sim_{\text{h}}}    % Homotopy between maps
+\newcommand{\simhtrel}[1]{\sim_{\text{rel }{#1}}}
 \newcommand{\isoht}{\iso_{\text{h}}} % Homotopy equivalence
+\newcommand{\htpy}{\Rightarrow}
+\newcommand{\htpyrel}[1]{\Rightarrow_{\text{rel }{#1}}}
+
 
 % Functors on topological spaces
-\DeclareMathOperator{\Cone}{C}  % Cone
+\DeclareMathOperator{\Cone}{Cone}  % Cone
+\DeclareMathOperator{\Cyl}{Cyl}  % Cylinder
 \DeclareMathOperator{\Susp}{S}  % Suspension
 \DeclareMathOperator{\rSusp}{\Sigma} % Reduced suspension
 \DeclareMathOperator{\Path}{Path} % Path object
+\DeclareMathOperator{\Eval}{eval} % Evaluation map
+\DeclareMathOperator{\curry}{curry} % Currying a map
+\DeclareMathOperator{\uncurry}{uncurry} % Currying a map
+\DeclareMathOperator{\co}{co} % Compact open co(K, U)
+
 
 % Set operators
 \DeclareMathOperator{\Cl}{Cl}       % Closure

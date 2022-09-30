@@ -95,7 +95,173 @@ x_n]/\ideal a\) is Noetherian.
 Every \emph{finite-type} algebra over a Noetherian ring is \emph{Noetherian}.
 \end{corollary}
 
+\subsection{Existence of Maximal Ideals}
 
+\begin{proposition}
+\label{prop:commutative-rings-have-maximal-ideals}
+Let \(R\) be a commutative ring. If \(\ideal a\) is any \emph{proper} ideal of
+\(R\), then there exists a \emph{maximal ideal} \(\ideal m\) of \(R\) containing
+\(\ideal a\).
+\end{proposition}
+
+\begin{proof}
+Consider the collection \(I\) of proper ideals of \(R\) containing
+\(\ideal a\)---which is ordered by inclusion. Using this ordering, let
+\((\ideal a_j)_{j \in J}\) be the chain of all proper ideals with
+\(\ideal a_j \in I\) and \(\ideal a_j \subseteq \ideal a_{j+1}\). Define the set
+\(\ideal m \coloneq \bigcup_{j \in J} \ideal a_j\), which is again an ideal of
+\(R\). Since every \(\ideal a_j\) contains \(\ideal a\) and does \emph{not}
+contain \(1\), it follows that \(\ideal m\) contains \(\ideal a\) and also
+doesn't contain \(1\)---hence \(\ideal m\) is a proper ideal. Therefore
+\(\ideal m\) is a \emph{maximal} ideal of \(R\) containing \(\ideal a\), which
+proves the statement.
+\end{proof}
+
+\section{Localization}
+
+\begin{definition}[Multiplicative subset]
+\label{def:multiplicative-subset}
+Given a commutative ring \(R\), a subset \(S \subseteq R\) is said to be
+\emph{multiplicative} if \(1_R \in S\) and \(S\) is closed under
+multiplication---that is, given \(s, s' \in S\), we have \(s s' \in S\).
+\end{definition}
+
+\begin{definition}[Localization]
+\label{def:localization-ring}
+Let \(R\) be a commutative ring, and \(S \subseteq R\) be a \emph{multiplicative
+  subset}. A \emph{localization} of \(R\) over the set \(S\) is a morphism of
+\emph{commutative rings} \(L_S: R \to R[S^{-1}]\) such that:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item For all \(s \in S\), the image \(L_S(s) \in R[S^{-1}]\) is a \emph{unit}.
+\item For every morphism of rings \(f: R \to K\) satisfying property (a), there
+  exists a \emph{unique} ring morphism \(\phi: R[S^{-1}] \to K\) such that the
+  diagram
+  \[
+  \begin{tikzcd}
+  R \ar[r, "L_S"] \ar[rd, bend right, "f"']
+  &{R[S^{-1}]} \ar[d, "\phi", dashed] \\
+  &K
+  \end{tikzcd}
+  \]
+\end{enumerate}
+Equivalently, consider the minimal equivalence relation \(\sim_{\text{frac}}\)
+on the set \(R \times S\) defined by \((r, s) \sim_{\text{frac}} (r', s')\) if
+and only if \(r s' - s r' = 0\). Then the localization of \(R\) under the
+multiplicative subset \(S\) is simply
+\[
+R[S^{-1}] = (R \times S)/{\sim_{\text{frac}}}.
+\]
+\end{definition}
+
+\begin{example}
+\label{exp:Z[1/p]/Z-finite-submodules}
+Let \(p \in \Z\) be a prime number, and consider the ring of fractions
+\(\Z[p^{-1}]\). Then every proper submodule of the \(\Z\)-module given by the
+quotient \(\Z[p^{-1}]/\Z\) is \emph{finite}.
+\todo[inline]{How to solve this?}
+\end{example}
+
+\begin{definition}
+\label{def:field-of-fractions}
+Let \(R\) be an integral domain. We define the \emph{field of fractions} of
+\(R\) to be the localization
+\[
+\Frac(R) \coloneq R[(R \setminus \{0\})^{-1}].
+\]
+\end{definition}
+
+It is immediate that \(\Frac(R)\) is a field, since a field is simply an
+integral domain whose non-zero elements are units---and this exactly what we did
+with the above localization.
+
+\section{Principal Ideal Domains}
+
+\subsection{Chinese Remainder Theorem}
+
+\begin{theorem}[Chinese remainder]
+\label{thm:chinese-remainder-theorem}
+Let \(R\) be a commutative ring, and \(\ideal{a}_1, \dots, \ideal{a}_k\)
+be ideals of \(R\) such that \(\ideal{a}_i + \ideal{a}_j = R\) for all
+\(i \neq j\). Then:
+\begin{itemize}\setlength\itemsep{0em}
+\item We have the equality \(\ideal{a}_1 \cap \dots \cap \ideal{a}_k =
+  \ideal{a}_1 \cdot \ldots \cdot \ideal{a}_k\).
+\item The natural projection
+  \(R \epi R/\ideal{a}_1 \times \dots \times R/\ideal{a}_k\) is
+  \emph{surjective}, and induces a natural \emph{isomorphism} of rings
+  \[
+  \frac{R}{\ideal{a}_1 \dots \ideal{a}_k}
+  \iso (R/\ideal{a}_1) \times \dots \times (R/\ideal{a}_{k})
+  \]
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+In particular, we have \(\ideal{a}_j + \ideal{a}_k = R\) for all \(1 \leq j \leq
+k - 1\). Therefore, for all such indices there exists \(a_j \in \ideal{a}_k\)
+such that \(1 - a_j \in \ideal a_j\), hence
+\[
+(1 - a_1) \dots (1 - a_{k-1}) \in
+\ideal{a}_1 \cdot \ldots \cdot \ideal a_{k-1},
+\]
+and since \(a_j \in \ideal{a}_k\), then
+\(1 - \prod_{j=1}^{k-1} (1 - a_j) \in \ideal{a}_k\). This shows that
+\begin{equation}\label{eq:coprime-ideals-CRT}
+(\ideal{a}_1 \cdot \ldots \cdot \ideal{a}_{k-1}) + \ideal{a}_k = R.
+\end{equation}
+
+Notice that
+\(\ideal{a}_1 \cdot \ldots \cdot \ideal a_k \subseteq \ideal a_1 \cap \dots \cap
+\ideal a_k\), thus it remains to prove the other side of the inclusion. From our
+last paragraph, we know that
+\(\ideal a_1 \cap \dots \cap \ideal a_k \subseteq \ideal{a}_1 \cdot \ldots \cdot
+\ideal a_k \) for all \(k \geq 3\). Since \(k = 1\) is trivial, we just need to
+prove the case for \(k = 2\). Let \(\ideal{b}, \ideal{c} \subseteq R\) be ideals
+such that \(\ideal b + \ideal c = R\)---then there exists \(b_0 \in \ideal b\)
+and \(c_0 \in \ideal c\) such that \(b_0 + c_0 = 1\). If \(x \in \ideal{b} \cap
+\ideal c\), then \(x = b_0 x + c_0 x\), implying in \(x \in \ideal b \cdot
+\ideal c\). Thus \(\ideal b \cap \ideal c \subseteq \ideal b \cdot \ideal c\).
+
+We now prove the second assertion via induction on \(k\). For the base case
+\(k = 1\), the statement follows trivially from the first isomorphism
+theorem. Assume as the hypothesis of induction that the statement is true
+\(k - 1 > 1\)---that is, we have an isomorphism
+\(R/(\ideal a_1 \cdot \ldots \cdot \ideal a_{k-1}) \iso (R/\ideal a_1) \times
+\dots \times (R/\ideal a_{k-1})\). Consider the natural map
+\begin{equation}\label{eq:natural-projection-CRT}
+\pi: R \longrightarrow \frac{R}{\ideal a_{1} \cdot \ldots \cdot \ideal a_{k-1}}
+\times (R/\ideal a_k).
+\end{equation}
+From \cref{eq:coprime-ideals-CRT} the statement is reduced for the case of two
+ideals \(\ideal b \coloneq \ideal a_1 \cdot \ldots \cdot a_{k-1}\) and
+\(\ideal c \coloneq \ideal a_k\) such that \(\ideal b + \ideal c = R\). Let
+\(b, c \in R\) be any two elements---we shall show that there exists \(r \in R\)
+such that \(r - b \in \ideal b\) and \(r - c \in \ideal c\). Since \(\ideal b\)
+and \(\ideal c\) are relatively prime, let as before \(b_0 + c_0 = 1\) and
+define \(r \coloneq b_0 c + c_0 b\). Then, one has
+\begin{align*}
+  r &= b_0 c + (1 - b_0) b = b + b_0 (c - b) \equiv b \pmod{\ideal b} \\
+  r &= (1 - c_0) c + c_0 b = c + c_0 (b - c) \equiv c \pmod{\ideal c}
+\end{align*}
+since \(b_0 \in \ideal b\) and \(c_0 \in \ideal c\). Therefore
+\(r - c \in \ideal b\) and \(r - b \in \ideal c\) a wanted. This shows that the
+natural morphism of rings \(\pi\) (see \cref{eq:natural-projection-CRT}) is
+surjective. From our first considerations, we know that
+\(\ker \pi = \ideal b \cap \ideal c = \ideal b \cdot \ideal c\), therefore the
+first isomorphism theorem establishes that
+\(R/(\ideal b \cdot \ideal c) \iso (R/\ideal b) \times (R/\ideal c)\).
+\end{proof}
+
+\begin{corollary}[Chinese remainder for PIDs]
+\label{cor:chinese-remainder-for-PID}
+Let \(R\) be a principal ideal domain, and \(a_1, \dots, a_k \in R\) be elements
+such that \(\gcd(a_i, a_j) = 1\) for all pairs \(i \neq j\). Then the natural
+map \(r + (a_1 \cdots a_k) \mapsto (r + (a_1), \dots, r + (a_k))\) establishes an
+\emph{isomorphism} of rings
+\[
+R/(a_1 \cdots a_k) \iso \frac{R}{(a_{1})} \times \dots \times \frac{R}{(a_k)}.
+\]
+\end{corollary}
 
 %%% Local Variables:
 %%% mode: latex

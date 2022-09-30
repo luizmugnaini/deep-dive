@@ -197,7 +197,7 @@ Let \((M, F)\) be a \(C^p\)-manifold in the sense of
 \cref{def:second-def-Cp-manifold}. A chart on \(M\) will be interpreted as a
 pair \((U, \phi: U \isoto V)\) such that \(\phi\) is an isomorphism
 \((U, F) \iso (V, C_V^p)\) of functionally structured spaces. Since every point
-of \(M\) has a neighbourhood from which one can define the above mencioned
+of \(M\) has a neighbourhood from which one can define the above mentioned
 isomorphism, we see that these charts do cover the whole space \(M\).
 
 It remains to be proven that the transition maps are \(C^p\). From our
@@ -302,7 +302,7 @@ composition
 where \(w\) is the dimension of \(W\), is a \(C^{\infty}\) map since both
 \(\gamma g \psi^{-1}\) and \(\psi f \phi^{-1}\) are \(C^{\infty}\). Since the
 charts where chosen arbitrarily, it follows that \(g f\) is a smooth map. Notice
-that the last two conclusions came dictly from
+that the last two conclusions came directly from
 \cref{prop:equiv-conditions-for-smooth}.
 \end{proof}
 
@@ -571,7 +571,7 @@ intuitive view of what the following definition states.
 
 \begin{definition}[Local coordinates]
 \label{def:local-coordinates}
-If \(X\) is an \(\R^n\) modeled manifold, and \(\phi: U \to \R^n\) is a chart,
+If \(X\) is an \(\R^n\) modelled manifold, and \(\phi: U \to \R^n\) is a chart,
 where \(U \subseteq X\) is open, then, we say that the collection
 \((\phi_j)_{j=1}^n\) are \emph{local coordinates} for \(X\) on \(U\).
 \end{definition}
@@ -611,7 +611,7 @@ have that for all \(1 \leq i, j \leq n\), the projections of \(\phi\) satisfy
 \end{proposition}
 
 \begin{proof}
-From the definiton, one has
+From the definition, one has
 \[
 \frac{\partial \phi_{i}}{\partial \phi_j} (p)
 = \frac{\partial (\phi_{i} \phi^{-1})}{\partial \pi_j} (\phi(p))
@@ -704,12 +704,12 @@ the induced restriction \(f: N \isoto f(N)\) is a \(C^{\infty}\)-isomorphism.
 Consider the sphere \(S^n \subseteq \R^{n+1}\), we'll define a smooth atlas on
 \(S^n\) using solely two charts. To that end, define two points
 \(n \coloneq (0, \dots, 0, 1)\) and \(s \coloneq (0, \dots, 0, -1)\) in
-\(\R^{n+1}\) --- these correspon to the north and south poles of \(S^n\),
+\(\R^{n+1}\) --- these correspond to the north and south poles of \(S^n\),
 respectively. Consider the \emph{stereographic projection}
 \(\phi_n: S^n \setminus \{n\} \to \R^n\), from the sphere with its north pole
 cut out to the hyperplane \(R^n \iso \R^n \times \{0\}\) --- the stereographic
 projection maps each point \(x \in S^n\) to the intersection of the line passing
-through \(x\) and \(n\), and the hyperplane above-mencioned. The inverse map of
+through \(x\) and \(n\), and the hyperplane above-mentioned. The inverse map of
 \(\phi_n\) is \(\pi_n: \R^n \to S^n \setminus \{n\}\), mapping
 \[
 x \longmapsto \frac{(2 x, \| x \|^2 - 1)}{(1 + \| x \|)^2}.
@@ -720,6 +720,54 @@ We define the south stereographic projection \(\phi_s: S^n \setminus \{s\} \to
 \phi_s \phi_n^{-1}(x) = \frac{y}{\| y \|^2}.
 \]
 \end{example}
+
+
+\section{Partitions of Unity}
+
+\begin{definition}[Adequate atlas]
+\label{def:adequate-atlas}
+Given an \(m\)-manifold \(M\), we say that an atlas
+\((U_j, \phi_j)_{j \in J}\) is \emph{adequate} if it is \emph{locally
+  finite}, and for all we have either \(\phi_j(U_j) = \R^m\) or
+\(\phi_j(U_j) = \Uhs^m\), and
+\[
+\bigcup_{j \in J} \phi_j^{-1}(\Int D^m) = M.
+\]
+\end{definition}
+
+Since every topological manifold is paracompact, by
+\cref{cor:manifold-paracompact} we obtain the following corollary.
+
+\begin{corollary}
+\label{cor:refinement-adequate-atlas}
+Let \(\mathcal{U}\) be a covering of \(M\). There exists an \emph{adequate
+  atlas} \((U_j, \phi_j)_{j \in J}\) such that \((U_j)_{j \in J}\) is
+a \emph{refinement} of \(\mathcal{U}\).
+\end{corollary}
+
+\begin{definition}[Bump functions \& partition of unity]
+\label{def:}
+Let \(M\) be an \(m\)-manifold and \((U_{j}, \phi_j)_{j \in J}\) be an
+\emph{adequate} atlas on \(M\). Let \(\lambda: \R^m \to \R\) be a \emph{smooth
+  non-negative} map such that \(\lambda|_{D^m} \coloneq 1\) and
+\(\lambda|_{\R^m \setminus D^m(2)} \coloneq 0\).
+\begin{itemize}\setlength\itemsep{0em}
+\item Define, for every \(j \in J\), maps \(\lambda_j: M \to \R\) where
+  \[
+  \lambda_j|_{U_j} \coloneq \lambda \phi_j
+  \quad\text{ and }\quad
+  \lambda_j|_{M \setminus U_j} \coloneq 0.
+  \]
+  We name the collection \((\lambda_j)_{j \in J}\) the \emph{bump functions}
+  associated to \((U_j)_{j \in J}\).
+\item Define, for each \(j \in J\), maps \(\mu_j: M \to \R\) given by
+  \[
+  \mu_j(p) \coloneq \frac{\lambda_j(p)}{\sum_{i \in J} \lambda_i(p)}
+  \]
+  for all \(p \in M\). The collection \((\mu_j)_{j \in J}\) is said to be the
+  \emph{partition of unity} associated to the atlas \((U_j, \phi_j)_{j \in J}\).
+\end{itemize}
+\end{definition}
 
 \section{Tangent Space}
 
@@ -761,7 +809,7 @@ tangent vectors at \(p\), denoted by \(T_p M\), together with a natural action
 \subsection{Differential of a Smooth Morphism}
 
 \begin{definition}[Differential at a point]
-\label{def:}
+\label{def:differential-at-a-point}
 Let \(f: N \to M\) be a \(C^{\infty}\)-morphism. At every point \(p \in N\), the
 morphism \(f\) induces a pushforward
 \[
@@ -777,26 +825,6 @@ between tangent spaces. For any tangent vector \(X_p: C_p^{\infty}(N) \to \R\) o
 \]
 for all \(g \in C_{f(p)}^{\infty}(M)\).
 \end{definition}
-
-% \section{Oriented Manifolds}
-
-% \begin{definition}[Oriented manifold]
-% \label{def:oriented-manifolds}
-% A manifold \(M\) with atlas \(\mathcal{A}\) such that, for every pair of charts
-% \(\phi, \psi \in \mathcal{A}\), the Jacobian of the transition map
-% \(\phi \psi^{-1}\) has \emph{positive determinant} for all points of the domain,
-% then \(M\) is called a \emph{oriented manifold}. A maximal atlas on \(M\) with
-% such a property is said to be an \emph{orientation} of the manifold, and \(M\)
-% is called \emph{orientable}.
-% \end{definition}
-
-% \begin{proposition}[Two orientations]
-% \label{prop:two-orientations-man}
-% Let \(M\) be a connected, orientable, smooth manifold. Then \(M\) admits exactly
-% two orientations.
-% \end{proposition}
-
-% \todo[inline]{Prove}
 
 %%% Local Variables:
 %%% mode: latex

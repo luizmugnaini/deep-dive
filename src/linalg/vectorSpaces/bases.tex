@@ -35,14 +35,14 @@ tuple \((a_s)_{s \in S} \subseteq k\) such that there are only finitely many
 \end{proposition}
 
 \begin{lemma}[Zorn's Lemma]\label{lem:zorn}
-Let \(X\) be a set and consider the partial order relation \((\vdash)
-\subseteq X \times X\), so that \(\vdash\) is reflexive for all \(x \in X\),
-antisymmetric for all \(x, y \in X\), and transitive for all \(x, y, z \in
-X\). Moreover, if \(S \subseteq X\) is such that only one of the propositions:
-\(x \vdash y\) or \(y \vdash x\) is true for every \(x, y \in S\); then there
-exists an element \(z \in X\) for which \(x \vdash z\) for all choices of \(x
-\in X\). Then there exists an element \(m \in X\) for which \(m \vdash x\) if
-and only if \(x = m\).
+Let \(X\) be a set and consider the partial order relation
+\((\vdash) \subseteq X \times X\), so that \(\vdash\) is reflexive for all
+\(x \in X\), antisymmetric for all \(x, y \in X\), and transitive for all
+\(x, y, z \in X\). Moreover, if \(S \subseteq X\) is such that only one of the
+propositions: \(x \vdash y\) or \(y \vdash x\) is true for every \(x, y \in S\);
+then there exists an element \(z \in X\) for which \(x \vdash z\) for all
+choices of \(x \in X\). Then there exists an element \(m \in X\) for which
+\(m \vdash x\) if and only if \(x = m\).
 \end{lemma}
 
 \begin{theorem}
@@ -50,37 +50,40 @@ Every vector space has a basis.
 \end{theorem}
 
 \begin{proof}
-Our initial goal is to construct a set \(\mathcal A\) together with a partial
-order and then a set \(\mathcal B\) subset of the first for which the last
-condition of Zorn's lemma is satisfied. Let then \(\mathcal A \coloneq \{X \subseteq
-V \colon X \text{ linearly independent}\}\), partially order under inclusion.
-Moreover, let \(\mathcal B \subseteq \mathcal A\) so that for every two
-elements \(X, Y \in \mathcal B\) we have \(X \subseteq Y\) or (exclusive) \(Y
-\subseteq X\).
+Let \(V\) be a \(k\)-vector space. Consider the set
+\(\mathcal A \coloneq \{X \subseteq V \colon X \text{ linearly independent}\}\)
+partially order under inclusion, and let \(\mathcal C \subseteq \mathcal A\) be
+a \emph{totally} ordered subset by inclusion.
 
-To show that indeed \(\mathcal B\) satisfies the last condition, define \(Z\)
-to be the inclusion of all sets in \(\mathcal B\). \(Z\) is linearly
-independent so that \(Z \in \mathcal A\). We prove such statement: given any
-finite subset \(\{v_1, \dots, v_n\} \subseteq Z\) then let the sets \(X_i \in
-\mathcal C\) be such that \(v_i \in X_i\) and then label the vectors and
-corresponding sets such that \(X_i \subseteq X_{i+1}\) and therefore \(X_1
-\subseteq  X_2 \subseteq  \dots \subseteq X_n\). Then, we have \(\{v_1, \dots,
-v_n\} \subseteq X_n \in \mathcal C\), which implies in \(\{v_1, \dots, v_n\}
-\subseteq Z\) being linearly independent regardless of the choice of such
-vectors. This finishes the proof that \(Z \in \mathcal A\) and \(X \subseteq
-Z\) for every \(X \in \mathcal C\), which shows that \(Z\) satisfies the last
-condition.
+We now show that \(\mathcal B\) satisfies the hypothesis needed for the use of
+Zorn's lemma. Define \(Z\) to be the \emph{union} of all sets in
+\(\mathcal C\)---we'll show that \(Z\) is linearly independent. For the sake of
+contradiction, suppose \(Z\) is linearly dependent, then one must be able to
+pick a finite collection \((v_j)_{j=1}^n\) of members of \(Z\) such that there
+exists an associated collection \((a_j)_{j=1}^n\) of elements \(a_j \in k\), not
+all zero, such that
+\begin{equation}\label{eq:Sn-is-LD}
+a_1 v_1 + \dots + a_n v_n = 0.
+\end{equation}
+Since each \(v_j \in S_j\) for some set \(S_j \in \mathcal{C}\), then by the
+total ordering of \(\mathcal{C}\) we may assume that
+\[
+S_1 \subseteq S_2 \subseteq \dots \subseteq S_{n-1} \subseteq S_n
+\]
+up to change of indexing. Since \(v_j \in S_n\) for all \(1 \leq j \leq n\),
+then in particular \cref{eq:Sn-is-LD} shows that \(S_n\) is linearly dependent,
+which is false by hypothesis that \(S_n \in \mathcal{A}\). We conclude that
+\(Z\) must be linearly independent and thus \(Z \in \mathcal{A}\).
 
-Then by means of Zorn's lemma we conclude that there exists a set \(S \in
-\mathcal A\) such that \(S \subseteq X \in \mathcal A\), which implies in \(S
-= X\).  Since \(S \in \mathcal A\) then \(k^{\oplus S} \to V\) is injective.
-Now we show that it is also surjective. Suppose not, so that there exists a
-vector \(v \in V\) such that \(v \not\in \mathrm{Span}(S)\), then \(S \cup
-\{v\} \in \mathcal A\) (linearly independent) but also \(S \subseteq S \cup
-\{v\}\) but \(S \neq S \cup \{v\}\), which is a contradiction obtained by
-supposing that \(S\) does not span \(V\). Thus we conclude that
-\(\mathrm{Span}(S) = V\) and moreover \(k^{\oplus S} \to V\) is an
-isomorphism, so that \(S\) is a basis.
+Since \(\mathcal{A}\) is ordered by inclusion, we can apply Zorn's lemma to
+conclude that \(\mathcal{A}\) admits a maximal element \(M \in
+\mathcal{A}\). We'll show that \(M\) does generate \(V\). Suppose, for the sake
+of contradiction, that there exists \(v \in V\) such that \(v\) is not generated
+by \(M\). Then it must be the case that \(M \cup \{v\}\) is linearly-independent
+hence \(M \cup \{v\} \in \mathcal{A}\) and \(M \subseteq M \cup \{v\}\), which
+is a contradiction since \(M\) is maximal. Therefore \(\Span(M) = V\), which
+shows\footnote{This proof is also true for
+  modules over division rings.} that \(M\) is a basis for \(V\).
 \end{proof}
 
 \begin{corollary}
@@ -220,7 +223,7 @@ from the construction of \(a\) (that is, \(a \not\in \mathrm{span}(B
 which makes \((B \setminus \{b\}) \cup \{a\}\) a basis for \(V\).
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}\label{lem:basis-have-equal-cardinality}
 Let \(B\) and \(B'\) be bases the \(k\)-vector space \(V\), then there exists
 a bijection \(B \iso B\), and thus \(|B| = |B'|\).
 \end{lemma}

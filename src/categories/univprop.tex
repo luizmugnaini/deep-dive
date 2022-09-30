@@ -6,12 +6,12 @@ Let \(J\) be a set, and \((C_j)_{j \in I}\) be a
 collection of objects in a category \(\cat C\).
 
 A \emph{product} of such collection, \emph{if it exists}, is a pair
-\((P, (\pi_j)_{j \in J})\) --- where \(P\) is an object of \(\cat C\), and for
+\((P, (\pi_j)_{j \in J})\)---where \(P\) is an object of \(\cat C\), and for
 every \(j \in J\), \(\pi_j: P \to C_j\) is a morphism of \(\cat C\).
 
 Furthermore, this pair has to satisfy the following \emph{universal property}:
-for every pair \((Q, (q_j)_{j \in J})\) --- where \(Q \in \cat C\) and for every
-\(j \in J\), \(q_j: Q \to C_j\) is a morphism in \(\cat C\) --- there exists a
+for every pair \((Q, (q_j)_{j \in J})\)---where \(Q \in \cat C\) and for every
+\(j \in J\), \(q_j: Q \to C_j\) is a morphism in \(\cat C\)---there exists a
 \emph{unique morphism} \(f: Q \unique P\) of \(\cat C\) such that, for every
 \(j \in J\) the following diagram commutes
 \[
@@ -97,10 +97,10 @@ L \ar[rrrrdd, bend left, "\ell_i"]
 &C_i
 \end{tikzcd}
 \]
-Since \(I = \bigcup_{k \in K} J_k\), the diagram commutes for any \(i \in I\)
---- thus \(\prod_{k \in K} \bigg( \prod_{j \in J_k} C_j \bigg)\) is a product of
-the collection \((C_i)_{i \in I}\). Now, \cref{prop:product-unique-up-to-iso}
-finishes the proof.
+Since \(I = \bigcup_{k \in K} J_k\), the diagram commutes for any
+\(i \in I\)---thus \(\prod_{k \in K} \bigg( \prod_{j \in J_k} C_j \bigg)\) is a
+product of the collection \((C_i)_{i \in I}\). Now,
+\cref{prop:product-unique-up-to-iso} finishes the proof.
 \end{proof}
 
 \section{Coproducts}
@@ -111,12 +111,12 @@ Let \(J\) be a set, and \((C_j)_{j \in I}\) be a
 collection of objects in a category \(\cat C\).
 
 A \emph{coproduct} of such collection, \emph{if it exists}, is a pair
-\((P, (\iota_j)_{j \in J})\) --- where \(P\) is an object of \(\cat C\), and for
+\((P, (\iota_j)_{j \in J})\)---where \(P\) is an object of \(\cat C\), and for
 every \(j \in J\), \(\iota_j: P \to C_j\) is a morphism of \(\cat C\).
 
 Furthermore, this pair has to satisfy the following \emph{universal property}:
-for every pair \((Q, (q_j)_{j \in J})\) --- where \(Q \in \cat C\) and for every
-\(j \in J\), \(q_j: C_j \to Q\) is a morphism in \(\cat C\) --- there exists a
+for every pair \((Q, (q_j)_{j \in J})\)---where \(Q \in \cat C\) and for every
+\(j \in J\), \(q_j: C_j \to Q\) is a morphism in \(\cat C\)---there exists a
 \emph{unique morphism} \(f: P \unique Q\) of \(\cat C\) such that, for every
 \(j \in J\) the following diagram commutes
 \[
@@ -154,7 +154,7 @@ Coproducts are \emph{dual} to products in the following sense: if \(P\) is a
 product in a category \(\cat C\), then \(P^{\op}\) is a coproduct in the
 opposite category \(\cat C^{\op}\). Notice however that one \emph{cannot} simply
 reverses the arrows of a product in \(\cat C\) and end up with a coproduct in
-\(\cat C\) --- in fact, there are categories where product do exist, while
+\(\cat C\)---in fact, there are categories where product do exist, while
 coproducts do not.
 \end{remark}
 
@@ -163,9 +163,9 @@ coproducts do not.
 \begin{definition}[Equalizer]
 \label{def:equalizer}
 Let \(f, g: A \para B\) be parallel morphisms in a category \(\cat C\). An
-\emph{equalizer of \(f\) and \(g\)} is a pair \((K, k)\) --- where
+\emph{equalizer of \(f\) and \(g\)} is a pair \((K, k)\)---where
 \(K \in \cat C\) is an object and \(k: K \to A\) is a morphism of \(\cat C\) for
-which \(f k = g k\) --- such that, for any object \(M \in \cat C\) and morphism
+which \(f k = g k\)---such that, for any object \(M \in \cat C\) and morphism
 \(m: M \to A\) of \(\cat C\) satisfying \(f m = g m\), there exists a
 \emph{unique} morphism \(n: M \to K\) such that the following diagram commutes
 \[
@@ -184,9 +184,9 @@ definition.
 \begin{definition}[Coequalizer]
 \label{def:coequalizer}
 Let \(f, g: A \para B\) be parallel morphisms in a category \(\cat C\). An
-\emph{equalizer of \(f\) and \(g\)} is a pair \((C, c)\) --- where
+\emph{equalizer of \(f\) and \(g\)} is a pair \((C, c)\)---where
 \(C \in \cat C\) is an object and \(c: B \to C\) is a morphism of \(\cat C\) for
-which \(c f = c g\) --- such that, for any object \(M \in \cat C\) and morphism
+which \(c f = c g\)---such that, for any object \(M \in \cat C\) and morphism
 \(m: B \to M\) of \(\cat C\) satisfying \(m f = m g\), there exists a
 \emph{unique} morphism \(n: C \to M\) such that the following diagram commutes
 \[
@@ -216,7 +216,7 @@ vice versa, we obtain unique morphisms \(n': K \to K'\) and \(n: K' \to K\) such
 that \(k = k' n'\) and \(k' = k n\).
 
 Moreover, applying the equalizer property of \((K, k)\) in itself we obtain a
-unique \(t: K \to K\) such that \(k = k t\) --- therefore \(t = \Id_K\). Since
+unique \(t: K \to K\) such that \(k = k t\)---therefore \(t = \Id_K\). Since
 \(k = k' n = k \Id_K\) and \(\Id_K\) is unique with such property, it follows
 that, since \(k = k' n' = (k n) n' = k (n n')\) we find that \(n n' =
 \Id_K\). On the other hand, doing the same for \((K', k')\) implies in \(n' n =
@@ -226,7 +226,7 @@ that, since \(k = k' n' = (k n) n' = k (n n')\) we find that \(n n' =
 \begin{corollary}
 \label{cor:self-(co)equalizer}
 Given a morphism \(f: A \to B\) in a category \(\cat C\), the (co)equalizer of
-\(f\) with itself always exists --- in fact \(\Eq(f, f) = (A, \Id_A)\) and
+\(f\) with itself always exists---in fact \(\Eq(f, f) = (A, \Id_A)\) and
 \(\Coeq(f, f) = (B, \Id_{B})\).
 \end{corollary}
 
@@ -249,7 +249,7 @@ Let \(\cat C\) be a category and \(f, g: A \para B\) be parallel morphisms in
 The properties are dual to each other, thus we may simply prove the one
 concerning equalizers. Let \(k: \Eq(f, g) \to A\) be the morphism in \(\cat C\)
 associated to the equalizer. Consider any two parallel morphisms \(x, y: C \para
-\Eq(f, g)\) such that \(k x = k y\) --- therefore, the following diagram
+\Eq(f, g)\) such that \(k x = k y\)---therefore, the following diagram
 commutes
 \[
 \begin{tikzcd}
@@ -260,7 +260,7 @@ C \ar[r, shift left, "x"] \ar[r, shift right, "y"']
 \end{tikzcd}
 \]
 From the diagram we obtain the relation \(f (k x) = g (k x)\). Since \(k x: C
-\to A\), the universal property implies that \(x\) must be the unique --- hence
+\to A\), the universal property implies that \(x\) must be the unique---hence
 \(y = x\).
 \end{proof}
 
@@ -283,7 +283,7 @@ A \ar[r, "f"] & B \ar[r, shift right, "g"'] \ar[r, shift left, "f"] &C
 which implies in \(x f = y f\). By hypothesis \(f\) is an epimorphism, thus
 \(x = y\). Notice however that the equalizer of a morphism \(B \to C\) with
 itself is the identity on \(B\). Since equalizers are unique up to isomorphism,
-it follows that \(f \iso \Id_B\) --- thus \(f\) itself is an isomorphism (and
+it follows that \(f \iso \Id_B\)---thus \(f\) itself is an isomorphism (and
 \(A \iso B\)).
 \end{proof}
 
@@ -433,8 +433,8 @@ Q \ar[rd, dashed, "\psi"]
 \end{tikzcd}
 \]
 Notice, however, that since \(\Id_P: P \to P\) and \(\Id_Q: Q \to Q\) also make
-them commute --- respectively, the left and right diagrams. From uniqueness we
-obtain \(\phi \psi = \Id_P\) and \(\psi \phi = \Id_Q\) --- therefore \(P \iso
+them commute---respectively, the left and right diagrams. From uniqueness we
+obtain \(\phi \psi = \Id_P\) and \(\psi \phi = \Id_Q\)---therefore \(P \iso
 Q\) in \(\cat C\), via \(\phi\) and \(\psi\).
 \end{proof}
 
@@ -458,7 +458,7 @@ We only prove items (a) and (b), since (c) and (d) are merely dual consequences
 of the former items.
 \begin{enumerate}[(a)]\setlength\itemsep{0em}
 \item Let \(g\) be a monomorphism and consider parallel morphisms \(u, v: Q
-  \para P\) such that \(g' u = g' v\) --- we want to prove that \(u = v\). Take
+  \para P\) such that \(g' u = g' v\)---we want to prove that \(u = v\). Take
   into account the following commutative diagram
   \[
   \begin{tikzcd}
@@ -476,7 +476,7 @@ of the former items.
   \((p, q)\) through \((g, f)\).
 
   On the other hand, if we consider the arrow \(v\), one can define
-  \(p' \coloneq g' v\) and \(q' \coloneq f' v\) so that \(f p' = g q'\) --- thus
+  \(p' \coloneq g' v\) and \(q' \coloneq f' v\) so that \(f p' = g q'\)---thus
   \(v\) is the unique factorization of \((p', q')\) through \((g, f)\). Notice,
   however, that from construction \(p' = g' v = g' u = p\). Moreover,
   \[
@@ -484,7 +484,7 @@ of the former items.
   \]
   since \(g\) is a monomorphism, it follows that \(g q' = g q\) implies
   \(q' = q\). Therefore both \(u\) and \(v\) are factorizations of the same pair
-  of morphisms --- and from uniqueness, it can only be the case that \(u = v\).
+  of morphisms---and from uniqueness, it can only be the case that \(u = v\).
 
 \item Suppose \(g\) is an isomorphism and consider the following commutative
   diagram
@@ -535,7 +535,7 @@ of the former items.
 \begin{definition}[Kernel \& cokernel]
 \label{def:kernel-cokernel}
 Let \(f: A \to B\) be a morphism in a category \(\cat C\). The \emph{(co)kernel}
-of \(f\), if existent, is defined to be the pullback of \(f\) with itself --- or
+of \(f\), if existent, is defined to be the pullback of \(f\) with itself---or
 pushout in the case of cokernels.
 \end{definition}
 
@@ -550,7 +550,7 @@ the (co)kernel of \(f\) exists, its associated morphisms are both epimorphisms
 Let \(\ker f \coloneq (K, \alpha, \beta)\) and consider \(A\) itself, together
 with the identity morphisms. Since \(K\) is a pullback of \(f\) with itself,
 there exists a unique morphism \(\gamma: A \to K\) such that \(\beta \gamma =
-\Id_A = \alpha \gamma\) --- therefore \(\gamma\) is a split monomorphism and
+\Id_A = \alpha \gamma\)---therefore \(\gamma\) is a split monomorphism and
 both \(\alpha\) and \(\beta\) are split epimorphisms.
 \end{proof}
 
@@ -572,7 +572,7 @@ properties are equivalent:
 \item (a) \(\implies\) (b): Since \(f\) is monic, if \(P\) is any object
   together with morphisms \(\phi, \psi: P \para A\) such that
   \(f \phi = f \psi\) then \(\phi = \psi\) and we may simply take \(A\) to be
-  the kernel of \(f\) together with the identity morphisms --- while the unique
+  the kernel of \(f\) together with the identity morphisms---while the unique
   morphism \(P \to A\) is given by \(\phi = \psi\).
 
 \item (b) \(\implies\) (c): If \((K, \alpha, \beta)\) is a kernel for \(f\) then
@@ -583,7 +583,7 @@ properties are equivalent:
 \item (c) \(\implies\) (a): Suppose \((K, \alpha, \alpha)\) is kernel for \(f\),
   then for all objects \(P\) and morphisms \(g, h: P \para A\) such that\(f g =
   f h\), we have a unique \(\phi: P \to K\) such that \(\alpha \phi = g\) and
-  \(\alpha \phi = h\) --- thus \(g = h\).
+  \(\alpha \phi = h\)---thus \(g = h\).
 \end{itemize}
 \end{proof}
 
@@ -612,7 +612,7 @@ following properties relate coequalizers and kernels:
   \(y = \beta \phi\).
 
   Notice that \(\alpha, \beta: \ker f \para A\) are parallel morphisms, so one
-  can be tempted to find its coequalizer --- we shall prove that
+  can be tempted to find its coequalizer---we shall prove that
   \(\Coeq(\alpha, \beta) = \Coeq(x, y)\). Let \(C\) be an object together with a
   morphism \(g: A \to C\) such that \(g \alpha = g \beta\). We may precompose
   this morphism with \(\phi\), obtaining \(g \alpha \phi = g \beta \phi\), but
@@ -643,9 +643,9 @@ following properties relate coequalizers and kernels:
   \end{tikzcd}
   \]
 
-\item From the pullback definition, we know that \(h \varepsilon = h \delta\)
-  --- since \(w\) is the coequalizer of \((\varepsilon, \delta)\), it follows
-  that there exists a unique morphism
+\item From the pullback definition, we know that
+  \(h \varepsilon = h \delta\)---since \(w\) is the coequalizer of
+  \((\varepsilon, \delta)\), it follows that there exists a unique morphism
   \(\gamma: B \to \Coeq(\varepsilon, \delta)\) such that \(\gamma w = h\).
 
   Consider now two parallel morphisms \(a, b: Y \para A\) such that
@@ -720,7 +720,7 @@ The following are properties which regard pullbacks of such commutative squares:
   morphisms \(z\) and \(x\) we find a unique \(w: Z \to A\) such that
   \(a w = z\) and \(c w = x\).
 
-  Notice that since \(a w = z\) then \(b (a w) = b z = y\) --- we'll show that
+  Notice that since \(a w = z\) then \(b (a w) = b z = y\)---we'll show that
   \(w\) is the unique morphism of \(\cat C\) such that \((b a) w = y\) and
   \(c w = x\). Suppose the existence of another morphism \(w': Z \to A\) such
   that \((b a) w' = y\) and \(c w' = x\). In particular, it follows that \(b (a
@@ -731,24 +731,26 @@ The following are properties which regard pullbacks of such commutative squares:
   By the uniqueness of the morphism \(Z \to B\) from the second pullback square
   diagram, \(a w' = z = a w\). Using this last equality and the fact that
   \(c w' = x = c w\), by the pullback property of the first square we obtain
-  \(w' = w\) --- which finally settles that \(w\) is unique and the outer-square
+  \(w' = w\)---which finally settles that \(w\) is unique and the outer-square
   is indeed a pullback.
 
 \item We assume the existence of a pullback \((A', c', a')\) of \((f, d)\) and
   show that \(A'\) must be isomorphic to \(A\). From the commutativity of the
   diagram, since \(d a = c f\), we use the pullback property of \((A', c', a')\)
-  to get a unique morphism \(h: A \to A'\) --- we'll show that \(h\) is the
+  to get a unique morphism \(h: A \to A'\)---we'll show that \(h\) is the
   required isomorphism. Via the result of item (a), we know that
   \((A', c, b a')\) is a pullback for the outer-square, therefore it follows
   that \(c' h = c\) and \(b a' h = b a\). Hence from the last two equalities one
   concludes that \(h\) is a factorization between two pullbacks of the
   outer-square. Since \(h\) is unique and pullbacks are unique up to
-  isomorphism, it must be the case that \(h\) is an isomorphism --- thus
+  isomorphism, it must be the case that \(h\) is an isomorphism---thus
   \(A \iso A'\), then \((A, c, a)\) is a pullback for the first square.
 \end{enumerate}
 \end{proof}
 
 \section{Limits \& Colimits}
+
+\subsection{(Co)Cones \& (Co)Limits}
 
 \begin{definition}[Cone]
 \label{def:cone-on-functor}
@@ -844,14 +846,38 @@ existent, is simply a \emph{product} in \(\cat C\), that is
 \]
 \end{example}
 
+\begin{example}[Inverse \& direct limit]
+\label{exp:inv-dir-limit}
+The limit of a functor \(F: \omega^{\op} \to \cat C\) is commonly refered to as
+an \emph{inverse limit}:
+\[
+\begin{tikzcd}
+\Lim F \ar[dd] \ar[drd, bend left] \ar[drdr, bend left] \ar[rdrdr, bend left]
+&&& \\
+&&& \\
+\dots \ar[r] &F(2) \ar[r] &F(1) \ar[r] &F(0)
+\end{tikzcd}
+\]
+The dual of this concept is that of the \emph{direct limit}, which is the
+colimit of a functor \(G: \omega \to \cat C\), visually given by:
+\[
+\begin{tikzcd}
+G(0) \ar[r] &G(1) \ar[r] &G(2) \ar[r] &\dots \\
+&&&\\
+\Lim G \ar[uu] \ar[uru, bend right] \ar[urur, bend right] \ar[rurur, bend right]
+&&&
+\end{tikzcd}
+\]
+\end{example}
+
 \subsection{Complete Categories}
 
 \begin{proposition}[All limits]
 \label{prop:all-limits-is-preorder}
 Let \(\cat C\) be a \(\mathcal{U}\)-category. If for all
 \(\mathcal{U}\)-categories \(\cat D\) and functors \(F: \cat D \to \cat C\), the
-limit of \(F\) exists in \(\cat C\) --- that is, the category \emph{admits all
-  limits} --- then \(\cat C\) is a \emph{preorder class}.
+limit of \(F\) exists in \(\cat C\)---that is, the category \emph{admits all
+  limits}---then \(\cat C\) is a \emph{preorder class}.
 \end{proposition}
 
 \begin{proof}
@@ -862,8 +888,8 @@ every pair of objects of \(\cat C\), so this is what we settle to do. Let
 exists, then in particular the product \(B^{|\Hom(\cat C)|}\) is a well defined
 object of \(\cat C\). From \(f\) and \(g\), one can create
 \(2^{|\Hom(\cat C)|}\) distinct collections of morphisms
-\((h: A \to B)_{|\Hom(\cat C)|}\) --- where each \(h\) is either \(f\) or \(g\)
---- which are cones over an ``inclusion'' functor \(F: \cat A \to \cat C\),
+\((h: A \to B)_{|\Hom(\cat C)|}\)---where each \(h\) is either \(f\) or
+\(g\)---which are cones over an ``inclusion'' functor \(F: \cat A \to \cat C\),
 where \(\cat A\) is composed of objects \(A\) and \(B\), and morphisms are
 \(f, g: A \para B\). The admittance of a limit over this functor is to state the
 existence of \(2^{|\Hom(\cat C)|}\) distinct factorizations of
@@ -1000,11 +1026,11 @@ r_D (\ell u)
 = (r_D \ell) v
 = r_D (\ell v)
 \]
-holds for all \(D \in \cat D\), therefore both \(\ell u\) and \(\ell v\) are
-parallel factorizations factorizations --- which by
-\cref{prop:equal-parallel-factorizations} implies \(\ell u = \ell v\).
-From \cref{prop:eq-monic-coeq-epic} we know that \(\ell\) is monic, therefore
-\(u = v\). This shows the uniqueness of \(u\), thus we may conclude that
+holds for all \(D \in \cat D\), therefore both \(\ell u\) and \(\ell v\) are parallel
+factorizations---which by \cref{prop:equal-parallel-factorizations} implies
+\(\ell u = \ell v\).  From \cref{prop:eq-monic-coeq-epic} we know that \(\ell\) is monic,
+therefore \(u = v\). This shows the uniqueness of \(u\), thus we may conclude
+that
 \[
 \Lim F = (L, (p_D)_{D \in \cat D}).
 \]
@@ -1039,7 +1065,7 @@ Let \(\cat C\) be a category. The following properties are equivalent:
   B \ar[r, dashed] &1
   \end{tikzcd}
   \]
-  is the product of \(A\) with \(B\) in \(\cat C\) --- thus binary products
+  is the product of \(A\) with \(B\) in \(\cat C\)---thus binary products
   exist. Now consider two parallel morphisms \(f, g: A \para B\) in \(\cat
   C\). In this case, one can consider the pullback
   \[
@@ -1074,7 +1100,7 @@ Let \(\cat C\) be a category. The following properties are equivalent:
 \label{prop:equiv-def-cone-on-func-from-graph}
 Let \(F: \cat D \to \cat C\) be a functor, and suppose there exists a collection
 \((f_j)_{j \in J}\) of morphisms of \(\cat D\) \emph{generating} every other
-morphism of \(\cat D\) --- that is, if \(g\) is a morphism in \(\cat D\), then
+morphism of \(\cat D\)---that is, if \(g\) is a morphism in \(\cat D\), then
 \(g\) can be written as the composition of \emph{finitely} many arrows of
 \((f_j)_{j \in J}\). A \emph{cone} on the functor \(F\) is a pair \((L, (p_D: L
 \to F D)_{D \in \cat D})\) such that, for any morphism \(f_j: D \to D'\), we
@@ -1126,8 +1152,8 @@ Since \(\cat C\) is finitely complete, we can recycle the proof of
 
 \begin{definition}[Limit preserving functor]
 \label{def:limit-preserving-functor}
-A functor \(F: \cat B \to \cat C\) is said to \emph{preserve limits} if --- for
-every small category \(\cat A\) and functor \(G: \cat A \to \cat B\) --- the
+A functor \(F: \cat B \to \cat C\) is said to \emph{preserve limits} if---for
+every small category \(\cat A\) and functor \(G: \cat A \to \cat B\)---the
 limit of \(G\) \emph{exists} and the limit of \(F G: \cat A \to \cat C\) exists
 and is given by
 \[
@@ -1137,18 +1163,250 @@ To put more concretely, if \((L, (p_A)_{A \in \cat A})\) is the limit of \(G\),
 then the limit of \(F G\) is given by \((F L, (F p_A)_{A \in \cat A})\).
 \end{definition}
 
-\subsection{Absolute limits}
+\begin{proposition}
+\label{prop:fin-complete-cat-func-preserves-iff-prod-eq}
+Let \(\cat D\) be a (finitely) complete category and \(\cat C\) be \emph{any}
+category. A functor \(F: \cat D \to \cat C\) preserves (finite) limits if and
+only if it preserves (finite) products and equalizers.
+\end{proposition}
+
+\begin{proof}
+Suppose \(F\) preserves (finite) limits, then in particular it preserves both
+(finite) products and equalizers. Now, we assume that \(F\) preserves both
+(finite) products and equalizers. Since \(\cat D\) is (finitely) complete, for
+any small (finite) category \(\cat A\) and functor \(G: \cat A \to \cat D\),
+there exists \(\Lim G\) in \(\cat D\). Moreover, since \(\Lim G\) can be build
+out of products and equalizers (see \cref{thm:complete-category-prod-eq}), it
+follows that, since \(F\) preserves products and equalizers, it must also
+preserve the limit of \(G\)---and \(\Lim(FG) = F(\Lim G)\).
+\end{proof}
+
+\begin{proposition}
+\label{prop:preserve-pullback-then-mono}
+A functor that preserves \emph{pullbacks} does preserve \emph{monomorphisms}.
+\end{proposition}
+
+\begin{proof}
+Let \(F: \cat B \to \cat C\) be a functor preserving pullbacks, and consider any
+monomorphism \(f: B \to B'\) in \(\cat B\). From
+\cref{prop:(co)kernel-properties} we find that \(\ker f = (B, \Id_B,
+\Id_B)\). Define \(\cat A\) to be a category whose objects are \(B\) and \(B'\),
+and morphisms are identities together with \(f: B \to B'\). The limit of the
+inclusion functor \(I: \cat A \to \cat D\) is simply the pullback of \(f\) with
+itself, namely, \(\ker f\). Since \(F\) preserves pullbacks, then
+\(F I: \cat A \to \cat C\) has a limit \(\Lim (F I) = F \ker f\), which is the
+the pullback of \(F I f = F f: F B \to F B'\). This implies in
+\(\ker(F f) = (F B, \Id_{F B}, \Id_{F B})\), which is equivalent to \(F f\)
+being a monomorphism in \(\cat C\). Therefore \(F\) preserves monomorphisms.
+\end{proof}
+
+\begin{proposition}
+\label{prop:Mor-func-preserves-all-limits}
+Let \(\cat C\) be a category and \(C \in \cat C\) be any object. The covariant
+functor \(\Hom_{\cat C}(C, -): \cat C \to \Set\) \emph{preserves all existing
+  limits, including large ones}. In particular it \emph{preserves
+  monomorphisms}.
+\end{proposition}
+
+\begin{proof}
+Let \(F: \cat D \to \cat C\) be a functor admitting a limit
+\((L, (p_D)_{D \in \cat D})\). Our goal is to show that the functor
+\(\Hom_{\cat C}(C, F(-)): \cat D \to \Set\)---mapping
+\(D \mapsto \Hom_{\cat C}(C, F D)\) and morphisms
+\((f: D \to D') \mapsto ((F f)_{*}: \Hom_{\cat C}(C, F D) \to \Hom_{\cat C}(C, F
+D'))\)---has a limit
+\[
+\Lim \Mor(C, F(-))
+= (\Mor_{\cat C}(C, L), (\Mor_{\cat C}(C, p_D))_{D \in \cat D}).
+\]
+Consider any cone \((q_D: S \to \Hom_{\cat C}(C, F D))_{D \in \cat D}\), on
+\(\Set\), over the said composite functor. Notice that every element \(s \in S\)
+induces a cone over \(F\) given by \((q_D(s): C \to F D)_{D \in \cat D}\). Since
+\(F\) has a limit, there must exist a \emph{unique} morphism \(q_s: C \to L\) in
+\(\cat C\) such that \(p_D q_s = q_D(s)\) for all objects \(D \in \cat
+D\). Since \(s \in S\) was chosen arbitrarily, we can define a uniquely induced
+set-function \(q: S \to \Hom_{\cat C}(C, L)\) given by \(q(s) \coloneq q_s\).
+By the properties of \(q_s\), the map \(q\) also satisfies
+\((F p_D)_{*} \circ q = q_D\) for all \(D \in \cat D\).
+\end{proof}
+
+\begin{corollary}
+\label{cor:contrav-Mor-colim-into-lim}
+Given a category \(\cat C\) and an object \(C \in \cat C\), the contravariant
+functor \(\Hom_{\cat C}(-, C): \cat C \to \Set\) \emph{transforms existing
+  colimits into limits}. In particular, it transforms \emph{epimorphisms into
+  monomorphisms}.
+\end{corollary}
+
+\subsubsection{Limit Reflection}
+
+\begin{definition}
+\label{def:functor-reflect-limit}
+A functor \(F: \cat B \to \cat C\) is said to \emph{reflect limits} if---for all
+small categories \(\cat A\), and all functors \(G: \cat A \to \cat B\), and
+every cone \((L, (g_A)_{A \in \cat A})\) over \(G\)---the limit of \(F G: \cat
+A \to \cat C\) is given by \(\Lim(F G) = (F L, (F g_A)_{\cat A})\), then \(\Lim
+G = (L, (g_A)_{A \in \cat A})\).
+\end{definition}
+
+\begin{proposition}
+\label{prop:complete-reflect-iso-reflect-limits}
+Let \(F: \cat A \to \cat B\) be a \emph{limit preserving} functor. If \(\cat A\)
+is \emph{complete}, and \(F\) \emph{reflects isomorphisms}, then \(F\) reflects
+limits.
+\end{proposition}
+
+\begin{proof}
+Let \(G: \cat D \to \cat A\) be a functor with \(\Lim G = (L, (g_D)_{D \in \cat
+  D})\). Since \(F\) preserves limits, then
+\[
+\Lim(FG) = (F L, (F g_D)_{D \in \cat D}).
+\]
+Suppose that \((F M, (F f_D)_{D \in \cat D})\) is also a limit of the composite
+\(F G\). We want to show that it must be the case that
+\((L, (g_D)_{D \in \cat D}) \iso (M, (f_D)_{D \in \cat D})\).
+
+From the limit property in \(\cat A\), there exists a unique factorization
+\(u: M \to L\) such that for all \(D \in \cat D\) we have \(g_D u =
+f_D\). Notice that \(F u: FM \to FL\) is a factorization between limits of the
+composite \(F G\). From the uniqueness of the factorization and since
+\(F M \iso F L\) in \(\cat B\), it follows that \(F u\) is an isomorphism. Since
+\(F\) reflects isomorphisms, it must be the case that \(u\) is an isomorphism
+and hence \(M \iso L\), showing that
+\((L, (g_D)_{D \in \cat D}) \iso (M, (f_D)_{D \in \cat D})\) via \(u\).
+\end{proof}
+
+\begin{proposition}
+\label{prop:finitely-gen-limits-preserve-reflect}
+Let \(F: \cat A \to \cat B\) be a functor between \emph{finitely generated
+  complete} categories \(\cat A\) and \(\cat B\). If the functor \(F\)
+\emph{preserves} (or \emph{reflects}) \emph{finite limits}, then \(F\) preserves
+(or reflects) \emph{finitely generated limits}.
+\end{proposition}
+
+\begin{proof}
+By \cref{prop:fin-gen-to-fin-complete-has-limits} we have that finitely
+generated limits can be expressed as finite products and equalizers. Therefore
+\(F\) preserves (or reflects) all existent finitely generated limits.
+\end{proof}
+
+\begin{proposition}
+\label{prop:full-faithful-reflects}
+A \emph{fully faithful} functor \(F: \cat C \to \cat D\)
+\emph{reflects limits}.
+\end{proposition}
+
+\begin{proof}
+Let \(G: \cat E \to \cat C\) be any functor from a small category \(\cat
+E\). Since \(F\) is fully faithful, there exists a unique collection of
+morphisms \((g_E: L \to G E)_{E \in \cat E}\)---which is a cone over
+\(G\)---such that the collection \((F g_E: F L \to F G E)_{E \in \cat E}\) is a
+\emph{limit} cone over \(F G\). From the limit property, if
+\((f_E: M \to G E)_{E \in \cat E} \) is another cone over \(G\), the
+corresponding cone \((F f_E: F M \to F G E)_{E \in \cat E}\) over \(F G\) has a
+unique factorization \(u: F M \to F L\) in \(\cat D\) such that for all
+\(E \in \cat E\) we have \(F g_E \circ u = F f_E\). From the fully faithfulness
+of \(F\), there exists a unique morphism \(\ell: M \to L\) in \(\cat E\) such
+that \(F \ell = u\)---which in this case satisfies \(g_E \ell = f_E\), showing
+that \(\ell\) is the unique factorization between the cones
+\((g_E)_{E \in \cat E}\) and \((f_E)_{E \in \cat E}\). This implies in
+\(\Lim G = (L, (g_E)_{E \in \cat E})\) as wanted.
+\end{proof}
+
+\subsection{Absolute (Co)Limits}
+
+\begin{definition}[Absolute (co)limit]
+\label{def:absolute-(co)-limit}
+Let \(G: \cat A \to \cat B\) be a functor admitting a colimit \(\Colim G\). We
+say that such colimit is \emph{absolute} if, for every functor
+\(F: \cat B \to \cat C\), we have
+\[
+\Colim (F G) = F (\Colim G).
+\]
+\end{definition}
+
+\begin{proposition}
+\label{prop:absolute-coequalizer}
+Let \(\cat C\) be a category and consider the following commutative diagram in
+\(\cat C\):
+\[
+\begin{tikzcd}
+A \ar[r, shift left, "f"] \ar[r, shift right, "g"']
+&B \ar[r, "q"]
+&C
+\end{tikzcd}
+\]
+that is, \(q f = q g\). If \(g\) and \(q\) are both \emph{split epimorphisms}
+with \emph{sections} \(s_g\) and \(s_q\), respectively, and the diagram
+\[
+\begin{tikzcd}
+B \ar[r, "q"] \ar[d, "s_g"'] &C \ar[d, "s_q"] \\
+A \ar[r, "f"'] &B
+\end{tikzcd}
+\]
+commutes in \(\cat C\)---that is, \(s_q q = f s_g\)---then
+\[
+\Coeq(f, g) = (C, q).
+\]
+Moreover, this coequalizer is \emph{absolute}.
+\end{proposition}
+
+\begin{proof}
+Let \(p: B \to D\) be any morphism in \(\cat C\) such that \(p f = p g\). Define
+a morphism \(\ell \coloneq p s_q: C \to D\), then
+\[
+\ell q = (p s_q) q
+= p (s_q q)
+= p (f s_g)
+= (p f) s_g
+= (p g) s_g
+= p (g s_g)
+= p \Id_A
+= p.
+\]
+To show the uniqueness of \(\ell\), suppose \(k: C \to D\) satisfies \(k q =
+p\). Then we have
+\[
+k = k (q s_q)
+= (k q) s_q
+= p s_q
+= \ell,
+\]
+which proves that \(\Coeq(f, g) = (C, q)\). Since any functor preserves retracts
+and sections, it follows that the coequalizer is preserved under any given
+functor.
+\end{proof}
 
 \begin{proposition}[Absolute pushout]
 \label{prop:absolute-pushout}
-Let \(\cat C\) be a category, and morphisms \(p: A \epi C\) and \(q: A
-\epi B\) in \(\cat C\) such that the following square commutes in \(\cat C\)
+Let \(\cat C\) be a category, and consider the following commutative square in
+\(\cat C\):
 \[
 \begin{tikzcd}
-A \ar[r, "q"] \ar[d, "p"'] &B \ar[d] \\
-C \ar[r] &D
+A \ar[r, "f"] \ar[d, two heads, "g"']
+&B \ar[d, two heads,"r"] \\
+C \ar[r, "h"'] &D
 \end{tikzcd}
 \]
-If \(p\) is a \emph{split epimorphism} and \(q\) is an \emph{epimorphism},
-then the square is an \emph{absolute pushout}.
+If \(g\) and \(r\) are both \emph{split epimorphisms} with corresponding
+\emph{sections} \(\alpha\) and \(\beta\) that are compatible with the
+square---meaning, \(f \alpha = \beta h\)--- then the square is an \emph{absolute
+  pushout}.
 \end{proposition}
+
+\begin{proof}
+We first show that the square is indeed a pushout. Let \(X \in \cat C\) be any
+object and consider morphisms \(p: B \to X\) and \(q: C \to X\) such that
+\(p f = q g\). Define a morphism \(\ell: D \to X\) by \(\ell \coloneq p
+\beta\). Note that
+\begin{gather*}
+\ell h = (p \beta) h = p (\beta h) = p (f \alpha) = (p f) \alpha
+= (q g) \alpha = q (g \alpha) = q \Id_A = q, \\
+\ell r = (p \beta) r = p (\beta r) = p \Id_B = p.
+\end{gather*}
+To show uniqueness of \(\ell\), suppose \(k: D \to X\) is another morphism such
+that \(k h = q\) and \(k r = p\)---then in particular \(k r = \ell r\) but since
+\(r\) is an epimorphism it follows that \(k = \ell\). With this we have proved
+that the square is indeed a pushout. Since split epimorphisms and commutative
+diagrams are preserved by any functor, it follows that the pushout is absolute.
+\end{proof}

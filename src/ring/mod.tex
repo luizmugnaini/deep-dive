@@ -278,7 +278,7 @@ surjective by the definition of an ideal. Moreover, one should note that
 \]
 and since \(R\) is an integral domain, it follows that \(r = r'\) --- therefore,
 \(\phi\) is injective. We conclude that \(\phi\) is a bijection between
-\(R\)-modules and therefore stablishes an isomorphism \(R \iso (a)\).
+\(R\)-modules and therefore establishes an isomorphism \(R \iso (a)\).
 \end{example}
 
 \begin{example}[Morphisms form an \(R\)-module]
@@ -348,7 +348,29 @@ Since bijective morphisms are isomorphisms in \(\Mod{R}\), it follows that
 \(\Hom_{\Mod{R}}(R, M) \iso M\) via \(\phi\).
 \end{proof}
 
-\begin{lemma}[Nakayama's lemma: a particular case]
+\begin{proposition}
+\label{prop:M-iso-N-then-iso-between-End}
+Let \(M\) and \(N\) be \(R\)-modules, for some ring \(R\). If \(M \iso N\), then
+there exists a natural isomorphism between \emph{abelian groups}
+\[
+\End_{\Mod{R}}(M) \iso \End_{\Mod{R}}(N).
+\]
+\end{proposition}
+
+\begin{proof}
+Let \(\phi: M \isoto N\) be an isomorphism. We define a map
+\(\Phi: \End_{\Mod{R}}(M) \to \End_{\Mod{R}}(N)\) given by the conjugation \(f
+\mapsto \phi f \phi^{-1}\). This uniquely defines an \(R\)-module morphism for
+each endomorphism \(f: M \to M\). Notice that, since \(\phi\) is a bijection,
+given any endomorphism \(g: N \to N\) we may define an \(R\)-morphism \(f: M \to
+M\) given by \(f \coloneq \phi^{-1} g \phi\), so that \(\Phi(f) = \phi
+(\phi^{-1} g \phi) \phi^{-1} = g\). Therefore \(\Phi\) establishes an isomorphism
+of abelian groups via conjugation.
+\end{proof}
+
+\subsubsection{Examples on Nilpotency}
+
+\begin{lemma}[Nakayama's lemma, a particular case]
 \label{lem:nakayama-particular-case}
 Let \(R\) be a \emph{commutative} ring, and \(a \in R\) be a \emph{nilpotent}
 element. Then \(M = 0\) if and only if \(a M = M\).
@@ -366,6 +388,40 @@ collection \((m_j)_{j=1}^k\) we get a chain of equalities
 m = a m_1 = a^2 m_2 = \dots = a^k m_k = 0.
 \]
 Therefore \(M = 0\).
+\end{proof}
+
+\begin{proposition}
+\label{prop:induced-surjective-nilpotent-ideal}
+Let \(R\) be a commutative ring and \(\ideal a\) a \emph{nilpotent ideal} of
+\(R\). Let \(\phi: M \to N\) be an \(R\)-module morphism. If the induced
+\(R\)-module morphism
+\[
+\overline{\phi}: \frac{M}{\ideal a M} \longrightarrow \frac{N}{\ideal a N}
+\quad\text{ mapping }\quad
+m + \ideal a M \longmapsto \phi(m) + \ideal a N
+\]
+is a surjection, then so is \(\phi\).
+\end{proposition}
+
+\begin{proof}
+Since \(\overline{\phi}\) is surjective, it follows that
+\[
+\overline{\phi}(M/\ideal{a} M) = \frac{\phi(M) + \ideal a N}{\ideal a N}
+= \frac{N}{\ideal a N},
+\]
+therefore \(N = \phi(M) + \ideal a N\). Suppose that \(k \in \Z_{> 0}\) is such
+that \(\ideal a^k = 0\) (which exists since \(\ideal a\) is a nilpotent
+ideal). Then via induction we find
+\begin{align*}
+  N = \phi(M) + \ideal a N
+  &= \phi(M) + \ideal a(\phi(M) + \ideal a N) \\
+  &= \phi(M) + \ideal a \phi(M) + \ideal a^2 N \\
+  &= \phi(M) + \ideal a^2 N \\
+  &= \dots \\
+  &= \phi(M) + \ideal a^k N \\
+  &= \phi(M).
+\end{align*}
+Therefore \(\phi\) is surjective, since \(N = \phi(M)\).
 \end{proof}
 
 \subsection{Kernels \& Cokernels}
@@ -520,7 +576,7 @@ name of \(R\)-algebra, which we now define for later reference.
 \label{def:R-algebra}
 Let \(R\) be a \emph{commutative} ring. We define an \emph{\(R\)-algebra} to be
 a \emph{ring morphism} \(\phi: R \to S\) such that the image of \(\phi\) is
-contained in the center of \(S\) --- inducing an \(R\)-module structure on
+contained in the centre of \(S\) --- inducing an \(R\)-module structure on
 \(S\). If the ring \(S\) itself is commutative, we say that it has a structure
 of a \emph{commutative \(R\)-algebra}.
 
@@ -709,10 +765,9 @@ submodules of \(M\). We have the following:
   \text{ is finite, and } n_j \in N_j \text{ for all } j \in F
   \bigg\}
   \]
-  is a submodule of \(R\).
+  is a submodule of \(M\).
 \end{enumerate}
-We show that each of these objects is indeed a submodule.
-
+\begin{proof}
 For the intersection, given any two \(a, b \in \bigcap_{j \in J} N_j\) we have,
 for each \(j \in J\), that \(a, b \in N_j\) and therefore \(a + b \in N_j\) ---
 this implies in \(a + b \in \bigcap_{j \in J} N_j\). Moreover, given any element
@@ -747,6 +802,59 @@ distributive over finite sums, it follows that for any \(r \in R\) we have
 and since \(a_j r \in N_j\) for each \(j \in F\), it follows that
 \(\big( \sum_{j \in F} a_j \big) r \in N\). Thus \(N\) is a submodule of
 \(M\).
+\end{proof}
+\end{example}
+
+\begin{example}[Union of submodules]
+\label{exp:union-submodules}
+Let \(M\) be an \(R\)-module, for a ring \(R\). The following are two
+propositions concerning submodules of \(M\):
+\begin{enumerate}\setlength\itemsep{0em}
+\item Given submodules \(S, T \subseteq M\), the union \(S \cup T\) is a
+  submodule of \(M\) if and only if \(S \subseteq T\) or \(T \subseteq S\).
+\item Let \((N_j)_{j \in \N}\) be an ascending chain of submodules of
+  \(M\)---that is, \(N_j \subseteq N_{j+1}\) for all \(j \in \N\). Then the
+  union \(\bigcup_{j \in \N} N_j\) is a submodule of \(M\).
+\end{enumerate}
+\begin{proof}
+For item (a), if \(S \cup T\) is a submodule of \(M\),
+let \(s \in S\) and \(t \in T\) be any two elements, then
+\(s + t \in S \cup T\). This implies that either \(s + t \in S\) (which would
+imply in \(t \in S\)) or \(s + t \in T\) (which would imply in \(s \in T\)),
+therefore either \(S \subseteq T\) or \(T \subseteq S\). For the converse,
+suppose, without loss of generality, that \(S \subseteq T\), then \(S \cup T =
+S\), therefore \(S \cup T\) is a submodule of \(M\).
+
+We now prove item (b). For the sake of notation, let
+\(N \coloneq \bigcup_{j \in \N} N_j\). If \(n, n' \in N\) are any two elements,
+there must exist indices \(j, j' \in \N\) such that \(n \in N_i\) and
+\(n' \in N_{i'}\) for all \(i > j\) and for all \(i' > j'\). Define
+\(k \coloneq \max(j, j')\), then \(n, n' \in N_i\) for all \(i > k\)---implying
+in \(n + n' \in N_i\) and \(r n \in N_i\) for any \(r \in R\). Therefore
+\(n + n' \in N\) and \(r n \in N\), hence \(N\) is a submodule of \(M\).
+\end{proof}
+\end{example}
+
+\begin{example}[Totally ordered submodules]
+\label{exp:totally-ordered-submodules-prime-division}
+Let \(M\) be a finite \(\Z\)-module such that the collection of its submodules
+is totally ordered with respect to inclusion. Then there exists a prime \(p\)
+such that the number of elements of \(M\) is a power of \(p\).
+
+\begin{proof}
+Let \(|M| \coloneq d\) and suppose there exists two primes \(p\) and \(q\)
+dividing \(d\). By \cref{prop:finite-abelian-p-div-then-elem-of-p-order} we know
+that there must exist \(m, n \in M\) with order \(p\) and \(q\),
+respectively. We now consider the submodules \(\langle m \rangle\) and
+\(\langle n \rangle\) of \(M\). Since \(M\) has a totally ordered set of
+submodules, we may assume without loss of generality that
+\(\langle m \rangle \subseteq \langle n \rangle\)---therefore there exists \(a
+\in \Z\) such that \(m = a n\). Notice that \(p m = p a n = 0\), therefore \(p
+a\) must be a divisor of \(q\)---but since \(q\) is prime, \(p a\) is either
+\(1\) or \(q\). Since \(p\) is also prime, it must be the case that \(a = 1\)
+and \(p = q\). Thus there exists a unique prime divisor of \(d\)---hence \(d =
+p^{\alpha}\) for some \(\alpha \in \Z\).
+\end{proof}
 \end{example}
 
 \subsubsection{Simple \texorpdfstring{\(R\)}{R}-Modules}
@@ -760,7 +868,8 @@ only submodules are \(\{0\}\) and \(M\) itself.
 \begin{lemma}[Schur's]
 \label{lem:schur-lemma}
 Let \(M\) and \(N\) be \emph{simple} \(R\)-modules. If \(\phi: M \to N\) is an
-\(R\)-module morphism, then either \(\phi = 0\) or \(\phi\) is an isomorphism.
+\(R\)-module morphism, then either \(\phi = 0\) or \(\phi\) is an
+\emph{isomorphism}.
 \end{lemma}
 
 \begin{proof}
@@ -774,22 +883,22 @@ surjective.
 
 \begin{corollary}
 \label{cor:M-simple-Mor-division-ring}
-Let \(M\) and \(N\) be \(\Mod{R}\) and consider \(\Hom_{\Mod{R}}(M, N)\) as a
-\emph{ring}. If \(M\) is \emph{simple}, then \(\Hom_{\Mod{R}}(M, N)\) is a
-division ring.
+Let \(M\) and \(N\) be right-\(R\)-modules and consider
+\(\Hom_{\rMod{R}}(M, N)\) as a \emph{ring}. If \(M\) is \emph{simple}, then
+\(\Hom_{\rMod{R}}(M, N)\) is a \emph{division ring}.
 \end{corollary}
 
 \begin{proof}
-Let \(\ideal{a}\) be a left-ideal (or right-ideal) of \(\Hom_{\Mod{R}}(M,
+Let \(\ideal{a}\) be a left-ideal (or right-ideal) of \(\Hom_{\rMod{R}}(M,
 N)\). If there exists an isomorphism \(\phi \in \ideal{a}\), then
 \(\phi^{-1} \phi = \Id_M \in \ideal{a}\) and therefore, for all elements
-\(\psi \in \Hom_{\Mod{R}}(M, N)\) we have \(\psi \Id_M = \psi \in \ideal{a}\)
---- thus \(\ideal{a} = \Hom_{\Mod{R}}(M, N)\) (the same equivalent arguement can
+\(\psi \in \Hom_{\rMod{R}}(M, N)\) we have \(\psi \Id_M = \psi \in \ideal{a}\)
+--- thus \(\ideal{a} = \Hom_{\rMod{R}}(M, N)\) (the same equivalent arguement can
 be used for right-ideals, where instead we get \(\phi \phi^{-1} = \Id_N\) in the
 ideal). If there exist no isomorphism in \(\ideal{a}\), by
 \cref{lem:schur-lemma} it is only composed of the zero morphism, thus
 \(\ideal{a} = 0\). From \cref{prop:division-ring-ideals-are-0-or-ring} we
-conclude that \(\Hom_{\Mod{R}}(M, N)\) is a division ring.
+conclude that \(\Hom_{\rMod{R}}(M, N)\) is a division ring.
 \end{proof}
 
 \begin{example}
@@ -969,6 +1078,37 @@ solution \(a = d = 1\) and \(b = c = 0\), yielding
 \big]\), which implies in \(\ideal{h} = \Hom_{\lMod{R}}(M, M)\).
 \end{example}
 
+\begin{proposition}
+\label{prop:simple-mod-iff-iso-R/a-with-maximal}
+Let \(M\) be an \(R\)-module. Then \(M\) is simple if and only if \(M \iso
+R/\ideal m\) for a maximal ideal \(\ideal m\) of \(R\).
+\end{proposition}
+
+\begin{proof}
+Suppose \(\phi: M \isoto R/\ideal m\) is an isomorphism of \(R\)-modules. If
+\(N \subsetneq M\) is a \emph{proper} submodule, then
+\(\phi(N) \subseteq R/\ideal m\) must also be a submodule of
+\(R/\ideal m\)---that is, an ideal. Since \(\ideal m\) is maximal, then the only
+ideals of the field \(R/\ideal m\) are either the field itself or the zero ideal
+\(\ideal m\). Since \(\phi\) is an isomorphism and \(N\) is proper, it must be
+the case that \(\phi(N) = \ideal m\). But since \(\phi(0) = \ideal m\), then
+\(N = \{0\}\)---thus \(M\) is simple.
+
+For the converse, assume that \(M\) is simple, so that every non-zero element of
+\(M\) generates the whole module. In particular \(1 \in M\) generates \(M\),
+therefore the morphism of \(R\)-modules \(\psi: R \to M\) mapping
+\(a \mapsto a \cdot 1\) is surjective, therefore
+\[
+M \iso R/\ker \psi.
+\]
+By \cref{cor:submodule-correspondence} if \(\ideal{a} \subsetneq R\) is any
+proper ideal (submodule) containing \(\ker \psi\), then its corresponding
+submodule is \(\ideal{a}/\ker \psi \subseteq R/\ker \psi \iso M\). Since \(M\)
+is simple and \(\ideal{a}\) is proper, it follows that \(\ideal{a}/\ker \psi\)
+must be the zero ideal, therefore \(\ideal{a} = \ker \psi\)---that is
+\(\ker \psi\) is maximal.
+\end{proof}
+
 \subsubsection{Quotient modules}
 
 \begin{definition}[Quotient module]
@@ -1000,7 +1140,7 @@ one can endow \(R/\ideal{a}\) with the canonical left-\(R\)-action given by
 \begin{theorem}[Universal property of quotient modules]
 \label{thm:univ-prop-quotient-modules}
 Let \(R\) be a ring and \(N\) be a submodule of an \(R\)-module \(M\). For every
-module \(Z\) toghether with a morphism \(\psi: M \to Z\) of \(R\)-modules such
+module \(Z\) together with a morphism \(\psi: M \to Z\) of \(R\)-modules such
 that \(N \subseteq \ker \psi\), there exists a \emph{unique} morphism of rings
 \(\phi: M/N \unique Z\) for which the following diagram commutes
 \[
@@ -1059,7 +1199,7 @@ N \iso M/{\ker \phi}
 \begin{proof}
 Since \(\phi\) is surjective, \(\im \phi = N\) and from
 \cref{thm:R-module-morphism-factorization} we conclude that the induced morphism
-\(\overline{\phi}: M/{\ker \phi} \isoto N\) stablishes the wanted canonical
+\(\overline{\phi}: M/{\ker \phi} \isoto N\) establishes the wanted canonical
 isomorphism.
 \end{proof}
 
@@ -1120,13 +1260,20 @@ necessarily \(m \in P\). Therefore \(\ker \phi = P/N\) and by
 \(\frac{M/N}{\ker \phi} \iso M/P\).
 \end{proof}
 
-From \cref{prop:third-iso-R-mod} one concludes that there exists an
-\emph{inclusion preserving set bijection} between
-\[
-\{\text{submodule } P \text{ of } M \text{ containing } N\}
-\overset{\dis}\longrightarrow
-\{\text{submodules of } M/N\}.
-\]
+\begin{corollary}[Submodule correspondence]
+\label{cor:submodule-correspondence}
+Let \(M\) be an \(R\)-module and \(N \subseteq M\) be a submodule. There exists
+a bijection
+\begin{align*}
+  \{\text{submodule } P \text{ of } M \text{ containing } N\}
+  &\xrightarrow{\hspace*{2cm}}\{\text{submodules of } M/N
+  \} \\
+  P &\xmapsto{\hspace*{2cm}} P/N
+\end{align*}
+Moreover, given submodules \(P, P' \subseteq M\), we have that \(N \subseteq P
+\subseteq P'\) if and only if \(P/N \subseteq P'/N\) in \(M/N\)---that is, the
+bijection preserves inclusions.
+\end{corollary}
 
 \begin{proposition}
 \label{prop:a*R/b-iso-a+b/b}
@@ -1142,7 +1289,7 @@ be ideals. Then, there exists a natural \emph{\(R\)-module isomorphism}
 Define a map
 \(\phi: \ideal{a} + \ideal{b} \to \ideal{a} \cdot \frac{R}{\ideal{b}}\) given by
 \(\phi(a + b) = a + \ideal{b}\) for every \(a \in \ideal{a}\) and
-\(b \in \ideal{b}\). Clearly such a map stablishes an \(R\)-module
+\(b \in \ideal{b}\). Clearly such a map establishes an \(R\)-module
 morphism. Moreover, if
 \(p \coloneq \sum_{j=1}^n a_j r_j + \ideal{b} \in \ideal{a} \cdot
 \frac{R}{\ideal{b}}\) is any element, since \(R\) is commutative then
@@ -1236,136 +1383,29 @@ right).
 \end{itemize}
 \end{proof}
 
-\begin{definition}[Direct summand]
-\label{def:direct-summand}
-Let \(P\) be an \(R\)-module and \(M\) be a submodule of \(P\). We say that
-\(M\) is a \emph{direct summand} of \(P\) if there exists a submodule \(N\) of
-\(P\) satisfying \(M \cap N = \{0\}\), called a \emph{complement} of \(M\), for
-which
-\[
-P = M \oplus N.
-\]
-\end{definition}
-
-\begin{definition}[Retract]
-\label{def:retract-module}
-Let \(M\) be an \(R\)-module. A submodule \(N\) of \(M\) is said to be a
-\emph{retract} of \(M\) if there exists an \(R\)-module morphism
-\(\rho: M \to N\) such that \(\rho(n) = n\) for all \(n \in N\) --- such
-morphism is called a \emph{retraction}.
-\end{definition}
-
-\begin{proposition}[Direct summands \& retractions]
-\label{prop:direct-summand-iff-retraction}
-Given \(R\)-modules \(P\) and \(M\), the module \(M\) is a \emph{direct summand}
-of \(P\) if and only if there exists a \emph{retraction} \(\rho: P \to M\), in
-this case \(P \iso M \oplus \ker \rho\).
-\end{proposition}
-
-\begin{proof}
-Suppose the retract \(\rho\) exists. Let \(p \in P\) be any element and consider
-the element \(\rho(p) \in M\). Notice that
-\(\rho(p - \rho(p)) = \rho(p) - \rho(\rho(p)) = \rho(p) - \rho(p) = 0\), thus
-\(p - \rho(p) \in \ker \rho\). Since \(p = \rho(p) + (p - \rho(p))\), then
-\(P = M + \ker \rho\). Moreover, if \(s \in S \cap \ker \phi\) it follows that
-\(\rho(s) = s\) and \(\rho(s) = 0\), therefore \(s = 0\) --- thus
-\(S \cap \ker \phi = \{0\}\), and \(P = M \oplus \ker \rho\).
-
-For the converse, suppose that \(M\) is a direct summand of \(P\) and let \(N\)
-be its complement. Since any element \(p \in P\) can be written uniquely as a
-sum \(p = m + n\) for \(m \in M\) and \(n \in N\), the map \(\rho: P \to M\) given by
-\(m + n \mapsto m\) is well defined and unique --- also being an \(R\)-module
-morphism. Notice also that \(\rho|_M = \Id_M\).
-\end{proof}
-
-\begin{corollary}
-\label{cor:direct-summand-iff-retraction}
-If \(P = M \oplus N\) and \(M \subseteq A \subseteq P\), then
-\(A = M \oplus (A \cap N)\).
-\end{corollary}
-
-\begin{proof}
-Let \(\rho: P \to M\) be a retraction, so that \(\ker \rho = N\). Since
-\(M \subseteq A\), then \(\rho|_A\) is a retraction between \(A\) and \(M\), and
-\(\ker(\rho|_A) = A \cap N\). This shows that \(A \cap N\) is a complement of
-\(M\) in \(A\) and hence \(A = M \oplus (A \cap N)\).
-\end{proof}
-
-\begin{corollary}
-\label{cor:module-iso-ker-im}
-Let \(M\) be an \(R\)-module, and \(p: M \to M\) be a projection (that is,
-\(p^2 = p\)). Then there exists a canonical isomorphisms
-\[
-M \iso \im p \oplus \ker p.
-\]
-\end{corollary}
-
-\begin{proof}
-Notice that the induced map \(\overline{p}: M \to \im p\) given by
-\(\overline{p}(m) = p(m)\) is a morphism of \(R\)-modules such that
-\(\overline{p}(\ell) = p(\ell) = \ell\) for all \(\ell \in \im p\) --- since
-\(p^2 = p\). This implies that \(\overline{p}\) is a retraction and from
-\cref{prop:direct-summand-iff-retraction} it follows that
-\(M \iso \im p \oplus \ker p\).
-\end{proof}
-
 \begin{proposition}
-\label{prop:direct-sums-isos-hom-sets}
-Let \(R\) be a ring, and consider a right-\(R\)-module \(M\), and a collection
-\((N_j)_{j \in J}\) of right-\(R\)-modules. The following propositions hold:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item There exists a canonical isomorphism of \emph{abelian groups}
-  \[
-  \Hom_{\rMod{R}}\bigg( \bigoplus_{j \in J} N_j, M \bigg) \iso
-  \prod_{j \in J} \Hom_{\rMod{R}}(N_j, M).
-  \]
-
-\item There exists a canonical isomorphism of \emph{abelian groups}
-  \[
-  \Hom_{\rMod{R}}\bigg( M, \prod_{j \in J} N_j \bigg) \iso
-  \prod_{j \in J} \Hom_{\rMod{R}}(M, N_j).
-  \]
-\item If \((M_i)_{i = 1}^n\) and \((N_j)_{j=1}^m\) are \emph{finite} collections
-  of right-\(R\)-modules, then there exists a canonical isomorphism of
-  \emph{abelian groups}
-  \[
-  \Hom_{\rMod{R}} \bigg( \bigoplus_{i=1}^n M_i, \bigoplus_{j=1}^m N_j \bigg)
-  \iso
-  \bigoplus_{i=1}^n \bigoplus_{j=1}^m \Hom_{\rMod{R}}(M_i, N_j).
-  \]
-\end{enumerate}
+\label{prop:quotient-family-modules}
+Let \((M_j)_{j \in J}\) be a collection of \(R\)-modules and \((N_j)_{j \in J}\)
+be a corresponding collection of submodules \(N_j \subseteq M_j\). Then
+\(\bigoplus_{j \in J} N_j\) is naturally identified as a submodule of
+\(\bigoplus_{j \in J} M_j\), and there exists a natural isomorphism
+\[
+\frac{\bigoplus_{j \in J} M_j}{\bigoplus_{j \in J} N_j}
+\iso
+\bigoplus_{j \in J} M_j/N_j.
+\]
 \end{proposition}
 
 \begin{proof}
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item Define a map
-  \(\Phi: \Hom_{\rMod{R}}(\bigoplus_{j \in J} N_j, M) \to \prod_{j \in J}
-  \Hom_{\rMod{R}}(N_j, M)\) by sending \(f \mapsto (f \iota_j)_{j \in J}\),
-  where \(\iota_j: N_j \emb \bigoplus_{j \in J} N_j\) is the canonical
-  inclusion. Notice that \(\Phi\) is indeed a group morphism. Also, morphisms
-  with equal image must agree on every element \(\iota_j(n_j)\) for any
-  \(j \in J\) and \(n_j \in N_j\), therefore, since these elements generate
-  \(\bigoplus_{j \in J} N_j\), it follows that the morphisms need to be equal
-  --- thus \(\Phi\) is injective. Moreover, if \((g_j: N_j \to M)_{j \in J}\) is
-  any collection of \(R\)-linear maps, then by the coproduct universal property
-  there exists a unique \(f: \bigoplus_{j \in J} N_j \to M\) such that
-  \(f \iota_j = g_j\) for all \(j \in J\).
-
-\item Define a map
-  \(\Psi: \Hom_{\rMod{R}}(M, \prod_{j \in J} N_j) \to \prod_{j \in J}
-  \Hom_{\rMod{R}}(M, N_j)\) by \(f \mapsto (\pi_j f)\) --- again
-  this product preserves additive stucture. Also, this map is injective since,
-  given \(f, g: M \para \prod_{j \in J} N_j\) such that \(\Psi(f) = \Psi(g)\),
-  we must have \(\pi_j f(m) = \pi_j g(m)\) for every \(j \in J\) and
-  \(m \in M\), therefore \(f(m) = g(m)\) and \(f = g\). Surjectivity comes from
-  the product universal property: given a collection
-  \((g_j: M \to N_j)_{j \in J}\) of morphisms, there exists a unique morphism
-  \(f: M \to \prod_{j \in J} N_j\) such that \(\pi_j f = g_j\) for all
-  \(j \in J\).
-
-\item For finite indexing sets direct sums and products are isomorphic, thus the
-  isomorphism follows directly from the last two items.
-\end{enumerate}
+For the sake of notation, define \(M \coloneq \bigoplus_{j \in J} M_j\) and
+\(N \coloneq \bigoplus_{j \in J} N_j\). Since the inclusion \(N \emb M\) is an
+\(R\)-module morphism, it follows that \(N\) is a submodule of \(M\). Consider
+the natural projections \((\pi_j: M_j \epi M_j/N_j)_{j \in J}\), with kernels
+\(\ker \pi_j = N_j\). Notice that the map
+\(\pi: M \to \bigoplus_{j \in J} M_j/N_j\) given by
+\(m \mapsto (\pi_j(m))_{j \in J}\) has a kernel \(\ker \pi = N\), and is
+naturally surjective from its construction. Therefore by the universal property
+of quotients we find \(M/\ker \pi = M/N \iso \bigoplus_{j \in J} M_j/N_j\).
 \end{proof}
 
 \begin{proposition}[Internal sum]
@@ -1412,9 +1452,178 @@ propositions are equivalent:
 
 \item (d) \(\implies\) (a). Unicity of expression implies that the given map is
   injective and unique. Moreover, the map is clearly surjective --- therefore it
-  stablishes a unique isomorphism.
+  establishes a unique isomorphism.
 \end{itemize}
 \end{proof}
+
+
+\begin{proposition}
+\label{prop:direct-sums-isos-hom-sets}
+Let \(R\) be a ring, and consider a right-\(R\)-module \(M\), and a collection
+\((N_j)_{j \in J}\) of right-\(R\)-modules. The following propositions hold:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item There exists a canonical isomorphism of \emph{abelian groups}
+  \[
+  \Hom_{\rMod{R}}\bigg( \bigoplus_{j \in J} N_j, M \bigg) \iso
+  \prod_{j \in J} \Hom_{\rMod{R}}(N_j, M).
+  \]
+
+\item There exists a canonical isomorphism of \emph{abelian groups}
+  \[
+  \Hom_{\rMod{R}}\bigg( M, \prod_{j \in J} N_j \bigg) \iso
+  \prod_{j \in J} \Hom_{\rMod{R}}(M, N_j).
+  \]
+\item If \((M_i)_{i = 1}^n\) and \((N_j)_{j=1}^m\) are \emph{finite} collections
+  of right-\(R\)-modules, then there exists a canonical isomorphism of
+  \emph{abelian groups}
+  \[
+  \Hom_{\rMod{R}} \bigg( \bigoplus_{i=1}^n M_i, \bigoplus_{j=1}^m N_j \bigg)
+  \iso
+  \bigoplus_{i=1}^n \bigoplus_{j=1}^m \Hom_{\rMod{R}}(M_i, N_j).
+  \]
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Define a map
+  \(\Phi: \Hom_{\rMod{R}}(\bigoplus_{j \in J} N_j, M) \to \prod_{j \in J}
+  \Hom_{\rMod{R}}(N_j, M)\) by sending \(f \mapsto (f \iota_j)_{j \in J}\),
+  where \(\iota_j: N_j \emb \bigoplus_{j \in J} N_j\) is the canonical
+  inclusion. Notice that \(\Phi\) is indeed a group morphism. Also, morphisms
+  with equal image must agree on every element \(\iota_j(n_j)\) for any
+  \(j \in J\) and \(n_j \in N_j\), therefore, since these elements generate
+  \(\bigoplus_{j \in J} N_j\), it follows that the morphisms need to be equal
+  --- thus \(\Phi\) is injective. Moreover, if \((g_j: N_j \to M)_{j \in J}\) is
+  any collection of \(R\)-linear maps, then by the coproduct universal property
+  there exists a unique \(f: \bigoplus_{j \in J} N_j \to M\) such that
+  \(f \iota_j = g_j\) for all \(j \in J\).
+
+\item Define a map
+  \(\Psi: \Hom_{\rMod{R}}(M, \prod_{j \in J} N_j) \to \prod_{j \in J}
+  \Hom_{\rMod{R}}(M, N_j)\) by \(f \mapsto (\pi_j f)\) --- again
+  this product preserves additive structure. Also, this map is injective since,
+  given \(f, g: M \para \prod_{j \in J} N_j\) such that \(\Psi(f) = \Psi(g)\),
+  we must have \(\pi_j f(m) = \pi_j g(m)\) for every \(j \in J\) and
+  \(m \in M\), therefore \(f(m) = g(m)\) and \(f = g\). Surjectivity comes from
+  the product universal property: given a collection
+  \((g_j: M \to N_j)_{j \in J}\) of morphisms, there exists a unique morphism
+  \(f: M \to \prod_{j \in J} N_j\) such that \(\pi_j f = g_j\) for all
+  \(j \in J\).
+
+\item For finite indexing sets direct sums and products are isomorphic, thus the
+  isomorphism follows directly from the last two items.
+\end{enumerate}
+\end{proof}
+
+\begin{example}
+\label{exp:matrix-of-morphisms}
+Let \(M_1, \dots, M_n\) be right-\(R\)-modules and define a right-\(R\)-module
+\(M \coloneq \bigoplus_{j=1}^n M_j\) and a ring
+\[
+H \coloneq \Bigg\{
+\begin{bmatrix}
+  f_{1 1} &\dots  &f_{1 n} \\
+  \vdots &\ddots &\vdots \\
+  f_{n 1} &\dots  &f_{n n}
+\end{bmatrix}
+\colon f_{i j} \in \Hom_{\rMod{R}}(M_j, M_i)
+\Bigg\}.
+\]
+Then there exists a natural isomorphism of rings
+\[
+H \iso \End_{\rMod{R}}(M).
+\]
+
+First we show that \(H\) is indeed a ring. Given any
+\([f_{i j}], [g_{ij}] \in H\), we have entry-wise
+\(f_{i j} + g_{i j} \in \Hom_{\rMod{R}}(M_j, M_i)\), thus
+\([f_{i j} + g_{i j}] \in H\), and \(H\) is an abelian group via matrix
+addition. Now, if we define a product on \(H\) as the matrix product
+\([f_{ij}] \cdot [g_{ij}] \coloneq [\sum_{k=1}^n f_{i k} g_{k j}]\), then since
+\(f_{i k} g_{k j}: M_j \to M_i\) thus the matrix product
+\([f_{i j}] \cdot [g_{ij}]\) is also an element of \(H\)---which shows that
+\(H\) is indeed a ring.
+
+If \([f_{i j}] \in H\) is any matrix, define a morphism of right-\(R\)-modules
+\(f: M \to M\) with projections \((f_i)_{i=1}^n\), where for every
+\(1 \leq i \leq n\) the map \(f_i: M \to M_i\) is the unique morphism such that
+the diagram
+\[
+\begin{tikzcd}
+M_j \ar[r, hook] \ar[rd, bend right, "f_{ij}"'] &M \ar[d, "f_i"] \\
+&M_i
+\end{tikzcd}
+\]
+commutes for all \(1 \leq j \leq n\). We now simply define a map \(\Phi: H \to
+\End_{\rMod{R}}(M)\) by \([f_{ij}] \mapsto f\).
+
+We now show that \(\Phi\) is a ring morphism. Let \([g_{ij}] \in H\) be any
+other matrix and let \(g \coloneq \Phi([g_{ij}]): M \to M\). If
+\([h_{ij}] \coloneq [f_{i j}] \cdot [g_{i j}]\) then from definition we have
+\(h_{ij} = \sum_{k=1}^n f_{i k} g_{k j}\). Notice that the composition \(f g: M
+\to M\) with projections
+\[
+(f g)_i = f_i\bigg(\sum_{k=1}^n g_k\bigg)
+= f_i \bigg(\sum_{k=1}^n \sum_{j=1}^n g_{k j} \bigg)
+= \sum_{j=1}^n \sum_{k=1}^n f_{i k} g_{k j}
+\]
+for all \(1 \leq i \leq n\), therefore \((f g)_i = h_i\). This proves that
+\(\phi\) is a ring morphism:
+\[
+\phi([f_{i j}] \cdot [g_{i j}]) = h = f g = \phi([f_{i j}]) \phi([g_{i j}]).
+\]
+
+For the injectivity of \(\phi\) it suffices to see that the image of an element
+of \(H\) is uniquely defined by the universal property of the coproduct. For the
+surjectivity of \(\phi\), let \(f: M \to M\) be any endomorphism, then again
+from the universal property each of its projections \(f_i\) are uniquely defined
+by a family of morphisms of \(R\)-modules \((f_{i j}: M_j \to M_i)_{j=1}^n\),
+therefore, the matrix \([f_{i j}] \in H\) has image \(f\) under
+\(\phi\). Therefore we conclude that \(H \iso \End_{\rMod{R}}(M)\).
+\end{example}
+
+\begin{example}
+\label{exp:matrix-of-morphisms-over-ring}
+Let \(R\) be a ring and consider \(R\) as a \emph{right}-\(R\)-module over
+itself. We'll show that there exists a natural isomorphism of rings
+\[
+M_n(R) \iso \End_{\rMod{R}}\Big( \bigoplus_{j=1}^n R \Big).
+\]
+
+First, we shall show that \(R \iso \End_{\rMod{R}}(R)\) as rings. For that end,
+define a map \(\Psi: R \to \End_{\rMod{R}}(R)\) given by \(r \mapsto {}_rm\),
+where \({}_rm: R \to R\) is the \emph{left}-multiplication by \(r\), that is
+\({}_rm(a) = r a\). It is easy to notice that if \(r, s \in R\), then
+\({}_{r s}m = {}_rm {}_sm\), therefore \(\Psi\) is a ring morphism. For the
+injectivity of \(\Psi\), if \(r, s \in R\) are elements with equal image, then
+in particular \(r = {}_rm(1) = {}_sm(1) = s\). For surjectivity, if
+\(f: R \to R\) is an endomorphism of right-\(R\)-modules, then given \(r \in R\)
+we have \(f(r) = f(1 \cdot r) = f(1) r\), therefore \(f = {}_{f(1)}m\)---and
+\(\Psi(f(1)) = f\). We thus conclude that
+\[
+R \iso \End_{\rMod{R}}(R).
+\]
+
+As in \cref{exp:matrix-of-morphisms}, we can define a ring \(H\) of
+\(n \times n\) matrices whose entries are elements of the ring
+\(\End_{\rMod{R}}(R)\). From our previous result, given a matrix
+\([f_{ij}] \in H\) there exists a unique matrix \([r_{ij}] \in M_n(R)\) such
+that \(\Psi(r_{ij}) = f_{ij}\) for all \(1 \leq i, j \leq n\). Therefore,
+\(\Psi\) induces an isomorphism \(H \iso M_n(R)\). From
+\cref{exp:matrix-of-morphisms} we know that
+\(H \iso \End_{\rMod{R}}(\bigoplus_{j=1}^n R)\), therefore we conclude that
+\(M_n(R) \iso \End_{\rMod{R}}(\bigoplus_{j=1}^n R)\).
+
+As a corollary of this result, together with
+\cref{cor:M-simple-Mor-division-ring}, we find that if \(S\) is a \emph{simple
+  right-\(R\)-module}, then there exists a natural isomorphism of rings
+\[
+M_n(D) \iso \End_{\rMod{R}}\Big(\bigoplus_{j=1}^n S \Big),
+\]
+where \(D\) is a division ring---in particular, we have
+\(D \iso \End_{\rMod{R}}(S)\).
+\end{example}
 
 \subsection{Pullbacks \& Pushouts of \texorpdfstring{\(R\)}{R}-Modules}
 

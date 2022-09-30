@@ -1,0 +1,381 @@
+\section{Projective Modules}
+
+\begin{theorem}[Free modules have the lifting property]
+\label{thm:free-modules-are-projective}
+Let \(R\) be a ring and \(F\) be a free \(R\)-module. For every surjective
+morphism of \(R\)-modules \(p: M \to N\) and morphism \(h: F \to N\), there
+\emph{exists a unique morphism} \(\ell: F \to M\), called \emph{lifting of
+  \(h\)}, such that the diagram
+\[
+\begin{tikzcd}
+&F \ar[d, "h"] \ar[dl, bend right, dashed, "\ell"'] & & \\
+M \ar[r, two heads, "p"'] &N \ar[r] &0
+\end{tikzcd}
+\]
+commutes in \(\Mod{R}\).
+\end{theorem}
+
+\begin{proof}
+Since \(F\) is free, let \(B \coloneq (b_j)_{j \in J}\) be a basis for
+\(F\). From the surjectivity of \(p\), for every \(j \in J\) there exists
+\(m_j \in M\) such that \(p(m_j) = h(b_j)\). From the free module universal
+property there exists a unique \(\ell: F \to M\) such that \(\ell(b_j) = m_j\)
+for each \(j \in J\). From construction we have
+\(p \ell(b_j) = p(m_j) = h(b_j)\), therefore \(p \ell = h\), since \(B\)
+generates \(F\), and the diagram commutes.
+\end{proof}
+
+\begin{remark}[Uniqueness of the lift]
+\label{rem:uniqueness-of-lifting}
+The lift \(\ell\) of \(h\) \emph{need not be unique} in case \(F\) isn't free!
+\end{remark}
+
+\begin{definition}[Projective module]
+\label{def:projective-module}
+Let \(R\) be a ring and \(P\) be an \(R\)-module. We say that \(P\) is a
+\emph{projective \(R\)-module} if
+\[
+\Hom_{\Mod{R}}(P, -): \Mod{R} \longrightarrow \Ab
+\]
+is an \emph{exact covariant functor}.
+\end{definition}
+
+
+\begin{proposition}[Equivalences for projective modules]
+\label{prop:equivalences-projective-module}
+Let \(R\) be a ring and \(P\) be an \(R\)-module. The following properties are equivalent:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The module \(P\) is \emph{projective}.
+
+\item For every exact sequence of \(R\)-modules \(M \overset{g}\epi N \to 0\)
+  the sequence of abelian groups
+  \[
+  \begin{tikzcd}
+  \Hom_{\Mod{R}}(P, M) \ar[r, "g_{*}", two heads]
+  &\Hom_{\Mod{R}}(P, N) \ar[r] &0
+  \end{tikzcd}
+  \]
+  is \emph{exact}. Equivalently, for every \(h: P \to N\), there \emph{exists a
+    lifting} \(\ell: P \to N\) of \(h\)---\emph{not necessarily unique}---such
+  that the diagram
+  \[
+  \begin{tikzcd}
+  &P \ar[d, "h"] \ar[dl, bend right, "\ell"'] & & \\
+  M \ar[r, two heads, "p"'] &N \ar[r] &0
+  \end{tikzcd}
+  \]
+  is commutative in \(\Mod{R}\).
+
+\item Every short exact sequence of \(R\)-modules of the form
+  \[
+  \begin{tikzcd}
+  0 \ar[r] &L \ar[r, tail] &M \ar[r, two heads] &P \ar[r] &0
+  \end{tikzcd}
+  \]
+  is a \emph{split} sequence.
+
+\item The module \(P\) is a \emph{direct summand} of a \emph{free} \(R\)-module.
+
+\item There exists a collection \((x_j)_{j \in J}\) of elements \(x_j \in P\),
+  and a collection of associated morphisms of \(R\)-modules
+  \((\phi_j: P \to R)_{j \in J}\)\footnote{The collection of pairs
+    \((x_j, \phi_j: P \to R)_{j \in J}\) is sometimes referred to as the
+    \emph{dual ``basis''}, but it should be noted right away that such family
+    \emph{may not form a basis} for the module \(P\)---\emph{not every
+      projective module is free}!} such that, for all \(x \in P\) we have:
+\begin{itemize}\setlength\itemsep{0em}
+\item The elements \(\phi_j(x) \in R\) are \emph{non-zero for only finitely many
+  \(j \in J\)}.
+\item The element \(x\) can be written as \(x = \sum_{j \in J} x_j \phi_j(x)\).
+\end{itemize}
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+From the definition, the equivalence of (a) and (b) is immediate. We prove the
+following:
+\begin{itemize}\setlength\itemsep{0em}
+\item (b) \(\implies\) (c). Let \(g: M \epi P\) be the epimorphism depicted in
+  the sequence. Consider the identity morphism \(\Id_P: P \to P\) and apply (b)
+  to obtain \(\rho: P \to M\) such that
+  \[
+  \begin{tikzcd}
+  &P \ar[d, "\Id_P"] \ar[ld, "\rho"', bend right] & \\
+  M \ar[r, "g"', two heads] &P \ar[r] &0
+  \end{tikzcd}
+  \]
+  is a commutative diagram of \(R\)-modules. Notice that \(g \rho = \Id_P\),
+  therefore \(\rho\) is a section of \(g\)---thus the sequence splits.
+
+\item (c) \(\implies\) (d). Via
+  \cref{thm:any-module-is-quotient-of-free-module} let \(p: F \epi M\) be a
+  surjective morphism of \(R\)-modules, where \(F\) is free. Thus we have a
+  short exact sequence
+  \[
+  \begin{tikzcd}
+  0 \ar[r] &\ker p \ar[r, hook] &F \ar[r, "p", two heads] &P \ar[r] &0.
+  \end{tikzcd}
+  \]
+  By item (c) we find that the above sequence is split, therefore if \(\iota: P
+  \mono F\) is a section of \(p\), then
+  \[
+  F = \ker p \oplus \im \iota \iso \ker p \oplus P.
+  \]
+
+\item (d) \(\implies\) (b). Let \(f: M \epi N\) be a surjective morphism of
+  \(R\)-modules, and \(\psi: P \to N\) be any morphism. By item (d), let \(F\)
+  be a free module with \(F \iso P \oplus P'\), where \(P'\) is the complement
+  \(R\)-module of \(P\) with respect to \(F\)---also, let \(B\) be a basis of
+  \(F\). Considering the natural projection \(\pi_P: F \epi P\), define a map
+  \(\phi': F \to M\) as follows: given \(b \in B\), by the surjectivity of
+  \(f\), there exists \(m \in M\) such that \(f(m) = \psi \pi_P(b)\)---we shall
+  define \(\phi'(b) \coloneq m\). It is easily seen that \(\phi'\) is
+  \(R\)-linear, and that \(f \phi' = \psi \pi_P\). Moreover, the surjectivity of
+  \(f\) implies that \(\phi'\) is the unique morphism of modules with such
+  property. Considering the natural inclusion \(\iota_P: P \emb F\)---which is a
+  section of \(\pi_P\)---define \(\phi \coloneq \phi' \iota_P: P \to M\) and
+  notice that
+  \[
+  f \phi
+  = f (\phi' \iota_P)
+  = (f \phi') \iota_P
+  = (\psi \pi_P) \iota_P
+  = \psi (\pi_P \iota_P)
+  = \psi.
+  \]
+\end{itemize}
+This finishes the proof of the equivalence of the items (a), (b), (c), and
+(d). For item (e), we shall prove its equivalence with (d).
+\begin{itemize}\setlength\itemsep{0em}
+\item (d) \(\implies\) (e). Via item (d), there exists an indexing set \(J\) and
+  an isomorphism \(\psi: \bigoplus_{j \in J} R \isoto P \oplus P'\), where
+  \(P'\) is the complement of \(P\). If \(\pi_P: P \oplus P' \epi P\) denotes
+  the canonical projection, define a collection \((x_j)_{j \in J}\) by
+  \(x_j \coloneq \pi_P \psi(e_j)\)---where
+  \(e_j \coloneq (\delta_{ij})_{i \in J}\). Let \(\iota_P: P \emb P \oplus P'\)
+  be the canonical inclusion of \(P\), and
+  \(\pi_j: \bigoplus_{j \in J} R \epi R\) be the canonical projection of the
+  \(j\)-th coordinate. Define a collection of morphisms \((\phi_j)_{j \in J}\)
+  by \(\phi_j \coloneq \pi_j \psi^{-1} \iota_P: P \to R\), so that---since
+  \(\psi^{-1} \iota_P(x) \in \bigoplus_{j \in J} R\) has finitely many non-zero
+  components---there are finitely many \(j \in J\) such that
+  \(\pi_j \psi^{-1} \iota_P(x) \in R\) is non-zero. For the last condition of
+  item (e), if \(x \in P\) is any element, we have
+  \begin{align*}
+  x &= \pi_P \iota_P(x)
+  = \pi_P(\psi \psi^{-1}) \iota_P(x)
+  = \pi_P \psi (\psi^{-1} \iota_P)(x)
+  = \pi_P \psi (\phi_j(x))_{j \in J} \\
+  &= \pi_P \psi \bigg( \sum_{j \in J} e_j \phi_j(x) \bigg)
+  = \sum_{j \in J} \pi_P \psi(e_j \phi_j(x))
+  = \sum_{j \in J} \pi_P \psi(e_j) \phi_j(x) \\
+  &= \sum_{j \in J} x_j \phi_j(x).
+  \end{align*}
+
+\item (e) \(\implies\) (d). The collection \((\phi_j)_{j \in J}\) induces, by
+  the universal property of the product, a unique morphism of \(R\)-modules
+  \(\phi: P \to \prod_{j \in J} R\) mapping \(x \mapsto (\phi_j(x))_{j \in
+    J}\). For any \(x \in P\) we know from hypothesis that the collection
+  \((\phi_j(x))_{j \in J}\) has finitely many non-zero elements, therefore
+  \(\im \phi \subseteq \bigoplus_{j \in J} R\). Then we may naturally restrict
+  the codomain of \(\phi\), obtaining a morphism
+  \(\phi: P \to \bigoplus_{j \in J} R\). Define a collection \((e_j)_{j \in J}\)
+  where \(e_j \coloneq (\delta_{ij})_{i \in J}\), and consider an \(R\)-linear
+  map \(\lambda: \bigoplus_{j \in J} R \to P\) defined by sending
+  \(e_j \mapsto x_j\). By hypothesis, one has
+  \[
+  \lambda \phi(x)
+  = \lambda(\phi_j(x))_{j \in J}
+  = \sum_{j \in J} x_j \phi_j(x)
+  = x,
+  \]
+  therefore \(\phi\) is a section of \(\lambda\), showing that \(\lambda\) is a
+  split epimorphism. Thus \(P\) is a direct summand of the free module
+  \(\bigoplus_{j \in J} R\).
+\end{itemize}
+\end{proof}
+
+\begin{example}
+\label{exp:free-mod-is-projective}
+From \cref{thm:free-modules-are-projective} we find that every free module is a
+projective module.
+\end{example}
+
+\begin{example}
+\label{exp:idempotent-ring-projective}
+Let \(R\) be a ring. If there exists an idempotent element \(e \in R\), then we
+have a decomposition \(R = e R \oplus (1 - e) R\). Therefore \(e R\) is
+projective.
+\end{example}
+
+\begin{proposition}
+\label{prop:direct-sum-projective}
+Let \((P_j)_{j \in J}\) be a family of \(R\)-modules. Then the module
+\(P \coloneq \bigoplus_{j \in J} P_j\) is projective if and only if \(P_j\) is
+projective for each \(j \in J\).
+\end{proposition}
+
+\begin{proof}
+Suppose that \(P\) is projective, then we let \(F\) be a free module of which
+\(P\) is a direct summand, say \(F = P \oplus P'\). If \(\sigma: J \to J\) is
+any permutation, we know that \(\bigoplus_{j \in J} P_j \iso
+\bigoplus_{j \in J} P_{\sigma(j)}\), therefore for all \(i \in J\) we have
+\[
+F = P \oplus P' = \Big( \bigoplus_{j \in J} P_j \Big) \oplus P'
+\iso \Big( P_i \oplus \bigoplus_{j \in J \setminus i} P_j \Big) \oplus P'
+= P_i \oplus \bigg(\Big(\bigoplus_{j \in J \setminus i} P_j \Big) \oplus P'\bigg)
+\]
+Since \(P_i\) is a direct summand of a free module, it is a projective module.
+
+For the converse, suppose that \(P_j\) is projective for all \(j \in J\). Let
+\(g: M \epi N\) be a surjective morphism of \(R\)-modules, and \(\phi: P \to N\)
+be any morphism. Since \(P_j\) is projective, if \(\iota_j: P_j \emb P\) is the
+canonical inclusion, there exists a morphism \(\psi_j: P_j \to M\) making the
+diagram
+\[
+\begin{tikzcd}
+&P_j \ar[d, "\phi \iota_j"] \ar[dl, bend right, "\psi_j"'] &\\
+M \ar[r, two heads, "g"'] &N \ar[r] &0
+\end{tikzcd}
+\]
+commute in \(\Mod{R}\). By the universal property of the coproduct \(P\), the
+collection of morphisms \((\psi_j)_{j \in J}\) induce a unique morphism \(\psi:
+P \to M\) such that \(\psi \iota_j = \psi_j\) for all \(j \in J\). To show that
+\(g \psi = \phi\), notice that, given any \((x_j)_{j \in J} \in P\), one has
+\[
+g \psi(x_j)_{j \in J} = g \Big(\sum_{j \in J} \psi_j(x_j)\Big)
+= \sum_{j \in J} g \psi_j(x_j)
+= \sum_{j \in J} \phi \iota_j(x_j)
+= \phi(x_j)_{j \in J}.
+\]
+Therefore, the following diagram commutes in \(\Mod{R}\):
+\[
+\begin{tikzcd}
+&P \ar[d, "\phi"] \ar[dl, bend right, "\psi"'] &\\
+M \ar[r, two heads, "g"'] &N \ar[r] &0
+\end{tikzcd}
+\]
+which shows that \(P\) is a projective module.
+\end{proof}
+
+\begin{proposition}
+\label{prop:fg-projective-then-dual-module-is-projective}
+Let \(P\) be a finitely generated projective right-\(R\)-module (or left). Then
+the dual module \(P^{*}\) is a projective left-\(R\)-module (or right).
+\end{proposition}
+
+\begin{proof}
+If \(P\) is finitely generated and projective we can choose a finitely generated
+free right-\(R\)-module \(F\) of which \(P\) is a direct summand---say, \(F = P
+\oplus P'\). Since \(F\) is finitely generated, there exists \(n \in \Z_{> 0}\)
+such that \(F \iso \bigoplus_{j=1}^n R\). We know that there exists a natural
+isomorphism of \emph{left}-\(R\)-modules
+\[
+F^{*} = \Hom_{\rMod{R}}(P \oplus P', R)
+\iso \Hom_{\rMod{R}}(P, R) \oplus \Hom_{\rMod{R}}(P', R)
+= P^{*} \oplus P'^{*}.
+\]
+Moreover, we can rewrite the morphism set using the fact that \(F\) is finitely
+generated:
+\[
+F^{*} \iso \Hom_{\rMod{R}}\Big(\bigoplus_{j=1}^n R, R\Big)
+\iso \bigoplus_{j=1}^n \Hom_{\rMod{R}}(R, R)
+\iso \bigoplus_{j=1}^n R,
+\]
+therefore \(F^{*}\) is a finitely generated free left-\(R\)-module. Since
+\(P^{*}\) is a direct summand of \(F^{*}\), then \(P^{*}\) is a finitely
+generated \emph{projective} left-\(R\)-module.
+\end{proof}
+
+\begin{proposition}
+\label{prop:projective-module-evaluation-morphism-is-injective}
+Let \(P\) be a right-\(R\)-module (or left). The \emph{double dual} \(P^{* *}\)
+is a \emph{right}-\(R\)-module (or left), and the natural evaluation map
+\[
+\eval: P \longrightarrow P^{* *}
+\]
+sending \(x \mapsto \eval_x: P^{*} \to R\)---where \(\eval_x(f) = f(x)\)---is an
+\emph{injective morphism of right-\(R\)-modules}.
+\end{proposition}
+
+\begin{proof}
+Let \((x_j, \phi_j)_{j \in J}\) be the dual ``basis'' of \(P\), where
+\(x_j \in P\) and \(\phi_j \in P^{*}\). If \(x \in \ker \eval\), then
+\(f(x) = 0\) for all \(f \in P^{*}\)---thus in particular \(x = \sum_{j \in J}
+x_j \phi_j(x) = 0\). This shows that \(\ker \eval = 0\), thus the evaluation
+morphism is injective.
+\end{proof}
+
+\begin{proposition}
+\label{prop:properties-of-fg-proj-modules-and-duals}
+Let \(P\) be a finitely generated projective right-\(R\)-module (or left), with
+a dual ``basis'' \((x_j, \phi_j)_{j=1}^n\). The following properties hold:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The finite collection \((\phi_j, \eval_{x_j})_{j=1}^n\) forms a \emph{dual
+  ``basis''} for the dual module \(P^{*}\).
+\item The dual \(P^{*}\) is a \emph{finitely generated projective
+    left-\(R\)-module} (or right), with a generating set \((\phi_j)_{j=1}^n\).
+\item The double dual \(P^{* *}\) is a \emph{finitely generated projective
+    right-\(R\)-module} (or left), with a generating set
+  \((\eval_{x_j})_{j=1}^n\).
+\item The natural evaluation morphism \(\eval: P \mono P^{* *}\) is an
+  \emph{isomorphism} of right-\(R\)-modules (or left).
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Let \(f \in P^{*}\) be any functional, then given any \(x \in P\) one has
+  \[
+  \sum_{j=1}^n \eval_{x_j}(f) \phi_j(x)
+  = \sum_{j=1}^{n} f(x_j \phi_j(x))
+  = f\Big( \sum_{j=1}^{n} x_j \phi_j(x) \Big)
+  = f(x),
+  \]
+  therefore \(f = \sum_{j=1}^n \eval_{x_j}(f) \phi_j\)---which proves that
+  \((\phi_j, \eval_{x_j})_j\) is a dual basis for \(P^{*}\).
+
+\item It is immediate from the last item's proof that \((\phi_j)_{j=1}^n\) is a
+  generating set for \(P^{*}\). Moreover, since \(P^{*}\) admits a dual basis it
+  follows that \(P^{*}\) is projective.
+
+\item Define a map \(\eval^{*}: P^{*} \to (P^{* *})^{*}\) given by \(f \mapsto
+  \eval_f^{*} \in \Hom_{\rMod{R}}(P^{* *}, R)\), where \(\eval_f^{*}(\Phi)
+  \coloneq \Phi(f)\) for any \(\Phi \in \Hom_{\lMod{R}}(P^{*}, R)\). Notice
+  that, for any \(f \in P^{*}\) one has
+  \[
+  \sum_{j=1}^n \eval_{x_j}(f) \eval_{\phi_j}^{*}(\Phi)
+  = \sum_{j=1}^n f(x_j) \Phi(\phi_j)
+  = \sum_{j=1}^n \Phi(f(x_j) \phi_j)
+  = \Phi\Big( \sum_{j=1}^n f(x_j) \phi_j \Big)
+  = \Phi(f),
+  \]
+  that is, \(\Phi = \sum_{j=1}^n \eval_{x_j} \cdot \eval_{\phi_j}^{*}
+  (\Phi)\). Therefore \((\eval_{x_j})_{j=1}^n\) is a generating set for
+  \(P^{* *}\), and \((\eval_{\phi_j}^{*}, \eval_{x_j})_{j=1}^n\) is a dual
+  ``basis'' for \(P^{* *}\). Therefore \(P^{* *}\) is a finitely generated
+  projective right-\(R\)-module.
+
+\item Given an element \(\Phi \in P^{* *}\), we can rewrite it as
+  \(\Phi = \sum_{j=1}^n \eval_{x_j} \cdot \eval_{\phi_j}^{*}(\Phi)\), therefore,
+  if we take \(\sum_{j=1}^n x_j \Phi(\phi_j) \in P\), one obtains
+  \begin{align*}
+  \eval\Big(\sum_{j=1}^n x_j \Phi(\phi_j)\Big)
+  &= \sum_{j=1}^n \eval(x_j \Phi(\phi_j))
+  = \sum_{j=1}^n \eval(x_j) \Phi(\phi_j) \\
+  &= \sum_{j=1}^n \eval_{x_j} \cdot \Phi(\phi_j)
+  = \sum_{j=1}^n \eval_{x_j} \cdot \eval_{\phi_j}^{*}(\Phi) \\
+  &= \Phi.
+  \end{align*}
+  This shows that \(\eval\) is also a surjective morphism. Therefore \(\eval\)
+  is an isomorphism of right-\(R\)-modules
+  \[
+  P \iso P^{* *}.
+  \]
+\end{enumerate}
+\end{proof}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../deep-dive"
+%%% End:

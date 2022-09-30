@@ -158,7 +158,7 @@ that the following diagram commutes
 {[m]} \ar[r, "\iota"'] &{[m + n - k]}
 \end{tikzcd}
 \]
-Now, consider any object \([\ell] \in \Splx\) toghether with two morphisms
+Now, consider any object \([\ell] \in \Splx\) together with two morphisms
 \(f: [n] \to [\ell]\) and \(g: [m] \to [\ell]\) such that \(f \iota = g
 \tau\). Define a map \(\phi: [m + n - k] \to [\ell]\) as follows
 \[
@@ -241,8 +241,322 @@ compatibility condition, notice that since \(i < j\), then from (5) we know that
 \(\sigma_j^n \delta_i^{n+1} = \delta_i^n \sigma_{j-1}^{n-1}\). Therefore we may
 define \(\alpha \coloneq \delta_i^{n+1}\) and \(\beta \coloneq \delta_i^n\).
 
-\todo[inline]{Do absolutes}
+For item (b), since surjections are finite compositions of degeneracies, via
+item (a) and \cref{prop:absolute-pushout}, we conclude that the square in (b) is
+an absolute pushout.
 \end{proof}
+
+\begin{lemma}
+\label{lem:}
+The following are properties of pullbacks along monomorphisms and pushouts along
+epimorphisms in the simplex category \(\Splx\):
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item If \(f: [m] \mono [n]\) is a \emph{monomorphism}, then if \(g: [k] \to
+  [n]\) is any morphism such that \(\im g \cap \im f \neq \emptyset\), then the
+  square
+  \[
+  \begin{tikzcd}
+  {[a]}  \ar[r] \ar[d] \ar[rd, phantom, very near start, "\lrcorner"]
+  &{[k]} \ar[d, "g"] \\
+  {[m]} \ar[r, tail, "f"'] &{[n]}
+  \end{tikzcd}
+  \]
+  is a \emph{pullback} in \(\Splx\).
+\item If \(f: [m] \epi [n]\) is an \emph{epimorphism}, then for any morphism
+  \(g: [m] \to [k]\), then square
+  \[
+  \begin{tikzcd}
+  {[m]} \ar[r, two heads, "f"] \ar[d, "g"']
+  \ar[dr, very near end, phantom, "\ulcorner"]
+  &{[n]} \ar[d] \\
+  {[k]} \ar[r] &{[b]}
+  \end{tikzcd}
+  \]
+  is a \emph{pushout} in \(\Splx\).
+\end{enumerate}
+\end{lemma}
+
+% \begin{proof}
+% For item (a), since \(\im g \cap \im f \neq \emptyset\), then the preimage
+% \(g^{-1}(\im f) \subseteq [k]\) is a non-empty set
+
+% For item (b), since \(f\) is a surjection, it can be decomposed into
+% degeneracies. Thus it is sufficient to prove the proposition for an elementary
+% degeneracy \(\sigma_j: [m] \to [m-1]\). The pushout of the pair \((\sigma_j,
+% g)\) is given by a map
+% \end{proof}
+\todo[inline]{I did not understand how to prove this, the proof presented on the
+book is a bit mysterious}
+
+\subsection{Simplicial Sets}
+
+\begin{definition}[Simplicial object]
+\label{def:simplicial-object}
+For any category \(\cat C\), a \emph{simplicial object} in \(\cat C\) is a
+contravariant functor \(\Splx^{\op} \to \cat C\). We define \(\Simp{\cat C}\) to
+be the category whose objects are simplicial objects and natural transformations
+between them---such category is commonly referred to as the \emph{simplicial
+  category of \(\cat C\)}.
+
+Less compactly, a simplicial object \(X \in \Simp{\cat C}\) consists of a
+collection of objects \((X_n)_{n \in \N}\), for
+\(X_n \coloneq X [n] \in \cat C\), and arrows \(\alpha^{*}: X_n \to X_m\) in
+\(\cat C\) for each map \(\alpha: [m] \to [n]\) in \(\Splx\). The nature of
+these arrows are as discussed in \cref{rem:yoneda-f*-notation}.
+
+Since every map \(\alpha\) in \(\Splx\) may be decomposed into elementary face
+and degeneracies, the the collection \(\delta_i^{*}\) and \(\sigma_j^{*}\) also
+generate the morphisms \(\alpha^{*}\) between the objects of
+\((X_n)_{n \in \N}\) of \(\cat C\). In the context of the simplicial category,
+we denote them by
+\begin{align*}
+  d_i^n &\coloneq (\delta_i^n)^{*}: X_n \longrightarrow X_{n-1}, \\
+  s_j^n &\coloneq (\sigma_j^n)^{*}: X_n \longrightarrow X_{n+1},
+\end{align*}
+for all \(0 \leq i, j \leq n\). The arrows \(d_i\) are called \emph{face maps}
+(or \emph{cofaces}), while the arrows \(s_j\) are called \emph{degeneracy maps}
+(or \emph{codegeneracies}) of the simplicial object \(X\).
+
+A map \(\eta: X \nat Y\) is a natural transformation between simplicial objects
+if and only if it is compatible with the face and degeneracy maps, that is, the
+following two diagrams commute in \(\cat C\) for all \(n \in \N\),
+\(0 \leq i, j\leq n\):
+\[
+\begin{tikzcd}
+X_n \ar[r, "\eta_n"] \ar[d, "d_i^n"'] &Y_n \ar[d, "d_i^n"] \\
+X_{n-1} \ar[r, "\eta_{n-1}"'] &Y_{n-1}
+\end{tikzcd}
+\qquad
+\qquad
+\begin{tikzcd}
+X_n \ar[r, "\eta_n"] \ar[d, "s_j^n"'] &Y_n \ar[d, "s_j^n"] \\
+X_{n+1} \ar[r, "\eta_{n+1}"'] &Y_{n+1}
+\end{tikzcd}
+\]
+
+In particular, the most important case we'll study for the time being is the
+simplicial category of sets, which we denote by \(\sSet\). The points of a
+given set \(X_n\) will be referred to as the \emph{\(n\)-simplices} of
+\(X \in \sSet\).
+\end{definition}
+
+\begin{corollary}[Simplicial identities]
+\label{cor:simplicial-identities}
+Since the face and degeneracy maps \(d_i\) and \(s_j\) are \emph{dual} to the
+elementary face and degeneracy maps \(\delta_i\) and \(\sigma_j\), they satisfy
+the following identities---which are dual to \cref{cor:cosimplicial-identities}:
+\begin{enumerate}[(1)]\setlength\itemsep{0em}
+\item \(d_i d_j = d_{j-1} d_i\), for \(i < j\).
+\item \(s_j s_i = s_i s_{j-1}\), for \(i < j\).
+\item \(d_j s_i = s_i d_{j-1}\), for \(i < j-1\).
+\item \(d_j s_i = \Id\), if \(i = j\) or \(i = j-1\).
+\item \(d_j s_i = s_{i-1} d_j\), for \(i > j\).
+\end{enumerate}
+\end{corollary}
+
+\subsubsection{Geometric Realization of the Simplex Category}
+
+We define, for each \(n \in \N\), a corresponding \emph{standard topological
+  \(n\)-simplex} \(\Delta^n\) given by
+\[
+\Delta^n \coloneq \bigg\{(t_0, \dots, t_n) \in \R^{n+1} \colon \sum_{j=0}^n t_j = 1
+\text{ and } t_j \geq 0 \text{ for all } j
+\bigg\}.
+\]
+Each \(\Delta^n\) is composed of \(n+1\) vertices
+\(v_j \coloneq (\delta_{ij})_{i=0}^n\).
+
+From a categorical point of view, standard simplices are nothing more than a functor
+\[
+\Delta^{\bullet}: \Splx \longrightarrow \Top,
+\]
+mapping objects \(\Delta^{\bullet}[n] \coloneq \Delta^n\)---where \(\Delta^n\)
+is endowed with the standard euclidean topology---and for each
+morphism \(f: [n] \to [m]\) in \(\Splx\), we map
+\(\Delta^{\bullet} f \coloneq f_{*}\), where \(f_{*}: \Delta^n \to \Delta^m\) is
+a uniquely determined continuous map such that
+\(f_{*}(v_j) \coloneq v_{f(j)}\). From this definition we obtain
+\[
+f_{*}(t_0, \dots, t_n) = (s_0, \dots, s_m) \text{,\ \ where \ }
+s_j = \sum_{f(i) = j} t_i,
+\]
+that is, \(s_j\) is the sum of the points that are collapsed to the \(j\)-th
+coordinate.
+
+This functor gives us a geometric visualization of the action of the elementary
+face and degeneracies:
+\begin{itemize}\setlength\itemsep{0em}
+\item Given an elementary \emph{face} map \(\delta_j: [n-1] \mono [n]\), for any
+  \(0 \leq j \leq n\), the corresponding map
+  \((\delta_j)_{*}: \Delta^{n-1} \emb \Delta^n\) is given by
+  \[
+  (\delta_j)_{*} v_i =
+  \begin{cases}
+    v_i, &\text{if } i < j, \\
+    v_{i+1}, &\text{if } i \geq j.
+  \end{cases}
+  \]
+  That is, \((\delta_j)_{*}\) embeds \(\Delta^{n-1}\) as a face of \(\Delta^n\)
+  opposite to the \(j\)-th vertex.
+
+\item An elementary \emph{degeneracy} map \(\sigma_j: [n+1] \epi [n]\), for any
+  \(0 \leq j \leq n\), has a map \((\sigma_j)_{*}: \Delta^{n+1} \epi \Delta^n\)
+  mapping the vertices as follows
+  \[
+  (\sigma_j)_{*} v_i =
+  \begin{cases}
+    v_i, &\text{if } i \leq j, \\
+    v_{i-1}, &\text{if } i > j.
+  \end{cases}
+  \]
+  Geometrically, the degeneracy map makes \(\Delta^{n+1}\) into \(\Delta^n\) by
+  removing a face of dimension \(1\)---through the projection parallel to the
+  line connecting \(v_j\) and \(v_{j+1}\).
+\end{itemize}
+
+\subsubsection{Geometric Realization of a Simplicial Set}
+
+Given a simplicial set \(X: \Splx^{\op} \to \Set\), we consider the topological
+space
+\[
+\coprod_{n \in \N} X_n \times \Delta^n
+\]
+and construct in this space a minimal equivalence relation \(\sim_{\text{gr}}\)
+for which points \((x, t) \in X_n \times \Delta^n\) and
+\((x', t') \in X_m \times \Delta^m\) are
+\emph{equivalent}---\((x, t) \sim_{\text{gr}} (x', t')\)---if and only if there
+exists a morphism \(\alpha: [m] \to [n]\) in \(\Splx\) such that
+\(x' = \alpha^{*} x\) and \(t = \alpha_{*} t'\). In an equivalent manner, we may
+summarize this equivalence relation as gluing points of the form
+\[
+(x, \alpha_{*} t) \sim_{\text{gr}} (\alpha^{*} x, t).
+\]
+The points of the resulting quotient space
+\((\coprod_{n \in \N} X_n \times \Delta^n)/{\sim_{\text{gr}}}\) are denoted by
+\(x \otimes t\)---corresponding to the class of a pair \((x, t)\).
+
+\todo[inline]{Study why this construction is related to a tensor product of the
+  form \(X \otimes_{\Splx} \Delta^{\bullet}\).}
+
+\begin{definition}[Geometric realization functor]
+\label{def:geometric-realization-functor}
+We define the \emph{geometric realization} of the category of simplicial sets to
+be a functor
+\[
+|-|: \sSet \longrightarrow \Top,
+\]
+mapping
+\(|X| \coloneq (\coprod_{n \in \N} X_n \times \Delta^n)/{\sim_{\text{gr}}}\) and
+for each natural transformation \(\eta: X \to Y\) we have a topological morphism
+\(|\eta|: |X| \to |Y|\) given by \(x \otimes t \mapsto \eta_n(x) \otimes t\),
+for \((x, t) \in X_n \times \Delta^n\).
+
+For any simplicial set \(X\), each \(n\)-simplex \(x \in X_n\) induces
+\emph{topological} morphism
+\[
+\widehat{x}: \Delta^n \longrightarrow |X|\text{, \ mapping }\
+t \longmapsto x \otimes t.
+\]
+From construction, given a morphism \(\alpha: [n] \to [m]\) in \(\Splx\) and a
+point \(y \in X_m\) such that \(y = \alpha^{*} x\), the diagram
+\begin{equation}\label{eq:commutativity-n-simplexes}
+\begin{tikzcd}
+\Delta^m \ar[rr, "\alpha_{*}"] \ar[rd, "\widehat y"']
+& &\Delta^n \ar[ld, "\widehat x"] \\
+&{|X|} &
+\end{tikzcd}
+\end{equation}
+commutes in \(\Top\).
+
+\todo[inline]{This looks like there exists an induced slice over category
+  \(\cat C/|X|\)---where \(\cat C\) is a subcategory of \(\Top\) consisting of
+  standard simplices and morphisms between them---whose objects are
+  \(\widehat x\) and morphisms \(\phi: \widehat x \to \widehat y\) are maps
+  \(\phi_{*}: \Delta^m \to \Delta^n\) for some \(\phi: [n] \to [m]\) in
+  \(\Splx\).}
+\end{definition}
+
+Given any category \(\cat C\) and a functor \(F: \Splx \to \cat C\), we can
+define a \emph{simplicial set} induced by any object \(C \in \cat C\) given by
+\[
+\Hom_{\cat C}(F(-), C): \Splx^{\op} \longrightarrow \Set.
+\]
+This simplicial set maps each \([n] \in \Splx\) to the set of morphisms
+\(\Hom_{\cat C}(F n, C)\), and each morphism \(\alpha: [m] \to [n]\) of
+\(\Splx\) to the set-function
+\(\alpha^{*}: \Hom_{\cat C}(F n, C) \to \Hom_{\cat C}(F m, C)\).
+
+
+\begin{definition}[Singular complex]
+\label{def:singular-complex-functor}
+Let \(\cat C\) be a category and \(F: \Splx \to \cat C\) be a functor. We define
+the \emph{singular complex} of \(\cat C\) to be the functor
+\[
+\Sing_F: \cat C \longrightarrow \sSet
+\]
+mapping each object \(C \in \cat C\) to the simplicial set
+\[
+\Sing_F(C) \coloneq \Hom_{\cat C}(F(-), C): \Splx^{\op} \longrightarrow \Set,
+\]
+and each map \(\alpha: [m] \to [n]\) to the set-function
+\[
+\Sing_F(\alpha) \coloneq \alpha^{*}:
+\Hom_{\cat C}(F n, C) \longrightarrow \Hom_{\cat C}(F m, C).
+\]
+
+In particular, the standard simplices functor \(\Delta^{\bullet}: \Splx \to
+\Top\) induces a singular complex on each topological space. Since we shall be
+mostly interested in this particular case for the time being, we shall reserve
+the notation
+\[
+\Sing \coloneq \Sing_{\Delta^{\bullet}}: \Top \longrightarrow \sSet,
+\]
+with no subscripts, for the standard simplices. In this case, given a
+topological space \(T\), we shall denote by \(\Sing(T)_n\) the image of
+\([n] \in \Splx\) under the simplicial set \(\Sing(T)\).
+\end{definition}
+
+Given a simplicial set \(X\), the collection of simplexes
+\((\widehat{x}_n)_{n \in \N}\), where \(x_n \in X_n\), covers the whole
+topological space \(|X|\)---in the sense that collection of images forms a cover
+of \(|X|\). Therefore, given any topological morphism \(\phi: |X| \to T\), this
+map is completely defined by the family of compositions
+\((\phi \widehat{x}_n: \Delta^n \to T)_{n \in \N}\). Given a morphism
+\(\alpha: [n] \to [n]\) in \(\Splx\), by \cref{eq:commutativity-n-simplexes},
+the diagram
+\[
+\begin{tikzcd}
+\Delta^m \ar[rr, "\alpha_{*}"]
+\ar[rd, "\widehat y_m"']
+\ar[drd, bend right, "\phi \widehat y_m"']
+& &\Delta^n \ar[ld, "\widehat x_n"]
+\ar[dld, bend left, "\phi \widehat x_n"] \\
+&{|X|} \ar[d, "\phi"] & \\
+&T &
+\end{tikzcd}
+\]
+commutes in \(\Top\). This construction induces unique a collection of maps
+\[
+(\phi_n: X_n \longrightarrow \Sing(T)_n)_{n \in \N},
+\]
+where \(\phi_n(x) \mapsto \phi \widehat x\). Notice that this family of arrows
+is nothing more than a natural transformation \(\phi: X \nat \Sing(T)\) between
+simplicial sets. From this we conclude that there exists a natural bijection
+\[
+\Hom_{\Top}(|X|, T) \iso \Hom_{\sSet}(X, \Sing(T)),
+\]
+thus the singular complex functor is \emph{right adjoint} to the geometric
+realization,
+\[
+\begin{tikzcd}
+\sSet \ar[rr, shift left, "{|-|}"] &&\Top \ar[ll, shift left, "\Sing"]
+\end{tikzcd}
+\]
+
+\subsection{Geometric Realization as a CW-complex}
+
+
+
 
 %%% Local Variables:
 %%% mode: latex

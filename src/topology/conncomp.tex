@@ -265,7 +265,7 @@ of the space.
 
 \begin{proof}
 Let \(X\) be a topological space. Let \(U\) and \(V\) be (path) connected
-components of \(X\) and supposet that \(U \cap V\) is non-empty. Since the union
+components of \(X\) and suppose that \(U \cap V\) is non-empty. Since the union
 of (path) connected sets is (path) connected, it follows that \(U \cup V\) is
 (path) connected from \cref{prop:union-path-connected}. Since (path) connected
 components are maximal, it follows that \(U \cup V = U = V\). Therefore the
@@ -332,7 +332,7 @@ Any path connected space is connected.
 Let \(X\) be a path connected space and \(f: X \to \{0, 1\}\) be any continuous
 map. Let \(x, y \in X\) be any two points. Since \(X\) is path connected, there
 exists a path \(\gamma: I \to X\) between \(x\) and \(y\). From the hypothesis
-that \(f\) is continuous, \(f\) must be continous on \(\gamma(I)\), therefore
+that \(f\) is continuous, \(f\) must be continuous on \(\gamma(I)\), therefore
 constant. Notice that, since this is true for all points of \(X\) we find that
 \(f(x) = f(y)\) for all \(x, y \in X\).
 \end{proof}
@@ -380,13 +380,13 @@ Suppose \((X_j)_{j \in J}\) is composed of connected spaces. Let
 construction, excludes the \(j_0\)-th coordinate from the original product space
 \(X\). Consider the continuous map \(\iota_{j_0}: X_{j_0} \to X\) for which
 \(\pi_j \iota_{j_0}(x) \coloneq \pi_j(p)\) for \(j \neq j_0\) and
-\(\pi_{j_0}\iota_{j_0}(x) \coloneq x\) --- that is, \(\iota_{j_0}\) embedds
+\(\pi_{j_0}\iota_{j_0}(x) \coloneq x\) --- that is, \(\iota_{j_0}\) embeds
 \(X_{j_0}\) in \(X\) where every coordinate, but \(j_0\), is fixed using the
 pre-chosen point \(p\). Since \(k\) is continuous and \(X_j\) is connected, the
 continuous map \(k \iota_{j_0}: X_j \to \{0, 1\}\) has to be constant. Now, if
 we take any pair of points \(x, y \in X\), one sees that \(k(x) = k(y)\) from
 the fact that \(k \iota_j\) has to be constant for all \(j \in J\) --- for the
-suitable choice of inicial fixed point.
+suitable choice of initial fixed point.
 
 Suppose \((X_j)_{j \in J}\) is a collection of path connected spaces. Let
 \(x, x' \in X\) be any two elements. For each \(j \in J\), let
@@ -1624,7 +1624,7 @@ construction of each \(K_j\). Define \(K_0 \coloneq \overline{U}_0\), and
 assume, for the inductive hypothesis, that we've constructed a sequence
 \((K_0, \dots, K_{n-1})\) of compact sets satisfying
 \(K_j \subseteq \Int K_{j+1}\) for \(j < n-1\). Since \(K_{n-1}\) is compact and
-\(\mathcal{C}\) covers \(K_{n-1}\), it follows that theres exist a finite
+\(\mathcal{C}\) covers \(K_{n-1}\), it follows that there exist a finite
 \(k_{n-1} \in \N\) such that \(K_{n-1} \subseteq \bigcup_{j=0}^{k_{n-1}} C_j\)
 --- in particular, choose \(k_{n-1}\) so that \(k_{n-1} > n\). We thus define
 \(K_n \coloneq \bigcup_{j=0}^{k_{n-1}} \Cl(C_j)\) so that
@@ -1639,7 +1639,7 @@ Every second countable, locally compact Hausdorff space is paracompact.
 \end{theorem}
 
 \begin{proof}
-Let \(X\) satisfy the above-mencioned hypothesis, and \(\mathcal{U}\) be an open
+Let \(X\) satisfy the above-mentioned hypothesis, and \(\mathcal{U}\) be an open
 cover of \(X\). By \cref{lem:2nd-loc-cpct-haus-exhaustion}, let
 \((K_j)_{j \in \N}\) be an exhaustion of \(X\) by compact sets. Define the
 following collections:
@@ -1674,6 +1674,125 @@ showing that \(\mathcal{V}\) is locally finite.
 \label{cor:manifold-paracompact}
 Every manifold with or without boundary is paracompact.
 \end{corollary}
+
+\section{Normal Spaces}
+
+\begin{definition}[Normal space]
+\label{def:normal-space}
+A topological space \(X\) is said to be \emph{normal} if it is \emph{Hausdorff},
+and for every pair of \emph{disjoint closed sets} \(C, F \subseteq X\) there
+exists a pair of \emph{disjoint open sets} \(U, V \subseteq X\) such that
+\(C \subseteq U\) and \(F \subseteq V\).
+\end{definition}
+
+\begin{proposition}
+\label{prop:compact-hausdorff-is-normal}
+Every compact Hausdorff space is normal.
+\end{proposition}
+
+\begin{proof}
+Since \(X\) is Hausdorff, for each \(c \in C\) and \(f \in F\) let
+\(C_f, F_f \subseteq X\) be \emph{disjoint} neighbourhoods of, respectively,
+\(c\) and \(f\). Now consider the collections \((C_f)_{f \in F}\) and
+\((F_f)_{f \in F}\), where the latter forms an open cover of \(F\). Since
+\(F\) is closed, thus compact, let
+\(\mathcal{F}_c \coloneq (F_{f_j})_{j=1}^n \subseteq (F_f)_{f \in F}\) be a
+\emph{finite subcover} of \(F\)---and consider the finite intersection
+\(C_c \coloneq \bigcap_{j=1}^n C_{f_j}\), which is a neighbourhood of \(c\) and
+is disjoint from every member of \(\mathcal{F}_c\).
+
+By the compactness of \(C\), let \(\mathcal{C} \coloneq (C_{c_j})_{j=1}^m\) be a
+finite subcover of the open cover \((C_c)_{c \in C}\) of the set \(C\). If we
+consider the corresponding family of finite covers
+\((\mathcal{F}_{c_j})_{j=1}^n\) of the set \(F\), we can define
+\(\mathcal{F} \coloneq \bigcap_{j=1}^m \mathcal{F}_{c_j}\)---which is again a
+finite open cover of \(F\), since each \(\mathcal{F}_{c_j}\) is finite. Now,
+defining the open sets \(U \coloneq \bigcup \mathcal{C}\) and
+\(V \coloneq \bigcup \mathcal{F}\), we find that \(C \subseteq U\) and
+\(F \subseteq V\)---moreover, from the construction of the open covers, the
+sets \(U\) and \(V\) are also disjoint.
+\end{proof}
+
+\begin{corollary}
+\label{cor:closed-subspace-is-normal}
+Every closed subspace of a normal space is normal.
+\end{corollary}
+
+\begin{definition}[Regular space]
+\label{def:regular-space}
+A topological space \(X\) is said to be \emph{regular} if it is \emph{Hausdorff}
+and for every \emph{closed set} \(C \subseteq X\) and point \(a \in X \setminus
+C\), there exists a pair of \emph{open sets} \(U, V \subseteq X\) for which \(a
+\in U\) and \(C \subseteq V\).
+\end{definition}
+
+\begin{lemma}
+\label{lem:equivalent-definition-normal-space}
+Let \(X\) be a Hausdorff space. Then \(X\) is \emph{normal} if and only if, for
+any closed subset \(C \subseteq X\) and open set \(U \subseteq X\) containing
+\(C\), there exists a neighbourhood \(V\) of \(C\) such that
+\(\Cl(V) \subseteq U\).
+\end{lemma}
+
+\begin{proof}
+If \(X\) is normal, we can consider a closed set \(C \subseteq X\) and, given an
+open set \(U \subseteq X\) containing \(C\), the closed set
+\(F \coloneq X \setminus U\). From definition, there must exist disjoint open
+sets \(V, U' \subseteq X\) for which \(C \subseteq V\) and \(F \subseteq
+U'\). Then in particular \(\Cl(V)\) and \(F\) are disjoint---otherwise, if
+\(y \in F \cap \Cl(V)\) then \(y \in U'\), but \(U'\) and \(V\) are disjoint,
+yielding a contradiction.
+
+For the converse, let \(A\) and \(B\) be disjoint closed subsets of \(X\) and
+assume the latter hypothesis. Define the open set \(U' \coloneq X \setminus B\)
+containing \(A\). Then one can choose a neighbourhood \(V\) of \(A\) such that
+\(\Cl(V) \subseteq U'\), therefore
+\(B \subseteq U \coloneq X \setminus \Cl(V)\). Therefore \(U\) and \(V\) form
+the desired pair of disjoint open sets for normality.
+\end{proof}
+
+\begin{theorem}
+\label{thm:paracompact-hausdorff-is-normal}
+Every paracompact Hausdorff space is normal.
+\end{theorem}
+
+\begin{proof}
+Let \(X\) be a paracompact Hausdorff space, and consider a closed subset
+\(A \subseteq X\) and a point \(x \in X \setminus A\)---we shall prove that
+\(X\) is regular first. Since \(X\) is Hausdorff, for each \(p \in A\), let
+\(U_p\) and \(V_p\) be disjoint neighbourhoods of \(p\) and \(x\),
+respectively. Therefore \((U_p)_{p \in A}\) forms an open cover of \(A\)---thus
+\(\mathcal{C}' \coloneq (U_p)_{p \in P} \cup \{X \setminus A\}\) is an open
+cover of \(X\). Since \(X\) is paracompact, let \(\mathcal{C}\) be a locally
+finite refinement of \(\mathcal{C}'\), and consider the subset
+\(\mathcal{U} \subseteq \mathcal{C}\) of members \(U \subseteq \mathcal{C}\)
+such that \(U \subseteq U_p\) for some \(p \in A\). The collection
+\(\mathcal{U}\) forms a locally finite open cover of \(A\). Also, given any \(U
+\in \mathcal{U}\), if \(U \subseteq U_p\), then \(V_p\) is a neighbourhood of
+\(x\) that is disjoint from \(U\)---therefore \(\Cl(U)\) cannot contain the
+point \(x\).
+
+Define \(L \coloneq \bigcup_{U \in \mathcal{U}} U\) and \(W \coloneq X \setminus
+\Cl(L)\). From the fact that \(\mathcal{U}\) is locally finite, we know that
+\(\Cl(L) = \bigcup_{U \in \mathcal{U}} U\). This shows that \(x\) is not
+contained in \(L\), while \(W\) is a neighbourhood of \(x\). Since \(L\) and
+\(W\) are disjoint open sets such that \(A \subseteq L\) and \(x \in W\), this
+shows that \(X\) is regular. For the proof that \(X\) is normal, one simply
+needs to interchange the Hausdorff condition used to build the initial sets by
+the regularity of \(X\).
+\end{proof}
+
+\begin{corollary}
+\label{cor:manifold-is-normal}
+Every topological manifold is normal.
+\end{corollary}
+
+\begin{theorem}[Urysohn]
+\label{thm:urysohn}
+Let \(X\) be a \emph{normal} topological space, and \(C, F \subseteq X\) be a
+pair of \emph{disjoint closed} subsets. Then there exists a \emph{continuous}
+map \(f: X \to [0, 1]\) such that \(f|_C = 0\) and \(f|_F = 1\).
+\end{theorem}
 
 %%% Local Variables:
 %%% TeX-master: "../../deep-dive"
