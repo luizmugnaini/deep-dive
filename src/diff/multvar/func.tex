@@ -91,11 +91,11 @@ The equality of such relations hold only when \(a = b\).
 Let \(\alpha = p^{-1}\) and set \(x = \frac a b\). From \cref{eq: CI-1} we
 have
 \begin{align*}
-0 &\geq \left(\frac a b\right)^{\frac 1 p} - \frac 1 p \frac a b + \frac 1 p
-- 1 = \left(\frac a b \right)^{\frac 1 p} - \frac 1 p \frac a b - \frac 1 q
+0 &\geq \Big(\frac a b\Big)^{\frac 1 p} - \frac 1 p \frac a b + \frac 1 p
+- 1 = \Big(\frac a b \Big)^{\frac 1 p} - \frac 1 p \frac a b - \frac 1 q
 \\
 \frac 1 p \frac a b + \frac 1 q
-    &\geq \left( \frac a b \right)^{\frac 1 p}
+    &\geq \Big( \frac a b \Big)^{\frac 1 p}
 \\
 \frac a p + \frac b q
     &\geq a^{\frac 1 p} b^{1 - \frac 1 p} = a^{p^{-1}} b^{q^{-1}}.
@@ -111,12 +111,12 @@ Let \(x_j, y_j \geq 0\) for \(1 \leq j \leq n\) and \(p^{-1} + q^{-1} = 1\).
 Then
 \begin{gather}
 \label{eq: holder-1}
-\sum_{1 \leq j \leq n} x_j y_j \leq \left( \sum_{1 \leq j \leq n} x_j^p
-\right)^{\frac 1 p} \left( \sum_{1 \leq j \leq n} y_j^q \right)^{\frac 1 q}\
+\sum_{1 \leq j \leq n} x_j y_j \leq \Big( \sum_{1 \leq j \leq n} x_j^p
+\Big)^{\frac 1 p} \Big( \sum_{1 \leq j \leq n} y_j^q \Big)^{\frac 1 q}\
 \text{ for } p > 1, \\
 \label{eq: holder-2}
-\sum_{1 \leq j \leq n} x_j y_j \geq \left( \sum_{1 \leq j \leq n} x_j^p
-\right)^{\frac 1 p} \left( \sum_{1 \leq j \leq n} y_j^q \right)^{\frac 1 q}\
+\sum_{1 \leq j \leq n} x_j y_j \geq \Big( \sum_{1 \leq j \leq n} x_j^p
+\Big)^{\frac 1 p} \Big( \sum_{1 \leq j \leq n} y_j^q \Big)^{\frac 1 q}\
 \text{ for } p < 1 \text{ and } p \neq 0.
 \end{gather}
 If \(p < 0\), then we need the strictness \(x_j > 0\) for all \(1 \leq j \leq
@@ -141,8 +141,8 @@ hence, summing such inequality over \(1 \leq j \leq n\) we find
 and finally \cref{eq: holder-1} is shown
 \[
 \sum_{j=1}^n x_j y_j \leq x^{p^{-1}} y^{q^{-1}}
-= \left(\sum_{j=1}^n x_j^p\right)^{\frac 1 p}
-\left(\sum_{j=1}^n y_j^q\right)^{\frac 1 q}.
+= \Big(\sum_{j=1}^n x_j^p\Big)^{\frac 1 p}
+\Big(\sum_{j=1}^n y_j^q\Big)^{\frac 1 q}.
 \]
 The same equivalent proof can be made with \cref{eq: young-2} for \cref{eq:
 holder-2}. Since the equality of the Young's inequalities occurs only for \(a
@@ -154,14 +154,14 @@ in the equality of H\H{o}lder's inequalities.
 Let \(x_j, y_j \geq 0\) for \(1 \leq j \leq n\). Then
 \begin{gather}
 \label{eq: minkowski-1}
-\left(\sum_{1 \leq j \leq n} (x_j + y_j)^p \right)^{\frac 1 p}
-\leq \left(\sum_{1 \leq j \leq n} x_j^p \right)^{\frac 1 p}
-+ \left(\sum_{1 \leq j \leq n} y_j^p\right)^{\frac 1 p}
+\Big(\sum_{1 \leq j \leq n} (x_j + y_j)^p \Big)^{\frac 1 p}
+\leq \Big(\sum_{1 \leq j \leq n} x_j^p \Big)^{\frac 1 p}
++ \Big(\sum_{1 \leq j \leq n} y_j^p\Big)^{\frac 1 p}
 \text{ for } p > 1,
 \\ \label{eq: minkowski-2}
-\left(\sum_{1 \leq j \leq n} (x_j + y_j)^p \right)^{\frac 1 p}
-\geq \left(\sum_{1 \leq j \leq n} x_j^p \right)^{\frac 1 p}
-+ \left(\sum_{1 \leq j \leq n} y_j^p\right)^{\frac 1 p}
+\Big(\sum_{1 \leq j \leq n} (x_j + y_j)^p \Big)^{\frac 1 p}
+\geq \Big(\sum_{1 \leq j \leq n} x_j^p \Big)^{\frac 1 p}
++ \Big(\sum_{1 \leq j \leq n} y_j^p\Big)^{\frac 1 p}
 \text{ for } p < 1 \text{, and } p \neq 0
 \end{gather}
 The equality occurs when \((x_j)_{1 \leq j \leq n}\) and \((y_j)_{1 \leq j
@@ -177,20 +177,20 @@ Notice that
 If \(p > 0\), then applying \cref{eq: holder-1} we find (noting that \(q =
 \frac p {p - 1}\))
 \[
-\sum_{j=1}^n (x_j + y_j)^p \leq \left[
-    \left(\sum_{j=1}^n x_j^p\right)^{\frac 1 p}
-    + \left(\sum_{j=1}^n y_j^p\right)^{\frac 1 p}
-\right] \left(\sum_{j=1}^n (x_j + y_j)^p\right)^{\frac 1 q}.
+\sum_{j=1}^n (x_j + y_j)^p \leq \Big[
+    \Big(\sum_{j=1}^n x_j^p\Big)^{\frac 1 p}
+    + \Big(\sum_{j=1}^n y_j^p\Big)^{\frac 1 p}
+\Big] \Big(\sum_{j=1}^n (x_j + y_j)^p\Big)^{\frac 1 q}.
 \]
 For \(p < 1\) with \(p \neq 0\), from \cref{eq: holder-2} we get
 \[
-\sum_{j=1}^n (x_j + y_j)^p \geq \left[
-    \left(\sum_{j=1}^n x_j^p\right)^{\frac 1 p}
-    + \left(\sum_{j=1}^n y_j^p\right)^{\frac 1 p}
-\right] \left(\sum_{j=1}^n (x_j + y_j)^p\right)^{\frac 1 q}.
+\sum_{j=1}^n (x_j + y_j)^p \geq \Big[
+    \Big(\sum_{j=1}^n x_j^p\Big)^{\frac 1 p}
+    + \Big(\sum_{j=1}^n y_j^p\Big)^{\frac 1 p}
+\Big] \Big(\sum_{j=1}^n (x_j + y_j)^p\Big)^{\frac 1 q}.
 \]
-Now, dividing both inequalities by the term \(\left(\sum_{j=1} (x_j + y_j)^p
-\right)^{\frac 1 q}\) we find respectively \cref{eq: minkowski-1} and
+Now, dividing both inequalities by the term \(\Big(\sum_{j=1} (x_j + y_j)^p
+\Big)^{\frac 1 q}\) we find respectively \cref{eq: minkowski-1} and
 \cref{eq: minkowski-2}. The equality occurs the same as with H\H{o}lder
 inequalities.
 \end{proof}
@@ -217,7 +217,7 @@ Let \(x_0 \in I\) and define the sequence \(x_n \coloneq f(x_{n-1})\) for all \(
 \geq 1\). We first show that \((x_n)_{n \in \N}\) is Cauchy. Let \(n >
 m \geq 1\), then
 \begin{equation}\label{eq: fixed point 1}
-|x_n - x_m| = \left| \sum_{k=m}^n x_{k+1} - x_k \right|
+|x_n - x_m| = \Big| \sum_{k=m}^n x_{k+1} - x_k \Big|
 \leq \sum_{k=m}^n |x_{k+1} - x_k| = \sum_{k=m}^n |f(x_k) - f(x_{k-1})|
 \end{equation}
 Since \(|f(x_k) - f(x_{k-1})| \leq \theta |x_k - x_{k-1}|\) and \(f(x_k) =

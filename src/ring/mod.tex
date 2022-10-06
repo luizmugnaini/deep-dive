@@ -1627,80 +1627,89 @@ where \(D\) is a division ring---in particular, we have
 
 \subsection{Pullbacks \& Pushouts of \texorpdfstring{\(R\)}{R}-Modules}
 
-\begin{theorem}
-\label{thm:R-mod-pullback-pushouts}
-The category of \(R\)-modules has pullbacks and pushouts.
-\end{theorem}
+\begin{proposition}[Pullback]
+\label{prop:pullback-modules}
+Let \(M\), \(N\), and \(Z\) be \(R\)-modules. Given \(R\)-module morphisms
+\(\mu: M \to Z\) and \(\lambda: N \to Z\), we define a triple
+\((M \times_Z N, \pi_M, \pi_N)\) --- where
+\[
+M \times_Z N \coloneq \{(m, n) \in M \times N \colon \mu(m) = \lambda(n)\},
+\]
+with the natural \(R\)-module structures inherited from \(M \times N\), and
+\(\pi_M: M \times_Z N \epi M\) and \(\pi_N: M \times_Z N \epi N\) are
+canonical projections. We claim that the following commutative square is a
+pullback
+\[
+\begin{tikzcd}
+M \times_Z N \ar[d, two heads, "\pi_M"'] \ar[r, two heads, "\pi_N"]
+\ar[dr, phantom, "\lrcorner", very near start]
+&N \ar[d, "\lambda"] \\
+M \ar[r, "\mu"'] &Z
+\end{tikzcd}
+\]
+\end{proposition}
 
 \begin{proof}
-Let \(M\), \(N\), and \(Z\) be \(R\)-modules.
-\begin{itemize}\setlength\itemsep{0em}
-\item (Pullback) Given \(R\)-module morphisms \(\mu: M \to Z\) and \(\lambda: N
-  \to Z\), we define a triple \((M \times_Z N, \pi_M, \pi_N)\) ---
-  where
-  \[
-  M \times_Z N \coloneq \{(m, n) \in M \times N \colon \mu(m) = \lambda(n)\},
-  \]
-  with the natural \(R\)-module structures inherited from \(M \times N\), and
-  \(\pi_M: M \times_Z N \epi M\) and \(\pi_N: M \times_Z N \epi N\) are
-  canonical projections. We claim that the following commutative square is a
-  pullback
-  \[
-  \begin{tikzcd}
-  M \times_Z N \ar[d, two heads, "\pi_M"'] \ar[r, two heads, "\pi_N"]
-  \ar[dr, phantom, "\lrcorner", very near start]
-  &N \ar[d, "\lambda"] \\
-  M \ar[r, "\mu"'] &Z
-  \end{tikzcd}
-  \]
-  From construction we have \(\mu \pi_M = \lambda \pi_N\), thus the diagram
-  commutes. Let \(W\) be any other \(R\)-module, and consider any two
-  \(R\)-module morphisms \(m: W \to M\) and \(n: W \to N\) such that
-  \(\mu m = \lambda n\). We define a map \(\phi: W \to M \times_Z N\) to be
-  given by \(\phi(w) = (m(w), n(w))\) --- since \(\mu m(w) = \mu n(w)\) then
-  indeed \(\phi(w) \in M \times_Z N\). Moreover, since \(m\) and \(n\) are
-  morphisms, it follows trivially that \(\phi\) is an \(R\)-module
-  morphism. Uniqueness of \(\phi\) comes from the fact that both \(\pi_M\) and
-  \(\pi_N\) are epimorphisms.
+From construction we have \(\mu \pi_M = \lambda \pi_N\), thus the diagram
+commutes. Let \(W\) be any other \(R\)-module, and consider any two \(R\)-module
+morphisms \(m: W \to M\) and \(n: W \to N\) such that \(\mu m = \lambda n\). We
+define a map \(\phi: W \to M \times_Z N\) to be given by
+\(\phi(w) = (m(w), n(w))\) --- since \(\mu m(w) = \mu n(w)\) then indeed
+\(\phi(w) \in M \times_Z N\). Moreover, since \(m\) and \(n\) are morphisms, it
+follows trivially that \(\phi\) is an \(R\)-module morphism. Uniqueness of
+\(\phi\) comes from the fact that both \(\pi_M\) and \(\pi_N\) are epimorphisms.
+\end{proof}
 
-\item (Pushout) Let \(\sigma: Z \to M\) and \(\varepsilon: Z \to N\) be
-  \(R\)-module morphisms. Consider the submodule
+\begin{proposition}[Pushout]
+\label{prop:pushout-modules}
+Let \(M\), \(N\), and \(P\) be three \(R\)-modules, and consider morphisms \(n:
+M \to N\) and \(p: M \to P\). Consider the following:
+\begin{itemize}\setlength\itemsep{0em}
+\item Define two \(R\)-modules:
   \[
-  W \coloneq \{(\sigma(z), -\varepsilon(z)) \in M \oplus N \colon
-  z \in Z\}.
+  L \coloneq \{(n(m), -p(m)) \colon m \in M\} \subseteq N \oplus P
+  \quad\text{ and } \quad
+  Q \coloneq \frac{N \oplus P}{L}
   \]
-  Define a triple \((M \oplus_Z N, \iota_M, \iota_N)\)
-  to be given by
+\item Define morphisms \(\varepsilon_N: N \to Q\) and \(\varepsilon_P: P \to Q\)
+  given by
   \[
-  M \oplus_Z N \coloneq \frac{M \oplus N}{W},
+  \varepsilon_N \coloneq \pi \iota_N \quad\text{ and }\quad
+  \varepsilon_P \coloneq \pi \iota_P.
   \]
-  inheriting the natural \(R\)-module structure from \(M \oplus N\), and
-  canonical inclusions \(\iota_M: M \emb M \oplus_Z N\) and
-  \(\iota_N: N \emb M \oplus_Z N\). We claim that the following commutative
-  diagram is a pushout
-  \[
-  \begin{tikzcd}
-  Z \ar[r, "\varepsilon"] \ar[d, "\sigma"']
-  \ar[dr, very near end, phantom, "\ulcorner"]
-  &N \ar[d, hook, "\iota_N"] \\
-  M \ar[r, hook, "\iota_M"'] &M \oplus_Z N
-  \end{tikzcd}
-  \]
-  If \(z \in Z\) is any element, then  \(\iota_M\sigma(z) = (\sigma(z), 0) + W\)
-  and \(\iota_N \varepsilon(z) = (0, \varepsilon(z)) + W\) but notice that
-  \[
-  \iota_M \sigma(z) - \iota_N \varepsilon(z)
-  = (\sigma(z), - \varepsilon(z)) + W
-  = W.
-  \]
-  Thus \(\iota_M \sigma = \iota_N \varepsilon\). Moreover, \(P\) be any
-  \(R\)-module, together with morphisms \(n: N \to P\) and \(m: M \to P\) such
-  that \(m \sigma = n \varepsilon\).  We construct a map
-  \(\psi: M \oplus_Z N \to P\) given by \((a, b) + W \mapsto m(a) + n(b)\),
-  which clearly is such that \(\psi \iota_N = n\) and \(\psi \iota_M = m\) ---
-  moreover, \(\psi\) is an \(R\)-module morphism. Its uniqueness comes from the
-  fact that \(\iota_M\) and \(\iota_N\) are monomorphisms.
+  Where \(\pi: N \oplus P \epi Q\) is the canonical projection and \(\iota_N\)
+  and \(\iota_P\) are the canonical inclusions of \(N\) and \(P\), respectively,
+  into \(N \oplus P\).
 \end{itemize}
+Then the triple \((Q, \varepsilon_N, \varepsilon_P)\) is the \emph{pushout} of
+the pair \((n, p)\), that is
+\[
+\begin{tikzcd}
+M \ar[r, "p"] \ar[d, "n"'] \ar[rd, very near end, phantom, "\ulcorner"]
+&P \ar[d, "\varepsilon_P"] \\
+N \ar[r, "\varepsilon_N"'] &Q
+\end{tikzcd}
+\]
+\end{proposition}
+
+\begin{proof}
+First we show that \(\varepsilon_N n = \varepsilon_P p\). Notice that for any
+\(m \in M\) we have
+\begin{align*}
+\varepsilon_P p(m) &= (\pi \iota_P) p(m) = \pi(0, p(m)) = (0, p(m)) + L, \\
+\varepsilon_N n(m) &= (\pi \iota_N) n(m) = \pi(n(m), 0) = (n(m), 0) + L,
+\end{align*}
+therefore \(\varepsilon_N n(m) - \varepsilon_P p(m) = (n(m), -p(m)) + L = L\),
+thus \(\varepsilon_N n = \varepsilon_P p\).
+
+Now, let \(X\) be any \(R\)-module, and consider morphisms \(p': P \to X\) and
+\(n': N \to X\) such that \(p' p = n' n\). Define a map \(q: Q \to X\) given by
+\((x, y) + L \mapsto n'(x) + p'(y)\), where \((x, y) \in N \oplus P\). We now
+show that \(q\) is well defined: suppose \((x, y) + L = (x', y') + L\)---that
+is, \((x - x', y - y') \in L\)---then since
+\(q((x - x', y - y') + L) = q(L) = 0\) and thus their images are the same. Also,
+from construction, \(q\) is a uniquely determined morphism of \(R\)-modules and
+satisfies \(p' = q \varepsilon_P\) and \(n' = q \varepsilon_N\).
 \end{proof}
 
 %%% Local Variables:

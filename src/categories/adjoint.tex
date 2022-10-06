@@ -1,0 +1,38 @@
+\section{Reflections}
+
+\begin{definition}[Reflection along a functor]
+\label{def:reflection-functor}
+Let \(F: \cat C \to \cat D\) be any functor and \(D \in \cat D\). We define a
+\emph{reflection of \(D\) along \(F\)} to be a pair \((R_D, \eta_D)\) where
+\(R_D \in \cat C\) is an object, and \(\eta_D: D \to F R_D\) is a morphism of
+\(\cat D\) such that: if \(C \in \cat C\) is any object and
+\(\delta: D \to F C\) is a morphism of \(\cat D\), then there exists a
+\emph{unique morphism} \(\varepsilon: R_D \to C\) in \(\cat C\) such that the
+diagram
+\[
+\begin{tikzcd}
+D \ar[rd, "\eta_D"'] \ar[rr, "\delta"] & &F C \\
+&F R_D \ar[ru, dashed, "F \varepsilon"'] &
+\end{tikzcd}
+\]
+commutes in the category \(\cat D\).
+\end{definition}
+
+\begin{proposition}[Uniqueness of reflections]
+\label{prop:reflection-unique-up-to-iso}
+Let \(F: \cat C \to \cat D\) be a functor and \(D \in \cat D\) be an object. If
+the reflection of \(D\) along \(F\) exists, then it is \emph{unique up to
+  isomorphism}.
+\end{proposition}
+
+\begin{proof}
+Suppose the reflection of \(D\) along \(F\) exists and let \((R, \eta)\) and
+\((R', \eta')\) be two reflections of \(D\). Considering morphisms \(\delta: D
+\to F R\)
+\todo[inline]{Continue}
+\end{proof}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../deep-dive"
+%%% End:

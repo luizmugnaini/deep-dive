@@ -1,5 +1,7 @@
 \section{Projective Modules}
 
+\subsection{Lifting Property For Projective Modules}
+
 \begin{theorem}[Free modules have the lifting property]
 \label{thm:free-modules-are-projective}
 Let \(R\) be a ring and \(F\) be a free \(R\)-module. For every surjective
@@ -203,9 +205,26 @@ projective module.
 
 \begin{example}
 \label{exp:idempotent-ring-projective}
-Let \(R\) be a ring. If there exists an idempotent element \(e \in R\), then we
-have a decomposition \(R = e R \oplus (1 - e) R\). Therefore \(e R\) is
-projective.
+Let \(R\) be a ring. If there exists an idempotent element \(e \in R\) (that is,
+\(e^2 = e\)), then we have a decomposition \(R = e R \oplus (1 - e)
+R\). Therefore \(e R\) is projective.
+
+Indeed, given \(r \in R\) we can write it as \(r = e r + (1 - e) r\)---so that
+\(R = eR + (1 - e)R\). Moreover, if \(a \in eR \cap (1 - e)R\), let \(r, r' \in
+R\) be such that \(a = e r = (1 - e) r'\), however, notice that
+\[
+a = e r = e (e r) = e ((1 - e) r') = (e - e^2) r' = (e - e) r' = 0.
+\]
+Therefore \(e R \cap (1 - e) R = 0\), thus \(R = eR \oplus (1 - e)R\).
+
+As an example of a \emph{projective module that isn't free}: if \(e\) is a
+central in \(R\), then given any \(e r \in e R\) we have
+\[
+(e r) (1 - e) = e r - (e r) e = e r - e (r e) = e r - e (e r)
+= er - er = 0.
+\]
+That is, the singleton \(\{e r\}\) is \emph{\(R\)-linearly
+  dependent}---therefore \(eR\) does \emph{not} admit a basis.
 \end{example}
 
 \begin{proposition}
@@ -257,6 +276,124 @@ M \ar[r, two heads, "g"'] &N \ar[r] &0
 \]
 which shows that \(P\) is a projective module.
 \end{proof}
+
+\begin{proposition}[Eilenberg's trick]
+\label{prop:eilenberg-trick}
+Let \(P\) be a \emph{projective} \(R\)-module. Then there exists a \emph{free
+  \(R\)-module} \(F\) such that the direct sum \(P \oplus F\) is a \emph{free
+  mocule}.
+\end{proposition}
+
+\begin{proof}
+Since \(P\) is projective, there exists a free \(R\)-module \(F'\) and an
+\(R\)-module \(Q\) such that \(F' = P \oplus Q\). Notice that
+\[
+(P \oplus Q) \oplus F'
+= P \oplus (Q \oplus (P \oplus Q))
+= P \oplus ((Q \oplus P) \oplus Q)
+\]
+is a direct sum of free modules, thus also free---however, \((Q \oplus P) \oplus
+Q\) may not be free, since \(Q\) is only ensured to be projective. However, if
+we define \(F \coloneq \bigoplus_{j \in \N} (Q \oplus P)\), then \(F\) is a
+direct sum of projective modules and hence projective itself. Using the
+fact that \(P \oplus (Q \oplus P) = (P \oplus Q) \oplus P\), we obtain
+\[
+P \oplus F
+= P \oplus \bigoplus_{j \in \N} (Q \oplus P)
+= \bigoplus_{j \in \N} (P \oplus Q),
+\]
+which is a direct sum of free modules---hence a projective module. Therefore
+\(F\) satisfies the requirement of the statement.
+\end{proof}
+
+\begin{proposition}[Schanuel]
+\label{prop:schanuel-lemma}
+Let \(P\) and \(P'\) be projective \(R\)-modules. If there exists short exact
+sequences
+\[
+\begin{tikzcd}
+0 \ar[r] &K \ar[r, tail, "f"] &P \ar[r, two heads, "g"] &M \ar[r] &0
+\\
+0 \ar[r] &K' \ar[r, tail, "\phi"] &P' \ar[r, two heads, "\psi"] &M \ar[r] &0
+\end{tikzcd}
+\]
+of \(R\)-modules, then there exists an isomorphism of \(R\)-modules
+\[
+K \oplus P' \iso K' \oplus P.
+\]
+\end{proposition}
+
+\begin{proof}
+Since \(P\) is projective, there exists a morphism of \(R\)-modules
+\(\varepsilon: P \to P'\) such that the diagram
+\[
+\begin{tikzcd}
+&P \ar[d, two heads, "g"] \ar[ld, bend right, "\varepsilon"'] &
+\\
+P' \ar[r, two heads, "\psi"'] &M \ar[r] &0
+\end{tikzcd}
+\]
+commutes in \(\Mod{R}\). Notice that for any \(k \in K\) one has
+\[
+\psi \varepsilon f(k) = g f(k) = 0,
+\]
+therefore \(\varepsilon f(k) \in \ker \psi\). Since
+\(\ker \psi \subseteq \im \phi\), there must exist \(k' \in K'\) such that
+\(\phi(k') = \varepsilon f(k)\)---which needs to be unique with such image since
+\(\phi\) is injective. Define \(\delta: K \to K'\) to be the map
+\(k \mapsto k'\), where \(k' \in K'\) is as described above. So far, we have the
+following commutative diagram in \(\Mod{R}\)
+\[
+\begin{tikzcd}
+0 \ar[r]
+&K \ar[r, tail, "f"] \ar[d, "\delta"']
+&P \ar[r, two heads, "g"] \ar[d, "\varepsilon"]
+&M \ar[r] \ar[d, equals]
+&0
+\\
+0 \ar[r] &K' \ar[r, tail, "\phi"'] &P' \ar[r, two heads, "\psi"'] &M \ar[r] &0
+\end{tikzcd}
+\]
+
+We now define a map \(\omega: K \to K' \oplus P\) given by
+\(k \mapsto (\delta(k), f(k))\), and \(\gamma: K' \oplus P \to P'\) by
+\((k', p) \mapsto \varepsilon(p) - \phi(k')\). Notice that both maps are clearly
+\(R\)-linear and from definition \((k', p) \in \ker \gamma\), that is,
+\(\varepsilon(p) = \phi(k')\) if and only if there exists a common \(k \in K\)
+for which \(f(k) = p\) and \(\delta(k) = k'\)---therefore
+\(\ker \gamma = \im \omega\). To show that \(\omega\) is injective, let
+\(k \in \ker \omega\) be any element, then from definition
+\((\delta(k), f(k)) = (0, 0)\), but since \(f\) is injective, then
+\(k = 0\)---thus \(\ker \omega = 0\) and \(\omega\) is injective. For the
+surjectivity of \(\gamma\), if \(p' \in P'\), let \(p \in P\) be such that
+\(g(p) = \psi(p')\)---which exists because \(g\) is surjective. Then by the
+commutativity of the right square one has
+\[
+\psi \varepsilon(p) = g(p) = \psi(p'),
+\]
+that is, \(\varepsilon(p) - p' \in \ker \psi\) and thus exists \(k' \in K'\) for
+which \(\phi(k') = \varepsilon(p) - p'\). This shows that
+\[
+\gamma(k', p') = \varepsilon(p) - \phi(k') = p',
+\]
+so that \(\gamma\) is surjective.
+
+We've just shown that the sequence
+\[
+\begin{tikzcd}
+0 \ar[r]
+&K \ar[r, tail, "\omega"]
+&K' \oplus P \ar[r, two heads, "\gamma"]
+&P' \ar[r]
+&0
+\end{tikzcd}
+\]
+is short exact. Since \(P'\) is projective, the sequence is also split and
+therefore there exists an isomorphism of \(R\)-modules
+\(K' \oplus P \iso K \oplus P'\).
+\end{proof}
+
+\subsection{Finitely Generated Projective Modules}
 
 \begin{proposition}
 \label{prop:fg-projective-then-dual-module-is-projective}
@@ -373,6 +510,940 @@ a dual ``basis'' \((x_j, \phi_j)_{j=1}^n\). The following properties hold:
   P \iso P^{* *}.
   \]
 \end{enumerate}
+\end{proof}
+
+\section{Injective Modules}
+
+\subsection{Lifting Property for Injective Modules}
+
+\begin{definition}[Injective module]
+\label{def:injective-modules}
+Let \(R\) be a ring, and \(E\) be an \(R\)-module. We say that \(E\) is an
+\emph{injective \(R\)-module} if
+\[
+\Hom_{\Mod{R}}(-, E): \Mod{R}^{\op} \longrightarrow \Ab
+\]
+is an \emph{exact contravariant functor}.
+\end{definition}
+
+\begin{proposition}
+\label{prop:injective-modules-equivalences}
+Let \(E\) be an \(R\)-module. The following are equivalent properties:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The module \(E\) is \emph{injective}.
+
+\item Given any exact sequence of \(R\)-modules \(0 \to M \overset{f}\mono N\),
+  the sequence
+  \[
+  \begin{tikzcd}
+  \Hom_{\Mod{R}}(N, E) \ar[r, two heads, "f^{*}"] &\Hom_{\Mod{R}}(M, E) \ar[r] &0
+  \end{tikzcd}
+  \]
+  is an \emph{exact sequence of abelian groups}
+
+\item For any injective morphism of \(R\)-modules \(f: M \mono N\), and morphism
+  \(\phi: M \to E\), there \emph{exists} a morphism \(\psi: N \to E\)---we do
+  not require uniqueness---for which the diagram
+  \[
+  \begin{tikzcd}
+  &E & \\
+  0 \ar[r] &M \ar[r, tail, "f"'] \ar[u, "\phi"] &N \ar[lu, bend right, "\psi"']
+  \end{tikzcd}
+  \]
+  is \emph{commutative} in \(\Mod{R}\).
+
+\item Any
+  short exact sequence of \(R\)-modules of the form
+  \[
+  \begin{tikzcd}
+  0 \ar[r] &E \ar[r, tail] &A \ar[r, two heads] &B \ar[r] &0
+  \end{tikzcd}
+  \]
+  is \emph{split}.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+The equivalence between (a) and (b) comes exactly from the definition of
+what an injective module is. We first prove the equivalence between (b) and (c),
+then the equivalence between (c) and (d):
+\begin{itemize}\setlength\itemsep{0em}
+\item (b) \(\implies\) (c). If we let \(0 \to M \overset{f}\mono N\) be any
+  exact sequence of \(R\)-modules, then by (b) we know that
+  \(f^{*}: \Hom_{\Mod{R}}(N, E) \epi \Hom_{\Mod{R}}(M, E)\) is a surjective
+  morphism. Therefore, if we are given any \(\phi \in \Hom_{\Mod{R}}(M, E)\),
+  one can choose a \(\psi \in \Hom_{\Mod{R}}(N, E)\) such that
+  \(f^{*}(\psi) = \psi f = \phi\).
+
+\item (c) \(\implies\) (b). Let \(0 \to M \overset{f}\mono N\) be any exact
+  sequence of \(R\)-modules, then if we are given any morphism
+  \(\phi: M \to E\), we can find \(\psi: N \to E\) such that \(\phi = f \psi\),
+  but \(f \psi = f^{*}(\psi)\), therefore we've just shown that the map
+  \(f^{*}\) is surjective.
+
+\item (c) \(\implies\) (d). Let \(0 \to E \overset f \mono A \epi B \to 0\) be
+  a short exact sequence of \(R\)-modules. If we consider the identity morphism
+  \(\Id_E\), by item (c) we are able to find a morphism \(\psi: A \to E\) such
+  that \(\psi f = \Id_E\)---therefore \(f\) is a split monomorphism and the
+  sequence splits.
+
+\item (d) \(\implies\) (c). Let \(0 \to L \overset f \mono M\) be an exact
+  sequence of \(R\)-modules and let \(\phi: L \to E\) be a morphism. We may
+  define an \(R\)-module
+  \[
+  X \coloneq \frac{E \oplus M}{\{(\phi(x), -f(x)) \colon x \in L\}},
+  \]
+  and---given the natural projection \(\pi: E \oplus M \epi X\) and the
+  canonical inclusion morphisms \(\iota_E: E \emb E \oplus M\) and
+  \(\iota_M: M \emb E \oplus M\)---we define \(\ell_E: E \to X\) and
+  \(\ell_M: M \to X\) by \(\ell_E \coloneq \pi \iota_E\) and
+  \(\ell_M \coloneq \pi \iota_M\). By \cref{prop:pushout-modules}, we know that
+  \((X, \ell_E, \ell_M)\) is the pushout of the pair \((f, \phi)\):
+  \[
+  \begin{tikzcd}
+  L \ar[r, tail, "f"] \ar[d, swap, "\phi"]
+  \ar[rd, phantom, very near end, "\ulcorner"]
+  &M \ar[d, "\ell_M"] \\
+  E \ar[r, "\ell_{E}"'] &X
+  \end{tikzcd}
+  \]
+  Let \(e \in \ker \ell_{E}\) be any element, then
+  \[
+  \ell_E(e) = [e, 0] \in \{[\phi(x), -f(x)] \colon x \in L\}.
+  \]
+  Let \(x_e \in L\) be such that \((e, 0) = (\phi(x_e), -f(x_e))\), then
+  \(x_e \in \ker f\)---but since \(f\) is injective, it follows that
+  \(x_e = 0\). Therefore \(e = \phi(0) = 0\).
+
+  From this we can consider the following short exact sequence
+  \[
+  \begin{tikzcd}
+  0 \ar[r] &E \ar[r, tail, "\ell_E"]
+  &X \ar[r, two heads]
+  &\coker \ell_E \ar[r] &0
+  \end{tikzcd}
+  \]
+  which by item (d) is split---therefore there exists a retract \(r: X \to E\)
+  of \(\ell_E\), that is, \(r \ell_E = \Id_E\). From this we can create a
+  morphism \(\psi: M \to E\) given by \(\psi \coloneq r \ell_M\)---we'll show
+  that this map satisfies the condition for item (c). Let \(x \in L\) be any
+  element and notice that
+  \[
+  \psi f(x)
+  = (r \ell_M) f(x)
+  = r[0, f(x)]
+  = r[\phi(x), 0]
+  = r(\ell_E(\phi(x)))
+  = (r \ell_E)\phi(x)
+  = \phi(x),
+  \]
+  therefore \(\psi f = \phi\) as needed, which proves that \(E\) is injective.
+\end{itemize}
+\end{proof}
+
+\begin{corollary}
+\label{cor:injective-submodule-is-direct-summand}
+Let \(M\) be an \(R\)-module, and \(E\) be a submodule of \(M\). If \(E\) is
+\emph{injective}, then it is a \emph{direct summand} of \(M\).
+\end{corollary}
+
+\begin{proof}
+Indeed, since the short exact sequence
+\[
+\begin{tikzcd}
+0 \ar[r] &E \ar[r, hook, "\iota"] &M \ar[r, two heads, "\pi"]
+&M/E \ar[l, bend left=50, "\rho" description] \ar[r] &0
+\end{tikzcd}
+\]
+is split, where \(\rho\) is a section of \(\pi\). Therefore
+\[
+M = \im \iota \oplus \im \rho = E \oplus \im \rho.
+\]
+\end{proof}
+
+\begin{proposition}
+\label{prop:direct-summand-of-injective-is-injective}
+Any \emph{direct summand of an injective} \(R\)-module is an \emph{injective}
+\(R\)-module
+\end{proposition}
+
+\begin{proof}
+Let \(E = X \oplus Y\), and consider a morphism \(\phi: L \to X\), and an
+injective morphism \(f: L \mono M\). If \(\iota_X: X \emb E\), we can define a
+morphism \(\phi': L \to E\) given by \(\phi' \coloneq \iota_X \phi\). Since
+\(E\) is injective, there exists \(\psi': M \to E\) such that
+\(\psi' f = \phi'\). However, taking the canonical projection
+\(\pi_X: E \epi X\) we can define \(\psi: M \to X\) to be given by
+\(\psi \coloneq \pi_X \psi'\)---therefore the diagram
+\[
+\begin{tikzcd}
+&X &
+\\
+0 \ar[r] &L \ar[u, "\phi"] \ar[r, tail, "f"'] &M \ar[lu, bend right, "\psi"']
+\end{tikzcd}
+\]
+is commutative in \(\Mod{R}\), hence \(X\) is injective.
+\end{proof}
+
+\begin{proposition}
+\label{prop:module-product-injective-iff-collection-injective}
+Let \((E_j)_{j \in J}\) be a collection of \(R\)-modules. Then the product
+\(\prod_{j \in J} E_j\) is an injective \(R\)-module if and only if \(E_j\) is
+injective for each \(j \in J\).
+\end{proposition}
+
+\begin{proof}
+(\(\implies\)) We know that any permutation \(\sigma: J \isoto J\) is such that
+\(\prod_{j \in J} E_j \iso \prod_{j \in J} E_{\sigma(j)}\) in \(\Mod{R}\).
+Therefore, for any \(i \in J\) we have a natural isomorphism
+\[
+\prod_{j \in J} E_j \iso E_i \times \Big( \prod_{j \in J \setminus i} E_j \Big),
+\]
+which by \cref{prop:direct-summand-of-injective-is-injective} implies in the
+injectivity of \(E_i\).
+
+(\(\impliedby\)) Let \(E_j\) be injective for each \(j \in J\). Let
+\(f: L \mono M\) be any injective morphism of \(R\)-modules and consider a
+morphism \(\phi: L \to E\). Since each \(E_j\) is injective, define
+\((\psi_j: M \to E_j)_{j \in J}\) to be the collection of morphisms such that
+the diagram
+\[
+\begin{tikzcd}
+&\prod_{j \in J} E_j \ar[r, two heads, "\pi_j"] & E_j
+\\
+0 \ar[r] &L \ar[u, "\phi"] \ar[r, tail, "f"] &M \ar[u, "\psi_j"']
+\end{tikzcd}
+\]
+commutes for all \(j \in J\)---where \(\pi_j\) is the natural \(j\)-th
+projection. From the universal property of products, the collection
+\((\psi_j)_{j \in J}\) defines a unique morphism \(\psi: M \to E\) such that
+\(\pi_j \psi = \psi_j\) for each \(j \in J\). Note that \(\psi f\) and \(\phi\)
+are equal if and only if each of their projections match, but since
+\[
+\pi_j(\psi f) = (\pi_j \psi) f = \psi_j f = \pi_j \phi,
+\]
+then \(\psi f = \phi\) and the diagram
+\[
+\begin{tikzcd}
+&\prod_{j \in J} E_j &
+\\
+0 \ar[r] &L \ar[u, "\phi"] \ar[r, tail, "f"'] &M \ar[lu, bend right, "\psi"']
+\end{tikzcd}
+\]
+commutes in \(\Mod{R}\)---therefore \(\prod_{j \in J} E_j\) is an injective
+module.
+\end{proof}
+
+\begin{remark}
+\label{rem:direct-sum-injective-modules-not-always-injective}
+Contrary to the behaviour of projective modules, \emph{the direct sum of a
+  collection of injective modules need not be injective}.
+\end{remark}
+
+\begin{lemma}
+\label{lemma:field-of-fractions-lifting-property}
+Let \(R\) be an integral domain and consider its field of fractions
+\(\Frac(R)\) as an \emph{\(R\)-module}. The following holds:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Let \(I \subseteq \Frac(R)\) be an \(R\)-submodule of the \(R\)-module
+  \(\Frac(R)\), and let \(\phi: I \to \Frac(R)\) be a \emph{morphism of
+    \(R\)-modules}. Then there exists \(q \in \Frac(R)\) such that
+  \(\phi(y) = q y\) for all \(y \in I\).
+
+\item Let \(\ideal a\) be a submodule (ideal) of \(R\). Then any morphism of
+  \(R\)-modules \(\phi: \ideal a \to \Frac(R)\) can be extended to a morphism
+  \(\overline{\phi}: R \to \Frac(R)\).
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item If \(I = 0\), then \(\phi = 0\) and any \(q \in \Frac(R)\) satisfies the
+  requirement. On the contrary, suppose \(I\) is non-zero, and fix any non-zero
+  \(b \coloneq w/z \in I\). If \(a \coloneq u/v \in \Frac(R)\) is any other
+  element, let \(r \coloneq z v\) so that
+  \[
+  b r = b (z v) = (b z) v = w v \in R
+  \quad\text{ and }\quad
+  a r = a(z v) = a(v z) = (a v) z = u z \in R,
+  \]
+  where we used the commutativity of \(R\) in order to have \(a r \in
+  R\). Therefore one has
+  \begin{gather*}
+  \phi((b a) r) = \phi(b (a r)) = \phi(b) \cdot (a r), \\
+  \phi((b a) r) = \phi((a b) r) = \phi(a (b r)) = \phi(a) \cdot (b r).
+  \end{gather*}
+  Thus \(\phi(a) b r = \phi(b) a r\)---multiplying this equality by
+  \((b r)^{-1} \in \Frac(R)\) we obtain
+  \[
+  \phi(a)
+  = \phi(b) \cdot (a r) (b r)^{-1}
+  = \phi(b) \cdot (a b^{-1})
+  = \phi(b) \cdot (b^{-1} a)
+  = (\phi(b) \cdot b^{-1}) a.
+  \]
+  Therefore we may define \(q \coloneq \frac{\phi(b)}{b} \in \Frac(R)\), so that
+  \(\phi(y) = q y\).
+
+\item Given any morphism of \(R\)-modules \(\phi: \ideal a \to \Frac(R)\), let
+  \(q \in \Frac(R)\) be such that \(\phi(y) = q y\)---which exists because of
+  the last items's result. Define \(\overline{\phi}: R \to \Frac(R)\) to be an
+  \(R\)-module morphism given by \(\overline{\phi}(1) \coloneq q\)---this
+  completely defines \(\psi\) since
+  \(\overline{\phi}(r) = \overline{\phi}(1 \cdot r) = \overline{\phi}(1) r = q
+  r\). Therefore the diagram
+  \[
+  \begin{tikzcd}
+  &\Frac{(R)} &
+  \\
+  0 \ar[r] &\ideal a \ar[r, hook] \ar[u, "\phi"]
+  &R \ar[lu, bend right, "\overline{\phi}"']
+  \end{tikzcd}
+  \]
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}[Baer's criterion]
+\label{thm:baer-criterion}
+Let \(E\) be a right-\(R\)-module (or left). Then \(E\) is \emph{injective} if
+and only if for every \emph{right ideal} (or left) \(\ideal a\) of \(R\), and
+morphism of right-\(R\)-modules (or left) \(\phi: \ideal a \to E\), there exists
+an extension \(\overline{\phi}: R \to E\) of \(\phi\)---that is, the diagram
+\[
+\begin{tikzcd}
+&E & \\
+0 \ar[r] &\ideal a \ar[r, hook] \ar[u, "\phi"]
+&R \ar[lu, bend right, "\overline{\phi}"']
+\end{tikzcd}
+\]
+is commutative in \(\rMod{R}\) (or \(\lMod{R}\)).
+\end{theorem}
+
+\begin{proof}
+(\(\implies\)) If \(E\) is injective, then the existence of the extension
+follows immediatly.
+
+(\(\impliedby\)) Suppose the latter condition is satisfied. Consider morphisms
+\(\phi: L \to E\), and \(f: L \mono M\) injective, in \(\rMod{R}\). Define
+\(\mathcal{L}\) to be the collection of all pairs \((L', \psi': L' \to E)\) such
+that \(f(L) \subseteq L' \subseteq M\), where \(L'\) is a submodule of \(M\),
+and \(\psi' f = \phi\). Notice that since \(f\) is injective we may define
+\(\psi' \coloneq \phi \circ (f|_{f(L)})^{-1}\) and take \(L' \coloneq f(L)\),
+proving that \(\mathcal{L}\) is a non-empty set.
+
+We define a partial order \(\preceq\) on \(\mathcal{L}\) as follows:
+\((L', \psi') \preceq (L'', \psi'')\) if and only if \(L' \subseteq L''\) and
+\(\psi''|_{L'} = \psi'\). Define an ascending chain (with respect to
+\(\preceq\)) of pairs \((L_j', \psi_j')_{j \in J}\) of elements of
+\(\mathcal{L}\), and let \(L'_{\text{M}} \coloneq \bigcup_{j \in J} L'_j\). From
+construction, one has that \(f(L) \subseteq L'_{\text{M}} \subseteq M\), where
+\(L'_{\text{M}}\) is a submodule of \(M\). Define a morphism
+\(\psi'_{\text{M}}: L'_{\text{M}} \to E\) as follows: if \(x \in L_j'\), define
+\(\psi'_{\text{M}}(x) \coloneq \psi_j'(x)\)---which is well defined because
+given \((L_j', \psi_j') \preceq (L_i', \psi_i')\), one has
+\(\psi_i|_{L_j} = \psi_j\). From its construction the pair
+\((L'_{\text{M}}, \psi'_{\text{M}})\) is a maximal element of the chain
+\((L_j', \psi_j')\).
+
+Since \(\mathcal{L}\) is non-empty and every chain of elements has a maximal
+element, we can use Zorn's lemma to conclude that \(\mathcal{L}\) admits a
+maximal element \((L_0, \psi_0)\). If, for the sake of contradiction, there
+exists an element \(x \in M \setminus L_0\), define a right-ideal
+\[
+\ideal a \coloneq \{r \in R \colon x r \in L_0\} \subseteq R,
+\]
+and a morphism \(\lambda: \ideal a \to E\) by
+\(r \mapsto \psi_0(x r) = \psi_0(x) r\). From hypothesis, \(\lambda\) admits an
+extension \(\overline{\lambda}: R \to E\) making the diagram
+\[
+\begin{tikzcd}
+&E &
+\\
+0 \ar[r] &\ideal a \ar[u, "\lambda"] \ar[r, hook]
+&R \ar[lu, "\overline{\lambda}"', bend right]
+\end{tikzcd}
+\]
+commute in \(\rMod{R}\). Define a map \(\psi_1: L_0 + x R \to E\) by
+\(\psi_1(y + x r) \coloneq \psi_0(y) + \overline{\lambda}(r)\), which is
+certainly a morphism of right-\(R\)-modules. To prove that \(\psi_1\) is well
+defined, if \(y + x r = y' + x r' \in L_0 + x R\) then
+\(y - y' = x(r' - r) \in x R\), therefore \(y - y' \in L_0\), while
+\(x (r' - r) \in x R\). This implies in \(r' - r \in \ideal a\), therefore both
+\(\psi_0(y - y')\) and \(\lambda(r' - r)\). Finally, we see that
+\[
+\psi_0(y - y')
+= \psi_0(x (r' - r))
+= \lambda(r' - r)
+= \overline{\lambda}(r' - r)
+= \overline{\lambda}(r') - \overline{\lambda}(r),
+\]
+therefore \(\psi_1(y + x r) = \psi_1(y' + x r')\), thus \(\psi_1\) is indeed
+well defined morphism. From construction, we have \(L_0 \subseteq L_0 + x R\)
+and \(\psi_1|_{L_0} = \psi_0\), which implies in
+\[
+(L_0, \psi_1) \preceq (L_0 + x R, \psi_1),
+\]
+contradicting the maximality of \((L_0, \psi_1)\). Therefore it must be the case
+that \(L_0 = M\), which implies in \(\psi_0: M \to E\) being such that
+\(\psi_0 f = \phi\). We conclude that the morphism of right-\(R\)-modules
+\(\psi_0\) makes the diagram
+\[
+\begin{tikzcd}
+&E &
+\\
+0 \ar[r] &L \ar[u, "\phi"] \ar[r, tail, "f"']
+&M \ar[lu, "\psi_0"', bend right]
+\end{tikzcd}
+\]
+commutative in \(\rMod{R}\), showing that \(E\) is an injective module.
+\end{proof}
+
+\begin{corollary}
+\label{cor:field-of-fractions-injective}
+Let \(R\) be an integral domain. Then the following holds:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The field of fractions \(\Frac(R)\) is an \emph{injective \(R\)-module}
+
+\item Every \emph{\(\Frac(R)\)-module} is an \emph{injective \(R\)-module}.
+
+\item Every \emph{vector space} is \emph{injective}.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Notice that by \cref{lemma:field-of-fractions-lifting-property} item (b)
+  we find that \(\Frac(R)\) satisfies the lifting property of injective modules
+  described by Baer's criterion, therefore \(\Frac(R)\) is an injective
+  \(R\)-module.
+
+\item Let \(M\) be a \(\Frac(R)\)-module, and \(\ideal a \subseteq R\) be a
+  non-zero ideal of \(R\)---if \(\ideal a\) where zero, then the extension
+  property would be satisfies right away. Since \(M\) is a module over a field,
+  it's a free module and we can assume that
+  \(M \iso \bigoplus_{j \in J} \Frac(R)\) for some set \(J\).
+
+  Let \(\phi: \ideal a \to M\) be any morphism of \(R\)-modules. If
+  \(\pi_j \in \Hom_{\Mod{R}}(M, \Frac(R))\) denotes the canonical projection of
+  the \(j\)-th coordinate, we define a collection
+  \((f_j: \ideal a \to \Frac(R))_{j \in J}\) of \(R\)-module morphisms by
+  \(f_j \coloneq \pi_j \phi\) for each \(j \in J\). Notice that since
+  \[
+  \phi(a) = (f_j(a))_{j \in J} = (f_j(1) a)_{j \in J}
+  \in \bigoplus_{j \in J} \Frac(R) \iso M,
+  \]
+  it must be the case that \(f_j(1)\) is non-zero only for finitely many
+  \(j \in J\). Therefore \(u \coloneq (f_j(1))_{j \in J}\) is an element of
+  \(M\) and we can define completely define a morphism of \(R\)-modules
+  \(\overline{\phi}: R \to M\) by mapping \(\overline{\phi}(1) \coloneq u\). We
+  conclude that such map extends \(\phi\), that is
+  \[
+  \begin{tikzcd}
+  &M & \\
+  0 \ar[r] &\ideal a \ar[r, hook] \ar[u, "\phi"]
+  &R \ar[lu, bend right, "\overline{\phi}"']
+  \end{tikzcd}
+  \]
+  is a commutative diagram in \(\Mod{R}\)---which, by Baer's criterion, proves
+  that \(M\) is injective.
+
+\item Given a \(k\)-vector space \(V\), where \(k\) is any field, we know that
+  \(k = \Frac(k)\). Therefore \(V\) is an injective \(k\)-module by item (b).
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}[Schanuel's dual (see \cref{prop:schanuel-lemma})]
+\label{prop:schanuel-lemma-dual}
+Let \(E\) and \(E'\) be injective \(R\)-modules. If there exists short exact
+sequences
+\[
+\begin{tikzcd}
+0 \ar[r] &M \ar[r, tail, "f"] &E \ar[r, two heads, "g"] &L \ar[r] &0
+\\
+0 \ar[r] &M \ar[r, tail, "\phi"] &E' \ar[r, two heads, "\psi"] &L' \ar[r] &0
+\end{tikzcd}
+\]
+of \(R\)-modules, then there exists an isomorphism of \(R\)-modules
+\[
+E \oplus L' \iso E' \oplus L.
+\]
+\end{proposition}
+
+\begin{proof}
+From the injectivity of \(E'\), there exists a morphism of \(R\)-modules
+\(\varepsilon: E \to E'\) such that the diagram
+\[
+\begin{tikzcd}
+&E' & \\
+0 \ar[r]
+&M \ar[u, tail, "\phi"] \ar[r, tail, "f"']
+&E \ar[ul, bend right, "\varepsilon"']
+\end{tikzcd}
+\]
+commutes in \(\Mod{R}\). Define a collection \((e_{\ell})_{\ell \in L}\) where
+\(g(e_{\ell}) = \ell\)---which is possible because \(g\) is surjective---and
+define the map \(\lambda: L \to L'\) to be given by
+\(\ell \mapsto \psi \varepsilon(\ell)\), then \(\lambda\) is certainly a
+morphism of \(R\)-modules and \(\lambda g = \psi \varepsilon\). We've
+constructed the following commutative diagram
+\[
+\begin{tikzcd}
+0 \ar[r]
+&M \ar[d, equals] \ar[r, tail, "f"]
+&E \ar[r, two heads, "g"] \ar[d, "\varepsilon"']
+&L \ar[r] \ar[d, "\lambda"] &0
+\\
+0 \ar[r] &M \ar[r, tail, "\phi"'] &E' \ar[r, two heads, "\psi"'] &L' \ar[r] &0
+\end{tikzcd}
+\]
+in \(\Mod{R}\). Define mappings \(\alpha: E \to E' \oplus L\) given by
+\(e \mapsto (\varepsilon(e), g(e))\), and \(\beta: E' \oplus L \to L'\) by
+\((e', \ell) \mapsto \lambda(\ell) - \psi(e')\). From construction, both are
+\(R\)-module morphisms. Moreover, notice that \((e', \ell) \in \ker \beta\) if
+and only if \(\lambda(\ell) = \psi(e')\), hence if we take \(e \in E\) such that
+\(g(e) = \ell\), we find by the commutativity of the right square that
+\[
+\psi \varepsilon(e) = \lambda g(e) = \lambda(\ell) = \psi(e').
+\]
+Therefore \(\varepsilon(e) - e' \in \ker \psi\) and by exactness there exists
+\(m \in M\) for which \(\phi(m) = \varepsilon(e) - e'\). From the commutativity
+of the left square one has
+\[
+\varepsilon f(m) = \varepsilon(e) - e',
+\]
+thus \(\varepsilon(e - f(m)) = e'\). Notice that
+\[
+\alpha(e - f(m)) = (\varepsilon(e - f(m)), g(e - f(m)))
+= (e', g(e) - g f(m))
+= (e', g(e))
+= (e', \ell),
+\]
+which proves that \((e', \ell) \in \im \alpha\). Therefore
+\(\ker \beta \subseteq \im \alpha\). For the converse, given any \(e \in E\) we have
+\[
+\beta \alpha(e) = \beta(\varepsilon(e), g(e))
+= \lambda g(e) - \psi \varepsilon(e)
+= 0
+\]
+since \(\lambda g = \psi \varepsilon\)---thus
+\(\im \alpha \subseteq \ker \beta\).
+
+We now show that \(\alpha\) is injective, while
+\(\beta\) is surjective. If \(e \in \ker \alpha\) then by definition
+\((\varepsilon(e), g(e)) = 0\). Since \(\im f = \ker g\), let \(m \in M\) be
+such that \(f(m) = e\). By the commutativity of the left square we know that
+\[
+\phi(m) = \varepsilon f(m) = \varepsilon(e) = 0,
+\]
+but \(\phi\) is injective, thus \(m = 0\). This proves that \(e = f(m) = 0\) and
+therefore \(\ker \alpha = 0\). For surjectivity, let \(\ell' \in L'\) be any
+element. Since \(\psi\) is surjective, choose \(e' \in E'\) with image
+\(\psi(e') = \ell'\). Taking the pair \((-e', 0) \in E' \oplus L\) we get
+\[
+\beta(-e', 0) = \lambda(0) - \psi(-e') = \psi(e') = \ell,
+\]
+therefore \(\beta\) is surjective.
+
+In the last two paragraphs we've shown that the sequence of \(R\)-modules
+\[
+\begin{tikzcd}
+0 \ar[r]
+&E \ar[r, tail, "\alpha"]
+&E' \oplus L \ar[r, two heads, "\beta"]
+&L' \ar[r]
+&0
+\end{tikzcd}
+\]
+is short exact. Since \(E\) is injective, then the sequence splits, proving the
+existence of an isomorphism \(E' \oplus L \iso E \oplus L'\).
+\end{proof}
+
+\subsection{Divisible Modules}
+
+\begin{definition}[Divisible module]
+\label{def:divisible-module}
+Let \(R\) be a \emph{domain}, and \(D\) be an \(R\)-module. We say that \(D\) is
+a \emph{divisible \(R\)-module} if for all \(x \in D\) and
+\(r \in R \setminus \{0\}\), there exists \(y \in D\) for which \(y r = x\).
+\end{definition}
+
+\begin{proposition}
+\label{prop:properties-divisible-modules}
+Let \(R\) be an integral domain. The following holds:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The field of fractions \(\Frac(R)\) is a divisible \(R\)-module.
+
+\item The sum (either direct or not) of divisible \(R\)-modules is a divisible
+  \(R\)-module.
+
+\item The direct product of divisible \(R\)-modules is a divisible \(R\)-module.
+
+\item If \(D\) is a divisible \(R\)-module and \(\phi: D \to M\) is a morphism
+  of \(R\)-modules, then the image \(\phi(D) \subseteq M\) is a divisible
+  \(R\)-module.
+
+\item The quotient of a divisible \(R\)-module is a divisible \(R\)-module.
+
+\item Every direct summand of a divisible \(R\)-module is itself a divisible
+  \(R\)-module.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Given any element \(x \coloneq u/v \in \Frac(R)\) and a non-zero
+  \(r \in R\), one has \(y \coloneq u/(v r) \in \Frac(R)\) such that
+  \[
+  y r = \frac{u}{v r} \cdot r = \frac{u}{v} = x.
+  \]
+
+\item Let \((D_j)_{j \in J}\) be a family of divisible \(R\)-modules. First we
+  prove that the sum of the family is divisible. Let
+  \(\sum_{j \in F} x_j \in \sum_{j \in J} D_j\) be any element, where
+  \(F \subseteq J\) is a finite subset. If \(r \in R\) is any non-zero element,
+  since \(D_j\) is divisible, let \(y_j \in D_j\) be such that \(y_j r =
+  x_j\). Since \(F\) is finite, we have \(\sum_{j \in F} y_j \in \sum_{j \in J}
+  D_j\), therefore
+  \[
+  \Big( \sum_{j \in F} y_j \Big) r = \sum_{j \in F} y_j r = \sum_{j \in F} x_j.
+  \]
+  This proves that \(\sum_{j \in J} D_j\) is a divisible \(R\)-module.
+
+  We now consider the direct sum \(\bigoplus_{j \in J} D_j\) and any element
+  \((x_j)_{j \in J} \in \bigoplus_{j \in J} D_j\). If \(r \in R\) is non-zero,
+  define a collection \((y_j)_{j \in J}\) as follows: if \(x_j = 0\), let
+  \(y_j = 0 \in D_j\), otherwise we use the divisibility of \(D_j\) and let
+  \(y_j \in D_j\) be an element such that \(y_j r = x_j\). Since finitely many
+  \(j \in J\) have a non-zero \(x_j\), it follows that \((y_j)_{j \in J} \in
+  \bigoplus_{j \in J} D_j\). Therefore we have
+  \[
+  (y_j)_{j \in J} r = (y_j r)_{j \in J} = (x_j)_{j \in J},
+  \]
+  proving that \(\bigoplus_{j \in J} D_j\) is a divisible \(R\)-module.
+
+\item Let \((D_j)_{j \in J}\) be a collection of divisible \(R\)-modules, and
+  let \((x_j)_{j \in J} \in \prod_{j \in J} D_j\) be any element. If \(r \in R\)
+  is a non-zero element, we define a collection
+  \((y_j)_{j \in J} \in \prod_{j \in J} D_j\) such that \(y_j r = x_j\)---which
+  is possible since each \(D_j\) is divisible. Therefore
+  \((y_j)_{j \in J} r = (y_j r)_{j \in J} = (x_j)_{j \in J}\), proving that the
+  direct product \(\prod_{j \in J} D_j\) is a divisible \(R\)-module.
+
+\item Let \(m \in \phi(D)\) be any element and take \(d \in
+  \phi^{-1}(m)\). Given any non-zero \(r \in R\), since \(D\) is divisible, let
+  \(y \in D\) be such that \(y r = d\). Applying \(\phi\) to such element,
+  \[
+  m = \phi(d) = \phi(y r) = \phi(y) r.
+  \]
+  Since \(\phi(y) \in \phi(D)\), this shows that \(m\) is divisible by
+  \(r\)---hence \(\phi(D)\) is a divisible \(R\)-module.
+
+\item Given a divisible \(R\)-module \(D\) and a submodule \(Q \subseteq D\),
+  the natural projection \(\pi: D \epi D/Q\) shows that \(\pi(D) = D/Q\) is a
+  divisible \(R\)-module via last item's result.
+
+\item Let \(D\) be a divisible \(R\)-module and suppose that \(D = X \oplus
+  Y\). Then the natural projection \(\pi_X: D \epi X\) has an image \(\pi_X(D) =
+  X\)---therefore \(X\) is divisible by the result of item (d).
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}[Injective module is divisible]
+\label{prop:int-domain-injective-mod-is-divisible}
+Let \(R\) be an \emph{integral domain}. Then every \emph{injective} \(R\)-module
+\emph{is} a \emph{divisible} \(R\)-module.
+\end{proposition}
+
+\begin{proof}
+Let \(E\) be an injective \(R\)-module, and \(x \in E\) be any element. If
+\(r \in R\) is any non-zero element, consider the submodule (ideal)
+\(r R \subseteq R\)---which is free with a basis \(\{r\}\). By the injectivity
+of \(E\), if \(\phi: r R \to E\) is defined by \(\phi(r) \coloneq x\), there
+exists an extension \(\psi: R \to E\) such that \(\psi|_{r R} =
+\phi\). Therefore one has
+\[
+x = \psi(r) = \psi(1 \cdot r) = \psi(1) r,
+\]
+which proves that \(x\) is divisible by \(r\), and hence \(E\) itself is a
+divisible \(R\)-module.
+\end{proof}
+
+\begin{proposition}[Divisible modules in PIDs]
+\label{prop:int-dom-PID-divisible-module-iff-injective-and-quotient}
+Let \(R\) be a \emph{principal ideal domain}. The following holds:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item An \(R\)-module is \emph{injective} if and only if it is
+  \emph{divisible}.
+
+\item Every \emph{quotient} of an \emph{injective} \(R\)-module is itself
+  \emph{injective}.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item If \(R\) is a principal ideal domain, then in particular it's an integral
+  domain, therefore any injective \(R\)-module is divisible. We prove the
+  converse. Let \(D\) be a divisible \(R\)-module and take any non-zero
+  submodule (ideal) \(\ideal a\) of \(R\), together with a morphism of
+  \(R\)-modules \(\phi: \ideal a \to E\). Since \(R\) is a PID, assume
+  \(\ideal a = a R\) for some non-zero \(a \in R\). By the divisibility of
+  \(D\), we know that there exists \(d \in D\) such that
+  \(\phi(a) = d a\)---that is, \(\phi(a) \in D\) is divisible by \(d\). We
+  define a map \(\psi: R \to D\) by mapping \(r \mapsto d r\), which is clearly
+  a morphism of \(R\)-modules. Notice that if \(x \coloneq a r \in \ideal a\) is
+  any element, then
+  \[
+  \psi(x) = \psi(a r) = \psi(a) r = (d a) r = \phi(a) r = \phi(a r) = \phi(x),
+  \]
+  that is, \(\psi\) extends \(\phi\), making the diagram
+  \[
+  \begin{tikzcd}
+  &D &
+  \\
+  0 \ar[r] &\ideal a \ar[u, "\phi"] \ar[r, hook]
+  &R \ar[lu, "\psi"', bend right]
+  \end{tikzcd}
+  \]
+  commutative in \(\Mod{R}\) and showing that \(D\) is injective.
+
+\item Let \(E\) be an injective module, hence divisible since \(R\) is in
+  particular an integral domain. Therefore, if \(M \subseteq E\) is any
+  submodule, we know that \(E/M\) is a divisible \(R\)-module by
+  \cref{prop:properties-divisible-modules} item (e). Therefore, by the fact that
+  \(R\) is a PID, we use last item's result to obtain that \(E/M\) is
+  injective.
+\end{enumerate}
+\end{proof}
+
+\begin{corollary}[Embedding abelian groups into injective ones]
+\label{cor:abelian-group-embedded-injective-abelian-group}
+Every \emph{abelian group} can be \emph{embedded} as a subgroup of an
+\emph{injective abelian group}.
+\end{corollary}
+
+\begin{proof}
+Let \(M\) be an abelian group (\(\Z\)-module) and by
+\cref{thm:any-module-is-quotient-of-free-module} we know that there exists a
+free abelian group \(F \coloneq \bigoplus_{j \in J} \Z\) such that \(M = F/K\)
+for some subgroup \(K \subseteq F\). Considering the natural inclusion morphism
+\(\iota: \Z \emb \Q\) of \(\Z\)-modules, we find that \(F\) is a submodule of
+the \(\Z\)-module \(\bigoplus_{j \in J} \Q\). Since \(\Q\) is a divisible
+\(\Z\)-module, by \cref{prop:properties-divisible-modules} we find that
+\(E \coloneq (\bigoplus_{j \in J} \Q)/K\) is again a divisible
+\(\Z\)-module. Since \(\Z\) is a PID, by
+\cref{prop:int-dom-PID-divisible-module-iff-injective-and-quotient} we find that
+\(E\) is injective. Therefore the proposition follows by the natural inclusion
+\(M = F/K \emb E\).
+\end{proof}
+
+\begin{theorem}[Embedding modules into injective ones]
+\label{thm:module-embedded-injective-module}
+Every right-\(R\)-module (or left) can be \emph{embedded as a submodule} of some
+\emph{injective right-\(R\)-module} (or left).
+\end{theorem}
+
+\begin{proof}
+Let \(M\) be any right-\(R\)-module. By
+\cref{cor:abelian-group-embedded-injective-abelian-group}, let \(D\) be an
+injective abelian group containing the abelian group \(M\). Considering the
+isomorphism \(M \iso \Hom_{\rMod{R}}(R, M)\) given by \(m \mapsto f_m\)---where
+\(f_m(r) \coloneq m r\)---we have an injective right-\(R\)-module morphism
+\(M \mono \Hom_{\rMod{\Z}}(R, D)\) given by the composition:
+\[
+\begin{tikzcd}
+M \ar[r, "\dis"] &\Hom_{\rMod{R}}(R, M) \ar[r, hook]
+&\Hom_{\rMod{\Z}}(R, M) \ar[r, hook]
+&\Hom_{\rMod{\Z}}(R, D)
+\end{tikzcd}
+\]
+This proves that \(M\) can be embedded as a subgroup of the right-\(R\)-module
+\(\Hom_{\rMod{\Z}}(R, D)\).
+\end{proof}
+
+\begin{proposition}
+\label{prop:abelian-grp-divisible-then-MorR-D-injective}
+Let \(D\) be a \emph{divisible abelian group} and \(R\) be any ring. Then the
+abelian group \(\Hom_{\rMod{\Z}}(R, D)\) is an \emph{injective
+  right-\(R\)-module} (also, \(\Hom_{\lMod{\Z}}(R, D)\) is an injective
+left-\(R\)-module), with a product
+\[
+(f \cdot r)(x) \coloneq f(r x)
+\]
+for every \(f \in \Hom_{\rMod{\Z}}(R, D)\), and \(r, x \in R\).
+\end{proposition}
+
+\begin{proof}
+We take \(D\) to be a right-\(\Z\)-module---which is isomorphic to the left
+module since \(\Z\) is commutative. Any ring \(R\) has the structure of
+\((R, \Z)\)-bimodule, thus the product is well defined and produces a structure
+of right-\(R\)-module in the abelian group \(\Hom_{\rMod{\Z}}(R, D)\).
+
+We now prove that \(\Hom_{\rMod{\Z}}(R, D)\) is injective using Baer's
+criterion. Since \(\Z\) is a PID, the divisibility of \(D\) implies that it is
+an injective \(\Z\)-module. Let \(\ideal a \subseteq R\) be any right-ideal of
+\(R\) and \(\phi: \ideal a \to \Hom_{\rMod{\Z}}(R, D)\) be a morphism of
+\(R\)-modules. Define a map \(\phi': \ideal a \to D\) by
+\(a \mapsto \phi(a)(1)\), which is a morphism of right-\(\Z\)-modules. By the
+injectivity of \(D\), there exists a morphism of right-\(\Z\)-modules
+\(\psi': R \to D\) such that the diagram
+\[
+\begin{tikzcd}
+&D &
+\\
+0 \ar[r] &\ideal a \ar[u, "\phi'"] \ar[r, hook]
+&R \ar[lu, "\psi'"', bend right]
+\end{tikzcd}
+\]
+commutes in \(\rMod{\Z}\). Define a morphism of right-\(R\)-modules
+\(\psi: R \to \Hom_{\rMod{\Z}}(R, D)\) by assigning \(\psi(1) \coloneq \psi'\),
+which completely determines \(\psi\) since
+\[
+\psi(s)(r) = (\psi(1) s) (r) = (\psi' s)(r) = \psi'(s r)
+\]
+for any \(s, r \in R\). Moreover, if \(a \in \ideal a\) is any element, then for
+any \(r \in R\) one has
+\[
+\psi(a)(r)
+= \psi'(a r)
+= \phi'(a r)
+= \phi(a r)(1)
+= (\phi(a) r)(1)
+= \phi(a)(r),
+\]
+since \(a r \in \ideal a\). Therefore \(\psi|_{\ideal a} = \phi\), making the
+diagram
+\[
+\begin{tikzcd}
+&\Hom_{\rMod{\Z}}(R, D) &
+\\
+0 \ar[r] &\ideal a \ar[u, "\phi"] \ar[r, hook]
+&R \ar[lu, "\psi"', bend right]
+\end{tikzcd}
+\]
+commute in \(\rMod{R}\)---which shows that \(\Hom_{\rMod{\Z}}(R, D)\) is an
+injective right-\(R\)-module.
+\end{proof}
+
+\begin{lemma}
+\label{lem:injective-module-completing-sequences}
+Let \(E\) be an injective \(R\)-module, and
+\(0 \to A \overset \alpha \mono B \overset \beta \epi C \to 0\) be a short exact
+sequence of \(R\)-modules. If there exists a morphism \(\gamma: A \to E\), then
+one can complete the given exact sequence to a commutative diagram in
+\(\Mod{R}\):
+\[
+\begin{tikzcd}
+0 \ar[r]
+&A \ar[r, tail, "\alpha"] \ar[d, "\gamma"']
+&B \ar[r, two heads, "\beta"] \ar[d, "\gamma'"]
+&C \ar[d, equals] \ar[r]
+&0
+\\
+0 \ar[r]
+&E \ar[r, tail, "\alpha'"]
+&P \ar[r, two heads, "\beta'"]
+&C \ar[r]
+&0
+\end{tikzcd}
+\]
+whose rows are short exact sequences.
+\end{lemma}
+
+\begin{proof}
+Let \(P\) be the pushout of the pair \((\gamma, \alpha)\), that is:
+\[
+P \coloneq
+\frac{E \oplus B}{\{(\gamma(a), - \alpha(a)) \in E \oplus B \colon a \in A\}}
+\]
+together with natural inclusion maps \(\alpha': E \to P\) given by
+\(e \mapsto [e, 0]\) and \(\gamma': B \to P\) sending \(b \mapsto [0,
+b]\). Define \(\beta': P \to C\) to be the mapping \([e, b] \mapsto
+\beta(b)\). To see that \(\beta'\) is well defined, let \([e, b] = [e', b']\)
+and notice this means that there exists a common \(a \in A\) such that
+\(\alpha(a) = b - b'\) and \(\gamma(a) = e - e'\). Since the top row is exact,
+then
+\[
+0 = \beta\alpha(a) = \beta(b - b') = \beta(b) - \beta(b'),
+\]
+that is, \(\beta'[e, b] = \beta'[e', b']\). Also it is clear that \(\beta'\) is
+a morphism of \(R\)-modules and that \(\beta' \gamma' = \beta\).
+
+Given any \(e \in \ker \alpha'\) one has \(\alpha'(e) = [e, 0] = [0, 0]\), that
+is, there exists \(a \in A\) for which \((\gamma(a), -\alpha(a)) = (e, 0)\) but
+since \(\alpha\) is injective, then \(a = 0\)---proving that
+\(\ker \alpha' = 0\) and that \(\alpha'\) is injective. For the surjectivity of
+\(\beta'\), we use the fact that \(\beta\) is surjective: given any \(c \in C\),
+there exists \(b \in B\) for which \(\beta(b) = c\)---therefore
+\(\beta' \gamma'(b) = \beta'[0, b] = \beta(b) = c\), showing that \(\beta'\) is
+surjective.
+
+We now show the exactness of the bottom row. Since
+\(\beta'\alpha'(e) = \beta'[e, 0] = \beta(0) = 0\), then
+\(\im \alpha' \subseteq \ker \beta'\). Given any \([e, b] \in \ker \beta'\) by
+definition we have \(\beta(b) = 0\), therefore by exactness of the top row there
+must exist \(a \in A\) such that \(\alpha(a) = b\). Therefore
+\[
+[e, b] = [e, \alpha(a)]
+= [e, \alpha(a)] + [\gamma(a), -\alpha(a)]
+= [e + \gamma(a), 0]
+\]
+since \([\gamma(a), -\alpha(a)] = [0, 0]\). From this we obtain that
+\(\alpha'(e + \gamma(a)) = [e, b]\) and hence
+\(\ker \beta' \subseteq \im \alpha'\).
+\end{proof}
+
+\begin{proposition}
+\label{prop:injective-iff-split-cyclic}
+An \(R\)-module \(E\) is \emph{injective} if and only if \emph{every} short
+exact sequence of \(R\)-modules
+\[
+\begin{tikzcd}
+0 \ar[r] &E \ar[r, tail, "f"] &B \ar[r, two heads, "g"] &C \ar[r] &0
+\end{tikzcd}
+\]
+\emph{ending} with a \emph{cyclic} module \(C\) is \emph{split}.
+\end{proposition}
+
+\begin{proof}
+The forward implication is immediate since any short exact sequence of
+right-\(R\)-modules starting with an injective module is split. For the
+converse, assume that \(E\) has the described property, and let
+\(\ideal b \subseteq R\) be any right-ideal together with a morphism of
+right-\(R\)-modules \(\phi: \ideal b \to E\). Considering the short exact
+sequence \(0 \to \ideal b \emb R \epi R/{\ideal b}\), using
+\cref{lem:injective-module-completing-sequences} there exists a commutative
+diagram
+\[
+\begin{tikzcd}
+0 \ar[r]
+&\ideal b \ar[r, hook, "\iota"] \ar[d, "\phi"']
+&R \ar[r, two heads] \ar[d, "\phi'"]
+&R/{\ideal b} \ar[d, equals] \ar[r]
+&0
+\\
+0 \ar[r]
+&E \ar[r, tail, "\alpha"]
+&P \ar[r, two heads]
+&R/{\ideal b} \ar[r]
+&0
+\end{tikzcd}
+\]
+Since \(R/{\ideal b}\) is a cyclic right-\(R\)-module, by hypothesis the bottom
+sequence splits, proving the existence of a retract \(q: P \to E\) such that
+\(q \alpha = \Id_E\). Therefore the composition \(q \phi': R \to E\) is a
+morphism of right-\(R\)-modules such that \((q \phi) \iota = \phi\), making the
+diagram
+\[
+\begin{tikzcd}
+&E &
+\\
+0 \ar[r]
+&\ideal b \ar[r, hook, "\iota"'] \ar[u, "\phi"]
+&R \ar[lu, bend right, "q \phi"']
+\end{tikzcd}
+\]
+commute in \(\rMod{R}\). Thus by Baer's criterion \(E\) is an injective module.
 \end{proof}
 
 %%% Local Variables:

@@ -276,18 +276,18 @@ Let \(\omega \coloneq \sum f_I\, \diff x_I\) and \(\lambda \coloneq \sum g_J\,
     &= \phi^{*} \bigg(
       \sum_{I, J} f_I \cdot g_J\, \diff x_I \wedge \diff x_J
     \bigg)
-    = \sum_{I, J} (f_I \cdot g_J) \phi\, \diff v_I \wedge \diff v_J
-    = \sum_{I, J} (f_I \phi) \cdot (g_J \phi)\, \diff v_I \wedge \diff v_J \\
-    &= \sum_{I, J} (f_I \phi\, \diff v_I) \wedge (g_J \phi\, \diff v_J)
-    = \phi^{*}(\omega) \wedge \phi^{*}(\lambda).
+    = \sum_{I, J} (f_I \cdot g_J) \phi\, \diff v_I \wedge \diff v_J \\
+    &= \sum_{I, J} (f_I \phi) \cdot (g_J \phi)\, \diff v_I \wedge \diff v_J
+    = \sum_{I, J} (f_I \phi\, \diff v_I) \wedge (g_J \phi\, \diff v_J) \\
+    &= \phi^{*}(\omega) \wedge \phi^{*}(\lambda).
   \end{align*}
 \item We first prove the equality for the base case of a \(0\)-form. Let \(h: E
   \to \R\) be a \(0\)-form, then
   \begin{align*}
     \phi^{*} (\diff h)
     &= \phi^{*} \bigg( \sum_{i=1}^n \partial_i h\, \diff x_i \bigg)
-    = \sum_{i=1}^n (\partial_i h) \phi\, \diff v_i
-    = \sum_{i=1}^n (\partial_i h) \phi
+    = \sum_{i=1}^n (\partial_i h) \phi\, \diff v_i \\
+    &= \sum_{i=1}^n (\partial_i h) \phi
       \bigg( \sum_{j=1}^{n} \partial_j v_i\, \diff x_j \bigg)
     = \sum_{j=1}^n \partial_j (h \phi)\, \diff x_j \\
     &= \diff (\phi^{*}(h))
@@ -299,8 +299,8 @@ Let \(\omega \coloneq \sum f_I\, \diff x_I\) and \(\lambda \coloneq \sum g_J\,
   \begin{align*}
     \diff (\phi^{*} \omega)
     &= \sum_I \diff(\phi^{*} f_{I}) \wedge \diff v_{I}
-    = \sum_I \phi^{*}(\diff f_I) \wedge \phi^{*} (\diff x_{I})
-    = \sum_I \phi^{*}(\diff f_I \wedge \diff x_I)
+    = \sum_I \phi^{*}(\diff f_I) \wedge \phi^{*} (\diff x_{I}) \\
+    &= \sum_I \phi^{*}(\diff f_I \wedge \diff x_I)
     = \phi^{*} \bigg( \sum_I \diff f_I \wedge \diff x_I \bigg) \\
     &= \phi^{*}(\diff \omega).
   \end{align*}
@@ -674,7 +674,7 @@ rectangle \([0, \pi] \times [0, 2 \pi]\) --- that is, \(\partial S =
   \gamma_3:& [0, \pi]\longrightarrow \R^3
   \text{ mapping } u \longmapsto S(\pi - u, 2 \pi) = (\sin(u), 0, -\cos(u)); \\
   \gamma_4:& [0, 2 \pi] \longrightarrow \R^3
-  \text{ mapping } v \longmapsto S(0, 2\pi - v) = (0, 0, 1). \\
+  \text{ mapping } v \longmapsto S(0, 2\pi - v) = (0, 0, 1).
 \end{align*}
 Now, given any \(1\)-form \(\omega \coloneq f_1\, \diff x_1 + f_2\, \diff x_2 +
 f_3\, \diff x_3\) in \(\R^3\), we have
@@ -880,6 +880,7 @@ Notice, on the other hand, that
   &= (-1)^{r-1} \partial_r f_r\, \diff x_1 \wedge \dots \wedge \diff x_k.
 \end{align*}
 Therefore, by Fubini's theorem (see \cref{thm:fubini}),
+{\small
 \begin{align*}
   \int_{\Id_{\R^k}} \diff \gamma
   &= (-1)^{r-1} \int_{\Delta_{\text{c}}^k} \partial_r f_r(x)\, \diff x \\
@@ -892,6 +893,7 @@ Therefore, by Fubini's theorem (see \cref{thm:fubini}),
     \sigma_r(t)\,
     \diff t.
 \end{align*}
+}
 Where the last equality was obtained by means of \cref{eq:stokes-sigma-0} and
 \cref{eq:stokes-sigma-j} since the variables are independent of each other. That
 is, we just proved that

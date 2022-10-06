@@ -1,0 +1,47 @@
+\section{Colouring the Portrait}
+
+\begin{definition}[Colours \& Profiles]
+\label{def:colors-profiles}
+Fix, for the remaining of the chapter, a \emph{non-empty set} \(\Col\)---whose
+elements will be called \emph{colours}. A \emph{\(\Col\)-profile} is a
+\emph{finite\footnote{Empty sequences are also admited.} sequence} of colours of
+\(\Col\).
+\end{definition}
+
+\begin{notation}
+\label{not:profiles-and-operations}
+We denote a \(\Col\)-profile by \(\prof c = (c_1, \dots, c_n)\) or also
+\(c_{[1, n]} = \prof c\) whenthe indexing matters. Some of the operations on
+profiles are the following:
+\begin{itemize}\setlength\itemsep{0em}
+\item The lenght of the profile is denoted by \(|\prof c| = n\).
+\item Given \(1 \leq j \leq n\), we define the notion of colour removal:
+  \[
+  \prof c \setminus c_j \coloneq (c_1, \dots, c_{i-1}, c_{i+1}, \dots, c_n).
+  \]
+\item Given another \(\Col\)-profile \(\prof d\), with \(|\prof d| = m\), we
+  define the \emph{concatenation} of \(\prof d\) and \(\prof c\) to be the
+  \(\Col\)-profile
+  \[
+  (\prof d, \prof c) \coloneq (d_1, \dots, d_m, c_1, \dots, c_n).
+  \]
+\item Given a permutation \(\sigma \in \Sym_n\), we define the action of
+  \(\sigma\) on the profile \(\prof c\) to be the \(\Col\)-profile \(\sigma
+  \prof c\) given by
+  \[
+  \sigma \prof c \coloneq (c_{\sigma(1)}, \dots, c_{\sigma(n)}).
+  \]
+\end{itemize}
+\end{notation}
+
+\begin{definition}[\(\Col\)-profile category]
+\label{def:profile-category}
+We define a category \(\ProfCol\) whose objects are \(\Col\)-profiles, and a
+morphism \(\sigma: \prof c \to \prof d\) is a \emph{permutation} such that
+\(\sigma \prof c = \prof d\).
+\end{definition}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../../deep-dive"
+%%% End:

@@ -8,9 +8,9 @@
     \text{, mapping }
     e \overset d \longmapsto (x, y) = (y, x)
   \]
-  That is, \(d\) defines a reflexive and symmetric relation --- that is, \(E(x,
-  x)\) is true for all \(x \in V\), and \(E(x, y) = E(y, x)\) for all pairs \(x,
-  y \in V\).
+  That is, \(d\) defines a reflexive and symmetric relation --- that is,
+  \(\Edge(x, x)\) is true for all \(x \in V\), and \(\Edge(x, y) = \Edge(y, x)\)
+  for all pairs \(x, y \in V\).
 \end{definition}
 
 We'll now construct a category for simple graphs using presheaves on the the
@@ -60,7 +60,7 @@ following category.
   \begin{itemize}
     \setlength\itemsep{0em}
     \item A morphism \(G \to H\) of simple graphs \(G = (V, E)\) and \(H = (V',
-      E')\) is a map \(f: V \to V'\) such that \(E(x, y)\) implies \(E(f(x),
+      E')\) is a map \(f: V \to V'\) such that \(\Edge(x, y)\) implies \(\Edge(f(x),
       f(y))\).
     \item Let \(G = (V, E, s, t)\) and \(H = (V', E', s', t')\) be simple
       graphs. A morphism \(G \to H\) is a natural transformation \(\alpha: G \Rightarrow H\)

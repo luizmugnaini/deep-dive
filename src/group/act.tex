@@ -12,12 +12,29 @@ that is, the elements of \(G\), which are automorphisms in the category
 \(\cat{B}G\), define automorphisms in \(A\) --- this shows that group actions
 are functors \(\cat{B}G \to \cat C\) (see \cref{exp:grp-action} for more). Left
 actions are covariant functors, while right actions are contravariant.
-
 Naturally the action is said to be \emph{faithful} if the functor is faithful,
-that is, if \(G \mono \Aut_{\cat C}(A)\) is injective. The action is said to be
-\emph{free} if the identity \(e_G\) is the only element fixing \emph{any} of the
-elements of \(A\).
+that is, if \(G \mono \Aut_{\cat C}(A)\) is injective.
 \end{definition}
+
+\begin{definition}
+\label{def:free-effective-action}
+Let \(G\) be a group acting on a \emph{set} \(X\). We define the following
+concepts concerning such action:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The action is said to be \emph{free} if the identity \(e_G\) is the only
+  element fixing \emph{any} of the elements of \(X\). In other words, \(G\) acts
+  freely on \(X\) if given any \(g \in G\) for which there exists \(x \in X\)
+  with \(g \cdot x = x\), then \(g = e\) is the identity element.
+
+\item An action is said to be \emph{effective} if the \emph{only} member of
+  \(G\) acting trivially is the identity \(e_G\).
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+\label{rem:free-versus-effective-actions}
+Mind you, free actions are effective, but not all effective actions are free.
+\end{remark}
 
 \begin{definition}[Conjugation]
 \label{def:group-conjugation-action}
@@ -132,9 +149,9 @@ subgroup of \(G\), notice that if \(g, h \in \Stab_G(a)\), then
 \(\sigma(g^{-1})(a) = \sigma(g)^{-1}(a) = a\) thus \(g^{-1} \in
 \Stab_G(a)\).
 
-\begin{definition}[\(G\)-\(\Set\) category]
+\begin{definition}[\(\GSet{G}\) category]
 \label{def:G-set-category}
-Given a group \(G\), we define a category \(G\)-\(\Set\) whose objects are pairs
+Given a group \(G\), we define a category \(\GSet{G}\) whose objects are pairs
 \((\sigma, A)\) --- where \(A\) is a set, and \(\sigma: G \to \Aut_{\Set}(A)\)
 is a group action on \(A\) --- and morphisms \(\phi: (\sigma, A) \to (\rho, B)\)
 are set-functions \(\phi: A \to B\) such that the following diagram commutes
@@ -152,13 +169,13 @@ functions are called \emph{\(G\)-equivariant}.
 
 \begin{proposition}
 \label{prop:transitive-G-set-iso-left-mul-G/Stab}
-Let \((\sigma, A) \in G\text{-}\Set\), where \(A\) is non-empty and \(\sigma\)
+Let \((\sigma, A) \in \GSet{G}\), where \(A\) is non-empty and \(\sigma\)
 is a \emph{transitive} left-action on \(A\). Then there exists an
 \emph{isomorphism}
 \[
 (\sigma, A) \iso (\ell, G/\Stab_{\ell}(a)),
 \]
-in \(G\text{-}\Set\), where \(\ell\) is the left-multiplication of \(G\)
+in \(\GSet{G}\), where \(\ell\) is the left-multiplication of \(G\)
 on \(G/\Stab_{\ell}(a)\), and \(a \in A\) is \emph{any} element.
 \end{proposition}
 
@@ -198,7 +215,7 @@ is a transitive action by the definition of the orbit --- where
 
 Therefore by \cref{prop:transitive-G-set-iso-left-mul-G/Stab} we have
 \((\overline{\sigma}, \Orb_G(a)) \iso (\ell, G/\Stab_G(g a))\) in
-\(G\)-\(\Set\), for any \(g a \in \Orb_G(a)\) --- which means the existence of a
+\(\GSet{G}\), for any \(g a \in \Orb_G(a)\) --- which means the existence of a
 \(G\)-equivariant bijection between the sets \(\Orb_G(a)\) and
 \(G/\Stab_G(g a)\). From \cref{prop:grp-index-subgroup} we have
 \(|G/\Stab_G(g a)| = |G|/|\Stab_G(g a)|\) and therefore
@@ -226,6 +243,86 @@ therefore \(g h g^{-1} \in \Stab_G(a)\). Now if \(\ell \in \Stab_G(b)\), we have
 by \(g^{-1}\) in both sides we obtain \((g^{-1} \ell g) a = a\). Therefore,
 \(\Stab_G(b) = g \Stab_G(a) g^{-1}\).
 \end{proof}
+
+\section{Group Objects}
+
+\begin{definition}[Group object]
+\label{def:group-object}
+Let \(\cat C\) be a category with (finite) products and with a terminal object
+\(1\). A triple \((G, m, e, i)\) is said to be a \emph{group object} of
+\(\cat C\) if:
+\begin{itemize}\setlength\itemsep{0em}
+\item \(G\) is an object of \(\cat C\).
+
+\item \(m: G \times G \to G\) is a morphism of \(\cat C\) satisfying the
+  commutativity of
+  \[
+  \begin{tikzcd}
+  (G \times G) \times G \ar[d, "\dis"'] \ar[rr, "m \times \Id_G"]
+  &
+  &G \times G \ar[rr, "m"]
+  &
+  &G \ar[d, equals]
+  \\
+  G \times (G \times G) \ar[rr, "\Id_G \times m"]
+  &
+  &G \times G \ar[rr, "m"]
+  &
+  &G
+  \end{tikzcd}
+  \]
+  in \(\cat C\). This arrow defines the notion of multiplication of group
+  members.
+
+\item \(e: 1 \to G\) is a morphism of \(\cat C\) making the diagram
+  \[
+  \begin{tikzcd}
+  1 \times G \ar[rr, "e \times \Id_{G}"]
+  \ar[rrd, "\dis"']
+  &
+  &G \times G \ar[d, "m"]
+  &
+  &G \times 1 \ar[ll, "\Id_G \times e"']
+  \ar[lld, "\dis"]
+  \\
+  &
+  &G
+  &
+  \end{tikzcd}
+  \]
+  commute in \(\cat C\). The map \(e\) defines the notion of a neutral member
+  of the group object.
+
+\item \(i: G \to G\) is a morphism of \(\cat C\) such that---if \(\Delta
+  \coloneq \Id_G \times \Id_G\) is the diagonal morphism of \(G\)---the diagram
+  \[
+  \begin{tikzcd}
+  G \ar[rr, "\Delta"] \ar[d, dashed]
+  &
+  &G \times G \ar[rr, "\Id_G \times i"]
+  &
+  &G \times G \ar[d, "m"]
+  %
+  &
+  &G \times G \ar[ll, "i \times \Id_G"']
+  &
+  &G \ar[d, dashed] \ar[ll, "\Delta"']
+  \\
+  1 \ar[rrrr, "e"']
+  &
+  &
+  &
+  &G
+  &
+  &
+  &
+  &1 \ar[llll, "e"]
+  \end{tikzcd}
+  \]
+  is commutative in \(\cat C\). The map \(i\) defines the notion of inversion of
+  members of the group.
+\end{itemize}
+\end{definition}
 
 %%% Local Variables:
 %%% mode: latex

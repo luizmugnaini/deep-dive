@@ -555,6 +555,23 @@ maps. This shows that \((U, f)\) is compatible with any intersecting chart of
 \((U, f)\) is a chart of \(M\).
 \end{proof}
 
+\begin{proposition}
+\label{prop:smooth-maps-are-coordinate-charts}
+Let \(U \subseteq M\) be an open set in the \(n\)-dimensional smooth manifold
+\(M\). If \(F: U \to B\) is a \(C^{\infty}\)-isomorphism where
+\(B \subseteq \R^n\) is an open set, then the pair \((U, F)\) is a coordinate
+chart in the differentiable structure of \(M\).
+\end{proposition}
+
+\begin{proof}
+Given any chart \((V, \phi)\) of the manifold \(M\) where \(U \cap V\) is
+non-empty, one has that the transition maps \(F \phi^{-1}\) and \(\phi F^{-1}\)
+are both compostions of \(C^{\infty}\)-isomorphisms---thus themselves
+\(C^{\infty}\)-isomorphisms. Since the differentiable structure of \(M\) is
+defined to be maximal, it must be the case that \((U, F)\) is a chart in the
+atlas of \(M\).
+\end{proof}
+
 \subsection{Local Coordinates}
 
 Let \(M\) be an smooth \(n\)-manifold and \(f: M \to \R\) be any real valued
@@ -641,6 +658,65 @@ If it is the case that \(N\) and \(M\) have the same dimension, we define the
 \emph{Jacobian of \(f\) in the chart \((V, \psi)\)} to be the determinant of its
 respective Jacobian matrix.
 \end{definition}
+
+\subsection{Inverse Map Theorem for Manifolds}
+
+\begin{theorem}[Inverse map theorem]
+\label{thm:inverse-map-theorem-manifolds}
+Let \(f: N \to M\) be a \(C^{\infty}\)-morphism, \(p \in N\) be any point, and
+both \(N\) and \(M\) be \(n\)-dimensional manifolds. Let \((U, \phi)\) be a
+chart about \(p\) in \(N\), and \((V, \psi)\) be a chart about \(f(p)\) in
+\(M\), such that \(f(U) \subseteq V\). Then \(f\) is \emph{locally invertible at
+  \(p\)} if and only if the \emph{determinant}
+\(\det \big[\frac{\partial f_i}{\partial \phi_j}\big]_{ij}\) is
+\emph{non-zero}---where \(f_i \coloneq \psi_i f\).
+\end{theorem}
+
+\begin{proof}
+Let \(\pi_j: \R^n \to \R\) denote the \(j\)-th canonical projection, so that
+\(f_i = \psi_i f = \pi_i \psi f\). The local representation of \(f_{*\, p}\)
+relative to the charts \((U, \phi)\) and \((V, \psi)\) is given by
+\begin{equation}\label{eq:jacobian-f*p}
+\Big[ \frac{\partial f_{i}}{\partial \phi_{j}} \Big]_{i, j=1}^n
+= \Big[ \frac{\partial (\pi_i \psi f)}{\partial \phi_{j}} \Big]_{i, j=1}^n
+= \Big[
+\frac{\partial (\pi_i \psi f \phi^{-1})}{\partial \pi_j}(\phi(p))
+\Big]_{i, j=1}^n.
+\end{equation}
+That is, the local representation of \(f_{*\, p}\) is the same as the Jacobian
+matrix of \(\psi f \phi^{-1}: \phi(U) \to \phi(V)\) at the point
+\(\phi(p)\)---where \(\phi(U), \phi(V) \subseteq \R^n\) are open sets. By the
+inverse map theorem for Banach spaces (see \cref{thm:inverse-map}), we find that
+the determinant of the Jacobian \cref{eq:jacobian-f*p} is non-zero if and only
+if \(\psi f \phi^{-1}\) is a locally invertible map at \(\phi(p)\). Notice
+however that both \(\phi\) and \(\psi\) are \(C^{\infty}\)-isomorphisms, thus
+\(\psi f \phi^{-1}\) is locally invertible at the said point if and only if
+\(f\) is invertible at \(p\).
+\end{proof}
+
+\begin{corollary}
+\label{cor:inverse-map-theorem-manifolds}
+Let \(M\) be an \(n\)-dimensional manifold, and \((U, \phi)\) be a chart of
+\(M\) about a given point \(p \in M\). A \(C^{\infty}\)-morphism
+\(F: U \to \R^n\), in the coordinate chart \((U, \phi)\), forms a
+coordinate chart\footnote{
+  That is, there exists a neighbourhood \(X \subseteq M\) of \(p\) such that the
+  induced map \(F: X \to F(X)\) is a \(C^{\infty}\)-morphism---then \((X, F)\)
+  is a coordinate chart about \(p\).
+} about \(p\) if and only if its Jacobian
+determinant \(\det \big[\frac{\partial f_{i}}{\partial \phi_j}\big]_{ij}\) is
+non-zero.
+\end{corollary}
+
+\begin{proof}
+From the inverse map theorem, the determinant of the Jacobian of \(F\) at the
+point \(p\) is non-zero if and only if \(F: U \to \R^n\) is locally invertible
+at \(p\). Moreover, the condition for \(F\) to be locally invertible is
+equivalent to the existence of a neighbourhood \(X \subseteq M\) of \(p\) such
+that the induced map \(F: X \to F(X)\) is a \(C^{\infty}\)-isomorphism, and thus
+\((X, F)\) is a coordinate chart about \(p\) (see
+\cref{prop:smooth-maps-are-coordinate-charts}).
+\end{proof}
 
 \section{Structures}
 
@@ -769,6 +845,78 @@ Let \(M\) be an \(m\)-manifold and \((U_{j}, \phi_j)_{j \in J}\) be an
 \end{itemize}
 \end{definition}
 
+\section{Fiber Bundles}
+
+\begin{definition}[Bundle projection]
+\label{def:bundle-projection}
+Let \(X\), \(B\), and \(F\) be Hausdorff spaces. We say that a continuous map
+\(p: X \to B\) is a \emph{bundle projection} with \emph{fiber} \(F\) if for each
+\(b \in B\) there exists a neighbourhood \(U \subseteq B\) of \(b\) such that
+there is a \emph{topological isomorphism}
+\[
+\phi: U \times F \longrightarrow p^{-1}(U),
+\quad\text{such that}\quad
+p \phi(x, y) = x
+\]
+for all \(x \in U\) and \(y \in F\)---the map \(\phi\) is called a
+\emph{trivialization of the bundle over \(U\)}. This means that on the set
+\(p^{-1}(U)\), the map \(p\) is a \emph{projection} of the type
+\(U \times F \epi U\).
+\end{definition}
+
+\begin{definition}[Fiber bundle]
+\label{def:fiber-bundle}
+Let \(G\) be a topological group acting \emph{effectively} on a Hausdorff space
+\(F\)---seen as a group of topological isomorphisms. Let \(X\) and \(B\) be
+Hausdorff spaces. We define a \emph{fiber bundle} (or simply \emph{bundle}) over
+the \emph{base space} \(B\) with \emph{total space} \(X\), \emph{fiber} \(F\),
+and \emph{structure group} \(G\), to be a pair \((p, \Phi)\) where
+\(p: X \to B\) is a \emph{bundle projection} and \(\Phi\) is a collection of
+trivializations of \(p\) (as described in \cref{def:bundle-projection})---the
+members of \(\Phi\) will be called \emph{charts} over \(U\)---such that:
+\begin{itemize}\setlength\itemsep{0em}
+\item For each \(b \in B\) there exists a neighbourhood \(U \subseteq B\) of
+  \(b\) and a chart \(\phi \in \Phi\) of the form
+  \(\phi: U \times F \to p^{-1}(U)\).
+
+\item Given a chart \(\phi: U \times F \to p^{-1}(U)\), member of \(\Phi\), then
+  any subset \(V \subseteq U\) is such that the restriction
+  \(\phi|_{V \times F}\) belongs to the family \(\Phi\).
+
+\item Given any pair of charts \(\phi, \psi \in \Phi\) over a common open set
+  \(U\), there exists a continuous map \(\theta: U \to G\) such that
+  \[
+  \psi(u, y) = \phi(u, \theta(u)(y)).
+  \]
+
+\item The family \(\Phi\) is \emph{maximal} among the collections satisfying the
+  previous properties.
+\end{itemize}
+The fiber bundle is said to be \emph{smooth} if each object above is a
+\emph{smooth manifold} and all maps are \emph{smooth morphisms}.
+\end{definition}
+
+\begin{definition}[Vector bundle]
+\label{def:vector-bundle}
+A \emph{vector bundle} is a fiber bundle with a fiber \(\R^n\) and structure
+group contained in \(\GL_n(\R)\). Given a vector bundle \(\xi\), we denote its
+total space by \(E(\xi)\) and base space by \(B(\xi)\).
+\end{definition}
+
+\begin{definition}[Morphism of vector bundles]
+\label{def:morphism-vector-bundles}
+If \(\xi\) and \(\eta\) are any two vector bundles, we define a \emph{bundle
+  morphism} \(\xi \to \eta\) over a continuous map \(\psi: B(\xi) \to B(\eta)\)
+to be a \emph{fiber-wise linear map} \(\Psi: E(\xi) \to E(\eta)\) such that the
+diagram
+\[
+\begin{tikzcd}
+E(\xi) \ar[d, "\xi"] \ar[r, "\Psi"] &E(\eta) \ar[d, "\eta"] \\
+B(\xi) \ar[r, "\psi"'] &B(\eta)
+\end{tikzcd}
+\]
+\end{definition}
+
 \section{Tangent Space}
 
 \subsection{Algebra of Germs}
@@ -787,13 +935,14 @@ Given a manifold \(M\) and a point \(p \in M\), we define the \emph{germs of
 \(\R\)-algebra on the following quotient:
 \[
 C_p^{\infty}(M) \coloneq
-\{f \in \Hom_{\Man}(U, \R) \colon p \in U \subseteq M\}/{\sim_p}.
+\{f \in \Hom_{\Man}(U, \R) \colon p \in U \subseteq M\}
+\Big/{\sim_p}.
 \]
 
 A \emph{point-derivation} of \(C_p^{\infty}(M)\) is an \emph{\(\R\)-linear map}
-\(\diff: C_p^{\infty}(M) \to \R\) such that
+\(X: C_p^{\infty}(M) \to \R\) such that
 \[
-\diff(f g) = (\diff f) g(p) + f(p) (\diff g).
+X(f g) = (X f) g(p) + f(p) (X g).
 \]
 \end{definition}
 
@@ -825,6 +974,436 @@ between tangent spaces. For any tangent vector \(X_p: C_p^{\infty}(N) \to \R\) o
 \]
 for all \(g \in C_{f(p)}^{\infty}(M)\).
 \end{definition}
+
+\begin{proposition}
+\label{prop:chain-rule}
+Let \(f: N \to M\) and \(g: M \to P\) be \(C^{\infty}\)-morphisms of manifolds,
+and \(p \in N\) be a given point. Then one has that the differential of the
+composition \(g f\) at \(p\), the linear map
+\((g f)_{*\, p}: T_pN \to T_{f(p)}M\), satisfies
+\[
+(g f)_{*\, p} = g_{*\, f(p)} f_{*\, p} ,
+\]
+where \(g_{*\, f(p)}\) denotes the differential of \(g\) at \(f(p)\), while
+\(f_{*\, p}\) the differential of \(f\) at \(p\).
+\end{proposition}
+
+\begin{proof}
+Let \(X_p \in T_p N\) be any tangent vector and
+\(\ell \in C_{g f(p)}^{\infty}(P)\), then one has
+\begin{gather*}
+((g f)_{*} X_p)(\ell) = X_p(\ell (g f)),
+\\
+((g_{*} f_{*})X_p)(\ell)
+= (g_{*}(f_{*} X_p))(\ell)
+= (f_* X_p)(\ell g)
+= X_p ((\ell g) f)
+= X_p (\ell (g f)).
+\end{gather*}
+Where we used the fact that \(f_{*} X_p \in T_{f(p)} M\). Therefore we conclude
+that \(((g f)_{*} X_p)(\ell) = ((g_{*} f_{*}) X_p)(\ell)\).
+\end{proof}
+
+\begin{corollary}
+\label{cor:iso-of-mfld-to-iso-of-vect-spaces}
+Let \(f: N \to M\) be a \(C^{\infty}\)-isomorphism and \(p \in N\) be any
+point, then the \(R\)-linear map \(f_{*}: T_p N \to T_{f(p)} M\) is an
+isomorphism of \(R\)-vector spaces.
+\end{corollary}
+
+\begin{proof}
+Since \(f\) is an isomorphism of manifolds, consider its inverse \(f^{-1}: M \to
+N\). Using the chain rule, we find that
+\begin{gather*}
+\Id_{T_p N} = (\Id_N)_{*\, p} = (f^{-1} f)_{*\, p} = f^{-1}_{*\, f(p)} f_{*\, p},
+\\
+\Id_{T_{f(p)} M}
+= (\Id_M)_{*\, f(p)}
+= (f f^{-1})_{*\, f(p)}
+= f_{*\, f^{-1} f(p)} f^{-1}_{*\, f(p)}
+= f_{*\, p} f^{-1}_{*\, f(p)}.
+\end{gather*}
+This shows that \(f_{*\, p}\) and \(f^{-1}_{*\, f(p)}\) are inverses of each
+other---thus isomorphisms.
+\end{proof}
+
+\begin{corollary}[Dimension invariance]
+\label{cor:dimension-invariance}
+If \(U \subseteq \R^n\) is an open set \(C^{\infty}\)-isomorphic to an open set
+\(V \subseteq \R^m\), then \(n = m\).
+\end{corollary}
+
+\begin{proof}
+Let \(f: U \to V\) be a \(C^{\infty}\)-isomorphism. For any \(p \in U\) one has
+that \(f_{*\, p}: T_p U \to T_{f(p)} V\) is an isomorphism of vector spaces by
+\cref{cor:iso-of-mfld-to-iso-of-vect-spaces}. Since \(\dim_{\R} T_p U = n\) and
+\(\dim_{\R} T_{f(p)} V = m\), then necessarily \(n = m\).
+\end{proof}
+
+\begin{definition}[Immersions and submersions]
+\label{def:immersion-and-submersion}
+Let \(f: N \to M\) be a \(C^{\infty}\)-morphism, and \(p \in N\) be any
+point---also assume that \(\dim N = n\) and \(\dim M = m\). We define the
+following two concepts concerning the differential
+\(f_{*\, p}: T_p N \to T_{f(p)} M\):
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The map \(f\) is said to be an \emph{immersion} at \(p\) if \(f_{*\, p}\)
+  is \emph{injective}---if that is the case, then \(n \leq m\). If \(f\) is an
+  immersion at every point, we simply classify \(f\) as an immersion.
+\item The map \(f\) is said to be an \emph{submersion} at \(p\) if \(f_{*\, p}\)
+  is \emph{surjective}---if that is the case, then \(m \leq n\). If \(f\) is a
+  submersion at every given point, we call \(f\) a submersion.
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+\label{rem:immersion-submersion-not-injective-not-surjective}
+Mind you: immersions \emph{do not need to be injective}, neither do
+submersions need to be surjective.
+\end{remark}
+
+\subsection{Tangent Space Basis at a Point}
+
+\begin{lemma}
+\label{lem:tangent-space-basis-lemma}
+Let \(M\) be an \(n\)-dimensional smooth manifold and \((U, \phi)\) be a chart
+about a point \(p \in M\), then for every \(1 \leq j \leq n\) we have
+\[
+\phi_{*}\Big( \frac{\partial}{\partial \phi_j}\Big|_p \Big)
+= \frac{\partial}{\partial \pi_j} \Big|_{\phi(p)}
+\]
+where \((\pi_j)_{j=1}^n\) are the local coordinates of \(\R^n\)---that is, the
+canonical projections.
+\end{lemma}
+
+\begin{proof}
+Let \(f \in C_{\phi(p)}^{\infty}(\R^n)\) be any smooth morphism, then we have
+\[
+\Big( \phi_{*} \Big( \frac{\partial}{\partial \phi_j} \Big|_p \Big) \Big) (f)
+= \frac{\partial}{\partial \phi_j}\Big|_p (f \phi)
+= \frac{\partial}{\partial \pi_j}\Big|_{\phi(p)} (f \phi) \phi^{-1}
+= \frac{\partial}{\partial \pi_j}\Big|_{\phi(p)} f (\phi \phi^{-1})
+= \frac{\partial}{\partial \pi_j}\Big|_{\phi(p)} f
+\]
+for each \(1 \leq j \leq n\).
+\end{proof}
+
+\begin{proposition}[Tangent space basis at a point]
+\label{prop:tangent-space-basis}
+Let \(M\) be an \(n\)-dimensional smooth manifold, and \((U, \phi)\) be a chart
+about \(p \in M\). Then the \(R\)-vector space \(T_p M\) has a basis
+\[
+\Big( \frac{\partial}{\partial \phi_1}\Big|_p, \dots,
+\frac{\partial}{\partial \phi_n}\Big|_p \Big)
+\]
+\end{proposition}
+
+\begin{proof}
+Via \cref{lem:tangent-space-basis-lemma} we know that the map
+\(\phi_{*}: T_p M \to T_{\phi(p)} \R^n\) is \(R\)-linear and sends each
+\(\frac{\partial}{\partial \phi_j}\big|_p\) to the corresponding base element
+\(\frac{\partial}{\partial \pi_j}\big|_{\phi(p)}\) of \(T_{\phi(p)}
+\R^n\). Therefore \(\phi_{*}\) is an \(\R\)-linear isomorphism and the
+collection of tangent vectors \(\frac{\partial}{\partial \phi_j}\big|_p\) is a
+basis.
+\end{proof}
+
+\begin{proposition}[Transition map matrix]
+\label{prop:transition-matrix}
+Let \((U, \phi)\) and \((V, \psi)\) be coordinate charts for an
+\(n\)-dimensional manifold \(M\). Then one has on the intersection \(U \cap V\),
+for each \(1 \leq j \leq n\),
+\[
+\frac{\partial}{\partial \phi_j}
+= \sum_{i=1}^n \frac{\partial \psi_i}{\partial \phi_j}
+\frac{\partial}{\partial \psi_i}
+\]
+\end{proposition}
+
+\begin{proof}
+Let \(p \in U \cap V\) be any point and define \([a_{ij}]_{i, j = 1}^n\)
+be a change of basis matrix from
+\(\big(\frac{\partial}{\partial \psi_j}\big|_p\big)_{j=1}^n\) to
+\(\big(\frac{\partial}{\partial \phi_j}\big|_p\big)_{j=1}^n\)---that is, the
+coefficients of the matrix must satisfy
+\[
+\frac{\partial}{\partial \phi_{j}}
+= \sum_{k=1}^n a_{kj}\frac{\partial}{\partial y_k}
+\]
+Since \(\frac{\partial \psi_i}{\partial \psi_j} = \delta_{ij}\) then by
+applying the component \(\psi_i\) to the above equation of tangent vectors, one
+has
+\[
+\frac{\partial \psi_i}{\partial \phi_j}
+= \sum_{k=1}^n a_{k j} \frac{\partial \psi_i}{\partial \psi_k}
+= \sum_{k=1}^n a_{k j} \delta_{i k}
+= a_{i j}.
+\]
+Which proves the proposition.
+\end{proof}
+
+\begin{proposition}[Local expression for the differential of a map]
+\label{prop:local-expression-differential}
+Let \(f: N \to M\) be a \(C^{\infty}\)-morphism, and consider a point
+\(p \in N\)---moreover, let \(\dim N = n\) and \(\dim M = m\). Given coordinate
+charts \((U, \phi)\) about \(p\), and \((V, \psi)\) about \(f(p)\), the
+differential \(f_{*\, p}: T_p N \to T_{f(p)} M\) can be locally
+represented---that is, with respect to the bases
+\(\big(\frac{\partial}{\partial \phi_j}\big|_p\big)_{j=1}^n\) and
+\(\big(\frac{\partial}{\partial \psi_i}\big|_{f(p)}\big)_{i=1}^m\)---by the
+matrix
+\[
+\Big[
+\frac{\partial f_i}{\partial \phi_j}(p)
+\Big]_{\substack{1 \leq i \leq n \\ 1 \leq j \leq m}}
+\]
+where \(f_i \coloneq \psi_i f\) is the \(i\)-th component of \(f\) with respect
+to \(\psi\), for each \(1 \leq i \leq m\).
+\end{proposition}
+
+\begin{proof}
+Given the said coordinate charts, \(f_{*\, p}\) will be completely determined
+by its image on the local basis of \(T_p N\) given by \((U, \phi)\). That is,
+\(f_{*\, p}\) is given by the matrix \([a_{i j}]_{i, j=1}^n\) whose coefficients
+satisfy
+\[
+f_{*} \Big( \frac{\partial}{\partial \phi_j}\Big|_p \Big)
+= \sum_{k=1}^m a_{k j} \frac{\partial}{\partial \psi_k}\Big|_{f(p)}.
+\]
+Moreover, if we apply \(\psi_i\) to the above equation concerning tangent
+vectors and obtain
+\[
+a_{ij} = \Big(
+\sum_{k=1}^m a_{k j} \frac{\partial}{\partial \psi_k}\Big|_{f(p)}
+\Big)(\psi_i)
+= f_{*}\Big( \frac{\partial}{\partial \phi_j}\Big|_p \Big)(\psi_i)
+= \frac{\partial}{\partial \phi_j}\Big|_p (\psi_i f)
+= \frac{\partial f_i}{\partial \phi_j}(p).
+\]
+\end{proof}
+
+\subsection{Rank, \& Critical \& Regular points}
+
+\begin{definition}[Rank at a point]
+\label{def:rank-smooth-map}
+Let \(f: N \to M\) be a \(C^{\infty}\)-morphism, and \(p \in N\) be any
+point. We define the \emph{rank of \(f\) at the point \(p\)} to be
+\[
+\rank_p f \coloneq \rank f_{*\, p}.
+\]
+Locally, by the independence of the choice of coordinate charts---given a chart
+\((U, \phi)\) about \(p\), and a chart \((V, \psi)\) about \(f(p)\)---one has
+\[
+\rank_p f = \rank \Big[ \frac{\partial f_i}{\partial \phi_j}(p) \Big].
+\]
+\end{definition}
+
+\begin{definition}[Critical \& Regular]
+\label{def:critical-point-and-value}
+Let \(f: N \to M\) be a \(C^{\infty}\)-morphism, and consider any two points
+\(p \in N\) and \(q \in M\). We define the following concerning the
+classification of the point \(p\):
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item We say that \(p\) is a \emph{critical point} of \(f\) if the differential
+  \(f_{*\, p}\) \emph{isn't surjective}. The point \(q\) is said to be a
+  \emph{critival value} if it is the \emph{image} of a critical point.
+
+\item We say that \(p\) is a \emph{regular point} of \(f\) if the differential
+  \(f_{*\, p}\) \emph{is surjective}---that is, \(f\) is a \emph{submersion at
+    \(p\)}.
+\end{enumerate}
+Finally, if \(q\) is not a critical value, we say that it is a \emph{regular
+  value}---we do \emph{not} impose \(q\) to be an element of the image of \(f\).
+\end{definition}
+
+\begin{proposition}
+\label{prop:critical-points-iff-vanishing-derivatives}
+Let \(f: M \to \R\) be a \(C^{\infty}\)-morphism, and \(p \in M\) be any
+point. Then \(p\) is a \emph{critical point} of \(f\) if and only if there
+exists a chart \((U, \phi)\) about \(p\) such that
+\[
+\frac{\partial f}{\partial \phi_j}(p) = 0
+\]
+for all \(1 \leq j \leq n\).
+\end{proposition}
+
+\begin{proof}
+Let \((V, \psi)\) be \emph{any} chart about \(p\). Since
+\(T_{f(p)} \R \iso \R\), one has that the differential
+\(f_{*\, p}: T_p M \to \R\) has \(\rank f_{*\, p} = 1\)---which means that
+\(f_{*\, p}\) is surjective---or \(\rank f_{*\, p} = 0\), that is,
+\(f_{*\, p} = 0\). Therefore \(f_{*\, p}\) isn't surjective (i.e. \(f\)
+\emph{isn't} a submersion at \(p\)) if and only if \(f_{*\, p}\) is zero---which
+is equivalent to the vanishing of all partial derivatives.
+\end{proof}
+
+\section{Submanifolds}
+
+\begin{definition}[Regular submanifold]
+\label{def:regular-submanifold}
+Let \(S \subseteq N\) be a subspace of the \(n\)-dimensional manifold \(N\). We
+say that \(S\) is a \emph{\(k\)-dimensional regular submanifold} of \(N\) if for
+every \(p \in S\) there exists a coordinate chart \((U, \phi)\) about \(p\) such
+that \(n-k\) coordinates of \(\phi\) vanish at the intersection \(U \cap S\). By
+the possible rearrangement of the indices, we may assume that
+\[
+\phi|_{U \cap S} = (\phi_1, \dots, \phi_k, 0, \dots, 0).
+\]
+The chart \((U, \phi)\) is then refered to as an \emph{adapted chart relative to
+  \(S\)}. We shall denote by \(\phi_S: U \cap S \to \R^k\) the induced
+\(C^{\infty}\)-isomorphism given by
+\[
+\phi_S \coloneq (\phi_1, \dots, \phi_k),
+\]
+where \((U \cap S, \phi_S)\) is a chart for \(S\) in the subspace topology.
+
+We define the \emph{codimension} of \(S\) as a submanifold of \(N\) to be
+\[
+\codim_M S \coloneq n - k.
+\]
+\end{definition}
+
+\begin{proposition}[Regular submanifolds are manifolds]
+\label{prop:regular-submanifold}
+Let \(S\) be a regular submanifold of \(N\) and let
+\((U_{\gamma}, \phi_{\gamma})_{\gamma \in \Gamma}\) be a collection of adapted
+charts of \(N\) relative to \(S\), such that the family of charts \emph{cover}
+\(S\). Then the induced collection
+\((U_{\gamma} \cap S, \phi_{\gamma\, S})_{\gamma \in \Gamma}\) is an
+\emph{atlas} for \(S\), and therefore \(S\) is itself a manifold. If
+\(\dim N = n\) and \(S\) is locally defined by the vanishing of \(n-k\)
+coordinates, then \(\dim S = k\).
+\end{proposition}
+
+\begin{proof}
+Consider two intersecting adapted charts \((U, \phi)\) and \((V, \psi)\) of
+\(N\) contained in the above-mentioned collection. Let \(p \in (U \cap V) \cap
+S\) be any point, then if \(\phi(p) = (x_1, \dots, x_k, 0, \dots, 0)\) and
+\(\psi(p) = (y_1, \dots, y_k, 0, \dots, 0)\), we obtain
+\[
+\psi_S \phi_S^{-1}(x_1, \dots, x_k) = \psi_S(p) = (y_1, \dots, y_k).
+\]
+Since the natural projections
+\(\pi_j(\psi_S \phi_S^{-1}): (U \cap V) \cap S \to \R\) are
+\(C^{\infty}\)-morphisms, then one concludes that the transition map
+\(\psi_S \phi_S\) is itself a \(C^{\infty}\)-morphism, showing that the charts
+are compatible. Therefore the induced family of charts
+\((U_{\gamma} \cap S, \phi_{\gamma\, S})_{\gamma \in \Gamma}\) is a smooth atlas
+for \(S\). It is immediate that \(S\) is a \(k\)-dimensional smooth manifold.
+\end{proof}
+
+\subsection{Fibers}
+
+\begin{definition}[Fibers \& levels]
+\label{def:fibers-and-levels}
+Given a \(C^{\infty}\)-morphism \(f: N \to M\), we say that a point \(q \in M\)
+is the \emph{level} of the fiber \(f^{-1}(c)\)---in particular, if \(q\) is a
+regular value, then we say that \(f^{-1}(c)\) is a \emph{regular fiber}.
+\end{definition}
+
+\begin{lemma}
+\label{lem:regular-fiber-equal-zero-regular-fiber}
+Let \(g: N \to \R\) be a \(C^{\infty}\)-morphism, and \(q \in \R\) be any
+regular value. If \(f: N \to \R\) is defined by \(f \coloneq g - q\), then
+\(0\) is a regular value of \(f\) and \(g^{-1}(q) = f^{-1}(0)\)---that is, one
+can construct a smooth map such that its \emph{regular zero fiber} equals to a
+given regular fiber of \(g\).
+\end{lemma}
+
+\begin{proof}
+From construction, it is obvious that \(g^{-1}(c) = f^{-1}(0)\). To show that
+\(0\) is a regular value of \(f\), notice that for all \(p \in N\) one has
+\(f_{*\, p} = g_{*\, p}\)---therefore \(f\) and \(g\) have the exact same
+critical points, and thus the same regular values. It follows that \(f^{-1}(0)\)
+is indeed a regular fiber of \(f\).
+\end{proof}
+
+\begin{lemma}
+\label{lem:regular-fibers-are-regular-manifolds}
+Let \(g: N \to \R\) be a \(C^{\infty}\)-morphism, and let \(q \in \im g\) be a
+regular value. Then the non-empty regular fiber \(g^{-1}(q)\) is a \emph{regular
+  submanifold of \(N\)} with codimension \(1\).
+\end{lemma}
+
+\begin{proof}
+Assume that \(\dim N = n\). As in
+\cref{lem:regular-fiber-equal-zero-regular-fiber}, define \(f: N \to \R\) to be
+the \(C^{\infty}\)-morphism given by \(f \coloneq g - q\), so that
+\(g^{-1}(q) = f^{-1}(0)\) and \(0\) is a regular value of \(f\). Given any
+\(p \in f^{-1}(0)\), by definition we have that \(p\) is a regular point of
+\(f\) and by \cref{prop:critical-points-iff-vanishing-derivatives} we know that
+any chart \((U, \phi)\) about \(p\) has a \emph{non-vanishing} partial
+derivative \(\frac{\partial f}{\partial \phi_j}(p) \neq 0\) for some index
+\(j\). By permutation of the indices, one may assume without much disturbance
+that \(\frac{\partial f}{\partial \phi_1}(p) \neq 0\) is a non-vanishing partial
+derivative. Consider the \(C^{\infty}\)-morphism \(\Phi: U \to \R^n\) defined by
+\(\Phi \coloneq (f, \phi_2, \dots, \phi_n)\), whose jacobian matrix equals
+\[
+\Jac \Phi =
+\begin{bmatrix}
+\frac{\partial f}{\partial \phi_1}
+&\frac{\partial f}{\partial \phi_2}
+&\dots
+&\frac{\partial f}{\partial \phi_{n-1}}
+&\frac{\partial f}{\partial \phi_n}
+\\
+\frac{\partial \phi_2}{\partial \phi_1}
+&\frac{\partial \phi_2}{\partial \phi_2}
+&\dots
+&\frac{\partial \phi_2}{\partial \phi_{n-1}}
+&\frac{\partial \phi_2}{\partial \phi_n}
+\\
+\vdots &\vdots &\ddots &\vdots &\vdots
+\\
+\frac{\partial \phi_n}{\partial \phi_1}
+&\frac{\partial \phi_n}{\partial \phi_2}
+&\dots
+&\frac{\partial \phi_n}{\partial \phi_{n-1}}
+&\frac{\partial \phi_n}{\partial \phi_n}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\frac{\partial f}{\partial \phi_1}
+&\frac{\partial f}{\partial \phi_2}
+&\dots
+&\frac{\partial f}{\partial \phi_{n-1}}
+&\frac{\partial f}{\partial \phi_n}
+\\
+0 &1 &\dots &0 &0
+\\
+\vdots &\vdots &\dots &\ddots &\vdots
+\\
+0 &0 &0 &\dots &n
+\end{bmatrix}
+\]
+Which has determinant
+\(\det(\Jac \Phi(p)) = \frac{\partial f}{\partial \phi_1}(p) \neq 0\) at the
+point \(p\). From the inverse map theorem (see
+\cref{cor:inverse-map-theorem-manifolds}) there must exist a neighbourhood
+\(X \subseteq M\) of \(p\) such that \((X, \Phi: X \to \Phi(X))\) is a chart
+about \(p\) for \(M\). Notice that by construction one has
+\(\Phi|_{X \cap f^{-1}(0)} = (0, \Phi_2, \dots, \Phi_n)\), which shows that
+\((X, \Phi)\) is an adapted chart of \(M\) relative to
+\(f^{-1}(0) = g^{-1}(q)\). This shows that every point of \(g^{-1}(q)\) has a
+corresponding adapted chart in \(M\), ensuring that \(g^{-1}(q)\) is a regular
+submanifold with \(\codim g^{-1}(q) = 1\)
+\end{proof}
+
+\begin{theorem}[Regular fibers are regular submanifolds]
+\label{thm:regular-fiber-theorem}
+Let \(f: N \to M\) be a \(C^{\infty}\)-morphism, and let \(\dim N = n\) while
+\(\dim M = m\). Given a regular point \(q \in \im f\), the non-empty regular
+fiber \(f^{-1}(q)\) is a regular submanifold of \(N\) with
+\(\dim f^{-1}(q) = n - m\).
+\end{theorem}
+
+\begin{proof}
+We could simply use \cref{lem:regular-fiber-equal-zero-regular-fiber}, but we
+shall construct the proof from the ground level. Let \((V, \psi)\) be a chart of
+\(M\) about \(q\) satisfying \(\psi(q) = 0 \in \R^m\) (that is, \((V, \psi)\) is
+centred at \(q\))---so that \((f|_{f^{-1}(V)})^{-1}(c) = (\psi f)^{-1}(0)\).
+\end{proof}
+
 
 %%% Local Variables:
 %%% mode: latex

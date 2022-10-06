@@ -1,21 +1,21 @@
 \section{General Definition Of a Graph}
 
 \begin{notation}[\(k\)-subsets]
-Given a set \(A\), we define a \(k\)-subset --- where \(0 \leq k \leq |A|\)
---- to be the a subset of \(A\) with exactly \(k\) elements. We denote the
-collection of all \(k\)-subsets of \(A\) as \([A]^k\).
+Given a set \(A\), we define a \(k\)-subset---where \(0 \leq k \leq |A|\)---to
+be the a subset of \(A\) with exactly \(k\) elements. We denote the collection
+of all \(k\)-subsets of \(A\) as \([A]^k\).
 \end{notation}
 
 \begin{notation}[Range]
-For any \(n \in \N\), we denote by \([n]\) the set of natural numbers \(\{0,
-1, \dots, n\}\).
+For any \(n \in \N\), we denote by \([n]\) the set of natural numbers
+\(\{0, 1, \dots, n\}\).
 \end{notation}
 
 \begin{definition}[General Graph]\label{def: general-graph}
 We define a \emph{general graph} \(G = (V, E, d)\) as a collection of disjoint
-sets \(V\) and \(E\) --- called, respectively, the vertices and edges of \(G\) ---
-together with a map \(d\) that defines the relations of incidence (see
-\cref{def: incidence}) between vertices and edges --- that is, it defines the
+sets \(V\) and \(E\)---called, respectively, the vertices and edges of
+\(G\)---together with a map \(d\) that defines the relations of incidence (see
+\cref{def: incidence}) between vertices and edges---that is, it defines the
 formation of edges between vertices.
 \end{definition}
 
@@ -29,24 +29,25 @@ notation that I judge will be quite appropriate to avoid confusion.
 
 \begin{notation}[Vertices and edges of a graph]
 Given a graph \(G\), its collection of vertices and edges are denoted by,
-respectively, \(V(G)\) and \(E(G)\).
+respectively, \(\Vertex(G)\) and \(\Edge(G)\).
 \end{notation}
 
 \begin{notation}[Existence of an edge]
-Let \(G\) be any graph and consider two vertices \(x, y \in V(G)\). We denote
-the relation of existence of an edge joining \(x\) and \(y\) by \(E(x, y)\) ---
-that is, if \(E(x, y)\) is \texttt{true}, there exists an edge \(e \in E(G)\) such
-that \(x\) and \(y\) are its end-vertices, otherwise, if \(E(x, y)\) is
-\texttt{false}, then there is no edge joining the two vertices.
+Let \(G\) be any graph and consider two vertices \(x, y \in \Vertex(G)\). We
+denote the relation of existence of an edge joining \(x\) and \(y\) by
+\(\Edge(x, y)\)---that is, if \(\Edge(x, y)\) is \texttt{true}, there exists
+an edge \(e \in \Edge(G)\) such that \(x\) and \(y\) are its end-vertices,
+otherwise, if \(\Edge(x, y)\) is \texttt{false}, then there is no edge joining
+the two vertices.
 \end{notation}
 
 \begin{definition}[Adjacency]
 Given vertices \(x, y \in V\), we say that \(x\) and \(y\) are neighbours if
-\(E(x, y)\) --- in such case, \(x\) and \(y\) are said to be end-vertices of the
-existent edge joining them.
+\(\Edge(x, y)\)---in such case, \(x\) and \(y\) are said to be end-vertices of
+the existent edge joining them.
 
 We say that two edges \(e\) and \(g\) are \emph{adjacent} or \emph{neighbours}
-if there exists a unique vertex \(x\) common to both of them --- \(x \in e\)
+if there exists a unique vertex \(x\) common to both of them---\(x \in e\)
 and \(x \in g\).
 
 A set of vertices, or edges, is said to be independent if no pair of elements
@@ -56,15 +57,15 @@ is adjacent. An independent set of vertices \(V\) is called stable.
 \begin{definition}[Diagonal set of vertices]
 Let \(G = (V, E)\) be a graph. We define the diagonal subset of \(V\) to be
 the collection \(\Delta_V = \{(x, x) \colon x \in V\}\). So that we have
-\(V^2 \setminus \Delta_V = \{(x, y) \colon x \neq y\}\) --- the collection of
+\(V^2 \setminus \Delta_V = \{(x, y) \colon x \neq y\}\)---the collection of
 ordered pairs of distinct vertices.
 \end{definition}
 
 The following definition will be useful when we are talking about graphs in
 which there is no concept of direction, that is, an edge joining \(x\) and \(y\)
-is exactly the same as the edge joining \(y\) and \(x\) --- that is, edges have no
-intrinsic orientation. Graph theorists like to think about graphs as being
-entities that satisfy such invariance on the order of the vertices --- but, when
+is exactly the same as the edge joining \(y\) and \(x\)---that is, edges have
+no intrinsic orientation. Graph theorists like to think about graphs as being
+entities that satisfy such invariance on the order of the vertices---but, when
 it's possible, we shall take the most general approach.
 
 \begin{definition}[Edge invariance]
@@ -76,13 +77,14 @@ We define the set \(\langle V \rangle^2\) to be the quotient
 
 \begin{notation}[Collection of edges]
 Given sets \(X\) and \(Y\), we denote the collection of all edges of the form
-\(xy\), where \(x \in X\) and \(y \in Y\), by \(E(X, Y)\). The collection of
-all edges that a given vertex \(x\) is incident with is denoted \(E(x)\).
+\(xy\), where \(x \in X\) and \(y \in Y\), by \(\Edge(X, Y)\). The collection of
+all edges that a given vertex \(x\) is incident with is denoted \(\Edge(x)\).
 \end{notation}
 
 \begin{definition}[Order and size]\label{def:graph-order-size}
-Let \(G\) be a graph. We define the \emph{order} of \(G\) as \(|G| =|V(G)|\),
-moreover, the \emph{size} of \(G\) is defined as \(\size{G} = |E(G)|\).
+Let \(G\) be a graph. We define the \emph{order} of \(G\) as
+\(|G| =|\Vertex(G)|\), moreover, the \emph{size} of \(G\) is defined as
+\(\size{G} = |\Edge(G)|\).
 \end{definition}
 
 \begin{definition}[Trivial graph]

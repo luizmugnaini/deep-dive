@@ -332,12 +332,12 @@ of a common interval of \(B\) then \(\xi_j = \xi'_j\), and if \(\xi_j\) and
 \(\xi_j'\) are elements common to an interval of \(A\), we choose \(\xi_j\) and
 \(\xi_j\) to be any points such that \(f(\xi_j) - f(\xi_j') > 1/(3n_0)\) ---
 which is always possible from the construction of \(A\). Notice that we have
-\[
+\begin{align*}
   \norm{\sigma(f, P, \xi) - \sigma(f, P, \xi')}
-  = \norm{\sum_{R_{j} \in A} (f(\xi_j) - f(\xi_j')) \Vol R_j}
-  > \frac 1 {3 n_0} \sum_{R_j \in A} \Vol R_j
-  > \frac 1 {3 n_0} \Vol E_{n_0} > 0,
-\]
+  &= \norm{\sum_{R_{j} \in A} (f(\xi_j) - f(\xi_j')) \Vol R_j} \\
+  &> \frac 1 {3 n_0} \sum_{R_j \in A} \Vol R_j \\
+  &> \frac 1 {3 n_0} \Vol E_{n_0} > 0,
+\end{align*}
 and therefore the limit \(\lim_{\Mesh(P) \to 0} \sigma(f, P, \xi)\) does not
 converge whenever \(E_{n_0}\) is of measure zero --- that is, if the set of
 discontinuities of \(f\) isn't of measure zero, then \(f\) is non-Riemann
@@ -1047,8 +1047,11 @@ measure zero.
 
 \begin{corollary}
 \label{cor:existence-right-int-change-variables}
-In the context of \cref{thm:change-variables}, the integral \(\int_{D_t}
-f\phi(t) \norm{\det(\Jac \phi(t))}\, \diff t\) exists.
+In the context of \cref{thm:change-variables}, the integral
+\[
+\int_{D_t} f\phi(t) \norm{\det(\Jac \phi(t))}\, \diff t
+\]
+exists.
 \end{corollary}
 
 \begin{proof}
@@ -1145,6 +1148,7 @@ bit) and let \(M > 0\) be a constant bounding \(f\). Define \(\varepsilon
 \coloneq \sup_{j \in J} \omega(\phi, [t_{j-1}, t_j])\), that is, the supremum
 oscillation of \(\phi\) over each of the intervals of the partition
 \(P_t\). Notice that we have
+{\footnotesize%
 \begin{align*}
   \sum_{j \in J} \sup_{x \in [x_{j-1}, x_j]} f(x) \norm{x_j - x_{j-1}}
   &\leq \sum_{j \in J} \sup_{t \in [t_{j-1}, t_j]} f \phi(t)
@@ -1165,6 +1169,7 @@ oscillation of \(\phi\) over each of the intervals of the partition
     f \phi(t) \norm{\phi'(t)}\, \norm{t_j - t_{j-1}}
     + \varepsilon M \Vol I_t
 \end{align*}
+}%
 where \(\Vol I_t\) happens to be the length of the interval, since \(I_t
 \subseteq \R\). Since \(\phi\) is uniformly continuous, we find, from the last
 inequalities, that in the limit \(\Mesh P_t \to 0\) (which implies in \(\Mesh
@@ -1226,6 +1231,7 @@ of \(I_x\) by closed intervals \(I_{x'}^0 \subseteq \R^{k-1}\), \(I_{x_k}
 \times I_{t_k} \times I_{t'}^1 \coloneq I_t\) where, as before, \(I_{t'}^0
 \subseteq \R^{k-1}\), \(I_{t_k} \subseteq \R\) and \(I_{t'}^1 \subseteq
 \R^{n-k}\) are all closed intervals. Thus, we have
+{\small
 \begin{align}
   \nonumber
   \int_{D_x} f(x)\, \diff x
@@ -1252,6 +1258,7 @@ of \(I_x\) by closed intervals \(I_{x'}^0 \subseteq \R^{k-1}\), \(I_{x_k}
   \label{eq:elem-diff-cv-def-2}
   &= \int_{D_t} f \phi(t) \norm{\det(\Jac \phi(t))}\, \diff t
 \end{align}
+}
 where we have the following use of theorems and definitions for each of the
 equations: \cref{eq:elem-diff-cv-fubini} used \cref{thm:fubini},
 \cref{eq:elem-diff-cv-def} used \cref{def:riemann-integral-over-set},
@@ -1384,6 +1391,7 @@ Notice that, for every \(s \in D_s\), \(\Jac (\phi \psi)(s) = \Jac
   \det(\Jac {(\phi \psi)}(s)) = \det(\Jac \phi(\psi(s))) \det(\Jac \psi(s)).
 \]
 Therefore we can write
+{\small
 \begin{align*}
   \int_{D_x} f(x)\, \diff x
   = \int_{D_t} f \phi(t) \norm{\det(\Jac \phi(t))}\, \diff t
@@ -1391,6 +1399,7 @@ Therefore we can write
   \norm{\det(\Jac \psi(s))}\, \diff s \\
   &= \int_{D_s} f \phi \psi(s) \norm{\det(\Jac{(\phi \psi)}(s))}\, \diff s,
 \end{align*}
+}
 which proves the proposition.
 \end{proof}
 
@@ -1418,12 +1427,12 @@ Let \(I \subseteq \R^n\) be an interval containing \(D_t\), and \(P \coloneq
 \(D_{t}\). Let \(S'\) be the index set such that \(I_s \cap K_t \neq \emptyset\)
 if and only if \(s \in S'\) --- the set indices of intervals of the partition
 \(P\) with non-empty intersection with the support. Then
-\[
+\begin{align*}
   \int_{D_t} f\phi(t) \norm{\det(\Jac \phi(t))}\, \diff t
-  = \int_I f \phi_{\chi_{D_t}}(t)
-  \norm{\det(\Jac \phi_{\chi_{D_t}}(t))}\, \diff t
-  = \sum_{s' \in S'} \int_{I_{s'}} f \phi(t) \norm{\det(\Jac \phi(t))}\, \diff t.
-\]
+  &= \int_I f \phi_{\chi_{D_t}}(t)
+  \norm{\det(\Jac \phi_{\chi_{D_t}}(t))}\, \diff t \\
+  &= \sum_{s' \in S'} \int_{I_{s'}} f \phi(t) \norm{\det(\Jac \phi(t))}\, \diff t.
+\end{align*}
 
 Since \(I_s \in P\) are Jordan-measurable sets, so is their image \(\phi(I_s)
 \subseteq D_x\) --- this follows from

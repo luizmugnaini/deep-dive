@@ -83,6 +83,7 @@
 \renewcommand{\leq}{\leqslant}
 \renewcommand{\geq}{\geqslant}
 \renewcommand{\setminus}{\smallsetminus}
+\renewcommand{\preceq}{\preccurlyeq}
 
 % ':' for maps and '\colon' for relations on collections
 \DeclareMathSymbol{:}{\mathpunct}{operators}{"3A}
@@ -142,6 +143,7 @@
 
 % Implication
 \renewcommand{\implies}{\Rightarrow}
+\renewcommand{\impliedby}{\Leftarrow}
 
 % Limits
 \DeclareMathOperator{\Lim}{lim}     % Limit
@@ -168,52 +170,56 @@
 
 % Font for categories
 \newcommand{\cat}{\mathcal}
+\newcommand{\catfont}{\texttt}
 
 % Opposite category
 \newcommand{\op}{\mathrm{op}}
 
 % Common categories
-\newcommand{\Set}{{\textbf{Set}}}          % Sets
-\newcommand{\FinSet}{{\textbf{FinSet}}}    % Finite sets
-\newcommand{\pSet}{{\textbf{pSet}}}        % Pointed sets
+\newcommand{\Set}{{\catfont{Set}}}          % Sets
+\newcommand{\FinSet}{{\catfont{FinSet}}}    % Finite sets
+\newcommand{\pSet}{{\catfont{pSet}}}        % Pointed sets
 
-\newcommand{\Vect}{{\textbf{Vect}}}        % Vector spaces
-\newcommand{\FinVect}{{\textbf{FinVect}}}  % Finite vector spaces
+\newcommand{\Vect}{{\catfont{Vect}}}        % Vector spaces
+\newcommand{\FinVect}{{\catfont{FinVect}}}  % Finite vector spaces
 
-\newcommand{\TVect}{{\textbf{TVect}}}      % Topological vector spaces
-\newcommand{\Ban}{{\textbf{Ban}}}          % Banach spaces
-\newcommand{\Man}{{\textbf{Man}}}          % Manifolds
+\newcommand{\TVect}{{\catfont{TVect}}}      % Topological vector spaces
+\newcommand{\Ban}{{\catfont{Ban}}}          % Banach spaces
+\newcommand{\Man}{{\catfont{Man}}}          % Manifolds
 
 \let\Top\relax
-\newcommand{\Top}{{\textbf{Top}}}          % Topological spaces
-\newcommand{\pTop}{{\textbf{Top}^{*}}}
-\newcommand{\bpTop}{{\textbf{Top}^{*/}}}
-\newcommand{\Ho}[1]{{\textbf{Ho}(#1)}}
-\newcommand{\HoTop}{{\textbf{Ho}(\textbf{Top})}} % Homotopy space
+\newcommand{\Top}{{\catfont{Top}}}          % Topological spaces
+\newcommand{\pTop}{{\catfont{Top}^{*}}}
+\newcommand{\bpTop}{{\catfont{Top}^{*/}}}
+\newcommand{\Ho}[1]{{\catfont{Ho}(#1)}}
+\newcommand{\HoTop}{{\catfont{Ho}(\catfont{Top})}} % Homotopy space
 \newcommand{\Splx}{{\mathbf{\Delta}}} % Simplex category
-\newcommand{\sSet}{{\textbf{sSet}}}        % Simplicial sets
-\newcommand{\CoSimp}[1]{{\textbf{CoSimp}(#1)}} % Category of cosimplicial objects
+\newcommand{\sSet}{{\catfont{sSet}}}        % Simplicial sets
+\newcommand{\CoSimp}[1]{{\catfont{CoSimp}(#1)}} % Category of cosimplicial objects
 
-\newcommand{\Grp}{{\textbf{Grp}}}          % Groups
-\newcommand{\Ab}{{\textbf{Ab}}}            % Abelian groups
+\newcommand{\Grp}{{\catfont{Grp}}}          % Groups
+\newcommand{\Ab}{{\catfont{Ab}}}            % Abelian groups
+\newcommand{\GSet}[1]{{{#1}\text{-}\Set}}            % Abelian groups
 
-\newcommand{\Graph}{{\textbf{Graph}}}      % Graphs
-\newcommand{\SimpGraph}{{\textbf{sGraph}}} % Simple graphs
+\newcommand{\Graph}{{\catfont{Graph}}}      % Graphs
+\newcommand{\SimpGraph}{{\catfont{sGraph}}} % Simple graphs
+\newcommand{\ProfCol}{{\catfont{Prof}(\Col)}}   % C-profile category
 
-\newcommand{\Rng}{{\textbf{Ring}}}         % Rings
-\newcommand{\cRng}{{\textbf{CRing}}}       % Commutative rings
-\newcommand{\rMod}[1]{{\textbf{Mod}_{#1}}}     % Right modules
-\newcommand{\lMod}[1]{{{}_{#1}\textbf{Mod}}}   % Left modules
-\newcommand{\Mod}[1]{{#1\text{-}\textbf{Mod}}} % Modules over comm. ring
-\newcommand{\Alg}[1]{{#1\text{-}\textbf{Alg}}} % Algebras
-\newcommand{\cAlg}[1]{{#1\text{-}\textbf{CAlg}}} % Commutative algebras
 
-\newcommand{\Cat}{{\textbf{Cat}}}          % Small categories
-\newcommand{\CAT}{{\textbf{CAT}}}          % Big categories
-\newcommand{\UCat}{{\mathcal{U}\text{-}\textbf{Cat}}} % U-Categories
+\newcommand{\Rng}{{\catfont{Ring}}}         % Rings
+\newcommand{\cRng}{{\catfont{CRing}}}       % Commutative rings
+\newcommand{\rMod}[1]{{\texttt{Mod}_{#1}}}     % Right modules
+\newcommand{\lMod}[1]{{{}_{#1}\catfont{Mod}}}   % Left modules
+\newcommand{\Mod}[1]{{#1\text{-}\catfont{Mod}}} % Modules over comm. ring
+\newcommand{\Alg}[1]{{#1\text{-}\catfont{Alg}}} % Algebras
+\newcommand{\cAlg}[1]{{#1\text{-}\catfont{CAlg}}} % Commutative algebras
 
-\newcommand{\Simp}[1]{{\textbf{Simp}(#1)}}   % Simplicial category
-\newcommand{\Psh}[1]{{\textbf{Psh}(#1)}}   % Category of presheaves
+\newcommand{\Cat}{{\catfont{Cat}}}          % Small categories
+\newcommand{\CAT}{{\catfont{CAT}}}          % Big categories
+\newcommand{\UCat}{{\mathcal{U}\text{-}\catfont{Cat}}} % U-Categories
+
+\newcommand{\Simp}[1]{{\catfont{Simp}(#1)}}   % Simplicial category
+\newcommand{\Psh}[1]{{\catfont{Psh}(#1)}}   % Category of presheaves
 \newcommand{\comma}{\downarrow} % Comma category separator
 \DeclareMathOperator{\El}{El}              % Category of elements
 
@@ -242,6 +248,7 @@
 % ** algebra **
 \DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\codim}{codim}
 \DeclareMathOperator{\Tr}{tr}   % Trace
 \DeclareMathOperator{\Sym}{Sym} % Symmetric space
 \DeclareMathOperator{\Alt}{Alt} % Alternating space
@@ -335,6 +342,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ** Graphs **
 
+% Colouring
+\newcommand{\Col}{\mathfrak{C}}
+\newcommand{\prof}[1]{\underline{#1}}
+
+\DeclareMathOperator{\Edge}{Edge}
+\DeclareMathOperator{\Vertex}{Vert}
 \DeclareMathOperator{\Circ}{circ}
 \DeclareMathOperator{\diam}{diam}
 \newcommand{\emptygraph}{\varnothing}
