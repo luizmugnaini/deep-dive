@@ -9,7 +9,7 @@ Let \(G\) be a group and \(A \in \cat C\) be an object in some category
 G \longrightarrow \Aut_{\cat C}(A),
 \]
 that is, the elements of \(G\), which are automorphisms in the category
-\(\cat{B}G\), define automorphisms in \(A\) --- this shows that group actions
+\(\cat{B}G\), define automorphisms in \(A\)---this shows that group actions
 are functors \(\cat{B}G \to \cat C\) (see \cref{exp:grp-action} for more). Left
 actions are covariant functors, while right actions are contravariant.
 Naturally the action is said to be \emph{faithful} if the functor is faithful,
@@ -48,8 +48,8 @@ Let \(G\) be a group. We define a \emph{conjugation} to be a group action of
 \begin{theorem}[Cayley]
 \label{thm:cayley-faithful}
 Every group acts faithfully on \emph{some} set. That is, there exists a set
-\(A\) and an injective action \(G \mono \Aut_{\Set}(A) = S_A\) --- where \(S_A\)
-is the symmetry group of \(A\) --- making \(G\) a subgroup of \(S_A\).
+\(A\) and an injective action \(G \mono \Aut_{\Set}(A) = S_A\)---where \(S_A\)
+is the symmetry group of \(A\)---making \(G\) a subgroup of \(S_A\).
 \end{theorem}
 
 \begin{proof}
@@ -152,8 +152,8 @@ subgroup of \(G\), notice that if \(g, h \in \Stab_G(a)\), then
 \begin{definition}[\(\GSet{G}\) category]
 \label{def:G-set-category}
 Given a group \(G\), we define a category \(\GSet{G}\) whose objects are pairs
-\((\sigma, A)\) --- where \(A\) is a set, and \(\sigma: G \to \Aut_{\Set}(A)\)
-is a group action on \(A\) --- and morphisms \(\phi: (\sigma, A) \to (\rho, B)\)
+\((\sigma, A)\)---where \(A\) is a set, and \(\sigma: G \to \Aut_{\Set}(A)\)
+is a group action on \(A\)---and morphisms \(\phi: (\sigma, A) \to (\rho, B)\)
 are set-functions \(\phi: A \to B\) such that the following diagram commutes
 \[
 \begin{tikzcd}
@@ -162,7 +162,7 @@ G \times A \ar[d, "\sigma"'] \ar[rr, "\Id_G \times \phi"]
 A \ar[rr, "\phi"'] &&B
 \end{tikzcd}
 \]
-That is, \(\phi(\sigma(g)(a)) = \rho(g)(\phi(a))\) --- or put even more simply
+That is, \(\phi(\sigma(g)(a)) = \rho(g)(\phi(a))\)---or put even more simply
 as \(\phi(g a) = g \phi(a)\) when there is no chance of confusion. These
 functions are called \emph{\(G\)-equivariant}.
 \end{definition}
@@ -209,13 +209,13 @@ any element, then the restriction
 \[
 \overline{\sigma}: G \longrightarrow \Aut_{\Set}(\Orb_G(a)),
 \]
-is a transitive action by the definition of the orbit --- where
+is a transitive action by the definition of the orbit---where
 \(\overline{\sigma}(g)(g' a) \coloneq \sigma(g)(g a)\) for all \(g \in G\) and
 \(g' a \in \Orb_G(a)\).
 
 Therefore by \cref{prop:transitive-G-set-iso-left-mul-G/Stab} we have
 \((\overline{\sigma}, \Orb_G(a)) \iso (\ell, G/\Stab_G(g a))\) in
-\(\GSet{G}\), for any \(g a \in \Orb_G(a)\) --- which means the existence of a
+\(\GSet{G}\), for any \(g a \in \Orb_G(a)\)---which means the existence of a
 \(G\)-equivariant bijection between the sets \(\Orb_G(a)\) and
 \(G/\Stab_G(g a)\). From \cref{prop:grp-index-subgroup} we have
 \(|G/\Stab_G(g a)| = |G|/|\Stab_G(g a)|\) and therefore

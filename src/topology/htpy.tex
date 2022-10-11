@@ -1540,3 +1540,161 @@ where \(g_j^{-1} f_j g_{j-1} \in \Path_{B_j}(x_{j-1}, x_j)\) for all
 %%% mode: latex
 %%% TeX-master: "../../deep-dive"
 %%% End:
+
+
+\section{Mappings \texorpdfstring{\(S^1 \longrightarrow S^1\)}{S1 -> S1}}
+
+We shall study the circle via the inclusion \(S^1 \emb \CC\) mapping
+\((\cos(2 \pi t), \sin(2 \pi t)) \mapsto e^{2 \pi i t}\) and the identification
+\(q: I \to S^1\) given by \(t \mapsto e^{2 \pi i t}\).
+
+For each \(n \in \Z\) we consider paths \(\phi_n \in \Path_{\R}(0, n)\). Each
+one of these maps induce a unique morphism \(\widehat \phi_n: S^1 \to S^1\) such
+that the diagram
+\[
+\begin{tikzcd}
+I \ar[r, "\phi_n"] \ar[d, "q"'] &\R \ar[d] \\
+S^1 \ar[r, dashed, "\widehat \phi_n"'] &S^1
+\end{tikzcd}
+\]
+commutes in \(\Top\)---explicitly we have
+\(\widehat \phi_n(e^{2 \pi i t}) = e^{2 \pi i \phi_n(t)}\).
+
+\begin{proposition}[Unwinding pointed maps]
+\label{prop:unwinding-pointed-maps}
+Let \(f: S^1 \to S^1\) be a pointed continuous map with \(f(1) = 1\). Then there
+exists a \emph{unique pointed morphism} \(\phi: I \to \R\), with
+\(\phi(0) = 0\), such that \(f = \widehat \phi\).
+\end{proposition}
+
+\begin{proof}
+Define \(h: I \to S^1\) to be the morphism \(h \coloneq f q\), which is
+uniformly continuous, since \(I\) is a compact space. From compactness, there
+exists a finite partition
+\[
+0 \eqqcolon t_0 < t_1 < \dots < t_k \coloneq 1
+\]
+such that \(|h(t) - h(t_j)| < 2\) for all \(t \in [t_j, t_{j+1}]\), for each
+\(0 \leq j < k\). This is done in order to ensure that \(h(t) \neq -h(t_j)\) and
+\(h(t)/h(t_j) \neq -1\). With these conditions being satisfied, we can define a
+map \(\phi: I \to \R\) given by
+\[
+\phi(t) \coloneq
+\frac{1}{2 \pi i} \bigg(
+  \log\Big( \frac{h(t)}{h(t_j)} \Big)
+  + \sum_{k=0}^{j-1} \log \Big( \frac{h(t_{k+1})}{h(t_k)} \Big)
+\bigg)
+\]
+for all \(t \in [t_j, t_{j+1}]\). From construction, we know that \(h(t_0) =
+1\), therefore
+\[
+q \phi(t)
+= e^{2 \pi i \phi(t)}
+= \frac{h(t)}{h(t_0)}
+= h(t)
+= fq(t)
+= f(e^{2\pi i t}),
+\]
+that is, \(f = \widehat \phi\).
+\end{proof}
+
+\begin{theorem}[Unwinding maps]
+\label{thm:unwinding-maps}
+Let \(f: S^1 \to S^1\) be any morphism, then there exists a unique pointed
+morphism \(\phi: I \to \R\)---with \(\phi(0) = 0\)---such that
+\(f = f(1) \widehat \phi\).
+\end{theorem}
+
+\begin{proof}
+From \(f\) we can define a \emph{pointed} morphism \(g: S^1 \to S^1\) given by
+\(g \coloneq f(1)^{-1} f\), so that \(g(1) = 1\). From
+\cref{prop:unwinding-pointed-maps} there exists a unique pointed morphism
+\(\phi: I \to \R\) such that \(g = \widehat \phi\). Therefore, from construction
+we find that \(f = f(1) \widehat \phi\).
+\end{proof}
+
+\begin{lemma}
+\label{lem:path-to-int-is-htpy-turns-on-circle}
+Given a path \(\phi \in \Path_{\R}(0, n)\), for some \(n \in \Z\), we have
+\[
+\widehat \phi \simhtrel{1} \widehat \phi_n,
+\]
+where \(\phi_n(t) \coloneq n t\).
+\end{lemma}
+
+\begin{proof}
+There exists a relative homotopy \(\eta: \phi \htpyrel{\Bd I} \phi_n\) given by
+\[
+\eta(s, t) \coloneq (1 - t) \phi(s) + t \phi_n(s).
+\]
+Notice that this homotopy is lifts to a homotopy
+\(\widehat \eta: \widehat \phi \htpyrel{1} \widehat \phi_n\) given by
+\(\widehat\eta(s, t) = (1 - t) \widehat \phi(s) + t \widehat \phi_n(s)\).
+\end{proof}
+
+\begin{proposition}
+\label{prop:circle-morphism-is-winding}
+Let \(f: S^1 \to S^1\) be a morphism. Then there exists a unique integer
+\(n \in \Z\) for which \(f \simht \widehat \phi_n\).
+\end{proposition}
+
+\begin{proof}
+From \cref{thm:unwinding-maps} we find that \(f = f(1) \widehat \phi\) for a
+unique map \(\phi: I \to \R\) such that \(\phi(0) = 0\). It should be noted that
+one necessarily has \(\widehat \phi(1) = 1\), which implies in
+\(\phi(1) \coloneq n \in \Z\).  Since \(f(1) \in \CC\) is a unitary complex
+number, the multiplication \(f(1) \widehat \phi(\zeta)\), for \(\zeta \in S^1\),
+is a rotation of the point \(\widehat \phi(\zeta)\) in the circle. Let
+\(y \in \R\) be such that \(f(1) = e^{2 \pi i y}\), and consider any path
+\(\psi \in \Path_{\R}(0, y)\). Therefore \(\widehat \phi \simht f\) via the
+homotopy given by
+\((\zeta, t) \mapsto \widehat \psi(e^{2 \pi i t}) \cdot \widehat \phi(\zeta)\).
+Finally, by \cref{lem:path-to-int-is-htpy-turns-on-circle}, we know that
+\(\widehat \phi \simhtrel{1} \widehat \phi_n\). Therefore
+\(f \simht \widehat \phi_n\) as wanted.
+\end{proof}
+
+\begin{definition}[Degree]
+\label{def:degree-S1-map}
+Given an endomorphism \(f: S^1 \to S^1\), let \(\phi: I \to \R\) be the unique
+path such that \(f = f(1) \widehat \phi\)---then we define the \emph{degree} of
+\(f\) to be \(\deg f \coloneq \phi(1) \in \Z\).
+\end{definition}
+
+\begin{lemma}
+\label{lem:homotopic-S1-maps-have-equal-degree}
+The degrees of homotopic maps are equal. That is, if \(f, g: S^1 \para S^1\) are
+homotopic endomorphisms, \(f \simht g\), then one has \(\deg f = \deg g\).
+\end{lemma}
+
+\begin{proof}
+Let \(\eta: f \htpy g\) be a homotopy. For each \(t \in I\) there exists an
+endomorphism \(\eta(-, t): S^1 \to S^1\) and, from \cref{thm:unwinding-maps},
+there is a unique path \(\phi_t: I \to \R\) for which
+\[
+\eta(-, t) = \eta(1, t) \widehat \phi_t.
+\]
+
+Define a map \(\varepsilon: I \times I \to \R\) given by
+\((s, t) \mapsto \eta(-, s) \circ q(t) = \eta(e^{2 \pi i t}, s)\), which is
+uniformly continuous since \(I \times I\) is compact. Using the compactness of
+\(I\), let
+\[
+0 \eqqcolon t_0 < t_1 < \dots < t_k \coloneq 1
+\]
+be a finite partition of \(I\) such that
+\(|\varepsilon(s, t) - \varepsilon(s, t_j)| < 2\) for all \(s \in I\) and
+\(t \in [t_j, t_{j+1}]\). Then define, for each \(s \in I\), a map
+\[
+\phi_s(t) \coloneq \frac{1}{2 \pi i} \bigg(
+\log\Big( \frac{\varepsilon(s, t_{1})}{\varepsilon(s, t_{0})} \Big)
++ \dots +
+\log\Big( \frac{\varepsilon(s, t_j)}{\varepsilon(s, t_{j-1})} \Big)
++
+\log\Big( \frac{\varepsilon(s, t)}{\varepsilon(s, t_{j})} \Big)
+\bigg)
+\]
+for all \(t \in [t_j, t_{j+1}]\). Then \(\phi_s\) is the finite sum of
+continuous maps, thus continuous. Moreover, the mapping \(s \mapsto \phi_s(1)\)
+also changes continuously, therefore \(\phi\)
+\end{proof}
