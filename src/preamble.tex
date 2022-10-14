@@ -5,6 +5,7 @@
 \usepackage{layout}
 \usepackage{afterpage}
 \usepackage[
+  asymmetric,
   textheight     = 673pt,
   marginparsep   = 7pt,
   footskip       = 27pt,
@@ -94,6 +95,15 @@
 % Disjoint unions over sets
 \renewcommand{\disj}{\amalg}     % Disjoint union
 \newcommand{\bigdisj}{\coprod} % Indexed disjoint union
+
+\DeclareMathOperator{\Log}{Log}
+\newcommand{\img}{\text{i}}
+
+% Constant map
+\DeclareMathOperator{\const}{cons}
+
+% Multiplication map
+\DeclareMathOperator{\mul}{mul}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ** arrows **
@@ -186,16 +196,6 @@
 \newcommand{\Ban}{{\catfont{Ban}}}          % Banach spaces
 \newcommand{\Man}{{\catfont{Man}}}          % Manifolds
 
-\let\Top\relax
-\newcommand{\Top}{{\catfont{Top}}}          % Topological spaces
-\newcommand{\pTop}{{\catfont{Top}^{*}}}
-\newcommand{\bpTop}{{\catfont{Top}^{*/}}}
-\newcommand{\Ho}[1]{{\catfont{Ho}(#1)}}
-\newcommand{\HoTop}{{\catfont{Ho}(\catfont{Top})}} % Homotopy space
-\newcommand{\Splx}{{\mathbf{\Delta}}} % Simplex category
-\newcommand{\sSet}{{\catfont{sSet}}}        % Simplicial sets
-\newcommand{\CoSimp}[1]{{\catfont{CoSimp}(#1)}} % Category of cosimplicial objects
-
 \newcommand{\Grp}{{\catfont{Grp}}}          % Groups
 \newcommand{\Ab}{{\catfont{Ab}}}            % Abelian groups
 \newcommand{\GSet}[1]{{{#1}\text{-}\Set}}            % Abelian groups
@@ -205,9 +205,9 @@
 \newcommand{\ProfCol}{{\catfont{Prof}(\Col)}}   % C-profile category
 
 
-\newcommand{\Rng}{{\catfont{Ring}}}         % Rings
-\newcommand{\cRng}{{\catfont{CRing}}}       % Commutative rings
-\newcommand{\rMod}[1]{{\texttt{Mod}_{#1}}}     % Right modules
+\newcommand{\Rng}{{\catfont{Ring}}}             % Rings
+\newcommand{\cRng}{{\catfont{CRing}}}           % Commutative rings
+\newcommand{\rMod}[1]{{\texttt{Mod}_{#1}}}      % Right modules
 \newcommand{\lMod}[1]{{{}_{#1}\catfont{Mod}}}   % Left modules
 \newcommand{\Mod}[1]{{#1\text{-}\catfont{Mod}}} % Modules over comm. ring
 \newcommand{\Alg}[1]{{#1\text{-}\catfont{Alg}}} % Algebras
@@ -217,29 +217,25 @@
 \newcommand{\CAT}{{\catfont{CAT}}}          % Big categories
 \newcommand{\UCat}{{\mathcal{U}\text{-}\catfont{Cat}}} % U-Categories
 
-\newcommand{\Simp}[1]{{\catfont{Simp}(#1)}}   % Simplicial category
-\newcommand{\Psh}[1]{{\catfont{Psh}(#1)}}   % Category of presheaves
+\newcommand{\Psh}[1]{{\catfont{Psh}({#1})}}   % Category of presheaves
 \newcommand{\comma}{\downarrow} % Comma category separator
 \DeclareMathOperator{\El}{El}              % Category of elements
 
 % Operators
-\DeclareMathOperator{\Hom}{Mor}
-\DeclareMathOperator{\Fct}{Fct}
-\DeclareMathOperator{\Obj}{Obj}
-\DeclareMathOperator{\Mor}{Mor}
-\DeclareMathOperator{\End}{End}
-\DeclareMathOperator{\Aut}{Aut}
-\DeclareMathOperator{\Id}{id}
+\DeclareMathOperator{\Hom}{Mor}   % Morphisms
+\DeclareMathOperator{\Fct}{Fct}   % Functors
+\DeclareMathOperator{\Obj}{Obj}   % Objects
+\DeclareMathOperator{\Mor}{Mor}   % Morphisms, again
+\DeclareMathOperator{\End}{End}   % Endomorphisms
+\DeclareMathOperator{\Aut}{Aut}   % Automorphisms
+\DeclareMathOperator{\Id}{id}     % Identity
 \DeclareMathOperator{\im}{im}     % Image
 \DeclareMathOperator{\dom}{dom}   % Domain
 \DeclareMathOperator{\codom}{cod} % Codomain
 \DeclareMathOperator{\supp}{supp} % Support
 
-\DeclareMathOperator{\Sing}{Sing} % Singular complex functor
-
 % Yoneda embedding
 \newcommand{\yo}{\text{\usefont{U}{min}{m}{n}\symbol{'210}}}
-
 \DeclareFontFamily{U}{min}{}
 \DeclareFontShape{U}{min}{m}{n}{<-> udmj30}{}
 
@@ -287,32 +283,48 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ** Topology **
 
-% attaching spaces
-\newcommand{\att}{\amalg}       % Disjoint union
-\newcommand{\bigatt}{\coprod}   % Indexed disjoint union
+\let\Top\relax
+\newcommand{\Top}{{\catfont{Top}}}                       % Topological spaces
 
-% Constant map
-\DeclareMathOperator{\const}{cons}
+\newcommand{\wHTop}{{\catfont{wH}\text{-}\catfont{Top}}} % Weak Hausdorff
+\newcommand{\kTop}{{k\text{-}\catfont{Top}}}             % k-spaces
+\newcommand{\cgTop}{{\catfont{cgTop}}} % Compactly generated
+
+\newcommand{\pTop}{{\catfont{Top}^{*}}}   % Pointed top spaces
+\newcommand{\bpTop}{{\catfont{Top}^{*/}}} % Base point top spaces
+
+\newcommand{\Ho}[1]{{\catfont{Ho}(#1)}}            % Homotopy category
+\newcommand{\HoTop}{{\catfont{Ho}(\catfont{Top})}} % Classical Homotopy cat
+
+\newcommand{\Splx}{{\mathbf{\Delta}}}           % Simplex category
+\newcommand{\sSet}{{\catfont{sSet}}}            % Simplicial sets
+\newcommand{\Simp}[1]{{\catfont{Simp}(#1)}}     % Simplicial category
+\newcommand{\CoSimp}[1]{{\catfont{CoSimp}(#1)}} % Cosimplicial category
+
+\DeclareMathOperator{\Sing}{Sing} % Singular complex functor
+
+% attaching spaces
+\newcommand{\att}{\amalg}     % Disjoint union
+\newcommand{\bigatt}{\coprod} % Indexed disjoint union
 
 % Homotopy
-\newcommand{\simht}{\sim_{\text{h}}}    % Homotopy between maps
-\newcommand{\simhtrel}[1]{\sim_{\text{rel }{#1}}}
-\newcommand{\isoht}{\iso_{\text{h}}} % Homotopy equivalence
-\newcommand{\htpy}{\Rightarrow}
-\newcommand{\htpyrel}[1]{\Rightarrow_{\text{rel }{#1}}}
+\newcommand{\simht}{\sim_{\text{h}}}              % Homotopy between maps
+\newcommand{\simhtrel}[1]{\sim_{\text{rel }{#1}}} % Relative htpy
+\newcommand{\isoht}{\iso_{\text{h}}}              % Homotopy equivalence
+\newcommand{\htpy}{\Rightarrow}                   % Htpy arrow
+\newcommand{\htpyrel}[1]{\Rightarrow_{\text{rel }{#1}}} % Relative htpy arrow
 
 
 % Functors on topological spaces
-\DeclareMathOperator{\Cone}{Cone}  % Cone
-\DeclareMathOperator{\Cyl}{Cyl}  % Cylinder
-\DeclareMathOperator{\Susp}{S}  % Suspension
-\DeclareMathOperator{\rSusp}{\Sigma} % Reduced suspension
-\DeclareMathOperator{\Path}{Path} % Path object
-\DeclareMathOperator{\Eval}{eval} % Evaluation map
-\DeclareMathOperator{\curry}{curry} % Currying a map
+\DeclareMathOperator{\Cone}{Cone}       % Cone
+\DeclareMathOperator{\Cyl}{Cyl}         % Cylinder
+\DeclareMathOperator{\Susp}{S}          % Suspension
+\DeclareMathOperator{\rSusp}{\Sigma}    % Reduced suspension
+\DeclareMathOperator{\Path}{Path}       % Path object
+\DeclareMathOperator{\Eval}{eval}       % Evaluation map
+\DeclareMathOperator{\curry}{curry}     % Currying a map
 \DeclareMathOperator{\uncurry}{uncurry} % Currying a map
-\DeclareMathOperator{\co}{co} % Compact open co(K, U)
-
+\DeclareMathOperator{\co}{co}           % Compact open co(K, U)
 
 % Set operators
 \DeclareMathOperator{\Cl}{Cl}       % Closure

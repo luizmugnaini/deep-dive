@@ -7,7 +7,7 @@ surjective set-functions \(\pi: X \epi S\) between topological spaces \(X\) and
 sets \(S\), which induce an equivalence relation on the initial topological
 space by means of arranging the points of \(X\) in classes where \(x \sim y\)
 for \(x, y \in X\) if and only if \(\pi(x) = \pi(y)\), that is, \(x\) and \(y\)
-are common points of a fiber \(\pi^{-1}(s)\) for some \(s \in S\).
+are common points of a fibre \(\pi^{-1}(s)\) for some \(s \in S\).
 
 The geometrically appealing version of such construction would be the idea of
 gluing every element \(x \in \pi^{-1}(s)\) into a unique point --- this way we
@@ -59,7 +59,7 @@ surjective set-function \(\pi: X \epi S\). The quotient topology \(\tau\)
 on \(S\) induced by \(\pi\) is such that, for all topological spaces \(Z\) and
 every morphism \(g: X \to Z\) for which all \(x, y \in X\) such that
 \(\pi(x) = \pi(y)\) then \(g(x) = g(y)\) --- i.e. \(g\) is constant on the
-fibers of \(\pi\) --- there exists a unique morphism
+fibres of \(\pi\) --- there exists a unique morphism
 \(f: (S, \tau) \to Z\) such that the diagram
 \[
   \begin{tikzcd}
@@ -172,7 +172,7 @@ open if and only if \(\pi^{-1}(V) \subseteq X\) is open.
 \begin{theorem}[Quotient descent]
 \label{thm:Top-quotient-descent}
 Let \(q: X \to Y\) be a quotient map between topological spaces. For any space
-\(Z\) together with a morphism \(f: X \to Z\) that is constant on the fibers of
+\(Z\) together with a morphism \(f: X \to Z\) that is constant on the fibres of
 \(q\) --- that is, \(q(x_1) = q(x_2)\) implies \(f(x_1) = f(x_2)\) --- there
 exists a \emph{unique} morphism \(f_{*}: Y \unique Z\) such that the following
 diagram commutes
@@ -187,7 +187,7 @@ Y \ar[r, dashed, swap, "f_{*}"] &Z
 \begin{proof}
 Since \(q\) is surjective, for every \(y \in Y\) there exists \(x \in X\) such
 that \(q(x) = y\), hence we define \(f_{*}(y) \coloneq f_{*}(x)\) for every
-\(x \in q^{-1}(y)\). For the uniqueness, since \(f\) is constant on the fibers
+\(x \in q^{-1}(y)\). For the uniqueness, since \(f\) is constant on the fibres
 of \(q\) then \(f_{*}\) is fully defined by \(f\) --- thus unique. From the
 universal property we obtain that \(f_{*}\) is continuous.
 \end{proof}
@@ -316,7 +316,7 @@ distinct limits \((0, 1)\) from one side and \((0, -1)\) from the other, thus
 \label{prop:open-quotient-hausdorff}
 Let \(\pi: X \epi Y\) be a surjective morphism of topological spaces \(X\) and
 \(Y\). Then \(Y\) is Hausdorff if and only if the collection of pairs of points
-with common fiber,
+with common fibre,
 \(C \coloneqq \{(p, q) \in X \times X \colon \pi(p) = \pi(q)\}\), is closed in
 \(X \times X\).
 \end{proposition}
@@ -325,7 +325,7 @@ with common fiber,
 Let \(Y\) be Hausdorff, then, given any \((p, q) \in X \setminus C\), there are
 neighbourhoods \(V_p, V_q \subseteq Y\) of \(\pi(p)\) and \(\pi(q)\),
 respectively, such that \(V_p \cap V_q = \emptyset\). Since these neighbourhoods
-are disjoint, then in particular the collection fibers \(\pi^{-1}(V_p) \times
+are disjoint, then in particular the collection fibres \(\pi^{-1}(V_p) \times
 \pi^{-1}(V_q)\) is contained in \(X \times X \setminus C\), that is, \(X \times
 X \setminus C\) is open --- hence \(C\) is closed.
 
@@ -390,32 +390,32 @@ set-functions, but what about being able to classifying a surjective morphisms
 between given topological spaces as inducing the universal property of the
 quotient space? This will be our goal with this subsection --- identifying
 quotient morphisms. For that end, we shall profit from the main idea behind
-quotients: fibers. For that, we define a set given by fibers of \(f\) as being
+quotients: fibres. For that, we define a set given by fibres of \(f\) as being
 saturated.
 
 \begin{definition}[Saturated set]
-\label{def:saturated-fiber}
+\label{def:saturated-fibre}
 Let \(f: X \to Y\) be a set-function. We say that a set \(U \subseteq X\) is
 saturated with respect to \(f\) if there exists \(V \subseteq Y\) such that
 \(U = f^{-1}(V)\).
 \end{definition}
 
 \begin{proposition}[Equivalences for saturated sets]
-\label{prop:equivalences-saturated-fiber}
+\label{prop:equivalences-saturated-fibre}
 Let \(f: X \to Y\) be a set-function and \(U \subseteq X\) be any subset. The
 following propositions are equivalent
 \begin{enumerate}[(a)]\setlength\itemsep{0em}
 \item The set \(U\) is saturated with respect to \(f\).
 \item \(U = f^{-1}(f(U))\).
 \item Let \(p \in U\) be any point, \(U\) contains every element \(x \in X\)
-  with common fiber to \(p\) --- that is, \(f(x) = f(p)\) implies \(x \in U\).
+  with common fibre to \(p\) --- that is, \(f(x) = f(p)\) implies \(x \in U\).
 \end{enumerate}
 \end{proposition}
 
 \begin{proof}
 (c) \(\Rightarrow\) (b): Suppose \(U\) satisfies proposition (c), it is clear
 that \(U \subseteq f^{-1}(f(U))\), on the other hand, given \(x \in
-f^{-1}(f(U))\), it follows that \(x\) has a common fiber with some point of
+f^{-1}(f(U))\), it follows that \(x\) has a common fibre with some point of
 \(U\), which implies that \(x \in U\). (b) \(\Rightarrow\) (a): Trivial from the
 definition. (a) \(\Rightarrow\) (c): Let \(V \subseteq Y\) be such that \(U =
 f^{-1}(V)\), then, given any \(p \in f^{-1}(V)\), it is clear that \(f(p) \in

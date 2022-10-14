@@ -866,15 +866,16 @@ concepts:
   \emph{homotopy equivalence}.
 
 \item The subspace \(A\) is said to be a \emph{deformation retract} of \(X\) if
-  there exists a retraction \(r: X \to A\) such that there exists a homotopy
+  there exists a retraction \(r: X \to A\) of \(\iota\)---that is,
+  \(r \iota = \Id_X\)---such that there exists a homotopy
   \(\iota r \simht \Id_X\). A homotopy \(\eta: \Id_X \htpy \iota r\) is called a
   \emph{deformation retraction of \(X\) to \(A\)}.
 
 \item The subspace \(A\) is said to be a \emph{strong deformation retract} of
-  \(X\) if there is a retraction \(r: X \to A\) such that there exists a
-  \emph{relative} homotopy \(\iota r \simhtrel{A} \Id_X\). A homotopy
-  \(\eta: \Id_X \htpyrel{A} \iota r\) is called a \emph{strong deformation
-    retraction of \(X\) to \(A\)}.
+  \(X\) if there is a retraction \(r: X \to A\) of \(\iota\)---that is,
+  \(r \iota = \Id_X\)---such that there exists a \emph{relative} homotopy
+  \(\iota r \simhtrel{A} \Id_X\). A homotopy \(\eta: \Id_X \htpyrel{A} \iota r\)
+  is called a \emph{strong deformation retraction of \(X\) to \(A\)}.
 \end{enumerate}
 \end{definition}
 
@@ -1065,8 +1066,7 @@ holds:
   \emph{commutes} in \(\Top\). That is, every continuous map can be factored
   through an embedding and a retraction of its mapping cylinder.
 
-\item There exists a \emph{homotopy relative to \(Y\)} between \(\Id_{\Cyl(f)}\)
-  and \(\iota_X\):
+\item There exists a \emph{relative homotopy}
   \[
   \Id_{\Cyl(f)} \simhtrel{Y} \iota_Y r.
   \]
@@ -1084,7 +1084,7 @@ any \(x \in X\). For item (b), consider the map \(\eta: \Cyl(f) \times I \to
 \[
 \eta(p, s) \coloneq
 \begin{cases}
-  [x, (1 - s) t + s], &\text{if } p = [x, t]
+  [x, (1 - s) t], &\text{if } p = [x, t]
                         \text{ for } (x, t) \in X \times I, \\
   [y], &\text{if } p = [y] \text{ for } y \in Y.
 \end{cases}
@@ -1095,9 +1095,9 @@ is continuous. Moreover, for any \(y \in Y\) we have \(\eta([y], -) = [y]\),
 hence \(\eta\) is a homotopy relative to \(Y\). Since
 \(\eta([x, t], 0) = [x, t]\) and \(\eta([y], 0) = [y]\) then
 \(\eta(-, 0) = \Id_{\Cyl(f)}\). On the other hand,
-\(\eta([x, t], 1) = [x, 1] = [f(x)]\) and \(\eta([y], 1) = [y]\), that is,
-\(\eta(-, 0) = \iota_Y r\). Therefore we can conclude that \(\eta\) establishes a
-relative homotopy \(\Id_{\Cyl(f)} \simhtrel{Y} \iota_Y r\).
+\(\eta([x, t], 1) = [x, 0] = [f(x)]\) and \(\eta([y], 1) = [y]\), that is,
+\(\eta(-, 0) = \iota_Y r\). Therefore we can conclude that \(\eta\) establishes
+a relative homotopy \(\Id_{\Cyl(f)} \simhtrel{Y} \iota_Y r\).
 
 In order to prove item (c), let \(W\) be any topological space and consider
 continuous maps \(g: \Cyl(f) \to W\) and \(\varepsilon: X \times I \to W\) such
@@ -1545,113 +1545,175 @@ where \(g_j^{-1} f_j g_{j-1} \in \Path_{B_j}(x_{j-1}, x_j)\) for all
 \section{Mappings \texorpdfstring{\(S^1 \longrightarrow S^1\)}{S1 -> S1}}
 
 We shall study the circle via the inclusion \(S^1 \emb \CC\) mapping
-\((\cos(2 \pi t), \sin(2 \pi t)) \mapsto e^{2 \pi i t}\) and the identification
-\(q: I \to S^1\) given by \(t \mapsto e^{2 \pi i t}\).
+\((\cos(2 \pi t), \sin(2 \pi t)) \mapsto e^{2 \pi \img t}\) and the
+identification \(q: I \to S^1\) given by \(t \mapsto e^{2 \pi \img t}\). In
+general, we shall also make use of the map \(\R \to S^1\) given by
+\(x \mapsto e^{2 \pi \img x}\).
 
-For each \(n \in \Z\) we consider paths \(\phi_n \in \Path_{\R}(0, n)\). Each
-one of these maps induce a unique morphism \(\widehat \phi_n: S^1 \to S^1\) such
+Each path \(\phi: (I, 0) \to (\R, 0)\) between pointed spaces, can be
+\emph{lifted} to a unique path \(\widehat \phi: (S^1, 1) \to (S^1, 1)\) such
 that the diagram
 \[
 \begin{tikzcd}
-I \ar[r, "\phi_n"] \ar[d, "q"'] &\R \ar[d] \\
+I \ar[r, "\phi_n"] \ar[d] &\R \ar[d] \\
 S^1 \ar[r, dashed, "\widehat \phi_n"'] &S^1
 \end{tikzcd}
 \]
-commutes in \(\Top\)---explicitly we have
-\(\widehat \phi_n(e^{2 \pi i t}) = e^{2 \pi i \phi_n(t)}\).
+commutes in \(\Top\). Explicitly, we have
+\[
+\widehat \phi_n(e^{2 \pi \img t}) = e^{2 \pi \img \phi_n(t)}.
+\]
 
 \begin{proposition}[Unwinding pointed maps]
 \label{prop:unwinding-pointed-maps}
-Let \(f: S^1 \to S^1\) be a pointed continuous map with \(f(1) = 1\). Then there
-exists a \emph{unique pointed morphism} \(\phi: I \to \R\), with
-\(\phi(0) = 0\), such that \(f = \widehat \phi\).
+Let \(f: (S^1, 1) \to (S^1, 1)\) be a \emph{pointed} continuous map. Then there
+exists a \emph{unique pointed morphism} \(\phi: (I, 0) \to (\R, 0)\) such that
+\(f = \widehat \phi\).
 \end{proposition}
 
 \begin{proof}
-Define \(h: I \to S^1\) to be the morphism \(h \coloneq f q\), which is
-uniformly continuous, since \(I\) is a compact space. From compactness, there
-exists a finite partition
+Define \(h: I \to S^1\) to be the morphism \(h \coloneq f q\)---which is
+uniformly continuous since \(I\) is a compact space. From the latter properties,
+one  can find a finite partition
 \[
 0 \eqqcolon t_0 < t_1 < \dots < t_k \coloneq 1
 \]
-such that \(|h(t) - h(t_j)| < 2\) for all \(t \in [t_j, t_{j+1}]\), for each
-\(0 \leq j < k\). This is done in order to ensure that \(h(t) \neq -h(t_j)\) and
-\(h(t)/h(t_j) \neq -1\). With these conditions being satisfied, we can define a
-map \(\phi: I \to \R\) given by
+of \(I\), such that \(|h(t) - h(t_j)| < 2\) for all \(t \in [t_j, t_{j+1}]\),
+for each \(0 \leq j < k\). This is done in order to ensure that
+\(h(t) \neq -h(t_j)\)---so that the complex logarithm\footnote{ If
+  \(z = r e^{\img \theta} \in \CC\) is a complex number, in polar form,
+  satisfying \(r > 0\) and \(\theta \in (-\pi, \pi)\), then the \emph{complex
+  logarithm} of \(z\) is \(\Log(z) = \log(r) + \img \theta\).
+} of the quotient \(h(t)/h(t_j)\) is
+well defined. With these conditions being satisfied, we can define a map
+\(\phi: I \to \R\) given by
 \[
 \phi(t) \coloneq
-\frac{1}{2 \pi i} \bigg(
-  \log\Big( \frac{h(t)}{h(t_j)} \Big)
-  + \sum_{k=0}^{j-1} \log \Big( \frac{h(t_{k+1})}{h(t_k)} \Big)
+\frac{1}{2 \pi \img} \bigg(
+  \Log\Big( \frac{h(t_1)}{h(t_0)} \Big)
+  + \dots
+  + \Log\Big( \frac{h(t_k)}{h(t_{k-1})} \Big)
+  + \Log\Big( \frac{h(t)}{h(t_j)} \Big)
 \bigg)
 \]
-for all \(t \in [t_j, t_{j+1}]\). From construction, we know that \(h(t_0) =
-1\), therefore
-\[
+for all \(t \in [t_j, t_{j+1}]\). Therefore one has
+\begin{align*}
 q \phi(t)
-= e^{2 \pi i \phi(t)}
-= \frac{h(t)}{h(t_0)}
-= h(t)
-= fq(t)
-= f(e^{2\pi i t}),
+&= e^{2 \pi \img \phi(t)}
+\\
+&= e^{
+  \Log\big( \frac{h(t_1)}{h(t_0)} \big)
+  + \dots
+  + \Log\big( \frac{h(t_j)}{h(t_{j-1})} \big)
+  + \Log\big( \frac{h(t)}{h(t_j)} \big)
+  }
+\\
+&= e^{\Log\big( \frac{h(t_1)}{h(t_0)} \big)}
+  \cdots
+  e^{\Log\big( \frac{h(t_j)}{h(t_{j-1})} \big)}
+  e^{\Log\big( \frac{h(t)}{h(t_k)} \big)}
+\\
+&= \frac{h(t_{1})}{h(t_0)} \cdots
+  \frac{h(t_{j})}{h(t_{j-1})}
+  \cdot
+  \frac{h(t)}{h(t_j)}
+\\
+&= \frac{h(t)}{h(t_0)}.
+\end{align*}
+Now, from construction we know that \(h(t_0) = h(0) = 1\), thus
+\(q \phi(t) = h(t)\). Moreover \(\phi(0) = 0\), which implies that \(\phi\) is a
+continuous pointed map of the form \((I, 0) \to (\R, 0)\) such that
+\[
+\widehat \phi(t) = f(e^{2 \pi \img t}).
 \]
-that is, \(f = \widehat \phi\).
+
+For the uniqueness of \(\phi\), suppose that \(\psi: (I, 0) \to (\R, 0)\) is
+another pointed morphism such that \(f = \widehat \psi\). Then in particular
+\(\widehat \phi = \widehat \psi\), which implies in
+\(e^{2 \pi \img \phi(t)} = e^{2 \pi \img \psi(t)}\) for each \(t \in I\). This can
+only be the case if \(\phi(t) - \psi(t) \in \Z\). Therefore, since the map
+\(\phi - \psi\) is a continuous map of the form \((I, 0) \to (\Z, 0)\), it
+follows that \(\phi = \psi\)---since \(I\) is connected and \(\Z\) is discrete.
 \end{proof}
 
 \begin{theorem}[Unwinding maps]
 \label{thm:unwinding-maps}
-Let \(f: S^1 \to S^1\) be any morphism, then there exists a unique pointed
-morphism \(\phi: I \to \R\)---with \(\phi(0) = 0\)---such that
-\(f = f(1) \widehat \phi\).
+Let \(f: S^1 \to S^1\) be any morphism, then there exists a \emph{unique pointed
+  morphism} \(\phi: (I, 0) \to (\R, 0)\) such that \(f = f(1) \widehat \phi\).
 \end{theorem}
 
 \begin{proof}
-From \(f\) we can define a \emph{pointed} morphism \(g: S^1 \to S^1\) given by
-\(g \coloneq f(1)^{-1} f\), so that \(g(1) = 1\). From
+From \(f\) we can define a \emph{pointed} morphism \(g: (S^1, 1) \to (S^1, 1)\)
+by \(g \coloneq f(1)^{-1} f\), so that indeed \(g(1) = 1\). From
 \cref{prop:unwinding-pointed-maps} there exists a unique pointed morphism
-\(\phi: I \to \R\) such that \(g = \widehat \phi\). Therefore, from construction
-we find that \(f = f(1) \widehat \phi\).
+\(\phi: (I, 0) \to (\R, 0)\) such that \(g = \widehat \phi\). Therefore, from
+the definition of \(g\) we find that \(f = f(1) \widehat \phi\).
 \end{proof}
 
 \begin{lemma}
 \label{lem:path-to-int-is-htpy-turns-on-circle}
-Given a path \(\phi \in \Path_{\R}(0, n)\), for some \(n \in \Z\), we have
-\[
-\widehat \phi \simhtrel{1} \widehat \phi_n,
-\]
-where \(\phi_n(t) \coloneq n t\).
+Let \(n \in \Z\) and \(\phi \in \Path_{\R}(0, n)\). If we consider the linear
+path \(\phi_n: I \to \R\) given by \(\phi_n(t) \coloneq t n\), then there
+exists a relative homotopy \(\widehat \phi \simhtrel{1} \widehat \phi_n\)
+between the lifted paths in the circle.
 \end{lemma}
 
 \begin{proof}
-There exists a relative homotopy \(\eta: \phi \htpyrel{\Bd I} \phi_n\) given by
+There exists a relative linear homotopy \(\ell: \phi \htpyrel{\Bd I} \phi_n\)
+given by
 \[
-\eta(s, t) \coloneq (1 - t) \phi(s) + t \phi_n(s).
+\ell(s, t) \coloneq (1 - t) \phi(s) + t \phi_n(s).
 \]
-Notice that this homotopy is lifts to a homotopy
-\(\widehat \eta: \widehat \phi \htpyrel{1} \widehat \phi_n\) given by
-\(\widehat\eta(s, t) = (1 - t) \widehat \phi(s) + t \widehat \phi_n(s)\).
+Notice that this homotopy can be lifted to
+\(\widehat \ell: S^1 \times I \to S^1\) mapping
+\[
+\widehat\ell(e^{2 \pi \img s}, t)
+= e^{2 \pi \img \big( (1-t)\phi(s) + t \phi_n(s) \big)}
+= e^{2 \pi \img (1-t)\phi(s)} e^{2 \pi \img t \phi_n(s)}
+\]
+which is a continuous map such that
+\(\widehat \ell(e^{2 \pi \img s}, 0) = e^{2 \pi \img \phi(s)} = \widehat
+\phi(e^{2 \pi \img s})\) while on the other end
+\(\widehat \ell(e^{2 \pi \img s}, 1) = e^{2 \pi \img \phi_n(s)} = \widehat
+\phi_n(e^{2 \pi \img s})\). That is, \(\widehat \ell\) establishes a relative
+homotopy \(\widehat \phi \simhtrel{1} \widehat \phi_n\) as we desired.
 \end{proof}
 
 \begin{proposition}
 \label{prop:circle-morphism-is-winding}
 Let \(f: S^1 \to S^1\) be a morphism. Then there exists a unique integer
-\(n \in \Z\) for which \(f \simht \widehat \phi_n\).
+\(n \in \Z\) for which \(f \simht \widehat \phi_n\), where \(\phi_n: I \to \R\)
+is the linear path \(\phi_n(t) \coloneq t n\).
 \end{proposition}
 
 \begin{proof}
 From \cref{thm:unwinding-maps} we find that \(f = f(1) \widehat \phi\) for a
-unique map \(\phi: I \to \R\) such that \(\phi(0) = 0\). It should be noted that
-one necessarily has \(\widehat \phi(1) = 1\), which implies in
-\(\phi(1) \coloneq n \in \Z\).  Since \(f(1) \in \CC\) is a unitary complex
-number, the multiplication \(f(1) \widehat \phi(\zeta)\), for \(\zeta \in S^1\),
-is a rotation of the point \(\widehat \phi(\zeta)\) in the circle. Let
-\(y \in \R\) be such that \(f(1) = e^{2 \pi i y}\), and consider any path
-\(\psi \in \Path_{\R}(0, y)\). Therefore \(\widehat \phi \simht f\) via the
-homotopy given by
-\((\zeta, t) \mapsto \widehat \psi(e^{2 \pi i t}) \cdot \widehat \phi(\zeta)\).
-Finally, by \cref{lem:path-to-int-is-htpy-turns-on-circle}, we know that
-\(\widehat \phi \simhtrel{1} \widehat \phi_n\). Therefore
-\(f \simht \widehat \phi_n\) as wanted.
+unique pointed map \(\phi: (I, 0) \to (\R, 0)\). Since
+\(\widehat \phi: (S^1, 1) \to (S^1, 1)\) is a pointed continuous map, it follows
+that
+\[
+\widehat\phi(1) = \widehat \phi(e^{2 \pi \img}) = e^{2 \pi \img \phi(1)} = 1,
+\]
+which implies in \(\phi(1) \coloneq n \in \Z\). From
+\cref{lem:path-to-int-is-htpy-turns-on-circle} we get
+\(\widehat \phi \simhtrel{1} \widehat \phi_n\).
+
+Notice that if \(\zeta_0 \coloneq e^{2\pi \img s_0} \in S^1\) is any fixed
+point, the multiplication map \(\mul: S^1 \to S^1\) given by
+\(\mul(\zeta) \coloneq \zeta_0 \zeta\) is a rotation of the point \(\zeta\) on
+the circle---we'll show that \(\mul \simht \Id_{S^1}\). Let
+\(\delta: S^1 \times I \to S^1\) be the map
+\(\delta(e^{2 \pi \img s}, t) \coloneq e^{2 \pi \img ((1 - t) s_0 + s)}\), so
+that \(\delta(-, 0) = \mul\) and \(\delta(-, 1) = \Id_{S^1}\).
+
+From the last paragraph we find that
+\[
+f = f(1) \cdot \widehat \phi
+\simht \Id_{S_1} \widehat \phi
+= \widehat \phi
+\simht \widehat \phi_n,
+\]
+therefore \(f \simht \widehat \phi_n\) as wanted.
 \end{proof}
 
 \begin{definition}[Degree]
@@ -1663,38 +1725,182 @@ path such that \(f = f(1) \widehat \phi\)---then we define the \emph{degree} of
 
 \begin{lemma}
 \label{lem:homotopic-S1-maps-have-equal-degree}
-The degrees of homotopic maps are equal. That is, if \(f, g: S^1 \para S^1\) are
-homotopic endomorphisms, \(f \simht g\), then one has \(\deg f = \deg g\).
+Let \(f, g: S^1 \para S^1\) be endomorphisms of the circle. Then \(f \simht g\)
+if and only if \(\deg f = \deg g\).
 \end{lemma}
 
 \begin{proof}
-Let \(\eta: f \htpy g\) be a homotopy. For each \(t \in I\) there exists an
-endomorphism \(\eta(-, t): S^1 \to S^1\) and, from \cref{thm:unwinding-maps},
-there is a unique path \(\phi_t: I \to \R\) for which
-\[
-\eta(-, t) = \eta(1, t) \widehat \phi_t.
-\]
+(\(\implies\)) Let \(\eta: f \htpy g\) be a homotopy. For each \(s \in I\) there
+exists an endomorphism \(\eta_s \coloneq \eta(-, s): S^1 \to S^1\) and, from
+\cref{thm:unwinding-maps}, there is a unique pointed continuous map
+\(\phi_s: (I, 0) \to (\R, 0)\) with \(\phi_s(1) \in \Z\) for which
+\begin{equation}\label{eq:etas-from-widehat-phis}
+\eta_s = \eta_s(1) \widehat \phi_s.
+\end{equation}
+We shall construct an explicit equation for \(\phi_s\) and prove that the
+mapping \(\Phi: I \times I \to \R\) given by \(\Phi(t, s) \coloneq \phi_s(t)\)
+is a homotopy.
 
-Define a map \(\varepsilon: I \times I \to \R\) given by
-\((s, t) \mapsto \eta(-, s) \circ q(t) = \eta(e^{2 \pi i t}, s)\), which is
-uniformly continuous since \(I \times I\) is compact. Using the compactness of
-\(I\), let
+We proceed as in the proof of \cref{prop:unwinding-pointed-maps}: define a map
+\(\varepsilon: I \times I \to S^1\) by
+\[
+\varepsilon(t, s) \coloneq \eta_s(e^{2 \pi \img t}) = \eta_s q(t).
+\]
+Since \(I \times I\) is compact, \(\varepsilon\) is uniformly
+continuous---therefore one can choose a partition
 \[
 0 \eqqcolon t_0 < t_1 < \dots < t_k \coloneq 1
 \]
-be a finite partition of \(I\) such that
-\(|\varepsilon(s, t) - \varepsilon(s, t_j)| < 2\) for all \(s \in I\) and
-\(t \in [t_j, t_{j+1}]\). Then define, for each \(s \in I\), a map
-\[
-\phi_s(t) \coloneq \frac{1}{2 \pi i} \bigg(
-\log\Big( \frac{\varepsilon(s, t_{1})}{\varepsilon(s, t_{0})} \Big)
+of \(I\) such that \(|\varepsilon(t, s) - \varepsilon(t_j, s)| < 2\) for all
+\(s \in I\) and \(t \in [t_j, t_{j+1}]\)---this ensures that the complex
+logarithm of \(\varepsilon(t, s)/\varepsilon(t_j, s) \neq -1\) is well
+defined. For each \(s \in I\), we construct a map \(\psi_s: I \to S^1\) by
+\begin{equation}\label{eq:explicit-form-psis-actually-phis}
+\psi_s(t) \coloneq \frac{1}{2 \pi \img} \bigg(
+\Log \Big( \frac{\varepsilon(t_1, s)}{\varepsilon(t_0, s)} \Big)
 + \dots +
-\log\Big( \frac{\varepsilon(s, t_j)}{\varepsilon(s, t_{j-1})} \Big)
-+
-\log\Big( \frac{\varepsilon(s, t)}{\varepsilon(s, t_{j})} \Big)
+\Log \Big( \frac{\varepsilon(t_j, s)}{\varepsilon(t_{j-1}, s)} \Big)
++ \Log \Big( \frac{\varepsilon(t, s)}{\varepsilon(t_j, s)} \Big)
 \bigg)
+\end{equation}
+for all \(t \in [t_j, t_{j+1}]\). Then for every \(s \in I\) one has
+\begin{align*}
+q \psi_s(t) &= e^{2 \pi \img \psi_s(t)} \\
+&= e^{
+  \Log \big( \frac{\varepsilon(t_1, s)}{\varepsilon(t_0, s)} \big)
+  + \dots +
+  \Log \big( \frac{\varepsilon(t_j, s)}{\varepsilon(t_{j-1}, s)} \big)
+  + \Log \big( \frac{\varepsilon(t, s)}{\varepsilon(t_j, s)} \big)
+} \\
+&= e^{\Log \big( \frac{\varepsilon(t_1, s)}{\varepsilon(t_0, s)} \big)}
+  \dots
+  e^{\Log \big( \frac{\varepsilon(t_j, s)}{\varepsilon(t_{j-1}, s)} \big)}
+  e^{\Log \big( \frac{\varepsilon(t, s)}{\varepsilon(t_j, s)} \big)} \\
+&= \frac{\varepsilon(t_1, s)}{\varepsilon(t_0, s)}
+  \cdots
+  \frac{\varepsilon(t_j, s)}{\varepsilon(t_{j-1}, s)}
+  \cdot
+  \frac{\varepsilon(t, s)}{\varepsilon(t_j, s)} \\
+&= \frac{\varepsilon(t, s)}{\varepsilon(t_0, s)} \\
+&= \frac{\eta_s(e^{2 \pi \img t})}{\eta_s(1)}.
+\end{align*}
+Therefore \(\eta_s = \eta_s(1) \widehat \psi_s\), which shows that
+\(\psi_s = \phi_s\) (from \cref{eq:etas-from-widehat-phis}). Looking at
+\cref{eq:explicit-form-psis-actually-phis} we see that the mapping \(\Phi\)
+above-mentioned is continuous, hence a homotopy.
+
+Considering the continuous map \(\Phi(1, -): I \to \R\) given by
+\(s \mapsto \phi_s(1)\), we know that \(\phi_s(1) \in \Z\) from earlier
+considerations---therefore using the fact that \(I\) is connected and \(\Z\) is
+discrete, it must bae the case that the induced map \(\Phi(1, -): I \to \Z\) is
+\emph{constant}. In particular, we shall have \(\phi_0(1) = \phi_1(1)\)---but
+from definition we have \(f = f(1) \widehat \phi_0\) and
+\(g = g(1) \widehat \phi_1\), so that \(\deg f = \phi_0(1)\) and
+\(\deg g = \phi_1(1)\). From these considerations we can finally conclude that
+\(\deg f = \deg g\).
+
+(\(\impliedby\)) For the converse, suppose that \(\deg f = \deg g \coloneq
+n\). Therefore there exists two unique pointed morphisms
+\(\phi, \psi \in \Path_{\R}(0, n)\) such that \(f = f(1) \widehat \phi\) and
+\(g = g(1) \widehat \psi\). Recall that since \(f(1), g(1) \in S^1\) are unitary
+complex numbers, multiplying a circle point by them amounts to a rotation of the
+initial point through the circle---which was already shown to be homotopic to
+the identity map of the circle. Therefore we conclude that
+\(\phi \simht \phi_n \psi\), where \(\phi_n \in \Path_{\R}(0, n)\) is the linear
+path \(\phi_n(t) \coloneq t n\). Thus
+\[
+f \simht \widehat \phi
+\simht \widehat \phi_n
+\simht \widehat \psi
+\simht g,
 \]
-for all \(t \in [t_j, t_{j+1}]\). Then \(\phi_s\) is the finite sum of
-continuous maps, thus continuous. Moreover, the mapping \(s \mapsto \phi_s(1)\)
-also changes continuously, therefore \(\phi\)
+proving that \(f\) and \(g\) are homotopic.
+\end{proof}
+
+\begin{lemma}
+\label{lem:degree-nth-power-map-is-n}
+For each \(n \in \Z\) the map \(e_n: S^1 \to S^1\) given by \(\zeta \mapsto
+\zeta^n\) is a continuous map of degree
+\[
+\deg e_n = n.
+\]
+\end{lemma}
+
+\begin{proof}
+Notice that from definition we have \(e_n(e^{2 \pi \img t}) = e^{2 \pi \img (n
+  t)} = q \phi_n(t)\), where \(\phi_n \in \Path_{\R}(0, n)\) is the linear path
+\(\phi_n(t) \coloneq t n\). Therefore \(\deg e_n = \phi_n(1) = n\).
+\end{proof}
+
+\begin{theorem}[\(\deg\) is a ring isomorphism]
+\label{thm:deg-is-ring-isomorphis}
+The map \(\deg: [S^1, S^1] \to \Z\) given by \([f] \mapsto \deg f\) is a
+\emph{ring isomorphism}. In other words, the degree map is an isomorphism of the
+\emph{first cohomology group of \(S^1\)} with \(\Z\):
+\[
+H^1(S^1) \iso \Z.
+\]
+\end{theorem}
+
+\begin{proof}
+From \cref{lem:homotopic-S1-maps-have-equal-degree} we know that \(\deg\) is a
+bijective map, we need to show that it's also a ring morphism. Consider any two
+endomorphism classes \([f], [g] \in [S^1, S^1]\) with degrees \(\deg [f]
+\coloneq n\) and \(\deg [g] \coloneq m\), then:
+\begin{itemize}\setlength\itemsep{0em}
+\item (Additive structure). From \cref{lem:degree-nth-power-map-is-n} we know
+  that \(f \simht e_n\) and \(g \simht e_m\), moreover given any
+  \(\zeta \in S^1\) one has
+  \[
+  (e_n \cdot e_m)(\zeta) = e_n(\zeta) e_m(\zeta) = \zeta^{n + m}.
+  \]
+  Therefore \(e_n \cdot e_m = e_{n + m}\) and, consequently
+  \[
+  \deg([f] \cdot [g])
+  = \deg([e_n] \cdot [e_m])
+  = \deg [e_n \cdot e_m]
+  = \deg [e_{n+m}]
+  = n + m
+  = \deg [f] + \deg [g].
+  \]
+
+\item (Multiplicative structure). Given any \(\zeta \in S^1\) we have
+  \[
+  e_n e_m(\zeta) = e_n(\zeta^m) = \zeta^{m n} = \zeta^{n m},
+  \]
+  therefore \(e_n e_m = e_{n m}\). From this we find that
+  \[
+  \deg([f] \circ [g])
+  = \deg([e_n] \circ [e_m])
+  = \deg [e_n \circ e_m]
+  = \deg [e_{n m}]
+  = n m
+  = \deg [f] \cdot \deg [g].
+  \]
+\end{itemize}
+This finishes the proof that \(\deg\) is an isomorphism of rings
+\[
+[S^1, S^1] \iso \Z.
+\]
+\end{proof}
+
+\begin{corollary}[Automorphisms of \(S^1\)]
+\label{cor:automorphism-of-circle-is-reflection-or-identity}
+If \(f \in \Aut_{\Top}(S^1)\) is an automorphism, then \(\deg f = \pm 1\). As a
+consequence, either \(f \simht \Id_{S^1}\) or \(f \simht \rho\), where \(\rho\)
+represents the reflection by complex conjugation.
+\end{corollary}
+
+\begin{proof}
+If \(f\) is an automorphism, let \(f^{-1}: S^1 \to S^1\) be its
+inverse. Therefore \(f f^{-1} = \Id_{S^1}\), implying in
+\[
+1 = \deg \Id_{S^1} = \deg(f f^{-1}) = \deg f \cdot \deg f^{-1},
+\]
+which can only be the case if \(\deg f = \deg f^{-1} = \pm 1\). Notice that the
+identity morphism is \(\Id_{S^1} = e_1\), therefore \(\deg \Id_{S^1} = 1\). On
+the other hand, the reflection \(\rho: S^1 \to S^1\) maps
+\(e^{2 \pi \img t} \mapsto e^{-2 \pi \img t}\)---thus \(\rho = e_{-1}\),
+implying in \(\deg \rho = -1\). From the latter two considerations, the last
+proposition follows.
 \end{proof}

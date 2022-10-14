@@ -3,32 +3,32 @@
 \begin{definition}
 Let \(X\) be a topological space. We define
 \begin{enumerate}[(1)]
-\item\label{def:T0-space-kolmogorov}
-  \(X\) is \(T_0\) (or Kolmogorov) if and only if for every pair of points
-  \(x, y \in X\) there exists an open set containing one, but not both, of them.
-\item\label{def:T1-space-frechet}
-    \(X\) is \(T_1\) (or Fréchet) if and only if for every pair or points
-    \(x, y \in X\) there exists open sets \(U, V \subseteq X\) such that \(x
-    \in U\) and \(y \in V\), but \(x \not\in V\) and \(y \not\in U\)
+\item\label{def:T0-space-kolmogorov} \(X\) is T\(_0\) (or Kolmogorov) if and
+  only if for every pair of distinct points \(x, y \in X\) there exists an open
+  set containing one, but not both, of them.
+\item\label{def:T1-space-frechet} \(X\) is T\(_1\) (or Fréchet) if and only if
+  for every pair of distinct points \(x, y \in X\) there exists open sets
+  \(U, V \subseteq X\) such that \(x \in U\) and \(y \in V\), but
+  \(x \not\in V\) and \(y \not\in U\)
 \end{enumerate}
 \end{definition}
 
 \begin{proposition}
-A space \(X\) is \(T_1\) if and only if the constant sequence \((x)_{i \in
+A space \(X\) is T\(_1\) if and only if the constant sequence \((x)_{i \in
 \N}\) converges to \(x\) and only to \(x\).
 \end{proposition}
 
 \begin{proof}
-(\(\Rightarrow\)) Suppose \(X\) is \(T_1\), then certainly \(x \to x\). Let
-\(y \in X\) be distinct of \(x\), then by the \(T_1\) property, there exists a
+(\(\Rightarrow\)) Suppose \(X\) is T\(_1\), then certainly \(x \to x\). Let
+\(y \in X\) be distinct of \(x\), then by the T\(_1\) property, there exists a
 neighbourhood \(U \ni y\) such that \(x \not\in U\), hence \((x)_{i \in
 \N}\) does not converge to \(y\). (\(\Leftarrow\)) Suppose \(X\) is
-not \(T_1\), then choose \(y \in X\) for which every neighbourhood \(U \ni y\)
+not T\(_1\), then choose \(y \in X\) for which every neighbourhood \(U \ni y\)
 contains \(x\), then \(x \to y\).
 \end{proof}
 
 \begin{definition}[Hausdorff space]\label{def: Hausdorff space}
-We say that a topological space \(X\) is Hausdorff (or \(T_2\)) if for all
+We say that a topological space \(X\) is Hausdorff (or T\(_2\)) if for all
 pair of distinct points \(x, y \in X\), there exists neighbourhoods \(U_x\)
 and \(U_y\), subsets of \(X\), such that \(U_x \cap U_y = \emptyset\).
 \end{definition}

@@ -186,6 +186,35 @@
   prod top universal prop}.
 \end{definition}
 
+\begin{proposition}[Product of morphisms]
+\label{prop:product-of-continuous-maps-is-continuous}
+Let \(\phi: X \to Z\) and \(\psi: Y \to W\) be morphisms in \(\Top\). Then the
+product morphism \(\phi \times \psi: X \times Y \to Z \times W\) is continuous
+with respect to the product topology.
+\end{proposition}
+
+\begin{proof}
+Consider the morphisms \(\phi \pi_X: X \times Y \to Z\) and
+\(\psi \times \pi_Y: X \times Y \to W\), so that
+\[
+\begin{tikzcd}
+&X \times Y \ar[dd, "\phi \times \psi" description]
+\ar[ddld, "\phi \pi_X", bend right, swap]
+\ar[ddrd, "\psi \pi_Y", bend left]
+& \\
+&&
+\\
+&Z \times W
+\ar[rd, "\pi_W"', two heads]
+\ar[ld, "\pi_Z", two heads]
+& \\
+Z & &W
+\end{tikzcd}
+\]
+commutes. Therefore by the universal property of the product topology we
+conclude that \(\phi \times \psi\) is continuous.
+\end{proof}
+
 \section{Coproduct Space}
 
 \begin{definition}[First definition]

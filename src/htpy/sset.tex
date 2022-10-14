@@ -60,6 +60,18 @@ maps, it follows that they can be written as a finite composition of elementary
 degeneracies and elementary faces.
 \end{proof}
 
+\begin{corollary}
+\label{cor:mono-and-epi-in-Splx-are-split-mono-and-epi}
+Every monomorphism of \(\Splx\) is split (admits a retraction),
+while every epimorphism of \(\Splx\) is split (admits a section).
+\end{corollary}
+
+\begin{proof}
+Given an elementary face \(\delta_j: [n] \mono [n+1]\) the elementary degeneracy
+\(\sigma_j: [n+1] \epi [n]\) is a retract of \(\delta_j\), and \(\delta_j\) is a
+section of \(\sigma_j\).
+\end{proof}
+
 \begin{corollary}[Cosimplicial identities]
 \label{cor:cosimplicial-identities}
 Fix any \(n \in \N\) and consider indices \(0 \leq i, j \leq n\). The following
@@ -247,7 +259,7 @@ an absolute pushout.
 \end{proof}
 
 \begin{lemma}
-\label{lem:}
+\label{lem:splx-cat-pullback-mono-pushout-epi}
 The following are properties of pullbacks along monomorphisms and pushouts along
 epimorphisms in the simplex category \(\Splx\):
 \begin{enumerate}[(a)]\setlength\itemsep{0em}
@@ -448,7 +460,7 @@ be a functor
 mapping
 \(|X| \coloneq (\coprod_{n \in \N} X_n \times \Delta^n)/{\sim_{\text{gr}}}\) and
 for each natural transformation \(\eta: X \to Y\) we have a topological morphism
-\(|\eta|: |X| \to |Y|\) given by \(x \otimes t \mapsto \eta_n(x) \otimes t\),
+\(|\eta|: |X| \to |Y|\) given by \(x \otimes t \mapsto \eta_n x \otimes t\),
 for \((x, t) \in X_n \times \Delta^n\).
 
 For any simplicial set \(X\), each \(n\)-simplex \(x \in X_n\) induces
@@ -555,8 +567,59 @@ realization,
 
 \subsection{Geometric Realization as a CW-complex}
 
+\begin{definition}[Degenerate \(n\)-simplex]
+\label{def:degenerate-n-simplex}
+Given a simplicial set \(X\), we say that an \(n\)-simplex \(x \in X_n\) is
+\emph{degenerate} if \(x \in s_j X_{n-1}\) for some \emph{codegeneracy} map
+\(s_j: X_{n-1} \to X_n\), where \(0 \leq j \leq n-1\).
 
+Equivalently, \(x\) is denenerate if there exists a \emph{surjective} map
+\(\alpha: [n] \epi [m]\) and \(m\)-simplex \(y \in X_m\) for which
+\(x = \alpha^{*} y\).
+\end{definition}
 
+\begin{lemma}[Eilenberg-Zilber]
+\label{lem:Eilenberg-Zilber}
+Let \(x\) be a \emph{degenerate} \(n\)-simplex of a given simplicial set
+\(X\). There \emph{exists a unique} pair \((\alpha, y)\) such that
+\(\alpha: [n] \epi [k]\) is a \emph{surjective} map and \(y\) is a
+\emph{non-degenerate} \(k\)-simplex of \(X\) satisfying \(\alpha^{*} y = x\).
+\end{lemma}
+
+\begin{proof}
+The existence of the pair \((\alpha, y)\) comes straight from definition. Now
+suppose \((\beta, z)\) is another pair satisfying the said property, where \(z\)
+is a non-degenerate \(\ell\)-simplex of \(X\). Since pushouts in \(\Splx\) are
+absolute (see \cref{lem:splx-cat-pushout-surjections}), the pushout of the pair
+\((\alpha, \beta)\):
+\[
+\begin{tikzcd}
+{[n]} \ar[r, two heads, "\alpha"]
+\ar[d, two heads, "\beta"']
+\ar[dr, phantom, "\ulcorner", very near end]
+&{[k]} \ar[d, "\gamma"] \\
+{[\ell]} \ar[r, "\omega"'] &{[s]}
+\end{tikzcd}
+\]
+is turned into a pullback by the simplicial set \(X: \Splx^{\op} \to \Set\),
+that is:
+\[
+\begin{tikzcd}
+X_n \ar[rd, phantom, very near start, "\lrcorner"]
+&X_k \ar[l, "\alpha^{*}"']
+\\
+X_{\ell} \ar[u, "\beta^{*}"]
+&X_s \ar[u, "\gamma^{*}"'] \ar[l, "\omega^{*}"]
+\end{tikzcd}
+\]
+From the pushout property, \(\gamma\) and \(\omega\) are epimorphisms, thus
+split, \(X\) ensures that \(\gamma^{*}\) and \(\omega^{*}\) are
+split-epimorphisms in \(\Set\). Therefore there exists \(s\)-simplices
+\(a, b \in X_s\) such that \(\gamma^{*} a = y\) and \(\omega^{*} b = z\). Notice
+however that we assumed \(y\) and \(z\) to be both non-degenerate, hence it must
+be the case that \(\gamma\) and \(\omega\) are \emph{identities}. This implies
+in \(\beta = \alpha\) and \(y = z\).
+\end{proof}
 
 %%% Local Variables:
 %%% mode: latex

@@ -845,12 +845,12 @@ Let \(M\) be an \(m\)-manifold and \((U_{j}, \phi_j)_{j \in J}\) be an
 \end{itemize}
 \end{definition}
 
-\section{Fiber Bundles}
+\section{Fibre Bundles}
 
 \begin{definition}[Bundle projection]
 \label{def:bundle-projection}
 Let \(X\), \(B\), and \(F\) be Hausdorff spaces. We say that a continuous map
-\(p: X \to B\) is a \emph{bundle projection} with \emph{fiber} \(F\) if for each
+\(p: X \to B\) is a \emph{bundle projection} with \emph{fibre} \(F\) if for each
 \(b \in B\) there exists a neighbourhood \(U \subseteq B\) of \(b\) such that
 there is a \emph{topological isomorphism}
 \[
@@ -864,12 +864,12 @@ for all \(x \in U\) and \(y \in F\)---the map \(\phi\) is called a
 \(U \times F \epi U\).
 \end{definition}
 
-\begin{definition}[Fiber bundle]
-\label{def:fiber-bundle}
+\begin{definition}[Fibre bundle]
+\label{def:fibre-bundle}
 Let \(G\) be a topological group acting \emph{effectively} on a Hausdorff space
 \(F\)---seen as a group of topological isomorphisms. Let \(X\) and \(B\) be
-Hausdorff spaces. We define a \emph{fiber bundle} (or simply \emph{bundle}) over
-the \emph{base space} \(B\) with \emph{total space} \(X\), \emph{fiber} \(F\),
+Hausdorff spaces. We define a \emph{fibre bundle} (or simply \emph{bundle}) over
+the \emph{base space} \(B\) with \emph{total space} \(X\), \emph{fibre} \(F\),
 and \emph{structure group} \(G\), to be a pair \((p, \Phi)\) where
 \(p: X \to B\) is a \emph{bundle projection} and \(\Phi\) is a collection of
 trivializations of \(p\) (as described in \cref{def:bundle-projection})---the
@@ -892,13 +892,13 @@ members of \(\Phi\) will be called \emph{charts} over \(U\)---such that:
 \item The family \(\Phi\) is \emph{maximal} among the collections satisfying the
   previous properties.
 \end{itemize}
-The fiber bundle is said to be \emph{smooth} if each object above is a
+The fibre bundle is said to be \emph{smooth} if each object above is a
 \emph{smooth manifold} and all maps are \emph{smooth morphisms}.
 \end{definition}
 
 \begin{definition}[Vector bundle]
 \label{def:vector-bundle}
-A \emph{vector bundle} is a fiber bundle with a fiber \(\R^n\) and structure
+A \emph{vector bundle} is a fibre bundle with a fibre \(\R^n\) and structure
 group contained in \(\GL_n(\R)\). Given a vector bundle \(\xi\), we denote its
 total space by \(E(\xi)\) and base space by \(B(\xi)\).
 \end{definition}
@@ -907,7 +907,7 @@ total space by \(E(\xi)\) and base space by \(B(\xi)\).
 \label{def:morphism-vector-bundles}
 If \(\xi\) and \(\eta\) are any two vector bundles, we define a \emph{bundle
   morphism} \(\xi \to \eta\) over a continuous map \(\psi: B(\xi) \to B(\eta)\)
-to be a \emph{fiber-wise linear map} \(\Psi: E(\xi) \to E(\eta)\) such that the
+to be a \emph{fibre-wise linear map} \(\Psi: E(\xi) \to E(\eta)\) such that the
 diagram
 \[
 \begin{tikzcd}
@@ -1292,22 +1292,22 @@ are compatible. Therefore the induced family of charts
 for \(S\). It is immediate that \(S\) is a \(k\)-dimensional smooth manifold.
 \end{proof}
 
-\subsection{Fibers}
+\subsection{Fibres}
 
-\begin{definition}[Fibers \& levels]
-\label{def:fibers-and-levels}
+\begin{definition}[Fibres \& levels]
+\label{def:fibres-and-levels}
 Given a \(C^{\infty}\)-morphism \(f: N \to M\), we say that a point \(q \in M\)
-is the \emph{level} of the fiber \(f^{-1}(c)\)---in particular, if \(q\) is a
-regular value, then we say that \(f^{-1}(c)\) is a \emph{regular fiber}.
+is the \emph{level} of the fibre \(f^{-1}(c)\)---in particular, if \(q\) is a
+regular value, then we say that \(f^{-1}(c)\) is a \emph{regular fibre}.
 \end{definition}
 
 \begin{lemma}
-\label{lem:regular-fiber-equal-zero-regular-fiber}
+\label{lem:regular-fibre-equal-zero-regular-fibre}
 Let \(g: N \to \R\) be a \(C^{\infty}\)-morphism, and \(q \in \R\) be any
 regular value. If \(f: N \to \R\) is defined by \(f \coloneq g - q\), then
 \(0\) is a regular value of \(f\) and \(g^{-1}(q) = f^{-1}(0)\)---that is, one
-can construct a smooth map such that its \emph{regular zero fiber} equals to a
-given regular fiber of \(g\).
+can construct a smooth map such that its \emph{regular zero fibre} equals to a
+given regular fibre of \(g\).
 \end{lemma}
 
 \begin{proof}
@@ -1315,19 +1315,19 @@ From construction, it is obvious that \(g^{-1}(c) = f^{-1}(0)\). To show that
 \(0\) is a regular value of \(f\), notice that for all \(p \in N\) one has
 \(f_{*\, p} = g_{*\, p}\)---therefore \(f\) and \(g\) have the exact same
 critical points, and thus the same regular values. It follows that \(f^{-1}(0)\)
-is indeed a regular fiber of \(f\).
+is indeed a regular fibre of \(f\).
 \end{proof}
 
 \begin{lemma}
-\label{lem:regular-fibers-are-regular-manifolds}
+\label{lem:regular-fibres-are-regular-manifolds}
 Let \(g: N \to \R\) be a \(C^{\infty}\)-morphism, and let \(q \in \im g\) be a
-regular value. Then the non-empty regular fiber \(g^{-1}(q)\) is a \emph{regular
+regular value. Then the non-empty regular fibre \(g^{-1}(q)\) is a \emph{regular
   submanifold of \(N\)} with codimension \(1\).
 \end{lemma}
 
 \begin{proof}
 Assume that \(\dim N = n\). As in
-\cref{lem:regular-fiber-equal-zero-regular-fiber}, define \(f: N \to \R\) to be
+\cref{lem:regular-fibre-equal-zero-regular-fibre}, define \(f: N \to \R\) to be
 the \(C^{\infty}\)-morphism given by \(f \coloneq g - q\), so that
 \(g^{-1}(q) = f^{-1}(0)\) and \(0\) is a regular value of \(f\). Given any
 \(p \in f^{-1}(0)\), by definition we have that \(p\) is a regular point of
@@ -1389,16 +1389,16 @@ corresponding adapted chart in \(M\), ensuring that \(g^{-1}(q)\) is a regular
 submanifold with \(\codim g^{-1}(q) = 1\)
 \end{proof}
 
-\begin{theorem}[Regular fibers are regular submanifolds]
-\label{thm:regular-fiber-theorem}
+\begin{theorem}[Regular fibres are regular submanifolds]
+\label{thm:regular-fibre-theorem}
 Let \(f: N \to M\) be a \(C^{\infty}\)-morphism, and let \(\dim N = n\) while
 \(\dim M = m\). Given a regular point \(q \in \im f\), the non-empty regular
-fiber \(f^{-1}(q)\) is a regular submanifold of \(N\) with
+fibre \(f^{-1}(q)\) is a regular submanifold of \(N\) with
 \(\dim f^{-1}(q) = n - m\).
 \end{theorem}
 
 \begin{proof}
-We could simply use \cref{lem:regular-fiber-equal-zero-regular-fiber}, but we
+We could simply use \cref{lem:regular-fibre-equal-zero-regular-fibre}, but we
 shall construct the proof from the ground level. Let \((V, \psi)\) be a chart of
 \(M\) about \(q\) satisfying \(\psi(q) = 0 \in \R^m\) (that is, \((V, \psi)\) is
 centred at \(q\))---so that \((f|_{f^{-1}(V)})^{-1}(c) = (\psi f)^{-1}(0)\).
