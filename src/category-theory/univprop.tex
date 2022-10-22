@@ -830,8 +830,8 @@ every cocone \((M, (t_D)_{D \in \cat D})\) on \(F\), there exists a
 following diagram commutes
 \[
 \begin{tikzcd}
-M \ar[r, "t_D"] &D \\
-L \ar[u, dashed, "m"] \ar[ru, bend right, "p_D"'] &
+M &F D \ar[l, "t_D"'] \ar[dl, bend left, "s_D"] \\
+L \ar[u, dashed, "m"] &
 \end{tikzcd}
 \]
 \end{definition}
@@ -864,7 +864,8 @@ colimit of a functor \(G: \omega \to \cat C\), visually given by:
 \begin{tikzcd}
 G(0) \ar[r] &G(1) \ar[r] &G(2) \ar[r] &\dots \\
 &&&\\
-\Lim G \ar[uu] \ar[uru, bend right] \ar[urur, bend right] \ar[rurur, bend right]
+\Colim G
+\ar[uu] \ar[uru, bend right] \ar[urur, bend right] \ar[rurur, bend right]
 &&&
 \end{tikzcd}
 \]

@@ -200,6 +200,20 @@ preservation of compositions, that is, \((h g)_{*} = g_{*} h_{*}\), and that
 \(e^{*} = \Id_X\) as before.
 \end{example}
 
+\begin{example}[Skeletal functor]
+\label{exp:skeletal-functor}
+Let \(\cat C\) be a category. The inclusion functor \(J: \Sk \cat C \to \cat C\)
+equivalence of categories, indeed, one can define a quasi-inverse functor
+\(F: \cat C \to \Sk \cat C\) by mapping \(a \in \cat C\) to the unique object
+\(F a \in \Sk \cat C\) for which there exists an isomorphism \(a \iso F
+a\). Choosing a collection \((\alpha_a: a \isoto F a)_{a \in \cat C}\) of
+isomorphisms where \(\alpha_a = \Id_a\) whenever \(F a = a\), we can map each
+morphism \(f: a \to b\) of \(\cat C\) to the morphism
+\(F f \coloneq \alpha_b f \alpha_a^{-1}: F a \to F b\). From this construction
+one gets \(F J = \Id\) and the collection \((\alpha_a)_{a \in \cat A}\) of
+chosen isomorphisms define a natural isomorphism \(\alpha: \Id \isonat J F\).
+\end{example}
+
 \begin{lemma}\label{lem: func-preserve-split}
 Functors preserve split monomorphisms and split epimorphisms.
 \end{lemma}
@@ -234,7 +248,7 @@ exists a pair of covariant and contravariant functors, \(\Hom(c, -)\) and
     x \ar[rr, maps to] \ar[d, swap, "f"]
     & & \Hom(x, c)
     \\
-    y \ar[rr, maps to] & & \cat \Hom(y, c) \ar[u, swap, "f^*"]
+    y \ar[rr, maps to] & & \Hom(y, c) \ar[u, swap, "f^*"]
   \end{tikzcd}
 \]
 \end{definition}
@@ -247,7 +261,7 @@ g)^*\). Let \(x \in \cat C\) be any object, then \(\Id_{x *} = \Id_{\Hom(c, x)}
 contravariant.
 
 \begin{definition}[Faithful, full \& its friends]
-\label{def:faithful-full-fully-faithful-essencially-surjective-conservative}
+\label{def:faithful-full-fully-faithful-essentially-surjective-conservative}
 Let \(\cat C\) and \(\cat D\) be categories. A functor \(F: \cat C \to \cat D\)
 is said to be
 \begin{enumerate}[(a)]\setlength\itemsep{0em}
@@ -356,6 +370,22 @@ and \(g: x' \to y'\) in \(\cat B\), the following diagram commutes
   \end{tikzcd}
 \]
 \end{proposition}
+
+Notice that the product of small categories can also be understood as a
+bifunctor
+\[
+\times: \Cat \times \Cat \longrightarrow \Cat
+\]
+which associates to each pair of small categories \((\cat A, \cat B)\) the
+product category \(\cat A \times \cat B\), and any pair of functors
+\((F: \cat A \to \cat B, G: \cat C \to \cat D)\) is mapped to a bifunctor
+\[
+F \times G: \cat A \times \cat C \to \cat B \times \cat D
+\]
+such that \((F \times G)(f, g) \coloneq (F f, G g)\) and
+\((F \times G)(A, C) \coloneq (F A, G C)\), for any pair of morphisms
+\((f, g) \in \Hom(\cat A) \times \Hom(\cat C)\) and pair of objects
+\((A, C) \in \cat A \times \cat C\).
 
 \begin{definition}[Functor-induced categories]
 \label{def:functor-induced-cats}
@@ -810,7 +840,7 @@ commutes up to natural isomorphism of functors.}
 We first build the functor \(F_0: \cat C \to \cat D_0\):
 \begin{itemize}\setlength\itemsep{0em}
 \item Let \(x \in \cat C\) be any object. By means of Zorn's Lemma (see
-  \cref{lem:zorn}), we choose \(a \in \cat \cat D_0\) for which exists an
+  \cref{lem:zorn}), we choose \(a \in \cat D_0\) for which exists an
   isomorphism \(\phi_x: a \isoto F(x)\) in \(\cat D\) --- and consequently we let
   \(F_0 x \coloneq a\).
 \item Given any morphism \(f: x \to y\) in \(\cat C\), we know from
@@ -936,12 +966,12 @@ now prove that \(F\) is both fully faithful and essentially surjective.
   \]
   From this we conclude that \(F\) is fully faithful.
 
-\item (Essencially surjective) Let \(a \in \cat D\) be any element and simply
+\item (Essentially surjective) Let \(a \in \cat D\) be any element and simply
   consider \(x = G a \in \cat D\) then from \(\beta\) we obtain that
   \(Fx = F G a \iso a\).
 \end{itemize}
 
-For the converse, suppose \(F\) is both fully faithful and essencially
+For the converse, suppose \(F\) is both fully faithful and essentially
 surjective. Using \cref{lem:full-subcategory-embedding-equivalence}, let
 \(\cat C_0\) be the full subcategory of \(\cat C\) such that
 \(\iota_{\cat C}: \cat C_0 \emb \cat C\) is an equivalence and if \(x \iso y\)
@@ -979,11 +1009,11 @@ of categories \(\Fct(\cat C, \cat D)^{\op} \iso \Fct(\cat C^{\op}, \cat
 D^{\op})\). Explicitly, such isomorphism maps \(F \mapsto \op F \op\).
 \end{example}
 
-\begin{definition}[Essencially \(\mathcal{U}\)-small]
-\label{def:essencially-U-small}
-A category \(\cat C\) is said to be \emph{essencially \(\mathcal{U}\)-small} if
+\begin{definition}[Essentially \(\mathcal{U}\)-small]
+\label{def:essentially-U-small}
+A category \(\cat C\) is said to be \emph{essentially \(\mathcal{U}\)-small} if
 it is equivalent to a \(\mathcal{U}\)-small category. Equivalently, \(\cat C\)
-is essencially \(\mathcal{U}\)-small if and only if \(\cat C\) is a
+is essentially \(\mathcal{U}\)-small if and only if \(\cat C\) is a
 \(\mathcal{U}\)-category and there exists a subset \(S \subseteq \Obj(\cat C)\)
 that is \(\mathcal{U}\)-small for which, given any \(x \in \cat C\), there
 exists \(y \in S\) such that \(x \iso y\).
@@ -1035,7 +1065,7 @@ such that \(F x' \iso F x\) and \(F y' \iso F y\) in \(\cat D_0\), then \(x'
 \Hom_{\cat C_0}(x', y')\).
 
 Restricting the codomain of \(F\) to \(\cat D_0\), we find that the induced
-functor \(F: \cat C \to \cat D_0\) is fully faithful and essencially surjective
+functor \(F: \cat C \to \cat D_0\) is fully faithful and essentially surjective
 --- thus by \cref{prop:equiv-cats-iff-fully-faith-and-essen-surj} \(F\) is an
 equivalence of categories.
 \end{proof}
@@ -1200,14 +1230,14 @@ with that would lead one to undesirable size issues.
 \begin{definition}[Category of presheaves \& Yoneda functors]
 \label{def:category-of-presheaves-and-yoneda-functors}
 Given a \(\mathcal{U}\)-category \(\cat C\), we define the \emph{big} category
-of \emph{presheaves} \([\cat C^{\op}, \Set]\) and a \emph{big} category of
-functors \([\cat C^{\op}, \Set^{\op}]\). Together with such category we define
+of \emph{presheaves} \(\Psh{\cat C}\) and a \emph{big} category of functors
+\(\Psh{\cat C^{\op}} = [C, \Set]\). Together with such categories we define
 functors
 \begin{align*}
-  \yo_{\cat C}:& \cat C \to [\cat C^{\op}, \Set],
+  \yo_{\cat C}:&\, \cat C \longrightarrow \Psh{\cat C},
                  \text{ mapping } x \mapsto \Hom_{\cat C}(-, x)
                  \text{ and } f \mapsto f_{*}, \\
-  \yo'_{\cat C}:& \cat C \to [\cat C^{\op}, \Set^{\op}],
+  \yo'_{\cat C}:&\, \cat C \longrightarrow \Psh{\cat C^{\op}},
                   \text{ mapping } x \mapsto \Hom_{\cat C}(x, -)
                   \text{ and } f \mapsto f^{*}.
 \end{align*}
@@ -1219,11 +1249,11 @@ The functors \(\yo_{\cat C}\) and \(\yo'_{\cat C}\) are called \emph{Yoneda
 \label{rem:yoneda-f*-notation}
 The attentive reader may note that setting \(\yo_{\cat C} f = f_{*}\) is not
 quite right since \(f_{*}\) is not a morphism in the category of presheaves
-\([\cat C^{\op}, \Set]\) according to our definition that roots from
+\(\Psh{\cat C}\) according to our definition that roots from
 \cref{lem:f-iso-iff-f*-iso} --- you are right, but we are being sloppy here just
 to simplify how we treat our objects and notations. The arrow \(f_{*}\) (and
 \(f^{*}\)) is to be interpreted as the \emph{natural transformation}
-\(f_{*}: \yo_{\cat C} x \to \yo_{\cat C} y\), where \(f: x \to y\) --- for which
+\(f_{*}: \yo_{\cat C} x \nat \yo_{\cat C} y\), where \(f: x \to y\) --- for which
 we define, for every object \(z \in \cat C\), the morphism
 \(f_{*}: \Hom_{\cat C}(z, x) \to \Hom_{\cat C}(z, y)\) mapping
 \(g \mapsto f g\).
@@ -1234,21 +1264,23 @@ we define, for every object \(z \in \cat C\), the morphism
 Although \(\cat C\) is a \(\mathcal{U}\)-category, its categories of presheaves
 described above \emph{need not} be a \(\mathcal{U}\)-category --- however, if
 \(\cat C\) happens to be \emph{\(\mathcal{U}\)-small}, then
-\([\cat C^{\op}, \Set]\) and \([\cat C^{\op}, \Set^{\op}]\) are both
+\(\Psh{\cat C}\) and \(\Psh{\cat C^{\op}}\) are both
 \emph{\(\mathcal{U}\)-categories}.
 \end{remark}
 
-Notice that by \cref{exp:equivalence-category-functor-opposite} we have
-natural isomorphisms
-\begin{equation}\label{eq:nat-iso-presheaf-categories}
-[\cat C^{\op}, \Set^{\op}] \iso [\cat C, \Set]^{\op},
-\end{equation}
-that is, \([\cat C^{\op}, \Set^{\op}]\) is isomorphic to the category of
-presheaves of the opposite category \(\cat C^{\op}\), namely,
-\([\cat C, \Set]\).  Therefore, for every \(x \in \cat C\) we have
-\[
-\yo'_{\cat C}x = (\yo_{\cat C^{\op}}x^{\op})^{\op}.
-\]
+%%%% This is a really confusing passage on Categories and Sheaves, I'll prefer
+%%%% to omit it
+% Notice that by \cref{exp:equivalence-category-functor-opposite} we have
+% natural isomorphisms
+% \begin{equation}\label{eq:nat-iso-presheaf-categories}
+% [\cat C^{\op}, \Set^{\op}] \iso [\cat C, \Set]^{\op},
+% \end{equation}
+% that is, \([\cat C^{\op}, \Set^{\op}]\) is isomorphic to the category of
+% presheaves of the opposite category \(\cat C^{\op}\), namely,
+% \([\cat C, \Set]\).  Therefore, for every \(x \in \cat C\) we have
+% \[
+% \yo'_{\cat C}x = (\yo_{\cat C^{\op}}x^{\op})^{\op}.
+% \]
 
 \begin{lemma}[Yoneda]
 \label{lem:yoneda}
@@ -1257,18 +1289,18 @@ The Yoneda lemma states that:
 \item For all functors \(F: \cat C^{\op} \to \Set\) and \(x \in \cat C\), there
   is a natural isomorphism:
   \[
-  \Hom_{[\cat C^{\op}, \Set]}(\yo_{\cat C}x, F) \iso F x.
+  \Hom_{\Psh{\cat C}}(\yo_{\cat C}x, F) \iso F x.
   \]
 
 \item For all functors \(G: \cat C \to \Set\) and
   \(x \in \cat C\), there is a natural isomorphism:
   \[
-  \Hom_{[\cat C, \Set]}(G, \yo'_{\cat C}x) \iso G x.
+  \Hom_{\Psh{\cat C^{\op}}}(G, \yo'_{\cat C}x) \iso G x.
   \]
 \end{enumerate}
 These natural isomorphisms have a \emph{functorial} nature --- they define,
-respectively, functors \(\cat C^{\op} \times [\cat C^{\op}, \Set] \to \Set\) and
-\([\cat C^{\op}, \Set^{\op}]^{\op} \times \cat C \to \Set\)
+respectively, functors \(\cat C^{\op} \times \Psh{\cat C} \to \Set\) and
+\(\Psh{\cat C^{\op}}^{\op} \times \cat C \to \Set\)
 \end{lemma}
 
 \begin{proof}
@@ -1278,7 +1310,7 @@ the two statements, since the other follows from duality. We prove the item (a).
 Let \(\phi\) be the morphism making
 \[
 \begin{tikzcd}
-\Hom_{[\cat C^{\op}, \Set]}(\yo_{\cat C}x, F) \ar[r]
+\Hom_{\Psh{\cat C}}(\yo_{\cat C}x, F) \ar[r]
 \ar[rr, bend left, "\phi" description]
 &\Hom_{\Set}(\Hom_{\cat C}(x, x), F x) \ar[r]
 & F x \\
@@ -1289,14 +1321,14 @@ commute. Notice that the choice of
 \(\Id_x \in \Hom_{\cat C}(x, x) = \yo_{\cat C}x (x)\) is done so that we can
 define a distinguished point \(\eta_x(\Id_x)\) from the set \(F_x\).
 
-Define now \(\psi: F x \to \Hom_{[\cat C^{\op}, \Set]}(\yo_{\cat C}(x), F)\) to
+Define now \(\psi: F x \to \Hom_{\Psh{\cat C}}(\yo_{\cat C}(x), F)\) to
 be the map \(F x \ni a \mapsto \eta^a: \yo_{\cat C} x \nat F\), where the
 natural transformation \(\eta^a\) associated to \(a\) is defined, for every
 object \(y \in \cat C\), by the map \(\eta_y^a: \Hom_{\cat C}(y, x) \to F x\)
 sending \(f \mapsto F (f) (a)\).
 
 Notice that any natural transformation
-\(\eta \in \Hom_{[\cat C^{\op}, \Set]}(\yo_{\cat C} x, F)\) is completely
+\(\eta \in \Hom_{\Psh{\cat C}}(\yo_{\cat C} x, F)\) is completely
 determined by \(\eta_x(\Id_x)\). Indeed, given \(f \in \Hom_{\cat C}(y, x)\) one
 has the following diagram, which comes from the naturality of \(\eta\):
 \[
@@ -1321,7 +1353,7 @@ The Yoneda functors \(\yo\) and \(\yo'\) are \emph{fully faithful}.
 
 \begin{proof}
 From duality, we only check that the map
-\(\Hom_{\cat C}(x, y) \to \Mor_{[\cat C^{\op}, \Set]}(\yo_{\cat C}x, \yo_{\cat
+\(\Hom_{\cat C}(x, y) \to \Mor_{\Psh{\cat C}}(\yo_{\cat C}x, \yo_{\cat
   C} y)\) sending \(f \mapsto \eta^f\), where
 \(\eta_z^f(g) = f_{*}(g) = f g\) for every \(z \in \cat C\) and map
 \(g \in \Hom_{\cat C}(z, x)\) --- is a bijection for all \(x, y \in \cat
@@ -1329,7 +1361,7 @@ C\). Such map is certainly injective, since given two distinct maps
 \(f, h \in \Hom_{\cat C}(x, y)\) we have \(f_{*} \neq h_{*}\).  Moreover, we
 have the isomorphism
 \[
-\Hom_{[\cat C^{\op}, \Set]}(\yo_{\cat C} x, \yo_{\cat C} y)
+\Hom_{\Psh{\cat C}}(\yo_{\cat C} x, \yo_{\cat C} y)
 \iso \yo_{\cat C} y (x)
 = \Hom_{\cat C} (x, y)
 \]
@@ -1359,7 +1391,7 @@ means that \(f\) will have image \(\eta\) under our mapping.
 \label{rem:C-is-full-subcategory-of-presheaf-cat}
 From \cref{cor:yoneda-fct-fully-faithful} one can conclude that \(\cat C\) can
 be viewed as a \emph{full subcategory} of the presheaf category
-\([\cat C^{\op}, \Set]\) (or of the category \([\cat C^{\op}, \Set^{\op}]\)).
+\(\Psh{\cat C}\) (or of the category \(\Psh{\cat C^{\op}}\)).
 \end{remark}
 
 The following corollary establishes the main idea of the Yoneda lemma --- one
@@ -1382,23 +1414,23 @@ fully faithful we find that \(\yo_{\cat C} x \iso \yo_{\cat C} y\) implies
 \end{proof}
 
 \begin{corollary}
-\label{cor:}
+\label{cor:yoneda-corollary-something}
 Let \(F: \cat C \to \cat D\) be a functor of \(\mathcal{U}\)-categories and
 assume that \(\cat C\) is \(\mathcal{U}\)-small. For every \emph{functor}
-\(A \in [\cat C^{\op}, \Set]\), the category \(\cat C_A\)
+\(A \in \Psh{\cat C}\), the category \(\cat C_A\)
 \emph{associated}\footnote{Recall \cref{def:functor-induced-cats}.} with the
 functor
 \[
 \begin{tikzcd}
-\cat C \ar[r, "F"] &\cat D \ar[r, "\yo_{\cat D}"] &{[\cat D^{\op}, \Set]}
+\cat C \ar[r, "F"] &\cat D \ar[r, "\yo_{\cat D}"] &{\Psh{\cat C}}
 \end{tikzcd}
 \]
 is \emph{\(\mathcal{U}\)-small}. Analogously, given a \emph{functor} \(B \in
-[\cat C^{\op}, \Set^{\op}]\), the category \(\cat C^B\) \emph{associated} with
+\Psh{\cat C^{\op}}\), the category \(\cat C^B\) \emph{associated} with
 the functor
 \[
 \begin{tikzcd}
-\cat C \ar[r, "F"] &\cat D \ar[r, "\yo_{\cat D}'"] &{[\cat D^{\op}, \Set^{\op}]}
+\cat C \ar[r, "F"] &\cat D \ar[r, "\yo_{\cat D}'"] &{\Psh{\cat C^{\op}}}
 \end{tikzcd}
 \]
 is \emph{\(\mathcal{U}\)-small}.
@@ -1495,7 +1527,7 @@ called a \emph{universal element} of \(F\).
 Indeed, if \(F\) is represented by \(x_0\), then by the Yoneda lemma we obtain
 an isomorphism
 \[
-\Hom_{[\cat C^{\op}, \Set]}(\yo_{\cat C} x_0, F) \iso F x_0,
+\Hom_{\Psh{\cat C}}(\yo_{\cat C} x_0, F) \iso F x_0,
 \]
 therefore for each \(s_0 \in F x_0\) there exists a unique corresponding natural
 transformation \(\eta: \yo_{\cat C} x_0 \nat F\) (notice we didn't require it to
@@ -1506,7 +1538,7 @@ unique morphism \(f: x_0 \to y\) such that \(F(f)(s_0) = t\).
 
 \begin{corollary}
 \label{cor:fct-to-presheaf-recover-fct-to-cat}
-Let \(F: \cat C \to [\cat D^{\op}, \Set]\) be a functor. If, for every
+Let \(F: \cat C \to \Psh{\cat D}\) be a functor. If, for every
 \(c \in \cat C\), there exists an object \(d \in \cat D\) such that
 \(F c \iso d\), then there exists a \emph{unique} --- up to unique isomorphism
 --- functor \(F_0: \cat C \to \cat D\) for which
@@ -1517,8 +1549,8 @@ F \iso \yo_{\cat D} F_0.
 
 \begin{proof}
 From \cref{rem:C-is-full-subcategory-of-presheaf-cat} we know that \(\cat D\) is
-a full subcategory of the presheaf category \([\cat D^{\op}, \Set]\). Since
-\(\yo_{\cat D}: D \to [\cat D^{\op}, \Set]\) is fully faithful, by means of
+a full subcategory of the presheaf category \(\Psh{\cat D}\). Since
+\(\yo_{\cat D}: D \to \Psh{\cat D}\) is fully faithful, by means of
 \cref{lem:full-subcategory-functor-correspondence} one finds that there exists a
 unique functor \(F_0: \cat C \to \cat D\) (up to unique isomorphism) and a
 natural isomorphism \(F \iso \yo_{\cat D} F_0\). In other words, the following
@@ -1526,7 +1558,7 @@ diagram is quasi-commutative
 \[
 \begin{tikzcd}
 \cat C \ar[r, "F"] \ar[rd, bend right, "F_0"', dashed]
-&{[\cat D^{\op}, \Set]} \\
+&{\Psh{\cat D}} \\
 &\cat D \ar[u, "\yo_{\cat D}"']
 \end{tikzcd}
 \]

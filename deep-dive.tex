@@ -1,6 +1,17 @@
 \input{src/preamble}
 
+\newcommand{\onlyinsubfile}[1]{#1}
+\newcommand{\notinsubfile}[1]{}
+
+\author{Luiz G. Mugnaini A.}
+\date{Last modification: \today}
+\title{Deep Dive}
+
 \begin{document}
+
+\renewcommand{\onlyinsubfile}[1]{}
+\renewcommand{\notinsubfile}[1]{#1}
+
 \frontmatter
 
 % \input{src/titlepage}
@@ -9,41 +20,60 @@
 \tableofcontents
 \listoftodos
 
-\pagestyle{plain}
+% \pagestyle{plain}
 
-\chapter{Preface}
+% \chapter{Preface}
 
-First of all I should stress that the title page template was taken from the
-beautiful book~\cite{Haine21DiffCoho} by P. Haine et al.~--- the whole credit
-should be given to them. The following text is a compilation of notes for my
-studies in mathematics, that being said, it is clear that the collection of
-mathematical and linguistic errors is non-empty. My main references are
-\begin{itemize}\setlength\itemsep{0em}
-\item Category Theory:~\cite{Rie16} and \cite{Shap06}.
-\item Algebra:~\cite{Yu89},~\cite{Kim20},~\cite{Aluf09} and~\cite{Lang93}.
-\item Topology:~\cite{Lee11},~\cite{Tai20},~\cite{Mun00} and~\cite{Eng89}.
-\item Differential Structures:~\cite{Zor15},~\cite{Zor16},~\cite{Rud76}
-  and~\cite{Jost06}.
-\item Combinatorics:~\cite{Die16}.
-\end{itemize}
+% First of all I should stress that the title page template was taken from the
+% beautiful book~\cite{Haine21DiffCoho} by P. Haine et al.~--- the whole credit
+% should be given to them. The following text is a compilation of notes for my
+% studies in mathematics, that being said, it is clear that the collection of
+% mathematical and linguistic errors is non-empty. My main references are
+% \begin{itemize}\setlength\itemsep{0em}
+% \item Category Theory:~\cite{Rie16} and~\cite{Shap06}.
+% \item Algebra:~\cite{Yu89},~\cite{Kim20},~\cite{Aluf09} and~\cite{Lang93}.
+% \item Topology:~\cite{Lee11},~\cite{Tai20},~\cite{Mun00} and~\cite{Eng89}.
+% \item Differential Structures:~\cite{Zor15},~\cite{Zor16},~\cite{Rud76}
+%   and~\cite{Jost06}.
+% \item Combinatorics:~\cite{Die16}.
+% \end{itemize}
 
 \mainmatter
 
+\part{Category Theory}
+
 \subfile{src/category-theory/main-categories}
 
-\subfile{src/algebra/main-algebra}
+\part{Algebra}
+
+\subfile{src/algebra/linalg/main-linalg}
+\subfile{src/algebra/group/main-group}
+\subfile{src/algebra/rings-and-modules/main-rings-and-modules}
+
+\part{Combinatorics}
 
 \subfile{src/combinatorics/main-combinatorics}
 
-\subfile{src/topology/main-topology}
+\part{Classical Topology}
 
-\subfile{src/differentiable/main-differentiable}
+\subfile{src/topology/classical-topology/main-classical-topology}
+
+\part{Homotopy Theory}
+
+\subfile{src/topology/homotopy-theory/main-htpy}
+
+\part{Differentiable Structures}
+
+\subfile{src/differentiable/functional-analysis/main-functional-analysis}
+
+\subfile{src/differentiable/manifold/main-manifold}
 
 \appendix
 
-\subfile{src/appendix/main-appendix}
-
-\backmatter
+% \subfile{src/appendix/main-appendix}
+\subfile{src/appendix/set-theory/main-set-theory}
+\subfile{src/appendix/multivariable-calculus/main-multivariable}
+\subfile{src/appendix/papers/main-papers}
 
 \printbibliography
 

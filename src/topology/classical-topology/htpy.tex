@@ -1401,6 +1401,21 @@ fundamental group is a functor
 \]
 \end{definition}
 
+\begin{proposition}
+\label{prop:pi1-equivalent-to-Pi1-for-connected-space}
+Let \(X\) be a path connected space. For every point \(x \in X\) the inclusion
+functor \(\pi_1(X, x) \to \Pi_1 X\) is an \emph{equivalence of categories}.
+\end{proposition}
+
+\begin{proof}
+Indeed, notice that \(\pi_1(X, x) = \Aut_{\Pi_1 X}(x)\) and since \(X\) is a
+connected space, \(\Pi_1 X\) is a connected groupoid---that is, for every pair
+of points \(x, y \in \Pi_1 X\), there exists an isomorphism \(x \iso y\) in
+\(\Pi_1 X\). It follows that \(\Aut_{\Pi_1 X} (x) = \Sk (\Pi_1 X)\), and
+therefore the inclusion functor is an equivalence of categories (see
+\cref{exp:skeletal-functor}).
+\end{proof}
+
 \begin{definition}[Pushforwards in \(\pi_1\)]
 \label{def:pushforward-pi1}
 Let \(f: (X, x) \to (Y, y)\) be a morphism of pointed topological spaces. There

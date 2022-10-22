@@ -254,7 +254,7 @@ and obeys the right and left unit laws, that is
 \begin{example}
 A monoid \(M\) defines a category with one object, denoted \(\cat{BM}\), such
 that \(\Obj(\cat{BM}) = \{*\}\) and \(\Hom_{\cat{BM}}(*, *) =
-\{*\}\). Composition of morphisms \(f, g: * \to *\) is defined as \(g f = g
+M\). Composition of morphisms \(f, g: * \to *\) is defined as \(g f = g
 \otimes f\). The identity morphism is \(\Id_* = e\). Hence we have \(e * f = f =
 f * e\) for all morphisms \(f \in \Mor(\cat{BM})\).
 \end{example}
@@ -320,6 +320,15 @@ be a \emph{full subcategory} if for all \(x, y \in \cat D\) we have
 is said to be \emph{saturated} if \(x \in \cat C\) is also an object of \(\cat D\)
 whenever there exists an object \(u \in \cat D\) such that \(x \iso u\) in
 \(\mathcal C\).
+\end{definition}
+
+\begin{definition}[Skeleton]
+\label{def:skeleton-category}
+Given a category \(\cat C\), we define the \emph{skeleton} of \(\cat C\),
+denoted by \(\Sk \cat C\), to be the full subcategory of \(\cat C\) such that,
+for every \(c \in \cat C\), there exists a \emph{unique} object
+\(s \in \Sk \cat C\) such that \(c \iso s\) in \(\cat C\). Furthermore, we say
+that a category \(\cat D\) is skeletal if \(\cat D = \Sk \cat D\).
 \end{definition}
 
 \begin{example}[Set based categories]

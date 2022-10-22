@@ -413,16 +413,147 @@ y_0\). The following holds
 \end{enumerate}
 \end{proof}
 
+\begin{theorem}[Constant rank]
+\label{thm:constant-rank-theorem}
+Let \(U \subseteq \R^n\) be an open set, and \(f: U \to \R^m\) be a
+\(C^{\infty}\)-map with a locally constant rank \(k\) at a neighbourhood
+\(V \subseteq U\) of a point \(p \in U\). Then after a possible permutation of
+coordinates near \(p\) and \(f p\), the map \(f\) assumes the form
+\[
+f|_U  = (f_1, \dots, f_k, 0, \dots, 0).
+\]
+In other words, there exists a \(C^{\infty}\)-isomorphism \(\phi: Q \to \R^n\)
+centred at \(p\) (that is, with \(\phi p = 0\)), and a
+\(C^{\infty}\)-isomorphism \(\psi: W \to \R^m\)---for some neighbourhood
+\(W \subseteq \R^m\) of \(f p\)---centred at \(f p\) such that
+\begin{equation}\label{eq:const-rnk-thm}
+\psi f \phi^{-1}(x_1, \dots, x_n) = (x_1, \dots, x_k, 0, \dots, 0) \in \R^m.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Since \(f\) has a locally constant rank \(k\) at \(p\), the local representation
+of the Jacobian matrix of \(f\) at \(V\) can be rearranged so that
+\[
+\det \Big[\partial_j f_i x \Big]_{1 \leq i, j \leq k} \neq 0
+\]
+for any \(x \in V\). Define \(\phi: U \to \R^n\) to be the map
+\(\phi \coloneq (f_1, \dots, f_k, \pi_{k+1}, \dots, \pi_n)\), so that one has a
+local Jacobian matrix at \(V\) given by
+\[
+\Jac \phi =
+\begin{bmatrix}
+  \partial_1 f_1 &\dots  &\partial_k f_1
+  &\partial_{k+1} f_1 &\dots  & \partial_n f_1
+  \\
+  \vdots           &\ddots &\vdots
+  &\vdots &\ddots &\vdots
+  \\
+  \partial_1 f_k &\dots  &\partial_k f_k
+  &\partial_{k+1} f_k & \dots &\partial_n f_k
+  \\
+  0                &\dots  &0
+  &1               &\dots  &0
+  \\
+  \vdots           &\ddots &\vdots
+  &\vdots          &\ddots &\vdots
+  \\
+  0                &\dots  &0
+  &0               &\dots  &1
+\end{bmatrix}
+\]
+Then
+\(\det(\Jac \phi x) = \det\big[\partial_j f_i x \big]_{1 \leq i, j \leq k}\) is
+non-zero for every \(x \in V\). Using the inverse map theorem, \(\phi\) is a
+\(C^{\infty}\)-isomorphism \(\phi: U_p \to U_{\phi p}\) for some neighbourhoods
+\(U_p \subseteq V\) of \(p\) and \(U_{\phi p} \subseteq \R^n\) of \(\phi p\),
+respectively.
+
+Consider the map \(g \coloneq f \phi^{-1}: U_{\phi p} \to \R^m\). Since
+\(\phi^{-1}\) has a constant maximal rank \(n\) at \(U_{\phi p}\), and
+\(f: U_p \to \R^m\) has constant rank \(k\) at \(U_p\), it follows that \(g\)
+has constant rank \(k\) at \(U_{\phi p}\). By construction, the Jacobian matrix
+of \(g\) is
+\[
+\Jac g =
+\begin{bmatrix}
+  1                &\dots  &0
+  &0               &\dots  &0
+  \\
+  \vdots           &\ddots &\vdots
+  &\vdots          &\ddots &\vdots
+  \\
+  0                &\dots  &1
+  &0               &\dots  &0
+  \\
+  \partial_1 g_{k+1} &\dots  &\partial_k g_{k+1}
+  &\partial_{k+1} g_{k+1} &\dots  & \partial_n g_{k+1}
+  \\
+  \vdots           &\ddots &\vdots
+  &\vdots &\ddots &\vdots
+  \\
+  \partial_1 g_m &\dots  &\partial_k g_m
+  &\partial_{k+1} g_m & \dots &\partial_n g_m
+\end{bmatrix}
+\]
+Therefore in the open set \(U_{\phi p}\) one has \(\partial_j g_i = 0\) for
+every \(k+1 \leq i \leq m\) and \(k+1 \leq j \leq n\).
+Restricting the neighbourhood \(U_{\phi p}\) to some inner open ball about \(\phi
+p\)---so that the neighbourhood is a convex set---we see that \(g_i\) is
+independent of the last \(m-k\) variables, for each \(k+1 \leq i \leq m\).
+
+Define a \(C^{\infty}\)-morphism \(\psi: U_{\phi p} \to \R^m\) by making
+\(\psi_i \coloneq \pi_i\) for each \(1 \leq i \leq k\), and
+\(\psi_i \coloneq \pi_i - g_i\) for each \(k+1 \leq i \leq m\). The Jacobi
+matrix of \(\psi\) has the form
+\[
+\Jac \psi =
+\begin{bmatrix}
+  1                &\dots  &0
+  &0               &\dots  &0
+  \\
+  \vdots           &\ddots &\vdots
+  &\vdots          &\ddots &\vdots
+  \\
+  0                &\dots  &1
+  &0               &\dots  &0
+  \\
+  -\partial_1 g_{k+1} &\dots  &-\partial_k g_{k+1}
+  &1 &\dots  &0
+  \\
+  \vdots           &\ddots &\vdots
+  &\vdots &\ddots &\vdots
+  \\
+  -\partial_1 g_m &\dots  &-\partial_k g_m
+  &0 &\dots &1
+\end{bmatrix}
+\]
+Which has \(\det(\Jac \psi) = 1\)---hence \(\psi\) is a
+\(C^{\infty}\)-isomorphism \(\psi: U_{f p} \to U_{\psi f p}\) for some
+neighbourhoods \(U_{f p}, U_{\psi f p} \subseteq \R^m\) of \(f p\) and
+\(\psi f p\), respectively. Considering the neighbourhood \(g^{-1} U_{f p}\) we
+find that the map
+\[
+\psi f \phi^{-1}: g^{-1} U_{f p} \longrightarrow \R^m
+\]
+is a \(C^{\infty}\)-morphism. Defining \(Q \coloneq \phi^{-1} U_{\phi p}\) and
+\(W \coloneq \psi^{-1} U_{\psi f p}\) we obtain induced
+\(C^{\infty}\)-isomorphisms \(\phi: Q \to \phi Q\) and \(\psi: W \to \psi W\)
+such that \(\psi f \phi^{-1}\) satisfies the required \cref{eq:const-rnk-thm}.
+\end{proof}
+
 \section{Extrema With Constraints}
 
 \begin{theorem}[Existence of Lagrange multipliers]
 \label{thm:existence-lagrange-multipliers}
-Let \(f: \Omega \to \R\) be a map, where \(\Omega \subseteq \R^d\), and a map \(F: \Omega \to \R^m\),
-where \(m < d\) ---  which will be called constraint map. Suppose \(x_0\) is a
-local extremum of \(f\) in the surface \(S \subseteq \Omega\) defined by the constraint \(S
-= \{x \in \Omega \colon F(x) = 0\}\). Suppose additionally that \(\rank F'(x) = m\) for
-every \(x \in \Omega\). Then, there exists a vector \(\lambda \in \R^m\) --- whose components
-are called Lagrange multipliers --- such that
+Let \(f: \Omega \to \R\) be a map, where \(\Omega \subseteq \R^d\), and a map
+\(F: \Omega \to \R^m\), where \(m < d\) --- which will be called constraint
+map. Suppose \(x_0\) is a local extremum of \(f\) in the surface
+\(S \subseteq \Omega\) defined by the constraint
+\(S = \{x \in \Omega \colon F(x) = 0\}\). Suppose additionally that
+\(\rank F'(x) = m\) for every \(x \in \Omega\). Then, there exists a vector
+\(\lambda \in \R^m\) --- whose components are called Lagrange multipliers ---
+such that
 \[
   f'(x_0) = F'(x_0) \lambda.
 \]
@@ -541,14 +672,15 @@ We can now exploit the parametrization of the surface \(S\) so that, as \(t \to
   &= \frac{1}{2!} \left\langle t, \Hess(L(x(0))) t \right\rangle +
   o(\norm{t}_{\R^d}).
 \end{align*}
-Where the entries of the Hessian are of the form \(\partial_{ij} L(x(0)) = \partial_{i j}
-L(x(0)) \partial_i x(0) \partial_j x(0)\). Then, if \(\Hess L(x(0))\) is positive or negative
-definite, by \cref{thm:classification-critical-points}, we obtain that \(t =
-0\) is an extremum of \(L(x(t))\). On the other hand, since there exists a
-neighbourhood of \(t = 0\) for which \(x(t)\) is a bijective parametrization,
-it follows that \(L\) has an extremum at \(x_0\) --- and hence \(x_0\) is an
-extremum of \(f\) in \(S\) and the classifications of maximum or minimum come
-again from the same theorem. If \(\Hess L(x(0))\) is indefinite, by
+Where the entries of the Hessian are of the form
+\(\partial_{ij} L(x(0)) = \partial_{i j} L(x(0)) \partial_i x(0) \partial_j
+x(0)\). Then, if \(\Hess L(x(0))\) is positive or negative definite, by
+\cref{thm:classification-critical-points}, we obtain that \(t = 0\) is an
+extremum of \(L(x(t))\). On the other hand, since there exists a neighbourhood
+of \(t = 0\) for which \(x(t)\) is a bijective parametrization, it follows that
+\(L\) has an extremum at \(x_0\) --- and hence \(x_0\) is an extremum of \(f\)
+in \(S\) and the classifications of maximum or minimum come again from the same
+theorem. If \(\Hess L(x(0))\) is indefinite, by
 \cref{thm:classification-critical-points} we conclude that \(L(x(t))\) has no
 extremum at \(t = 0\) --- and with the same analogous arguments as before, we
 argue that \(L\) has no extrema at \(x_0\) and neither does \(f\).

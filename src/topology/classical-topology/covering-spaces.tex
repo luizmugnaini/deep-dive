@@ -1,0 +1,250 @@
+\section{The van Kampen Theorem}
+
+\subsection{For the Fundamental Groupoid}
+
+\begin{theorem}[van Kampen theorem for the fundamental groupoid]
+\label{thm:van-Kampen-groupoid}
+Let \(X\) be a space, and \(\mathcal{O}\) be a connected open
+cover\footnote{That is, composed of connected open subsets of \(X\).} of \(X\)
+that is closed under finite intersections---which is a subcategory of \(\Top\)
+whose morphisms are inclusions. Considering the functor
+\(\Pi_1: \Top \to \Grpd\), the fundamental groupoid \(\Pi_1 X\) is the colimit
+of the functor \(\Pi_1|_{\mathcal{O}}\), that is:
+\[
+\Pi_1 X \iso \Colim_{U \in \mathcal{O}} \Pi_1 U
+\]
+in the category \(\Grpd\).
+\end{theorem}
+
+\begin{proof}
+We'll show that \(\Pi_1|\) Let \(\mathcal{G}\) be a groupoid and consider the
+constant functor \(C: \mathcal{O} \to \Grpd\) mapping \(U \mapsto \mathcal{G}\)
+and \(\iota \mapsto \Id_{\mathcal{G}}\) for any object \(U \in \mathcal{O}\) and
+morphism \(\iota\) of \(\mathcal{O}\). Let \(\eta: \Pi_1|_{\mathcal{O}} \nat C\)
+be a natural transformation. The pair \((\mathcal{G}, \eta)\) forms a
+\emph{cocone} over the functor \(\Pi_1|_{\mathcal{O}}\): indeed, given an object
+\(U \in \mathcal{O}\) there exists a morphism of groupoids
+\(\eta_U: \Pi_1 U \to C U = \mathcal{G}\) and from naturality, given any
+inclusion \(\iota: U \emb V\) in \(\mathcal{O}\) one has that
+\[
+\begin{tikzcd}
+\Pi_1 U \ar[d, "\Pi_1 \iota"'] \ar[r, "\eta_U"]
+&C U = \mathcal{G} \ar[d, "C \iota = \Id_{\mathcal{G}}"] \\
+\Pi_1 V \ar[r, "\eta_V"'] &C V = \mathcal{G}
+\end{tikzcd}
+\]
+commutes in \(\Grpd\)---showing that
+\(\eta_U = \Id_{\mathcal{G}} \eta_U = \eta_V \circ \Pi_1 \iota\), hence
+compatibility \(\Pi_1\) is satisfied, making \((\mathcal{G}, \eta)\) a cocone.
+
+Consider the collection \((i_U: \Pi_1 U \to \Pi_1 X)_{U \in \mathcal{O}}\) of
+canonical inclusions of groupoids. To show the universal property of \(\Pi_1 X\)
+we must construct a \emph{unique morphism} of groupoids (that is, a functor
+between groupoids) \(\chi: \Pi_1 X \to \mathcal{G}\) such that
+\begin{equation}\label{eq:van-kampen-grpd}
+\begin{tikzcd}
+\mathcal{G} &\Pi_1 U \ar[l, "\eta_U"'] \ar[dl, bend left, "i_U"] \\
+\Pi_1 X \ar[u, dashed, "\chi"] &
+\end{tikzcd}
+\end{equation}
+commutes in \(\Grpd\) for all \(U \in \mathcal{O}\).
+
+To that end, for every \(x \in X\), if \(x \in U\) let
+\(\chi x \coloneq \eta_U x\). For the morphisms of \(\Pi_1 X\), consider any
+path \(f \in \Path_X(x, y)\) on \(X\). If \(\im f\) lies interely in some object
+\(U \in \mathcal{O}\), simply define \(\chi [f] \coloneq \eta_U [f]\)---since
+\(\mathcal{O}\) is closed under finite intersections, if
+\(\im f \subseteq U \cap V\) for some \(U, V \in \mathcal{O}\), then the image
+\(\eta_{\bullet} [f]\) is independent of the choice of \(U\) or \(V\). Consider
+now the case where \(f\) has an image not entirely contained in a single element
+of \(\mathcal{O}\), but multiple ones, say
+\(\im f \subseteq \bigcup_{j=1}^n U_j\) for some finite collection of sets
+\(U_j \in \mathcal{O}\)---since \(\mathcal{O}\) is closed under finite
+intersections, this, we shall define a corresponding collection of paths
+\((f_j: I \to U_j)_{j=1}^n\) such that
+\[
+f = f_n f_{n-1} \cdots f_2 f_1.
+\]
+With this collection in hands we may define
+\(\chi[f] \coloneq \eta_{U_n}[f_n] \cdots \eta_{U_1}[f_1]\).
+
+We must ensure that this is well defined: let \(g \in \Path_X(x, y)\) be another
+path and suppose there exists a homotopy \(\varepsilon: f \nat g\). Take a
+decomposition \((g_j: I \to V_j)_{j=1}^m\) for sets \(V_j \in
+\mathcal{O}\). Consider a partition \((J_j \times S_j)_{j=1}^{\ell}\) of the
+square \(I \times I\) such that
+\(\im \varepsilon|_{J_j \times S_j} \subseteq U\) for some
+\(U \in \mathcal{O}\), and such that \((J_j)_{j=1}^{\ell}\) is a refinement for
+the decompositions of \(f\) and \(g\)---that is, \(f|_{J_j}\) and \(g|_{J_j}\)
+are paths entirely contained in some set of \(\mathcal{O}\). In this way we see
+that \(\varepsilon\) induces a collection of homotopies
+\((\varepsilon_j: f_j \nat g_j)_{j=1}^{\ell}\) proving that \([f_j] = [g_j]\) in
+some \(\Pi_1 U\), therefore \(\chi [f] = \chi [g]\). Hence \(\chi\) is a
+uniquely defined functor satisfying \cref{eq:van-kampen-grpd}.
+\end{proof}
+
+\subsection{For the Fundamental Group}
+
+\begin{theorem}[van Kampen theorem for the fundamental group]
+\label{thm:van-kampen-group}
+Let \((X, x) \in \bpTop\) be a path-connected space, and \(\mathcal{O}\) be a
+path-connected open cover of \(X\) closed under finite intersections---and such
+that \(x \in U\) for every \(U \in \mathcal{O}\), therefore \(\mathcal{O}\) is a
+subcategory of \(\bpTop\) whose morphisms are inclusions. Then the fundamental
+groupoid of \(X\) is the colimit of the functor \(\pi_1|_{\mathcal{O}}:
+\mathcal{O} \to \Grp\), that is:
+\[
+\pi_1(X, x) \iso \Colim_{U \in \mathcal{O}} \pi_1(U, x).
+\]
+\end{theorem}
+
+We first prove a particular case of the classical van Kampen theorem and after
+generalize.
+
+\begin{lemma}
+\label{lem:van-kampen-finite-cover}
+The van Kampen theorem for the fundamental group holds when \(\mathcal{O}\) is
+finite.
+\end{lemma}
+
+\begin{proof}
+Let \(G\) be a group and \(C: \mathcal{O} \to \Grp\) be the constant functor on
+\(G\) and consider the cocone \((G, \eta: \pi_1|_{\mathcal{O}} \nat C)\) over
+the functor \(\pi_1|_{\mathcal{O}}\). We'll construct a morphism of groups
+\(\chi: \pi_1(X, x) \to G\). Recall that the inclusion functor
+\(J: \pi_1(X, x) \to \Pi_1 X\) is an equivalence of categories, since
+\(\pi_1(X, x)\) is a skeleton of \(\Pi_1 X\) by
+\cref{prop:pi1-equivalent-to-Pi1-for-connected-space}. Define a quasi-inverse of
+\(J\) as follows: consider a collection \((\gamma_y)_{y \in X}\) of paths
+\(\gamma_y \in \Path_X(x, y)\) where \(\im \gamma_y \subseteq U\) when
+\(y \in U\) and \(\gamma_x \coloneq \const_x\)---this is possible because
+\(\mathcal{O}\) is closed under finite intersections---then define
+\(F: \Pi_1 X \to \pi_1(X, x)\) by mapping \(f: a \to b\) to
+\(F f \coloneq \gamma_b f \gamma_a^{-1}: x \to x\).
+
+Notice that the quasi-inverse functors \(J\) and \(F\) induce, for each \(U \in
+\mathcal{O}\), a corresponding pair of quasi-inverse functors
+\[
+F_U \colon \Pi_1 U \rightleftarrows \pi_1(U, x) \colon J_U.
+\]
+Then we can construct a cocone \((G, \delta: \Pi_1|_{\mathcal{O}} \nat C)\) over
+the functor \(\Pi_1|_{\mathcal{O}}\), where
+\(\delta_U \coloneq \eta_U F_U: \Pi_1 U \to G\). By means of
+\cref{thm:van-Kampen-groupoid} there exists a \emph{unique} morphism of
+groupoids \(\xi: \Pi_1 X \to G\) (where \(G\) is interpreted as a groupoid with a
+single object) such that
+\[
+\begin{tikzcd}
+\Pi_1 U \ar[r, "F_U"] \ar[rrd, bend right, hook, "i_U"']
+&\pi_1(U, x) \ar[r, "\eta_U"] &G \\
+&&\Pi_1 X \ar[u, dashed, "\xi"']
+\end{tikzcd}
+\]
+commutes in \(\Grpd\) for every \(U \in \mathcal{O}\). Define
+\(\chi \coloneq \xi J: \pi_1(X, x) \to G\), and notice that since
+\(\eta_U F_U = \xi i_U\) we can precompose with \(J_U: \pi_1(U, x) \to \Pi_1 U\)
+and use that \(F_U J_U = \Id_{\pi_1(U, x)}\) to obtain that
+\(\eta_U = \xi i_U J_U\). Notice however that given any \([g] \in \pi_1(U, x)\)
+one has \(i_U J_U [g] = [g] \in \Pi_1 X\) while \(J j_U [g] = [g] \in \Pi_1 X\)
+again---for the canonical inclusion
+\(j_U: \pi_1(U, x) \emb \pi_1(X, x)\)---therefore \(i_U J_U = J j_U\). This
+proves that \(\eta_U = \xi J j_U = \chi j_U\) for every \(U \in \mathcal{O}\),
+that is
+\[
+\begin{tikzcd}
+\pi_1(U, x) \ar[r, "\eta_U"] \ar[rdd, bend right, "j_U", hook] &G \\
+&\Pi_1 X \ar[u, dashed, "\xi"] \\
+&\pi_1(X, x) \ar[u, "J"] \ar[uu, dashed, bend right=50, "\chi"']
+\end{tikzcd}
+\]
+commutes in \(\Grp\), which proves the universal property for the colimit
+\(\pi_1(X, x)\).
+\end{proof}
+
+\subsubsection{Proof of the Classical van Kampen Theorem}
+
+Let \(\mathcal{O}\) be a path-connected open cover of \(X\) closed under
+intersections and composed of neighbourhoods of the chosen base-point \(x\). Let
+\(\mathfrak{F} \subseteq 2^{\mathcal{O}}\) be the category whose objects are the
+\emph{finite} subsets of \(\mathcal{O}\) of the cover that is \emph{closed under
+  finite intersections}, and morphisms are \emph{inclusions}. Given any such
+subset \(\mathcal{C} \in \mathfrak F\), we know from
+\cref{lem:van-kampen-finite-cover} that the space
+\(U_{\mathcal{C}} \coloneq \bigcup_{U \in \mathcal{C}} U\) satisfies
+\begin{equation}\label{eq:van-kampen-grp-1}
+\pi_1(U_{\mathcal{C}}, x) \iso \Colim_{U \in \mathcal{C}} \pi_1(U, x).
+\end{equation}
+
+\begin{itemize}\setlength\itemsep{0em}
+\item Let's prove that the colimit of the functor
+  \(\pi_1|_{\mathfrak{F}}: \mathfrak{F} \to \Grp\)---which maps each
+  \(\mathcal{C} \in \mathfrak{F}\) to the group
+  \(\pi_1(U_{\mathcal{C}}, x)\)---is the fundamental group \(\pi_1(X,
+  x)\). Given any group \(G\) and a its corresponding constant functor
+  \(C_G: \mathfrak{F} \to \Grp\) with \(C_G \mathcal{C} \coloneq G\), let
+  \(\eta: \pi_1|_{\mathfrak{F}} \nat C_G\) be a natural transformation. The pair
+  \((G, \eta)\) is then a cocone over the functor \(\pi_1|_{\mathfrak F}\).
+
+  We'll construct a unique morphism of groups \(\chi: \pi_1(X, x) \to G\)
+  satisfying the coherence of the cocones using the same technique from
+  \cref{thm:van-Kampen-groupoid}. If \(f: x \to x\) is a loop contained entirely
+  in a set \(U_{\mathcal{C}} \subseteq X\) for some
+  \(\mathcal{C} \in \mathfrak{F} F\), we simply map
+  \(\chi [f] \coloneq \eta_{\mathcal{C}} [f]\). If on the other hand \(f\) is
+  not entirely contained in a single set, say that \(f\) is contained in the
+  union \(\bigcup_{j=1}^n U_j\) for sets \(U_j \in \mathcal{C}\) and define a
+  collection of decompositions of \(f\), namely \((f_j: I \to U_j)_{j=1}^n\),
+  for which \(f\) is the result of the concatenation of paths. From the same
+  argument as before, merely map
+  \(\chi [f] \coloneq \eta_{U_n} [f_n] \cdots \eta_{U_1} [f_1]\), which is well
+  defined and unique\footnote{Simply refer to the proof of
+    \cref{thm:van-Kampen-groupoid}, now it should be clear that the proof
+    follows exacly the same steps}. Therefore one has
+  \begin{equation}\label{eq:van-kampen-grp-2}
+  \Colim_{\mathcal{C} \in \mathfrak{F}} \pi_1(U_{\mathcal{C}}, x) \iso \pi_1(X, x).
+  \end{equation}
+
+\item For the final part of the proof, we shall prove that the colimits of the
+  functors \(\pi_1|_{\mathcal{O}}\) and \(\pi_1|_{\mathfrak{F}}\) agree so that
+  the van Kampen theorem is true. Recalling \cref{eq:van-kampen-grp-1}, one has
+  \begin{align*}
+  \Colim_{\mathcal{C} \in \mathfrak{F}} \pi_1(U_{\mathcal{C}}, x)
+  &\iso
+  \Colim_{\mathcal{C} \in \mathfrak{F}}(\Colim_{U \in \mathcal{C}} \pi_1(U, x)) \\
+  &\iso
+  \Colim_{(\mathcal{O}, \mathfrak{F})} \pi_1(U, x),
+  \end{align*}
+  where \((\mathcal{O}, \mathfrak{F})\) is the category whose objects are pairs
+  \((U, \mathcal{C}) \in \mathcal{C} \times \mathfrak{F}\), and morphisms are
+  paired inclusions---also
+  \(\pi_1(-, x)|_{(\mathcal{O}, \mathfrak{F})}: (\mathcal{O}, \mathfrak{F}) \to
+  \Grp\) is defined to map \((U, \mathcal{C})\) to \(\pi_1(U, x)\). Notice that
+  the functors \(\pi_1(-, x)|_{\mathcal{O}}\) and
+  \(\pi_1(-, x)|_{(\mathcal{O}, \mathfrak{F})}\) factor as
+  \[
+  \begin{tikzcd}
+  \mathcal{O} \ar[rr, "\pi_1{(-, x)}|_{\mathcal{O}}"] \ar[rd, "\iota"]
+  & &\Grp \\
+  &(\mathcal{O}, \mathfrak{F})
+  \ar[ru, "\pi_1{(-, x)}|_{(\mathcal{O}, \mathfrak F)}"']
+  \ar[lu, bend left=50, "p"] &
+  \end{tikzcd}
+  \]
+  Where \(\iota U \coloneq (U, \{U\})\) and \(p (U, \mathcal{C}) \coloneq
+  U\). Therefore one has an isomorphism
+  \begin{equation}\label{eq:van-kampen-grp-3}
+  \Colim_{U \in \mathcal{O}} \pi_1(U, x)
+  \iso
+  \Colim_{(U, \mathcal{C}) \in (\mathcal{O}, \mathfrak F)} \pi_1(U, x).
+  \end{equation}
+\end{itemize}
+Therefore, by \cref{eq:van-kampen-grp-2,eq:van-kampen-grp-3} we have
+\[
+\Colim_{U \in \mathcal{O}} \pi_1(U, x) \iso \pi_1(X, x)
+\]
+as wanted.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../../deep-dive"
+%%% End:

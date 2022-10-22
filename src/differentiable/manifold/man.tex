@@ -222,6 +222,14 @@ that \(\phi\) naturally induces a morphism of functionally structured spaces
 isomorphism, then \(\phi\) is an isomorphism \((U, F_U) \iso (V, C_V^p)\).
 \end{proof}
 
+\begin{definition}[Orientation]
+\label{def:orientation-manifold}
+A manifold \(M\) is said to be \emph{oriented} if for any two charts \(\phi\)
+and \(\psi\) on \(M\), the \emph{Jacobian} matrix of the \emph{transition} map
+\(\phi \psi^{-1}\) has a \emph{positive determinant for all points of its
+  domain}. This maximal atlas on \(M\) is said to define an \emph{orientation}
+on \(M\). A manifold endowed with such an atlas is said to be \emph{orientable}.
+\end{definition}
 
 \subsection{Smooth Morphisms}
 
@@ -684,28 +692,30 @@ relative to the charts \((U, \phi)\) and \((V, \psi)\) is given by
 \Big]_{i, j=1}^n.
 \end{equation}
 That is, the local representation of \(f_{*\, p}\) is the same as the Jacobian
-matrix of \(\psi f \phi^{-1}: \phi(U) \to \phi(V)\) at the point
-\(\phi(p)\)---where \(\phi(U), \phi(V) \subseteq \R^n\) are open sets. By the
-inverse map theorem for Banach spaces (see \cref{thm:inverse-map}), we find that
-the determinant of the Jacobian \cref{eq:jacobian-f*p} is non-zero if and only
-if \(\psi f \phi^{-1}\) is a locally invertible map at \(\phi(p)\). Notice
-however that both \(\phi\) and \(\psi\) are \(C^{\infty}\)-isomorphisms, thus
-\(\psi f \phi^{-1}\) is locally invertible at the said point if and only if
-\(f\) is invertible at \(p\).
+matrix of
+\[
+\psi f \phi^{-1}: \phi(f^{-1} V \cap U) \to \R^m
+\]
+at the point \(\phi(p)\). By the inverse map theorem for Banach spaces (see
+\cref{thm:inverse-map}), we find that the determinant of the Jacobian
+\cref{eq:jacobian-f*p} is non-zero if and only if \(\psi f \phi^{-1}\) is a
+locally invertible map at \(\phi(p)\). Notice however that both \(\phi\) and
+\(\psi\) are \(C^{\infty}\)-isomorphisms, thus \(\psi f \phi^{-1}\) is locally
+invertible at the said point if and only if \(f\) is invertible at \(p\).
 \end{proof}
 
 \begin{corollary}
 \label{cor:inverse-map-theorem-manifolds}
 Let \(M\) be an \(n\)-dimensional manifold, and \((U, \phi)\) be a chart of
 \(M\) about a given point \(p \in M\). A \(C^{\infty}\)-morphism
-\(F: U \to \R^n\), in the coordinate chart \((U, \phi)\), forms a
-coordinate chart\footnote{
-  That is, there exists a neighbourhood \(X \subseteq M\) of \(p\) such that the
-  induced map \(F: X \to F(X)\) is a \(C^{\infty}\)-morphism---then \((X, F)\)
-  is a coordinate chart about \(p\).
-} about \(p\) if and only if its Jacobian
-determinant \(\det \big[\frac{\partial f_{i}}{\partial \phi_j}\big]_{ij}\) is
-non-zero.
+\(F: U \to \R^n\), in the coordinate chart \((U, \phi)\), forms a coordinate
+chart\footnote{
+  That is, there exists a neighbourhood \(X \subseteq M\) of \(p\)
+  such that the induced map \(F: X \to F(X)\) is a
+  \(C^{\infty}\)-isomorphism---then \((X, F)\) is a coordinate chart about
+  \(p\).
+} about \(p\) if and only if its Jacobian determinant
+\(\det \big[\frac{\partial F_{i}}{\partial \phi_j}\big]_{ij}\) is non-zero.
 \end{corollary}
 
 \begin{proof}
@@ -845,77 +855,6 @@ Let \(M\) be an \(m\)-manifold and \((U_{j}, \phi_j)_{j \in J}\) be an
 \end{itemize}
 \end{definition}
 
-\section{Fibre Bundles}
-
-\begin{definition}[Bundle projection]
-\label{def:bundle-projection}
-Let \(X\), \(B\), and \(F\) be Hausdorff spaces. We say that a continuous map
-\(p: X \to B\) is a \emph{bundle projection} with \emph{fibre} \(F\) if for each
-\(b \in B\) there exists a neighbourhood \(U \subseteq B\) of \(b\) such that
-there is a \emph{topological isomorphism}
-\[
-\phi: U \times F \longrightarrow p^{-1}(U),
-\quad\text{such that}\quad
-p \phi(x, y) = x
-\]
-for all \(x \in U\) and \(y \in F\)---the map \(\phi\) is called a
-\emph{trivialization of the bundle over \(U\)}. This means that on the set
-\(p^{-1}(U)\), the map \(p\) is a \emph{projection} of the type
-\(U \times F \epi U\).
-\end{definition}
-
-\begin{definition}[Fibre bundle]
-\label{def:fibre-bundle}
-Let \(G\) be a topological group acting \emph{effectively} on a Hausdorff space
-\(F\)---seen as a group of topological isomorphisms. Let \(X\) and \(B\) be
-Hausdorff spaces. We define a \emph{fibre bundle} (or simply \emph{bundle}) over
-the \emph{base space} \(B\) with \emph{total space} \(X\), \emph{fibre} \(F\),
-and \emph{structure group} \(G\), to be a pair \((p, \Phi)\) where
-\(p: X \to B\) is a \emph{bundle projection} and \(\Phi\) is a collection of
-trivializations of \(p\) (as described in \cref{def:bundle-projection})---the
-members of \(\Phi\) will be called \emph{charts} over \(U\)---such that:
-\begin{itemize}\setlength\itemsep{0em}
-\item For each \(b \in B\) there exists a neighbourhood \(U \subseteq B\) of
-  \(b\) and a chart \(\phi \in \Phi\) of the form
-  \(\phi: U \times F \to p^{-1}(U)\).
-
-\item Given a chart \(\phi: U \times F \to p^{-1}(U)\), member of \(\Phi\), then
-  any subset \(V \subseteq U\) is such that the restriction
-  \(\phi|_{V \times F}\) belongs to the family \(\Phi\).
-
-\item Given any pair of charts \(\phi, \psi \in \Phi\) over a common open set
-  \(U\), there exists a continuous map \(\theta: U \to G\) such that
-  \[
-  \psi(u, y) = \phi(u, \theta(u)(y)).
-  \]
-
-\item The family \(\Phi\) is \emph{maximal} among the collections satisfying the
-  previous properties.
-\end{itemize}
-The fibre bundle is said to be \emph{smooth} if each object above is a
-\emph{smooth manifold} and all maps are \emph{smooth morphisms}.
-\end{definition}
-
-\begin{definition}[Vector bundle]
-\label{def:vector-bundle}
-A \emph{vector bundle} is a fibre bundle with a fibre \(\R^n\) and structure
-group contained in \(\GL_n(\R)\). Given a vector bundle \(\xi\), we denote its
-total space by \(E(\xi)\) and base space by \(B(\xi)\).
-\end{definition}
-
-\begin{definition}[Morphism of vector bundles]
-\label{def:morphism-vector-bundles}
-If \(\xi\) and \(\eta\) are any two vector bundles, we define a \emph{bundle
-  morphism} \(\xi \to \eta\) over a continuous map \(\psi: B(\xi) \to B(\eta)\)
-to be a \emph{fibre-wise linear map} \(\Psi: E(\xi) \to E(\eta)\) such that the
-diagram
-\[
-\begin{tikzcd}
-E(\xi) \ar[d, "\xi"] \ar[r, "\Psi"] &E(\eta) \ar[d, "\eta"] \\
-B(\xi) \ar[r, "\psi"'] &B(\eta)
-\end{tikzcd}
-\]
-\end{definition}
 
 \section{Tangent Space}
 
@@ -1061,6 +1000,14 @@ following two concepts concerning the differential
 Mind you: immersions \emph{do not need to be injective}, neither do
 submersions need to be surjective.
 \end{remark}
+
+We now restate \cref{def:submanifold} and \cref{def:smooth-embedding} with this
+new terminology of immersions. Given a \(C^{\infty}\)-morphism \(f: M \to N\),
+if \(f\) is an immersion and is injective, then the pair \((M, f)\) defines a
+\emph{submanifold} of \(N\). Consequently, \(f: M \to f M\) is a
+\(C^\infty\)-isomorphism, being an \emph{embedding}. Later (see
+\cref{def:embedded-submanifold}) we shall define \(f M\) to be an \emph{embedded
+  submanifold} on \(N\).
 
 \subsection{Tangent Space Basis at a Point}
 
@@ -1237,15 +1184,140 @@ Let \((V, \psi)\) be \emph{any} chart about \(p\). Since
 is equivalent to the vanishing of all partial derivatives.
 \end{proof}
 
+
+\subsection{Tangent Bundle}
+
+Given an \(n\)-manifold \(M\), define
+\[
+T M \coloneq \bigcup_{p \in M} T_p M
+\]
+which will be associated with a natural projection \(\pi: T M \epi M\) mapping
+each pair \((p, \xi) \in T M\), where \(\xi \in T_p M\), to the point
+\(p \in M\).
+
+We wish to define a smooth structure on \(T M\). To that end, let \(p \in M\) be
+any point and \(\phi: U \to U' \subseteq \R^n\) be a chart of \(M\) about \(p\),
+forming a local basis \(\big(\frac{\partial}{\partial \phi_j}\big)_{j=1}^n\) for
+the spaces \(T_x M\) for any \(x \in U\). From this we conclude that there
+exists a linear isomorphism
+\(\pi^{-1} U \iso U \times \R^n \iso U' \times \R^n\) associating each pair
+\(\big( p, \xi = \sum_{j=1}^n a_j \frac{\partial}{\partial \phi_{j}} \big) \in T
+M\) to \((p, \phi_{*} \xi) \in U \times \R^n\) or
+\((\phi p, \phi_{*} \xi) \in U' \times \R^n\). We shall take the latter, which
+has the form
+\[
+(\phi \pi) \times \phi_{*}: \pi^{-1} U \longrightarrow U' \times \R^n,
+\]
+as a chart on \(T M\). To see that this gives a smoothly compatible structure to
+\(T M\), let \(\psi: V \to \R^n\) be another chart on \(M\) and consider the
+transition map \(\theta \coloneq \psi \phi^{-1}: \phi (U \cap V) \to \psi(U \cap
+V)\). The corresponding transition map between the charts \((\phi \pi) \times
+\phi_{*}\) and \((\psi \pi) \times \psi_{*}\) is then \(\theta \times
+\theta_{*}\), which is smooth. This proves that the constructed atlas gives to
+\(T M\) a smooth structure of a \(2 n\)-dimensional manifold. We shall refer to
+such manifold as the \emph{tangent bundle} of \(M\).
+
+\begin{definition}[Vector field]
+\label{def:vector-field}
+Let \(M\) be a manifold. A \emph{vector field} on \(M\) is a \emph{section} of
+the natural projection \(\pi: T M \epi M\)---that is, a \(C^{\infty}\)-morphism
+\(\xi: M \to T M\) for which \(\pi \xi = \Id_M\). More explicitly, given a point
+\(p \in M\) and a chart \(\phi\) of \(M\) about \(p\), we have
+\[
+\xi p = \sum_{j=1}^n \alpha_j(p) \frac{\partial}{\partial \phi_j},
+\]
+where \(\alpha_j: M \to \R\) are \(C^{\infty}\)-morphisms. The collection of all
+vector fields on \(M\) is denoted by \(\VecField M\).
+\end{definition}
+
+\begin{definition}[Flow]
+\label{def:flow}
+Let \(M\) be an \(m\)-manifold. A \emph{smooth flow} on \(M\) is a \emph{smooth
+  action} of the abelian topological group \((\R, +)\) on \(M\), that is, a
+\(C^{\infty}\)-morphism \(\theta: \R \times M \to M\) satisfying:
+\begin{itemize}\setlength\itemsep{0em}
+\item For all \(x \in M\), we have \(\theta(0, x) = x\).
+\item For every pair \(s, t \in \R\), and point \(x \in M\), one has
+  \(\theta(s + t, x) = \theta(s, \theta(t, x))\).
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Tangent field to a flow]
+\label{def:tangent-field-to-a-flow}
+Let \(\theta\) be a flow on a manifold \(M\). We define a \emph{tangent field}
+of \(\theta\) to be the vector field \(\xi: M \to T M\) given by
+\[
+\xi p \coloneq \theta_{*} \frac{\diff}{\diff t} \Big|_{(0, p)}
+\]
+that is, the vector \(\xi p \in T M\) is tangent to the curve \(\gamma(t)
+\coloneq \theta(t, p)\) at the point \(t = 0\).
+\end{definition}
+
+\begin{example}
+\label{exp:unit-vec-field-on-(2n-1)-sphere}
+Given a sphere \(S^{2 n - 1} \emb \CC^n\), consider the flow \(\theta: \R \times
+S^{2n-1} \to S^{2n-1}\) given by
+\[
+\theta(t, z) \coloneq e^{i t} z.
+\]
+The tangent field \(\xi: S^{2n - 1} \to T S^{2n - 1}\) to \(\theta\) is then
+\[
+\xi(z) = \theta_{*} \frac{\diff}{\diff t}\Big|_{t=0} z
+= \frac{\diff}{\diff t}\Big|_{t=0} e^{i t} z
+= i z.
+\]
+Therefore \(\xi\) is a unitary vector field on the \((2n-1)\)-sphere.
+\end{example}
+
+\begin{definition}[Parallelizable manifold]
+\label{def:parallelizable-manifold}
+An \(m\)-manifold \(M\) is said to be \emph{parallelizable} if there exists a
+\emph{\(C^{\infty}\)-isomorphism} \(T M \isoto M \times \R^n\) for which the
+restriction \(T_p M \to p \times \R^n\) is an \emph{\(\R\)-linear isomorphism}
+for each \(p \in M\).
+\end{definition}
+
+\begin{example}
+\label{exp:S1-parallelizable}
+The circle is parallelizable. Indeed, we can use \(\xi: M \to T M\) as the
+tangent vector field to the flow \(\R \times S^1 \to S^1\) mapping
+\((t, z) \mapsto e^{i t} z\).
+\end{example}
+
+\begin{proposition}
+\label{prop:n-torus-parallelizable}
+The \(n\)-torus is parallelizable.
+\end{proposition}
+
+\begin{proposition}
+\label{prop:Sn-times-Sk-parallelizable}
+If \(n\) is odd, then \(S^n \times S^k\) is parallelizable for all \(k \geq 1\).
+\end{proposition}
+
+\todo[inline]{To prove: \(n\)-torus and product of spheres are parallelizable}
+
 \section{Submanifolds}
 
-\begin{definition}[Regular submanifold]
-\label{def:regular-submanifold}
+\subsection{Embedded Submanifolds}
+
+We shall give two descriptions of what is called an embedded submanifold:
+
+\begin{definition}[Embedded submanifold]
+\label{def:embedded-submanifold}
+A subspace \(S \subseteq N\) is said to be an \emph{embedded submanifold} on a
+manifold \(N\) if the canonical inclusion \(S \emb N\) is a \emph{smooth
+  embedding}.
+\end{definition}
+
+\begin{definition}[Embedded submanifold, again\footnote{This is the common
+  description when authors call embedded submanifolds by ``regular
+  submanifolds''}]
+\label{def:embedded-submanifold-2}
 Let \(S \subseteq N\) be a subspace of the \(n\)-dimensional manifold \(N\). We
-say that \(S\) is a \emph{\(k\)-dimensional regular submanifold} of \(N\) if for
-every \(p \in S\) there exists a coordinate chart \((U, \phi)\) about \(p\) such
-that \(n-k\) coordinates of \(\phi\) vanish at the intersection \(U \cap S\). By
-the possible rearrangement of the indices, we may assume that
+say that \(S\) is a \emph{\(k\)-dimensional embedded submanifold} of \(N\) if
+for every \(p \in S\) there exists a coordinate chart \((U, \phi)\) about \(p\)
+such that \(n-k\) coordinates of \(\phi\) vanish at the intersection
+\(U \cap S\). By the possible rearrangement of the indices, we may assume that
 \[
 \phi|_{U \cap S} = (\phi_1, \dots, \phi_k, 0, \dots, 0).
 \]
@@ -1256,16 +1328,25 @@ The chart \((U, \phi)\) is then refered to as an \emph{adapted chart relative to
 \phi_S \coloneq (\phi_1, \dots, \phi_k),
 \]
 where \((U \cap S, \phi_S)\) is a chart for \(S\) in the subspace topology.
+\end{definition}
 
-We define the \emph{codimension} of \(S\) as a submanifold of \(N\) to be
+The proof of the equivalence between \cref{def:embedded-submanifold} and
+\cref{def:embedded-submanifold-2} shall be posponed to
+\cref{thm:embedded-submanifold-equivalent-definitions}.
+
+\begin{definition}[Codimension]
+\label{def:codimension}
+Let \(S \subseteq N\) be a \(k\)-dimensional submanifold of the
+\(n\)-dimensional manifold \(N\). We define the \emph{codimension} of \(S\) as a
+submanifold of \(N\) to be
 \[
-\codim_M S \coloneq n - k.
+\codim_N S \coloneq n - k.
 \]
 \end{definition}
 
-\begin{proposition}[Regular submanifolds are manifolds]
-\label{prop:regular-submanifold}
-Let \(S\) be a regular submanifold of \(N\) and let
+\begin{proposition}[Embedded submanifolds are manifolds]
+\label{prop:embedded-submanifold}
+Let \(S\) be a embedded submanifold of \(N\) and let
 \((U_{\gamma}, \phi_{\gamma})_{\gamma \in \Gamma}\) be a collection of adapted
 charts of \(N\) relative to \(S\), such that the family of charts \emph{cover}
 \(S\). Then the induced collection
@@ -1292,36 +1373,36 @@ are compatible. Therefore the induced family of charts
 for \(S\). It is immediate that \(S\) is a \(k\)-dimensional smooth manifold.
 \end{proof}
 
-\subsection{Fibres}
+\subsection{Fibre of \texorpdfstring{\(C^{\infty}\)}{Smooth}-Morphisms}
 
 \begin{definition}[Fibres \& levels]
 \label{def:fibres-and-levels}
 Given a \(C^{\infty}\)-morphism \(f: N \to M\), we say that a point \(q \in M\)
-is the \emph{level} of the fibre \(f^{-1}(c)\)---in particular, if \(q\) is a
-regular value, then we say that \(f^{-1}(c)\) is a \emph{regular fibre}.
+is the \emph{level} of the fibre \(f^{-1} q\)---in particular, if \(q\) is a
+regular value, then we say that \(f^{-1} q\) is a \emph{regular fibre}.
 \end{definition}
 
 \begin{lemma}
 \label{lem:regular-fibre-equal-zero-regular-fibre}
 Let \(g: N \to \R\) be a \(C^{\infty}\)-morphism, and \(q \in \R\) be any
 regular value. If \(f: N \to \R\) is defined by \(f \coloneq g - q\), then
-\(0\) is a regular value of \(f\) and \(g^{-1}(q) = f^{-1}(0)\)---that is, one
+\(0\) is a regular value of \(f\) and \(g^{-1} q = f^{-1} 0\). That is, one
 can construct a smooth map such that its \emph{regular zero fibre} equals to a
 given regular fibre of \(g\).
 \end{lemma}
 
 \begin{proof}
-From construction, it is obvious that \(g^{-1}(c) = f^{-1}(0)\). To show that
+From construction, it is obvious that \(g^{-1} q = f^{-1} 0\). To show that
 \(0\) is a regular value of \(f\), notice that for all \(p \in N\) one has
 \(f_{*\, p} = g_{*\, p}\)---therefore \(f\) and \(g\) have the exact same
-critical points, and thus the same regular values. It follows that \(f^{-1}(0)\)
+critical points, and thus the same regular values. It follows that \(f^{-1} 0\)
 is indeed a regular fibre of \(f\).
 \end{proof}
 
 \begin{lemma}
-\label{lem:regular-fibres-are-regular-manifolds}
+\label{lem:regular-fibres-are-embedded-manifolds}
 Let \(g: N \to \R\) be a \(C^{\infty}\)-morphism, and let \(q \in \im g\) be a
-regular value. Then the non-empty regular fibre \(g^{-1}(q)\) is a \emph{regular
+regular value. Then the non-empty regular fibre \(g^{-1} q\) is a \emph{regular
   submanifold of \(N\)} with codimension \(1\).
 \end{lemma}
 
@@ -1389,19 +1470,475 @@ corresponding adapted chart in \(M\), ensuring that \(g^{-1}(q)\) is a regular
 submanifold with \(\codim g^{-1}(q) = 1\)
 \end{proof}
 
-\begin{theorem}[Regular fibres are regular submanifolds]
+\begin{theorem}[Regular fibres are embedded submanifolds]
 \label{thm:regular-fibre-theorem}
 Let \(f: N \to M\) be a \(C^{\infty}\)-morphism, and let \(\dim N = n\) while
-\(\dim M = m\). Given a regular point \(q \in \im f\), the non-empty regular
-fibre \(f^{-1}(q)\) is a regular submanifold of \(N\) with
-\(\dim f^{-1}(q) = n - m\).
+\(\dim M = m\). Given a regular value \(q \in \im f\), the non-empty regular
+fibre \(f^{-1} q\) is a embedded submanifold of \(N\) with
+\(\dim f^{-1} q = n - m\).
 \end{theorem}
 
 \begin{proof}
 We could simply use \cref{lem:regular-fibre-equal-zero-regular-fibre}, but we
 shall construct the proof from the ground level. Let \((V, \psi)\) be a chart of
-\(M\) about \(q\) satisfying \(\psi(q) = 0 \in \R^m\) (that is, \((V, \psi)\) is
-centred at \(q\))---so that \((f|_{f^{-1}(V)})^{-1}(c) = (\psi f)^{-1}(0)\).
+\(M\) about \(q\) satisfying \(\psi q = 0 \in \R^m\) (that is, \((V, \psi)\) is
+centred at \(q\))---so that \(f^{-1} V\) is a neighbourhood of \(f^{-1} q\) in
+\(N\), and one has
+\[
+f^{-1} V \cap f^{-1} q = f^{-1} q = (\psi f|_{f^{-1} V})^{-1} 0.
+\]
+Therefore \(f^{-1} q\) is the zero fibre of the map \(\psi f\), which we can
+analyse locally as the zero fibres of the collection of local projections
+\((f_j = \pi_j (\psi f|_{f^{-1} V}))_{j=1}^m\). Since \(q \in \im f\) is a regular value,
+every point \(p \in f^{-1} q\) is regular and thus has a surjective
+\(f_{*\, p}\)---that is, \(n \geq m\) and \(\rank f_{*\, p} = m\). Let
+\((U, \phi)\) be a chart about \(p\) in \(N\) where \(U \subseteq f^{-1} V\).
+Consider the local Jacobian representation of \(f_{*\, p}\) at \((U, \phi)\),
+and assume that the first \(m \times m\) block of
+\(\big[ \frac{\partial f_i}{\partial \phi_j} p \big]\) is invertible---if that
+is not the case, simply rearrange the indices so that this is true.
+
+Define a \(C^{\infty}\)-morphism \(\phi': U \to \R^n\) by making
+\(\phi_j' \coloneq f_j = \pi_j (\psi f|_{f^{-1} V})\) for \(1 \leq j \leq m\),
+while \(\phi_j' \coloneq \phi_j\) for the remaining \(m < j \leq n\). To show
+that \(\phi'\) is locally invertible at \(p\), notice that the local Jacobian
+matrix of \(f\) about \(\phi'\) at \(p\) is
+\[
+\Jac_{\phi'} f|_p =
+\begin{bmatrix}
+  \frac{\partial f_i}{\partial \phi_j} p
+  &\frac{\partial f_{i}}{\partial \phi_{\beta}} p
+    \\
+  \frac{\partial \phi_{\alpha}}{\partial \phi_j} p
+  &\frac{\partial \phi_{\alpha}}{\partial \phi_{\beta}} p
+\end{bmatrix}
+=
+\begin{bmatrix}
+  \frac{\partial f_i}{\partial \phi_j} p
+  &\frac{\partial f_{i}}{\partial \phi_{\beta}} p
+    \\
+  0
+  &\Id
+\end{bmatrix}
+\]
+where \(1 \leq i, j \leq m\) and \(m < \alpha, \beta \leq n\). This shows that
+\[
+\det(\Jac_{\phi'} f|_p)
+= \det \Big[ \frac{\partial f_{i}}{\partial \phi_j} p \Big]_{1 \leq i, j \leq m}
+\neq 0,
+\]
+that is, \(\phi'\) is locally invertible at \(p\) and by
+\cref{cor:inverse-map-theorem-manifolds} there exists \(U_p \subseteq U\) such
+that \(\phi': U_p \to \phi'(U_p)\) is a \(C^{\infty}\)-isomorphism, and thus
+\((U, \phi')\) is a chart about \(p\) in \(N\). Notice that, by construction,
+\(f^{-1} q\) is the set obtained by imposing \(\phi'_j = f_j = 0\) for each
+\(1 \leq j \leq m\)---thus \((U_p, \phi')\) is an \emph{adapted chart} for \(N\)
+relative to \(f^{-1} q\). Therefore \(f^{-1} q\) admits an adapted chart for
+each of its points, showing that it is a embedded submanifold of dimension
+\(n - m\).
+\end{proof}
+
+\begin{corollary}[Producing adapted charts]
+\label{cor:regular-fibre-producing-adapted-charts}
+Let \(f: N \to \R^m\) be a \(C^{\infty}\)-morphism and \(\dim N = n\), consider
+the zero fibre \(f^{-1} 0\). If there exists a chart \((U, \phi)\) about
+\(p \in f^{-1} 0\) such that
+\[
+\det \Big[ \frac{\partial f_i}{\partial \phi_j} p \Big]_{1 \leq i, j \leq m}
+\neq 0,
+\]
+then there exists a neighbourhood \(U_p \subseteq N\) of \(p\) such that the
+pair \((U_p, \phi')\), where
+\[
+\phi' \coloneq (f_1, \dots, f_m, \phi_{m+1}, \dots, \phi_n):
+U_p \longrightarrow \phi' U_p
+\]
+is a \(C^{\infty}\)-isomorphism, forms an \emph{adapted chart} for \(N\)
+relative to \(f^{-1} 0\).
+\end{corollary}
+
+\begin{lemma}
+\label{lem:embedded-submanifold-iff-regular-fibre}
+Let \(M\) be a manifold and \(S \subseteq M\) be a subset. Then \(S\) is a
+embedded submanifold of \(M\) with codimension \(k\) if and only if every point
+of \(S\) has a neighbourhood \(U \subseteq M\) such that \(U \cap S\) is the
+regular zero fibre of a \(C^{\infty}\)-isomorphism \(\phi: U \to \R^k\).
+\end{lemma}
+
+\begin{proof}
+Let \(\dim M \coloneq m\). (\(\implies\)) Assume \(S\) is a regular
+submanifold. For any \(p \in S\), take \((U, \phi)\) to be an adapted chart of
+\(M\) with respect to \(S\), so that
+\[
+\phi|_S = (\phi_1, \dots, \phi_{m-k}, 0, \dots, 0).
+\]
+Define \(\widehat\phi: U \to \R^k\) to be the \(C^{\infty}\)-isomorphism given
+by \(\widehat\phi \coloneq (\phi_{m-k+1}, \dots, \phi_m)\), so that one has
+\[
+S \cap U = \widehat\phi^{-1} 0.
+\]
+
+(\(\impliedby\)) For the converse, suppose that \(S\) admits a pair
+\((U, \widehat\phi: U \to \R^k)\) about each point \(p \in S\) such that
+\(U \cap S\) is the regular zero fibre of the \(C^{\infty}\)-isomorphism
+\(\widehat\phi\). Therefore, any \(C^{\infty}\)-isomorphism \(\phi: U \to \R^m\)
+such that
+\[
+\begin{tikzcd}
+U \ar[rr, "\widehat\phi"] \ar[rd, "\phi"']& &\R^k \\
+&\R^m \ar[ru, two heads] &
+\end{tikzcd}
+\]
+commutes, forms an adapted chart \((U, \phi)\) relative to \(S\) about
+\(p\). This shows that \(S\) is a relative submanifold of \(M\).
+\end{proof}
+
+\section{Rank of \texorpdfstring{\(C^{\infty}\)}{Smooth}-Morphisms}
+
+\begin{theorem}[Constant rank, then the fibre is a embedded submanifold]
+\label{thm:constant-rank-fibre-is-embedded-submanifold}
+Let \(f: N \to M\) be a \(C^{\infty}\)-morphism and \(q \in M\) be any point. If
+\(f\) has has a locally constant rank \(k\) at \(f^{-1} q\), then the fibre
+\(f^{-1} q\) is a embedded submanifold of \(N\) of codimension \(k\).
+\end{theorem}
+
+\begin{proof}
+Take any \(p \in f^{-1} q\) and, by the constant rank theorem, let \((U, \phi)\)
+be a chart centred at \(p\) and \((V, \psi)\) be a chart centred at \(f p = q\)
+such that
+\[
+\psi f \phi^{-1}(x_1, \dots, x_n) = (x_1, \dots, x_k, 0, \dots, 0) \in \R^m
+\]
+The zero fibre \((\psi f \phi^{-1})^{-1} 0\) is therefore the common zero fibre
+of the coordinates \(\bigcap_{j=1}^k (\psi f \phi^{-1})_j^{-1} 0\). Notice that
+\[
+\phi(f^{-1} q) = \phi (f^{-1}(\psi^{-1} 0)) = (\psi f \phi^{-1})^{-1} 0,
+\]
+therefore \(U \cap f^{-1} q = \bigcap_{j=1}^k \phi_j^{-1} 0\), proving that
+\((U, \phi)\) is an adapted chart of \(N\) about \(p\) with respect to
+\(f^{-1} q\).
+\end{proof}
+
+\begin{theorem}[Constant rank]
+\label{thm:constant-rank-theorem-manifolds}
+Let \(N\) and \(M\) be manifolds of dimensions \(n\) and \(m\),
+respectively. Given a \(C^{\infty}\)-morphism \(f: N \to M\) with local constant
+rank \(k\) in a neighbourhood of a \(p \in N\), there are charts \((U, \phi)\)
+centred at \(p\) and \((V, \phi)\) centred at \(f p\) such that
+\[
+\pi_j (\psi f \phi^{-1})|_{\phi U} = 0
+\]
+for all \(k < j \leq n\).
+\end{theorem}
+
+\begin{proof}
+Let \((U', \phi')\) be a chart about \(p\), and \((V', \psi')\) be a chart about
+\(f p\), and consider the \(C^{\infty}\)-morphism
+\[
+\psi' f \phi'^{-1}: \phi'(f^{-1} V \cap U) \longrightarrow \R^m.
+\]
+Since both \(\phi'\) and \(\psi'\) are \(C^{\infty}\)-isomorphism, it follows
+that \(\psi' f \phi'^{-1}\) has a \emph{local} constant rank \(k\) at
+\(\phi' p\). By \cref{thm:constant-rank-theorem} we conclude that there exists a
+\(C^{\infty}\)-isomorphism \(\phi''\) of a neighbourhood of \(\phi' p \in \R^n\)
+and a \(C^{\infty}\)-isomorphism \(\psi''\) of a neighbourhood of
+\(\psi f p \in \R^m\) for which
+\[
+\psi'' (\psi' f \phi'^{-1}) \phi''^{-1}(x_1, \dots, x_n)
+= (x_1, \dots, x_k, 0, \dots, 0).
+\]
+Therefore by letting \(\phi \coloneq \phi'' \phi'\) and \(\psi \coloneq \psi''
+\psi'\) we obtain the desired result.
+\end{proof}
+
+The following theorems are mere corollaries of the constant rank theorem: given
+a smooth map \(f: M \to N\), if \(f\) is an immersion at a point \(p\), then it
+has a locally constant rank \(m\) near \(p\), on the other hand, if \(f\) is a
+submersion at a point \(q\), it has a locally constant rank \(n\) near \(q\).
+
+\begin{theorem}[Immersion]
+\label{thm:immersion-rank-theorem}
+Let \(\theta: M \to N\) be a \(C^{\infty}\)-morphism, and \(\dim M = m\) while
+\(\dim N = n\). If \(\theta\) is an immersion at \(p \in M\), then there are
+charts \(\phi\) about \(p\) and \(\psi\) about \(\theta p\) such that the
+diagram
+\[
+\begin{tikzcd}
+M \ar[r, "\theta"] &N \ar[d, "\psi"] \\
+\R^m \ar[u, "\phi^{-1}"] \ar[r, hook] &\R^n
+\end{tikzcd}
+\]
+commutes in \(\Man\). That is, \(\theta\) locally acts as an inclusion about
+\(p\).
+\end{theorem}
+
+% \begin{proof}
+% Since \(\theta_{*}\) is a monomorphism, it follows that \(m \leq n\), thus the
+% inclusion \(\iota: \R^m \emb \R^n\) is well defined. Let \(\phi\) be any chart
+% of \(M\) centred at \(p\), and \(\psi'\) be any chart of \(N\) centred at
+% \(\theta p\). Since the inclusion is injective, \(\iota_{*}: \R^m \mono \R^n\)
+% is a monomorphism. By a possible permutation of coordinates, let
+% \[
+% \iota_{*} \R^m = \R^m \times 0^{n-m} \subseteq \R^n = \R^m \times \R^{n-m}.
+% \]
+% Defining the map \(i: \R^m \to \R^m \times \R^{n-m}\) as
+% \(i x \coloneq (x, 0)\), we see that the injective map
+% \(\zeta: \R^m \times \R^{n-m} \to \R^n\) mapping
+% \(\zeta(x, y) \coloneq \iota x + y\) makes the diagram
+% \[
+% \begin{tikzcd}
+% \R^m \ar[r, "\iota"] \ar[rd, bend right, "i"'] &\R^n \\
+% &\R^m \times \R^{n-m} \ar[u, "\zeta"']
+% \end{tikzcd}
+% \]
+% commute in \(\Man\). By construction, we have
+% \(\zeta_{*}(\R^m \times \{0\}^{n-m}) = \R^m \times \{0\}^{n-m}\), while
+% \(\zeta_{*}(\{0\}^m \times \R^{n-m}) = \{0\}^m \times \R^{n-m}\). This shows
+% that \(\zeta_{*}\) is a bijective linear map, thus a linear isomorphism. By the
+% inverse map theorem, there are neighbourhoods
+% \(U, V \subseteq \R^m \times \R^{n-m}\) of the origin, for which the induced map
+% \(\zeta: U \isoto V\) is a \(C^{\infty}\)-isomorphism. If we consider the
+% \(C^{\infty}\)-isomorphisms \(\psi \coloneq \zeta^{-1} \psi'\), we obtain \(\psi
+% \theta \phi^{-1} = \iota\) as wanted.
+% \end{proof}
+
+\begin{theorem}
+\label{thm:submersion}
+Let \(\theta: M \to N\) be a \(C^{\infty}\)-morphism. If \(\theta\) is a
+submersion at some point \(p \in M\), there are charts \(\phi\) about \(p\) and
+\(\psi\) about \(\theta p\) for which
+\[
+\begin{tikzcd}
+M \ar[r, "\theta"] &N \ar[d, "\psi"] \\
+\R^m \ar[u, "\phi^{-1}"] \ar[r, two heads] &\R^n
+\end{tikzcd}
+\]
+commutes in \(\Man\). That is, \(\theta\) locally acts as a projection about
+\(p\).
+\end{theorem}
+
+% \begin{proof}
+% Since \(\theta\) is a submersion at \(p\), then \(n \leq m\). Consider the
+% canonical projection \(\pi: \R^{m-n} \times \R^n \epi \R^n\) mapping
+% \((x, y) \mapsto y\), and consider \(\phi'\) to be a chart of \(M\) centred at
+% \(p\), and \(\psi\) to be a chart of \(N\) centred at \(\theta p\). By
+% permutating the coordinates at a neighbourhood of \(p\), assume
+% \(\ker \pi_{*} = \R^{m-n} \times \{0\}^n\). Define a change of coordinates
+% \(\zeta: \R^{m-n} \times \R^n \to \R^{m-n} \times \R^n\) as the map
+% \((x, y) \mapsto (x, \pi(x, y))\), so that
+% \(\ker \zeta_{*} \subseteq \ker \pi_{*}\) and
+% \(\ker \zeta_{*} \cap (\R^{m-n} \times \{0\}^n) = 0\)---therefore \(\zeta_{*}\)
+% is a monomorphism, defining an isomorphism at the origin. By the inverse map
+% theorem it follows that \(\zeta\) is a local \(C^{\infty}\)-isomorphism at
+% \(0\). Therefore, by making \(\phi \coloneq \zeta \phi'\), one has
+% \(\psi \theta \phi^{-1} = \pi\).
+% \end{proof}
+
+\begin{corollary}
+\label{cor:submersion-is-open}
+A smooth submersion is an \emph{open map}.
+\end{corollary}
+
+\begin{proof}
+Let \(f: M \to N\) be a smooth submersion and \(U \subseteq M\) be an open
+subset. Let \(f p \in f U\) be any point for which \(p \in U\). Applying the
+submersion theorem to \(f\), we can find a neighbourhood \(V \subseteq U\) of
+\(p\) for which \(f|_V\) acts as a projection, which implies that
+\(f V \subseteq f U\) is a neighbourhood for \(p\)---since projections are open
+morphisms. This proves that \(f U\) is an open set.
+\end{proof}
+
+\begin{theorem}
+\label{thm:embedded-submanifold-equivalent-definitions}
+Let \(N\) be an \(n\)-manifold, and \(M\) be an \(m\)-manifold. Then:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item If \(f: N \to M\) is a smooth embedding, then the image \(f N\) is an
+  embedded submanifold of \(M\) in the sense of
+  \cref{def:embedded-submanifold-2}.
+
+\item If \(N\) is an embedded submanifold of \(M\) in the sense of
+  \cref{def:embedded-submanifold-2}, then the canonical inclusion
+  \(\iota: N \emb M\) is a smooth embedding---thus \(N\) is an embedded
+  submanifold in the sense of \cref{def:embedded-submanifold}.
+\end{enumerate}
+This shows that the two definitions for embedded submanifolds are equivalent.
+\end{theorem}
+
+\begin{proof}
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item By the immersion theorem, let \((U, \phi)\) be a chart centred at \(p\)
+  and \((V, \psi)\) be a chart centred at \(f p\) such that
+  \[
+  \begin{tikzcd}
+  U \ar[r, "f"] &V \\
+  \phi U \ar[u, "\phi^{-1}"] \ar[r, hook] &\psi V \ar[u, "\psi^{-1}"']
+  \end{tikzcd}
+  \]
+  commutes---where \(\phi U \subseteq \R^n\) and \(\phi V \subseteq \R^m\). Then
+  \(f U\) is simply the common zero fibres of the last \(m-n\) coordinates of
+  \(\psi\), that is, \(f U = \bigcap_{j=n+1}^m \psi_j^{-1} 0\). Since \(f\) is
+  injective, it follows that \(f N\)---endowed with the subspace topology---is
+  isomorphic to \(N\). Therefore \(f U\) is open in \(f N\), thus there must
+  exist an open set \(V' \subseteq M\) such that \(V' \cap f N = f U\) and hence
+  \(V'\) is a neighbourhood of \(f p\). Since
+  \[
+  (V \cap V') \cap f N = V \cap f U = f U,
+  \]
+  it follows that \((V \cap V', \psi)\) is an adapted chart of \(M\) about \(f
+  p\) with respect to \(f N\). Therefore \(f N\) is an embedded submanifold in
+  the sense of \cref{def:embedded-submanifold-2}.
+
+\item Recall that both \(\iota N\) and \(N\) are endowed with the subspace
+  topology. Since \(\iota\) is injective, the induced map
+  \(\iota: N \to \iota N\) is a topological isomorphism---therefore \(\iota\) is
+  a topological embedding. In order to show that \(\iota\) is an immersion, let
+  \(p \in N\) be any point, and take an adapted chart \((V, \psi)\) of \(M\)
+  about \(p\) with respect to \(N\)---that is,
+  \(V \cap N = \bigcap_{j=n+1}^m \psi_j^{-1} 0\). Define \(\psi_N \coloneq
+  (\psi_1, \dots, \psi_n): V \cap N \to \psi_N(V \cap N) \subseteq \R^n\), then
+  \[
+  \begin{tikzcd}
+  V \cap N \ar[r, hook, "\iota"] &V \\
+  \psi_N(V \cap N) \ar[u, "\psi_N^{-1}"] \ar[r, hook]
+  &\psi V \ar[u, "\psi^{-1}"']
+  \end{tikzcd}
+  \]
+  commutes, showing that \(\iota\) is an immersion.
+\end{enumerate}
+\end{proof}
+
+\section{Transversality}
+
+\begin{definition}[Transversal \(C^{\infty}\)-morphism]
+\label{def:transversal-smooth-morphism}
+Let \(M\) be a manifold and \(S \subseteq M\) be an embedded submanifold. A
+\(C^{\infty}\)-morphism \(f: N \to M\) is said to be \emph{transversal} to
+\(S\), denoted \(f \trans S\), if for every \(p \in f^{-1} S\) one has
+\[
+f_{*}(T_p N) + T_{f p} S = T_{f p} M.
+\]
+
+Moreover, we can equally define this notion for embedded submanifolds: let \(N\)
+and \(L\) be embedded submanifolds of \(M\). We say that \(N\) \emph{intersects}
+\(L\) \emph{transversely}, denoted \(N \trans L\), if for any \(p \in N \cap L\)
+we have
+\[
+T_p N + T_p L = T_p M.
+\]
+\end{definition}
+
+\begin{theorem}[Transversality]
+\label{thm:transversality-theorem}
+Let \(M\) be a manifold, and \(S \subseteq M\) be a embedded submanifold with
+\(\codim_M S = k\). Then every \(C^{\infty}\)-morphism \(f: N \to M\) that is
+\emph{transversal} to \(S\) is such that \(f^{-1} S\) is a embedded submanifold
+of codimension \(k\) in \(N\).
+\end{theorem}
+
+\begin{proof}
+Let \(\dim M \coloneq m\) and \(\dim N \coloneq n\). Since \(S\) is a regular
+submanifold of \(M\), given any point \(p \in f^{-1} S\), we can find an adapted
+chart \((U, \phi)\) of \(M\) with respect to \(S\) that is centred at
+\(f p \in S\) and such that
+\[
+U \cap S = \{q \in M \colon \phi_j q = 0 \text{ for each } m - k < j \leq m\},
+\]
+that is, \(U \cap S\) is the zeros of the last \(m-k\) coordinates of \(\phi\).
+
+Define \(g: U \to \R^k\) as the \(C^{\infty}\)-isomorphism given by those last
+\(m-k\) coordinates:
+\[
+g \coloneq (\phi_{m-k+1}, \dots, \phi_m),
+\]
+so that \(g|_S = 0\). Since \(f p \in U\) then
+\(f^{-1} U \cap f^{-1} S\) is a neighbourhood for \(p\) in \(N\), and
+\(p \in (g f|_{f^{-1} U})^{-1} 0\) because \(f p \in S\), therefore
+\[
+f^{-1} U \cap f^{-1} S = (g f|_{f^{-1} U})^{-1} 0.
+\]
+
+We shall prove that \(0\) is a regular value of \(g f|_{f^{-1} U}\) so that
+\(f^{-1} U \cap f^{-1} S\) is a regular zero fibre of the map. To that
+end, let \(z \in T_0 \R^k\) and \(x \in (g f|_{f^{-1} U})^{-1} 0\) be any
+two elements. Since \(g\) is an isomorphism, \(0\) is a regular value of \(g\),
+therefore there exists \(y \in T_{f x} M\) for which \(g_{*\, f x}(y) =
+z\). Using the fact that \(f\) is transversal to \(S\), there exists
+\(y_0 \in T_{f x} S\) and \(v \in T_x N\) for which \(y = y_0 + f_{*\, x}
+v\). Recall that \(g|_S = 0\) from construction, therefore
+\(g_{*\, f x}(y_0) = 0\). Hence one has
+\[
+z = g_{*\, f x} y
+= g_{*\, f x}(y_0 + f_{*\, x} v)
+= g_{*\, f x} f_{*\, x} v
+= (g f)_{*\, x} v,
+\]
+showing that \((g f)_{*\, x}\) is surjective---hence \(x\) is a regular point of
+\(g f|_{f^{-1} U}\). This shows that \(0\) is a regular value of
+\(g f|_{f^{-1} U}\), therefore the subset \(f^{-1} U\) is a
+neihbourhood of \(p\) satisfying the desired condition specified in
+\cref{lem:embedded-submanifold-iff-regular-fibre}---moreover, since \(p\) was any
+point of \(f^{-1} S\), the theorem follows by just mentioned lemma.
+\end{proof}
+
+\begin{theorem}
+\label{thm:transversal-intersection-theorem}
+Let \(M\) be an \(m\)-manifold, and both \(N\) and \(L\) be submanifolds---whose
+dimensions are \(n\) and \(\ell\), respectively. If \(N \trans L\) in \(M\),
+then \(N \cap L\) is a submanifold of \(M\) with dimension
+\(\dim N \cap L = n + \ell - m\).
+% Furthermore, we have local isomorphisms
+% \(N \iso \R^n \times \{0\}\) and \(L \iso \{0\} \times \R^{\ell}\).
+\end{theorem}
+
+\begin{proof}
+Let \(p \in N \cap L\) be any point. Let \((U, \phi)\) and \((V, \psi)\) be
+adapted charts of \(M\) about \(p\) with respect to \(N\) and \(L\). Let
+\(W \coloneq U \cap V\) and define the induced maps
+\[
+\eta \coloneq (\phi_{n+1}, \dots, \phi_m): W \longrightarrow \R^{m-n}
+\quad \text{and} \quad
+\lambda \coloneq (\psi_{\ell+1}, \dots, \psi_m): W \longrightarrow \R^{m-\ell}
+\]
+so that \(W \cap N = \eta^{-1} 0\) and \(W \cap L = \lambda^{-1} 0\) are regular
+fibres of \(\eta\) and \(\lambda\), respectively.
+
+Consider the product map
+\(\eta \times \lambda: W \to \R^{m-n} \times \R^{m-\ell}\)---we wish to show
+that \((\eta \times \lambda)^{-1} 0 = W \cap (N \cap L)\) is a regular fibre of
+\(\eta \times \lambda\), so that \((W, \phi \times \psi)\) is an adapted chart
+of \(M\) about \(p\) with respect to \(N \cap L\). To that end, we shall
+consider the differential
+\((\eta \times \lambda)_{*}: T_p M \to \R^{m - n} \times \R^{m - \ell}\), whose
+kernel is
+\[
+\ker(\eta \times \lambda)_{*} = \ker \eta_{*} \cap \ker \lambda_{*}
+= T_p N \cap T_p L.
+\]
+On the other hand, we know that
+\[
+\dim \ker(\eta \times \lambda)_{*}
+= \dim T_p N + \dim T_p L - \dim T_p M
+= n + \ell - m,
+\]
+therefore by the rank plus nullity theorem one has
+\[
+\rank(\eta \times \lambda)_{*} = m - (n + \ell - m) = 2 m - n - \ell
+= \dim (\R^{m-n} \times \R^{m-\ell})
+\]
+which shows that \((\eta \times \lambda)_{*}\) is an epimorphism at \(p\)---thus
+\(0\) is a regular value of \(\eta \times \lambda\). This concludes the proof
+that \(N \cap L\) is an embedded submanifold of \(M\) with dimension
+\(n + \ell - m\).
+
+% For the last proposition, let \((U, \gamma: U \to \R^{n + \ell - m})\) be the
+% induced chart on \(N \cap L\) given by an adapted chart of \(M\) about \(p\)
+% relative to \(N \cap L\). Define a map
+% \[
+% \theta \coloneq (\lambda, \gamma, \eta): U \longrightarrow
+% \R^{m - \ell} \times \R^{n + \ell - m} \times \R^{m - n}.
+% \]
+% Notice that \(T_p(N \cap L) \subseteq \ker \eta_{*} \cap \ker \lambda_{*}\),
+% therefore \(\R^{n + \ell - m} \emb \theta_{*} U\) exists.
 \end{proof}
 
 

@@ -91,10 +91,8 @@
 \let\colon\relax
 \DeclareMathSymbol{\colon}{\mathrel}{operators}{"3A}
 
-\newcommand{\disj}{\squarecup}
-
 % Disjoint unions over sets
-\renewcommand{\disj}{\amalg}     % Disjoint union
+\newcommand{\disj}{\amalg}     % Disjoint union
 \newcommand{\bigdisj}{\coprod} % Indexed disjoint union
 
 \DeclareMathOperator{\Log}{Log}
@@ -140,7 +138,7 @@
 \newcommand{\nat}{\Rightarrow}
 
 % Natural isomorphism
-\newcommand{\isonat}{\xRightarrow{\raisebox{-.8ex}[0ex][0ex]{\(\arrowiso\)}}}
+\newcommand{\isonat}{\xRightarrow{\raisebox{-.6ex}[0ex][0ex]{\(\arrowiso\)}}}
 
 % Embedding arrow
 \newcommand{\emb}{\hookrightarrow}
@@ -179,7 +177,7 @@
 % ** Categories **
 
 % Font for categories
-\newcommand{\cat}{\mathcal}
+\newcommand{\cat}{\texttt}
 \newcommand{\catfont}{\texttt}
 
 % Opposite category
@@ -189,17 +187,23 @@
 \newcommand{\Set}{{\catfont{Set}}}          % Sets
 \newcommand{\FinSet}{{\catfont{FinSet}}}    % Finite sets
 \newcommand{\pSet}{{\catfont{pSet}}}        % Pointed sets
+\newcommand{\tOrd}{{\catfont{tOrd}}}        % Totally ordered sets
 
 \newcommand{\Vect}{{\catfont{Vect}}}        % Vector spaces
 \newcommand{\FinVect}{{\catfont{FinVect}}}  % Finite vector spaces
 
 \newcommand{\TVect}{{\catfont{TVect}}}      % Topological vector spaces
 \newcommand{\Ban}{{\catfont{Ban}}}          % Banach spaces
-\newcommand{\Man}{{\catfont{Man}}}          % Manifolds
 
 \newcommand{\Grp}{{\catfont{Grp}}}          % Groups
 \newcommand{\Ab}{{\catfont{Ab}}}            % Abelian groups
-\newcommand{\GSet}[1]{{{#1}\text{-}\Set}}            % Abelian groups
+\newcommand{\GSet}[1]{{{#1}\text{-}\Set}}   % G-sets
+\newcommand{\Grpd}{{\catfont{Grpd}}}        % Groupoids
+
+\newcommand{\Mon}{{\catfont{Mon}}}          % Monoidal category
+\newcommand{\coMon}{{\catfont{coMon}}}      % coMonoidal category
+\newcommand{\rActMon}{{\catfont{rActMon}}}  % right action category
+\newcommand{\lActMon}{{\catfont{lActMon}}}  % left action category
 
 \newcommand{\Graph}{{\catfont{Graph}}}      % Graphs
 \newcommand{\SimpGraph}{{\catfont{sGraph}}} % Simple graphs
@@ -234,6 +238,8 @@
 \DeclareMathOperator{\dom}{dom}   % Domain
 \DeclareMathOperator{\codom}{cod} % Codomain
 \DeclareMathOperator{\supp}{supp} % Support
+
+\DeclareMathOperator{\Sk}{sk} % Skeleton
 
 % Yoneda embedding
 \newcommand{\yo}{\text{\usefont{U}{min}{m}{n}\symbol{'210}}}
@@ -302,7 +308,12 @@
 \newcommand{\Simp}[1]{{\catfont{Simp}(#1)}}     % Simplicial category
 \newcommand{\CoSimp}[1]{{\catfont{CoSimp}(#1)}} % Cosimplicial category
 
+\newcommand{\splx}{\Delta}
+\newcommand{\splxtop}{\Delta_{\text{top}}}
+
 \DeclareMathOperator{\Sing}{Sing} % Singular complex functor
+\DeclareMathOperator{\Nondeg}{nd} % Non-degenerate simplices
+\newcommand{\disc}{\text{disc}}   % discrete
 
 % attaching spaces
 \newcommand{\att}{\amalg}     % Disjoint union
@@ -336,6 +347,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ** Differentiable structures **
 
+\newcommand{\Bun}{{\catfont{Bun}}} % Bundle category
+\newcommand{\Man}{{\catfont{Man}}} % Manifolds
+
 % Norm
 \DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
 
@@ -346,6 +360,13 @@
 \DeclareMathOperator{\Hess}{Hess} % Hessian
 \DeclareMathOperator{\Jac}{Jac}   % Jacobian
 \DeclareMathOperator{\Curl}{Curl} % Curl
+\DeclareMathOperator{\VecField}{\mathfrak{X}}
+
+\DeclareMathOperator{\Grass}{Grass} % Grassmann variety
+\DeclareMathOperator{\Stie}{Stie}      % Stiefel variety
+
+
+\newcommand{\trans}{\pitchfork} % Transversality
 
 % Set operators
 \DeclareMathOperator{\Vol}{vol}   % Volume
@@ -368,7 +389,3 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ** MACROS END HERE **
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\author{Luiz G. Mugnaini A.}
-\date{Last modification: \today}
-\title{Deep Dive}
