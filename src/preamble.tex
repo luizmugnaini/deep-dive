@@ -28,6 +28,7 @@
 \usepackage{amssymb}
 \usepackage{stmaryrd}
 \usepackage{tikz-cd}
+\usepackage{tqft}
 
 % Font
 \usepackage[no-math]{newpxtext}
@@ -204,6 +205,7 @@
 \newcommand{\coMon}{{\catfont{coMon}}}      % coMonoidal category
 \newcommand{\rActMon}{{\catfont{rActMon}}}  % right action category
 \newcommand{\lActMon}{{\catfont{lActMon}}}  % left action category
+\newcommand{\BrMonCat}{{\catfont{BrMonCat}}} % Cat of braided monoidal cats
 
 \newcommand{\Graph}{{\catfont{Graph}}}      % Graphs
 \newcommand{\SimpGraph}{{\catfont{sGraph}}} % Simple graphs
@@ -228,6 +230,8 @@
 
 % Operators
 \DeclareMathOperator{\Hom}{Mor}   % Morphisms
+\DeclareMathOperator{\Mono}{Mono} % Monomorphisms
+\DeclareMathOperator{\Epi}{Epi}   % Epimorphisms
 \DeclareMathOperator{\Fct}{Fct}   % Functors
 \DeclareMathOperator{\Obj}{Obj}   % Objects
 \DeclareMathOperator{\Mor}{Mor}   % Morphisms, again
@@ -238,8 +242,6 @@
 \DeclareMathOperator{\dom}{dom}   % Domain
 \DeclareMathOperator{\codom}{cod} % Codomain
 \DeclareMathOperator{\supp}{supp} % Support
-
-\DeclareMathOperator{\Sk}{sk} % Skeleton
 
 % Yoneda embedding
 \newcommand{\yo}{\text{\usefont{U}{min}{m}{n}\symbol{'210}}}
@@ -284,6 +286,10 @@
 \DeclareMathOperator{\Orb}{Orb}
 \DeclareMathOperator{\Stab}{Stab}
 
+% Left and right group actions
+\newcommand{\laction}{\circlearrowright}
+\newcommand{\raction}{\circlearrowleft}
+
 % Ring ideals font
 \newcommand{\ideal}[1]{\mathfrak{#1}}
 
@@ -315,6 +321,8 @@
 \DeclareMathOperator{\Nondeg}{nd} % Non-degenerate simplices
 \newcommand{\disc}{\text{disc}}   % discrete
 
+\DeclareMathOperator{\Sk}{sk} % Skeleton
+
 % attaching spaces
 \newcommand{\att}{\amalg}     % Disjoint union
 \newcommand{\bigatt}{\coprod} % Indexed disjoint union
@@ -328,15 +336,19 @@
 
 
 % Functors on topological spaces
+\DeclareMathOperator{\Disc}{Disc}       % Discrete topology: Set -> Top
 \DeclareMathOperator{\Cone}{Cone}       % Cone
 \DeclareMathOperator{\Cyl}{Cyl}         % Cylinder
 \DeclareMathOperator{\Susp}{S}          % Suspension
 \DeclareMathOperator{\rSusp}{\Sigma}    % Reduced suspension
 \DeclareMathOperator{\Path}{Path}       % Path object
+\DeclareMathOperator{\Loop}{\Omega}       % Loop space
 \DeclareMathOperator{\Eval}{eval}       % Evaluation map
 \DeclareMathOperator{\curry}{curry}     % Currying a map
 \DeclareMathOperator{\uncurry}{uncurry} % Currying a map
 \DeclareMathOperator{\co}{co}           % Compact open co(K, U)
+
+\newcommand{\lift}{\widehat} % Lifting of path and stuff
 
 % Set operators
 \DeclareMathOperator{\Cl}{Cl}       % Closure
@@ -348,6 +360,7 @@
 % ** Differentiable structures **
 
 \newcommand{\Bun}{{\catfont{Bun}}} % Bundle category
+\newcommand{\VecBun}{{\catfont{VecBun}}} % Vector Bundle category
 \newcommand{\Man}{{\catfont{Man}}} % Manifolds
 
 % Norm
@@ -365,6 +378,8 @@
 \DeclareMathOperator{\Grass}{Grass} % Grassmann variety
 \DeclareMathOperator{\Stie}{Stie}      % Stiefel variety
 
+% Vector bundle
+\DeclareMathOperator{\zerosec}{Zero} % Zero section
 
 \newcommand{\trans}{\pitchfork} % Transversality
 

@@ -1,0 +1,123 @@
+\section{Classification of 1-Manifolds}
+
+\begin{definition}[Parametrization by arc-length]
+\label{def:parametrization-by-arc-length}
+Let \(I \subseteq \R\) be an interval, and \(M\) be a smooth manifold. We say that a
+\(C^{\infty}\)-morphism \(f: I \to M\) is a \emph{parametrization by arc-length} if the
+restriction \(f: I \to f I\) is a \(C^{\infty}\)-isomorphism, and if the velocity
+vector \(f_{*\, s} 1 \in T_{f s} M\) is \emph{unitary} for each \(s \in I\).
+\end{definition}
+
+\begin{lemma}
+\label{lem:image-components-arc-len-parametrization}
+Consider a pair of arc-length parametrizations
+\(I \xrightarrow f M \xleftarrow g J\). Then \(f I \cap g J\) has at most two
+connected components. One has the following properties concerning the number of
+connected components:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item If \(f I \cap g J\) has only \emph{one} connected component, then one can
+  \emph{extend} \(f\) to an arc-length parametrization of \(f I \cup g J\).
+\item If \(f I \cap g J\) has \emph{two} components, then \(M \iso S^1\).
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Consider the \(C^{\infty}\)-isomorphism
+\[
+g^{-1} f: f^{-1}(f I \cap g J) \isoto g^{-1}(f I \cap g J),
+\]
+sending open sets of \(I\) to open sets of \(J\), and with derivative \(\pm 1\)
+everywhere---from the definition of the parametrization. Let \(\Gamma\) be the
+pullback of the pair \((f, g)\)---that is, composed of pairs
+\((s, t) \in I \times J\) such that \(f s = g t\). Therefore \(\Gamma\) is a
+closed subset of \(I \times J\), with the product topology, and consists of line
+segments with slope \(\pm 1\) by the behaviour of \(g^{-1} f\). Since
+\(g^{-1} f\) is an isomorphism, it must be the case that the line segments don't
+end abruptly, but extend from edge to edge of \(I \times J\). From the fact that
+\(g^{-1} f\) is injective and constant derivative, it must be the case that
+\(\Gamma\) is composed of at most two line segments---furthermore, if \(\Gamma\)
+has two components, then they must have the same slope and the start and end
+edges has to be distinct. We analyse the number of components of \(\Gamma\):
+\begin{itemize}\setlength\itemsep{0em}
+\item If \(\Gamma\) has a single component, then one can extend \(g^{-1} f\) to
+  a line \(\ell: \R \to \R\). Therefore the map
+  \(g \ell: I \cup \ell^{-1} J \to f I \cup g J\) forms an extension of \(f\).
+
+\item If \(\Gamma\) has two components, let those be the line segments
+  connecting \((a, \alpha) \to (b, \beta)\) and
+  \((c, \gamma) \to (d, \delta)\)---whose points lie in \(I \times J\), with
+  ends in the boundary of the square, that is, \(I = (a, d)\) and
+  \(J = (\gamma, \delta)\) for instance. By merely a translation of \(J\), we
+  may assume that \(\gamma = c\) and \(\delta = d\), for which we obtain the
+  relations
+  \[
+  a < b \leq c < d \leq \alpha < \beta.
+  \]
+  We may define a continuous maps \(\theta: [a, \beta] \to \R\) given by
+  \(t \mapsto \frac{2 \pi t}{\alpha - a}\), and \(h: S^1 \to M\) mapping
+  \[
+  h(\cos(\theta t), \sin(\theta t)) \coloneq
+  \begin{cases}
+  f t, &\text{if } a < t < d \\
+  g t, &\text{if } c < t < \beta
+  \end{cases}
+  \]
+  which is well defined since \(f\) and \(g\) agree on \([c, d]\) due to the
+  translation of \(J\). Since \(h S^1\) is a compact open set of \(M\), it
+  follows that it must be the case that \(h S^1 = M\). Therefore, since the
+  restrictions of \(f\) and \(g\) are \(C^{\infty}\)-isomorphisms, it follows
+  that \(h\) is a \(C^{\infty}\)-isomorphism.
+\end{itemize}
+\end{proof}
+
+\begin{theorem}[Classification of \(1\)-manifolds]
+\label{thm:classification-of-1-manifolds}
+Any smooth connected \(1\)-manifold \(M\) is \(C^{\infty}\)-isomorphic to either
+the \emph{circle} \(S^1\) or to some \emph{interval} of real numbers:
+\([0, 1]\), \([0, 1)\), \((0, 1]\) or \((0, 1)\). In fact, the following is a
+complete classification list:
+\begin{enumerate}[(1)]\setlength\itemsep{0em}
+\item If \(M\) is compact without boundary, then \(M\) is
+  \(C^{\infty}\)-isomorphic to a circle.
+
+\item If \(M\) is compact with boundary, then \(M\) is \(C^{\infty}\)-isomorphic
+  to a closed interval.
+
+\item If \(M\) is non-compact without boundary, then \(M\) is
+  \(C^{\infty}\)-isomorphic to an open interval.
+
+\item If \(M\) is non-compact with boundary, then \(M\) is
+  \(C^{\infty}\)-isomorphic to a half-open interval.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Given a parametrization by arc-length \(f': J \to M\), via
+\cref{lem:image-components-arc-len-parametrization} one can extend \(f'\) to a
+\emph{maximal} arc-length parametrization \(f: I \to M\)---so that \(I\) is the
+maximal interval \(f\) can be extended to.
+
+Assuming \(M \not\iso S^{1}\), suppose that there exists a limit point \(x\) of
+\(f I\) with \(x \in M \setminus f I\), so that \(f\) is not surjective. Let
+\(U\) be a neigbourhood of \(x\) and \(g: I' \to U\) be an arc-length
+parametrization of \(U\). From
+\cref{lem:image-components-arc-len-parametrization} we can use \(g\) to extend
+\(f\) to a parametrization \(f I \cup g J\), contradicting the hypothesis of
+maximality of \(f\).
+\end{proof}
+
+\begin{corollary}
+\label{cor:1-manifold-boundary-even-number-of-points}
+The boundary of a compact \(1\)-manifold has an \emph{even} number of points.
+\end{corollary}
+
+\begin{proof}
+Indeed, if \(M\) is a compact \(1\)-manifold with boundary, then it's
+isomorphic to the disjoint union of a collection of closed intervals, each of
+which has two boundary points, thus \(M\) has an even number of boundary points.
+\end{proof}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../../deep-dive"
+%%% End:

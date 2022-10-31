@@ -244,6 +244,32 @@ by \(g^{-1}\) in both sides we obtain \((g^{-1} \ell g) a = a\). Therefore,
 \(\Stab_G(b) = g \Stab_G(a) g^{-1}\).
 \end{proof}
 
+\section{Topological Groups}
+
+\subsection{Construction and Properties}
+
+\todo[inline]{Study topological groups on Dieck}
+
+\subsection{Actions on Topological Spaces}
+
+\begin{definition}[Orbit space]
+\label{def:orbit-space}
+Let \(X\) be a topological space, and a topological group \(G\) together with a
+left action on \(X\). We define the \emph{orbit space} of the \(G\)-space \(X\)
+to be the set
+\[
+X/G \coloneq X/{x \sim \Orb_G(x)}
+\]
+together with the quotient topology given by the canonical projection
+\(X \epi X/G\).
+\end{definition}
+
+\begin{definition}[\(G\)-stable]
+\label{def:G-stable}
+Given a \(G\)-space \(X\), a subset \(A \subseteq X\) is said to be \(G\)-stable
+if for every pair \((g, a) \in G \times A\) we have \(g a \in A\).
+\end{definition}
+
 \section{Group Objects}
 
 \begin{definition}[Group object]

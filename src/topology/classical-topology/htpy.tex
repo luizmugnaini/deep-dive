@@ -1539,10 +1539,10 @@ For each \(0 \leq j < k\) let \(g_j \in \Path_{B_j \cap B_{j+1}}(x_j, f(a_j))\),
 where \(x_j \in \mathcal{X}\) as in the first paragraph---and \(x_0, x_k
 \coloneq p\), with constant paths \(g_0, g_k \coloneq \const_p\). Notice that
 \begin{align*}
-f &\simht f_k \dots f_1 \\
-  &\simht g_k^{-1} f_k (g_{k-1} g_{k-1}^{-1}) \dots (g_2 g_2^{-1}) f_2 (g_1 g_1^{-1})
+f &\simht f_k \cdots f_1 \\
+  &\simht g_k^{-1} f_k (g_{k-1} g_{k-1}^{-1}) \cdots (g_2 g_2^{-1}) f_2 (g_1 g_1^{-1})
     f_1 g_0 \\
-  &\simht (g_k^{-1} f_k  g_{k-1}^{-1}) \dots (g_1^{-1} f_1 g_0), \\
+  &\simht (g_k^{-1} f_k  g_{k-1}^{-1}) \cdots (g_1^{-1} f_1 g_0), \\
 \end{align*}
 where \(g_j^{-1} f_j g_{j-1} \in \Path_{B_j}(x_{j-1}, x_j)\) for all
 \(0 < j \leq k\). Since each \(B_j\) is simply connected, then
@@ -1918,4 +1918,51 @@ the other hand, the reflection \(\rho: S^1 \to S^1\) maps
 \(e^{2 \pi \img t} \mapsto e^{-2 \pi \img t}\)---thus \(\rho = e_{-1}\),
 implying in \(\deg \rho = -1\). From the latter two considerations, the last
 proposition follows.
+\end{proof}
+
+\begin{example}
+\label{exp:null-homotopic-has-degree-zero}
+A null-homotopic map \(f: S^1 \to S^1\) has \(\deg f = 0\), since it's homotopic
+to a constant map.
+\end{example}
+
+\begin{corollary}
+\label{cor:circle-not-contractible}
+The circle \(S^1\) is not contractible.
+\end{corollary}
+
+\begin{proof}
+Since \(\deg \Id_{S^1} = 1\), from our considerations from
+\cref{exp:null-homotopic-has-degree-zero} we conclude that \(\Id_{S^1}\) isn't
+null-homotopic and therefore there exists no contraction of the circle.
+\end{proof}
+
+\begin{corollary}
+\label{cor:no-retraction-from-disk-to-circle}
+There exists no retraction \(D^2 \to S^1\).
+\end{corollary}
+
+\begin{proof}
+Suppose, for the sake of contradiction, that there exists a retraction \(r: D^2
+\to S^1\) such that \(r \iota = \Id_{S^1}\), where \(\iota: S^1 \emb D^2\) is
+the canonical inclusion. Since \(D^2\) is a contractible space, then \(r\) is
+null-homotopic. This would imply that \(r \iota\) was null-homotopic and thus
+would be \(\Id_{S^1}\), which contradicts
+\cref{cor:circle-not-contractible}. Therefore \(r\) cannot exist.
+\end{proof}
+
+\begin{theorem}[Brouwer's fixed point]
+\label{thm:brouwer-fixed-point}
+Every continuous map \(D^2 \to D^2\) has a fixed point.
+\end{theorem}
+
+\begin{proof}
+Let \(f: D^2 \to D^2\) be any continuous map. Suppose, for the sake of
+contradiction, that \(f\) admits no fixed point. We construct a map
+\(r: D^2 \to S^1\) as follows: for each \(x \in D^2\), since \(f x \neq x\), we
+can define a point \(r x \in S^1\) given by
+\(r x \coloneq \frac{f x - x}{\| fx - x \|}\). Notice \(r\) defines a retraction
+of the disk to the sphere, contradicting the result of
+\cref{cor:no-retraction-from-disk-to-circle}, therefore there must exist at
+least one point of \(f\).
 \end{proof}

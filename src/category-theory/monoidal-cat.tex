@@ -573,7 +573,89 @@ a \otimes 1 \ar[rr, "\gamma_{(a, 1)}"]
 should commute for all triples \((a, b, c)\) of objects of \(\cat M\).
 \end{definition}
 
-\todo[inline]{Continue braided}
+\begin{definition}[Braided monoidal category]
+\label{def:braided-monoidal-category}
+A monoidal category \((\cat M, \otimes, 1)\) is said to be \emph{braided} if it
+is endowed with a braiding \(\gamma\). We shall denote this data shortly by
+\((\cat M, \gamma)\).
+\end{definition}
+
+\begin{corollary}
+\label{cor:braiding-morphisms}
+For any given pair of morphisms \(f: a \to b\) and \(g: c \to d\) in a braided
+monoidal category \(\cat M\), we have
+\[
+(g \otimes f) \gamma_{(a, c)} \iso \gamma_{(b, d)} (f \otimes g).
+\]
+\end{corollary}
+
+\begin{definition}[Braided monoidal functor]
+\label{def:braided-monoidal-functor}
+A monoidal functor \(F: (\cat A, \gamma) \to (\cat B, \widehat \gamma)\) between
+braided monoidal categories is said to be a \emph{braided monoidal functor} if
+for every pair of objects \(a, b \in \cat A\) the braiding coherence square
+\[
+\begin{tikzcd}
+F a \otimes F b \ar[r, "\widehat\gamma"] \ar[d, "\dis"']
+&F b \otimes F a \ar[d, "\dis"] \\
+F (a \otimes b) \ar[r, "F \gamma"'] &F (b \otimes a)
+\end{tikzcd}
+\]
+commutes in \(\cat B\).
+\end{definition}
+
+\begin{corollary}
+\label{cor:composition-of-braided-monoidal-functors}
+The composition of braided monoidal functors is again a braided monoidal
+functor.
+\end{corollary}
+
+\begin{proof}
+Indeed, if
+\((\cat A, \gamma) \xrightarrow F (\cat B, \widehat \gamma) \xrightarrow G (\cat
+C, \widetilde \gamma)\) are braided monoidal functors, then for every pair
+\(a, b \in \cat A\) one has the following commutative diagram in \(\cat C\):
+\[
+\begin{tikzcd}
+G F a \otimes G F b
+\ar[r, "\widetilde \gamma"]
+\ar[d, "\dis"']
+&GF b \otimes GF a
+\ar[d, "\dis"]
+\\
+G(F a \otimes F b)
+\ar[r, "G \widehat \gamma"]
+\ar[d, "\dis"']
+&G (F b \otimes F a)
+\ar[d, "\dis"]
+\\
+GF (a \otimes b)
+\ar[r, "G F \gamma"']
+&GF (b \otimes a)
+\end{tikzcd}
+\]
+\end{proof}
+
+\begin{definition}
+\label{def:category-of-braided-monoidal}
+We define a category \(\BrMonCat\) composed of braided monoidal categories and
+braided monoidal functors between them.
+\end{definition}
+
+\begin{definition}[Symmetric monoidal category]
+\label{def:symmetric-monoidal-category}
+A braided monoidal category \((\cat M, \gamma)\) is said to be \emph{symmetric}
+if for any two \(a, b \in \cat M\) the triangle
+\[
+\begin{tikzcd}
+a \otimes b \ar[rr, "\Id_{a \otimes b}"]
+& &a \otimes b \ar[ld, "\gamma_{(a, b)}"] \\
+&b \otimes a \ar[ru, "\gamma_{(b, a)}"] &
+\end{tikzcd}
+\]
+commutes in \(\cat M\). A morphism between symmetric monoidal categories is a
+braided monoidal functor between them.
+\end{definition}
 
 \end{document}
 %%% Local Variables:

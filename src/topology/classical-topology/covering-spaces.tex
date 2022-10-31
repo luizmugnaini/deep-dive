@@ -244,6 +244,415 @@ Therefore, by \cref{eq:van-kampen-grp-2,eq:van-kampen-grp-3} we have
 \]
 as wanted.
 
+\section{Covering Spaces}
+
+\subsection{Initial Constructions}
+
+\begin{definition}[Covering space]
+\label{def:covering-space}
+A surjective continuous map \(p: E \to B\) is said to be a \emph{covering space
+  over \(B\)} if for every point \(x \in B\), there exists a neigbourhood
+\(U \subseteq B\) of \(x\) that is \emph{evenly covered} by \(p\), that is:
+there exists a bundle isomorphism over \(B\) between the pullback\footnote{It
+  should be noted that the pullback of \(p\) over \(U\) is nothing more than the
+  induced bundle \(\iota^{*} p\) given by the inclusion \(\iota: U \emb B\).} of
+\(p\) over \(U\) and a product bundle \(\pi: U \times E_x \to U\) with
+\emph{discrete\footnote{Here, discrete means a space together with the discrete
+    topology. We shall make use of the functor \(\Disc: \Set \to \Top\) mapping
+    a bare set \(S\) to the topological space \(\Disc S\) with underlying set
+    \(S\) and endowed with the discrete topology.} fibre}
+\(E_x = p^{-1} x\). Diagrammatically, one has that the diagram
+\[
+\begin{tikzcd}
+U \times E_x \ar[r, "\dis"] \ar[rd, "\pi"']
+&p^{-1} U \ar[r, hook] \ar[d]
+\ar[rd, "\lrcorner", phantom, very near start]
+&E \ar[d, "p"] \\
+&U \ar[r, hook] &B
+\end{tikzcd}
+\]
+commutes in \(\Top\), where the topological isomorphism
+\(U \times E_x \isoto p^{-1} U\) is explicitly given by \((u, e) \mapsto e\).
+\end{definition}
+
+\begin{corollary}
+\label{cor:covering-induces-monomorphism-fundamental-grps}
+Given a covering \(p: E \epi B\), the induced morphism of groups
+\[
+p_{*}: \pi_1(E, e) \mono \pi_1(B, p e)
+\]
+is a monomorphism for any \(e \in E\).
+\end{corollary}
+
+\begin{corollary}
+\label{cor:covering-space-is-locally-top-iso}
+A covering space is a local topological isomorphism.
+\end{corollary}
+
+\begin{proof}
+Given a covering space \(p: E \to B\) and \(x \in B\), we can consider the
+neighbourhood \(U \subseteq B\) of \(x\) such that \(p\) admits a trivialization
+\(\phi: p^{-1} U \isoto U \times E_x\). Since \(E_x\) is discrete, then
+\(U \times E_x \iso \bigdisj_{e \in E_x} U \times \{e\}\) and certainly
+\(U \times \{e\} \iso U\). Therefore \(p\) yields an isomorphism
+\begin{equation}\label{eq:covering-space-sheet}
+U_e \coloneq \phi^{-1}(U \times \{e\}) \iso U,
+\end{equation}
+proving that \(p\) is a local isomorphism.
+\end{proof}
+
+\begin{notation}[Sheets]
+\label{not:coveing-space-sheet}
+The open sets \(U_e \iso U \times \{e\}\) of \(E\) from
+\cref{eq:covering-space-sheet} are called \emph{sheets}.
+\end{notation}
+
+\begin{proposition}[Covering projections are open]
+\label{prop:covering-projection-is-open}
+Given a covering space \(p: E \to B\), the projection \(p\) is open.
+\end{proposition}
+
+\begin{proof}
+Consider the open cover \((U_x)_{x \in B}\) of \(B\)---where \(U_x\) is a
+neighbourhood of \(x\) such that there exists a topological isomorphism
+\(p^{-1} U_x \iso U_x \times \Disc E_x\), for each \(x \in B\). Under the
+product topology, projections are open maps (see
+\cref{lem:projections-open-under-product-top}), therefore \(p|_{p^{-1} U_x}\) is
+an open map for each \(x \in B\). Given any open set \(V \subseteq E\), notice
+that \(V = \bigcup_{x \in B} (W \cap p^{-1} U_x)\), therefore
+\[
+p V = p\Big(\bigcup_{x \in B} (W \cap p^{-1} U_x)\Big)
+= \bigcup_{x \in B} p(W \cap p^{-1} U_x)
+\]
+is the union of open sets, thus open---which shows that \(p\) is an open map.
+\end{proof}
+
+\begin{lemma}[Fibre-wise diagonal of covering space is open and closed]
+\label{lem:fibre-wise-diag-open-and-closed}
+Let \(p: E \to B\) be a covering space, and \(E \times_B E\) be the pullback of
+\(p\) with itself. Then the diagonal of \(E\) with respect to the fibre product
+over \(B\), namely
+\[
+\Delta_B E = \{(e, e) \in E \times_B E \colon e \in E\},
+\]
+is an \emph{open and closed set} in \(E \times_B E\).
+\end{lemma}
+
+\begin{proof}
+First we prove that \(\Delta_B E\) is open. Let \(e \in E\) be any point and
+\(U_{p e} \subseteq B\) be a neighbourhood of \(p e\) together with an
+isomorphism
+\[
+p^{-1} U_{p e} \iso U_{p e} \times E_{p e} = U_{p e} \times \{e\}.
+\]
+Since \(p^{-1} U_{p e}\) is open, it follows that
+\(U_{p e} \times \{e\} \emb E\) is open. Then the set
+\((E \times_B E) \cap (U_{p e} \times U_{p e})\) is an open neighbourhood of
+\((e, e)\) in \(E \times_B E\). This shows that \(\Delta_B E\) is open.
+
+To show that \(\Delta_B E\) is closed, let \((x, y) \in E \times_B E\) with
+\(x \neq y\). Let \(U \subseteq B\) be a neighbourhood of \(p x = p y\) that is
+evenly covered, and consider the induced sheets \(U_x, U_y \subseteq E\) for
+\(x\) and \(y\), respectively. From the assumption that \(x\) and \(y\) are
+distinct points, we have an empty intersection
+\(U_x \cap U_y = \emptyset\)---which shows that \(U_x \times U_y\) is disjoint
+from \(\Delta_B E\). Therefore \((E \times_B E) \cap (U_x \times U_y)\) is a
+neighbourhood for \((x, y) \in E \times_B E\) outside of \(\Delta_B E\), showing
+that \(\Delta_B E\) is closed.
+\end{proof}
+
+\begin{theorem}[Lifting out of connected space]
+\label{thm:lifting-out-of-connected-space}
+Let \(p: E \to B\) be a covering space, and \(f: Y \to X\) be a continuous map,
+where \(Y\) is a connected space. Consider two \emph{lifts of \(f\) along
+  \(p\)}: continuous maps \(\lift f_1, \lift f_2: Y \para E\) such that
+the triangle
+\[
+\begin{tikzcd}
+&E \ar[dd, "p"] \\
+Y \ar[ru, shift left, "\lift f_1"]
+\ar[ru, shift right, "\lift f_2"']
+\ar[dr, "f"']
+&
+\\
+&X
+\end{tikzcd}
+\]
+commutes in \(\Top\). If there exists \(y \in Y\) such that
+\(\lift f_1 y = \lift f_2 y\), then the lifts agree everywhere
+\(\lift f_1 = \lift f_2\).
+\end{theorem}
+
+\begin{proof}
+Consider the pullback \(E \times_B E\) of \(p\) with itself and consider the
+uniquely defined morphism \((\lift f_1, \lift f_2): Y \to E \times_B E\)
+making the diagram
+\[
+\begin{tikzcd}
+Y \ar[rrd, bend left, "\lift{f}_1"]
+\ar[ddr, "\lift{f}_2"', bend right]
+\ar[rd, dashed]
+& &
+\\
+&E \times_B E \ar[r] \ar[d]
+\ar[rd, phantom, "\lrcorner", very near start]
+&E \ar[d, "p"]
+\\
+&E \ar[r, "p"']
+&B
+\end{tikzcd}
+\]
+commute. Define \(\Delta_B E \subseteq E \times_B E\) for the diagonal of \(E\)
+with respect to the fibre product. Using
+\cref{lem:fibre-wise-diag-open-and-closed} we know that \(\Delta_B E\) is both
+open and closed, thus
+\(V \coloneq (\lift f_1, \lift f_2)^{-1}(\Delta_B E) \subseteq Y\) is both
+open and closed in \(Y\), which is a non-empty set since by hypothesis
+\(\lift f_1\) and \(\lift f_2\) agree at least in one point of
+\(Y\). Since \(V\) is closed, then \(Y \setminus V\) is open in \(Y\) and
+certainly disjoint from \(V\). Since their union is the whole space \(Y\), by
+the hypothesis that \(Y\) is connected, it must be the case that \(V =
+Y\). Therefore \(\lift f_1 = \lift f_2\) as wanted.
+\end{proof}
+
+\begin{proposition}
+% \label{prop:}
+Let \(q: E \to B \times I\) be a locally trivial covering space with
+fibre \(F\). Then \(B\) admits an open cover \(\mathcal{U}\) for which \(q\) is
+trivial over \(U \times I\) for each \(U \in \mathcal{U}\).
+\end{proposition}
+
+\todo[inline]{Prove when needed}
+
+% \begin{proof}
+% For each element of \(B \times I\) take an evenly covered neighbourhood
+% \(U \times [a, b]\), and construct \(\mathcal U\) to be the set whose elements
+% are these chosen neighbourhoods. Fix any point \(x_0 \in B\) and run \(t \in I\)
+% \end{proof}
+
+\subsection{Coverings and \texorpdfstring{\(G\)}{G}-Actions}
+
+\begin{definition}[Properly discontinuous action]
+\label{def:properly-discontinuous-action}
+Given a discrete topological group \(G\), a left action \(G \times E \to E\) is
+said to be \emph{properly discontinuous} if for each pair
+\((g, x) \in G \times E\), where \(g \neq e\), there exists a neighbourhood
+\(U \subseteq E\) of \(x\) such that
+\[
+U \cap g U = \emptyset.
+\]
+In particular, every properly discontinuous action is free.
+\end{definition}
+
+\begin{definition}[\(G\)-principal covering space]
+\label{def:G-principal-covering}
+Let \(G\) be a discrete topological group. A \emph{left \(G\)-principal covering
+  space} is a covering \(p: E \to B\) together with a properly discontinuous
+left action \(G \laction E\) for which \(p(g x) = p x\) for every pair
+\((g, x) \in G \times E\), and such that the induced action on the fibres is
+transitive.
+\end{definition}
+
+\begin{proposition}
+\label{prop:properly-discontinuous-induces-covering}
+If \(G \laction X\) is a properly discontinuous action of a discrete group \(G\)
+on a space \(X\), the canonical projection \(q: X \epi X/G\) is a
+\(G\)-principal covering space.
+\end{proposition}
+
+\begin{proof}
+First of all, it is clear that \(q(g x) = q x \in X/G\) for any pair
+\((g, x) \in G \times X\). Let \([x] \in X/G\) be any point, and
+\(V \subseteq X\) be a neighbourhood of \(x\) such that
+\(V \cap g V \neq \emptyset\) implies \(g = e\), and define \(U \coloneq q
+V\). Notice that since \(G\) acts by topological isomorphisms, one has
+\(q^{-1} U = \bigcup_{g \in G} g V\)---now, since each \(g V\) is open, it
+follows that \(q^{-1} U \subseteq X\) is open. Since \(X/G\) has the quotient
+topology, then \(U \subseteq X/G\) is open.
+
+Consider \(q^{-1} U = \bigdisj_{g \in G} V_g\), where \(V_g \coloneq g
+V\). Given any \(g \in G\), suppose there exists \(h \in G\) such that
+\(V_g \cap V_h \neq \emptyset\)---then for any \(x' \in V_g \cap V_h\), one has
+\(h^{-1} x' \in V_g \cap V\), and from construction this implies in
+\(h^{-1} g = e\), thus \(h = g\).
+
+It remains for us to show a trivialization for \(q\)---we shall prove that
+\(q|_{V_g}: V_g \to U\) is an isomorphism. Since quotient maps are open, it
+suffices to show that \(q|_{V_g}\) is bijective. Let \([x'] \in U\) be any
+point, and take \(x'' \in V\) such that \(q x'' = [x']\), then in particular
+\(g x'' \in g V\) and \(q(g x'') = [g x''] = [x']\)---thus \(q|_{V_g}\) is
+surjective. For injectivity, let \(x', x'' \in V\) be a pair of points such that
+\(q(g x') = q(g x'')\), then \([x'] = [x'']\) in \(X/G\), which implies in the
+existence of a point \(h \in G\) such that \(x' = h x''\), then
+\(x'' \in V \cap V_h\)---therefore \(h = e\) and hence \(x' = x''\), thus in
+particular \(g x' = g x''\) as wanted.
+\end{proof}
+
+\begin{definition}[Deck transformations]
+\label{def:deck-transformations}
+Given a covering space \(p: E \to B\), we define a group of automorphisms
+\(\Aut(p)\) of the cover \(p\) to be composed of topological isomorphisms
+\(\alpha: E \isoto E\) such that \(p \alpha = p\)---such maps are called
+\emph{deck transformations} of the covering \(p\).
+\end{definition}
+
+\begin{example}[Translations]
+\label{exp:left-translation-is-deck-transformation}
+Given a left \(G\)-principal covering \(p: E \to B\), the \emph{left
+  translation} of \(E\) by \(g \in E\), the isomorphism \(\ell_g: E \isoto E\)
+mapping \(e \mapsto g e\), is a deck transformation of \(p\). The collection of
+such maps \((\ell_g)_{g \in G}\) define a morphism of groups
+\[
+\ell: G \longrightarrow \Aut(p).
+\]
+
+Assume that \(E\) is a connected space. Let \(x \in B\) be any point and
+consider any deck transformation \(\alpha \in \Aut(p)\). From the fact that
+\(\alpha\) is bijective and \(p \alpha = p\), it acts as a permutation on the
+fibre \(p^{-1} x\). Since \(p\) is a \(G\)-principal covering, then \(G\) acts
+transitively on the fibres: hence given any two points \(e, e' \in p^{-1} x\),
+since \(\alpha e \in p^{-1}(p e)\), it follows that there exists \(g \in G\)
+such that \(\alpha e' = g(\alpha e)\). Therefore \(\alpha\), using the
+connectedness of \(E\), is uniquely defined by its image under a single
+point. This shows that, under these assumptions, \(\ell\) is an isomorphism
+\(G \iso \Aut(p)\).
+\end{example}
+
+\begin{proposition}
+\label{prop:automorphism-grp-covering-properties}
+Let \(p: E \to B\) be a covering space. The following are properties concerning
+the automorphism group of \(p\):
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item If \(E\) is a connected space, then \(\Aut(p)\) has a properly
+  discontinuous action on \(E\).
+
+\item If \(B\) is locally path connected and \(H \subseteq \Aut(p)\) is a
+  subgroup, then the induced map \(q: E/H \to B\) is a covering.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Consider any point \(e \in E\) and deck transformation \(g \in
+  \Aut(p)\). Since \(p\) is a covering, choose \(U \subseteq B\) to be an evenly
+  covered neighbourhood of \(p e\) and let \(U_e\) be a sheet over \(U\) with
+  \(e \in U_e\). Suppose there exists a point \(e' \in U_e \cap g U_e\) and
+  notice that, since \(p g = p\), we have \(p e' = p(g^{-1} e')\).
+
+\todo[inline]{Continueeeee}
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+\label{prop:prop-disc-and-1-connected-simply-connected-iso-grps}
+Let \(E\) be a simply connected space. If \(G \laction E\) is a properly
+discontinuous action of a discrete topological group \(G\), then the action
+induces an isomorphism of groups
+\[
+\pi_1(E/G) \iso G.
+\]
+\end{proposition}
+
+\begin{proof}
+Let \([x] \in E/G\) be any base point, and choose \(x \in q^{-1}[x]\)---where
+\(q: E \epi E/G\) is the canonical projection. Define a map
+\(\psi_x: \pi_1(E/G, [x]) \to G\) such that \(\psi_x[\alpha] = g\) if and only
+if \(\lift \alpha_x(1) = g x\)---where \(\lift \alpha_x: I \to E\) is the lift of
+\(\alpha\) over \(q\). We now show that \(\psi_x\) is the required isomorphism
+of groups:
+\begin{itemize}\setlength\itemsep{0em}
+\item (Well defined) Suppose that \([\alpha] = [\beta]\) and that
+  \(\psi_x[\alpha] = g\) while \(\psi_x[\beta] = h\). This means that
+  \(\lift \alpha_x(1) = g x\) and \(\lift \beta_x(1) = h x\), but since
+  \(\lift \alpha_x = \lift \beta_x\), then \(g x = h x\) and hence
+  \(h^{-1} g x = x\). Since \(G\) has a properly discontinuous action, there
+  exists a neighbourhood \(U \subseteq E\) of \(x\) such that
+  \(U \cap (h^{-1} g) U\) is \emph{non-empty}, thus it is necessarily the case
+  that \(h^{-1} g = e\), thus \(h = g\). This proves that
+  \(\psi_x[\alpha] = \psi_x[\beta]\).
+
+\item (Injective) Suppose \(\psi_x [\alpha] = \psi_x [\beta]\), then
+  \(\lift \alpha_x(1) = g x = \lift \beta_x(1)\) for some \(g \in G\). This
+  shows that \(\lift \alpha_x \simhtrel{\Bd I} \lift \beta_x\), hence
+  \(\alpha \simhtrel{\Bd I} \beta\) thus \([\alpha] = [\beta]\).
+
+\item (Surjective) From the fact that \(\pi_1(E/G, [x])\) acts transitively on
+  the fibres of \(q\), it folows that \(\psi_x\) is surjective.
+
+\item (Group morphism) Let \(\psi_x[\alpha] = g\) and \(\psi_x [\beta] = h\) and
+  define \(k \coloneq \psi_x[\beta \cdot \alpha]\), so that
+  \[
+  k x = (\lift{\beta \cdot \alpha})_x(1)
+  = (\lift \beta_{\lift \alpha_x(1)} \cdot \lift \alpha_x)(1)
+  = \lift \beta_{g x}(1)
+  = g \lift \beta_x(1)
+  = g h x,
+  \]
+  therefore \(k = g h\).
+\end{itemize}
+\end{proof}
+
+\subsection{Fibre Transport}
+
+\begin{definition}[Homotopy lifting property]
+\label{def:homotopy-lifting-property}
+A continuous map \(p: E \to B\) is said to heve the \emph{homotopy lifting
+  property} (HLP) for a given space \(X\) if: for any homotopy \(\eta: X \times
+I \to B\) and continuous map \(a: X \to E\) such that \(p a x = \eta(x, 0)\)
+\emph{exists} a homotopy \(\delta: X \times I \to E\) such that the diagram
+\[
+\begin{tikzcd}
+X \ar[r, "a"] \ar[d, "i_0"']
+&E \ar[d, "p"] \\
+X \times I \ar[ru, "\delta" description]
+\ar[r, "\eta"']
+&B
+\end{tikzcd}
+\]
+commutes in \(\Top\)---the map \(i_0: X \emb X \times I\) is defined as
+\(x \mapsto (x, 0)\)
+\end{definition}
+
+\todo[inline]{Check proof of these last fibration stuff---tom Dieck's book}
+
+\begin{definition}[Fibration]
+\label{def:fibration}
+A continuous map \(p: E \to B\) is said to be a \emph{fibration} if it satisfies
+the homotopy lifting property for every space.
+\end{definition}
+
+\begin{theorem}
+\label{thm:coverings-are-fibrations}
+A covering space is a fibration.
+\end{theorem}
+
+% \begin{proof}
+% Let \(p: E \to B\) be a covering space and \(\eta: X \times I \to B\) be a
+% homotopy and \(a: X \to E\) be a morphism with \(p a = \eta i_0\).
+% \end{proof}
+
+\begin{proposition}[Unique path lifting]
+\label{prop:path-lifting}
+Let \(p: E \to B\) be a covering space, and \(\gamma: I \to B\) be a path with
+initial point \(\gamma 0 \coloneq p e \in B\). Then there exists a \emph{unique
+  lifting} \(I \to E\) of \(\gamma\) that begins in \(e\). Furthermore, any two
+paths \(u, v: I \para E\) with \(u 0 = v 0\) are \emph{homotopic} if and only if
+their images are homotopic in \(B\).
+\end{proposition}
+
+\begin{lemma}
+\label{lem:general-lifting-lemma}
+Let \(p: E \to B\) be a covering space and define \(p e_0 \coloneq b_0\). Let
+\(Y\) be a path connected and locally path connected space, and \(f: Y \to B\)
+be a continuous map with \(f y_0 = b_0\). There exists a lift \(Y \to E\) of
+\(f\) over \(p\) such that \(y_0 \mapsto e_0\) if and only if
+\[
+f_{*} \pi_1(Y, y_0) \subseteq p_{*} \pi_1(E, e_0).
+\]
+If such a lift exists, then it's unique.
+\todo[inline]{See Munkres, page 478}
+\end{lemma}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../../deep-dive"

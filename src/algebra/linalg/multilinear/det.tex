@@ -218,6 +218,23 @@ be either strictly positive or strictly negative, therefore, the quotient
 both classes are said to define an \emph{orientation} for \(V\). If \([v]\) is
 an orientation class for \(V\), we commonly refer to the opposite orientation
 as \(-[v]\).
+
+If \(\phi: V \isoto L\) is an isomorphism of \(k\)-vector spaces, and \([v]\) is
+an orientation for \(V\), then \([\phi v]\) is the \emph{induced orientation}
+for \(W\).
+
+An \emph{oriented \(k\)-vector space} is a pair \((V, [v])\), where \(V\) is a
+\(k\)-vector space and \([v]\) is an orientation class for \(V\). An isomorphism
+between oriented \(k\)-vector spaces \(\psi: (V, [v]) \isoto (L, [\ell])\) isa
+said to be \emph{orientation preserving} if \([\psi v] = [\ell]\), otherwise we
+say that \(\psi\) is \emph{order reversing}.
+\end{definition}
+
+\begin{definition}[Standard euclidean orientation]
+\label{def:standard-orientation-euclidean}
+The \emph{standard orientation} on the euclidean space \(\R^n\) is given by the
+basis \([e_1, \dots, e_n]\) where \(e_j = (\delta_{ij})_{i=1}^n\) is the
+\(j\)-th unit vector of \(\R^n\).
 \end{definition}
 
 \begin{corollary}\label{cor:unique-orientation}

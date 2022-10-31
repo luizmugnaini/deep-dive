@@ -1,0 +1,173 @@
+\section{Cobordisms}
+
+\subsection{Unoriented Cobordisms}
+
+\begin{definition}[Unoriented cobordism]
+\label{def:unoriented-cobordism}
+Given a pair \(\Sigma_0\) and \(\Sigma_1\) of smooth compact
+\((n-1)\)-manifolds without boundary, we define a \emph{cobordism between
+  \(\Sigma_0\) and \(\Sigma_1\)} to be a smooth compact \(n\)-manifold \(M\)
+whose boundary is \(\Bd M = \Sigma_0 \disj \Sigma_1\). We thus call the
+manifolds \(\Sigma_0\) and \(\Sigma_1\) \emph{cobordant}.
+\end{definition}
+
+\begin{example}
+\label{exp:birth-death-circle}
+Two interesting cobordisms are formed from the empty manifold to the circle,
+which shall be called \emph{birth-of-a-circle}, and from the circle to the empty
+manifold, so called \emph{death-of-a-circle}.
+\end{example}
+
+\begin{lemma}[Cobordant zero and one dimensional manifolds]
+\label{lem:cobordant-0-and-1-manifolds}
+Two given compact \(0\)-manifolds without boundary are cobordant if and only if
+they have the same number of points modulo \(2\). Moreover, any two compact
+\(1\)-manifolds without boundary are cobordant.
+\end{lemma}
+
+\begin{proof}
+Let's consider the case of a pair of \(0\)-manifolds \(\Sigma_0\) and
+\(\Sigma_1\). Notice that since every pair of points can be connected by a
+smooth curve, and every \(1\)-manifold with boundary has an even number of
+boundary points\footnote{This is due to the fact that \(1\)-manifolds are
+  \(C^{\infty}\)-isomorphic to a finite disjoint union of circles or intervals
+  (see \cref{cor:1-manifold-boundary-even-number-of-points}).}, it follows that
+\(\Sigma_0\) and \(\Sigma_1\) are cobordant if and only if the disjoint union
+\(\Sigma_0 \disj \Sigma_1\) has an even number of points.
+
+For the second statement, one should recall that a compact \(1\)-manifold is the
+disjoint union of circles. Then we can choose one of the manifolds to
+attach copies of the death-of-a-circle cobordism for each of its circles, and
+attach birth-of-a-circle cobordisms for each of its respective
+circles of the other \(1\)-manifold. This construction yields a cobordism
+between them.
+\end{proof}
+
+\subsection{Oriented Cobordisms}
+
+Consider the following setup: let \(\Sigma\) be a closed submanifold of \(M\)
+with codimension \(1\), where \(\dim M = n\). Assume both manifolds to be
+oriented.
+
+\begin{definition}[Positive normal]
+\label{def:positive-normal-manifold}
+Let \([v_1, \dots, v_{n-1}]\) be a positive basis for \(T_x \Sigma\) for any
+given point \(x \in \Sigma\). We say that a tangent vector \(v \in T_x M\) is a
+\emph{positive normal} if the induced basis \([v_1, \dots, v_{n-1}, v]\) for
+\(T_x M\) is positive.
+\end{definition}
+
+\begin{definition}[In and out boundaries]
+\label{def:in-out-boundaries}
+If \(\Sigma\) is a connected component of \(\Bd M\), we call \(\Sigma\) an
+\emph{in-boundary} if a positive normal points inwards relative to \(M\), and
+otherwise an \emph{out-boundary}---when a positive normal points outward
+relative to \(M\).
+\end{definition}
+
+% In order to show that in and out boundaries are not ill-defined, one has to show
+% the independence of the choice of the positive normal and the base point
+% \(x \in \Sigma\). This comes from the assumption that \(\Sigma\) is connected,
+% thus
+
+The notion of an in and out boundary allows us to define the notion of an
+oriented cobordism. From now on, a cobordism will always mean an
+\emph{oriented} one, unless stated otherwise.
+
+\begin{definition}[Oriented cobordism]
+\label{def:oriented-cobordism}
+Let \(\Sigma_{\text{in}}\) and \(\Sigma_{\text{out}}\) be compact
+\((n-1)\)-manifolds without boundary. We define an \emph{oriented cobordism}
+between them to be a triple \((M, \iota_{\text{in}}, \iota_{\text{out}})\),
+where \(M\) is a smooth compact oriented \(n\)-manifold, and arrows
+\[
+\begin{tikzcd}
+\Sigma_{\text{in}} \ar[r, "\iota_{\text{in}}"] &M
+&\Sigma_{\text{out}} \ar[l, "\iota_{\text{out}}"']
+\end{tikzcd}
+\]
+which are \(C^{\infty}\)-isomorphisms when restricted to the in and out boundary
+of \(M\), respectively. We shall denote the oriented cobordism \(M\) as an
+arrow \(M: \Sigma_{\text{in}} \nat \Sigma_{\text{out}}\).
+\end{definition}
+
+\begin{definition}[Equivalence of cobordisms]
+\label{def:equivalence-of-cobordisms}
+Given two cobordisms
+\[
+\begin{tikzcd}
+\Sigma_{\text{in}} \ar[r, shift right=1.5, Rightarrow, "N"']
+\ar[r, shift left=1.5, Rightarrow, "M"]
+&\Sigma_{\text{out}}
+\end{tikzcd}
+\]
+we say that \(M\) is \emph{equivalent} to the cobordism \(N\) if there exists an
+orientation-preserving \(C^{\infty}\)-isomorphism \(\phi: M \isoto N\) such that
+the following diagram commutes in \(\Man\):
+\[
+\begin{tikzcd}
+&N &
+\\
+\Sigma_{\text{in}} \ar[ru] \ar[rd]
+&
+&\Sigma_{\text{out}} \ar[lu] \ar[ld]
+\\
+&M \ar[uu, "\phi", "\dis"']&
+\end{tikzcd}
+\]
+\end{definition}
+
+\section{Elements of Morse Theory}
+
+\begin{definition}
+\label{def:non-degenerate-point-and-index}
+Let \(f: M \to I\) be a \(C^{\infty}\)-morphism, and \(p \in M\) be a critical
+point of \(f\). We call \(p\) a \emph{non-degenerate} point if there exists a
+chart about \(p\) for which the local Hessian of \(f\) is
+invertible. Furthermore, define the \emph{index of \(f\) at \(p\)} to be the
+number of \emph{negative eigenvalues} of the local Hessian.
+\end{definition}
+
+\begin{definition}[Morse maps]
+\label{def:morse-maps}
+Given a smooth manifold \(M\), we say that a \(C^{\infty}\)-morphism
+\(f: M \to I\) is a \emph{Morse map} if every critical point of \(f\) is
+non-degenerate. If it happens to be the case that \(M\) is a manifold with
+boundary, we shall require that \(f^{-1} \Bd I = \Bd M\) and that the boundary
+points \(\Bd I = \{0, 1\}\) are regular values of \(f\)---this ensures that
+\(\Bd M\) contains no critical points.
+\end{definition}
+
+The existence of Morse maps is ensured by the following theorem:
+
+\begin{theorem}
+\label{thm:morse-maps-are-dense}
+For any manifold \(M\) and integer \(2 \leq r \leq \infty\), the collection of
+Morse maps \(M \to I\) is dense in \(C^r(M, I)\).
+\end{theorem}
+
+The following is a generalization of the construction of attaching spaces:
+
+\begin{definition}[Gluing]
+\label{def:gluing-topological-spaces}
+Let \(f: X \to Y\) and \(g: X \to Z\) be topological morphisms. We define the
+\emph{gluing of \(Y\) and \(Z\) along \(X\)} to be the pushout
+\[
+\begin{tikzcd}
+X \ar[d, "g"']
+\ar[r, "f"]
+\ar[rd, "\ulcorner", phantom, very near end]
+&Y \ar[d] \\
+Z \ar[r]
+&Y \disj_X Z
+\end{tikzcd}
+\]
+Explicitly, \(Y \disj_X Z\) is the quotient space of \(Y \disj Z\) where
+\(y \sim z\) if and only if there exists a common \(x \in X\) such that
+\(f x = y\) and \(g x = z\).
+\end{definition}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../../deep-dive"
+%%% End:
