@@ -1,10 +1,44 @@
-\begin{remark}[Rings are commutative]
-\label{rem:commutative-rings-in-chapter-int-dom}
-In the \emph{entirety} of this chapter, if \(R\) is a \emph{ring}, we assume it
-is \emph{commutative} unless otherwise stated.
-\end{remark}
+\section{Torsion}
+
+\begin{definition}[Torsion]
+\label{def:torsion-module}
+Let \(R\) be an integral domain, and \(M\) be an \(R\)-module. We define the
+\emph{torsion} of \(M\) to be the submodule
+\[
+\torsion M \coloneq
+\{m \in M \colon r m = 0 \text{ for some } r \in R \setminus 0\}.
+\]
+If \(\torsion M = 0\), we say that \(M\) is of \emph{free-torsion}. On the
+contrary, if \(\torsion M = M\), then \(M\) is said to be of \emph{torsion}.
+\end{definition}
+
+\begin{definition}[Rank]
+\label{def:rank-of-general-module}
+Given an integral domain \(R\) and an \(R\)-module \(M\), we define the
+\emph{rank} of \(M\) to be the cardinality of the maximal \(R\)-linearly
+independent subset of \(M\).
+\end{definition}
+
+\begin{example}
+\label{exp:torsion-module-has-rank-zero}
+If \(R\) is an integral domain, and \(M\) is a torsion \(R\)-module, then
+\(\rank_R M = 0\). Indeed, for any singleton \(\{m\} \subseteq M\) there exists
+a non-zero \(r \in R\) such that \(r m = 0\), which shows that every singleton
+is \(R\)-linearly dependent.
+\end{example}
 
 \section{Noetherian Rings \& Modules}
+
+\subsection{Chain Conditions}
+
+Recalling the definition of Noetherian rings (see \cref{def:noetherian-ring}),
+we can extend this notion to the evironment of modules:
+
+\begin{definition}
+\label{def:noetherian-module}
+Let \(R\) be a commutative ring. We say that an \(R\)-module \(M\) is
+\emph{Noetherian} if every submodule of \(M\) is finitely generated.
+\end{definition}
 
 \begin{proposition}
 \label{prop:equiv-conditions-noetherian}
@@ -57,6 +91,12 @@ equivalent propositions:
   \(M\) is Noetherian.
 \end{itemize}
 \end{proof}
+
+\begin{corollary}
+\label{cor:pid-is-noetherian}
+Every principal ideal domain \(R\) is a Noetherian module over itself, and thus
+every non-empty collection of ideals of \(R\) admits a maximal element.
+\end{corollary}
 
 \begin{lemma}[Quotient of Noetherian rings is Noetherian]
 \label{lem:quotient-is-noetherian}
@@ -175,6 +215,244 @@ integral domain whose non-zero elements are units---and this exactly what we did
 with the above localization.
 
 \section{Principal Ideal Domains}
+
+\subsection{Modules Over PID's}
+
+\begin{theorem}
+\label{thm:module-over-PID}
+Let \(R\) be a principal ideal domain, and \(M\) be a free \(R\)-module with
+\(\rank_R M = m\) finite, and \(N \subseteq M\) a submodule. Then:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The submodule \(N\) is free with \(\rank_R N = n\) satisfying \(n \leq m\).
+\item There exists a basis \((y_1, \dots, y_m)\) of \(M\), and a collection
+  \((a_1, \dots, a_m)\) of \(R\) such that \((a_1 y_1, \dots, a_n y_n)\) is a
+  basis for \(N\) and \(a_1 \mid a_2 \mid \dots \mid a_n\).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Fix a basis \((x_1, \dots, x_m)\) for \(M\) and define a collection of
+\(R\)-linear morphisms \((\pi_j: M \epi R)_{j=1}^n\) with
+\(\pi_j x_i = \delta_{i j}\).
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Since \(R\) is a domain, \(M\) is torsion-free and so is \(N\). Since
+  \(M\) has a finite rank, it must also be the case that \(N\) has a finite rank
+  \(n\) satisfying \(n \leq m\)---which follows from
+  \cref{prop:LI-leq-maximal-LI}. We proceed via induction on \(n\): for the base
+  case \(n = 0\) we have \(N = 0\) and therefore \(N\) is free. We assume for
+  the induction hypothesis that the proposition is true for some
+  \(0 < n-1 < m\). Now we consider the case \(0 < n \leq m\): since \(n\) is
+  non-zero, then \(N\) is a non-zero module and therefore there exists a
+  non-zero \(x = \sum_{j=1}^n b_j x_j \neq 0\) element of \(N\). If
+  \(1 \leq j_0 \leq n\) is an index such that \(b_{j_0} \neq 0\), then in
+  particular \(\pi_{j_0}|_N\) is a non-zero map of the form \(N \to R\). Since
+  \(R\) is a PID and \(\pi_{j_0} N \subseteq R\) is a non-zero submodule, then
+  there must exist \(b_0 \in R \setminus 0\) for which \(\pi_{j_0} N = R
+  b_0\). Since \(R\) is a domain, then \(\{b_0\}\) is a basis for the free
+  \(R\)-module \(\pi_{j_0} N\). Then the short exact sequence
+  \[
+  \begin{tikzcd}
+  0 \ar[r]
+  &\ker(\pi_{j_0}|_N) \ar[r, hook]
+  &N \ar[r, two heads, "\pi_{j_0}|_N"]
+  &R b_0 \ar[r]
+  &0
+  \end{tikzcd}
+  \]
+  ends with a free module and thus splits, hence
+  \[
+  N \iso \ker(\pi_{j_0}|_N) \oplus R b_0.
+  \]
+  Since \(\rank\) is additive over direct sums, then
+  \(n = \rank_R(\ker(\pi_{j_0}|_N)) + 1\) implies that
+  \(\ker(\pi_{j_0}|_N) \subseteq M\) is a submodule of rank \(n-1\). From the
+  inductive hypothesis it follows that \(\ker(\pi_{j_0}|_N)\) is a free
+  module. Therefore \(N\) is the direct sum of two free modules, hence \(N\) is
+  itself free.
+
+\item Notice that the case \(M = 0\) is trivial, thus we shall consider only
+  \(m \geq 1\) and do induction on \(m\)---moreover, we'll assume that \(N\) is
+  anon-zero submodule of \(M\), since the zero case is trivially satisfied. For
+  the base case \(m = 1\), there exists an \(R\)-module isomorphism
+  \(\phi: M \isoto R\). Then from the fact that \(R\) is a PID it follows that
+  there exists \(a \in R\) such that \(\phi N = R a = a R\), and if
+  \(u \coloneq \phi^{-1}(1)\) then \(M = R u\)---so that \(\{u\}\) is a basis
+  for \(M\). Moreover,
+  \[
+  N = a (R u) = (a R) u = (R a) u = R (a u),
+  \]
+  therefore \(\{a u\}\) forms a basis for \(N\).
+
+  Now let \(m > 1\) and assume as a hypothesis for induction that the
+  proposition is true for all modules of rank less than \(m\). For each
+  \(\phi \in \Hom_{\Mod R}(M, R)\), let \(a_{\phi} \in R\) denote a ring element
+  such that \(\phi N = R a_{\phi}\), and define a collection of principal ideals
+  \[
+  \Sigma \coloneq (R a_{\phi})_{\phi \in \Hom(M, R)}.
+  \]
+  From our previous considerations in item (a), we know that there must exist a
+  non-zero \(\pi_{j_0} \in \Hom(M, R)\)---thus \(\Sigma\) is non-empty and its
+  elements are not all zero. Since \(R\) is Noetherian, it follows that
+  \(\Sigma\) admits a maximal element \(R a_{\phi_1} \in \Sigma\). Define
+  \(a_1 \coloneq a_{\phi_1}\) and let \(y \in N\) be such that
+  \(\phi_1 y = a_1\), which exists because \(\phi_1 N = R a_1\). We'll show that
+  \(a_1 \mid \varphi y\) for any \(\varphi \in \Hom(M, R)\). Let
+  \(\varphi: M \to R\) be any such map, and let
+  \(\ideal p \coloneq \langle a_1, \varphi y \rangle\) be an ideal of \(R\), so
+  that there exists \(d \in R\) such that \(\ideal p = R d\) since \(\ideal p\)
+  is principal. Therefore there exists a pair \(r_1, r_2 \in R\) such that
+  \(d = r_1 a_1 + r_2 \varphi y\). Define a morphism \(\psi: M \to R\) given by
+  \(\psi \coloneq r_1 \phi_1 + r_2 \varphi\) so that \(\psi y = d\) and hence
+  \(d \in \psi N\) from the fact that \(y \in N\). Since \(a_1 \in R d\), then
+  \(R a_1 \subseteq R d\) and from maximality we obtain the equality
+  \(R a_1 = R d\), which proves that \(a_1 \mid d\)---while
+  \(d \mid \varphi y\), thus \(a_1 \mid \varphi y\) as we wanted.
+
+  In particular, the last paragraph shows that \(a_1 \mid \pi_j y\) for each
+  projection \(1 \leq j \leq m\), thus we may find \(b_j \in R\) such that
+  \(\pi_j y = a_1 b_j\). We shall define
+  \[
+  y_1 \coloneq \sum_{j=1}^m b_j x_j.
+  \]
+  Notice then that \(y\) can be rewritten as
+  \begin{equation}\label{eq:y=a1y1-rewrite}
+  y = \sum_{j=1}^m \pi_j(y) x_j
+  = \sum_{j=1}^m (a_1 b_j) x_j
+  = a_1 \sum_{j=1}^m b_j x_j
+  = a_1 y_1.
+  \end{equation}
+  Furthermore, one knows that \(a_1 = \psi y = \psi (a_1 y_1) = a_1 \psi y_1\),
+  therefore since \(R\) is a domain it follows that \(\psi y_1 = 1\).
+
+  We'll now show that \(M = R y_1 \oplus \ker \psi\). Let \(x \in M\) be any
+  element and write \(x = \psi(x) y_1 + (x - \psi(x) y_1)\). Notice that
+  \begin{equation}\label{eq:x-psixy1-in-kernel}
+  \psi(x - \psi(x) y_1) = \psi x - \psi(x) \psi(y_1) = 0
+  \end{equation}
+  so \(x - \psi(x) y_1 \in \ker \psi\). Therefore \(M = R y_1 + \ker \psi\). Now
+  if \(r y_1 \in \ker \psi\) then from the fact that \(\psi y_1 = 1\) we have
+  \(r = 0\), hence \(r y_1 = 0\) and thus \(R y_1 \cap \ker \psi = 0\). We thus
+  conclude that \(M = R y_1 \oplus \ker \psi\).
+
+  Further, we'll prove that \(N = R (a_1 y_1) \oplus (N \cap \ker \psi)\). Let
+  \(x \in N\) be any element and as before rewrite it as \(x = \psi(x) y_1 + (x
+  - \psi(x) y_1)\). Using the fact that \(\psi N = R a_1\), there exists \(b \in
+  R\) such that \(\psi x = b a_1\)---then one has
+  \[
+  x = (b a_1) y_1 + (x - (b a_1) y_1)
+  \]
+  where \(b a_1 y_1 \in R (a_1 y_1)\) and \(x - (b a_1) y_1 \in N \cap \ker \psi\)
+  from \cref{eq:x-psixy1-in-kernel}. Therefore \(N = R (a_1 y_1) + (N \cap \ker
+  \psi)\), and since \(R(a_1 y_1) \subseteq R y_1\) while \(N \cap \ker \psi
+  \subseteq \ker \psi\) then \(R(a_1 y_1) \cap (N \cap \ker \psi) = 0\). Thus
+  \[
+  N = R(a_1 y_1) \oplus (N \cap \ker \psi).
+  \]
+
+  Since \(\ker \psi \subseteq M\) then it is free and the rank of the direct sum
+  yields \(\rank_R \ker \psi = m - 1\). Thus from the inductive hypothesis we
+  conclude that there exists a basis \((y_2, \dots, y_m)\) of \(\ker \psi\) and
+  a collection of ring elements \((a_2, \dots, a_n)\) such that
+  \((a_2 y_2, \dots, a_n y_n)\) forms a basis for \(N \cap \ker \psi\), and
+  \(a_2 \mid a_3 \mid \dots \mid a_m\). Since \(M = R y_1 \oplus \ker \psi\)
+  then \((y_1, y_2, \dots, y_m)\) is a basis for \(M\), and since \(N = R (a_1
+  y_1) \oplus (N \cap \ker \psi)\) we have that \((a_1 y_1, a_2 y_2, \dots, a_n
+  y_n)\) is a basis for \(N\).
+
+  To conclude the proof, we must show that \(a_1 \mid a_2\). Since
+  \((y_1, \dots, y_m)\) is a basis of \(M\), let \(f: M \to R\) be an
+  \(R\)-linear morphism such that \(f y_1 = f y_2 = 1\) while \(f y_j = 0\) for
+  each \(3 \leq j \leq m\). From \cref{eq:y=a1y1-rewrite} we have
+  \(a_1 = a_1 f y_1 = f(a_1 y_1) = f y\), therefore since \(y \in N\) then \(a_1
+  \in f N\). This implies in \(R a_1 \subseteq f N\) but using maximality this
+  yields the equality \(f N = R a_1\). We also know that \(a_2 = f(a_2 y_2)\) in
+  a similar fashion, and since \(a_2 y_2 \in N\) then \(a_2 \in f N\). This
+  concludes the proof that \(a_1 \mid a_2\), which was the last step for the end
+  of the proof at large.
+\end{enumerate}
+\end{proof}
+
+\subsection{Decomposition Theorems}
+
+\begin{theorem}[Fundamental theorem of invariant factors]
+\label{thm:fundamental-theorem-of-invariant-factors}
+Let \(R\) be a principal ideal domain and \(M\) a finitely generated
+\(R\)-module. Then the following holds:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item There exists a number \(r \in \N\) and a collection of non-zero and
+  non-invertible elements \((a_1, \dots, a_m)\) of \(R\) such that
+  \[
+  M \iso R^r \oplus \Big( \bigoplus_{j=1}^m R/R a_j \Big),
+  \]
+  and \(a_1 \mid a_2 \mid \dots \mid a_m\). That is, \(M\) is isomorphic to the
+  direct sum of a finite collection of cyclic \(R\)-modules. The elements
+  \(a_j\) are said to be invariant factors of \(M\).
+
+\item The module \(M\) is torsion-free if and only if \(M\) is free.
+
+\item There exists an isomorphism
+  \[
+  \torsion M \iso \bigoplus_{j=1}^m R/Ra_j.
+  \]
+  In particular, \(M\) is a torsion module if and only if \(r = 0\), and in such
+  a case we have \(\Ann M = R a_m\)\footnote{The annihilator of a module \(M\)
+    is defined to be the collection
+    \[
+    \Ann M \coloneq \{r \in R \colon r m = 0 \text{ for all } m \in M\}.
+    \]}.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Let \(M = \langle x_1, \dots, x_n \rangle\) and let
+\(e_j \coloneq (\delta_{ij})_{i=1}^n \in R^n\) be a base element of \(R^n\). Define a morphism
+\(\phi: R^n \to M\) as the map that sends \(e_j \mapsto x_j\) for each
+\(j\)---which is unique by the free module universal property. Since
+\(\{x_1, \dots, x_n\}\) generates \(M\), then \(\im \phi = M\) and \(\phi\) is thus
+surjective. Via the first isomorphism theorem we obtain
+\(R^n/\ker \phi \iso M\). Since \(\ker \phi\) is a submodule of \(R^n\) we can use
+\cref{thm:module-over-PID} to obtain that \(\ker \phi\) is free and has
+\(\rank(\ker \phi) \coloneq m \leq n\). Furthermore, there exists a basis
+\((t_1, \dots, t_n)\) of \(R^n\) and a list of ring elements
+\((a_1, \dots, a_m)\) such that \((a_1 t_1, \dots, a_m t_m)\) is a basis of
+\(\ker \phi\) satisfying \(a_1 \mid a_2 \mid \dots \mid a_m\). From the decomposition of
+free modules we obtain
+\[
+M \iso R^n/\ker \phi =
+\frac{R t_1 \oplus \dots \oplus R t_n}{R a_1 t_1 \oplus \dots \oplus R a_m t_m}
+\]
+Define a morphism of \(R\)-modules
+\(\psi: \bigoplus_{j=1}^n R t_j \to \big( \bigoplus_{j=1}^m R/Ra_j \big) \oplus R^{n-m}\)
+by mapping
+\[
+\psi(r_1 t_1, \dots, r_n t_n) \coloneq
+(r_1 + R a_1, \dots, r_m + R a_m, r_{m+1}, \dots, r_n).
+\]
+From the definition, this map is certainly surjective. Moreover, we can see that
+\[
+\ker \psi
+= \Big( \bigoplus_{j=1}^m R a_j \Big) \oplus \{0\}^{\oplus (n-m)}
+\iso \bigoplus_{j=1}^m R a_j,
+\]
+therefore by the first isomorphism theorem we find
+\[
+\frac{R t_1 \oplus \dots \oplus R t_n}{R a_1 t_1 \oplus \dots \oplus R a_m t_m}
+\iso \Big( \bigoplus_{j=1}^m R/R a_j \Big) \oplus R^{n-m}.
+\]
+Notice that if \(a \in R\) is an invertible element, then \(R a = R\) and hence
+\(R/Ra = 0\). Therefore the proposition of item (a) is stablished since we can
+cut off of the direct sum every summand \(R/Ra_j\) where \(a_j\) is invertible.
+Let \(b \in R\) be any element, then given any \(r + R b \in R/Rb\) we find that
+\[
+b(r + R b) = b r + R b = r b + R b = R b
+\]
+therefore \(R/Rb\) is a torsion \(R\)-module. This shows that \(M\) is
+torsion-free if and only if \(M \iso R^r\), which proves item (b). As we just
+noted, one has \(\torsion M \iso \bigoplus_{j=1}^m R/R a_j\), and \(M\) is a
+torsion module we have \(\Ann\)
+\todo[inline]{Notice that this isn't finished: it is part of the lost
+  work---this chapter was the most affected by the losses.}
+\end{proof}
 
 \subsection{Chinese Remainder Theorem}
 
