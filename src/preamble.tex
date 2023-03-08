@@ -281,6 +281,9 @@
 \DeclareMathOperator{\Unit}{U}
 \DeclareMathOperator{\Orth}{O}
 
+% Matrix operators
+\DeclareMathOperator{\Transp}{T}
+
 % Symbol for the group of units --- for instance, the group of units of a ring
 % \(R\) will be denoted by \(R^{\unit}\).
 \newcommand{\unit}{\times}
@@ -358,6 +361,7 @@
 \DeclareMathOperator{\Bd}{\partial} % Boundary
 \DeclareMathOperator{\Int}{Int}     % Interior
 \DeclareMathOperator{\Ext}{Ext}     % Exterior
+\newcommand{\Compl}[1]{{#1}^{\text{c}}} % Complement
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ** Differentiable structures **
@@ -403,6 +407,17 @@
 \DeclareMathOperator{\diam}{diam}
 \newcommand{\emptygraph}{\varnothing}
 \DeclarePairedDelimiterX{\size}[1]{\lVert}{\rVert}{#1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** statistics & probability **
+
+\DeclareMathOperator{\Prob}{\mathbb{P}} % Probability
+\DeclareMathOperator{\Expect}{\mathbb{E}} % Expectation
+\newcommand{\Mean}{\mu} % Mean
+\DeclareMathOperator{\Cov}{Cov} % Covariance
+\DeclareMathOperator{\Var}{Var} % Variance
+\DeclareMathOperator{\Correlation}{Corr}
+\DeclareMathOperator{\stdev}{\sigma} % standard deviation
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ** MACROS END HERE **
