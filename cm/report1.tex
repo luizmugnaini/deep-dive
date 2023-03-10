@@ -1,0 +1,1564 @@
+\documentclass[11pt, reqno]{amsart}
+\usepackage[english]{babel}
+
+\usepackage{layout}
+\usepackage{afterpage}
+\usepackage[
+  asymmetric,
+  textheight     = 673pt,
+  marginparsep   = 7pt,
+  footskip       = 27pt,
+  hoffset        = 0pt,
+  paperwidth     = 597pt,
+  textwidth      = 452pt,
+  marginparwidth = 101pt,
+  voffset        = 0pt,
+  paperheight    = 845pt,
+]{geometry}
+
+\newcommand{\changegeometry}{\newgeometry{includehead,headheight=89pt}%
+  \afterpage{\aftergroup\restoregeometry}%
+}
+
+% Math stuff: do not mess with the ordering!
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{stmaryrd}
+\usepackage{tikz-cd}
+\usepackage{tqft}
+
+% Font
+\usepackage[no-math]{newpxtext}
+\usepackage{newpxmath}
+% Set arrow tip to that of newpxmath
+\tikzset{>=Straight Barb, commutative diagrams/arrow style=tikz}
+
+% Utilities
+\usepackage{enumerate}
+\usepackage{todonotes}
+\usepackage{graphicx}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Horizontal rule
+\usepackage{multirow}
+
+% Color
+\usepackage{xcolor}
+\definecolor{brightmaroon}{rgb}{0.76, 0.13, 0.28}
+
+% References
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks = true,
+  allcolors  = brightmaroon,
+}
+\usepackage[capitalize,nameinlink]{cleveref}
+\usepackage[
+  backend = biber,
+  style   = alphabetic,
+]{biblatex}
+\addbibresource{src/bibliography.bib}
+
+% Table of contents: show subsections
+\setcounter{tocdepth}{2}
+
+\linespread{1.05}
+\vfuzz=14pt % No more vbox errors all over the place
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** Environments **
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{notation}[theorem]{Notation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** symbols **
+
+\renewcommand{\qedsymbol}{\(\natural\)}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\setminus}{\smallsetminus}
+\renewcommand{\preceq}{\preccurlyeq}
+
+% ':' for maps and '\colon' for relations on collections
+\DeclareMathSymbol{:}{\mathpunct}{operators}{"3A}
+\let\colon\relax
+\DeclareMathSymbol{\colon}{\mathrel}{operators}{"3A}
+
+% Disjoint unions over sets
+\newcommand{\disj}{\amalg}     % Disjoint union
+\newcommand{\bigdisj}{\coprod} % Indexed disjoint union
+
+\DeclareMathOperator{\Log}{Log}
+\newcommand{\img}{\text{i}}
+
+% Constant map
+\DeclareMathOperator{\const}{cons}
+
+% Multiplication map
+\DeclareMathOperator{\mul}{mul}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** arrows **
+
+% Alias for Rightarrow
+\newcommand{\To}{\Rightarrow}
+
+% Monomorphism arrow
+\newcommand{\mono}{\rightarrowtail}
+
+% Epimorphism arrow
+\newcommand{\epi}{\twoheadrightarrow}
+
+% Unique morphism
+\newcommand{\unique}{\to}%{\dashrightarrow}
+\newcommand{\xdashrightarrow}[2][]{\ext@arrow 0359\rightarrowfill@@{#1}{#2}}
+
+% Isomorphism symbol
+\newcommand{\iso}{\simeq}
+
+\newcommand{\arrowiso}{\iso}
+% Isomorphism arrow
+\newcommand{\isoto}{\xrightarrow{\raisebox{-.6ex}[0ex][0ex]{\(\arrowiso\)}}}
+
+% How isomorphisms are depicted in diagrams: either \sim or \simeq
+\newcommand{\dis}{\iso}
+
+\newcommand{\isounique}{%
+  \xdashrightarrow{\raisebox{-.6ex}[0ex][0ex]{\(\arrowiso\)}}
+}%
+
+% Natural transformation arrow
+\newcommand{\nat}{\Rightarrow}
+
+% Natural isomorphism
+\newcommand{\isonat}{\xRightarrow{\raisebox{-.6ex}[0ex][0ex]{\(\arrowiso\)}}}
+
+% Embedding arrow
+\newcommand{\emb}{\hookrightarrow}
+
+% Parallel arrows
+\newcommand{\para}{\rightrightarrows}
+
+% Adjoint arrows
+\newcommand{\adj}{\rightleftarrows}
+
+% Implication
+\renewcommand{\implies}{\Rightarrow}
+\renewcommand{\impliedby}{\Leftarrow}
+
+% Limits
+\DeclareMathOperator{\Lim}{lim}     % Limit
+\DeclareMathOperator{\Colim}{colim} % Colimit
+\DeclareMathOperator{\Eq}{eq}       % Equalizer
+\DeclareMathOperator{\Coeq}{coeq}   % Coequalizer
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** Common collections **
+
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\Q}{\mathbf{Q}}
+\newcommand{\CC}{\mathbf{C}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\FF}{\mathbf{F}}
+
+\renewcommand{\emptyset}{\varnothing}
+
+\newcommand{\Uhs}{\mathbf{H}}  % Upper half space
+\newcommand{\Proj}{\mathbf{P}} % Projective space
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** Categories **
+
+% Font for categories
+\newcommand{\cat}{\texttt}
+\newcommand{\catfont}{\texttt}
+
+% Opposite category
+\newcommand{\op}{\mathrm{op}}
+
+% Common categories
+\newcommand{\Set}{{\catfont{Set}}}          % Sets
+\newcommand{\FinSet}{{\catfont{FinSet}}}    % Finite sets
+\newcommand{\pSet}{{\catfont{pSet}}}        % Pointed sets
+\newcommand{\tOrd}{{\catfont{tOrd}}}        % Totally ordered sets
+
+\newcommand{\Vect}{{\catfont{Vect}}}        % Vector spaces
+\newcommand{\FinVect}{{\catfont{FinVect}}}  % Finite vector spaces
+
+\newcommand{\TVect}{{\catfont{TVect}}}      % Topological vector spaces
+\newcommand{\Ban}{{\catfont{Ban}}}          % Banach spaces
+
+\newcommand{\Grp}{{\catfont{Grp}}}          % Groups
+\newcommand{\Ab}{{\catfont{Ab}}}            % Abelian groups
+\newcommand{\GSet}[1]{{{#1}\text{-}\Set}}   % G-sets
+\newcommand{\Grpd}{{\catfont{Grpd}}}        % Groupoids
+
+\newcommand{\Mon}{{\catfont{Mon}}}          % Monoidal category
+\newcommand{\coMon}{{\catfont{coMon}}}      % coMonoidal category
+\newcommand{\rActMon}{{\catfont{rActMon}}}  % right action category
+\newcommand{\lActMon}{{\catfont{lActMon}}}  % left action category
+\newcommand{\BrMonCat}{{\catfont{BrMonCat}}} % Cat of braided monoidal cats
+
+\newcommand{\Graph}{{\catfont{Graph}}}      % Graphs
+\newcommand{\SimpGraph}{{\catfont{sGraph}}} % Simple graphs
+\newcommand{\ProfCol}{{\catfont{Prof}(\Col)}}   % C-profile category
+
+
+\newcommand{\Rng}{{\catfont{Ring}}}             % Rings
+\newcommand{\cRng}{{\catfont{CRing}}}           % Commutative rings
+\newcommand{\rMod}[1]{{\texttt{Mod}_{#1}}}      % Right modules
+\newcommand{\lMod}[1]{{{}_{#1}\catfont{Mod}}}   % Left modules
+\newcommand{\Mod}[1]{{#1\text{-}\catfont{Mod}}} % Modules over comm. ring
+\newcommand{\Alg}[1]{{#1\text{-}\catfont{Alg}}} % Algebras
+\newcommand{\cAlg}[1]{{#1\text{-}\catfont{CAlg}}} % Commutative algebras
+
+\newcommand{\Cat}{{\catfont{Cat}}}          % Small categories
+\newcommand{\CAT}{{\catfont{CAT}}}          % Big categories
+\newcommand{\UCat}{{\mathcal{U}\text{-}\catfont{Cat}}} % U-Categories
+
+\newcommand{\Psh}[1]{{\catfont{Psh}({#1})}}   % Category of presheaves
+\newcommand{\comma}{\downarrow} % Comma category separator
+\DeclareMathOperator{\El}{El}              % Category of elements
+
+% Operators
+\DeclareMathOperator{\Hom}{Mor}   % Morphisms
+\DeclareMathOperator{\Mono}{Mono} % Monomorphisms
+\DeclareMathOperator{\Epi}{Epi}   % Epimorphisms
+\DeclareMathOperator{\Fct}{Fct}   % Functors
+\DeclareMathOperator{\Obj}{Obj}   % Objects
+\DeclareMathOperator{\Mor}{Mor}   % Morphisms, again
+\DeclareMathOperator{\End}{End}   % Endomorphisms
+\DeclareMathOperator{\Aut}{Aut}   % Automorphisms
+\DeclareMathOperator{\Id}{id}     % Identity
+\DeclareMathOperator{\im}{im}     % Image
+\DeclareMathOperator{\dom}{dom}   % Domain
+\DeclareMathOperator{\codom}{cod} % Codomain
+\DeclareMathOperator{\supp}{supp} % Support
+
+% Yoneda embedding
+\newcommand{\yo}{\text{\usefont{U}{min}{m}{n}\symbol{'210}}}
+\DeclareFontFamily{U}{min}{}
+\DeclareFontShape{U}{min}{m}{n}{<-> udmj30}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** algebra **
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\Tr}{tr}   % Trace
+\DeclareMathOperator{\Sym}{Sym} % Symmetric space
+\DeclareMathOperator{\Alt}{Alt} % Alternating space
+\DeclareMathOperator{\Ann}{Ann} % Annihilator
+\DeclareMathOperator{\Char}{char}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\Inn}{Inn}     % Inner automorphisms
+\DeclareMathOperator{\Spec}{Spec}   % Prime spectrum
+\DeclareMathOperator{\Specm}{Spec_m} % Maximal spectrum
+\newcommand{\lie}[1]{\mathfrak{#1}} % Font for Lie structures
+\DeclareMathOperator{\Rees}{Rees}   % Rees algebra
+\DeclareMathOperator{\Frac}{Frac}   % Field of fractions
+
+\DeclareMathOperator{\torsion}{\texttt{tor}}   % Torsion
+
+\DeclareMathOperator{\eval}{eval}
+\DeclareMathOperator{\sign}{sign}
+
+% Matrices
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\PSL}{PSL}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\Unit}{U}
+\DeclareMathOperator{\Orth}{O}
+
+% Symbol for the group of units --- for instance, the group of units of a ring
+% \(R\) will be denoted by \(R^{\unit}\).
+\newcommand{\unit}{\times}
+
+% Orbit and stabilizer
+\DeclareMathOperator{\Orb}{Orb}
+\DeclareMathOperator{\Stab}{Stab}
+
+% Left and right group actions
+\newcommand{\laction}{\circlearrowright}
+\newcommand{\raction}{\circlearrowleft}
+
+% Ring ideals font
+\newcommand{\ideal}[1]{\mathfrak{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** Topology **
+
+\let\Top\relax
+\newcommand{\Top}{{\catfont{Top}}}                       % Topological spaces
+
+\newcommand{\wHTop}{{\catfont{wH}\text{-}\catfont{Top}}} % Weak Hausdorff
+\newcommand{\kTop}{{k\text{-}\catfont{Top}}}             % k-spaces
+\newcommand{\cgTop}{{\catfont{cgTop}}} % Compactly generated
+
+\newcommand{\pTop}{{\catfont{Top}^{*}}}   % Pointed top spaces
+\newcommand{\bpTop}{{\catfont{Top}^{*/}}} % Base point top spaces
+
+\newcommand{\Ho}[1]{{\catfont{Ho}(#1)}}            % Homotopy category
+\newcommand{\HoTop}{{\catfont{Ho}(\catfont{Top})}} % Classical Homotopy cat
+
+\newcommand{\Splx}{{\mathbf{\Delta}}}           % Simplex category
+\newcommand{\sSet}{{\catfont{sSet}}}            % Simplicial sets
+\newcommand{\Simp}[1]{{\catfont{Simp}(#1)}}     % Simplicial category
+\newcommand{\CoSimp}[1]{{\catfont{CoSimp}(#1)}} % Cosimplicial category
+
+\newcommand{\splx}{\Delta}
+\newcommand{\splxtop}{\Delta_{\text{top}}}
+
+\DeclareMathOperator{\Sing}{Sing} % Singular complex functor
+\DeclareMathOperator{\Nondeg}{nd} % Non-degenerate simplices
+\newcommand{\disc}{\text{disc}}   % discrete
+
+\DeclareMathOperator{\Sk}{sk} % Skeleton
+
+% attaching spaces
+\newcommand{\att}{\amalg}     % Disjoint union
+\newcommand{\bigatt}{\coprod} % Indexed disjoint union
+
+% Homotopy
+\newcommand{\simht}{\sim_{\text{h}}}              % Homotopy between maps
+\newcommand{\simhtrel}[1]{\sim_{\text{rel }{#1}}} % Relative htpy
+\newcommand{\isoht}{\iso_{\text{h}}}              % Homotopy equivalence
+\newcommand{\htpy}{\Rightarrow}                   % Htpy arrow
+\newcommand{\htpyrel}[1]{\Rightarrow_{\text{rel }{#1}}} % Relative htpy arrow
+
+
+% Functors on topological spaces
+\DeclareMathOperator{\Disc}{Disc}       % Discrete topology: Set -> Top
+\DeclareMathOperator{\Cone}{Cone}       % Cone
+\DeclareMathOperator{\Cyl}{Cyl}         % Cylinder
+\DeclareMathOperator{\Susp}{S}          % Suspension
+\DeclareMathOperator{\rSusp}{\Sigma}    % Reduced suspension
+\DeclareMathOperator{\Path}{Path}       % Path object
+\DeclareMathOperator{\Loop}{\Omega}       % Loop space
+\DeclareMathOperator{\Eval}{eval}       % Evaluation map
+\DeclareMathOperator{\curry}{curry}     % Currying a map
+\DeclareMathOperator{\uncurry}{uncurry} % Currying a map
+\DeclareMathOperator{\co}{co}           % Compact open co(K, U)
+
+\newcommand{\lift}{\widehat} % Lifting of path and stuff
+
+% Set operators
+\DeclareMathOperator{\Cl}{Cl}       % Closure
+\DeclareMathOperator{\Bd}{\partial} % Boundary
+\DeclareMathOperator{\Int}{Int}     % Interior
+\DeclareMathOperator{\Ext}{Ext}     % Exterior
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** Differentiable structures **
+
+\newcommand{\Bun}{{\catfont{Bun}}} % Bundle category
+\newcommand{\VecBun}{{\catfont{VecBun}}} % Vector Bundle category
+\newcommand{\Man}{{\catfont{Man}}} % Manifolds
+
+% Norm
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+
+% Differential operators
+\newcommand{\diff}{\mathrm{d}}
+\newcommand{\Diff}{\mathrm{D}}
+\DeclareMathOperator{\grad}{grad} % Gradient
+\DeclareMathOperator{\Hess}{Hess} % Hessian
+\DeclareMathOperator{\Jac}{Jac}   % Jacobian
+\DeclareMathOperator{\Curl}{Curl} % Curl
+\DeclareMathOperator{\VecField}{\mathfrak{X}}
+
+\DeclareMathOperator{\Grass}{Grass} % Grassmann variety
+\DeclareMathOperator{\Stie}{Stie}      % Stiefel variety
+
+% Vector bundle
+\DeclareMathOperator{\zerosec}{Zero} % Zero section
+
+\newcommand{\trans}{\pitchfork} % Transversality
+
+% Set operators
+\DeclareMathOperator{\Vol}{vol}   % Volume
+\DeclareMathOperator{\Mesh}{mesh} % Mesh
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** Graphs **
+
+% Colouring
+\newcommand{\Col}{\mathfrak{C}}
+\newcommand{\prof}[1]{\underline{#1}}
+
+\DeclareMathOperator{\Edge}{Edge}
+\DeclareMathOperator{\Vertex}{Vert}
+\DeclareMathOperator{\Circ}{circ}
+\DeclareMathOperator{\diam}{diam}
+\newcommand{\emptygraph}{\varnothing}
+\DeclarePairedDelimiterX{\size}[1]{\lVert}{\rVert}{#1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** MACROS END HERE **
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\begin{titlepage}
+ \vfill
+  \begin{center}
+       \textsc{\LARGE \textbf{University of São Paulo}} \\[2.0cm]
+
+       \vskip 0.5cm
+       \textsc{\large Luiz Gustavo Mugnaini Anselmo}
+
+       {\normalsize Molecular Sciences Course \\
+         Class 30, n\(^{\text{o}}\)
+         USP 11809746
+
+       E-mail: \texttt{luizmugnaini@usp.br}}\\[2.0cm]
+
+       \HRule\\
+       \vskip 0.5cm
+       {\LARGE \textbf{Dendroidal Homotopy Theory \& Operads}}
+       \HRule\\[1.5cm]
+
+       \hspace{.45\textwidth}
+       \begin{minipage}{.5\textwidth}
+       \normalsize \textbf{Advanced Studies Report I}\\[0.5cm]
+
+       \textsc{\large Prof.~Ivan Struchiner}\\
+       University of São Paulo \\
+       Institute of Mathematics and Statistics \\
+       E-mail: \texttt{ivanstru@ime.usp.br}\\[1cm]
+
+       \normalsize São Paulo, December of 2022
+       \end{minipage}
+  \end{center}
+\end{titlepage}
+
+% Title stuff
+\title[Dendroidal Homotopy Theory \& Operads]{%
+{\footnotesize\sl Advanced Studies Report I} \\ \smallskip
+  Dendroidal Homotopy Theory \& Operads
+}%
+
+\author{%
+  Luiz Gustavo Mugnaini Anselmo and Ivan Struchiner
+}%
+
+\address{%
+  Institute of Mathematics and Statistics, University of São
+  Paulo, Rua do Matão 1010, 05508--090~São Paulo, SP
+}%
+
+\email{luizmugnaini@usp.br, ivanstru@ime.usp.br}
+
+\begin{abstract}
+This report documents the first research advances of the student Luiz
+G. Mugnaini A. during his first semester of the advanced cycle of the Molecular
+Sciences course. The main topic of research explored this semester was the
+study of simplicial methods in homotopy theory.
+\end{abstract}
+\maketitle
+
+\section{Research}
+
+This semester our study focused in the theory of simplicial homotopy theory,
+which will play a key role in our next advances through the field of homotopy
+theory. In what follows, we lay a brief summary of what was discussed in our
+reading group and seminars---which where held weekly.
+
+\subsection{Simplicial Sets}
+
+\subsubsection{Construction}
+
+\begin{definition}[Simplicial object]
+\label{def:simplicial-object}
+For any category \(\cat C\), a \emph{simplicial object} in \(\cat C\) is a
+contravariant functor \(\Splx^{\op} \to \cat C\). We define \(\Simp{\cat C}\) to
+be the category whose objects are simplicial objects and natural transformations
+between them---such category is commonly referred to as the \emph{simplicial
+  category of \(\cat C\)}.
+\end{definition}
+
+\begin{notation}[Simplicial sets, notations and nomenclatures]
+\label{not:simplicial-sets-notation-and-nomenclature}
+In particular, the most important case we'll study for the time being is the
+\emph{simplicial category of sets}, which we denote by \(\sSet\). The objects of
+\(\sSet\) shall be called \emph{simplicial sets}.\
+
+Given a simplicial set \(X \in \sSet\), the points of \(X_n \in \Set\) will be
+referred to as the \emph{\(n\)-cells} (or \emph{\(n\)-simplices}) of
+\(X \in \sSet\).
+\end{notation}
+
+Since every map \(\alpha\) in \(\Splx\) may be decomposed into elementary face
+and degeneracies, the the collection \(\delta_i^{*}\) and \(\sigma_j^{*}\) also
+generate the morphisms \(\alpha^{*}\) between the objects of
+\((X_n)_{n \in \N}\) of \(\cat C\). In the context of the simplicial category,
+we denote them by
+\begin{align*}
+  d_i^n &\coloneq (\delta_i^n)^{*}: X_n \longrightarrow X_{n-1}, \\
+  s_j^n &\coloneq (\sigma_j^n)^{*}: X_n \longrightarrow X_{n+1},
+\end{align*}
+for all \(0 \leq i, j \leq n\). The arrows \(d_i\) are called \emph{face maps}
+(or \emph{cofaces}), while the arrows \(s_j\) are called \emph{degeneracy maps}
+(or \emph{codegeneracies}) of the simplicial object \(X\).
+
+A map \(\eta: X \nat Y\) is a natural transformation between simplicial objects
+if and only if it is compatible with the face and degeneracy maps, that is, the
+following two diagrams commute in \(\cat C\) for all \(n \in \N\),
+\(0 \leq i, j\leq n\):
+\[
+\begin{tikzcd}
+X_n \ar[r, "\eta_n"] \ar[d, "d_i^n"'] &Y_n \ar[d, "d_i^n"] \\
+X_{n-1} \ar[r, "\eta_{n-1}"'] &Y_{n-1}
+\end{tikzcd}
+\qquad
+\qquad
+\begin{tikzcd}
+X_n \ar[r, "\eta_n"] \ar[d, "s_j^n"'] &Y_n \ar[d, "s_j^n"] \\
+X_{n+1} \ar[r, "\eta_{n+1}"'] &Y_{n+1}
+\end{tikzcd}
+\]
+
+\begin{corollary}[Simplicial identities]
+\label{cor:simplicial-identities}
+Since the face and degeneracy maps \(d_i\) and \(s_j\) are \emph{dual} to the
+elementary face and degeneracy maps \(\delta_i\) and \(\sigma_j\), they satisfy
+the following identities:
+\begin{enumerate}[(1)]\setlength\itemsep{0em}
+\item \(d_i d_j = d_{j-1} d_i\), for \(i < j\).
+\item \(s_j s_i = s_i s_{j-1}\), for \(i < j\).
+\item \(d_j s_i = s_i d_{j-1}\), for \(i < j-1\).
+\item \(d_j s_i = \Id\), if \(i = j\) or \(i = j-1\).
+\item \(d_j s_i = s_{i-1} d_j\), for \(i > j\).
+\end{enumerate}
+\end{corollary}
+
+\begin{definition}[Subcomplex]
+\label{def:subcomplex}
+By a \emph{subcomplex} of a simplicial set we mean a subobject.
+\end{definition}
+
+\subsubsection{Discrete Simplicial Sets}
+
+\begin{definition}[Discrete simplicial set]
+\label{def:discrete-simplicial-set}
+We say that a simplicial set \(X\) is \emph{discrete} if every simplicial
+operator \(f: [m] \to [n]\) induces a \emph{bijective set-function}
+\(f^{*}: X_n \to X_m\). We denote by \(\sSet^{\disc}\) the full subcategory of
+\(\sSet\) consisting of discrete simplicial sets.
+
+For every set \(S\), there exists a discrete simplicial set \(S^{\disc}\) where
+\(S_n^{\disc} \coloneq S\) for each \(n \in \N\), and for any \(f: [n] \to [m]\)
+we have \(S^{\disc} f \coloneq \Id_S\).
+\end{definition}
+
+\begin{corollary}
+\label{cor:bijection-discrete-simplicial-set-and-set-functions}
+For any set \(S\) and simplicial set \(X\), there exists a bijection
+\[
+\Hom_{\sSet}(S^{\disc}, X) \iso \Hom_{\Set}(S, X_0).
+\]
+\end{corollary}
+
+\begin{proof}
+Define a set-function
+\(\Phi: \Hom_{\sSet}(S^{\disc}, X) \to \Hom_{\Set}(S, X_0)\) by mapping each
+simplicial set morphism \(f: S^{\disc} \to X\) to the corresponding set function
+\(f_0: S \to X_0\). To prove that \(\Phi\) is injective, consider simplicial
+morphisms \(f, g: S^{\disc} \para X\) such that \(f_0 = g_0\). Applying the
+naturallity of \(f\) and \(g\) to the simplicial operator \(j: [n] \to [0]\) we
+obtain that \(j^{*} f_0 = f_n\) and \(j^{*} g_0 = g_n\), but since
+\(f_0 = f_0\), then \(f_n = g_n\)---proving that \(f = g\). Surjectivity is
+immediate, therefore \(\Phi\) is a bijection.
+\end{proof}
+
+\begin{proposition}[\(\sSet^{\disc}\) \& \(\Set\)]
+\label{prop:sSet-disc-equivalent-to-Set}
+The full subcategory of discrete simplicial sets is \emph{equivalent} to the
+category of sets.
+\end{proposition}
+
+% \begin{proof}
+% We start by constructing a functor \(\disc: \Set \to \sSet^{\disc}\) where we
+% define the simplicial set \(S^{\disc}\) associated with a given set \(S\) to be
+% the simplicial set with \(S_n^{\disc} = S\) for every \(S\). Each set-function
+% \(f: A \to B\) is mapped to their corresponding simplicial set morphism
+% \(f: A^{\disc} \to B^{\disc}\) given by \(f_n \coloneq f: A \to B\) for each
+% \(n \in \N\). We now show that \(\disc\) is an equivalence of categories:
+
+% \begin{itemize}\setlength\itemsep{0em}
+% \item (Fully faithful) Given any two sets, \(S\) and \(T\), define a
+%   set-function
+%   \(\Phi: \Mor_{\Set}(S, T) \to \Mor_{\sSet^{\disc}}(S^{\disc}, T^{\disc})\) by
+%   mapping each set function \(f: S \to T\) to \(f: S^{\disc} \to T^{\disc}\) as
+%   above. Then it's clear that \(\Phi\) is a \emph{bijection}.
+
+% \item (Essentially surjective) Given any \(X \in \sSet^{\disc}\), consider the
+%   set \(S \coloneq X_0\)---we'll show that \(X \iso S^{\disc}\). Define a
+%   morphism of simplicial sets \(f: S^{\disc} \to X\) where \(f_0 \coloneq
+%   \Id_{X_0}\). Let \(\alpha: [n] \to [0]\) be any simplicial operator. Since
+%   \(\alpha^{*}: X_0 \isoto X_n\) is a bijection, then by naturality of \(f\) we
+%   find that
+%   \[
+%   \begin{tikzcd}
+%   &X_0 \ar[dd, "\dis"', "\alpha^{*}"]
+%   \\
+%   S \ar[ru, "\Id_{X_0}"] \ar[rd, "f_n"'] &
+%   \\
+%   &X_n
+%   \end{tikzcd}
+%   \]
+%   commutes in \(\Set\), making \(f_n\) a bijection, which proves that \(f\) is a
+%   natural isomorphism of simplicial sets.
+% \end{itemize}
+% \end{proof}
+
+\subsubsection{Standard Simplices}
+
+\begin{definition}[Standard simplex]
+\label{def:standard-n-simplex}
+We define the \emph{standard \(n\)-simplex} \(\splx^n\) to be the contravariant
+functor \(\Splx^{\op} \to \Set\) represented by \([n]\), that is, the
+\emph{simplicial set}
+\[
+\splx^n \coloneq \Hom_{\Splx}(-, [n]).
+\]
+The \emph{generator} of the standard \(n\)-simplex corresponds to the \(n\)-cell
+\[
+\iota_n \coloneq \Id_{[n]} \in \splx^n [n].
+\]
+\end{definition}
+
+Let \(\phi: [\ell] \to [k]\) be any simplicial operator, then the action of
+\(\phi\) on the cells of \(\splx^n\) is given by the map
+\(\splx^n \phi = \phi^{*}: \splx^k \to \splx^{\ell}\). Explicitly, given a
+\(k\)-cell \(\alpha: [k] \to [n]\) of \(\splx^n\), the action of the simplicial
+operator \(\phi\) on \(\alpha\) yields an \(\ell\)-cell
+\[
+\big(\phi^{*} \alpha = \alpha \phi: [\ell] \longrightarrow [n]\big)
+\in \splx^n[\ell].
+\]
+
+\begin{lemma}[Yoneda consequences]
+\label{lem:yoneda-lemma-on-Splx-category}
+Given a simplicial set \(X\), there exists a bijection
+\[
+\Hom_{\sSet}(\splx^n, X) \iso X_n,
+\]
+which is explicitly given by the map \(\eta \mapsto \eta_n
+\iota_n\). Equivalently, for each \(n\)-cell \(x \in X_n\), there \emph{exists}
+a \emph{unique} morphism of simplicial sets \(\eta^x: \splx^n \to X\) such that
+\(\eta_n^x \iota_n = x\).
+\end{lemma}
+
+\begin{proof}
+Consider the Yoneda functor \(\yo_{\Splx}: \Splx \to \sSet\), mapping each
+object \([n] \mapsto \splx^n\) and each simplicial operator \(f: [n] \to [m]\)
+to the morphism of simplicial sets \(f_{*}: \splx^n \to \splx^m\). Explicitly,
+for each \(k \in \N\) we have \((f_{*})_k: \splx^n[k] \to \splx^m[k]\) mapping
+\(\alpha \mapsto f \alpha\). By the Yoneda lemma we know that there exists, for
+each \(n \in \N\), a bijection
+\[
+\Hom_{\sSet}(\splx^n, X) = \Hom_{\sSet}(\yo_{\Splx}[n], X) \iso X_n.
+\]
+\end{proof}
+
+\begin{definition}[Representing map of a cell]
+\label{def:representing-map-of-a-cell}
+Regarding \cref{lem:yoneda-lemma-on-Splx-category}, we shall refer to \(\eta^x\)
+as the \emph{representing map} of the \(n\)-cell \(x\). When convenient,
+we'll simply denote \(\eta^x\) by \(x: \splx^n \to X\).
+\end{definition}
+
+\begin{corollary}
+\label{cor:bijection-mor-set-standard-simplices}
+There exists a bijection
+\[
+\Hom_{\sSet}(\splx^n, \splx^m) \iso \splx^m[n].
+\]
+The \emph{inverse} of this set-function is explicitly given by mapping each
+simplicial operator \(\alpha: [n] \to [m]\) to the corresponding morphism of
+simplicial sets \(\alpha_{*}: \splx^n \to \splx^m\)---where \(\alpha_{*}\) acts
+on any \(k\)-cell \(x \in \splx^n[k]\) as
+\(\alpha_{*} x = \alpha x \in \splx^m[k]\).
+\end{corollary}
+
+\begin{proof}
+In the proof of \cref{lem:yoneda-lemma-on-Splx-category}, merely consider the
+case where \(X \coloneq \splx^m\).
+\end{proof}
+
+\begin{corollary}[Standard simplices \& \(\Splx\)]
+\label{cor:standard-simplices-equivalent-Splx}
+The full subcategory \(\sSet_{\splx}\) of \(\sSet\) consisting of standard
+simplices is \emph{equivalent} to the simplex category \(\Splx\).
+\end{corollary}
+
+\begin{proof}
+Consider the functor \(F: \Splx \to \sSet_{\splx}\) given by
+\([n] \mapsto \splx^n\) and mapping each simplicial operator \(f: [n] \to [m]\)
+to its corresponding morphism of simplicial sets \(f_{*}: \splx^n \to
+\splx^m\). By \cref{lem:yoneda-lemma-on-Splx-category} we see that \(F\) is
+fully faithful and essentially surjective---thus an equivalence of categories.
+\end{proof}
+
+\begin{definition}[Standard simplices on totally ordered sets]
+\label{def:standard-simplex-on-totally-ordered-set}
+Given a totally ordered set \(S\), we define the \emph{standard \(S\)-simplicial
+set} \(\splx^S\) to be the functor\footnote{We denote by \(\tOrd\) the category
+of totally ordered sets.}
+\[
+\splx^{S} \coloneq \Hom_{\tOrd}(-, S)|_{\Splx},
+\]
+that is, for each \(n \in \N\) we define \(\splx^S_n\) to be the collection of
+order preserving maps \([n] \to S\).
+\end{definition}
+
+\begin{definition}[Boundary of a standard simplex]
+\label{def:boundary-of-standard-simplex}
+For every \(n \in \N\), we define the \emph{boundary} of the standard
+\(n\)-simplex \(\splx^n\) to be the subobject
+\[
+\Bd \splx^n \coloneq \Colim_{k \in [n]} \splx^{[n] \setminus k}
+= \bigcup_{k \in [n]} \splx^{[n] \setminus k}
+\]
+composed of all \emph{codimension-one faces} of \(\splx^n\). Explicitly, for
+each \(k \in \N\) we have
+\[
+\Bd \splx^n [k] = \{ f \in \Hom_{\Splx}([k], [n]) \colon f[k] \neq [n] \}
+\subseteq \splx^n[k],
+\]
+composed of all \emph{non-surjective \(k\)-cells} of \(\splx^n\).
+\end{definition}
+
+\begin{proposition}
+\label{prop:boundary-maximal-proper-subcomplex}
+The boundary \(\Bd \splx^n\) is the \emph{maximal proper subcomplex of
+  \(\splx^n\)}.
+\end{proposition}
+
+\subsubsection{Geometric Realization of the Simplex Category}
+
+We define, for each \(n \in \N\), a corresponding \emph{standard topological
+  \(n\)-simplex} \(\splxtop^n\) given by
+\[
+\splxtop^n \coloneq \bigg\{(t_0, \dots, t_n) \in \R^{n+1} \colon \sum_{j=0}^n
+t_j = 1 \text{ and } t_j \geq 0 \text{ for all } j \bigg\}.
+\]
+Each \(\splxtop^n\) is composed of \(n+1\) vertices
+\(v_j \coloneq (\delta_{ij})_{i=0}^n\).
+
+From a categorical point of view, standard topological simplices are nothing
+more than a functor
+\[
+\splxtop^{\bullet}: \Splx \longrightarrow \Top,
+\]
+mapping objects \(\splxtop^{\bullet}[n] \coloneq \splxtop^n\)---where
+\(\splxtop^n\) is endowed with the standard euclidean topology---and for each
+morphism \(f: [n] \to [m]\) in \(\Splx\), we map
+\(\splxtop^{\bullet} f \coloneq f_{*}\), where
+\(f_{*}: \splxtop^n \to \splxtop^m\) is a uniquely determined continuous map
+such that \(f_{*}(v_j) \coloneq v_{f(j)}\). From this definition we obtain
+\[
+f_{*}(t_0, \dots, t_n) = (s_0, \dots, s_m) \text{,\ \ where \ }
+s_j = \sum_{f(i) = j} t_i,
+\]
+that is, \(s_j\) is the sum of the points that are collapsed to the \(j\)-th
+coordinate.
+
+This functor gives us a geometric visualization of the action of the elementary
+face and degeneracies:
+\begin{itemize}\setlength\itemsep{0em}
+\item Given an elementary \emph{face} map \(\delta_j: [n-1] \mono [n]\), for any
+  \(0 \leq j \leq n\), the corresponding map
+  \((\delta_j)_{*}: \splxtop^{n-1} \emb \splxtop^n\) is given by
+  \[
+  (\delta_j)_{*} v_i =
+  \begin{cases}
+    v_i, &\text{if } i < j, \\
+    v_{i+1}, &\text{if } i \geq j.
+  \end{cases}
+  \]
+  That is, \((\delta_j)_{*}\) embeds \(\splxtop^{n-1}\) as a face of
+  \(\splxtop^n\) opposite to the \(j\)-th vertex.
+
+\item An elementary \emph{degeneracy} map \(\sigma_j: [n+1] \epi [n]\), for any
+  \(0 \leq j \leq n\), has a map
+  \((\sigma_j)_{*}: \splxtop^{n+1} \epi \splxtop^n\) mapping the vertices as
+  follows
+  \[
+  (\sigma_j)_{*} v_i =
+  \begin{cases}
+    v_i, &\text{if } i \leq j, \\
+    v_{i-1}, &\text{if } i > j.
+  \end{cases}
+  \]
+  Geometrically, the degeneracy map makes \(\splxtop^{n+1}\) into \(\splxtop^n\)
+  by removing a face of dimension \(1\)---through the projection parallel to the
+  line connecting \(v_j\) and \(v_{j+1}\).
+\end{itemize}
+
+\subsubsection{Geometric Realization of a Simplicial Set}
+
+Given a simplicial set \(X: \Splx^{\op} \to \Set\), we consider the topological
+space
+\[
+\coprod_{n \in \N} X_n \times \splxtop^n
+\]
+and construct in this space a minimal equivalence relation \(\sim_{\text{gr}}\)
+for which points \((x, t) \in X_n \times \splxtop^n\) and
+\((x', t') \in X_m \times \splxtop^m\) are
+\emph{equivalent}---\((x, t) \sim_{\text{gr}} (x', t')\)---if and only if there
+exists a morphism \(\alpha: [m] \to [n]\) in \(\Splx\) such that
+\(x' = \alpha^{*} x\) and \(t = \alpha_{*} t'\). In an equivalent manner, we may
+summarize this equivalence relation as gluing points of the form
+\[
+(x, \alpha_{*} t) \sim_{\text{gr}} (\alpha^{*} x, t).
+\]
+The points of the resulting quotient space
+\((\coprod_{n \in \N} X_n \times \splxtop^n)/{\sim_{\text{gr}}}\) are denoted by
+\(x \otimes t\)---corresponding to the class of a pair \((x, t)\).
+
+\begin{definition}[Geometric realization functor]
+\label{def:geometric-realization-functor}
+We define the \emph{geometric realization} of the category of simplicial sets to
+be a functor
+\[
+|-|: \sSet \longrightarrow \Top,
+\]
+mapping
+\(|X| \coloneq (\coprod_{n \in \N} X_n \times \splxtop^n)/{\sim_{\text{gr}}}\) and
+for each natural transformation \(\eta: X \to Y\) we have a topological morphism
+\(|\eta|: |X| \to |Y|\) given by \(x \otimes t \mapsto \eta_n x \otimes t\),
+for \((x, t) \in X_n \times \splxtop^n\).
+
+For any simplicial set \(X\), each \(n\)-cell \(x \in X_n\) induces
+\emph{topological} morphism
+\[
+\widehat{x}: \splxtop^n \longrightarrow |X|\text{, \ mapping }\
+t \longmapsto x \otimes t.
+\]
+From construction, given a morphism \(\alpha: [n] \to [m]\) in \(\Splx\) and a
+point \(y \in X_m\) such that \(y = \alpha^{*} x\), the diagram
+\begin{equation}\label{eq:commutativity-n-simplexes}
+\begin{tikzcd}
+\splxtop^m \ar[rr, "\alpha_{*}"] \ar[rd, "\widehat y"']
+& &\splxtop^n \ar[ld, "\widehat x"] \\
+&{|X|} &
+\end{tikzcd}
+\end{equation}
+commutes in \(\Top\).
+\end{definition}
+
+Given any category \(\cat C\) and a functor \(F: \Splx \to \cat C\), we can
+define a \emph{simplicial set} induced by any object \(C \in \cat C\) given by
+\[
+\Hom_{\cat C}(F(-), C): \Splx^{\op} \longrightarrow \Set.
+\]
+This simplicial set maps each \([n] \in \Splx\) to the set of morphisms
+\(\Hom_{\cat C}(F n, C)\), and each morphism \(\alpha: [m] \to [n]\) of
+\(\Splx\) to the set-function
+\(\alpha^{*}: \Hom_{\cat C}(F n, C) \to \Hom_{\cat C}(F m, C)\).
+
+
+% \begin{definition}[Singular complex]
+% \label{def:singular-complex-functor}
+% Let \(\cat C\) be a category and \(F: \Splx \to \cat C\) be a functor. We define
+% the \emph{singular complex} of \(\cat C\) to be the functor
+% \[
+% \Sing_F: \cat C \longrightarrow \sSet
+% \]
+% mapping each object \(C \in \cat C\) to the simplicial set
+% \[
+% \Sing_F(C) \coloneq \Hom_{\cat C}(F(-), C): \Splx^{\op} \longrightarrow \Set,
+% \]
+% and each map \(\alpha: [m] \to [n]\) to the set-function
+% \[
+% \Sing_F(\alpha) \coloneq \alpha^{*}:
+% \Hom_{\cat C}(F n, C) \longrightarrow \Hom_{\cat C}(F m, C).
+% \]
+
+% In particular, the standard topological simplices functor \(\splxtop^{\bullet}: \Splx \to
+% \Top\) induces a singular complex on each topological space. Since we shall be
+% mostly interested in this particular case for the time being, we shall reserve
+% the notation
+% \[
+% \Sing \coloneq \Sing_{\splxtop^{\bullet}}: \Top \longrightarrow \sSet,
+% \]
+% with no subscripts, for the standard topological simplices functor. In this
+% case, given a topological space \(T\), we shall denote by \(\Sing(T)_n\) the
+% image of \([n] \in \Splx\) under the simplicial set \(\Sing(T)\).
+% \end{definition}
+
+% Given a simplicial set \(X\), the collection of simplexes
+% \((\widehat{x}_n)_{n \in \N}\), where \(x_n \in X_n\), covers the whole
+% topological space \(|X|\)---in the sense that collection of images forms a cover
+% of \(|X|\). Therefore, given any topological morphism \(\phi: |X| \to T\), this
+% map is completely defined by the family of compositions
+% \((\phi \widehat{x}_n: \splxtop^n \to T)_{n \in \N}\). Given a morphism
+% \(\alpha: [n] \to [n]\) in \(\Splx\), by \cref{eq:commutativity-n-simplexes},
+% the diagram
+% \[
+% \begin{tikzcd}
+% \splxtop^m \ar[rr, "\alpha_{*}"]
+% \ar[rd, "\widehat y_m"']
+% \ar[drd, bend right, "\phi \widehat y_m"']
+% & &\splxtop^n \ar[ld, "\widehat x_n"]
+% \ar[dld, bend left, "\phi \widehat x_n"] \\
+% &{|X|} \ar[d, "\phi"] & \\
+% &T &
+% \end{tikzcd}
+% \]
+% commutes in \(\Top\). This construction induces unique a collection of maps
+% \[
+% (\phi_n: X_n \longrightarrow \Sing(T)_n)_{n \in \N},
+% \]
+% where \(\phi_n(x) \mapsto \phi \widehat x\). Notice that this family of arrows
+% is nothing more than a natural transformation \(\phi: X \nat \Sing(T)\) between
+% simplicial sets. From this we conclude that there exists a natural bijection
+% \[
+% \Hom_{\Top}(|X|, T) \iso \Hom_{\sSet}(X, \Sing(T)),
+% \]
+% thus the singular complex functor is \emph{right adjoint} to the geometric
+% realization,
+% \[
+% \begin{tikzcd}
+% \sSet \ar[rr, shift left, "{|-|}"] &&\Top \ar[ll, shift left, "\Sing"]
+% \end{tikzcd}
+% \]
+
+\subsubsection{Geometric Realization as a CW-complex}
+
+\begin{definition}[Degenerate \(n\)-cell]
+\label{def:degenerate-n-cell}
+Given a simplicial set \(X\), we say that an \(n\)-cell \(x \in X_n\) is
+\emph{degenerate} if \(x \in s_j X_{n-1}\) for some \emph{codegeneracy} map
+\(s_j: X_{n-1} \to X_n\), where \(0 \leq j \leq n-1\).
+
+Equivalently, \(x\) is denenerate if there exists a \emph{surjective} map
+\(\alpha: [n] \epi [m]\) and \(m\)-cell \(y \in X_m\) for which
+\(x = \alpha^{*} y\).
+\end{definition}
+
+\begin{lemma}[Eilenberg-Zilber]
+\label{lem:Eilenberg-Zilber}
+Let \(x\) be a \(n\)-cell of a given simplicial set \(X\). There \emph{exists
+  a unique} pair \((\alpha, y)\) such that \(\alpha: [n] \epi [k]\) is a
+\emph{surjective} map and \(y\) is a \emph{non-degenerate} \(k\)-cell of
+\(X\) satisfying \(\alpha^{*} y = x\).
+\end{lemma}
+
+\begin{proof}
+The existence of the pair \((\alpha, y)\) comes straight from definition. Now
+suppose \((\beta, z)\) is another pair satisfying the said property, where \(z\)
+is a non-degenerate \(\ell\)-cell of \(X\). Since pushouts of a pair of
+surjections in \(\Splx\) are absolute, the pushout of the pair
+\((\alpha, \beta)\):
+\[
+\begin{tikzcd}
+{[n]} \ar[r, two heads, "\alpha"]
+\ar[d, two heads, "\beta"']
+\ar[dr, phantom, "\ulcorner", very near end]
+&{[k]} \ar[d, "\gamma"] \\
+{[\ell]} \ar[r, "\omega"'] &{[s]}
+\end{tikzcd}
+\]
+is turned into a pullback by the simplicial set \(X: \Splx^{\op} \to \Set\),
+that is:
+\[
+\begin{tikzcd}
+X_n \ar[rd, phantom, very near start, "\lrcorner"]
+&X_k \ar[l, "\alpha^{*}"']
+\\
+X_{\ell} \ar[u, "\beta^{*}"]
+&X_s \ar[u, "\gamma^{*}"'] \ar[l, "\omega^{*}"]
+\end{tikzcd}
+\]
+From the pushout property, \(\gamma\) and \(\omega\) are epimorphisms, thus
+split, \(X\) ensures that \(\gamma^{*}\) and \(\omega^{*}\) are
+split-epimorphisms in \(\Set\). Therefore there exists \(s\)-cells
+\(a, b \in X_s\) such that \(\gamma^{*} a = y\) and \(\omega^{*} b = z\). Notice
+however that we assumed \(y\) and \(z\) to be both non-degenerate, hence it must
+be the case that \(\gamma\) and \(\omega\) are \emph{identities}. This implies
+in \(\beta = \alpha\) and \(y = z\).
+\end{proof}
+
+Notice that, given a simplicial set \(X\), we can naturally construct a
+\emph{filtration} for \(X\) by defining for each \(n \in \N\) the subspace
+\(|X|_n\) of \(|X|\) given by
+\[
+|X|_n \coloneq \{
+x \otimes t \in |X| \colon
+(x, t) \in X_k \times \splxtop^k
+\text{ for some } k \leq n
+\},
+\]
+so that the collection \((|X|_n)_{n \in \N}\) defines a filtration---that is,
+\(|X|_n \leq |X|_{n+1}\) and \(|X| = \bigcup_{n \in \N} |X|_n\) is endowed with
+the \emph{weak topology}.
+
+\begin{lemma}
+\label{lem:X0-simplicial-set-is-discrete}
+Given a simplicial set \(X\), the subspace \(|X|_0 \subseteq |X|\) is
+\emph{discrete} and given by
+\[
+|X|_0 = X_0 \times \splxtop^0.
+\]
+\end{lemma}
+
+\begin{proof}
+We shall create an isomorphism between both spaces. Define a surjective map
+\(X_0 \times \splxtop^0 \epi |X|_0\) by mapping \((x, 1) \mapsto x \otimes
+1\). Now, suppose that for some \(x, y \in X_0\) one has
+\(x \otimes 1 = y \otimes 1\), then there must exist a pair
+\((z, t) \in X_n \times \splxtop^n\), for some \(n \in \N\), and parallel
+morphisms \(\alpha, \beta: [0] \para [n]\) in \(\Splx\) for which
+\[
+(x, \alpha_{*} 1) = (\alpha^{*} z, t)
+\quad \text{ and } \quad
+(y, \beta_{*} 1) = (\beta^{*} z, t).
+\]
+Since \(\splxtop^0 = 1\) is a single point, then \(\alpha_{*} = \beta_{*}\) and
+hence \(\alpha = \beta\), which shows that \(x = y\).
+\end{proof}
+
+\begin{notation}
+\label{not:non-degenerate-cells}
+Denote by \(X_n^{\Nondeg}\) the collection of all \emph{non-degenerate
+  \(n\)-cells} of a given simplicial set \(X\).
+\end{notation}
+
+\begin{lemma}
+\label{lem:unique-non-degenerate-point-geometric-realization}
+Let \(\xi \in |X|\) be any point, and let \(n \in \N\) be the \emph{minimal}
+index such that there exists \((x, t) \in X_n \times \splxtop^n\) for which
+\(\xi = x \otimes t\). Then \(x\) is a non-degenerate simplex, and if
+\(n \geq 1\) then \(t \in \Int \splxtop^n\)---also, if that is the case, then the
+pair \((x, t)\) is unique with such property.
+\end{lemma}
+
+% \begin{proof}
+% We shall prove this lemma in three steps:
+% \begin{itemize}\setlength\itemsep{0em}
+% \item (\(x\) is non-degenerate) Suppose for the sake of contradiction that \(x\)
+%   is degenerate, so that there exists a pair \((\alpha: [n] \epi [m], y)\) with
+%   \(y \in X_m\) and \(m < n\) such that \(\alpha^{*} y = x\). From this one
+%   obtains
+%   \[
+%   x \otimes t = \alpha^{*} y \otimes t = y \otimes \alpha_{*} t
+%   \]
+%   then \((y, \alpha_{*} t) \in X_m \times \splxtop^m\) satisfies
+%   \(\xi = y \otimes \alpha^{*} t\), which contradicts the assumption that \(n\)
+%   was the minimal element of \(\N\) with this property.
+
+% \item (\(t \in \Int \splxtop^n\)) Assume that \(n \geq 1\) and, for the sake of
+%   contradiction, suppose that \(t \in \Bd \splxtop^n\)---so that there exists
+%   at least one coordinate of \(t\) that is zero. From this last comment, it
+%   follows that there exists an injective map \(\beta: [k] \mono [n]\), for some
+%   \(k < n\), such that \(t \in \beta_{*} \splxtop^k\). If \(s \in \splxtop^k\) is
+%   the point such that \(\beta_{*} s = t\), then
+%   \[
+%   \xi = x \otimes t = x \otimes \beta_{*} s = \beta^{*} x \otimes s,
+%   \]
+%   but \(\beta^{*} x \in \splxtop^k\), which contradicts again the minimality of
+%   \(n\).
+
+% \item (Uniqueness of the pair \((x, t)\)) Assume again that \(n \geq 1\), and
+%   suppose that \(\xi = x \otimes t = y \otimes s\) for some
+%   \(x, y \in X_n^{\Nondeg}\) and \(t, s \in \Int \splxtop^n\)---which can be
+%   assumed using the result of the last item. From the definition of \(\otimes\)
+%   we may consider a finite zig-zag \((\alpha_j, \beta_j)_{j=1}^N\) in \(\Splx\):
+%   \[
+%   \begin{tikzcd}
+%   {[n_{j-1}]}
+%   &&{[m_j]}
+%   \\
+%   &{[k_j] \ar[lu, "\alpha_j"]} \ar[ru, "\beta_j"']
+%   &
+%   \end{tikzcd}
+%   \]
+%   where \(n_0\) and \(m_N\) are both defined to be \(n\) and the intersection
+%   \(\im \beta_j \cap \im \alpha_{j+1}\) is \emph{non-empty} for every
+%   \(1 \leq j < N\)---together with a collection of pairs
+%   \[
+%   \big((x_j, t_j), (y_j, s_j)\big)_{j=0}^N
+%   \in \prod_{j=0}^N (X_{k_j} \times \splxtop^{k_j})
+%   \times (X_{m_j} \times \splxtop^{m_j})
+%   \]
+%   for which one has the following relations:
+%   \[
+%   (x_j, (\alpha_j)_{*} t_j) = (\alpha_j^{*} y_{j-1}, s_{j-1})
+%   \quad \text{ and } \quad
+%   (x_j, (\beta_j)_{*} t_j) = (\beta_j^{*} y_j, s_j),
+%   \]
+%   and \((x_0, t_0) \coloneq (x, t)\), while \((y_N, s_N) \coloneq (y, s)\).
+
+%   By hypothesis, since \(t\) and \(s\) are interior points of \(\splxtop^n\), then
+%   it must be the case that both \(\alpha_1\) and \(\beta_N\) are
+%   \emph{surjective}, so that \(k_1, k_N \geq n\). We proceed by induction on the
+%   zig-zag length \(N\). If \(N = 1\), then the zig-zag is composed by two
+%   \emph{surjective} maps \(\alpha, \beta: [k] \para [n]\). Since pushouts of
+%   surjective maps exist in \(\Splx\) and are \emph{absolute}, if we consider the
+%   pushout of the pair \((\alpha, \beta)\):
+%   \[
+%   \begin{tikzcd}
+%   {[k]} \ar[r, "\alpha"]
+%   \ar[d, "\beta"']
+%   \ar[rd, phantom, "\ulcorner", very near end]
+%   &{[n]} \ar[d, "\gamma"] \\
+%   {[n]} \ar[r] &{[\ell]}
+%   \end{tikzcd}
+%   \]
+%   the contravariant functor \(X\) maps this universal square to a
+%   \emph{pullback} in \(\Set\):
+%   \[
+%   \begin{tikzcd}
+%   X_k \ar[rd, "\lrcorner", very near start, phantom]
+%   &X_n \ar[l, "\alpha^{*}"'] \\
+%   X_n \ar[u, "\beta^{*}"]
+%   &X_{\ell} \ar[u, "\gamma^{*}"'] \ar[l]
+%   \end{tikzcd}
+%   \]
+%   Then since \(\gamma\) is a split epimorphism, so is \(\gamma^{*}\), which
+%   proves the existence of an \(\ell\)-cell \(z \in X_{\ell}\) such that
+%   \(\gamma^{*} z = x\). However, since \(x\) is non-degenerate and \(n\) is
+%   minimal, this can only happen if \(\ell = n\) so that \(\alpha, \beta =
+%   \Id_{[n]}\)---implying on \((x, t) = (y, s)\).
+
+%   Assume, for the hypothesis of induction, that equality of the points is
+%   stablished for some \(N-1 > 1\). We now work on the case \(N > 1\): our goal
+%   will be to shorten the zig-zag sequence by one. Start by factoring the
+%   morphism \(\beta_1\) as follows
+%   \[
+%   \begin{tikzcd}
+%   {[k_1]} \ar[rr, "\beta_1"] \ar[rd, two heads, "\varepsilon"']
+%   & &{[m_1]} \\
+%   &{[m_1']} \ar[ur, tail, "\delta"'] &
+%   \end{tikzcd}
+%   \]
+%   If we now consider the pushout of the pair of \emph{surjective} maps
+%   \((\alpha_1, \varepsilon)\), the simplicial set takes this pushout to a
+%   \emph{pullback} in \(\Set\) and from an analogous argument as done above, we
+%   conclude that we must have \(\varepsilon = \Id_{[k_1]}\). Therefore the
+%   factorization of \(\beta_1\) reduces solely to \(\beta_1 = \delta\), which is
+%   a \emph{monomorphism}. Since \(\im \alpha_2 \cap \im \beta_1 \neq \emptyset\),
+%   then by \cref{lem:splx-cat-pullback-mono-pushout-epi} we know that the
+%   pullback of the pair \((\beta_1, \alpha_2)\) exists in \(\Splx\):
+%   \begin{equation}\label{eq:pullback-unique-nd-pt-xi}
+%   \begin{tikzcd}
+%   {[k_1']} \ar[r, tail, "\theta"]
+%   \ar[rd, phantom, very near start, "\lrcorner"]
+%   \ar[d, "\eta"']
+%   &{[k_2]} \ar[d, "\alpha_2"] \\
+%   {[k_1]} \ar[r, tail, "\beta_1"'] &{[m_1]}
+%   \end{tikzcd}
+%   \end{equation}
+%   Considering the simplex covariant functor \(\splxtop^{\bullet}\), we have a
+%   corresponding square
+%   \[
+%   \begin{tikzcd}
+%   \splxtop^{k_1'} \ar[r, tail, "\theta_{*}"]
+%   \ar[d, "\eta_{*}"']
+%   \ar[rd, phantom, very near start, "\lrcorner"]
+%   &\splxtop^{k_2} \ar[d, "(\alpha_2)_{*}"] \\
+%   \splxtop^{k_1} \ar[r, tail, "(\beta_1)_{*}"'] &\splxtop^{m_1}
+%   \end{tikzcd}
+%   \]
+%   in \(\Top\), which is again a pullback. Therefore can find \(c \in X_{k_1'}\)
+%   such that \(c = \eta^{*} x_1 = \theta^{*} y_1\), and take the \emph{unique}
+%   \(w \in \splxtop^{k_1'}\) such that \(\eta_{*} w = t_1\) and
+%   \(\theta_{*} w = s_1\).
+
+%   Notice that by the pullback \cref{eq:pullback-unique-nd-pt-xi} one has
+%   \[
+%   \begin{tikzcd}
+%   {[n]} & &{[m_1]} & &{[m_2]}
+%   \\
+%   &{[k_1]} \ar[ul, "\alpha_1"]
+%   \ar[ru, tail, "\beta_1"]
+%   &
+%   &{[k_2]} \ar[ru, "\beta_2"']
+%   \ar[lu, "\alpha_2"']
+%   &
+%   \\
+%   & &{[k_1']} \ar[ul, "\eta"] \ar[ru, tail, "\theta"'] & &
+%   \end{tikzcd}
+%   \]
+%   so together with the pair \((c, w) \in X_{k_1'} \times \splxtop^{k_1'}\) and
+%   \([n] \overset{\alpha_1 \eta} \longleftarrow [k_1'] \overset{\beta_2
+%     \theta}\longrightarrow [m_2]\) we can shorten the zig-zag length by one,
+%   yielding the case \(N - 1\), which is true by hypothesis. Therefore
+%   \((x, t) = (y, s)\) and the lemma follows.
+% \end{itemize}
+% \end{proof}
+
+\begin{theorem}
+\label{thm:geometric-realization-is-CW-complex}
+Let \(X\) be a simplicial set. The geometric realization of \(X\) has a natural
+structure of a CW-complex with exactly one closed \(n\)-cell
+\(\widehat x: \splxtop^n \to |X|\) for each non-degenerate \(n\)-cell
+\(x \in X_n\).
+\end{theorem}
+
+\begin{proof}
+Let \((x, t), (y, s) \in \coprod_{x \in X_n^{\Nondeg}} \splxtop^n\) be any two
+points.  We analyse the case where \(x \otimes t = y \otimes s\) are equivalent
+points of \(|X|_n\) by means of
+\cref{lem:unique-non-degenerate-point-geometric-realization}:
+\begin{itemize}\setlength\itemsep{0em}
+\item If both \(t, s \in \Int \splxtop^n\) then by the uniqueness of
+  representatives we find that
+  \[
+  (x, t) = (y, s).
+  \]
+
+\item Now if for instance \(t \in \Bd \splxtop^n\), then there exits a
+  unique \((z, r) \in X_k \times \Int \splxtop^k\) for some minimal \(k < n\)
+  such that \(x \otimes t = z \otimes t\). Notice however that since \(k\) is
+  minimal and unique with such property, then it must be the case that
+  \(s \in \Bd \splxtop^n\)---therefore in this case one has both points
+  \[
+  (x, t), (y, s) \in \coprod_{x \in X_n^{\Nondeg}} \Bd \splxtop^n.
+  \]
+\end{itemize}
+From this we can conclude that the following square is a pushout in \(\Top\):
+\[
+\begin{tikzcd}
+\coprod_{x \in X_n^{\Nondeg}} \Bd \splxtop^n
+\ar[dd, hook]
+\ar[rr]
+\ar[rdrd, "\ulcorner", phantom, very near end]
+&&{|X|_{n-1}} \ar[dd, hook]
+\\
+&&
+\\
+\coprod_{x \in X_n^{\Nondeg}} \splxtop^n
+\ar[rr, "(\widehat x)_{x \in X_n^{\Nondeg}}"']
+&&{|X|_n}
+\end{tikzcd}
+\]
+which proves that \(|X|\) is a \(CW\)-complex.
+\end{proof}
+
+\begin{definition}[Skeletal filtrations in \(\sSet\)]
+\label{def:skeletal-filtration-sset}
+Let \(X\) be a simplicial set. We define the \emph{skeletal filtration} of \(X\)
+to be the collection \((\Sk_n X)_{n \in \N}\) of simplicial sets, where
+\(\Sk_n X\) is the \emph{smallest subcomplex} of \(X\) containing every
+\(k\)-cell \(x \in X_k\) for each \(0 \leq k \leq n\). Explicitly, the
+collection of \(k\)-cells of \(\Sk_n X\) is
+\[
+(\Sk_n X)_k = \bigcup_{0 \leq j \leq k}
+\big\{ x f \in X_k
+\colon x \in X_j
+\text{ and }
+f \in \Hom_{\Splx}([k], [j])\big\}.
+\]
+Therefore for each \(n \in \N\) the simplicial set \(\Sk_n X\) is a
+\emph{subcomplex} of \(\Sk_{n+1} X\).
+
+From construction we see that
+\[
+X = \Colim_{n \in \N} \Sk_n X,
+\]
+which is, loosely, the \emph{union} of all \(\Sk_n X\).
+\end{definition}
+
+% \begin{remark}[On \cref{def:skeletal-filtration-sset}]
+% \label{rem:on-the-skeletal-filtration-of-a-sset}
+% Note by a subobject \(S \in \sSet\) of the simplicial set \(X\) we actually
+% mean an isomorphism class of \emph{natural monomorphisms}---meaning, a class of
+% natural transformations \(\eta: S \nat X\) for which each associated morphism
+% \(\eta_{[n]}: S_n \mono X_n\) is a monomorphism in \(\Set\). We say that
+% \((S, \eta)\) is \emph{equivalent} to another subobject \((B, \xi: B \nat X)\)
+% of \(X\) if there exists a \emph{natural isomorphism} \(\sigma: S \isonat B\)
+% such that, for any \([n] \in \Splx\), the diagram
+% \[
+% \begin{tikzcd}
+% &X_k &
+% \\
+% S_k \ar[ru, tail, "\eta_{[k]}"]
+% \ar[rr, "\dis", "\sigma_{[k]}"']
+% &
+% &B_k \ar[lu, tail, "\xi_{[k]}"']
+% \end{tikzcd}
+% \]
+% commutes in \(\Set\).
+% \end{remark}
+
+% \begin{corollary}[Pushouts \& pullbacks in \(\sSet\)]
+% \label{cor:pushout-and-pullback-of-simplicial-sets}
+% Let \(X\), \(Y\) and \(Z\) be simplicial sets. We define the following:
+% \begin{enumerate}[(a)]\setlength\itemsep{0em}
+% \item Given morphisms of simplicial sets \(f: X \to Z\) and \(g: Y \to Z\), the
+%   pullback of the pair \((f, g)\) to be the simplicial set \(P\) defined as
+%   follows: for each \(n \in \N\), the set \(P_n\) is the pullback
+%   \[
+%   \begin{tikzcd}
+%   P_n \ar[rd, phantom, "\lrcorner", very near start]
+%   \ar[r] \ar[d]
+%   &Y_n \ar[d, "g_n"] \\
+%   X_n \ar[r, "f_n"']
+%   &Z_n
+%   \end{tikzcd}
+%   \]
+%   in the category of sets.
+% \item Given morphisms of simplicial sets \(u: X \to Z\) and \(v: Y \to Z\), the
+%   pushout of the pair \((u, v)\) to be the simplicial set \(Q\) defined as
+%   follows: for each \(n \in \N\), the set \(Q_n\) is the pushout
+%   \[
+%   \begin{tikzcd}
+%   Z_n \ar[rd, phantom, "\ulcorner", very near end]
+%   \ar[r, "v_n"] \ar[d, "u_n"']
+%   &Y_n \ar[d] \\
+%   X_n \ar[r]
+%   &Q_n
+%   \end{tikzcd}
+%   \]
+%   in the category of sets.
+% \end{enumerate}
+% \end{corollary}
+
+% \begin{proof}
+% These limits all exist in \(\Set\), therefore each limit is well defined in
+% \(\sSet\).
+% \end{proof}
+
+\begin{proposition}
+\label{prop:filtration-attaching-cells}
+Given a simplicial set \(X\), the square
+\[
+\begin{tikzcd}
+\coprod_{x \in X_n^{\Nondeg}} \Bd \Delta^n
+\ar[rd, phantom, very near end, "\ulcorner"]
+\ar[r] \ar[d, tail]
+&\Sk_{n-1} X \ar[d, tail]
+\\
+\coprod_{x \in X_n^{\Nondeg}} \Delta^n
+\ar[r]
+&\Sk_n X
+\end{tikzcd}
+\]
+is a pushout in \(\sSet\).
+\end{proposition}
+
+% \begin{proof}
+% Let \(P \in \sSet\) be the pushout of the given square, and define
+% \(p: P \to \Sk_n X\) to be unique morphism of simplicial sets making the diagram
+% \[
+% \begin{tikzcd}
+% \coprod_{x \in X_n^{\Nondeg}} \Bd \Delta^n
+% \ar[rd, phantom, very near end, "\ulcorner"]
+% \ar[r] \ar[d]
+% &\Sk_{n-1} X
+% \ar[d, tail]
+% \ar[rdd, tail, bend left]
+% &
+% \\
+% \coprod_{x \in X_n^{\Nondeg}} \Delta^n
+% \ar[rrd, bend right]
+% \ar[r]
+% &P \ar[rd, dashed, "p"]
+% &
+% \\
+% &&\Sk_n X
+% \end{tikzcd}
+% \]
+% commute in \(\sSet\). We'll show that \(p\) is an isomorphism of simplicial
+% sets:
+% \begin{itemize}\setlength\itemsep{0em}
+% \item (Epimorphism) Let \(x \in (\Sk X_n)_k\) be any \(k\)-cell, and let
+%   \((y, \alpha: [k] \epi [m])\) be the unique representative pair of \(x\) with
+%   \(y \in X_m\) being a non-degenerate \(m\)-cell such that
+%   \(x = y \alpha\) and \(m \leq k\). If it is the case that \(m < n\), then
+%   \(x\) is a degenerate \(k\)-cell and also \(y \in \Sk_{n-1} X\)---but then
+%   \(x \in \Sk_{n-1} X\) via \(\alpha^{*}\), showing that \(x \in \im p_k\). For
+%   the case where \(m = n\) we see that \(x\) is non-degenerate and therefore
+%   \((x, \splx^n) \in \coprod_{x \in X_n^{\Nondeg}} \splx^n\), thus
+%   \(x \in \im p_k\) by the commutativity of
+%   \[
+%   \begin{tikzcd}
+%   {(x, \splx^n)}
+%   \ar[r]
+%   \ar[rd, "x"']
+%   &P_k \ar[d, "p_k"] \\
+%   &{(\Sk_n X)_{k}}
+%   \end{tikzcd}
+%   \]
+%   where \(x: \splx^n \to (\Sk_n X)_k\) is the unique representative morphism of
+%   \(x\).
+
+% \item (Monomorphism) To prove that \(p\) is a monomorphism it suffices to show
+%   the following two properties:
+%   \begin{enumerate}[(i)]\setlength\itemsep{0em}
+% \item Let \(x \in X_n^{\Nondeg}\) be any non-degenerate \(n\)-cell and consider
+%   the canonical morphisms \(x: \splx^n \to \Sk_n X\) and
+%   \(\Sk_{n-1} X \mono \Sk_n X\)---we'll show that the \emph{pullback} of this
+%   pair of morphisms is \(\Bd \splx^n\).
+
+%   Let \(\alpha \in \splx^n[k]\) be a \(k\)-cell such that the \(k\)-cell
+%   \(x \alpha \in X_k\) is an element of \((\Sk_{n-1} X)_k\). Suppose, for the
+%   sake of contradiction, that \(\alpha\) is an epimorphism, so that
+%   \(n \leq k\). Since \(x \alpha\) a \(k\)-cell of the \((n-1)\)-skeleton, the
+%   unique pair \((y, \beta: [k] \epi [m])\)---where \(y \in X_m\) is
+%   non-degenerate with \(m < n\) and \(y \beta = x \alpha\)---is such that
+%   \(y \in (\Sk_n X)_m\). Since \(\alpha\) and \(\beta\) are epimorphisms in
+%   \(\Splx\), their pushout exists and is absolute:
+%   \[
+%   \begin{tikzcd}
+%   {[k]} \ar[r, "\alpha", two heads]
+%   \ar[d, two heads, "\beta"']
+%   \ar[dr, phantom, very near end, "\ulcorner"]
+%   &{[n]} \ar[d, "\delta"] \\
+%   {[m]} \ar[r, "\gamma"']
+%   &{[\ell]}
+%   \end{tikzcd}
+%   \]
+%   Since \(X\) is covariant, the corresponding square is a pullback in \(\sSet\):
+%   \[
+%   \begin{tikzcd}
+%   X_k
+%   \ar[dr, phantom, very near start, "\lrcorner"]
+%   &X_n \ar[l, "\alpha^{*}"', two heads] \\
+%   X_m
+%   \ar[u, two heads, "\beta^{*}"]
+%   &X_{\ell} \ar[l, "\gamma^{*}"]
+%   \ar[u, "\delta^{*}"']
+%   \end{tikzcd}
+%   \]
+%   Using the fact that \(y \beta = x \alpha\), there exists \(z \in X_{\ell}\)
+%   such that \(z \delta = x\) and \(z \gamma = y\). Since \(x\) is assumed to be
+%   non-degenerate, and \(\delta\) is an epimorphism with \(\ell \leq n\) and
+%   \(z \delta = x\), then it must be the case that \(\delta = \Id_{[n]}\) and
+%   hence \(\ell = n\). Note however that \(m < n\) so that
+%   \(\gamma: [m] \to [n]\) should not be able to be an epimorphism, which is a
+%   contradiction.  From this it follows that \(\alpha\) isn't an epimorphism and
+%   hence \(\alpha \in \Bd \splx^n[k]\) is a \(k\)-cell of the boundary. We thus
+%   conclude that
+%   \[
+%   \begin{tikzcd}
+%   \Bd \splx^n
+%   \ar[rd, phantom, "\lrcorner", very near start]
+%   \ar[r] \ar[d, tail]
+%   &\Sk_{n-1} X \ar[d, tail]
+%   \\
+%   \splx^n \ar[r, "x"']
+%   &\Sk_n X
+%   \end{tikzcd}
+%   \]
+
+% %%%%%%%%%%%%%%%%%%
+
+% \item Given any two \emph{distinct} non-degenerate \(n\)-cells \(x, y \in
+%   X_n^{\Nondeg}\), let the square
+%   \[
+%   \begin{tikzcd}
+%   Q \ar[r, "v"]
+%   \ar[d, "w"']
+%   &\splx^n \ar[d, "x"] \\
+%   \splx^n \ar[r, "y"']
+%   &\Sk_n X
+%   \end{tikzcd}
+%   \]
+%   be a pullback in \(\sSet\). Our goal will be to show that \(v\) and \(w\) can
+%   be factored through the monomorphism \(\Bd \splx^n \mono \splx^n\).
+
+%   Consider a pair of \(k\)-cells \(\alpha, \beta \in \splx^n[k]\) such that
+%   \(x \alpha = y \beta\). First, notice that if one of them was an identity map,
+%   then \(k\) would coincide with \(n\) and it would follow that both \(\alpha\)
+%   and \(\beta\) are identities, yielding \(x = y\), which contradicts the
+%   assumption of \(x\) and \(y\) being distinct cells. We can therefore assume
+%   that neither \(\alpha\) nor \(\beta\) are identities. Consider the
+%   factorization
+%   \[
+%   \begin{tikzcd}
+%   {[k]} \ar[rr, "\alpha"]
+%   \ar[rd, two heads, "\alpha_{-}"']
+%   &&{[n]} \\
+%   &{[m_1]} \ar[ru, tail, "\alpha_{+}"'] &
+%   \end{tikzcd}
+%   \qquad
+%   \qquad
+%   \begin{tikzcd}
+%   {[k]} \ar[rr, "\beta"]
+%   \ar[rd, two heads, "\beta_{-}"']
+%   & &{[n]}
+%   \\
+%   &{[m_2]} \ar[ru, tail, "\beta_{+}"'] &
+%   \end{tikzcd}
+%   \]
+%   Since \(\alpha_{-}\) and \(\beta_{-}\) are epimorphisms, their pushout exists
+%   and is absolute:
+%   \begin{equation}\label{eq:pushout-proving-p-is-monic}
+%   \begin{tikzcd}
+%   {[k]} \ar[r, "\alpha_{-}", two heads]
+%   \ar[d, two heads, "\beta_{-}"']
+%   \ar[dr, phantom, very near end, "\ulcorner"]
+%   &{[m_1]} \ar[d, "\delta"] \\
+%   {[m_2]} \ar[r, "\gamma"']
+%   &{[\ell]}
+%   \end{tikzcd}
+%   \end{equation}
+%   Since \(X\) is covariant, the corresponding square is a pullback in \(\sSet\):
+%   \[
+%   \begin{tikzcd}
+%   X_k
+%   \ar[dr, phantom, very near start, "\lrcorner"]
+%   &X_{m_1} \ar[l, "\alpha_{-}^{*}"', two heads] \\
+%   X_{m_2}
+%   \ar[u, two heads, "\beta_{-}^{*}"]
+%   &X_{\ell} \ar[l, "\gamma^{*}"]
+%   \ar[u, "\delta^{*}"']
+%   \end{tikzcd}
+%   \]
+%   Therefore there exists \(z \in X_{\ell}\) for which
+%   \(z \alpha_{-} \gamma = x\) while \(z \delta \beta_{-} = y\). Now, since both
+%   \(x\) and \(y\) are non-degenerate cells, it follows that all maps in
+%   \cref{eq:pushout-proving-p-is-monic} are identity morphisms. It then follows
+%   that \(\alpha = \alpha_{+}\) and \(\beta = \beta_{+}\) are
+%   monomorphisms. Since neither of them is an identity, it follows that
+%   \(\alpha, \beta \in \Bd \splx^n\) are \(k\)-cells of the boundary. This shows
+%   that \(v\) and \(w\) can be both factorized through
+%   \(\Bd \splx^n \mono \splx^n\).
+%   \end{enumerate}
+% \end{itemize}
+% \end{proof}
+
+\section{Next Semester}
+
+The following table displays the planned courses that the student will
+participate in the following semester.
+
+\begin{table}[h!]\label{tab:disc}
+  \centering
+  \caption{Types are divided in undergraduate course (G) and graduate (PG).}
+  \begin{tabular}{ |c|c|c|c|c| }
+    \hline
+    Year and Semester & Code & Discipline & Type & Credits \\
+    \hline
+    \multirow{3}{*}{2023 / 1}
+                   & CCM0328 & Iniciação à Pesquisa II            & G  & 12 \\
+                   & MAT5761 & Introdução à Geometria Algébrica   & PG & 10 \\
+                   & MAT6684 & Topologia Algébrica                & PG & 10 \\
+    \hline
+\end{tabular}
+\end{table}
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
