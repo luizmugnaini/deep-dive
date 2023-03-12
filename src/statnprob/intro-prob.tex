@@ -417,45 +417,45 @@ Variables that take a finite set of \emph{unordered} values are called
 \emph{categorical variables}, and are used widely in machine learning contexts.
 \end{definition}
 
-\begin{lemma}[Marginalisation]
+\begin{lemma}[Sum rule]
 \label{lem:joint-probability-sum-rule}
 Let \(X: \Omega_X \to \mathcal{X}\) and \(Y: \Omega_Y \to \mathcal{Y}\) be
 multivariate random variables and consider the joint probability
-\(f: \Omega_X \times \Omega_Y \to \R\). The \emph{marginalisation property}
+\(\Prob: \Omega_X \times \Omega_Y \to \R\). The \emph{sum rule}
 states that the marginal probability of \(X = x\) is given by
 \[
-f(x) =
+\Prob(x) =
 \begin{cases}
-  \sum_{y \in \mathcal{Y}} f(x, y), &\text{if } y \text{ is discrete} \\
-  \int_{\mathcal{Y}} f(x, y)\, \diff y, &\text{if } y \text{ is continuous}
+  \sum_{y \in \mathcal{Y}} \Prob(x, y), &\text{if } y \text{ is discrete} \\
+  \int_{\mathcal{Y}} \Prob(x, y)\, \diff y, &\text{if } y \text{ is continuous}
 \end{cases}
 \]
 \end{lemma}
 
 \begin{lemma}[Product rule]
 \label{lem:joint-probability-product-rule}
-Given a joint probability \(f: \Omega_X \times \Omega_Y \to \R\), the product
+Given a joint probability \(\Prob: \Omega_X \times \Omega_Y \to \R\), the product
 rule states that
 \[
-f(x, y) = f(y \mid x) f(x).
+\Prob(x, y) = \Prob(y \mid x) \Prob(x).
 \]
 \end{lemma}
 
 From the product rule we can obtain Bayes' theorem by noting the symmetry
-\(f(x, y) = f(x \mid y) f(y)\), resulting in
+\(\Prob(x, y) = \Prob(x \mid y) \Prob(y)\), resulting in
 \[
-f(x \mid y) = \frac{f(y \mid x) f(x)}{f(y)}.
+\Prob(x \mid y) = \frac{\Prob(y \mid x) \Prob(x)}{\Prob(y)}.
 \]
 In the eyes of machine learning and Bayesian statistics, this formula gives a
 way to make inferences about the unobserved random variable \(X\) by having a
-\emph{prior} knowledge \(f(x)\) and a second random variable \(Y\) of which we
-can observe and have a \emph{marginal evidence} \(f(y)\) and a relational
-\emph{likelihood} \(f(y \mid x)\). This data gives a \emph{posterior} knowledge
-\(f(x \mid y)\).
+\emph{prior} knowledge \(\Prob(x)\) and a second random variable \(Y\) of which we
+can observe and have a \emph{marginal evidence} \(\Prob(y)\) and a relational
+\emph{likelihood} \(\Prob(y \mid x)\). This data gives a \emph{posterior} knowledge
+\(\Prob(x \mid y)\).
 
 \begin{remark}
 \label{rem:likelihood}
-The value \(f(y \mid x)\) can be called either the ``likelihood of \(x\) given
+The value \(\Prob(y \mid x)\) can be called either the ``likelihood of \(x\) given
 \(y\)'' or the ``probability of \(y\) given \(x\)''.
 \end{remark}
 
@@ -549,7 +549,7 @@ Let \(X\) and \(Y\) be multivariate random variables with \(\im X \subseteq
 \[
 \Cov(X, Y) \coloneq \Expect_{X, Y}(\langle x, y \rangle) -
 \langle \Mean_X , \Mean_Y  \rangle
-= \Cov(X, Y)^{\Transp} \in \R^n \times \R^m,
+= \Cov(Y, X)^{\Transp} \in \R^n \times \R^m,
 \]
 where \(\langle -, - \rangle\) is the standard euclidean inner product.
 
@@ -594,6 +594,8 @@ Analogously, the \emph{empirical covariance} is defined as
 \]
 \end{definition}
 
+\subsection{Random Variables \& Linear Maps}
+
 \begin{lemma}
 \label{lem:sums-differences-random-variables}
 Given a pair of random variables \(X\) and \(Y\) with states in \(\R^n\), we can
@@ -608,6 +610,122 @@ and variances:
   \Var(X - Y) &= \Var X + \Var Y - (\Cov(X, Y) + \Cov(Y, X)). \\
 \end{align*}
 \end{lemma}
+
+Let \(Y = A X + b\) be a linear transformation and \(X\) a random variable, then
+\(Y\) itself is a random variable. The following relations hold true for the
+mean of \(Y\):
+\[
+\Mean_Y = \Expect_Y Y = \Expect_X[A X + b] = A \Expect_X X + b = A \Mean_X + b
+\]
+Moreover, we also have the following relation with the variance of \(Y\):
+\begin{align*}
+  \Var(Y)
+  &= \Var(A X + b) \\
+  &= \Cov(A X + b, A X + b) \\
+  &= \Expect[(A X + b)(A X + b)^{\Transp}] - \Mean_{A X + b} \Mean_{A X +
+    b}^{\Transp} \\
+  &= \Expect[
+    A X X^{\Transp} A^{\Transp} + A X b^{\Transp} + b X^{\Transp} A^{\Transp}
+    + b b^{\Transp}
+    ]
+    - (A \Mean_X \Mean_X^{\Transp} A^{\Transp} + A \Mean_X b^{\Transp}
+    + b \Mean_X^{\Transp} A^{\Transp} - b b^{\Transp}) \\
+  &= A \Expect[X X^{\Transp}] A^{\Transp} - A \Mean_X \Mean_X^{\Transp}
+    A^{\Transp} \\
+  &= \Var(A X) \\
+  &= A \Var(X) A^{\Transp}
+\end{align*}
+Finally, we can compute the covariance of \(X\) and \(Y\) as
+\begin{align*}
+  \Cov(X, Y)
+  &= \Expect[X (A x + b)^{\Transp}] - \Mean_X \Mean_{A X + b}^{\Transp} \\
+  &= \Mean_X b^{\Transp} + \Expect[X X^{\Transp}] A^{\Transp}
+    - \Mean_X b^{\Transp} - \Mean_X \Mean_X^{\Transp} A^{\Transp} \\
+  &= \Expect[X X^{\Transp}] A^{\Transp} - \Mean_X \Mean_X^{\Transp} A^{\Transp} \\
+  &= \Var(X) A^{\Transp}
+\end{align*}
+
+\begin{lemma}
+\label{lem:statistical-independence-and-cov-var}
+If \(X\) and \(Y\) are statistically independent random variables, then
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item \(\Var(X + Y) = \Var X + \Var Y\).
+\item \(\Cov(X, Y) = 0\).
+\end{enumerate}
+It is to be noted that two random variables may have a zero covariance but
+still be statistically dependent---this is because covariance merely measures
+linear dependence.
+\end{lemma}
+
+\begin{definition}[Conditional independence]
+\label{def:conditional-independence}
+Two random variables \(X\) and \(Y\) are said to be conditionally independent of
+a given random variable \(Z\) when
+\[
+\Prob(x, y \mid z) = \Prob(x \mid z) \Prob(y \mid z)
+\]
+for all states \(z\) of \(Z\). If we use
+\cref{lem:joint-probability-product-rule} we obtain \(\Prob(x, y \mid z) =
+\Prob(x \mid y, z) \Prob(y \mid z)\) and hence the conditional independence can
+be reformulated as
+\[
+\Prob(x \mid y, z) = \Prob(x \mid z).
+\]
+\end{definition}
+
+\begin{definition}[Inner product of random variables]
+\label{def:inner-product-random-variables}
+Given two random variables \(X\) and \(Y\), we can define their inner product to
+be
+\[
+\langle X, Y \rangle \coloneq \Expect(X Y).
+\]
+Also if it is the case that \(\Mean_X = 0 = \Mean_Y\), then in particular
+\(\langle X, Y \rangle = \Cov(X, Y)\) and we would have
+\[
+\Correlation(X, Y) = \frac{\Cov(X, Y)}{\sqrt{\Var(X) \Var(Y)}}
+= \frac{\langle X, Y \rangle}{\| X \|\, \| Y \|} = \cos \theta,
+\]
+where \(\theta\) is the angle between the vectors \(X\) and \(Y\).
+\end{definition}
+
+\section{Distributions}
+
+\begin{definition}[Gaussian distribution]
+\label{def:gaussian-distribution}
+Let \(X\) be a \emph{univariate} random variable with mean \(\Mean\) and
+standard deviation \(\stdev\). The \emph{Gaussian distribution} of \(X\) has a
+density function given by
+\[
+N(x \mid \Mean, \stdev^2) \coloneq \frac{1}{\sqrt{2 \pi \sigma^{2}}}
+\exp\Big( -\frac{(x - \Mean)^2}{2 \stdev^2} \Big).
+\]
+Now, if \(X\) where an \emph{\(n\)-multivariate} random variable, then the Gaussian
+distribution of \(X\) would have a density function defined as
+\[
+N(x \mid \Mean, \Var X) \coloneq \frac{1}{\sqrt{(2 \pi)^n \det(\Var X)}}
+\exp\Big(-\frac{1}{2} (x - \Mean)^{\Transp} \Var(X)^{-1} (x - \Mean)\Big).
+\]
+
+The special case where \(\Mean = 0\) and \(\Var(X) = \Id\) is referred to as the
+\emph{standard normal distribution}.
+\end{definition}
+
+Let \(X\) and \(Y\) be multivariate random variables and consider the
+Gaussian distribution
+\[
+f(x, y) = N\bigg(
+\begin{bmatrix}
+  \Mean_X \\
+  \Mean_Y
+\end{bmatrix},
+\begin{bmatrix}
+  \Var X     & \Cov(X, Y) \\
+  \Cov(Y, X) & \Var Y
+\end{bmatrix}
+\bigg)
+\]
+
 
 %%% Local Variables:
 %%% mode: latex
