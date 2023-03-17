@@ -1,0 +1,153 @@
+\begin{definition}[Convexity]
+\label{def:convexity}
+The following are definitions concerning convexity of spaces in \(\R^n\):
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Given any two points \(x, y \in \R^n\), we define the \emph{segment} from
+  \(x\) to \(y\) to be the set of points
+  \(\{(1-t) x + t y \colon t \in [0, 1]\}\).
+
+\item A set \(C \subseteq \R^n\) is said to be \emph{convex} if for any pair of
+  points \(x, y \in C\) the segment from \(x\) to \(y\) is contained in \(C\).
+
+\item Given a set \(A \subseteq \R^n\), we define the \emph{convex hull} of
+  \(A\) to be the intersection of all convex sets of \(\R^n\) containing \(A\).
+
+\item An \emph{\(m\)-simplex} \(\sigma\) in \(\R^n\) is defined to be the
+  convex-hull of a collection of \(m+1\) distinct points \(\{x_0, \dots, x_m\}\)
+  such that the set \(\{x_j - x_0 \colon 1 \leq j \leq m\}\) is linearly
+  independent. The points \(x_j\) are called the \emph{vertices} of
+  \(\sigma\). If an \emph{order} is assigned to the collection of vertices of
+  \(\sigma\), then we obtain an ordered simplex---the ordered simplex is
+  commonly written as \(\sigma = [x_0, \dots, x_m]\).
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+\label{lem:linear-independence-simplex}
+Let \(\{x_0, \dots, x_m\} \subseteq \R^n\) be a collection of \(m+1\) distinct
+points. Then the set \(L = \{x_j - x_0 \colon 1 \leq j \leq m\}\) is linearly
+independent if and only if for any two sequences of parameters \((s_j)_{j=0}^m\)
+and \((t_j)_{j=0}^m\) satisfying both \(\sum_j s_j x_j = \sum_j t_j x_j\) and
+\(\sum_j s_j = \sum_j t_j\) implies that \(s_j = t_j\) for each \(0 \leq j \leq m\).
+\end{lemma}
+
+\begin{proof}
+Suppose that \(L\) is linearly independent and the two conditions hold for a given
+pair of sequences of parameters. Then
+\begin{align*}
+  0 &= \sum_{j=0}^m (s_j - t_j) x_j \\
+  &= \sum_{j=0}^m (s_j - t_j) x_j - \Big( \sum_{j=0}^m s_j - t_j \Big) x_0 \\
+  &= \sum_{j=1}^{m} (s_j - t_j) (x_j - x_0)
+\end{align*}
+but since \(L\) is linearly independent, then it must be the case that
+\(s_j - t_j = 0\). For the second case, assume only that the two conditions for
+any pair sequences are met: then if \(\sum_{j=1}^m a_j (x_j - x_0) = 0\) then
+\(\sum_j a_j x_j = \sum_j a_j x_0\) hence \(a_j = 0\) for each
+\(1 \leq j \leq m\)---proving that \(L\) is linearly independent.
+\end{proof}
+
+\begin{corollary}
+\label{cor:barycentric-coordinates-simplex}
+Let \(\sigma\) be the \(m\)-simplex given by the convex hull of the set of
+points \(\{x_0, \dots, x_m\}\). Then every point contained in \(\sigma\) is
+uniquely represented by \(\sum_{j=0}^m t_j x_j\) where \(t_j \geq 0\) and
+\(\sum_j t_j = 1\). The tuple \((t_0, \dots, t_m)\) is called the
+\emph{barycentric coordinates} of the point in question.
+\end{corollary}
+
+\begin{corollary}
+\label{cor:ordered-simplex-iso-standard-simplex}
+Let \(\sigma = [x_0, \dots, x_m]\) be an ordered \(m\)-simplex. Then the  map
+\(\splxtop^m \to \sigma\), from the standard topological \(m\)-simplex, given by
+\((t_0, \dots, t_m) \mapsto \sum_{j=0}^m t_j x_j\) is an isomorphism of
+topological spaces.
+\end{corollary}
+
+\begin{definition}[Singular simplex]
+\label{def:singular-simplex}
+Let \(X\) be a topological space. We define a \emph{singular \(m\)-simplex} in
+\(X\) to be a morphism of topological spaces \(\phi: \splxtop^m \to X\).
+
+Given a topological morphism \(f: X \to Y\), we obtain a singular \(m\)-simplex
+in \(Y\) given by the \emph{pushforward} \(f_{*}\phi = f \phi\)---it should be
+noted that this construction is functorial.
+
+Following the construction of the singular complex functor (see
+\cref{def:singular-complex-functor}) we define a structure of a \emph{free
+  abelian group} to the set
+\[
+\Sing_m X \coloneq \Sing_{\splxtop^m} X = \Hom_{\Top}(\splxtop^m, X).
+\]
+An element of \(\Sing_m X\) is called a \emph{singular \(m\)-chain} of \(X\) and
+assumes the form \(\sum_{\phi} n_{\phi} \phi\) for finitely many non-zero
+integers \(n_{\phi}\) associated with singular \(m\)-simplices \(\phi\).
+
+Together with the singular simplex we also define, for each \(0 \leq j \leq m\)
+a morphism of abelian groups
+\[
+\face_j: \Sing_m X \longrightarrow \Sing_{m-1} X
+\]
+called \emph{\(j\)-th face map}, which is explicitly given by
+\[
+\face_j \phi(t_0, \dots, t_{m-1})
+\coloneq \phi(t_0, \dots, t_{j-1}, 0, t_j, \dots, t_{m-1}).
+\]
+That is, the \(j\)-th face map embeds \(\splxtop^{m-1}\) into \(\splxtop^m\)
+face opposite to the \(j\)-th vertex and then map it to \(X\) again via
+\(\phi\). More compactly, if \(\{v_0, \dots, v_m\}\) are the vertices of
+\(\splxtop^m\) then we can also write
+\[
+\face_j \phi \eqqcolon \phi|_{[v_0, \dots, \widehat v_j, \dots, v_m]}.
+\]
+
+We shall also define the \emph{boundary operator} to be the morphism
+of abelian groups
+\[
+\face^m: \Sing_m X \longrightarrow \Sing_{m-1} X
+\]
+to be given by the alternating sum of face maps
+\[
+\face^m \coloneq \sum_{j=0}^m (-1)^j \face_j.
+\]
+\end{definition}
+
+\begin{proposition}
+\label{prop:boundary-squared-is-zero}
+The composition of the maps
+\(\Sing_m X \xrightarrow{\face^m} \Sing_{m-1} X \xrightarrow{\face^{m-1}}
+\Sing_{m-2} X\) is identically zero. That is, the boundary of an \(m\)-chain is
+an \((m-1)\)-chain with empty boundary.
+\end{proposition}
+
+\begin{proof}
+With no loss of generality, consider merely one singular \(m\)-simplex
+\(\phi\). One has
+\begin{align*}
+  \face^{m-1} \face^m \phi
+  &= \sum_{i=0}^m (-1)^i
+  \Big( \sum_{j=0}^{m-1} (-1)^j \partial_j \partial_i \phi \Big) \\
+  &= \sum_{i=0}^m (-1)^i
+  \Big(
+    \sum_{i > j} (-1)^j
+    \phi|_{[v_0, \dots, \widehat v_j, \dots, \widehat v_i, \dots, v_{m-2}]}
+  + \sum_{i < j} (-1)^{j-1}
+      \phi|_{[v_0, \dots, \widehat v_i, \dots, \widehat v_j, \dots, v_{m-2}]}
+      \Big) \\
+\end{align*}
+Notice that the first term accounts for the removal of \(j\) then of \(i\), with
+\(i > j\), yielding a factor \((-1)^{i + j}\) for each newly generated
+simplex. The second term deals with the removal of \(i\) first and then \(j\),
+with \(i < j\), thus \(j\) must be updated to a lower index by \(1\), hence the
+factor \((-1)^{i + j - 1}\). Notice that the pair of sums has different signs
+and the same simplices---therefore they pairwise cancel, yielding zero.
+\end{proof}
+
+
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../../deep-dive"
+%%% End:

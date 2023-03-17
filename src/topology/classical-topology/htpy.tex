@@ -1951,6 +1951,8 @@ would be \(\Id_{S^1}\), which contradicts
 \cref{cor:circle-not-contractible}. Therefore \(r\) cannot exist.
 \end{proof}
 
+\subsection{Applications of \texorpdfstring{\(\pi_1(S^1)\)}{pi1(S1)}}
+
 \begin{theorem}[Brouwer's fixed point]
 \label{thm:brouwer-fixed-point}
 Every continuous map \(D^2 \to D^2\) has a fixed point.
@@ -1963,6 +1965,19 @@ contradiction, that \(f\) admits no fixed point. We construct a map
 can define a point \(r x \in S^1\) given by
 \(r x \coloneq \frac{f x - x}{\| fx - x \|}\). Notice \(r\) defines a retraction
 of the disk to the sphere, contradicting the result of
-\cref{cor:no-retraction-from-disk-to-circle}, therefore there must exist at
-least one point of \(f\).
+\cref{cor:no-retraction-from-disk-to-circle}, therefore \(f\) must admit at
+least one fixed point.
+\end{proof}
+
+\begin{theorem}[Fundamental Theorem of Algebra]
+\label{thm:fundamental-theorem-of-algebra-pi1-S1}
+Every non-constant polynomial with coefficients in \(\CC\) has root in \(\CC\).
+\end{theorem}
+
+\begin{proof}
+Let \(p(z) = z^n + a_1 z^{n-1} + \dots + a_n\) be any polynomial---note that the
+restriction to the case of monomials does not create any loss of
+generality. Suppose, for the sake of contradiction, that \(p\) admits no roots
+in \(\CC\). Then for any real number \(r \geq 0\)
+\todo[inline]{Finish this proof (look Hatcher's book)}
 \end{proof}

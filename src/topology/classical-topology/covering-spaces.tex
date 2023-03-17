@@ -272,17 +272,16 @@ U \times E_x \ar[r, "\dis"] \ar[rd, "\pi"']
 \end{tikzcd}
 \]
 commutes in \(\Top\), where the topological isomorphism
-\(U \times E_x \isoto p^{-1} U\) is explicitly given by \((u, e) \mapsto e\).
-\end{definition}
+\(U \times E_x \isoto p^{-1} U\) is explicitly given by \((u, e) \mapsto
+e\). Said concisely, a covering space is a locally trivial bundle with discrete
+fibre.
 
-\begin{corollary}
-\label{cor:covering-induces-monomorphism-fundamental-grps}
-Given a covering \(p: E \epi B\), the induced morphism of groups
-\[
-p_{*}: \pi_1(E, e) \mono \pi_1(B, p e)
-\]
-is a monomorphism for any \(e \in E\).
-\end{corollary}
+Yet another equivalent way of defining a covering space goes as follows. \(B\) is
+evenly covered by \(p\) if there exists an open cover \(\mathcal{U}\) of \(B\)
+such that any \(U \in \mathcal{U}\) has a preimage \(p^{-1} U = \bigdisj_{\alpha}
+V_{\alpha}\) where \(V_{\alpha}\) is an open set of \(E\), and the restriction
+\(p|_{V_{\alpha}}: V_{\alpha} \isoto U\) is a topological isomorphism.
+\end{definition}
 
 \begin{corollary}
 \label{cor:covering-space-is-locally-top-iso}
@@ -290,21 +289,26 @@ A covering space is a local topological isomorphism.
 \end{corollary}
 
 \begin{proof}
-Given a covering space \(p: E \to B\) and \(x \in B\), we can consider the
-neighbourhood \(U \subseteq B\) of \(x\) such that \(p\) admits a trivialization
-\(\phi: p^{-1} U \isoto U \times E_x\). Since \(E_x\) is discrete, then
-\(U \times E_x \iso \bigdisj_{e \in E_x} U \times \{e\}\) and certainly
-\(U \times \{e\} \iso U\). Therefore \(p\) yields an isomorphism
-\begin{equation}\label{eq:covering-space-sheet}
-U_e \coloneq \phi^{-1}(U \times \{e\}) \iso U,
-\end{equation}
-proving that \(p\) is a local isomorphism.
+Given a covering space \(p: E \to B\) and \(x \in E\), we can consider the
+neighbourhood \(U \subseteq B\) of \(p x\) that is evenly covered by \(p\). Then
+from our last definition we know that \(U\) is isomorphic to a disjoint union of
+open sets of \(E\). Let \(V \subseteq p^{-1} U\) be one such open set which is
+also a neighbourhood of \(x\). Then the restriction \(p|_V: V \to p(V) = U\) is
+an isomorphism, showing that \(p\) is indeed a local isomorphism.
 \end{proof}
 
 \begin{notation}[Sheets]
 \label{not:coveing-space-sheet}
-The open sets \(U_e \iso U \times \{e\}\) of \(E\) from
-\cref{eq:covering-space-sheet} are called \emph{sheets}.
+Let \(p: E \to B\) be a covering space and \(x \in B\) be any point. Consider a
+neighbourhood \(U \subseteq B\) of \(x\) such that \(p\) admits a trivialisation
+\(\phi: p^{-1} U \isoto U \times E_x\). Since \(E_x\) is discrete, we have an
+isomorphism \(U \times E_x \iso \bigdisj_{e \in E_x} U \times e\). Moreover,
+clearly \(U \iso U \times e\) for any \(e \in E_x\). We shall define a
+\emph{sheet} over \(U\) to be an open set
+\begin{equation}\label{eq:covering-space-sheet}
+U_e \coloneq \phi^{-1}(U \times \{e\}) \subseteq E.
+\end{equation}
+The motivation comes from the fact that \(U_e \iso U \times e \iso U\).
 \end{notation}
 
 \begin{proposition}[Covering projections are open]
@@ -359,6 +363,171 @@ distinct points, we have an empty intersection
 from \(\Delta_B E\). Therefore \((E \times_B E) \cap (U_x \times U_y)\) is a
 neighbourhood for \((x, y) \in E \times_B E\) outside of \(\Delta_B E\), showing
 that \(\Delta_B E\) is closed.
+\end{proof}
+
+\section{Lifting Properties}
+
+\begin{definition}[Lift]
+\label{def:lift-top}
+Let \(f: Y \to X\) and \(g: Z \to X\) be morphisms. We define a \emph{lift of
+  \(g\) along \(f\)} to be a morphism \(\lift{g}: Z \to Y\) such that the
+following diagram commutes:
+\[
+\begin{tikzcd}
+ &Y \ar[d, "f"] \\
+Z \ar[r, "g"'] \ar[ru, "\lift g", bend left] & X
+\end{tikzcd}
+\]
+\end{definition}
+
+\begin{proposition}[Homotopy lift via covering space]
+\label{prop:homotopy-lift-via-covering-space}
+Let \(p: E \to B\) be a covering space and consider a homotopy \(\eta: X \times
+I \to B\). Let \(\lift \eta_0: X \to E\) be a lift of \(\eta(-, 0)\) along
+\(p\). Then there exists a \emph{unique lift} \(\lift \eta: X \times I \to E\)
+of \(\eta\) along \(p\) which \emph{extends} \(\lift \eta_0\). That is, the
+following diagram commutes:
+\[
+\begin{tikzcd}
+X \times 0 \ar[r, "\lift \eta_0"] \ar[d]
+&E \ar[d, "p"] \\
+X \times I \ar[ru, dashed, "\lift \eta"] \ar[r, "\eta"']
+&X
+\end{tikzcd}
+\]
+\end{proposition}
+
+\begin{proof}
+We shall prove this proposition in three acts, first we shall construct a lift
+with respect to a neighbourhood of any given point \(x \in X\), later the
+uniqueness of such lift, and finally how all this pieces together to form the
+required lift.
+
+\begin{enumerate}[(i)]\setlength\itemsep{0em}
+\item Let \(x \in X\) be any point and take, for each \((x, t) \in x \times I\),
+  an evenly covered neighbourhood \(U_t \subseteq B\) of \(\eta(x, t)\). Now we
+  can choose a neighbourhood \(N_t \times (a_t, b_t)\) of \((x, t)\) such that
+  \(\eta(N_t \times (a_t, b_t)) \subseteq U_t\) is again evenly covered by
+  \(p\).
+
+  Since \(x \times I\) is compact, let \(0 = t_0 < t_1 < \dots < t_n = 1\) be a
+  partition of \(I\) such that \(\{N_{t_j} \times [t_j, t_{j+1}]\}_{j=0}^{n-1}\)
+  covers \(x \times I\)---and also satisfies the requirement that
+  \(\eta(N_{t_j} \times [t_j, t_{j+1}])\) is evenly covered by \(p\) as in the
+  previous construction. Define the neighbourhood
+  \(N \coloneq \bigcap_{j=0}^n N_{t_j}\) of \(x\), so that
+  \(\eta(N \times [t_j, t_{j+1}])\) is still evenly covered by \(p\) for any \(j\).
+
+  We proceed by induction assuming that, for some \(j\), the lift \(\lift \eta\)
+  has been constructed on \(N \times [0, t_j]\) and which extends the given
+  starting lift \(\lift \eta_0\). Let \(U_j \subseteq B\) be an evenly covered
+  set containing \(\eta(N \times [t_j, t_{j+1}])\), and take
+  \(V_j \subseteq E\) to be an open set projecting isomorphically onto \(U_j\)
+  via \(p\) and with \(\lift\eta(x, t) \in V_j\).  Define
+  \[
+  N' \times t_j \coloneq (N \times t_j) \cap (\lift\eta|_{N \times t_j})^{-1} V_j,
+  \]
+  which is again a neighbourhood of \((x, t_j)\). From this construction we find
+  that \(\lift\eta(N' \times t_j) \subseteq V_j\). Now we define \(\lift\eta\)
+  on \(N' \times [t_j, t_{j+1}]\) to be the composition of \(\eta\) with
+  \(p^{-1}: U_j \to V_j\), that is:
+  \[
+  \begin{tikzcd}
+  &V_j \\
+  N' \times [t_j, t_{j+1}]
+  \ar[ru, bend left, "\lift\eta"]
+  \ar[r, "\eta"']
+  & U_j \ar[u, "p^{-1}"', "\dis"]
+  \end{tikzcd}
+  \]
+  This procedure is to be done a finite number of iterations, so that in the end
+  we obtain a lift \(\lift\eta: M \times I \to E\) for some neighbourhood
+  \(M \subseteq X\) of \(x\).
+
+\item To prove the uniqueness of the lifting \(\lift\eta\) we'll work simply on
+  the case of a single point \(x\), so that uniqueness for the total set
+  \(X \times I\) will follow from the uniqueness of the lift on segments
+  \(x \times I\) for each \(x \in X\). Let \(\lift\eta\) and \(\lift\eta'\) be
+  two lifts of \(\eta: x \times I \to B\) with \(\lift\eta(0) =
+  \lift\eta'(0)\). From the same argument as before, take a partition
+  \(0 = t_0 < t_1 < \dots < t_n = 1\) of \(I\) such that
+  \(\eta([t_j, t_{j+1}])\) is contained in an evenly covered neighbourhood
+  \(U_j \subseteq B\) by \(p\). Using induction, we may assume that
+  \(\lift\eta|_{[0, t_j]} = \lift\eta'|_{[0, t_j]}\) for some \(j\). Using the
+  fact that \([t_j, t_{j+1}]\) is a connected set, the image
+  \(\lift\eta([t_j, t_{j+1}]) \subseteq E\) will also be connected. Therefore
+  there exists a set \(V_j \subseteq E\) containing
+  \(\lift\eta([t_j, t_{j+1}])\), and with \(V_j \iso U_j\) via \(p\). Since
+  \(\lift\eta t_j = \lift\eta' t_j\) then by connectedness
+  \(\lift\eta'([t_j, t_{j+1}]) \subseteq V_j\). The lift condition implies in
+  \(p \lift\eta = p \lift\eta'\), however we also know that \(p\) is injective
+  in \(V_j\)---therefore it follows that
+  \(\lift\eta|_{[t_j, t_{j+1}]} = \lift\eta'|_{[t_j, t_{j+1}]}\). This procedure
+  is continued for finitely many steps and shows that
+  \(\lift\eta = \lift\eta'\).
+
+\item Notice that, by choosing a point \(x \in X\), we obtain a lift piece of
+  the form \(M \times I \to E\) where \(M \subseteq X\) is a neighbourhood of
+  \(x\). Notice however that in the overlap of such neighbourhoods, when one
+  considers the whole range of points contained in \(X\), we must have an
+  agreement of the lift pieces. Therefore, such neighbourhoods may be glued to
+  create a well defined lift \(\lift\eta: X \times I \to E\). Moreover, using
+  the proof of the last item we know that each segment
+  \(\lift\eta|_{x \times I}\) is unique for any \(x \in X\), thus \(\lift\eta\)
+  itself is unique.
+\end{enumerate}
+\end{proof}
+
+\begin{corollary}
+\label{cor:lift-via-covering-space}
+Let \(p: E \to B\) be a covering space. The following are lifting properties
+associated to \(p\):
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item For each path \(\gamma: I \to B\) starting at \(x_0 \in B\) and each \(e_0
+  \in p^{-1} x_0\) there exists a \emph{unique lift} \(\lift \gamma: I \to E\)
+  which starts at \(e_0\).
+
+\item For each homotopy \(\eta: I \times I \to B\) of paths starting at \(x_0\)
+  and each \(e_0 \in p^{-1} x_0\) there is a unique lifted homotopy
+  \(\lift \eta: I \times I \to E\) of paths starting at \(e_0\).
+
+\item The lift of a constant path is constant.
+
+\item Every homotopy between paths lifts to a homotopy of paths\footnote{Since
+    the end-points are fixed---which was pointed out in item (c).}.
+\end{enumerate}
+\end{corollary}
+
+\begin{proposition}
+\label{proposition:covering-induces-monomorphism-fundamental-grps}
+Given a covering \(p: E \epi B\), the induced morphism of groups
+\[
+p_{*}: \pi_1(E, e) \mono \pi_1(B, p e)
+\]
+is a monomorphism for any \(e \in E\).
+\end{proposition}
+
+\begin{proof}
+Let \([\lift f]\) be a kernel element of \(p_{*}\), so that
+\(p_{*}[\lift f] = [f] = [\const_{p e}]\). Thus there exists a homotopy
+\(\eta: f \nat \const_{p e}\) and via
+\cref{prop:homotopy-lift-via-covering-space} we obtain a lifted homotopy of
+loops \(\lift\eta: \lift f \nat \const_e\), showing that
+\([\lift f] = [\const_e]\). Therefore \(p\) is indeed a monomorphism of groups.
+\end{proof}
+
+\begin{proposition}
+\label{prop:covering-space-n-of-sheets-is-index}
+Let \(E\) and \(B\) be path-connected spaces. The number of sheets of a pointed
+covering space \(p: (E, e) \to (B, b)\) is equal to the index of the subgroup
+\(p_{*}\pi_1(E, e)\) in \(\pi_1(B, b)\).
+\end{proposition}
+
+\begin{proof}
+Define the notation \(G \coloneq p_{*} \pi_1(E, e)\). Let
+\(\gamma \in \Loop(B, b)\) be a loop and consider its lifted loop
+\(\lift \gamma \in \Loop(E, e)\).
+\todo[inline]{Continue}
 \end{proof}
 
 \begin{theorem}[Lifting out of connected space]
@@ -430,7 +599,7 @@ trivial over \(U \times I\) for each \(U \in \mathcal{U}\).
 % are these chosen neighbourhoods. Fix any point \(x_0 \in B\) and run \(t \in I\)
 % \end{proof}
 
-\subsection{Coverings and \texorpdfstring{\(G\)}{G}-Actions}
+\section{Coverings and \texorpdfstring{\(G\)}{G}-Actions}
 
 \begin{definition}[Properly discontinuous action]
 \label{def:properly-discontinuous-action}
@@ -476,7 +645,7 @@ V\). Given any \(g \in G\), suppose there exists \(h \in G\) such that
 \(h^{-1} x' \in V_g \cap V\), and from construction this implies in
 \(h^{-1} g = e\), thus \(h = g\).
 
-It remains for us to show a trivialization for \(q\)---we shall prove that
+It remains for us to show a trivialisation for \(q\)---we shall prove that
 \(q|_{V_g}: V_g \to U\) is an isomorphism. Since quotient maps are open, it
 suffices to show that \(q|_{V_g}\) is bijective. Let \([x'] \in U\) be any
 point, and take \(x'' \in V\) such that \(q x'' = [x']\), then in particular
@@ -592,7 +761,7 @@ of groups:
 \end{itemize}
 \end{proof}
 
-\subsection{Fibre Transport}
+\section{Fibre Transport}
 
 \begin{definition}[Homotopy lifting property]
 \label{def:homotopy-lifting-property}

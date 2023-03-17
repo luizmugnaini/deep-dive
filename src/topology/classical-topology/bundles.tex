@@ -14,7 +14,7 @@ the \emph{base space}, while \(E\) is the \emph{total space}, and \(p\) is the
 \emph{projection} of the bundle. As usual, given any \(b \in B\), we name the
 object \(p^{-1} b\) the \emph{fibre} of the bundle over \(b\).
 
-A \emph{subbundle} of \((E, p, B)\) is a bundle \((E', p', B')\) such that
+A \emph{sub-bundle} of \((E, p, B)\) is a bundle \((E', p', B')\) such that
 \(E'\) and \(B'\) are \emph{subspaces} of \(E\) and \(B\), respectively, and
 \(p' = p|_{E'}: E' \to B'\).
 \end{definition}
@@ -29,7 +29,7 @@ A \emph{product bundle over \(B\) with fibre \(F\)} is a triple
 \label{def:cross-section-bundle}
 Given a bundle \((E, p, B)\), a \emph{cross section} of the bundle is a
 \emph{section} \(s: B \to E\) of \(p\)---that is, \(p s = \Id_B\). As
-an immediate consequence of this definition, if \((E', p', B')\) is a subbundle
+an immediate consequence of this definition, if \((E', p', B')\) is a sub-bundle
 of \((E, p, B)\), then \(s\) is a cross section of \((E', p', B')\) if and only
 if \(s B \subseteq E'\).
 \end{definition}
@@ -92,7 +92,7 @@ B \ar[r, "f"'] &B'
 \]
 commutes in \(\Top\)---equivalently, \(u (p^{-1} B) \subseteq p'^{-1}(f
 B)\). The special case where the base spaces coincide, we define a \emph{bundle
-  morphism over \(B\)} (also refered to as \(B\)-morphism)
+  morphism over \(B\)} (also referred to as \(B\)-morphism)
 \((E, p, B) \to (E', p', B)\) to be a morphism \(u: E \to E'\) such that the
 triangle
 \[
@@ -284,7 +284,7 @@ E (f^{*} \xi)
 \end{proposition}
 
 \begin{proof}
-For the functoriallity, given any \(B\)-bundle morphism \(u: \xi \to \eta\), the
+For the functoriality, given any \(B\)-bundle morphism \(u: \xi \to \eta\), the
 associated map \(f^{*} u: f^{*} \xi \to f^{*} \eta\) is canonically given by the
 mapping \((b_0, x) \mapsto (b_0, u x)\), which is a \(B_0\)-morphism of
 bundles. Moreover, if we consider the identity morphism \(\Id_{\xi}: \xi \to
@@ -318,7 +318,7 @@ which proves the commutativity of the diagram.
 \begin{proposition}[Functorial transitivity of the induced bundle]
 \label{prop:induced-bundle-functorial-transitivity}
 Consider continuous maps \(B_1 \xrightarrow g B_0 \xrightarrow f B\), and a
-bundle \(\xi = (E, p, B)\). Then the following are properties conserning the
+bundle \(\xi = (E, p, B)\). Then the following are properties concerning the
 induced bundles over \(\xi\):
 \begin{enumerate}[(a)]\setlength\itemsep{0em}
 \item Considering the identity map \(\Id: B \to B\), there exists a bundle
@@ -359,7 +359,7 @@ there is a \emph{topological isomorphism}
 p \phi(x, y) = x
 \]
 for all \(x \in U\) and \(y \in F\)---the map \(\phi\) is called a
-\emph{trivialization of the bundle over \(U\)}. This means that on the set
+\emph{trivialisation of the bundle over \(U\)}. This means that on the set
 \(p^{-1} U\), the map \(p\) is a \emph{projection} of the type
 \(U \times F \epi U\).
 \end{definition}
@@ -372,16 +372,17 @@ Hausdorff spaces. We define a \emph{fibre bundle} (or simply \emph{bundle}) over
 the \emph{base space} \(B\) with \emph{total space} \(X\), \emph{fibre} \(F\),
 and \emph{structure group} \(G\), to be a pair \((p, \Phi)\) where
 \(p: X \to B\) is a \emph{bundle projection} and \(\Phi\) is a collection of
-trivializations of \(p\) (as described in \cref{def:bundle-projection})---the
+trivialisations of \(p\) (as described in \cref{def:bundle-projection})---the
 members of \(\Phi\) will be called \emph{charts} over \(U\)---such that:
 \begin{itemize}\setlength\itemsep{0em}
 \item For each \(b \in B\) there exists a neighbourhood \(U \subseteq B\) of
   \(b\) and a chart \(\phi \in \Phi\) of the form
-  \(\phi: U \times F \to p^{-1} U\).
+  \(\phi: U \times F \to p^{-1} U\), where \(\phi\) is a local trivialisation of
+  \(p\) over \(U\).
 
-\item Given a chart \(\phi: U \times F \to p^{-1} U\), member of \(\Phi\), then
-  any subset \(V \subseteq U\) is such that the restriction
-  \(\phi|_{V \times F}\) belongs to the family \(\Phi\).
+\item Given a chart \(\phi: U \times F \to p^{-1} U\), member of \(\Phi\), any
+  subset \(V \subseteq U\) is such that the restriction \(\phi|_{V \times F}\)
+  belongs to the family \(\Phi\).
 
 \item Given any pair of charts \(\phi, \psi \in \Phi\) over a common open set
   \(U\), there exists a continuous map \(\theta: U \to G\) such that
@@ -528,12 +529,12 @@ where \(p\) is the projection of the first component, and \(\Phi\) is the unique
 maximal vector bundle atlas on \(\varepsilon_B^n\) containing identity maps for
 each open set of \(B \times \R^n\). A vector bundle over \(B\) is said to be
 trivial if it is isomorphic---such isomorphism is said to be a
-\emph{trivialization}---to \(\varepsilon_B^n\) for some \(n \in \N\).
+\emph{trivialisation}---to \(\varepsilon_B^n\) for some \(n \in \N\).
 \end{definition}
 
 \begin{definition}[Smooth vector bundle]
 \label{def:smooth-bundles}
-A vector bundle \(\xi\) is said to be smoth if its associated spaces are smooth
+A vector bundle \(\xi\) is said to be smooth if its associated spaces are smooth
 manifolds and the projection is a \(C^{\infty}\)-morphism.
 \end{definition}
 
@@ -557,7 +558,7 @@ bundles. Then \(u\) is a \(B\)-isomorphism of vector bundles if and only if
 \end{theorem}
 
 \begin{proof}
-(\(\implies\)) If \(u\) is a \(B\)-isomorphsim of vector bundles, then the
+(\(\implies\)) If \(u\) is a \(B\)-isomorphism of vector bundles, then the
 restriction mapping \(u^{-1}|_{\eta_b}: \eta_b \to \xi_b\) is an inverse for
 \(u_b\).
 
@@ -614,7 +615,7 @@ the linear structure just defined in \(p_0^{-1} b_0\), we see that \(f_{\xi}\)
 is also a linear map, thus it's an isomorphism of vector spaces. This shows that
 \(p_0^{-1} b_0\) is restrained to this linear structure, which proves uniqueness.
 
-For a local trivialization of \(f^{*} \xi\), consider, for any open set \(U
+For a local trivialisation of \(f^{*} \xi\), consider, for any open set \(U
 \subseteq B\), a vector bundle chart \(h: U \times \R^n \to p^{-1} U\) for
 \(\xi\). We can construct a map \(h': f^{-1} U \times \R^n \to
 p_0^{-1}(f^{-1} U)\) mapping \((b_0, x) \mapsto (b_0, h(f b_0, x))\), which
@@ -634,7 +635,7 @@ Let \(\xi = (E, p, B \times I)\) be a \(C^r\) vector bundle for some
 Since \(\xi\) is locally trivial and \(I\) is compact, then given \(b \in B\)
 consider a neighbourhood \(V_j \subseteq B\) of \(b\) and a partition
 \(0 = t_0 < \dots < t_m = 1\) of \(I\) such that \(\xi\) is trivial in a
-neihbourhood of \(V_j \times I_j \coloneq V_j \times [t_{j-1}, t_j]\) for each
+neighbourhood of \(V_j \times I_j \coloneq V_j \times [t_{j-1}, t_j]\) for each
 \(0 < j \leq m\). Define \(V \coloneq \bigcap_{j=1}^m V_j\) and let
 \((U_j)_{j=1}^m\) be a collection where \(U_j \subseteq I\) is a neighbourhood
 of \(I_j\) such that \(\xi|_{V \times U_j}\) is trivial.
@@ -648,7 +649,7 @@ which \(\xi|_{V \times J}\) is trivial. This hints at the fact that it is
 sufficient to prove this construction for the case \(m = 2\), and this is what
 we'll set out to do.
 
-Take two subintervals \(U_1 \coloneq [0, b]\) and \(U_2 \coloneq [a, 1]\) where
+Take two sub-intervals \(U_1 \coloneq [0, b]\) and \(U_2 \coloneq [a, 1]\) where
 \(0 < a < b < 1\). Let
 \(\phi_j: p^{-1}(V \times U_j) \to (V \times U_j) \times \R^n\), for
 \(j \in \{1, 2\}\), be \(C^r\)-charts (where we assumed \(\xi\) to be
@@ -662,7 +663,7 @@ Take two subintervals \(U_1 \coloneq [0, b]\) and \(U_2 \coloneq [a, 1]\) where
 h \coloneq g \mu: V \times [a, 1] \longrightarrow \GL_n(\R)
 \]
 such that \(h|_{V \times [a, c]} = g|_{V \times [a, c]}\). This allows us to
-construct a trivialization \(\psi\) where we define, for each \(x \in V \times
+construct a trivialisation \(\psi\) where we define, for each \(x \in V \times
 I\), a map \(\psi_x: \xi_x \to \R^n\), and
 \[
 \psi_x \coloneq
@@ -673,7 +674,7 @@ I\), a map \(\psi_x: \xi_x \to \R^n\), and
 \]
 so that by construction for any \(x \in [a, c]\) one has
 \(h(x) \phi_{2\, x} = (\phi_{1\, x} \phi_{2 x}^{-1}) \phi_{2\, x} = \phi_{1\,
-  x}\), showing that \(\psi_x\) is well defined. This defines a trivialization
+  x}\), showing that \(\psi_x\) is well defined. This defines a trivialisation
 \(\psi: p^{-1}(V \times I) \to (V \times I) \times \R^n\) as wanted.
 \end{proof}
 

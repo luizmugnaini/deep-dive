@@ -1,4 +1,4 @@
-\chapter{Probability Theory}
+\chapter{Introduction to Probability Theory \& Statistics}
 
 \section{Probability}
 
@@ -459,7 +459,29 @@ The value \(\Prob(y \mid x)\) can be called either the ``likelihood of \(x\) giv
 \(y\)'' or the ``probability of \(y\) given \(x\)''.
 \end{remark}
 
-\section{Means \& Covariances}
+Consider a collection of data \(\mathcal{D}\) and model parameters
+\(w\). Frequentists commonly use the \emph{maximum likelihood} estimator, which
+aims to find parameters \(w\) for which the likelihood function
+\(\Prob(\mathcal{D} \mid w)\) is \emph{maximised}---that is, we maximise the
+probability that, having parameters \(w\), the observed set of events is
+\(\mathcal{D}\). In the context of machine learning we normally work
+with the \emph{errors function}
+\(\operatorname{err}(w) = -\log(\Prob(\mathcal{D} \mid w))\), and the goal of
+the learning process is to \emph{minimise} this error. To be able to work in the
+frequentist settings, one needs multiple data sets to determine the error
+bars---one of the methods to deal with this is the bootstrap.
+
+\begin{definition}[Data set bootstrap]
+\label{def:bootstrap-data-sets}
+Given a data set \(X = \{x_1, \dots, x_n\}\), we construct a new data set
+\(X_j\) by drawing \(n\) points of \(X\) at random and with replacement. This
+procedure can be done \(\ell\) times to generate a new collection \(\{X_1,
+\dots, X_{\ell}\}\) each containing \(n\) data points. The statistical accuracy
+of the parameter estimates will then be evaluated by analysing the variability
+of predictions between the different bootstrap data sets \(X_j\).
+\end{definition}
+
+\section{Mean, Variance \& Covariance}
 
 \begin{definition}[Expected value]
 \label{def:expected-value}
@@ -484,6 +506,17 @@ As one might ``expect'', in the case of an \(n\)-multivariate random variable
   \Expect_{Z_n} g
 \end{bmatrix}
 \]
+
+We can also define \emph{conditional expectation} with respect to a conditional
+distribution, which we shall write as
+\[
+\Expect[g \mid t_0] =
+\begin{cases}
+  \sum_{t \in \mathcal{T}} g(t) f_T(t \mid t_0), &\text{if } T \text{ is discrete}\\
+  \int_{\mathcal{T}} g(t) f_T(t \mid t_0)\, \diff t, &\text{if } T \text{ is continuous}
+\end{cases}
+\]
+for a random variable \(T: \Omega_T \to \mathcal{T}\) with distribution \(f_T\).
 \end{definition}
 
 \begin{definition}[Mean, median \& mode]
@@ -533,11 +566,16 @@ The \emph{variance} of the random variable \(X\) is defined to be
 \Var X
 &\coloneq \Cov(X, X) \\
 &= \Expect_X[(x - \Mean_X)^2] \\
-&= \Expect_X(x^2) - \Mean_X^2.
+&= \Expect_X(x^2) - \Mean_X^2,
 \end{align*}
+which measures how much variability there is in \(X\) around its mean value.
 The \emph{standard deviation} of \(X\) is defined as
 \[
 \stdev(X) \coloneq \sqrt{\Var(X)}.
+\]
+We also define the \emph{precision}, which is given by
+\[
+\precision \coloneq \frac{1}{\stdev^2}
 \]
 \end{definition}
 
@@ -697,13 +735,13 @@ Let \(X\) be a \emph{univariate} random variable with mean \(\Mean\) and
 standard deviation \(\stdev\). The \emph{Gaussian distribution} of \(X\) has a
 density function given by
 \[
-N(x \mid \Mean, \stdev^2) \coloneq \frac{1}{\sqrt{2 \pi \sigma^{2}}}
+\ndist(x \mid \Mean, \stdev^2) \coloneq \frac{1}{\sqrt{2 \pi \sigma^{2}}}
 \exp\Big( -\frac{(x - \Mean)^2}{2 \stdev^2} \Big).
 \]
 Now, if \(X\) where an \emph{\(n\)-multivariate} random variable, then the Gaussian
 distribution of \(X\) would have a density function defined as
 \[
-N(x \mid \Mean, \Var X) \coloneq \frac{1}{\sqrt{(2 \pi)^n \det(\Var X)}}
+\ndist(x \mid \Mean, \Var X) \coloneq \frac{1}{\sqrt{(2 \pi)^n \det(\Var X)}}
 \exp\Big(-\frac{1}{2} (x - \Mean)^{\Transp} \Var(X)^{-1} (x - \Mean)\Big).
 \]
 
@@ -714,7 +752,7 @@ The special case where \(\Mean = 0\) and \(\Var(X) = \Id\) is referred to as the
 Let \(X\) and \(Y\) be multivariate random variables and consider the
 Gaussian distribution
 \[
-f(x, y) = N\bigg(
+f(x, y) = \ndist\bigg(
 \begin{bmatrix}
   \Mean_X \\
   \Mean_Y
