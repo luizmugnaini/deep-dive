@@ -574,6 +574,22 @@ Let \(G\) be any abelian group
 
 \todo[inline]{Continue direct products}
 
+\section{Graded Abelian Groups}
+
+\begin{definition}[Graded abelian group]
+\label{def:graded-abelian-group}
+A \emph{graded abelian group} is defined to be an abelian group \(A\) consisting
+of an indexed collection of abelian groups \((A_s)_{s \in S}\)---it should be
+noted that \(S\) can be any set with an additive structure, for instance \(A\)
+would be a \(\Z\)-graded abelian group if \(S = \Z\). An element \(a \in A\) is
+said to have \emph{degree} \(s_0\) if \(a \in A_{s_0}\).
+
+Given \(S\)-graded abelian groups \(A\) and \(B\) we define a morphism
+\(f: A \to B\) to be a collection of morphisms of groups
+\((f_s: A_s \to B_{s+d})_{s \in S}\) for some fixed element \(d \in S\), in such
+case we say that \(f\) has \emph{degree} \(d\).
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../deep-dive"

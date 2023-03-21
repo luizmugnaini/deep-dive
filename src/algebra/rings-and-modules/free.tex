@@ -1916,6 +1916,49 @@ We can now apply the first part of the proof and conclude that the sequence of
 modules \(0 \to A \to B \to C \to 0\) is exact.
 \end{proof}
 
+\begin{lemma}[Snake lemma]
+\label{lem:snake-lemma}
+Consider the following commutative diagram in \(\Mod{R}\):
+\[
+\begin{tikzcd}
+0 \ar[r]
+&A \ar[d, "f"'] \ar[r]
+&B \ar[r] \ar[d, "g"]
+&C \ar[r] \ar[d, "h"]
+&0
+\\
+0 \ar[r]
+&X \ar[r]
+&Y \ar[r]
+&Z \ar[r]
+&0
+\end{tikzcd}
+\]
+There exists an exact sequence:
+\[
+\begin{tikzcd}
+0 \ar[r]
+&\ker f \ar[r]
+&\ker g \ar[r]
+\ar[d, phantom, ""{coordinate, name=Z}]
+&\ker h
+\ar[
+  dll,
+  rounded corners,
+  to path={ -- ([xshift=2ex]\tikztostart.east)
+  |- (Z) [near end]\tikztonodes
+  -| ([xshift=-2ex]\tikztotarget.west)
+  -- (\tikztotarget)}
+]
+\\
+&\coker f \ar[r]
+&\coker g \ar[r]
+&\coker h \ar[r]
+&0
+\end{tikzcd}
+\]
+\end{lemma}
+
 \subsection{Exact Functors}
 
 \begin{definition}

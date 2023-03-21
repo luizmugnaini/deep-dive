@@ -749,6 +749,69 @@ The special case where \(\Mean = 0\) and \(\Var(X) = \Id\) is referred to as the
 \emph{standard normal distribution}.
 \end{definition}
 
+\begin{proposition}[Gaussian distribution properties]
+\label{prop:gaussian-distribution-basic-properties}
+The following items are properties pertaining to the Gaussian distribution
+\(\ndist\):
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The Gaussian distribution is normalised.
+
+\item The maximum of a Gaussian distribution, its mode, coincides with the mean.
+
+\item The likelihood function associated with a finite dataset of scalar
+  observations \(\mathcal{D}\) is given by
+  \[
+  \Prob(\mathcal{D} \mid \mu, \stdev^2)
+  = \prod_{x \in \mathcal{D}} \ndist(x \mid \mu, \stdev^2).
+  \]
+\end{enumerate}
+\end{proposition}
+
+\begin{remark}[Finding \(\mu\) and \(\stdev^2\) with the maximum likelihood]
+\label{rem:find-mean-and-variance-with-maximum-likelihood}
+In order to determine the unknown parameters \(\mu\) and \(\stdev^2\) associated
+with the dataset \(\mathcal{D}\) we can try to find the parameters that
+\emph{maximise} the likelihood function---or, equivalently, maximising the
+function
+\begin{equation}\label{eq:log-likelihood-function}
+\log \Prob(\mathcal{D} \mid \mu, \stdev^2)
+= - \frac{1}{2 \stdev^{2}}
+\sum_{x \in \mathcal{D}} (x - \mu)^2 - \frac{N}{2}(\log(\stdev^2) + \log(2 \pi)),
+\end{equation}
+where \(N \coloneq |\mathcal{D}|\) is the total number of data points.
+Maximising \cref{eq:log-likelihood-function} with respect to \(\mu\) gives
+\[
+\mu_{\text{ML}} = \frac{1}{N} \sum_{x \in \mathcal{D}} x,
+\]
+known as the \emph{sample mean}, while maximising with respect to \(\stdev^2\)
+we obtain
+\[
+\stdev^2_{\text{ML}} = \frac{1}{N} \sum_{x \in \mathcal{D}} (x - \mu_{\text{ML}})^2,
+\]
+called the \emph{sample variance} with respect to the sample mean
+\(\mu_{\text{ML}}\).
+
+The problem with this approach, however, is that the obtained sample variance is
+\emph{underestimated} with respect to the true variance \(\stdev^2\). Indeed,
+one has
+\[
+\Expect[\stdev^2_{\text{ML}}] = \frac{N-1}{N} \stdev^2,
+\]
+while we obtain a correct mean \(\Expect[\mu_{\text{ML}}] = \mu\). This effect
+is called \emph{bias}. In order to deal with that, we can calculate an unbiased
+variance by
+\[
+\widetilde\stdev^2 = \frac{N}{N-1} \stdev^2_{\text{ML}}
+= \frac{1}{N-1} \sum_{x \in \mathcal{D}} (x - \mu_{\text{ML}})^2
+\]
+\end{remark}
+
+\begin{definition}[Hyperparameters]
+\label{def:hyperparameters}
+Parameters that control the distribution of model parameters are called
+\emph{hyperparameters}.
+\end{definition}
+
 Let \(X\) and \(Y\) be multivariate random variables and consider the
 Gaussian distribution
 \[
@@ -764,6 +827,20 @@ f(x, y) = \ndist\bigg(
 \bigg)
 \]
 
+\section{Model Selection}
+
+\begin{definition}[\(S\)-fold cross-validation]
+\label{def:s-fold-cross-validation}
+Let \(N\) be the number of data points available in a given dataset. The
+\(S\)-fold cross-validation for evaluating model performance consist in creating
+\(S \leq N\)\footnote{When data is scarce, it may be acceptable to use
+  \(S = N\). This is known as the \emph{leave-one-out} technique for dataset
+  manipulations.} distinct groups of the available data---then \(S-1\) of those
+are used as training data for the model, while the remaining group is used as a
+validation set. We permute the validation set across all possible \(S\) groups
+and finally calculate the model performance as the average score from the \(S\)
+total runs.
+\end{definition}
 
 %%% Local Variables:
 %%% mode: latex
