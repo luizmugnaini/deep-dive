@@ -6,8 +6,14 @@ studying mathematics. They currently encompass:
 - Category Theory
 - Linear Algebra
 - Group Theory
-- Topology
+- Ring Theory
+- Module Theory
+- Classical Topology
+- Abstract Homotopy Theory
 - Graph Theory
+- Manifold Theory
+- Real Analysis
+- Statistics, Probability and Machine Learning
 
 None of these subjects are completed (for trivial reasons). I don't know why I
 keep these notes public, but if you happen to compile them and find them helpful
@@ -18,5 +24,5 @@ For the compilation of the notes:
 #+BEGIN_SRC shell
   git clone https://github.com/luizmugnaini/deep-dive
   cd deep-dive
-  latexmk -pvc
+  latexmk
 #+END_SRC
