@@ -1,0 +1,1100 @@
+\chapter{Introduction to Probability Theory \& Statistics}
+
+\section{Probability}
+
+\begin{definition}[Sample space \& events]
+\label{def:sample-space}
+We define the \emph{sample space} of an experiment to be the set \(\Omega\)
+composed of all possible outcomes.
+
+An \emph{event} is defined to be any subset \(A \subseteq \Omega\) of the sample
+space. The event \(A\) is said to have occurred whenever the outcome inhabits
+\(A\). Two events \(A, B \subseteq \Omega\) are said to be \emph{mutually
+  exclusive} whenever \(A\) and \(B\) are disjoint.
+\end{definition}
+
+\begin{definition}[\(\sigma\)-algebra]
+\label{def:sigma-algebra}
+Let \(\Omega\) be a set. A family of subsets \(\Sigma \subseteq 2^{\Omega}\) is called
+a \emph{\(\sigma\)-algebra} if it satisfies the following conditions:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The empty set is an element of \(\Sigma\).
+\item If \(A \in \Sigma\), then the complement \(\Compl{A}\) is an
+  element of \(\Sigma\).
+\item If \(\{A_j\}_{j \in J}\) is a collection of elements of \(\Sigma\)
+  indexed by a \emph{countable set} \(J\), then the union
+  \(\bigcup_{j \in J} A_j\) is also contained in \(\Sigma\).
+\end{enumerate}
+From condition (b) it follows immediately that \(\Omega \in \Sigma\).
+\end{definition}
+
+\begin{definition}[Probability function]
+\label{def:probability-function}
+Given a sample space \(\Omega\) and an associated \(\sigma\)-algebra \(\Sigma\),
+we define a \emph{probability function} on \(\Sigma\) to be a map
+\(\Prob: \Sigma \to \R\) such that
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The map \(\Prob\) is non-negative.
+\item The probability of the whole sample space is \(1\), that is,
+  \(\Prob(\Sigma) = 1\).
+\item Given a \emph{countable set} of pairwise \emph{disjoint} events
+  \(\{A_j\}_{j} \subseteq \Sigma\), then
+  \[
+  \Prob\Big( \bigcup_{j \in J} A_j \Big) = \sum_{j \in J} \Prob(A_j).
+  \]
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+\label{lem:probability-function}
+Let \(\Omega = \{s_j\}_{j \in J}\) be a countable sample space and \(\Sigma\) be
+an associated \(\sigma\)-algebra. If \(\Prob: \Sigma \to \R\) is a mapping
+associated with non-negative real numbers \(\{p_j\}_{j \in J}\) with
+\(\sum_{j \in J} p_j = 1\), for which
+\[
+\Prob(A) \coloneq \sum_{j \colon s_j \in A} p_j
+\]
+for each \(A \in \Sigma\), then \(\Prob\) is a probability function on \(\Sigma\).
+\end{lemma}
+
+\begin{theorem}
+\label{thm:probability-calculus-basics}
+Let \(\Sigma\) be a \(\sigma\)-algebra associated to a sample space \(\Omega\),
+and \(\Prob: \Sigma \to \R\) be a probability function. If \(A, B \in \Sigma\) are
+any sets then the following is holds:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item \(\Prob(\Compl{A}) = 1 - \Prob(A)\).
+\item \(\Prob(\emptyset) = 0\).
+\item \(\Prob(A) \leq 1\), therefore \(\Prob(\Sigma) \subseteq [0, 1]\).
+\item \(\Prob(B \cap \Compl{A}) = \Prob(B) - \Prob(A \cap B)\).
+\item \(\Prob(A \cup B) = \Prob(A) + \Prob(B) - \Prob(A \cap B)\), hence
+  \(\Prob(A \cup B) \geq \Prob(A) + \Prob(B) - 1\), which is known as the
+  \emph{Bonferroni's inequality}.
+\item If \(A \subseteq B\) then \(\Prob(A) \leq \Prob(B)\).
+\end{enumerate}
+Moreover, if \(\{C_{j}\}_{j \in J}\) is a countable partition of \(\Sigma\), and
+\(\{A_i\}_{i \in \N}\) is any family of elements of \(\Sigma\), we also have
+\begin{enumerate}[(a)]\setlength\itemsep{0em}\setcounter{enumi}{6}
+\item \(\Prob(A) = \sum_{j \in J} \Prob(A \cap C_j)\).
+\item \(\Prob(\bigcup_{i \in \N} A_i) \leq \sum_{i \in \N} \Prob(A_i)\).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Notice that \(A \cup \Compl{A} = \Sigma\), therefore \(\Prob(A \cup
+  \Compl{A}) = \Prob(A) + \Prob(\Compl{A}) = 1\), which proves the statement.
+
+\item Since \(\Compl{\Sigma} = \emptyset\), then
+  \(\Prob(\emptyset) = 1 - \Prob(\Sigma) = 0\).
+
+\item Since \(\Prob\) is a non-negative map, then \(\Prob(\Compl{A}) \geq 0\),
+  hence \(\Prob(A) = 1 - \Prob(\Compl{A})\) implies in \(\Prob(A) \leq 1\).
+
+\item Notice that in general \(B = (B \cap A) \cup (B \cap \Compl{A})\),
+  therefore \(\Prob(B) = \Prob(B \cap A) + \Prob(B \cap \Compl{A})\), from which
+  the formula follows.
+
+\item Since \(A \cup B = A \cup (B \cap \Compl A)\), and from the fact that the
+  sets \(A\) and \(B \cap \Compl A\) are disjoint, then
+  \(\Prob(A \cup B) = \Prob(A) + \Prob(B \cap \Compl A)\). Using the result from
+  the last item for \(\Prob(B \cap \Compl A)\) we obtain the required
+  formula. For the inequality, it suffices to see that \(\Prob(A \cap B) \leq 1\).
+
+\item Since \(A \cap B = A\) then by the result of item (d) we obtain
+  \[
+  \Prob(A) = \Prob(A \cap B) = \Prob(B) - \Prob(B \cap \Compl A)
+  \]
+  and since \(\Prob(B \cap \Compl A) \in [0, 1]\), then
+  \(\Prob(A) \leq \Prob(B)\).
+
+\item Since \(\bigcup_{j \in J} C_j = \Sigma\) we have
+  \[
+  A = A \cap \Sigma = A \cap \Big( \bigcup_{j \in J} C_j \Big)
+  = \bigcup_{j \in J} A \cap C_j,
+  \]
+  therefore \(\Prob(A) = \Prob(\bigcup_{j \in J} A \cap C_j) = \sum_{j \in J}
+  \Prob(A \cap C_j)\).
+
+\item We shall construct a collection \(\{A'_{i}\}_{i \in \N}\) of disjoint sets
+  partitioning \(\bigcup_{i \in \N} A_i\). To do so, define
+  \(A'_{0} \coloneq A_{0}\) and for any other \(i \in \N_{> 0}\) we take
+  \(A'_i \coloneq A_i \setminus \bigcup_{j = 0}^{i-1} A_j\). To see that such
+  collection is indeed a partition, let \(i, j \in \N\) be any two distinct indices and
+  notice that
+  \begin{align*}
+    A_i' \cap A_j'
+    &= \Big( A_i \setminus \bigcup_{k=0}^{i-1} A_k \Big)
+    \cap \Big( A_j \setminus \bigcup_{k=0}^{j-1} A_k \Big) \\
+    &= \Big( A_i \cap \Big(\bigcup_{k=0}^{i-1} A_k\Big)^{\text{c}} \Big)
+      \cap \Big( A_j \cap \Big(\bigcup_{k=0}^{j-1} A_k\Big)^{\text{c}} \Big) \\
+    &= \Big( A_i \cap \Big(\bigcap_{k=0}^{i-1} \Compl A_k\Big) \Big)
+      \cap \Big( A_j \cap \Big(\bigcap_{k=0}^{j-1} \Compl A_k\Big) \Big),
+  \end{align*}
+  from which, if \(i > j\) then
+  \(\Compl A_j \subseteq A_i \cap \bigcap_{k=0}^{i-1} A_k\), thus the first term
+  is disjoint from the second---the case for \(i < j\) is symmetric. Since our
+  new collection satisfies the pairwise disjoint condition, we find
+  \(\Prob(\bigcup_{i \in \N} A_i) = \sum_{i \in \N} \Prob(A'_i)\). From our
+  construction we know that \(A'_i \subseteq A_i\) thus \(\Prob(A'_i) \leq
+  \Prob(A_i)\) and hence \(\sum_{i \in \N} \Prob(A_i') \leq \sum_{i \in \N}
+  \Prob(A_i)\), which proves the statement.
+\end{enumerate}
+\end{proof}
+
+\begin{definition}[Conditional probability]
+\label{def:conditional-probability}
+Let \(A\) and \(B\) be events in a sample space \(\Omega\), with
+\(\Prob(B) > 0\) ---where \(\Prob\) is a probability function. We define the
+\emph{conditional probability of \(A\) given \(B\)} to be
+\[
+\Prob(A \mid B) = \frac{\Prob(A \cap B)}{\Prob(B)}.
+\]
+In this case, the map \(\Prob(- \mid B): \Sigma \to \R\) is a probability
+function associated to \(\Prob\).
+\end{definition}
+
+Moreover, by symmetry we have \(\Prob(B \mid A) = \Prob(A \cap B)/\Prob(A)\),
+therefore one obtains
+\[
+\Prob(A \mid B) = \Prob(B \mid A) \frac{\Prob(A)}{\Prob(B)}.
+\]
+When \(A\) and \(B\) are unrelated events---that is, \(A \cap B = \emptyset\)
+---one has both \(\Prob(A \mid B) = \Prob(B \mid A) = 0\) since
+\(\Prob(A \cap B) = 0\).
+
+\begin{theorem}[Bayes' rule]
+\label{thm:bayes-rule}
+Let \(\{A_{j}\}_{j \in J}\) be a countable partition of the sample space, and
+let \(B\) be any event. Then, for each \(j \in J\) on has
+\[
+\Prob(A_j \mid B) =
+\frac{\Prob(B \mid A_j) \Prob(A_j)}{\sum_{j \in J} \Prob(B \mid A_j) \Prob(A_j)}.
+\]
+\end{theorem}
+
+\begin{definition}[Statistically independent events]
+\label{def:statistically-independent}
+A pair of events \(A\) and \(B\) is said to be statistically independent from
+each other if it is the case that \(\Prob(A \cap B) = \Prob(A) \Prob(B)\).
+\end{definition}
+
+\begin{theorem}
+\label{thm:statistically-independent-pairs}
+If \(A\) and \(B\) are statistically independent events, then the following
+pairs of events are also independent:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item \(A\) and \(\Compl{B}\).
+\item \(\Compl{A}\) and \(B\).
+\item \(\Compl{A}\) and \(\Compl{B}\).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item One has
+  \begin{align*}
+    \Prob(A \cap \Compl B)
+    &= \Prob(A) - \Prob(A \cap B) \\
+    &= \Prob(A) - \Prob(A) \Prob(B) \\
+    &= \Prob(A) (1 - \Prob(B)) \\
+    &= \Prob(A) \Prob(\Compl B).
+  \end{align*}
+\item The symmetric argument can be applied to the case of \(\Compl A\) and \(B\).
+
+\item For both complements, we have
+  \begin{align*}
+    \Prob(\Compl A \cap \Compl B)
+    &= \Prob(\Compl{(A \cup B)}) \\
+    &= 1 - \Prob(A \cup B) \\
+    &= 1 - (\Prob(A) + \Prob(B) - \Prob(A \cap B)) \\
+    &= 1 - \Prob(A) - \Prob(B) + \Prob(A) \Prob(B) \\
+    &= (1 - \Prob(A)) (1 - \Prob(B)) \\
+    &= \Prob(\Compl A) \Prob(\Compl B).
+  \end{align*}
+\end{enumerate}
+\end{proof}
+
+\begin{remark}
+\label{rem:event-independence}
+Let \(A\), \(B\) and \(C\) be three events in our sample space such that
+\[
+\Prob(A \cap B \cap C) = \Prob(A) \Prob(B) \Prob(C).
+\]
+\emph{It is not necessarily true} that \(A\), \(B\) and \(C\) are pairwise
+disjoint---that is, although the probability of them occurring simultaneously
+splits, it does not mean that the events are pairwise independent! Moreover, one
+\emph{cannot} define the independence of the events \(A\), \(B\) and \(C\) by
+requiring pairwise independence without running into problems---unfortunately
+the generalisation of \cref{def:statistically-independent} is not that simple,
+but here we come to the rescue.
+\end{remark}
+
+\begin{definition}[Mutually independent events]
+\label{def:mutually-independent-events}
+Let \((A_1, \dots, A_n)\) be a collection of events. We say that they are
+\emph{mutually independent} if for any subcollection \((A_{j_1}, \dots,
+A_{j_k})\) one has
+\[
+\Prob \Big(\bigcap_{i=1}^k A_{j_i}\Big) = \prod_{i=1}^k \Prob(A_{j_i}).
+\]
+\end{definition}
+
+\section{Random Variables}
+
+\begin{definition}[Random variable]
+\label{def:random-variable}
+A \emph{random variable} is a map \(X: \Omega \to \mathcal{T}\), where
+\(\Omega\) is our ambient sample space and \(\mathcal{T}\) is the \emph{target
+  space}---for instance, \(\R^n\). This random variable induces a new sample space
+\(\mathcal{X} = X(\Omega)\), on which we can define a new probability function.
+
+Suppose that \(\Omega\) is countable. If \(\Sigma\) and \(\Sigma_X\) are
+\(\sigma\)-algebras associated to \(\Omega\) and \(\mathcal{X}\) respectively,
+then we define \(\Prob_X: \Sigma_X \to \R\) given by
+\[
+\Prob_X(X = x) \coloneq \Prob(\{y \in \Omega \colon X(y) = x\}),
+\]
+where \(\Prob: \Sigma \to \R\) is a probability function. To ease the notation,
+we shall merely write \(\Prob(X = x)\) rather than \(\Prob_X(X = x)\).
+
+Now, if \(\Omega\) is an uncountable sample space, we define \(\Prob_X\) as
+follows: for any \(A \subseteq \mathcal{X}\) let
+\[
+\Prob_X(X \in A) \coloneq \Prob(\{s \in \Omega \colon X(s) \in A\}).
+\]
+\end{definition}
+
+\begin{definition}[Categorical variables]
+\label{def:categorical-variables}
+Variables that take a finite set of \emph{unordered} values are called
+\emph{categorical variables}, and are used widely in machine learning contexts.
+\end{definition}
+
+\section{Distribution Functions}
+
+\begin{definition}[Cumulative distribution function]
+\label{def:cumulative-distribution-function}
+Let \(X: \Omega \to \R\) be a random variable. We define a \emph{cumulative distribution
+  function} (cdf) associated to \(X\) to be map \(F_X: \Omega \to \R\) given by
+\[
+F_X(x) \coloneq \Prob_X(X \leq x)
+\]
+for each \(x \in \Omega\). From its construction, \(F_X\) is a
+\emph{right-continuous} mapping. We shall use the expression \(X \sim F_X\) to
+encode ``\(X\) has a distribution given by \(F_X\)''.
+\end{definition}
+
+\begin{theorem}[Cdf necessary and sufficient properties]
+\label{thm:cdf-iff-properties}
+A map \(F: \Omega \to \R\) is a cumulative distribution if and only if all of
+the following three conditions hold:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item We have limits \(\lim_{x \to -\infty} F(x) = 0\) and \(\lim_{x \to \infty} F(x) = 1\).
+\item The map \(F\) is non-decreasing.
+\item The map \(F\) is right-continuous, that is, for any \(x_0 \in \Omega\) we
+  have \(\lim_{x \to +x_0} F(x) = F(x_0)\).
+\end{enumerate}
+\end{theorem}
+
+\begin{example}
+\label{exp:cdfs}
+Here we list some of the most important cumulative distribution functions:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Let \(p\) be the probability of success and \(X\) be the number of trials
+  required to obtain a success. The probability functions associated with \(X\)
+  is \(\Prob(X = x) = (1 - p)^{x-1} p\) and its corresponding cdf is called a
+  \emph{geometric distribution}:
+  \[
+  F_X(x) = 1 - (1 - p)^x.
+  \]
+
+% \item The \emph{logistic distribution} is defined to be the cdf given by
+%   \[
+%   F_X(x) = \frac{1}{1 + e^{-x}}.
+%   \]
+\end{enumerate}
+\end{example}
+
+\begin{definition}
+\label{def:continuity-discreteness-random-variable}
+A random variable \(X\) is said to be \emph{continuous} if its associated
+cumulative distribution function \(F_X\) is continuous. On the other hand, we
+say that \(X\) is \emph{discrete} if \(F_X\) is a step-function.
+\end{definition}
+
+\begin{definition}
+\label{def:identically-distributed-random-variables}
+Let \(\Sigma^1\) be the smallest \(\sigma\)-algebra containing all intervals of
+real numbers. Two random variables \(X\) and \(Y\) are said to be
+\emph{identically distributed} if for some \(A \in \Sigma^1\), one has
+\(\Prob(X \in A) = \Prob(Y \in A)\). We denote that \(X\) and \(Y\) have
+identical distributions by \(X \sim Y\).
+\end{definition}
+
+\begin{theorem}
+\label{thm:random-variables-identical-iff-equal-cdfs}
+Two random variables \(X\) and \(Y\) are identically distributed if and only if
+\(F_X = F_Y\).
+\end{theorem}
+
+\subsection{Density \& Mass Functions}
+
+\begin{definition}[Probability mass function]
+\label{def:probability-mass-function}
+The \emph{probability mass function} (or simply \emph{probability function})
+of a \emph{discrete} random variable \(X\) is a map \(f_X: \Omega \to \R\) given
+by
+\[
+f_X(x) = \Prob(X = x).
+\]
+\end{definition}
+
+\begin{definition}[Binomial distribution]
+\label{def:binomial-distribution}
+A random variable \(X: \mathcal{X} \to \N\) is said to have a
+\emph{binomial probability function \(f\) with parameters \(n \in \N\) and
+  \(p \in [0, 1]\)} if
+\[
+f(x) =
+\begin{cases}
+  \binom{n}{x} p^x (1 - p)^{n - x}, &\text{if } 0 \leq x \leq n \\
+  0, &\text{otherwise}
+\end{cases}
+\]
+\end{definition}
+
+\begin{definition}
+\label{def:bernoulli-random-variable}
+A random variable \(X\) is said to have Bernoulli distribution with parameter
+\(p\) if \(X\) is binary---for instance, with values in \(\{0, 1\}\)---and such
+that \(\Prob(X = 1) = p\).
+\end{definition}
+
+\begin{definition}[Probability density function]
+\label{def:probability-mass-function}
+The \emph{probability density function} (pdf) of a \emph{continuous} random variable
+\(X\) is a map \(f_X: \Omega \to \R\) for which
+\[
+F_X(x) = \int_{-\infty}^x f_X(t)\, \diff t.
+\]
+Consequently, for any \(a < b\) we have
+\[
+\Prob(a \leq X \leq b) = \int_a^b f_X(t)\, \diff t.
+\]
+\end{definition}
+
+\begin{remark}
+\label{rem:interval-probability-continuous-random-variable}
+In the case of a continuous random variable \(X\) we have \(\Prob(X = x) = 0\)
+for any \(x\) of the sample space, therefore one has for any interval:
+\[
+\Prob(a < X < b)
+= \Prob(a < X \leq b)
+= \Prob(a \leq X < b)
+= \Prob(a \leq X \leq b).
+\]
+\end{remark}
+
+\begin{theorem}
+\label{thm:prob-density-fn-equivalent-conditions}
+A map \(f_X\) is a pdf (or pmf) of a random variable \(X\) if and only if the
+following requirements are met:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The map \(f_X\) is non-negative.
+\item In the case of a pdf, \(\int_{-\infty}^{\infty} f_X(x)\, \diff x = 1\). On
+  the other hand, for a pmf, \(\sum_x f_X(x) = 1\).
+\end{enumerate}
+\end{theorem}
+
+\begin{notation}
+\label{not:univariate-multivariate-distributions}
+Distributions do not need to depend on a single random variable, when they do we
+call them \emph{univariate}, otherwise \emph{multivariate} distributions. For
+instance, a multivariate real-valued random variable \(X\) is a map
+\(X: \Omega \to \R^n\) having an associated cumulative distribution function
+and---if existent---probability density functions:
+\[
+F_X(x) = \Prob(X_1 \leq x_1, \dots, X_n \leq x_n)
+= \int_{-\infty}^{x_1} \cdots \int_{-\infty}^{x_n} f_X(x_1, \dots, x_n)\,
+\diff x_1 \dots \diff x_n
+\]
+\end{notation}
+
+\begin{definition}[Joint probability]
+\label{def:joint-probability}
+Let \((X_j: \Omega_j \to \R)_{j=1}^m\) be a collection of discrete random variables. We
+define the \emph{joint probability} of this collection by the probability mass
+function \(f: \prod_{j=1}^m \Omega_j \to \R\) given by
+\[
+f(x_1, \dots, x_m)
+= \Prob(X_1 = x_1, \dots, X_m = x_m)
+= \frac{n(x_1, \dots, x_m)}{N}
+\]
+where \(n(x_1, \dots, x_m)\) is the number of events with state
+\(x_1, \dots, x_m\), and \(N\) is the total number of events. The probability of
+\(X_j = x_j\) irrespective of the other random variables as the \emph{marginal
+  probability} of \(X_j\) and sometimes denote it by \(p(x_j)\). Fixing that
+\(X_i = x_i\) for each \(i \neq j\) we can calculate the \emph{conditional
+  probability} of \(X_j = x_j\), which we write as
+\(f(x_j \mid x_1, \dots, x_m)\).
+\end{definition}
+
+\subsection{Quantile Function}
+
+\begin{definition}
+\label{def:quantile-percentile}
+Let \(X: \Omega \to \mathcal{X}\) be a random variable with a cumulative
+distribution function \(F\). We define the \emph{quantile function of
+  \(X\)}\footnote{To be precise, \(q\) represents the quantile function of the
+  \emph{distribution} associated with \(X\)---random variables with equal
+  distribution will have equal quantile functions.} to be a map
+\(q: (0, 1) \to \mathcal{X}\) given by
+\[
+q(p) \coloneq \argmin_{x \in \mathcal{X}} (F(x) \geq p).
+\]
+We call \(q(p)\) the \emph{\(p\) quantile of \(X\)} or the \emph{\(100 p\)
+  percentile of \(X\)}.
+\end{definition}
+
+\section{Sum \& Product Rules}
+
+\begin{lemma}[Sum rule]
+\label{lem:joint-probability-sum-rule}
+Let \(X: \Omega_X \to \mathcal{X}\) and \(Y: \Omega_Y \to \mathcal{Y}\) be
+multivariate random variables and consider the joint probability
+\(\Prob: \Omega_X \times \Omega_Y \to \R\). The \emph{sum rule}
+states that the marginal probability of \(X = x\) is given by
+\[
+\Prob(x) =
+\begin{cases}
+  \sum_{y \in \mathcal{Y}} \Prob(x, y), &\text{if } y \text{ is discrete} \\
+  \int_{\mathcal{Y}} \Prob(x, y)\, \diff y, &\text{if } y \text{ is continuous}
+\end{cases}
+\]
+\end{lemma}
+
+\begin{lemma}[Product rule]
+\label{lem:joint-probability-product-rule}
+Given a joint probability \(\Prob: \Omega_X \times \Omega_Y \to \R\), the product
+rule states that
+\[
+\Prob(x, y) = \Prob(y \mid x) \Prob(x).
+\]
+\end{lemma}
+
+From the product rule we can obtain Bayes' theorem by noting the symmetry
+\(\Prob(x, y) = \Prob(x \mid y) \Prob(y)\), resulting in
+\[
+\Prob(x \mid y) = \frac{\Prob(y \mid x) \Prob(x)}{\Prob(y)}.
+\]
+In the eyes of machine learning and Bayesian statistics, this formula gives a
+way to make inferences about the unobserved random variable \(X\) by having a
+\emph{prior} knowledge \(\Prob(x)\) and a second random variable \(Y\) of which we
+can observe and have a \emph{marginal evidence} \(\Prob(y)\) and a relational
+\emph{likelihood} \(\Prob(y \mid x)\). This data gives a \emph{posterior} knowledge
+\(\Prob(x \mid y)\).
+
+\begin{remark}
+\label{rem:likelihood}
+The value \(\Prob(y \mid x)\) can be called either the ``likelihood of \(x\) given
+\(y\)'' or the ``probability of \(y\) given \(x\)''.
+\end{remark}
+
+Consider a collection of data \(\mathcal{D}\) and model parameters
+\(w\). Frequentists commonly use the \emph{maximum likelihood} estimator, which
+aims to find parameters \(w\) for which the likelihood function
+\(\Prob(\mathcal{D} \mid w)\) is \emph{maximised}---that is, we maximise the
+probability that, having parameters \(w\), the observed set of events is
+\(\mathcal{D}\). In the context of machine learning we normally work
+with the \emph{errors function}
+\(\operatorname{err}(w) = -\log(\Prob(\mathcal{D} \mid w))\), and the goal of
+the learning process is to \emph{minimise} this error. To be able to work in the
+frequentist settings, one needs multiple data sets to determine the error
+bars---one of the methods to deal with this is the bootstrap.
+
+\begin{definition}[Data set bootstrap]
+\label{def:bootstrap-data-sets}
+Given a data set \(X = \{x_1, \dots, x_n\}\), we construct a new data set
+\(X_j\) by drawing \(n\) points of \(X\) at random and with replacement. This
+procedure can be done \(\ell\) times to generate a new collection \(\{X_1,
+\dots, X_{\ell}\}\) each containing \(n\) data points. The statistical accuracy
+of the parameter estimates will then be evaluated by analysing the variability
+of predictions between the different bootstrap data sets \(X_j\).
+\end{definition}
+
+\section{Functions of Random Variables}
+
+\begin{proposition}[The probability function for the discrete case]
+\label{prop:fn-of-rand-var-discrete-case}
+Let \(X: \Omega \to \mathcal{X}\) be a discrete random variable with probability
+mass function \(f\) and define a random variable \(Y \coloneq r(X)\)---where
+\(r: \mathcal{X} \to \mathcal{Y}\) is some function of \(X\). Then the
+probability mass function \(g: \mathcal{Y} \to \R\) of \(Y\) is given by
+\[
+g(y) = \Prob(r(X) = y) = \sum_{r(x) = y} f(x).
+\]
+\end{proposition}
+
+\begin{proposition}[The probability function for the continuous case]
+\label{prop:fn-of-rand-var-continuous-case}
+Let \(X\) be a continuously distributed random variable with probability density
+function \(f\), and consider a random variable \(Y = r(X)\). The
+\emph{cumulative distribution function} \(G\) of \(Y\) is given by
+\[
+G(y) = \int_{\{x \in \mathcal{X} \colon r(x) \leq y\}} f(x)\, \diff x.
+\]
+Moreover, if \(Y\) has a \emph{continuous} distribution, its probability
+density function \(g\) can be found at a point \(y \in \mathcal{Y}\) as a solution of
+\[
+g(y) = \frac{\diff G(y)}{\diff y},
+\]
+assuming that \(G\) is differentiable at \(y\).
+\end{proposition}
+
+\begin{proposition}[Probability integral transformation]
+\label{prop:probability-integral-transformation}
+Let \(X\) be a continuous random variable with cumulative distribution \(F\),
+and consider a random variable \(Y = F X\)---such variable is called the
+\emph{probability integral transformation} of \(X\). Then the cumulative
+distribution of \(Y\) is \emph{uniform} on the interval \([0, 1]\).
+\end{proposition}
+
+\begin{proof}
+Since \(\im F \subseteq [0, 1]\) then \(\Prob(Y < 0) = 0 = \Prob(Y > 1)\). From
+the fact that \(F\) is continuous, given any \(y \in (0, 1)\), we can find a
+maximum argument
+\[
+x_{\text{max}} \coloneq \argmax [F(x) = y],
+\]
+so that \(Y \leq y\) if and only if \(X \leq x_{\text{max}}\). Then the
+cumulative distribution of \(Y\) at \(y\) is given by
+\[
+\Prob(Y \leq y) = \Prob(X \leq x_{\text{max}}) = F(x_{\text{max}}) = y.
+\]
+Therefore we conclude that \(Y\) has a uniform distribution on the open interval
+\((0, 1)\). Since \(Y\) has a continuous distribution, then \(Y\) is uniformly
+distributed in \([0, 1]\).
+\end{proof}
+
+\begin{corollary}
+\label{cor:}
+Let \(Y\) be a uniformly distributed random variable on the interval \([0,
+1]\). If \(F\) is a continuous cumulative distribution function with associated
+quantile function \(q_F\), then the random variable \(X = q_F Y\) has \(F\) as
+its cdf.
+\end{corollary}
+
+\begin{corollary}
+\label{cor:choose-distribution}
+Let \(X\) be a random variable with continuous cdf \(F\), and let \(G\) be any
+other continuous cdf. Then the random variable \(Z = q_G F X\) has \(G\) as its
+cdf.
+\end{corollary}
+
+\begin{proposition}
+\label{prop:injective-diff-random-variable-pdf}
+Let \(X\) be a random variable with probability distribution \(f\) such that
+\(\Prob(x \in (a, b)) = 1\). Define a random variable \(Y = r X\), where \(r\)
+is an injective and differentiable map on the interval \((a, b)\). Define
+\((\alpha, \beta) \coloneq r((a, b))\) and let \(s: (\alpha, \beta) \to (a, b)\)
+be the inverse function of \(r|_{(a, b)}\). Then the probability distribution
+\(g\) of \(Y\) is given by
+\[
+g(y) =
+\begin{cases}
+  \Big| \frac{\diff s(y)}{\diff y} \Big| f s(y) ,
+  &\text{for } y \in (\alpha, \beta) \\
+  0, &\text{otherwise}
+\end{cases}
+\]
+\end{proposition}
+
+\begin{proof}
+We have two possibilities:
+\begin{enumerate}[(i)]\setlength\itemsep{0em}
+\item If \(r\) is increasing on \((a, b)\) then \(s\) is also increasing on
+  \((\alpha, \beta)\). With this, if \(G\) is the cumulative distribution of
+  \(Y\), we obtain
+  \[
+  G(y) = \Prob(Y \leq y)
+  =  \Prob(r(X) \leq y)
+  = \Prob(X \leq s(y))
+  = F s(y),
+  \]
+  where \(F\) is the cumulative distribution for \(X\). Therefore, for any \(y
+  \in (\alpha, \beta)\) such that \(s\) is differentiable at \(y\) and \(F\) is
+  differentiable at \(s(y)\) we have
+  \[
+  g(y) = \frac{\diff G(y)}{\diff y}
+  = \frac{\diff F s(y)}{\diff y}
+  = fs(y) \frac{\diff s}{\diff y}.
+  \]
+  Since \(s\) is increasing in \((\alpha, \beta)\), then \(s'\) is positive.
+
+\item If \(r\) is decreasing on \((a, b)\), then so is \(s\) on
+  \((\alpha, \beta)\). Then one has
+  \[
+  G(y) = \Prob(r(X) \leq y)
+  = \Prob(X \geq s(y))
+  = 1 - F s(y).
+  \]
+  Therefore differentiating on each differentiable point we obtain
+  \[
+  g(y) = -f s(y) \frac{\diff s(y)}{\diff y}.
+  \]
+  From the fact that \(s\) is decreasing, then \(s'\) is negative.
+\end{enumerate}
+From this we obtain the said equality.
+\end{proof}
+
+\begin{corollary}[Linear function of random variable]
+\label{cor:linear-fn-of-rand-var}
+Let \(X\) be a random variable with probability distribution \(f\), and consider
+\(Y = a X + b\) with \(a \neq 0\). The probability density function \(g\) of
+\(Y\) is then given by
+\[
+g(y) = \frac{1}{|a|} f\Big(\frac{y - b}{a}\Big).
+\]
+\end{corollary}
+
+\begin{proposition}
+\label{prop:sum-bernoulli-rv-is-binomial}
+Let \((X_1, \dots, X_n)\) be a collection of independent and identically
+distributed random variables with Bernoulli distribution with parameter
+\(p\). Then the random variable \(Y = \sum_{j=0}^n X_j\) has a binomial
+distribution with parameters \(n\) and \(p\).
+\end{proposition}
+
+\begin{proof}
+Notice that \(Y\) is a random variable taking values in
+\(\{0, 1, 2, \dots, n\}\), therefore if \(Y = y\) there are \(\binom{n}{y}\)
+possible combinations of \((X_1, \dots, X_n)\) in order to have
+\(\sum_j X_j = y\) since \(X_j \in \{0, 1\}\)---where we are going to have
+exactly \(y\) variables evaluating to \(1\) and the remaining \(n - y\)
+evaluating to \(0\). Therefore if \(g\) denotes the probability function of
+\(Y\) we have
+\[
+g(y) = \binom{n}{y} p^y (1 - p)^{n - y}.
+\]
+\end{proof}
+
+\begin{proposition}
+\label{prop:}
+Let \(X\) and \(Y\) be random variables with joint probability density function
+\(f\) and let \(Z = a_1 X + a_2 Y + b\) be a random variable with \(a_1 \neq
+0\). Then \(Z\) is continuously distributed and has a probability density
+function given by
+\[
+g(z) = \int_{-\infty}^{\infty} \frac{1}{|a_1|}
+f\Big( \frac{z - b - a_{2}y}{a_1}, y \Big)\, \diff y
+\]
+\end{proposition}
+
+\section{Mean, Variance \& Covariance}
+
+\begin{definition}[Expected value]
+\label{def:expected-value}
+The \emph{expected value} of a function \(g: \R \to \R\) of a \emph{univariate
+  continuous} random variable \(X: \Omega_X \to \mathcal{X}\) with distribution
+\(f_X\) is defined as
+\[
+\Expect_X g \coloneq \int_{\mathcal{X}} g(x) f_X(x)\, \diff x.
+\]
+Analogously, if \(Y: \Omega_Y \to \mathcal{Y}\) is a \emph{univariate discrete}
+random variable with \(Y \sim f_Y\), the expected value of \(g\) is given by
+\[
+\Expect_Y g = \sum_{y \in \mathcal{Y}} g(y) f_Y(y).
+\]
+As one might ``expect'', in the case of an \(n\)-multivariate random variable
+\(Z: \Omega_Z \to \mathcal{Z}\) we have
+\[
+\Expect_Z g =
+\begin{bmatrix}
+  \Expect_{Z_1} g \\
+  \vdots \\
+  \Expect_{Z_n} g
+\end{bmatrix}
+\]
+
+We can also define \emph{conditional expectation} with respect to a conditional
+distribution, which we shall write as
+\[
+\Expect[g \mid t_0] =
+\begin{cases}
+  \sum_{t \in \mathcal{T}} g(t) f_T(t \mid t_0), &\text{if } T \text{ is discrete}\\
+  \int_{\mathcal{T}} g(t) f_T(t \mid t_0)\, \diff t, &\text{if } T \text{ is continuous}
+\end{cases}
+\]
+for a random variable \(T: \Omega_T \to \mathcal{T}\) with distribution \(f_T\).
+\end{definition}
+
+\begin{definition}[Mean, median \& mode]
+\label{def:mean-of-random-variable}
+We define the \emph{mean} (or \emph{population} mean) of an \(n\)-multivariate
+random variable \(X: \Omega \to \mathcal{X}\) to be
+\[
+\Mean_X = \Expect_X \Id =
+\begin{bmatrix}
+  \Expect_{X_1} \Id \\
+  \vdots \\
+  \Expect_{X_n} \Id
+\end{bmatrix}
+\]
+where, as in \cref{def:expected-value} we have for each \(1 \leq j \leq n\):
+\[
+\Expect_{X_j} \Id =
+\begin{cases}
+  \int_{\mathcal{X}_j} x_j f_X(x_j)\, \diff x_j, &\text{if } X \text{ is
+                                                   continuous} \\
+  \sum_{x_j \in \mathcal{X}_j} x_j f_X(x_j), &\text{if } X \text{ is discrete}
+\end{cases}
+\]
+
+The \emph{median} of a \emph{univariate} discrete random variable is the middle-most
+value of the image of the variable. In the case of \emph{univariate} continuous random
+variables, we define the median is defined to be the value where the cumulative
+density function is \(1/2\).
+
+The \emph{mode} of a discrete random variable is the value having the highest
+frequency of occurrence. For continuous random variables, we define the mode as
+the values corresponding to maximal critical points of the probability density
+function---which may admit more than a single mode.
+\end{definition}
+
+\begin{definition}[Covariance, variance \& standard deviation: univariate case]
+\label{def:covariance-univariate}
+The \emph{covariance} between two univariate real-valued random variables \(X\)
+and \(Y\) is given by
+\begin{align*}
+  \Cov(X, Y)
+  &\coloneq \Expect_{X, Y}[(x - \Mean_X)(y - \Mean_Y)] \\
+  &= \Expect_{X, Y}(x y) - \Mean_X \Mean_Y.
+\end{align*}
+The \emph{variance} of the random variable \(X\) is defined to be
+\begin{align*}
+\Var X
+&\coloneq \Cov(X, X) \\
+&= \Expect_X[(x - \Mean_X)^2] \\
+&= \Expect_X(x^2) - \Mean_X^2,
+\end{align*}
+which measures how much variability there is in \(X\) around its mean value.
+The \emph{standard deviation} of \(X\) is defined as
+\[
+\stdev(X) \coloneq \sqrt{\Var(X)}.
+\]
+We also define the \emph{precision}, which is given by
+\[
+\precision \coloneq \frac{1}{\stdev^2}
+\]
+\end{definition}
+
+\begin{definition}[Covariance \& variance: multivariate case]
+\label{def:covariance-multivariate}
+Let \(X\) and \(Y\) be multivariate random variables with \(\im X \subseteq
+\R^n\) and \(\im Y \subseteq \R^m\). We define the \emph{covariance} (or \emph{cross-variance}) between
+\(X\) and \(Y\) as
+\[
+\Cov(X, Y) \coloneq \Expect_{X, Y}(\langle x, y \rangle) -
+\langle \Mean_X , \Mean_Y  \rangle
+= \Cov(Y, X)^{\Transp} \in \R^n \times \R^m,
+\]
+where \(\langle -, - \rangle\) is the standard euclidean inner product.
+
+As before, the variance of the multivariate random variable \(X\) is given by
+\begin{align*}
+  \Var X
+  &= \Cov(X, X) \\
+  &= \Expect(\langle x - \Mean_X, x - \Mean_X \rangle) \\
+  &= \Expect(\langle x, x \rangle) - \langle \Mean_X, \Mean_X \rangle \\
+  &=
+    \begin{bmatrix}
+      \Cov(X_1, X_1) &\Cov(X_1, X_2) &\dots &\Cov(X_1, X_n) \\
+      \vdots &\vdots &\dots &\vdots \\
+      \Cov(X_n, X_1) &\Cov(X_n, X_2) &\dots &\Cov(X_n, X_n) \\
+    \end{bmatrix}
+\end{align*}
+This matrix is symmetric and positive semi-definite.
+\end{definition}
+
+\begin{definition}[Correlation]
+\label{def:correlation}
+The \emph{correlation} between two random variables \(X\) and \(Y\) is given by
+\[
+\Correlation(X, Y) \coloneq \frac{\Cov(X, Y)}{\stdev(X) \stdev(Y)} \in [-1, 1].
+\]
+A positive correlation means that if \(x\) increases, then \(y\) also
+increases. A negative correlation means that if \(x\) increases, then \(y\)
+decreases.
+\end{definition}
+
+\begin{definition}[Empirical mean \& covariance]
+\label{def:empirical-mean-and-covariance}
+Let \((x_j)_{j=1}^{n}\) be a collection of observations (empirical data). We
+define the \emph{empirical mean} as
+\[
+\overline x \coloneq \frac{1}{n} \sum_{j=1}^n x_j.
+\]
+Analogously, the \emph{empirical covariance} is defined as
+\[
+\Cov(x_j)_{j=1}^n
+= \frac{1}{n} \sum_{j=1}^n \langle x_j - \overline x, x_j - \overline x \rangle.
+\]
+\end{definition}
+
+\subsection{Random Variables \& Linear Maps}
+
+\begin{lemma}
+\label{lem:sums-differences-random-variables}
+Given a pair of random variables \(X\) and \(Y\) with states in \(\R^n\), we can
+compute the following means:
+\begin{align*}
+  \Mean_{X + Y} &= \Mean_X + \Mean_Y, \\
+  \Mean_{X - Y} &= \Mean_X - \Mean_Y,
+\end{align*}
+and variances:
+\begin{align*}
+  \Var(X + Y) &= \Var X + \Var Y + \Cov(X, Y) + \Cov(Y, X), \\
+  \Var(X - Y) &= \Var X + \Var Y - (\Cov(X, Y) + \Cov(Y, X)). \\
+\end{align*}
+\end{lemma}
+
+Let \(Y = A X + b\) be a linear transformation and \(X\) a random variable, then
+\(Y\) itself is a random variable. The following relations hold true for the
+mean of \(Y\):
+\[
+\Mean_Y = \Expect_Y Y = \Expect_X[A X + b] = A \Expect_X X + b = A \Mean_X + b
+\]
+Moreover, we also have the following relation with the variance of \(Y\):
+\begin{align*}
+  \Var(Y)
+  &= \Var(A X + b) \\
+  &= \Cov(A X + b, A X + b) \\
+  &= \Expect[(A X + b)(A X + b)^{\Transp}] - \Mean_{A X + b} \Mean_{A X +
+    b}^{\Transp} \\
+  &= \Expect[
+    A X X^{\Transp} A^{\Transp} + A X b^{\Transp} + b X^{\Transp} A^{\Transp}
+    + b b^{\Transp}
+    ]
+    - (A \Mean_X \Mean_X^{\Transp} A^{\Transp} + A \Mean_X b^{\Transp}
+    + b \Mean_X^{\Transp} A^{\Transp} - b b^{\Transp}) \\
+  &= A \Expect[X X^{\Transp}] A^{\Transp} - A \Mean_X \Mean_X^{\Transp}
+    A^{\Transp} \\
+  &= \Var(A X) \\
+  &= A \Var(X) A^{\Transp}
+\end{align*}
+Finally, we can compute the covariance of \(X\) and \(Y\) as
+\begin{align*}
+  \Cov(X, Y)
+  &= \Expect[X (A x + b)^{\Transp}] - \Mean_X \Mean_{A X + b}^{\Transp} \\
+  &= \Mean_X b^{\Transp} + \Expect[X X^{\Transp}] A^{\Transp}
+    - \Mean_X b^{\Transp} - \Mean_X \Mean_X^{\Transp} A^{\Transp} \\
+  &= \Expect[X X^{\Transp}] A^{\Transp} - \Mean_X \Mean_X^{\Transp} A^{\Transp} \\
+  &= \Var(X) A^{\Transp}
+\end{align*}
+
+\begin{lemma}
+\label{lem:statistical-independence-and-cov-var}
+If \(X\) and \(Y\) are statistically independent random variables, then
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item \(\Var(X + Y) = \Var X + \Var Y\).
+\item \(\Cov(X, Y) = 0\).
+\end{enumerate}
+It is to be noted that two random variables may have a zero covariance but
+still be statistically dependent---this is because covariance merely measures
+linear dependence.
+\end{lemma}
+
+\begin{definition}[Conditional independence]
+\label{def:conditional-independence}
+Two random variables \(X\) and \(Y\) are said to be conditionally independent of
+a given random variable \(Z\) when
+\[
+\Prob(x, y \mid z) = \Prob(x \mid z) \Prob(y \mid z)
+\]
+for all states \(z\) of \(Z\). If we use
+\cref{lem:joint-probability-product-rule} we obtain \(\Prob(x, y \mid z) =
+\Prob(x \mid y, z) \Prob(y \mid z)\) and hence the conditional independence can
+be reformulated as
+\[
+\Prob(x \mid y, z) = \Prob(x \mid z).
+\]
+\end{definition}
+
+\begin{definition}[Inner product of random variables]
+\label{def:inner-product-random-variables}
+Given two random variables \(X\) and \(Y\), we can define their inner product to
+be
+\[
+\langle X, Y \rangle \coloneq \Expect(X Y).
+\]
+Also if it is the case that \(\Mean_X = 0 = \Mean_Y\), then in particular
+\(\langle X, Y \rangle = \Cov(X, Y)\) and we would have
+\[
+\Correlation(X, Y) = \frac{\Cov(X, Y)}{\sqrt{\Var(X) \Var(Y)}}
+= \frac{\langle X, Y \rangle}{\| X \|\, \| Y \|} = \cos \theta,
+\]
+where \(\theta\) is the angle between the vectors \(X\) and \(Y\).
+\end{definition}
+
+\section{Distributions}
+
+\begin{definition}[Gaussian distribution]
+\label{def:gaussian-distribution}
+Let \(X\) be a \emph{univariate} random variable with mean \(\Mean\) and
+standard deviation \(\stdev\). The \emph{Gaussian distribution} of \(X\) has a
+density function given by
+\[
+\ndist(x \mid \Mean, \stdev^2) \coloneq \frac{1}{\sqrt{2 \pi \sigma^{2}}}
+\exp\Big( -\frac{(x - \Mean)^2}{2 \stdev^2} \Big).
+\]
+Now, if \(X\) where an \emph{\(n\)-multivariate} random variable, then the Gaussian
+distribution of \(X\) would have a density function defined as
+\[
+\ndist(x \mid \Mean, \Var X) \coloneq \frac{1}{\sqrt{(2 \pi)^n \det(\Var X)}}
+\exp\Big(-\frac{1}{2} (x - \Mean)^{\Transp} \Var(X)^{-1} (x - \Mean)\Big).
+\]
+
+The special case where \(\Mean = 0\) and \(\Var(X) = \Id\) is referred to as the
+\emph{standard normal distribution}.
+\end{definition}
+
+\begin{proposition}[Gaussian distribution properties]
+\label{prop:gaussian-distribution-basic-properties}
+The following items are properties pertaining to the Gaussian distribution
+\(\ndist\):
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The Gaussian distribution is normalised.
+
+\item The maximum of a Gaussian distribution, its mode, coincides with the mean.
+
+\item The likelihood function associated with a finite dataset of scalar
+  observations \(\mathcal{D}\) is given by
+  \[
+  \Prob(\mathcal{D} \mid \mu, \stdev^2)
+  = \prod_{x \in \mathcal{D}} \ndist(x \mid \mu, \stdev^2).
+  \]
+\end{enumerate}
+\end{proposition}
+
+\begin{remark}[Finding \(\mu\) and \(\stdev^2\) with the maximum likelihood]
+\label{rem:find-mean-and-variance-with-maximum-likelihood}
+In order to determine the unknown parameters \(\mu\) and \(\stdev^2\) associated
+with the dataset \(\mathcal{D}\) we can try to find the parameters that
+\emph{maximise} the likelihood function---or, equivalently, maximising the
+function
+\begin{equation}\label{eq:log-likelihood-function}
+\log \Prob(\mathcal{D} \mid \mu, \stdev^2)
+= - \frac{1}{2 \stdev^{2}}
+\sum_{x \in \mathcal{D}} (x - \mu)^2 - \frac{N}{2}(\log(\stdev^2) + \log(2 \pi)),
+\end{equation}
+where \(N \coloneq |\mathcal{D}|\) is the total number of data points.
+Maximising \cref{eq:log-likelihood-function} with respect to \(\mu\) gives
+\[
+\mu_{\text{ML}} = \frac{1}{N} \sum_{x \in \mathcal{D}} x,
+\]
+known as the \emph{sample mean}, while maximising with respect to \(\stdev^2\)
+we obtain
+\[
+\stdev^2_{\text{ML}} = \frac{1}{N} \sum_{x \in \mathcal{D}} (x - \mu_{\text{ML}})^2,
+\]
+called the \emph{sample variance} with respect to the sample mean
+\(\mu_{\text{ML}}\).
+
+The problem with this approach, however, is that the obtained sample variance is
+\emph{underestimated} with respect to the true variance \(\stdev^2\). Indeed,
+one has
+\[
+\Expect[\stdev^2_{\text{ML}}] = \frac{N-1}{N} \stdev^2,
+\]
+while we obtain a correct mean \(\Expect[\mu_{\text{ML}}] = \mu\). This effect
+is called \emph{bias}. In order to deal with that, we can calculate an unbiased
+variance by
+\[
+\widetilde\stdev^2 = \frac{N}{N-1} \stdev^2_{\text{ML}}
+= \frac{1}{N-1} \sum_{x \in \mathcal{D}} (x - \mu_{\text{ML}})^2
+\]
+\end{remark}
+
+\begin{definition}[Hyperparameters]
+\label{def:hyperparameters}
+Parameters that control the distribution of model parameters are called
+\emph{hyperparameters}.
+\end{definition}
+
+Let \(X\) and \(Y\) be multivariate random variables and consider the
+Gaussian distribution
+\[
+f(x, y) = \ndist\bigg(
+\begin{bmatrix}
+  \Mean_X \\
+  \Mean_Y
+\end{bmatrix},
+\begin{bmatrix}
+  \Var X     & \Cov(X, Y) \\
+  \Cov(Y, X) & \Var Y
+\end{bmatrix}
+\bigg)
+\]
+
+\section{Model Selection}
+
+\begin{definition}[\(S\)-fold cross-validation]
+\label{def:s-fold-cross-validation}
+Let \(N\) be the number of data points available in a given dataset. The
+\(S\)-fold cross-validation for evaluating model performance consist in creating
+\(S \leq N\)\footnote{When data is scarce, it may be acceptable to use
+  \(S = N\). This is known as the \emph{leave-one-out} technique for dataset
+  manipulations.} distinct groups of the available data---then \(S-1\) of those
+are used as training data for the model, while the remaining group is used as a
+validation set. We permute the validation set across all possible \(S\) groups
+and finally calculate the model performance as the average score from the \(S\)
+total runs.
+\end{definition}
+
+\subsection{Loss Functions}
+
+In the case of \emph{classification problems}, we may analyse the number of
+misclassifications via what is called a \emph{loss matrix}. Let
+\(\mathcal{C} = \{C_k\}_{k=1}^n\) be the classes associated with a dataset
+\(\mathcal{D}\) and define the loss matrix \(L\) to be an \(n \times n\) matrix
+whose entries \(L_{i j}\) are the \emph{number} of data points of \emph{true
+  class} \(C_i\) which where predicted to pertain to class \(C_j\). For each
+input \(x\) the uncertainty associated with the true class of \(x\) is given by
+the probability distribution \(\Prob(x, C_k)\). Our goal in developing
+classification algorithms will be to \emph{minimise the average loss} computed
+with respect to the associated uncertainty over the decision spaces\footnote{The
+algorithm will define disjoint spaces \(R_k\) as a mean of classifying future
+incoming data points \(x\) as follows: if \(x \in R_k\) then predict that \(x\)
+pertains to the class \(C_k\).}
+\(\{R_k\}_{k=1}^n\) associated with each class \(C_j\):
+\[
+\Expect[L] = \sum_{i=1}^n \sum_{j=1}^n \int_{R_j} L_{i j} \Prob(x, C_i)\, \diff x.
+\]
+Since \(\Prob(x, C_k) = \Prob(C_k \mid x) \Prob(x)\) then the \emph{decision
+  rule} that minimises the expected loss is the one assigning \(x\) to the class
+\(C_{j_0}\) where
+\[
+j_0 = \argmin_j \sum_{i=1}^n L_{i j} \Prob(C_i \mid x).
+\]
+
+In the case of \emph{regression problems}, given a dataset \(\mathcal{D}\) one
+wants to create the best possible estimate function \(g: \R^d \to \R^m\) for the
+unknown map \(f: \R^d \to \R^m\) associated with the true values of
+\(\mathcal{D}\). To that end, we must choose a loss function
+\[
+L: f(\mathcal{D}) \times g(\mathcal{D}) \to \R,
+\]
+for instance, the squared loss is given by \(L(f(x), g(x)) = (g(x) -
+f(x))^2\)). The average of the expected loss, which we want to minimise, is
+given by
+\[
+\Expect[L] = \iint L(t, g(x)) \Prob(x, t)\, \diff x \diff t
+\]
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../deep-dive"
+%%% End:

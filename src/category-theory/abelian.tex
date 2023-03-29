@@ -1,0 +1,51 @@
+\begin{definition}
+\label{def:additive-category}
+A category \(\cat C\) is said to be \emph{additive} if
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item For any pair of objects \(X, Y \in \cat C\) the morphism collection
+  \(\Mor_{\cat C}(X, Y)\) is an abelian group.
+
+\item Consider the following diagram in \(\cat C\):
+  \[
+  \begin{tikzcd}
+  X \ar[r, "a"]
+  &A \ar[r, shift left, "f"] \ar[r, shift right, "g"']
+  &B \ar[r, "b"]
+  &Y
+  \end{tikzcd}
+  \]
+  Then the following relations are satisfied, which mimic the familiar
+  distributive law:
+  \begin{align*}
+    b (f + g) &= b f + b g, \\
+    (f + g) a &= f a + g a.
+  \end{align*}
+
+\item The category \(\cat C\) has a zero object.
+
+\item The category \(\cat C\) admits finite products and finite coproducts.
+\end{enumerate}
+
+Given additive categories \(\cat C\) and \(\cat D\), we define an \emph{additive
+  functor} between \(\cat C\) and \(\cat D\) to be a functor
+\(F: \cat C \to \cat D\) such that for all parallel morphisms
+\(f, g: A \para B\) we have
+\[
+F(f + g) = F f + F g,
+\]
+for any \(A, B \in \cat C\). In other words, the induced map
+\(\Hom_{\cat C}(A, B) \to \Hom_{\cat D}(F A, F B)\) is a morphism of abelian
+groups.
+\end{definition}
+
+% \begin{definition}
+% \label{def:}
+% Let \(k\) be a commutative ring. We say that a category \(\cat C\) is a
+% \(k\)-category if for any pair of objects \(A, B \in \cat C\) the morphism
+% collection \(\Hom_{\cat C}(A, B)\) has the structure of a \(k\)-module.
+% \end{definition}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../deep-dive"
+%%% End:

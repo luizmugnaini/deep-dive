@@ -1,0 +1,571 @@
+\section{Singular Homology}
+
+\begin{definition}[Convexity]
+\label{def:convexity}
+The following are definitions concerning convexity of spaces in \(\R^n\):
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Given any two points \(x, y \in \R^n\), we define the \emph{segment} from
+  \(x\) to \(y\) to be the set of points
+  \(\{(1-t) x + t y \colon t \in [0, 1]\}\).
+
+\item A set \(C \subseteq \R^n\) is said to be \emph{convex} if for any pair of
+  points \(x, y \in C\) the segment from \(x\) to \(y\) is contained in \(C\).
+
+\item Given a set \(A \subseteq \R^n\), we define the \emph{convex hull} of
+  \(A\) to be the intersection of all convex sets of \(\R^n\) containing \(A\).
+
+\item An \emph{\(m\)-simplex} \(\sigma\) in \(\R^n\) is defined to be the
+  convex-hull of a collection of \(m+1\) distinct points \(\{x_0, \dots, x_m\}\)
+  such that the set \(\{x_j - x_0 \colon 1 \leq j \leq m\}\) is linearly
+  independent. The points \(x_j\) are called the \emph{vertices} of
+  \(\sigma\). If an \emph{order} is assigned to the collection of vertices of
+  \(\sigma\), then we obtain an ordered simplex---the ordered simplex is
+  commonly written as \(\sigma = [x_0, \dots, x_m]\).
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+\label{lem:linear-independence-simplex}
+Let \(\{x_0, \dots, x_m\} \subseteq \R^n\) be a collection of \(m+1\) distinct
+points. Then the set \(L = \{x_j - x_0 \colon 1 \leq j \leq m\}\) is linearly
+independent if and only if for any two sequences of parameters \((s_j)_{j=0}^m\)
+and \((t_j)_{j=0}^m\) satisfying both \(\sum_j s_j x_j = \sum_j t_j x_j\) and
+\(\sum_j s_j = \sum_j t_j\) implies that \(s_j = t_j\) for each \(0 \leq j \leq m\).
+\end{lemma}
+
+\begin{proof}
+Suppose that \(L\) is linearly independent and the two conditions hold for a given
+pair of sequences of parameters. Then
+\begin{align*}
+  0 &= \sum_{j=0}^m (s_j - t_j) x_j \\
+  &= \sum_{j=0}^m (s_j - t_j) x_j - \Big( \sum_{j=0}^m s_j - t_j \Big) x_0 \\
+  &= \sum_{j=1}^{m} (s_j - t_j) (x_j - x_0)
+\end{align*}
+but since \(L\) is linearly independent, then it must be the case that
+\(s_j - t_j = 0\). For the second case, assume only that the two conditions for
+any pair sequences are met: then if \(\sum_{j=1}^m a_j (x_j - x_0) = 0\) then
+\(\sum_j a_j x_j = \sum_j a_j x_0\) hence \(a_j = 0\) for each
+\(1 \leq j \leq m\)---proving that \(L\) is linearly independent.
+\end{proof}
+
+\begin{corollary}
+\label{cor:barycentric-coordinates-simplex}
+Let \(\sigma\) be the \(m\)-simplex given by the convex hull of the set of
+points \(\{x_0, \dots, x_m\}\). Then every point contained in \(\sigma\) is
+uniquely represented by \(\sum_{j=0}^m t_j x_j\) where \(t_j \geq 0\) and
+\(\sum_j t_j = 1\). The tuple \((t_0, \dots, t_m)\) is called the
+\emph{barycentric coordinates} of the point in question.
+\end{corollary}
+
+\begin{corollary}
+\label{cor:ordered-simplex-iso-standard-simplex}
+Let \(\sigma = [x_0, \dots, x_m]\) be an ordered \(m\)-simplex. Then the  map
+\(\splxtop^m \to \sigma\), from the standard topological \(m\)-simplex, given by
+\((t_0, \dots, t_m) \mapsto \sum_{j=0}^m t_j x_j\) is an isomorphism of
+topological spaces.
+\end{corollary}
+
+\begin{definition}[Singular simplex]
+\label{def:singular-simplex}
+Let \(X\) be a topological space. We define a \emph{singular \(m\)-simplex} in
+\(X\) to be a morphism of topological spaces \(\phi: \splxtop^m \to X\).
+
+Following the construction of the singular complex functor (see
+\cref{def:singular-complex-functor}) we define a structure of a \emph{free
+  abelian group} to the set
+\[
+\Sing_m X \coloneq \Sing_{\splxtop^m} X = \Hom_{\Top}(\splxtop^m, X).
+\]
+An element of \(\Sing_m X\) is called a \emph{singular \(m\)-chain} of \(X\) and
+assumes the form \(\sum_{\phi} n_{\phi} \phi\) for finitely many non-zero
+integers \(n_{\phi}\) associated with singular \(m\)-simplices \(\phi\).
+
+Together with the singular simplex we also define, for each \(0 \leq j \leq m\)
+a morphism of abelian groups
+\[
+\face_m^{(j)}: \Sing_m X \longrightarrow \Sing_{m-1} X
+\]
+called \emph{\(j\)-th face map}, which is explicitly given by
+\[
+\face_m^{(j)} \phi(t_0, \dots, t_{m-1})
+\coloneq \phi(t_0, \dots, t_{j-1}, 0, t_j, \dots, t_{m-1}).
+\]
+That is, the \(j\)-th face map embeds \(\splxtop^{m-1}\) into \(\splxtop^m\)
+face opposite to the \(j\)-th vertex and then map it to \(X\) again via
+\(\phi\). More compactly, we can also write
+\[
+\face_m^{(j)} \phi \eqqcolon \phi|_{[0, \dots, \widehat j, \dots, m]}.
+\]
+
+We shall also define the \emph{boundary operator} to be the morphism
+of abelian groups
+\[
+\face_m: \Sing_m X \longrightarrow \Sing_{m-1} X
+\]
+to be given by the alternating sum of face maps
+\[
+\face_m \coloneq \sum_{j=0}^m (-1)^j \face_m^{(j)}.
+\]
+\end{definition}
+
+\begin{proposition}
+\label{prop:boundary-squared-is-zero}
+The composition of the maps
+\(\Sing_m X \xrightarrow{\face_m} \Sing_{m-1} X \xrightarrow{\face_{m-1}}
+\Sing_{m-2} X\) is identically zero. That is, the boundary of an \(m\)-chain is
+an \((m-1)\)-chain with empty boundary.
+\end{proposition}
+
+\begin{proof}
+With no loss of generality, consider merely one singular \(m\)-simplex
+\(\phi\). One has
+\begin{align*}
+  \face_{m-1} \face_m \phi
+  &= \sum_{i=0}^m (-1)^i
+  \Big( \sum_{j=0}^{m-1} (-1)^j \partial_j \partial_i \phi \Big) \\
+  &= \sum_{i=0}^m (-1)^i
+  \Big(
+    \sum_{i > j} (-1)^j
+    \phi|_{[v_0, \dots, \widehat v_j, \dots, \widehat v_i, \dots, v_{m-2}]}
+  + \sum_{i < j} (-1)^{j-1}
+      \phi|_{[v_0, \dots, \widehat v_i, \dots, \widehat v_j, \dots, v_{m-2}]}
+      \Big) \\
+\end{align*}
+Notice that the first term accounts for the removal of \(j\) then of \(i\), with
+\(i > j\), yielding a factor \((-1)^{i + j}\) for each newly generated
+simplex. The second term deals with the removal of \(i\) first and then \(j\),
+with \(i < j\), thus \(j\) must be updated to a lower index by \(1\), hence the
+factor \((-1)^{i + j - 1}\). Notice that the pair of sums has different signs
+and the same simplices---therefore they pairwise cancel, yielding zero.
+\end{proof}
+
+\begin{definition}
+\label{def:cycle-boundary-homology}
+Let \(X\) be a topological space. We define the following:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item A singular \(n\)-chain \(c \in \Sing_n X\) is said to be an
+  \emph{\(n\)-cycle} if \(\face c = 0\). The collection of \(n\)-cycles of
+  \(\Sing_n X\) forms a subgroup \(\Cycle_n(X)\).
+
+\item A singular \(n\)-chain \(b \in \Sing_n X\) is called an
+  \emph{\(n\)-boundary} if there exists \(s \in \Sing_{n+1} X\) with
+  \(\face s = b\). The collection of such \(n\)-boundaries forms a subgroup of
+  \(\Sing_n X\) named \(\Bdry_n(X)\)
+
+\item From \cref{prop:boundary-squared-is-zero} we obtain
+  \(\Bdry_n(X) \subseteq \Cycle_n(X)\) and thus we may define the \emph{\(n\)-th
+    singular homology group of \(X\)} as the quotient group
+  \[
+  \Hmlg_n(X) \coloneq \Cycle_n(X) / \Bdry_n(X).
+  \]
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[Chain complex]
+\label{def:chain-complex}
+We define a \emph{chain complex} to be a \(\Z\)-graded abelian group
+\(C = (C_n)_{n \in \Z}\) together with a graded endomorphism \(\face: C \to C\)
+of degree \(-1\) such that \(\face \circ \face = 0\). Given chain complexes
+\((C, \face)\) and \((C', \face')\) we define a \emph{morphism of chain
+  complexes} (or \emph{chain map}) \(\Phi: C \to C'\) to be a morphism of graded
+abelian groups with \emph{zero degree} satisfying the commutativity of the
+square
+\[
+\begin{tikzcd}
+C_n \ar[d, "\Phi_n"'] \ar[r, "\face_n"] &C_{n-1} \ar[d, "\Phi_{n-1}"] \\
+C_n' \ar[r, "\face_n'"'] &C_{n-1}'
+\end{tikzcd}
+\]
+for every \(n \in \Z\).
+
+Considering the \(\Z\)-graded abelian groups \(\Cycle_{\bullet}(C) = \ker
+\face\) and \(\Bdry_{\bullet}(C) = \im \face\) we obtain the following
+\(\Z\)-graded quotient abelian group
+\[
+\Hmlg_{\bullet}(C) = \Cycle_{\bullet}(C)/\Bdry_{\bullet}(C).
+\]
+Moreover, given a chain map \(\Phi: C \to C'\) since
+\(\Phi(\Cycle_{\bullet}(C)) \subseteq \Cycle_{\bullet}(C')\) and
+\(\Phi(\Bdry_{\bullet}(C)) \subseteq \Bdry_{\bullet}(C)\) then \(\Phi\) induces
+a morphism of graded groups between the homology groups associated with \(C\)
+and \(C'\):
+\[
+\Phi_{*}: \Hmlg_{\bullet}(C) \longrightarrow \Hmlg_{\bullet}(C').
+\]
+
+Given a topological space \(X\), its associated chain complex is given by
+\(\Sing_{\bullet} X\) together with the boundary operator \(\face\) and the
+homology of \(X\) is the homology of the chain complex \((\Sing_{\bullet} X, \face)\).
+\end{definition}
+
+\begin{corollary}
+\label{cor:homology-zero-iff-seq-is-exact}
+Given a topological space \(X\), the homology \(\Hmlg_{\bullet}(X)\) is zero if
+and only if the sequence \((\Sing_{\bullet} X, \face_{\bullet})\) is
+exact. In other words, \(\Hmlg_{\bullet}(X)\) measures how exact is the chain
+complex of \(X\).
+\end{corollary}
+
+\begin{proposition}
+\label{prop:induced-chain-map-and-homology-map}
+Let \(f: X \to Y\) be a morphism of topological spaces. For each \(n \in \Z\)
+and singular \(n\)-simplex \(\phi \in \Sing_n X\) we obtain an induced singular
+\(n\)-simplex in \(Y\) given by the \emph{pushforward}
+\(f_{\#\, n}(\phi) = f \phi \in \Sing_n Y\). From this we obtain a morphism of
+abelian groups \(f_{\#\, n}: \Sing_n X \to \Sing_n Y\). This can be extended to
+a chain map
+\[
+f_{\#}: \Sing_{\bullet} X \longrightarrow \Sing_{\bullet} Y.
+\]
+Moreover, this map also induces a graded morphism of zero degree between the
+homology groups of \(X\) and \(Y\):
+\[
+f_{*}: \Hmlg_{\bullet}(X) \longrightarrow \Hmlg_{\bullet}(Y).
+\]
+Both \(f_{\#}\) and \(f_{*}\) have a functorial nature.
+\end{proposition}
+
+\begin{proof}
+To prove that \(f_{\#}\) is a chain map, it must be the case that
+\[
+\begin{tikzcd}
+\Sing_n X \ar[d, "f_{\#\, n}"'] \ar[r, "\face_n"]
+&\Sing_{n-1} X \ar[d, "f_{\#\, n-1}"]
+\\
+\Sing_n Y \ar[r, "\face_n'"']
+&\Sing_{n-1} Y
+\end{tikzcd}
+\]
+commutes for any \(n \in \Z\). Let \(\phi \in \Sing_n X\) be any element and
+notice that for any \(0 \leq j \leq n\) we have
+\[
+f_{\#\, n-1}(\partial_n^{(j)} \phi)
+= f \phi|_{[0, \dots, \widehat j, \dots, n]},
+\]
+moreover
+\[
+{\face_n'}^{(j)} f_{\# n}(\phi)
+= (f_{\# n} (\phi))|_{[0, \dots, \widehat j, \dots, n]}
+= (f \phi)|_{[0, \dots, \widehat j, \dots, n]}
+= f \phi|_{[0, \dots, \widehat j, \dots, n]}
+\]
+therefore the diagram indeed commutes.
+\end{proof}
+
+\begin{proposition}
+\label{prop:coprod-space-decomposition-homology-group}
+Let \(X \iso \bigdisj_{\lambda \in \Lambda} X_{\lambda}\) be a topological
+space, where \(X_{\lambda}\) is path-connected, then
+\[
+\Hmlg_{\bullet}(X) \iso \bigoplus_{\lambda \in \Lambda} \Hmlg_{\bullet}(X_{\lambda}).
+\]
+\end{proposition}
+
+\begin{proposition}
+\label{prop:path-connected-homology0-is-Z}
+Let \(X\) be path-connected, then \(\Hmlg_0(X) \iso \Z\).
+\end{proposition}
+
+\begin{proof}
+Define the morphism of groups \(\varepsilon: \Sing_0 X \to \Z\) to be given by
+\(\sum_j n_j \sigma_j \mapsto \sum_j n_j\)---which is clearly surjective. Notice
+that if \(\sigma \in \Sing_1 X\) is any singular \(1\)-simplex, then
+\(\face_1 \sigma = \sigma_{[\widehat 0, 1]} - \sigma_{[0, \widehat
+  1]}\). Therefore \(\varepsilon \sigma = 1 - 1 = 0\) and thus
+\(\im \face_1 \subseteq \ker \varepsilon\). For the contrary, let
+\(\sum_j n_j \sigma_j \in \ker \varepsilon\)---that is, \(\sum_j n_j = 0\). Let
+\(x_0 \in X\) be any point and, since \(X\) is path-connected, take for each
+\(j\) a singular \(1\)-simplex \(\tau_j: \splxtop^1 \to X\) (which is a path in
+\(X\) since \(\splxtop^1 = I\)) connecting \(x_0\) with \(\im \sigma_j\)---which
+is a unique point in \(X\) the domain of \(\sigma_j\) is a single point
+\(\splxtop^0\). Then
+\[
+\face_1 \Big( \sum_j n_j \tau_j \Big) = \sum_j n_j (\sigma_j - x_0)
+= \sum_j n_j \sigma_j - \Big(\sum_j n_j\Big) x_0
+= \sum_j n_j \sigma_j,
+\]
+which shows that \(\ker \varepsilon \subseteq \im \face_1\). Therefore
+\[
+\begin{tikzcd}
+\Sing_0 X \ar[r, "\varepsilon"] \ar[d, two heads]
+&\Z \\
+\frac{\Sing_0 X}{\ker \varepsilon}
+\ar[ru, dashed, "\dis"', bend right] &
+\end{tikzcd}
+\]
+induces a unique isomorphism \(\Hmlg_0(X) \iso \Z\) since
+\[
+\Sing_0(X)/\ker\varepsilon = \Sing_0(X)/\im \face_1 = \Hmlg_0(X).
+\]
+\end{proof}
+
+\begin{example}
+\label{exp:homology-of-point-space}
+Let \(X = \{*\}\) be the discrete space with a single point. For any \(p \in
+\N\) we have a unique singular \(p\)-simplex \(\phi_p: \splxtop^p \to X\), and
+thus \(\face_p^{(j)} \phi_p = \phi_{p-1}\)---where \(\phi_{p-1}\) is the unique
+singular \(p-1\)-simplex of \(X\). This shows that each \(\Sing_p X\) is a
+cyclic group generated by \(\phi_p\). Moreover, for any \(p \in \N\) we have
+\[
+\face \phi_p = \sum_{j=0}^p (-1)^j \face_j \phi_p
+= \sum_{j=0}^p (-1)^j \phi_{p-1}
+=
+\begin{cases}
+  \phi_{p-1}, &\text{if } p \text{ is even and } p > 0 \\
+  0, &\text{otherwise}
+\end{cases}
+\]
+Therefore one has \(\Cycle_p(X) = \Bdry_p(X)\) for each \(p > 0\), and
+\(\Cycle_0(X) = \Sing_0 X\) while \(\Bdry_0(X) = 0\). Hence we conclude that the
+homology groups associated to \(X\) are
+\[
+\Hmlg_p(X) =
+\begin{cases}
+  \Z, &\text{if } p = 0 \\
+  0, &\text{if } p > 0
+\end{cases}
+\]
+where \(\Hmlg_0(X) = \Z\) comes from the fact that \(X\) is path-connected and
+\cref{prop:path-connected-homology0-is-Z}.
+\end{example}
+
+\begin{theorem}
+\label{thm:convex-space-Rn-zero-homology}
+Let \(X \subseteq \R^n\) be a convex subspace. Then for any \(p > 0\) we have
+\[
+\Hmlg_p(X) = 0.
+\]
+\end{theorem}
+
+Let \(T: (C, \face) \to (C', \face')\) be a morphism of
+graded groups of degree \(1\). The morphism of graded groups
+\[
+\face' T + T \face: C \longrightarrow C'
+\]
+is then of degree \(0\) since both \(\face\) and \(\face'\) have degree
+\(-1\). Moreover, \(\face' T + T \face\) is in fact a chain map since
+\[
+\face'(\face' T + T \face)
+= \face' \face' T + \face' T \face
+= \face' T \face
+= \face' T \face + T \face \face
+= (\face' T + T \face) \face
+\]
+shows that it satisfies the needed commutativity condition. Notice that for any
+cycle \(z \in \Cycle_p(C)\) we have
+\[
+(\face' T + T \face) z = \face' T z + T \face z = \face' T z \in \Bdry_p(C').
+\]
+Therefore the induced morphism of homology groups
+\[
+(\face' T + T \face)_{*}: \Hmlg_{\bullet}(C) \longrightarrow \Hmlg_{\bullet}(C')
+\]
+is identically zero.
+
+\begin{definition}
+\label{def:chain-homotopic-maps}
+Let \(f, g: (C, \face) \to (C', \face')\) be parallel chain
+maps. We say that \(f\) and \(g\) are \emph{chain-homotopic} if there exists a
+morphism of graded groups \(T: C \to C'\) with degree \(1\)
+such that
+\[
+\face' T + T \face = f - g.
+\]
+\end{definition}
+
+\begin{proposition}
+\label{prop:homotopic-chain-maps-equal-induced-homology-morphisms}
+Let \(f, g: C \para C'\) be chain-homotopic chain morphisms, then we have the
+equality
+\[
+f_{*} = g_{*}: \Hmlg_{\bullet}(C) \longrightarrow \Hmlg_{\bullet}(C')
+\]
+of the induced morphisms of homology groups.
+\end{proposition}
+
+\begin{proof}
+Let \(T: C \to C'\) be a chain-homotopy between \(f\) and \(g\), thus \(f - g =
+\face' T - T \face\) and we have
+\[
+f_{*} - g_{*} = (f - g)_{*} = (\face' T - T \face)_{*} = 0.
+\]
+\end{proof}
+
+\begin{theorem}
+\label{thm:homotopic-maps-equal-induced-homology-morphism}
+Let \(f, g: X \para Y\) be homotopic topological morphisms. Then we have the
+equality
+\[
+f_{*} = g_{*}: \Hmlg_{\bullet}(X) \longrightarrow \Hmlg_{\bullet}(Y)
+\]
+of the induced morphisms of homology groups.
+\end{theorem}
+
+\begin{proof}
+In view of \cref{prop:homotopic-chain-maps-equal-induced-homology-morphisms} we
+shall merely prove that the maps \(f_{\#}\) and \(g_{\#}\) are
+chain-homotopic. Let \(\eta: f \htpy g\) be a homotopy and consider the
+inclusions \(i_0, i_1: X \para X \times I\) mapping, respectively
+\(x \mapsto (x, 0)\) and \(x \mapsto (x, 1)\).
+
+We now discuss why it is sufficient for \(i_{0\, \#}\) and \(i_{1\, \#}\) to be
+chain-homotopic in order for \(f_{\#}\) and \(g_{\#}\) to be
+chain-homotopic. Suppose that \(i_{0\, \#}\) and \(i_{1\, \#}\) are indeed
+chain-homotopic and let \(T: \Sing_{*} X \to \Sing_{*}(X \times I)\) be a degree
+\(1\) morphism of graded abelian groups such that
+\(\face_{X \times I} T + T \face_X = i_{0\, \#} - i_{1\, \#}\). If we now consider
+the induced map \(\eta_{\#}: \Sing_{*}(X \times I) \to \Sing_{*} X\) we see that
+\begin{align*}
+  \eta_{\#} (\face_{X \times I} T + T \face_X)
+  &= \eta_{\#} (i_{0\, \#} - i_{1\, \#})
+  \\
+  \face_X (\eta_{\#} T) + (\eta_{\#} T) \face_X
+  &= f_{\#} - g_{\#}.
+\end{align*}
+Thus we see that if \(i_{0\, \#}\) and \(i_{1\, \#}\) are chain-homotopic it
+follows that \(f_{\#}\) and \(g_{\#}\) are also chain-homotopic, as wanted.
+
+We shall prove the existence of the chain-homotopy
+\(T: \Sing_{\bullet} X \to \Sing_{\bullet}(X \times I)\) via induction. Let
+\(X\) denote any topological space and suppose there exists \(n > 0\) such that
+for any integer \(j < n\) there exists a morphism of abelian groups \((T_X)_j:
+\Sing_j X \to \Sing_{j+1}(X \times I)\) such that
+\begin{equation}\label{eq:chain-homotopy-condition-proof}
+(\face_{X \times I})_{j+1} (T_X)_j + (T_X)_{j-1} (\face_X)_j
+= (i_{0\, \#})_j - (i_{1\, \#})_j
+\end{equation}
+and that for any topological morphism \(h: X \to Z\) the following diagram
+commutes for any \(j < n\):
+\begin{equation}\label{eq:naturality-chain-homotopy-condition-proof}
+\begin{tikzcd}
+\Sing_j X \ar[r, "(T_X)_j"] \ar[d, "h_{\#}"']
+&\Sing_{j+1}(X \times I) \ar[d, "(h \times \Id_I)_{\#}"] \\
+\Sing_j Z \ar[r, "(T_Z)_j"']
+&\Sing_{j+1}(Z \times I)
+\end{tikzcd}
+\end{equation}
+We shall now define a map \((T_X)_n: \Sing_n X \to \Sing_{n+1}(X \times
+I)\). Let \(\phi \in \Sing_n X\) be any singular \(n\)-simplex and consider the
+identity \(n\)-singular simplex \(\Id_n \in \Sing_n \splxtop^n\). Notice that
+since \(\phi_{\#}(\Id_n) = \phi \Id_n = \phi\), then if we define
+\((T_{\splxtop^n})_n: \Sing_n\splxtop^n \to \Sing_{n+1}(\splxtop^n \times I)\)
+following the naturality requirement presented in
+\cref{eq:naturality-chain-homotopy-condition-proof} then we may ask for
+\begin{equation}\label{eq:T-X-n-phi-chain-homotopy}
+T_X\phi = T_X \phi_{\#}\Id_n
+= (\phi \times \Id_I)_{\#}(T_{\splxtop^n} \Id_n).
+\end{equation}
+Hence in order to define \((T_X)_n\) it is sufficient to define
+\((T_{\splxtop^n})_n\).
+
+For the sake of convenience, we shall adopt the notation
+\(\face \coloneq \face_{\splxtop^n}\) and
+\(\face' \coloneq \face_{\splxtop^n \times I}\). Let
+\(d \in \Sing_n \splxtop^n\) be any singular \(n\)-simplex and consider the
+chain
+\[
+c \coloneq i_{0\, \#} d - i_{1\, \#} d -
+T_{\splxtop^n} \face_n d \in \Sing_n(\splxtop^n \times I).
+\]
+Notice that \(c\) is in fact a cycle, since
+\begin{align*}
+  \face'_n c
+  &= \face'_n i_{0\, \#} d -
+     \face'_n i_{1\, \#} d -
+     \face'_n T_{\splxtop^n} (\face_n d) \\
+  &= i_{0\, \#} \face_n d -
+     i_{1\, \#} \face_n d -
+    [
+      i_{0\, \#} \face_n d - i_{1\, \#} \face_n d -
+      T_{\splxtop^n} \face_{n-1} \face_n d
+    ] \\
+  &= 0
+\end{align*}
+where we used \cref{eq:chain-homotopy-condition-proof} in order to expand the
+\(\face'_n (T_{\splxtop^n})_{n-1}(\face_n d)\) term. Hence we conclude that
+\(c \in \Cycle_n(\splxtop^n \times I)\). Moreover, from
+\cref{thm:convex-space-Rn-zero-homology} we see that
+\(\Hmlg_n(\splxtop^n \times I) = 0\) thus \(c \in \Bdry_n(\splxtop^n \times I)\) and
+there exists \(b \in \Sing_{n+1}(\splxtop^n \times I)\) such that
+\(\face_{n+1}' b = c\). We shall define
+\[
+T_{\splxtop^n} d \coloneq b.
+\]
+Therefore \(\face_{n+1}' T_{\splxtop^n} d = \face_{n+1}' b = c\) and hence
+\[
+\face'_{n+1} T_{\splxtop^n} d + T_{\splxtop^n} \face_n d
+= i_{0\, \#} d - i_{1\, \#} d.
+\]
+This finishes the final inductive step and proves that
+\cref{eq:T-X-n-phi-chain-homotopy} can be constructed:
+\[
+T_X: \Sing_n X \longrightarrow \Sing_{n+1}(X \times I).
+\]
+
+From the naturality expressed in
+\cref{eq:naturality-chain-homotopy-condition-proof} we find that for any \(\phi
+\in \Sing_n X\) the maps \(i_{0\, \#}\) and \(i_{1\, \#}\) induce
+\begin{align*}
+  i_{0\, \#} \phi
+  &= i_{0\, \#} \phi_{\#} \Id_n
+    = (\phi \times \Id_I) i_{0\, \#} \Id_n \\
+  i_{1\, \#} \phi
+  &= i_{1\, \#} \phi_{\#} \Id_n
+    = (\phi \times \Id_I) i_{1\, \#} \Id_n \\
+\end{align*}
+Moreover, notice that
+\begin{align*}
+  \face_{X \times I} T_X \phi + T_X \face_X \phi
+  &= \face_{X \times I} T_X \phi_{\#} \Id_n
+     + T_X \face_X \phi_{\#} \Id_n \\
+  &= \face_{X \times I} (\phi \times \Id_I)_{\#} T_X \Id_n
+    + T_X \phi_{\#} \face_{\splxtop^n} \Id_n \\
+  &= (\phi \times \Id_I)_{\#} \face_{\splxtop^n \times I} T_{\splxtop^n} \Id_n
+    + (\phi \times \Id_I)_{\#} T_{\splxtop^n} \face_{\splxtop^n} \Id_n \\
+  &= (\phi \times \Id_I)_{\#} (\face_{\splxtop^n \times I} T_{\splxtop^n} \Id_n
+    + T_{\splxtop^n} \face_{\splxtop^n} \Id_n) \\
+  &= (\phi \times \Id_I)_{\#} (i_{0\, \#} \Id_n - i_{1\, \#} \Id_n) \\
+  &= i_{0\, \#} \phi - i_{1\, \#} \phi.
+\end{align*}
+Moreover, naturality can be proved as follows:
+\begin{align*}
+  T_X \face_X \phi
+  &= T_X \face_X \phi_{\#} \Id_n \\
+  &= T_X \phi_{\#} \face_{\splxtop^n} \Id_n \\
+  &= (\phi \times \Id_I)_{\#} T_{\splxtop^n} \face_{\splxtop^n} \Id_n \\
+  &= \face_{X \times I} (\phi \times \Id_I)_{\#} T_{\splxtop^n} \Id_n \\
+  &= \face_{X \times I} T_X \phi_{\#} \Id_n \\
+  &= \face_{X \times I} T_X \phi.
+\end{align*}
+This finishes the proof that \(T_X\) is indeed a chain-homotopy between
+\(i_{0\, \#}\) and \(i_{1\, \#}\) as wanted.
+\end{proof}
+
+\begin{corollary}
+\label{cor:htpy-equiv-iso-homology}
+Let \(f: X \isoht Y\) be a \emph{homotopy equivalence}, then the induced
+homology map \(f_{*}: \Hmlg_{\bullet}(X) \to \Hmlg_{\bullet}(Y)\) is an
+\emph{isomorphism} of \(\Z\)-graded abelian groups:
+\[
+\Hmlg_{\bullet}(X) \iso \Hmlg_{\bullet}(Y).
+\]
+\end{corollary}
+
+\begin{proof}
+Let \(g: Y \to X\) be a homotopy inverse of \(f\). Thus \(g f \simht \Id_X\) and
+\(f g \simht \Id_Y\), thus via
+\cref{thm:homotopic-maps-equal-induced-homology-morphism} we obtain \((g f)_{*}
+= g_{*} f_{*} = \Id_{\Sing_{\bullet} X}\) and \((f g)_{*} = f_{*} g_{*} =
+\Id_{\Sing_{\bullet} Y}\). This shows that \(f_{*}\) and \(g_{*}\) are inverses
+of each other and thus \(f_{*}\) is an isomorphism.
+\end{proof}
+
+
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../../deep-dive"
+%%% End:
