@@ -1,0 +1,66 @@
+\begin{definition}[Model category]
+\label{def:model-category}
+Let \(\mcat E\) be a category. We say that \(\mcat E\) has a \emph{model
+  structure} if their morphisms are classified into three classes:
+\emph{fibrations} (denoted by the arrow \(\epi\)), \emph{cofibrations} (denoted
+by \(\mono\)), and \emph{weak equivalences} (denoted by \(\isoto\)), which
+satisfy the following properties:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The category \(\mcat E\) is \emph{complete} and
+  \emph{cocomplete}\footnote{Has all \emph{small} limits and colimits by
+    \cref{def:completeness-categories}.}.
+
+\item Given a commutative diagram
+  \[
+  \begin{tikzcd}
+  X \ar[rr, "f"] \ar[rd, "g"'] & &Z \\
+  &Y \ar[ru, "h"']
+  \end{tikzcd}
+  \]
+  in \(\mcat E\), if \emph{any two} of the maps \(f\), \(g\) and \(h\) are weak
+  equivalences, then the \emph{third} is a weak equivalence.
+
+\item If \(f\) is a retract---in the category \(\Mor(\mcat E)\)---of a morphism
+  \(g\), and \(g\) is a weak equivalence, then \(f\) is also a weak
+  equivalence. For a shorter punchline, the classes of fibrations and
+  cofibrations is \emph{closed under retracts}.
+
+\item Given a commutative square
+  \[
+  \begin{tikzcd}
+  A \ar[r] \ar[d, tail, "j"'] &E \ar[d, two heads, "p"] \\
+  X \ar[ur, dotted] \ar[r] &B
+  \end{tikzcd}
+  \]
+  in \(\mcat E\) where \(j\) is a cofibration and \(p\) is a fibration, the
+  dotted morphism \(X \to E\) \emph{exists} when either \(j\) or \(p\) is a
+  \emph{weak equivalence}. Said differently, fibrations have the \emph{right
+    lifting property} with respect to \emph{trivial cofibrations} (both a
+  cofibration and a weak equivalence), while \emph{trivial fibrations} (both a
+  fibration and a weak equivalence) have the \emph{right lifting property} with
+  respect to cofibrations.
+
+\item Every morphism \(f: X \to Y\) can be factored as
+  \[
+  \begin{tikzcd}
+  X
+  \ar[rr, tail, "j"]
+  \ar[rrd, "f" description]
+  \ar[d, tail, "i"', "\dis"]
+  &&Y' \ar[d, two heads, "\dis"', "q"]
+  \\
+  X' \ar[rr, two heads, "p"']
+  &&Y
+  \end{tikzcd}
+  \]
+  where \(j\) is a \emph{cofibration} and \(q\) is a \emph{trivial fibration} ,
+  and \(i\) is a \emph{trivial cofibration} and \(p\) is a \emph{fibration}.
+\end{enumerate}
+The category \(\mcat E\) together with its model structure is said to be a
+\emph{model category}.
+\end{definition}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../../deep-dive"
+%%% End:

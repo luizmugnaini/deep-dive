@@ -543,7 +543,7 @@ This finishes the proof that \(T_X\) is indeed a chain-homotopy between
 
 \begin{corollary}
 \label{cor:htpy-equiv-iso-homology}
-Let \(f: X \isoht Y\) be a \emph{homotopy equivalence}, then the induced
+Let \(f: X \isotoht Y\) be a \emph{homotopy equivalence}, then the induced
 homology map \(f_{*}: \Hmlg_{\bullet}(X) \to \Hmlg_{\bullet}(Y)\) is an
 \emph{isomorphism} of \(\Z\)-graded abelian groups:
 \[
@@ -559,6 +559,62 @@ Let \(g: Y \to X\) be a homotopy inverse of \(f\). Thus \(g f \simht \Id_X\) and
 \Id_{\Sing_{\bullet} Y}\). This shows that \(f_{*}\) and \(g_{*}\) are inverses
 of each other and thus \(f_{*}\) is an isomorphism.
 \end{proof}
+
+\begin{corollary}
+\label{cor:retract-monic-homology}
+Let \(A\) be a \emph{retract} of \(X\) and \(\iota: A \emb X\) be the canonical
+inclusion, then \(\iota_{*}: \Hmlg_{\bullet}(A) \to \Hmlg_{\bullet}(X)\) is a
+\emph{split monomorphism} onto a direct summand. If \(A\) is a \emph{deformation
+  retract} of \(X\), then \(\iota_{*}\) is an \emph{isomorphism}
+\end{corollary}
+
+\begin{proof}
+Since \(\iota\) admits a left inverse \(r: X \to A\) then
+\(r_{*} \iota_{*} = \Id_{\Hmlg_{\bullet}(A)}\) shows that \(\iota_{*}\) is a
+split monomorphism. We now show that \(\iota_{*}\) maps \(\Hmlg_{\bullet}(A)\)
+onto a direct summand of \(\Hmlg_{\bullet}(X)\). Let
+\(G_1 \coloneq \im \iota_{*}\) and \(G_2 \coloneq \ker r_{*}\) be two subgroups
+of \(\Hmlg_{\bullet}(X)\). Let \(\alpha \in \Hmlg_{\bullet}(X)\) be any element
+and notice that we can write
+\(\alpha = \iota_{*} r_{*} \alpha + (\alpha - \iota_{*} r_{*} \alpha)\), where
+\(\iota_{*} r_{*} \alpha \in \im \iota_{*}\) and since \(r_{*}\) is a left
+inverse of \(\iota_{*}\) then
+\(\alpha - \iota_{*} r_{*} \alpha \in \ker r_{*}\). Therefore we have
+\(\Hmlg_{\bullet}(X) = G_1 + G_2\), furthermore, if \(\beta \in G_1 \cap G_2\)
+we have that there exists \(\gamma \in \Hmlg_{\bullet}(A)\) such that
+\(\iota_{*} \gamma = \beta\) and \(r_{*} \beta = 0\), therefore
+\[
+\gamma = r_{*} i_{*} \gamma = r_{*} \beta = 0
+\]
+hence \(\beta = 0\). This shows that \(G_1 \cap G_2 = 0\), thus
+\(G_1 + G_2 = G_1 \oplus G_2\) and \(\Hmlg_{\bullet}(X) = G_1 \oplus G_2\).
+\end{proof}
+
+\begin{theorem}
+\label{thm:long-exact-sequence}
+Given a short exact sequence of chain complexes with degree zero chain maps:
+\[
+\begin{tikzcd}
+0 \ar[r]
+&C \ar[r, tail, "f"]
+&D \ar[r, two heads, "g"]
+&E \ar[r]
+&0
+\end{tikzcd}
+\]
+the following long sequence of homology groups is exact:
+\[
+\begin{tikzcd}
+\cdots \ar[r, "f_{*}"]
+&\Hmlg_n(D) \ar[r, "g_{*}"]
+&\Hmlg_n(E) \ar[r, "\Delta"]
+&\Hmlg_{n-1}(C) \ar[r, "f_{*}"]
+&\cdots
+\end{tikzcd}
+\]
+\end{theorem}
+
+
 
 
 
