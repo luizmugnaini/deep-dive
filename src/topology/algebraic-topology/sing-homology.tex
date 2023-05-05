@@ -1,5 +1,7 @@
 \section{Singular Homology}
 
+\subsection{Life in Topological Spaces: Singular Simplices}
+
 \begin{definition}[Convexity]
 \label{def:convexity}
 The following are definitions concerning convexity of spaces in \(\R^n\):
@@ -139,6 +141,8 @@ factor \((-1)^{i + j - 1}\). Notice that the pair of sums has different signs
 and the same simplices---therefore they pairwise cancel, yielding zero.
 \end{proof}
 
+\subsection{Cycles \& Boundaries: Homology}
+
 \begin{definition}
 \label{def:cycle-boundary-homology}
 Let \(X\) be a topological space. We define the following:
@@ -253,13 +257,61 @@ therefore the diagram indeed commutes.
 \end{proof}
 
 \begin{proposition}
+\label{prop:direct-sum-of-chain-complexes}
+Let \((C^{\lambda}, \face^{\lambda})_{\lambda \in \Lambda}\) be a collection of chain
+complexes and define a chain complex \(C \coloneq \bigoplus_{\lambda \in
+  \Lambda} C^{\lambda}\) as \(C_p = \bigoplus_{\lambda \in \Lambda}
+C_p^{\lambda}\) and the natural boundary maps. Then there exists a natural isomorphism
+\[
+\Hmlg_{\bullet}(C) \iso \bigoplus_{\lambda \in \Lambda} \Hmlg_{\bullet}(C^{\lambda})
+\]
+\end{proposition}
+
+\begin{proof}
+From construction we have
+\(\Sing_{\bullet} C = \bigoplus_{\lambda \in \Lambda} \Sing_{\bullet}
+C^{\lambda}\). Therefore for any \(p \in \Z\) we have
+\begin{align*}
+  \Hmlg_p(C)
+  &= \Cycle_p(C)/\Bdry_p(C) \\
+  &= \frac{\bigoplus_{\lambda \in
+    \Lambda}\Cycle_p(C^{\lambda})}{\bigoplus_{\lambda \in \Lambda}\Bdry_p(C^{\lambda})}
+  \\
+  &\iso \bigoplus_{\lambda \in \Lambda} \Cycle_p(C^{\lambda})/\Bdry_p(C^{\lambda}) \\
+  &= \bigoplus_{\lambda \in \Lambda} \Hmlg_p(C^{\lambda}).
+\end{align*}
+\end{proof}
+
+\begin{proposition}
 \label{prop:coprod-space-decomposition-homology-group}
 Let \(X \iso \bigdisj_{\lambda \in \Lambda} X_{\lambda}\) be a topological
-space, where \(X_{\lambda}\) is path-connected, then
+space, where \(X_{\lambda}\) are path-connected components of \(X\), then
 \[
 \Hmlg_{\bullet}(X) \iso \bigoplus_{\lambda \in \Lambda} \Hmlg_{\bullet}(X_{\lambda}).
 \]
 \end{proposition}
+
+\begin{proof}
+For each \(p \in \Z\) consider the morphism of groups
+\(\Theta_p: \bigoplus_{\lambda} \Sing_p X_{\lambda} \to \Sing_p X\) given by
+\[
+\Big( \sum_{\phi_{\lambda}} n_{\lambda, \phi_{\lambda}} \phi \Big)_{\lambda}
+\longmapsto
+\sum_{\lambda} \sum_{\phi_{\lambda}} n_{\lambda, \phi_{\lambda}} \phi_{\lambda}.
+\]
+The \(\Z\)-graded abelian group morphism
+\(\Theta: \bigoplus_{\lambda} \Sing_{\bullet} X_{\lambda} \to \Sing_{\bullet}
+X\) given by \((\Theta_p)_{p \in \Z}\) is a morphism between free abelian
+groups, therefore \(\Theta\) is injective. Let \(\phi \in \Sing_p X\) be any
+singular \(p\)-simplex of \(X\). Since \(\splxtop^p\) is path-connected, its
+image \(\phi(\splxtop^p) \subseteq X\) must be contained in some unique
+path-connected component \(X_{\lambda}\) of \(X\). Therefore we might as well
+restrict the target of \(\phi\) and obtain a singular \(p\)-simplex
+\(\phi|^{X_{\lambda}} \in \Sing_p X_{\lambda}\). This shows that \(\Theta_p(\phi|^{X_{\lambda}}) = \phi\) and
+therefore \(\Theta\) is a surjective map. Therefore \(\Theta\) is an isomorphism. Using
+\cref{prop:direct-sum-of-chain-complexes} we obtain the desired isomorphism
+between homology groups.
+\end{proof}
 
 \begin{proposition}
 \label{prop:path-connected-homology0-is-Z}
@@ -299,7 +351,7 @@ induces a unique isomorphism \(\Hmlg_0(X) \iso \Z\) since
 \]
 \end{proof}
 
-\begin{example}
+\begin{example}[Single point space homology]
 \label{exp:homology-of-point-space}
 Let \(X = \{*\}\) be the discrete space with a single point. For any \(p \in
 \N\) we have a unique singular \(p\)-simplex \(\phi_p: \splxtop^p \to X\), and
@@ -336,6 +388,104 @@ Let \(X \subseteq \R^n\) be a convex subspace. Then for any \(p > 0\) we have
 \Hmlg_p(X) = 0.
 \]
 \end{theorem}
+
+\begin{proof}
+If \(X = \emptyset\) then we are done, now assume that \(X\) is non-empty. Let \(x \in X\)
+be any point and consider a singular \(p\)-simplex \(\phi \in \Sing_p X\) for some
+\(p \geq 0\). Since \(X\) is convex, we can define a singular \((p+1)\)-simplex \(\theta
+\in \Sing_{p+1} X\) given by
+\[
+\theta(t_0, \dots, t_{p+1}) \coloneq
+\begin{cases}
+  (1 - t_0) \Big(\phi\Big( \frac{t_{1}}{1 - t_{0}}, \dots, \frac{t_{p+1}}{1 - t_0}
+  \Big)\Big) + t_0 x, &\text{for } t_0 < 1 \\
+  x, &\text{for } t_0 = 1.
+\end{cases}
+\]
+We have to check that \(\theta\) is indeed continuous at \(x\). Notice that
+\begin{align*}
+  \lim_{t_0 \to 1} \| \theta(t_0, \dots, t_{p+1}) - x \|
+  &= \lim_{t_0 \to 1} \Big\| (1 - t_0)
+  \Big(\phi\Big( \frac{t_{1}}{1 - t_{0}}, \dots, \frac{t_{p+1}}{1 - t_0} \Big)\Big)
+  - (1 - t_0) x
+  \Big\| \\
+  &\leq \lim_{t_0 \to 1} (1 - t_0) \Big( \Big\|
+    \phi\Big( \frac{t_{1}}{1 - t_{0}}, \dots, \frac{t_{p+1}}{1 - t_0} \Big)
+    \Big\|
+    + \| x \|
+    \Big).
+\end{align*}
+Using the fact that the image \(\phi(\splxtop^p) \subseteq X\) is compact, it follows that
+the second term of the right-hand side of the above equation is bound, therefore
+\[
+\lim_{t_0 \to 1} \| \theta(t_{0}, \dots, t_{p+1}) - x \| = 0.
+\]
+
+This construction induces a morphism \(T_p: \Sing_p X \to \Sing_{p+1} X\) given by
+\(\phi \mapsto \theta\) for every \(p \geq 0\). Moreover, notice that
+\(\face_{p+1}^0 T_p \phi = \face_{p+1}^0 \theta = \phi\) and
+\(T_p \face_{p+1}^0 \theta = T_p \phi = \theta\), therefore the induced morphism
+\(T: \Sing_{\bullet} X \to \Sing_{\bullet} X\) is an isomorphism of
+\(\Z\)-graded abelian groups with inverse \(\face_{\bullet}^0\). Hence
+\(\Sing_p X \iso \Sing_{p + 1} X\) for any \(p \geq 0\).
+
+We now check that \(T\) is a chain map. For each
+\(1 \leq j \leq p+1\) one has
+\begin{align*}
+  \face_{p+1}^j (T_p(\phi))(t_0, \dots, t_p)
+  &= T_p(\phi)(t_0, \dots, t_{j-1}, 0, t_j, \dots, t_p) \\
+  &= (1 - t_0) \Big(
+      \phi\Big(
+      \frac{t_{1}}{1 - t_{0}}, \dots, \frac{t_{j-1}}{1 - t_0}, 0,
+      \frac{t_{j}}{1 - t_0}, \dots, \frac{t_{p}}{1 - t_{p}}
+      \Big)
+    \Big) + t_0 x
+\end{align*}
+and for \(\face_p^{j-1}\) we have
+\begin{align*}
+  T_{p-1}(\face_p^{j-1} \phi)(t_0, \dots, t_{p})
+  &= (1 - t_0) \face_p^{j-1} \phi\Big(
+      \frac{t_{1}}{1 - t_0}, \dots, \frac{t_{p}}{1 - t_{0}}
+    \Big) + t_0 x \\
+  &= (1 - t_0) \phi\Big(
+      \frac{t_{1}}{1 - t_{0}}, \dots, \frac{t_{j-1}}{1 - t_{0}}, 0,
+      \frac{t_j}{1 - t_0}, \dots, \frac{t_{p}}{1 - t_0}
+    \Big) + t_0 x.
+\end{align*}
+With this we conclude that
+\[
+\face_{p+1}^j T_p = T_{p-1} \face_p^{j-1}.
+\]
+
+For any \(\phi \in \Sing_p X\) we have
+\begin{align*}
+  \face_{p+1} T_p \phi
+  &= \face_{p+1}^0 T_p \phi + \sum_{j=1}^{p+1} (-1)^j \face_{p+1}^j T_p \phi \\
+  &= \face_{p+1}^0 T_p \phi + \sum_{j=1}^{p+1} (-1)^j \face_{p+1}^j T_p \phi
+    - \Big(
+      \sum_{j=1}^{p+1} (-1)^j T_{p-1} \face_p^{j-1} \phi
+      + \sum_{j=0}^p (-1)^j T_{p-1} \face_p^j \phi
+    \Big) \\
+  &= \face_{p+1}^0 T_p \phi + \Big(
+      \sum_{j=1}^{p+1} (-1)^j \face_{p+1}^j T_p \phi
+      - \sum_{j=1}^{p+1} (-1)^j T_{p-1} \face_p^{j-1} \phi
+    \Big) + \sum_{j=0}^p (-1)^j T_{p-1} \face_p^j \phi \\
+  &= \face_{p+1}^0 T_p \phi + \sum_{j=0}^p (-1)^j T_{p-1} \face_p^j \phi \\
+  &= \phi - T \face_p \phi
+\end{align*}
+Therefore we conclude that for any \(p \geq 1\) we have
+\[
+\face_{p+1} T_p + T_{p-1} \face_p = \Id_{\Sing_p X}.
+\]
+
+Consider a cycle \(z \in \Cycle_p(X)\) for \(p > 0\) and notice that
+\(\face_{p+1} T_p z + T_{p-1} \face_p z = z\) implies in
+\(\face_{p+1} T_p z = z\) since \(\face_p z = 0\). Therefore from definition we
+conclude that \(z \in \Bdry_p(X)\), which implies that \(\Hmlg_p(X) = 0\) for each
+\(p > 0\).
+\end{proof}
+
+\subsection{Chain Homotopies}
 
 Let \(T: (C, \face) \to (C', \face')\) be a morphism of
 graded groups of degree \(1\). The morphism of graded groups
@@ -446,7 +596,7 @@ commutes for any \(j < n\):
 \end{equation}
 We shall now define a map \((T_X)_n: \Sing_n X \to \Sing_{n+1}(X \times
 I)\). Let \(\phi \in \Sing_n X\) be any singular \(n\)-simplex and consider the
-identity \(n\)-singular simplex \(\Id_n \in \Sing_n \splxtop^n\). Notice that
+identity singular \(n\)-simplex \(\Id_n \in \Sing_n \splxtop^n\). Notice that
 since \(\phi_{\#}(\Id_n) = \phi \Id_n = \phi\), then if we define
 \((T_{\splxtop^n})_n: \Sing_n\splxtop^n \to \Sing_{n+1}(\splxtop^n \times I)\)
 following the naturality requirement presented in
@@ -541,6 +691,8 @@ This finishes the proof that \(T_X\) is indeed a chain-homotopy between
 \(i_{0\, \#}\) and \(i_{1\, \#}\) as wanted.
 \end{proof}
 
+\subsection{Homotopy Invariance}
+
 \begin{corollary}
 \label{cor:htpy-equiv-iso-homology}
 Let \(f: X \isotoht Y\) be a \emph{homotopy equivalence}, then the induced
@@ -590,31 +742,204 @@ hence \(\beta = 0\). This shows that \(G_1 \cap G_2 = 0\), thus
 \(G_1 + G_2 = G_1 \oplus G_2\) and \(\Hmlg_{\bullet}(X) = G_1 \oplus G_2\).
 \end{proof}
 
+\subsection{Long Exact Sequence Theorem}
+
 \begin{theorem}
 \label{thm:long-exact-sequence}
 Given a short exact sequence of chain complexes with degree zero chain maps:
 \[
 \begin{tikzcd}
 0 \ar[r]
-&C \ar[r, tail, "f"]
-&D \ar[r, two heads, "g"]
-&E \ar[r]
+&A \ar[r, tail, "i"]
+&B \ar[r, two heads, "j"]
+&C \ar[r]
 &0
 \end{tikzcd}
 \]
 the following long sequence of homology groups is exact:
 \[
 \begin{tikzcd}
-\cdots \ar[r, "f_{*}"]
-&\Hmlg_n(D) \ar[r, "g_{*}"]
-&\Hmlg_n(E) \ar[r, "\Delta"]
-&\Hmlg_{n-1}(C) \ar[r, "f_{*}"]
+\cdots \ar[r, "i_{*}"]
+&\Hmlg_p(B) \ar[r, "j_{*}"]
+&\Hmlg_p(C) \ar[r, "\delta"]
+&\Hmlg_{p-1}(A) \ar[r, "i_{*}"]
 &\cdots
 \end{tikzcd}
 \]
 \end{theorem}
 
+\begin{proof}
+We shall define \(\delta: \Hmlg_\bullet(C) \to \Hmlg_{\bullet}(A)\) with degree
+\(-1\). Let \(c \in \Cycle_p(C)\) and since \(j_p\) is surjective, there exists
+\(b \in B_p\) such that \(j_p b = c\). Furthermore,
+\[
+j_{p-1} \face_p^B b = \face_p^C j_p b = \face_p^C c = 0,
+\]
+from the fact that \(j\) is a chain map---therefore
+\(\face_p^B b \in \ker j_{p-1} = \im i_{p-1}\). Since
+\(\face_p^B b \in \im i_{p-1}\) then there exists a unique \(a \in A_{p-1}\) such
+that \(i_{p-1} a = \face_p^B b\)---the uniqueness of \(a\) comes from the fact
+that \(i\) is an injective map. Define the map
+\(\delta_p: \Hmlg_p(C) \to \Hmlg_{p-1}(A)\) to take
+\(\delta_p[c] \coloneq [a]\). We need to show that \(\delta_p\) is well defined, which requires
+us to prove that the mapping \([c] \mapsto [a]\) is independent of the choice of
+\(b\) and \(c\):
+\begin{itemize}\setlength\itemsep{0em}
+\item Let \(b' \in B_p\) be such that \(j_p b' = c\), thus \(b' - b \in \ker j_p\)
+  and since \(\ker j_p = \im i_p\) it follows that there exists \(a' \in A_p\) for
+  which \(i_p a' = b' - b\). Therefore
+  \[
+  \face_p^B b'
+  = \face_p^B b + \face_p^B i_p a'
+  = i_p a + i_p \face_p^A a'
+  = i_p(a + \face_p^A a'),
+  \]
+  which shows that \([a + \face_p^A a'] = [a]\), therefore the construction is
+  independent of the choice of \(b\).
 
+\item Let \([c'] = [c]\) so that \(c' - c \in \Bdry_p(C)\), and choose
+  \(\alpha \in C_{p+1}\) such that \(c' - c = \face_{p+1}^C \alpha\). By the surjectiveness
+  of \(j\), choose \(b' \in B_{p+1}\) for which \(\alpha = j_{p+1} b'\). Therefore
+  \[
+  c' = c + \face_{p+1}^C \alpha = c + \face_{p+1}^C j_{p+1} b'
+  = j_p(b) + j_p(\face_{p+1}^B b')
+  = j_p(b + \face_{p+1}^B b').
+  \]
+  Moreover, one also has
+  \[
+  \face_p^B(b + \face_{p+1}^B b')
+  = \face_p^B b + \face_p^B \face_{p+1}^B b'
+  = \face_p^{B} b,
+  \]
+  therefore \(i_{p-1} a = \face_p^B b = \face_p^B(b + \face_{p+1}^B b')\).  This
+  shows us that the construction is agnostic of the choice of representative of
+  the class \([c]\).
+\end{itemize}
+It remains for us to prove that the resulting sequence of homology groups is
+exact:
+\begin{itemize}\setlength\itemsep{0em}
+\item (\(\im i_{*} = \ker j_{*}\)) Notice that by functoriality we have
+  \(j_{*} i_{*} = (j i)_{*} = 0\) since \(\im i \subseteq \ker j\)---this shows that
+  \(\im i_{*} \subseteq \ker j_{*}\). On the other hand, if
+  \([b] \in \ker j_{*\, p}\) is any element, then \(j_p b \in \Bdry_p(C)\) and there
+  exists \(c \in C_{p+1}\) such that \(j_p b = \face_{p+1}^C c\). Since \(j\) is
+  surjective, there also exists \(b' \in B_{p+1}\) such that \(j_{p+1} b' =
+  c\). Notice that
+  \[
+  j_p\face_{p+1}^B b' = \face_p^B j_{p+1} b' = \face_p^B c = j_p b,
+  \]
+  therefore \(b - \face_{p+1}^B b' \in \ker j_p = \im i_p\). Since \(i\) is
+  injective it follows that there exists a unique \(a \in A_p\) such that
+  \(i a = b - \face_{p+1}^B b'\). Notice that since \([b] \in \Hmlg_p(B)\) then in
+  particular \(b \in \Cycle_p(B)\), therefore
+  \[
+  i_{p-1} \face_p^A a
+  = \face_p^B i_p a
+  =  \face_p^B(b - \face_{p+1}^B b')
+  = \face_p^B b - \face_p^B \face_{p+1}^B b'
+  = 0.
+  \]
+  From the injectivity of \(i\) we conclude that \(\face_p^A a = 0\), therefore
+  \(a \in Z_p(A)\) and hence
+  \[
+  [b] = [b - \face_{p+1}^B b'] = [i_p a] = i_{*\, p}[a],
+  \]
+  which proves that \(\ker j_{*\, p} \subseteq \im i_{*\, p}\) and in general
+  \(\ker j_{*} \subseteq \im i_{*}\).
+
+\item (\(\im j_{*} = \ker \delta\)) By the definition of \(\delta\) we have
+  \(\delta j_{*} = 0\) thus \(\im j_{*} \subseteq \ker \delta\). Let
+  \([c] \in \ker \delta_p\) then \(\delta_p[c] = [a] = 0\), which means that
+  \(a \in \Bdry_{p-1}(A)\) and therefore there exists \(a' \in A_p\) such that
+  \(a = \face_p^A a'\). Since \(j\) is surjective, let \(b \in B_p\) be such that
+  \(j_p b = c\), then
+  \[
+  j_p(b - i_p a') = j_p b - j_p i_p a' = j_p b = c,
+  \]
+  moreover we also have
+  \[
+  \face_p^B(b - i_p a')
+  = \face_p^B b - \face_p^B i_p a'
+  = \face_p^B b - i_{p-1} \face_p^A a'
+  = \face_p^B b - i_{p-1} a
+  = 0
+  \]
+  therefore \(b - i_p a' \in \Cycle_p(B)\) and hence
+  \[
+  j_{*\, p}[b - i_p a'] = [j_p(b - i_p a')] = [c],
+  \]
+  showing that \(\ker \delta \subseteq \im j_{*}\).
+
+\item (\(\im \delta = \ker i_{*}\))  By the definition of \(\delta\), if \(a \in \im \delta_p\)
+  with \(\delta[c] = [a]\), and both \(j_p b = c\) and \(i_{p-1} a = \face_p^B b\) then
+  \[
+  i_{*\, p-1}[a] = [i_{p-1} a] = [\face_p^B b] = 0,
+  \]
+  thus \(\im \delta \subseteq \ker i_{*}\). Moreover, if \([a'] \in \ker i_{*\, p-1}\), let
+  \(i_{p-1} a = \face_p^B b\) for some \(b \in B_p\). Since
+  \[
+  \face_p^C j_p b = j_{p-1} \face_p^B b = j_{p-1} i_{p-1} a = 0,
+  \]
+  then \(j_p b \in \Cycle_p(C)\) and hence \(\delta[j b] = [a]\). Therefore
+  \(\ker i_{*} \subseteq \im \delta\).
+\end{itemize}
+\end{proof}
+
+\begin{proposition}
+\label{prop:long-exact-sequence-construction-is-natural}
+The long exact sequence induced by short exact sequences of chain complexes is
+natural. In other terms, given a commutative diagram with exact rows:
+\[
+\begin{tikzcd}
+0 \ar[r]
+&C \ar[r, "f", tail] \ar[d, "\alpha"']
+&D \ar[r, "g", two heads] \ar[d, "\beta"]
+&E \ar[r] \ar[d, "\gamma"]
+&0
+\\
+0 \ar[r]
+&C' \ar[r, "f'"', tail]
+&D' \ar[r, "g'"', two heads]
+&E' \ar[r]
+&0
+\end{tikzcd}
+\]
+then the following diagram with long exact rows commutes:
+\[
+\begin{tikzcd}
+\cdots \ar[r]
+&\Hmlg_n(D) \ar[r, "g_{*}", tail] \ar[d, "\beta_{*}"']
+&\Hmlg_n(E) \ar[r, "\delta_n", two heads] \ar[d, "\gamma_{*}"]
+&\Hmlg_{n-1}(C) \ar[r, "f_{*}"] \ar[d, "\alpha_{*}"]
+&\Hmlg_{n-1}(D) \ar[r] \ar[d, "\beta_{*}"]
+&\cdots
+\\
+\cdots \ar[r]
+&\Hmlg_n(D') \ar[r, "g_{*}'"', tail]
+&\Hmlg_n(E') \ar[r, "\delta_n"', two heads]
+&\Hmlg_{n-1}(C') \ar[r, "f_{*}'"']
+&\Hmlg_{n-1}(D') \ar[r]
+&\cdots
+\end{tikzcd}
+\]
+\end{proposition}
+
+\begin{definition}
+\label{def:cover-singular-simplicial-complex}
+Let \(X\) be a topological space and \(\mathcal{U}\) be an open cover of \(X\). Denote by
+\(\Sing_{\bullet}^{\mathcal{U}} X\) the \(\Z\)-graded abelian group given by groups
+\(\Sing_n^{\mathcal{U}} X\) composed of singular \(n\)-simplices \(\phi: \splxtop^n \to X\)
+such that \(\im \phi \subseteq U\) for some \(U \in \mathcal{U}\)---for each \(n \in \Z\). Since \(\im
+\face^j \phi \subseteq \im \phi\), then boundary map
+\[
+\face: \Sing_{\bullet}^{\mathcal{U}} X \to \Sing_{\bullet}^{\mathcal{U}} X
+\]
+is well defined and has degree \(-1\).
+
+Given another topological space \(Y\) together with an open covering \(\mathcal{V}\) and a
+continuous map \(f: X \to Y\), we have the following commutative diagram for each
+\(n \in \Z\):
+\end{definition}
 
 
 

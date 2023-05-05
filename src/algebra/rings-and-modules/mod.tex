@@ -312,6 +312,46 @@ elements. Mind that \cref{eq:left-R-action-problem} \emph{does not yield a
 left-\(R\)-module structure unless \(R\) is commutative}.
 \end{example}
 
+\begin{lemma}
+\label{lem:hom-functor-is-additive}
+Let \(R\) be a ring and let \(M, N \in \lMod{R}\). We have the following
+properties:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The functor \(\Mor_{\lMod{R}}(M, -): \lMod{R} \to \Ab\) is additive.
+
+\item The collection of morphisms \(\Mor_{\lMod{R}}(M, N)\) has a natural
+  structure of left \(\Centre(R)\)-module with multiplication \(r f\) mapping
+  \(x \mapsto f(r x)\) for any \(r \in \Centre(R)\) and morphism \(f: M \to N\), moreover,
+  addition is defined point-wise as expected. Therefore
+  \(\Mor_{\lMod{R}}(M, -)\) can be seen as an additive functor
+  \(\lMod{R} \to \lMod{\Centre(R)}\).
+\end{enumerate}
+\end{lemma}
+
+\begin{proposition}[Additive functor, zero maps \& zero objects]
+\label{prop:additive-functor-zero-maps-zero-obj}
+Let \(F: \Mod{R} \to \Ab\) be an additive functor of either
+variance\footnote{\(F\) can be covariant or contravariant.}. Then
+\(F\) maps the
+zero map \(0: M \to N\) to the zero map \(F 0 = 0: F M \to F N\), and maps the zero
+object \(\{0\} \in \Mod{R}\) to the zero object \(F \{0\} = \{0\} \in \Ab\).
+\end{proposition}
+
+\begin{proof}
+Since \(F\) is additive, for any morphism \(f: M \to N\) we have
+\[
+F f = F (f + 0) = F f + F 0,
+\]
+therefore it must be the case that \(F 0: F M \to F N\) is the zero morphism in
+\(\Ab\). Moreover, since \(L = 0 \in \Mod{R}\) if and only if \(\Id_L = 0: L \to
+L\), then from the fact that if \(0 \in \End_{\lMod{R}}(0)\) is the zero morphism,
+then
+\[
+F 0 = F \Id_0 = \Id_{F 0}
+\]
+and it follows that \(F 0 = 0\).
+\end{proof}
+
 \begin{proposition}
 \label{prop:Mor(R,M)-iso-M-for-commutative-R}
 Let \(R\) be a \emph{commutative} ring. Then there exists a canonical

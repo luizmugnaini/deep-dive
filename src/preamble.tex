@@ -148,6 +148,7 @@
 
 % Adjoint arrows
 \newcommand{\adj}{\rightleftarrows}
+\newcommand{\Adj}{\dashv}
 
 % Implication
 \renewcommand{\implies}{\Rightarrow}
@@ -240,6 +241,7 @@
 \DeclareMathOperator{\Aut}{Aut}   % Automorphisms
 \DeclareMathOperator{\Id}{id}     % Identity
 \DeclareMathOperator{\im}{im}     % Image
+\DeclareMathOperator{\coim}{coim} % Coimage
 \DeclareMathOperator{\dom}{dom}   % Domain
 \DeclareMathOperator{\codom}{cod} % Codomain
 \DeclareMathOperator{\supp}{supp} % Support
@@ -299,6 +301,8 @@
 
 % Ring ideals font
 \newcommand{\ideal}[1]{\mathfrak{#1}}
+
+\DeclareMathOperator{\Centre}{Z}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ** Topology **
@@ -415,7 +419,7 @@
 \DeclarePairedDelimiterX{\size}[1]{\lVert}{\rVert}{#1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ** statistics & probability **
+% ** machine learning **
 
 \DeclareMathOperator{\Prob}{\mathbb{P}} % Probability
 \DeclareMathOperator{\Expect}{\mathbb{E}} % Expectation
@@ -428,6 +432,9 @@
 \DeclareMathOperator{\precision}{\beta}
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\vcdim}{VCdim}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ** MACROS END HERE **

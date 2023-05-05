@@ -831,8 +831,7 @@ and say this maximum is attained at an index \(1 \leq i_0 \leq T\). Denote
 \cref{lem:markov-inequality-lemma} we have
 \[
 \Prob(L_{\mathcal{D}}(A(S)) \geq 1/8)
-\geq \frac{\Expect_{S \sim \mathcal{D}^m}[L_{\mathcal{D}}(A(S))] -
-  1/8}{1 - 1/8}
+\geq \frac{\Expect_{S \sim \mathcal{D}^m}[L_{\mathcal{D}}(A(S))] - 1/8}{1 - 1/8}
 = \frac{1}{7}
 \]
 \end{proof}
@@ -840,12 +839,126 @@ and say this maximum is attained at an index \(1 \leq i_0 \leq T\). Denote
 \begin{corollary}
 \label{cor:full-hypothesis-class-not-pac-learnable}
 Let \(\mathcal{X}\) be an infinite domain and define
-\(\mathcal{H} \coloneq \{0, 1\}^{\mathcal{X}}\) to be our hypothesis class. Then
-\(\mathcal{H}\) is not PAC learnable.
+\(\mathcal{H} \coloneq \{0, 1\}^{\mathcal{X}}\) to be our hypothesis class---that is, the collection of all
+possible binary classifiers of \(\mathcal{X}\). Then
+\(\mathcal{H}\) is \emph{not} PAC learnable.
 \end{corollary}
 
-\todo[inline]{Continue bias-complexity tradeoff}
+\begin{proof}
+Suppose, for the sake of contradiction, that \(\mathcal{H}\) is PAC learnable. Take
+\(\varepsilon < 1/8\) and \(\delta < 1/7\). From assumption, there exists an algorithm
+\(A\) and a number \(m \in \N\), depending on the choice of \(\varepsilon\) and
+\(\delta\), such that for any distribution \(\mathcal{D}\) over
+\(\mathcal{X} \times \{0, 1\}\) and labelling function
+\(f: \mathcal{X} \to \{0, 1\}\) with \(L_{\mathcal{D}}(f) = 0\)---then, with a probability of at least
+\(1 - \delta\) over a sample \(S \sim \mathcal{D}^m\), the algorithm \(A\) will output a
+classifier with \(L_{\mathcal{D}}(A(S)) \leq \varepsilon\). Since
+\(\mathcal{X}\) is infinite, then certainly its cardinality overcomes \(2 m\) and by
+\cref{thm:no-free-lunch} the algorithm \(A\) fails for some distribution
+\(\mathcal{D}_0\) with a probability greater than \(1/7\)---in this case the failure of
+\(A\) means \(L_{\mathcal{D}_0}(A(S)) > 1/8\). This is a contradiction and therefore
+proves that \(\mathcal{H}\) is not PAC learnable.
+\end{proof}
 
+\begin{definition}[Threshold function]
+\label{def:threshold-function}
+Let \(P\) be a proposition taking values in the set
+\(\{\texttt{false}, \texttt{true}\}\). We define a map
+\(\mathbf{1}_P: \{\texttt{false}, \texttt{true}\} \to \{0, 1\}\) as
+\[
+\mathbf{1}_P(x) =
+\begin{cases}
+  1, &\text{if } P(x) = \texttt{true} \\
+  0, &\text{if } P(x) = \texttt{false}.
+\end{cases}
+\]
+A common use of such maps are threshold functions: for each \(a \in \R\) we define
+a map \(\mathbf{1}_{< a}\) assuming \(1\) if the argument is less than \(a\) and
+\(0\) otherwise.
+\end{definition}
+
+\begin{lemma}
+\label{lem:threshold-functions-pac-learnable}
+Let \(\mathcal{H}\) denote the infinite collection of all threshold functions as in
+\cref{def:threshold-function}. Then \(\mathcal{H}\) is PAC learnable with the ERM
+algorithm with a sample complexity of
+\[
+m_{\mathcal{H}}(\varepsilon, \delta) \leq \left\lceil \frac{\log(2/\delta)}{\varepsilon} \right\rceil.
+\]
+\end{lemma}
+
+\begin{proof}
+Via the realisability assumption, let \(a^{\star} \in \R\) be such that
+\(L_{\mathcal{D}}(\mathbf{1}_{a^{\star}}) = 0\). Consider the marginal distribution
+\(\mathcal{D}_{\mathcal{X}}\) and take points \(a_0 < a^{\star} < a_1\) such that\footnote{If such
+  points do not exist, we can set \(a_0 \coloneq -\infty\) and \(a_1 \coloneq \infty\).}
+\[
+\Prob_{x \sim \mathcal{D}_{\mathcal{X}}}(a_0 < x < a^{\star})
+= \Prob_{x \sim \mathcal{D}_{\mathcal{X}}}(a^{\star} < x < a_1)
+= \varepsilon.
+\]
+Let \(S \sim \mathcal{D}^m\) be a training set, and define constants\footnote{If the first
+  set is empty, we instead set \(b_0 \coloneq \infty\), and if the latter is empty then
+  \(b_1 \coloneq -\infty\).}
+\[
+b_0 \coloneq \max_{(x, 1) \in S} x
+\quad \text{ and } \quad
+b_1 \coloneq \min_{(x, 0) \in S} x
+\]
+Let \(b_S \in \R\) be a threshold obtained by \(\text{ERM}_{\mathcal{H}}\), giving
+\(b_0 < b_S < b_1\). Notice that in order to have a true error
+\(L_{\mathcal{D}}(\mathbf{1}_{< b_S}) \leq \varepsilon\) it is sufficient to ensure that \(a_0 \leq b_0\)
+and \(b_1 \leq a_1\) so that \(b_S \in (a_0, a_1)\). Notice that
+\begin{align*}
+  \Prob_{S \sim \mathcal{D}^m}(L_{\mathcal{D}}(\mathbf{1}_{< b_S}) > \varepsilon)
+  &\leq \Prob_{S \sim \mathcal{D}^m}(b_0 < a_0 \text{ and } b_1 > a_1) \\
+  &\leq \Prob_{S \sim \mathcal{D}^m}(b_0 < a_0) + \Prob(b_1 > a_1)
+\end{align*}
+Notice that in order to have the event \(b_0 < a_0\) one has to sample every point
+\((x, y) \in S\) with \(x < a_0\), since the probability of having a sample \(x \in
+(a_0, a^{\star})\) is \(\varepsilon\) it follows that
+\begin{align*}
+  \Prob_{S \sim \mathcal{D}^m}(b_0 < a_0)
+  &= \Prob_{S \sim \mathcal{D}^m}(\forall (x, y) \in S,\, x \notin (a_0, a^{\star})) \\
+  &= (1 - \varepsilon)^m \\
+  &\leq e^{-m \varepsilon} \\
+  &\leq e^{- \frac{\log(2/\delta)}{\varepsilon} \varepsilon} \\
+  &= \delta/2,
+\end{align*}
+since \(m > \log(2/\delta)/\varepsilon\). Analogously, \(b_1 > a_1\) only if each point
+\((x, y)\) of \(S\) has \(x > a_1\), therefore
+\(\Prob_{S \sim \mathcal{D}^m}(b_1 > a_1) \leq \delta/2\).  This shows that
+\[
+\Prob_{S \sim \mathcal{D}^m}(L_{\mathcal{D}}(\mathbf{1}_{< b_S} > \varepsilon)) \leq \delta.
+\]
+\end{proof}
+
+\begin{definition}[Restricting the hypothesis class]
+\label{def:restrict-hypothesis-class}
+Let \(\mathcal{H}\) be a hypothesis class of maps \(\mathcal{X} \to \mathcal{Y}\) and take a finite set
+\(C \subseteq \mathcal{X}\). We define \(\mathcal{H}|_C \coloneq (h|_C)_{h \in \mathcal{H}}\) to be the restriction of the
+hypothesis class to \(C\). We say that \(\mathcal{H}\) \emph{shatters} \(C\) if it is the
+case that \(\mathcal{H}|_C = \mathcal{Y}^{C}\).
+\end{definition}
+
+\begin{corollary}
+\label{cor:shatters-2m-cannot-learn-with-train-of-size-m}
+Let \(\mathcal{H}\) be a hypothesis class of maps \(\mathcal{X} \to \{0, 1\}\), and \(m\) be the
+training set size. Assume the existence of a subset \(C \subseteq \mathcal{X}\) with cardinality
+\(2 m\) such that \(\mathcal{H}|_C\) shatters \(C\). It follows that for any learning
+algorithm \(A\) there exists a distribution \(\mathcal{D}\) over \(\mathcal{X} \times \{0, 1\}\) and a
+predictor \(h \in \mathcal{H}\) for which \(L_{\mathcal{D}}(h) = 0\) and having a probability of at
+least \(1/7\) over the choice of samples \(S \sim \mathcal{D}^m\) that \(L_{\mathcal{D}}A(S) \geq 1/8\).
+\end{corollary}
+
+\begin{definition}[VC-dimension]
+\label{def:vc-dimension}
+Let \(\mathcal{H}\) be a hypothesis class. We define the \emph{VC-dimension} of
+\(\mathcal{H}\) to be:
+\[
+\vcdim \mathcal{H} \coloneq \max \{|C| \colon C \subseteq \mathcal{X} \text{ is shattered by } \mathcal{H}|_C\}.
+\]
+\end{definition}
 
 %%% Local Variables:
 %%% mode: latex

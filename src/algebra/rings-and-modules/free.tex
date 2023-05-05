@@ -1,4 +1,4 @@
-\begin{remark}
+\begin{remark}[Which side?]
 \label{rem:R-modules-convension}
 For the remainder of the chapter, if \(M\) is said to be an \(R\)-module, then
 \(M\) can be \emph{either a left or right \(R\)-module}---and \(R\) need
@@ -8,6 +8,12 @@ other hand, if we \emph{specify} the side of the multiplicative structure of
 \(M\), then it may well be the case that the proposition does \emph{only work}
 for this strict case \emph{or} that the \emph{distiction} between right and left
 modules is \emph{important} in some way.
+\end{remark}
+
+\begin{remark}[Algebras and commutative rings]
+\label{rem:algebras-and-commutative-rings}
+We shall sometimes address a commutative ring by \(k\)---for instance, in the case
+of a \(k\)-algebra \(A\).
 \end{remark}
 
 \section{Free Modules}
@@ -1310,15 +1316,22 @@ consequence of \cref{cor:module-iso-ker-im}.
 \begin{remark}
 \label{rem:converse-of-splitting-sequence-is-false}
 It should be emphasized that the converse of \cref{prop:splitting-of-sequence}
-\emph{does not hold} in general. For instance, consider cyclic free groups
-\(A \coloneq \langle a \rangle\), \(B \coloneq \langle b \rangle\) and
-\(C \coloneq \langle c \rangle\)---where both \(A\) and \(C\) have order \(2\),
-while \(B\) has order \(4\). Endowing such groups with the structure of
+\emph{does not hold} in general.  For instance, consider cyclic free groups
+\(A \coloneq \langle a \rangle\) and \(B \coloneq \langle b \rangle\) of orders
+\(2\) and \(4\), respectively. Endowing such groups with the structure of
 \(\Z\)-modules, we can define morphisms \(\iota: A \to B\) mapping
-\(a \mapsto 2 b\), and \(p: B \to C\) with \(b \mapsto c\), then the sequence
-\(0 \to A \xrightarrow \iota B \xrightarrow p C \to 0\) is exact
-
-\todo[inline]{Continue this, I can't continue today}
+\(a \mapsto 2 b\), and \(p: B \to A\) with \(b \mapsto a\), then the sequence
+\[
+\begin{tikzcd}
+0 \ar[r]
+&A \ar[r, "\iota"]
+&B \ar[r, "p"]
+&A \ar[r]
+&0
+\end{tikzcd}
+\]
+is exact but does not split since
+\(\Id_{\Z/4\Z} \not\iso \Id_{\Z/2\Z} \oplus \Id_{\Z/2\Z}\).
 \end{remark}
 
 \begin{proposition}[Equivalent definition for split sequences]
@@ -1369,6 +1382,52 @@ For the second statement, notice that
 &= \iota(a) + s(c),
 \end{align*}
 therefore \(s p + \iota r = \Id_B\).
+\end{proof}
+
+\begin{proposition}
+\label{prop:additive-functor-mod-to-ab-preserves-direct-sum}
+If \(F: \Mod{R} \to \Ab\) is an additive functor of either variance, then there
+exists a natural isomorphism of abelian groups
+\[
+F(M \oplus N) \iso F M \oplus F N.
+\]
+In particular, if \(F\) is covariant then the mapping
+\(x \mapsto ((F \pi_M) x, (F \pi_N) x)\) is an isomorphism---where
+\(\pi_M: M \oplus N \to M\) and \(\pi_N: M \oplus N \to N\) are natural projections.
+\end{proposition}
+
+\begin{proof}
+Consider the projections \(\pi_M\), \(\pi_N\) and inclusions \(\iota_M\) and
+\(\iota_N\). From definition of the direct sum:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Since \(\pi_M \iota_M = \Id_M\) and \(\pi_N \iota_N = \Id_N\) then
+  \begin{align*}
+    F \Id_M &= \Id_{F M} = F(\pi_M \iota_M) = F \pi_M F \iota_M, \\
+    F \Id_N &= \Id_{F N} = F(\pi_N \iota_N) = F \pi_N F \iota_N.
+  \end{align*}
+
+\item Since \(\pi_M \iota_N = 0: N \to M\) and \(\pi_N \iota_M = 0: M \to N\) we can use
+  \cref{prop:additive-functor-zero-maps-zero-obj} to obtain that
+  \begin{align*}
+    0 &= F 0 = F(\pi_M \iota_N) = F \pi_M F \iota_N \in \Mor_{\Ab}(F N, F M), \\
+    0 &= F 0 = F(\pi_N \iota_M) = F \pi_N F \iota_M \in \Mor_{\Ab}(F M, F N).
+  \end{align*}
+
+\item Since \(\iota_M \pi_M + \iota_N \pi_N = \Id_{M \oplus N}\), using the additivity of \(F\)
+  we obtain (for the case where \(F\) is covariant)
+  \begin{align*}
+  \Id_{F(M \oplus N)}
+  &= F \Id_{M \oplus N}
+  = F(\iota_M \pi_M + \iota_N \pi_N)
+  = F(\iota_M \pi_M) + F(\iota_N \pi_N) \\
+  &= F \iota_M F \pi_M + F \iota_N F \pi_N
+  \end{align*}
+\end{enumerate}
+Therefore the maps \(F \pi_M: F(M \oplus N) \to F M\) and
+\(F \pi_N: F(M \oplus N) \to F N\) act as projections, while
+\(F \iota_M: F M \to F(M \oplus N)\) and \(F \iota_N: F N \to F(M \oplus N)\) are inclusions. Such
+maps satisfy all the requirements from \cref{prop:split-short-exact-sequence}
+and therefore there exists a natural isomorphism \(F(M \oplus N) \iso F M \oplus F N\).
 \end{proof}
 
 \begin{proposition}
@@ -2232,6 +2291,111 @@ properties concerning the functors \(\Hom_{\Mod{R}}(M, -)\) and
 \end{enumerate}
 \end{proof}
 
+\begin{lemma}
+\label{lem:split-short-exact-iff-hom-funct-exact-seq}
+Consider the following sequence of \(R\)-modules: sequence of \(R\)-modules
+\begin{equation}\label{eq:split-short-exact-iff-hom-funct-exact-seq}
+\begin{tikzcd}
+0 \ar[r]
+&A \ar[r, "f"]
+&B \ar[r, "g"]
+&C \ar[r]
+&0
+\end{tikzcd}
+\end{equation}
+We have the following:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The sequence \cref{eq:split-short-exact-iff-hom-funct-exact-seq} is
+  \emph{split short exact} if and only if for every \(R\)-module \(X\) the
+  induced sequence of abelian groups
+  \[
+  \begin{tikzcd}
+  0 \ar[r]
+  &\Mor_{\Mod R}(X, A)
+  \ar[r, tail, "f_{*}"]
+  &\Mor_{\Mod R}(X, B)
+  \ar[r, two heads, "g_{*}"]
+  &\Mor_{\Mod R}(X, C)
+  \ar[r]
+  &0
+  \end{tikzcd}
+  \]
+  is \emph{exact}.
+
+\item The sequence \cref{eq:split-short-exact-iff-hom-funct-exact-seq} is
+  \emph{split short exact} if and only if for every \(R\)-module \(Y\) the
+  induced sequence of abelian groups
+  \[
+  \begin{tikzcd}
+  0 \ar[r]
+  &\Mor_{\Mod R}(C, Y)
+  \ar[r, tail, "g^{*}"]
+  &\Mor_{\Mod R}(B, Y)
+  \ar[r, two heads, "f^{*}"]
+  &\Mor_{\Mod R}(A, Y)
+  \ar[r]
+  &0
+  \end{tikzcd}
+  \]
+  is \emph{exact}.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+We shall only prove item (a) since (b) is merely its dual. (\(\implies\)) Since
+\(\Hom_{\Mod R}(X, -)\) is left exact, it suffices to show that \(g_{*}\) is an
+epimorphism. Since \(g\) is a retract, there exists \(u: C \to B\) such that
+\(g u = \Id_C = g_{*} u\), therefore given any morphism
+\(t \in \Mor_{\Mod R}(X, C)\) there exists a morphism
+\(u t \in \Mor_{\Mod R}(X, B)\) such that \(g_{*}(u t) = g u t = t\)---which shows
+that \(g_{*}\) is surjective.
+
+(\(\impliedby\)) By \cref{prop:hom-exact-then-sequence-exact} we know that
+\(0 \to A \to B \to C\) is exact. If we now choose \(X \coloneq C\) then there exists a map
+\(v: C \to B\) such that \(g_{*} v = g v = \Id_C\) from the fact that \(g_{*}\) is
+an epimorphism---thus surjective. This shows that \(g\) admits a right inverse,
+thus \(g\) is a split epimorphism.
+\end{proof}
+
+\begin{theorem}
+\label{thm:mod-cat-adjoint-pair-right-left-exact-functors}
+Let \(A\) and \(B\) be a pair of \(k\)-algebras, where \(k\) is a commutative
+ring, and consider a pair of functors \(F \colon \Mod A \to \Mod B \colon G\). If
+the pair \((F, G)\) is adjunct, then \(F\) is right-exact and \(G\) is left
+exact.
+\end{theorem}
+
+\begin{proof}
+By definition, for any pair of modules \(M \in \Mod A\) and \(X \in \Mod B\) there
+exists a natural isomorphism
+\[
+\theta_{M X}: \Mor_{\Mod B}(F M, X) \isoto \Mor_{\Mod A}(M, G X).
+\]
+Let \(L \xrightarrow{f} M \xrightarrow{g} N \to 0\) an exact sequence of
+\(A\)-modules. The naturality of the map \(\theta\) implies that the following
+diagram commutes for any \(X \in \Mod B\):
+\[
+\begin{tikzcd}
+0 \ar[r]
+&\Mor_{\Mod B}(F N, X) \ar[r, "{(F g)^{*}}"]
+\ar[d, "\theta_{N X}"', "\dis"]
+&\Mor_{\Mod B}(F M, X) \ar[r, "{(F f)^{*}}"]
+\ar[d, "\theta_{M, X}"', "\dis"]
+&\Mor_{\Mod B}(F L, X) \ar[d, "\theta_{L, X}"]
+\\
+0 \ar[r]
+&\Mor_{\Mod A}(N, G X) \ar[r, "{(G g)_{*}}"]
+&\Mor_{\Mod A}(M, G X) \ar[r, "{(G f)_{*}}"]
+&\Mor_{\Mod A}(L, G X)
+\end{tikzcd}
+\]
+Since \(\Mor_{\Mod A}(-, G X)\) is left-exact then the inferior row is exact,
+and since the vertical morphisms are isomorphisms, then the superior row is also
+exact. Using \cref{prop:hom-exact-then-sequence-exact} item (b) we obtain that
+\(F L \xrightarrow{F f} F M \xrightarrow{F g} F N \to 0\), therefore \(F\) is
+right exact. Analogously we can show that \(G\) is left exact.
+\end{proof}
+
 \section{Bimodules}
 
 \begin{definition}[Bimodule]
@@ -2477,8 +2641,6 @@ the \emph{dual module} of \(M\) to be the \emph{left-\(R\)-module}
 M^{*} \coloneq \Hom_{\rMod{R}}(M, R).
 \]
 \end{definition}
-
-
 
 %%% Local Variables:
 %%% mode: latex
