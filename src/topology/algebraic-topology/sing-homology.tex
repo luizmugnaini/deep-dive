@@ -313,6 +313,8 @@ therefore \(\Theta\) is a surjective map. Therefore \(\Theta\) is an isomorphism
 between homology groups.
 \end{proof}
 
+\section{Calculating The Homology: Some Examples}
+
 \begin{proposition}
 \label{prop:path-connected-homology0-is-Z}
 Let \(X\) be path-connected, then \(\Hmlg_0(X) \iso \Z\).
@@ -485,7 +487,7 @@ conclude that \(z \in \Bdry_p(X)\), which implies that \(\Hmlg_p(X) = 0\) for ea
 \(p > 0\).
 \end{proof}
 
-\subsection{Chain Homotopies}
+\section{Chain Homotopies}
 
 Let \(T: (C, \face) \to (C', \face')\) be a morphism of
 graded groups of degree \(1\). The morphism of graded groups
@@ -691,7 +693,7 @@ This finishes the proof that \(T_X\) is indeed a chain-homotopy between
 \(i_{0\, \#}\) and \(i_{1\, \#}\) as wanted.
 \end{proof}
 
-\subsection{Homotopy Invariance}
+\section{Homotopy Invariance}
 
 \begin{corollary}
 \label{cor:htpy-equiv-iso-homology}
@@ -742,7 +744,7 @@ hence \(\beta = 0\). This shows that \(G_1 \cap G_2 = 0\), thus
 \(G_1 + G_2 = G_1 \oplus G_2\) and \(\Hmlg_{\bullet}(X) = G_1 \oplus G_2\).
 \end{proof}
 
-\subsection{Long Exact Sequence Theorem}
+\section{Long Exact Sequence Theorem}
 
 \begin{theorem}
 \label{thm:long-exact-sequence}
@@ -924,27 +926,819 @@ then the following diagram with long exact rows commutes:
 \]
 \end{proposition}
 
+
+\section{Reduced Homology}
+
+\begin{definition}[Reduced homology]
+\label{def:reduced-homology}
+Let \(X\) be a non-empty topological space, and define a surjective morphism
+\(\varepsilon: \Sing_0 X \epi \Z\) given by
+\(\sum_j n_j \phi_j \mapsto \sum_j n_j\). Notice that \(\im \face_1 \subseteq \ker \varepsilon\) since given any
+\(\tau \in \Sing_1 X\) we have
+\[
+\varepsilon \face_1 \tau = \varepsilon(\tau(1) - \tau(0)) = 1 - 1 = 0.
+\]
+Therefore the sequence
+\[
+\begin{tikzcd}
+\cdots \ar[r]
+&\Sing_2 X \ar[r, "\face_2"]
+&\Sing_1 X \ar[r, "\face_1"]
+&\Sing_0 X \ar[r, two heads, "\varepsilon"]
+&\Z
+\ar[r]
+&0
+\end{tikzcd}
+\]
+is a chain complex---in fact, we call such complex the \emph{augmented chain
+  complex} of \(X\). It is to be noticed that from the isomorphism theorem for
+groups there exists a unique morphism \(\varepsilon_{*}: \Hmlg_0(X) \to \Z\) such that the
+following diagram commutes
+\[
+\begin{tikzcd}
+\Sing_0 X \ar[rr, "\varepsilon"] \ar[d, two heads]
+&&\Z \\
+\Hmlg_0(X) = \frac{\Sing_0 X}{\im \face_1}
+\ar[rru, dashed, bend right, "\varepsilon_{*}"']
+&&
+\end{tikzcd}
+\]
+If we now define a \(\Z\)-graded group \(\rHmlg_{\bullet}(X)\) as follows: for each
+\(p > 0\) let \(\rHmlg_p(X) \coloneq \Hmlg_p(X)\), while
+\(\rHmlg_0(X) \coloneq \ker \varepsilon/\im \face_1\). The group \(\rHmlg_p(X)\) is called the
+\emph{\(p\)-th reduced homology group} of \(X\).
+
+In particular we know that
+\(\ker \varepsilon_{*} = \ker \varepsilon/\im \face_1\), therefore we may define a choice-dependent
+isomorphism
+\[
+\rHmlg_0(X) \oplus \Z \iso \Hmlg_0(X)
+\]
+as follows: given \(\psi \in \Sing_0 X\), define the mappings
+\(([\sum_j n_j \phi_j], m) \mapsto [\sum_j n_j \phi_j + m \psi]\) together with an inverse
+\([\sum_j n_j \phi_j] \mapsto ([\sum_j n_j \phi_j - \sum_j n_j \psi], \sum_j n_j)\). Another way to see the
+existence of this isomorphism is to notice that since \(\im \varepsilon_{*} = \Z\) and
+\(\ker \varepsilon_{*} = \rHmlg_0(X)\) then there exists a short exact sequence
+\[
+\begin{tikzcd}
+0 \ar[r]
+&\rHmlg_0(X) \ar[r, hook]
+&\Hmlg_0(X) \ar[r, two heads, "\varepsilon"]
+&\Z \ar[r]
+&0
+\end{tikzcd}
+\]
+and since \(\Z\) is free then the sequence splits and there exists an
+isomorphism \(\Hmlg_0(X) \iso \rHmlg_0(X) \oplus \Z\) as expected.
+\end{definition}
+
+\section{Mayer-Vietoris Sequence}
+
+\subsection{Barycentric Subdivision}
+
+\todo[inline]{To be added}
+
+\subsection{Mayer-Vietoris Theorem}
+
 \begin{definition}
 \label{def:cover-singular-simplicial-complex}
 Let \(X\) be a topological space and \(\mathcal{U}\) be an open cover of \(X\). Denote by
 \(\Sing_{\bullet}^{\mathcal{U}} X\) the \(\Z\)-graded abelian group given by groups
-\(\Sing_n^{\mathcal{U}} X\) composed of singular \(n\)-simplices \(\phi: \splxtop^n \to X\)
-such that \(\im \phi \subseteq U\) for some \(U \in \mathcal{U}\)---for each \(n \in \Z\). Since \(\im
-\face^j \phi \subseteq \im \phi\), then boundary map
+\(\Sing_n^{\mathcal{U}} X\) composed of singular \(n\)-simplices\footnote{A simplex with
+  such property is called \(\mathcal{U}\)-small.} \(\phi: \splxtop^n \to X\) such that
+\(\im \phi \subseteq U\) for some \(U \in \mathcal{U}\)---for each \(n \in \Z\). Since
+\(\im \face^j \phi \subseteq \im \phi\), the boundary map
 \[
 \face: \Sing_{\bullet}^{\mathcal{U}} X \to \Sing_{\bullet}^{\mathcal{U}} X
 \]
 is well defined and has degree \(-1\).
 
-Given another topological space \(Y\) together with an open covering \(\mathcal{V}\) and a
-continuous map \(f: X \to Y\), we have the following commutative diagram for each
-\(n \in \Z\):
+Given another topological space \(Y\) together with an open covering
+\(\mathcal{V}\) and a continuous map \(f: X \to Y\) for which each
+\(U \in \mathcal{U}\) has image \(f U \subseteq V\) for some
+\(V \in \mathcal{V}\), we have an induced chain map
+\(f_{\#}: \Sing_{\bullet}^{\mathcal{U}} X \to \Sing_{\bullet}^{\mathcal{V}} Y\).
 \end{definition}
 
+\begin{theorem}
+\label{thm:iso-hmlg-groups-cover}
+Let \(\mathcal{U}\) be a collection of subsets of \(X\) such that the interior of
+\(\mathcal{U}\) is an open cover for \(X\), then the canonical inclusion map
+\(\iota: \Sing_{\bullet}^{\mathcal{U}} X \to \Sing_{\bullet} X\) induces an isomorphism
+\[
+\iota_{*}: \Hmlg_{\bullet}(\Sing_{\bullet}^{\mathcal{U}} X) \isoto \Hmlg_{\bullet}(X).
+\]
+\end{theorem}
 
+\begin{theorem}
+\label{thm:mayer-vietoris}
+Let \(X\) be a space and \(U, V \subseteq X\) be subsets such that
+\(\Int U \cup \Int V = X\) with inclusion maps:
+\[
+\begin{tikzcd}
+&U \ar[rd, "k"] & \\
+U \cap V \ar[ur, "i"] \ar[rd, "j"'] & &U \cup V = X \\
+&V \ar[ru, "\ell"']&
+\end{tikzcd}
+\]
+Then there exists a long exact sequence of homology
+groups, called the \emph{Mayer-Vietoris sequence}, of the form
+{\small
+\[
+\begin{tikzcd}
+\cdots \ar[r]
+&\Hmlg_n(U \cap V) \ar[r, "i_* \oplus j_{*}"]
+&\Hmlg_n(U) \oplus \Hmlg_n(V) \ar[r, "k_{*} - \ell_{*}"]
+&\Hmlg_n(X) \ar[r, "\delta"]
+&\Hmlg_{n-1}(U \cap V) \ar[r]
+&\cdots
+\end{tikzcd}
+\]
+}
 
+Moreover, this sequence is natural---that is, given subsets
+\(U', V' \subseteq X'\) with \(\Int U' \cup \Int V' = X\) and a continuous map
+\(f: X \to X'\) for which \(f U \subseteq U'\) and \(f V \subseteq V'\) then the following diagram
+commutes:
+{\small
+\[
+\begin{tikzcd}
+\cdots \ar[r]
+&\Hmlg_n(U \cap V) \ar[r]
+\ar[d, "f_{*}"]
+&\Hmlg_n(U) \oplus \Hmlg_n(V) \ar[r]
+\ar[d, "f_{*} \oplus f_{*}"]
+&\Hmlg_n(X) \ar[r]
+\ar[d, "f_{*}"]
+&\Hmlg_{n-1}(U \cap V) \ar[r]
+\ar[d, "f_{*}"]
+&\cdots
+\\
+\cdots \ar[r]
+&\Hmlg_n(U' \cap V') \ar[r]
+&\Hmlg_n(U') \oplus \Hmlg_n(V') \ar[r]
+&\Hmlg_n(X') \ar[r]
+&\Hmlg_{n-1}(U \cap V) \ar[r]
+&\cdots
+\end{tikzcd}
+\]
+}
+\end{theorem}
 
+\begin{proof}
+For convenience, let \(\mathcal{U} \coloneq \{U, V\}\). Let \(S_U\) and \(S_V\) be the sets
+consisting of all singular \(n\)-simplices in \(U\) and \(V\), respectively. If
+\(\operatorname F: \Set \to \Ab\) denotes the free abelian group functor, then it
+follows that
+\[
+\Sing_n (U \cap V) = \operatorname F(S_U \cap S_V)
+\quad
+\text{ and }
+\quad
+\Sing_n^{\mathcal{U}} X = \operatorname F(S_U \cup S_V).
+\]
+Define a morphism of groups
+\[
+h: \operatorname F(S_U) \oplus \operatorname F(S_V) \epi \operatorname F(S_U \cup S_V)
+\]
+to be given by \((\phi, \psi) \mapsto \phi - \psi\), which gives an epimorphism. Further,
+define a monomorphism of groups
+\[
+g: \operatorname F(S_U \cap S_V) \mono \operatorname F(S_U) \oplus \operatorname F(S_V)
+\]
+mapping \(\tau \mapsto (\tau, \tau)\). Notice that from construction we have
+\(h g = 0\), hence \(\im g \subseteq \ker h\).
 
+On the other hand, let
+\((\Phi, \Psi) \coloneq (\sum_{\phi \in S_U} n_{\phi} \phi, \sum_{\psi \in S_{V}} m_{\psi} \psi) \in \ker h\), which is the
+case if and only if for each \(\phi \in S_U\) associated with a non-zero coefficient
+\(n_{\phi}\) there exists \(\psi \in S_V\) with \(m_{\psi} = n_{\phi}\) and
+\(\psi = \phi\)---this construction should be bijective in the singular simplices that
+have non-zero coefficient in order to obtain \(\Phi + \Psi = 0\). From this
+consideration, we conclude that for \((\Phi, \Psi)\) to be an element of the kernel of
+\(h\) it must be the case that each non-zero simplex lies in the intersection
+\(S_U \cap S_V\), therefore it is clear that \(\ker h \subseteq \im g\). This shows us that
+\begin{equation}\label{eq:chain-cplx-short-exact-seq-mv-seq}
+\begin{tikzcd}
+0 \ar[r]
+&\Sing_n(U \cap V)
+\ar[r, tail, "g"]
+&\Sing_n U \oplus \Sing_n V
+\ar[r, two heads, "h"]
+&\Sing_n(U \cup V)
+\ar[r]
+&0
+\end{tikzcd}
+\end{equation}
+is a short exact sequence, which can be extended as a short exact sequence of
+chain complexes and degree zero chain maps \(g\) and \(h\).
+
+Using the long exact sequence theorem on
+\cref{eq:chain-cplx-short-exact-seq-mv-seq} we obtain an exact sequence of
+homology groups
+{\small
+\[
+\begin{tikzcd}
+\cdots \ar[r]
+&\Hmlg_n(U \cap V) \ar[r, "g_{*}"]
+&\Hmlg_n(U) \oplus \Hmlg_n(V) \ar[r, "h_{*}"]
+&\Hmlg_n^{\mathcal{U}}(X) \ar[r, "\delta"]
+&\Hmlg_{n-1}(U \cap V) \ar[r]
+&\cdots
+\end{tikzcd}
+\]
+}
+Now using the isomorphism from \cref{thm:iso-hmlg-groups-cover} we obtain the
+desired long exact sequence.
+\end{proof}
+
+\begin{corollary}
+\label{cor:mayer-vietoris-for-reduced-homology}
+Let \(X\) be a non-empty topological space, and \(U, V \subseteq X\) be intersecting
+subsets such that \(\Int U \cup \Int V = X\). There exists an exact sequence
+\[
+\begin{tikzcd}[column sep=small]
+\cdots \ar[r]
+&\rHmlg_p(U \cap V) \ar[r]
+&\rHmlg_p(U) \oplus \rHmlg_p(V) \ar[r]
+&\rHmlg_p(X) \ar[r]
+&\rHmlg_{p-1}(U \cap V) \ar[r]
+&\cdots
+\end{tikzcd}
+\]
+and the reduced homology makes this sequence end:
+\[
+\begin{tikzcd}
+\cdots \ar[r]
+&\rHmlg_0(U) \oplus \rHmlg_0(V) \ar[r, two heads]
+&\rHmlg_0(X) \ar[r]
+&0
+\end{tikzcd}
+\]
+\end{corollary}
+
+\subsection{Applications of The Mayer-Vietoris Sequence}
+
+\begin{example}[The circle]
+\label{exp:homology-of-the-circle}
+Consider the circle \(S^1\) and denote by \(s\) and \(n\) its south and north
+poles, respectively. Define subsets \(U \coloneq S^1 \setminus s\) and
+\(V \coloneq S^1 \setminus n\). First let us calculate the first homology group of
+\(S^1\): to that end, we can use the Mayer-Vietoris sequence for the triple
+\((S^1, U, V)\) to obtain an exact sequence
+\[
+\begin{tikzcd}
+\Hmlg_1(U) \oplus \Hmlg_1(V) \ar[r, "k_{*} - \ell_{*}"]
+&\Hmlg_1(S^1) \ar[r, "\delta"]
+&\Hmlg_0(U \cap V) \ar[r, "i_{*} \oplus j_{*}"]
+&\Hmlg_0(U) \oplus \Hmlg_0(V)
+\end{tikzcd}
+\]
+Notice that both \(U\) and \(V\) are contractible spaces, therefore they have
+the same homotopy as the single point space, that is
+\[
+\Hmlg_p(U) = \Hmlg_p(V) =
+\begin{cases}
+  \Z, &\text{if } p = 0 \\
+  0, &\text{otherwise}
+\end{cases}
+\]
+Thus \(\Hmlg_1(U) \oplus \Hmlg_1(V) = 0\)---implying that \(\delta\) is a monomorphism---and
+we also have \(\Hmlg_0(U) \oplus \Hmlg_0(V) \iso \Z \oplus \Z\). On the other hand, the
+set \(U \cap V\) is homotopic to a space consisting of two points---that is,
+\(U \cap V \isoht \{*\} \disj \{*\}\)---thus in particular we have an isomorphism
+\(\Hmlg_0(U \cap V) \iso \Z \oplus \Z\) by mapping
+\(a \phi + b \psi \mapsto (a, b)\). In summary, we obtain the following exact
+sequence
+\[
+\begin{tikzcd}
+0 \ar[r]
+&\Hmlg_1(S^1) \ar[r, "\delta", tail]
+&\Z \oplus \Z \ar[r, "i_{*}' \oplus j_{*}'"]
+&\Z \oplus \Z
+\end{tikzcd}
+\]
+where both \(i_{*}', j_{*}': \Z \oplus \Z \para \Z\) map
+\((a, b) \mapsto a + b\), since \(i_{*}\) and \(j_{*}\) are inclusions.  Given an
+element \(a \phi + b \psi \in \Hmlg_0(U \cap V)\), we find that
+\(a \phi + b \psi\) corresponds to an element of the kernel of
+\(i_{*}' \oplus j_{*}'\) if and only if \(a = -b\). Hence
+\(\ker(i_*' \oplus j_{*}')\) is a subgroup of \(\Z \oplus \Z\) generated by
+elements of the form \((a, -a)\)---that is,
+\[
+\ker(i_{*}' \oplus j_{*}') = \im \delta \iso \Z.
+\]
+Since \(\delta\) is injective, then \(\Hmlg_1(S^1) \iso \im \delta\), therefore
+\(\Hmlg_1(S^1) \iso \Z\).
+
+Moreover, for the case of \(p > 1\) we have an exact sequence
+\[
+\begin{tikzcd}
+\Hmlg_p(U) \oplus \Hmlg_p(V) \ar[r, "k_{*} - \ell_{*}"]
+&\Hmlg_p(S^1) \ar[r, "\delta"]
+&\Hmlg_{p-1}(U \cap V)
+\end{tikzcd}
+\]
+however from previous considerations we know that for \(p > 1\) we have both
+\(\Hmlg_p(U) = \Hmlg_p(V) = 0\) and \(\Hmlg_{p-1}(U \cap V) = 0\). This shows that
+\(\ker \delta = \Hmlg_p(S^1)\) and since \(\im(k_{*} - \ell_{*}) = 0\) it follows from
+exactness that \(\Hmlg_p(S^1) = 0\). This results shows us that:
+\[
+\Hmlg_p(S^1) =
+\begin{cases}
+  \Z, &\text{if } p = 1 \\
+  0, &\text{otherwise}
+\end{cases}
+\]
+\end{example}
+
+\begin{example}[\(n\)-spheres]
+\label{exp:homology-of-sphere}
+Let's consider the general case of an \(n\)-sphere \(S^n \subseteq \R^{n+1}\), where
+\(n > 0\). Let \(n, s \in S^n\) be the north and south poles, respectively, and
+define subsets \(U \coloneq S^n \setminus n\) and
+\(V \coloneq S^n \setminus s\). Via the stereographic projection we know that there are
+topological isomorphisms
+\[
+U \iso \R^n \iso V \quad \text{ and } \quad U \cap V \iso \R^n \setminus 0,
+\]
+furthermore, \(S^{n-1}\) is a deformation retract of \(\R^n \setminus 0\), hence
+\(U \cap V \isoht S^{n-1}\). Therefore we have, for any \(p\):
+\[
+\begin{tikzcd}
+\Hmlg_p(U) \oplus \Hmlg_p(V) \ar[r, "k_{*} - \ell_{*}"]
+\ar[d, "\dis"]
+&\Hmlg_p(S^n) \ar[r, "\delta"]
+\ar[d, equals]
+&\Hmlg_{p-1}(U \cap V) \ar[r, "i_{*} \oplus j_{*}"]
+\ar[d, "\dis"]
+&\Hmlg_{p-1}(U) \oplus \Hmlg_{p-1}(V)
+\ar[d, "\dis"]
+\\
+\Hmlg_p(\R^n) \oplus \Hmlg_p(\R^n) \ar[r, "h_{*}"']
+&\Hmlg_p(S^n) \ar[r, "d_{*}"']
+&\Hmlg_{p-1}(S^{n-1}) \ar[r, "g_{*}"']
+&\Hmlg_{p-1}(\R^n) \oplus \Hmlg_{p-1}(\R^n)
+\end{tikzcd}
+\]
+Since \(\R^n\) is contractible then for \(p > 0\) we have \(\Hmlg_p(\R^n) = 0\),
+therefore both end terms of the above sequence are zero. By exactness of the
+sequence, this implies that for \(p > 1\) the map \(\delta\) is an isomorphism
+\(\Hmlg_p(S^n) \iso \Hmlg_{p-1}(S^{n-1})\). Therefore, for \(p = n\) we find
+recursively that \(\Hmlg_n(S^n) \iso \Hmlg_1(S^1) \iso \Z\). In the case of
+\(p = 1\) and \(n > 1\) we have that both \(d_{*}\) and \(g_{*}\) are
+monomorphisms, thus \(\Hmlg_1(S^n) \iso 0\)---this also follows from Hurewicz's
+theorem. Otherwise, if \(p > 1\) and \(p \neq n\) then \(\Hmlg_p(S^n)\). This
+settles the following: for \(n > 0\)
+\[
+\Hmlg_p(S^n) =
+\begin{cases}
+  \Z, &\text{if } p \in \{0, n\} \\
+  0,  &\text{otherwise}
+\end{cases}
+\]
+for the case \(n = 0\), \(S^0\) consists of two points---therefore has two path
+connected components, hence \(\Hmlg_0(S^0) \iso \Z \oplus \Z\), thus
+\[
+\Hmlg_p(S^0) =
+\begin{cases}
+  \Z \oplus \Z, &\text{if } p = 0 \\
+  0,       &\text{otherwise}
+\end{cases}
+\]
+\end{example}
+
+\begin{example}[Torus]
+\label{exp:torus-homology}
+Consider the torus \(T\). We shall calculate the homology of \(T\) using two
+different coverings \(U\) and \(V\):
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item Let \(U\) and \(V\) be intersecting subsets of \(T\), where \(U\) is one
+  half of the torus and \(V\) is the other half---therefore:
+  \[
+  U \iso V \isoht S^1 \quad \text{ and } \quad U \cap V = S^1 \disj S^1.
+  \]
+  Since \(T\) is path-connected, we know that \(\Hmlg_0(T) = \Z\).
+  \begin{itemize}\setlength\itemsep{0em}
+\item For the case where \(p > 2\) we have
+  \[
+  \begin{tikzcd}
+  \Hmlg_p(U) \oplus \Hmlg_p(V) \ar[d, "\dis"]
+  \ar[r]
+  &\Hmlg_p(T) \ar[d, equals]
+  \ar[r]
+  &\Hmlg_{p-1}(U \cap V) \ar[d, "\dis"]
+  \\
+  0 \ar[r] &\Hmlg_p(T) \ar[r] &0
+  \end{tikzcd}
+  \]
+  hence from exactness we obtain \(\Hmlg_p(T) = 0\).
+
+  \item For the case \(p = 2\) we have
+  \[
+  \begin{tikzcd}
+  \Hmlg_2(U) \oplus \Hmlg_2(V)
+  \ar[r, "k_{*} - \ell_{*}"]
+  \ar[d, equals]
+  &\Hmlg_2(T)
+  \ar[r, "\delta"]
+  \ar[d, equals]
+  &\Hmlg_1(U \cap V)
+  \ar[d, "\dis"]
+  \ar[r, "i_{*} \oplus j_{*}"]
+  &\Hmlg_1(U) \oplus \Hmlg_1(V)
+  \ar[d, "\dis"]
+  \\
+  0 \ar[r] &\Hmlg_2(T) \ar[r] &\Z \oplus \Z \ar[r] &\Z \oplus \Z
+  \end{tikzcd}
+  \]
+  Since the sequence is exact, then \(\Hmlg_2(T) \mono \Z \oplus \Z\) is a
+  monomorphism. Let's analyse the map \(i_{*} \oplus j_{*}\): let
+  \(u, v \in Z_1(U \cap V)\) be equators, where \(u\) sits in one of the cylinders
+  while \(v\) in the other. Notice however that
+  \[
+  (i_{*} \oplus j_{*})[\alpha]_{U \cap V} = (\alpha, \beta) = (i_{*} \oplus j_{*})[\beta]_{U \cap V}
+  \]
+  since the classes of \(\alpha\) and \(\beta\) are equal in both \(\Hmlg_1(U)\) and
+  \(\Hmlg_1(V)\). From injectivity of \(\delta\) we know that
+  \(\Hmlg_2(T) \iso \im \delta\), moreover exactness implies in
+  \(\im \delta = \ker(i_{*} \oplus j_{*})\). Notice that
+  \[
+  \ker(i_{*} \oplus j_{*}) = \Z[\alpha - \beta]_{U \cap V} \iso \Z,
+  \]
+  therefore \(\Hmlg_2(T) \iso \Z\).
+
+  \item For the case where \(p = 1\) we have {\small
+  \[
+  \begin{tikzcd}
+  \Hmlg_1(U \cap V) \ar[r, "{(i_{*} \oplus j_*)_1}"] \ar[d, "\dis"]
+  &{\Hmlg_1(U) \oplus \Hmlg_1(V)} \ar[r, "{k_{*} - \ell_{*}}"] \ar[d, "\dis"]
+  &\Hmlg_1(T) \ar[r, "\delta"] \ar[d, equals]
+  &\Hmlg_0(U \cap V) \ar[r, "{(i_* \oplus j_{*})_0}"] \ar[d, "\dis"]
+  &\Hmlg_0(U) \oplus \Hmlg_0(V) \ar[d, "\dis"]
+  \\
+  \Z \oplus \Z \ar[r]
+  &\Z \oplus \Z \ar[r]
+  &\Hmlg_1(T) \ar[r]
+  &\Z \oplus \Z \ar[r]
+  &\Z \oplus \Z
+  \end{tikzcd}
+  \]
+  } In order to analyse the map \((i_* \oplus j_{*})_0\) we can take distinct points
+  \(u, v \in U \cap V\)---each contained in one of the two connected components of
+  \(U \cap V\)---so that \([u]_U\) generates \(\Hmlg_0(U)\) while \([v]_V\) generates
+  \(\Hmlg_0(V)\). It follows that
+  \[
+  \Hmlg_0(U \cap V) \iso \Z [u]_{U \cap V} \oplus \Z [v]_{U \cap V}.
+  \]
+  Notice that since \([u]_U = [v]_U\) and \([u]_V = [v]_V\) then
+  \[
+  (i_{*} \oplus j_{*})_0 [u]_{U \cap V} = (i_{*} \oplus j_{*})_0 [v]_{U \cap V},
+  \]
+  therefore, \(\ker(i_{*} \oplus j_{*})_0 = \Z[u - v]_{U \cap V} \iso \Z\) and from
+  exactness we have
+  \[
+  \im \delta = \ker(i_{*} \oplus j_{*})_0 \iso \Z.
+  \]
+  It should be noted that the long sequence can be split into short exact
+  sequences, for instance, we are interested in the following induced short
+  sequence:
+  \[
+  \begin{tikzcd}
+  0 \ar[r]
+  &\im(k_{*} - \ell_{*})_1 \ar[r] \ar[d, equals]
+  &\Hmlg_1(T) \ar[r] \ar[d, equals]
+  &\im \delta \ar[d, equals] \ar[r]
+  &0
+  \\
+  0 \ar[r]
+  &\im(k_{*} - \ell_{*})_1 \ar[r]
+  &\Hmlg_1(T) \ar[r]
+  &\ker(i_{*} \oplus j_{*})_0
+  \ar[r]
+  &0
+  \end{tikzcd}
+  \]
+  Moreover, we have
+  \[
+  \im (k_{*} - \ell_{*}) \iso \frac{\Z \oplus \Z}{\ker (k_{*} - \ell_{*})}
+  \iso \frac{\Z \oplus \Z}{\im(i_{*} \oplus j_{*})_1}
+  \iso \frac{\Z \oplus \Z}{\Z}
+  \iso \Z,
+  \]
+  therefore the short exact sequence above becomes the split sequence
+  \[
+  \begin{tikzcd}
+  0 \ar[r] &\Z \ar[r] &\Hmlg_1(T) \ar[r] &\Z \ar[r] &0
+  \end{tikzcd}
+  \]
+  which implies in \(\Hmlg_1(T) \iso \Z \oplus \Z\).
+  \end{itemize}
+  This can be summarised as
+  \[
+  \Hmlg_p(T) =
+  \begin{cases}
+    \Z, &\text{if } p = 0 \\
+    \Z \oplus \Z, &\text{if } p = 1 \\
+    \Z, &\text{if } p = 2 \\
+    0, &\text{otherwise}
+  \end{cases}
+  \]
+
+\item Let \(p \in T\) be any point. Consider the cover composed of
+  \(U \coloneq T \setminus p\) and \(V\) being a disk around \(p\). Notice that
+  \(V\) is topologically isomorphic to a disk in \(\R^2\), which is a convex
+  euclidean set, thus
+  \[
+  \Hmlg_p(V) =
+  \begin{cases}
+    \Z, &\text{if } p = 0 \\
+    0,  &\text{otherwise}
+  \end{cases}
+  \]
+  Also notice that \(U \cap V = V \setminus p\), which is isomorphic to \(S^1\), hence
+  \(\Hmlg_p(U \cap V) \iso \Hmlg_p(S^1)\). The reader should now draw for himself
+  the gluing diagram of \(T\) without a point, noticing that we can
+  homotopically remove the inside face of the diagram, remaining only the gluing
+  boundaries, which after being glued we see that
+  \(T \setminus p \isoht S^1 \vee S^1\), hence
+  \(\Hmlg_p(U) \iso \Hmlg_p(S^1 \vee S^1)\). Using the the Hurewicz's theorem we
+  obtain:
+  \[
+  \Hmlg_1(U)
+  \iso \Hmlg_1(S^1 \vee S^1)
+  \iso \pi_1^{\text{Ab}}(S^1 \vee S^1)
+  = (\Z * \Z)^{\text{Ab}}
+  \iso \Z \oplus \Z.
+  \]
+  Notice that for \(p \geq 3\) we have
+  \[
+  \begin{tikzcd}
+  0 = \Hmlg_p(U) \oplus \Hmlg_p(V) \ar[r]
+  &\Hmlg_p(T) \ar[r]
+  &\Hmlg_{p-1}(U \cap V) = 0
+  \end{tikzcd}
+  \]
+  therefore from exactness we get \(\Hmlg_p(T) = 0\). For the case where
+  \(p = 2\) we have:
+  \[
+  \begin{tikzcd}[column sep=small]
+  \Hmlg_2(U) \oplus \Hmlg_2(V)
+  \ar[r] \ar[dd, equals]
+  &\Hmlg_2(T)
+  \ar[r] \ar[dd, equals]
+  &\Hmlg_1(U \cap V)
+  \ar[r] \ar[dd, "\dis"]
+  &\Hmlg_1(U) \oplus \Hmlg_1(V)
+  \ar[d, "\dis"]
+  \\
+  &&
+  &(\Z \oplus \Z) \oplus 0
+  \ar[d, "\dis"]
+  \\
+  0
+  \ar[r]
+  &\Hmlg_2(T)
+  \ar[r]
+  &\Z
+  \ar[r]
+  &\Z \oplus \Z
+  \end{tikzcd}
+  \]
+  Since \(H_1(V)\) is zero, then in particular the map
+  \(\Hmlg_1(U \cap V) \to \Hmlg_1(U) \oplus \Hmlg_1(V)\) sends
+  \([\phi] \mapsto (0, 0)\), therefore the induced map \(\Z \to \Z \oplus \Z\) is zero, that is,
+  has kernel \(\Z\). Since the sequence is exact, the image of
+  \(\Hmlg_2(T) \to \Z\) equals \(\Z\), therefore being both an injection and
+  surjection, proving that \(\Hmlg_2(T) \iso \Z\).
+
+  Now for \(p = 1\):
+  \[
+  \begin{tikzcd}[column sep=small]
+  \Hmlg_1(U \cap V)
+  \ar[r] \ar[dd, "\dis"]
+  &\Hmlg_1(U) \oplus \Hmlg_1(V)
+  \ar[r] \ar[d, "\dis"]
+  &\Hmlg_1(T) \ar[r]
+  \ar[dd, equals]
+  &\Hmlg_0(U \cap V)
+  \ar[dd, "\dis"]
+  \ar[r]
+  &\Hmlg_0(U) \oplus \Hmlg_0(V)
+  \ar[dd, equals]
+  \\
+  &(\Z \oplus \Z) \oplus 0
+  \ar[d, "\dis"]
+  &&&
+  \\
+  \Z
+  \ar[r]
+  &\Z \oplus \Z
+  \ar[r]
+  &\Hmlg_1(T)
+  \ar[r]
+  &\Z \ar[r]
+  &\Z \oplus \Z
+  \end{tikzcd}
+  \]
+  Furthermore, from exactness we know that \(\Z \oplus \Z \to \Hmlg_1(T)\) has null
+  kernel, hence a monomorphism, since the image of \(\Z \to \Z \oplus \Z\) is zero. On
+  the other hand, since \(\Hmlg_0(U \cap V) \to \Hmlg_0(U) \oplus \Hmlg_0(V)\) induces an
+  injective mapping \(1 \mapsto (1, 1)\) of the form \(\Z \to \Z \oplus \Z\), then by
+  exactness it follows that the image of \(\Hmlg_1(T) \to \Hmlg_0(U \cap V)\) is
+  identically zero. This proves that \(\Z \oplus \Z \to \Hmlg_1(T)\) is also an
+  epimorphism, which shows the existence of an isomorphism
+  \(\Hmlg_1(T) \iso \Z \oplus \Z\). In summary we have:
+  \[
+  \Hmlg_p(T) =
+  \begin{cases}
+    \Z, &\text{if } p = 0 \\
+    \Z \oplus \Z, &\text{if } p = 1 \\
+    \Z, &\text{if } p = 2 \\
+    0, &\text{otherwise}
+  \end{cases}
+  \]
+  where \(\Hmlg_0(T) = \Z\) comes from the fact that \(T\) is path-connected.
+\end{enumerate}
+\end{example}
+
+\begin{example}[Klein bottle]
+\label{exp:klein-bottle-homology}
+Let \(K\) denote the Klein bottle and let both \(M\) and \(M'\) denote copies of
+a M\"{o}bius band. If the relation \(\sim\) denoted the gluing of \(M\) and
+\(M'\) along their boundary, then \(K \iso (M \disj M')/{\sim}\). Moreover, we know
+that \(M = M' \isoht S^1\) and \(M \cap M' \isoht S^1\). From this we know that for
+each \(p > 2\) we have
+\[
+\begin{tikzcd}
+\Hmlg_p(M) \oplus \Hmlg_p(M') \ar[r] \ar[d, equals]
+&\Hmlg_p(K) \ar[r] \ar[d, equals]
+&\Hmlg_{p-1}(M \cap M') \ar[d, equals]
+\\
+0 \ar[r]
+&\Hmlg_p(K) \ar[r]
+&0
+\end{tikzcd}
+\]
+therefore \(\Hmlg_p(K) = 0\) from exactness. Let's consider the case where
+\(p = 2\):
+\[
+\begin{tikzcd}
+\Hmlg_2(M) \oplus \Hmlg_2(M') \ar[r] \ar[d, equals]
+&\Hmlg_2(K)
+\ar[r] \ar[d, equals]
+&\Hmlg_1(M \cap M')
+\ar[r] \ar[d, equals]
+&\Hmlg_1(M) \oplus \Hmlg_1(M') \ar[d, equals]
+\\
+0 \ar[r]
+&\Hmlg_2(K)
+\ar[r]
+&\Z
+\ar[r]
+&\Z \oplus \Z
+\end{tikzcd}
+\]
+Consider the circle \(\sigma \in Z_1(M \cap M')\), which generates all
+\(1\)-cycles of the intersection, then when mapped back to either \(M\) or
+\(M'\) we obtain a cycle looping two times around the boundary of the strips,
+therefore the induced mapping \(\Z \to \Z \oplus \Z\) takes
+\(1 \mapsto (2, 2)\), showing that the map is injective---hence has a null kernel. Since
+\(\Hmlg_2(K) \mono \Z\) is also injective, then \(\Hmlg_2(K)\) is isomorphic to
+its image in \(\Z\)---which on the other hand is equal to the kernel of
+\(\Z \to \Z \oplus \Z\) by exactness of the sequence---hence \(\Hmlg_2(K) = 0\).
+
+For the case where \(p=1\) we have:
+\[
+\begin{tikzcd}[column sep=small]
+\Hmlg_1(M) \oplus \Hmlg_1(M') \ar[d, equals] \ar[r]
+&\Hmlg_1(K) \ar[d, equals] \ar[r]
+&\Hmlg_0(M \cap M') \ar[d, equals] \ar[r]
+&\Hmlg_0(M) \oplus \Hmlg_0(M') \ar[r] \ar[d, equals]
+&\Hmlg_0(K) \ar[d, equals]
+\\
+\Z \oplus \Z
+\ar[r]
+&\Hmlg_1(K)
+\ar[r]
+&\Z \ar[r]
+&\Z \oplus \Z \ar[r]
+&\Z
+\end{tikzcd}
+\]
+Notice that \(\Z \to \Z \oplus \Z\) maps \(1 \mapsto (1, 1)\) since it maps the generator of
+the circle \(M \cap M'\) to the generators of the disjoint circles \(M\) and
+\(M'\). This mapping is injective, therefore by
+exactness it follows that the map \(\Hmlg_1(K) \to \Z\) is identically zero. From
+this we can extract the following short exact sequence:
+\[
+\begin{tikzcd}
+0 \ar[r]
+&\Hmlg_1(M \cap M') \ar[r, tail] \ar[d, equals]
+&\Hmlg_1(M) \oplus \Hmlg_1(M) \ar[r, two heads] \ar[d, equals]
+&\Hmlg_1(K) \ar[r] \ar[d, equals]
+&0
+\\
+0 \ar[r]
+&\Z \ar[r, tail]
+&\Z \oplus \Z \ar[r, two heads]
+&\Hmlg_1(K) \ar[r]
+&0
+\end{tikzcd}
+\]
+therefore from the isomorphism theorem for groups we have
+\[
+\Hmlg_1(K)
+\iso \frac{\Z \oplus \Z}{\im(\Z \to \Z \oplus \Z)}
+= \frac{\Z \oplus \Z}{\{(2x, 2x) \colon x \in \Z\}}
+\iso \Z \oplus (\Z/2\Z).
+\]
+Indeed, the last isomorphism is given by the mapping
+\([a, b] \mapsto (a + b, [b])\): surjectivity is trivial, and on the other hand if
+\((a - b, [b]) = (0, [0])\) then \(a = b\) and \(b = 2c\) for some \(c \in \Z\)
+therefore \([a, b] = [2c, 2c] = 0\), proving injectivity---which shows the last
+isomorphism. In summary we obtain:
+\[
+\Hmlg_p(K) =
+\begin{cases}
+  \Z,            &\text{if } p = 0 \\
+  \Z \oplus (\Z/2\Z), &\text{if } p = 1 \\
+  0,             &\text{otherwise}
+\end{cases}
+\]
+\end{example}
+
+\begin{example}[Projective plane]
+\label{exp:rp2-homology}
+Consider \(\R \Proj^2\) as the gluing of the M\"{o}bius strip \(M\) with the
+disk \(D\) along the boundary. Let \(p \in \R \Proj^2\) be any point, define
+\(U\) to be a disk around \(p\), and \(V \coloneq \R \Proj^2 \setminus p \isoht M \isoht
+S^1\)---then we also have \(U \cap V = U \setminus p \isoht S^1\). For any \(p > 2\) we have
+\[
+\begin{tikzcd}
+\Hmlg_p(U) \oplus \Hmlg_p(V) \ar[r] \ar[d, equals]
+&\Hmlg_p(\R \Proj^2) \ar[r] \ar[d, equals]
+&\Hmlg_{p-1}(U \cap V) \ar[d, equals]
+\\
+0 \ar[r]
+&\Hmlg_p(\R \Proj^2) \ar[r]
+&0
+\end{tikzcd}
+\]
+and from exactness we obtain \(\Hmlg_p(\R\Proj^2) = 0\). For the case \(p = 2\)
+we have
+\[
+\begin{tikzcd}[row sep=small]
+\Hmlg_2(U) \oplus \Hmlg_2(V) \ar[r] \ar[dd, equals]
+&\Hmlg_2(\R\Proj^2) \ar[r, "\delta"] \ar[dd, equals]
+&\Hmlg_1(U \cap V) \ar[dd, equals] \ar[r, "i_* \oplus j_{*}"]
+&\Hmlg_1(U) \oplus \Hmlg_1(V) \ar[d, equals]
+\\
+&&&0 \oplus \Z \ar[d, equals]
+\\
+0 \ar[r]
+&\Hmlg_2(\R\Proj^2) \ar[r, tail]
+&\Z \ar[r]
+&\Z
+\end{tikzcd}
+\]
+From injectivity of the map \(\delta\) we find
+\(\Hmlg_2(\R\Proj^2) \iso \im \delta\) and from exactness we have
+\(\im \delta = \ker(i_{*} \oplus j_{*})\). Notice however that the mapping
+\(\Z \to \Z\) must send \(1 \mapsto 2\) since the generator of
+\(\Hmlg_1(U \cap V)\) is a loop through the circle, which is certainly a boundary
+in \(\Hmlg_1(U)\) since \(U\) is a disk, while \(j\) will map such loop to a
+double loop around the boundary of the M\"{o}bius strip. This shows that
+\(i_{*} \oplus j_{*}\) is injective and hence has null kernel, proving that
+\(\Hmlg_2(\R\Proj^2) = 0\). For the case where \(p = 1\) one has, in the reduced
+homology case, that:
+\[
+\begin{tikzcd}[row sep=small]
+\Hmlg_1(U \cap V) \ar[r, "i_{*} \oplus j_{*}"] \ar[dd, equals]
+&\Hmlg_1(U) \oplus \Hmlg_1(V) \ar[r, "k_{*} - \ell_{*}"] \ar[dd, equals]
+&\Hmlg_1(\R\Proj^2) \ar[r] \ar[dd, equals]
+&\rHmlg_0(U \cap V) \ar[d, equals]
+\\
+&&&\rHmlg_0(S^1) \ar[d, equals]
+\\
+\Z \ar[r] &\Z \ar[r, two heads] &\Hmlg_1(\R\Proj^2) \ar[r] &0
+\end{tikzcd}
+\]
+Since \(\Z \epi \Hmlg_1(\R\Proj^2)\) is surjective, there exists an isomorphism
+\[
+\Hmlg_1(\R\Proj^2) \iso \Z/\ker(k_{*} - \ell_{*}) = \Z/\im(i_{*} \oplus j_{*}) = \Z/2\Z.
+\]
+Moreover, since \(\R\Proj^2\) is path-connected then
+\(\Hmlg_0(\R\Proj^2) \iso \Z\). In summary we obtained:
+\[
+\Hmlg_p(\R \Proj^2) =
+\begin{cases}
+  \Z, &\text{if } p = 0 \\
+  \Z/2\Z, &\text{if } p = 1 \\
+  0, &\text{otherwise}
+\end{cases}
+\]
+\end{example}
 
 %%% Local Variables:
 %%% mode: latex

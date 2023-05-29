@@ -19,10 +19,9 @@ the distribution \(\mathcal{D}\), on which the predictor \(h\) fails to meet \(f
 \label{def:training-error}
 Let \(S = (x_i, y_i)_{i=1}^m\) be a training set, sampled from an unknown
 probability distribution \(\mathcal{D}\) and labelled by a target function
-\(f: \mathcal{X} \to \mathcal{Y}\). Let \(h_S: \mathcal{X} \to \mathcal{Y}\) be
-the hypothesis returned by a learning algorithm based on the training set
-\(S\). We define the \emph{training error} \(L_S: \mathcal{Y}^{\mathcal{X}} \to
-\R\) to be the map
+\(f: \mathcal{X} \to \mathcal{Y}\). Let \(h_S: \mathcal{X} \to \mathcal{Y}\) be the hypothesis returned by a learning
+algorithm based on the training set \(S\). We define the \emph{training error}
+\(L_S: \mathcal{Y}^{\mathcal{X}} \to \R\) to be the map
 \[
 L_S(h) \coloneq \frac{|\{i \in [m] \colon h(x_i) \neq y_i\}|}{m}.
 \]
@@ -959,6 +958,141 @@ Let \(\mathcal{H}\) be a hypothesis class. We define the \emph{VC-dimension} of
 \vcdim \mathcal{H} \coloneq \max \{|C| \colon C \subseteq \mathcal{X} \text{ is shattered by } \mathcal{H}|_C\}.
 \]
 \end{definition}
+
+\begin{theorem}
+\label{thm:infinite-VC-dim-not-learnable}
+If \(\mathcal{H}\) is a class with \emph{infinite} VC-dimension, then
+\(\mathcal{H}\) is \emph{not PAC learnable}.
+\end{theorem}
+
+\begin{proof}
+Let \(S\) be a training set with size \(m\). Since
+\(\vcdim \mathcal{H} = \infty\) then there exists a set with size \(2 m\) that is shattered by
+\(\mathcal{H}\)---thus by \cref{cor:shatters-2m-cannot-learn-with-train-of-size-m}
+\(\mathcal{H}\) isn't PAC learnable.
+\end{proof}
+
+\section{Fundamental Theorem of PAC Learning}
+
+\begin{definition}[Growth function]
+\label{def:growth-function-learning}
+Let \(\mathcal{H}\) be a hypothesis class. We define the growth function of \(\mathcal{H}\) to be
+the map \(\Growth_{\mathcal{H}}: \N \to \N\) given by
+\[
+\Growth_{\mathcal{H}}(m) \coloneq \max \{|\mathcal{H}_C| \colon C \subseteq \mathcal{X} \text{ with } |C| = m\}.
+\]
+\end{definition}
+
+\begin{corollary}
+\label{cor:growth-function-lower-vc-dim}
+If \(\vcdim \mathcal{H} = d\) then for any \(m \leq d\) we have \(\Growth_{\mathcal{H}}(m) = 2^m\).
+\end{corollary}
+
+\begin{lemma}[Sauer-Shelah-Perles]
+\label{lem:sauer-shelah-perles}
+Let \(\mathcal{H}\) be a hypothesis class with \(\vcdim \mathcal{H} \leq d\) finite. Then for any
+\(m \in \N\) one has
+\[
+\Growth_{\mathcal{H}}(m) \leq \sum_{j=0}^d \binom m j.
+\]
+In particular, if \(m > d + 1\) then our bound becomes
+\[
+\Growth_{\mathcal{H}}(m) \leq \Big(\frac{e m}{d}\Big)^d
+\]
+\end{lemma}
+
+\begin{theorem}[Fundamental theorem of statistical learning]
+\label{thm:fundamental-thm-stat-learning}
+Let \(\mathcal{H}\) be a hypothesis class of maps \(\mathcal{X} \to \{0, 1\}\) together with the
+binary loss function. The following conditions are equivalent:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The collection \(\mathcal{H}\) has the uniform convergence property.
+
+\item Any ERM rule succeeds at PAC learning \(\mathcal{H}\) agnostically.
+
+\item The collection \(\mathcal{H}\) is agnostic PAC learnable.
+
+\item The collection \(\mathcal{H}\) is PAC learnable.
+
+\item Any ERM rule succeeds at PAC learning \(\mathcal{H}\).
+
+\item The collection \(\mathcal{H}\) has a finite VC-dimension.
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Sample complexity estimation]
+\label{thm:finite-vc-dim-sample-complexity-estimation}
+Let \(\mathcal{H}\) be a hypothesis class of maps \(\mathcal{X} \to \{0, 1\}\) together with the
+binary loss function, and having a finite \(\vcdim \mathcal{H} = d\). There exists
+constants \(c_1, c_2 \in \R\) such that:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item \(\mathcal{H}\) has the uniform convergence property and sample complexity:
+  \[
+  c_1 \frac{d + \log(1/\delta)}{\varepsilon^2} \leq
+  m_{\mathcal{H}}^{\text{UC}}(\varepsilon, \delta) \leq
+  c_2 \frac{d + \log(1/\delta)}{\varepsilon^2}.
+  \]
+
+\item \(\mathcal{H}\) is agnostic PAC learnable and has sample complexity:
+  \[
+  c_1 \frac{d + \log(1/\delta)}{\varepsilon^2} \leq
+  m_{\mathcal{H}}^{\text{UC}}(\varepsilon, \delta) \leq
+  c_2 \frac{d + \log(1/\delta)}{\varepsilon^2}.
+  \]
+
+\item \(\mathcal{H}\) is PAC learnable with sample complexity of:
+  \[
+  c_1 \frac{d + \log(1/\delta)}{\varepsilon} \leq
+  m_{\mathcal{H}}(\varepsilon, \delta) \leq
+  c_2 \frac{d \log(1/\varepsilon) + \log(1/\delta)}{\varepsilon}.
+  \]
+\end{enumerate}
+\end{theorem}
+
+\todo[inline]{Write proof}
+
+\section{Non-Uniform Learnability}
+
+\begin{definition}[Competitive hypothesis]
+\label{def:competitive-hypothesis}
+Let \(\mathcal{H}\) be a hypothesis class, and let \(h, h' \in \mathcal{H}\) be a pair of predictors,
+and consider parameters \(\varepsilon, \delta \in (0, 1)\). We say that \(h\) is
+\((\varepsilon, \delta)\)-competitive with respect to \(h'\) if with a probability of at least
+\(1 - \delta\) we have
+\[
+L_{\mathcal{D}}(h) \leq L_{\mathcal{D}}(h') + \varepsilon.
+\]
+\end{definition}
+
+\begin{definition}
+\label{def:non-uniform-learnable-hypothesis-class}
+We say that a hypothesis class \(\mathcal{H}\) is \emph{non-uniformly learnable} if there
+exists an algorithm \(A\) and a map
+\[
+m_{\mathcal{H}}^{\text{NUL}}: (0, 1)^2 \times \mathcal{H} \longrightarrow \N
+\]
+such that, for every triple \((\varepsilon, \delta, h) \in (0, 1)^2 \times \mathcal{H}\) the resulting predictor
+\(A(S)\) is \((\varepsilon, \delta)\)-competitive with respect to \(h\). That is, with a
+probability of at least \(1 - \delta\) over the choice of sample set \(S \sim \mathcal{D}^m\) we have
+\[
+L_{\mathcal{D}} A(S) \leq L_{\mathcal{D}}(h) + \varepsilon.
+\]
+\end{definition}
+
+\begin{lemma}
+\label{lem:countable-unif-conv-prop--then-non-unif-learnable}
+Let \(\mathcal{H} = \bigcup_{n \in \N} \mathcal{H}_n\) be a hypothesis class. If each \(\mathcal{H}_n\) has the
+uniform convergence property, then \(\mathcal{H}\) is non-uniformly learnable.
+\end{lemma}
+
+\begin{theorem}
+\label{thm:non-uniformly-learnable-iff-countable-union-pac}
+Let \(\mathcal{H}\) be a hypothesis class of maps of the form
+\(\mathcal{X} \to \{0, 1\}\). The class \(\mathcal{H}\) is non-uniformly learnable if and only if it
+consists of a countable union of agnostic PAC learnable hypothesis classes.
+\end{theorem}
+
+
 
 %%% Local Variables:
 %%% mode: latex

@@ -14,79 +14,79 @@
 
 \frontmatter
 
-\input{src/titlepage}
+% \input{src/titlepag
 \maketitle
 
-\tableofcontents
-\listoftodos
+% \tableofcontents
+% \listoftodos
 
-\pagestyle{plain}
+% \pagestyle{plain}
 
-\chapter{Preface}
+% \chapter{Preface}
 
-First of all I should stress that the title page template was taken from the
-beautiful book~\cite{Haine21DiffCoho} by P. Haine et al.~--- the whole credit
-should be given to them. The following text is a compilation of notes for my
-studies in mathematics, that being said, it is clear that the collection of
-mathematical and linguistic errors is non-empty. My main references are
-\begin{itemize}\setlength\itemsep{0em}
-\item Category Theory:~\cite{Rie16} and~\cite{Shap06}.
-\item Algebra:~\cite{Yu89},~\cite{Kim20},~\cite{Aluf09} and~\cite{Lang93}.
-\item Topology:~\cite{Lee11},~\cite{Tai20},~\cite{Mun00} and~\cite{Eng89}.
-\item Differential Structures:~\cite{Zor15},~\cite{Zor16},~\cite{Rud76}
-  and~\cite{Jost06}.
-\item Combinatorics:~\cite{Die16}.
-\item Machine Learning:~\cite{Shai14},~\cite{Bishop06}.
-\end{itemize}
+% First of all I should stress that the title page template was taken from the
+% beautiful book~\cite{Haine21DiffCoho} by P. Haine et al.~--- the whole credit
+% should be given to them. The following text is a compilation of notes for my
+% studies in mathematics, that being said, it is clear that the collection of
+% mathematical and linguistic errors is non-empty. My main references are
+% \begin{itemize}\setlength\itemsep{0em}
+% \item Category Theory:~\cite{Rie16} and~\cite{Shap06}.
+% \item Algebra:~\cite{Yu89},~\cite{Kim20},~\cite{Aluf09} and~\cite{Lang93}.
+% \item Topology:~\cite{Lee11},~\cite{Tai20},~\cite{Mun00} and~\cite{Eng89}.
+% \item Differential Structures:~\cite{Zor15},~\cite{Zor16},~\cite{Rud76}
+%   and~\cite{Jost06}.
+% \item Combinatorics:~\cite{Die16}.
+% \item Machine Learning:~\cite{Shai14},~\cite{Bishop06}.
+% \end{itemize}
 
 \mainmatter
 
 % NOTE: the spacing correction in the part titles is needed because latex
 % handles absolutely poorly the spacing between the roman numbers and the title
 
-\part{Category Theory}
+% \part{Category Theory}
 
-\subfile{src/category-theory/main-categories}
+% \subfile{src/category-theory/main-categories}
 
 \part{Algebra}
 
-\subfile{src/algebra/linalg/main-linalg}
-\subfile{src/algebra/group/main-group}
+% \subfile{src/algebra/linalg/main-linalg}
+% \subfile{src/algebra/group/main-group}
 \subfile{src/algebra/rings-and-modules/main-rings-and-modules}
 
-\part{~~Combinatorics}
+% \part{~~Combinatorics}
 
-\subfile{src/combinatorics/main-combinatorics}
+% \subfile{src/combinatorics/main-combinatorics}
 
-\part{~~Classical Topology}
+% \part{~~Classical Topology}
 
-\subfile{src/topology/classical-topology/main-classical-topology}
+% \subfile{src/topology/classical-topology/main-classical-topology}
 
-\part{~Algebraic Topology}
+% \part{~Algebraic Topology}
+%
+% \subfile{src/topology/algebraic-topology/main-algebraic-topology}
 
-\subfile{src/topology/algebraic-topology/main-algebraic-topology}
+% \part{~~Homotopy Theory}
 
-\part{~~Homotopy Theory}
+% \subfile{src/topology/homotopy-theory/main-htpy}
 
-\subfile{src/topology/homotopy-theory/main-htpy}
+% \part{~~Manifold Theory}
 
-\part{~~Manifold Theory}
+% \subfile{src/differentiable/manifold/main-manifold}
 
-\subfile{src/differentiable/manifold/main-manifold}
+% \part{~~~~~Analysis}
 
-\part{~~~~~Analysis}
+% \subfile{src/differentiable/functional-analysis/main-functional-analysis}
 
-\subfile{src/differentiable/functional-analysis/main-functional-analysis}
+% \part{~~Machine Learning}
+%
+% \subfile{src/machine-learning/main-ml}
 
-\part{~~Machine Learning}
+% \appendix
 
-\subfile{src/machine-learning/main-ml}
+% \part{~~~~Appendix}
 
-\appendix
-
-\part{~~~~Appendix}
-
-\subfile{src/appendix/main-appendix}
+% \subfile{src/appendix/main-appendix}
 % % \subfile{src/appendix/papers/main-papers}
 
 \printbibliography
