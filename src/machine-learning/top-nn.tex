@@ -6,7 +6,7 @@
 \label{def:combinatorial-complex}
 A \emph{combinatorial complex} (CC) consists of a triple
 \(\mathcal{X} = (V, C, \rank)\) where we have a set of \emph{vertices} \(V\), a set of
-\emph{cells} \(C \subseteq 2^S \setminus \emptyset\) (endowed with the inclusion preorder) and a map
+\emph{cells} \(C \subseteq 2^V \setminus \emptyset\) (endowed with the inclusion preorder) and a map
 \(\rank: C \to \Z_{\geq 0}\) such that:
 \begin{enumerate}[(a)]\setlength\itemsep{0em}
 \item For all \(v \in V\) we have \(\{v\} \in C\).
@@ -48,7 +48,7 @@ composed of exactly \(2\) vertices are called \emph{graph-based combinatorial
 Let \(\mathcal{X}\) and \(\mathcal{Y}\) be combinatorial complexes. We define a \emph{CC-morphism}
 \(\phi: \mathcal{X} \to \mathcal{Y}\) to be a map \(\phi: \Cell \mathcal{X} \to \Cell \mathcal{Y}\) satisfying:
 \begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item Given a pair \(x, x' \in \Cell \mathcal{X}\) such that \(x \leq x'\), then \(\phi x \subseteq \phi
+\item Given a pair \(x, x' \in \Cell \mathcal{X}\) such that \(x \subseteq x'\), then \(\phi x \subseteq \phi
   x'\)---that is, \(\phi\) is order preserving.
 \item For any \(x \in \Cell \mathcal{X}\) we have
   \(\rank_{\mathcal{X}} x \geq \rank_{\mathcal{Y}}(\phi x)\)---that is, for any
