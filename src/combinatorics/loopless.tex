@@ -125,7 +125,7 @@ Given a graph property \(P\), a graph \(G = (V, E)\) is said to be
 \begin{definition}[Clique]\label{def: clique}
 Let \(G\) be a graph and \(S \subseteq \Vertex(G)\) be a subset with \(k\) vertices.
 If the graph \(G[S]\) is complete, we call it a \(k\)-clique. Trivially,
-\(G[S] \iso K_k\).
+\(G[S] \iso K^k\).
 \end{definition}
 
 \begin{definition}[Complement graph]\label{def: complement-graph}
@@ -190,10 +190,13 @@ The number of vertices of odd degree in a graph is even.
 
 \begin{proof}
 Let \(G\) be a graph. Since \(\size G \in \N\) and \(\size G = \frac 1 2
-\sum_{v \in \Vertex(G)} \deg v\), then \(\sum_{v \in \Vertex(G)} \deg v\) is even. If the
-number of odd degree vertices where odd, then the sum of their degrees would
-also be odd. Since the sum of even degree vertices is always even, it is
-necessary for the number of odd degree vertices to be even.
+\sum_{v \in \Vertex(G)} \deg v\), then
+\[
+    \sum_{v \in \Vertex(G)} \deg v
+\]
+is even. If the number of odd degree vertices where odd, then the sum of their
+degrees would also be odd. Since the sum of even degree vertices is always
+even, it is necessary for the number of odd degree vertices to be even.
 \end{proof}
 
 \begin{proposition}[Edge-dense subgraph]\label{prop: edge-dense-subgraph}
@@ -243,11 +246,14 @@ A graph \(G\) is said to be \(k\)-regular---for some \(k \in \N\)---if
 
 \begin{definition}[Walk]\label{def: walk}
 A walk on a graph \(G\) is defined to be a subgraph \(W \subseteq G\)---assume \(|W| = n
-+ 1\) for some \(n \in \N\)---such that there exists a \emph{surjective map} \(\ell:
-[n] \epi \Vertex(W)\) satisfying the condition of \(\Edge_G(\ell(k), \ell(k + 1))\) for all \(0
-\leq k < n\). We'll generally assume this underlying surjective vertex-labelling
-map and denote \(W = (\ell(0), \dots, \ell(n)) = (v_0, \dots, v_n)\). The walk \(W\)
-is said to be closed if \(v_0 = v_n\).
++ 1\) for some \(n \in \N\)---such that there exists a \emph{surjective map}
+\[
+    \ell: [n] \epi \Vertex(W)
+\]
+satisfying the condition of \(\Edge_G(\ell(k-1), \ell(k))\) for all \(1 < k <
+n\). We'll generally assume this underlying surjective vertex-labelling map and
+denote \(W = (\ell(1), \dots, \ell(n)) = (v_1, \dots, v_{n})\). The walk
+\(W\) is said to be closed if \(v_1 = v_{n}\).
 \end{definition}
 
 \begin{definition}[Length]\label{def: walk-length}
@@ -275,14 +281,18 @@ Given a path \(W = (v_0, \dots, v_n)\) we can define the following:
 
 \begin{definition}[Path]\label{def: path}
 We define a path to be walk with no repeating vertices. A path graph \(P_n\)
-is a graph of order \(n + 1\) and size \(n\) such that there exists a
-\emph{bijective map} \(\ell_n: [n] \isoto \Vertex(P_n)\) for which
-\(\Edge_{P_n}(\ell_n(k), \ell_n(k+1))\) for all \(0 \leq k < n\). We'll usually
-assume the existence of the underlying vertex-labelling bijection \(\ell_n\).
-This way we can naturally write the path \(P_n\) as a unique sequence of
-vertices \((v_0, v_1, \dots, v_n)\) \emph{up to isomorphism} of graphs.
+is a graph of order \(n\) and size \(n-1\) such that there exists a
+\emph{bijective map}
+\[
+    \ell_n: [n] \isoto \Vertex(P_n)
+\]
+for which \(\Edge_{P_n}(\ell_n(k-1), \ell_n(k))\) for all \(1 < k < n\).
+We'll usually assume the existence of the underlying vertex-labelling bijection
+\(\ell_n\). This way we can naturally write the path \(P_n\) as a unique
+sequence of vertices \((v_1, \dots, v_n)\) \emph{up to isomorphism} of
+graphs.
 
-Given a graph \(G\), we define a path of size \(n + 1\) \emph{on} \(G\) to be
+Given a graph \(G\), we define a path of size \(n\) \emph{on} \(G\) to be
 the \emph{induced subgraph} of \(G\) given by \(G[\iota(P_n)]\), where
 \(\iota: P_n \emb G\) is an \emph{embedding of graphs}---see \cref{def:
 graph-embedding}. The underlying labelling is now given by the composition
@@ -295,17 +305,20 @@ Since a path is just a special type of walk, every operation described on
 \begin{proposition}[Transforming paths into walks]
 \label{prop: morphism-path-walk}
 A map \(\phi: P_n \to G\) is a morphism of graphs if and only if the sequence
-\((\phi(v_0), \dots, \phi(v_n))\) is a walk on \(G\).
+\((\phi(v_0), \dots, \phi(v_{n-1}))\) is a walk on \(G\).
 \end{proposition}
 
 \begin{proof}
-Throughout, assume \(0 \leq j < n\). If \(\phi\) is a morphism of graphs then
-\(\Edge_{P_n}(v_j, v_{j + 1})\) implies \(\Edge_G(\phi(v_j), \phi(v_{j+1}))\) thus
-inducing a walk on \(G\). On the other hand, if \((\phi(v_0), \dots,
-\phi(v_n))\) is a walk on \(G\), then since the only edges on \(P_n\) occur
-between consequent vertices \(v_j\) and \(v_{j+1}\), we have that \(\phi\)
+Throughout, assume \(1 < j < n\). If \(\phi\) is a morphism of graphs then
+\(\Edge_{P_n}(v_{j-1}, v_{j})\) implies \(\Edge_G(\phi(v_{j-1}), \phi(v_{j}))\) thus
+inducing a walk on \(G\). On the other hand, if
+\[
+    (\phi(v_1), \dots, \phi(v_{n}))
+\]
+is a walk on \(G\), then since the only edges on \(P_n\) occur
+between consequent vertices \(v_{j-1}\) and \(v_{j}\), we have that \(\phi\)
 indeed preserves the adjacency structure of the path \(P_n\), that is,
-\(\Edge_{P_n}(v_j, v_{j+1})\) implies \(\Edge_G(\phi(v_j), \phi(v_{j+1}))\)---hence
+\(\Edge_{P_n}(v_{j-1}, v_{j})\) implies \(\Edge_G(\phi(v_{j-1}), \phi(v_{j}))\)---hence
 \(\phi\) is a morphism.
 \end{proof}
 
@@ -320,7 +333,7 @@ end-vertices---if not, we would be analogously analysing the subwalk
 \(xWy\). Let \(\ell: [k] \epi \Vertex(W)\) be a surjective labelling on
 \(W\)---since \(x\) and \(y\) are end-vertices, we have
 \begin{equation}\label{eq: paths-on-walks-1}
-  \ell(0) = x\ \text{ and }\ \ell(k) = y.
+  \ell(1) = x\ \text{ and }\ \ell(k) = y.
 \end{equation}
 Let \(\mathcal C\) be the
 collection of all cycles on \(W\)---refer to \cref{def: cycle}. Define the
@@ -333,12 +346,12 @@ can first construct an equivalence relation \(\sim_\ell\) on the indexing set
 \([k]\), defined as follows: \(i \sim_\ell j\) if and only if
 \(\ell(i) \sim \ell(j)\)---clearly \([k]/{\sim_\ell}\) is an indexing set for
 the vertices of the quotient graph. Lets assume that
-\([k]/{\sim_\ell}\, = \{\overline 0, \dots, \overline m\}\). Let
+\([k]/{\sim_\ell}\, = \{\overline 1, \dots, \overline m\}\). Let
 \(\ell': [k]/{\sim_\ell}\, \to \Vertex(W/{\sim})\) be a labelling on
 \(W/{\sim}\) defined as \(\ell'(\overline j) = \overline{\ell(j)}\). Using
 \cref{eq: paths-on-walks-1}, the sequence of vertices
-\((\ell'(\overline 0), \dots, \ell'(\overline m))\) is such that
-\(\ell'(\overline 0) = \overline x\) and \(\ell'(\overline m) = \overline y\).
+\((\ell'(\overline 1), \dots, \ell'(\overline m))\) is such that
+\(\ell'(\overline 1) = \overline x\) and \(\ell'(\overline m) = \overline y\).
 Also,
 \(\Edge_{W/{\sim}}(\ell'(\overline j), \ell'(\overline{j + 1})) = \Edge_W(\ell(j),
 \ell(j+1))\) is always true (because \(W\) is a walk). So far, we've shown that
