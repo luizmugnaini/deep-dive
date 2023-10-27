@@ -1,0 +1,632 @@
+\documentclass[11pt, reqno]{amsart}
+\usepackage[english]{babel}
+
+\usepackage{layout}
+\usepackage{afterpage}
+\usepackage[
+  asymmetric,
+  textheight     = 673pt,
+  marginparsep   = 7pt,
+  footskip       = 27pt,
+  hoffset        = 0pt,
+  paperwidth     = 597pt,
+  textwidth      = 452pt,
+  marginparwidth = 101pt,
+  voffset        = 0pt,
+  paperheight    = 845pt,
+]{geometry}
+
+\newcommand{\changegeometry}{\newgeometry{includehead,headheight=89pt}%
+  \afterpage{\aftergroup\restoregeometry}%
+}
+
+% Math stuff: do not mess with the ordering!
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{stmaryrd}
+\usepackage{tikz-cd}
+\usepackage{tqft}
+
+% Font
+\usepackage[no-math]{newpxtext}
+\usepackage{newpxmath}
+% Set arrow tip to that of newpxmath
+\tikzset{>=Straight Barb, commutative diagrams/arrow style=tikz}
+
+% Utilities
+\usepackage{enumerate}
+\usepackage{todonotes}
+\usepackage{graphicx}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Horizontal rule
+\usepackage{multirow}
+
+% Color
+\usepackage{xcolor}
+\definecolor{brightmaroon}{rgb}{0.76, 0.13, 0.28}
+
+\usepackage{pdfpages}
+
+% References
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks = true,
+  allcolors  = brightmaroon,
+}
+\usepackage[capitalize,nameinlink]{cleveref}
+\usepackage[
+  backend = biber,
+  style   = alphabetic,
+]{biblatex}
+\addbibresource{bibliography.bib}
+
+
+% Table of contents: show subsections
+\setcounter{tocdepth}{2}
+
+\linespread{1.05}
+\vfuzz=14pt % No more vbox errors all over the place
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** Environments **
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{notation}[theorem]{Notation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** symbols **
+
+\renewcommand{\qedsymbol}{\(\natural\)}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\setminus}{\smallsetminus}
+\renewcommand{\preceq}{\preccurlyeq}
+
+% ':' for maps and '\colon' for relations on collections
+\DeclareMathSymbol{:}{\mathpunct}{operators}{"3A}
+\let\colon\relax
+\DeclareMathSymbol{\colon}{\mathrel}{operators}{"3A}
+
+% Disjoint unions over sets
+\newcommand{\disj}{\amalg}     % Disjoint union
+\newcommand{\bigdisj}{\coprod} % Indexed disjoint union
+
+\DeclareMathOperator{\Log}{Log}
+\newcommand{\img}{\text{i}}
+
+% Constant map
+\DeclareMathOperator{\const}{cons}
+
+% Multiplication map
+\DeclareMathOperator{\mul}{mul}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** arrows **
+
+% Alias for Rightarrow
+\newcommand{\To}{\Rightarrow}
+
+% Monomorphism arrow
+\newcommand{\mono}{\rightarrowtail}
+
+% Epimorphism arrow
+\newcommand{\epi}{\twoheadrightarrow}
+
+% Unique morphism
+\newcommand{\unique}{\to}%{\dashrightarrow}
+\newcommand{\xdashrightarrow}[2][]{\ext@arrow 0359\rightarrowfill@@{#1}{#2}}
+
+% Isomorphism symbol
+\newcommand{\iso}{\simeq}
+
+\newcommand{\arrowiso}{\iso}
+% Isomorphism arrow
+\newcommand{\isoto}{\xrightarrow{\raisebox{-.6ex}[0ex][0ex]{\(\arrowiso\)}}}
+
+% How isomorphisms are depicted in diagrams: either \sim or \simeq
+\newcommand{\dis}{\iso}
+
+\newcommand{\isounique}{%
+  \xdashrightarrow{\raisebox{-.6ex}[0ex][0ex]{\(\arrowiso\)}}
+}%
+
+% Natural transformation arrow
+\newcommand{\nat}{\Rightarrow}
+
+% Natural isomorphism
+\newcommand{\isonat}{\xRightarrow{\raisebox{-.6ex}[0ex][0ex]{\(\arrowiso\)}}}
+
+% Embedding arrow
+\newcommand{\emb}{\hookrightarrow}
+
+% Parallel arrows
+\newcommand{\para}{\rightrightarrows}
+
+% Adjoint arrows
+\newcommand{\adj}{\rightleftarrows}
+
+% Implication
+\renewcommand{\implies}{\Rightarrow}
+\renewcommand{\impliedby}{\Leftarrow}
+
+% Limits
+\DeclareMathOperator{\Lim}{lim}     % Limit
+\DeclareMathOperator{\Colim}{colim} % Colimit
+\DeclareMathOperator{\Eq}{eq}       % Equalizer
+\DeclareMathOperator{\Coeq}{coeq}   % Coequalizer
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** Common collections **
+
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\Q}{\mathbf{Q}}
+\newcommand{\CC}{\mathbf{C}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\FF}{\mathbf{F}}
+
+\renewcommand{\emptyset}{\varnothing}
+
+\newcommand{\Uhs}{\mathbf{H}}  % Upper half space
+\newcommand{\Proj}{\mathbf{P}} % Projective space
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** Categories **
+
+% Font for categories
+\newcommand{\cat}{\texttt}
+\newcommand{\catfont}{\texttt}
+
+% Opposite category
+\newcommand{\op}{\mathrm{op}}
+
+% Common categories
+\newcommand{\Set}{{\catfont{Set}}}          % Sets
+\newcommand{\FinSet}{{\catfont{FinSet}}}    % Finite sets
+\newcommand{\pSet}{{\catfont{pSet}}}        % Pointed sets
+\newcommand{\tOrd}{{\catfont{tOrd}}}        % Totally ordered sets
+
+\newcommand{\Vect}{{\catfont{Vect}}}        % Vector spaces
+\newcommand{\FinVect}{{\catfont{FinVect}}}  % Finite vector spaces
+
+\newcommand{\TVect}{{\catfont{TVect}}}      % Topological vector spaces
+\newcommand{\Ban}{{\catfont{Ban}}}          % Banach spaces
+
+\newcommand{\Grp}{{\catfont{Grp}}}          % Groups
+\newcommand{\Ab}{{\catfont{Ab}}}            % Abelian groups
+\newcommand{\GSet}[1]{{{#1}\text{-}\Set}}   % G-sets
+\newcommand{\Grpd}{{\catfont{Grpd}}}        % Groupoids
+
+\newcommand{\Mon}{{\catfont{Mon}}}          % Monoidal category
+\newcommand{\coMon}{{\catfont{coMon}}}      % coMonoidal category
+\newcommand{\rActMon}{{\catfont{rActMon}}}  % right action category
+\newcommand{\lActMon}{{\catfont{lActMon}}}  % left action category
+\newcommand{\BrMonCat}{{\catfont{BrMonCat}}} % Cat of braided monoidal cats
+
+\newcommand{\Graph}{{\catfont{Graph}}}      % Graphs
+\newcommand{\SimpGraph}{{\catfont{sGraph}}} % Simple graphs
+\newcommand{\ProfCol}{{\catfont{Prof}(\Col)}}   % C-profile category
+
+
+\newcommand{\Rng}{{\catfont{Ring}}}             % Rings
+\newcommand{\cRng}{{\catfont{CRing}}}           % Commutative rings
+\newcommand{\rMod}[1]{{\texttt{Mod}_{#1}}}      % Right modules
+\newcommand{\lMod}[1]{{{}_{#1}\catfont{Mod}}}   % Left modules
+\newcommand{\Mod}[1]{{#1\text{-}\catfont{Mod}}} % Modules over comm. ring
+\newcommand{\Alg}[1]{{#1\text{-}\catfont{Alg}}} % Algebras
+\newcommand{\cAlg}[1]{{#1\text{-}\catfont{CAlg}}} % Commutative algebras
+
+\newcommand{\Cat}{{\catfont{Cat}}}          % Small categories
+\newcommand{\CAT}{{\catfont{CAT}}}          % Big categories
+\newcommand{\UCat}{{\mathcal{U}\text{-}\catfont{Cat}}} % U-Categories
+
+\newcommand{\Psh}[1]{{\catfont{Psh}({#1})}}   % Category of presheaves
+\newcommand{\comma}{\downarrow} % Comma category separator
+\DeclareMathOperator{\El}{El}              % Category of elements
+
+\DeclareMathOperator{\Map}{Map}
+
+% Operators
+\DeclareMathOperator{\Hom}{Mor}   % Morphisms
+\DeclareMathOperator{\Mono}{Mono} % Monomorphisms
+\DeclareMathOperator{\Epi}{Epi}   % Epimorphisms
+\DeclareMathOperator{\Fct}{Fct}   % Functors
+\DeclareMathOperator{\Obj}{Obj}   % Objects
+\DeclareMathOperator{\Mor}{Mor}   % Morphisms, again
+\DeclareMathOperator{\End}{End}   % Endomorphisms
+\DeclareMathOperator{\Aut}{Aut}   % Automorphisms
+\DeclareMathOperator{\Id}{id}     % Identity
+\DeclareMathOperator{\im}{im}     % Image
+\DeclareMathOperator{\dom}{dom}   % Domain
+\DeclareMathOperator{\codom}{cod} % Codomain
+\DeclareMathOperator{\supp}{supp} % Support
+
+% Yoneda embedding
+\newcommand{\yo}{\text{\usefont{U}{min}{m}{n}\symbol{'210}}}
+\DeclareFontFamily{U}{min}{}
+\DeclareFontShape{U}{min}{m}{n}{<-> udmj30}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** algebra **
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\Tr}{tr}   % Trace
+\DeclareMathOperator{\Sym}{Sym} % Symmetric space
+\DeclareMathOperator{\Alt}{Alt} % Alternating space
+\DeclareMathOperator{\Ann}{Ann} % Annihilator
+\DeclareMathOperator{\Char}{char}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\Inn}{Inn}     % Inner automorphisms
+\DeclareMathOperator{\Spec}{Spec}   % Prime spectrum
+\DeclareMathOperator{\Specm}{Spec_m} % Maximal spectrum
+\newcommand{\lie}[1]{\mathfrak{#1}} % Font for Lie structures
+\DeclareMathOperator{\Rees}{Rees}   % Rees algebra
+\DeclareMathOperator{\Frac}{Frac}   % Field of fractions
+
+\DeclareMathOperator{\torsion}{\texttt{tor}}   % Torsion
+
+\DeclareMathOperator{\eval}{eval}
+\DeclareMathOperator{\sign}{sign}
+
+% Matrices
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\PSL}{PSL}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\Unit}{U}
+\DeclareMathOperator{\Orth}{O}
+
+% Symbol for the group of units --- for instance, the group of units of a ring
+% \(R\) will be denoted by \(R^{\unit}\).
+\newcommand{\unit}{\times}
+
+% Orbit and stabilizer
+\DeclareMathOperator{\Orb}{Orb}
+\DeclareMathOperator{\Stab}{Stab}
+
+% Left and right group actions
+\newcommand{\laction}{\circlearrowright}
+\newcommand{\raction}{\circlearrowleft}
+
+% Ring ideals font
+\newcommand{\ideal}[1]{\mathfrak{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** Topology **
+
+\let\Top\relax
+\newcommand{\Top}{{\catfont{Top}}}                       % Topological spaces
+
+\newcommand{\wHTop}{{\catfont{wH}\text{-}\catfont{Top}}} % Weak Hausdorff
+\newcommand{\kTop}{{k\text{-}\catfont{Top}}}             % k-spaces
+\newcommand{\cgTop}{{\catfont{cgTop}}} % Compactly generated
+
+\newcommand{\pTop}{{\catfont{Top}^{*}}}   % Pointed top spaces
+\newcommand{\bpTop}{{\catfont{Top}^{*/}}} % Base point top spaces
+
+\newcommand{\Ho}[1]{{\catfont{Ho}(#1)}}            % Homotopy category
+\newcommand{\HoTop}{{\catfont{Ho}(\catfont{Top})}} % Classical Homotopy cat
+
+\newcommand{\Splx}{{\mathbf{\Delta}}}           % Simplex category
+\newcommand{\sSet}{{\catfont{sSet}}}            % Simplicial sets
+\newcommand{\Simp}[1]{{\catfont{Simp}(#1)}}     % Simplicial category
+\newcommand{\CoSimp}[1]{{\catfont{CoSimp}(#1)}} % Cosimplicial category
+
+\newcommand{\splx}{\Delta}
+\newcommand{\splxtop}{\Delta_{\text{top}}}
+
+\DeclareMathOperator{\Sing}{Sing} % Singular complex functor
+\DeclareMathOperator{\Nondeg}{nd} % Non-degenerate simplices
+\newcommand{\disc}{\text{disc}}   % discrete
+
+\DeclareMathOperator{\Sk}{sk} % Skeleton
+
+\DeclareMathOperator{\Cof}{Cof} % Cofibrant replacement
+\DeclareMathOperator{\Fib}{Fib} % Fibrant replacement
+\newcommand{\operad}{\mathcal}
+\newcommand{\Operad}{{\catfont{Operad}}}
+
+% attaching spaces
+\newcommand{\att}{\amalg}     % Disjoint union
+\newcommand{\bigatt}{\coprod} % Indexed disjoint union
+
+% Homotopy
+\newcommand{\simht}{\sim_{\text{h}}}              % Homotopy between maps
+\newcommand{\simhtrel}[1]{\sim_{\text{rel }{#1}}} % Relative htpy
+\newcommand{\isoht}{\iso_{\text{h}}}              % Homotopy equivalence
+\newcommand{\htpy}{\Rightarrow}                   % Htpy arrow
+\newcommand{\htpyrel}[1]{\Rightarrow_{\text{rel }{#1}}} % Relative htpy arrow
+
+
+% Functors on topological spaces
+\DeclareMathOperator{\Disc}{Disc}       % Discrete topology: Set -> Top
+\DeclareMathOperator{\Cone}{Cone}       % Cone
+\DeclareMathOperator{\Cyl}{Cyl}         % Cylinder
+\DeclareMathOperator{\Susp}{S}          % Suspension
+\DeclareMathOperator{\rSusp}{\Sigma}    % Reduced suspension
+\DeclareMathOperator{\Path}{Path}       % Path object
+\DeclareMathOperator{\Loop}{\Omega}       % Loop space
+\DeclareMathOperator{\Eval}{eval}       % Evaluation map
+\DeclareMathOperator{\curry}{curry}     % Currying a map
+\DeclareMathOperator{\uncurry}{uncurry} % Currying a map
+\DeclareMathOperator{\co}{co}           % Compact open co(K, U)
+
+\newcommand{\lift}{\widehat} % Lifting of path and stuff
+
+% Set operators
+\DeclareMathOperator{\Cl}{Cl}       % Closure
+\DeclareMathOperator{\Bd}{\partial} % Boundary
+\DeclareMathOperator{\Int}{Int}     % Interior
+\DeclareMathOperator{\Ext}{Ext}     % Exterior
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** Differentiable structures **
+
+\newcommand{\Bun}{{\catfont{Bun}}} % Bundle category
+\newcommand{\VecBun}{{\catfont{VecBun}}} % Vector Bundle category
+\newcommand{\Man}{{\catfont{Man}}} % Manifolds
+
+% Norm
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+
+% Differential operators
+\newcommand{\diff}{\mathrm{d}}
+\newcommand{\Diff}{\mathrm{D}}
+\DeclareMathOperator{\grad}{grad} % Gradient
+\DeclareMathOperator{\Hess}{Hess} % Hessian
+\DeclareMathOperator{\Jac}{Jac}   % Jacobian
+\DeclareMathOperator{\Curl}{Curl} % Curl
+\DeclareMathOperator{\VecField}{\mathfrak{X}}
+
+\DeclareMathOperator{\Grass}{Grass}    % Grassmann variety
+\DeclareMathOperator{\Stie}{Stie}      % Stiefel variety
+
+% Vector bundle
+\DeclareMathOperator{\zerosec}{Zero} % Zero section
+
+\newcommand{\trans}{\pitchfork} % Transversality
+
+% Set operators
+\DeclareMathOperator{\Vol}{vol}   % Volume
+\DeclareMathOperator{\Mesh}{mesh} % Mesh
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** Graphs **
+
+% Colouring
+\newcommand{\Col}{\mathfrak{C}}
+\newcommand{\prof}[1]{\underline{#1}}
+
+\DeclareMathOperator{\Edge}{Edge}
+\DeclareMathOperator{\Vertex}{Vert}
+\DeclareMathOperator{\Circ}{circ}
+\DeclareMathOperator{\diam}{diam}
+\newcommand{\emptygraph}{\varnothing}
+\DeclarePairedDelimiterX{\size}[1]{\lVert}{\rVert}{#1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** machine learning **
+
+\DeclareMathOperator{\Prob}{\mathbb{P}} % Probability
+\DeclareMathOperator{\Expect}{\mathbb{E}} % Expectation
+\newcommand{\Mean}{\mu} % Mean
+\DeclareMathOperator{\Cov}{Cov} % Covariance
+\DeclareMathOperator{\Var}{Var} % Variance
+\DeclareMathOperator{\Correlation}{Corr}
+\DeclareMathOperator{\stdev}{\sigma} % standard deviation
+\DeclareMathOperator{\ndist}{\mathcal{N}} % Normal distribution
+\DeclareMathOperator{\precision}{\beta}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\vcdim}{VCdim}
+\DeclareMathOperator{\Growth}{Growth} % Growth function
+\DeclareMathOperator{\Quantile}{Quant}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** MACROS END HERE **
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\begin{titlepage}
+ \vfill
+  \begin{center}
+       \textsc{\LARGE \textbf{University of São Paulo}} \\[2.0cm]
+
+       \vskip 0.5cm
+       \textsc{\large Luiz Gustavo Mugnaini Anselmo}
+
+       {\normalsize Molecular Sciences Course \\
+         Class 30, n\(^{\text{o}}\)
+         USP 11809746
+
+       E-mail: \texttt{luizmugnaini@usp.br}}\\[2.0cm]
+
+       \HRule\\
+       \vskip 0.5cm
+       {\LARGE \textbf{Dendroidal Homotopy Theory \& Operads}}
+       \HRule\\[1.5cm]
+
+       \hspace{.45\textwidth}
+       \begin{minipage}{.5\textwidth}
+       \normalsize \textbf{Advanced Studies Report III}\\[0.5cm]
+
+       \textsc{\large Prof.~Ivan Struchiner}\\
+       University of São Paulo \\
+       Institute of Mathematics and Statistics \\
+       E-mail: \texttt{ivanstru@ime.usp.br}\\[1cm]
+
+       \normalsize São Paulo, July of 2023
+       \end{minipage}
+  \end{center}
+\end{titlepage}
+
+% Title stuff
+\title[Dendroidal Homotopy Theory \& Operads]{%
+{\footnotesize\sl Advanced Studies Report III} \\ \smallskip
+  Dendroidal Homotopy Theory \& Operads
+}%
+
+\author{%
+  Luiz Gustavo Mugnaini Anselmo and Ivan Struchiner
+}%
+
+\address{%
+  Institute of Mathematics and Statistics, University of São
+  Paulo, Rua do Matão 1010, 05508--090~São Paulo, SP
+}%
+
+\email{luizmugnaini@usp.br, ivanstru@ime.usp.br}
+
+\begin{abstract}
+This report documents the research advances of the student Luiz G. Mugnaini
+A. during his third semester of the advanced cycle of the Molecular Sciences
+course. The main topic of research explored this semester was the study of model
+categories, operads, and dendroidal sets.
+\end{abstract}
+\maketitle
+
+% \section{This Semester \&  the Future of the Project}
+
+% With the insurgence of geometric and topological deep learning, we think it
+% would be a great opportunity to utilise our knowledge of algebraic topology to
+% help advance these fields of research---which currently lack mathematical
+% formality and a good framework to build upon. This led us to the decision that
+% part of our research group would start focusing on topological deep learning
+% using techniques from pure mathematics. With this in mind, we opted to add to my
+% semester (2023/1) a course on machine learning (MAC5832). Moreover, we thought
+% it would be a great idea to exchange the course on algebraic geometry (MAT5761)
+% for one in homological algebra (MAT5997), which would best fit our intentions
+% with the current research. All alterations where properly approved by Ivan
+% Struchiner.
+
+% \begin{table}[h!]\label{tab:disc}
+%   \centering
+%   \caption{Modified list of courses attended in the first semester of 2023.}
+%   \begin{tabular}{ |c|c|c|c|c| }
+%     \hline
+%     Year and Semester & Code & Discipline & Type & Credits \\
+%     \hline
+%     \multirow{4}{*}{2023 / 1}
+%                    & CCM0328 & Iniciação à Pesquisa II            & G  & 12 \\
+%                    & MAT5997 & Tópicos de Álgebra   & PG & 8 \\
+%                    & MAT6684 & Topologia Algébrica                & PG & 8 \\
+%                    & MAC5832 & Introdução ao Aprendizado de Máquina & PG & 8 \\
+%     \hline
+% \end{tabular}
+% \end{table}
+
+\section{Operads}
+
+\begin{definition}[Operad]
+\label{def:operad}
+An \emph{operad} \(\operad P\) is given by a \emph{set} of \emph{colours} \(C\),
+and for each \(n \in \N\) and a sequence \(c_1, \dots, c_n, c \in C\) there is a set
+\emph{operations} denoted by
+\[
+\operad P(c_1, \ldots, c_n; c).
+\]
+We think of these operations as taking \(n\) input colours \(c_1, \dots, c_n\)
+and outputting a colour \(c\). The operad also implements the following structures:
+\begin{itemize}\setlength\itemsep{0em}
+\item For each colour \(c \in C\), there exists a unit map
+  \(u_c: * \to \operad P(c; c)\) that maps \(* \mapsto 1_c\).
+
+\item For any sequence \(c_1, \dots, c_n, c \in C\) and any \(n\)-tuple of
+  sequences \(d_1^j, \dots, d_{k_j}^j\) for \(1 \leq j \leq n\), there is a
+  composition of operations:
+  \[
+  \operad P(c_1, \dots, c_n; c)
+  \times \prod_{j=1}^n \operad P(d_1^j, \dots, d_{k_j}^j; c_j)
+  \overset{\gamma}\longrightarrow
+  \operad P(d_1^1, \dots, d_{k_1}^1, d_1^2, \dots, d_{k_n}^n; c).
+  \]
+  Moreover, this composition is unital with respect to each \(1_c\) and
+  associative.  The associative property can be seen explicitly as follows:
+
+  Let \(p \in \operad P(c_1, \dots, c_n; c)\), and
+  \(q_1, \dots, q_n \in \prod_{j=1}^n \operad P(d_1^1, \dots, d_{k_n}^n; c)\). Then,
+  taking operations \(r_1^j, \dots, r_{k_j}^j\) for \(1 \leq j \leq n\) where
+  \(r_i^j\) has output colour \(d_i^j\), we obtain
+  \[
+  (p(q_1, \dots, q_n))(r_1^1, \dots, r_{k_1}^1, r_{k_2}^2, \dots r_{k_n}^n)
+  = p(q_1(r_1^1, \dots, r_{k_1}^1), \dots, q_n(r_1^n, \dots, q_{k_n}^n)).
+  \]
+
+
+\item For each permutation \(\sigma\) on \(n\) elements, there exists an induced map
+  \[
+  \operad P(c_1, \dots, c_n; c)
+  \overset{\sigma^{*}}\longrightarrow
+  \operad P(c_{\sigma(1)}, \dots, c_{\sigma(n)}; c).
+  \]
+  Moreover, \(\sigma^{*}\) gives a right action that is compatible with the
+  composition given by \(\gamma\).
+\end{itemize}
+\end{definition}
+
+Given any function of sets \(f: D \to C\) there exists an induced operad
+\(f^{*} \operad P\) coloured by \(D\), explicitly given by
+\[
+f^{*} \operad P(d_1, \dots, d_n; d) = \operad P(f d_1, \dots, f d_n; f d).
+\]
+
+Consider operads \(\operad Q\), \(\operad P\) to be coloured by \(D\) and \(C\),
+respectively. We define a morphism of operads \(\phi: \operad Q \to \operad P\) to be
+a function of sets \(D \to C\) for which we associate a function
+\[
+f_{d_1, \dots, d_n; d}: \operad Q(d_1, \dots, d_n; d)
+\longrightarrow
+\operad P(f d_1, \dots, f d_n; d),
+\]
+for each sequence \(d_1, \dots, d_n, d \in D\), which commutes with all operations
+and permutations. This defines a category which we shall denote by \(\Operad\)
+
+\begin{remark}
+\label{rem:operad-set-to-sym-mon-cat}
+The \cref{def:operad} can be further generalised by replacing \(\Set\) with any
+symmetric monoidal category \(\cat E\).
+\end{remark}
+
+% \section{Next Semester}
+
+% The following table displays the planned courses that the student will
+% participate in the following semester.
+
+% \begin{table}[h!]\label{tab:disc}
+%     \centering
+%     \caption{Planned list of courses that will be attended in the next semester (second semester of 2023).}
+%     \begin{tabular}{ |c|c|c|c|c| }
+%         \hline
+%         Year and Semester & Code & Discipline & Type & Credits \\
+%         \hline
+%         \multirow{4}{*}{2023 / 2}
+%               & CCM0418 & Iniciação à Pesquisa III     & G  & 12      \\
+%               & MAT5008 & Teoria de Homotopia Abstrata & PG & 8 \\
+%               & MAC5922 & Combinatória I               & PG & 8 \\
+%               & MAC5921 & Deep Learning                & PG & 8 \\
+%         \hline
+%     \end{tabular}
+% \end{table}
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
