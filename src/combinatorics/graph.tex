@@ -1,4 +1,4 @@
-\section{General Definition Of a Graph}
+\section{Basic Principles of Combinatorics}
 
 \begin{notation}[\(k\)-subsets]
 Given a set \(A\), we define a \(k\)-subset---where \(0 \leq k \leq |A|\)---to
@@ -8,8 +8,50 @@ of all \(k\)-subsets of \(A\) as \([A]^k\).
 
 \begin{notation}[Range]
 For any \(n \in \N\), we denote by \([n]\) the set of natural numbers
-\(\{0, 1, \dots, n\}\).
+\(\{1, \dots, n\}\).
 \end{notation}
+
+\begin{definition}[Partition]
+Given a set \(V\), a partition is a collection \(V_1, \dots, V_n\) such
+that for each \(v \in V\) there exists a \emph{unique} index \(1 \leq i
+\leq n\) such that \(v \in V_i\).
+\end{definition}
+
+\begin{definition}[Colouring]
+    Given a set \(V\) we define an \(r\)-colouring of \(V\), for \(r \in \N\),
+    to be a function \(V \to [r]\).
+\end{definition}
+
+\begin{axiom}[Pigeon hole principle]
+    Given a collection \(V\) of \(n\) elements and an \(r\)-colouring \(c: V
+    \to [r]\), with \(r < n\), then there exists at least one colour \(j \in
+    [r]\) such that \(c(v) = j = c(v')\) for distinct elements \(v, v' \in V\).
+\end{axiom}
+
+\begin{lemma}[Stifel relation]
+    Given numbers \(n, k \geq 1\) with \(k \leq n\), we have
+    \[
+        \binom{n + 1}{k+1} = \binom n k + \binom n {k + 1}.
+    \]
+\end{lemma}
+
+\begin{proof}
+    The left side of the equation counts the number of sets with \(k+1\)
+    elements out of \([n+1]\). For the interpretation of the right side, let
+    \(x \in [n + 1]\) be any fixed element, then consider:
+    \begin{itemize}\setlength\itemsep{0em}
+        \item The number of sets composed of \(k+1\) elements of \([n+1]
+          \setminus x \iso [n]\) is given by
+          \(\binom n {k+1}\).
+        \item The number of sets composed of \(k+1\) elements of \([n+1]\)
+          containing \(x\) is the same as \(\binom n k\) since one of the
+          \(k+1\) elements is already fixed (the element \(x\)).
+    \end{itemize}
+    Notice that a subset \(A \subseteq [n + 1]\) either contains or doesn't
+    contain \(x\), thus we have proven the identity.
+\end{proof}
+
+\section{General Definition Of a Graph}
 
 \begin{definition}[General Graph]\label{def: general-graph}
 We define a \emph{general graph} \(G = (V, E, d)\) as a collection of disjoint
