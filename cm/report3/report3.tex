@@ -59,7 +59,7 @@
   backend = biber,
   style   = alphabetic,
 ]{biblatex}
-\addbibresource{bibliography.bib}
+\addbibresource{../../src/bibliography.bib}
 
 
 % Table of contents: show subsections
@@ -337,6 +337,11 @@
 \DeclareMathOperator{\Fib}{Fib} % Fibrant replacement
 \newcommand{\operad}{\mathcal}
 \newcommand{\Operad}{{\catfont{Operad}}}
+\newcommand{\Tree}{{\mathbf{\Omega}}}
+\DeclareMathOperator{\Input}{In}
+\DeclareMathOperator{\Output}{Out}
+\DeclareMathOperator{\TreeFace}{\partial}
+\newcommand{\dSet}{{\catfont{dSet}}}
 
 % attaching spaces
 \newcommand{\att}{\amalg}     % Disjoint union
@@ -530,54 +535,156 @@ categories, operads, and dendroidal sets.
 % \end{tabular}
 % \end{table}
 
-\section{Operads}
+\section{Studies}
+
+This section provides an overview of the subjects studied in the second semester of 2023. The material presented is based on \cref{Weiss07,HeuMoer22,MoerdijkWeiss07}.
+
+\subsection{Operads}
 
 \begin{definition}[Operad]
 \label{def:operad}
-An \emph{operad} \(\operad P\) is given by a \emph{set} of \emph{colours} \(C\),
-and for each \(n \in \N\) and a sequence \(c_1, \dots, c_n, c \in C\) there is a set
-\emph{operations} denoted by
+A (symmetric) \emph{operad} \(\operad P\) is given by a \emph{set} of
+\emph{colours} \(C\) (or objects \(\Obj(\operad P) \coloneq C\)), and for each
+\(n \in \N\) and a sequence \(c_1, \dots, c_n, c \in C\) there is a set
+\emph{operations} (or arrows) denoted by
 \[
 \operad P(c_1, \ldots, c_n; c).
 \]
 We think of these operations as taking \(n\) input colours \(c_1, \dots, c_n\)
-and outputting a colour \(c\). The operad also implements the following structures:
-\begin{itemize}\setlength\itemsep{0em}
-\item For each colour \(c \in C\), there exists a unit map
-  \(u_c: * \to \operad P(c; c)\) that maps \(* \mapsto 1_c\).
+and outputting a colour \(c\)---which can be visualized as a \emph{corolla}:
+\[
+    \begin{tikzcd}
+        &\ar[drr, no head, "c_1"'] 
+        &\dots 
+        &\ar[d, no head, "c_j"] 
+        &\dots 
+        &\ar[dll, no head, "c_n"]
+        \\
+        & & &v \ar[d, no head, "c"] & &
+        \\
+        & & &\phantom{v} & &
+    \end{tikzcd}
+\]
+where \(v \in \operad P(c_1, \ldots, c_n; c)\)---which can also be denoted by
+\(v: (c_1, \ldots, c_n) \to c\)---is the operation, which has \emph{arity}
+\(n\).
 
-\item For any sequence \(c_1, \dots, c_n, c \in C\) and any \(n\)-tuple of
-  sequences \(d_1^j, \dots, d_{k_j}^j\) for \(1 \leq j \leq n\), there is a
-  composition of operations:
-  \[
-  \operad P(c_1, \dots, c_n; c)
-  \times \prod_{j=1}^n \operad P(d_1^j, \dots, d_{k_j}^j; c_j)
-  \overset{\gamma}\longrightarrow
-  \operad P(d_1^1, \dots, d_{k_1}^1, d_1^2, \dots, d_{k_n}^n; c).
-  \]
-  Moreover, this composition is unital with respect to each \(1_c\) and
-  associative.  The associative property can be seen explicitly as follows:
+We shall assume that if the intersection 
+\[
+    \operad P(c_1, \dots, c_n; c) \cap \operad P(c_1', \dots, c_m'; c')
+\]
+is non-empty, then \(n = m\) and for each \(1 \leq j \leq n\) we have \(c_j =
+c_j'\), and \(c = c'\). Notice that since \(n \in \N\), we may have \(n = 0\)---in which case an operation \(v \in \operad P(; c)\) is depicted as
+\[
+    \begin{tikzcd}
+        v \ar[dd, "c", no head] \\ \\
+        \phantom{v}
+    \end{tikzcd}
+\]
 
-  Let \(p \in \operad P(c_1, \dots, c_n; c)\), and
-  \(q_1, \dots, q_n \in \prod_{j=1}^n \operad P(d_1^1, \dots, d_{k_n}^n; c)\). Then,
-  taking operations \(r_1^j, \dots, r_{k_j}^j\) for \(1 \leq j \leq n\) where
-  \(r_i^j\) has output colour \(d_i^j\), we obtain
-  \[
-  (p(q_1, \dots, q_n))(r_1^1, \dots, r_{k_1}^1, r_{k_2}^2, \dots r_{k_n}^n)
-  = p(q_1(r_1^1, \dots, r_{k_1}^1), \dots, q_n(r_1^n, \dots, q_{k_n}^n)).
-  \]
+The operad also implements the following structures:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+    \item \emph{Identity maps}. For each colour \(c \in C\), there exists an
+    identity map \(\Id_c \in \operad P(c; c)\).
+
+    \item \emph{Composition}. For any sequence \(c_1, \dots, c_n, c \in C\) and
+    any collection of sequences \(d_1^j, \dots, d_{k_j}^j, c_j\) for \(1
+    \leq j \leq n\), there is a composition of operations:
+    \[
+    \operad P(c_1, \dots, c_n; c)
+    \times \prod_{j=1}^n \operad P(d_1^j, \dots, d_{k_j}^j; c_j)
+    \overset{\circ}\longrightarrow
+    \operad P(d_1^1, \dots, d_{k_1}^1, d_1^2, \dots, d_{k_n}^n; c).
+    \]
+
+    Given an operation \(f \in \operad P(c_1, \dots, c_n; c\) and operations
+    \(g_j \in \operad P(d_{1}^j, \dots, d_{k_j}^j; d^j)\) for each \(1 \leq j
+    \leq n\) then we denote the composition of \(f\) with the sequence \((g_1,
+    \dots, g_n)\) simply as
+    \[
+    f (g_1, \dots, g_n).
+    \]
+
+    The composition function must be such that
+    \begin{itemize}
+        \item For any colour \(c, d \in C\) and operation \(f \in \operad P(d; c)\)
+            one must have \(\Id_c(f) = f\).
+
+        \item The composition is associative. Take an operation \(p \in \operad P(c_1,
+            \dots, c_n; c)\), and consider the following sequence of operations:
+            \[
+                q_1, \dots, q_n \in \prod_{j=1}^n \operad P(d_1^j, \dots, d_{k_j}^j; c_j)
+            \]
+            and for each \(1 \leq j \leq n\) we take a sequence
+            \[
+                r_1^j, \dots, r_{k_j}^j \in 
+                \prod_{i=1}^{k_j} \operad P(e_1^i, \dots, e_{k_j}^i; d_i^j)
+            \]
+            then the composition must be such that
+            \[
+                (p(q_1, \dots, q_n))(r_1^1, \dots, r_{k_1}^1, r_1^2, \dots, r_{k_n}^n)
+                = p(q_1(r_1^1, \dots, r_{k_1}^1), \dots, q_n(r_1^n, \dots, q_{k_n}^n)).
+            \]
+    \end{itemize}
 
 
-\item For each permutation \(\sigma\) on \(n\) elements, there exists an induced map
-  \[
-  \operad P(c_1, \dots, c_n; c)
-  \overset{\sigma^{*}}\longrightarrow
-  \operad P(c_{\sigma(1)}, \dots, c_{\sigma(n)}; c).
-  \]
-  Moreover, \(\sigma^{*}\) gives a right action that is compatible with the
-  composition given by \(\gamma\).
-\end{itemize}
+    \item \emph{Permutation action}\footnote{Non-symmetric operads, called planar
+        operads, simply ignore this last condition---they are not endowed with any
+    symmetric group action.}. For each permutation \(\sigma\) on \(n\) elements,
+    there exists an induced map
+    \[
+        \operad P(c_1, \dots, c_n; c)
+        \overset{\sigma^{*}}\longrightarrow
+        \operad P(c_{\sigma(1)}, \dots, c_{\sigma(n)}; c).
+    \]
+    The symmetric group gives a right action that is compatible with the
+    composition defined above, that is, \((\sigma \tau)^* = \tau^* \sigma^*\).
+
+    For each \(0 \leq j \leq n\) consider an operation \(f_j\) with arity \(k_j\)
+    such that the composition \(f_0 (f_1, \dots, f_n)\) is well defined. For each
+    \(0 \leq j \leq n\) let \(\sigma_j \in \Sym(k_j)\) be a permutation on \(k_j\)
+    elements. The following should hold:
+    \[
+        (\sigma_0 (\sigma_1, \dots, \sigma_n))^*
+        \circ (f_0 \circ (f_1, \dots, f_n)
+        =
+        \sigma_0^*(f_0) \circ 
+        (\sigma_{\sigma_0(1)}^*(f_{\sigma_0(1)}),
+        \dots,
+        \sigma_{\sigma_0(n)}^*(f_{\sigma_0(n)}))
+    \]
+\end{enumerate}
 \end{definition}
+
+\begin{example}\label{exp:composing-operations-tree}
+Consider a simple example where we have an operad \(\operad P\) coloured by
+\(C\), and take operations \(f \in \operad P(c_1, c_2; c)\), \(g \in \operad
+P(d_1, d_2; c_1)\), and \(h \in \operad P(e_1, e_2; c_2)\) then the composition
+\(f(g, h)\) is well defined and can be visualized by a planar tree as follows:
+\[
+    \begin{tikzcd}
+         \ar[rd, no head, "d_1"'] & & \ar[dl, no head, "d_2"]
+        &
+        &\ar[rd, no head, "e_1"'] & & \ar[dl, no head, "e_2"]
+        \\
+          &g \ar[rrd, no head, "c_1"'] &
+        &
+        & &h \ar[lld, no head, "c_2"] &
+        \\
+          & &
+        &f \ar[dd, "c", no head]
+        & & &
+        \\
+          & &
+        &
+        &  & &
+        \\
+          & &
+        &\phantom{f}
+        & & &
+    \end{tikzcd}
+\]
+\end{example}
 
 Given any function of sets \(f: D \to C\) there exists an induced operad
 \(f^{*} \operad P\) coloured by \(D\), explicitly given by
@@ -585,22 +692,365 @@ Given any function of sets \(f: D \to C\) there exists an induced operad
 f^{*} \operad P(d_1, \dots, d_n; d) = \operad P(f d_1, \dots, f d_n; f d).
 \]
 
-Consider operads \(\operad Q\), \(\operad P\) to be coloured by \(D\) and \(C\),
-respectively. We define a morphism of operads \(\phi: \operad Q \to \operad P\) to be
-a function of sets \(D \to C\) for which we associate a function
+\begin{definition}[Morphism of operads]\label{def:morphism-of-operads}
+Consider operads \(\operad Q\), \(\operad P\) to be coloured by \(D\) and
+\(C\), respectively. We define a morphism\footnote{The notion of a morphism of
+operads clearly extends that of a classical functor between two categories. For
+this reason, sometimes these operad maps are called functors in the
+literature.} of operads \(\phi: \operad Q \to \operad P\) to be a function of
+sets \(\phi: D \to C\) for which we associate functions
 \[
-f_{d_1, \dots, d_n; d}: \operad Q(d_1, \dots, d_n; d)
-\longrightarrow
-\operad P(f d_1, \dots, f d_n; d),
+    \phi_{d_1, \dots, d_n; d}: \operad Q(d_1, \dots, d_n; d)
+    \longrightarrow
+    \operad P(\phi d_1, \dots, \phi d_n; \phi d),
 \]
-for each sequence \(d_1, \dots, d_n, d \in D\), which commutes with all operations
-and permutations. This defines a category which we shall denote by \(\Operad\)
+for all sequences \(d_1, \dots, d_n, d \in D\)---which preserves the 
+composition and permutation structures. Moreover, for any sequence of operations \(f_0,
+f_1, \dots, f_n\) such that \(f_0 (f_1, \dots, f_n)\) is a well defined
+composition, it should be the case that
+\[
+    \phi(f_0(f_1, \dots, f_n)) = \phi(f_0)(\phi(f_1), \dots, \phi(f_n)),
+\]
+that is, the morphism distributes over composition. Also, given any colour \(d
+\in D\) we impose that 
+\[
+    \phi \Id_d = \Id_{\phi d}.
+\]
+For the symmetry condition\footnote{Again, for planar non-symmetric operads,
+this condition is ignored.}, we demand that if \(f\) is an \(n\)-ary operation
+then for any permutation \(\sigma \in \Sym(n)\) we have
+\[
+    \phi(\sigma^*(f)) = \sigma^*(\phi(f)).
+\]
+\end{definition}
+
+Operads, together with their morphisms, form a category which we shall denote
+by \(\Operad\).
 
 \begin{remark}
 \label{rem:operad-set-to-sym-mon-cat}
 The \cref{def:operad} can be further generalised by replacing \(\Set\) with any
-symmetric monoidal category \(\cat E\).
+symmetric monoidal category \(\cat E\). In such a case, we denote the category
+of operads over \(\cat E\) by \(\Operad(\cat E)\).
+
+A symmetric monoidal category \(\cat E\) has a natural structure of an operad,
+whose colours are \(\Obj(\cat E)\) and for which \(\cat E(X_1, \dots, X_n; X)\)
+is the collection of morphisms \(X_1 \otimes \dots X_n \to X\) in \(\cat E\).
+
+It should be noted, however, that we are only going to consider operads
+enriched by \(\Set\).
 \end{remark}
+
+\begin{remark}[\(\Cat\) \& \(\Operad\)]
+\label{rem:operad-from-a-category}
+Given a small category \(\cat C\), we can define an operad \(\operad P_{\cat C}\)
+whose colours are the objects of \(\cat C\), and for each sequence of colours
+\(C_1, \dots, C_n, C \in \cat C\) we define the collection of operations
+\[
+\operad P_{\cat C}(C_1, \dots, C_n; C) \coloneq
+\begin{cases}
+  \Mor_{\cat C}(C_1, C), &\text{if } n = 1, \\
+  \emptyset, &\text{otherwise}.
+\end{cases}
+\]
+It is trivial to notice that this structure satisfies all conditions for an
+operad. This construction naturally defines a fully faithful functor \(j_!:
+\Cat \to \Operad\).
+
+On the other hand, given an operad \(\operad P\) coloured by a set \(C\), we
+define a corresponding category whose objects are the colours \(C\) and whose
+morphisms are the unary operations of \(\operad P\). This allows one to
+construct adjunct functors
+\[
+    \begin{tikzcd}
+        \Cat \ar[r, shift left, "j_{!}"] &\Operad \ar[l, shift left, "j^{*}"]
+    \end{tikzcd}
+\]
+where \(\Cat\) denotes the category composed of small categories and natural
+transformations. It is to be noted that \(j_!\) is a fully faithful functor.
+\end{remark}
+
+\begin{definition}[Isomorphism inside an operad]
+An operation of an operad \(\operad P\) is said to be an isomorphism if it
+survives the functor \(j^*\) and is an isomorphims in the category \(j^*
+\operad P\).
+\end{definition}
+
+\begin{definition}[Natural transformations in \(\Operad\)]
+\label{def:nat-transf-in-operad}
+For each \(1 \leq j \leq n\), consider a morphism of operads \(F_j: \operad P \to \operad Q\), and a morphism \(G: \operad P \to \operad Q\). We define a natural transformation
+\[
+    \alpha: (F_1, \dots, F_n) \longrightarrow G
+\]
+to be a collection of operations \(\{\alpha_p\}_{p \in \Obj(\operad P)}\),
+where \(\alpha_p \in \operad Q(F_1 p, \dots, F_n p; G p)\)---this will be
+called the component of \(\alpha\) at \(p\). We shall impose the following
+condition on \(\alpha\):
+
+Given an operation \(\psi \in \operad P(p_1, \dots, p_m; p)\), consider the
+composition tree
+\[
+    \begin{tikzcd}
+         \ar[rd, no head, "F_1 p_1"'] &\dots &\ar[dl, no head, "F_n p_1"]
+        &
+        &\ar[rd, no head, "F_1 p_m"'] &\dots &\ar[dl, no head, "F_n p_m"]
+        \\
+            &\alpha_{p_1} \ar[rrd, no head, "G p_1"'] &
+        &\dots
+        & &\alpha_{p_m} \ar[lld, no head, "G p_m"] &
+        \\
+          & &
+        &G \psi \ar[dd, "G p", no head]
+        & & &
+        \\
+          & &
+        &
+        &  & &
+        \\
+          & &
+        &\phantom{f}
+        & & &
+    \end{tikzcd}
+\]
+which we shall call \(\phi_1\), and the composition tree
+\[
+    \begin{tikzcd}
+         \ar[rd, no head, "F_1 p_1"'] &\dots &\ar[dl, no head, "F_n p_1"]
+        &
+        &\ar[rd, no head, "F_1 p_m"'] &\dots &\ar[dl, no head, "F_n p_m"]
+        \\
+            &F_1 \psi \ar[rrd, no head, "F_1 p"'] &
+        &\dots
+        & &F_n \psi \ar[lld, no head, "F_n p"] &
+        \\
+          & &
+        &\alpha_p \ar[dd, "G p", no head]
+        & & &
+        \\
+          & &
+        &
+        &  & &
+        \\
+          & &
+        &\phantom{f}
+        & & &
+    \end{tikzcd}
+\]
+which we'll address as \(\phi_2\). Then if \(\sigma_{m, n}\) is the permutation
+equating the input of both \(\phi_1\) and \(\phi_2\), we impose that
+\[
+    \sigma_{m, n}^* \phi_1 = \phi_2.
+\]
+The natural transformation \(\alpha\) is said to be a natural isomorphism
+whenever each component \(\alpha_p\) is an isomorphism in \(\operad Q\)
+\end{definition}
+
+\begin{definition}[Equivalence of operads]
+\label{def:equivalence-of-operads}
+A morphism \(F: \operad P \to \operad Q\) is said to be an equivalence
+of operads if there exists a contrary morphism \(G: \operad Q \to \operad
+P\), and two natural isomorphisms \(\alpha: \Id_{\operad P} \to G F\) and
+\(\beta: \Id_{\operad Q} \to F G\).
+\end{definition}
+
+\begin{definition}
+Given a morphism of operads \(F: \operad P \to \operad Q\), we define the following:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+    \item \(F\) is essentially surjective if \(j^* F\) is an essentially
+        surjective functor between categories.
+
+    \item The morphism \(F\) is said to be full if, given any sequence \(p_1,
+        \dots, p_n, p \in \Obj(\operad P)\), the map
+        \[
+            F: \operad P(p_1, \dots, p_n; p) \longrightarrow
+            \operad Q(F p_1, \dots F p_n; F p)
+        \]
+        is surjective. On the other hand, \(F\) is said to be faithful if the
+        above map is injective. Finally, \(F\) is fully faithful if the above
+        map is a bijection.
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+A morphism \(F\) of operads is an equivalence if and only if \(F\) is both
+essentially surjective and fully faithful.
+\end{lemma}
+
+\subsection{The Quillen Model Structure in The Category of Operads}
+
+
+\todo[inline]{\(\Operad\) is small complete and cocomplete.}
+
+We now prove that the category of operads admits a Quillen model structure:
+
+\begin{theorem}\label{thm:quillen-model-structure-operads}
+The category of operads admits a Quillen model structure where we define:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+    \item The weak equivalences are operadic equivalences.
+    \item The cofibrations are morphisms that
+        are injective on the objects.
+    \item The fibrations are morphisms \(F: \operad P \to \operad Q\) such
+        that: for any colour \(p \in \Obj(\operad P)\) and isomorphism \(\psi: F p
+        \isoto q\) in \(\operad Q\), there exists an isomorphism \(\phi: p \isoto
+        p'\) in \(\operad P\) such that \(F \phi = \psi\).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+We claim that a morphism of operads \(F: \operad P \to \operad Q\) is a trivial
+fibration if and only if \(F: \Obj(\operad P) \epi \Obj(\operad Q)\) is
+surjective, and \(F\) is fully faithful:
+\begin{itemize}
+    \item If \(F\) is a weak equivalence, by definition it is fully faithful
+        and essentially surjective. Take \(q \in \Obj(\operad Q)\) and since
+        \(F\) is essentially surjective, there exists \(\psi: F p \isoto q\) in
+        \(\operad Q\) for some \(p \in \Obj(\operad P)\).
+
+        Now, if \(F\) is a fibration, there exists \(\phi: p \to p'\) such that
+        \(F \phi = \psi\), therefore \(F p' = q\). This proves that \(F:
+        \Obj(\operad P) \to \Obj(\operad Q)\) is surjective.
+
+    \item If \(F\) is fully faithful, for it to be a weak equivalence we just
+        have to prove that \(F\) is essentially surjective. Assuming that \(F\)
+        is surjective on the objects, given \(q \in \Obj(\operad Q)\) there
+        exists \(p \in \Obj(\operad P)\) such that \(Fp = q\) and therefore
+        \(\Id_q: Fp \isoto q\) shows that \(F\) is essentially surjective.
+
+        We now prove that \(F\) is also a fibration. Let \(p \in \Obj(\operad
+        P)\) be any colour and take an isomorphism \(\psi: Fp \isoto q\) in
+        \(\operad Q\). Since \(F\) is surjective on the objects, there exists
+        \(p' \in \Obj(\operad P)\) such that \(F p' = q\). Moreover, since
+        \(F\) is fully faithful, then the function 
+        \[
+            F: \operad P(p; p') \isoto \operad Q(F p; F p') = \operad Q(F p; q) 
+        \]
+        is a bijection and therefore there exists a unique morphism \(\phi: p
+        \to p'\) in \(\operad P\) such that \(F \phi = \psi\). Finally, since
+        \(F\) preserves compositions, \(\phi\) needs to be an isomorphism. This
+        proves that \(F\) is a fibration.
+\end{itemize}
+The proof that the special classes of morphisms are closed under weak
+equivalence, and the proof of the 2-out-of-3 property is left as a routine
+exercise. We now prove the lifting and factorization properties:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+    \item
+        \todo[inline]{Continue here}
+\end{enumerate}
+\end{proof}
+
+\subsection{The Category of Trees and Dendroidal Sets}
+
+\begin{definition}[Tree]
+\label{def:tree-operad}
+A \emph{tree} \(T\) is defined to be a pair \((V, E, r)\) where \(V\) is a
+finite set of \emph{vertices}, \(E\) is a non-empty finite set of \emph{edges},
+and \(r \in E\) is a distinguished element called \emph{root} of \(T\). A tree
+comes endowed with two functions:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The input function \(\Input: E \setminus r \to V\) assigns each non-root
+    edge to its corresponding \emph{input vertex}.
+
+\item The output function \(\Output: V \to E\) assigns each vertex to its
+    corresponding \emph{output edge}.
+\end{enumerate}
+Moreover, these two functions must satisfy the following requirement: given any
+non-root edge \(e \in E\), there should exist sequence of repeatedly applying
+\(\Output \circ \Input\) compositions starting at \(e\) and ending at \(r\).
+Graphically this process is the descent from any edge to the bottom (root) of
+the tree---defining an up-down directionality to the tree.
+
+We now define some additional terms associated to a tree:
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+\item The edges \(E \setminus \Output(V)\) are called \emph{leaves} of \(T\).
+
+\item The vertices \(V \setminus \Input(E)\) are called \emph{stumps} of \(T\).
+
+\item An \emph{outer edge} of \(T\) is an edge that is either a root or a
+  leaf, that is, the edge has only one vertex. On The contrary, an \emph{inner
+  edge} is one that is not outer, that is, the edge has a vertex on either
+  side.
+
+\item The valence of a vertex is defined to be the number of input edges, that
+    is, the valence of \(v \in V\) is given by \(\Input^{-1}(v)\).
+\end{enumerate}
+We also endow the sets \(E\) and \(V\) with the following partial order: given
+\(e, f \in E\) (or \(v, w \in V\)), we say that \(e < f\) if the directed path
+from \(e\) to the root (or \(v\) to the root) passes through \(f\) (or \(w\)).
+\end{definition}
+
+Given a tree \(T\), one can define an operad---which we shall again refer as
+\(T\)---whose colours are the set \(E(T)\), and given a planar representation
+of \(T\), each vertex \(v \in V(T)\) defines an operation \(v \in
+T(\Input^{-1}(v); \Output(v))\). Other operations are units \(1_e\) for each
+edge \(e \in E(T)\), compositions, and permutations. This defines an operad
+containing at most one operation per morphism set \(T(-; -)\).
+
+A \emph{subtree} of \(T\) is defined to be a smaller tree contained in \(T\),
+whose vertices contain all incoming and outcoming edges present in \(T\).
+Therefore, an operation \(v \in T(c_1, \dots, c_n; c)\) defines a
+subtree of \(T\) with \(V(v) = v\) and \(E(v) = \{c_1, \dots, c_n,
+c\}\)---where \(c_1, \dots, c_n\) are leafs, and \(c\) is the root.
+
+This allows us to define a \emph{category of trees} \(\Tree\) whose objects are
+trees, and maps \(T_1 \to T_2\) are morphisms between the operads \(T_1 \to
+T_2\). Notice that each object \([n] \in \Splx\) naturally defines a linear
+tree whose leaf is \(0\), inner edges are \(\{1, 2, \dots, n-1\}\), and whose
+root is \(n\). This shows that \(\Tree\) is but an extension of \(\Splx\), and
+there exists a natural embedding
+\[
+    \begin{tikzcd}
+        \Splx \ar[r, "i", tail] &\Tree
+    \end{tikzcd}
+\]
+
+Last but not least, we can define the category of dendroidal sets:
+
+\begin{definition}\label{def:dendroidal-sets}
+A dendroidal set is a \(\Set\)-valued presheaf on the category \(\Tree\), and
+the category of dendroidal sets is defined as the presheaf category
+\[
+    \dSet \coloneq \Psh{\Tree}.
+\]
+\end{definition}
+
+Notice that each \(T \in \Tree\) gives naturally gives rise to a representable
+presheaf 
+\[
+    \Omega[T] \coloneq \Mor_{\Tree}(-, T),
+\]
+which is nothing more than a dendroidal set.
+
+\section{Faces and Horns of Trees}
+
+Just as we did with the simplicial category \(\Splx\), and consequently to the
+category of simplicial sets \(\sSet\), we'll now define the notion of a face
+map for the category of trees \(\Tree\). Given a tree \(T\), we can define the following operations 
+\begin{enumerate}[(a)]\setlength\itemsep{0em}
+    \item \emph{Inner face maps}. Given an inner edge \(e \in E(T)\), we can
+        define a new tree \(T/e\) by contracting \(e\) and quotienting its
+        corresponding vertices from each side into one. This comes with a
+        canonical inclusion morphism in \(\Tree\):
+        \[
+            \begin{tikzcd}
+                T/e \ar[r, "\TreeFace_e", tail] &T
+            \end{tikzcd}
+        \]
+        which we shall call an inner face map of \(T\).
+    \item \emph{Outer face map}. Given a vertex \(v \in V(T)\) such that
+        \(\Input^{-1}(v)\) is composed of outer edges, and \(\Output(v)\) is an
+        inner edge, we define the tree \(T/v\) as the removal of \(v\) together
+        with the outer edges \(\Input^{-1}(v)\). This construction comes with a
+        canonical inclusion morphism in \(\Tree\):
+        \[
+            \begin{tikzcd}
+                T/v \ar[r, "\TreeFace_v", tail] &T
+            \end{tikzcd}
+        \]
+        which we shall call an outer face map of \(T\).
+\end{enumerate}
+The collection of all face maps of a tree \(T\) will be denoted by
+\(\TreeFace(T) \subseteq \Mor(\Tree/T)\).
+
 
 % \section{Next Semester}
 
@@ -623,6 +1073,8 @@ symmetric monoidal category \(\cat E\).
 %     \end{tabular}
 % \end{table}
 
+% FIX: Solve issue, bibliography is not beign printed.
+\printbibliography
 
 \end{document}
 
