@@ -475,7 +475,7 @@
        Institute of Mathematics and Statistics \\
        E-mail: \texttt{ivanstru@ime.usp.br}\\[1cm]
 
-       \normalsize São Paulo, July of 2023
+       \normalsize São Paulo, December of 2023
        \end{minipage}
   \end{center}
 \end{titlepage}
@@ -498,46 +498,32 @@
 \email{luizmugnaini@usp.br, ivanstru@ime.usp.br}
 
 \begin{abstract}
-This report documents the research advances of the student Luiz G. Mugnaini
-A. during his third semester of the advanced cycle of the Molecular Sciences
-course. The main topic of research explored this semester was the study of model
-categories, operads, and dendroidal sets.
+    This report documents the research advances of the student Luiz Gustavo Mugnaini Anselmo. During his
+    third semester of the advanced cycle of the Molecular Sciences course. The main topic of research
+    explored this semester was the study of model categories, operads, and dendroidal sets.
 \end{abstract}
 \maketitle
 
-% \section{This Semester \&  the Future of the Project}
+\section{Introduction}
 
-% With the insurgence of geometric and topological deep learning, we think it
-% would be a great opportunity to utilise our knowledge of algebraic topology to
-% help advance these fields of research---which currently lack mathematical
-% formality and a good framework to build upon. This led us to the decision that
-% part of our research group would start focusing on topological deep learning
-% using techniques from pure mathematics. With this in mind, we opted to add to my
-% semester (2023/1) a course on machine learning (MAC5832). Moreover, we thought
-% it would be a great idea to exchange the course on algebraic geometry (MAT5761)
-% for one in homological algebra (MAT5997), which would best fit our intentions
-% with the current research. All alterations where properly approved by Ivan
-% Struchiner.
-
-% \begin{table}[h!]\label{tab:disc}
-%   \centering
-%   \caption{Modified list of courses attended in the first semester of 2023.}
-%   \begin{tabular}{ |c|c|c|c|c| }
-%     \hline
-%     Year and Semester & Code & Discipline & Type & Credits \\
-%     \hline
-%     \multirow{4}{*}{2023 / 1}
-%                    & CCM0328 & Iniciação à Pesquisa II            & G  & 12 \\
-%                    & MAT5997 & Tópicos de Álgebra   & PG & 8 \\
-%                    & MAT6684 & Topologia Algébrica                & PG & 8 \\
-%                    & MAC5832 & Introdução ao Aprendizado de Máquina & PG & 8 \\
-%     \hline
-% \end{tabular}
-% \end{table}
+In this semester we focused our research in the theory underlying operads and dendroidal sets.
+Operads come as way of generalizing the idea of a category. An operad consists of a collection of
+objects, while arrows are defined by their input and output---just as in a plain category. The input
+of these arrows is not limited to a single object, but rather we allow for any \(n \in \N\) number
+of objects as input---we however still limit the output to a single object. This extension in the
+number of inputs allows us to view an operad as a multicategory. Moreover, we can visualise an arrow
+in an operad as a tree, as shown in \cref{eq:operad-arrow-as-tree}. This abstraction leads to the
+category \(\Operad\) which generalises our previous category of simplexes \(\Splx\). As we know from
+previous studies, the category \(\Splx\) gives birth to the idea of a simplicial set and
+consequently the presheaf category \(\sSet\). On the other hand, the generalisation \(\Operad\)
+leads us to the presheaf category of dendroidal sets \(\dSet\) which play a crucial role in the
+study of modern homotopy theory.
 
 \section{Studies}
 
-This section provides an overview of the subjects studied in the second semester of 2023. The material presented is based on \cref{Weiss07,HeuMoer22,MoerdijkWeiss07}.
+This section provides an overview of the subjects studied in the second
+semester of 2023. The material presented is based on
+\cite{Weiss07,HeuMoer22,MoerdijkWeiss07}.
 
 \subsection{Operads}
 
@@ -552,7 +538,7 @@ A (symmetric) \emph{operad} \(\operad P\) is given by a \emph{set} of
 \]
 We think of these operations as taking \(n\) input colours \(c_1, \dots, c_n\)
 and outputting a colour \(c\)---which can be visualized as a \emph{corolla}:
-\[
+\begin{equation}\label{eq:operad-arrow-as-tree}
     \begin{tikzcd}
         &\ar[drr, no head, "c_1"'] 
         &\dots 
@@ -564,7 +550,7 @@ and outputting a colour \(c\)---which can be visualized as a \emph{corolla}:
         \\
         & & &\phantom{v} & &
     \end{tikzcd}
-\]
+\end{equation}
 where \(v \in \operad P(c_1, \ldots, c_n; c)\)---which can also be denoted by
 \(v: (c_1, \ldots, c_n) \to c\)---is the operation, which has \emph{arity}
 \(n\).
@@ -597,7 +583,7 @@ The operad also implements the following structures:
     \operad P(d_1^1, \dots, d_{k_1}^1, d_1^2, \dots, d_{k_n}^n; c).
     \]
 
-    Given an operation \(f \in \operad P(c_1, \dots, c_n; c\) and operations
+    Given an operation \(f \in \operad P(c_1, \dots, c_n; c)\) and operations
     \(g_j \in \operad P(d_{1}^j, \dots, d_{k_j}^j; d^j)\) for each \(1 \leq j
     \leq n\) then we denote the composition of \(f\) with the sequence \((g_1,
     \dots, g_n)\) simply as
@@ -618,12 +604,12 @@ The operad also implements the following structures:
             and for each \(1 \leq j \leq n\) we take a sequence
             \[
                 r_1^j, \dots, r_{k_j}^j \in 
-                \prod_{i=1}^{k_j} \operad P(e_1^i, \dots, e_{k_j}^i; d_i^j)
+                \prod_{i=1}^{k_j} \operad P(e_1^i, \dots, e_{t_j}^i; d_i^j)
             \]
             then the composition must be such that
             \[
-                (p(q_1, \dots, q_n))(r_1^1, \dots, r_{k_1}^1, r_1^2, \dots, r_{k_n}^n)
-                = p(q_1(r_1^1, \dots, r_{k_1}^1), \dots, q_n(r_1^n, \dots, q_{k_n}^n)).
+                (p(q_1, \dots, q_n))(r_1^1, \dots, r_{t_1}^1, r_1^2, \dots, r_{t_n}^n)
+                = p(q_1(r_1^1, \dots, r_{t_1}^1), \dots, q_n(r_1^n, \dots, r_{t_n}^n)).
             \]
     \end{itemize}
 
@@ -735,7 +721,7 @@ of operads over \(\cat E\) by \(\Operad(\cat E)\).
 
 A symmetric monoidal category \(\cat E\) has a natural structure of an operad,
 whose colours are \(\Obj(\cat E)\) and for which \(\cat E(X_1, \dots, X_n; X)\)
-is the collection of morphisms \(X_1 \otimes \dots X_n \to X\) in \(\cat E\).
+is the collection of morphisms \(X_1 \otimes \cdots \otimes X_n \to X\) in \(\cat E\).
 
 It should be noted, however, that we are only going to consider operads
 enriched by \(\Set\).
@@ -815,9 +801,9 @@ composition tree
 which we shall call \(\phi_1\), and the composition tree
 \[
     \begin{tikzcd}
-         \ar[rd, no head, "F_1 p_1"'] &\dots &\ar[dl, no head, "F_n p_1"]
+         \ar[rd, no head, "F_1 p_1"'] &\dots &\ar[dl, no head, "F_1 p_m"]
         &
-        &\ar[rd, no head, "F_1 p_m"'] &\dots &\ar[dl, no head, "F_n p_m"]
+        &\ar[rd, no head, "F_n p_m"'] &\dots &\ar[dl, no head, "F_n p_m"]
         \\
             &F_1 \psi \ar[rrd, no head, "F_1 p"'] &
         &\dots
@@ -856,30 +842,31 @@ P\), and two natural isomorphisms \(\alpha: \Id_{\operad P} \to G F\) and
 \begin{definition}
 Given a morphism of operads \(F: \operad P \to \operad Q\), we define the following:
 \begin{enumerate}[(a)]\setlength\itemsep{0em}
-    \item \(F\) is essentially surjective if \(j^* F\) is an essentially
+    \item \(F\) is \emph{essentially surjective} if \(j^* F\) is an essentially
         surjective functor between categories.
 
-    \item The morphism \(F\) is said to be full if, given any sequence \(p_1,
+    \item The morphism \(F\) is said to be \emph{full} if, given any sequence \(p_1,
         \dots, p_n, p \in \Obj(\operad P)\), the map
         \[
             F: \operad P(p_1, \dots, p_n; p) \longrightarrow
-            \operad Q(F p_1, \dots F p_n; F p)
+            \operad Q(F p_1, \dots, F p_n; F p)
         \]
-        is surjective. On the other hand, \(F\) is said to be faithful if the
-        above map is injective. Finally, \(F\) is fully faithful if the above
+        is surjective. On the other hand, \(F\) is said to be \emph{faithful} if the
+        above map is injective. Finally, \(F\) is \emph{fully faithful} if the above
         map is a bijection.
 \end{enumerate}
 \end{definition}
 
 \begin{lemma}
-A morphism \(F\) of operads is an equivalence if and only if \(F\) is both
-essentially surjective and fully faithful.
+A morphism \(F\) of operads is an \emph{equivalence} if and only if \(F\)
+is both essentially surjective and fully faithful.
 \end{lemma}
 
 \subsection{The Quillen Model Structure in The Category of Operads}
 
-
-\todo[inline]{\(\Operad\) is small complete and cocomplete.}
+\begin{lemma}\label{lem:operad-is-complete-and-cocomplete}
+The category of operads is small (co)complete. 
+\end{lemma}
 
 We now prove that the category of operads admits a Quillen model structure:
 
@@ -929,13 +916,239 @@ surjective, and \(F\) is fully faithful:
         \(F\) preserves compositions, \(\phi\) needs to be an isomorphism. This
         proves that \(F\) is a fibration.
 \end{itemize}
-The proof that the special classes of morphisms are closed under weak
-equivalence, and the proof of the 2-out-of-3 property is left as a routine
-exercise. We now prove the lifting and factorization properties:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-    \item
-        \todo[inline]{Continue here}
-\end{enumerate}
+The proof that the special classes of morphisms are closed under retracts, and
+the proof of the 2-out-of-3 property is left as a routine exercise. We now
+prove the lifting property.
+
+Let \(F: \operad P \mono \operad Q\) be a cofibration and \(G: \operad R \epi
+\operad S\) be a fibration. Consider the following commutative diagram:
+\[
+    \begin{tikzcd}
+        \operad P \ar[r, "U"] \ar[d, "F"', tail]
+        &\operad R \ar[d, two heads, "G"] \\
+        \operad Q \ar[r, "V"'] &\operad S
+    \end{tikzcd}
+\]
+We need to prove that whenever \(F\) or \(G\) are weak equivalences, then there
+exists a lifting \(L: \operad Q \to \operad R\) filling the commutative square.
+We do this considering both cases:
+\begin{itemize}
+    \item Suppose that \(G\) is a trivial fibration, so that \(G: \Obj(\operad
+        R) \epi \Obj(\operad S)\) is surjective and \(G\) is fully
+        faithful---as we have proved above. Then one has a diagram in \(\Set\):
+        \[
+            \begin{tikzcd}
+                \Obj(\operad P) \ar[r, "U"] \ar[d, "F"', tail]
+                &\Obj(\operad R) \ar[d, two heads, "G"] \\
+                \Obj(\operad Q) \ar[r, "V"'] &\Obj(\operad S)
+            \end{tikzcd}
+        \]
+        where \(F\) is injective, and \(G\) is surjective. Therefore we are
+        able to define a function of sets \(L: \Obj(\operad Q) \to \Obj(\operad
+        R)\) such that \(L F = U\) and \(G L = V\). Now, in order to lift \(L\)
+        to a morphism of operads we can do the following:
+
+        Let \(\phi \in \operad Q(q_1, \dots, q_n; q)\) and
+        consider its image \(V \phi \in \operad S(V q_1, \dots, V q_n; V q)\)
+        under the morphism of operads \(V\). From what we discussed before,
+        since \(G\) is a trivial fibration then \(G\) is a fully faithful
+        morphism and therefore the function 
+        \[
+            G: \operad R(L q_1, \dots, L q_n; L q) \isoto \operad S(V q_1,
+            \dots, V q_n; V q)
+        \] 
+        is a bijection. Hence one can define \(L: \operad Q \to \operad S\) as
+        \(L \phi \coloneq G^{-1}(V \phi)\), which trivially satisfies \(G L =
+        V\) and for any \(\psi \in \operad P(p_1, \dots, p_n; p)\) we have
+        \[
+            L F \psi = G^{-1}(V(F \psi)) = G^{-1} V F \psi = U \psi
+        \]
+        therefore \(L F = U\) as wanted.
+
+    \item Now suppose that \(F\) is a trivial cofibration. Since \(F\) is a
+        weak equivalence, there exists a morphism \(F': \operad Q \to \operad
+        P\) such that \(F' F = \Id_{\operad P}\)---since \(F\) is injective on
+        the objects---and a natural isomorphism \(\alpha: F F' \isoto
+        \Id_{\operad Q}\), which we can define for each \(p \in \Obj(\operad
+        P)\) as \(\alpha_{F p} \coloneq \Id_{F p}\).
+
+        We'll now define the function \(L: \Obj(\operad Q) \to \Obj(\operad
+        R)\). For each \(q \in \Obj(\operad Q)\) we know that
+        \[
+            \begin{tikzcd}
+                G U F' q = V F F' q \ar[r, "\iso", "\alpha_q"'] &V q
+            \end{tikzcd}
+        \]
+        therefore using the fact that \(G\) is a fibration we obtain another
+        isomorphism 
+        \[
+            \beta_q: U F' q \isoto r
+        \] 
+        in \(\operad R\) for which
+        \[
+            G \beta_q = \alpha_q 
+        \]
+        If we now define \(L q \coloneq r\) so that
+        \[
+            \beta_q: UF' q \isoto L q,
+        \]
+        we obtain \(G L q = V q\) as wanted for one of the commuting triangles
+        of the diagram. For the remaining triangle, notice that the
+        commutativity of the square allows us to define \(L Fp \coloneq U p\)
+        for any \(p \in \Obj(\operad P)\).
+
+        Let \(\psi \in \operad Q(q_1, \dots, q_n; q)\) be any operation. We
+        shall define the image \(L \psi\) to be given by the following
+        composition tree:
+        \[
+            \begin{tikzcd}
+                \phantom{-} \ar[d, no head, "L q_1"'] 
+                &
+                &\phantom{-} \ar[d, no head, "L q_n"]
+                \\
+                \beta^{-1}_{q_1} \ar[rd, no head, "U F' q_1"'] 
+                &\dots
+                &\beta^{-1}_{q_n} \ar[ld, no head, "U F' q_n"]
+                \\
+                &U F' \psi \ar[d, no head, "U F' q"] &
+                \\
+                &\beta_q \ar[d, no head, "L q"] &
+                \\
+                &\phantom{-} &
+            \end{tikzcd}
+        \]
+        that is, \(L \psi \coloneq \beta_q U F' (\beta_{q_1}, \dots,
+        \beta_{q_n}) \psi \in \operad R(L q_1, \dots, L q_n; L q)\).
+\end{itemize}
+    The above constructions show that if \(F\) or \(G\) are trivial then there
+    exists \(L: \operad Q \to \operad R\) such that the following diagram
+    commutes
+    \[
+        \begin{tikzcd}
+            \operad P \ar[r, "U"] \ar[d, "F"', tail]
+            &\operad R \ar[d, two heads, "G"] \\
+            \operad Q \ar[r, "V"'] \ar[ru, "L" description] &\operad S
+        \end{tikzcd}
+    \]
+
+    In order to close the proof we got to show that given a morphism \(F:
+    \operad P \to \operad Q\) there exists factorisations of \(F\) via a
+    trivial cofibration followed by a fibration, and a cofibration followed by
+    a trivial fibration. We split the cases in two:
+    \begin{itemize}
+        \item Define an operad \(\operad P'\) to be composed of objects
+            \[
+                \Obj(\operad P') \coloneq
+                \{
+                    (p, \psi, q) \in
+                    \Obj(\operad P) \times \operad Q(F p, q) \times \Obj(\operad Q)
+                    \colon \psi \text{ is an isomorphism }
+                \},
+            \]
+            and for the operations, given objects \((p_1, \psi_1, q_1), \dots,
+            (p_n, \psi_n, q_n), (p, \psi, q) \in \Obj(\operad P')\) then
+            \[
+                \operad P'(
+                    (p_1, \psi_1, q_1), \dots, (p_n, \psi_n, q_n); (p, \psi, q) 
+                ) \coloneq
+                \operad P(p_1, \dots, p_n; p).
+            \]
+
+            We now define a morphism \(G: \operad P \to \operad P'\) to map
+            each \(p \in \Obj(\operad P)\) as \(p \mapsto (p, \Id_{F p}, F
+            p)\), and operations should be mapped as \(\phi \mapsto \phi\).
+            This map is clearly bijective on the objects---hence a cofibration
+            and fully faithful. Furthermore, the morphism \(G\) is trivially
+            essentially surjective.
+
+            Take \(L: \operad P' \to \operad Q\) to map objects \((p, \psi, q)
+            \mapsto q\) which ensures that \(F = L G\) as a function on the
+            objects, and given an operation 
+            \[
+                \Psi \in \operad P'((p_1, \psi_1, q_1), \dots, (p_n, \psi_n,
+                q_n); (p, \psi, q))
+            \]
+            define \(L \Psi\) to be given by the composition tree:
+            \[
+                \begin{tikzcd}
+                    \phantom{-} \ar[d, no head, "q_1"'] 
+                    &
+                    &\phantom{-} \ar[d, no head, "q_n"]
+                    \\
+                    \psi_1^{-1} \ar[rd, no head, "F p_1"'] 
+                    &\dots
+                    &\psi_n^{-1} \ar[ld, no head, "F p_n"]
+                    \\
+                    &F \Psi \ar[d, no head, "F p"] &
+                    \\
+                    &\psi \ar[d, no head, "q"] &
+                    \\
+                    &\phantom{-} &
+                \end{tikzcd}
+            \]
+            To see that \(L\) is a fibration, notice that given an object \((p,
+            \psi, q) \in \Obj(\operad P')\) and an isomorphism \(f: L(p, \psi,
+            q) \isoto q'\) in \(\operad Q\), then one has that
+            \[
+                f \psi: F p \isoto q = L(p, \psi, q) \isoto q'
+            \]
+            is an isomorphism---therefore \((p, f \psi, q') \in \Obj(\operad
+            P')\). From construction, 
+            \[
+                \Id_p: (p, \psi, q) \isoto (p, f \psi, q')
+            \]
+            is an isomorphism in \(\operad P'\) and we have from the
+            composition tree that 
+            \[
+                L \Id_p = f \psi (F \Id_p) \psi^{-1} = f \psi \Id_{F p} \psi^{-1}
+                = f,
+            \]
+            which shows that \(L\) is a fibration.
+
+            Moreover, given an operation \(\phi \in \operad P(p_1, \dots, p_n;
+            p)\) we have 
+            \[
+                G \phi = \phi \in \operad P'(
+                    (p_1, \Id_{F p_1}, F p_1), \dots,
+                    (p_n, \Id_{F p_n}, F p_n); (p, \Id_{F p}, F p)
+                )
+            \]
+            therefore
+            \[
+                L G \phi 
+                = \Id_{F p} (F \phi) (\Id_{F p_1}, \dots, \Id_{F p_n})
+                = F \phi.
+            \]
+
+        \item Now we show that we can decompose \(F\) as a cofibration followed
+            by a trivial fibration. Define an operad \(\operad Q'\) to be given
+            by objects \(\Obj(\operad Q') \coloneq \Obj(\operad P) \disj \Obj(\operad
+            Q)\), and for each object \(t \in \Obj(\operad Q')\), define the notation
+            \[
+                \overline F t \coloneq
+                \begin{cases}
+                    F t, &\text{if } t \in \Obj(\operad P) \\
+                    t,   &\text{if } t \in \Obj(\operad Q)
+                \end{cases}
+            \]
+            Given any objects \(t_1, \dots, t_n, t \in \Obj(\operad Q')\) we define
+            \[
+                \operad Q'(t_1, \dots, t_n; t) \coloneq 
+                \operad Q(\overline F t_1, \dots, \overline F t_n; \overline F t).
+            \]
+
+            Define a morphism of operads \(G: \operad P \to \operad Q'\) as
+            mapping objects \(p \mapsto p\) and morphisms \(\phi \mapsto F
+            \phi\). This defines a clearly injective map on the objects and
+            therefore \(G\) is a cofibration.
+
+            On the other hand, we can define \(L: \operad Q' \to \operad Q\) by
+            mapping \(L t \coloneq \overline F t\) just as defined above. Given
+            an operation \(\psi \in \operad Q(t_1, \dots, t_n; t)\) we make \(L
+            \psi \coloneq \psi\). This definition makes \(L\) surjective on the
+            objects and trivially fully faithful. It is clear that \(F = L G\)
+            thus we have constructed the desired factorisation.
+    \end{itemize}
 \end{proof}
 
 \subsection{The Category of Trees and Dendroidal Sets}
@@ -1022,9 +1235,10 @@ which is nothing more than a dendroidal set.
 
 \section{Faces and Horns of Trees}
 
-Just as we did with the simplicial category \(\Splx\), and consequently to the
-category of simplicial sets \(\sSet\), we'll now define the notion of a face
-map for the category of trees \(\Tree\). Given a tree \(T\), we can define the following operations 
+Just as we did with the simplicial category \(\Splx\), and consequently to
+the category of simplicial sets \(\sSet\), we'll now define the notion of a
+face map for the category of trees \(\Tree\). Given a tree \(T\), we can
+define the following operations 
 \begin{enumerate}[(a)]\setlength\itemsep{0em}
     \item \emph{Inner face maps}. Given an inner edge \(e \in E(T)\), we can
         define a new tree \(T/e\) by contracting \(e\) and quotienting its
@@ -1052,28 +1266,11 @@ The collection of all face maps of a tree \(T\) will be denoted by
 \(\TreeFace(T) \subseteq \Mor(\Tree/T)\).
 
 
-% \section{Next Semester}
+\section{Next Semester}
 
-% The following table displays the planned courses that the student will
-% participate in the following semester.
+The project ``Dendroidal Homotopy Theory \& Operads'' is now terminated and the student will move on
+to study a different field---Discrete Differential Geometry and Computer Graphics.
 
-% \begin{table}[h!]\label{tab:disc}
-%     \centering
-%     \caption{Planned list of courses that will be attended in the next semester (second semester of 2023).}
-%     \begin{tabular}{ |c|c|c|c|c| }
-%         \hline
-%         Year and Semester & Code & Discipline & Type & Credits \\
-%         \hline
-%         \multirow{4}{*}{2023 / 2}
-%               & CCM0418 & Iniciação à Pesquisa III     & G  & 12      \\
-%               & MAT5008 & Teoria de Homotopia Abstrata & PG & 8 \\
-%               & MAC5922 & Combinatória I               & PG & 8 \\
-%               & MAC5921 & Deep Learning                & PG & 8 \\
-%         \hline
-%     \end{tabular}
-% \end{table}
-
-% FIX: Solve issue, bibliography is not beign printed.
 \printbibliography
 
 \end{document}
