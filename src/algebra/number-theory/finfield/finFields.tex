@@ -1,191 +1,191 @@
 \section{Some Results on Finite Fields}
 
 \begin{definition}[Multiplicative Group]
-   Let \(k\) be a finite field. We define \(k^\ast = k \setminus \{0\}\),
-   composed with the invertible elements of \(k\) equipped with multiplication,
-   to be the \emph{multiplicative group} of \(k\). Therefore, from the
-   definition, \(\forall \alpha \in k^\ast\) is a root of the polynomial
-   \(x^{|k|-1} - 1 \in k[x]\), also, \(\forall \alpha' \in k\) is a root of the
-   polynomial \(x^{|k|} - x \in k[x]\).
+    Let \(k\) be a finite field. We define \(k^\ast = k \setminus \{0\}\),
+    composed with the invertible elements of \(k\) equipped with multiplication,
+    to be the \emph{multiplicative group} of \(k\). Therefore, from the
+    definition, \(\forall \alpha \in k^\ast\) is a root of the polynomial
+    \(x^{|k|-1} - 1 \in k[x]\), also, \(\forall \alpha' \in k\) is a root of the
+    polynomial \(x^{|k|} - x \in k[x]\).
 \end{definition}
 
 \begin{proposition}
-   Let \(k\) be a finite field with \(|k| := q\). Then
-   \[
-      x^{q} - x = \prod_{\alpha \in k} (x-\alpha).
-   \] 
+    Let \(k\) be a finite field with \(|k| := q\). Then
+    \[
+        x^{q} - x = \prod_{\alpha \in k} (x-\alpha).
+    \]
 \end{proposition}
 
 \begin{proof}
-   Notice that both polynomials are monic of degree \(q\). Since every root
-   coincides from the definition of the finite field \(k\), the equality
-   follows.
+    Notice that both polynomials are monic of degree \(q\). Since every root
+    coincides from the definition of the finite field \(k\), the equality
+    follows.
 \end{proof}
 
 \begin{corollary}
-   Let \(K\) be a field and \(k \subseteq K\) be a finite subfield with \(q\)
-   elements. Let \(\alpha \in K\), then 
-   \[
-      \alpha \in k \Leftrightarrow \alpha^q = \alpha.
-   \] 
+    Let \(K\) be a field and \(k \subseteq K\) be a finite subfield with \(q\)
+    elements. Let \(\alpha \in K\), then
+    \[
+        \alpha \in k \Leftrightarrow \alpha^q = \alpha.
+    \]
 \end{corollary}
 
 \begin{proof}
-   (\(\Rightarrow\)) Let \(\alpha \in k\), then \(\alpha\) is a root of \(x^q -
-   x\), thus \(\alpha^q = \alpha\). (\(\Leftarrow\)) Let \(\alpha \in K\) such
-   that \(\alpha^q = \alpha\), then \(\alpha\) is a root of \(x^q - x\) and thus
-   is an element of \(k\).
+    (\(\Rightarrow\)) Let \(\alpha \in k\), then \(\alpha\) is a root of \(x^q -
+    x\), thus \(\alpha^q = \alpha\). (\(\Leftarrow\)) Let \(\alpha \in K\) such
+    that \(\alpha^q = \alpha\), then \(\alpha\) is a root of \(x^q - x\) and thus
+    is an element of \(k\).
 \end{proof}
 
 \begin{corollary}
-   Let \(f, x^q - x \in k[x]\), where \(|k| = q\). If \(f(x) \mid x^q - x\) then
-   \(f\) has \(\deg(f)\) distinct roots.
+    Let \(f, x^q - x \in k[x]\), where \(|k| = q\). If \(f(x) \mid x^q - x\) then
+    \(f\) has \(\deg(f)\) distinct roots.
 \end{corollary}
 
 \begin{proof}
-   If \(f\) divides  \(x^q - x\) then there exists \(g \in k[x]\) such that
-   \(x^q - x = f(x)g(x)\) and therefore \(\deg(g) = \deg(f) - q\). Suppose then
-   that \(f\) had less than \(\deg(f)\) roots, then this implies in  \(x^q - x\)
-   having less than \(q\) roots, which is definitely false from the
-   construction of \(k\). Therefore \(f\) has \(\deg(f)\) distinct roots.
+    If \(f\) divides  \(x^q - x\) then there exists \(g \in k[x]\) such that
+    \(x^q - x = f(x)g(x)\) and therefore \(\deg(g) = \deg(f) - q\). Suppose then
+    that \(f\) had less than \(\deg(f)\) roots, then this implies in  \(x^q - x\)
+    having less than \(q\) roots, which is definitely false from the
+    construction of \(k\). Therefore \(f\) has \(\deg(f)\) distinct roots.
 \end{proof}
 
 \begin{theorem}
-   Let \(k\) be a finite group. The multiplicative group \(k^\ast\) is cyclic.
+    Let \(k\) be a finite group. The multiplicative group \(k^\ast\) is cyclic.
 \end{theorem}
 
 \begin{proof}
-   Let \(|k| := q\) and \(d \mid q-1\), then exists \(a\) such that \(da = q-1\)
-   and thus \(x^{q-1} - 1 = (x^d - 1) ((x^d)^{a-1} + \dots + 1)\) and thus
-   \(x^d - 1 \mid x^{q-1} - 1\). From last corollary this implies in \(x^d - 1\)
-   having \(d\) distinct roots. We now consider the subgroup of \(k^\ast\)
-   composed of elements such that \(x^d = 1\) (they have order \(d\)). Define
-   now the function \(\psi\) to be such that \(d \mapsto |\{\alpha \in k^\ast :
-   \alpha^d = 1\}|\) we have already shown in \ref{unitCyclic} that \(\sum_{c
-   \mid d} \psi(c) = d\) and thus we can apply the Möbius inversion theorem to
-   obtain  \(\psi(d) = \sum_{c\mid d} \mu(c) (d/c) = \varphi(d)\). We conclude
-   that \(\psi(d-1) = \varphi(d-1) \geqslant 1\) for any \(d\), showing the
-   existence of an element of order \(d-1\) and showing that the group is indeed
-   cyclic.
+    Let \(|k| := q\) and \(d \mid q-1\), then exists \(a\) such that \(da = q-1\)
+    and thus \(x^{q-1} - 1 = (x^d - 1) ((x^d)^{a-1} + \dots + 1)\) and thus
+    \(x^d - 1 \mid x^{q-1} - 1\). From last corollary this implies in \(x^d - 1\)
+    having \(d\) distinct roots. We now consider the subgroup of \(k^\ast\)
+    composed of elements such that \(x^d = 1\) (they have order \(d\)). Define
+    now the function \(\psi\) to be such that \(d \mapsto |\{\alpha \in k^\ast :
+    \alpha^d = 1\}|\) we have already shown in \ref{unitCyclic} that \(\sum_{c
+        \mid d} \psi(c) = d\) and thus we can apply the Möbius inversion theorem to
+    obtain  \(\psi(d) = \sum_{c\mid d} \mu(c) (d/c) = \varphi(d)\). We conclude
+    that \(\psi(d-1) = \varphi(d-1) \geqslant 1\) for any \(d\), showing the
+    existence of an element of order \(d-1\) and showing that the group is indeed
+    cyclic.
 \end{proof}
 
 \begin{proposition}
-   Let \(k\) be a finite field of \(q\) elements and \(\alpha \in k^\ast\). Then
-   \(x^n = \alpha\) is solvable if and only if \(\alpha^{\frac{q-1}{d}} = 1\),
-   where \(d := (n, q-1)\). Also, if there exists a solution, there are exactly
+    Let \(k\) be a finite field of \(q\) elements and \(\alpha \in k^\ast\). Then
+    \(x^n = \alpha\) is solvable if and only if \(\alpha^{\frac{q-1}{d}} = 1\),
+    where \(d := (n, q-1)\). Also, if there exists a solution, there are exactly
     \(d\) solutions.
 \end{proposition}
 
 \begin{proof}
-   Let since \(k^\ast\) is cyclic, let \(\langle \omega \rangle = k^\ast\).
-   Define now elements \(0 \leqslant u,v \leqslant q-1\) such that \(\omega^{u}
-   = \alpha\) and \(\omega^{v} = x\), thus we have \(x^n = \omega^{nv} =
-   \omega^u = \alpha \Leftrightarrow nv \equiv u \pmod{q-1}\) from the
-   definition of the generator \(\omega\), the last congruence has solution if
-   and only if, defining \(d = (n, q-1)\), \(d \mid u\). Therefore we can write
-   \(u=da\) for some \(a\) and it follows that \(\alpha^{\frac{q-1}{d}} =
-   \omega^{u \frac{q-1}{d}} = \omega^{da \frac{q-1}{d}} = 1\) as wanted. 
+    Let since \(k^\ast\) is cyclic, let \(\langle \omega \rangle = k^\ast\).
+    Define now elements \(0 \leqslant u,v \leqslant q-1\) such that \(\omega^{u}
+    = \alpha\) and \(\omega^{v} = x\), thus we have \(x^n = \omega^{nv} =
+    \omega^u = \alpha \Leftrightarrow nv \equiv u \pmod{q-1}\) from the
+    definition of the generator \(\omega\), the last congruence has solution if
+    and only if, defining \(d = (n, q-1)\), \(d \mid u\). Therefore we can write
+    \(u=da\) for some \(a\) and it follows that \(\alpha^{\frac{q-1}{d}} =
+    \omega^{u \frac{q-1}{d}} = \omega^{da \frac{q-1}{d}} = 1\) as wanted.
 \end{proof}
 
 \begin{proposition}
-   Let \(k\) be a finite field. The integer multiples of the identity form a
-   subfield \(k' \subseteq k\) such that \(k' \simeq \mathbb{F}_p\) for some
-   prime \(p\).
+    Let \(k\) be a finite field. The integer multiples of the identity form a
+    subfield \(k' \subseteq k\) such that \(k' \simeq \mathbb{F}_p\) for some
+    prime \(p\).
 \end{proposition}
 
 \begin{proof}
-   Let the morphism \(\psi: \mathbb{Z} \to k\) mapping \(n \mapsto n 1_k\).
-   Notice that \(\psi(\mathbb{Z}) := k' \subseteq k\) forms an integral domain,
-   also, the \(\ker(\psi)\) is non-zero (from the fact that \(k\) is finite) 
-   prime ideal (that is \(\ker(\psi) \neq k\) also, given \(a, b \in k\) then
-   \(ab \in \ker(\psi) \Rightarrow a \in \ker(\psi)\) or \(b \in \ker(\psi)\)).
-   Notice that since \(\ker(\psi)\) is a prime ideal, then we can see that there
-   is an isomorphism \(k' \xrightarrow{\sim} \mathbb{F}_p\), which concludes the
-   proof.
+    Let the morphism \(\psi: \mathbb{Z} \to k\) mapping \(n \mapsto n 1_k\).
+    Notice that \(\psi(\mathbb{Z}) := k' \subseteq k\) forms an integral domain,
+    also, the \(\ker(\psi)\) is non-zero (from the fact that \(k\) is finite)
+    prime ideal (that is \(\ker(\psi) \neq k\) also, given \(a, b \in k\) then
+    \(ab \in \ker(\psi) \Rightarrow a \in \ker(\psi)\) or \(b \in \ker(\psi)\)).
+    Notice that since \(\ker(\psi)\) is a prime ideal, then we can see that there
+    is an isomorphism \(k' \xrightarrow{\sim} \mathbb{F}_p\), which concludes the
+    proof.
 \end{proof}
 
 \begin{proposition}
-   The number of elements in a finite field is a power of a prime.
+    The number of elements in a finite field is a power of a prime.
 \end{proposition}
 
 \begin{proof}
-   Since there exists an inclusion morphism \(\mathbb{F}_p \hookrightarrow k\),
-   we can see \(k\) as an \(\mathbb{F}_p\)-space. Let now
-   \(\dim_{\mathbb{F}_p}(k) = n\) and define \(\{\omega_1, \dots, \omega_n\}\)
-   as its basis. Then, we can see that every element consists of a linear
-   combination of the \(n\) basis vectors with an \(n\)-tuple \((a_i)_{i=1}^n\)
-   of elements \(a_i \in \mathbb{F}_p\), thus, since there are \(p\) elements
-   for each index \(i\), the number of possible linear combinations is \(p^n\).
+    Since there exists an inclusion morphism \(\mathbb{F}_p \hookrightarrow k\),
+    we can see \(k\) as an \(\mathbb{F}_p\)-space. Let now
+    \(\dim_{\mathbb{F}_p}(k) = n\) and define \(\{\omega_1, \dots, \omega_n\}\)
+    as its basis. Then, we can see that every element consists of a linear
+    combination of the \(n\) basis vectors with an \(n\)-tuple \((a_i)_{i=1}^n\)
+    of elements \(a_i \in \mathbb{F}_p\), thus, since there are \(p\) elements
+    for each index \(i\), the number of possible linear combinations is \(p^n\).
 \end{proof}
 
 \begin{proposition}
-   If \(\mathrm{char}(k) = p\), then, \(\forall \alpha, \beta \in k\) and \(\forall d
-   \in \mathbb{Z}_{>0}\) then
-   \[
-      (\alpha + \beta)^{p^d} = \alpha^{p^d} + \beta^{p^d}.
-   \] 
+    If \(\mathrm{char}(k) = p\), then, \(\forall \alpha, \beta \in k\) and \(\forall d
+    \in \mathbb{Z}_{>0}\) then
+    \[
+        (\alpha + \beta)^{p^d} = \alpha^{p^d} + \beta^{p^d}.
+    \]
 \end{proposition}
 
 \begin{proof}
-   Let \(d = 1\) then trivially  \((\alpha + \beta)^p = \alpha^p + \sum_{1
-   \leqslant k \leqslant p-1} \binom{p}{k} \alpha^{p-k}\beta^k + \beta^p =
-   \alpha^p + \beta^p\). Suppose the proposition holds for \(d > 1\). Then,
-   since \((\alpha + \beta)^{p^d} = \alpha^{p^d} + \beta^{p^d}\) then
-   \((\alpha + \beta)^{p^{d+1}} = (\alpha^{p^d} + \beta^{p^d})^p
-   = \alpha^{p^{d+1}} + \beta^{p^{d+1}}\), which completes the induction.
+    Let \(d = 1\) then trivially  \((\alpha + \beta)^p = \alpha^p + \sum_{1
+        \leqslant k \leqslant p-1} \binom{p}{k} \alpha^{p-k}\beta^k + \beta^p =
+    \alpha^p + \beta^p\). Suppose the proposition holds for \(d > 1\). Then,
+    since \((\alpha + \beta)^{p^d} = \alpha^{p^d} + \beta^{p^d}\) then
+    \((\alpha + \beta)^{p^{d+1}} = (\alpha^{p^d} + \beta^{p^d})^p
+    = \alpha^{p^{d+1}} + \beta^{p^{d+1}}\), which completes the induction.
 \end{proof}
 
 \begin{proposition}
-   Let \(k\) be a field. We have that \(x^\ell - 1 \mid x^m - 1\), polynomials in
-   \(k[x]\), if and only if \(\ell \mid m\).
+    Let \(k\) be a field. We have that \(x^\ell - 1 \mid x^m - 1\), polynomials in
+    \(k[x]\), if and only if \(\ell \mid m\).
 \end{proposition}
 
 \begin{proof}
-   (\(\Rightarrow\)) Suppose \(m = q\ell + r\) and  \(0 \leqslant r < \ell\),
-   thus
-   \[
-      \frac{x^m - 1}{x^\ell - 1} = \frac{x^{q\ell + r} - 1}{x^\ell - 1} 
-      = \frac{(x^{q \ell + r} - x^r) + (x^r - 1)}{x^\ell - 1} 
-      = x^r\frac{x^{q\ell} - 1}{x^\ell - 1} + \frac{x^r - 1}{x^\ell - 1}
-   \] 
-   We now wish to analyse the second term vanishes, since \(\frac{x^{q\ell} -
-   1}{x^\ell - 1} \in k[x]\) (just a matter of factorization of the numerator).
-   Now, since \(r < \ell\) then it follows that \(\frac{x^r - 1}{x^\ell - 1} \in
-   k[x] \Leftrightarrow r = 0\) so that \(x^r - 1 = 0\). (\(\Leftarrow\))
-   Trivial.
+    (\(\Rightarrow\)) Suppose \(m = q\ell + r\) and  \(0 \leqslant r < \ell\),
+    thus
+    \[
+        \frac{x^m - 1}{x^\ell - 1} = \frac{x^{q\ell + r} - 1}{x^\ell - 1}
+        = \frac{(x^{q \ell + r} - x^r) + (x^r - 1)}{x^\ell - 1}
+        = x^r\frac{x^{q\ell} - 1}{x^\ell - 1} + \frac{x^r - 1}{x^\ell - 1}
+    \]
+    We now wish to analyse the second term vanishes, since \(\frac{x^{q\ell} -
+        1}{x^\ell - 1} \in k[x]\) (just a matter of factorization of the numerator).
+    Now, since \(r < \ell\) then it follows that \(\frac{x^r - 1}{x^\ell - 1} \in
+    k[x] \Leftrightarrow r = 0\) so that \(x^r - 1 = 0\). (\(\Leftarrow\))
+    Trivial.
 \end{proof}
 
 \begin{proposition}
-   Let \(k\) be a finite field of dimension \(n\) over \(\mathbb{F}_p\), so that
-   \(|k| = p^n\). The subfields of \(k\) are in a bijection with the divisors of
-   \(n\).
+    Let \(k\) be a finite field of dimension \(n\) over \(\mathbb{F}_p\), so that
+    \(|k| = p^n\). The subfields of \(k\) are in a bijection with the divisors of
+    \(n\).
 \end{proposition}
 
 \begin{proof}
-   (\(\Rightarrow\)) Let \(E \subseteq k\) be a subfield and let
-   \(\dim_{\mathbb{F}_p}(E) = d\) our initial goal is the following: show that
-   \(d \mid n\). Notice that \(|E| = p^d\) and thus \(|E^\ast| = p^d - 1\).
-   Then, we have that every element \(\alpha \in E^\ast\) is a root of both
-   \(x^{|E^\ast|} - 1 = x^{(p^d - 1)}\) and \(x^{|k|} - 1 = x^{p^n - 1}\) (since
-   \(\alpha \in k^\ast\)) and therefore \(x^{p^d - 1}- 1 \mid x^{p^n - 1}\)
-   (because all roots of the first are also roots of the second) if and only if \(p^d - 1
-   \mid p^n-1 \Leftrightarrow d \mid n\).
+    (\(\Rightarrow\)) Let \(E \subseteq k\) be a subfield and let
+    \(\dim_{\mathbb{F}_p}(E) = d\) our initial goal is the following: show that
+    \(d \mid n\). Notice that \(|E| = p^d\) and thus \(|E^\ast| = p^d - 1\).
+    Then, we have that every element \(\alpha \in E^\ast\) is a root of both
+    \(x^{|E^\ast|} - 1 = x^{(p^d - 1)}\) and \(x^{|k|} - 1 = x^{p^n - 1}\) (since
+    \(\alpha \in k^\ast\)) and therefore \(x^{p^d - 1}- 1 \mid x^{p^n - 1}\)
+    (because all roots of the first are also roots of the second) if and only if \(p^d - 1
+    \mid p^n-1 \Leftrightarrow d \mid n\).
 
-   (\(\Leftarrow\)) Let \(d \mid n\) and define \(E := \{\alpha \in k :
-   \alpha^{p^d} = \alpha\} \subseteq k\). We now check that indeed \(E\) is a
-   field: 
-   \begin{enumerate}[i.]
-      \item \((\alpha + \beta)^{p^d} = \alpha^{p^d} + \beta^{p^d} = \alpha +
-         \beta\).
-      \item \((\alpha\beta)^{p^d} = \alpha\beta\).
-      \item \((\alpha^{-1})^{p^d} = \alpha^{-1},\ \alpha \neq 0\).
-   \end{enumerate}
-   Since from hypothesis \(d \mid n\) then \(p^d - 1 \mid p^n - 1\) and thus
-   \(x^{p^d-1}- 1 \mid x^{p^n-1}-1\) and therefore obviously \(x^{p^d} - x \mid
-   x^{p^n} - x\) then \(x^{p^d} - x\) has \(p^d\) distinct roots, which implies
-   that \(|E| = p^d \Rightarrow \dim_{\mathbb{F}_p}(E) = d\). Notice that the
-   bijection can now be established, since subfields of \(k\) with dimension
-   \(d\) over \(\mathbb{F}_p\) are equal to \(E\).
+    (\(\Leftarrow\)) Let \(d \mid n\) and define \(E := \{\alpha \in k :
+    \alpha^{p^d} = \alpha\} \subseteq k\). We now check that indeed \(E\) is a
+    field:
+    \begin{enumerate}[i.]
+        \item \((\alpha + \beta)^{p^d} = \alpha^{p^d} + \beta^{p^d} = \alpha +
+              \beta\).
+        \item \((\alpha\beta)^{p^d} = \alpha\beta\).
+        \item \((\alpha^{-1})^{p^d} = \alpha^{-1},\ \alpha \neq 0\).
+    \end{enumerate}
+    Since from hypothesis \(d \mid n\) then \(p^d - 1 \mid p^n - 1\) and thus
+    \(x^{p^d-1}- 1 \mid x^{p^n-1}-1\) and therefore obviously \(x^{p^d} - x \mid
+    x^{p^n} - x\) then \(x^{p^d} - x\) has \(p^d\) distinct roots, which implies
+    that \(|E| = p^d \Rightarrow \dim_{\mathbb{F}_p}(E) = d\). Notice that the
+    bijection can now be established, since subfields of \(k\) with dimension
+    \(d\) over \(\mathbb{F}_p\) are equal to \(E\).
 \end{proof}
 
 

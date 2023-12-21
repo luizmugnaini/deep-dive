@@ -1,199 +1,199 @@
 \section{Duality}
 
 \begin{definition}[Opposite category]\label{def: opposite cat}
-  Let \(\cat C\) be a category. We define the opposite category of \(\cat C\) as
-  \(\cat C^\op\), such that
-  \begin{enumerate}[(COP1)]\setlength\itemsep{0em}
-    \item \(\Obj(\cat C^\op) = \Obj(\cat C)\).
-    \item Given a morphism \(f: x \to y\) in  \(\cat C\), there exists a
-      corresponding morphism \(f^\op: y \to x\) in the \(\cat C^\op\). That is
-      \(\dom f = \codom f^\op\) and \(\codom f = \dom f^\op\), these form all of
-      the morphisms in the category \(\cat C^\op\).
-    \item For all \(A \in \cat C^\op\), there exists an identity morphism
-      \(\Id_A^\op \in \End_{\cat C^\op}(A)\).
-    \item A pair of morphisms \(f^\op, g^\op \in \cat C^\op\) is composable, so
-      that \(\dom g^\op = \codom f^\op\), if and only if the pair \(g, f \in
-      \cat C\) is composable, that is \(\dom f = \codom g\). Moreover, we
-      define their composition as \(g^\op f^\op = (f g)^\op\).
-  \end{enumerate}
+    Let \(\cat C\) be a category. We define the opposite category of \(\cat C\) as
+    \(\cat C^\op\), such that
+    \begin{enumerate}[(COP1)]\setlength\itemsep{0em}
+        \item \(\Obj(\cat C^\op) = \Obj(\cat C)\).
+        \item Given a morphism \(f: x \to y\) in  \(\cat C\), there exists a
+              corresponding morphism \(f^\op: y \to x\) in the \(\cat C^\op\). That is
+              \(\dom f = \codom f^\op\) and \(\codom f = \dom f^\op\), these form all of
+              the morphisms in the category \(\cat C^\op\).
+        \item For all \(A \in \cat C^\op\), there exists an identity morphism
+              \(\Id_A^\op \in \End_{\cat C^\op}(A)\).
+        \item A pair of morphisms \(f^\op, g^\op \in \cat C^\op\) is composable, so
+              that \(\dom g^\op = \codom f^\op\), if and only if the pair \(g, f \in
+              \cat C\) is composable, that is \(\dom f = \codom g\). Moreover, we
+              define their composition as \(g^\op f^\op = (f g)^\op\).
+    \end{enumerate}
 \end{definition}
 
 \begin{lemma}\label{lem:f-iso-iff-f*-iso}
-  The following propositions are equivalent
-  \begin{enumerate}[(a)]\setlength\itemsep{0em}
-    \item \(f : x \isoto y\) is an isomorphism in \(\cat C\).
-    \item For all \(c \in \cat C\), the map
-      \[
-        f_*: \Hom_{\cat C}(c, x) \to \Hom_{\cat C}(c, y), \qquad
-        g \xmapsto{f_*} f g
-      \]
-      is a bijection.
-    \item For all \(c \in \cat C\), the map
-      \[
-         f^* : \Hom_{\cat C} (x, c) \to \Hom_{\cat C}(y, c), \qquad
-         g \xmapsto{f^*} g f
-      \]
-      is a bijection.
-  \end{enumerate}
+    The following propositions are equivalent
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item \(f : x \isoto y\) is an isomorphism in \(\cat C\).
+        \item For all \(c \in \cat C\), the map
+              \[
+                  f_*: \Hom_{\cat C}(c, x) \to \Hom_{\cat C}(c, y), \qquad
+                  g \xmapsto{f_*} f g
+              \]
+              is a bijection.
+        \item For all \(c \in \cat C\), the map
+              \[
+                  f^* : \Hom_{\cat C} (x, c) \to \Hom_{\cat C}(y, c), \qquad
+                  g \xmapsto{f^*} g f
+              \]
+              is a bijection.
+    \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-  ((a) \(\Rightarrow\) (b)) Let \(f: x \isoto y\) be an isomorphism and \(c
-  \in \cat C\) be an object and define \(\ell : y \isoto x\) to be its inverse.
-  Given \(c \in \cat C\), define \(\ell_*: \Hom_{\cat C}(c, y) \to \Hom_{\cat
-  C}(c, x)\). Notice that \(f_* \ell_* : \Hom_{\cat C}(c, y) \to
-  \Hom_{\cat C}(c, y)\) mapping \(g \mapsto f_*(\ell_*(g)) = f \ell
-  g = g\), hence \(f_* \ell_* = \Id_{\Hom_{\cat C}(c, y)}\). Moreover, we
-  have \(\ell_* f_* : \Hom_{\cat C}(c, x) \to \Hom_{\cat C}(c, x)\) mapping \(h \mapsto
-\ell_*(f_*(h)) = h f \ell = h\), hence
-  \(\ell_* f_* = \Id_{\Hom_{\cat C}(c, x)}\). This shows that \(\ell_*\)
-  is the inverse of \(f_*\) and therefore \(f_*\) is an isomorphism. ((b)
-  \(\Rightarrow\) (a)) Suppose the contrary, so that \(f_*\) is an isomorphism.
-  In particular, we can take \(c = y\) so that \(f_*: \Hom_{\cat C}(y, x) \to
-  \Hom_{\cat C}(y, y)\). From the isomorphism property, there exists \(\ell \in
-  \Hom_{\cat C}(y, x)\) such that \(f_*(\ell) = f \ell = \Id_y\). Consider
-  now that \(c = x\), then \(f_*: \Hom_{\cat C}(x, x) \to \Hom_{\cat C}(x, y)\).
-  Notice that \(f_*(\ell f) = f \ell f = \Id_y f = f\)
-  and \(f_*(\Id_x) = f \Id_x = f\). Since \(f_*\) is supposed to be an
-  isomorphism, it follows that \(\Id_x = \ell f\). With this we conclude
-  that \(\ell\) is the inverse of \(f\) and hence \(f\) is an isomorphism.
+    ((a) \(\Rightarrow\) (b)) Let \(f: x \isoto y\) be an isomorphism and \(c
+    \in \cat C\) be an object and define \(\ell : y \isoto x\) to be its inverse.
+    Given \(c \in \cat C\), define \(\ell_*: \Hom_{\cat C}(c, y) \to \Hom_{\cat
+        C}(c, x)\). Notice that \(f_* \ell_* : \Hom_{\cat C}(c, y) \to
+    \Hom_{\cat C}(c, y)\) mapping \(g \mapsto f_*(\ell_*(g)) = f \ell
+    g = g\), hence \(f_* \ell_* = \Id_{\Hom_{\cat C}(c, y)}\). Moreover, we
+    have \(\ell_* f_* : \Hom_{\cat C}(c, x) \to \Hom_{\cat C}(c, x)\) mapping \(h \mapsto
+    \ell_*(f_*(h)) = h f \ell = h\), hence
+    \(\ell_* f_* = \Id_{\Hom_{\cat C}(c, x)}\). This shows that \(\ell_*\)
+    is the inverse of \(f_*\) and therefore \(f_*\) is an isomorphism. ((b)
+    \(\Rightarrow\) (a)) Suppose the contrary, so that \(f_*\) is an isomorphism.
+    In particular, we can take \(c = y\) so that \(f_*: \Hom_{\cat C}(y, x) \to
+    \Hom_{\cat C}(y, y)\). From the isomorphism property, there exists \(\ell \in
+    \Hom_{\cat C}(y, x)\) such that \(f_*(\ell) = f \ell = \Id_y\). Consider
+    now that \(c = x\), then \(f_*: \Hom_{\cat C}(x, x) \to \Hom_{\cat C}(x, y)\).
+    Notice that \(f_*(\ell f) = f \ell f = \Id_y f = f\)
+    and \(f_*(\Id_x) = f \Id_x = f\). Since \(f_*\) is supposed to be an
+    isomorphism, it follows that \(\Id_x = \ell f\). With this we conclude
+    that \(\ell\) is the inverse of \(f\) and hence \(f\) is an isomorphism.
 
-  ((a) \(\Leftrightarrow\) (c)) Suppose that
-  \(f^\op: y \to x \in \Mor(\cat C^\op)\), then from the last paragraph we have
-  that \(f^\op\) is an isomorphism if and only if
-  \((f^\op)_* : \Hom_{\cat C^\op}(c, y) \to \Hom_{\cat C^\op}(c, x)\) is an
-  isomorphism. Therefore the dual of such statement is that
-  \(f: x \to y \in \Mor(\cat C)\) is an isomorphism if and only if
-  \((f^\op)_*^\op = f^*: \Hom_{\cat C}(x, c) \to \Hom_{\cat C}(y, c)\) is an
-  isomorphism, since \(\Hom_{\cat C^\op}(*, *') = \Hom_{\cat C}(*', *)\).
+    ((a) \(\Leftrightarrow\) (c)) Suppose that
+    \(f^\op: y \to x \in \Mor(\cat C^\op)\), then from the last paragraph we have
+    that \(f^\op\) is an isomorphism if and only if
+    \((f^\op)_* : \Hom_{\cat C^\op}(c, y) \to \Hom_{\cat C^\op}(c, x)\) is an
+    isomorphism. Therefore the dual of such statement is that
+    \(f: x \to y \in \Mor(\cat C)\) is an isomorphism if and only if
+    \((f^\op)_*^\op = f^*: \Hom_{\cat C}(x, c) \to \Hom_{\cat C}(y, c)\) is an
+    isomorphism, since \(\Hom_{\cat C^\op}(*, *') = \Hom_{\cat C}(*', *)\).
 \end{proof}
 
 \begin{definition}[Monomorphism]\label{def: monomorphism}
-  Let a category \(\cat{C}\). We say that \(f \in \Hom_{\cat C}(x, y)\) is a
-  \emph{monomorphism} if for all \(c \in \cat{C}\), and for all \(\alpha, \beta
-  \in \mathrm{Hom}(c, x)\) we have that \(f \alpha = f \beta\) implies \(\alpha
-  = \beta\). Equivalently, for all \(c \in \cat C\) the map \(f_*: \Hom_{\cat
-  C}(c, x) \to \Hom_{\cat C}(c, y)\) is injective.
+    Let a category \(\cat{C}\). We say that \(f \in \Hom_{\cat C}(x, y)\) is a
+    \emph{monomorphism} if for all \(c \in \cat{C}\), and for all \(\alpha, \beta
+    \in \mathrm{Hom}(c, x)\) we have that \(f \alpha = f \beta\) implies \(\alpha
+    = \beta\). Equivalently, for all \(c \in \cat C\) the map \(f_*: \Hom_{\cat
+        C}(c, x) \to \Hom_{\cat C}(c, y)\) is injective.
 \end{definition}
 
 \begin{definition}[Epimorphism]\label{def: epimorphism}
-  Let a category \(\cat C\). We say that morphism \(g \in \mathrm{Hom}_{\cat
-  C}(x, y)\) to be an \emph{epimorphism} if for all \(c \in \cat{C}\), and for
-  all \(\gamma, \delta \in \mathrm{Hom}_{\cat C}(y, c)\) we have that \(\gamma g
-  = \delta g\) implies \(\gamma = \delta\). Equivalently, for all \(c \in \cat
-  C\) the map \(g^*: \Hom_{\cat C}(y, c)\to \Hom_{\cat C}(x, c)\) is injective.
+    Let a category \(\cat C\). We say that morphism \(g \in \mathrm{Hom}_{\cat
+        C}(x, y)\) to be an \emph{epimorphism} if for all \(c \in \cat{C}\), and for
+    all \(\gamma, \delta \in \mathrm{Hom}_{\cat C}(y, c)\) we have that \(\gamma g
+    = \delta g\) implies \(\gamma = \delta\). Equivalently, for all \(c \in \cat
+    C\) the map \(g^*: \Hom_{\cat C}(y, c)\to \Hom_{\cat C}(x, c)\) is injective.
 \end{definition}
 
 \begin{proposition}
-\label{prop:}
-Let \(\cat C\) be a category. The following are properties regarding
-monomorphisms and epimorphisms in \(\cat C\):
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item Every identity morphism is a monomorphism and an epimorphism
-\item The composite of two monomorphisms (or epimorphisms) is a monomorphism (or
-  epimorphism).
-\item If the composition \(k f\) is a monomorphism, then \(f\) is a
-  monomorphism. Conversely, if \(f k\) is an epimorphism, then \(f\) is an
-  epimorphism.
-\end{enumerate}
+    \label{prop:}
+    Let \(\cat C\) be a category. The following are properties regarding
+    monomorphisms and epimorphisms in \(\cat C\):
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item Every identity morphism is a monomorphism and an epimorphism
+        \item The composite of two monomorphisms (or epimorphisms) is a monomorphism (or
+              epimorphism).
+        \item If the composition \(k f\) is a monomorphism, then \(f\) is a
+              monomorphism. Conversely, if \(f k\) is an epimorphism, then \(f\) is an
+              epimorphism.
+    \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-We prove the assertions about monomorphisms, the respective ones for
-epimorphisms are dually true from the former.
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item Identities are isomorphism, so clearly they are monomorphisms and
-  epimorphisms.
+    We prove the assertions about monomorphisms, the respective ones for
+    epimorphisms are dually true from the former.
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item Identities are isomorphism, so clearly they are monomorphisms and
+              epimorphisms.
 
-\item Let \(f\) and \(g\) be composable monomorphisms, then if \(g f p = g f q\)
-  for two given morphisms \(p\) and \(q\), for since \(g\) is a monomorphism
-  then \(f p = f q\) --- then using the fact that \(f\) is a monomorphism we
-  obtain \(p = q\).
+        \item Let \(f\) and \(g\) be composable monomorphisms, then if \(g f p = g f q\)
+              for two given morphisms \(p\) and \(q\), for since \(g\) is a monomorphism
+              then \(f p = f q\) --- then using the fact that \(f\) is a monomorphism we
+              obtain \(p = q\).
 
-\item Suppose \(k f\) is a monomorphism and consider morphisms \(g\) and \(h\)
-  such that \(f g = f h\). Composing with \(k\) one sees that \(k f g = k f h\)
-  but since \(k f\) is a monomorphism, it follows that \(g = h\).
-\end{enumerate}
+        \item Suppose \(k f\) is a monomorphism and consider morphisms \(g\) and \(h\)
+              such that \(f g = f h\). Composing with \(k\) one sees that \(k f g = k f h\)
+              but since \(k f\) is a monomorphism, it follows that \(g = h\).
+    \end{enumerate}
 \end{proof}
 
 \begin{definition}
-  Let \(x \xrightarrow s y \xrightarrow r x\) be morphisms such that \(r s =
-  \Id_x\). We define the following terms
-  \begin{enumerate}[(a)]\setlength\itemsep{0em}
-    \item\label{def: split monomorphism}
-      \(s\) is said to be a section of \(r\). The morphism \(s\) is always a
-      monomorphism, being called a split monomorphism.
-    \item\label{def: split epimorphism}
-      \(r\) is said to be the retraction of \(s\). The morphism \(r\) is always
-      an epimorphism, being called a split epimorphism.
-    \item\label{def: retract}
-      \(x\) is the retract of \(y\).
-  \end{enumerate}
+    Let \(x \xrightarrow s y \xrightarrow r x\) be morphisms such that \(r s =
+    \Id_x\). We define the following terms
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item\label{def: split monomorphism}
+        \(s\) is said to be a section of \(r\). The morphism \(s\) is always a
+        monomorphism, being called a split monomorphism.
+        \item\label{def: split epimorphism}
+        \(r\) is said to be the retraction of \(s\). The morphism \(r\) is always
+        an epimorphism, being called a split epimorphism.
+        \item\label{def: retract}
+        \(x\) is the retract of \(y\).
+    \end{enumerate}
 \end{definition}
 
 \begin{proposition}
-  A morphism \(f \in \Hom_{\cat C}(x, y)\) is a split epimorphism if and only if
-  for all \(c \in \cat C\) the map \(f_*: \Hom_{\cat C}(c, x) \to \Hom_{\cat
-    C}(c, y)\) is surjective. Dually, \(f\) is a split monomorphism if and only
+    A morphism \(f \in \Hom_{\cat C}(x, y)\) is a split epimorphism if and only if
+    for all \(c \in \cat C\) the map \(f_*: \Hom_{\cat C}(c, x) \to \Hom_{\cat
+        C}(c, y)\) is surjective. Dually, \(f\) is a split monomorphism if and only
     if for all \(c \in \cat C\) the map \(f^*: \Hom_{\cat C}(x, c) \to
     \Hom_{\cat C}(y, c)\) is surjective.
 \end{proposition}
 
 \begin{proof}
-  (\(\Rightarrow\)) Suppose \(f: x \to y\) is a split epimorphism and define
-  \(g: y \to x\) as a section of \(f\), that is \(f g = \Id_y\). Let \(c
-  \in \cat C\), and \(\alpha \in \Hom_{\cat C}(c, y)\) be any morphism. Notice
-  that \(g \alpha \in \Hom_{\cat C}(c, x)\), hence we find that \(f_*(g
-  \alpha) = f g \alpha = \alpha\) and therefore \(f_*\) is
-  surjective. (\(\Leftarrow\)) Suppose \(f_*\) is surjective, then in particular
-  for \(c = y\) we have that \(\Id_y \in \im f_*\) and hence \(f\) is a split
-  epimorphism. (Dual) Let \(f^\op: y \to x\), then from the above proposition
-  \(f^\op\) is a split epimorphism if and only if \((f^\op)_*: \Hom_{\cat
-  C^\op}(y, c) \to \Hom_{\cat C^\op}(x, c)\) is surjective. Dually we have that
-  \(f\) is a monomorphism if and only if \((f^\op)_*^\op = f^*: \Hom_{\cat C}(c,
-  x) \to \Hom_{\cat C}(c, y)\), which proves the last part.
+    (\(\Rightarrow\)) Suppose \(f: x \to y\) is a split epimorphism and define
+    \(g: y \to x\) as a section of \(f\), that is \(f g = \Id_y\). Let \(c
+    \in \cat C\), and \(\alpha \in \Hom_{\cat C}(c, y)\) be any morphism. Notice
+    that \(g \alpha \in \Hom_{\cat C}(c, x)\), hence we find that \(f_*(g
+    \alpha) = f g \alpha = \alpha\) and therefore \(f_*\) is
+    surjective. (\(\Leftarrow\)) Suppose \(f_*\) is surjective, then in particular
+    for \(c = y\) we have that \(\Id_y \in \im f_*\) and hence \(f\) is a split
+    epimorphism. (Dual) Let \(f^\op: y \to x\), then from the above proposition
+    \(f^\op\) is a split epimorphism if and only if \((f^\op)_*: \Hom_{\cat
+        C^\op}(y, c) \to \Hom_{\cat C^\op}(x, c)\) is surjective. Dually we have that
+    \(f\) is a monomorphism if and only if \((f^\op)_*^\op = f^*: \Hom_{\cat C}(c,
+    x) \to \Hom_{\cat C}(c, y)\), which proves the last part.
 \end{proof}
 
 \begin{proposition}
-  Let \(f \in \Mor(\cat C)\). If \(f\) is a monomorphism and also a split
-  epimorphism, then \(f\) is an isomorphism. Dually, if \(f\) is an epimorphism
-  and a split monomorphism, then \(f\) is an isomorphism.
+    Let \(f \in \Mor(\cat C)\). If \(f\) is a monomorphism and also a split
+    epimorphism, then \(f\) is an isomorphism. Dually, if \(f\) is an epimorphism
+    and a split monomorphism, then \(f\) is an isomorphism.
 \end{proposition}
 
 \begin{proof}
-  Suppose \(f: x \to y\) is a split epimorphism and \(g: y \to x\) be a section
-  of \(f\), then \(f g = \Id_y\) and, moreover \(f g f = \Id_y
-  f = f\) hence from if \(f\) is a monomorphism we conclude that \(g
-  f = \Id_x\). Thus \(g\) is the inverse of \(f\) and hence \(f\) is an
-  isomorphism. Dually, let \(f^\op: y \to x\) be a monomorphism and split
-  epimorphism, then \(f^\op\) is an isomorphism, which dually means that \(f\)
-  is an epimorphism and split monomorphism, then \(f\) is an isomorphism.
+    Suppose \(f: x \to y\) is a split epimorphism and \(g: y \to x\) be a section
+    of \(f\), then \(f g = \Id_y\) and, moreover \(f g f = \Id_y
+    f = f\) hence from if \(f\) is a monomorphism we conclude that \(g
+    f = \Id_x\). Thus \(g\) is the inverse of \(f\) and hence \(f\) is an
+    isomorphism. Dually, let \(f^\op: y \to x\) be a monomorphism and split
+    epimorphism, then \(f^\op\) is an isomorphism, which dually means that \(f\)
+    is an epimorphism and split monomorphism, then \(f\) is an isomorphism.
 \end{proof}
 
 \begin{lemma}
-  Let \(f: x \to y\) and \(g: y \to z\). The following propositions hold
-  \begin{enumerate}[(a).]\setlength\itemsep{0em}
-    \item If \(f\) and \(g\) are monomorphisms, so is \(g f: x \mono z\).
-      For the dual proposition, if \(f\) and \(g\) are epimorphisms, then \(g
-      f: x \epi z\) is an epimorphism.
-    \item If \(g f: x \mono z\) is a monomorphism, then \(f\) is also
-      monomorphism.  Dually, if \(g f: x \epi z\) is an epimorphism, then
-      \(g\) is an epimorphism.
-  \end{enumerate}
+    Let \(f: x \to y\) and \(g: y \to z\). The following propositions hold
+    \begin{enumerate}[(a).]\setlength\itemsep{0em}
+        \item If \(f\) and \(g\) are monomorphisms, so is \(g f: x \mono z\).
+              For the dual proposition, if \(f\) and \(g\) are epimorphisms, then \(g
+              f: x \epi z\) is an epimorphism.
+        \item If \(g f: x \mono z\) is a monomorphism, then \(f\) is also
+              monomorphism.  Dually, if \(g f: x \epi z\) is an epimorphism, then
+              \(g\) is an epimorphism.
+    \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-  (a) Suppose that \(f, g\) are both monomorphisms. Given any \(c \in \cat C\),
-  let \(\alpha, \beta \in \Hom_{\cat C}(c, x)\) be such that \(g f \alpha = g f
-  \beta\). In particular, since \(g\) is monic, then \(f \alpha = f \beta\), but
-  \(f\) is also monic, hence \(\alpha = \beta\). For the dual part, suppose that
-  \(f^\op: y \to x\) and \(g^\op: z \to y\) be monic, then from above we have
-  \(f^\op g^\op = (g f)^\op\) monic, which dually implies that \(g f\) is epic.
+    (a) Suppose that \(f, g\) are both monomorphisms. Given any \(c \in \cat C\),
+    let \(\alpha, \beta \in \Hom_{\cat C}(c, x)\) be such that \(g f \alpha = g f
+    \beta\). In particular, since \(g\) is monic, then \(f \alpha = f \beta\), but
+    \(f\) is also monic, hence \(\alpha = \beta\). For the dual part, suppose that
+    \(f^\op: y \to x\) and \(g^\op: z \to y\) be monic, then from above we have
+    \(f^\op g^\op = (g f)^\op\) monic, which dually implies that \(g f\) is epic.
 
-  (b) Let \(g f\) be monic. Then given \(c \in \cat C\) and \(\alpha, \beta \in
-  \Hom_{\cat C}(c, x)\) such that \(f \alpha = f \beta\), then in particular
-  \(g(f \alpha) = g(f \beta)\), then from the monic property we have \(\alpha =
-  \beta\). Dually, suppose that \((g f)^\op = f^\op g^\op \in \Mor(\cat C^\op)\)
-  is monic, then from above we find that \(g^\op\) is monic, which dually
-  implies that \(g\) is epic.
+    (b) Let \(g f\) be monic. Then given \(c \in \cat C\) and \(\alpha, \beta \in
+    \Hom_{\cat C}(c, x)\) such that \(f \alpha = f \beta\), then in particular
+    \(g(f \alpha) = g(f \beta)\), then from the monic property we have \(\alpha =
+    \beta\). Dually, suppose that \((g f)^\op = f^\op g^\op \in \Mor(\cat C^\op)\)
+    is monic, then from above we find that \(g^\op\) is monic, which dually
+    implies that \(g\) is epic.
 \end{proof}

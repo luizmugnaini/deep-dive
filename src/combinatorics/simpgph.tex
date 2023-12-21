@@ -1,123 +1,123 @@
 \section{The Simple Graph --- Looping All Over}
 
 \begin{definition}[Simple Graph]\label{def: simp-graph}
-  A simple graph is defined to be a graph \(G = (V, E, d)\) (in the sense of
-  \cref{def: general-graph}) where
-  \[
-    d: E \to V^2/_{(x, y) \sim (y, x)}
-    \text{, mapping }
-    e \overset d \longmapsto (x, y) = (y, x)
-  \]
-  That is, \(d\) defines a reflexive and symmetric relation --- that is,
-  \(\Edge(x, x)\) is true for all \(x \in V\), and \(\Edge(x, y) = \Edge(y, x)\)
-  for all pairs \(x, y \in V\).
+    A simple graph is defined to be a graph \(G = (V, E, d)\) (in the sense of
+    \cref{def: general-graph}) where
+    \[
+        d: E \to V^2/_{(x, y) \sim (y, x)}
+        \text{, mapping }
+        e \overset d \longmapsto (x, y) = (y, x)
+    \]
+    That is, \(d\) defines a reflexive and symmetric relation --- that is,
+    \(\Edge(x, x)\) is true for all \(x \in V\), and \(\Edge(x, y) = \Edge(y, x)\)
+    for all pairs \(x, y \in V\).
 \end{definition}
 
 We'll now construct a category for simple graphs using presheaves on the the
 following category.
 
 \begin{definition}[Walking simple graph]\label{def: walking-simp-graph}
-  A walking simple graph is defined as a category \(\cat S\) consisting of
-  \begin{itemize}
-    \setlength\itemsep{0.0em}
-    \item An object \(V\), called the set of vertices --- containg elements
-      \(x\).
-    \item An object \(E\), called the set of edges --- containing ordered pairs
-      \(e = (x, y)\), where \(x, y \in V\).
-    \item Morphisms \(s, t: E \to V\) called source and target, respectively ---
-      given an edge \(e = (x, y)\) we have \(e \xmapsto{s} x\) and \(e \xmapsto{t}
-      y\). We also impose that the map defined by \(e \mapsto (s(e), t(e))\)
-      in \(\End_{\Set}(E)\) is injective.
-    \item Identity morphisms \(\Id_V: V \to V\) and \(\Id_E: E \to E\)
-      (reflexivity of vertices and edges).
-    \item An automorphism \(\sigma: E \isoto E\) called symmetry --- mapping \(e =
-      (x, y) \xmapsto\sigma (y, x)\).
-  \end{itemize}
+    A walking simple graph is defined as a category \(\cat S\) consisting of
+    \begin{itemize}
+        \setlength\itemsep{0.0em}
+        \item An object \(V\), called the set of vertices --- containg elements
+              \(x\).
+        \item An object \(E\), called the set of edges --- containing ordered pairs
+              \(e = (x, y)\), where \(x, y \in V\).
+        \item Morphisms \(s, t: E \to V\) called source and target, respectively ---
+              given an edge \(e = (x, y)\) we have \(e \xmapsto{s} x\) and \(e \xmapsto{t}
+              y\). We also impose that the map defined by \(e \mapsto (s(e), t(e))\)
+              in \(\End_{\Set}(E)\) is injective.
+        \item Identity morphisms \(\Id_V: V \to V\) and \(\Id_E: E \to E\)
+              (reflexivity of vertices and edges).
+        \item An automorphism \(\sigma: E \isoto E\) called symmetry --- mapping \(e =
+              (x, y) \xmapsto\sigma (y, x)\).
+    \end{itemize}
 \end{definition}
 
 \begin{proposition}[Simple graph is a presheaf]\label{prop: simp-graph-presheaf}
-  Let \(\cat S\) be a walking simple graph. A simple graph is a presheaf
-  \[
-    G: \cat S^\op \to \Set.
-  \]
+    Let \(\cat S\) be a walking simple graph. A simple graph is a presheaf
+    \[
+        G: \cat S^\op \to \Set.
+    \]
 \end{proposition}
 
 \begin{proof}
-  The source and target morphisms correspond to \(G(s), G(t): G(E) \to G(V)\) in
-  such a way that, given any \(e = (x, y) \in G(E)\), \(e \xmapsto{G(s)} x\) and
-  \(e \xmapsto{G(t)} y\) (edges have sources and targets). Moreover, since the
-  map \(e \mapsto (s(e), t(e))\) is injective, if \(e, e' \in G(E)\) are edges
-  such that \((s(e), t(e)) = (s(e'), t(e'))\), then \(e = e'\) (edges are well
-  defined). The automorphism \(\sigma\) corresponds to \(G(\sigma): G(E) \to
-  G(E)\) which is again an automorphism and hence defines an equivalence between
-  edges \((x, y)\) and \((y, x)\) --- which implies that the source and target
-  of an edge are indiscernible from each other.
+    The source and target morphisms correspond to \(G(s), G(t): G(E) \to G(V)\) in
+    such a way that, given any \(e = (x, y) \in G(E)\), \(e \xmapsto{G(s)} x\) and
+    \(e \xmapsto{G(t)} y\) (edges have sources and targets). Moreover, since the
+    map \(e \mapsto (s(e), t(e))\) is injective, if \(e, e' \in G(E)\) are edges
+    such that \((s(e), t(e)) = (s(e'), t(e'))\), then \(e = e'\) (edges are well
+    defined). The automorphism \(\sigma\) corresponds to \(G(\sigma): G(E) \to
+    G(E)\) which is again an automorphism and hence defines an equivalence between
+    edges \((x, y)\) and \((y, x)\) --- which implies that the source and target
+    of an edge are indiscernible from each other.
 \end{proof}
 
 \begin{definition}[Morphism of simple graphs]
-  We define morphisms of simple graphs in two equivalent ways --- respectively
-  following \cref{def: simp-graph} and \cref{prop: simp-graph-presheaf}:
-  \begin{itemize}
-    \setlength\itemsep{0em}
-    \item A morphism \(G \to H\) of simple graphs \(G = (V, E)\) and \(H = (V',
-      E')\) is a map \(f: V \to V'\) such that \(\Edge(x, y)\) implies \(\Edge(f(x),
-      f(y))\).
-    \item Let \(G = (V, E, s, t)\) and \(H = (V', E', s', t')\) be simple
-      graphs. A morphism \(G \to H\) is a natural transformation \(\alpha: G \Rightarrow H\)
-      \[
-        \begin{tikzcd}
-          \cat S^\op
-          \ar[r, bend left, "G", ""{name=G}]
-          \ar[r, bend right, swap, "H", ""{name=H}]
-          &\Set
-          \ar[Rightarrow, "\alpha", from=G, to=H]
-        \end{tikzcd}
-      \]
-      Where \(\alpha\) is defined by a pair of morphisms \(\alpha_V: V \to V'\)
-      and \(\alpha_E: E \to E'\) such that the following diagrams commute
-      \[
-        \begin{tikzcd}
-          E \ar[r, "s"] \ar[d, swap, "\alpha_E"] &V \ar[d, "\alpha_V"]
-          \\
-          E' \ar[r, swap, "s'"] &V'
-        \end{tikzcd}
-        \qquad \qquad \qquad
-        \begin{tikzcd}
-          E \ar[r, "t"] \ar[d, swap, "\alpha_E"] &V \ar[d, "\alpha_V"]
-          \\
-          E' \ar[r, swap, "t'"] &V'
-        \end{tikzcd}
-      \]
-      from the symmetric and reflective relations in \(\Mor(\cat S)\) we see
-      that this is equivalent to the commutativity of the diagram\footnote{
-        Where, for any \(e \in E\), \(e' \in E'\), and \((x, y) \in \langle V
-        \rangle^2\), we define the maps \(s \times t\), \(s' \times t'\) and
-        \(\alpha_V \times \alpha_V\) as
-        \begin{itemize}
-          \setlength\itemsep{0.0em}
-          \item \(e \xmapsto{s \times t} (s(e), t(e)) = (t(e), s(e))\).
-          \item \(e' \xmapsto{s' \times t'} (s'(e'), t'(e')) = (t'(e'),
-            s'(e'))\).
-          \item \((x, y) \xmapsto{\alpha_V \times \alpha_V} (\alpha_V(x),
-            \alpha_V(y)) = (\alpha_V(y), \alpha_V(x))\).
-        \end{itemize}
-      }
-      \[
-        \begin{tikzcd}
-          E \ar[r, "s \times t"]
-          \ar[d, swap, "\alpha_E"]
-          &V^2/_{(x, y) \sim (y, x)}
-          \ar[d, "\alpha_V \times \alpha_V"]
-          \\
-          E' \ar[r, swap, "s' \times t'"] &V'^2/_{(x', y') \sim (y', x')}
-        \end{tikzcd}
-      \]
-  \end{itemize}
+    We define morphisms of simple graphs in two equivalent ways --- respectively
+    following \cref{def: simp-graph} and \cref{prop: simp-graph-presheaf}:
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item A morphism \(G \to H\) of simple graphs \(G = (V, E)\) and \(H = (V',
+              E')\) is a map \(f: V \to V'\) such that \(\Edge(x, y)\) implies \(\Edge(f(x),
+              f(y))\).
+        \item Let \(G = (V, E, s, t)\) and \(H = (V', E', s', t')\) be simple
+              graphs. A morphism \(G \to H\) is a natural transformation \(\alpha: G \Rightarrow H\)
+              \[
+                  \begin{tikzcd}
+                      \cat S^\op
+                      \ar[r, bend left, "G", ""{name=G}]
+                      \ar[r, bend right, swap, "H", ""{name=H}]
+                      &\Set
+                      \ar[Rightarrow, "\alpha", from=G, to=H]
+                  \end{tikzcd}
+              \]
+              Where \(\alpha\) is defined by a pair of morphisms \(\alpha_V: V \to V'\)
+              and \(\alpha_E: E \to E'\) such that the following diagrams commute
+              \[
+                  \begin{tikzcd}
+                      E \ar[r, "s"] \ar[d, swap, "\alpha_E"] &V \ar[d, "\alpha_V"]
+                      \\
+                      E' \ar[r, swap, "s'"] &V'
+                  \end{tikzcd}
+                  \qquad \qquad \qquad
+                  \begin{tikzcd}
+                      E \ar[r, "t"] \ar[d, swap, "\alpha_E"] &V \ar[d, "\alpha_V"]
+                      \\
+                      E' \ar[r, swap, "t'"] &V'
+                  \end{tikzcd}
+              \]
+              from the symmetric and reflective relations in \(\Mor(\cat S)\) we see
+              that this is equivalent to the commutativity of the diagram\footnote{
+                  Where, for any \(e \in E\), \(e' \in E'\), and \((x, y) \in \langle V
+                  \rangle^2\), we define the maps \(s \times t\), \(s' \times t'\) and
+                  \(\alpha_V \times \alpha_V\) as
+                  \begin{itemize}
+                      \setlength\itemsep{0.0em}
+                      \item \(e \xmapsto{s \times t} (s(e), t(e)) = (t(e), s(e))\).
+                      \item \(e' \xmapsto{s' \times t'} (s'(e'), t'(e')) = (t'(e'),
+                            s'(e'))\).
+                      \item \((x, y) \xmapsto{\alpha_V \times \alpha_V} (\alpha_V(x),
+                            \alpha_V(y)) = (\alpha_V(y), \alpha_V(x))\).
+                  \end{itemize}
+              }
+              \[
+                  \begin{tikzcd}
+                      E \ar[r, "s \times t"]
+                      \ar[d, swap, "\alpha_E"]
+                      &V^2/_{(x, y) \sim (y, x)}
+                      \ar[d, "\alpha_V \times \alpha_V"]
+                      \\
+                      E' \ar[r, swap, "s' \times t'"] &V'^2/_{(x', y') \sim (y', x')}
+                  \end{tikzcd}
+              \]
+    \end{itemize}
 \end{definition}
 
 \begin{definition}[Simple graphs category]
-  The category of simple graphs, denoted by \(\SimpGraph\), consists of
-  simple graphs and morphisms between them. That is, \(\SimpGraph = \Set^{\cat
-  S^\op}\) --- the category of presheaves on the walking simple graphs category
-  \(\cat S\).
+    The category of simple graphs, denoted by \(\SimpGraph\), consists of
+    simple graphs and morphisms between them. That is, \(\SimpGraph = \Set^{\cat
+        S^\op}\) --- the category of presheaves on the walking simple graphs category
+    \(\cat S\).
 \end{definition}

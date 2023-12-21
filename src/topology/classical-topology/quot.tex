@@ -22,27 +22,27 @@ which is exactly the definition of a continuous map. Lets give this a formal
 definition.
 
 \begin{definition}\label{def:quotient-topology}
-Let \(X\) be a topological space and \(S\) be any set. Let also \(\pi: X \epi S\)
-be a set-function. The quotient topology on \(S\) induced by the map \(\pi\) is
-the final topology such that \(\pi\) is a continuous map.
+    Let \(X\) be a topological space and \(S\) be any set. Let also \(\pi: X \epi S\)
+    be a set-function. The quotient topology on \(S\) induced by the map \(\pi\) is
+    the final topology such that \(\pi\) is a continuous map.
 \end{definition}
 
 \begin{proposition}
-The quotient topology is a topology.
+    The quotient topology is a topology.
 \end{proposition}
 
 \begin{proof}
-Let \(X /{\sim}\) be a space with the topology induced by the map
-\(\pi: X \epi X /{\sim}\). Consider an arbitrary collection \({\{U_{j}\}}_j\) of
-open sets of \(X /{\sim}\). Notice that since
-\(\pi^{-1}(\bigcup_{j} U_{j}) = \bigcup_j \pi^{-1}(U_j)\) then since
-\(\pi^{-1}(U_j)\) is open for all index \(j\), we conclude that
-\(\bigcup_j \pi^{-1}(U_{j}) \subseteq X\) is open, hence the set
-\(\bigcup_j U_j \subseteq X /{\sim}\) is necessarily open --- since \(\pi\) is
-continuous. Let now \(A, B \subseteq X /{\sim}\) be any open sets, then
-\(\pi^{-1}(A \cap B) = \pi^{-1}(A) \cap \pi^{-1}(B) \subseteq X\), which is open
-and therefore \(A \cap B\) is open in \(X /{\sim}\). We conclude that the
-quotient topology indeed satisfies the properties of a topology.
+    Let \(X /{\sim}\) be a space with the topology induced by the map
+    \(\pi: X \epi X /{\sim}\). Consider an arbitrary collection \({\{U_{j}\}}_j\) of
+    open sets of \(X /{\sim}\). Notice that since
+    \(\pi^{-1}(\bigcup_{j} U_{j}) = \bigcup_j \pi^{-1}(U_j)\) then since
+    \(\pi^{-1}(U_j)\) is open for all index \(j\), we conclude that
+    \(\bigcup_j \pi^{-1}(U_{j}) \subseteq X\) is open, hence the set
+    \(\bigcup_j U_j \subseteq X /{\sim}\) is necessarily open --- since \(\pi\) is
+    continuous. Let now \(A, B \subseteq X /{\sim}\) be any open sets, then
+    \(\pi^{-1}(A \cap B) = \pi^{-1}(A) \cap \pi^{-1}(B) \subseteq X\), which is open
+    and therefore \(A \cap B\) is open in \(X /{\sim}\). We conclude that the
+    quotient topology indeed satisfies the properties of a topology.
 \end{proof}
 
 In other terms, let \(T_S\) be the collection of all topologies on \(S\) such
@@ -53,107 +53,107 @@ fact that we can determine the quotient topology by the following universal
 property.
 
 \begin{theorem}[Universal property of the quotient topology]
-\label{thm:universal-property-quotient-topology}
-Let \(X\) be a topological space and \(S\) be any set, together with a
-surjective set-function \(\pi: X \epi S\). The quotient topology \(\tau\)
-on \(S\) induced by \(\pi\) is such that, for all topological spaces \(Z\) and
-every morphism \(g: X \to Z\) for which all \(x, y \in X\) such that
-\(\pi(x) = \pi(y)\) then \(g(x) = g(y)\) --- i.e. \(g\) is constant on the
-fibres of \(\pi\) --- there exists a unique morphism
-\(f: (S, \tau) \to Z\) such that the diagram
-\[
-  \begin{tikzcd}
-    X \ar[r, "g"] \ar[d, two heads, swap, "\pi"] &Z\\
-    S \ar[ur, swap, bend right, dashed, "f"]
-  \end{tikzcd}
-\]
-commutes in \(\Top\). Moreover, if \(\tau'\) is a topology on \(S\) such
-that the diagram commutes, then necessarily \(\tau' = \tau\).
+    \label{thm:universal-property-quotient-topology}
+    Let \(X\) be a topological space and \(S\) be any set, together with a
+    surjective set-function \(\pi: X \epi S\). The quotient topology \(\tau\)
+    on \(S\) induced by \(\pi\) is such that, for all topological spaces \(Z\) and
+    every morphism \(g: X \to Z\) for which all \(x, y \in X\) such that
+    \(\pi(x) = \pi(y)\) then \(g(x) = g(y)\) --- i.e. \(g\) is constant on the
+    fibres of \(\pi\) --- there exists a unique morphism
+    \(f: (S, \tau) \to Z\) such that the diagram
+    \[
+        \begin{tikzcd}
+            X \ar[r, "g"] \ar[d, two heads, swap, "\pi"] &Z\\
+            S \ar[ur, swap, bend right, dashed, "f"]
+        \end{tikzcd}
+    \]
+    commutes in \(\Top\). Moreover, if \(\tau'\) is a topology on \(S\) such
+    that the diagram commutes, then necessarily \(\tau' = \tau\).
 \end{theorem}
 
 \begin{proof}
-Since \(\pi\) is surjective, we can completely define a map \(f: S \to Z\)
-sending \(s \mapsto g(x)\) such that \(x \in \pi^{-1}(s)\), which is well
-defined because, for all \(x, y \in \pi^{-1}(s)\), we have \(g(x) = g(y)\), so
-that the image of each \(s \in S\) under the map \(f\) is uniquely defined. We
-now show that \(f\) is, in fact, continuous --- and hence a morphism. Let
-\(U \subseteq Z\) be any open set of \(Z\), then, since \(g^{-1}(U)\) is open
-and \((f \pi)^{-1}(U) = \pi^{-1} f^{-1}(U) = g^{-1}(U)\), \(f^{-1}(U)\) cannot
-be a closed set --- in fact, it needs to be an open set, because
-\(\pi^{-1}(f^{-1}(U)) \subseteq X\) must be open, since \(\pi\) is continuous.
-It follows that \(f\) is continuous and thus the said morphism indeed exists.
+    Since \(\pi\) is surjective, we can completely define a map \(f: S \to Z\)
+    sending \(s \mapsto g(x)\) such that \(x \in \pi^{-1}(s)\), which is well
+    defined because, for all \(x, y \in \pi^{-1}(s)\), we have \(g(x) = g(y)\), so
+    that the image of each \(s \in S\) under the map \(f\) is uniquely defined. We
+    now show that \(f\) is, in fact, continuous --- and hence a morphism. Let
+    \(U \subseteq Z\) be any open set of \(Z\), then, since \(g^{-1}(U)\) is open
+    and \((f \pi)^{-1}(U) = \pi^{-1} f^{-1}(U) = g^{-1}(U)\), \(f^{-1}(U)\) cannot
+    be a closed set --- in fact, it needs to be an open set, because
+    \(\pi^{-1}(f^{-1}(U)) \subseteq X\) must be open, since \(\pi\) is continuous.
+    It follows that \(f\) is continuous and thus the said morphism indeed exists.
 
-For the uniqueness, let \(f\) and \(f'\) be two morphisms such that \(f\pi = g\)
-and \(f'\pi = g\). Let \(s \in S\) be any point. Since \(\pi\) is surjective,
-there exists \(x \in X\) for which \(x \in \pi^{-1}(s)\), therefore,
-\(f \pi(x) = f(s) = f'\pi(x) = f'(s)\) for every element of their domain ---
-hence \(f = f'\).
+    For the uniqueness, let \(f\) and \(f'\) be two morphisms such that \(f\pi = g\)
+    and \(f'\pi = g\). Let \(s \in S\) be any point. Since \(\pi\) is surjective,
+    there exists \(x \in X\) for which \(x \in \pi^{-1}(s)\), therefore,
+    \(f \pi(x) = f(s) = f'\pi(x) = f'(s)\) for every element of their domain ---
+    hence \(f = f'\).
 
-Suppose now that both \((S, \tau)\) and \((S, \tau')\) satisfy the
-universal property, that is, the following diagrams commutes for unique
-morphisms \(f\) and \(h\)
-\[
-  \begin{tikzcd}
-    &Z & \\
-    (S, \tau) \ar[ur, dashed, bend left, "f"]
-    &X \ar[l, two heads, "\pi"] \ar[r, swap, two heads, "\pi"] \ar[u, "g"]
-    &(S, \tau') \ar[ul, dashed, bend right, swap, "f'"]
-  \end{tikzcd}
-\]
-Since the diagram commutes for all \(Z\), let \(Z = (S, \tau)\), and
-consider the map \(f' = \Id': (S, \tau') \to (S, \tau)\). Then,
-given any \(U \in \tau\) we find that since \(\Id'\) is continuous that
-\(\Id'^{-1}(U) = U \subseteq (S, \tau')\) is open, hence
-\(\tau \subseteq \tau'\). Analogously, let \(Z = (S, \tau')\)
-and consider \(f = \Id: (S, \tau) \to (S, \tau')\). Let
-\(U' \in \tau'\) then from the continuity of \(\Id\) we find that
-\(\Id^{-1}(U') = U' \subseteq (S, \tau)\) is open, therefore
-\(\tau' \subseteq \tau\). Thus indeed \(\tau = \tau'\)
-as wanted.
+    Suppose now that both \((S, \tau)\) and \((S, \tau')\) satisfy the
+    universal property, that is, the following diagrams commutes for unique
+    morphisms \(f\) and \(h\)
+    \[
+        \begin{tikzcd}
+            &Z & \\
+            (S, \tau) \ar[ur, dashed, bend left, "f"]
+            &X \ar[l, two heads, "\pi"] \ar[r, swap, two heads, "\pi"] \ar[u, "g"]
+            &(S, \tau') \ar[ul, dashed, bend right, swap, "f'"]
+        \end{tikzcd}
+    \]
+    Since the diagram commutes for all \(Z\), let \(Z = (S, \tau)\), and
+    consider the map \(f' = \Id': (S, \tau') \to (S, \tau)\). Then,
+    given any \(U \in \tau\) we find that since \(\Id'\) is continuous that
+    \(\Id'^{-1}(U) = U \subseteq (S, \tau')\) is open, hence
+    \(\tau \subseteq \tau'\). Analogously, let \(Z = (S, \tau')\)
+    and consider \(f = \Id: (S, \tau) \to (S, \tau')\). Let
+    \(U' \in \tau'\) then from the continuity of \(\Id\) we find that
+    \(\Id^{-1}(U') = U' \subseteq (S, \tau)\) is open, therefore
+    \(\tau' \subseteq \tau\). Thus indeed \(\tau = \tau'\)
+    as wanted.
 \end{proof}
 
 \begin{proposition}[Quotient topology as a coequalizer]
-\label{prop:quotient-top-as-coequalizer}
-Let \(X\) be a topological space and \(f: X \epi S\) be a surjective
-map, where \(S\) is some set. Define the equivalence relation set
-\[
-R \coloneq \{(x, y) \in X \times X \colon f(x) = f(y)\},
-\]
-together with two maps \(r_1, r_2: R \rightrightarrows X\) given by the
-following commutative diagram
-\[
-\begin{tikzcd}
-R \ar[r, hook] \ar[rr, bend left=50, "r_1" description]
-\ar[rr, bend right=50, "r_2" description]
-&X \times X \ar[r, two heads, shift left, "\pi_1"]
-\ar[r, two heads, shift right, "\pi_2"']
-&X
-\end{tikzcd}
-\]
+    \label{prop:quotient-top-as-coequalizer}
+    Let \(X\) be a topological space and \(f: X \epi S\) be a surjective
+    map, where \(S\) is some set. Define the equivalence relation set
+    \[
+        R \coloneq \{(x, y) \in X \times X \colon f(x) = f(y)\},
+    \]
+    together with two maps \(r_1, r_2: R \rightrightarrows X\) given by the
+    following commutative diagram
+    \[
+        \begin{tikzcd}
+            R \ar[r, hook] \ar[rr, bend left=50, "r_1" description]
+            \ar[rr, bend right=50, "r_2" description]
+            &X \times X \ar[r, two heads, shift left, "\pi_1"]
+            \ar[r, two heads, shift right, "\pi_2"']
+            &X
+        \end{tikzcd}
+    \]
 
-The \emph{quotient topology} is exactly the topology that makes \(S\) into the
-\emph{coequalizer} of \(r_1\) and \(r_2\).
+    The \emph{quotient topology} is exactly the topology that makes \(S\) into the
+    \emph{coequalizer} of \(r_1\) and \(r_2\).
 \end{proposition}
 
 \begin{proof}
-Let \(Y\) be any space and \(h: X \to Y\) be a continuous map such that
-\(h r_1 = h r_2\). Let \(x, x' \in X\) be any two points such that
-\(f(x) = f(y)\), then from construction \(x, x' \in R\). Then
-\(h(x) = h r_1(x, x') = h r_2(x, x') = h(x')\). Now by means of the universal
-property \cref{thm:universal-property-quotient-topology}, if \(\tau\) is the
-quotient topology on \(S\) induced by \(f\), we conclude that there
-exists a unique continuous map \(g: (S, \tau) \to Y\) such that the following
-diagram commutes
-\[
-\begin{tikzcd}
-Y & & \\
-(S, \tau) \ar[u, dashed, "g"]
-&X \ar[l, two heads, "f"]
-\ar[lu, bend right, "h"']
-&R \ar[l, shift right, "r_1"'] \ar[l, shift left, "r_2"]
-\end{tikzcd}
-\]
-Therefore \((S, \tau) = \Coeq(r_1, r_2)\), with associated morphism \(f\).
+    Let \(Y\) be any space and \(h: X \to Y\) be a continuous map such that
+    \(h r_1 = h r_2\). Let \(x, x' \in X\) be any two points such that
+    \(f(x) = f(y)\), then from construction \(x, x' \in R\). Then
+    \(h(x) = h r_1(x, x') = h r_2(x, x') = h(x')\). Now by means of the universal
+    property \cref{thm:universal-property-quotient-topology}, if \(\tau\) is the
+    quotient topology on \(S\) induced by \(f\), we conclude that there
+    exists a unique continuous map \(g: (S, \tau) \to Y\) such that the following
+    diagram commutes
+    \[
+        \begin{tikzcd}
+            Y & & \\
+            (S, \tau) \ar[u, dashed, "g"]
+            &X \ar[l, two heads, "f"]
+            \ar[lu, bend right, "h"']
+            &R \ar[l, shift right, "r_1"'] \ar[l, shift left, "r_2"]
+        \end{tikzcd}
+    \]
+    Therefore \((S, \tau) = \Coeq(r_1, r_2)\), with associated morphism \(f\).
 \end{proof}
 
 To ease the way in which we refer to quotients and surjective morphisms that
@@ -161,35 +161,35 @@ induce quotients between topological spaces, we define the following
 terminology.
 
 \begin{definition}[Quotient morphism]
-\label{def:quotient-morphism}
-A surjective morphism \(\pi: X \to Y\) of topological spaces \(X\) and \(Y\) is
-said to be a \emph{quotient morphism} (or quotient map) if \(\pi\) induces the
-universal property of quotients --- in other words, open sets of \(Y\) are
-exactly those that have open preimage on \(\pi\), that is, \(V \subseteq Y\) is
-open if and only if \(\pi^{-1}(V) \subseteq X\) is open.
+    \label{def:quotient-morphism}
+    A surjective morphism \(\pi: X \to Y\) of topological spaces \(X\) and \(Y\) is
+    said to be a \emph{quotient morphism} (or quotient map) if \(\pi\) induces the
+    universal property of quotients --- in other words, open sets of \(Y\) are
+    exactly those that have open preimage on \(\pi\), that is, \(V \subseteq Y\) is
+    open if and only if \(\pi^{-1}(V) \subseteq X\) is open.
 \end{definition}
 
 \begin{theorem}[Quotient descent]
-\label{thm:Top-quotient-descent}
-Let \(q: X \to Y\) be a quotient map between topological spaces. For any space
-\(Z\) together with a morphism \(f: X \to Z\) that is constant on the fibres of
-\(q\) --- that is, \(q(x_1) = q(x_2)\) implies \(f(x_1) = f(x_2)\) --- there
-exists a \emph{unique} morphism \(f_{*}: Y \unique Z\) such that the following
-diagram commutes
-\[
-\begin{tikzcd}
-X \ar[d, two heads, "q", swap] \ar[dr, bend left, "f"] & \\
-Y \ar[r, dashed, swap, "f_{*}"] &Z
-\end{tikzcd}
-\]
+    \label{thm:Top-quotient-descent}
+    Let \(q: X \to Y\) be a quotient map between topological spaces. For any space
+    \(Z\) together with a morphism \(f: X \to Z\) that is constant on the fibres of
+    \(q\) --- that is, \(q(x_1) = q(x_2)\) implies \(f(x_1) = f(x_2)\) --- there
+    exists a \emph{unique} morphism \(f_{*}: Y \unique Z\) such that the following
+    diagram commutes
+    \[
+        \begin{tikzcd}
+            X \ar[d, two heads, "q", swap] \ar[dr, bend left, "f"] & \\
+            Y \ar[r, dashed, swap, "f_{*}"] &Z
+        \end{tikzcd}
+    \]
 \end{theorem}
 
 \begin{proof}
-Since \(q\) is surjective, for every \(y \in Y\) there exists \(x \in X\) such
-that \(q(x) = y\), hence we define \(f_{*}(y) \coloneq f_{*}(x)\) for every
-\(x \in q^{-1}(y)\). For the uniqueness, since \(f\) is constant on the fibres
-of \(q\) then \(f_{*}\) is fully defined by \(f\) --- thus unique. From the
-universal property we obtain that \(f_{*}\) is continuous.
+    Since \(q\) is surjective, for every \(y \in Y\) there exists \(x \in X\) such
+    that \(q(x) = y\), hence we define \(f_{*}(y) \coloneq f_{*}(x)\) for every
+    \(x \in q^{-1}(y)\). For the uniqueness, since \(f\) is constant on the fibres
+    of \(q\) then \(f_{*}\) is fully defined by \(f\) --- thus unique. From the
+    universal property we obtain that \(f_{*}\) is continuous.
 \end{proof}
 
 \subsection{Some Examples And Applications}
@@ -199,188 +199,188 @@ topology to our toolkit, I'll now briefly discuss some of those, which will most
 probably come up further into this text.
 
 \begin{example}[Projective space]\label{exp:real-projective-space}
-Let \(\sim\) be the equivalence relation for which \(x \sim y\) if and only if
-\(x = \gamma y\), where \(x, y \in \R^{n+1} \ \{0\}\) and \(\gamma \in \R\). We
-define the \(n\)-dimensional real projective space as the quotient \((\R^{n+1}
-\setminus \{0\})/{\sim}\), which is denoted by \(\R \Proj^{n}\).
+    Let \(\sim\) be the equivalence relation for which \(x \sim y\) if and only if
+    \(x = \gamma y\), where \(x, y \in \R^{n+1} \ \{0\}\) and \(\gamma \in \R\). We
+    define the \(n\)-dimensional real projective space as the quotient \((\R^{n+1}
+    \setminus \{0\})/{\sim}\), which is denoted by \(\R \Proj^{n}\).
 \end{example}
 
 \begin{definition}[Cone]\label{def:cone}
-Let \(X\) be any topological space and \(I\) be the standard interval. The
-topological space \(X \times I\) is known as the cylinder on \(X\). Via a
-quotient operation, we can collapse regions of this cylinder. For instance,
-we can create a cone by collapsing one of the sides of the cylinder, such as
-\((X \times I) / (X \times \{1\})\). Such object is denoted \(\Cone X\), the
-cone on \(X\).
+    Let \(X\) be any topological space and \(I\) be the standard interval. The
+    topological space \(X \times I\) is known as the cylinder on \(X\). Via a
+    quotient operation, we can collapse regions of this cylinder. For instance,
+    we can create a cone by collapsing one of the sides of the cylinder, such as
+    \((X \times I) / (X \times \{1\})\). Such object is denoted \(\Cone X\), the
+    cone on \(X\).
 \end{definition}
 
 \begin{definition}[Suspension]
-\label{def:suspension}
-The \emph{suspension} of a topological space is an endofunctor \(\Susp: \Top \to
-\Top\) mapping each space \(X\) to the quotient space
-\[
-\Susp X \coloneq (X \times I)/(X \times \{0, 1\})
-\]
-and for each morphism \(f: X \to Y\) we have the naturally induced morphism
-\[
-\Susp f: \Susp X \to \Susp Y\ \text{ mapping }\ [x, t] \mapsto [f(x), t].
-\]
+    \label{def:suspension}
+    The \emph{suspension} of a topological space is an endofunctor \(\Susp: \Top \to
+    \Top\) mapping each space \(X\) to the quotient space
+    \[
+        \Susp X \coloneq (X \times I)/(X \times \{0, 1\})
+    \]
+    and for each morphism \(f: X \to Y\) we have the naturally induced morphism
+    \[
+        \Susp f: \Susp X \to \Susp Y\ \text{ mapping }\ [x, t] \mapsto [f(x), t].
+    \]
 \end{definition}
 
 
 \begin{example}
-\label{exp:wedge-sum-space}
-Let \(J\) be an indexing set and \(\{X_j\}_{j \in J}\) be a collection of
-non-empty topological spaces. For each \(j \in J\), choose any \(p_j \in X_j\)
-as a base point. We define the wedge sum of the collection \(\{X_{j}\}_{j \in
-J}\) with respect to the base points \(\{p_{j}\}_{j \in J}\) as the topological
-space
-\[
-  \bigvee_{j \in J} X_j = \bigatt_{j \in J} X_j / \{p_{j}\}_{j \in J}
-\]
+    \label{exp:wedge-sum-space}
+    Let \(J\) be an indexing set and \(\{X_j\}_{j \in J}\) be a collection of
+    non-empty topological spaces. For each \(j \in J\), choose any \(p_j \in X_j\)
+    as a base point. We define the wedge sum of the collection \(\{X_{j}\}_{j \in
+    J}\) with respect to the base points \(\{p_{j}\}_{j \in J}\) as the topological
+    space
+    \[
+        \bigvee_{j \in J} X_j = \bigatt_{j \in J} X_j / \{p_{j}\}_{j \in J}
+    \]
 \end{example}
 
 An interesting fact about wedge sums of topological spaces preserve the
 Hausdorff property if every component is Hausdorff.
 
 \begin{proposition}
-\label{prop:hausdorff-wedge-sum}
-Let \(\{X_{j}\}_{j \in J}\) be an indexed collection of Hausdorff topological
-spaces. Then the wedge sum \(\bigvee_{j \in J} X_j\) with respect to any choice
-of base points is Hausdorff.
+    \label{prop:hausdorff-wedge-sum}
+    Let \(\{X_{j}\}_{j \in J}\) be an indexed collection of Hausdorff topological
+    spaces. Then the wedge sum \(\bigvee_{j \in J} X_j\) with respect to any choice
+    of base points is Hausdorff.
 \end{proposition}
 
 \begin{proof}
-Let \(\{p_j \in X_j\}_{j \in J}\) be any choice of base points for the given
-collection. Let \(x, y \in \bigvee_{j \in J} X_j\) be any distinct points in the
-wedge sum space. If \(x, y \in X_j\) for some \(j \in J\), then it is clear that
-there exists non-intersecting neighbourhoods of \(x\) and \(y\) on \(X_j\) ---
-of which we can take their intersection with the disjoint union \(\bigatt_{j \in
-J} X_j\) and the proposition will hold for \(\bigvee_{j \in J} X_j\). On the
-other hand, if \(i, j \in J\) are distinct indices and \(x \in X_i\) while \(y
-\in X_j\), then there exists \(U_x \subseteq X_i\) and \(U_y \subseteq X_j\)
-neighbours of \(x\) and \(y\), respectively, such that \(U_x \cap X_j =
-\emptyset\) and \(U_y \cap X_i = \emptyset\), which in particular imply in \(U_x
-\cap U_y= \emptyset\). For our end, we just need to consider the neighbourhoods
-\(U_x' = U_x \cap \bigatt_{j \in J} X_j\) and \(U_y' = U_y \cap \bigatt_{j \in J}
-X_j\) so that \(U_x' = U_y'\).
+    Let \(\{p_j \in X_j\}_{j \in J}\) be any choice of base points for the given
+    collection. Let \(x, y \in \bigvee_{j \in J} X_j\) be any distinct points in the
+    wedge sum space. If \(x, y \in X_j\) for some \(j \in J\), then it is clear that
+    there exists non-intersecting neighbourhoods of \(x\) and \(y\) on \(X_j\) ---
+    of which we can take their intersection with the disjoint union \(\bigatt_{j \in
+        J} X_j\) and the proposition will hold for \(\bigvee_{j \in J} X_j\). On the
+    other hand, if \(i, j \in J\) are distinct indices and \(x \in X_i\) while \(y
+    \in X_j\), then there exists \(U_x \subseteq X_i\) and \(U_y \subseteq X_j\)
+    neighbours of \(x\) and \(y\), respectively, such that \(U_x \cap X_j =
+    \emptyset\) and \(U_y \cap X_i = \emptyset\), which in particular imply in \(U_x
+    \cap U_y= \emptyset\). For our end, we just need to consider the neighbourhoods
+    \(U_x' = U_x \cap \bigatt_{j \in J} X_j\) and \(U_y' = U_y \cap \bigatt_{j \in J}
+    X_j\) so that \(U_x' = U_y'\).
 \end{proof}
 
 \begin{proposition}
-\label{prop:quot-second-count-locall-euclidean}
-Let \(X\) be a second countable space and \(M = X / {\sim}\) be a quotient. If
-\(M\) is locally Euclidean, then \(M\) is second countable.
+    \label{prop:quot-second-count-locall-euclidean}
+    Let \(X\) be a second countable space and \(M = X / {\sim}\) be a quotient. If
+    \(M\) is locally Euclidean, then \(M\) is second countable.
 \end{proposition}
 
 \begin{proof}
-Let \(\pi: X \epi M\) be the quotient map that induces the equivalence
-relation \(\sim\) in \(X\). If we assume that \(M\) is locally euclidean, we can
-let \(\mathcal{C}\) be a cover of \(M\) composed of coordinate balls. Since
-\(\pi\) is surjective, \(\mathcal H \coloneq \{\pi^{-1}(U) \colon U \in
-\mathcal{C}\}\) is a cover for the space \(X\). Moreover, since \(X\) is second
-countable, any cover of \(X\) contains a countable subcover --- in particular,
-let \(\mathcal U \subseteq \mathcal H\) be a countable subcover. Define the
-countable set \(\mathcal{C}' = \{U \in \mathcal{C} \colon \pi^{-1}(U) \in
-\mathcal{U}\}\). Since \(\mathcal{U}\) covers \(X\) and \(\pi\) is surjective,
-it follows that \(\mathcal{C}' \subseteq \mathcal{C}\) is a countable subcover
-of \(M\) composed of coordinate balls --- that is, \(M\) is Lindelöf. Better
-than that, since coordinate balls are second countable (see
-\cref{prop:coordinate-ball-second-countable}) we can apply
-\cref{cor:second-countable-out-of-cover} to see that \(M\) is second
-countable.
+    Let \(\pi: X \epi M\) be the quotient map that induces the equivalence
+    relation \(\sim\) in \(X\). If we assume that \(M\) is locally euclidean, we can
+    let \(\mathcal{C}\) be a cover of \(M\) composed of coordinate balls. Since
+    \(\pi\) is surjective, \(\mathcal H \coloneq \{\pi^{-1}(U) \colon U \in
+    \mathcal{C}\}\) is a cover for the space \(X\). Moreover, since \(X\) is second
+    countable, any cover of \(X\) contains a countable subcover --- in particular,
+    let \(\mathcal U \subseteq \mathcal H\) be a countable subcover. Define the
+    countable set \(\mathcal{C}' = \{U \in \mathcal{C} \colon \pi^{-1}(U) \in
+    \mathcal{U}\}\). Since \(\mathcal{U}\) covers \(X\) and \(\pi\) is surjective,
+    it follows that \(\mathcal{C}' \subseteq \mathcal{C}\) is a countable subcover
+    of \(M\) composed of coordinate balls --- that is, \(M\) is Lindelöf. Better
+    than that, since coordinate balls are second countable (see
+    \cref{prop:coordinate-ball-second-countable}) we can apply
+    \cref{cor:second-countable-out-of-cover} to see that \(M\) is second
+    countable.
 \end{proof}
 
 \begin{corollary}[Manifold from a quotient]
-\label{cor:manifold-from-quotient}
-In the context of the preceding proposition, if \(M\) is both locally Euclidean
-and Hausdorff, then \(M\) is a topological manifold.
+    \label{cor:manifold-from-quotient}
+    In the context of the preceding proposition, if \(M\) is both locally Euclidean
+    and Hausdorff, then \(M\) is a topological manifold.
 \end{corollary}
 
 \subsection{Hausdorffness \& Quotient Spaces}
 
 \begin{remark}
-\label{rem:quotient-doesnt-preserve-hausdorff}
-The quotient topology \emph{doesn't preserve} Hausdorffness.
+    \label{rem:quotient-doesnt-preserve-hausdorff}
+    The quotient topology \emph{doesn't preserve} Hausdorffness.
 
-As an example, take the space \(\R \times \{-1, 1\}\) with the usual topology
-and define the equivalence relation \((x, 1) \sim (x, -1)\) if and only if
-\(x \neq 0\). The resulting space \((\R \times \{-1, 1\})/{\sim}\) is not
-Hausdorff: consider the sequence \((1/n, 1)_{n \in \Z_{>0}}\), we have that
-\(1/n \to 0\) but since \(1/n\) does never assume the value of zero, for all
-\(n \in \Z_{>0}\) we have \((1/n, 1) \sim (1/n, -1)\) --- thus the has two
-distinct limits \((0, 1)\) from one side and \((0, -1)\) from the other, thus
-\((\R \times \{-1, 1\})/{\sim}\) isn't Hausdorff.
+    As an example, take the space \(\R \times \{-1, 1\}\) with the usual topology
+    and define the equivalence relation \((x, 1) \sim (x, -1)\) if and only if
+    \(x \neq 0\). The resulting space \((\R \times \{-1, 1\})/{\sim}\) is not
+    Hausdorff: consider the sequence \((1/n, 1)_{n \in \Z_{>0}}\), we have that
+    \(1/n \to 0\) but since \(1/n\) does never assume the value of zero, for all
+    \(n \in \Z_{>0}\) we have \((1/n, 1) \sim (1/n, -1)\) --- thus the has two
+    distinct limits \((0, 1)\) from one side and \((0, -1)\) from the other, thus
+    \((\R \times \{-1, 1\})/{\sim}\) isn't Hausdorff.
 \end{remark}
 
 \begin{proposition}[Hausdorff from open quotients]
-\label{prop:open-quotient-hausdorff}
-Let \(\pi: X \epi Y\) be a surjective morphism of topological spaces \(X\) and
-\(Y\). Then \(Y\) is Hausdorff if and only if the collection of pairs of points
-with common fibre,
-\(C \coloneqq \{(p, q) \in X \times X \colon \pi(p) = \pi(q)\}\), is closed in
-\(X \times X\).
+    \label{prop:open-quotient-hausdorff}
+    Let \(\pi: X \epi Y\) be a surjective morphism of topological spaces \(X\) and
+    \(Y\). Then \(Y\) is Hausdorff if and only if the collection of pairs of points
+    with common fibre,
+    \(C \coloneqq \{(p, q) \in X \times X \colon \pi(p) = \pi(q)\}\), is closed in
+    \(X \times X\).
 \end{proposition}
 
 \begin{proof}
-Let \(Y\) be Hausdorff, then, given any \((p, q) \in X \setminus C\), there are
-neighbourhoods \(V_p, V_q \subseteq Y\) of \(\pi(p)\) and \(\pi(q)\),
-respectively, such that \(V_p \cap V_q = \emptyset\). Since these neighbourhoods
-are disjoint, then in particular the collection fibres \(\pi^{-1}(V_p) \times
-\pi^{-1}(V_q)\) is contained in \(X \times X \setminus C\), that is, \(X \times
-X \setminus C\) is open --- hence \(C\) is closed.
+    Let \(Y\) be Hausdorff, then, given any \((p, q) \in X \setminus C\), there are
+    neighbourhoods \(V_p, V_q \subseteq Y\) of \(\pi(p)\) and \(\pi(q)\),
+    respectively, such that \(V_p \cap V_q = \emptyset\). Since these neighbourhoods
+    are disjoint, then in particular the collection fibres \(\pi^{-1}(V_p) \times
+    \pi^{-1}(V_q)\) is contained in \(X \times X \setminus C\), that is, \(X \times
+    X \setminus C\) is open --- hence \(C\) is closed.
 
-Let \(C\) be closed, then given any distinct points \(a, b \in Y\), the
-surjectivity of \(\pi\) implies that there exists \(p, q \in X\) such that
-\(\pi(p) = a\) and \(\pi(q) = b\) --- in particular \((p, q) \in X \times X
-\setminus C\) and since \(C\) is closed, there exists a neighbourhood \(U_p
-\times U_q \subseteq X \times X\) of \((p, q)\) such that \(U_p \times U_q
-\subseteq X \times X \setminus C\), that is, \(\pi(U_p), \pi(U_q) \subseteq Y\)
-are non intersecting open sets (from the fact that \(\pi\) is open) that are
-neighbourhoods of \(a\) and \(b\), respectively --- thus \(Y\) is Hausdorff.
+    Let \(C\) be closed, then given any distinct points \(a, b \in Y\), the
+    surjectivity of \(\pi\) implies that there exists \(p, q \in X\) such that
+    \(\pi(p) = a\) and \(\pi(q) = b\) --- in particular \((p, q) \in X \times X
+    \setminus C\) and since \(C\) is closed, there exists a neighbourhood \(U_p
+    \times U_q \subseteq X \times X\) of \((p, q)\) such that \(U_p \times U_q
+    \subseteq X \times X \setminus C\), that is, \(\pi(U_p), \pi(U_q) \subseteq Y\)
+    are non intersecting open sets (from the fact that \(\pi\) is open) that are
+    neighbourhoods of \(a\) and \(b\), respectively --- thus \(Y\) is Hausdorff.
 \end{proof}
 
 \begin{proposition}
-\label{prop:top-space-is-quotient-of-hausdorff}
-Every topological space is the quotient of a Hausdorff space.
+    \label{prop:top-space-is-quotient-of-hausdorff}
+    Every topological space is the quotient of a Hausdorff space.
 \end{proposition}
 
 \begin{proof}
-Let \(X\) be any topological space. Consider the product of real lines
-\(P \coloneq \prod_{x \in X} \R\) under the product topology and let \(Y\) be
-the subspace of \(P\) given by all points with one, and only one, rational
-coordinate --- such space \(Y\) is therefore Hausdorff. Furthermore, define a
-collection \(\{Y_{x}\}_{x \in X}\) to consist of subsets \(Y_x \subseteq Y\)
-given by the set of points whose rational coordinate has index \(x\) --- hence
-\(Y_x\) is dense in \(Y\). It should be noted that the above construction is
-not necessarily unique, so the reader may try to construct a different Hausdorff
-space \(Y\) and a collection of dense sets \(\{Y_{x}\}_{x \in X}\) in \(Y\).
+    Let \(X\) be any topological space. Consider the product of real lines
+    \(P \coloneq \prod_{x \in X} \R\) under the product topology and let \(Y\) be
+    the subspace of \(P\) given by all points with one, and only one, rational
+    coordinate --- such space \(Y\) is therefore Hausdorff. Furthermore, define a
+    collection \(\{Y_{x}\}_{x \in X}\) to consist of subsets \(Y_x \subseteq Y\)
+    given by the set of points whose rational coordinate has index \(x\) --- hence
+    \(Y_x\) is dense in \(Y\). It should be noted that the above construction is
+    not necessarily unique, so the reader may try to construct a different Hausdorff
+    space \(Y\) and a collection of dense sets \(\{Y_{x}\}_{x \in X}\) in \(Y\).
 
-Define now the subspace of \(X \times Y\) given by
-\(Z \coloneq \bigcup_{x \in X} x \times Y_x\) --- endowed with the subspace
-topology. Let \(\sim\) be the equivalence relation on \(Z\) given by
-\((x_1, y_1) \sim (x_2, y_2)\) if and only if \(x_1 = x_2 = x\) for some
-\(x \in X\) and \(y_1, y_2 \in Y_x\). Define a map \(\phi: Z/{\sim} \to X\)
-sending \(x \times Y_x \mapsto x\) --- which is clearly both surjective and
-injective. We now show that \(\phi\) is a topological isomorphism.
+    Define now the subspace of \(X \times Y\) given by
+    \(Z \coloneq \bigcup_{x \in X} x \times Y_x\) --- endowed with the subspace
+    topology. Let \(\sim\) be the equivalence relation on \(Z\) given by
+    \((x_1, y_1) \sim (x_2, y_2)\) if and only if \(x_1 = x_2 = x\) for some
+    \(x \in X\) and \(y_1, y_2 \in Y_x\). Define a map \(\phi: Z/{\sim} \to X\)
+    sending \(x \times Y_x \mapsto x\) --- which is clearly both surjective and
+    injective. We now show that \(\phi\) is a topological isomorphism.
 
-Let \(V \subseteq X\) be any open set, then
-\(\phi^{-1}(V) = \{x \times Y_x \colon x \in V\}\) --- which in turn is open in
-\(Z/{\sim}\). On the other hand, let
-\(U \coloneq \{x \times Y_{x} \colon x \in U'\}\) be any open set in
-\(Z/{\sim}\) given by some indexing set of points \(U' \subseteq X\) --- our
-goal will be to prove that \(U'\) is open, so that the inverse of \(\phi\) is
-continuous. Consider \(x_0 \in U'\) to be any point and likewise
-\((x_0, y_0) \in x_0 \times Y_{x_0}\). By the fact that
-\(\bigcup_{x \in U'} x \times Y_x \subseteq Z\) is open, we are able to find
-neighbourhoods \(O_X(x_0) \subseteq X\) and \(O_Y(y_0) \subseteq Y\) --- of
-\(x_0\) and \(y_0\), respectively --- such that
-\(N \coloneq Z \cap (O_X(x_0) \times O_Y(y_0))\) is a neighbourhood of
-\((x_0, y_0)\) in \(Z/{\sim}\). If \(x' \in O_X(x_0)\) is any point, then by the
-fact that \(Y_{x'}\) is dense in \(Y\), by
-\cref{prop:dense-non-empty-intersects}, the sets \(x' \times Y_{x'}\) and \(N\)
-have a non-empty intersection and thus \(x' \times Y_{x'}\) also intersects
-\(\bigcup_{x \in U'} x \times Y_x\). Therefore \(x' \times Y_{x'} \in U\) and
-hence \(x' \in U'\) --- which implies that \(U'\) is open.
+    Let \(V \subseteq X\) be any open set, then
+    \(\phi^{-1}(V) = \{x \times Y_x \colon x \in V\}\) --- which in turn is open in
+    \(Z/{\sim}\). On the other hand, let
+    \(U \coloneq \{x \times Y_{x} \colon x \in U'\}\) be any open set in
+    \(Z/{\sim}\) given by some indexing set of points \(U' \subseteq X\) --- our
+    goal will be to prove that \(U'\) is open, so that the inverse of \(\phi\) is
+    continuous. Consider \(x_0 \in U'\) to be any point and likewise
+    \((x_0, y_0) \in x_0 \times Y_{x_0}\). By the fact that
+    \(\bigcup_{x \in U'} x \times Y_x \subseteq Z\) is open, we are able to find
+    neighbourhoods \(O_X(x_0) \subseteq X\) and \(O_Y(y_0) \subseteq Y\) --- of
+    \(x_0\) and \(y_0\), respectively --- such that
+    \(N \coloneq Z \cap (O_X(x_0) \times O_Y(y_0))\) is a neighbourhood of
+    \((x_0, y_0)\) in \(Z/{\sim}\). If \(x' \in O_X(x_0)\) is any point, then by the
+    fact that \(Y_{x'}\) is dense in \(Y\), by
+    \cref{prop:dense-non-empty-intersects}, the sets \(x' \times Y_{x'}\) and \(N\)
+    have a non-empty intersection and thus \(x' \times Y_{x'}\) also intersects
+    \(\bigcup_{x \in U'} x \times Y_x\). Therefore \(x' \times Y_{x'} \in U\) and
+    hence \(x' \in U'\) --- which implies that \(U'\) is open.
 \end{proof}
 
 \subsection{Quotient Morphisms In More Depth}
@@ -394,260 +394,260 @@ quotients: fibres. For that, we define a set given by fibres of \(f\) as being
 saturated.
 
 \begin{definition}[Saturated set]
-\label{def:saturated-fibre}
-Let \(f: X \to Y\) be a set-function. We say that a set \(U \subseteq X\) is
-saturated with respect to \(f\) if there exists \(V \subseteq Y\) such that
-\(U = f^{-1}(V)\).
+    \label{def:saturated-fibre}
+    Let \(f: X \to Y\) be a set-function. We say that a set \(U \subseteq X\) is
+    saturated with respect to \(f\) if there exists \(V \subseteq Y\) such that
+    \(U = f^{-1}(V)\).
 \end{definition}
 
 \begin{proposition}[Equivalences for saturated sets]
-\label{prop:equivalences-saturated-fibre}
-Let \(f: X \to Y\) be a set-function and \(U \subseteq X\) be any subset. The
-following propositions are equivalent
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item The set \(U\) is saturated with respect to \(f\).
-\item \(U = f^{-1}(f(U))\).
-\item Let \(p \in U\) be any point, \(U\) contains every element \(x \in X\)
-  with common fibre to \(p\) --- that is, \(f(x) = f(p)\) implies \(x \in U\).
-\end{enumerate}
+    \label{prop:equivalences-saturated-fibre}
+    Let \(f: X \to Y\) be a set-function and \(U \subseteq X\) be any subset. The
+    following propositions are equivalent
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item The set \(U\) is saturated with respect to \(f\).
+        \item \(U = f^{-1}(f(U))\).
+        \item Let \(p \in U\) be any point, \(U\) contains every element \(x \in X\)
+              with common fibre to \(p\) --- that is, \(f(x) = f(p)\) implies \(x \in U\).
+    \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-(c) \(\Rightarrow\) (b): Suppose \(U\) satisfies proposition (c), it is clear
-that \(U \subseteq f^{-1}(f(U))\), on the other hand, given \(x \in
-f^{-1}(f(U))\), it follows that \(x\) has a common fibre with some point of
-\(U\), which implies that \(x \in U\). (b) \(\Rightarrow\) (a): Trivial from the
-definition. (a) \(\Rightarrow\) (c): Let \(V \subseteq Y\) be such that \(U =
-f^{-1}(V)\), then, given any \(p \in f^{-1}(V)\), it is clear that \(f(p) \in
-V\), hence every point \(x \in X\) such that \(f(x) = f(p) \in V\) then \(x \in
-U\), which finishes the equivalence chain.
+    (c) \(\Rightarrow\) (b): Suppose \(U\) satisfies proposition (c), it is clear
+    that \(U \subseteq f^{-1}(f(U))\), on the other hand, given \(x \in
+    f^{-1}(f(U))\), it follows that \(x\) has a common fibre with some point of
+    \(U\), which implies that \(x \in U\). (b) \(\Rightarrow\) (a): Trivial from the
+    definition. (a) \(\Rightarrow\) (c): Let \(V \subseteq Y\) be such that \(U =
+    f^{-1}(V)\), then, given any \(p \in f^{-1}(V)\), it is clear that \(f(p) \in
+    V\), hence every point \(x \in X\) such that \(f(x) = f(p) \in V\) then \(x \in
+    U\), which finishes the equivalence chain.
 \end{proof}
 
 \begin{proposition}[Classification of surjective morphisms]
-\label{prop:surjective-saturated-is-quotient}
-Let \(\pi: X \epi Y\) be a surjective morphism of topological spaces. The map
-\(\pi\) is a quotient morphism --- that is, induces the universal property of
-quotients for \(X\) and \(Y\) --- if and only if every saturated open (or
-closed) set of \(X\) has an open (or closed) image in \(Y\).
+    \label{prop:surjective-saturated-is-quotient}
+    Let \(\pi: X \epi Y\) be a surjective morphism of topological spaces. The map
+    \(\pi\) is a quotient morphism --- that is, induces the universal property of
+    quotients for \(X\) and \(Y\) --- if and only if every saturated open (or
+    closed) set of \(X\) has an open (or closed) image in \(Y\).
 \end{proposition}
 
 \begin{proof}
-Let \(\pi\) be any surjective morphism taking saturated open sets to open
-images. Let \(V \subseteq Y\) be an open set. Since \(\pi\) is surjective and
-continuous, then \(\pi^{-1}(V) \subseteq X\) is open. On the other hand, let \(V
-\subseteq Y\) be any set of \(Y\) (not necessarily open), such that
-\(\pi^{-1}(V) \coloneq U \subseteq X\) is open. This implies directly that \(U\)
-is saturated with respect to \(\pi\) and from our initial hypothesis, \(\pi(U) =
-V \subseteq Y\) is open. Thus \(\pi\) is a quotient morphism.
+    Let \(\pi\) be any surjective morphism taking saturated open sets to open
+    images. Let \(V \subseteq Y\) be an open set. Since \(\pi\) is surjective and
+    continuous, then \(\pi^{-1}(V) \subseteq X\) is open. On the other hand, let \(V
+    \subseteq Y\) be any set of \(Y\) (not necessarily open), such that
+    \(\pi^{-1}(V) \coloneq U \subseteq X\) is open. This implies directly that \(U\)
+    is saturated with respect to \(\pi\) and from our initial hypothesis, \(\pi(U) =
+    V \subseteq Y\) is open. Thus \(\pi\) is a quotient morphism.
 
-For the contrary, let \(\pi\) be a quotient morphism. Then, given any \(U
-\subseteq X\) open set, saturated with respect to \(\pi\), define \(V \subseteq
-Y\) such that \(U = \pi^{-1}(V)\). Since \(\pi\) is a quotient morphism, it
-follows that \(V\) is necessarily open in \(Y\), thus \(\pi(U) = V\) is open.
+    For the contrary, let \(\pi\) be a quotient morphism. Then, given any \(U
+    \subseteq X\) open set, saturated with respect to \(\pi\), define \(V \subseteq
+    Y\) such that \(U = \pi^{-1}(V)\). Since \(\pi\) is a quotient morphism, it
+    follows that \(V\) is necessarily open in \(Y\), thus \(\pi(U) = V\) is open.
 
-The proof for the closed set case is completely analogous.
+    The proof for the closed set case is completely analogous.
 \end{proof}
 
 \begin{proposition}[Properties of quotient morphisms]
-\label{prop:properties-quotient-morphism}
-The following properties pertain to quotient morphisms between topological
-spaces.
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item The composition of quotient morphisms is a quotient morphism.
-\item Injective quotient morphisms are isomorphisms.
-\item Let \(\pi: X \epi Y\) be a quotient morphism. Then, \(C \subseteq Y\) is
-  closed if and only if \(\pi^{-1}(C) \subseteq X\) is closed.
-\item Let \(\pi: X \epi Y\) be a quotient morphism and \(U \subseteq X\) be any
-  saturated set (open or closed) with respect to \(\pi\). Then, the restriction
-  \(\pi|_U: U \epi \pi(U)\) is a quotient map.
-\item Let \(J\) be an indexing set and \(\{\pi_j: X_j \epi Y_j\}_{j \in J}\) be
-  an indexed collection of quotient morphisms. The map \(\pi: \bigatt_{j \in J}
-  X_j \epi \bigatt_{j \in J} Y_j\) defined by the restrictions \(\pi(x_{j}) =
-  \pi_{j}(x_j)\) for every \(x_j \in X_{j} \cap \bigatt_{j \in J} X_j\) is a
-  quotient map.
-\end{enumerate}
+    \label{prop:properties-quotient-morphism}
+    The following properties pertain to quotient morphisms between topological
+    spaces.
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item The composition of quotient morphisms is a quotient morphism.
+        \item Injective quotient morphisms are isomorphisms.
+        \item Let \(\pi: X \epi Y\) be a quotient morphism. Then, \(C \subseteq Y\) is
+              closed if and only if \(\pi^{-1}(C) \subseteq X\) is closed.
+        \item Let \(\pi: X \epi Y\) be a quotient morphism and \(U \subseteq X\) be any
+              saturated set (open or closed) with respect to \(\pi\). Then, the restriction
+              \(\pi|_U: U \epi \pi(U)\) is a quotient map.
+        \item Let \(J\) be an indexing set and \(\{\pi_j: X_j \epi Y_j\}_{j \in J}\) be
+              an indexed collection of quotient morphisms. The map \(\pi: \bigatt_{j \in J}
+              X_j \epi \bigatt_{j \in J} Y_j\) defined by the restrictions \(\pi(x_{j}) =
+              \pi_{j}(x_j)\) for every \(x_j \in X_{j} \cap \bigatt_{j \in J} X_j\) is a
+              quotient map.
+    \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item Let \(\pi: X \epi Y\) and \(\pi': Y \epi Z\) be quotient morphisms, and
-  consider the map \(\pi' \pi: X \epi Z\), which is clearly surjective. From
-  hypothesis a subset \(U \subseteq Z\) is open if and only if \(\pi'^{-1}(U)\)
-  is open, moreover, \(\pi'^{-1}(U) \subseteq Y\) is open if and only if
-  \(\pi^{-1}(\pi'^{-1}(U)) \subseteq X\) is open --- the proposition follows.
-\item If the quotient morphism \(\pi: X \epi Y\) is injective, then \(\pi\) is a
-  bijection. Let \(U \subseteq X\) be any open set, since \(\pi\) is bijective,
-  there exists a set \(V \subseteq Y\) such that \(\pi^{-1}(V) = U\) ---
-  moreover, such set must be open on \(Y\) from the quotient topology. This
-  shows that \(\pi(U) = V\) is open and hence \(\pi\) is a topological
-  isomorphism.
-\item Let \(C \subseteq Y\) be any set, notice that \(Y \setminus C\) is open
-  if and only if \(\pi^{-1}(Y \setminus C) = \pi^{-1}(Y) \setminus \pi^{-1}(C)
-  \subseteq X\) is open --- thus the proposition follows.
-\item Let \(V \subseteq \pi(U)\) be any set. Since \(\pi\) is a quotient
-  morphism, \(V\) is open if and only if \(\pi^{-1}(V) \subseteq U \subseteq
-  X\) --- moreover, since \(U\) is saturated, the whole set can have its subsets
-  classified by \(\pi|_U\) into open or closed sets, thus \(\pi|_U\) is a
-  quotient map.
-\item Let \(U \subseteq \bigatt_{j \in J} Y_j\) be any set and let \(j_{0} \in
-  J\) be such that \(U \subseteq Y_{j_0}\). From the mappings, \(U\) is open if
-  and only if \(\pi^{-1}_{j_0}(U) \subseteq X_{j_0}\) is open --- but since
-  \(\pi^{-1}(U) = \pi^{-1}_{j_0}(U)\), the proposition follows.
-\end{enumerate}
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item Let \(\pi: X \epi Y\) and \(\pi': Y \epi Z\) be quotient morphisms, and
+              consider the map \(\pi' \pi: X \epi Z\), which is clearly surjective. From
+              hypothesis a subset \(U \subseteq Z\) is open if and only if \(\pi'^{-1}(U)\)
+              is open, moreover, \(\pi'^{-1}(U) \subseteq Y\) is open if and only if
+              \(\pi^{-1}(\pi'^{-1}(U)) \subseteq X\) is open --- the proposition follows.
+        \item If the quotient morphism \(\pi: X \epi Y\) is injective, then \(\pi\) is a
+              bijection. Let \(U \subseteq X\) be any open set, since \(\pi\) is bijective,
+              there exists a set \(V \subseteq Y\) such that \(\pi^{-1}(V) = U\) ---
+              moreover, such set must be open on \(Y\) from the quotient topology. This
+              shows that \(\pi(U) = V\) is open and hence \(\pi\) is a topological
+              isomorphism.
+        \item Let \(C \subseteq Y\) be any set, notice that \(Y \setminus C\) is open
+              if and only if \(\pi^{-1}(Y \setminus C) = \pi^{-1}(Y) \setminus \pi^{-1}(C)
+              \subseteq X\) is open --- thus the proposition follows.
+        \item Let \(V \subseteq \pi(U)\) be any set. Since \(\pi\) is a quotient
+              morphism, \(V\) is open if and only if \(\pi^{-1}(V) \subseteq U \subseteq
+              X\) --- moreover, since \(U\) is saturated, the whole set can have its subsets
+              classified by \(\pi|_U\) into open or closed sets, thus \(\pi|_U\) is a
+              quotient map.
+        \item Let \(U \subseteq \bigatt_{j \in J} Y_j\) be any set and let \(j_{0} \in
+              J\) be such that \(U \subseteq Y_{j_0}\). From the mappings, \(U\) is open if
+              and only if \(\pi^{-1}_{j_0}(U) \subseteq X_{j_0}\) is open --- but since
+              \(\pi^{-1}(U) = \pi^{-1}_{j_0}(U)\), the proposition follows.
+    \end{enumerate}
 \end{proof}
 
 \begin{example}[Cones]
-\label{exp:remove-section-cone-isomorphism}
-An application of the last proposition takes us back to \cref{def:cone}, where
-we defined the cone \(\Cone X\) of a topological space \(X\) as \((X \times I) /
-(X \times \{1\})\) --- the collapse the top of the cylinder. Notice that, given
-any point \((x, t) \in (X \times I) \setminus (X \times \{1\})\), there exists a
-neighbourhood \(U \subseteq (X \times I) \setminus (X \times \{1\})\) of \((x,
-t)\), therefore \(X \times \{1\}\) is closed in \(X \times I\). If we consider
-the quotient morphism of the cone \(\pi: X \times I \epi \Cone X\), the
-restriction \(\pi|_{X \times \{0\}}: X \times \{0\} \epi \pi(X \times \{0\})\)
-is also a quotient map --- moreover, such quotient map is injective, thus
-\(\pi|_{X \times \{0\}}\) is an isomorphism. Therefore we have a sequence of
-isomorphisms
-\[
-  X \isoto X \times \{0\} \isoto \pi(X \times \{0\}) \subseteq \Cone X,
-\]
-thus we can identify \(X\) as a subspace of \(\Cone X\).
+    \label{exp:remove-section-cone-isomorphism}
+    An application of the last proposition takes us back to \cref{def:cone}, where
+    we defined the cone \(\Cone X\) of a topological space \(X\) as \((X \times I) /
+    (X \times \{1\})\) --- the collapse the top of the cylinder. Notice that, given
+    any point \((x, t) \in (X \times I) \setminus (X \times \{1\})\), there exists a
+    neighbourhood \(U \subseteq (X \times I) \setminus (X \times \{1\})\) of \((x,
+    t)\), therefore \(X \times \{1\}\) is closed in \(X \times I\). If we consider
+    the quotient morphism of the cone \(\pi: X \times I \epi \Cone X\), the
+    restriction \(\pi|_{X \times \{0\}}: X \times \{0\} \epi \pi(X \times \{0\})\)
+    is also a quotient map --- moreover, such quotient map is injective, thus
+    \(\pi|_{X \times \{0\}}\) is an isomorphism. Therefore we have a sequence of
+    isomorphisms
+    \[
+        X \isoto X \times \{0\} \isoto \pi(X \times \{0\}) \subseteq \Cone X,
+    \]
+    thus we can identify \(X\) as a subspace of \(\Cone X\).
 \end{example}
 
 The following is a \emph{sufficient}, but \emph{not} necessary condition for a
 quotient morphism.
 
 \begin{proposition}
-Let \(\pi: X \epi Y\) be a surjective topological morphism. If \(\pi\) is either
-open or closed, then \(\pi\) is a quotient morphism.
+    Let \(\pi: X \epi Y\) be a surjective topological morphism. If \(\pi\) is either
+    open or closed, then \(\pi\) is a quotient morphism.
 \end{proposition}
 
 \begin{proof}
-If \(\pi\) is open (respectively, closed), in particular we have that saturated
-sets open (respectively, closed) of \(X\) are mapped to open (respectively,
-closed) sets of \(Y\), hence \(\pi\) is a quotient morphism.
+    If \(\pi\) is open (respectively, closed), in particular we have that saturated
+    sets open (respectively, closed) of \(X\) are mapped to open (respectively,
+    closed) sets of \(Y\), hence \(\pi\) is a quotient morphism.
 \end{proof}
 
 \begin{proposition}
-\label{prop:map-open-or-closed-properties}
-Let \(f: X \to Y\) be a topological morphism that is either open or closed. The
-following are properties hold:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item If \(f\) is injective, it is a topological \emph{embedding}.
+    \label{prop:map-open-or-closed-properties}
+    Let \(f: X \to Y\) be a topological morphism that is either open or closed. The
+    following are properties hold:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item If \(f\) is injective, it is a topological \emph{embedding}.
 
-\item If \(f\) is surjective, it is a \emph{quotient map}.
+        \item If \(f\) is surjective, it is a \emph{quotient map}.
 
-\item If \(f\) is bijective, it is an \emph{isomorphism}.
-\end{enumerate}
+        \item If \(f\) is bijective, it is an \emph{isomorphism}.
+    \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-We work out the proof for the case where \(f\) is open, the closed case is
-equivalent:
-\begin{enumerate}\setlength\itemsep{0em}
-\item Consider the restriction of the codomain \(f': X \to f(X)\) --- which is
-  certainly surjective, thus bijective. Let \(g: f(X) \to X\) denote the inverse
-  of \(f\). Notice that since \(f\) is open then any \(U \subseteq X\) open
-  implies in \(f(U) \subseteq Y\) also open, therefore \(g(U) = f(U)\) is open
-  and hence \(g\) is continuous.
+    We work out the proof for the case where \(f\) is open, the closed case is
+    equivalent:
+    \begin{enumerate}\setlength\itemsep{0em}
+        \item Consider the restriction of the codomain \(f': X \to f(X)\) --- which is
+              certainly surjective, thus bijective. Let \(g: f(X) \to X\) denote the inverse
+              of \(f\). Notice that since \(f\) is open then any \(U \subseteq X\) open
+              implies in \(f(U) \subseteq Y\) also open, therefore \(g(U) = f(U)\) is open
+              and hence \(g\) is continuous.
 
-\item Let \(U \subseteq Y\) be any set. Since \(f\) is surjective, there exists
-  \(V \subseteq X\) such that \(f(V) = U\). Moreover, since \(f\) is open, \(U\)
-  can only be open in \(Y\) if its preimage \(f^{-1}(U) = V\) is open in \(X\)
-  --- which implies that \(f\) is a quotient map.
+        \item Let \(U \subseteq Y\) be any set. Since \(f\) is surjective, there exists
+              \(V \subseteq X\) such that \(f(V) = U\). Moreover, since \(f\) is open, \(U\)
+              can only be open in \(Y\) if its preimage \(f^{-1}(U) = V\) is open in \(X\)
+              --- which implies that \(f\) is a quotient map.
 
-\item If \(f\) is bijective, then by the fist item \(f\) is an embedding, that
-  is, it yields an isomorphism \(X \iso f(X)\). Moreover since \(f\) is also
-  surjective then \(f(X) = Y\) and thus \(f\) is an isomorphism \(X \isoto Y\).
-\end{enumerate}
+        \item If \(f\) is bijective, then by the fist item \(f\) is an embedding, that
+              is, it yields an isomorphism \(X \iso f(X)\). Moreover since \(f\) is also
+              surjective then \(f(X) = Y\) and thus \(f\) is an isomorphism \(X \isoto Y\).
+    \end{enumerate}
 \end{proof}
 
 \section{Attaching Space}
 
 \begin{definition}[Attaching space]
-\label{def:attaching-space}
-Let \(X\) and \(Y\) be topological spaces, and consider a subspace
-\(A \subseteq X\) together with a continuous map \(f: A \to X\). The
-\emph{attaching space of \(X\) and \(Y\) along \(f\)} is defined to be the
-pushout of the canonical inclusion \(\iota: A \emb X\) and \(f\), that is
-\[
-\begin{tikzcd}
-A \ar[r, hook, "\iota"] \ar[d, "f"']
-\ar[rd, phantom, very near end, "\ulcorner"]
-&X \ar[d] \\
-Y \ar[r] &X \cup_f Y
-\end{tikzcd}
-\]
+    \label{def:attaching-space}
+    Let \(X\) and \(Y\) be topological spaces, and consider a subspace
+    \(A \subseteq X\) together with a continuous map \(f: A \to X\). The
+    \emph{attaching space of \(X\) and \(Y\) along \(f\)} is defined to be the
+    pushout of the canonical inclusion \(\iota: A \emb X\) and \(f\), that is
+    \[
+        \begin{tikzcd}
+            A \ar[r, hook, "\iota"] \ar[d, "f"']
+            \ar[rd, phantom, very near end, "\ulcorner"]
+            &X \ar[d] \\
+            Y \ar[r] &X \cup_f Y
+        \end{tikzcd}
+    \]
 \end{definition}
 
 \begin{corollary}
-\label{cor:attaching-space-as-quotient}
-In the notation of \cref{def:attaching-space}, the attaching space of \(X\) and
-\(Y\) along \(f\) is given by the quotient space
-\[
-X \cup_f Y \iso (X \disj Y)/{\sim},
-\]
-where \(\sim\) is the smallest equivalence relation on \(X \disj Y\) such that
-\(x \sim f(x)\) for all \(x \in A\).
+    \label{cor:attaching-space-as-quotient}
+    In the notation of \cref{def:attaching-space}, the attaching space of \(X\) and
+    \(Y\) along \(f\) is given by the quotient space
+    \[
+        X \cup_f Y \iso (X \disj Y)/{\sim},
+    \]
+    where \(\sim\) is the smallest equivalence relation on \(X \disj Y\) such that
+    \(x \sim f(x)\) for all \(x \in A\).
 \end{corollary}
 
 \begin{proof}
-Let \(Z\) be any space together with two continuous maps \(p: X \to Z\) and
-\(q: Y \to Z\) such that \(p \iota = q f\) --- that is, for every \(x \in A\) we
-have \(p(x) = q(f(x))\). We define a map \(\phi: (X \disj Y)/{\sim} \to Z\) by
-\([(x, X)] \mapsto p(x)\) and \([(y, Y)] \mapsto q(y)\). Indeed, the image of a
-class point under \(\phi\) does not depend on the representative since, for any
-\(x \in A\), we have \([(x, X)] \sim [(f(x), Y)]\), but \(p(x) =
-q(f(x))\). Also, since \([X] \coloneq \{[(x, X)]\}_{x \in X}\) and
-\([Y] \coloneq \{[(y, Y)]\}_{y \in Y}\) are open subspaces covering
-\((X \disj Y)/{\sim}\), since \(\phi|_{[X]} = p\) and \(\phi|_{[Y]} = q\) are
-continuous maps, by \cref{prop:continuous-from-covering-subspaces} we conclude
-that \(\phi\) is continuous.
+    Let \(Z\) be any space together with two continuous maps \(p: X \to Z\) and
+    \(q: Y \to Z\) such that \(p \iota = q f\) --- that is, for every \(x \in A\) we
+    have \(p(x) = q(f(x))\). We define a map \(\phi: (X \disj Y)/{\sim} \to Z\) by
+    \([(x, X)] \mapsto p(x)\) and \([(y, Y)] \mapsto q(y)\). Indeed, the image of a
+    class point under \(\phi\) does not depend on the representative since, for any
+    \(x \in A\), we have \([(x, X)] \sim [(f(x), Y)]\), but \(p(x) =
+    q(f(x))\). Also, since \([X] \coloneq \{[(x, X)]\}_{x \in X}\) and
+    \([Y] \coloneq \{[(y, Y)]\}_{y \in Y}\) are open subspaces covering
+    \((X \disj Y)/{\sim}\), since \(\phi|_{[X]} = p\) and \(\phi|_{[Y]} = q\) are
+    continuous maps, by \cref{prop:continuous-from-covering-subspaces} we conclude
+    that \(\phi\) is continuous.
 
-If we consider the inclusions \(\iota_X: X \emb (X \disj Y)/{\sim}\) and
-\(\iota_Y: Y \emb (X \disj Y)/{\sim}\), one has that \(\phi \iota_X = p\) and
-\(\phi \iota_Y = q\). On the other hand, since these inclusions are
-monomorphisms in \(\Top\), we conclude that \(\phi\) is the only continuous map
-making the following diagram commutative in \(\Top\)
-\[
-\begin{tikzcd}
-A \ar[r, hook, "\iota"] \ar[d, "f"']
-&X \ar[drd, bend left, "p"] \ar[d, hook, "\iota_X"]  &\\
-Y \ar[r, "\iota_Y", hook] \ar[rrd, "q"', bend right]
-&(X \disj Y)/{\sim} \ar[rd, "\phi"', dashed]  &\\
-& &Z
-\end{tikzcd}
-\]
-We conclude that \((X \disj Y)/{\sim}\) is the pushout of \(f\) with \(\iota\)
-and since pushouts are unique up to isomorphism, then
-\((X \disj Y)/{\sim} \iso X \cup_f Y\).
+    If we consider the inclusions \(\iota_X: X \emb (X \disj Y)/{\sim}\) and
+    \(\iota_Y: Y \emb (X \disj Y)/{\sim}\), one has that \(\phi \iota_X = p\) and
+    \(\phi \iota_Y = q\). On the other hand, since these inclusions are
+    monomorphisms in \(\Top\), we conclude that \(\phi\) is the only continuous map
+    making the following diagram commutative in \(\Top\)
+    \[
+        \begin{tikzcd}
+            A \ar[r, hook, "\iota"] \ar[d, "f"']
+            &X \ar[drd, bend left, "p"] \ar[d, hook, "\iota_X"]  &\\
+            Y \ar[r, "\iota_Y", hook] \ar[rrd, "q"', bend right]
+            &(X \disj Y)/{\sim} \ar[rd, "\phi"', dashed]  &\\
+            & &Z
+        \end{tikzcd}
+    \]
+    We conclude that \((X \disj Y)/{\sim}\) is the pushout of \(f\) with \(\iota\)
+    and since pushouts are unique up to isomorphism, then
+    \((X \disj Y)/{\sim} \iso X \cup_f Y\).
 \end{proof}
 
 \begin{proposition}[Attaching space properties]
-\label{prop:attaching-space-properties}
-Let \(A \subseteq Y\) be a \emph{closed} subspace, \(f: A \to X\) be a
-continuous map, and \(\pi: X \disj Y \epi X \cup_f Y\) be the canonical
-projection to the attaching space along \(f\). The following properties hold:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item The restriction \(\pi|_X\) is a \emph{topological embedding}, and its
-  image \(\pi(X)\) is a \emph{closed subspace} of \(X \cup_f Y\).
+    \label{prop:attaching-space-properties}
+    Let \(A \subseteq Y\) be a \emph{closed} subspace, \(f: A \to X\) be a
+    continuous map, and \(\pi: X \disj Y \epi X \cup_f Y\) be the canonical
+    projection to the attaching space along \(f\). The following properties hold:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item The restriction \(\pi|_X\) is a \emph{topological embedding}, and its
+              image \(\pi(X)\) is a \emph{closed subspace} of \(X \cup_f Y\).
 
-\item The restriction \(\pi|_{Y \setminus A}\) is a \emph{topological
-    embedding}, and its image \(\pi(Y \setminus A)\) is an \emph{open subspace}
-  of \(X \cup_f Y\).
+        \item The restriction \(\pi|_{Y \setminus A}\) is a \emph{topological
+                  embedding}, and its image \(\pi(Y \setminus A)\) is an \emph{open subspace}
+              of \(X \cup_f Y\).
 
-\item The attaching space \(X \cup_f Y\) is isomorphic to the disjoint union
-  \(\pi(X) \disj \pi(Y \setminus A)\).
-\end{enumerate}
+        \item The attaching space \(X \cup_f Y\) is isomorphic to the disjoint union
+              \(\pi(X) \disj \pi(Y \setminus A)\).
+    \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item
-  \todo[inline]{Prove attaching space properties and continue on attaching
-    manifolds along the boundary.}
-\end{enumerate}
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item
+              \todo[inline]{Prove attaching space properties and continue on attaching
+                  manifolds along the boundary.}
+    \end{enumerate}
 \end{proof}
 
 %%% Local Variables:

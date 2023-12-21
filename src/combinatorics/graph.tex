@@ -1,20 +1,20 @@
 \section{Basic Principles of Combinatorics}
 
 \begin{notation}[\(k\)-subsets]
-Given a set \(A\), we define a \(k\)-subset---where \(0 \leq k \leq |A|\)---to
-be the a subset of \(A\) with exactly \(k\) elements. We denote the collection
-of all \(k\)-subsets of \(A\) as \([A]^k\).
+    Given a set \(A\), we define a \(k\)-subset---where \(0 \leq k \leq |A|\)---to
+    be the a subset of \(A\) with exactly \(k\) elements. We denote the collection
+    of all \(k\)-subsets of \(A\) as \([A]^k\).
 \end{notation}
 
 \begin{notation}[Range]
-For any \(n \in \N\), we denote by \([n]\) the set of natural numbers
-\(\{1, \dots, n\}\).
+    For any \(n \in \N\), we denote by \([n]\) the set of natural numbers
+    \(\{1, \dots, n\}\).
 \end{notation}
 
 \begin{definition}[Partition]
-Given a set \(V\), a partition is a collection \(V_1, \dots, V_n\) such
-that for each \(v \in V\) there exists a \emph{unique} index \(1 \leq i
-\leq n\) such that \(v \in V_i\).
+    Given a set \(V\), a partition is a collection \(V_1, \dots, V_n\) such
+    that for each \(v \in V\) there exists a \emph{unique} index \(1 \leq i
+    \leq n\) such that \(v \in V_i\).
 \end{definition}
 
 \begin{definition}[Colouring]
@@ -41,11 +41,11 @@ that for each \(v \in V\) there exists a \emph{unique} index \(1 \leq i
     \(x \in [n + 1]\) be any fixed element, then consider:
     \begin{itemize}\setlength\itemsep{0em}
         \item The number of sets composed of \(k+1\) elements of \([n+1]
-          \setminus x \iso [n]\) is given by
-          \(\binom n {k+1}\).
+              \setminus x \iso [n]\) is given by
+              \(\binom n {k+1}\).
         \item The number of sets composed of \(k+1\) elements of \([n+1]\)
-          containing \(x\) is the same as \(\binom n k\) since one of the
-          \(k+1\) elements is already fixed (the element \(x\)).
+              containing \(x\) is the same as \(\binom n k\) since one of the
+              \(k+1\) elements is already fixed (the element \(x\)).
     \end{itemize}
     Notice that a subset \(A \subseteq [n + 1]\) either contains or doesn't
     contain \(x\), thus we have proven the identity.
@@ -54,53 +54,53 @@ that for each \(v \in V\) there exists a \emph{unique} index \(1 \leq i
 \section{General Definition Of a Graph}
 
 \begin{definition}[General Graph]\label{def: general-graph}
-We define a \emph{general graph} \(G = (V, E, d)\) as a collection of disjoint
-sets \(V\) and \(E\)---called, respectively, the vertices and edges of
-\(G\)---together with a map \(d\) that defines the relations of incidence (see
-\cref{def: incidence}) between vertices and edges---that is, it defines the
-formation of edges between vertices.
+    We define a \emph{general graph} \(G = (V, E, d)\) as a collection of disjoint
+    sets \(V\) and \(E\)---called, respectively, the vertices and edges of
+    \(G\)---together with a map \(d\) that defines the relations of incidence (see
+    \cref{def: incidence}) between vertices and edges---that is, it defines the
+    formation of edges between vertices.
 \end{definition}
 
 \begin{definition}[Incidence]\label{def: incidence}
-We say that a vertex \(x\) is \emph{incident} with an edge \(e\) if \(x \in
-e\). Moreover if \(x \in e\), we say that \(e\) is an edge \emph{at} \(x\).
+    We say that a vertex \(x\) is \emph{incident} with an edge \(e\) if \(x \in
+    e\). Moreover if \(x \in e\), we say that \(e\) is an edge \emph{at} \(x\).
 \end{definition}
 
 In order to ease the the way on which we talk about graphs, I'll introduce some
 notation that I judge will be quite appropriate to avoid confusion.
 
 \begin{notation}[Vertices and edges of a graph]
-Given a graph \(G\), its collection of vertices and edges are denoted by,
-respectively, \(\Vertex(G)\) and \(\Edge(G)\).
+    Given a graph \(G\), its collection of vertices and edges are denoted by,
+    respectively, \(\Vertex(G)\) and \(\Edge(G)\).
 \end{notation}
 
 \begin{notation}[Existence of an edge]
-Let \(G\) be any graph and consider two vertices \(x, y \in \Vertex(G)\). We
-denote the relation of existence of an edge joining \(x\) and \(y\) by
-\(\Edge(x, y)\)---that is, if \(\Edge(x, y)\) is \texttt{true}, there exists
-an edge \(e \in \Edge(G)\) such that \(x\) and \(y\) are its end-vertices,
-otherwise, if \(\Edge(x, y)\) is \texttt{false}, then there is no edge joining
-the two vertices.
+    Let \(G\) be any graph and consider two vertices \(x, y \in \Vertex(G)\). We
+    denote the relation of existence of an edge joining \(x\) and \(y\) by
+    \(\Edge(x, y)\)---that is, if \(\Edge(x, y)\) is \texttt{true}, there exists
+    an edge \(e \in \Edge(G)\) such that \(x\) and \(y\) are its end-vertices,
+    otherwise, if \(\Edge(x, y)\) is \texttt{false}, then there is no edge joining
+    the two vertices.
 \end{notation}
 
 \begin{definition}[Adjacency]
-Given vertices \(x, y \in V\), we say that \(x\) and \(y\) are neighbours if
-\(\Edge(x, y)\)---in such case, \(x\) and \(y\) are said to be end-vertices of
-the existent edge joining them.
+    Given vertices \(x, y \in V\), we say that \(x\) and \(y\) are neighbours if
+    \(\Edge(x, y)\)---in such case, \(x\) and \(y\) are said to be end-vertices of
+    the existent edge joining them.
 
-We say that two edges \(e\) and \(g\) are \emph{adjacent} or \emph{neighbours}
-if there exists a unique vertex \(x\) common to both of them---\(x \in e\)
-and \(x \in g\).
+    We say that two edges \(e\) and \(g\) are \emph{adjacent} or \emph{neighbours}
+    if there exists a unique vertex \(x\) common to both of them---\(x \in e\)
+    and \(x \in g\).
 
-A set of vertices, or edges, is said to be independent if no pair of elements
-is adjacent. An independent set of vertices \(V\) is called stable.
+    A set of vertices, or edges, is said to be independent if no pair of elements
+    is adjacent. An independent set of vertices \(V\) is called stable.
 \end{definition}
 
 \begin{definition}[Diagonal set of vertices]
-Let \(G = (V, E)\) be a graph. We define the diagonal subset of \(V\) to be
-the collection \(\Delta_V = \{(x, x) \colon x \in V\}\). So that we have
-\(V^2 \setminus \Delta_V = \{(x, y) \colon x \neq y\}\)---the collection of
-ordered pairs of distinct vertices.
+    Let \(G = (V, E)\) be a graph. We define the diagonal subset of \(V\) to be
+    the collection \(\Delta_V = \{(x, x) \colon x \in V\}\). So that we have
+    \(V^2 \setminus \Delta_V = \{(x, y) \colon x \neq y\}\)---the collection of
+    ordered pairs of distinct vertices.
 \end{definition}
 
 The following definition will be useful when we are talking about graphs in
@@ -111,25 +111,25 @@ entities that satisfy such invariance on the order of the vertices---but, when
 it's possible, we shall take the most general approach.
 
 \begin{definition}[Edge invariance]
-We define the set \(\langle V \rangle^2\) to be the quotient
-\[
-  \langle V \rangle^2 = (V^2 \setminus \Delta_V)/_{(x, y) \sim (y, x)}.
-\]
+    We define the set \(\langle V \rangle^2\) to be the quotient
+    \[
+        \langle V \rangle^2 = (V^2 \setminus \Delta_V)/_{(x, y) \sim (y, x)}.
+    \]
 \end{definition}
 
 \begin{notation}[Collection of edges]
-Given sets \(X\) and \(Y\), we denote the collection of all edges of the form
-\(xy\), where \(x \in X\) and \(y \in Y\), by \(\Edge(X, Y)\). The collection of
-all edges that a given vertex \(x\) is incident with is denoted \(\Edge(x)\).
+    Given sets \(X\) and \(Y\), we denote the collection of all edges of the form
+    \(xy\), where \(x \in X\) and \(y \in Y\), by \(\Edge(X, Y)\). The collection of
+    all edges that a given vertex \(x\) is incident with is denoted \(\Edge(x)\).
 \end{notation}
 
 \begin{definition}[Order and size]\label{def:graph-order-size}
-Let \(G\) be a graph. We define the \emph{order} of \(G\) as
-\(|G| =|\Vertex(G)|\), moreover, the \emph{size} of \(G\) is defined as
-\(\size{G} = |\Edge(G)|\).
+    Let \(G\) be a graph. We define the \emph{order} of \(G\) as
+    \(|G| =|\Vertex(G)|\), moreover, the \emph{size} of \(G\) is defined as
+    \(\size{G} = |\Edge(G)|\).
 \end{definition}
 
 \begin{definition}[Trivial graph]
-A graph \(G\) is said to be trivial if \(|G| \leq 1\). In the case of the
-\(0\) order, we denote the graph as \(\emptygraph\).
+    A graph \(G\) is said to be trivial if \(|G| \leq 1\). In the case of the
+    \(0\) order, we denote the graph as \(\emptygraph\).
 \end{definition}

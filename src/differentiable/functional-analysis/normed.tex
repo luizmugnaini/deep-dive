@@ -1,29 +1,29 @@
 \begin{remark}
-\label{rem:k-is-C-or-R}
-Throughout this whole chapter we shall denote by \(k\) a field that is either
-\(\CC\) or \(\R\) --- we'll adopt the use of \(|-|: k \to \R_{\geq 0}\) for the
-standard norm of the underlying field in order to distinguish that from the norm
-of the vector spaces.
+    \label{rem:k-is-C-or-R}
+    Throughout this whole chapter we shall denote by \(k\) a field that is either
+    \(\CC\) or \(\R\) --- we'll adopt the use of \(|-|: k \to \R_{\geq 0}\) for the
+    standard norm of the underlying field in order to distinguish that from the norm
+    of the vector spaces.
 \end{remark}
 
 \section{Norms on Spaces}
 
 \begin{definition}[(Pre)Norm and (pre)normed vector spaces]
-\label{def:prenorm-and-norm-normed-vect-space}
-Let \(E\) be a \(k\)-vector space. We say that a map \(\|-\|: E \to
-\R_{\geq 0}\) is a \emph{pre-norm} in \(E\) if for all \(x, y \in E\) and
-\(\lambda \in k\) the map satisfies the following properties
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item Product by scalar: \(\|\lambda x\| = |\lambda|\, \|x\|\).
-\item Triangle inequality: \(\| x + y \| \leq \| x \| + \| y \|\).
-\end{enumerate}
-Moreover, if \(\| - \|\) satisfies the following additional condition, it is
-called a \emph{norm}.
-\begin{enumerate}[(a)]\setlength\itemsep{0em}\setcounter{enumi}{2}
-\item If \(\| x \| = 0\) then \(x = 0\).
-\end{enumerate}
-The vector space \(E\) endowed with the (pre)norm \(\| - \|\) is called a
-\emph{(pre)normed vector space}.
+    \label{def:prenorm-and-norm-normed-vect-space}
+    Let \(E\) be a \(k\)-vector space. We say that a map \(\|-\|: E \to
+    \R_{\geq 0}\) is a \emph{pre-norm} in \(E\) if for all \(x, y \in E\) and
+    \(\lambda \in k\) the map satisfies the following properties
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item Product by scalar: \(\|\lambda x\| = |\lambda|\, \|x\|\).
+        \item Triangle inequality: \(\| x + y \| \leq \| x \| + \| y \|\).
+    \end{enumerate}
+    Moreover, if \(\| - \|\) satisfies the following additional condition, it is
+    called a \emph{norm}.
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}\setcounter{enumi}{2}
+        \item If \(\| x \| = 0\) then \(x = 0\).
+    \end{enumerate}
+    The vector space \(E\) endowed with the (pre)norm \(\| - \|\) is called a
+    \emph{(pre)normed vector space}.
 \end{definition}
 
 It should be noted immediately that the first condition for a pre-norm implies in
@@ -39,258 +39,258 @@ A simple property that can be extracted from
 inherited norm.
 
 \begin{example}[Norms from maps]
-\label{exp:norm-from-functional}
-Let \(E\) be a \(k\)-vector space and let's consider any functional \(f \in
-E^{*}\). We can build a \emph{pre-norm} from the linear map \(f\) by defining a
-map \(\| - \|_f: E \to \R_{\geq 0}\) given by \(\| x \|_f \coloneq |f(x)|\) ---
-which clearly satisfies all of the required conditions for a norm. Note however
-that for \(\| - \|_f\) to satisfy the last condition, it must be true that
-\(\ker f = 0\), that is, \(\dim_{k} E = 1\) necessarily for \(\| - \|_f\) to be
-a \emph{norm}.
+    \label{exp:norm-from-functional}
+    Let \(E\) be a \(k\)-vector space and let's consider any functional \(f \in
+    E^{*}\). We can build a \emph{pre-norm} from the linear map \(f\) by defining a
+    map \(\| - \|_f: E \to \R_{\geq 0}\) given by \(\| x \|_f \coloneq |f(x)|\) ---
+    which clearly satisfies all of the required conditions for a norm. Note however
+    that for \(\| - \|_f\) to satisfy the last condition, it must be true that
+    \(\ker f = 0\), that is, \(\dim_{k} E = 1\) necessarily for \(\| - \|_f\) to be
+    a \emph{norm}.
 \end{example}
 
 \begin{example}[Metrics from norms]
-\label{exp:metric-from-norm}
-Given a (pre)normed \(k\)-vector space \((E, \| - \|)\), we can naturally
-define a metric in \(E\) to be a map \(d: E \times E \to \R_{\geq 0}\) given by
-\(d(x, y) \coloneq \| x - y \|\) --- which makes \(E\) into a (pre)metric
-space (refer to \cref{def:premetric-and-metric-space}). We now verify each of
-the conditions for a pre-metric:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item If \(x, y \in E\) are any elements, then
-\[
-  d(x, y) = \| x - y \| = |-1|\, \| x - y \| = \| y - x \| = d(y, x).
-\]
-\item If \(z \in E\) is another element, then
-\[
-  d(x, z) = \| x - z \| \leq \| x - y \| + \| y - z \| = d(x, y) + d(y, z).
-\]
-\end{enumerate}
-Moreover, if \(\| - \|\) is a norm, then we are also able to satisfy:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}\setcounter{enumi}{2}
-\item Given \(x, y \in E\) such that \(d(x, y) = 0\), then \(\| x - y \| = 0\)
-and since \(\| - \|\) is a norm, we obtain \(x - y = 0\), thus \(x = y\) as
-wanted.
-\end{enumerate}
+    \label{exp:metric-from-norm}
+    Given a (pre)normed \(k\)-vector space \((E, \| - \|)\), we can naturally
+    define a metric in \(E\) to be a map \(d: E \times E \to \R_{\geq 0}\) given by
+    \(d(x, y) \coloneq \| x - y \|\) --- which makes \(E\) into a (pre)metric
+    space (refer to \cref{def:premetric-and-metric-space}). We now verify each of
+    the conditions for a pre-metric:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item If \(x, y \in E\) are any elements, then
+              \[
+                  d(x, y) = \| x - y \| = |-1|\, \| x - y \| = \| y - x \| = d(y, x).
+              \]
+        \item If \(z \in E\) is another element, then
+              \[
+                  d(x, z) = \| x - z \| \leq \| x - y \| + \| y - z \| = d(x, y) + d(y, z).
+              \]
+    \end{enumerate}
+    Moreover, if \(\| - \|\) is a norm, then we are also able to satisfy:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}\setcounter{enumi}{2}
+        \item Given \(x, y \in E\) such that \(d(x, y) = 0\), then \(\| x - y \| = 0\)
+              and since \(\| - \|\) is a norm, we obtain \(x - y = 0\), thus \(x = y\) as
+              wanted.
+    \end{enumerate}
 \end{example}
 
 \begin{proposition}
-\label{prop:hausdorff-space-norm}
-Let \((E, \| - \|)\) be a (pre)normed \(k\)-vector space, and \(d: E \times E
-\to \R_{\geq 0}\) be the (pre)metric induced by \(\| - \|\). Then, \(E\) is a
-\emph{Hausdorff} space if and only if \(\| - \|\) is a \emph{norm}.
+    \label{prop:hausdorff-space-norm}
+    Let \((E, \| - \|)\) be a (pre)normed \(k\)-vector space, and \(d: E \times E
+    \to \R_{\geq 0}\) be the (pre)metric induced by \(\| - \|\). Then, \(E\) is a
+    \emph{Hausdorff} space if and only if \(\| - \|\) is a \emph{norm}.
 \end{proposition}
 
 \begin{proof}
-Suppose \(E\) is a Hausdorff space and let \(x, y \in E\) be such that \(\| x -
-y \| = 0\), then in particular \(d(x, y) = 0\) and therefore any open ball
-\(B_x(r)\) centred at \(x\), for \(r > 0\), does also contain \(y\) --- but
-since \(E\) is Hausdorff, this can only be true if \(x = y\), thus \(x - y = 0\)
-and we obtain that \(\| - \|\) is a norm, and \(d\) is a metric.
+    Suppose \(E\) is a Hausdorff space and let \(x, y \in E\) be such that \(\| x -
+    y \| = 0\), then in particular \(d(x, y) = 0\) and therefore any open ball
+    \(B_x(r)\) centred at \(x\), for \(r > 0\), does also contain \(y\) --- but
+    since \(E\) is Hausdorff, this can only be true if \(x = y\), thus \(x - y = 0\)
+    and we obtain that \(\| - \|\) is a norm, and \(d\) is a metric.
 
-Now, assume that \(\| - \|\) is a norm, thus \(d\) is a metric and since any
-metric space is Hausdorff (see \cref{prop: metric space T2}), in particular,
-\(E\) is Hausdorff.
+    Now, assume that \(\| - \|\) is a norm, thus \(d\) is a metric and since any
+    metric space is Hausdorff (see \cref{prop: metric space T2}), in particular,
+    \(E\) is Hausdorff.
 \end{proof}
 
 \begin{lemma}
-\label{lem:norm-is-continuous}
-Let \((E, \| - \|)\) be a normed \(k\)-vector space, then the following is true
-for any given \(x, y, z \in E\):
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item If \(d: E \times E \to \R_{\geq 0}\) is the metric induced by \(\| - \|\),
-then \(d(x + y, y + z) = d(x, z)\).
+    \label{lem:norm-is-continuous}
+    Let \((E, \| - \|)\) be a normed \(k\)-vector space, then the following is true
+    for any given \(x, y, z \in E\):
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item If \(d: E \times E \to \R_{\geq 0}\) is the metric induced by \(\| - \|\),
+              then \(d(x + y, y + z) = d(x, z)\).
 
-\item The inequality \(\big| \| x \| - \| y \| \big| \leq \| x - y \|\) holds.
-\end{enumerate}
+        \item The inequality \(\big| \| x \| - \| y \| \big| \leq \| x - y \|\) holds.
+    \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item \(d(x + y, y + z) = \| (x + y) - (y + z)\| = \| x - z \| = d(x, z)\).
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item \(d(x + y, y + z) = \| (x + y) - (y + z)\| = \| x - z \| = d(x, z)\).
 
-\item Notice that \(\| x \| = \| (x - y) + y \| \leq \| x - y \| + \| y \|\),
-therefore \(\| x \| - \| y \| \leq \| x - y \|\). Moreover, symmetrically we
-have that \(\| y \| - \| x \| \leq \| y - x \| = \| x - y \|\), therefore,
-\[
-- \| x - y \| \leq \| x \| - \| y \| \leq \| x - y \|
-\]
-as wanted.
-\end{enumerate}
+        \item Notice that \(\| x \| = \| (x - y) + y \| \leq \| x - y \| + \| y \|\),
+              therefore \(\| x \| - \| y \| \leq \| x - y \|\). Moreover, symmetrically we
+              have that \(\| y \| - \| x \| \leq \| y - x \| = \| x - y \|\), therefore,
+              \[
+                  - \| x - y \| \leq \| x \| - \| y \| \leq \| x - y \|
+              \]
+              as wanted.
+    \end{enumerate}
 \end{proof}
 
 \begin{proposition}
-\label{prop:norm-is-continuous}
-Any norm in an \(\R\)-vector space is \emph{continuous}.
+    \label{prop:norm-is-continuous}
+    Any norm in an \(\R\)-vector space is \emph{continuous}.
 \end{proposition}
 
 \begin{proof}
-This follows directly from the inequality obtained in item (b) of
-\cref{lem:norm-is-continuous}.
+    This follows directly from the inequality obtained in item (b) of
+    \cref{lem:norm-is-continuous}.
 \end{proof}
 
 \begin{proposition}
-\label{prop:continuity-sum-multiplication-scalar}
-Given a (pre)normed \(k\)-vector space \(E\), if we endow the products \(E
-\times E\) and \(k \times E\) with the product topology, \emph{addition} of
-vectors and \emph{multiplication} of vectors by scalars are both
-\emph{continuous} maps.
+    \label{prop:continuity-sum-multiplication-scalar}
+    Given a (pre)normed \(k\)-vector space \(E\), if we endow the products \(E
+    \times E\) and \(k \times E\) with the product topology, \emph{addition} of
+    vectors and \emph{multiplication} of vectors by scalars are both
+    \emph{continuous} maps.
 \end{proposition}
 
 \begin{proof}
-Given sequences \(x_j \to x\) and \(y_j \to y\) for any \(x, y \in E\), then
-\(x_j + y_j \to x + y\), let \(\varepsilon > 0\) be any bound, then choose a
-common \(n \in \N\) for which \(\| x - x_j \| < \frac{\varepsilon}{2}\) and
-\(\| y - y_{j} \| < \frac{\varepsilon}{2}\) for all \(j \geq n\). Therefore, by
-the triangle inequality
-\[
-\| (x + y) - (x_j - y_j)\| \leq  \| x - x_j \| - \| y - y_j \| < \varepsilon
-\text{ for all } j > n,
-\]
-where we thus conclude that \(x_j + y_j \to x + y\) --- all limits are well
-defined since \(E\) is Hausdorff.
+    Given sequences \(x_j \to x\) and \(y_j \to y\) for any \(x, y \in E\), then
+    \(x_j + y_j \to x + y\), let \(\varepsilon > 0\) be any bound, then choose a
+    common \(n \in \N\) for which \(\| x - x_j \| < \frac{\varepsilon}{2}\) and
+    \(\| y - y_{j} \| < \frac{\varepsilon}{2}\) for all \(j \geq n\). Therefore, by
+    the triangle inequality
+    \[
+        \| (x + y) - (x_j - y_j)\| \leq  \| x - x_j \| - \| y - y_j \| < \varepsilon
+        \text{ for all } j > n,
+    \]
+    where we thus conclude that \(x_j + y_j \to x + y\) --- all limits are well
+    defined since \(E\) is Hausdorff.
 
-Let \(\lambda_j \to \lambda\) be a convergent sequence in \(k\) for any given
-\(\lambda \in k\). Since convergent sequences are bounded, let \(M \in k\) be a
-bound for \((x_j)_{j \in \N}\), that is, \(|x_j| < M\) --- also,
-define \(M' \coloneq \max (M, |\lambda|)\). Given any \(\varepsilon > 0\) we
-choose a common \(n \in \N\) for which \(|\lambda - \lambda_j| <
-\frac{\varepsilon}{2 M'}\) and \(\| x - x_{j} \| < \frac{\varepsilon}{2 M'}\)
-for all \(j \geq n\). With this we can use the triangle inequality to find
-\begin{align*}
-  \| \lambda x - \lambda_j x_j \|
-  &= \| (\lambda - \lambda_j) x_j + \lambda (x - x_j)\| \\
-  &\leq \| (\lambda - \lambda_{j}) x_j \| + \| \lambda (x - x_j) \| \\
-  &= |\lambda - \lambda_j|\, \| x_j \| + |\lambda|\, \| x - x_j \| \\
-  &= \frac{\varepsilon}{2 M'} \| x_{j} \| + |\lambda| \frac{\varepsilon}{2 M'}
-  \\
-  &< \frac{\varepsilon}{2 M'} M' + M' \frac{\varepsilon}{2 M'} \\
-  &= \varepsilon,
-\end{align*}
-that is, \(\lambda_j x_j \to \lambda x\) as wanted.
+    Let \(\lambda_j \to \lambda\) be a convergent sequence in \(k\) for any given
+    \(\lambda \in k\). Since convergent sequences are bounded, let \(M \in k\) be a
+    bound for \((x_j)_{j \in \N}\), that is, \(|x_j| < M\) --- also,
+    define \(M' \coloneq \max (M, |\lambda|)\). Given any \(\varepsilon > 0\) we
+    choose a common \(n \in \N\) for which \(|\lambda - \lambda_j| <
+    \frac{\varepsilon}{2 M'}\) and \(\| x - x_{j} \| < \frac{\varepsilon}{2 M'}\)
+    for all \(j \geq n\). With this we can use the triangle inequality to find
+    \begin{align*}
+        \| \lambda x - \lambda_j x_j \|
+         & = \| (\lambda - \lambda_j) x_j + \lambda (x - x_j)\|                        \\
+         & \leq \| (\lambda - \lambda_{j}) x_j \| + \| \lambda (x - x_j) \|            \\
+         & = |\lambda - \lambda_j|\, \| x_j \| + |\lambda|\, \| x - x_j \|             \\
+         & = \frac{\varepsilon}{2 M'} \| x_{j} \| + |\lambda| \frac{\varepsilon}{2 M'}
+        \\
+         & < \frac{\varepsilon}{2 M'} M' + M' \frac{\varepsilon}{2 M'}                 \\
+         & = \varepsilon,
+    \end{align*}
+    that is, \(\lambda_j x_j \to \lambda x\) as wanted.
 \end{proof}
 
 \begin{definition}[Equivalence of norms]
-\label{def:equivalence-of-norms}
-Given vector space \(E\) and two norms, \(\| - \|_1\) and \(\| - \|_2\), on
-\(E\), we say that such norms are equivalent if there exists \(a, b > 0\) such
-that for all \(v \in E\) we have the inequalities
-\[
-  a \| v \|_1 \leq \| v \|_2 \leq b \| v \|_1.
-\]
+    \label{def:equivalence-of-norms}
+    Given vector space \(E\) and two norms, \(\| - \|_1\) and \(\| - \|_2\), on
+    \(E\), we say that such norms are equivalent if there exists \(a, b > 0\) such
+    that for all \(v \in E\) we have the inequalities
+    \[
+        a \| v \|_1 \leq \| v \|_2 \leq b \| v \|_1.
+    \]
 \end{definition}
 
 \begin{proposition}
-\label{prop:equivalent-norms-same-topology}
-Two norms are equivalent if and only if they induce the same topology.
+    \label{prop:equivalent-norms-same-topology}
+    Two norms are equivalent if and only if they induce the same topology.
 \end{proposition}
 
 \begin{proof}
-Let \(E\) be a \(k\)-vector space and both \(\| - \|_1\) and \(\| - \|_2\) be
-norms on \(E\). Let \(U \subseteq (E, \| - \|_1)\) be open and, for any given
-\(x \in U\), let \(B_x(r) \subseteq (E, \| - \|_1)\) be an open ball centred at
-\(x\). Notice that if \(b > 0\) is the right constant in
-\cref{def:equivalence-of-norms}, then by choosing the open ball \(B_x(r/b)
-\subseteq (E, \| - \|_2)\), we are able to obtain that for all \(y \in
-B_x(r/b)\) we have
-\[
-\| x - y \|_1 \leq b \| x - y \|_2 < r
-\]
-thus \(y \in B_x(r)\) in \(\| - \|_1\) --- this implies in \(B_x(c r) \subseteq
-B_x(r)\) in \(\| - \|_2\) and therefore we conclude that \(B_x(r)\) is open in
-\((E, \| - \|_2)\). Notice that the proof can be mirrored for the other case,
-thus we are done.
+    Let \(E\) be a \(k\)-vector space and both \(\| - \|_1\) and \(\| - \|_2\) be
+    norms on \(E\). Let \(U \subseteq (E, \| - \|_1)\) be open and, for any given
+    \(x \in U\), let \(B_x(r) \subseteq (E, \| - \|_1)\) be an open ball centred at
+    \(x\). Notice that if \(b > 0\) is the right constant in
+    \cref{def:equivalence-of-norms}, then by choosing the open ball \(B_x(r/b)
+    \subseteq (E, \| - \|_2)\), we are able to obtain that for all \(y \in
+    B_x(r/b)\) we have
+    \[
+        \| x - y \|_1 \leq b \| x - y \|_2 < r
+    \]
+    thus \(y \in B_x(r)\) in \(\| - \|_1\) --- this implies in \(B_x(c r) \subseteq
+    B_x(r)\) in \(\| - \|_2\) and therefore we conclude that \(B_x(r)\) is open in
+    \((E, \| - \|_2)\). Notice that the proof can be mirrored for the other case,
+    thus we are done.
 \end{proof}
 
 \subsection{Quotient Space}
 
 \begin{example}[Pre-norm on quotients of normed spaces]
-\label{exp:prenorm-quotient-space}
-Let \((E, \| - \|)\) be a \emph{pre-normed} \(k\)-vector space and \(F
-\subseteq E\) a subspace. We can define a \emph{pre-norm} \(\| - \|_{\sim}: E/F
-\to \R_{\geq 0}\) on the quotient space \(E/F\) as
-\[
-  \| [v] \|_{\sim} \coloneq \inf_{u \in [v]} \| u \|,
-\]
-that is, the infimum of the norm of the representatives of the class. This
-indeed defines a pre-norm since, if \([v], [w] \in E/F\), then
-\begin{align}\label{eq:quotient-norm-triang-ineq}
-  \nonumber
-  \| [v] + [w] \|_{\sim}
-  &= \inf \{\|x + y\| \colon x + y \in [v] + [w]\} \\
-  &\leq \inf \{\| x \| + \| y \| \colon x \in [v] \text{ and } y \in [w]\}
-\end{align}
-We claim that \(\inf \{\| x \| + \| y \|\} \leq \inf \| x \| + \inf \| y
-\|\). To prove that, assume that both \(\inf \| x \|\) and \(\inf \| y \|\) are
-finite --- otherwise, if one of them is infinite, the inequality is trivially
-true. For any \(\varepsilon > 0\) we can find \(x' \in [v]\) and \(y' \in
-[w]\) for which
-\begin{gather*}
-\inf_{x \in [v]} \| x \|
-\leq \| x' \|
-\leq \inf_{x \in [v]} \| x \| + \varepsilon,
-\\
-\inf_{y \in [v]} \| y \|
-\leq \| y' \|
-\leq \inf_{y \in [v]} \| y \| + \varepsilon.
-\end{gather*}
-Therefore we find that \(\inf \{\| x \| + \| y \|\} \leq \| x' \| + \| y' \|\)
-therefore \(\inf \{\| x \| + \| y \|\} \leq \inf \| x \| + \inf \| y \| + 2
-\varepsilon\), but since \(\varepsilon\) may be indefinitely little, we find
-that indeed \(\inf \{\| x \| + \| y \|\} \leq \inf \| x \| + \inf \| y
-\|\). Hence, we can turn to \cref{eq:quotient-norm-triang-ineq} and conclude
-that
-\begin{align*}
-\| [v] + [w] \|_{\sim}
-&\leq \inf \{\| x \| + \| y \| \colon x \in [v] \text{ and } y \in [w]\} \\
-&\leq \inf_{x \in [v]} \| x \| + \inf_{y \in [w]} \| y \| \\
-&= \| [v] \|_{\sim} + \| [w] \|_{\sim},
-\end{align*}
-thus satisfying the triangle inequality. The condition that \(\| \lambda v
-\|_{\sim} = |\lambda|\, \| v \|_{\sim}\) is trivially obtained --- hence \(\| -
-\|_{\sim}\) is a pre-norm in \(E/F\).
+    \label{exp:prenorm-quotient-space}
+    Let \((E, \| - \|)\) be a \emph{pre-normed} \(k\)-vector space and \(F
+    \subseteq E\) a subspace. We can define a \emph{pre-norm} \(\| - \|_{\sim}: E/F
+    \to \R_{\geq 0}\) on the quotient space \(E/F\) as
+    \[
+        \| [v] \|_{\sim} \coloneq \inf_{u \in [v]} \| u \|,
+    \]
+    that is, the infimum of the norm of the representatives of the class. This
+    indeed defines a pre-norm since, if \([v], [w] \in E/F\), then
+    \begin{align}\label{eq:quotient-norm-triang-ineq}
+        \nonumber
+        \| [v] + [w] \|_{\sim}
+         & = \inf \{\|x + y\| \colon x + y \in [v] + [w]\}                         \\
+         & \leq \inf \{\| x \| + \| y \| \colon x \in [v] \text{ and } y \in [w]\}
+    \end{align}
+    We claim that \(\inf \{\| x \| + \| y \|\} \leq \inf \| x \| + \inf \| y
+    \|\). To prove that, assume that both \(\inf \| x \|\) and \(\inf \| y \|\) are
+    finite --- otherwise, if one of them is infinite, the inequality is trivially
+    true. For any \(\varepsilon > 0\) we can find \(x' \in [v]\) and \(y' \in
+    [w]\) for which
+    \begin{gather*}
+        \inf_{x \in [v]} \| x \|
+        \leq \| x' \|
+        \leq \inf_{x \in [v]} \| x \| + \varepsilon,
+        \\
+        \inf_{y \in [v]} \| y \|
+        \leq \| y' \|
+        \leq \inf_{y \in [v]} \| y \| + \varepsilon.
+    \end{gather*}
+    Therefore we find that \(\inf \{\| x \| + \| y \|\} \leq \| x' \| + \| y' \|\)
+    therefore \(\inf \{\| x \| + \| y \|\} \leq \inf \| x \| + \inf \| y \| + 2
+    \varepsilon\), but since \(\varepsilon\) may be indefinitely little, we find
+    that indeed \(\inf \{\| x \| + \| y \|\} \leq \inf \| x \| + \inf \| y
+    \|\). Hence, we can turn to \cref{eq:quotient-norm-triang-ineq} and conclude
+    that
+    \begin{align*}
+        \| [v] + [w] \|_{\sim}
+         & \leq \inf \{\| x \| + \| y \| \colon x \in [v] \text{ and } y \in [w]\} \\
+         & \leq \inf_{x \in [v]} \| x \| + \inf_{y \in [w]} \| y \|                \\
+         & = \| [v] \|_{\sim} + \| [w] \|_{\sim},
+    \end{align*}
+    thus satisfying the triangle inequality. The condition that \(\| \lambda v
+    \|_{\sim} = |\lambda|\, \| v \|_{\sim}\) is trivially obtained --- hence \(\| -
+    \|_{\sim}\) is a pre-norm in \(E/F\).
 \end{example}
 
 \begin{proposition}[Quotient norm]
-\label{prop:quotient-norm}
-The pre-norm \(\| - \|_{\sim}\) described in \cref{exp:prenorm-quotient-space} is
-a \emph{norm} if and only if the subspace \(F\) is closed in \(E\).
+    \label{prop:quotient-norm}
+    The pre-norm \(\| - \|_{\sim}\) described in \cref{exp:prenorm-quotient-space} is
+    a \emph{norm} if and only if the subspace \(F\) is closed in \(E\).
 \end{proposition}
 
 \begin{proof}
-Let \([v] \in E/F\) be any class such that \(\| [v] \|_{\sim} = 0\), therefore,
-we must be able to find a sequence \((v_j)_{j \in \N}\) of elements \(v_j \in
-[v]\) such that \(\| v_{j} \| \to 0\) as \(j \to \infty\). Moreover, choosing
-\(v \in [v]\) to be any representative, since \(v_j - v \in F\) and \(F\) is
-closed normed space, the convergence of the norm to zero implies that \(v_j \to
-0\) for \(j \to \infty\) in \(F\) --- therefore, we conclude that \(F \ni v_j -
-v \to -v\) and thus \(-v \in F\) from the closeness property, in particular, we
-find that \(v \in F\).
+    Let \([v] \in E/F\) be any class such that \(\| [v] \|_{\sim} = 0\), therefore,
+    we must be able to find a sequence \((v_j)_{j \in \N}\) of elements \(v_j \in
+    [v]\) such that \(\| v_{j} \| \to 0\) as \(j \to \infty\). Moreover, choosing
+    \(v \in [v]\) to be any representative, since \(v_j - v \in F\) and \(F\) is
+    closed normed space, the convergence of the norm to zero implies that \(v_j \to
+    0\) for \(j \to \infty\) in \(F\) --- therefore, we conclude that \(F \ni v_j -
+    v \to -v\) and thus \(-v \in F\) from the closeness property, in particular, we
+    find that \(v \in F\).
 
-We now claim that since \(v \in F\), then \([v] = [0]\). Let \(u \in [v]\) be
-any representative, then \(u - v \in F\) and since \(v \in F\) by assumption,
-then in particular \(u \in F\), hence \(u \in [0]\) --- that is, \([v] \subseteq
-[0]\). Now, if \(w \in [0]\), from definition we obtain \(w \in F\), but since
-\(v \in F\) then in particular \(w - v \in F\) hence \(w \in [v]\) --- which
-implies that \([0] \subseteq [v]\) and thus \([v] = [0]\) for all \(v \in
-F\). Therefore, from this claim we obtain that \(\| [v] \|_{\sim} = 0\) implies
-\([v] = [0] = F\), the zero element of \(E/F\).
+    We now claim that since \(v \in F\), then \([v] = [0]\). Let \(u \in [v]\) be
+    any representative, then \(u - v \in F\) and since \(v \in F\) by assumption,
+    then in particular \(u \in F\), hence \(u \in [0]\) --- that is, \([v] \subseteq
+    [0]\). Now, if \(w \in [0]\), from definition we obtain \(w \in F\), but since
+    \(v \in F\) then in particular \(w - v \in F\) hence \(w \in [v]\) --- which
+    implies that \([0] \subseteq [v]\) and thus \([v] = [0]\) for all \(v \in
+    F\). Therefore, from this claim we obtain that \(\| [v] \|_{\sim} = 0\) implies
+    \([v] = [0] = F\), the zero element of \(E/F\).
 \end{proof}
 
 \begin{proposition}[Norm out of pre-norm]
-\label{prop:norm-out-of-prenorm}
-Let \((E, \| - \|)\) be a \emph{pre-normed} \(k\)-vector space and \(E_0 \coloneq
-\{x \in E \colon \| x \| = 0\}\). Then, the map \(\| - \|_{\sim}: E / E_0 \to
-\R_{\geq 0}\) defined by \(\| [x] \|_{\sim} \coloneq \| x \|\) is well defined
-and is a \emph{norm} for the space \(E / E_0\).
+    \label{prop:norm-out-of-prenorm}
+    Let \((E, \| - \|)\) be a \emph{pre-normed} \(k\)-vector space and \(E_0 \coloneq
+    \{x \in E \colon \| x \| = 0\}\). Then, the map \(\| - \|_{\sim}: E / E_0 \to
+    \R_{\geq 0}\) defined by \(\| [x] \|_{\sim} \coloneq \| x \|\) is well defined
+    and is a \emph{norm} for the space \(E / E_0\).
 \end{proposition}
 
 \begin{proof}
-Let \([x] \in E / E_0\) be a class such that \(\| [x] \|_{\sim} = 0\). Choose
-any representative \(x \in [x]\) and notice that since \(\| x \| = 0\) then \(x
-\in E_0\), that is, \([x] \subseteq E_0\) --- moreover, if \(y \in E_0\), then
-surely \(y \in [x]\), that is, \(E_0 \subseteq [x]\). This shows that \([x] =
-E_0\), where \(E_0 = [0] \in E / E_0\).
+    Let \([x] \in E / E_0\) be a class such that \(\| [x] \|_{\sim} = 0\). Choose
+    any representative \(x \in [x]\) and notice that since \(\| x \| = 0\) then \(x
+    \in E_0\), that is, \([x] \subseteq E_0\) --- moreover, if \(y \in E_0\), then
+    surely \(y \in [x]\), that is, \(E_0 \subseteq [x]\). This shows that \([x] =
+    E_0\), where \(E_0 = [0] \in E / E_0\).
 \end{proof}
 
 \subsection{Examples of Normed Spaces}
@@ -299,152 +299,152 @@ The following is an immediate proposition, so we won't bother to write down
 the proof.
 
 \begin{lemma}[Complex conjugate space norm]
-\label{lem:prenorm-complex-conjugate-space}
-Let \((E, \| - \|)\) be a pre-normed \(\CC\)-vector space. Then the naturally
-induced map \(\| - \|: \overline{E} \to \R_{\geq 0}\) is a pre-norm for the
-complex conjugate space \(\overline{E}\).
+    \label{lem:prenorm-complex-conjugate-space}
+    Let \((E, \| - \|)\) be a pre-normed \(\CC\)-vector space. Then the naturally
+    induced map \(\| - \|: \overline{E} \to \R_{\geq 0}\) is a pre-norm for the
+    complex conjugate space \(\overline{E}\).
 \end{lemma}
 
 \begin{proposition}
-Let \(E\) be a pre-normed \(k\)-vector space, \(F \subseteq E\) be a closed
-subspace, and \(x \in E \setminus F\). Then there exists a scalar \(C > 0\)
-for which, for every given scalar \(\lambda \in k\) and vector \(y \in F\), we
-have
-\[
-|\lambda| \leq C \| \lambda x + y \|.
-\]
+    Let \(E\) be a pre-normed \(k\)-vector space, \(F \subseteq E\) be a closed
+    subspace, and \(x \in E \setminus F\). Then there exists a scalar \(C > 0\)
+    for which, for every given scalar \(\lambda \in k\) and vector \(y \in F\), we
+    have
+    \[
+        |\lambda| \leq C \| \lambda x + y \|.
+    \]
 \end{proposition}
 
 \begin{proof}
-If \(\lambda = 0\) then the proposition follows trivially. Otherwise, let
-\(\lambda \neq 0\) and notice that since \(F\) is closed, there must exist
-\(\theta > 0\) for which \(\| x - y \| \geq \theta\) for every given \(y \in F\)
---- since \(x\) lies outside of \(F\). In particular, since \(-\frac{1}{\lambda}
-y \in F\), then \(\| x - (-\frac{1}{\lambda} y) \| \geq \theta\) --- notice that
-such choice of vector was not made arbitrarily since
-\[
-\| \lambda x + y \|
-= |\lambda|\, \| x - (- y / \lambda) \| \geq |\lambda| \theta,
-\]
-therefore, if we choose \(C \coloneq \frac{1}{\theta}\), we obtain the desired
-inequality.
+    If \(\lambda = 0\) then the proposition follows trivially. Otherwise, let
+    \(\lambda \neq 0\) and notice that since \(F\) is closed, there must exist
+    \(\theta > 0\) for which \(\| x - y \| \geq \theta\) for every given \(y \in F\)
+    --- since \(x\) lies outside of \(F\). In particular, since \(-\frac{1}{\lambda}
+    y \in F\), then \(\| x - (-\frac{1}{\lambda} y) \| \geq \theta\) --- notice that
+    such choice of vector was not made arbitrarily since
+    \[
+        \| \lambda x + y \|
+        = |\lambda|\, \| x - (- y / \lambda) \| \geq |\lambda| \theta,
+    \]
+    therefore, if we choose \(C \coloneq \frac{1}{\theta}\), we obtain the desired
+    inequality.
 \end{proof}
 
 \begin{example}[\(p\)-norms]
-\label{exp:p-norms}
-The following are recurrent norms on two of the most relevant spaces to our
-analytical study of normed \(k\)-vector spaces:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item For every integer \(1 \leq p < \infty\) we define a norm \(\| - \|_p: k^n
-\to \R_{\geq 0}\) defined by, for all \(x \in k^n\),
-\[
-\| x \|_p \coloneq \bigg( \sum_{j=1}^n |x_j|^p \bigg)^{1/p}.
-\]
+    \label{exp:p-norms}
+    The following are recurrent norms on two of the most relevant spaces to our
+    analytical study of normed \(k\)-vector spaces:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item For every integer \(1 \leq p < \infty\) we define a norm \(\| - \|_p: k^n
+              \to \R_{\geq 0}\) defined by, for all \(x \in k^n\),
+              \[
+                  \| x \|_p \coloneq \bigg( \sum_{j=1}^n |x_j|^p \bigg)^{1/p}.
+              \]
 
-\item The infinite case for the space \(k^n\) is defined by a map
-\(\| - \|_{\infty}: k^n \to \R_{\geq 0}\) given by
-\[
-\| x \|_{\infty} \coloneq \max_{1 \leq j \leq n} |x_j|.
-\]
+        \item The infinite case for the space \(k^n\) is defined by a map
+              \(\| - \|_{\infty}: k^n \to \R_{\geq 0}\) given by
+              \[
+                  \| x \|_{\infty} \coloneq \max_{1 \leq j \leq n} |x_j|.
+              \]
 
-\item Let \(\ell^p(J) \subseteq k^J\) be the \(k\)-vector subspace consisting of
-maps \(f: J \to k\) with \emph{countable support} --- that is, \(\sum_{t \in J}
-|f(t)|^p < \infty\). For each integer \(1 \leq p < \infty\), we define a norm
-\(\| - \|_p: \ell^p(J) \to \R_{\geq 0}\) given by
-\[
-\| f \|_p \coloneq \bigg( \sum_{t \in J} |f(t)|^p \bigg)^{1/p}.
-\]
+        \item Let \(\ell^p(J) \subseteq k^J\) be the \(k\)-vector subspace consisting of
+              maps \(f: J \to k\) with \emph{countable support} --- that is, \(\sum_{t \in J}
+              |f(t)|^p < \infty\). For each integer \(1 \leq p < \infty\), we define a norm
+              \(\| - \|_p: \ell^p(J) \to \R_{\geq 0}\) given by
+              \[
+                  \| f \|_p \coloneq \bigg( \sum_{t \in J} |f(t)|^p \bigg)^{1/p}.
+              \]
 
-\item For the infinite case, we define \(\ell^{\infty}(J) \subseteq k^{J}\) to
-be the \(k\)-vector subspace consisting of maps \(f: J \to k\) such that
-\(\sup_{t \in J} |f(t)| < \infty\). We define the norm \(\| - \|_{\infty}:
-\ell^{\infty}(J) \to \R_{\geq 0}\) by
-\[
-\| f \|_{\infty} \coloneq \sup_{t \in J} |f(t)|.
-\]
-\end{enumerate}
-In fact, each one of the above spaces is Banach, but we'll prove this later.
-We need now to prove that these are indeed normed vector spaces.
+        \item For the infinite case, we define \(\ell^{\infty}(J) \subseteq k^{J}\) to
+              be the \(k\)-vector subspace consisting of maps \(f: J \to k\) such that
+              \(\sup_{t \in J} |f(t)| < \infty\). We define the norm \(\| - \|_{\infty}:
+              \ell^{\infty}(J) \to \R_{\geq 0}\) by
+              \[
+                  \| f \|_{\infty} \coloneq \sup_{t \in J} |f(t)|.
+              \]
+    \end{enumerate}
+    In fact, each one of the above spaces is Banach, but we'll prove this later.
+    We need now to prove that these are indeed normed vector spaces.
 \end{example}
 
 \begin{proof}
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item Let \(x \in k^n\) be any vector and \(\lambda \in k\) any scalar, then
-\[
-\| \lambda x \|_p
-= \bigg( \sum_j | \lambda x_j |^p \bigg)^{1/p}
-= \bigg( |\lambda|^p \sum_j | x_j |^p \bigg)^{1/p}
-= |\lambda|\, \| x \|_p.
-\]
-Moreover, if \(y \in k^n\) is another vector, then since \(p \geq 1\) we may
-just use Minkowski's inequalities (see \cref{prop: minkowski-ineq}) in order to
-obtain the triangle inequality --- it should be noted that \(p < 1\) does not
-yield a valid triangle inequality, hence justifying the restriction \(p \geq
-1\). Also, if \(\| z \| = 0\) for some \(z \in k^n\), then \(z_j = 0\) for all
-\(1 \leq j \leq n\) --- since \(|z_j| = 0\) --- and thus \(z = 0\).
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item Let \(x \in k^n\) be any vector and \(\lambda \in k\) any scalar, then
+              \[
+                  \| \lambda x \|_p
+                  = \bigg( \sum_j | \lambda x_j |^p \bigg)^{1/p}
+                  = \bigg( |\lambda|^p \sum_j | x_j |^p \bigg)^{1/p}
+                  = |\lambda|\, \| x \|_p.
+              \]
+              Moreover, if \(y \in k^n\) is another vector, then since \(p \geq 1\) we may
+              just use Minkowski's inequalities (see \cref{prop: minkowski-ineq}) in order to
+              obtain the triangle inequality --- it should be noted that \(p < 1\) does not
+              yield a valid triangle inequality, hence justifying the restriction \(p \geq
+              1\). Also, if \(\| z \| = 0\) for some \(z \in k^n\), then \(z_j = 0\) for all
+              \(1 \leq j \leq n\) --- since \(|z_j| = 0\) --- and thus \(z = 0\).
 
-\item The map \(\| - \|_{\infty}: k^n \to \R_{\geq 0}\) is clearly a norm.
+        \item The map \(\| - \|_{\infty}: k^n \to \R_{\geq 0}\) is clearly a norm.
 
-\item
+        \item
 
-\item Let \(\lambda \in k\) and \(f, g \in \ell^{\infty}(J)\) be any
-elements. Since \(\sup_t |f(t)| < \infty\), we conclude that \(\| \lambda f \| =
-\sup_t |\lambda f(t)| = \sup_t |\lambda|\, |f(t)| = |\lambda| \sup_t |f(t)|\),
-thus \(\| \lambda f \| = |\lambda|\, \| f \|\). Moreover, we have \(\sup_t |f(t)
-+ g(t)| \leq \sup_t (|f(t)| + |g(t)|) \leq \sup_t |f(t)| + \sup_t |g(t)| <
-\infty\), therefore \(\| f + g \| \leq \| f \| + \| g \|\). Also, if \(h \in
-\ell^{\infty}(J)\) is a map such that \(\| h \| = 0\), then \(\sup_t |h(t)| =
-0\), which by the definition of the supremum of a set and since \(|h(t)| \geq
-0\), we conclude that \(h(t) = 0\) for every \(t \in J\) --- that is, \(h = 0\).
-\end{enumerate}
-\todo[inline]{Prove that the maps define norms for \(\ell^p\) and
-\(\ell^{\infty}\), moreover, prove that each of the mentioned spaces is
-Banach.}
+        \item Let \(\lambda \in k\) and \(f, g \in \ell^{\infty}(J)\) be any
+              elements. Since \(\sup_t |f(t)| < \infty\), we conclude that \(\| \lambda f \| =
+              \sup_t |\lambda f(t)| = \sup_t |\lambda|\, |f(t)| = |\lambda| \sup_t |f(t)|\),
+              thus \(\| \lambda f \| = |\lambda|\, \| f \|\). Moreover, we have \(\sup_t |f(t)
+              + g(t)| \leq \sup_t (|f(t)| + |g(t)|) \leq \sup_t |f(t)| + \sup_t |g(t)| <
+              \infty\), therefore \(\| f + g \| \leq \| f \| + \| g \|\). Also, if \(h \in
+              \ell^{\infty}(J)\) is a map such that \(\| h \| = 0\), then \(\sup_t |h(t)| =
+              0\), which by the definition of the supremum of a set and since \(|h(t)| \geq
+              0\), we conclude that \(h(t) = 0\) for every \(t \in J\) --- that is, \(h = 0\).
+    \end{enumerate}
+    \todo[inline]{Prove that the maps define norms for \(\ell^p\) and
+        \(\ell^{\infty}\), moreover, prove that each of the mentioned spaces is
+        Banach.}
 \end{proof}
 
 \begin{lemma}
-\label{lem:p-norms-equivalent-finite-case}
-Let \(\| - \|_p, \| - \|_{\infty}: k^n \rightrightarrows \R_{\geq 0}\) be the
-norms defined in \cref{exp:p-norms}, then the following inequality holds for all
-\(1 \leq p < \infty\) and all \(x \in k^n\):
-\[
-\| x \|_{\infty} \leq \| x \|_p \leq n^{1/p} \| x \|_{\infty}.
-\]
-Therefore \(\| - \|_p\) and \(\| - \|_{\infty}\) are equivalent norms.
+    \label{lem:p-norms-equivalent-finite-case}
+    Let \(\| - \|_p, \| - \|_{\infty}: k^n \rightrightarrows \R_{\geq 0}\) be the
+    norms defined in \cref{exp:p-norms}, then the following inequality holds for all
+    \(1 \leq p < \infty\) and all \(x \in k^n\):
+    \[
+        \| x \|_{\infty} \leq \| x \|_p \leq n^{1/p} \| x \|_{\infty}.
+    \]
+    Therefore \(\| - \|_p\) and \(\| - \|_{\infty}\) are equivalent norms.
 \end{lemma}
 
 \begin{proof}
-Since \((\sum_j |x_j|^p)^{1/p} \leq (\sum_j (\max_j |x_j|)^p)^{1/p} = n^{1/p}
-\max_j |x_j|\), we obtain \(\| x \|_p \leq n^{1/p} \| x \|_{\infty}\). Moreover,
-clearly \(\| x \|_{\infty} \leq \| x \|_p\), thus the proposition follows.
+    Since \((\sum_j |x_j|^p)^{1/p} \leq (\sum_j (\max_j |x_j|)^p)^{1/p} = n^{1/p}
+    \max_j |x_j|\), we obtain \(\| x \|_p \leq n^{1/p} \| x \|_{\infty}\). Moreover,
+    clearly \(\| x \|_{\infty} \leq \| x \|_p\), thus the proposition follows.
 \end{proof}
 
 \begin{example}[\(\ell^{\infty}\) space of maps]
-\label{exp:ell-infty-space-maps}
-Let \(X\) be any set and define \(\ell^{\infty}(X)\) to be a \(k\)-vector
-subspace of \(k^X\), consisting of all bounded maps. We define a norm
-\(\| - \|_{\infty}: \ell^{\infty}(X) \to \R_{\geq 0}\) to be the map given by
-\[
-\| f \|_{\infty} \coloneq \sup_{t \in X} |f(t)|.
-\]
-Such norm is called the \emph{uniform norm} on the function space.
+    \label{exp:ell-infty-space-maps}
+    Let \(X\) be any set and define \(\ell^{\infty}(X)\) to be a \(k\)-vector
+    subspace of \(k^X\), consisting of all bounded maps. We define a norm
+    \(\| - \|_{\infty}: \ell^{\infty}(X) \to \R_{\geq 0}\) to be the map given by
+    \[
+        \| f \|_{\infty} \coloneq \sup_{t \in X} |f(t)|.
+    \]
+    Such norm is called the \emph{uniform norm} on the function space.
 \end{example}
 
 \begin{example}[Uniform convergence norm]
-\label{exp:uniform-convergence-norm}
-Let \(X\) be a \emph{Hausdorff} space and \(\Omega \subseteq X\) be a
-\emph{compact} set. If \(C(\Omega, k)\) denotes the \(k\)-vector space of
-continuous functionals \(\Omega \to k\), the map \(\| - \|_{\infty}: C(\Omega,
-k) \to \R_{\geq 0}\) given by
-\[
-\| f \|_{\infty} \coloneq \sup_{t \in \Omega} |f(t)| = \max_{t \in \Omega} |f(t)|
-\]
-defines a \emph{norm} in \(C(\Omega, k)\). Moreover, the normed \(k\)-vector
-space \((C(\Omega, k), \| - \|_{\infty})\) is \emph{Banach}.
+    \label{exp:uniform-convergence-norm}
+    Let \(X\) be a \emph{Hausdorff} space and \(\Omega \subseteq X\) be a
+    \emph{compact} set. If \(C(\Omega, k)\) denotes the \(k\)-vector space of
+    continuous functionals \(\Omega \to k\), the map \(\| - \|_{\infty}: C(\Omega,
+    k) \to \R_{\geq 0}\) given by
+    \[
+        \| f \|_{\infty} \coloneq \sup_{t \in \Omega} |f(t)| = \max_{t \in \Omega} |f(t)|
+    \]
+    defines a \emph{norm} in \(C(\Omega, k)\). Moreover, the normed \(k\)-vector
+    space \((C(\Omega, k), \| - \|_{\infty})\) is \emph{Banach}.
 \end{example}
 
 \begin{proof}
-\todo[inline]{Prove}
+    \todo[inline]{Prove}
 \end{proof}
 
 % \begin{definition}[Total subset]
@@ -458,250 +458,250 @@ space \((C(\Omega, k), \| - \|_{\infty})\) is \emph{Banach}.
 \subsection{Finite Dimensional}
 
 \begin{lemma}
-\label{lem:finite-normed-scalars-inequality}
-Let \(E\) be an \(n\)-dimensional normed \(k\)-vector space and \(\{x_1, \dots,
-x_n\}\) be a basis of \(E\). There exists a scalar \(C > 0\) such that, for
-every choice of scalars \(\{\lambda_1, \dots, \lambda_n\} \subseteq k\), we have
-\[
-\bigg\| \sum_{j=1}^n \lambda_j x_j \bigg\| \geq C \sum_{j=1}^n |\lambda_j|.
-\]
+    \label{lem:finite-normed-scalars-inequality}
+    Let \(E\) be an \(n\)-dimensional normed \(k\)-vector space and \(\{x_1, \dots,
+    x_n\}\) be a basis of \(E\). There exists a scalar \(C > 0\) such that, for
+    every choice of scalars \(\{\lambda_1, \dots, \lambda_n\} \subseteq k\), we have
+    \[
+        \bigg\| \sum_{j=1}^n \lambda_j x_j \bigg\| \geq C \sum_{j=1}^n |\lambda_j|.
+    \]
 \end{lemma}
 
 \begin{proof}
-For the sake of brevity, denote \(S \coloneq \sum_{j=1}^{n} |\lambda_j|\). If
-\(S = 0\) then the lemma follows trivially. Suppose that \(S > 0\) and, for the
-sake of contradiction, that there exists no scalar \(C > 0\) such that \(\|
-\sum_j | \lambda_j x_j | \| \geq C \sum_j |\lambda_j|\) --- this implies that
-for all integer \(p \geq 1\) there exists a point \(y_p \coloneq \sum_{j=1}^n
-\lambda_j(p) x_j\) such that
-\begin{equation}\label{eq:sum-coeff-inequality-normed-fin-dim}
-\sum_{j=1}^n |\lambda_j(p)| \geq p \| y_p \|.
-\end{equation}
-Moreover, for each \(p \geq 1\), we may as well construct \(z_p \coloneq
-\sum_{j=1}^n \alpha_j(p) x_j\) --- where \(\alpha_j: \N \to k\) for all \(1 \leq
-j \leq n\) --- for which
-\[
-\alpha_j(p) \coloneq \frac{\lambda_j(p)}{\sum_{j=1}^n |\lambda_j(p)|}.
-\]
-This ensures us that \(\sum_j \alpha_j(p) = 1\) --- hence \(|\alpha_j(p)| \leq
-1\). Dividing \cref{eq:sum-coeff-inequality-normed-fin-dim} by \(\sum_j
-|\lambda_j(p)|\) we find
-\begin{equation}\label{eq:yp-converges-zero-inequality-normed-fin-dim}
-\frac 1 p \geq \| y_p \|.
-\end{equation}
+    For the sake of brevity, denote \(S \coloneq \sum_{j=1}^{n} |\lambda_j|\). If
+    \(S = 0\) then the lemma follows trivially. Suppose that \(S > 0\) and, for the
+    sake of contradiction, that there exists no scalar \(C > 0\) such that \(\|
+    \sum_j | \lambda_j x_j | \| \geq C \sum_j |\lambda_j|\) --- this implies that
+    for all integer \(p \geq 1\) there exists a point \(y_p \coloneq \sum_{j=1}^n
+    \lambda_j(p) x_j\) such that
+    \begin{equation}\label{eq:sum-coeff-inequality-normed-fin-dim}
+        \sum_{j=1}^n |\lambda_j(p)| \geq p \| y_p \|.
+    \end{equation}
+    Moreover, for each \(p \geq 1\), we may as well construct \(z_p \coloneq
+    \sum_{j=1}^n \alpha_j(p) x_j\) --- where \(\alpha_j: \N \to k\) for all \(1 \leq
+    j \leq n\) --- for which
+    \[
+        \alpha_j(p) \coloneq \frac{\lambda_j(p)}{\sum_{j=1}^n |\lambda_j(p)|}.
+    \]
+    This ensures us that \(\sum_j \alpha_j(p) = 1\) --- hence \(|\alpha_j(p)| \leq
+    1\). Dividing \cref{eq:sum-coeff-inequality-normed-fin-dim} by \(\sum_j
+    |\lambda_j(p)|\) we find
+    \begin{equation}\label{eq:yp-converges-zero-inequality-normed-fin-dim}
+        \frac 1 p \geq \| y_p \|.
+    \end{equation}
 
-For every fixed \(1 \leq j \leq n\), the sequence \((\alpha_j(p))_p\) is bounded
-and since we are working either with the complex or real numbers as the
-underlying field, we can conclude from Bolzano-Weirstra{\ss} theorem (see
-\cref{thm:bolzano-weierstrass}) that from the sequence of bounded scalars one
-can extract a convergent subsequence \((\alpha_j(p'))_{p'}\) --- assume that
-\(\alpha_j(p') \to \beta_j\) for some \(\beta_j \in k\). This induces a
-subsequence of \((y_p)_{p}\), given by \((y_{p'})_{p'}\), so that \(y_{p'} \to
-\sum_j \beta_j x_j\) --- moreover, \(\sum_j |\beta_j| = 1\). However, from
-\cref{eq:yp-converges-zero-inequality-normed-fin-dim} we find that \(y_p \to
-0\), thus also \(y_{p'} \to 0\). Since \(E\) is Hausdorff, the limit of the
-sequence \((y_{p'})_{p'}\) must be unique, hence \(\sum_j \beta_j x_j = 0\)
---- which contradicts the initial hypothesis that the set \(\{x_1, \dots,
-x_n\}\) was linearly independent in \(E\).
+    For every fixed \(1 \leq j \leq n\), the sequence \((\alpha_j(p))_p\) is bounded
+    and since we are working either with the complex or real numbers as the
+    underlying field, we can conclude from Bolzano-Weirstra{\ss} theorem (see
+    \cref{thm:bolzano-weierstrass}) that from the sequence of bounded scalars one
+    can extract a convergent subsequence \((\alpha_j(p'))_{p'}\) --- assume that
+    \(\alpha_j(p') \to \beta_j\) for some \(\beta_j \in k\). This induces a
+    subsequence of \((y_p)_{p}\), given by \((y_{p'})_{p'}\), so that \(y_{p'} \to
+    \sum_j \beta_j x_j\) --- moreover, \(\sum_j |\beta_j| = 1\). However, from
+    \cref{eq:yp-converges-zero-inequality-normed-fin-dim} we find that \(y_p \to
+    0\), thus also \(y_{p'} \to 0\). Since \(E\) is Hausdorff, the limit of the
+    sequence \((y_{p'})_{p'}\) must be unique, hence \(\sum_j \beta_j x_j = 0\)
+    --- which contradicts the initial hypothesis that the set \(\{x_1, \dots,
+    x_n\}\) was linearly independent in \(E\).
 
-This shows one cannot build a sequence \((y_p)_p\) for which
-\cref{eq:sum-coeff-inequality-normed-fin-dim} is satisfied, hence the
-proposition follows.
+    This shows one cannot build a sequence \((y_p)_p\) for which
+    \cref{eq:sum-coeff-inequality-normed-fin-dim} is satisfied, hence the
+    proposition follows.
 \end{proof}
 
 \begin{corollary}
-\label{cor:unit-ball}
-The unit ball is compact in a finite dimensional normed vector space.
+    \label{cor:unit-ball}
+    The unit ball is compact in a finite dimensional normed vector space.
 \end{corollary}
 
 \begin{proof}
-Let \(E\) be an \(n\)-dimensional \(k\)-vector space and \(\{e_1, \dots, e_n\}\)
-be a basis for \(E\). Let \((x_p)_{p \in \N}\) be a sequence of points in the
-unit ball \(B_0(1)\) (that is, \(\| x_{p} \| \leq 1\)) --- we'll define for
-each \(p \in \N\) that \(x_p \coloneq \sum_{j=1}^{n} \alpha_j(p) e_j\), where
-\(\alpha_j: \N \to k\) for all \(1 \leq j \leq n\). One concludes that, since
-\(\| \alpha_j(p) \| \leq 1\) for each \(1 \leq j \leq n\), we can use the
-Bolzano-Weierstra{\ss} theorem (see \cref{thm:bolzano-weierstrass}) to conclude
-that we can extract a convergent subsequence \((\alpha_j(p'))_{p'}\) from
-\((\alpha_j(p))_{p \in \N}\) --- for instance, assume that \(\alpha_j(p) \to
-\beta_j\) for some \(\beta_j \in k\). Then the induced subsequence
-\((x_{p'})_{p'}\) is such that \(x_{p'} \to \sum_j \beta_j e_j \coloneq
-x\). Moreover, for each \(p'\) we have the inequality \(\| x \| \leq \| x -
-x_{p'} \| + \| x_{p} \| \leq \| x - x_{p'} \| + 1\), thus as \(p' \to \infty\)
-we have \(\| x - x_{p'} \| \to 0\) and therefore \(\| x \| \leq 1\) --- that
-is, every sequence in \(B_0(1)\) has a convergent subsequence in \(B_0(1)\),
-which by \cref{thm:metric-2d-ctbl-hausdorff-equiv-compactness} implies that
-\(B_0(1)\) is compact in \(E\).
+    Let \(E\) be an \(n\)-dimensional \(k\)-vector space and \(\{e_1, \dots, e_n\}\)
+    be a basis for \(E\). Let \((x_p)_{p \in \N}\) be a sequence of points in the
+    unit ball \(B_0(1)\) (that is, \(\| x_{p} \| \leq 1\)) --- we'll define for
+    each \(p \in \N\) that \(x_p \coloneq \sum_{j=1}^{n} \alpha_j(p) e_j\), where
+    \(\alpha_j: \N \to k\) for all \(1 \leq j \leq n\). One concludes that, since
+    \(\| \alpha_j(p) \| \leq 1\) for each \(1 \leq j \leq n\), we can use the
+    Bolzano-Weierstra{\ss} theorem (see \cref{thm:bolzano-weierstrass}) to conclude
+    that we can extract a convergent subsequence \((\alpha_j(p'))_{p'}\) from
+    \((\alpha_j(p))_{p \in \N}\) --- for instance, assume that \(\alpha_j(p) \to
+    \beta_j\) for some \(\beta_j \in k\). Then the induced subsequence
+    \((x_{p'})_{p'}\) is such that \(x_{p'} \to \sum_j \beta_j e_j \coloneq
+    x\). Moreover, for each \(p'\) we have the inequality \(\| x \| \leq \| x -
+    x_{p'} \| + \| x_{p} \| \leq \| x - x_{p'} \| + 1\), thus as \(p' \to \infty\)
+    we have \(\| x - x_{p'} \| \to 0\) and therefore \(\| x \| \leq 1\) --- that
+    is, every sequence in \(B_0(1)\) has a convergent subsequence in \(B_0(1)\),
+    which by \cref{thm:metric-2d-ctbl-hausdorff-equiv-compactness} implies that
+    \(B_0(1)\) is compact in \(E\).
 \end{proof}
 
 \begin{lemma}
-\label{lem:finite-dim-equivalent-norms}
-If \(E\) is a \emph{finite} dimensional \(k\)-vector space, then \emph{all}
-norms in \(E\) are \emph{equivalent}.
+    \label{lem:finite-dim-equivalent-norms}
+    If \(E\) is a \emph{finite} dimensional \(k\)-vector space, then \emph{all}
+    norms in \(E\) are \emph{equivalent}.
 \end{lemma}
 
 \begin{proof}
-Assume that \(\{e_1, \dots, e_n\}\) is a basis for \(E\). We'll show that every
-norm is equivalent to \(\| - \|: E \to \R_{\geq 0}\) given by \(\| \sum_{j=1}^n
-\lambda_j e_j \| \coloneq \sum_{j=1}^n |\lambda_j|\). Let \(\| - \|': E \to
-\R_{\geq 0}\) be any other norm --- then from the triangle inequality we have,
-for any point \(x \coloneq \sum_j \lambda_j e_j\) in \(E\):
-\[
-\| x \|'
-\leq \sum_{j=1}^n \| \lambda_j e_j \|
-\leq \max_{1 \leq j \leq n} \| e_j \| \sum_{j=1}^n |\lambda_j|
-= \max_{1 \leq j \leq n} \| e_j \|\, \| x \|.
-\]
-Defining \(C \coloneq \max_j \| e_j \|\), we have shown that \(\| x \|' \leq C
-\| x \|\).
+    Assume that \(\{e_1, \dots, e_n\}\) is a basis for \(E\). We'll show that every
+    norm is equivalent to \(\| - \|: E \to \R_{\geq 0}\) given by \(\| \sum_{j=1}^n
+    \lambda_j e_j \| \coloneq \sum_{j=1}^n |\lambda_j|\). Let \(\| - \|': E \to
+    \R_{\geq 0}\) be any other norm --- then from the triangle inequality we have,
+    for any point \(x \coloneq \sum_j \lambda_j e_j\) in \(E\):
+    \[
+        \| x \|'
+        \leq \sum_{j=1}^n \| \lambda_j e_j \|
+        \leq \max_{1 \leq j \leq n} \| e_j \| \sum_{j=1}^n |\lambda_j|
+        = \max_{1 \leq j \leq n} \| e_j \|\, \| x \|.
+    \]
+    Defining \(C \coloneq \max_j \| e_j \|\), we have shown that \(\| x \|' \leq C
+    \| x \|\).
 
-For the last part, we must prove the existence of a scalar \(B > 0\) such that
-\(\| x \| \leq B \| x \|'\). We proceed by contradiction, that is, assuming we
-can choose a sequence of points \((x_p)_{p \in \N}\) such that
-\begin{equation}\label{eq:all-norms-equivalent-ineq}
-\| x_p \| \geq p \| x_p \|'
-\end{equation}
-for all \(p \in \N\). Let \((y_p)_{p \in \N}\) be the sequence defined by \(y_p
-\coloneq x_p/\| x_p \|\), so that \(\| y_p \| = 1\) --- thus, by
-\cref{eq:all-norms-equivalent-ineq} we obtain the bound \(\| y_p \|' \leq 1/p\),
-thus \(y_p \to 0\). If we let \(y_p \coloneq \sum_j \alpha_j(p) e_j\), we obtain
-that \(\sum_j |\alpha_j(p)| = 1\) implies \(|\alpha_j(p)| \leq 1\) --- hence,
-for every fixed \(1 \leq j \leq n\), the sequence \((\alpha_j(p))_{p \in \N}\)
-contains a convergent subsequence \((\alpha_j(p'))_{p'}\) such that
-\(\alpha_{j}(p') \to \beta_j\) for some \(\beta_j \in k\). Moreover, the limits
-are such that \(\sum_j |\beta_j| = 1\). Therefore, the induced subsequence
-\((y_{p'})_{p'}\) is such that \(y_{p'} \to \sum_j \beta_j e_j\) --- however,
-since \(E\) is Hausdorff, the sequence must have a unique limit, hence \(\sum_j
-\beta_j e_j = 0\), which is only possible if \(\beta_j = 0\) for all \(1 \leq j
-\leq n\) --- this contradicts the fact that \(\sum_j |\beta_j| = 1\). We
-conclude that a sequence \((x_p)_{p \in \N}\) satisfying
-\cref{eq:all-norms-equivalent-ineq} must not exist, thus implying that there
-exists \(B > 0\) such that \(\| x \| \leq B \| x \|'\) for all \(x \in E\).
+    For the last part, we must prove the existence of a scalar \(B > 0\) such that
+    \(\| x \| \leq B \| x \|'\). We proceed by contradiction, that is, assuming we
+    can choose a sequence of points \((x_p)_{p \in \N}\) such that
+    \begin{equation}\label{eq:all-norms-equivalent-ineq}
+        \| x_p \| \geq p \| x_p \|'
+    \end{equation}
+    for all \(p \in \N\). Let \((y_p)_{p \in \N}\) be the sequence defined by \(y_p
+    \coloneq x_p/\| x_p \|\), so that \(\| y_p \| = 1\) --- thus, by
+    \cref{eq:all-norms-equivalent-ineq} we obtain the bound \(\| y_p \|' \leq 1/p\),
+    thus \(y_p \to 0\). If we let \(y_p \coloneq \sum_j \alpha_j(p) e_j\), we obtain
+    that \(\sum_j |\alpha_j(p)| = 1\) implies \(|\alpha_j(p)| \leq 1\) --- hence,
+    for every fixed \(1 \leq j \leq n\), the sequence \((\alpha_j(p))_{p \in \N}\)
+    contains a convergent subsequence \((\alpha_j(p'))_{p'}\) such that
+    \(\alpha_{j}(p') \to \beta_j\) for some \(\beta_j \in k\). Moreover, the limits
+    are such that \(\sum_j |\beta_j| = 1\). Therefore, the induced subsequence
+    \((y_{p'})_{p'}\) is such that \(y_{p'} \to \sum_j \beta_j e_j\) --- however,
+    since \(E\) is Hausdorff, the sequence must have a unique limit, hence \(\sum_j
+    \beta_j e_j = 0\), which is only possible if \(\beta_j = 0\) for all \(1 \leq j
+    \leq n\) --- this contradicts the fact that \(\sum_j |\beta_j| = 1\). We
+    conclude that a sequence \((x_p)_{p \in \N}\) satisfying
+    \cref{eq:all-norms-equivalent-ineq} must not exist, thus implying that there
+    exists \(B > 0\) such that \(\| x \| \leq B \| x \|'\) for all \(x \in E\).
 \end{proof}
 
 \begin{corollary}
-\label{cor:finite-dimensional-is-banach}
-Every \emph{finite} dimensional normed \(k\)-vector space is Banach.
+    \label{cor:finite-dimensional-is-banach}
+    Every \emph{finite} dimensional normed \(k\)-vector space is Banach.
 \end{corollary}
 
 \begin{proof}
-We'll work on a \(n\)-dimensional \(k\)-vector space \((E, \| - \|)\) --- where
-we let \(\{e_1, \dots, e_n\}\) be any basis and \(\| - \|'\) be the norm \(\|
-\sum_j \lambda_j e_j \|' \coloneq \sum_j |\lambda_j|\). Let \((x_p)_{p \in \N}\)
-be any Cauchy sequence with respect to \(\| - \|\), and define \(x_p \coloneq
-\sum_j \lambda_j(p) e_j\) for some map \(\lambda_j: \N \to k\). From
-\cref{lem:finite-dim-equivalent-norms} we find that there exists \(C > 0\) for
-which \(\| x \|' \leq C \| x \|\) for every \(x \in E\) --- therefore \((x_p)_{p
-\in \N}\) is also Cauchy with respect to \(\| - \|'\). Hence, for all
-\(\varepsilon > 0\) there exists \(N \in \N\) such that for all \(p, q \geq N\)
-we have \(\| x_p - x_q \|' = \sum_j |\lambda_j(p) - \lambda_j(q)| <
-C \varepsilon\) --- therefore for every \(1 \leq j \leq n\) we have
-\(|\lambda_j(p) - \lambda_j(q)| < C \varepsilon\), which implies that
-\((\lambda_j(p))_{p \in \N}\) is Cauchy in \(k\). Let for instance
-\(\lambda_j(p) \to \alpha_j\) for some \(\alpha_j \in k\). Moreover, notice that
-\(\| x_p - \sum_j \alpha_j e_j\|' = \sum_j |\lambda_j(p) - \alpha_j|\), which
-converges to zero as \(p \to \infty\) --- thus \(x_p \to \sum_j \alpha_j e_j\),
-which proves that \((x_p)_{p \in \N}\) converges in \(E\).
+    We'll work on a \(n\)-dimensional \(k\)-vector space \((E, \| - \|)\) --- where
+    we let \(\{e_1, \dots, e_n\}\) be any basis and \(\| - \|'\) be the norm \(\|
+    \sum_j \lambda_j e_j \|' \coloneq \sum_j |\lambda_j|\). Let \((x_p)_{p \in \N}\)
+    be any Cauchy sequence with respect to \(\| - \|\), and define \(x_p \coloneq
+    \sum_j \lambda_j(p) e_j\) for some map \(\lambda_j: \N \to k\). From
+    \cref{lem:finite-dim-equivalent-norms} we find that there exists \(C > 0\) for
+    which \(\| x \|' \leq C \| x \|\) for every \(x \in E\) --- therefore \((x_p)_{p
+            \in \N}\) is also Cauchy with respect to \(\| - \|'\). Hence, for all
+    \(\varepsilon > 0\) there exists \(N \in \N\) such that for all \(p, q \geq N\)
+    we have \(\| x_p - x_q \|' = \sum_j |\lambda_j(p) - \lambda_j(q)| <
+    C \varepsilon\) --- therefore for every \(1 \leq j \leq n\) we have
+    \(|\lambda_j(p) - \lambda_j(q)| < C \varepsilon\), which implies that
+    \((\lambda_j(p))_{p \in \N}\) is Cauchy in \(k\). Let for instance
+    \(\lambda_j(p) \to \alpha_j\) for some \(\alpha_j \in k\). Moreover, notice that
+    \(\| x_p - \sum_j \alpha_j e_j\|' = \sum_j |\lambda_j(p) - \alpha_j|\), which
+    converges to zero as \(p \to \infty\) --- thus \(x_p \to \sum_j \alpha_j e_j\),
+    which proves that \((x_p)_{p \in \N}\) converges in \(E\).
 \end{proof}
 
 \begin{proposition}[Compact sets]
-\label{prop:compact-on-normed-space}
-If \(E\) is a \emph{finite} dimensional normed \(k\)-vector space, a subset
-\(\Omega \subseteq E\) is \emph{compact} if and only if \(\Omega\) is
-\emph{bounded and closed}.
+    \label{prop:compact-on-normed-space}
+    If \(E\) is a \emph{finite} dimensional normed \(k\)-vector space, a subset
+    \(\Omega \subseteq E\) is \emph{compact} if and only if \(\Omega\) is
+    \emph{bounded and closed}.
 \end{proposition}
 
 \begin{proof}
-The first part comes from
-\cref{prop:metric-space-compact-implies-bounded-closed}. For the second, let
-\(\Omega\) be bounded and closed. If \(\dim E = n\), we let
-\(\{e_1, \dots, e_n\}\) be a basis for \(E\). Let \((x_p)_{p \in \N}\) be any
-sequence of points in \(\Omega\) and assume that each \(x_p\) has the form
-\(x_j\coloneq \sum_{i=1}^n \lambda_i(p) e_i\) for scalars
-\(\lambda_i(p) \in k\). From the boundness of \(\Omega\) one can find \(M > 0\)
-such that \(\| x_p \| \leq C\) for every index \(p \in \N\). Evoking
-\cref{lem:finite-normed-scalars-inequality} for each index \(p \in \N\), we find
-that
-\[
-M \geq \| x_p \| \geq C \sum_{i=1}^n |\lambda_i(p)|,
-\]
-for some \(C > 0\). Fixing any \(1 \leq i \leq n\), one concludes that
-\(|\lambda_i(p)| \leq M\) and therefore the sequence \((\lambda_i(p))_{p \in
-\N}\) is bounded. Using Bolzano-Weierstra{\ss} theorem (see
-\cref{thm:bolzano-weierstrass}) there exists a convergent subsequence
-\((\lambda_i(p'))_{p'}\) --- assume for instance that \(\lambda_i(p') \to
-\lambda_i\) for some \(\lambda_i \in k\). Such subsequence induces another
-subsequence \((x_{p'})_{p'}\), for which \(x_{p'} \to \sum_i \lambda_i e_i
-\coloneq x\) --- but since \(\Omega\) is closed, we find \(x \in \Omega\). Thus
-any sequence in \(\Omega\) has a convergent subsequence in \(\Omega\) --- this
-shows that \(\Omega\) is compact (see
-\cref{thm:metric-2d-ctbl-hausdorff-equiv-compactness}).
+    The first part comes from
+    \cref{prop:metric-space-compact-implies-bounded-closed}. For the second, let
+    \(\Omega\) be bounded and closed. If \(\dim E = n\), we let
+    \(\{e_1, \dots, e_n\}\) be a basis for \(E\). Let \((x_p)_{p \in \N}\) be any
+    sequence of points in \(\Omega\) and assume that each \(x_p\) has the form
+    \(x_j\coloneq \sum_{i=1}^n \lambda_i(p) e_i\) for scalars
+    \(\lambda_i(p) \in k\). From the boundness of \(\Omega\) one can find \(M > 0\)
+    such that \(\| x_p \| \leq C\) for every index \(p \in \N\). Evoking
+    \cref{lem:finite-normed-scalars-inequality} for each index \(p \in \N\), we find
+    that
+    \[
+        M \geq \| x_p \| \geq C \sum_{i=1}^n |\lambda_i(p)|,
+    \]
+    for some \(C > 0\). Fixing any \(1 \leq i \leq n\), one concludes that
+    \(|\lambda_i(p)| \leq M\) and therefore the sequence \((\lambda_i(p))_{p \in
+            \N}\) is bounded. Using Bolzano-Weierstra{\ss} theorem (see
+    \cref{thm:bolzano-weierstrass}) there exists a convergent subsequence
+    \((\lambda_i(p'))_{p'}\) --- assume for instance that \(\lambda_i(p') \to
+    \lambda_i\) for some \(\lambda_i \in k\). Such subsequence induces another
+    subsequence \((x_{p'})_{p'}\), for which \(x_{p'} \to \sum_i \lambda_i e_i
+    \coloneq x\) --- but since \(\Omega\) is closed, we find \(x \in \Omega\). Thus
+    any sequence in \(\Omega\) has a convergent subsequence in \(\Omega\) --- this
+    shows that \(\Omega\) is compact (see
+    \cref{thm:metric-2d-ctbl-hausdorff-equiv-compactness}).
 \end{proof}
 
 \subsection{%
-  \texorpdfstring{\(\ell^{\infty}(\N)\)}{l infinity} and
-  \texorpdfstring{\(\ell^p(\N)\)}{lp} are Banach Spaces
+    \texorpdfstring{\(\ell^{\infty}(\N)\)}{l infinity} and
+    \texorpdfstring{\(\ell^p(\N)\)}{lp} are Banach Spaces
 }
 
 \begin{lemma}
-\label{lem:cauchy-bounded}
-Every Cauchy sequence in a normed \(k\)-vector space is bounded.
+    \label{lem:cauchy-bounded}
+    Every Cauchy sequence in a normed \(k\)-vector space is bounded.
 \end{lemma}
 
 \begin{proof}
-Let \((x_j)_{j \in \N}\) be a Cauchy sequence in a normed \(k\)-vector space
-\(E\). If \(\varepsilon = 1\), then there exists \(N \in \N\) for which \(i, j
-\geq N\) implies \(\| x_j - x_i \| < 1\) and therefore \(\| x_j \| \leq \| x_j -
-x_N \| + \| x_N \| < 1 + \| x_N \|\). We conclude that the sequence is bounded:
-\[
-\| x_j \| \leq 1 + \max_{0 \leq i \leq N} \| x_i \|.
-\]
+    Let \((x_j)_{j \in \N}\) be a Cauchy sequence in a normed \(k\)-vector space
+    \(E\). If \(\varepsilon = 1\), then there exists \(N \in \N\) for which \(i, j
+    \geq N\) implies \(\| x_j - x_i \| < 1\) and therefore \(\| x_j \| \leq \| x_j -
+    x_N \| + \| x_N \| < 1 + \| x_N \|\). We conclude that the sequence is bounded:
+    \[
+        \| x_j \| \leq 1 + \max_{0 \leq i \leq N} \| x_i \|.
+    \]
 \end{proof}
 
 \begin{proposition}
-\label{prop:ell-infty-is-banach}
-The space \(\ell^{\infty}(\N)\) is Banach.
+    \label{prop:ell-infty-is-banach}
+    The space \(\ell^{\infty}(\N)\) is Banach.
 \end{proposition}
 
 \begin{proof}
-Let \(x \coloneq (x^p)_{p \in \N}\) denote any Cauchy sequence of points \(x^p
-\in \ell^{\infty}(\N)\) --- that is, \(x^p \coloneq (x_j(p))_{j \in \N}\) is
-itself a sequence --- therefore for all \(\varepsilon > 0\) there exists \(N \in
-\N\) such that for all \(p, q \geq N\) we have
-\begin{equation}\label{eq:ell-infty-is-banach}
-\| x^p - x^q \| = \sup_{j \in \N} |x_j(p) - x_j(q)| < \varepsilon
-\end{equation}
+    Let \(x \coloneq (x^p)_{p \in \N}\) denote any Cauchy sequence of points \(x^p
+    \in \ell^{\infty}(\N)\) --- that is, \(x^p \coloneq (x_j(p))_{j \in \N}\) is
+    itself a sequence --- therefore for all \(\varepsilon > 0\) there exists \(N \in
+    \N\) such that for all \(p, q \geq N\) we have
+    \begin{equation}\label{eq:ell-infty-is-banach}
+        \| x^p - x^q \| = \sup_{j \in \N} |x_j(p) - x_j(q)| < \varepsilon
+    \end{equation}
 
-We first construct a candidate for the limit of \(x\). Let \(j_0 \in \N\) be any
-fixed index --- we'll show that the sequence \((x_{j_0}(p))_{p \in \N}\) forms a
-Cauchy sequence in \(k\). Notice that from \cref{eq:ell-infty-is-banach} it is
-clear that \(\sup_{j \in \N} |x_j(p) - x_j(q)| < \varepsilon\) implies in
-\(|x_{j_0}(p) - x_{j_0}(q)| < \varepsilon\) for all \(p, q > N\) --- therefore
-\((x_{j_0}(p))_{p \in \N}\) is indeed Cauchy, and since \(k\) (either \(\R\) or
-\(\CC\)) is complete, there exists \(y_{j_0} \in k\) for which \(x_{j_0}(p) \to
-y_{j_0}\). Our candidate sequence will thus be formed by \(y \coloneq (y_j)_{j
-\in \N}\) --- where each \(y_j\) is constructed just as above. Indeed, \(y \in
-\ell^{\infty}(\N)\), since for every \(j \in \N\) we have \(|y_j| = \lim_{p \to
-\infty} |x_j(p)| \leq \lim_{p \to \infty} \| x^p \|_{\infty}\) and since
-\(x\) is Cauchy, from \cref{lem:cauchy-bounded}, we find that there exists \(C >
-0\) such that \(|y_j| \leq \| x^{p} \|_{\infty} < C\) --- hence \(\| y
-\|_{\infty} = \sup_{j \in \N} |y_j| < \infty\).
+    We first construct a candidate for the limit of \(x\). Let \(j_0 \in \N\) be any
+    fixed index --- we'll show that the sequence \((x_{j_0}(p))_{p \in \N}\) forms a
+    Cauchy sequence in \(k\). Notice that from \cref{eq:ell-infty-is-banach} it is
+    clear that \(\sup_{j \in \N} |x_j(p) - x_j(q)| < \varepsilon\) implies in
+    \(|x_{j_0}(p) - x_{j_0}(q)| < \varepsilon\) for all \(p, q > N\) --- therefore
+    \((x_{j_0}(p))_{p \in \N}\) is indeed Cauchy, and since \(k\) (either \(\R\) or
+    \(\CC\)) is complete, there exists \(y_{j_0} \in k\) for which \(x_{j_0}(p) \to
+    y_{j_0}\). Our candidate sequence will thus be formed by \(y \coloneq (y_j)_{j
+        \in \N}\) --- where each \(y_j\) is constructed just as above. Indeed, \(y \in
+    \ell^{\infty}(\N)\), since for every \(j \in \N\) we have \(|y_j| = \lim_{p \to
+        \infty} |x_j(p)| \leq \lim_{p \to \infty} \| x^p \|_{\infty}\) and since
+    \(x\) is Cauchy, from \cref{lem:cauchy-bounded}, we find that there exists \(C >
+    0\) such that \(|y_j| \leq \| x^{p} \|_{\infty} < C\) --- hence \(\| y
+    \|_{\infty} = \sup_{j \in \N} |y_j| < \infty\).
 
-We now show that \((y_j)_{j \in \N}\) is the limit of \((x^p)_{p \in \N}\). Let
-\(\varepsilon > 0\) be any bound and \(N \in \N\) be such that \(p, q > N\)
-implies \(\| x^p - x^q \|_{\infty} < \varepsilon\) --- that is, for any fixed
-\(j_0 \in \N\) we have \(|x_{j_0}^p - x_{j_0}^q| < \varepsilon\). Moreover, if
-we let \(q \to \infty\) we'll find that \(|x_{j_0}^p - x_{j_0}^q| \to |x_{j_0}^p
-- y_{j_0}| < \varepsilon\) --- hence, since this must be true for any \(j_0 \in
-\N\), we obtain that \(\| x \|_{\infty} = \sup_{j \in \N} |x_j^q - y_j| <
-\varepsilon\). This proves that \(x_j(p) \to y_j\) as \(p \to \infty\) and
-therefore \(x^p \to y\) as wanted. Thus any Cauchy sequence converges and the
-limit is given by the sequence of the limit of the components.
+    We now show that \((y_j)_{j \in \N}\) is the limit of \((x^p)_{p \in \N}\). Let
+    \(\varepsilon > 0\) be any bound and \(N \in \N\) be such that \(p, q > N\)
+    implies \(\| x^p - x^q \|_{\infty} < \varepsilon\) --- that is, for any fixed
+    \(j_0 \in \N\) we have \(|x_{j_0}^p - x_{j_0}^q| < \varepsilon\). Moreover, if
+    we let \(q \to \infty\) we'll find that \(|x_{j_0}^p - x_{j_0}^q| \to |x_{j_0}^p
+    - y_{j_0}| < \varepsilon\) --- hence, since this must be true for any \(j_0 \in
+    \N\), we obtain that \(\| x \|_{\infty} = \sup_{j \in \N} |x_j^q - y_j| <
+    \varepsilon\). This proves that \(x_j(p) \to y_j\) as \(p \to \infty\) and
+    therefore \(x^p \to y\) as wanted. Thus any Cauchy sequence converges and the
+    limit is given by the sequence of the limit of the components.
 \end{proof}
 
 \begin{proposition}
-\label{prop:ell-p-is-banach}
-The space \(\ell^p(\N)\) is Banach for all \(1 \leq p < \infty\).
+    \label{prop:ell-p-is-banach}
+    The space \(\ell^p(\N)\) is Banach for all \(1 \leq p < \infty\).
 \end{proposition}
 
 \todo[inline]{prove}
@@ -709,239 +709,239 @@ The space \(\ell^p(\N)\) is Banach for all \(1 \leq p < \infty\).
 \subsection{Common Properties Disregarding the Dimension of the Space}
 
 \begin{proposition}
-\label{prop:continous-linear-thus-bounded}
-Let \(f: X \to Y\) be an \(\R\)-linear map between normed \(\R\)-vector spaces
-\(X\) and \(Y\). Then, \(f\) is contiguous if and only if there exists a scalar
-\(C > 0\), called \emph{bound}, for which \(\norm{f(x)}_Y \leq C \norm{x}_{X}\)
-for all \(x \in X\).
+    \label{prop:continous-linear-thus-bounded}
+    Let \(f: X \to Y\) be an \(\R\)-linear map between normed \(\R\)-vector spaces
+    \(X\) and \(Y\). Then, \(f\) is contiguous if and only if there exists a scalar
+    \(C > 0\), called \emph{bound}, for which \(\norm{f(x)}_Y \leq C \norm{x}_{X}\)
+    for all \(x \in X\).
 \end{proposition}
 
 \begin{proof}
-If \(f\) is bounded by \(C\), let \(B\) be a basis for \(X\) and consider any
-element \(x \coloneq \sum_{v \in B} a_{v} v\). From linearity we have \(f(x) =
-\sum_{v \in B} a_v f(v)\), thus
-\[
-  \| f(x) \|_Y = \bigg\| \sum_{v \in B} a_v f(v) \bigg\|_{Y}
-  \leq \sum_{v \in B} \| a_v \|_{\R} \| f(v) \|_{Y}
-  \leq C \|x\|_{X} \sum_{v \in B} \|a_v\|_{\R}.
-\]
-This boils down to \(f = O(\Id_{X})\) --- which implies in \(f(x - x_0) = f(x) -
-f(x_0) \to 0\) as \(x \to x_0\), where \(x_0 \in X\) is any point, that is,
-\(f\) is continuous at any point of \(X\). Even better than that, we can show
-that \(f\) is uniformly continuous (I won't carry it out since it's equivalent to
-what we wrote in \cref{prop: linear-continuous}).
+    If \(f\) is bounded by \(C\), let \(B\) be a basis for \(X\) and consider any
+    element \(x \coloneq \sum_{v \in B} a_{v} v\). From linearity we have \(f(x) =
+    \sum_{v \in B} a_v f(v)\), thus
+    \[
+        \| f(x) \|_Y = \bigg\| \sum_{v \in B} a_v f(v) \bigg\|_{Y}
+        \leq \sum_{v \in B} \| a_v \|_{\R} \| f(v) \|_{Y}
+        \leq C \|x\|_{X} \sum_{v \in B} \|a_v\|_{\R}.
+    \]
+    This boils down to \(f = O(\Id_{X})\) --- which implies in \(f(x - x_0) = f(x) -
+    f(x_0) \to 0\) as \(x \to x_0\), where \(x_0 \in X\) is any point, that is,
+    \(f\) is continuous at any point of \(X\). Even better than that, we can show
+    that \(f\) is uniformly continuous (I won't carry it out since it's equivalent to
+    what we wrote in \cref{prop: linear-continuous}).
 
-For the opposite, suppose \(f\) is continuous at \(0\), then there will surely
-exist \(\delta > 0\) for which \(\|x\|_X < \delta\) implies in
-\(\|f(x)\|_Y < 1\). Therefore, for any choice of non-zero \(x \in X\), we
-find
-\[
-  \bigg\| f \left( \frac{\delta}{\norm{x}_X} x \right) \bigg\|_Y
-  = \frac{\delta}{\| x \|_X} \| f(x) \|_{Y} < 1,
-\]
-therefore \(\| f(x) \| < \frac{\| x \|_{X}}{\delta}\), thus \(f\) is indeed
-bounded.
+    For the opposite, suppose \(f\) is continuous at \(0\), then there will surely
+    exist \(\delta > 0\) for which \(\|x\|_X < \delta\) implies in
+    \(\|f(x)\|_Y < 1\). Therefore, for any choice of non-zero \(x \in X\), we
+    find
+    \[
+        \bigg\| f \left( \frac{\delta}{\norm{x}_X} x \right) \bigg\|_Y
+        = \frac{\delta}{\| x \|_X} \| f(x) \|_{Y} < 1,
+    \]
+    therefore \(\| f(x) \| < \frac{\| x \|_{X}}{\delta}\), thus \(f\) is indeed
+    bounded.
 \end{proof}
 
 \begin{proposition}
-\label{prop:composition-banach-morphisms}
-Let \(E, F\) and \(G\) be normed vector spaces, and let \(u: E \to F\) and \(v:
-F \to G\) be continuous linear maps. Then, \(v u: E \to G\) is also a continuous
-linear map, and
-\[
-  \|v u\| \leq \|v\|\, \|u\|,
-\]
-where \(\|f\| \coloneq \sup_{x \in X} \|f(x)\|\) for a continuous linear
-map \(f: X \to Y\) between normed vector spaces\footnote{Beware! This is not the
-norm we shall adopt for our studies on banachable topological vector spaces. For
-the latter, see \cref{def:norm-morphism-TopVect}}.
+    \label{prop:composition-banach-morphisms}
+    Let \(E, F\) and \(G\) be normed vector spaces, and let \(u: E \to F\) and \(v:
+    F \to G\) be continuous linear maps. Then, \(v u: E \to G\) is also a continuous
+    linear map, and
+    \[
+        \|v u\| \leq \|v\|\, \|u\|,
+    \]
+    where \(\|f\| \coloneq \sup_{x \in X} \|f(x)\|\) for a continuous linear
+    map \(f: X \to Y\) between normed vector spaces\footnote{Beware! This is not the
+        norm we shall adopt for our studies on banachable topological vector spaces. For
+        the latter, see \cref{def:norm-morphism-TopVect}}.
 \end{proposition}
 
 \begin{proof}
-The first assertion is trivial, since the composition of continuous maps is
-continuous, and the same is true for linear maps. Let \(x \in E\) be any element,
-notice that
-\[
-  \|vu(x)\|_G
-  \leq \|v\|\, \|u(x)\|_F
-  \leq \|v\|\, \|u\|\, \|x\|_{E},
-\]
-thus the inequality holds.
+    The first assertion is trivial, since the composition of continuous maps is
+    continuous, and the same is true for linear maps. Let \(x \in E\) be any element,
+    notice that
+    \[
+        \|vu(x)\|_G
+        \leq \|v\|\, \|u(x)\|_F
+        \leq \|v\|\, \|u\|\, \|x\|_{E},
+    \]
+    thus the inequality holds.
 \end{proof}
 
 \begin{proposition}
-\label{prop:multilinear-continous-iff-bounded}
-A multilinear map \(\phi: \prod_{j=1}^n E_j \to F\) between normed vector spaces
-\(E_1, \dots, E_n\), and \(F\), is continuous if and only if there exists a bound
-\(C > 0\) such that, for every \(x \in \prod_{j = 1}^n E_j\),
-\[
-  \|\phi(x)\|_{F} \leq C \prod_{j=1}^n \|x_j\|_{E_j}.
-\]
+    \label{prop:multilinear-continous-iff-bounded}
+    A multilinear map \(\phi: \prod_{j=1}^n E_j \to F\) between normed vector spaces
+    \(E_1, \dots, E_n\), and \(F\), is continuous if and only if there exists a bound
+    \(C > 0\) such that, for every \(x \in \prod_{j = 1}^n E_j\),
+    \[
+        \|\phi(x)\|_{F} \leq C \prod_{j=1}^n \|x_j\|_{E_j}.
+    \]
 \end{proposition}
 
 \begin{proposition}
-\label{prop:canonical-iso-banach-multilinear}
-Let \(E_1, \dots, E_r\), and \(F\) be normed vector spaces. There exists a
-canonical map from repeated continuous linear maps to the continuous multilinear
-maps, which is a continuous linear isomorphism, and is norm-preserving --- that
-is, the canonical map
-\[
-  \Phi: L(E_1, L(E_2, \dots, L(E_r, F), \dots)) \isoto L^n(E_1, \dots, E_n; F)
-\]
-is a \emph{Banach isomorphism}.
+    \label{prop:canonical-iso-banach-multilinear}
+    Let \(E_1, \dots, E_r\), and \(F\) be normed vector spaces. There exists a
+    canonical map from repeated continuous linear maps to the continuous multilinear
+    maps, which is a continuous linear isomorphism, and is norm-preserving --- that
+    is, the canonical map
+    \[
+        \Phi: L(E_1, L(E_2, \dots, L(E_r, F), \dots)) \isoto L^n(E_1, \dots, E_n; F)
+    \]
+    is a \emph{Banach isomorphism}.
 \end{proposition}
 
 \begin{proof}
-We define \(\Phi\) by the following: if \(\lambda \in L(E_1, L(E_2, \dots,
-L(E_n, F) \dots))\) is given by
-\[
-  \lambda(x_1) = \lambda_2,\ \text{ where }\ \lambda_2(x_2) = \lambda_3, \
-  \dots, \ \lambda_n(x_n) = y \in F,
-\]
-we define \(\Phi(\lambda) \coloneq \overline{\lambda} \in L(E_1, \dots, E_n;
-F)\) by the mapping
-\[
-  \overline\lambda(x_1, \dots, x_n) \coloneq \lambda(x_1)(x_2) \dots (x_n),
-\]
-where \(\lambda_j(x_j)(x_{j+1}) \dots (x_n) \coloneq \lambda_{j-1}(x_{j-1})
-\dots (x_n)\) for every \(1 \leq j \leq n\) --- where \(\lambda_1 \coloneq
-\lambda\).
+    We define \(\Phi\) by the following: if \(\lambda \in L(E_1, L(E_2, \dots,
+    L(E_n, F) \dots))\) is given by
+    \[
+        \lambda(x_1) = \lambda_2,\ \text{ where }\ \lambda_2(x_2) = \lambda_3, \
+        \dots, \ \lambda_n(x_n) = y \in F,
+    \]
+    we define \(\Phi(\lambda) \coloneq \overline{\lambda} \in L(E_1, \dots, E_n;
+    F)\) by the mapping
+    \[
+        \overline\lambda(x_1, \dots, x_n) \coloneq \lambda(x_1)(x_2) \dots (x_n),
+    \]
+    where \(\lambda_j(x_j)(x_{j+1}) \dots (x_n) \coloneq \lambda_{j-1}(x_{j-1})
+    \dots (x_n)\) for every \(1 \leq j \leq n\) --- where \(\lambda_1 \coloneq
+    \lambda\).
 
-Given \(\lambda \in L(E_1, L(E_2, \dots, L(E_n, F), \dots))\), the map
-\(\overline\lambda\) is surely multilinear since each of the recursive arguments
-are linear. Moreover, notice that, for any \(x \in \prod_{j=1}^n E_j\), we have
-\[
-  \|\overline\lambda(x)\|_{F}
-  \leq \|\lambda(x_1) (x_2) \dots (x_n)\|_F
-  \leq \|\lambda\| \prod_{j=1}^n \|x_{j}\|_{E_j},
-\]
-thus \(\|\overline\lambda\| \leq \|\lambda\|\).
+    Given \(\lambda \in L(E_1, L(E_2, \dots, L(E_n, F), \dots))\), the map
+    \(\overline\lambda\) is surely multilinear since each of the recursive arguments
+    are linear. Moreover, notice that, for any \(x \in \prod_{j=1}^n E_j\), we have
+    \[
+        \|\overline\lambda(x)\|_{F}
+        \leq \|\lambda(x_1) (x_2) \dots (x_n)\|_F
+        \leq \|\lambda\| \prod_{j=1}^n \|x_{j}\|_{E_j},
+    \]
+    thus \(\|\overline\lambda\| \leq \|\lambda\|\).
 
-On the other hand, given \(\overline\phi \in L(E_1, \dots, E_n; F)\), define the
-map \(\phi = \Phi^{-1}(\overline\phi)\) by
-\[
-  \phi(x_1)(x_2) \dots (x_n) \coloneq \overline\phi(x_1, \dots, x_n).
-\]
-Therefore
-\[
-  \|\phi(x_1)(x_2) \dots (x_n)\|_{F}
-  \leq \|\overline\phi\| \prod_{j=1}^n \|x_j\|_{E_j},
-\]
-which shows that \(\|\phi\| \leq \|\overline\phi\|\). We conclude that
-\(\Phi(\lambda) = \overline\lambda\) for all repeating map \(\lambda\).
+    On the other hand, given \(\overline\phi \in L(E_1, \dots, E_n; F)\), define the
+    map \(\phi = \Phi^{-1}(\overline\phi)\) by
+    \[
+        \phi(x_1)(x_2) \dots (x_n) \coloneq \overline\phi(x_1, \dots, x_n).
+    \]
+    Therefore
+    \[
+        \|\phi(x_1)(x_2) \dots (x_n)\|_{F}
+        \leq \|\overline\phi\| \prod_{j=1}^n \|x_j\|_{E_j},
+    \]
+    which shows that \(\|\phi\| \leq \|\overline\phi\|\). We conclude that
+    \(\Phi(\lambda) = \overline\lambda\) for all repeating map \(\lambda\).
 \end{proof}
 
 \begin{theorem}[Hahn-Banach]
-\label{thm:Hahn-Banach}
-Let \(E\) be a normed \(\R\)-vector space, and \(F \subseteq E\) be a
-subspace. Let \(\lambda \in F^{*}\) be a functional with bound \(C > 0\). Then
-there exist an extension of \(\lambda\) to a functional on \(E\) with the same
-bound \(C\) --- that is, a map \(\overline \lambda: E \to \R\) such that
-\(\overline\lambda|_F = \lambda\) and \(\|\overline\lambda(x)\|_\R \leq C
-\|x\|_{E}\) for all \(x \in E\).
+    \label{thm:Hahn-Banach}
+    Let \(E\) be a normed \(\R\)-vector space, and \(F \subseteq E\) be a
+    subspace. Let \(\lambda \in F^{*}\) be a functional with bound \(C > 0\). Then
+    there exist an extension of \(\lambda\) to a functional on \(E\) with the same
+    bound \(C\) --- that is, a map \(\overline \lambda: E \to \R\) such that
+    \(\overline\lambda|_F = \lambda\) and \(\|\overline\lambda(x)\|_\R \leq C
+    \|x\|_{E}\) for all \(x \in E\).
 \end{theorem}
 
 \begin{corollary}[Hahn-Banach]
-\label{cor:Hahn-Banach}
-Let \(E\) be a Banach space and \(x \in E\) be a non-zero element. There exists
-a continuous linear map \(\phi \in E^{*}\) such that \(\phi(x) \neq 0\).
+    \label{cor:Hahn-Banach}
+    Let \(E\) be a Banach space and \(x \in E\) be a non-zero element. There exists
+    a continuous linear map \(\phi \in E^{*}\) such that \(\phi(x) \neq 0\).
 \end{corollary}
 
 \subsection{Properties of Banach Spaces}
 
 \begin{definition}
-\label{def:banach-isomorphism}
-We define a \emph{Banach isomorphism} to be a continuous linear map \(u: E \to
-F\), between Banach spaces \(E\) and \(F\), that is both invertible (there
-exists a continuous linear map \(u^{-2}: F \to E\) that is the two-sided inverse
-of \(u\)), and norm preserving --- that is, given any \(x \in E\), we have
-\(\|u(x)\|_F = \|x\|_E\). Banach isomorphisms may also be referenced to
-isometries in the literature.
+    \label{def:banach-isomorphism}
+    We define a \emph{Banach isomorphism} to be a continuous linear map \(u: E \to
+    F\), between Banach spaces \(E\) and \(F\), that is both invertible (there
+    exists a continuous linear map \(u^{-2}: F \to E\) that is the two-sided inverse
+    of \(u\)), and norm preserving --- that is, given any \(x \in E\), we have
+    \(\|u(x)\|_F = \|x\|_E\). Banach isomorphisms may also be referenced to
+    isometries in the literature.
 \end{definition}
 
 \begin{proposition}[Bijections are isomorphisms]
-\label{prop:continuous-bijective-linear-is-isomorphism}
-Every continuous bijective \(\R\)-linear map between topological vector spaces
-is an isomorphism.
+    \label{prop:continuous-bijective-linear-is-isomorphism}
+    Every continuous bijective \(\R\)-linear map between topological vector spaces
+    is an isomorphism.
 \end{proposition}
 
 \begin{proposition}[Splitting]
-\label{prop:banach-split}
-Let \(E\) be a Banach space, and \(F\) and \(G\) be complementary closed
-subspaces of \(E\) --- that is, \(E = F + G\) and \(F \cap G = 0\). Then the
-morphism \(F \times G \to E\) given by \((f, g) \mapsto f + g\) is a continuous
-linear isomorphism.
+    \label{prop:banach-split}
+    Let \(E\) be a Banach space, and \(F\) and \(G\) be complementary closed
+    subspaces of \(E\) --- that is, \(E = F + G\) and \(F \cap G = 0\). Then the
+    morphism \(F \times G \to E\) given by \((f, g) \mapsto f + g\) is a continuous
+    linear isomorphism.
 \end{proposition}
 
 \section{Topological Vector Spaces}
 
 \begin{definition}
-\label{def:topological-vector-space}
-A topological vector space is a \(k\)-vector space together with a topology
-such that addition of vectors and the product by scalars are both continuous
-\(k\)-linear maps.
+    \label{def:topological-vector-space}
+    A topological vector space is a \(k\)-vector space together with a topology
+    such that addition of vectors and the product by scalars are both continuous
+    \(k\)-linear maps.
 
-We denote by \(\TVect_{\R}\) the category consisting of topological
-\(\R\)-vector spaces together with morphisms, which are continuous \(\R\)-linear
-maps (which may also be referenced to by the term ``top-linear'').
+    We denote by \(\TVect_{\R}\) the category consisting of topological
+    \(\R\)-vector spaces together with morphisms, which are continuous \(\R\)-linear
+    maps (which may also be referenced to by the term ``top-linear'').
 
-Let \(E\) be a topological vector space. The continuous \(\R\)-linear maps
-corresponding to the dual space \(E^{*} = \Hom_{\TVect_{\R}}(E, \R)\), of a
-topological \(\R\)-vector space \(E\), are called \(\R\) \emph{forms}. The
-collection of forms of the form \(E \to \R\) will be conveniently separated in
-classes and denoted:
-\begin{itemize}\setlength\itemsep{0em}
-\item \(L(E)\): the collection of continuous linear maps \(E \to \R\).
-\item \(L^r(E)\): the collection of continuous \(r\)-multilinear maps \(E^r \to \R\).
-\item \(L^r_{\Sym}(E)\): the collection of continuous \(r\)-multilinear
-  symmetric maps \(E^r \to \R\).
-\item \(L^r_{\Alt}(E)\): the collection of continuous \(r\)-multilinear
-  alternating maps \(E^r \to \R\).
-\end{itemize}
+    Let \(E\) be a topological vector space. The continuous \(\R\)-linear maps
+    corresponding to the dual space \(E^{*} = \Hom_{\TVect_{\R}}(E, \R)\), of a
+    topological \(\R\)-vector space \(E\), are called \(\R\) \emph{forms}. The
+    collection of forms of the form \(E \to \R\) will be conveniently separated in
+    classes and denoted:
+    \begin{itemize}\setlength\itemsep{0em}
+        \item \(L(E)\): the collection of continuous linear maps \(E \to \R\).
+        \item \(L^r(E)\): the collection of continuous \(r\)-multilinear maps \(E^r \to \R\).
+        \item \(L^r_{\Sym}(E)\): the collection of continuous \(r\)-multilinear
+              symmetric maps \(E^r \to \R\).
+        \item \(L^r_{\Alt}(E)\): the collection of continuous \(r\)-multilinear
+              alternating maps \(E^r \to \R\).
+    \end{itemize}
 \end{definition}
 
 \begin{definition}[Locally convex]
-\label{def:locally-convex}
-A topological vector space \(E\) is said to be locally convex if, for every open
-set \(U \subseteq E\), any pair of points \(x, y \in U\) are such that \(t x +
-(1 - t) y \in U\) for all \(t \in [0, 1]\).
+    \label{def:locally-convex}
+    A topological vector space \(E\) is said to be locally convex if, for every open
+    set \(U \subseteq E\), any pair of points \(x, y \in U\) are such that \(t x +
+    (1 - t) y \in U\) for all \(t \in [0, 1]\).
 \end{definition}
 
 \begin{definition}[Banachable]
-\label{def:banachable}
-A topological \(\R\)-vector space \(E\) is said to be banachable if \(E\) is
-complete and its topology can be defined by a norm.
+    \label{def:banachable}
+    A topological \(\R\)-vector space \(E\) is said to be banachable if \(E\) is
+    complete and its topology can be defined by a norm.
 \end{definition}
 
 As a point of order, \emph{every time} we mention a topological \(\R\)-vector
 space in the course of this chapter, we shall mean a \emph{banachable space}.
 
 \begin{definition}[Norm of a morphism]
-\label{def:norm-morphism-TopVect}
-Let \(E\) and \(F\) be topological \(\R\)-vector spaces. In order to make
-\(\Hom_{\TVect_{\R}}(E, F)\) into a topological \(\R\)-vector space, we can
-construct a norm for which, given a morphism \(A: E \to F\), define \(K \coloneq
-\{k \in \R \colon \norm{Ax}_{F} \leq k \norm{x}_E \text{, for all } x \in E\}\), the
-norm of \(A\) is
-\[
-  \norm{A} \coloneq \sup_{k \in K} k.
-\]
+    \label{def:norm-morphism-TopVect}
+    Let \(E\) and \(F\) be topological \(\R\)-vector spaces. In order to make
+    \(\Hom_{\TVect_{\R}}(E, F)\) into a topological \(\R\)-vector space, we can
+    construct a norm for which, given a morphism \(A: E \to F\), define \(K \coloneq
+    \{k \in \R \colon \norm{Ax}_{F} \leq k \norm{x}_E \text{, for all } x \in E\}\), the
+    norm of \(A\) is
+    \[
+        \norm{A} \coloneq \sup_{k \in K} k.
+    \]
 
-If \(\Hom_{\TVect_{\R}}(E_1, \dots, E_n; F)\) is the collection of continuous
-\(\R\)-multilinear maps, then we define similarly the norm of a continuous
-multilinear map \(B: \prod_{j=1}^n E_j \to F\) as
-\[
-  \norm{B} \coloneq \sup_{m \in M} m,
-\]
-where \(M \coloneq \{m \in \R \colon \norm{Bx}_F \leq m \prod_{j=1}^n
-\norm{x_j}_{E_j} \text{, for all } x \in E\}\).
+    If \(\Hom_{\TVect_{\R}}(E_1, \dots, E_n; F)\) is the collection of continuous
+    \(\R\)-multilinear maps, then we define similarly the norm of a continuous
+    multilinear map \(B: \prod_{j=1}^n E_j \to F\) as
+    \[
+        \norm{B} \coloneq \sup_{m \in M} m,
+    \]
+    where \(M \coloneq \{m \in \R \colon \norm{Bx}_F \leq m \prod_{j=1}^n
+    \norm{x_j}_{E_j} \text{, for all } x \in E\}\).
 \end{definition}
 
 \begin{remark}
-\label{rm:Cp-morphism}
-From now on, \emph{\(C^p\)-morphism} will refer to a map \(f: U \to V\) between
-open subsets of Banach spaces such that \(f\) is a continuous map of class
-\(C^p\), where \(p \leq \infty\).
+    \label{rm:Cp-morphism}
+    From now on, \emph{\(C^p\)-morphism} will refer to a map \(f: U \to V\) between
+    open subsets of Banach spaces such that \(f\) is a continuous map of class
+    \(C^p\), where \(p \leq \infty\).
 \end{remark}
 
 %%% Local Variables:

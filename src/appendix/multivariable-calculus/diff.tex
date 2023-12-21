@@ -1,142 +1,142 @@
 \section{Differentiable Maps}\label{sec:differentiable-maps}
 
 \begin{remark}
-  Throughout this chapter, we'll denote by \(\norm{}: \R^n \to \R\) the standard
-  norm in \(\R^n\), given by
-  \[
-    \norm x = \sqrt{\sum_{j=1}^n x_j^2}.
-  \]
-  Moreover, the set \(E\) is a any subset of \(\R^m\).
+    Throughout this chapter, we'll denote by \(\norm{}: \R^n \to \R\) the standard
+    norm in \(\R^n\), given by
+    \[
+        \norm x = \sqrt{\sum_{j=1}^n x_j^2}.
+    \]
+    Moreover, the set \(E\) is a any subset of \(\R^m\).
 \end{remark}
 
 \begin{definition}[Little-Oh]
-  Given maps \(f: X \to \R^n\) and \(g: X \to \R^m\), we say that \(f\) is
-  little-Oh of \(g\) over a filter base \(\mathcal B \subseteq 2^X\) --- and
-  write \(f = o(g)\) --- if \(\norm{f(x)}_{\R^n} = o(\norm{g(x)}_{\R^m})\) over
-  \(\mathcal B\).
+    Given maps \(f: X \to \R^n\) and \(g: X \to \R^m\), we say that \(f\) is
+    little-Oh of \(g\) over a filter base \(\mathcal B \subseteq 2^X\) --- and
+    write \(f = o(g)\) --- if \(\norm{f(x)}_{\R^n} = o(\norm{g(x)}_{\R^m})\) over
+    \(\mathcal B\).
 \end{definition}
 
 \begin{proposition}\label{prop: linear-little-oh}
-  Let \(L: \R^m \to \R^n\) be a linear map, then for \(h \in \R^m\), as \(h \to
-  0\) we have
-  \[
-    L(o(h)) = o(h).
-  \]
+    Let \(L: \R^m \to \R^n\) be a linear map, then for \(h \in \R^m\), as \(h \to
+    0\) we have
+    \[
+        L(o(h)) = o(h).
+    \]
 \end{proposition}
 
 \begin{proof}
-  Define \(f(h) = \alpha(h) h = o(h)\) --- that is \(\alpha: \R^n \to \R\),
-  where \(\alpha(h) \to 0\) as \(h \to 0\). This yields \(L(f(h)) = L(\alpha(h)
-  h) = \alpha(h) \sum_{j=1}^n h_j L(e_j)\), therefore
-  \begin{align*}
-    \norm{L(f(h))}_{\R^n}
-    &= \norm{\alpha(h)}_\R \norm{\sum_{j=1}^n h_j L(e_j)}_{\R^n} \\
-    &\leq \norm{\alpha(h)}_\R \sum_{j=1}^n \norm{L(e_j)}_{\R^n} \norm{h_j}_\R \\
-    &\leq \left( \norm{\alpha(h)}_\R \sum_{j=1}^n \norm{L(e_j)}_{\R^n} \right)
-    \norm{h}_{\R^m}
-  \end{align*}
-  and since \(\norm{\alpha(h)}_\R \sum_{j=1}^n \norm{L(e_j)}_{\R^n} \to 0\) as
-  \(h \to 0\), we find that \(L(o(h)) = o(h)\).
+    Define \(f(h) = \alpha(h) h = o(h)\) --- that is \(\alpha: \R^n \to \R\),
+    where \(\alpha(h) \to 0\) as \(h \to 0\). This yields \(L(f(h)) = L(\alpha(h)
+    h) = \alpha(h) \sum_{j=1}^n h_j L(e_j)\), therefore
+    \begin{align*}
+        \norm{L(f(h))}_{\R^n}
+         & = \norm{\alpha(h)}_\R \norm{\sum_{j=1}^n h_j L(e_j)}_{\R^n}               \\
+         & \leq \norm{\alpha(h)}_\R \sum_{j=1}^n \norm{L(e_j)}_{\R^n} \norm{h_j}_\R  \\
+         & \leq \left( \norm{\alpha(h)}_\R \sum_{j=1}^n \norm{L(e_j)}_{\R^n} \right)
+        \norm{h}_{\R^m}
+    \end{align*}
+    and since \(\norm{\alpha(h)}_\R \sum_{j=1}^n \norm{L(e_j)}_{\R^n} \to 0\) as
+    \(h \to 0\), we find that \(L(o(h)) = o(h)\).
 \end{proof}
 
 \begin{definition}[Big-Oh]
-  Let maps \(f: X \to \R^n\) and \(g: X \to \R^m\). \(f\) is said to be big-Oh
-  of \(g\) over a filter base \(\mathcal B \subseteq 2^X\) --- and denote by \(f
-  = O(g)\) --- if \(\norm{f(x)}_{\R^n} = O(\norm{g(x)}_{\R^m})\) over \(\mathcal
-  B\).
+    Let maps \(f: X \to \R^n\) and \(g: X \to \R^m\). \(f\) is said to be big-Oh
+    of \(g\) over a filter base \(\mathcal B \subseteq 2^X\) --- and denote by \(f
+    = O(g)\) --- if \(\norm{f(x)}_{\R^n} = O(\norm{g(x)}_{\R^m})\) over \(\mathcal
+    B\).
 \end{definition}
 
 \begin{proposition}\label{prop: linear-big-oh}
-  Let \(L: \R^m \to \R^n\) be a linear map. For any \(h \in \R^m\) we have that
-  --- as \(h \to 0\)
-  \[
-    L(h) = O(h).
-  \]
+    Let \(L: \R^m \to \R^n\) be a linear map. For any \(h \in \R^m\) we have that
+    --- as \(h \to 0\)
+    \[
+        L(h) = O(h).
+    \]
 \end{proposition}
 
 \begin{proof}
-  Consider \(h = \sum_{j = 1}^m h_j e_j\), then \(L(h) = \sum_{j=1}^m h_j
-  L(e_j)\). From Minkowski's inequalities (see \cref{prop: minkowski-ineq}) we
-  have
-  \[
-    \norm{L(h)}_{\R^n} = \norm{\sum_{j=1}^m h_j L(e_j)}_{\R^n}
-    \leq \sum_{j=1}^m \norm{L(e_j)}_{\R^n} \norm{h_j}_\R
-    \leq \left(\sum_{j=1}^m \norm{L(e_j)}_{\R^n}\right) \norm{h}_{\R^m}
-    = M \norm{h}_{\R^m}
-  \]
-  Thus, as \(h \to 0\) that \(L(h) = O(h)\).
+    Consider \(h = \sum_{j = 1}^m h_j e_j\), then \(L(h) = \sum_{j=1}^m h_j
+    L(e_j)\). From Minkowski's inequalities (see \cref{prop: minkowski-ineq}) we
+    have
+    \[
+        \norm{L(h)}_{\R^n} = \norm{\sum_{j=1}^m h_j L(e_j)}_{\R^n}
+        \leq \sum_{j=1}^m \norm{L(e_j)}_{\R^n} \norm{h_j}_\R
+        \leq \left(\sum_{j=1}^m \norm{L(e_j)}_{\R^n}\right) \norm{h}_{\R^m}
+        = M \norm{h}_{\R^m}
+    \]
+    Thus, as \(h \to 0\) that \(L(h) = O(h)\).
 \end{proof}
 
 \begin{definition}[Tangent space]
-  Let \(x \in \R^n\). We define the tangent space of \(x\) --- denoted by
-  \(T_x\R^n\) --- to be the \(R\)-vector space spanned by \(x\).
+    Let \(x \in \R^n\). We define the tangent space of \(x\) --- denoted by
+    \(T_x\R^n\) --- to be the \(R\)-vector space spanned by \(x\).
 \end{definition}
 
 \begin{definition}[Differentiable]\label{def: diff-several}
-  A map \(f: E \to \R^n\) is differentiable at a point \(x \in E\) --- where
-  \(x\) is a limit point of \(E\) --- if
-  \begin{equation}\label{eq: diff-several-1}
-    f(x + t) - f(x) = L(x)(t) + \alpha(x, t)
-  \end{equation}
-  where \(L(x): \R^m \to \R^n\) is a linear map --- on the variable \(t\) ---
-  and \(\alpha(x, t) = o(t)\) as \(t \to 0\). We call the linear map \(L(x)\)
-  the \emph{differential} (or tangent map) of \(f\) at the point \(x \in E\) ---
-  we shall normally denote \(L(x)\) by \(\diff f(x): T_x\R^m \to T_{f(x)}\R^n\).
-  We can clarify the last equation by writing it equivalently as
-  \begin{equation}\label{eq: diff-several-2}
-    f(x + t) - f(x) = \diff f(x)(t) + o(t).
-  \end{equation}
+    A map \(f: E \to \R^n\) is differentiable at a point \(x \in E\) --- where
+    \(x\) is a limit point of \(E\) --- if
+    \begin{equation}\label{eq: diff-several-1}
+        f(x + t) - f(x) = L(x)(t) + \alpha(x, t)
+    \end{equation}
+    where \(L(x): \R^m \to \R^n\) is a linear map --- on the variable \(t\) ---
+    and \(\alpha(x, t) = o(t)\) as \(t \to 0\). We call the linear map \(L(x)\)
+    the \emph{differential} (or tangent map) of \(f\) at the point \(x \in E\) ---
+    we shall normally denote \(L(x)\) by \(\diff f(x): T_x\R^m \to T_{f(x)}\R^n\).
+    We can clarify the last equation by writing it equivalently as
+    \begin{equation}\label{eq: diff-several-2}
+        f(x + t) - f(x) = \diff f(x)(t) + o(t).
+    \end{equation}
 \end{definition}
 
 \begin{proposition}
-  A map \(f: E \to \R^n\) is differentiable at a limit point \(x \in E\) if and
-  only if, for all \(1 \leq j \leq n\), the maps \(\pi_j \circ f: E \to \R\) are
-  differentiable at \(x\).
+    A map \(f: E \to \R^n\) is differentiable at a limit point \(x \in E\) if and
+    only if, for all \(1 \leq j \leq n\), the maps \(\pi_j \circ f: E \to \R\) are
+    differentiable at \(x\).
 \end{proposition}
 
 \begin{proof}
-  Notice that \cref{eq: diff-several-2} can be rewritten coordinate-wise --- as
-  \(t \to 0\)
-  \begin{equation}\label{eq: equiv-diff-coord}
-    \pi_j \circ f(x + t) - \pi_j \circ f(x)
-    = (\pi_j \circ \diff f(x))(t) + o(t).
-  \end{equation}
-  Assume that \(\pi_j \circ \diff f(x)\) has the general form of \((\pi_j \circ
-  \diff f(x))(t) \coloneq \sum_{j=1}^m a_x^j t_j\), where \(a_x^j \in \R\) are scalars
-  dependent on \(x \in E\) for all \(1 \leq j \leq m\). Consider, for each \(1
-  \leq j \leq m\), the displacements \(t = t_j e_j\) so that \(\norm{t}_{\R^m} =
-  \norm{t_j}_{\R}\). For such displacements, we find --- as \(t_j \to 0\)
-  \[
-    \pi_j \circ f(x + t_j e_j) - \pi_j \circ f(x) = a_x^j t_j + o(t_j)
-  \]
-  therefore we find that each of the scalar corresponding to displacements on
-  the \(j\)th coordinate --- of the \(j\)th differential \(\pi_j \circ f\) of
-  \(f\) --- can be written as
-  \begin{equation}\label{eq: partial-deriv-initial}
-    a_x^j = \lim_{t_j \to 0} \frac{\pi_j \circ f(x + t_j e_j) - \pi_j \circ
-    f(x)} {t_j}.
-  \end{equation}
-  The equivalence between \cref{eq: diff-several-2} and \cref{eq:
-  equiv-diff-coord} shows that the map \(f\) is differentiable at \(x\) if and
-  only if each of its coordinate decompositions are differentiable at \(x\).
+    Notice that \cref{eq: diff-several-2} can be rewritten coordinate-wise --- as
+    \(t \to 0\)
+    \begin{equation}\label{eq: equiv-diff-coord}
+        \pi_j \circ f(x + t) - \pi_j \circ f(x)
+        = (\pi_j \circ \diff f(x))(t) + o(t).
+    \end{equation}
+    Assume that \(\pi_j \circ \diff f(x)\) has the general form of \((\pi_j \circ
+    \diff f(x))(t) \coloneq \sum_{j=1}^m a_x^j t_j\), where \(a_x^j \in \R\) are scalars
+    dependent on \(x \in E\) for all \(1 \leq j \leq m\). Consider, for each \(1
+    \leq j \leq m\), the displacements \(t = t_j e_j\) so that \(\norm{t}_{\R^m} =
+    \norm{t_j}_{\R}\). For such displacements, we find --- as \(t_j \to 0\)
+    \[
+        \pi_j \circ f(x + t_j e_j) - \pi_j \circ f(x) = a_x^j t_j + o(t_j)
+    \]
+    therefore we find that each of the scalar corresponding to displacements on
+    the \(j\)th coordinate --- of the \(j\)th differential \(\pi_j \circ f\) of
+    \(f\) --- can be written as
+    \begin{equation}\label{eq: partial-deriv-initial}
+        a_x^j = \lim_{t_j \to 0} \frac{\pi_j \circ f(x + t_j e_j) - \pi_j \circ
+            f(x)} {t_j}.
+    \end{equation}
+    The equivalence between \cref{eq: diff-several-2} and \cref{eq:
+        equiv-diff-coord} shows that the map \(f\) is differentiable at \(x\) if and
+    only if each of its coordinate decompositions are differentiable at \(x\).
 \end{proof}
 
 \subsection{Partial Derivative and Differential of Real Valued Maps}
 
 \begin{definition}[Partial derivative]\label{def: partial derivative}
-  Let \(f: E \to \R\), where \(E \subseteq \R^m\). We define the partial
-  derivative of \(f\) at the point \(x \in \Int E\), with respect to its \(j\)th
-  coordinate, to be the real value (if existent)
-  \[
-    \partial_j f(x) = \lim_{t \to 0} \frac{f(x + t e_j) - f(x)}{t}
-  \]
+    Let \(f: E \to \R\), where \(E \subseteq \R^m\). We define the partial
+    derivative of \(f\) at the point \(x \in \Int E\), with respect to its \(j\)th
+    coordinate, to be the real value (if existent)
+    \[
+        \partial_j f(x) = \lim_{t \to 0} \frac{f(x + t e_j) - f(x)}{t}
+    \]
 \end{definition}
 
 Notice that, given a map \(f: E \to \R^n\), the partial derivative of each of
 its coordinate-wise maps \(\pi_j \circ f\) is the real value
 \[
-  \partial_j (\pi_j \circ f)(x) = \lim_{\R \ni t \to 0} \frac{\pi_j \circ f(x
-  + t e_j) - \pi_j \circ f(x)}{t}.
+    \partial_j (\pi_j \circ f)(x) = \lim_{\R \ni t \to 0} \frac{\pi_j \circ f(x
+        + t e_j) - \pi_j \circ f(x)}{t}.
 \]
 
 Consider the \(j\)th projection map \(\pi_j: \R^m \to \R\). From the definition
@@ -146,32 +146,32 @@ is independent of \(x\). We can define now the following operator, that will
 stand as a clever notation for the differential of the projection maps.
 
 \begin{notation}\label{not: diff-x_j}
-  Given a point \(x \in \R^m\), we denote the linear map \(\diff x_j: T_x\R^m
-  \to T_{\pi_j(x)}\R\) as
-  \[
-    \diff x_j(t) = t_j.
-  \]
+    Given a point \(x \in \R^m\), we denote the linear map \(\diff x_j: T_x\R^m
+    \to T_{\pi_j(x)}\R\) as
+    \[
+        \diff x_j(t) = t_j.
+    \]
 \end{notation}
 
 \begin{proposition}[Real valued differential]\label{prop: differential}
-  Let \(f: E \to \R\) be a differentiable map at an interior point \(x \in \Int
-  E\). Then \(f\) has a partial derivative at \(x\) for each of its variables.
-  The differential of \(f\) at the point \(x\) --- the map \(\diff f(x): T_x\R^m
-  \to T_{f(x)}\R^n\) --- is uniquely defined as the sum of the partial
-  derivatives of \(f\) at \(x\) --- that is, for any \(t \in T_x\R^m\), we have
-  \[
-    \diff f(x)(t) = \sum_{1 \leq j \leq m} \partial_j f(x) t_j.
-  \]
-  In view of the introduced \cref{not: diff-x_j}, we can rewrite the
-  differential as the map
-  \[
-    \diff f(x) = \sum_{1 \leq j \leq m} \partial_j f(x) \diff x_j.
-  \]
+    Let \(f: E \to \R\) be a differentiable map at an interior point \(x \in \Int
+    E\). Then \(f\) has a partial derivative at \(x\) for each of its variables.
+    The differential of \(f\) at the point \(x\) --- the map \(\diff f(x): T_x\R^m
+    \to T_{f(x)}\R^n\) --- is uniquely defined as the sum of the partial
+    derivatives of \(f\) at \(x\) --- that is, for any \(t \in T_x\R^m\), we have
+    \[
+        \diff f(x)(t) = \sum_{1 \leq j \leq m} \partial_j f(x) t_j.
+    \]
+    In view of the introduced \cref{not: diff-x_j}, we can rewrite the
+    differential as the map
+    \[
+        \diff f(x) = \sum_{1 \leq j \leq m} \partial_j f(x) \diff x_j.
+    \]
 \end{proposition}
 
 \begin{notation}
-  For the sake of brevity --- given a function \(f: E \to R^n\) --- we define
-  \(f_j \coloneq \pi_j \circ f\) for each \(1 \leq j \leq n\).
+    For the sake of brevity --- given a function \(f: E \to R^n\) --- we define
+    \(f_j \coloneq \pi_j \circ f\) for each \(1 \leq j \leq n\).
 \end{notation}
 
 \subsection{Differential of a Map \texorpdfstring{\(\R^m \to \R^n\)}{Rm to Rn}}
@@ -180,1174 +180,1174 @@ Now we can generalize the results for real valued functions \(E \to \R\) to
 functions of the type \(E \to \R^n\).
 
 \begin{corollary}[Several variables differential]
-  \label{cor: several-differential}
-  Let \(f: E \to \R^n\) be differentiable at the interior point \(x \in \Int
-  E\). The differential of \(f\) at \(x\), \(\diff f(x): T_x\R^m \to
-  T_{f(x)}\R^m\), exists and is uniquely given by --- for any given \(t \in
-  T_x\R^m\)
-  \begin{equation}\label{eq: several-differential}
-    \diff f(x)(t) =
-    \begin{bmatrix}
-      \diff f_1(x)(t) \\ \vdots \\ \diff f_n(x)
-    \end{bmatrix}
-    =
-    \begin{bmatrix}
-      \sum_{j=1}^m \partial_j f_1(x) t_j
-      \\ \vdots \\
-      \sum_{j=1}^m \partial_j f_n(x) t_j
-    \end{bmatrix}
-    =
-    \begin{bmatrix}
-      \partial_1 f_1(x) && \dots && \partial_m f_1(x) \\
-      \vdots && \ddots && \vdots \\
-      \partial_1 f_n(x) && \dots && \partial_m f_n(x)
-    \end{bmatrix}
-    \begin{bmatrix}
-      t_1 \\ \vdots \\ t_m
-    \end{bmatrix}
-  \end{equation}
+    \label{cor: several-differential}
+    Let \(f: E \to \R^n\) be differentiable at the interior point \(x \in \Int
+    E\). The differential of \(f\) at \(x\), \(\diff f(x): T_x\R^m \to
+    T_{f(x)}\R^m\), exists and is uniquely given by --- for any given \(t \in
+    T_x\R^m\)
+    \begin{equation}\label{eq: several-differential}
+        \diff f(x)(t) =
+        \begin{bmatrix}
+            \diff f_1(x)(t) \\ \vdots \\ \diff f_n(x)
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            \sum_{j=1}^m \partial_j f_1(x) t_j
+            \\ \vdots \\
+            \sum_{j=1}^m \partial_j f_n(x) t_j
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            \partial_1 f_1(x) &  & \dots  &  & \partial_m f_1(x) \\
+            \vdots            &  & \ddots &  & \vdots            \\
+            \partial_1 f_n(x) &  & \dots  &  & \partial_m f_n(x)
+        \end{bmatrix}
+        \begin{bmatrix}
+            t_1 \\ \vdots \\ t_m
+        \end{bmatrix}
+    \end{equation}
 \end{corollary}
 
 \begin{definition}[Jacobi matrix]\label{def: jacobi-matrix}
-  The matrix given by the partial derivatives of the projections of \(f: E \to
-  \R^n\) --- \([\partial_i f_j(x)]_{i, j}\), with \(1 \leq i \leq m\) and \(1
-  \leq j \leq n\) --- is called the Jacobi matrix \(f\) at \(x\).
+    The matrix given by the partial derivatives of the projections of \(f: E \to
+    \R^n\) --- \([\partial_i f_j(x)]_{i, j}\), with \(1 \leq i \leq m\) and \(1
+    \leq j \leq n\) --- is called the Jacobi matrix \(f\) at \(x\).
 \end{definition}
 
 \begin{notation}[Jacobi matrix]
-  We'll denote the Jacobi matrix of a map \(f: E \to \R^n\) at an interior point
-  \(x\) --- where \(f\) is differentiable --- as \(f'(x)\).
+    We'll denote the Jacobi matrix of a map \(f: E \to \R^n\) at an interior point
+    \(x\) --- where \(f\) is differentiable --- as \(f'(x)\).
 \end{notation}
 
 \begin{definition}[Jacobian]\label{def: jacobian}
-  Let \(E \subseteq \R^n\) and a map \(f: E \to \R^n\) --- where \(f\) is
-  differentiable at an interior point \(x \in \Int E\). The Jacobi matrix of
-  \(f\) at the point \(x\) is a \(n \times n\) square matrix and its determinant
-  \(\det [\partial_i f_j(x)]_{i, j}\) is called the Jacobian of \(f\) at \(x\).
+    Let \(E \subseteq \R^n\) and a map \(f: E \to \R^n\) --- where \(f\) is
+    differentiable at an interior point \(x \in \Int E\). The Jacobi matrix of
+    \(f\) at the point \(x\) is a \(n \times n\) square matrix and its determinant
+    \(\det [\partial_i f_j(x)]_{i, j}\) is called the Jacobian of \(f\) at \(x\).
 \end{definition}
 
 \subsection{Connections Between Differentiability and Continuity}
 
 \begin{corollary}[Differentiable implies continuous]
-  Let \(f: E \to \R^n\) be a differentiable map at a point \(x \in E\).
-  Then \(f\) is continuous at \(x\).
+    Let \(f: E \to \R^n\) be a differentiable map at a point \(x \in E\).
+    Then \(f\) is continuous at \(x\).
 \end{corollary}
 
 \begin{proof}
-  By definition, the differential of \(f\) at \(x\) exists and is a linear map.
-  By \cref{prop: linear-continuous} we find that \(\diff f(x)\) is continuos and
-  hence \(\diff f(x)(t) \to 0\) as \(t \to 0\). Then as \(t \to 0\) we have
-  \(f(x + t) - f(x) = \diff f(x)(t) + o(t) \to 0\) so \(\lim_{t \to 0} f(x + t)
-  = f(x)\) --- the map is continuous at \(x\).
+    By definition, the differential of \(f\) at \(x\) exists and is a linear map.
+    By \cref{prop: linear-continuous} we find that \(\diff f(x)\) is continuos and
+    hence \(\diff f(x)(t) \to 0\) as \(t \to 0\). Then as \(t \to 0\) we have
+    \(f(x + t) - f(x) = \diff f(x)(t) + o(t) \to 0\) so \(\lim_{t \to 0} f(x + t)
+    = f(x)\) --- the map is continuous at \(x\).
 \end{proof}
 
 \begin{remark}[Differential and partial derivatives]
-  The \cref{prop: differential} shows that if a map is differentiable at an
-  interior point of its domain, then the partial derivatives exist at the given
-  point. However, the converse does not hold. For instance, consider the map
-  \(g: \R^2 \to \R\) given by
-  \[
-    g(x, y) \coloneq
-    \begin{cases}
-      \frac{x y}{x^2 + y^2}, &x^2 + y^2 \neq 0 \\
-      0, &x^2 + y^2 = 0
-    \end{cases}
-  \]
-  Notice that \(g(0, y) = g(x, 0) = 0\) but \(g(x, x) = \frac 1 2\) when \(x
-  \neq 0\), therefore \(g\) has no limit as \((x,y) \to 0\). On the other hand,
-  \(g\) has partial derivatives for all points over the plane
-  \[
-    \partial_1 g(x, y) = \frac{y (y^2 - x^2)}{(x^2 + y^2)^2}
-    \ \text{ and }\
-    \partial_2 g(x, y) = \frac{x (x^2 - y^2)}{(x^2 + y^2)^2}.
-  \]
+    The \cref{prop: differential} shows that if a map is differentiable at an
+    interior point of its domain, then the partial derivatives exist at the given
+    point. However, the converse does not hold. For instance, consider the map
+    \(g: \R^2 \to \R\) given by
+    \[
+        g(x, y) \coloneq
+        \begin{cases}
+            \frac{x y}{x^2 + y^2}, & x^2 + y^2 \neq 0 \\
+            0,                     & x^2 + y^2 = 0
+        \end{cases}
+    \]
+    Notice that \(g(0, y) = g(x, 0) = 0\) but \(g(x, x) = \frac 1 2\) when \(x
+    \neq 0\), therefore \(g\) has no limit as \((x,y) \to 0\). On the other hand,
+    \(g\) has partial derivatives for all points over the plane
+    \[
+        \partial_1 g(x, y) = \frac{y (y^2 - x^2)}{(x^2 + y^2)^2}
+        \ \text{ and }\
+        \partial_2 g(x, y) = \frac{x (x^2 - y^2)}{(x^2 + y^2)^2}.
+    \]
 \end{remark}
 
 \subsection{Laws of Differentiability}
 
 \begin{theorem}\label{thm: diff-linear}
-  Let \(f, g: E \to \R^n\) be differentiable maps at the point \(x \in E\), then
-  the linear combination \(\lambda f + \gamma g: E \to \R^n\), where \(\lambda,
-  \gamma \in \R\) are scalars, is differentiable at \(x\) and the differential
-  \(\diff(\lambda f + \gamma g): T_x\R^m \to T_{\lambda f(x) + \gamma
-  g(x)}\R^n\) is given by
-  \[
-    \diff (\lambda f + \gamma g)(x) = (\lambda \diff f + \gamma \diff g)(x).
-  \]
+    Let \(f, g: E \to \R^n\) be differentiable maps at the point \(x \in E\), then
+    the linear combination \(\lambda f + \gamma g: E \to \R^n\), where \(\lambda,
+    \gamma \in \R\) are scalars, is differentiable at \(x\) and the differential
+    \(\diff(\lambda f + \gamma g): T_x\R^m \to T_{\lambda f(x) + \gamma
+            g(x)}\R^n\) is given by
+    \[
+        \diff (\lambda f + \gamma g)(x) = (\lambda \diff f + \gamma \diff g)(x).
+    \]
 \end{theorem}
 
 \begin{proof}
-  Note that
-  \begin{align*}
-    (\lambda f + \gamma g)(x + t) - (\lambda f + \gamma g)(x)
-    &= \lambda (f(x + t) - f(x)) + \gamma (g(x + t) + g(x)) \\
-    &= \lambda(\diff f(x)(t) + o(t)) + \gamma(\diff g(x)(t) + o(t)) \\
-    &= (\lambda \diff f(x) + \gamma \diff g(x))(t) + o(t)
-  \end{align*}
-  thus \(\lambda f + \gamma g\) is differentiable at \(x\). Taking the limit as
-  \(t \to 0\), we find
-  \[
-    \diff(\lambda f + \gamma g)(x)(t)
-    = \lambda \diff f(x)(t) + \gamma \diff g(x)(t).
-  \]
-  If we also assume that \(x \in \Int E\), then we can rewrite the last relation
-  as
-  {\small%
-  \begin{align*}
-    \begin{bmatrix}
-      \partial_1 (\lambda f + \gamma g)_1(x) &\dots &\partial_m (\lambda f +
-      \gamma g)_1(x) \\
-      \vdots &\ddots &\vdots \\
-      \partial_1 (\lambda f + \gamma g)_n(x) &\dots &\partial_m(\lambda f +
-      \gamma g)_n(x)
-    \end{bmatrix}
-    =
-    \begin{bmatrix}
-      \lambda \partial_1 f_1(x) + \gamma \partial_1 g_1(x) &\dots &\lambda
-      \partial_m f_1(x) + \gamma \partial_m g_1(x) \\
-      \vdots &\ddots &\vdots \\
-      \lambda \partial_1 f_n(x) + \gamma \partial_1 g_n(x) &\dots &\lambda
-      \partial_m f_n(x) + \gamma \partial_m g_n(x) \\
-    \end{bmatrix}
-  \end{align*}
-  }%
-  thus the following equality is obtained
-  \[
-    \partial_i (\lambda f + \gamma g)_j(x) = \lambda \partial_i f_j(x) + \gamma
-    \partial_i g_j(x)
-  \]
+    Note that
+    \begin{align*}
+        (\lambda f + \gamma g)(x + t) - (\lambda f + \gamma g)(x)
+         & = \lambda (f(x + t) - f(x)) + \gamma (g(x + t) + g(x))         \\
+         & = \lambda(\diff f(x)(t) + o(t)) + \gamma(\diff g(x)(t) + o(t)) \\
+         & = (\lambda \diff f(x) + \gamma \diff g(x))(t) + o(t)
+    \end{align*}
+    thus \(\lambda f + \gamma g\) is differentiable at \(x\). Taking the limit as
+    \(t \to 0\), we find
+    \[
+        \diff(\lambda f + \gamma g)(x)(t)
+        = \lambda \diff f(x)(t) + \gamma \diff g(x)(t).
+    \]
+    If we also assume that \(x \in \Int E\), then we can rewrite the last relation
+    as
+        {\small%
+            \begin{align*}
+                \begin{bmatrix}
+                    \partial_1 (\lambda f + \gamma g)_1(x) & \dots  & \partial_m (\lambda f +
+                    \gamma g)_1(x)                                                            \\
+                    \vdots                                 & \ddots & \vdots                  \\
+                    \partial_1 (\lambda f + \gamma g)_n(x) & \dots  & \partial_m(\lambda f +
+                    \gamma g)_n(x)
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    \lambda \partial_1 f_1(x) + \gamma \partial_1 g_1(x) & \dots  & \lambda
+                    \partial_m f_1(x) + \gamma \partial_m g_1(x)                            \\
+                    \vdots                                               & \ddots & \vdots  \\
+                    \lambda \partial_1 f_n(x) + \gamma \partial_1 g_n(x) & \dots  & \lambda
+                    \partial_m f_n(x) + \gamma \partial_m g_n(x)                            \\
+                \end{bmatrix}
+            \end{align*}
+        }%
+    thus the following equality is obtained
+    \[
+        \partial_i (\lambda f + \gamma g)_j(x) = \lambda \partial_i f_j(x) + \gamma
+        \partial_i g_j(x)
+    \]
 \end{proof}
 
 \begin{theorem}\label{thm: diff-prod-div}
-  Let \(h, \ell: E \to \R\) be differentiable maps at \(x \in E\). Then
-  \begin{enumerate}[(a)]
-    \item The product \(h \cdot \ell: E \to \R\) is differentiable at \(x\) and
-      the differential \(\diff(h \cdot \ell): T_x\R^m \to T_{(h \cdot
-      \ell)(x)}\R\) is given by
-      \begin{equation}
-        \diff(h \cdot \ell)(x) = h(x) \diff \ell(x) + \ell(x) \diff h(x).
-      \end{equation}
-      If we also assume \(x \in \Int E\), then the relation can be rewritten
-      matricially as
-      \[
-        \begin{bmatrix}
-          \partial_1 (h \cdot \ell)(x) &\cdots &\partial_m (h \cdot \ell)(x)
-        \end{bmatrix}
-        =
-        \begin{bmatrix}
-          h(x) \partial_1 \ell(x) + \ell \partial_1 h(x)
-          &\cdots
-          &h(x) \partial_m \ell(x)
-        \end{bmatrix}
-      \]
-      thus the following relation is obtained
-      \begin{equation}
-        \partial_i (h \cdot \ell)(x) =
-        h(x) \partial_i \ell(x) + \ell(x) \partial_i h(x)
-        \quad \text{ for } 1 \leq i \leq m
-      \end{equation}
-    \item If \(\ell(x) \neq 0\), the quotient \(\frac h \ell: E \to \R\) is
-      differentiable at \(x\) and the differential of such quotient at \(x\),
-      \(\diff \frac h \ell: T_x\R^m \to T_{\frac h \ell (x)}\R\), is given by
-      \begin{equation}
-        \diff \frac h \ell (x) =
-        \frac{\ell(x) \diff h(x) - h(x) \diff \ell(x)}{\ell^2(x)}.
-      \end{equation}
-      If we also assume \(x \in \Int E\), then the relation can be rewritten
-      matricially as
-      {\small%
-      \[
-        \begin{bmatrix}
-          \partial_1 \frac h \ell (x) &\cdots &\partial_m \frac h \ell (x)
-        \end{bmatrix}
-        =
-        \frac 1 {\ell^2(x)}
-        \begin{bmatrix}
-        \ell(x) \partial_1 h(x) - h(x) \partial_1 \ell(x)
-        &\cdots
-        &\ell(x) \partial_m h(x) - h(x) \partial_m \ell(x)
-        \end{bmatrix}
-      \]
-      }%
-      thus we obtain
-      \begin{equation}
-        \partial_i \frac h \ell (x) =
-        \frac{\ell(x) \partial_i h(x) - h(x) \partial_i \ell(x)}{\ell^2(x)}
-      \end{equation}
-  \end{enumerate}
+    Let \(h, \ell: E \to \R\) be differentiable maps at \(x \in E\). Then
+    \begin{enumerate}[(a)]
+        \item The product \(h \cdot \ell: E \to \R\) is differentiable at \(x\) and
+              the differential \(\diff(h \cdot \ell): T_x\R^m \to T_{(h \cdot
+                      \ell)(x)}\R\) is given by
+              \begin{equation}
+                  \diff(h \cdot \ell)(x) = h(x) \diff \ell(x) + \ell(x) \diff h(x).
+              \end{equation}
+              If we also assume \(x \in \Int E\), then the relation can be rewritten
+              matricially as
+              \[
+                  \begin{bmatrix}
+                      \partial_1 (h \cdot \ell)(x) & \cdots & \partial_m (h \cdot \ell)(x)
+                  \end{bmatrix}
+                  =
+                  \begin{bmatrix}
+                      h(x) \partial_1 \ell(x) + \ell \partial_1 h(x)
+                       & \cdots
+                       & h(x) \partial_m \ell(x)
+                  \end{bmatrix}
+              \]
+              thus the following relation is obtained
+              \begin{equation}
+                  \partial_i (h \cdot \ell)(x) =
+                  h(x) \partial_i \ell(x) + \ell(x) \partial_i h(x)
+                  \quad \text{ for } 1 \leq i \leq m
+              \end{equation}
+        \item If \(\ell(x) \neq 0\), the quotient \(\frac h \ell: E \to \R\) is
+              differentiable at \(x\) and the differential of such quotient at \(x\),
+              \(\diff \frac h \ell: T_x\R^m \to T_{\frac h \ell (x)}\R\), is given by
+              \begin{equation}
+                  \diff \frac h \ell (x) =
+                  \frac{\ell(x) \diff h(x) - h(x) \diff \ell(x)}{\ell^2(x)}.
+              \end{equation}
+              If we also assume \(x \in \Int E\), then the relation can be rewritten
+              matricially as
+                  {\small%
+                      \[
+                          \begin{bmatrix}
+                              \partial_1 \frac h \ell (x) & \cdots & \partial_m \frac h \ell (x)
+                          \end{bmatrix}
+                          =
+                          \frac 1 {\ell^2(x)}
+                          \begin{bmatrix}
+                              \ell(x) \partial_1 h(x) - h(x) \partial_1 \ell(x)
+                               & \cdots
+                               & \ell(x) \partial_m h(x) - h(x) \partial_m \ell(x)
+                          \end{bmatrix}
+                      \]
+                  }%
+              thus we obtain
+              \begin{equation}
+                  \partial_i \frac h \ell (x) =
+                  \frac{\ell(x) \partial_i h(x) - h(x) \partial_i \ell(x)}{\ell^2(x)}
+              \end{equation}
+    \end{enumerate}
 \end{theorem}
 
 \begin{theorem}[Composition]\label{thm: multi-comp-diff}
-  Let \(A \subseteq \R^m\) and \(B \subseteq \R^n\) be any sets and define
-  maps \(f: A \to B\) and \(g: B \to R^k\). Let \(f\) and \(g\) be such that
-  \(f\) is differentiable at \(x \in A\) and \(g\) is differentiable at \(f(x)
-  \in B\). Then the map \(g \circ f: A \to \R^k\) is differentiable at \(x \in
-  A\). Moreover, the differential \(\diff(g \circ f)(x): T\R^m_x \to
-  T\R^k{g(f(x))}\) is
-  \begin{equation}
-    \diff(g \circ f)(x) = \diff g(f(x)) \circ \diff f(x).
-  \end{equation}
-  Also, if \(x \in \Int A\) and \(f(x) \in \Int B\), then the theorem can be
-  rewritten in terms of the Jacobian matrix
-  {\small%
-  \[
-    \begin{bmatrix}
-      \partial_1 (g_1 \circ f)(x) &\dots &\partial_m (g_1 \circ f)(x) \\
-      \vdots &\ddots &\vdots \\
-      \partial_1 (g_k \circ f)(x) &\dots &\partial_m (g_k \circ f)(x)
-    \end{bmatrix}
-    =
-    \begin{bmatrix}
-      \partial_1 g_1(f(x)) &\dots &\partial_n g_1(f(x)) \\
-      \vdots &\ddots &\vdots \\
-      \partial_1 g_k(f(x)) &\dots &\partial_n g_k(f(x))
-    \end{bmatrix}
-    \begin{bmatrix}
-      \partial_1 f_1(x) &\dots &\partial_m f_1(x) \\
-      \vdots &\ddots &\vdots \\
-      \partial_1 f_n(x) &\dots &\partial_m f_n(x)
-    \end{bmatrix}
-  \]
-  }%
-  hence we find the relation --- for \(1 \leq i \leq m\) and \(1 \leq j \leq k\)
-  \begin{equation}
-    \partial_i(g_j \circ f)(x) =
-    \sum_{1 \leq r \leq n} (\partial_r g_j(f(x))) \cdot (\partial_i f_r(x))
-  \end{equation}
+    Let \(A \subseteq \R^m\) and \(B \subseteq \R^n\) be any sets and define
+    maps \(f: A \to B\) and \(g: B \to R^k\). Let \(f\) and \(g\) be such that
+    \(f\) is differentiable at \(x \in A\) and \(g\) is differentiable at \(f(x)
+    \in B\). Then the map \(g \circ f: A \to \R^k\) is differentiable at \(x \in
+    A\). Moreover, the differential \(\diff(g \circ f)(x): T\R^m_x \to
+    T\R^k{g(f(x))}\) is
+    \begin{equation}
+        \diff(g \circ f)(x) = \diff g(f(x)) \circ \diff f(x).
+    \end{equation}
+    Also, if \(x \in \Int A\) and \(f(x) \in \Int B\), then the theorem can be
+    rewritten in terms of the Jacobian matrix
+        {\small%
+            \[
+                \begin{bmatrix}
+                    \partial_1 (g_1 \circ f)(x) & \dots  & \partial_m (g_1 \circ f)(x) \\
+                    \vdots                      & \ddots & \vdots                      \\
+                    \partial_1 (g_k \circ f)(x) & \dots  & \partial_m (g_k \circ f)(x)
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    \partial_1 g_1(f(x)) & \dots  & \partial_n g_1(f(x)) \\
+                    \vdots               & \ddots & \vdots               \\
+                    \partial_1 g_k(f(x)) & \dots  & \partial_n g_k(f(x))
+                \end{bmatrix}
+                \begin{bmatrix}
+                    \partial_1 f_1(x) & \dots  & \partial_m f_1(x) \\
+                    \vdots            & \ddots & \vdots            \\
+                    \partial_1 f_n(x) & \dots  & \partial_m f_n(x)
+                \end{bmatrix}
+            \]
+        }%
+    hence we find the relation --- for \(1 \leq i \leq m\) and \(1 \leq j \leq k\)
+    \begin{equation}
+        \partial_i(g_j \circ f)(x) =
+        \sum_{1 \leq r \leq n} (\partial_r g_j(f(x))) \cdot (\partial_i f_r(x))
+    \end{equation}
 \end{theorem}
 
 \begin{proof}
-  Consider the filter base given by \(h \to 0\), where \(f(x + h) - f(x) = \diff
-  f(x)(h) + o(h)\), and as \(t \to 0\) we find \(g(f(x) + t) - g(f(x)) = \diff
-  g(f(x)) + o(t)\). Therefore by defining \(t \coloneq f(x + h) - f(x)\) we can write ---
-  as \(h, t \to 0\)
-  \begin{align*}
-    g(f(x + h)) - g(f(x)) &= g(f(x) + t) - g(f(x)) \\
-                          &= \diff g(f(x))(t) + o(t) \\
-                          &= \diff g(f(x))(f(x + h) - f(x)) + o(f(x + h) - f(x))
-                          \\
-                          &= \diff g(f(x))(\diff f(x)(h) + o(h)) + o(f(x + h) -
-                          f(x))
-                          \\
-                          &= \diff g(f(x))(\diff f(x)(h)) + \diff g(f(x))(o(h))
-                          + o(f(x + h) - f(x))
-  \end{align*}
-  From definition we have that --- as \(h \to 0\)
-  \[
-    \diff g(f(x))(o(h)) = g(f(x) + o(h)) - g(f(x)) - o(h),
-  \]
-  thus \(\diff g(f(x))(o(h)) \to 0\) as \(h \to 0\), that is, \(\diff g(f(x))
-  (o(h)) = o(h)\). Also, as \(h \to 0\), we have --- recalling \cref{prop:
-  linear-big-oh}
-  \[
-    t = f(x + h) - f(x) = \diff f(x)(h) + o(h) = O(h) + o(h) = O(h).
-  \]
-  Notice that \(o(O(h)) = o(h)\), thus \(o(f(x + h) - f(x)) = o(h)\), and hence
-  we finally conclude that
-  \begin{align*}
-    g(f(x + h)) - g(f(x))
-    &= \diff g(f(x))(\diff f(x)(h)) + \diff g(f(x))(o(h)) + o(f(x + h) - f(x))\\
-    &= \diff g(f(x))(\diff f(x)(h)) + o(h) + o(h)\\
-    &= \diff g(f(x))(\diff f(x)(h)) + o(h)
-  \end{align*}
-  which from definition implies that \(g \circ f\) is differentiable at \(x\)
-  and \(\diff (g \circ f)(x) = \diff g(f(x))(\diff f(x))\).
+    Consider the filter base given by \(h \to 0\), where \(f(x + h) - f(x) = \diff
+    f(x)(h) + o(h)\), and as \(t \to 0\) we find \(g(f(x) + t) - g(f(x)) = \diff
+    g(f(x)) + o(t)\). Therefore by defining \(t \coloneq f(x + h) - f(x)\) we can write ---
+    as \(h, t \to 0\)
+    \begin{align*}
+        g(f(x + h)) - g(f(x)) & = g(f(x) + t) - g(f(x))                               \\
+                              & = \diff g(f(x))(t) + o(t)                             \\
+                              & = \diff g(f(x))(f(x + h) - f(x)) + o(f(x + h) - f(x))
+        \\
+                              & = \diff g(f(x))(\diff f(x)(h) + o(h)) + o(f(x + h) -
+        f(x))
+        \\
+                              & = \diff g(f(x))(\diff f(x)(h)) + \diff g(f(x))(o(h))
+        + o(f(x + h) - f(x))
+    \end{align*}
+    From definition we have that --- as \(h \to 0\)
+    \[
+        \diff g(f(x))(o(h)) = g(f(x) + o(h)) - g(f(x)) - o(h),
+    \]
+    thus \(\diff g(f(x))(o(h)) \to 0\) as \(h \to 0\), that is, \(\diff g(f(x))
+    (o(h)) = o(h)\). Also, as \(h \to 0\), we have --- recalling \cref{prop:
+        linear-big-oh}
+    \[
+        t = f(x + h) - f(x) = \diff f(x)(h) + o(h) = O(h) + o(h) = O(h).
+    \]
+    Notice that \(o(O(h)) = o(h)\), thus \(o(f(x + h) - f(x)) = o(h)\), and hence
+    we finally conclude that
+    \begin{align*}
+        g(f(x + h)) - g(f(x))
+         & = \diff g(f(x))(\diff f(x)(h)) + \diff g(f(x))(o(h)) + o(f(x + h) - f(x)) \\
+         & = \diff g(f(x))(\diff f(x)(h)) + o(h) + o(h)                              \\
+         & = \diff g(f(x))(\diff f(x)(h)) + o(h)
+    \end{align*}
+    which from definition implies that \(g \circ f\) is differentiable at \(x\)
+    and \(\diff (g \circ f)(x) = \diff g(f(x))(\diff f(x))\).
 \end{proof}
 
 \begin{definition}[Directional derivative]\label{def: dir-derivative}
-  Let \(f: E \to \R\) and \(x \in  \Int E\), and \(v \in T\R^m_x\). If the
-  following limit exists
-  \begin{equation}
-    \Diff_v f(x) \coloneq \lim_{t \to 0} \frac{f(x + v t) - f(x)}{t}
-  \end{equation}
-  then the real quantity \(\Diff_v f(x) \in T\R_{f(x)}\) is called the
-  directional derivative of \(f\) at the point \(x\) evaluated at the vector
-  \(v\).
+    Let \(f: E \to \R\) and \(x \in  \Int E\), and \(v \in T\R^m_x\). If the
+    following limit exists
+    \begin{equation}
+        \Diff_v f(x) \coloneq \lim_{t \to 0} \frac{f(x + v t) - f(x)}{t}
+    \end{equation}
+    then the real quantity \(\Diff_v f(x) \in T\R_{f(x)}\) is called the
+    directional derivative of \(f\) at the point \(x\) evaluated at the vector
+    \(v\).
 \end{definition}
 
 \begin{definition}[Gradient]
-  Let \(E \subseteq \R^m\) and \(f: E \to \R\) be a real map. We define the
-  gradient of \(f\) as the vector field \(\grad f: \R^m \to \R^m\) written as
-  \[
-    \grad f = \left( \partial_1 f, \dots, \partial_m f \right).
-  \]
+    Let \(E \subseteq \R^m\) and \(f: E \to \R\) be a real map. We define the
+    gradient of \(f\) as the vector field \(\grad f: \R^m \to \R^m\) written as
+    \[
+        \grad f = \left( \partial_1 f, \dots, \partial_m f \right).
+    \]
 \end{definition}
 
 \begin{corollary}
-  Let \(E \subseteq \R^m\). If \(f: E \to \R\) is differentiable at \(x \in \Int
-  E\), then
-  \[
-    \Diff_v f(x) = \diff f(x)(v) = \sum_{1 \leq j \leq m} \partial_j f(x) v_j.
-  \]
-  Written in terms of the euclidean inner product in \(\R^m\):
-  \[
-    \Diff_v f(x) = \langle \grad f, v \rangle.
-  \]
+    Let \(E \subseteq \R^m\). If \(f: E \to \R\) is differentiable at \(x \in \Int
+    E\), then
+    \[
+        \Diff_v f(x) = \diff f(x)(v) = \sum_{1 \leq j \leq m} \partial_j f(x) v_j.
+    \]
+    Written in terms of the euclidean inner product in \(\R^m\):
+    \[
+        \Diff_v f(x) = \langle \grad f, v \rangle.
+    \]
 \end{corollary}
 
 \begin{proof}
-  Let \(\ell: \R \to E\) be a map \(\ell(t) = x + v t\). Then the composition
-  \(f \circ \ell\) is such that the differential at the point \(t = 0\) --- that
-  is \(\diff (f \circ \ell)(0): T\R_0 \to T\R_x\) --- is given by \(\diff (f
-  \circ \ell)(0) = \diff f(x) \circ \diff \ell(0)\), from the composition
-  theorem. Thus, if \(x \in \Int E\), then
-  \[
-    \partial (f \circ \ell)(0) =
-    \sum_{1 \leq r \leq m}
-    (\partial_r f(x)) \cdot (\partial \ell_r(0)).
-  \]
-  Moreover, \(\partial \ell_r(0) = \lim_{\R \ni h \to 0} \frac{\ell_r(0 + h) -
-  \ell_r(0)}{h}  = \lim_{h \to 0} \frac{(x_r + v_r h) - x_r}{h} = v_r\), which
-  implies that
-  \[
-    \partial (f\circ \ell)(0) = \sum_{1 \leq r \leq m} \partial_r f(x) v_r =
-    \diff f(x)(v).
-  \]
-  In order to make the connection to the directional derivative, it suffices to
-  observe that since \(f \circ \ell: \R \to \R\) then \(\partial (f \circ
-  \ell)\) is just the single variable derivative of the composite map ---
-  that is
-  \[
-    \partial (f \circ \ell)(0) =
-    \lim_{\R \ni t \to 0} \frac{(f \circ \ell)(0 + t) - f(\ell(0))} t =
-    \lim_{\R \ni t \to 0} \frac{f(x + vt) - f(x)} t = \Diff_v f(x).
-  \]
+    Let \(\ell: \R \to E\) be a map \(\ell(t) = x + v t\). Then the composition
+    \(f \circ \ell\) is such that the differential at the point \(t = 0\) --- that
+    is \(\diff (f \circ \ell)(0): T\R_0 \to T\R_x\) --- is given by \(\diff (f
+    \circ \ell)(0) = \diff f(x) \circ \diff \ell(0)\), from the composition
+    theorem. Thus, if \(x \in \Int E\), then
+    \[
+        \partial (f \circ \ell)(0) =
+        \sum_{1 \leq r \leq m}
+        (\partial_r f(x)) \cdot (\partial \ell_r(0)).
+    \]
+    Moreover, \(\partial \ell_r(0) = \lim_{\R \ni h \to 0} \frac{\ell_r(0 + h) -
+        \ell_r(0)}{h}  = \lim_{h \to 0} \frac{(x_r + v_r h) - x_r}{h} = v_r\), which
+    implies that
+    \[
+        \partial (f\circ \ell)(0) = \sum_{1 \leq r \leq m} \partial_r f(x) v_r =
+        \diff f(x)(v).
+    \]
+    In order to make the connection to the directional derivative, it suffices to
+    observe that since \(f \circ \ell: \R \to \R\) then \(\partial (f \circ
+    \ell)\) is just the single variable derivative of the composite map ---
+    that is
+    \[
+        \partial (f \circ \ell)(0) =
+        \lim_{\R \ni t \to 0} \frac{(f \circ \ell)(0 + t) - f(\ell(0))} t =
+        \lim_{\R \ni t \to 0} \frac{f(x + vt) - f(x)} t = \Diff_v f(x).
+    \]
 \end{proof}
 
 Let \(f: E \to \R\) be a differentiable map at \(x \in E\). Define \(\phi\) to
 be the angle between \(\grad f(x)\) and a given unit vector \(u \in T\R^m_x\).
 Lets analyse the implication of certain choices of \(u\):
 \begin{itemize}
-  \item If \(u = \frac{\grad f(x)}{\norm{\grad f(x)}}\) then \(\phi = 0\) and
-    hence
-    \[
-      \Diff_u f(x) = \langle \grad f(x), u \rangle = \norm{\grad f(x)} \norm{u}
-      \cos(\phi) = \norm{\grad f(x)},
-    \]
-    which indicates that for this choice of \(u\) the value \(\Diff f(x) \in
-    \R\) is maximized.
-  \item If \(u\) is any vector perpendicular to \(\grad f(x)\) then \(\Diff_u
-    f(x) = 0\).
-  \item If \(u = - \frac{\grad f(x)}{\norm{\grad f(x)}}\), then \(\phi = \frac
-    \pi 2\) and thus
-    \[
-      \Diff_u f(x) = -\norm{\grad f(x)},
-    \]
-    which is the minimum value for the directional derivative over a unit
-    vector.
+    \item If \(u = \frac{\grad f(x)}{\norm{\grad f(x)}}\) then \(\phi = 0\) and
+          hence
+          \[
+              \Diff_u f(x) = \langle \grad f(x), u \rangle = \norm{\grad f(x)} \norm{u}
+              \cos(\phi) = \norm{\grad f(x)},
+          \]
+          which indicates that for this choice of \(u\) the value \(\Diff f(x) \in
+          \R\) is maximized.
+    \item If \(u\) is any vector perpendicular to \(\grad f(x)\) then \(\Diff_u
+          f(x) = 0\).
+    \item If \(u = - \frac{\grad f(x)}{\norm{\grad f(x)}}\), then \(\phi = \frac
+          \pi 2\) and thus
+          \[
+              \Diff_u f(x) = -\norm{\grad f(x)},
+          \]
+          which is the minimum value for the directional derivative over a unit
+          vector.
 \end{itemize}
 
 \begin{theorem}[Inverse mapping differential]
-  Let \(x, y \in \R^n\) be any points and consider the map \(f: U_x \to V_y\),
-  where \(U_x \subseteq \R^n\) is a neighbourhood of \(x\) and \(V_y \subseteq
-  \R^n\) is a neighbourhood of \(y\) --- and define \(f(x) = y\). Let \(f\) be
-  continuous at \(x\) and have a continuous inverse mapping \(f^{-1}: V_y \to
-  U_x\) at the point \(y\). If the map \(f\) is differentiable at \(x\) and
-  \(\diff f(x): T\R^n_x \to T\R^n_y\) has an inverse \(\diff f(x)^{-1}: T\R^n_y
-  \to T\R^n_x\), then the map \(f^{-1}\) is differentiable at \(y\) and the
-  differential \(\diff f^{-1}(y): T\R^n_y \to T\R^n_x\) is such that
-  \[
-    \diff f^{-1}(y) = (\diff f(x))^{-1}.
-  \]
+    Let \(x, y \in \R^n\) be any points and consider the map \(f: U_x \to V_y\),
+    where \(U_x \subseteq \R^n\) is a neighbourhood of \(x\) and \(V_y \subseteq
+    \R^n\) is a neighbourhood of \(y\) --- and define \(f(x) = y\). Let \(f\) be
+    continuous at \(x\) and have a continuous inverse mapping \(f^{-1}: V_y \to
+    U_x\) at the point \(y\). If the map \(f\) is differentiable at \(x\) and
+    \(\diff f(x): T\R^n_x \to T\R^n_y\) has an inverse \(\diff f(x)^{-1}: T\R^n_y
+    \to T\R^n_x\), then the map \(f^{-1}\) is differentiable at \(y\) and the
+    differential \(\diff f^{-1}(y): T\R^n_y \to T\R^n_x\) is such that
+    \[
+        \diff f^{-1}(y) = (\diff f(x))^{-1}.
+    \]
 \end{theorem}
 
 \begin{proof}
-  From the continuity of \(f\), for any neighbourhood \(V \subseteq V_y\) of
-  \(y\), the preimage \(f^{-1}(V) \subseteq U_x\) is open. Let \(y + t \in V\)
-  be some element, then there exists \(x + h \in U_x\) for which \(f(x + h) = y
-  + t\). Moreover, since \(f\) is continuous at \(x\), --- as \(h \to 0\) --- we
-  have \(t = f(x + h) - y \to 0\) and since \(f^{-1}\) is continuous at \(y\),
-  --- as \(t \to 0\) --- we have \(h = f^{-1}(y + t) - x\).
+    From the continuity of \(f\), for any neighbourhood \(V \subseteq V_y\) of
+    \(y\), the preimage \(f^{-1}(V) \subseteq U_x\) is open. Let \(y + t \in V\)
+    be some element, then there exists \(x + h \in U_x\) for which \(f(x + h) = y
+    + t\). Moreover, since \(f\) is continuous at \(x\), --- as \(h \to 0\) --- we
+    have \(t = f(x + h) - y \to 0\) and since \(f^{-1}\) is continuous at \(y\),
+    --- as \(t \to 0\) --- we have \(h = f^{-1}(y + t) - x\).
 
-  From the differentiability of \(f\) at \(x\) we have that --- as \(h \to 0\),
-  from \cref{prop: linear-big-oh}
-  \begin{equation}\label{eq: inv-map-diff-1}
-    t = \diff f(x)(h) + o(h) = O(h) + o(h) = O(h).
-  \end{equation}
-  Since \(\diff f(x)\) is invertible, from \cref{eq: inv-map-diff-1} we find
-  --- as \(h \to 0\)
-  \begin{align}\label{eq: inv-map-diff-2}
-    (\diff f(x))^{-1}(t) = \left( \diff f(x))^{-1} \circ \diff f(x) \right)(h) +
-    (\diff f(x))^{-1}(o(h))
-    = h + o(h)
-  \end{align}
-  Where \((\diff f(x))^{-1}(o(h)) = o(h)\) comes from \cref{prop:
-  linear-little-oh}. Now let \(\delta > 0\) be such that, if \(\norm{h} <
-  \delta\), then \(\norm{o(h)} \leq \frac 1 2 \norm{h}\). For such
-  \(\delta\) we find that --- since \((\diff f(x))^{-1}(t) \geq h - o(h)\)
-  \begin{align*}
-    \norm{(\diff f(x))^{-1}(t)}
-    = \norm{h - o(h)}
-    \geq \norm{h} - \norm{o(h)}
-    \geq \frac 1 2 \norm{h}
-  \end{align*}
-  Hence, using the fact that \(h = f^{-1}(y + t) + x \to 0\) as \(t \to 0\),
-  then the inequality obtained above --- that is
-  \[
-    \norm{h} \leq 2 \norm{(\diff f(x))^{-1}(t)}
-  \]
-  together with the fact that \((\diff f(x))^{-1}(t) \to 0\) as \(t \to 0\) ---
-  since linear maps are continuous (see \cref{prop: linear-continuous}) and
-  vanish at \(0\) --- we conclude that \(h = O(t)\). Therefore \(h\) and \(t\)
-  have the same order over \(h, t \to 0\), that is \(h \asymp t\) and,
-  equivalently, there exists \(a, b > 0\) constants for which exists a
-  neighbourhood \(U \subseteq \R^n\) of \(0\) such that \(a \norm{t} \leq
-  \norm{h} \leq b \norm{t}\) --- see \cref{def: asymp-order}. This
-  shows that \(o(h) = o(t)\). Henceforth, by the use of \cref{eq:
-  inv-map-diff-2} we find
-  \[
-    f^{-1}(y + t) + f^{-1}(y) = (\diff f(x))^{-1}(t) + o(t).
-  \]
-  Thus indeed \(f^{-1}\) is differentiable at \(y\) and \(\diff f^{-1}(x) =
-  (\diff f(x))^{-1}\).
+    From the differentiability of \(f\) at \(x\) we have that --- as \(h \to 0\),
+    from \cref{prop: linear-big-oh}
+    \begin{equation}\label{eq: inv-map-diff-1}
+        t = \diff f(x)(h) + o(h) = O(h) + o(h) = O(h).
+    \end{equation}
+    Since \(\diff f(x)\) is invertible, from \cref{eq: inv-map-diff-1} we find
+    --- as \(h \to 0\)
+    \begin{align}\label{eq: inv-map-diff-2}
+        (\diff f(x))^{-1}(t) = \left( \diff f(x))^{-1} \circ \diff f(x) \right)(h) +
+        (\diff f(x))^{-1}(o(h))
+        = h + o(h)
+    \end{align}
+    Where \((\diff f(x))^{-1}(o(h)) = o(h)\) comes from \cref{prop:
+        linear-little-oh}. Now let \(\delta > 0\) be such that, if \(\norm{h} <
+    \delta\), then \(\norm{o(h)} \leq \frac 1 2 \norm{h}\). For such
+    \(\delta\) we find that --- since \((\diff f(x))^{-1}(t) \geq h - o(h)\)
+    \begin{align*}
+        \norm{(\diff f(x))^{-1}(t)}
+        = \norm{h - o(h)}
+        \geq \norm{h} - \norm{o(h)}
+        \geq \frac 1 2 \norm{h}
+    \end{align*}
+    Hence, using the fact that \(h = f^{-1}(y + t) + x \to 0\) as \(t \to 0\),
+    then the inequality obtained above --- that is
+    \[
+        \norm{h} \leq 2 \norm{(\diff f(x))^{-1}(t)}
+    \]
+    together with the fact that \((\diff f(x))^{-1}(t) \to 0\) as \(t \to 0\) ---
+    since linear maps are continuous (see \cref{prop: linear-continuous}) and
+    vanish at \(0\) --- we conclude that \(h = O(t)\). Therefore \(h\) and \(t\)
+    have the same order over \(h, t \to 0\), that is \(h \asymp t\) and,
+    equivalently, there exists \(a, b > 0\) constants for which exists a
+    neighbourhood \(U \subseteq \R^n\) of \(0\) such that \(a \norm{t} \leq
+    \norm{h} \leq b \norm{t}\) --- see \cref{def: asymp-order}. This
+    shows that \(o(h) = o(t)\). Henceforth, by the use of \cref{eq:
+        inv-map-diff-2} we find
+    \[
+        f^{-1}(y + t) + f^{-1}(y) = (\diff f(x))^{-1}(t) + o(t).
+    \]
+    Thus indeed \(f^{-1}\) is differentiable at \(y\) and \(\diff f^{-1}(x) =
+    (\diff f(x))^{-1}\).
 \end{proof}
 
 \subsection{Mean Value Theorem}
 
 \begin{remark}
-  In what remains of this chapter we'll denote a general domain by \(G \subseteq
-  \R^m\). Moreover, if \(x, y \in \R^n\), we'll denote by \([x, y]\) the line
-  segment \(\gamma([0, 1])\) --- where \(\gamma: [0, 1] \to \R^n\) maps \(t
-  \xmapsto \gamma (t - 1) x + t y\). On the other hand, \((x, y)\) denotes
-  \(\gamma((0, 1))\).
+    In what remains of this chapter we'll denote a general domain by \(G \subseteq
+    \R^m\). Moreover, if \(x, y \in \R^n\), we'll denote by \([x, y]\) the line
+    segment \(\gamma([0, 1])\) --- where \(\gamma: [0, 1] \to \R^n\) maps \(t
+    \xmapsto \gamma (t - 1) x + t y\). On the other hand, \((x, y)\) denotes
+    \(\gamma((0, 1))\).
 \end{remark}
 
 \begin{theorem}[Mean Value Theorem for real valued maps]
-  \label{thm: several-mvt-real-val}
-  Let \(f: E \to \R\) be a map. If \(f\) is continuous on the line segment \([x,
-  y]\) and differentiable on \((x, y)\) --- where \(x, y \in E\) --- then there
-  exists \(z \in (x, y)\) such that
-  \[
-    f(y) - f(x) = \diff f(z)(y - x).
-  \]
+    \label{thm: several-mvt-real-val}
+    Let \(f: E \to \R\) be a map. If \(f\) is continuous on the line segment \([x,
+            y]\) and differentiable on \((x, y)\) --- where \(x, y \in E\) --- then there
+    exists \(z \in (x, y)\) such that
+    \[
+        f(y) - f(x) = \diff f(z)(y - x).
+    \]
 \end{theorem}
 
 \begin{proof}
-  Define \(h(t) = (1 - t) x + ty\). Let \(g: [0, 1] \to \R\) defined by \(g = f
-  \circ h\). Since \(h\) and \(f\) are both continuous maps on, respectively,
-  \([0, 1]\) and \(h([0, 1]) = [x, y]\) --- together with the fact that the
-  composition of continuous maps yield a continuous map --- we find that \(g\)
-  is continuous on \([0, 1]\). Since \(h\) and \(f\) are differentiable at,
-  respectively \((0, 1)\) and \(h((0, 1)) = (x, y)\) --- by the composition of
-  differentiable maps --- we get that \(g\) is differentiable on \((0, 1)\).
+    Define \(h(t) = (1 - t) x + ty\). Let \(g: [0, 1] \to \R\) defined by \(g = f
+    \circ h\). Since \(h\) and \(f\) are both continuous maps on, respectively,
+    \([0, 1]\) and \(h([0, 1]) = [x, y]\) --- together with the fact that the
+    composition of continuous maps yield a continuous map --- we find that \(g\)
+    is continuous on \([0, 1]\). Since \(h\) and \(f\) are differentiable at,
+    respectively \((0, 1)\) and \(h((0, 1)) = (x, y)\) --- by the composition of
+    differentiable maps --- we get that \(g\) is differentiable on \((0, 1)\).
 
-  We can now apply the Mean Value Theorem on \(g\) to ensure that there exists
-  \(\overline t \in [0, 1]\) such that
-  \[
-    g(1) - g(0) = g'(\overline t).
-  \]
-  Since \(g'(\overline t) = [\diff f(h(\overline t))](h'(\overline t)) = \diff
-  f((1 -\overline t) x + \overline t y)(y - x)\), making \(z \coloneq (1 - \overline
-  t)x + \overline t y \in (x, y)\) and substituting the values for \(g\) in
-  terms of \(f\) we prove the theorem.
+    We can now apply the Mean Value Theorem on \(g\) to ensure that there exists
+    \(\overline t \in [0, 1]\) such that
+    \[
+        g(1) - g(0) = g'(\overline t).
+    \]
+    Since \(g'(\overline t) = [\diff f(h(\overline t))](h'(\overline t)) = \diff
+    f((1 -\overline t) x + \overline t y)(y - x)\), making \(z \coloneq (1 - \overline
+    t)x + \overline t y \in (x, y)\) and substituting the values for \(g\) in
+    terms of \(f\) we prove the theorem.
 \end{proof}
 
 \begin{corollary}[Constant real valued map]\label{cor: sev-const}
-  Let \(f: G \to \R\) be a map --- where \(G \subseteq \R^m\) is a domain. If
-  \(f\) is differentiable at every point of \(G\) and its differential vanishes
-  at all points of \(G\), then \(f\) is constant on the domain \(G\).
+    Let \(f: G \to \R\) be a map --- where \(G \subseteq \R^m\) is a domain. If
+    \(f\) is differentiable at every point of \(G\) and its differential vanishes
+    at all points of \(G\), then \(f\) is constant on the domain \(G\).
 \end{corollary}
 
 \begin{proof}
-  Since for all \(x \in G\) the differential \(\diff f(x)\) vanishes for all \(v
-  \in T\R^m_x\), then \(\dim \ker(\diff f(x)) = m\) and \(\diff f(x)\) is the
-  null mapping. Since \(G\) is open, the partial derivatives \(\partial_j f(x)\)
-  exist --- where \(1 \leq j \leq m\) --- and \(\partial_j f(x) = 0\).
+    Since for all \(x \in G\) the differential \(\diff f(x)\) vanishes for all \(v
+    \in T\R^m_x\), then \(\dim \ker(\diff f(x)) = m\) and \(\diff f(x)\) is the
+    null mapping. Since \(G\) is open, the partial derivatives \(\partial_j f(x)\)
+    exist --- where \(1 \leq j \leq m\) --- and \(\partial_j f(x) = 0\).
 
-  Let \(x \in G\) be any point and consider \(B_x(r) \subseteq G\) an open ball
-  centred in \(x\). Let \(y \in B_x(r)\) be any point, then from \cref{thm:
-  several-mvt-real-val} --- since \([x, y] \subseteq B_x(r)\) --- we have the
-  existence of \(z \in [x, y]\) such that
-  \begin{equation}\label{eq: sev-const}
-    f(y) - f(x) = \diff f(z)(y - x) = 0,
-  \end{equation}
-  that is, \(f(y) = f(x)\) for all points of the open ball --- the map is
-  constant at any open ball contained in \(G\) of every point of \(G\).
+    Let \(x \in G\) be any point and consider \(B_x(r) \subseteq G\) an open ball
+    centred in \(x\). Let \(y \in B_x(r)\) be any point, then from \cref{thm:
+        several-mvt-real-val} --- since \([x, y] \subseteq B_x(r)\) --- we have the
+    existence of \(z \in [x, y]\) such that
+    \begin{equation}\label{eq: sev-const}
+        f(y) - f(x) = \diff f(z)(y - x) = 0,
+    \end{equation}
+    that is, \(f(y) = f(x)\) for all points of the open ball --- the map is
+    constant at any open ball contained in \(G\) of every point of \(G\).
 
-  Let \(x, y \in G\) be any points. Since \(G\) is path-connected, there exists
-  a continuous map \(\gamma: [0, 1] \to G\) such that \(\gamma(0) = x\) and
-  \(\gamma(1) = y\). Consider any open ball \(B_x(r) \subseteq G\) centred in
-  \(x\). Let \(\Delta = \{\delta \in [0, 1] \colon \gamma([0, \delta]) \in
-  B_x(r)\}\). From the continuity of \(\gamma\) and the fact that \(\gamma(0) =
-  x \in B_x(r)\), the collection \(\Delta\) is non-empty. If \(\delta \in
-  \Delta\) --- from \cref{eq: sev-const} --- we find that \((f \circ \gamma)([0,
-  \delta] = f(x)\). Since \(\Delta\) is limited, we can define \(\varepsilon =
-  \sup \Delta\). From the continuity of \(\gamma\) we have that \((f \circ
-  \gamma)(\varepsilon) = f(x)\). We now show that, in fact, \(\varepsilon = 1\).
-  Suppose --- for the sake of contradiction --- that \(\varepsilon < 1\), then
-  there would exist some open ball \(B_{\gamma(\varepsilon)}(d)\) such that
-  \(f(B_{\gamma(\varepsilon)}(d)) = f(\gamma(\varepsilon)) = f(x)\) and, for
-  instance, \(\varepsilon + d \in \Delta\) and \(\varepsilon < \varepsilon +
-  d\), which contradicts the hypothesis that \(\varepsilon = \sup \Delta\). From
-  this, we conclude that \(\varepsilon = 1\) and hence \(f(\gamma([0, 1])) = f(x)
-  = f(y)\) which closes the proof.
+    Let \(x, y \in G\) be any points. Since \(G\) is path-connected, there exists
+    a continuous map \(\gamma: [0, 1] \to G\) such that \(\gamma(0) = x\) and
+    \(\gamma(1) = y\). Consider any open ball \(B_x(r) \subseteq G\) centred in
+    \(x\). Let \(\Delta = \{\delta \in [0, 1] \colon \gamma([0, \delta]) \in
+    B_x(r)\}\). From the continuity of \(\gamma\) and the fact that \(\gamma(0) =
+    x \in B_x(r)\), the collection \(\Delta\) is non-empty. If \(\delta \in
+    \Delta\) --- from \cref{eq: sev-const} --- we find that \((f \circ \gamma)([0,
+            \delta] = f(x)\). Since \(\Delta\) is limited, we can define \(\varepsilon =
+    \sup \Delta\). From the continuity of \(\gamma\) we have that \((f \circ
+    \gamma)(\varepsilon) = f(x)\). We now show that, in fact, \(\varepsilon = 1\).
+    Suppose --- for the sake of contradiction --- that \(\varepsilon < 1\), then
+    there would exist some open ball \(B_{\gamma(\varepsilon)}(d)\) such that
+    \(f(B_{\gamma(\varepsilon)}(d)) = f(\gamma(\varepsilon)) = f(x)\) and, for
+    instance, \(\varepsilon + d \in \Delta\) and \(\varepsilon < \varepsilon +
+    d\), which contradicts the hypothesis that \(\varepsilon = \sup \Delta\). From
+    this, we conclude that \(\varepsilon = 1\) and hence \(f(\gamma([0, 1])) = f(x)
+    = f(y)\) which closes the proof.
 \end{proof}
 
 \begin{lemma}\label{lem: mvt-sev-real-dom}
-  Let \([a, b] \subseteq \R\) be a closed interval and \(f: [a, b] \to \R^n\) be
-  a map. If \(f\) is continuous on \([a, b]\) and differentiable on \((a, b)\),
-  then there exists \(x \in [a, b]\) such that
-  \[
-    \norm{f(b) - f(a)}_{\R^n} \leq (b - a) \norm{\diff f(x)}_{\R^n}.
-  \]
+    Let \([a, b] \subseteq \R\) be a closed interval and \(f: [a, b] \to \R^n\) be
+    a map. If \(f\) is continuous on \([a, b]\) and differentiable on \((a, b)\),
+    then there exists \(x \in [a, b]\) such that
+    \[
+        \norm{f(b) - f(a)}_{\R^n} \leq (b - a) \norm{\diff f(x)}_{\R^n}.
+    \]
 \end{lemma}
 
 \begin{proof}
-Let \(\phi: [a, b] \to \R\) be defined as \(\phi(t) = \langle f(b) - f(a), f(t) \rangle_{\R^n}\) ---
-thus \(\phi\) is continuous on \([a, b]\) and differentiable on \((a, b)\).
-Applying the Mean Value Theorem we ensure the existence of some \(x \in (a, b)\)
-such that
-  \begin{equation}
-    \label{eq: mvt-sev-lem-eq-1}
-    \phi(b) - \phi(a) = (b - a) \phi'(x)
-    = (b - a) \langle f(b) - f(a), \diff f(x) \rangle_{\R^n}.
-  \end{equation}
-  Since
-  \begin{align}
-    \nonumber
-    \phi(b) - \phi(a)
-    &= \langle f(b) - f(a), f(b) \rangle_{\R^n} - \langle f(b) - f(a), f(a)
-    \rangle_{\R^n} \\
-    \nonumber
-    &= \langle f(b) - f(a), f(b) - f(a) \rangle_{\R^n} \\
-    \label{eq: mvt-sev-lem-eq-2}
-    &= \norm{f(b) - f(a)}_{\R^n}^2
-  \end{align}
-  We can substitute \cref{eq: mvt-sev-lem-eq-2} into \cref{eq: mvt-sev-lem-eq-1}
-  to find
-  \[
-    \norm{f(b) - f(a)}_{\R^n}^2 = (b - a) \langle f(b) - f(a), \diff f(x)
-    \rangle_{\R^n}.
-  \]
-  From H\H{o}lder's inequalities (see \cref{prop: holder-ineq}) we know that
-  \(\langle v, u \rangle_{\R^n} \leq \norm{v}_{\R^n} \norm{u}_{\R^n}\). Using
-  such fact and assuming \(f(a) \neq f(b)\), we find that
-  \begin{align*}
-    \norm{f(b) - f(a)}_{\R^n}^2
-    = (b - a) \langle f(b) - f(a), \diff f(x) \rangle_{\R^n}
-    \leq (b - a) \norm{f(b) - f(a)}_{\R^n} \norm{\diff f(x)}_{\R^n}
-  \end{align*}
-  implies \(\norm{f(b) - f(a)}_{\R^n} \leq (b - a) \norm{\diff f(x)}_{\R^n}\).
+    Let \(\phi: [a, b] \to \R\) be defined as \(\phi(t) = \langle f(b) - f(a), f(t) \rangle_{\R^n}\) ---
+    thus \(\phi\) is continuous on \([a, b]\) and differentiable on \((a, b)\).
+    Applying the Mean Value Theorem we ensure the existence of some \(x \in (a, b)\)
+    such that
+    \begin{equation}
+        \label{eq: mvt-sev-lem-eq-1}
+        \phi(b) - \phi(a) = (b - a) \phi'(x)
+        = (b - a) \langle f(b) - f(a), \diff f(x) \rangle_{\R^n}.
+    \end{equation}
+    Since
+    \begin{align}
+        \nonumber
+        \phi(b) - \phi(a)
+         & = \langle f(b) - f(a), f(b) \rangle_{\R^n} - \langle f(b) - f(a), f(a)
+        \rangle_{\R^n}                                                            \\
+        \nonumber
+         & = \langle f(b) - f(a), f(b) - f(a) \rangle_{\R^n}                      \\
+        \label{eq: mvt-sev-lem-eq-2}
+         & = \norm{f(b) - f(a)}_{\R^n}^2
+    \end{align}
+    We can substitute \cref{eq: mvt-sev-lem-eq-2} into \cref{eq: mvt-sev-lem-eq-1}
+    to find
+    \[
+        \norm{f(b) - f(a)}_{\R^n}^2 = (b - a) \langle f(b) - f(a), \diff f(x)
+        \rangle_{\R^n}.
+    \]
+    From H\H{o}lder's inequalities (see \cref{prop: holder-ineq}) we know that
+    \(\langle v, u \rangle_{\R^n} \leq \norm{v}_{\R^n} \norm{u}_{\R^n}\). Using
+    such fact and assuming \(f(a) \neq f(b)\), we find that
+    \begin{align*}
+        \norm{f(b) - f(a)}_{\R^n}^2
+        = (b - a) \langle f(b) - f(a), \diff f(x) \rangle_{\R^n}
+        \leq (b - a) \norm{f(b) - f(a)}_{\R^n} \norm{\diff f(x)}_{\R^n}
+    \end{align*}
+    implies \(\norm{f(b) - f(a)}_{\R^n} \leq (b - a) \norm{\diff f(x)}_{\R^n}\).
 \end{proof}
 
 \begin{theorem}[Mean Value Theorem for \(\R^n\) valued maps]
-  \label{thm: several-mvt-Rn-val}
-  Let \(f: E \to \R^n\) be a continuous map on the line segment \([x, y]\) and
-  differentiable on \((x, y)\) --- with \(x, y \in E\). If for all \(z \in (x,
-  y)\) and all \(v \in T\R^n_z\) we have \(\norm{\diff f(z)(v)}_{\R^n} \leq M
-  \norm{v}_{\R^n}\) --- for some fixed \(M \in \R\) --- then
-  \[
-    \norm{f(y) - f(x)}_{\R^n} \leq M \norm{y - x}_{\R^n}.
-  \]
+    \label{thm: several-mvt-Rn-val}
+    Let \(f: E \to \R^n\) be a continuous map on the line segment \([x, y]\) and
+    differentiable on \((x, y)\) --- with \(x, y \in E\). If for all \(z \in (x,
+    y)\) and all \(v \in T\R^n_z\) we have \(\norm{\diff f(z)(v)}_{\R^n} \leq M
+    \norm{v}_{\R^n}\) --- for some fixed \(M \in \R\) --- then
+    \[
+        \norm{f(y) - f(x)}_{\R^n} \leq M \norm{y - x}_{\R^n}.
+    \]
 \end{theorem}
 
 \begin{proof}
-  Let \(h: [0, 1] \to E\) be defined as \(h(t) = (1-t)x + ty\), and \(g: [0, 1]
-  \to \R^n\) defined by \(g = f \circ h\). Notice that \(g\) is the composition
-  of continuous maps on \([0, 1]\) and differentiable maps on \((0, 1)\), so
-  \(g\) inherits both properties. By applying \cref{lem: mvt-sev-real-dom} we
-  ensure the existence of some \(\overline t \in [0, 1]\) such that
-  \begin{equation}\label{eq: several-mvt-Rn-val-1}
-    \norm{g(1) - g(0)} \leq \norm{\diff g(\overline t)}
-  \end{equation}
-  From the composition theorem we have that --- for any \(t \in (0, 1)\)
-  \[
-    \diff g(t) = [\diff f(h(t))](\diff h(t)) = [\diff f(h(t))](y - x).
-  \]
-  Since \(\norm{\diff f(z)(v)} \leq M \norm{v}\), we get
-  \begin{equation}\label{eq: several-mvt-Rn-val-2}
-    \norm{\diff g(t)}
-    = \norm{\diff f(h(t))(y - x)}
-    \leq M \norm{y - x}.
-  \end{equation}
-  By substituting \cref{eq: several-mvt-Rn-val-2} into \cref{eq:
-  several-mvt-Rn-val-1} and noting that \(g(1) = f(y)\) and \(g(0) = f(x)\) we
-  can finally conclude that
-  \[
-    \norm{f(y) - f(x)} \leq M \norm{y - x}.
-  \]
+    Let \(h: [0, 1] \to E\) be defined as \(h(t) = (1-t)x + ty\), and \(g: [0, 1]
+    \to \R^n\) defined by \(g = f \circ h\). Notice that \(g\) is the composition
+    of continuous maps on \([0, 1]\) and differentiable maps on \((0, 1)\), so
+    \(g\) inherits both properties. By applying \cref{lem: mvt-sev-real-dom} we
+    ensure the existence of some \(\overline t \in [0, 1]\) such that
+    \begin{equation}\label{eq: several-mvt-Rn-val-1}
+        \norm{g(1) - g(0)} \leq \norm{\diff g(\overline t)}
+    \end{equation}
+    From the composition theorem we have that --- for any \(t \in (0, 1)\)
+    \[
+        \diff g(t) = [\diff f(h(t))](\diff h(t)) = [\diff f(h(t))](y - x).
+    \]
+    Since \(\norm{\diff f(z)(v)} \leq M \norm{v}\), we get
+    \begin{equation}\label{eq: several-mvt-Rn-val-2}
+        \norm{\diff g(t)}
+        = \norm{\diff f(h(t))(y - x)}
+        \leq M \norm{y - x}.
+    \end{equation}
+    By substituting \cref{eq: several-mvt-Rn-val-2} into \cref{eq:
+        several-mvt-Rn-val-1} and noting that \(g(1) = f(y)\) and \(g(0) = f(x)\) we
+    can finally conclude that
+    \[
+        \norm{f(y) - f(x)} \leq M \norm{y - x}.
+    \]
 \end{proof}
 
 \begin{corollary}
-  Let \(f: G \to \R^n\) be a differentiable map in \(G\). If \(\diff f(x)\) is
-  the zero-map --- that is, \(\diff f(x)(y) = 0\) for all \(y \in T\R^m_x\) ---
-  for all \(x \in G\), then \(f\) is constant.
+    Let \(f: G \to \R^n\) be a differentiable map in \(G\). If \(\diff f(x)\) is
+    the zero-map --- that is, \(\diff f(x)(y) = 0\) for all \(y \in T\R^m_x\) ---
+    for all \(x \in G\), then \(f\) is constant.
 \end{corollary}
 
 \begin{proof}
-  Let \(M = 0\) and use \cref{thm: several-mvt-Rn-val}.
+    Let \(M = 0\) and use \cref{thm: several-mvt-Rn-val}.
 \end{proof}
 
 \subsection{Sufficient Condition for Differentiability}
 
 \begin{theorem}\label{thm: suff-partial-continuous}
-  Let \(x \in \R^m\) be any point and let \(U \subseteq \R^m\) be a
-  neighbourhood of \(x\). Let \(f: U \to \R\) be a map. If for all \(1 \leq j
-  \leq m\) the partial derivatives \(\partial_j f\) exist for each point of
-  \(U\), and \(\partial_j f\) is continuous at \(x\), then \(f\) is
-  differentiable at \(x\).
+    Let \(x \in \R^m\) be any point and let \(U \subseteq \R^m\) be a
+    neighbourhood of \(x\). Let \(f: U \to \R\) be a map. If for all \(1 \leq j
+    \leq m\) the partial derivatives \(\partial_j f\) exist for each point of
+    \(U\), and \(\partial_j f\) is continuous at \(x\), then \(f\) is
+    differentiable at \(x\).
 \end{theorem}
 
 \begin{proof}
-  Since the collection of open balls in \(\R^m\) forms a base for the standard
-  real topology, we may assume that \(U = B_x(r)\) for some \(r > 0\). Consider
-  a point \(x + h \in B_x(r)\), then for all \(0 \leq k \leq m\) we have that
-  \(y_k = x + \sum_{j=1}^k h_j e_j \in B_x(r)\). Moreover, if \(0 \leq \ell, k
-  \leq m\) then the line segment \([y_\ell, y_k] \subseteq U\). Notice that
-  \begin{align}\label{eq: suff-partial-continuous-1}
-    \nonumber
-    f(x + h) - f(x)
-    &= f(x + h) + \left[ \sum_{k=1}^{m-1}
-      f\bigg( x + \sum_{j=1}^k h_i e_j \bigg) -
-      f\bigg( x + \sum_{j=1}^k h_i e_j \bigg)
-    \right] - f(x)
-    \\
-    \nonumber
-    &= \sum_{k=1}^m \left[
-      f\bigg( x + \sum_{j=1}^k h_j e_j \bigg)
-      - f\bigg( x + \sum_{j=1}^{k-1} h_j e_j \bigg)
-    \right]
-    \\
-    &= \sum_{k=1}^m f(y_k) - f(y_{k-1})
-  \end{align}
-  Since \(f\) has partial derivatives for every point of \(U\), for each \(1
-  \leq k \leq m\), we can apply the Mean Value \cref{thm: several-mvt-real-val}
-  for the pair of points points \(y_k\) and \(y_{k-1}\), to find a point \(z_k =
-  x + \theta_k h_k e_k\) belonging to the segment line \([y_{k-1}, y_k]
-  \subseteq U\) --- with \(\theta_j \in [0, 1]\) --- such that
-  \begin{equation}\label{eq: suff-partial-continuous-2}
-    f(y_k) - f(y_{k-1}) = \partial_k f(z_k) h_k
-  \end{equation}
-  Substituting \cref{eq: suff-partial-continuous-2} into \cref{eq:
-  suff-partial-continuous-1} we get
-  \begin{equation}\label{eq: suff-partial-continuous-3}
-    f(x + h) - f(x)
-    = \sum_{k=1}^m \partial_k f(z_k) h_k
-  \end{equation}
-  Since all partial derivatives are continuous at \(x\), for all \(1 \leq k \leq
-  m\) there exists a map \(\alpha_k: U \to \R\) such that \(\alpha_k(h_k) \to
-  0\) as \(h_k \to 0\) and we can write
-  \begin{equation}\label{eq: suff-partial-continuous-4}
-     \partial_k f(z_k) = \partial_k f(x + \theta_k h_k e_k)
-     = \partial_k f(x) + \alpha_k(h_k)
-  \end{equation}
-  Substituting \cref{eq: suff-partial-continuous-4} into \cref{eq:
-  suff-partial-continuous-3} we get the following relation
-  \[
-    f(x + h) - f(x) = \sum_{k=1}^m \partial_k f(x) h_k + \alpha_k(h_k) h_k
-    = \sum_{k=1}^m \partial_k f(x) h_k + \sum_{k=1}^m \alpha_k(h_k) h_k
-  \]
-  Notice that as \(h \to 0\) we have that \(\alpha_k(h_k) h_k \to 0\) for all
-  \(1 \leq k \leq m\), hence \(\alpha_k(h_k) h_k = o(h)\) and thus
-  \[
-    f(x + h) - f(x) = \sum_{k=1}^m \partial_k f(x) h_k + o(h)
-  \]
-  From \cref{def: diff-several} the map \(f\) is differentiable at \(x\) --- and
-  \(\diff f(x)(h) = \sum_{k=1}^m \partial_k f(x) h_k\).
+    Since the collection of open balls in \(\R^m\) forms a base for the standard
+    real topology, we may assume that \(U = B_x(r)\) for some \(r > 0\). Consider
+    a point \(x + h \in B_x(r)\), then for all \(0 \leq k \leq m\) we have that
+    \(y_k = x + \sum_{j=1}^k h_j e_j \in B_x(r)\). Moreover, if \(0 \leq \ell, k
+    \leq m\) then the line segment \([y_\ell, y_k] \subseteq U\). Notice that
+    \begin{align}\label{eq: suff-partial-continuous-1}
+        \nonumber
+        f(x + h) - f(x)
+         & = f(x + h) + \left[ \sum_{k=1}^{m-1}
+            f\bigg( x + \sum_{j=1}^k h_i e_j \bigg) -
+            f\bigg( x + \sum_{j=1}^k h_i e_j \bigg)
+            \right] - f(x)
+        \\
+        \nonumber
+         & = \sum_{k=1}^m \left[
+            f\bigg( x + \sum_{j=1}^k h_j e_j \bigg)
+            - f\bigg( x + \sum_{j=1}^{k-1} h_j e_j \bigg)
+            \right]
+        \\
+         & = \sum_{k=1}^m f(y_k) - f(y_{k-1})
+    \end{align}
+    Since \(f\) has partial derivatives for every point of \(U\), for each \(1
+    \leq k \leq m\), we can apply the Mean Value \cref{thm: several-mvt-real-val}
+    for the pair of points points \(y_k\) and \(y_{k-1}\), to find a point \(z_k =
+    x + \theta_k h_k e_k\) belonging to the segment line \([y_{k-1}, y_k]
+    \subseteq U\) --- with \(\theta_j \in [0, 1]\) --- such that
+    \begin{equation}\label{eq: suff-partial-continuous-2}
+        f(y_k) - f(y_{k-1}) = \partial_k f(z_k) h_k
+    \end{equation}
+    Substituting \cref{eq: suff-partial-continuous-2} into \cref{eq:
+        suff-partial-continuous-1} we get
+    \begin{equation}\label{eq: suff-partial-continuous-3}
+        f(x + h) - f(x)
+        = \sum_{k=1}^m \partial_k f(z_k) h_k
+    \end{equation}
+    Since all partial derivatives are continuous at \(x\), for all \(1 \leq k \leq
+    m\) there exists a map \(\alpha_k: U \to \R\) such that \(\alpha_k(h_k) \to
+    0\) as \(h_k \to 0\) and we can write
+    \begin{equation}\label{eq: suff-partial-continuous-4}
+        \partial_k f(z_k) = \partial_k f(x + \theta_k h_k e_k)
+        = \partial_k f(x) + \alpha_k(h_k)
+    \end{equation}
+    Substituting \cref{eq: suff-partial-continuous-4} into \cref{eq:
+        suff-partial-continuous-3} we get the following relation
+    \[
+        f(x + h) - f(x) = \sum_{k=1}^m \partial_k f(x) h_k + \alpha_k(h_k) h_k
+        = \sum_{k=1}^m \partial_k f(x) h_k + \sum_{k=1}^m \alpha_k(h_k) h_k
+    \]
+    Notice that as \(h \to 0\) we have that \(\alpha_k(h_k) h_k \to 0\) for all
+    \(1 \leq k \leq m\), hence \(\alpha_k(h_k) h_k = o(h)\) and thus
+    \[
+        f(x + h) - f(x) = \sum_{k=1}^m \partial_k f(x) h_k + o(h)
+    \]
+    From \cref{def: diff-several} the map \(f\) is differentiable at \(x\) --- and
+    \(\diff f(x)(h) = \sum_{k=1}^m \partial_k f(x) h_k\).
 \end{proof}
 
 \begin{definition}[Continuously differentiable map]
-  We denote by \(C^1(G, \R)\) the vector space of real valued continuously
-  differentiable maps \(\R^m \supseteq G \to \R\) --- that is, with continuous
-  partial derivatives in \(G\).
+    We denote by \(C^1(G, \R)\) the vector space of real valued continuously
+    differentiable maps \(\R^m \supseteq G \to \R\) --- that is, with continuous
+    partial derivatives in \(G\).
 \end{definition}
 
 \subsection{Higher Order Partial Derivatives}
 
 \begin{definition}[\(k\)-th partial derivative]
-  \label{def: kth-partial}
-  Let \(f: G \to \R\) be a map --- over a domain \(G \subseteq \R^m\) ---
-  partially differentiable over its \(j_1\)-th variable. If in turn
-  \(\partial_{j_1} f: G \to \R\) is partially differentiable over its \(j_2\)-th
-  variable, we say that \(\partial_{j_2}(\partial_{j_1} f) = \partial_{j_2 j_1}
-  f: G \to \R\) is said to be the second partial derivative of \(f\) with
-  respect to \((j_1, j_2)\) variables. If such property holds \(k\) times over
-  variables the \((j_1, j_2, \dots, j_k)\), we say that
-  \[
-    \partial_{j_k j_{k-1} \dots j_2 j_1} f: G \to \R
-  \]
-  is the \(k\)-th partial derivative of \(f\) with respect to variables
-  \((j_i)_{1 \leq i \leq k}\).
+    \label{def: kth-partial}
+    Let \(f: G \to \R\) be a map --- over a domain \(G \subseteq \R^m\) ---
+    partially differentiable over its \(j_1\)-th variable. If in turn
+    \(\partial_{j_1} f: G \to \R\) is partially differentiable over its \(j_2\)-th
+    variable, we say that \(\partial_{j_2}(\partial_{j_1} f) = \partial_{j_2 j_1}
+    f: G \to \R\) is said to be the second partial derivative of \(f\) with
+    respect to \((j_1, j_2)\) variables. If such property holds \(k\) times over
+    variables the \((j_1, j_2, \dots, j_k)\), we say that
+    \[
+        \partial_{j_k j_{k-1} \dots j_2 j_1} f: G \to \R
+    \]
+    is the \(k\)-th partial derivative of \(f\) with respect to variables
+    \((j_i)_{1 \leq i \leq k}\).
 \end{definition}
 
 \begin{definition}[\(k\)-continuously differentiable]
-  A map \(f: G \to \R\) is said to be \(k\)-continuously differentiable if for
-  all tuples of indices \(I_i = (j_1, \dots, j_i)\) and for all \(1 \leq i \leq
-  k\) the map \(\partial_{I_i} f\) exists and is continuous at \(G\).
+    A map \(f: G \to \R\) is said to be \(k\)-continuously differentiable if for
+    all tuples of indices \(I_i = (j_1, \dots, j_i)\) and for all \(1 \leq i \leq
+    k\) the map \(\partial_{I_i} f\) exists and is continuous at \(G\).
 \end{definition}
 
 \begin{lemma}\label{lem: order-var-partial}
-  Let \(E \subseteq \R^m\) be an open set and \(f: E \to \R\) be a map with
-  existing partial derivatives \(\partial_i f\) and \(\partial_{ji} f\) at every
-  point of \(E\). Let \(y \in E\) and a map \(\phi_{ji}: V \to \R\) --- where
-  \(V = \{(t, h) \in \R^2 \colon y + t e_i + h e_j \in E\} \) --- being defined by
-  \[
-    \phi_{ji}(t, h) = f(y + t e_i + h e_j) - f(y + t e_i) + f(y + h e_j) - f(y).
-  \]
-  Then for all pairs \((t, h) \in V\) --- \(t, h \neq 0\) --- there exists a
-  point \(x = y + \theta_i t e_i + \theta_j h e_j \in E\), where \(\theta_i,
-  \theta_j \in (0, 1)\), such that
-  \[
-    \phi(t, h) = t h [\partial_{2 1} f(x)].
-  \]
+    Let \(E \subseteq \R^m\) be an open set and \(f: E \to \R\) be a map with
+    existing partial derivatives \(\partial_i f\) and \(\partial_{ji} f\) at every
+    point of \(E\). Let \(y \in E\) and a map \(\phi_{ji}: V \to \R\) --- where
+    \(V = \{(t, h) \in \R^2 \colon y + t e_i + h e_j \in E\} \) --- being defined by
+    \[
+        \phi_{ji}(t, h) = f(y + t e_i + h e_j) - f(y + t e_i) + f(y + h e_j) - f(y).
+    \]
+    Then for all pairs \((t, h) \in V\) --- \(t, h \neq 0\) --- there exists a
+    point \(x = y + \theta_i t e_i + \theta_j h e_j \in E\), where \(\theta_i,
+    \theta_j \in (0, 1)\), such that
+    \[
+        \phi(t, h) = t h [\partial_{2 1} f(x)].
+    \]
 \end{lemma}
 
 \begin{proof}
-  Since \(E\) is open, \(V\) is non-empty. Choose any non-zero tuple \((t, h)
-  \in V\). Let the map \(\omega: [0, 1] \to \R\) be defined by
-  \[
-    \omega(\theta) = f(y + \theta t e_i + h e_j) - f(y + \theta t e_i).
-  \]
-  Notice that \(\omega\) is continuous on \([0, 1]\) and differentiable on \((0,
-  1)\) --- since \(f\) has partial derivative \(\partial_i f\). We can use the
-  Mean Value Theorem to find \(\theta_i \in (0, 1)\) such that
-  \begin{align}\label{eq: lem-order-var-partial-1}
-    \nonumber
-    \omega(1) - \omega(0)
-    &= \omega'(\theta_i)
-    \\
-    \nonumber
-    &= \left[ \frac{\partial}{\partial \theta} \left(
-      f(y + \theta t e_i + h e_j) - f(y + \theta t e_i)
-    \right) \right]_{\theta = x_1}
-    \\
-    &= \left[
-      \theta \partial_i f(y + \theta t e_i + h e_j)
-      - \theta \partial_i f(y + \theta t e_i)
-    \right]_{\theta = \theta_1}
-    \\
-    &= t (\partial_1 f(y + \theta_i t e_i + h e_j)
-    - \partial_1 f(y + \theta_i t e_i))
-  \end{align}
-  Since \(\partial_i f\) is partially differentiable --- with respect to its
-  \(j\)-th variable --- on every point of \(E\), we conclude that \(\partial_1
-  f\) continuous on the line segment \([y, y + t e_i + h e_j] \subseteq E\) and
-  is differentiable on the line segment \((y, y + t e_i + h e_j) \subseteq E\).
-  Let a map \(\gamma: [0, 1] \to \R\) defined by
-  \[
-    \gamma(\theta) = \partial_1 f(y + \theta_i t e_i + \theta e_j)
-  \]
-  which, from \(\partial_i f\) properties, is continuous on \([0, 1]\) and
-  differentiable on \((0, 1)\). We can apply the Mean Value Theorem on
-  \(\gamma\) to find an element \(\theta_j \in (0, 1)\) for which
-  \begin{align}\label{eq: lem-order-var-partial-2}
-    \nonumber
-    \gamma(1) - \gamma(0)
-    &= \gamma'(\theta_j)
-    \\ \nonumber
-    &= \left[
-      \frac{\partial}{\partial \theta}
-      \partial_1 f(y + \theta_i t e_i + \theta e_j)
-    \right]_{\theta = \theta_j}
-    \\ \nonumber
-    &= \left[
-      h \partial_{21} f(y + \theta_i t e_i + \theta h e_j)
-    \right]_{\theta = \theta_j}
-    \\
-    &= h \partial_{2 1} f(y + \theta_i t e_i + \theta_j h e_j)
-  \end{align}
-  Therefore, substituting \cref{eq: lem-order-var-partial-2} into \cref{eq:
-  lem-order-var-partial-1} we get
-  \[
-    \phi(t, h) = \omega(1) - \omega(0)
-    = t h [\partial_{2 1} f(y + \theta_i t e_i + \theta_j h e_j)].
-  \]
+    Since \(E\) is open, \(V\) is non-empty. Choose any non-zero tuple \((t, h)
+    \in V\). Let the map \(\omega: [0, 1] \to \R\) be defined by
+    \[
+        \omega(\theta) = f(y + \theta t e_i + h e_j) - f(y + \theta t e_i).
+    \]
+    Notice that \(\omega\) is continuous on \([0, 1]\) and differentiable on \((0,
+    1)\) --- since \(f\) has partial derivative \(\partial_i f\). We can use the
+    Mean Value Theorem to find \(\theta_i \in (0, 1)\) such that
+    \begin{align}\label{eq: lem-order-var-partial-1}
+        \nonumber
+        \omega(1) - \omega(0)
+         & = \omega'(\theta_i)
+        \\
+        \nonumber
+         & = \left[ \frac{\partial}{\partial \theta} \left(
+            f(y + \theta t e_i + h e_j) - f(y + \theta t e_i)
+            \right) \right]_{\theta = x_1}
+        \\
+         & = \left[
+            \theta \partial_i f(y + \theta t e_i + h e_j)
+            - \theta \partial_i f(y + \theta t e_i)
+            \right]_{\theta = \theta_1}
+        \\
+         & = t (\partial_1 f(y + \theta_i t e_i + h e_j)
+        - \partial_1 f(y + \theta_i t e_i))
+    \end{align}
+    Since \(\partial_i f\) is partially differentiable --- with respect to its
+    \(j\)-th variable --- on every point of \(E\), we conclude that \(\partial_1
+    f\) continuous on the line segment \([y, y + t e_i + h e_j] \subseteq E\) and
+    is differentiable on the line segment \((y, y + t e_i + h e_j) \subseteq E\).
+    Let a map \(\gamma: [0, 1] \to \R\) defined by
+    \[
+        \gamma(\theta) = \partial_1 f(y + \theta_i t e_i + \theta e_j)
+    \]
+    which, from \(\partial_i f\) properties, is continuous on \([0, 1]\) and
+    differentiable on \((0, 1)\). We can apply the Mean Value Theorem on
+    \(\gamma\) to find an element \(\theta_j \in (0, 1)\) for which
+    \begin{align}\label{eq: lem-order-var-partial-2}
+        \nonumber
+        \gamma(1) - \gamma(0)
+         & = \gamma'(\theta_j)
+        \\ \nonumber
+         & = \left[
+            \frac{\partial}{\partial \theta}
+            \partial_1 f(y + \theta_i t e_i + \theta e_j)
+            \right]_{\theta = \theta_j}
+        \\ \nonumber
+         & = \left[
+            h \partial_{21} f(y + \theta_i t e_i + \theta h e_j)
+            \right]_{\theta = \theta_j}
+        \\
+         & = h \partial_{2 1} f(y + \theta_i t e_i + \theta_j h e_j)
+    \end{align}
+    Therefore, substituting \cref{eq: lem-order-var-partial-2} into \cref{eq:
+        lem-order-var-partial-1} we get
+    \[
+        \phi(t, h) = \omega(1) - \omega(0)
+        = t h [\partial_{2 1} f(y + \theta_i t e_i + \theta_j h e_j)].
+    \]
 \end{proof}
 
 \begin{theorem}[Order of the partial derivative variables]
-  \label{thm: order-var-partial}
-  Let \(f: G \to \R\) be a map with partial derivatives \(\partial_{i j} f: G
-  \to \R\) and \(\partial_{j i} f: G \to \R\). If \(\partial_{i j} f\) and
-  \(\partial_{j i} f\) are both continuous over the point \(x \in G\), then
-  \[
-    \partial_{i j} f(x) = \partial_{j i} f(x).
-  \]
+    \label{thm: order-var-partial}
+    Let \(f: G \to \R\) be a map with partial derivatives \(\partial_{i j} f: G
+    \to \R\) and \(\partial_{j i} f: G \to \R\). If \(\partial_{i j} f\) and
+    \(\partial_{j i} f\) are both continuous over the point \(x \in G\), then
+    \[
+        \partial_{i j} f(x) = \partial_{j i} f(x).
+    \]
 \end{theorem}
 
 \begin{proof}
-  Since \(G\) is open, there exists \(h \in \R^m\) such that \(x + h \in G\) ---
-  where we impose that \(h_i, h_j \neq 0\). Define the map
-  \begin{equation}\label{eq: order-var-partial-1}
-    \Delta(f, h) =
-    [f(x + h_i e_i + h_j e_j) - f(x + h_i e_i)] - [f(x + h_j e_j) - f(x)]
-  \end{equation}
-  Define maps \(\phi_{ji}, \phi_{ij}: [0, 1] \to \R\) by
-  \begin{gather}
-    \label{eq: phi_ij_theta-1}
-    \phi_{ji}(\theta) = f(x + \theta h_i e_i + h_j e_j) - f(x + \theta h_i e_i)
-    \\
-    \label{eq: phi_ij_theta-2}
-    \phi_{ij}(\theta) = f(x + h_i e_i + \theta h_j e_j) - f(x + \theta h_j e_j)
-  \end{gather}
-  Applying \cref{lem: order-var-partial} on \cref{eq: phi_ij_theta-1} we find
-  \(\theta_i, \theta_j \in (0, 1)\) such that
-  \begin{equation}\label{eq: delta-f-h-1}
-    \Delta(f, h) = \phi_{ji}(1) - \phi_{ji}(0)
-    = h_j h_i [\partial_{ji} f(x + \theta_i h_i e_i + \theta_j h_j e_j)]
-  \end{equation}
-  Analogously, we can apply \cref{lem: order-var-partial} on \cref{eq:
-  phi_ij_theta-2} to find \(\overline \theta_i, \overline \theta_j \in (0, 1)\)
-  such that
-  \begin{equation}\label{eq: delta-f-h-2}
-    \Delta(f, h) = \phi_{ij}(1) - \phi_{ij}(0)
-    = h_i h_j [\partial_{ij} f(x + \overline \theta_i h_i e_i + \overline
-    \theta_j h_j e_j)]
-  \end{equation}
-  Equating both \cref{eq: delta-f-h-1} and \cref{eq: delta-f-h-2} we get
-  \[
-    h_j h_i [\partial_{ji} f(x + \theta_i h_i e_i + \theta_j h_j e_j)]
-    = h_i h_j [\partial_{ij} f(x + \overline \theta_i h_i e_i + \overline
-    \theta_j h_j e_j)]
-  \]
-  Since \(h_i, h_j \neq 0\), we have
-  \[
-    \partial_{ji} f(x + \theta_i h_i e_i + \theta_j h_j e_j)
-    = \partial_{ij} f(x + \overline \theta_i h_i e_i + \overline \theta_j h_j
-    e_j).
-  \]
-  Since \(\partial_{ji} f\) and \(\partial_{ij} f\) are continuous at \(x\), as
-  \(h \to 0\) we get
-  \[
-    \partial_{ji} f(x) = \partial_{ij} f(x).
-  \]
+    Since \(G\) is open, there exists \(h \in \R^m\) such that \(x + h \in G\) ---
+    where we impose that \(h_i, h_j \neq 0\). Define the map
+    \begin{equation}\label{eq: order-var-partial-1}
+        \Delta(f, h) =
+        [f(x + h_i e_i + h_j e_j) - f(x + h_i e_i)] - [f(x + h_j e_j) - f(x)]
+    \end{equation}
+    Define maps \(\phi_{ji}, \phi_{ij}: [0, 1] \to \R\) by
+    \begin{gather}
+        \label{eq: phi_ij_theta-1}
+        \phi_{ji}(\theta) = f(x + \theta h_i e_i + h_j e_j) - f(x + \theta h_i e_i)
+        \\
+        \label{eq: phi_ij_theta-2}
+        \phi_{ij}(\theta) = f(x + h_i e_i + \theta h_j e_j) - f(x + \theta h_j e_j)
+    \end{gather}
+    Applying \cref{lem: order-var-partial} on \cref{eq: phi_ij_theta-1} we find
+    \(\theta_i, \theta_j \in (0, 1)\) such that
+    \begin{equation}\label{eq: delta-f-h-1}
+        \Delta(f, h) = \phi_{ji}(1) - \phi_{ji}(0)
+        = h_j h_i [\partial_{ji} f(x + \theta_i h_i e_i + \theta_j h_j e_j)]
+    \end{equation}
+    Analogously, we can apply \cref{lem: order-var-partial} on \cref{eq:
+        phi_ij_theta-2} to find \(\overline \theta_i, \overline \theta_j \in (0, 1)\)
+    such that
+    \begin{equation}\label{eq: delta-f-h-2}
+        \Delta(f, h) = \phi_{ij}(1) - \phi_{ij}(0)
+        = h_i h_j [\partial_{ij} f(x + \overline \theta_i h_i e_i + \overline
+        \theta_j h_j e_j)]
+    \end{equation}
+    Equating both \cref{eq: delta-f-h-1} and \cref{eq: delta-f-h-2} we get
+    \[
+        h_j h_i [\partial_{ji} f(x + \theta_i h_i e_i + \theta_j h_j e_j)]
+        = h_i h_j [\partial_{ij} f(x + \overline \theta_i h_i e_i + \overline
+        \theta_j h_j e_j)]
+    \]
+    Since \(h_i, h_j \neq 0\), we have
+    \[
+        \partial_{ji} f(x + \theta_i h_i e_i + \theta_j h_j e_j)
+        = \partial_{ij} f(x + \overline \theta_i h_i e_i + \overline \theta_j h_j
+        e_j).
+    \]
+    Since \(\partial_{ji} f\) and \(\partial_{ij} f\) are continuous at \(x\), as
+    \(h \to 0\) we get
+    \[
+        \partial_{ji} f(x) = \partial_{ij} f(x).
+    \]
 \end{proof}
 
 \begin{corollary}\label{cor: k-order-var-partial}
-  If \(f \in C^k(G, \R)\), then the maps \(\partial_{i_k \dots i_1} f\) for any
-  \(k\)-tuple \(I_k = (i_1, \dots, i_k)\) --- where \(1 \leq i_j \leq m\) for
-  all \(1 \leq j \leq k\) --- are the same for any permutation of \(I_k\).
+    If \(f \in C^k(G, \R)\), then the maps \(\partial_{i_k \dots i_1} f\) for any
+    \(k\)-tuple \(I_k = (i_1, \dots, i_k)\) --- where \(1 \leq i_j \leq m\) for
+    all \(1 \leq j \leq k\) --- are the same for any permutation of \(I_k\).
 \end{corollary}
 
 \begin{proof}
-  We proceed by induction on \(k\). If \(k = 2\) then the proposition is true,
-  from \cref{thm: order-var-partial}. Assume the proposition is true for some
-  \(k > 2\). Let \(\sigma\) be any permutation on \(I_k\), since any permutation
-  can be written as the composition of finitely many elementary transpositions,
-  it suffices to observe that --- from the inductive hypothesis
-  \begin{equation}\label{eq: k-order-var-partial-1}
-    \partial_{I_{k+1}} f
-    = \partial_{i_{k+1}} \left( \partial_{I_k} f \right)
-    = \partial_{i_{k+1}} \left( \partial_{\sigma(I_k)} f \right).
-  \end{equation}
-  From \cref{thm: order-var-partial} following relation is verified
-  \begin{equation}\label{eq: k-order-var-partial-2}
-    \partial_{I_{k+1}} f
-    = \partial_{i_{k+1} i_k} \left( \partial_{I_{k-1}} f \right)
-    = \partial_{i_k i_{k+1}} \left( \partial_{I_{k-1}} f \right)
-    = \partial_{i_k i_{k+1} i_{k-1} \dots i_1} f.
-  \end{equation}
-  Thus, with \cref{eq: k-order-var-partial-1} and \cref{eq:
-  k-order-var-partial-2} we find that the the proposition is true for \(k + 1\).
-  This finishes the induction proof.
+    We proceed by induction on \(k\). If \(k = 2\) then the proposition is true,
+    from \cref{thm: order-var-partial}. Assume the proposition is true for some
+    \(k > 2\). Let \(\sigma\) be any permutation on \(I_k\), since any permutation
+    can be written as the composition of finitely many elementary transpositions,
+    it suffices to observe that --- from the inductive hypothesis
+    \begin{equation}\label{eq: k-order-var-partial-1}
+        \partial_{I_{k+1}} f
+        = \partial_{i_{k+1}} \left( \partial_{I_k} f \right)
+        = \partial_{i_{k+1}} \left( \partial_{\sigma(I_k)} f \right).
+    \end{equation}
+    From \cref{thm: order-var-partial} following relation is verified
+    \begin{equation}\label{eq: k-order-var-partial-2}
+        \partial_{I_{k+1}} f
+        = \partial_{i_{k+1} i_k} \left( \partial_{I_{k-1}} f \right)
+        = \partial_{i_k i_{k+1}} \left( \partial_{I_{k-1}} f \right)
+        = \partial_{i_k i_{k+1} i_{k-1} \dots i_1} f.
+    \end{equation}
+    Thus, with \cref{eq: k-order-var-partial-1} and \cref{eq:
+        k-order-var-partial-2} we find that the the proposition is true for \(k + 1\).
+    This finishes the induction proof.
 \end{proof}
 
 \begin{example}\label{ex: taylor-auxiliar}
-  Let \(f \in C^k(G, \R)\) and, for some given \(x \in G\), let \(h \in \R^m\) be
-  such that \(x + h \in G\). Consider the map \(\phi: [0, 1] \to \R\), defined as
-  \[
-    \phi(t) = f(x + th).
-  \]
-  Then \(\phi \in C^k([0, 1], \R)\) and its \(k\)-th derivative is given by
-  \[
-    \phi^{(k)}(t) = (h_1 \partial_1 + \dots + h_m \partial_m)^k f(x + th).
-  \]
-  More generally, for all \(1 \leq j \leq k\) we have
-  \[
-    \phi^{(j)}(t) = (h_1 \partial_1 + \dots + h_m \partial_m)^j f(x + th).
-  \]
+    Let \(f \in C^k(G, \R)\) and, for some given \(x \in G\), let \(h \in \R^m\) be
+    such that \(x + h \in G\). Consider the map \(\phi: [0, 1] \to \R\), defined as
+    \[
+        \phi(t) = f(x + th).
+    \]
+    Then \(\phi \in C^k([0, 1], \R)\) and its \(k\)-th derivative is given by
+    \[
+        \phi^{(k)}(t) = (h_1 \partial_1 + \dots + h_m \partial_m)^k f(x + th).
+    \]
+    More generally, for all \(1 \leq j \leq k\) we have
+    \[
+        \phi^{(j)}(t) = (h_1 \partial_1 + \dots + h_m \partial_m)^j f(x + th).
+    \]
 \end{example}
 
 \begin{definition}[Hessian matrix]
-  Let \(f: E \to \R\) be twice partially differentiable with respect to all
-  variables at the point \(x \in \Int E\). The Hessian of \(f\) is defined to be
-  the matrix
-  \[
-    \operatorname{Hess} f(x) =
-    \begin{bmatrix}
-      \partial_{1 1} f(x) &\dots &\partial_{1 m} f(x) \\
-      \vdots &\ddots &\vdots \\
-      \partial_{m 1} f(x) &\dots &\partial_{m m} f(x)
-    \end{bmatrix}
-  \]
+    Let \(f: E \to \R\) be twice partially differentiable with respect to all
+    variables at the point \(x \in \Int E\). The Hessian of \(f\) is defined to be
+    the matrix
+    \[
+        \operatorname{Hess} f(x) =
+        \begin{bmatrix}
+            \partial_{1 1} f(x) & \dots  & \partial_{1 m} f(x) \\
+            \vdots              & \ddots & \vdots              \\
+            \partial_{m 1} f(x) & \dots  & \partial_{m m} f(x)
+        \end{bmatrix}
+    \]
 \end{definition}
 
 \begin{definition}
-  The Hessian of \(f\) is defined to be the second order differential of \(f\)
-  at the interior point \(x\) that is, the multilinear map
-  \[
-    \diff^2 f(x): T\R^m_x \times T\R^m_x \to \R\text{, mapping }
-    (y, z) \overset f \longmapsto \sum_{i, j = 1}^m \partial_{ij} f(x) y_i z_i
-  \]
+    The Hessian of \(f\) is defined to be the second order differential of \(f\)
+    at the interior point \(x\) that is, the multilinear map
+    \[
+        \diff^2 f(x): T\R^m_x \times T\R^m_x \to \R\text{, mapping }
+        (y, z) \overset f \longmapsto \sum_{i, j = 1}^m \partial_{ij} f(x) y_i z_i
+    \]
 \end{definition}
 
 \subsection{Taylor's Formula}
 
 \begin{theorem}[Taylor's formula]\label{thm: taylor-poly-Rn}
-  Let \(x \in \R^m\) be a point and let \(U \subseteq \R^m\) be a neighbourhood
-  of \(x\). Consider a point \(h \in \R^m\) such that the line segment \([x, x +
-  h]\) is contained in \(U\). Let \(f: U \to \R\) be a map \(f \in C^{k+1}(U, \R)\).
-  Then the following equality holds
-  \[
-    f(x + h) - f(x) = \sum_{\ell=1}^k
-    \frac 1 {\ell!} (h_1 \partial_1 + \dots + h_m \partial_m)^\ell f(x)
-    + r_k(x, h)
-  \]
-  Where the polynomial term is called Taylor polynomial of order \(k\) of \(f\)
-  on \(x\), and \(r_k\) is the \(k\)-th order remainder of \(f\) on \(x\) ---
-  which can be written in the following forms:
-  \begin{enumerate}[(i)]
-    \item Integral form
-      \[
-        r_k(x, h) = \int_0^1 \frac{(1 - t)^k}{k!} (h_1 \partial_1 + \dots + h_m
-        \partial_m)^{k+1} f(x + th)\ \diff t.
-      \]
-    \item Lagrange form --- for some \(\theta \in (0, 1)\)
-      \[
-        r_k(x, h) = \frac 1 {(k + 1)!} (h_1 \partial_1 + \dots + h_m
-        \partial_m)^{k+1} f(x + \theta h).
-      \]
-    \item Peano form --- as \(h \to 0\)
-      \[
-        r_k(x, h) = \frac 1 {(k + 1)!} (h_1 \partial_1 + \dots + h_m
-        \partial_m)^{k+1} f(x) + o(\norm{h}_{\R^m}^{k+1}).
-      \]
-      and we rewrite the Taylor formula as
-      \[
-        f(x + h) - f(x) = \sum_{\ell=1}^{k+1}
+    Let \(x \in \R^m\) be a point and let \(U \subseteq \R^m\) be a neighbourhood
+    of \(x\). Consider a point \(h \in \R^m\) such that the line segment \([x, x +
+            h]\) is contained in \(U\). Let \(f: U \to \R\) be a map \(f \in C^{k+1}(U, \R)\).
+    Then the following equality holds
+    \[
+        f(x + h) - f(x) = \sum_{\ell=1}^k
         \frac 1 {\ell!} (h_1 \partial_1 + \dots + h_m \partial_m)^\ell f(x)
-        + o(\norm{h}_{\R^m}^{k+1}).
-      \]
-  \end{enumerate}
+        + r_k(x, h)
+    \]
+    Where the polynomial term is called Taylor polynomial of order \(k\) of \(f\)
+    on \(x\), and \(r_k\) is the \(k\)-th order remainder of \(f\) on \(x\) ---
+    which can be written in the following forms:
+    \begin{enumerate}[(i)]
+        \item Integral form
+              \[
+                  r_k(x, h) = \int_0^1 \frac{(1 - t)^k}{k!} (h_1 \partial_1 + \dots + h_m
+                  \partial_m)^{k+1} f(x + th)\ \diff t.
+              \]
+        \item Lagrange form --- for some \(\theta \in (0, 1)\)
+              \[
+                  r_k(x, h) = \frac 1 {(k + 1)!} (h_1 \partial_1 + \dots + h_m
+                  \partial_m)^{k+1} f(x + \theta h).
+              \]
+        \item Peano form --- as \(h \to 0\)
+              \[
+                  r_k(x, h) = \frac 1 {(k + 1)!} (h_1 \partial_1 + \dots + h_m
+                  \partial_m)^{k+1} f(x) + o(\norm{h}_{\R^m}^{k+1}).
+              \]
+              and we rewrite the Taylor formula as
+              \[
+                  f(x + h) - f(x) = \sum_{\ell=1}^{k+1}
+                  \frac 1 {\ell!} (h_1 \partial_1 + \dots + h_m \partial_m)^\ell f(x)
+                  + o(\norm{h}_{\R^m}^{k+1}).
+              \]
+    \end{enumerate}
 \end{theorem}
 
 \begin{proof}
-  Let \(\phi: [0, 1] \to \R\) be defined by \(\phi(t) = f(x + th)\). Notice that
-  this implies in \(\phi \in C^{k+1}([0, 1], \R)\) and --- using the Taylor's formula
-  for one variable and \cref{ex: taylor-auxiliar} --- we find, for \(\tau \in [0, 1]\)
-  \begin{align*}
-    \phi(\tau)
-    = f(x + \tau h)
-    = \sum_{\ell=1}^k \frac{\phi^{(\ell)}(0)}{\ell!} \tau^\ell + R_k(\tau)
-  \end{align*}
-  Notice that \(\phi(1) - \phi(0) = f(x + h) - f(x)\), hence
-  \[
-    f(x + h) - f(x) =
-    \sum_{\ell=1}^k \frac 1 {\ell!}
-    (h_1 \partial_1 + \dots + h_m \partial_m)^\ell f(x) + r_k(x, h).
-  \]
-  We can now analyse the possible forms for the remainders.
-  \begin{enumerate}[(i)]
-    \item (Integral form) We have \(R_k\) given by
-      \[
-        R_k(\tau) = \int_0^1 \frac{(1 - t)^k}{k!} \phi^{(k+1)}(t \tau) t^{k+1}\
-        \diff t.
-      \]
-      Hence
-      \[
-        r_k(x, h) = \int_0^1 \frac{(1 - t)^k}{k!}
-        (h_1 \partial_1 + \dots + h_m \partial_m)^{k+1} f(x + t \tau h) \tau^{k
-        + 1}\ \diff t.
-      \]
-    \item (Lagrange form) For some \(\theta \in (0, 1)\), \(R_k\) is given by
-      \[
-        R_k(\tau) = \frac 1 {(k + 1)!} \phi^{(k+1)}(\theta).
-      \]
-      Hence
-      \[
-        r_k(x, h) = \frac 1 {(k + 1)!} (h_1 \partial_1 + \dots + h_m
-        \partial_m)^{k+1} f(x + \theta h).
-      \]
-    \item (Peano form) From the Lagrange form and as \(h \to 0\)
-      \begin{align*}
-        r_k(x, h)
-        &= \frac 1 {(k + 1)!} (h_1 \partial_1 + \dots + h_m \partial_m)^{k+1}
-        f(x + \theta h) \\
-        &= \frac 1 {(k + 1)!} (h_1 \partial_1 + \dots + h_m
-        \partial_m)^{k+1} f(x) + o(\norm{h}_{\R^m}^{k+1}).
-      \end{align*}
-  \end{enumerate}
-  This finishes the proof.
+    Let \(\phi: [0, 1] \to \R\) be defined by \(\phi(t) = f(x + th)\). Notice that
+    this implies in \(\phi \in C^{k+1}([0, 1], \R)\) and --- using the Taylor's formula
+    for one variable and \cref{ex: taylor-auxiliar} --- we find, for \(\tau \in [0, 1]\)
+    \begin{align*}
+        \phi(\tau)
+        = f(x + \tau h)
+        = \sum_{\ell=1}^k \frac{\phi^{(\ell)}(0)}{\ell!} \tau^\ell + R_k(\tau)
+    \end{align*}
+    Notice that \(\phi(1) - \phi(0) = f(x + h) - f(x)\), hence
+    \[
+        f(x + h) - f(x) =
+        \sum_{\ell=1}^k \frac 1 {\ell!}
+        (h_1 \partial_1 + \dots + h_m \partial_m)^\ell f(x) + r_k(x, h).
+    \]
+    We can now analyse the possible forms for the remainders.
+    \begin{enumerate}[(i)]
+        \item (Integral form) We have \(R_k\) given by
+              \[
+                  R_k(\tau) = \int_0^1 \frac{(1 - t)^k}{k!} \phi^{(k+1)}(t \tau) t^{k+1}\
+                  \diff t.
+              \]
+              Hence
+              \[
+                  r_k(x, h) = \int_0^1 \frac{(1 - t)^k}{k!}
+                  (h_1 \partial_1 + \dots + h_m \partial_m)^{k+1} f(x + t \tau h) \tau^{k
+                      + 1}\ \diff t.
+              \]
+        \item (Lagrange form) For some \(\theta \in (0, 1)\), \(R_k\) is given by
+              \[
+                  R_k(\tau) = \frac 1 {(k + 1)!} \phi^{(k+1)}(\theta).
+              \]
+              Hence
+              \[
+                  r_k(x, h) = \frac 1 {(k + 1)!} (h_1 \partial_1 + \dots + h_m
+                  \partial_m)^{k+1} f(x + \theta h).
+              \]
+        \item (Peano form) From the Lagrange form and as \(h \to 0\)
+              \begin{align*}
+                  r_k(x, h)
+                   & = \frac 1 {(k + 1)!} (h_1 \partial_1 + \dots + h_m \partial_m)^{k+1}
+                  f(x + \theta h)                                                         \\
+                   & = \frac 1 {(k + 1)!} (h_1 \partial_1 + \dots + h_m
+                  \partial_m)^{k+1} f(x) + o(\norm{h}_{\R^m}^{k+1}).
+              \end{align*}
+    \end{enumerate}
+    This finishes the proof.
 \end{proof}
 
 \section{Extrema on Several Variables}
 
 \begin{definition}[Extrema points]
-  \label{def:extrema-points}
-  Let \(f: E \to \R\) be a map. The map \(f\) is said to have a local maximum (or
-  local minimum) at\(x_0 \in \Int E\) if there exists a neighbourhood \(U \subseteq E\) of
-  \(x_0\) for which \(f(x) \leq f(x_0)\) (or \(f(x) \geq f(x_0)\)) for all \(x \in
-  U\). The local maximum (or minimum) is said to be strict if the strict
-  inequality holds for all \(x \in U \setminus x_0\). A local maximum (or minimum) is said
-  to be a local extrema of \(f\).
+    \label{def:extrema-points}
+    Let \(f: E \to \R\) be a map. The map \(f\) is said to have a local maximum (or
+    local minimum) at\(x_0 \in \Int E\) if there exists a neighbourhood \(U \subseteq E\) of
+    \(x_0\) for which \(f(x) \leq f(x_0)\) (or \(f(x) \geq f(x_0)\)) for all \(x \in
+    U\). The local maximum (or minimum) is said to be strict if the strict
+    inequality holds for all \(x \in U \setminus x_0\). A local maximum (or minimum) is said
+    to be a local extrema of \(f\).
 \end{definition}
 
 \begin{theorem}[Necessary condition for local extrema]
-  \label{thm:local-extrema-necessary-condition}
-  Let \(f: U \to \R\) be a map defined on the neighbourhood \(U \subseteq \R^{m}\) of a
-  point \(x_0\). Assume that \(f\) is partially differentiable at \(x_0\). For
-  \(x_0\) to be a local extrema of \(f\) it is \textbf{necessary} that for all
-  \(1 \leq j \leq m\) we have \(\partial_jf(x_0) = 0\), that is
-  \[
-    \grad f(x_0) = 0.
-  \]
+    \label{thm:local-extrema-necessary-condition}
+    Let \(f: U \to \R\) be a map defined on the neighbourhood \(U \subseteq \R^{m}\) of a
+    point \(x_0\). Assume that \(f\) is partially differentiable at \(x_0\). For
+    \(x_0\) to be a local extrema of \(f\) it is \textbf{necessary} that for all
+    \(1 \leq j \leq m\) we have \(\partial_jf(x_0) = 0\), that is
+    \[
+        \grad f(x_0) = 0.
+    \]
 \end{theorem}
 
 \begin{proof}
-  Let \(1 \leq j \leq m\) be any index and consider the map \(g_{j}: \R \to \R\) given
-  by
-  \[
-    x \xmapsto{g_j} f(x_0^1, \dots, x_0^{j-1}, x, x_0^j, \dots, x_0^m).
-  \]
-  A necessary condition for \(x_0^j\) to be an extrema of \(g_j\) is that its
-  derivative at \(x_0^j\) needs to be zero. Moreover \(g_j' = \partial_{j} f\), thus
-  the necessary condition for \(g_j\) implies \(\partial_jf(x_0) = 0\).
+    Let \(1 \leq j \leq m\) be any index and consider the map \(g_{j}: \R \to \R\) given
+    by
+    \[
+        x \xmapsto{g_j} f(x_0^1, \dots, x_0^{j-1}, x, x_0^j, \dots, x_0^m).
+    \]
+    A necessary condition for \(x_0^j\) to be an extrema of \(g_j\) is that its
+    derivative at \(x_0^j\) needs to be zero. Moreover \(g_j' = \partial_{j} f\), thus
+    the necessary condition for \(g_j\) implies \(\partial_jf(x_0) = 0\).
 \end{proof}
 
 \begin{definition}
-  \label{def:symmetric-matrix-definiteness}
-  Let \(A\) be a \((n \times n)\)-symmetric matrix. We define the following:
-  \begin{itemize}\setlength\itemsep{0em}
-    \item \(A\) is said to be positive definite if for all \(v \in \R^n \setminus 0\)
-    \[
-      \left\langle v, Av \right\rangle > 0.
-    \]
-    On the other hand, \(A\) is negative definite if for all \(v \in \R^n \setminus 0\)
-    \[
-      \left\langle v, Av \right\rangle < 0.
-    \]
-    \item \(A\) is positive semidefinite if for all \(v \in \R^n\)
-    \[
-      \left\langle v, Av \right\rangle \geq 0.
-    \]
-    On the other hand, \(A\) is negative semidefinite if for all \(v \in \R^n\) we
-    have
-    \[
-      \left\langle v, Av \right\rangle \leq 0.
-    \]
-  \end{itemize}
+    \label{def:symmetric-matrix-definiteness}
+    Let \(A\) be a \((n \times n)\)-symmetric matrix. We define the following:
+    \begin{itemize}\setlength\itemsep{0em}
+        \item \(A\) is said to be positive definite if for all \(v \in \R^n \setminus 0\)
+              \[
+                  \left\langle v, Av \right\rangle > 0.
+              \]
+              On the other hand, \(A\) is negative definite if for all \(v \in \R^n \setminus 0\)
+              \[
+                  \left\langle v, Av \right\rangle < 0.
+              \]
+        \item \(A\) is positive semidefinite if for all \(v \in \R^n\)
+              \[
+                  \left\langle v, Av \right\rangle \geq 0.
+              \]
+              On the other hand, \(A\) is negative semidefinite if for all \(v \in \R^n\) we
+              have
+              \[
+                  \left\langle v, Av \right\rangle \leq 0.
+              \]
+    \end{itemize}
 \end{definition}
 
 \begin{lemma}
-  \label{lem:pos-neg-definite-lambda}
-  Let \(A\) be a symmetric \(n \times n\) matrix. \(A\) is positive definite if and
-  only if there exists \(\lambda > 0\) such that for all \(v \in \R^n \setminus 0\)
-  \[
-    \left\langle v, A v \right\rangle \geq \lambda \norm{v}^2.
-  \]
-  On the other hand, \(A\) is negative definite if and only if there exists \(\lambda
-  > 0\) such that for all \(v \in \R^n \setminus 0\)
-  \[
-    \left\langle v, A v \right\rangle \leq - \lambda \norm{v}^2.
-  \]
+    \label{lem:pos-neg-definite-lambda}
+    Let \(A\) be a symmetric \(n \times n\) matrix. \(A\) is positive definite if and
+    only if there exists \(\lambda > 0\) such that for all \(v \in \R^n \setminus 0\)
+    \[
+        \left\langle v, A v \right\rangle \geq \lambda \norm{v}^2.
+    \]
+    On the other hand, \(A\) is negative definite if and only if there exists \(\lambda
+    > 0\) such that for all \(v \in \R^n \setminus 0\)
+    \[
+        \left\langle v, A v \right\rangle \leq - \lambda \norm{v}^2.
+    \]
 \end{lemma}
 
 \begin{proof}
-  Lets treat only the case for positive definite, the other is analogous and
-  would be boring to repeat myself. Suppose there exists such \(\lambda > 0\) for
-  which all \(v \in \R^n\) satisfy \(\left\langle v, Av \right\rangle \geq \lambda \norm{v}^2\). Then
-  since \(v \neq 0\) and hence \(\norm{v} > 0\), it follows immediately that \(A\)
-  is positive definite.
+    Lets treat only the case for positive definite, the other is analogous and
+    would be boring to repeat myself. Suppose there exists such \(\lambda > 0\) for
+    which all \(v \in \R^n\) satisfy \(\left\langle v, Av \right\rangle \geq \lambda \norm{v}^2\). Then
+    since \(v \neq 0\) and hence \(\norm{v} > 0\), it follows immediately that \(A\)
+    is positive definite.
 
-  Suppose \(A\) is positive definite. Consider the unitary \(n-1\)-sphere
-  \(S^{n-1} = \{v \in \R^{n} \colon \norm{v} = 1\}\). Since \(S^{n-1}\) is closed and
-  bounded, we conclude that \(S^{n-1}\) is compact by
-  \cref{heine-borel}. Consider the map \(f: S^{n-1} \to \R\) given by the mapping
-  \(v \mapsto \left\langle v, Av \right\rangle\) which is continuous. Therefore, from the global
-  properties enunciated at \cref{prop:global-properties-continuous-on-compact}
-  we find that there exists \(v_0 \in S^{n-1}\) where \(f\) assumes a minimum
-  value. Let \(f(v_0) = \lambda\) and since \(A\) is positive definite, we have that
-  \(\lambda\) is necessarily positive. Let \(v \in \R^n \setminus 0\) be any element, then from
-  the definition of a minimum, we find \(f(\frac{v}{\norm{v}}) \geq \lambda\). Therefore
-  we conclude that \(\left\langle v, Av \right\rangle \geq \lambda \norm{v}^2\), which finishes the
-  proof.
+    Suppose \(A\) is positive definite. Consider the unitary \(n-1\)-sphere
+    \(S^{n-1} = \{v \in \R^{n} \colon \norm{v} = 1\}\). Since \(S^{n-1}\) is closed and
+    bounded, we conclude that \(S^{n-1}\) is compact by
+    \cref{heine-borel}. Consider the map \(f: S^{n-1} \to \R\) given by the mapping
+    \(v \mapsto \left\langle v, Av \right\rangle\) which is continuous. Therefore, from the global
+    properties enunciated at \cref{prop:global-properties-continuous-on-compact}
+    we find that there exists \(v_0 \in S^{n-1}\) where \(f\) assumes a minimum
+    value. Let \(f(v_0) = \lambda\) and since \(A\) is positive definite, we have that
+    \(\lambda\) is necessarily positive. Let \(v \in \R^n \setminus 0\) be any element, then from
+    the definition of a minimum, we find \(f(\frac{v}{\norm{v}}) \geq \lambda\). Therefore
+    we conclude that \(\left\langle v, Av \right\rangle \geq \lambda \norm{v}^2\), which finishes the
+    proof.
 \end{proof}
 
 \begin{definition}[Critical point]
-  \label{def:critical-point}
-  Let \(f: U \to \R^n\) be a map defined on a neighbourhood \(U \subseteq \R^m\) of a
-  point \(x_0\). Assume that \(f\) is differentiable at \(x_0\). We say that
-  \(x_0\) is a critical point of \(f\) if the rank of the Jacobi matrix
-  \(f'(x_0)\) has a rank less than \(\min(m, n)\) --- where \(\min(m, n)\) is the
-  maximum possible value of the rank.
+    \label{def:critical-point}
+    Let \(f: U \to \R^n\) be a map defined on a neighbourhood \(U \subseteq \R^m\) of a
+    point \(x_0\). Assume that \(f\) is differentiable at \(x_0\). We say that
+    \(x_0\) is a critical point of \(f\) if the rank of the Jacobi matrix
+    \(f'(x_0)\) has a rank less than \(\min(m, n)\) --- where \(\min(m, n)\) is the
+    maximum possible value of the rank.
 \end{definition}
 
 \begin{theorem}[Classification of critical points of real valued maps]
-  \label{thm:classification-critical-points}
-  Let \(f: U \to \R\) be twice continuously differentiable and let \(x_0 \in U \subseteq
-  \R^m\) be an internal point such that \(\grad f(x_0) = 0\). If
-  the matrix \(\operatorname{Hess} f(x_0)\):
-  \begin{enumerate}\setlength\itemsep{0em}
-    \item is positive definite, then \(x_0\) is a local
-      minimum of \(f\).
-    \item is negative definite, then \(x_{0}\) is a local
-      maximum of \(f\).
-    \item is indefinite, then \(x_0\) is not an extremum point of \(f\).
-  \end{enumerate}
+    \label{thm:classification-critical-points}
+    Let \(f: U \to \R\) be twice continuously differentiable and let \(x_0 \in U \subseteq
+    \R^m\) be an internal point such that \(\grad f(x_0) = 0\). If
+    the matrix \(\operatorname{Hess} f(x_0)\):
+    \begin{enumerate}\setlength\itemsep{0em}
+        \item is positive definite, then \(x_0\) is a local
+              minimum of \(f\).
+        \item is negative definite, then \(x_{0}\) is a local
+              maximum of \(f\).
+        \item is indefinite, then \(x_0\) is not an extremum point of \(f\).
+    \end{enumerate}
 \end{theorem}
 
 \begin{proof}
-  Let \(h \in T_{x_0}\R^m\) and consider the Taylor polynomial of \(f\) of order
-  \(2\) at the point \(x_0\) in the Peano form:
-  \[
-    f(x_0 + h) - f(x_0) = \sum_{\ell=1}^2 \frac{1}{\ell!} (h_1 \partial_1 + \dots + h_m \partial_m)^{\ell}
-    f(x_0) + o(\norm{h}^2).
-  \]
-  Notice however that for \(x_0\) to be an extremum point candidate of \(f\) we
-  have from \cref{thm:local-extrema-necessary-condition} that \(\grad f(x_0) =
-  0\) thus the Taylor polynomial only has its second order factor. Moreover, we
-  can rewrite the second order term as an inner product of \(\Hess f(x_0)\) and
-  \(h\) in the following manner
-  \[
-    \sum_{i, j = 1}^m \partial_{ij} f(x_0) h_i h_j
-    = \left\langle h, \Hess(f(x_0)) h \right\rangle.
-  \]
-  Thus we can now rewrite the Taylor polynomial in a way that lets us analyse
-  the hessian of the map
-  \[
-    f(x_0 + h) - f(x_0) = \left\langle h, \Hess(f(x_0)) h \right\rangle + o(\norm{h}^2).
-  \]
+    Let \(h \in T_{x_0}\R^m\) and consider the Taylor polynomial of \(f\) of order
+    \(2\) at the point \(x_0\) in the Peano form:
+    \[
+        f(x_0 + h) - f(x_0) = \sum_{\ell=1}^2 \frac{1}{\ell!} (h_1 \partial_1 + \dots + h_m \partial_m)^{\ell}
+        f(x_0) + o(\norm{h}^2).
+    \]
+    Notice however that for \(x_0\) to be an extremum point candidate of \(f\) we
+    have from \cref{thm:local-extrema-necessary-condition} that \(\grad f(x_0) =
+    0\) thus the Taylor polynomial only has its second order factor. Moreover, we
+    can rewrite the second order term as an inner product of \(\Hess f(x_0)\) and
+    \(h\) in the following manner
+    \[
+        \sum_{i, j = 1}^m \partial_{ij} f(x_0) h_i h_j
+        = \left\langle h, \Hess(f(x_0)) h \right\rangle.
+    \]
+    Thus we can now rewrite the Taylor polynomial in a way that lets us analyse
+    the hessian of the map
+    \[
+        f(x_0 + h) - f(x_0) = \left\langle h, \Hess(f(x_0)) h \right\rangle + o(\norm{h}^2).
+    \]
 
-  Suppose \(\Hess f(x_0)\) is positive definite, then using
-  \cref{lem:pos-neg-definite-lambda} we find some \(\lambda > 0\) such that for all
-  \(v \in \R^n\) we have \(\left\langle v, \Hess(f(x_0)) v \right\rangle \geq \lambda \norm{v}^2\). In
-  particular, we can choose \(\delta > 0\) for which \(|o(\norm{h}^2)| \leq \frac{\lambda}{4}
-  \norm{h}^2\) for all \(h \in T_{x_0}\R^n\) such that \(\norm{h} \leq \delta\). Then for
-  all \(\norm{h} \leq \delta\) we have
-  \begin{align*}
-    f(x_0 + h) - f(x_0)
-    = \frac{1}{2} \left\langle h, \Hess(f(x_0)) h \right\rangle + o(\norm{h}^2)
-    \geq \frac{1}{2} \lambda \norm{h}^2 - \frac{\lambda}{4} \norm{h}^2
-    \geq \frac{\lambda}{4} \norm{h}^2
-  \end{align*}
-  And since \(\frac{\lambda}{4} \norm{h}^2 > 0\) then \(f(x_{0} + h) - f(x_0) > 0\)
-  and therefore --- at least in the neighbourhood \(B_{x_0}(\delta)\) --- we are ensured
-  that \(x_0\) is a local minimum of \(f\).
+    Suppose \(\Hess f(x_0)\) is positive definite, then using
+    \cref{lem:pos-neg-definite-lambda} we find some \(\lambda > 0\) such that for all
+    \(v \in \R^n\) we have \(\left\langle v, \Hess(f(x_0)) v \right\rangle \geq \lambda \norm{v}^2\). In
+    particular, we can choose \(\delta > 0\) for which \(|o(\norm{h}^2)| \leq \frac{\lambda}{4}
+    \norm{h}^2\) for all \(h \in T_{x_0}\R^n\) such that \(\norm{h} \leq \delta\). Then for
+    all \(\norm{h} \leq \delta\) we have
+    \begin{align*}
+        f(x_0 + h) - f(x_0)
+        = \frac{1}{2} \left\langle h, \Hess(f(x_0)) h \right\rangle + o(\norm{h}^2)
+        \geq \frac{1}{2} \lambda \norm{h}^2 - \frac{\lambda}{4} \norm{h}^2
+        \geq \frac{\lambda}{4} \norm{h}^2
+    \end{align*}
+    And since \(\frac{\lambda}{4} \norm{h}^2 > 0\) then \(f(x_{0} + h) - f(x_0) > 0\)
+    and therefore --- at least in the neighbourhood \(B_{x_0}(\delta)\) --- we are ensured
+    that \(x_0\) is a local minimum of \(f\).
 
-  If on the other hand we have \(\Hess f(x_0)\) negative definite, then
-  \(\Hess(-f(x_0))\) is positive definite and the proposition follows.
+    If on the other hand we have \(\Hess f(x_0)\) negative definite, then
+    \(\Hess(-f(x_0))\) is positive definite and the proposition follows.
 
-  Suppose \(\Hess f(x_0)\) is indefinite and let \(u \in S^{n-1}\) be the point
-  where the mapping given by \(\ell \mapsto \left\langle \ell, \Hess(f(x_0)) \ell \right\rangle\) assumes
-  its minimum \(m < 0\) and \(v \in S^{n-1}\) be the point where the map assumes
-  it maximum \(M > 0\). Define \(t > 0\) so that \(x_0 + ut \in U\), then
-  \[
-    f(x_0 + ut) - f(x_0) = \left\langle ut, \Hess(f(x_0)) ut \right\rangle + o(\norm{ut}^2)
-    = \frac{1}{2!} mt^2 + o(t^2)
-  \]
-  Then, for \(t \to 0\) we'll have \(f(x_0 + t u) - f(x_0) < 0\) in some
-  neighbourhood of \(x_0\), since \(m < 0\) --- this implies that \(x_0\) is a
-  local minimum of such neighbourhood. Moreover, if we now set \(t > 0\)
-  so that \(x_0 + vt \in U\), it follows that
-  \[
-    f(x_0 + vt) - f(x_{0})
-    = \frac{1}{2!} \left\langle vt, \Hess(f(x_0)) vt \right\rangle + o(\norm{vt}^2)
-    = \frac{1}{2!} M t^2 + o(t^2)
-  \]
-  so that, as \(t \to 0\) we have \(f(x_0 + t v) - f(x_0) > 0\) for some
-  neighbourhood of \(x_0\), since \(M > 0\) --- which now implies that \(x_0\) is
-  in fact a local maximum in some neighbourhood, which is a direct contradiction
-  to the assertion that \(x_0\) was a local minimum. This shows us that for
-  \(\Hess f(x_0)\) indefinite, \(x_0\) is not an extremum of \(f\).
+    Suppose \(\Hess f(x_0)\) is indefinite and let \(u \in S^{n-1}\) be the point
+    where the mapping given by \(\ell \mapsto \left\langle \ell, \Hess(f(x_0)) \ell \right\rangle\) assumes
+    its minimum \(m < 0\) and \(v \in S^{n-1}\) be the point where the map assumes
+    it maximum \(M > 0\). Define \(t > 0\) so that \(x_0 + ut \in U\), then
+    \[
+        f(x_0 + ut) - f(x_0) = \left\langle ut, \Hess(f(x_0)) ut \right\rangle + o(\norm{ut}^2)
+        = \frac{1}{2!} mt^2 + o(t^2)
+    \]
+    Then, for \(t \to 0\) we'll have \(f(x_0 + t u) - f(x_0) < 0\) in some
+    neighbourhood of \(x_0\), since \(m < 0\) --- this implies that \(x_0\) is a
+    local minimum of such neighbourhood. Moreover, if we now set \(t > 0\)
+    so that \(x_0 + vt \in U\), it follows that
+    \[
+        f(x_0 + vt) - f(x_{0})
+        = \frac{1}{2!} \left\langle vt, \Hess(f(x_0)) vt \right\rangle + o(\norm{vt}^2)
+        = \frac{1}{2!} M t^2 + o(t^2)
+    \]
+    so that, as \(t \to 0\) we have \(f(x_0 + t v) - f(x_0) > 0\) for some
+    neighbourhood of \(x_0\), since \(M > 0\) --- which now implies that \(x_0\) is
+    in fact a local maximum in some neighbourhood, which is a direct contradiction
+    to the assertion that \(x_0\) was a local minimum. This shows us that for
+    \(\Hess f(x_0)\) indefinite, \(x_0\) is not an extremum of \(f\).
 \end{proof}
 
 

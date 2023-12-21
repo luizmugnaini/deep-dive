@@ -3,449 +3,449 @@
 \subsection{Torsion}
 
 \begin{definition}[Torsion subgroup]
-\label{def:torsion-subgroup}
-Given an abelian group \(G\), we define the \emph{torsion subgroup} of \(G\) to be
-\[
-\torsion G = \{g \in G \colon g \text{ has finite order}\}.
-\]
-The group \(G\) is said to be of \emph{torsion} if \(\torsion G = G\), while
-\(G\) is \emph{torsion-free} if \(\torsion G = 0\).
+    \label{def:torsion-subgroup}
+    Given an abelian group \(G\), we define the \emph{torsion subgroup} of \(G\) to be
+    \[
+        \torsion G = \{g \in G \colon g \text{ has finite order}\}.
+    \]
+    The group \(G\) is said to be of \emph{torsion} if \(\torsion G = G\), while
+    \(G\) is \emph{torsion-free} if \(\torsion G = 0\).
 \end{definition}
 
 \begin{corollary}
-\label{cor:torsion-subgrp-first-properties}
-Let \(G\) and \(H\) be abelian groups, then one has:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item The quotient \(G/\torsion G\) is torsion-free.
-\item If \(G \iso H\), then \(\torsion G \iso \torsion H\) and
-  \(G/\torsion G \iso H/\torsion H\).
-\end{enumerate}
+    \label{cor:torsion-subgrp-first-properties}
+    Let \(G\) and \(H\) be abelian groups, then one has:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item The quotient \(G/\torsion G\) is torsion-free.
+        \item If \(G \iso H\), then \(\torsion G \iso \torsion H\) and
+              \(G/\torsion G \iso H/\torsion H\).
+    \end{enumerate}
 \end{corollary}
 
 \begin{proof}
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item Let \(x + \torsion G \in \torsion(G/\torsion G)\) be any element, then
-  there exists \(n \in \Z_{>0}\) such that
-  \[
-  \torsion G = n(x + \torsion G) = n x + \torsion G,
-  \]
-  therefore \(n x \in \torsion G\). The latter conclusion implies in the
-  existence of \(m \in \Z_{>0}\) such that \(0 = m (n x) = (m n) x\). But then
-  \(x\) is an element of finite order, thus \(x \in \torsion G\) and hence
-  \(\torsion(G/\torsion G) = \torsion G\), proving the statement.
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item Let \(x + \torsion G \in \torsion(G/\torsion G)\) be any element, then
+              there exists \(n \in \Z_{>0}\) such that
+              \[
+                  \torsion G = n(x + \torsion G) = n x + \torsion G,
+              \]
+              therefore \(n x \in \torsion G\). The latter conclusion implies in the
+              existence of \(m \in \Z_{>0}\) such that \(0 = m (n x) = (m n) x\). But then
+              \(x\) is an element of finite order, thus \(x \in \torsion G\) and hence
+              \(\torsion(G/\torsion G) = \torsion G\), proving the statement.
 
-\item Let \(\phi: G \isoto H\) be an isomorphism. If \(x \in \torsion G\) then
-  there exists \(n \in \Z_{>0}\) such that \(n x = 0\) and hence \(\phi(n x) = n
-  \phi x = 0_H\)---thus \(\phi x \in \torsion H\). Furthermore, if \(y \in
-  \torsion H\) with \(m y = 0\) for some \(m \in \Z_{> 0}\), and \(\phi x = y\),
-  then
-  \[
-  0_H = m y = m \phi x = \phi(m x)
-  \]
-  but since \(\phi\) is injective then \(m x = 0_G\)---thus
-  \(x \in \torsion G\). With this we have shown that
-  \[
-  \phi(\torsion G) = \torsion H.
-  \]
-  Now by \cref{prop:iso-mod-to-iso-quotient-of-mod} we know that the induced map
-  \(\phi_{*}: G/\torsion G \isoto H/\torsion H\) is an isomorphism. Moreover,
-  the restriction \(\phi|_{\torsion G}: \torsion G \isoto \torsion H\) is also
-  an isomorphism, finishing the proof of item (b).
-\end{enumerate}
+        \item Let \(\phi: G \isoto H\) be an isomorphism. If \(x \in \torsion G\) then
+              there exists \(n \in \Z_{>0}\) such that \(n x = 0\) and hence \(\phi(n x) = n
+              \phi x = 0_H\)---thus \(\phi x \in \torsion H\). Furthermore, if \(y \in
+              \torsion H\) with \(m y = 0\) for some \(m \in \Z_{> 0}\), and \(\phi x = y\),
+              then
+              \[
+                  0_H = m y = m \phi x = \phi(m x)
+              \]
+              but since \(\phi\) is injective then \(m x = 0_G\)---thus
+              \(x \in \torsion G\). With this we have shown that
+              \[
+                  \phi(\torsion G) = \torsion H.
+              \]
+              Now by \cref{prop:iso-mod-to-iso-quotient-of-mod} we know that the induced map
+              \(\phi_{*}: G/\torsion G \isoto H/\torsion H\) is an isomorphism. Moreover,
+              the restriction \(\phi|_{\torsion G}: \torsion G \isoto \torsion H\) is also
+              an isomorphism, finishing the proof of item (b).
+    \end{enumerate}
 \end{proof}
 
 \begin{theorem}
-\label{thm:finitely-generated-torsion-free-abelian-grp-is-free}
-Every finitely generated torsion-free abelian group is free.
+    \label{thm:finitely-generated-torsion-free-abelian-grp-is-free}
+    Every finitely generated torsion-free abelian group is free.
 \end{theorem}
 
 \begin{proof}
-Let \(G\) be a finitely generated torsion-free abelian group with \(n\)
-generators. We proceed by induction on \(n\). For the case \(n = 1\) we know
-that \(G\) is cyclic, moreover, since \(G\) is also torsion-free then
-\(G \iso \Z\). Assume, for the inductive hypothesis, that the statement is true
-for some \(n > 1\).
+    Let \(G\) be a finitely generated torsion-free abelian group with \(n\)
+    generators. We proceed by induction on \(n\). For the case \(n = 1\) we know
+    that \(G\) is cyclic, moreover, since \(G\) is also torsion-free then
+    \(G \iso \Z\). Assume, for the inductive hypothesis, that the statement is true
+    for some \(n > 1\).
 
-Suppose now that \(G = \langle g_1, \dots, g_{n+1} \rangle\) is abelian and
-torsion-free, and define a non-zero subgroup
-\[
-U \coloneq
-\{x \in G \colon \exists m \in \Z \setminus 0
-\text{ with } m x \in \langle g_{n+1} \rangle\}.
-\]
-Notice that the quotient \(G/U\) is torsion-free, since: if
-\(g + U \in \torsion(G/U)\), then there exists a non-zero \(q \in \Z\) such that
-\(U = q(g + U) = q g + U\), thus \(q g \in U\). Therefore there exists
-\(q' \in \Z\) such that \(g_{n+1} = q'(q g) = (q' q) g\), then
-\(g \in U\)---thus \(\torsion(G/U) = U\). By the hypothesis of induction, since
-\(G/U = \langle g_1 + U, \dots, g_n + U \rangle\) then \(G/U\) is a free
-group. From freeness we know that the short exact sequence
-\(0 \to U \emb G \epi G/U \to 0\) is split and therefore
-\[
-G \iso U \oplus \frac{G}{U}.
-\]
+    Suppose now that \(G = \langle g_1, \dots, g_{n+1} \rangle\) is abelian and
+    torsion-free, and define a non-zero subgroup
+    \[
+        U \coloneq
+        \{x \in G \colon \exists m \in \Z \setminus 0
+        \text{ with } m x \in \langle g_{n+1} \rangle\}.
+    \]
+    Notice that the quotient \(G/U\) is torsion-free, since: if
+    \(g + U \in \torsion(G/U)\), then there exists a non-zero \(q \in \Z\) such that
+    \(U = q(g + U) = q g + U\), thus \(q g \in U\). Therefore there exists
+    \(q' \in \Z\) such that \(g_{n+1} = q'(q g) = (q' q) g\), then
+    \(g \in U\)---thus \(\torsion(G/U) = U\). By the hypothesis of induction, since
+    \(G/U = \langle g_1 + U, \dots, g_n + U \rangle\) then \(G/U\) is a free
+    group. From freeness we know that the short exact sequence
+    \(0 \to U \emb G \epi G/U \to 0\) is split and therefore
+    \[
+        G \iso U \oplus \frac{G}{U}.
+    \]
 
-Now we shall prove that \(U\) is free. Define a map \(\phi: U \to \Q\) as
-follows: if \(x \in U\) let \(r \in \Z\) be a non-zero
-integer such that there exists \(a \in \Z\) for which \(r x = a g_{n+1}\)---then
-define \(\phi x \coloneq r/a\). To see that \(\phi\) is well defined, suppose we
-also have \(s x = b g_{n + 1}\), then \(s a g_{n+1} = r b g_{n+1}\)---however,
-since \(g_{n+1}\) has infinite order, it must be the case that \(s a = r b\)
-thus \(r/a = s/b\). Notice that if \(y \in \ker \phi\) then it must be the case
-that \(y = 0\), thus \(\phi\) is injective and therefore \(U \iso \im
-\phi\). Since \(U\) is a direct summand of the finitely generated group \(G\),
-then \(U\) is finitely generated (and so is \(\im \phi\)).
+    Now we shall prove that \(U\) is free. Define a map \(\phi: U \to \Q\) as
+    follows: if \(x \in U\) let \(r \in \Z\) be a non-zero
+    integer such that there exists \(a \in \Z\) for which \(r x = a g_{n+1}\)---then
+    define \(\phi x \coloneq r/a\). To see that \(\phi\) is well defined, suppose we
+    also have \(s x = b g_{n + 1}\), then \(s a g_{n+1} = r b g_{n+1}\)---however,
+    since \(g_{n+1}\) has infinite order, it must be the case that \(s a = r b\)
+    thus \(r/a = s/b\). Notice that if \(y \in \ker \phi\) then it must be the case
+    that \(y = 0\), thus \(\phi\) is injective and therefore \(U \iso \im
+    \phi\). Since \(U\) is a direct summand of the finitely generated group \(G\),
+    then \(U\) is finitely generated (and so is \(\im \phi\)).
 
-We'll show that \(\im \phi\) is a cyclic subgroup of \(\Q\). For that, we prove
-a stronger statement: if
-\(D = \langle b_1/c_1, \dots, b_m/c_m \rangle \subseteq \Q\) is a finitely
-generated subgroup, then \(D\) is cyclic. Define
-\(c \coloneq \prod_{j=1}^m c_j\), and a map \(\psi: D \to \Z\) given by
-\(d \mapsto c d\). Clearly, \(\Q\) is torsion-free and so is \(D\), hence
-\(\psi\) is an injective morphism of groups. Therefore there is an isomorphism
-\(D \iso \im \psi \subseteq \Z\)---then \(D\) has the form of an ideal of
-\(\Z\), which is principal, thus \(D\) is cyclic. It follows that \(D \iso \Z\),
-hence either \(U \iso \im \phi \iso \Z\) or \(U = 0\). This shows that \(U\) is
-free and hence so is \(G\).
+    We'll show that \(\im \phi\) is a cyclic subgroup of \(\Q\). For that, we prove
+    a stronger statement: if
+    \(D = \langle b_1/c_1, \dots, b_m/c_m \rangle \subseteq \Q\) is a finitely
+    generated subgroup, then \(D\) is cyclic. Define
+    \(c \coloneq \prod_{j=1}^m c_j\), and a map \(\psi: D \to \Z\) given by
+    \(d \mapsto c d\). Clearly, \(\Q\) is torsion-free and so is \(D\), hence
+    \(\psi\) is an injective morphism of groups. Therefore there is an isomorphism
+    \(D \iso \im \psi \subseteq \Z\)---then \(D\) has the form of an ideal of
+    \(\Z\), which is principal, thus \(D\) is cyclic. It follows that \(D \iso \Z\),
+    hence either \(U \iso \im \phi \iso \Z\) or \(U = 0\). This shows that \(U\) is
+    free and hence so is \(G\).
 \end{proof}
 
 \begin{lemma}
-\label{lem:subgroup-fg-free-ab-grp-is-free}
-Every \emph{subgroup} \(S\) of a finitely generated free abelian group \(F\) is
-\emph{free}, and \(\rank S \leq \rank F\)\footnote{In fact, even if \(F\) isn't
-finitely generated, the last rank property holds}.
+    \label{lem:subgroup-fg-free-ab-grp-is-free}
+    Every \emph{subgroup} \(S\) of a finitely generated free abelian group \(F\) is
+    \emph{free}, and \(\rank S \leq \rank F\)\footnote{In fact, even if \(F\) isn't
+        finitely generated, the last rank property holds}.
 \end{lemma}
 
 \begin{proof}
-Let \(F\) be generated by \(n\) elements---we do induction on \(n\). If
-\(n = 1\) then \(F\) is a cyclic free group, and since \(F\) is torsion-free,
-\(F \iso \Z\). Therefore, if \(S \subseteq F\) is a subgroup, either \(S\) is
-zero or an ideal of \(\Z\), in which case one has \(S \iso \Z\). For the
-hypothesis of induction, assume the proposition holds for some \(n > 1\).
+    Let \(F\) be generated by \(n\) elements---we do induction on \(n\). If
+    \(n = 1\) then \(F\) is a cyclic free group, and since \(F\) is torsion-free,
+    \(F \iso \Z\). Therefore, if \(S \subseteq F\) is a subgroup, either \(S\) is
+    zero or an ideal of \(\Z\), in which case one has \(S \iso \Z\). For the
+    hypothesis of induction, assume the proposition holds for some \(n > 1\).
 
-Suppose now that \(F = \langle x_1, \dots, x_{n+1} \rangle\) and consider the
-short exact sequence
-\[
-\begin{tikzcd}
-0 \ar[r]
-&S \cap \langle x_1, \dots, x_n \rangle \ar[r, hook]
-&S \ar[r, two heads]
-&\frac{S}{S \cap \langle x_1, \dots, x_n \rangle} \ar[r]
-&0
-\end{tikzcd}
-\]
-Using the inductive hypothesis, \(S \cap \langle x_1, \dots, x_n \rangle\) is a
-free group with \(\rank S \leq n\). By the second isomorphism theorem (see
-\cref{cor:grp-intersection-coset-isomorphism}) one has the isomorphism
-\[
-\frac{S}{S \cap \langle x_1, \dots, x_n \rangle}
-\iso
-\frac{S + \langle x_1, \dots, x_n \rangle}{\langle x_1, \dots, x_n \rangle}.
-\]
-Notice that \(S/(S \cap \langle x_1, \dots, x_n \rangle)\) is a subgroup of the
-cyclic group \(\langle x_{n+1} + \langle x_1, \dots, x_n \rangle \rangle\), thus
-generated by a single element. Therefore, by means of
-\cref{prop:short-exact-finitely-generated} we conclude that \(S\) is finitely
-generated with \(\rank S \leq n + 1\).
+    Suppose now that \(F = \langle x_1, \dots, x_{n+1} \rangle\) and consider the
+    short exact sequence
+    \[
+        \begin{tikzcd}
+            0 \ar[r]
+            &S \cap \langle x_1, \dots, x_n \rangle \ar[r, hook]
+            &S \ar[r, two heads]
+            &\frac{S}{S \cap \langle x_1, \dots, x_n \rangle} \ar[r]
+            &0
+        \end{tikzcd}
+    \]
+    Using the inductive hypothesis, \(S \cap \langle x_1, \dots, x_n \rangle\) is a
+    free group with \(\rank S \leq n\). By the second isomorphism theorem (see
+    \cref{cor:grp-intersection-coset-isomorphism}) one has the isomorphism
+    \[
+        \frac{S}{S \cap \langle x_1, \dots, x_n \rangle}
+        \iso
+        \frac{S + \langle x_1, \dots, x_n \rangle}{\langle x_1, \dots, x_n \rangle}.
+    \]
+    Notice that \(S/(S \cap \langle x_1, \dots, x_n \rangle)\) is a subgroup of the
+    cyclic group \(\langle x_{n+1} + \langle x_1, \dots, x_n \rangle \rangle\), thus
+    generated by a single element. Therefore, by means of
+    \cref{prop:short-exact-finitely-generated} we conclude that \(S\) is finitely
+    generated with \(\rank S \leq n + 1\).
 \end{proof}
 
 \begin{corollary}
-\label{cor:subgroup-fg-is-fg}
-If an abelian group \(G\) is generated by \(n\) elements, every subgroup
-\(S \subseteq G\) can be generated by at most \(n\) elements.
+    \label{cor:subgroup-fg-is-fg}
+    If an abelian group \(G\) is generated by \(n\) elements, every subgroup
+    \(S \subseteq G\) can be generated by at most \(n\) elements.
 \end{corollary}
 
 \begin{proof}
-Let \(G = \langle g_1, \dots, g_n \rangle\), and consider a free group \(F\)
-with basis \(\{x_1, \dots, x_n\}\). Define a surjective group morphism
-\(\phi: F \to G\) mapping \(x_j \mapsto g_j\) for each \(1 \leq j \leq n\). Now
-if \(S \subseteq \phi F'\) for a subgroup \(F' \subseteq F\), then by the
-isomorphism theorem we have \(S \iso F'/\ker \phi\). From
-\cref{lem:subgroup-fg-free-ab-grp-is-free} we know that \(F'\) is free and has
-rank at most \(n\), therefore \(S\) shall be generated by at most \(n\)
-elements.
+    Let \(G = \langle g_1, \dots, g_n \rangle\), and consider a free group \(F\)
+    with basis \(\{x_1, \dots, x_n\}\). Define a surjective group morphism
+    \(\phi: F \to G\) mapping \(x_j \mapsto g_j\) for each \(1 \leq j \leq n\). Now
+    if \(S \subseteq \phi F'\) for a subgroup \(F' \subseteq F\), then by the
+    isomorphism theorem we have \(S \iso F'/\ker \phi\). From
+    \cref{lem:subgroup-fg-free-ab-grp-is-free} we know that \(F'\) is free and has
+    rank at most \(n\), therefore \(S\) shall be generated by at most \(n\)
+    elements.
 \end{proof}
 
 \begin{corollary}
-\label{cor:quotient-by-torsion-is-free}
-If \(G\) is a finitely generated abelian group, then the quotient
-\(G/\torsion G\) is a free abelian group of finite rank.
+    \label{cor:quotient-by-torsion-is-free}
+    If \(G\) is a finitely generated abelian group, then the quotient
+    \(G/\torsion G\) is a free abelian group of finite rank.
 \end{corollary}
 
 \begin{proof}
-Torsion-freeness of \(G/\torsion G\) is already known from
-\cref{cor:torsion-subgrp-first-properties}, moreover by
-\cref{cor:subgroup-fg-is-fg} we find that \(G/\torsion G\) is finitely
-generated. Therefore by
-\cref{thm:finitely-generated-torsion-free-abelian-grp-is-free} we conclude that
-\(G/\torsion G\) is free.
+    Torsion-freeness of \(G/\torsion G\) is already known from
+    \cref{cor:torsion-subgrp-first-properties}, moreover by
+    \cref{cor:subgroup-fg-is-fg} we find that \(G/\torsion G\) is finitely
+    generated. Therefore by
+    \cref{thm:finitely-generated-torsion-free-abelian-grp-is-free} we conclude that
+    \(G/\torsion G\) is free.
 \end{proof}
 
 \begin{corollary}
-\label{cor:fg-ab-grp-direct-sum-torsion-and-free-grp}
-Given any finitely generated abelian group \(G\) there exists a finitely
-generated free abelian group \(F\) for which
-\[
-G = \torsion G \oplus F.
-\]
+    \label{cor:fg-ab-grp-direct-sum-torsion-and-free-grp}
+    Given any finitely generated abelian group \(G\) there exists a finitely
+    generated free abelian group \(F\) for which
+    \[
+        G = \torsion G \oplus F.
+    \]
 \end{corollary}
 
 \begin{proof}
-Recall that \(G \iso H \oplus (G/H)\) for a normal subgroup \(H \subseteq G\),
-therefore since \(G/\torsion G\) is free (see
-\cref{cor:quotient-by-torsion-is-free}) then
-\(G \iso \torsion G \oplus (G/\torsion G)\) proves the statement.
+    Recall that \(G \iso H \oplus (G/H)\) for a normal subgroup \(H \subseteq G\),
+    therefore since \(G/\torsion G\) is free (see
+    \cref{cor:quotient-by-torsion-is-free}) then
+    \(G \iso \torsion G \oplus (G/\torsion G)\) proves the statement.
 \end{proof}
 
 \begin{corollary}
-\label{cor:iso-fg-grps-iff-torsions-and-rank}
-Given a pair of finitely generated abelian groups \(G\) and \(H\), one has
-\(G \iso H\) if and only if \(\torsion G \iso \torsion H\) and
-\(\rank(G/\torsion G) = \rank(H/\torsion H)\).
+    \label{cor:iso-fg-grps-iff-torsions-and-rank}
+    Given a pair of finitely generated abelian groups \(G\) and \(H\), one has
+    \(G \iso H\) if and only if \(\torsion G \iso \torsion H\) and
+    \(\rank(G/\torsion G) = \rank(H/\torsion H)\).
 \end{corollary}
 
 \begin{proof}
-From \cref{cor:torsion-subgrp-first-properties} we know that if \(G \iso H\)
-then \(\torsion G \iso \torsion H\) and \(G/\torsion G \iso H/\torsion
-H\). Moreover, since both quotients are free (see
-\cref{cor:quotient-by-torsion-is-free}) then their rank must be the same.
+    From \cref{cor:torsion-subgrp-first-properties} we know that if \(G \iso H\)
+    then \(\torsion G \iso \torsion H\) and \(G/\torsion G \iso H/\torsion
+    H\). Moreover, since both quotients are free (see
+    \cref{cor:quotient-by-torsion-is-free}) then their rank must be the same.
 
-For the converse, suppose the latter hypothesis and notice that the rank
-hypothesis implies in \(G/\torsion G \iso H/\torsion H\). Using
-\cref{cor:fg-ab-grp-direct-sum-torsion-and-free-grp} we find that
-\(G \iso \torsion G \oplus (G/\torsion G)\) and
-\(H \iso \torsion H \oplus (H/\torsion H)\). Therefore we may rightly conclude
-that \(G \iso H\).
+    For the converse, suppose the latter hypothesis and notice that the rank
+    hypothesis implies in \(G/\torsion G \iso H/\torsion H\). Using
+    \cref{cor:fg-ab-grp-direct-sum-torsion-and-free-grp} we find that
+    \(G \iso \torsion G \oplus (G/\torsion G)\) and
+    \(H \iso \torsion H \oplus (H/\torsion H)\). Therefore we may rightly conclude
+    that \(G \iso H\).
 \end{proof}
 
 \subsection{Basis Theorem}
 
 \begin{definition}[\(p\)-group]
-\label{def:p-group}
-Let \(G\) be a group and \(p\) be a prime number. We say that \(G\) is a
-\emph{\(p\)-group} if for every \(g \in G\) there exists \(n \in \Z\) such that
-\(|g| = p^n\) is the order of \(g\) in \(G\).
+    \label{def:p-group}
+    Let \(G\) be a group and \(p\) be a prime number. We say that \(G\) is a
+    \emph{\(p\)-group} if for every \(g \in G\) there exists \(n \in \Z\) such that
+    \(|g| = p^n\) is the order of \(g\) in \(G\).
 
-Analogously, if \(A\) is an \emph{abelian} group, we shall say that \(A\) is
-\emph{\(p\)-primary} if for every \(a \in A\) there exists \(k \geq 1\) such
-that \(p^k a = 0\). We shall define the notation
-\[
-A_p = \{a \in A \colon p^k a = 0 \text{ for some } k \geq 1\}
-\]
-for the \(p\)-primary subgroup, or component, of \(A\).
+    Analogously, if \(A\) is an \emph{abelian} group, we shall say that \(A\) is
+    \emph{\(p\)-primary} if for every \(a \in A\) there exists \(k \geq 1\) such
+    that \(p^k a = 0\). We shall define the notation
+    \[
+        A_p = \{a \in A \colon p^k a = 0 \text{ for some } k \geq 1\}
+    \]
+    for the \(p\)-primary subgroup, or component, of \(A\).
 \end{definition}
 
 \begin{theorem}[Primary decomposition]
-\label{thm:primary-decomposition-torsion-abelian-grp}
-Let \(G\) and \(H\) be torsion abelian groups, then:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item The group \(G\) is the direct sum of its \(p\)-primary components:
-  \[
-  G = \bigoplus_{p \text{ prime}} G_p.
-  \]
+    \label{thm:primary-decomposition-torsion-abelian-grp}
+    Let \(G\) and \(H\) be torsion abelian groups, then:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item The group \(G\) is the direct sum of its \(p\)-primary components:
+              \[
+                  G = \bigoplus_{p \text{ prime}} G_p.
+              \]
 
-\item The groups \(G\) and \(H\) are isomorphic if and only if \(G_p \iso H_p\)
-  for each prime \(p\).
-\end{enumerate}
+        \item The groups \(G\) and \(H\) are isomorphic if and only if \(G_p \iso H_p\)
+              for each prime \(p\).
+    \end{enumerate}
 \end{theorem}
 
 \begin{proof}
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item Let \(x \in G\) be any element, and assume \(|x| \coloneq d > 1\). Let
-  \(d = \prod_{j=1}^t p_j^{k_j}\) be the prime decompostion of \(d\), and define
-  for each \(1 \leq j \leq t\) the integer \(r_j \coloneq d/p_j^{k_j}\). Since
-  \(d x = 0\), then \(r_j x \in G_{p_j}\) for each \(j\). Since the collection
-  \(\{r_1, \dots, r_t\}\) share no common divisors other than \(1\), then
-  \(\gcd_{1 \leq j \leq t} r_j = 1\) and hence one can find a collection
-  \((a_j)_{j=1}^t\) of integers such that \(\sum_{j=1}^t a_j r_j = 1\). In
-  particular, one has \(x = \sum_j a_j (r_j x) \in \sum_j G_{p_j}\). To prove
-  that this sum of abelian groups is direct, we must show that for each
-  \(1 \leq j \leq t\) the group \(H_j \coloneq \sum_{i \neq j} G_{p_i}\) has a
-  trivial intersection with \(G_{p_j}\).
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item Let \(x \in G\) be any element, and assume \(|x| \coloneq d > 1\). Let
+              \(d = \prod_{j=1}^t p_j^{k_j}\) be the prime decompostion of \(d\), and define
+              for each \(1 \leq j \leq t\) the integer \(r_j \coloneq d/p_j^{k_j}\). Since
+              \(d x = 0\), then \(r_j x \in G_{p_j}\) for each \(j\). Since the collection
+              \(\{r_1, \dots, r_t\}\) share no common divisors other than \(1\), then
+              \(\gcd_{1 \leq j \leq t} r_j = 1\) and hence one can find a collection
+              \((a_j)_{j=1}^t\) of integers such that \(\sum_{j=1}^t a_j r_j = 1\). In
+              particular, one has \(x = \sum_j a_j (r_j x) \in \sum_j G_{p_j}\). To prove
+              that this sum of abelian groups is direct, we must show that for each
+              \(1 \leq j \leq t\) the group \(H_j \coloneq \sum_{i \neq j} G_{p_i}\) has a
+              trivial intersection with \(G_{p_j}\).
 
-  To obtain this intersection, let \(y \in G_{p_j} \cap H_j\) be any element and
-  take \(s \geq 0\) such that \(p_j^s y = 0\), and a collection
-  \((s_i)_{i \neq j}\) of non-negative integers such that
-  \(u x \coloneq \prod_{i \neq j} p_i^{s_i} x = 0\). Since \(p_j\) does not
-  appear in the prime decomposition of \(u\), it follows that
-  \(\gcd(p_j^s, u) = 1\). Therefore we may find \(a, b \in \Z\) such that
-  \(a p_j^s + b u = 1\). Hence one has
-  \[
-  x = (a p_j^s + b u) x = a p_j^s x + b u x = 0,
-  \]
-  therefore \(G_{p_j} \cap H_j = 0\) as wanted.
+              To obtain this intersection, let \(y \in G_{p_j} \cap H_j\) be any element and
+              take \(s \geq 0\) such that \(p_j^s y = 0\), and a collection
+              \((s_i)_{i \neq j}\) of non-negative integers such that
+              \(u x \coloneq \prod_{i \neq j} p_i^{s_i} x = 0\). Since \(p_j\) does not
+              appear in the prime decomposition of \(u\), it follows that
+              \(\gcd(p_j^s, u) = 1\). Therefore we may find \(a, b \in \Z\) such that
+              \(a p_j^s + b u = 1\). Hence one has
+              \[
+                  x = (a p_j^s + b u) x = a p_j^s x + b u x = 0,
+              \]
+              therefore \(G_{p_j} \cap H_j = 0\) as wanted.
 
-\item Suppose that there exists an isomorphism \(\phi: G \isoto H\). Notice that
-  if \(x \in G_p\) then \(p^k x = 0\) for some \(k \geq 0\) and hence
-  \(0 = \phi(p^k x) = p^k \phi x\) shows that \(\phi x \in H_p\)---thus \(\phi
-  G_p \subseteq H_p\). Moreover, since \(\phi\) is an isomorphism, given any
-  element \(y \in H_p\), let \(\phi x = y\) and \(\ell \geq 0\) such that
-  \(p^{\ell} y = 0\), then we have
-  \[
-  0 = p^{\ell} y = p^{\ell} \phi x = \phi(p^{\ell} x)
-  \]
-  hence \(p^{\ell} x \in \ker \phi = 0\) since \(\phi\) is injective and thus
-  \(x \in G_p\). This shows that \(\phi G_p = H_p\), therefore the induced map
-  \(\phi|_{G_p}: G_p \isoto H_p\) is an isomorphism.
+        \item Suppose that there exists an isomorphism \(\phi: G \isoto H\). Notice that
+              if \(x \in G_p\) then \(p^k x = 0\) for some \(k \geq 0\) and hence
+              \(0 = \phi(p^k x) = p^k \phi x\) shows that \(\phi x \in H_p\)---thus \(\phi
+              G_p \subseteq H_p\). Moreover, since \(\phi\) is an isomorphism, given any
+              element \(y \in H_p\), let \(\phi x = y\) and \(\ell \geq 0\) such that
+              \(p^{\ell} y = 0\), then we have
+              \[
+                  0 = p^{\ell} y = p^{\ell} \phi x = \phi(p^{\ell} x)
+              \]
+              hence \(p^{\ell} x \in \ker \phi = 0\) since \(\phi\) is injective and thus
+              \(x \in G_p\). This shows that \(\phi G_p = H_p\), therefore the induced map
+              \(\phi|_{G_p}: G_p \isoto H_p\) is an isomorphism.
 
-  For the contrary, let \((f_p: G_p \isoto H_p)_{p \text{ prime}}\) be a
-  collection of isomorphisms. From the coproduct universal property we know that
-  there exists a uniquely iduced group morphism \(f: G \to H\) such that \(f_p =
-  f \iota_p\) for each prime \(p\)---where \(\iota_p: G_p \emb G\) is the
-  canonical inclusion. Since each \(f_p\) is an isomorphism, so is \(f\) and
-  hence \(G \iso H\).
-\end{enumerate}
+              For the contrary, let \((f_p: G_p \isoto H_p)_{p \text{ prime}}\) be a
+              collection of isomorphisms. From the coproduct universal property we know that
+              there exists a uniquely iduced group morphism \(f: G \to H\) such that \(f_p =
+              f \iota_p\) for each prime \(p\)---where \(\iota_p: G_p \emb G\) is the
+              canonical inclusion. Since each \(f_p\) is an isomorphism, so is \(f\) and
+              hence \(G \iso H\).
+    \end{enumerate}
 \end{proof}
 
 \begin{lemma}
-\label{lem:grp-independence}
-Let \(G = \langle x_1, \dots, x_n \rangle\) be a finitely generated abelian
-group. Then \(G = \bigoplus_{j=1}^n \langle x_j \rangle\) if and only if
-\(\sum_{j=1}^n a_j x_j = 0\) implies in \(a_j x_j = 0\) for all
-\(1 \leq j \leq n\), where \(a_j \in \Z\).
+    \label{lem:grp-independence}
+    Let \(G = \langle x_1, \dots, x_n \rangle\) be a finitely generated abelian
+    group. Then \(G = \bigoplus_{j=1}^n \langle x_j \rangle\) if and only if
+    \(\sum_{j=1}^n a_j x_j = 0\) implies in \(a_j x_j = 0\) for all
+    \(1 \leq j \leq n\), where \(a_j \in \Z\).
 \end{lemma}
 
 \begin{proof}
-We shall make use of \cref{prop:internal-sum-modules}. Let \(1 \leq j \leq n\)
-be any index, and consider any element
-\(g \in \langle x_j \rangle \cap \langle x_1, \dots, \widehat x_j, \dots, x_n
-\rangle\). Then there exists \(a \in \Z\) and a collection \((a_i)_{i \neq j}\)
-of integers such that
-\[
-a x_j = g = \sum_{i \neq j} a_i x_i,
-\]
-so that \(\big(\sum_{i \neq j} a_i x_i \big) - a x_j = 0\). From hypothesis this
-last equation implies in \(a_i x_i = 0\) for each \(i \neq j\) and
-\(g = a x_j = 0\), thus
-\[
-\langle x_j \rangle
-\cap \langle x_1, \dots, \widehat x_j, \dots, x_n \rangle
-= 0.
-\]
+    We shall make use of \cref{prop:internal-sum-modules}. Let \(1 \leq j \leq n\)
+    be any index, and consider any element
+    \(g \in \langle x_j \rangle \cap \langle x_1, \dots, \widehat x_j, \dots, x_n
+    \rangle\). Then there exists \(a \in \Z\) and a collection \((a_i)_{i \neq j}\)
+    of integers such that
+    \[
+        a x_j = g = \sum_{i \neq j} a_i x_i,
+    \]
+    so that \(\big(\sum_{i \neq j} a_i x_i \big) - a x_j = 0\). From hypothesis this
+    last equation implies in \(a_i x_i = 0\) for each \(i \neq j\) and
+    \(g = a x_j = 0\), thus
+    \[
+        \langle x_j \rangle
+        \cap \langle x_1, \dots, \widehat x_j, \dots, x_n \rangle
+        = 0.
+    \]
 
-For the converse, assume \(G = \bigoplus_{j=1}^n \langle x_j \rangle\) and
-suppose \(\sum_j b_j x_j = 0\) with \(b_j \in \Z\). Again from
-\cref{prop:internal-sum-modules} the uniqueness of each \(b_j x_j\) shows that
-it must be the case that \(b_j x_j = 0\).
+    For the converse, assume \(G = \bigoplus_{j=1}^n \langle x_j \rangle\) and
+    suppose \(\sum_j b_j x_j = 0\) with \(b_j \in \Z\). Again from
+    \cref{prop:internal-sum-modules} the uniqueness of each \(b_j x_j\) shows that
+    it must be the case that \(b_j x_j = 0\).
 \end{proof}
 
 \begin{proposition}
-\label{prop:torsion-grp-iso-iff-primary-iso}
-Two torsion abelian groups \(G\) and \(H\) are isomorphic if and only if
-\(G_p \iso H_p\) for each prime \(p\).
+    \label{prop:torsion-grp-iso-iff-primary-iso}
+    Two torsion abelian groups \(G\) and \(H\) are isomorphic if and only if
+    \(G_p \iso H_p\) for each prime \(p\).
 \end{proposition}
 
 \begin{proof}
-If \(G \iso H\) then certainly the restriction to each \(G_p\) is an isomorphism
-\(G_p \iso H_p\). For the converse, if there exists a collection of isomorphisms
-\(G_p \iso H_p\) for each prime \(p\), then by the universap property of
-coproducts there exists a unique induced isomorphism
-\(\bigoplus_p G_p \iso \bigoplus_p H_p\)---proving that \(G\) and \(H\) are
-isomorphic.
+    If \(G \iso H\) then certainly the restriction to each \(G_p\) is an isomorphism
+    \(G_p \iso H_p\). For the converse, if there exists a collection of isomorphisms
+    \(G_p \iso H_p\) for each prime \(p\), then by the universap property of
+    coproducts there exists a unique induced isomorphism
+    \(\bigoplus_p G_p \iso \bigoplus_p H_p\)---proving that \(G\) and \(H\) are
+    isomorphic.
 \end{proof}
 
 \begin{definition}
-\label{def:pure-subgroup}
-Let \(G\) be a \(p\)-primary abelian group for a given prime \(p\). A subgroup
-\(P \subseteq G\) is said to be \emph{pure} if for all \(n \geq 0\) one has
-\(P \cap p^n G = p^n P\).
+    \label{def:pure-subgroup}
+    Let \(G\) be a \(p\)-primary abelian group for a given prime \(p\). A subgroup
+    \(P \subseteq G\) is said to be \emph{pure} if for all \(n \geq 0\) one has
+    \(P \cap p^n G = p^n P\).
 
-In general, given any abelian group \(H\), a \emph{pure subgroup}
-\(S \subseteq H\) is a subgroup such that \(S \cap m H = m S\) for each
-\(m \in \Z\).
+    In general, given any abelian group \(H\), a \emph{pure subgroup}
+    \(S \subseteq H\) is a subgroup such that \(S \cap m H = m S\) for each
+    \(m \in \Z\).
 \end{definition}
 
 \begin{lemma}
-\label{lem:finite-p-primary-has-pure-cyclic-subgrp}
-Let \(G\) be a \emph{finite} \(p\)-primary abelian group, then \(G\) has a
-\emph{non-zero pure cyclic subgroup}.
+    \label{lem:finite-p-primary-has-pure-cyclic-subgrp}
+    Let \(G\) be a \emph{finite} \(p\)-primary abelian group, then \(G\) has a
+    \emph{non-zero pure cyclic subgroup}.
 \end{lemma}
 
 \begin{proof}
-Since \(G\) is finite, let \(y \in G\) be the element fo maximal order
-\(|y| \coloneq p^{\ell}\), and define \(S \coloneq \langle y \rangle\). Consider
-any non-zero element \(s \coloneq m p^t y \in S\) with \(t \geq 0\) and
-\(p \nmid m\). If there exists \(g \in G\) and \(n \geq 0\) with \(s = p^n g\),
-then in particular it must be the case that \(n < \ell\) since \(p^{\ell}\) is
-the biggest order in the group and \(s\) is non-zero.
+    Since \(G\) is finite, let \(y \in G\) be the element fo maximal order
+    \(|y| \coloneq p^{\ell}\), and define \(S \coloneq \langle y \rangle\). Consider
+    any non-zero element \(s \coloneq m p^t y \in S\) with \(t \geq 0\) and
+    \(p \nmid m\). If there exists \(g \in G\) and \(n \geq 0\) with \(s = p^n g\),
+    then in particular it must be the case that \(n < \ell\) since \(p^{\ell}\) is
+    the biggest order in the group and \(s\) is non-zero.
 
-Suppose, for the sake of contradiction, that \(t < n\), then
-\[
-p^\ell g = (p^{\ell - n} p^n) g = p^{\ell - n} s = p^{\ell - n} (m p^t y) = m
-p^{\ell - n + t} y.
-\]
-Notice however that \(p \nmid m\) and \(\ell - n + t < \ell\), therefore
-contradicting the fact that \(p^{\ell} g = 0\). Thus we may assume that
-\(t \geq n\). In such case, defining \(s' \coloneq m p^{t-n} y \in S\) we obtain
-\[
-p^n s' = m p^t y = s,
-\]
-which is a solution for \(s\) in the equation \(p^n S = S \cap p^n G\).
+    Suppose, for the sake of contradiction, that \(t < n\), then
+    \[
+        p^\ell g = (p^{\ell - n} p^n) g = p^{\ell - n} s = p^{\ell - n} (m p^t y) = m
+        p^{\ell - n + t} y.
+    \]
+    Notice however that \(p \nmid m\) and \(\ell - n + t < \ell\), therefore
+    contradicting the fact that \(p^{\ell} g = 0\). Thus we may assume that
+    \(t \geq n\). In such case, defining \(s' \coloneq m p^{t-n} y \in S\) we obtain
+    \[
+        p^n s' = m p^t y = s,
+    \]
+    which is a solution for \(s\) in the equation \(p^n S = S \cap p^n G\).
 \end{proof}
 
 \begin{definition}
-\label{def:finite-p-primary-quotiented-is-Fp-vector-space}
-Given a finite \(p\)-primary abelian group \(G\), the quotient \(G/pG\) is an
-\emph{\(\FF_p\)-vector space} with dimension
-\[
-\delta G \coloneq \dim_{\FF_p}(G/pG).
-\]
+    \label{def:finite-p-primary-quotiented-is-Fp-vector-space}
+    Given a finite \(p\)-primary abelian group \(G\), the quotient \(G/pG\) is an
+    \emph{\(\FF_p\)-vector space} with dimension
+    \[
+        \delta G \coloneq \dim_{\FF_p}(G/pG).
+    \]
 \end{definition}
 
 Also, if \(G\) and \(H\) are both finite \(p\)-primary groups, then since
 \[
-\frac{G \oplus H}{p(G \oplus H)} = \frac{G \oplus H}{p G \oplus p H}
-\iso \frac{G}{p G} \oplus \frac{H}{p H}
+    \frac{G \oplus H}{p(G \oplus H)} = \frac{G \oplus H}{p G \oplus p H}
+    \iso \frac{G}{p G} \oplus \frac{H}{p H}
 \]
 it follows that \(\delta(G \oplus H) = \delta G + \delta H\)---thus \(\delta\)
 is additive over direct sums.
 
 \begin{corollary}
-\label{cor:finite-p-primary-is-trivial-iff-delta-is-zero}
-If \(G\) is a finite \(p\)-primary abelian group, then \(G = 0\) if and only if
-\(\delta G = 0\).
+    \label{cor:finite-p-primary-is-trivial-iff-delta-is-zero}
+    If \(G\) is a finite \(p\)-primary abelian group, then \(G = 0\) if and only if
+    \(\delta G = 0\).
 \end{corollary}
 
 \begin{definition}
-\label{def:prufer-grp}
-We define the \emph{Pr\"{u}fer group} \(\Z(p^{\infty})\) to be the group
-\[
-\Z(p^{\infty}) \coloneq \langle e^{2 \pi \img / p^\ell} \colon \ell \geq 0 \rangle.
-\]
+    \label{def:prufer-grp}
+    We define the \emph{Pr\"{u}fer group} \(\Z(p^{\infty})\) to be the group
+    \[
+        \Z(p^{\infty}) \coloneq \langle e^{2 \pi \img / p^\ell} \colon \ell \geq 0 \rangle.
+    \]
 \end{definition}
 
 \begin{lemma}
-\label{lem:G=pG-for-p-primary-iff-zero-or-infinite}
-Let \(G\) be a \(p\)-primary abelian group. If \(G = p G\) then either \(G = 0\)
-or \(G\) is infinite.
+    \label{lem:G=pG-for-p-primary-iff-zero-or-infinite}
+    Let \(G\) be a \(p\)-primary abelian group. If \(G = p G\) then either \(G = 0\)
+    or \(G\) is infinite.
 \end{lemma}
 
 \begin{proof}
-Suppose \(G\) is non-zero and satisfies \(G = p G\). Let \(g \in G\) be a
-non-zero element with \(p^k g = 0\) for a minimal \(k \geq 1\), then there
-exists \(h \in G\) with \(h \neq g\) for which \(g = p h\)---then
-\(p^{k+1} h = 0\). This shows that the order of the elements of \(G\) isn't
-bounded, and thus \(G\) must contain an infinite number of elements.
+    Suppose \(G\) is non-zero and satisfies \(G = p G\). Let \(g \in G\) be a
+    non-zero element with \(p^k g = 0\) for a minimal \(k \geq 1\), then there
+    exists \(h \in G\) with \(h \neq g\) for which \(g = p h\)---then
+    \(p^{k+1} h = 0\). This shows that the order of the elements of \(G\) isn't
+    bounded, and thus \(G\) must contain an infinite number of elements.
 \end{proof}
 
 \begin{lemma}
-\label{lem:finite-p-primary-is-cyclic-iff-delta-is-one}
-A finite \(p\)-primary abelian group \(G\) is a \emph{non-zero cyclic group} if
-and only if \(\delta G = 1\).
+    \label{lem:finite-p-primary-is-cyclic-iff-delta-is-one}
+    A finite \(p\)-primary abelian group \(G\) is a \emph{non-zero cyclic group} if
+    and only if \(\delta G = 1\).
 \end{lemma}
 
 \begin{proof}
-Suppose \(G\) is a non-zero cyclic group, then \(G/pG\) will be a non-zero
-cyclic group with \(\dim_{\FF_p}(G/pG) = 1\), then \(G/pG \iso \FF_p\).
+    Suppose \(G\) is a non-zero cyclic group, then \(G/pG\) will be a non-zero
+    cyclic group with \(\dim_{\FF_p}(G/pG) = 1\), then \(G/pG \iso \FF_p\).
 
-For the converse, assume that \(\delta G = 1\), so that \(G/pG \iso \Z/p\Z\) is
-cyclic. Let \(g + p G\) be the generator of \(G/pG\) and assume, for the sake of
-contradiction, that \(G\) is \emph{not} generated by \(g\), that is,
-\(\langle g \rangle \subsetneq G\) is a \emph{proper} subgroup. Since \(\Z/p\Z\)
-is a simple group, it follows that \(p G \subseteq G\) is a \emph{maximal}
-subgroup. Suppose that \(L \subseteq G\) is another maximal subgroup of \(G\),
-so that \(G/L\) is a simple abelian group---and since \(G\) is \(p\)-primary,
-then \(G/L\) is a \(p\)-group and thus \(G/L \iso \Z/p\Z\).
+    For the converse, assume that \(\delta G = 1\), so that \(G/pG \iso \Z/p\Z\) is
+    cyclic. Let \(g + p G\) be the generator of \(G/pG\) and assume, for the sake of
+    contradiction, that \(G\) is \emph{not} generated by \(g\), that is,
+    \(\langle g \rangle \subsetneq G\) is a \emph{proper} subgroup. Since \(\Z/p\Z\)
+    is a simple group, it follows that \(p G \subseteq G\) is a \emph{maximal}
+    subgroup. Suppose that \(L \subseteq G\) is another maximal subgroup of \(G\),
+    so that \(G/L\) is a simple abelian group---and since \(G\) is \(p\)-primary,
+    then \(G/L\) is a \(p\)-group and thus \(G/L \iso \Z/p\Z\).
 \end{proof}
 
 %%% Local Variables:

@@ -3,106 +3,106 @@
 \subsection{First Characterisations}
 
 \begin{definition}[Combinatorial complex]
-\label{def:combinatorial-complex}
-A \emph{combinatorial complex} (CC) consists of a triple
-\(\mathcal{X} = (V, C, \rank)\) where we have a set of \emph{vertices} \(V\), a set of
-\emph{cells} \(C \subseteq 2^V \setminus \emptyset\) (endowed with the inclusion preorder) and a map
-\(\rank: C \to \Z_{\geq 0}\) such that:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item For all \(v \in V\) we have \(\{v\} \in C\).
-\item The map \(\rank\) is order preserving with respect to inclusions: if \(x,
-  y \subseteq C\) are such that \(x \subseteq y\) then \(\rank x \leq \rank y\).
-\end{enumerate}
-The dimension of \(\mathcal{X}\) is defined to be
-\[
-\dim \mathcal{X} \coloneq \max_{x \in C} \rank x.
-\]
-A cell \(x \in C\) is said to be of rank \(k \in \Z_{\geq 0}\) if \(\rank x = k\), which we
-summarise by saying that \(x\) is a \(k\)-cell. The \(k\)-skeleton of \(\mathcal{X}\) is
-defined as
-\[
-\Sk_k \mathcal{X} \coloneq \{x \in C \colon \rank x \leq k\}.
-\]
-The collection of all cells of rank \(k\) will be denoted by
-\(\mathcal{X}^k \coloneq \rank^{-1} k\).
+    \label{def:combinatorial-complex}
+    A \emph{combinatorial complex} (CC) consists of a triple
+    \(\mathcal{X} = (V, C, \rank)\) where we have a set of \emph{vertices} \(V\), a set of
+    \emph{cells} \(C \subseteq 2^V \setminus \emptyset\) (endowed with the inclusion preorder) and a map
+    \(\rank: C \to \Z_{\geq 0}\) such that:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item For all \(v \in V\) we have \(\{v\} \in C\).
+        \item The map \(\rank\) is order preserving with respect to inclusions: if \(x,
+              y \subseteq C\) are such that \(x \subseteq y\) then \(\rank x \leq \rank y\).
+    \end{enumerate}
+    The dimension of \(\mathcal{X}\) is defined to be
+    \[
+        \dim \mathcal{X} \coloneq \max_{x \in C} \rank x.
+    \]
+    A cell \(x \in C\) is said to be of rank \(k \in \Z_{\geq 0}\) if \(\rank x = k\), which we
+    summarise by saying that \(x\) is a \(k\)-cell. The \(k\)-skeleton of \(\mathcal{X}\) is
+    defined as
+    \[
+        \Sk_k \mathcal{X} \coloneq \{x \in C \colon \rank x \leq k\}.
+    \]
+    The collection of all cells of rank \(k\) will be denoted by
+    \(\mathcal{X}^k \coloneq \rank^{-1} k\).
 \end{definition}
 
 \begin{notation}
-\label{not:notation-combinatorial-complex}
-Let \(\mathcal X = (V, C, \rank)\) be a combinatorial complex. For the sake of
-clearness we shall also adopt the following notation: vertices of
-\(\mathcal{X}\) are denoted by \(\Vertex \mathcal{X} \coloneq V\), while cells of
-\(\mathcal{X}\) are \(\Cell \mathcal{X} \coloneq C\), and when needed we'll also write
-\(\rank_{\mathcal{X}} = \rank\).
+    \label{not:notation-combinatorial-complex}
+    Let \(\mathcal X = (V, C, \rank)\) be a combinatorial complex. For the sake of
+    clearness we shall also adopt the following notation: vertices of
+    \(\mathcal{X}\) are denoted by \(\Vertex \mathcal{X} \coloneq V\), while cells of
+    \(\mathcal{X}\) are \(\Cell \mathcal{X} \coloneq C\), and when needed we'll also write
+    \(\rank_{\mathcal{X}} = \rank\).
 \end{notation}
 
 \begin{example}
-\label{exp:graph-based-cc}
-The particular class of combinatorial complexes whose \(1\)-cells (edges) are
-composed of exactly \(2\) vertices are called \emph{graph-based combinatorial
-  complexes}.
+    \label{exp:graph-based-cc}
+    The particular class of combinatorial complexes whose \(1\)-cells (edges) are
+    composed of exactly \(2\) vertices are called \emph{graph-based combinatorial
+        complexes}.
 \end{example}
 
 \begin{definition}[Morphism of combinatorial complexes]
-\label{def:cc-morphism}
-Let \(\mathcal{X}\) and \(\mathcal{Y}\) be combinatorial complexes. We define a \emph{CC-morphism}
-\(\phi: \mathcal{X} \to \mathcal{Y}\) to be a map \(\phi: \Cell \mathcal{X} \to \Cell \mathcal{Y}\) satisfying:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item Given a pair \(x, x' \in \Cell \mathcal{X}\) such that \(x \subseteq x'\), then \(\phi x \subseteq \phi
-  x'\)---that is, \(\phi\) is order preserving.
-\item For any \(x \in \Cell \mathcal{X}\) we have
-  \(\rank_{\mathcal{X}} x \geq \rank_{\mathcal{Y}}(\phi x)\)---that is, for any
-  \(k \in \Z_{\geq 0}\) we have \(\phi(\Sk_k \mathcal{X}) \subseteq \Sk_k \mathcal{Y}\).
-\end{enumerate}
+    \label{def:cc-morphism}
+    Let \(\mathcal{X}\) and \(\mathcal{Y}\) be combinatorial complexes. We define a \emph{CC-morphism}
+    \(\phi: \mathcal{X} \to \mathcal{Y}\) to be a map \(\phi: \Cell \mathcal{X} \to \Cell \mathcal{Y}\) satisfying:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item Given a pair \(x, x' \in \Cell \mathcal{X}\) such that \(x \subseteq x'\), then \(\phi x \subseteq \phi
+              x'\)---that is, \(\phi\) is order preserving.
+        \item For any \(x \in \Cell \mathcal{X}\) we have
+              \(\rank_{\mathcal{X}} x \geq \rank_{\mathcal{Y}}(\phi x)\)---that is, for any
+              \(k \in \Z_{\geq 0}\) we have \(\phi(\Sk_k \mathcal{X}) \subseteq \Sk_k \mathcal{Y}\).
+    \end{enumerate}
 \end{definition}
 
 \begin{definition}
-\label{def:cc-embedding}
-A CC-morphism \(\phi: \mathcal{X} \to \mathcal{Y}\) is said to be a \emph{CC-embedding} if
-\(\phi\) is an injective set function on the cells, and
-\(\rank_{\mathcal{X}} x = \rank_{\mathcal{Y}}(\phi x)\) for every cell \(x \in \Cell \mathcal{X}\).
+    \label{def:cc-embedding}
+    A CC-morphism \(\phi: \mathcal{X} \to \mathcal{Y}\) is said to be a \emph{CC-embedding} if
+    \(\phi\) is an injective set function on the cells, and
+    \(\rank_{\mathcal{X}} x = \rank_{\mathcal{Y}}(\phi x)\) for every cell \(x \in \Cell \mathcal{X}\).
 \end{definition}
 
 \begin{definition}[Sub-combinatorial complex]
-\label{def:sub-combinatorial-complex}
-Let \(\mathcal{X}\) be a combinatorial complex. We say that \(\mathcal{Y}\) is a
-\emph{sub-combinatorial complex} (or sub-CC) if there exists a CC-embedding
-\(\mathcal{Y} \emb \mathcal{X}\). We shall denote by \(\Sub \mathcal{X}\) the collection of all
-sub-combinatorial complexes of \(\mathcal{X}\).
+    \label{def:sub-combinatorial-complex}
+    Let \(\mathcal{X}\) be a combinatorial complex. We say that \(\mathcal{Y}\) is a
+    \emph{sub-combinatorial complex} (or sub-CC) if there exists a CC-embedding
+    \(\mathcal{Y} \emb \mathcal{X}\). We shall denote by \(\Sub \mathcal{X}\) the collection of all
+    sub-combinatorial complexes of \(\mathcal{X}\).
 \end{definition}
 
 \begin{example}
-\label{exp:sub-cc}
-For any subset \(V \subseteq \Vertex \mathcal{X}\), we can induce a sub-CC given by
-\[
-\mathcal{X}_V \coloneq (V, C, \rank_{\mathcal{X}}|_C)
-\]
-where \(C \coloneq \{x \in \Cell \mathcal{X} \colon x \subseteq V\}\). In particular, for
-\(k \in \Z_{\geq 0}\), the skeleton \(\Sk_k \mathcal{X}\) is a sub-CC of \(\mathcal{X}\). A cell \(x \in
-\Cell \mathcal{X}\) also induces a sub-CC whose vertices are the nodes contained in \(x\)
-and whose cells are \(\{y \in \Cell \mathcal{X} \colon y \subseteq x\}\)---we shall abuse the notation
-and say that \(x\) is a sub-CC of \(\mathcal{X}\).
+    \label{exp:sub-cc}
+    For any subset \(V \subseteq \Vertex \mathcal{X}\), we can induce a sub-CC given by
+    \[
+        \mathcal{X}_V \coloneq (V, C, \rank_{\mathcal{X}}|_C)
+    \]
+    where \(C \coloneq \{x \in \Cell \mathcal{X} \colon x \subseteq V\}\). In particular, for
+    \(k \in \Z_{\geq 0}\), the skeleton \(\Sk_k \mathcal{X}\) is a sub-CC of \(\mathcal{X}\). A cell \(x \in
+    \Cell \mathcal{X}\) also induces a sub-CC whose vertices are the nodes contained in \(x\)
+    and whose cells are \(\{y \in \Cell \mathcal{X} \colon y \subseteq x\}\)---we shall abuse the notation
+    and say that \(x\) is a sub-CC of \(\mathcal{X}\).
 \end{example}
 
 \subsection{Neighbourhood Functions}
 
 \begin{definition}[Neighbourhood functions \& matrices]
-\label{def:neighbourhood-function}
-A neighbourhood function on a combinatorial complex \(\mathcal{X}\) is a map
-\(N: \Sub \mathcal{X} \to 2^{\Vertex \mathcal{X}} \setminus \emptyset\), assigning to each sub-CC of \(\mathcal{X}\) a non-empty
-subset of nodes of \(\mathcal{X}\).
+    \label{def:neighbourhood-function}
+    A neighbourhood function on a combinatorial complex \(\mathcal{X}\) is a map
+    \(N: \Sub \mathcal{X} \to 2^{\Vertex \mathcal{X}} \setminus \emptyset\), assigning to each sub-CC of \(\mathcal{X}\) a non-empty
+    subset of nodes of \(\mathcal{X}\).
 
-Let \(C = \{c_1, \dots, c_n\}\) and \(C' = \{c'_1, \dots, c'_m\}\) be two finite
-subsets of the cells of \(\mathcal{X}\) for which \(N c_j \subseteq C'\) for any \(1 \leq j \leq n\). We
-define the \emph{neighbourhood matrix of \(N\) with respect to \(C\) and \(C'\)}
-to be the \(m \times n\) binary matrix \(\Mat N = [a_{i j}]\) given by
-\[
-a_{i j} =
-\begin{cases}
-  1, &\text{if } c'_i \in N c_j \\
-  0, &\text{otherwise}
-\end{cases}
-\]
+    Let \(C = \{c_1, \dots, c_n\}\) and \(C' = \{c'_1, \dots, c'_m\}\) be two finite
+    subsets of the cells of \(\mathcal{X}\) for which \(N c_j \subseteq C'\) for any \(1 \leq j \leq n\). We
+    define the \emph{neighbourhood matrix of \(N\) with respect to \(C\) and \(C'\)}
+    to be the \(m \times n\) binary matrix \(\Mat N = [a_{i j}]\) given by
+    \[
+        a_{i j} =
+        \begin{cases}
+            1, & \text{if } c'_i \in N c_j \\
+            0, & \text{otherwise}
+        \end{cases}
+    \]
 \end{definition}
 
 \subsubsection{Important Examples of Neighbourhood Functions}
@@ -111,91 +111,91 @@ Now we shall define some of the most important neighbourhood functions for
 applications in topological neural networks.
 
 \begin{definition}[Down \& up incidence neighbourhood function]
-\label{def:down/up-incidence-neighbourhood}
-Let \(\mathcal{X}\) be a combinatorial complex. Given a pair of distinct cells
-\(x, y \in \Cell \mathcal{X}\), we say that \(x\) and \(y\) are \emph{incident} if either
-\(x \subsetneq y\) or \(y \subsetneq x\). We define the following:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item The \emph{down-incidence neighbourhood function}
-  \(N_{\searrow}: \Sub \mathcal{X} \to 2^{\Vertex \mathcal{X}} \setminus \emptyset\) is the map
-  \[
-  N_{\nearrow} x \coloneq \{y \in \Cell \mathcal{X} \colon y \subsetneq x\}.
-  \]
+    \label{def:down/up-incidence-neighbourhood}
+    Let \(\mathcal{X}\) be a combinatorial complex. Given a pair of distinct cells
+    \(x, y \in \Cell \mathcal{X}\), we say that \(x\) and \(y\) are \emph{incident} if either
+    \(x \subsetneq y\) or \(y \subsetneq x\). We define the following:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item The \emph{down-incidence neighbourhood function}
+              \(N_{\searrow}: \Sub \mathcal{X} \to 2^{\Vertex \mathcal{X}} \setminus \emptyset\) is the map
+              \[
+                  N_{\nearrow} x \coloneq \{y \in \Cell \mathcal{X} \colon y \subsetneq x\}.
+              \]
 
-\item The \emph{up-incidence neighbourhood function}
-  \(N_{\nearrow}: \Sub \mathcal{X} \to 2^{\Vertex \mathcal{X}} \setminus \emptyset\) is the map
-  \[
-  N_{\nearrow} x \coloneq \{y \in \Cell \mathcal{X} \colon x \subsetneq y\}.
-  \]
+        \item The \emph{up-incidence neighbourhood function}
+              \(N_{\nearrow}: \Sub \mathcal{X} \to 2^{\Vertex \mathcal{X}} \setminus \emptyset\) is the map
+              \[
+                  N_{\nearrow} x \coloneq \{y \in \Cell \mathcal{X} \colon x \subsetneq y\}.
+              \]
 
-\item Let \(k \in \Z_{\geq 0}\) be any non-negative integer. We define the
-  \emph{\(k\)-down incidence neighbourhood function}
-  \(N_{\searrow, k}: \Sub \mathcal{X} \to 2^{\Vertex \mathcal{X}} \setminus \emptyset\) to be the map
-  \[
-  N_{\searrow, k} x \coloneq
-  \{y \in \Cell \mathcal{X} \colon y \subsetneq x \text{ such that } \rank y = \rank(x) - k\}.
-  \]
+        \item Let \(k \in \Z_{\geq 0}\) be any non-negative integer. We define the
+              \emph{\(k\)-down incidence neighbourhood function}
+              \(N_{\searrow, k}: \Sub \mathcal{X} \to 2^{\Vertex \mathcal{X}} \setminus \emptyset\) to be the map
+              \[
+                  N_{\searrow, k} x \coloneq
+                  \{y \in \Cell \mathcal{X} \colon y \subsetneq x \text{ such that } \rank y = \rank(x) - k\}.
+              \]
 
-\item Let \(k \in \Z_{\geq 0}\) be any non-negative integer. We define the
-  \emph{\(k\)-up incidence neighbourhood function}
-  \(N_{\searrow, k}: \Sub \mathcal{X} \to 2^{\Vertex \mathcal{X}} \setminus \emptyset\) to be the map
-  \[
-  N_{\nearrow, k} x \coloneq
-  \{y \in \Cell \mathcal{X} \colon x \subsetneq y \text{ such that } \rank y = \rank(x) + k\}.
-  \]
-\end{enumerate}
+        \item Let \(k \in \Z_{\geq 0}\) be any non-negative integer. We define the
+              \emph{\(k\)-up incidence neighbourhood function}
+              \(N_{\searrow, k}: \Sub \mathcal{X} \to 2^{\Vertex \mathcal{X}} \setminus \emptyset\) to be the map
+              \[
+                  N_{\nearrow, k} x \coloneq
+                  \{y \in \Cell \mathcal{X} \colon x \subsetneq y \text{ such that } \rank y = \rank(x) + k\}.
+              \]
+    \end{enumerate}
 \end{definition}
 
 \begin{corollary}
-\label{cor:relation-down/up-to-k-down/up}
-If \(\mathcal{X}\) is a CC, then \(N_{\searrow} x = \bigcup_{k \geq 0} N_{\searrow, k} x\) and \(N_{\nearrow} x = \bigcup_{k \geq
-  0} N_{\nearrow, k} x\) for every \(x \in \Cell \mathcal{X}\).
+    \label{cor:relation-down/up-to-k-down/up}
+    If \(\mathcal{X}\) is a CC, then \(N_{\searrow} x = \bigcup_{k \geq 0} N_{\searrow, k} x\) and \(N_{\nearrow} x = \bigcup_{k \geq
+        0} N_{\nearrow, k} x\) for every \(x \in \Cell \mathcal{X}\).
 \end{corollary}
 
 \begin{definition}
-\label{def:cc-cell-face-and-coface}
-Given a CC \(\mathcal{X}\) we define, for each cell \(x \in \Cell \mathcal{X}\) the following:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item The \emph{faces} of \(x\) is defined to be \(N_{\searrow, 1} x\).
+    \label{def:cc-cell-face-and-coface}
+    Given a CC \(\mathcal{X}\) we define, for each cell \(x \in \Cell \mathcal{X}\) the following:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item The \emph{faces} of \(x\) is defined to be \(N_{\searrow, 1} x\).
 
-\item The \emph{cofaces} of \(x\) is defined to be \(N_{\nearrow, 1} x\).
-\end{enumerate}
+        \item The \emph{cofaces} of \(x\) is defined to be \(N_{\nearrow, 1} x\).
+    \end{enumerate}
 \end{definition}
 
 \begin{definition}[Incidence matrix]
-\label{def:cc-incidence-matrix}
-Let \(\mathcal{X}\) be a CC with finitely many vertices and take non-negative integers
-\(0 \leq r < k \leq \dim \mathcal{X}\). We define the \emph{\((r, k)\)-incidence matrix
-  \(B_{r, k} = [b_{i j}]\)} between \(\mathcal{X}^r = \{x_1, \dots, x_m\}\) and
-\(\mathcal{X}^k = \{x_1', \dots, x_n'\}\) to be the binary \(m \times n\) matrix such that
-\[
-b_{i j} =
-\begin{cases}
-  1, &\text{if } x_i \text{ is incident to } x_j' \\
-  0, &\text{otherwise}
-\end{cases}
-\]
+    \label{def:cc-incidence-matrix}
+    Let \(\mathcal{X}\) be a CC with finitely many vertices and take non-negative integers
+    \(0 \leq r < k \leq \dim \mathcal{X}\). We define the \emph{\((r, k)\)-incidence matrix
+    \(B_{r, k} = [b_{i j}]\)} between \(\mathcal{X}^r = \{x_1, \dots, x_m\}\) and
+    \(\mathcal{X}^k = \{x_1', \dots, x_n'\}\) to be the binary \(m \times n\) matrix such that
+    \[
+        b_{i j} =
+        \begin{cases}
+            1, & \text{if } x_i \text{ is incident to } x_j' \\
+            0, & \text{otherwise}
+        \end{cases}
+    \]
 \end{definition}
 
 \begin{definition}[(Co)adjacency neighbourhood function]
-\label{def:co-adjacency-neighbourhood-function}
-Let \(\mathcal{X}\) be a CC. We shall define the following neighbourhood functions on \(\mathcal{X}\):
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item The \emph{adjacency neighbourhood function}
-  \(N_{\text{ad}}: \Cell \mathcal{X} \to 2^{\Vertex \mathcal X} \setminus \emptyset\) to be the map sending
-  a cell \(x \in \Cell \mathcal{X}\) to the collection of all
-  \(y \in \Cell \mathcal{X}\) having \(\rank y = \rank x\) for which there exists
-  \(z \in \Cell \mathcal{X}\) such that \(\rank z > \rank x\) and \(x, y \subsetneq z\).
+    \label{def:co-adjacency-neighbourhood-function}
+    Let \(\mathcal{X}\) be a CC. We shall define the following neighbourhood functions on \(\mathcal{X}\):
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item The \emph{adjacency neighbourhood function}
+              \(N_{\text{ad}}: \Cell \mathcal{X} \to 2^{\Vertex \mathcal X} \setminus \emptyset\) to be the map sending
+              a cell \(x \in \Cell \mathcal{X}\) to the collection of all
+              \(y \in \Cell \mathcal{X}\) having \(\rank y = \rank x\) for which there exists
+              \(z \in \Cell \mathcal{X}\) such that \(\rank z > \rank x\) and \(x, y \subsetneq z\).
 
-\item The \emph{coadjacency neighbourhood function}
-  \(N_{\text{coad}}: \Cell \mathcal{X} \to 2^{\Vertex \mathcal X} \setminus \emptyset\) to be the map sending
-  a cell \(x \in \Cell \mathcal{X}\) to the collection of all
-  \(y \in \Cell \mathcal{X}\) having \(\rank y = \rank x\) for which there exists
-  \(z \in \Cell \mathcal{X}\) such that \(\rank z < \rank x\), and having both \(z \subsetneq y\) and
-  \(z \subsetneq x\).
-\end{enumerate}
-A cell \(z \in \Cell \mathcal{X}\) that satisfies either of the conditions imposed by the
-sets \(N_{\text{ad}} x\) or \(N_{\text{coad}} x\) is said to be a \emph{bridge cell}.
+        \item The \emph{coadjacency neighbourhood function}
+              \(N_{\text{coad}}: \Cell \mathcal{X} \to 2^{\Vertex \mathcal X} \setminus \emptyset\) to be the map sending
+              a cell \(x \in \Cell \mathcal{X}\) to the collection of all
+              \(y \in \Cell \mathcal{X}\) having \(\rank y = \rank x\) for which there exists
+              \(z \in \Cell \mathcal{X}\) such that \(\rank z < \rank x\), and having both \(z \subsetneq y\) and
+              \(z \subsetneq x\).
+    \end{enumerate}
+    A cell \(z \in \Cell \mathcal{X}\) that satisfies either of the conditions imposed by the
+    sets \(N_{\text{ad}} x\) or \(N_{\text{coad}} x\) is said to be a \emph{bridge cell}.
 \end{definition}
 
 

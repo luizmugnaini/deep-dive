@@ -1,263 +1,263 @@
 \section{Symmetric Tensors and Symmetric Algebra}
 
 \begin{definition}[Symmetric tensor]
-Let \(V\) be a \(k\)-vector space and consider the mixed tensor product
-\(T_0^q(V)\). For every permutation \(\sigma \in S_q\) (where
-\(S_q\) denotes the symmetry group of \(q\) elements), define the
-linear transformation
-\[
-  f_\sigma: T_0^q(V) \to T_0^q(V),\ \otimes_{i=1}^q v_i \xmapsto{f_\sigma}
-  \otimes_{i=1}^q v_{f_\sigma(i)}.
-\]
-We say that a tensor \(T \in T_0^q(V)\) is symmetric if for all \(\sigma \in S_q\)
-\[
-    f_\sigma(T) = T.
-\]
+    Let \(V\) be a \(k\)-vector space and consider the mixed tensor product
+    \(T_0^q(V)\). For every permutation \(\sigma \in S_q\) (where
+    \(S_q\) denotes the symmetry group of \(q\) elements), define the
+    linear transformation
+    \[
+        f_\sigma: T_0^q(V) \to T_0^q(V),\ \otimes_{i=1}^q v_i \xmapsto{f_\sigma}
+        \otimes_{i=1}^q v_{f_\sigma(i)}.
+    \]
+    We say that a tensor \(T \in T_0^q(V)\) is symmetric if for all \(\sigma \in S_q\)
+    \[
+        f_\sigma(T) = T.
+    \]
 \end{definition}
 
 \begin{definition}[Symmetric tensor space]
-We denote the subspace of \(T_0^q(V)\) consisting of symmetric tensors as the
-symmetric space \(\Sym^q(V)\), also called symmetric power.
+    We denote the subspace of \(T_0^q(V)\) consisting of symmetric tensors as the
+    symmetric space \(\Sym^q(V)\), also called symmetric power.
 \end{definition}
 
 \begin{definition}[Symmetrization map]
-Let \(V\) be a \(k\)-vector space. We define the projection operator \(S:
-T_0^q(V) \epi \Sym^q(V)\), which maps factorizable tensors to symmetric tensors.
+    Let \(V\) be a \(k\)-vector space. We define the projection operator \(S:
+    T_0^q(V) \epi \Sym^q(V)\), which maps factorizable tensors to symmetric tensors.
 \end{definition}
 
 \begin{proposition}[Symmetric space universal property]
-Let \(V\) be a \(k\)-vector space. Given any \(k\)-vector space \(L\) and a
-multilinear symmetric map \(\mu: V^q \to L\), there exists a unique linear map
-\(\ell: \Sym^q(V) \to L\) such that \(\ell \circ S \circ \otimes = \mu\). That
-is, the following diagram commutes
-\[
-  \begin{tikzcd}
-    V^q \ar[r, "\mu"] \ar[d, "\otimes"] &L \\
-    T_0^q(V) \ar[r, two heads, "S"] &\Sym^q(V) \ar[u, dashed, swap, "\ell"]
-  \end{tikzcd}
-\]
+    Let \(V\) be a \(k\)-vector space. Given any \(k\)-vector space \(L\) and a
+    multilinear symmetric map \(\mu: V^q \to L\), there exists a unique linear map
+    \(\ell: \Sym^q(V) \to L\) such that \(\ell \circ S \circ \otimes = \mu\). That
+    is, the following diagram commutes
+    \[
+        \begin{tikzcd}
+            V^q \ar[r, "\mu"] \ar[d, "\otimes"] &L \\
+            T_0^q(V) \ar[r, two heads, "S"] &\Sym^q(V) \ar[u, dashed, swap, "\ell"]
+        \end{tikzcd}
+    \]
 \end{proposition}
 
 \begin{proof}
-Since \(\Sym^q(V)\) is a subspace of \(T_0^q(V)\), then we can use
-\cref{thm: universal property of tensor products}.
+    Since \(\Sym^q(V)\) is a subspace of \(T_0^q(V)\), then we can use
+    \cref{thm: universal property of tensor products}.
 \end{proof}
 
 \begin{proposition}
-For \(\Char k \nmid q!\), we have that
-\[
-  S(T) = \frac{1}{q!} \sum_{\sigma \in S_q} f_\sigma(T)
-\]
-and hence \(S^2 = S\), and \(S(T_0^q(V)) = \Sym^q(V)\).
+    For \(\Char k \nmid q!\), we have that
+    \[
+        S(T) = \frac{1}{q!} \sum_{\sigma \in S_q} f_\sigma(T)
+    \]
+    and hence \(S^2 = S\), and \(S(T_0^q(V)) = \Sym^q(V)\).
 \end{proposition}
 
 \begin{proof}
-Let \(\{e_i\}_{i=1}^n\) be a basis for \(V\). First, notice that if \(T =
-T^{i_1, \dots, i_q} \in \Sym^q(V)\),
-then
-\[
-  S(T) = \frac{1}{q!} \sum_{\sigma \in S_q} f_\sigma(T^{i_1, \dots,
-  i_q}) = \frac{1}{q!} (q! T^{i_1, \dots, i_q}) = T
-\]
-where we assumed that \(\Char k \nmid q!\) in order to obtain a non-zero tensor
-after the summation. Hence \(S|_{\Sym^q(T)} = \Id_{\Sym^q(V)}\) therefore we
-find that \(\Sym^q(V) \subseteq \im S\). Moreover, let \(T = T^{i_1, \dots,
-i_q} \in T_0^q(V)\) be any factorizable tensor, then its image under \(S\) is
-clearly a symmetric tensor, that is \(S(T) \in \Sym^q(V)\), hence \(\im S
-\subseteq \Sym^q(V)\). This implies that \(\im S = \Sym^q(V)\) for \(\Char k
-\nmid q!\). Moreover, \(S(S(T)) = S(T)\) from the first argument, since
-\(S(T) \in \Sym^q(V)\).
+    Let \(\{e_i\}_{i=1}^n\) be a basis for \(V\). First, notice that if \(T =
+    T^{i_1, \dots, i_q} \in \Sym^q(V)\),
+    then
+    \[
+        S(T) = \frac{1}{q!} \sum_{\sigma \in S_q} f_\sigma(T^{i_1, \dots,
+            i_q}) = \frac{1}{q!} (q! T^{i_1, \dots, i_q}) = T
+    \]
+    where we assumed that \(\Char k \nmid q!\) in order to obtain a non-zero tensor
+    after the summation. Hence \(S|_{\Sym^q(T)} = \Id_{\Sym^q(V)}\) therefore we
+    find that \(\Sym^q(V) \subseteq \im S\). Moreover, let \(T = T^{i_1, \dots,
+            i_q} \in T_0^q(V)\) be any factorizable tensor, then its image under \(S\) is
+    clearly a symmetric tensor, that is \(S(T) \in \Sym^q(V)\), hence \(\im S
+    \subseteq \Sym^q(V)\). This implies that \(\im S = \Sym^q(V)\) for \(\Char k
+    \nmid q!\). Moreover, \(S(S(T)) = S(T)\) from the first argument, since
+    \(S(T) \in \Sym^q(V)\).
 \end{proof}
 
 \begin{remark}
-From now on we are going to assume that \(\Char k \nmid q!\)
+    From now on we are going to assume that \(\Char k \nmid q!\)
 \end{remark}
 
 \begin{notation}
-Notice that since \(\im S = \Sym^q(V)\) then we can write any symmetrized
-tensor in any permutation that we choose, hence, we sometimes use the dot
-notation \(\Sym^q(V) \ni v_1 \otimes \dots \otimes v_q = v_1 \cdot \ldots
-\cdot v_q\). Moreover, if \(\{e_i\}_{i=1}^n\) is a basis for \(V\), one can
-even adopt an exponential notation \(e_1 \cdot \ldots \cdot e_q = e_1^{a_1}
-\cdot \ldots \cdot e_q^{a_n}\), where \(a_i\) denotes the number of times the
-component \(e_i\) appears in the factorizable tensor, and \(a_1 + \dots + a_q
-= q\).
+    Notice that since \(\im S = \Sym^q(V)\) then we can write any symmetrized
+    tensor in any permutation that we choose, hence, we sometimes use the dot
+    notation \(\Sym^q(V) \ni v_1 \otimes \dots \otimes v_q = v_1 \cdot \ldots
+    \cdot v_q\). Moreover, if \(\{e_i\}_{i=1}^n\) is a basis for \(V\), one can
+    even adopt an exponential notation \(e_1 \cdot \ldots \cdot e_q = e_1^{a_1}
+    \cdot \ldots \cdot e_q^{a_n}\), where \(a_i\) denotes the number of times the
+    component \(e_i\) appears in the factorizable tensor, and \(a_1 + \dots + a_q
+    = q\).
 \end{notation}
 
 \begin{proposition}[Basis for \(\Sym^q(V)\)]
-\label{prop: basis for symmetric power}
-Let \(\{e_i\}_{i=1}^n\) be a basis for the \(k\)-vector space \(V\). Then, the
-collection of tensors \(\{e_1^{a_1} \cdot \ldots \cdot e_n^{a_n} \colon a_1 + \dots
-+ a_n = q\} \subseteq \Sym^q(V)\) form a basis for the symmetric space
-\(\Sym^q(V)\). This implies that \(\Sym^q(V)\) is the subspace of \(k[e_1,
-\dots, e_n]\) of homogeneous polynomials of total degree \(q\).
+    \label{prop: basis for symmetric power}
+    Let \(\{e_i\}_{i=1}^n\) be a basis for the \(k\)-vector space \(V\). Then, the
+    collection of tensors \(\{e_1^{a_1} \cdot \ldots \cdot e_n^{a_n} \colon a_1 + \dots
+    + a_n = q\} \subseteq \Sym^q(V)\) form a basis for the symmetric space
+    \(\Sym^q(V)\). This implies that \(\Sym^q(V)\) is the subspace of \(k[e_1,
+            \dots, e_n]\) of homogeneous polynomials of total degree \(q\).
 \end{proposition}
 
 \begin{proof}
-We know from \cref{lem: tensor basis} that \(\{\otimes_{j=1}^q e_{i_j} \colon 1 \leq
-i_j \leq n\}\) forms a basis for \(T_0^q(V)\). Since \(S\) is multilinear,
-then \(S(\{\otimes_{j=1}^q e_{i_j}\}) = \Sym^q(V)\), that is \(\{e_{i_1}^{a_1}
-\cdot \ldots \cdot e_n^{a_n}\} = \{S(\otimes_{j=1}^q e_{i_j})\}\) generates
-the space \(\Sym^q(V)\). Hence, to show that the collection of symmetric
-tensors of the basis elements of \(V\) forms a basis for the symmetric space,
-we just need to show their linear independence.
+    We know from \cref{lem: tensor basis} that \(\{\otimes_{j=1}^q e_{i_j} \colon 1 \leq
+    i_j \leq n\}\) forms a basis for \(T_0^q(V)\). Since \(S\) is multilinear,
+    then \(S(\{\otimes_{j=1}^q e_{i_j}\}) = \Sym^q(V)\), that is \(\{e_{i_1}^{a_1}
+    \cdot \ldots \cdot e_n^{a_n}\} = \{S(\otimes_{j=1}^q e_{i_j})\}\) generates
+    the space \(\Sym^q(V)\). Hence, to show that the collection of symmetric
+    tensors of the basis elements of \(V\) forms a basis for the symmetric space,
+    we just need to show their linear independence.
 
-To do that, fix a sequence of indices \(I = (i_1, \dots, i_q)\) such that  \(1
-\leq i_1 \leq \dots \leq i_q \leq n\). For all \(v_j = \sum_{i=1}^n a_{ij} e_i
-\in V\) where \(1 \leq j \leq q\), let \(\mu_I: V^q \to k\) be the mapping
-\[
-  \mu_I(v_1, \dots, v_n) = \sum_{\sigma \in S_q} \prod_{j=1}^q
-  e_{i_{\sigma(j)}}^*(v_j).
-\]
-From the universal property of tensor products we find a unique
-functional \(f_I: \Sym^q(V) \to k\) such that the diagram commutes:
-\[
-  \begin{tikzcd}
-    V^q \ar[r, "\mu_I"] \ar[d, swap, "S \circ \otimes"] &k \\
-    \Sym^q(V) \ar[ru, swap, dashed, "f_I"]
-  \end{tikzcd}
-\]
-hence for all \((v_1, \dots, v_q) \in T_0^q(V)\) we have \(\mu(v_1, \dots,
-v_q) = f(v_1 \cdot \ldots \cdot v_n)\). Notice that if we have a monotonically
-increasing sequence of indices \(I' = (i_1', \dots, i_q') \neq I\), there must
-be an index \(i_{j_0}' \in I'\) such that \(i_{j_0}' \neq i_j\) for all \(i_j
-\in I\). This way we find that for all \(\sigma \in S_q\) the product
-\(\prod_{j=1}^q e_{i_{\sigma(j)}}^*(e_{i_j'}) = 0\) because
-\(e_{i_{\sigma(j)}}^*(e_{i_{j_0}'}) = 0\). In particular, this implies in
-\[
-  \mu_I(e_{i_1'}, \dots, e_{i_q'}) = f_I(e_{i_1'} \cdot \ldots \cdot e_{i_q'})
-  = 0.
-\]
+    To do that, fix a sequence of indices \(I = (i_1, \dots, i_q)\) such that  \(1
+    \leq i_1 \leq \dots \leq i_q \leq n\). For all \(v_j = \sum_{i=1}^n a_{ij} e_i
+    \in V\) where \(1 \leq j \leq q\), let \(\mu_I: V^q \to k\) be the mapping
+    \[
+        \mu_I(v_1, \dots, v_n) = \sum_{\sigma \in S_q} \prod_{j=1}^q
+        e_{i_{\sigma(j)}}^*(v_j).
+    \]
+    From the universal property of tensor products we find a unique
+    functional \(f_I: \Sym^q(V) \to k\) such that the diagram commutes:
+    \[
+        \begin{tikzcd}
+            V^q \ar[r, "\mu_I"] \ar[d, swap, "S \circ \otimes"] &k \\
+            \Sym^q(V) \ar[ru, swap, dashed, "f_I"]
+        \end{tikzcd}
+    \]
+    hence for all \((v_1, \dots, v_q) \in T_0^q(V)\) we have \(\mu(v_1, \dots,
+    v_q) = f(v_1 \cdot \ldots \cdot v_n)\). Notice that if we have a monotonically
+    increasing sequence of indices \(I' = (i_1', \dots, i_q') \neq I\), there must
+    be an index \(i_{j_0}' \in I'\) such that \(i_{j_0}' \neq i_j\) for all \(i_j
+    \in I\). This way we find that for all \(\sigma \in S_q\) the product
+    \(\prod_{j=1}^q e_{i_{\sigma(j)}}^*(e_{i_j'}) = 0\) because
+    \(e_{i_{\sigma(j)}}^*(e_{i_{j_0}'}) = 0\). In particular, this implies in
+    \[
+        \mu_I(e_{i_1'}, \dots, e_{i_q'}) = f_I(e_{i_1'} \cdot \ldots \cdot e_{i_q'})
+        = 0.
+    \]
 
-Lets compute the value of \(f_I(e_{i_1} \cdot \ldots \cdot e_{i_q})\). To do
-this, consider again the fixed monotone increasing sequence of indices that we
-started with, that is, \(I\). Let \(Q \leq q\) denote the number of distinct
-values of \(i_j \in I\) for \(1 \leq j \leq q\). Define now, for all \(1 \leq
-r \leq Q\) the index sets \(J_r \coloneq \{j \colon e_{i_j} \text{ have equal
-values}\}\). Define \(n_r \coloneq |J_r|\), this construction yields a total of
-\(\prod_{r=1}^Q (n_r!)\) permutations. Notice that all permutations of
-\(J_r\)'s are such that \(\sigma_{J_r}(I) = I\) (they change the position of
-equal elements, causing no alteration of the sequence), we'll denote such
-permutations by \(\sigma_J \in S_q\). Moreover, these are
-all the possible permutations that leave \(I\) unaltered. Hence
-\[
-  f_I(e_{i_1} \cdot \ldots \cdot e_{i_q}) = \mu_I(e_{i_1}, \dots, e_{i_q})
-  = \sum_{\sigma \in S_q} \prod_{j=1}^q e_{i_{\sigma(j)}}^*(e_j)
-  = \sum_{\sigma_J \in S_q} \prod_{j=1}^q e_{i_{\sigma_J(j)}}^*(e_j)
-  = \prod_{r=1}^Q (n_r!) \in k.
-\]
-Therefore, if \(\Char k \nmid q!\), we find \(f_I(e_{i_1} \cdot \ldots \cdot
-e_{i_q}) \neq 0 \in k\).
+    Lets compute the value of \(f_I(e_{i_1} \cdot \ldots \cdot e_{i_q})\). To do
+    this, consider again the fixed monotone increasing sequence of indices that we
+    started with, that is, \(I\). Let \(Q \leq q\) denote the number of distinct
+    values of \(i_j \in I\) for \(1 \leq j \leq q\). Define now, for all \(1 \leq
+    r \leq Q\) the index sets \(J_r \coloneq \{j \colon e_{i_j} \text{ have equal
+        values}\}\). Define \(n_r \coloneq |J_r|\), this construction yields a total of
+    \(\prod_{r=1}^Q (n_r!)\) permutations. Notice that all permutations of
+    \(J_r\)'s are such that \(\sigma_{J_r}(I) = I\) (they change the position of
+    equal elements, causing no alteration of the sequence), we'll denote such
+    permutations by \(\sigma_J \in S_q\). Moreover, these are
+    all the possible permutations that leave \(I\) unaltered. Hence
+    \[
+        f_I(e_{i_1} \cdot \ldots \cdot e_{i_q}) = \mu_I(e_{i_1}, \dots, e_{i_q})
+        = \sum_{\sigma \in S_q} \prod_{j=1}^q e_{i_{\sigma(j)}}^*(e_j)
+        = \sum_{\sigma_J \in S_q} \prod_{j=1}^q e_{i_{\sigma_J(j)}}^*(e_j)
+        = \prod_{r=1}^Q (n_r!) \in k.
+    \]
+    Therefore, if \(\Char k \nmid q!\), we find \(f_I(e_{i_1} \cdot \ldots \cdot
+    e_{i_q}) \neq 0 \in k\).
 
-If there exists a linear relation
-\[
-  \sum_{i_1', \dots, i_q'} c_{i_1', \dots, i_q'} (e_{i_1'} \cdot \ldots \cdot
-  e_{i_q'}) = 0
-\]
-where the indices are arranged in monotonic increasing order, then we conclude
-that
-\begin{align*}
-  0 = f_I \left( \sum_{i_1', \dots, i_q'} c_{i_1', \dots, i_q'} (e_{i_1'} \cdot
-  \ldots \cdot e_{i_q}) \right)
-  &= c_{i_1', \dots, i_q'} \sum_{\sigma \in S_q} \prod_{j=1}^q
-  e_{i_{\sigma(j)}}^*(e_{i_j'}) \\
-  &= c_{i_1, \dots, i_q} \sum_{\sigma \in S_q} \prod_{j=1}^q
-  e_{i_{\sigma(j)}}^*(e_j) \\
-  &=  c_{i_1, \dots, i_q} f_I(e_{i_1} \cdot \ldots \cdot e_{i_q})
-\end{align*}
-hence \(c_{i_1, \dots, i_q} = 0\) since, as proved above, \(f_I(e_{i_1} \cdot
-\ldots \cdot e_{i_q}) \neq 0\). Now, passing \(I\) through all the monotone
-increasing sequences of indices, we prove that all of the coefficients
-\(c_{i_1', \dots, i_c'}\) vanish, as wanted. This proves that \(\{e_1^{a_1}
-\cdot \ldots \cdot e_n^{a_n} \colon a_1 + \dots + a_n = q\}\) is indeed a linearly
-independent collection.
+    If there exists a linear relation
+    \[
+        \sum_{i_1', \dots, i_q'} c_{i_1', \dots, i_q'} (e_{i_1'} \cdot \ldots \cdot
+        e_{i_q'}) = 0
+    \]
+    where the indices are arranged in monotonic increasing order, then we conclude
+    that
+    \begin{align*}
+        0 = f_I \left( \sum_{i_1', \dots, i_q'} c_{i_1', \dots, i_q'} (e_{i_1'} \cdot
+        \ldots \cdot e_{i_q}) \right)
+         & = c_{i_1', \dots, i_q'} \sum_{\sigma \in S_q} \prod_{j=1}^q
+        e_{i_{\sigma(j)}}^*(e_{i_j'})                                     \\
+         & = c_{i_1, \dots, i_q} \sum_{\sigma \in S_q} \prod_{j=1}^q
+        e_{i_{\sigma(j)}}^*(e_j)                                          \\
+         & =  c_{i_1, \dots, i_q} f_I(e_{i_1} \cdot \ldots \cdot e_{i_q})
+    \end{align*}
+    hence \(c_{i_1, \dots, i_q} = 0\) since, as proved above, \(f_I(e_{i_1} \cdot
+    \ldots \cdot e_{i_q}) \neq 0\). Now, passing \(I\) through all the monotone
+    increasing sequences of indices, we prove that all of the coefficients
+    \(c_{i_1', \dots, i_c'}\) vanish, as wanted. This proves that \(\{e_1^{a_1}
+    \cdot \ldots \cdot e_n^{a_n} \colon a_1 + \dots + a_n = q\}\) is indeed a linearly
+    independent collection.
 \end{proof}
 
 \begin{corollary}
-If \(V\) is a finite \(n\)-dimensional \(k\)-vector space, then
-\[
-  \dim_k(\Sym^q(V)) = \binom{n + q - 1}{q}
-\]
+    If \(V\) is a finite \(n\)-dimensional \(k\)-vector space, then
+    \[
+        \dim_k(\Sym^q(V)) = \binom{n + q - 1}{q}
+    \]
 \end{corollary}
 
 \begin{proof}
-Notice that from \cref{prop: basis for symmetric power} we have that
-\(\Sym^q(V)\) is the subspace of \(k[e_1, \dots, e_n]\) consisting of
-homogeneous polynomials of degree \(q\). In order to find the dimension of
-such space, it is sufficient to find the cardinality \(|\{a_1 + \dots + a_n =
-q \colon a_i \geq 0\}|\). A combinatorial way to do so is to define \(q\)
-symbols \(|\) (which represent the unity \(1\)), which can be divided into
-\(n\) different groups. In order to do so, we introduce \(n - 1\) symbols (we
-are going to use \(+\)), which are arranged in order to separate the bars into
-the \(n\) requested groups (example: for \(n = 3\) and \(q = 5\), one possible
-arrangement is \(| + || + ||\)). We have a total of \(n + q - 1\) symbols, and
-we want \(q\) of those (the bars) in order to create the groupings, that
-is, we have a total of \(\binom{n + q - 1}{q}\) ways of doing so. This proves
-the corollary.
+    Notice that from \cref{prop: basis for symmetric power} we have that
+    \(\Sym^q(V)\) is the subspace of \(k[e_1, \dots, e_n]\) consisting of
+    homogeneous polynomials of degree \(q\). In order to find the dimension of
+    such space, it is sufficient to find the cardinality \(|\{a_1 + \dots + a_n =
+    q \colon a_i \geq 0\}|\). A combinatorial way to do so is to define \(q\)
+    symbols \(|\) (which represent the unity \(1\)), which can be divided into
+    \(n\) different groups. In order to do so, we introduce \(n - 1\) symbols (we
+    are going to use \(+\)), which are arranged in order to separate the bars into
+    the \(n\) requested groups (example: for \(n = 3\) and \(q = 5\), one possible
+    arrangement is \(| + || + ||\)). We have a total of \(n + q - 1\) symbols, and
+    we want \(q\) of those (the bars) in order to create the groupings, that
+    is, we have a total of \(\binom{n + q - 1}{q}\) ways of doing so. This proves
+    the corollary.
 \end{proof}
 
 \begin{definition}
-We define the symmetric algebra over a finite \(n\)-dimensional \(k\)-linear
-space \(V\) to be the object \(\Sym V = \bigoplus_{q=1}^\infty \Sym^q V\).
-This is the space of all polynomials in \(e_1, \dots, e_n\) variables (where
-\(e_1, \dots, e_n\) form a basis for \(V\)).
+    We define the symmetric algebra over a finite \(n\)-dimensional \(k\)-linear
+    space \(V\) to be the object \(\Sym V = \bigoplus_{q=1}^\infty \Sym^q V\).
+    This is the space of all polynomials in \(e_1, \dots, e_n\) variables (where
+    \(e_1, \dots, e_n\) form a basis for \(V\)).
 
-We define multiplication in \(\Sym V\) as the map
-\begin{equation}\label{def: multiplication symmetric algebra}
-  \Sym^q V \times \Sym^d V \to \Sym^{q + d} V,\ \text{ mapping }\
-  (T_1, T_2) \mapsto S(T_1 \otimes T_2) =: T_1 T_2
-\end{equation}
+    We define multiplication in \(\Sym V\) as the map
+    \begin{equation}\label{def: multiplication symmetric algebra}
+        \Sym^q V \times \Sym^d V \to \Sym^{q + d} V,\ \text{ mapping }\
+        (T_1, T_2) \mapsto S(T_1 \otimes T_2) =: T_1 T_2
+    \end{equation}
 \end{definition}
 
 \begin{proposition}
-The multiplicative structure defined by \cref{def: multiplication symmetric
-algebra} makes \(\Sym V\) a commutative associative \(k\)-algebra. Under the
-isomorphism of tensors and homogeneous polynomials as described in
-\cref{prop: basis for symmetric power}, this multiplicative structure
-preserves that of the multiplication of polynomials, making such isomorphism
-an isomorphism of algebras.
-\[
-  \{\text{polynomials in } e_1, \dots, e_n\} \iso \Sym V
-\]
-where \(e_1, \dots, e_n\) forms a basis for \(V\).
+    The multiplicative structure defined by \cref{def: multiplication symmetric
+        algebra} makes \(\Sym V\) a commutative associative \(k\)-algebra. Under the
+    isomorphism of tensors and homogeneous polynomials as described in
+    \cref{prop: basis for symmetric power}, this multiplicative structure
+    preserves that of the multiplication of polynomials, making such isomorphism
+    an isomorphism of algebras.
+    \[
+        \{\text{polynomials in } e_1, \dots, e_n\} \iso \Sym V
+    \]
+    where \(e_1, \dots, e_n\) forms a basis for \(V\).
 \end{proposition}
 
 \begin{proof}
-Let \(T_1 \in T_0^q(V)\) and \(T_2 \in T_0^d(V)\), then we find that
-\[
-  S(T_1) \otimes T_2 = \left( \frac{1}{q!} \sum_{\sigma \in S_q}
-  f_\sigma(T_1) \right) \otimes T_2
-\]
-This way we find that
-\begin{align*}
-  S(S(T_1) \otimes T_2) = S \left( \frac{1}{q!} \sum_{\sigma \in S_q}
-  f_\sigma(T_1) \otimes T_2 \right)
-  &= \frac{1}{q!} \sum_{\sigma \in S_q} S(f_\sigma(T_1) \otimes T_2)
-  \\
-  &= \frac{1}{q!} \sum_{\sigma \in S_q} S(T_1 \otimes T_2) \\
-  &= S(T_1 \otimes T_2)
-\end{align*}
-where we used the fact that \(S(f_\sigma(T_1) \otimes T_2) = S(T_1 \otimes
-T_2)\). Hence, we can conclude in general that
-\[
-  S(S(T_1) \otimes T_2) = S(T_1 \otimes S(T_2)) = S(T_1 \otimes T_2)
-\]
-If we extend such argument for tensors \(T_1, T_2, T_3\), we find that
-\[
-  (T_1 T_2) T_3 = S(S(T_1 \otimes T_2) \otimes T_3)
-  = T_1 (T_2 T_3) = S(T_1 \otimes (T_1 \otimes T_3))
-  = T_1 T_2 T_3 = S(T_1 \otimes T_2 \otimes T_3)
-\]
-which proves associativity for the multiplication. From tensor commutativity
-we find that
-\[
-  T_1 T_2 = S(T_1 \otimes T_2) = S(T_2 \otimes T_1) = T_2 T_1
-\]
+    Let \(T_1 \in T_0^q(V)\) and \(T_2 \in T_0^d(V)\), then we find that
+    \[
+        S(T_1) \otimes T_2 = \left( \frac{1}{q!} \sum_{\sigma \in S_q}
+        f_\sigma(T_1) \right) \otimes T_2
+    \]
+    This way we find that
+    \begin{align*}
+        S(S(T_1) \otimes T_2) = S \left( \frac{1}{q!} \sum_{\sigma \in S_q}
+        f_\sigma(T_1) \otimes T_2 \right)
+         & = \frac{1}{q!} \sum_{\sigma \in S_q} S(f_\sigma(T_1) \otimes T_2)
+        \\
+         & = \frac{1}{q!} \sum_{\sigma \in S_q} S(T_1 \otimes T_2)           \\
+         & = S(T_1 \otimes T_2)
+    \end{align*}
+    where we used the fact that \(S(f_\sigma(T_1) \otimes T_2) = S(T_1 \otimes
+    T_2)\). Hence, we can conclude in general that
+    \[
+        S(S(T_1) \otimes T_2) = S(T_1 \otimes S(T_2)) = S(T_1 \otimes T_2)
+    \]
+    If we extend such argument for tensors \(T_1, T_2, T_3\), we find that
+    \[
+        (T_1 T_2) T_3 = S(S(T_1 \otimes T_2) \otimes T_3)
+        = T_1 (T_2 T_3) = S(T_1 \otimes (T_1 \otimes T_3))
+        = T_1 T_2 T_3 = S(T_1 \otimes T_2 \otimes T_3)
+    \]
+    which proves associativity for the multiplication. From tensor commutativity
+    we find that
+    \[
+        T_1 T_2 = S(T_1 \otimes T_2) = S(T_2 \otimes T_1) = T_2 T_1
+    \]
 
-Finally, notice that from this multiplicative structure we have that the
-multiplication of polynomials is given by
-\((e_1^{a_1} \cdots e_n^{a_n}) (e_n^{b_1} \cdots e_n^{b_n}) = e_1^{a_1 + b_1} \cdots e_n^{a_n
-+ b_n}\), which shows the algebra isomorphism.
+    Finally, notice that from this multiplicative structure we have that the
+    multiplication of polynomials is given by
+    \((e_1^{a_1} \cdots e_n^{a_n}) (e_n^{b_1} \cdots e_n^{b_n}) = e_1^{a_1 + b_1} \cdots e_n^{a_n
+    + b_n}\), which shows the algebra isomorphism.
 \end{proof}
 
 %%% Local Variables:

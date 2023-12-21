@@ -1,60 +1,60 @@
 \section{Learnability}
 
 \begin{definition}[True error]
-\label{def:true-error}
-Consider a target function \(f: \mathcal{X} \to \mathcal{Y}\) and a probability
-distribution \(\mathcal{D}\) over \(\mathcal{X}\). If
-\(h: \mathcal{X} \to \mathcal{Y}\) is a prediction rule for the learning problem
-\((\mathcal{D}, f)\), we define the \emph{true error} of \(h\) as
-\[
-L_{(\mathcal{D}, f)}(h)
-\coloneq \Prob_{x \sim \mathcal{D}}(h(x) \neq f(x))
-= \mathcal{D}(\{x \in \mathcal{X} \colon h(x) \neq f(x)\}),
-\]
-which is the probability of sampling a point \(x \in \mathcal{X}\), according to
-the distribution \(\mathcal{D}\), on which the predictor \(h\) fails to meet \(f\).
+    \label{def:true-error}
+    Consider a target function \(f: \mathcal{X} \to \mathcal{Y}\) and a probability
+    distribution \(\mathcal{D}\) over \(\mathcal{X}\). If
+    \(h: \mathcal{X} \to \mathcal{Y}\) is a prediction rule for the learning problem
+    \((\mathcal{D}, f)\), we define the \emph{true error} of \(h\) as
+    \[
+        L_{(\mathcal{D}, f)}(h)
+        \coloneq \Prob_{x \sim \mathcal{D}}(h(x) \neq f(x))
+        = \mathcal{D}(\{x \in \mathcal{X} \colon h(x) \neq f(x)\}),
+    \]
+    which is the probability of sampling a point \(x \in \mathcal{X}\), according to
+    the distribution \(\mathcal{D}\), on which the predictor \(h\) fails to meet \(f\).
 \end{definition}
 
 \begin{definition}[Training error]
-\label{def:training-error}
-Let \(S = (x_i, y_i)_{i=1}^m\) be a training set, sampled from an unknown
-probability distribution \(\mathcal{D}\) and labelled by a target function
-\(f: \mathcal{X} \to \mathcal{Y}\). Let \(h_S: \mathcal{X} \to \mathcal{Y}\) be the hypothesis returned by a learning
-algorithm based on the training set \(S\). We define the \emph{training error}
-\(L_S: \mathcal{Y}^{\mathcal{X}} \to \R\) to be the map
-\[
-L_S(h) \coloneq \frac{|\{i \in [m] \colon h(x_i) \neq y_i\}|}{m}.
-\]
+    \label{def:training-error}
+    Let \(S = (x_i, y_i)_{i=1}^m\) be a training set, sampled from an unknown
+    probability distribution \(\mathcal{D}\) and labelled by a target function
+    \(f: \mathcal{X} \to \mathcal{Y}\). Let \(h_S: \mathcal{X} \to \mathcal{Y}\) be the hypothesis returned by a learning
+    algorithm based on the training set \(S\). We define the \emph{training error}
+    \(L_S: \mathcal{Y}^{\mathcal{X}} \to \R\) to be the map
+    \[
+        L_S(h) \coloneq \frac{|\{i \in [m] \colon h(x_i) \neq y_i\}|}{m}.
+    \]
 \end{definition}
 
 \begin{definition}[Empirical risk minimisation]
-\label{def:empirical-risk-minimisation}
-The learning paradigm known as \emph{empirical risk minimisation}
-(ERM) is defined to have the goal of minimising the training
-error. As this may cause overfitting, we restrict the set of possible predictors
-to a hypothesis collection \(\mathcal{H}\)---this approach induces a bias to the
-model. Given a training sample \(S\), we define the learner
-\(\text{ERM}_{\mathcal{H}}: 2^{\mathcal{X}} \to \mathcal{Y}^{\mathcal{X}}\) to
-choose a predictor \(\text{ERM}_{\mathcal{H}}(S) \coloneq h_S\) such that
-\[
-h_S \in \argmin_{h \in \mathcal{H}} L_S(h).
-\]
+    \label{def:empirical-risk-minimisation}
+    The learning paradigm known as \emph{empirical risk minimisation}
+    (ERM) is defined to have the goal of minimising the training
+    error. As this may cause overfitting, we restrict the set of possible predictors
+    to a hypothesis collection \(\mathcal{H}\)---this approach induces a bias to the
+    model. Given a training sample \(S\), we define the learner
+    \(\text{ERM}_{\mathcal{H}}: 2^{\mathcal{X}} \to \mathcal{Y}^{\mathcal{X}}\) to
+    choose a predictor \(\text{ERM}_{\mathcal{H}}(S) \coloneq h_S\) such that
+    \[
+        h_S \in \argmin_{h \in \mathcal{H}} L_S(h).
+    \]
 \end{definition}
 
 \begin{definition}[Realisability assumption]
-\label{def:realisability-assumption}
-Within the hypothesis collection \(\mathcal{H}\) there exists \(h^{\star}\) for
-which the training error is null:
-\[
-L_S(h^{\star}) = 0.
-\]
+    \label{def:realisability-assumption}
+    Within the hypothesis collection \(\mathcal{H}\) there exists \(h^{\star}\) for
+    which the training error is null:
+    \[
+        L_S(h^{\star}) = 0.
+    \]
 \end{definition}
 
 \begin{definition}[Independently identically distributed assumption (i.i.d.)]
-\label{def:iid-assumption}
-We shall assume that the training set \(S\) has points which are independently
-and identically distributed (i.i.d.) with respect to the probability distribution
-\(\mathcal{D}\), shortly we write that \(S \sim \mathcal{D}^{|S|}\).
+    \label{def:iid-assumption}
+    We shall assume that the training set \(S\) has points which are independently
+    and identically distributed (i.i.d.) with respect to the probability distribution
+    \(\mathcal{D}\), shortly we write that \(S \sim \mathcal{D}^{|S|}\).
 \end{definition}
 
 Since \(S\) is chosen by a randomised procedure, the predictor \(h_S\) and risk
@@ -62,172 +62,172 @@ Since \(S\) is chosen by a randomised procedure, the predictor \(h_S\) and risk
 about the probability of \(L_{(\mathcal{D}, f)}(h_S)\) not being large.
 
 \begin{definition}[Confidence parameter]
-\label{def:confidence-parameter}
-We shall denote by \(\delta\) the probability of \(S\) being a
-\emph{non-representative} sample of \(\mathcal{X}\) with respect to the
-distribution \(\mathcal{D}\), and \(1 - \delta\) the \emph{confidence parameter}
-of the predictor \(h_S\).
+    \label{def:confidence-parameter}
+    We shall denote by \(\delta\) the probability of \(S\) being a
+    \emph{non-representative} sample of \(\mathcal{X}\) with respect to the
+    distribution \(\mathcal{D}\), and \(1 - \delta\) the \emph{confidence parameter}
+    of the predictor \(h_S\).
 \end{definition}
 
 \begin{definition}[Accuracy parameter]
-\label{def:accuracy-parameter}
-We denote by \(\varepsilon\) the \emph{accuracy parameter}, which measures how
-large is \(L_{(\mathcal{D}, f)}(h_S)\) as follows: if
-\(L_{(\mathcal{D}, f)}(h_S) > \varepsilon\) we interpret the result of the
-algorithm as a \emph{failure}, while
-\(L_{(\mathcal{D}, f)}(h_S) \leq \varepsilon\) as a \emph{approximately correct}
-predictor.
+    \label{def:accuracy-parameter}
+    We denote by \(\varepsilon\) the \emph{accuracy parameter}, which measures how
+    large is \(L_{(\mathcal{D}, f)}(h_S)\) as follows: if
+    \(L_{(\mathcal{D}, f)}(h_S) > \varepsilon\) we interpret the result of the
+    algorithm as a \emph{failure}, while
+    \(L_{(\mathcal{D}, f)}(h_S) \leq \varepsilon\) as a \emph{approximately correct}
+    predictor.
 \end{definition}
 
 \begin{proposition}[Failure bound]
-\label{prop:finite-hypothesis-class-failure-bound}
-Consider a learner with a finite hypothesis class \(\mathcal{H}\). The
-probability of obtaining a sample \(S\), of size \(m\), on which the learner
-fails the accuracy parameter is bound by
-\[
-\mathcal{D}^m(\{\pi_{\mathcal{X}} S \colon L_{(\mathcal{D}, f)}(h_S) > \varepsilon\})
-\leq |\mathcal{H}| e^{-\varepsilon m}
-\]
-where \(\pi_{\mathcal{X}}\) is the projection of the first coordinate.
+    \label{prop:finite-hypothesis-class-failure-bound}
+    Consider a learner with a finite hypothesis class \(\mathcal{H}\). The
+    probability of obtaining a sample \(S\), of size \(m\), on which the learner
+    fails the accuracy parameter is bound by
+    \[
+        \mathcal{D}^m(\{\pi_{\mathcal{X}} S \colon L_{(\mathcal{D}, f)}(h_S) > \varepsilon\})
+        \leq |\mathcal{H}| e^{-\varepsilon m}
+    \]
+    where \(\pi_{\mathcal{X}}\) is the projection of the first coordinate.
 \end{proposition}
 
 \begin{proof}
-Let
-\(\mathcal{H}_{\text{bad}} \coloneq \{h \in \mathcal{H} \colon L_{(\mathcal{D},
-  f)} > \varepsilon\}\) be the collection of all hypothesis which fail to meet
-the expected accuracy of the learner, and define
-\[
-M \coloneq
-\{\pi_{\mathcal{X}} S \colon \exists h \in \mathcal{H}_{\text{bad}},\, L_S(h) = 0\}
-= \bigcup_{h \in \mathcal{H}_{\text{bad}}}
-\{\pi_{\mathcal{X}} S \colon L_S(h) = 0\},
-\]
-the collection of all possible misleading non-representative samples for which
-the training error can be nullified by the learner.
+    Let
+    \(\mathcal{H}_{\text{bad}} \coloneq \{h \in \mathcal{H} \colon L_{(\mathcal{D},
+            f)} > \varepsilon\}\) be the collection of all hypothesis which fail to meet
+    the expected accuracy of the learner, and define
+    \[
+        M \coloneq
+        \{\pi_{\mathcal{X}} S \colon \exists h \in \mathcal{H}_{\text{bad}},\, L_S(h) = 0\}
+        = \bigcup_{h \in \mathcal{H}_{\text{bad}}}
+        \{\pi_{\mathcal{X}} S \colon L_S(h) = 0\},
+    \]
+    the collection of all possible misleading non-representative samples for which
+    the training error can be nullified by the learner.
 
-The realisability assumption says that \(L_S(h_S) = 0\), therefore
-\(L_{(\mathcal{D}, f)}(h_S) > \varepsilon\) is only possible in the situation
-where there exists a predictor \(h \in \mathcal{H}_{\text{bad}}\) such that
-\(L_S(h) = 0\), that is
-\[
-\{\pi_{\mathcal{X}} S \colon L_{(\mathcal{D}, f)}(h_S) > \varepsilon\} \subseteq M.
-\]
-Therefore, by the union bound applied to the distribution \(\mathcal{D}^m\) we have
-\begin{align*}
-  \mathcal{D}^m(\{\pi_{\mathcal{X}} S \colon L_{(\mathcal{D}, f)}(h_S) > \varepsilon\})
-  &\leq \mathcal{D}^m(M) \\
-  &= \mathcal{D}^m \Big(
-      \bigcup_{h \in \mathcal{H}_{\text{bad}}}
-      \{\pi_{\mathcal{X}} S \colon L_S(h) = 0\}
-    \Big) \\
-  &\leq \sum_{h \in \mathcal{H}_{\text{bad}}}
-    \mathcal{D}^m(\{\pi_{\mathcal{X}} S \colon L_S(h) = 0\}).
-\end{align*}
-Now notice that for any \(h \in \mathcal{H}_{\text{bad}}\) we have
-\[
-\{\pi_{\mathcal{X}} S \colon L_S(h) = 0\}
-= \{\pi_{\mathcal{X}} S \colon \forall j \in [m],\, h(x_j) = f(x_j)\},
-\]
-where \(\pi_{\mathcal{X}} S = (x_j)_{j=1}^m\). Since each point \(x_j \in
-\mathcal{X}\) composing \(S\) is chosen in an independently and identically
-distributed fashion, it follows that
-\begin{align*}
-  \mathcal{D}^m(\{\pi_{\mathcal{X}} S \colon L_S(h) = 0\})
-  &= \mathcal{D}^m(
-    \{\pi_{\mathcal{X}} S \colon \forall j \in [m],\, h(x_j) = f(x_j)\}) \\
-  &= \prod_{j=1}^m \mathcal{D}(\{x_j \in \mathcal{X} \colon h(x_j) = f(x_j)\}).
-\end{align*}
-Moreover, since we define
-\(L_{(\mathcal{D}, f)} = \mathcal{D}(\{x \colon h(x) \neq f(x)\})\) we obtain
-for each \(j \in [m]\) the bound
-\[
-\mathcal{D}(\{x_j \colon h(x_j) = f(x_j)\})
-= 1 - L_{(\mathcal{D}, f)}(h)
-\leq 1 - \varepsilon,
-\]
-since \(L_{(\mathcal{D}, f)}(h) > \varepsilon\) for any
-\(h \in \mathcal{H}_{\text{bad}}\). Now if we use the inequality \(1 -
-\varepsilon \leq e^{-\varepsilon}\) we obtain
-\[
-\mathcal{D}^m(\{\pi_{\mathcal{X}} S \colon L_S(h) = 0\})
-\leq (1 - \varepsilon)^m
-\leq e^{-m \varepsilon}.
-\]
+    The realisability assumption says that \(L_S(h_S) = 0\), therefore
+    \(L_{(\mathcal{D}, f)}(h_S) > \varepsilon\) is only possible in the situation
+    where there exists a predictor \(h \in \mathcal{H}_{\text{bad}}\) such that
+    \(L_S(h) = 0\), that is
+    \[
+        \{\pi_{\mathcal{X}} S \colon L_{(\mathcal{D}, f)}(h_S) > \varepsilon\} \subseteq M.
+    \]
+    Therefore, by the union bound applied to the distribution \(\mathcal{D}^m\) we have
+    \begin{align*}
+        \mathcal{D}^m(\{\pi_{\mathcal{X}} S \colon L_{(\mathcal{D}, f)}(h_S) > \varepsilon\})
+         & \leq \mathcal{D}^m(M)                      \\
+         & = \mathcal{D}^m \Big(
+        \bigcup_{h \in \mathcal{H}_{\text{bad}}}
+        \{\pi_{\mathcal{X}} S \colon L_S(h) = 0\}
+        \Big)                                         \\
+         & \leq \sum_{h \in \mathcal{H}_{\text{bad}}}
+        \mathcal{D}^m(\{\pi_{\mathcal{X}} S \colon L_S(h) = 0\}).
+    \end{align*}
+    Now notice that for any \(h \in \mathcal{H}_{\text{bad}}\) we have
+    \[
+        \{\pi_{\mathcal{X}} S \colon L_S(h) = 0\}
+        = \{\pi_{\mathcal{X}} S \colon \forall j \in [m],\, h(x_j) = f(x_j)\},
+    \]
+    where \(\pi_{\mathcal{X}} S = (x_j)_{j=1}^m\). Since each point \(x_j \in
+    \mathcal{X}\) composing \(S\) is chosen in an independently and identically
+    distributed fashion, it follows that
+    \begin{align*}
+        \mathcal{D}^m(\{\pi_{\mathcal{X}} S \colon L_S(h) = 0\})
+         & = \mathcal{D}^m(
+        \{\pi_{\mathcal{X}} S \colon \forall j \in [m],\, h(x_j) = f(x_j)\})            \\
+         & = \prod_{j=1}^m \mathcal{D}(\{x_j \in \mathcal{X} \colon h(x_j) = f(x_j)\}).
+    \end{align*}
+    Moreover, since we define
+    \(L_{(\mathcal{D}, f)} = \mathcal{D}(\{x \colon h(x) \neq f(x)\})\) we obtain
+    for each \(j \in [m]\) the bound
+    \[
+        \mathcal{D}(\{x_j \colon h(x_j) = f(x_j)\})
+        = 1 - L_{(\mathcal{D}, f)}(h)
+        \leq 1 - \varepsilon,
+    \]
+    since \(L_{(\mathcal{D}, f)}(h) > \varepsilon\) for any
+    \(h \in \mathcal{H}_{\text{bad}}\). Now if we use the inequality \(1 -
+    \varepsilon \leq e^{-\varepsilon}\) we obtain
+    \[
+        \mathcal{D}^m(\{\pi_{\mathcal{X}} S \colon L_S(h) = 0\})
+        \leq (1 - \varepsilon)^m
+        \leq e^{-m \varepsilon}.
+    \]
 
-From this analysis we can conclude that
-\[
-\mathcal{D}^m(\{\pi_{\mathcal{X}} S \colon L_{(\mathcal{D}, f)}(h) > \varepsilon\})
-\leq |\mathcal{H}_{\text{bad}}| e^{-m \varepsilon}
-\leq |\mathcal{H}| e^{-m \varepsilon},
-\]
-which is the bound that we settled to prove.
+    From this analysis we can conclude that
+    \[
+        \mathcal{D}^m(\{\pi_{\mathcal{X}} S \colon L_{(\mathcal{D}, f)}(h) > \varepsilon\})
+        \leq |\mathcal{H}_{\text{bad}}| e^{-m \varepsilon}
+        \leq |\mathcal{H}| e^{-m \varepsilon},
+    \]
+    which is the bound that we settled to prove.
 \end{proof}
 
 \begin{corollary}
-\label{cor:finite-hypothesis-pac-learnability}
-Let \(\mathcal{H}\) be a finite hypothesis collection, and consider parameters
-\(0 < \delta < 1\) and \(\varepsilon > 0\). If \(m \in \N\) is such that
-\[
-m \geq \frac{\log(|\mathcal{H}| / \delta)}{\varepsilon},
-\]
-then for any labelling map \(f: \mathcal{X} \to \mathcal{Y}\) together with a
-distribution \(\mathcal{D}\) following the realisability assumption, we have a
-probability of at least \(1 - \delta\) of choosing an i.i.d.~sample \(S\) with
-size \(m\) for which every ERM hypothesis \(h_S\) satisfies
-\[
-L_{(\mathcal{D}, f)}(h_S) \leq \varepsilon.
-\]
+    \label{cor:finite-hypothesis-pac-learnability}
+    Let \(\mathcal{H}\) be a finite hypothesis collection, and consider parameters
+    \(0 < \delta < 1\) and \(\varepsilon > 0\). If \(m \in \N\) is such that
+    \[
+        m \geq \frac{\log(|\mathcal{H}| / \delta)}{\varepsilon},
+    \]
+    then for any labelling map \(f: \mathcal{X} \to \mathcal{Y}\) together with a
+    distribution \(\mathcal{D}\) following the realisability assumption, we have a
+    probability of at least \(1 - \delta\) of choosing an i.i.d.~sample \(S\) with
+    size \(m\) for which every ERM hypothesis \(h_S\) satisfies
+    \[
+        L_{(\mathcal{D}, f)}(h_S) \leq \varepsilon.
+    \]
 
-In other words, for a sufficiently large \(m\), the learner
-\(\text{ERM}_{\mathcal{H}}\) will be \emph{probably} (with a confidence of at
-least \(1 - \delta\)) \emph{approximately} (up to an error of \(\varepsilon\))
-\emph{correct} (PAC).
+    In other words, for a sufficiently large \(m\), the learner
+    \(\text{ERM}_{\mathcal{H}}\) will be \emph{probably} (with a confidence of at
+    least \(1 - \delta\)) \emph{approximately} (up to an error of \(\varepsilon\))
+    \emph{correct} (PAC).
 \end{corollary}
 
 \section{PAC Learning Model}
 
 \begin{definition}[PAC learning]
-\label{def:pac-learning}
-A hypothesis class \(\mathcal{H}\) is said to be \emph{PAC learnable} if there
-exists a map
-\[
-m_{\mathcal{H}}: (0, 1)^2 \longrightarrow \N,
-\]
-and a learning algorithm \(A\) such that for every tuple
-\((\varepsilon, \delta, f, \mathcal{D}, S)\) where
-\begin{itemize}\setlength\itemsep{0em}
-\item \(\varepsilon, \delta \in (0, 1)\) are the accuracy and confidence
-  parameters, respectively.
-\item \(f: \mathcal{X} \to \{0, 1\}\) is a binary labelling map on \(\mathcal{X}\).
-\item \(\mathcal{D}\) is a probability distribution on \(\mathcal{X}\).
-\item The realisability assumption holds with respect to the triple
-  \((\mathcal{H}, \mathcal{D}, f)\).
-\item The set \(S = (x_j, f(x_j))_{j=1}^m\) with \(m \geq
-  m_{\mathcal{H}}(\varepsilon, \delta)\) is composed of i.i.d.~samples of
-  \(\mathcal{X}\) generated by \(\mathcal{D}\) and labelled by \(f\).
-\end{itemize}
-The algorithm \(A\) returns a predictor \(A(S) = h\) with a probability of at
-least \(1 - \delta\), over the choice of \(S\), such that
-\[
-L_{(\mathcal{D}, f)}(h) \leq \varepsilon.
-\]
+    \label{def:pac-learning}
+    A hypothesis class \(\mathcal{H}\) is said to be \emph{PAC learnable} if there
+    exists a map
+    \[
+        m_{\mathcal{H}}: (0, 1)^2 \longrightarrow \N,
+    \]
+    and a learning algorithm \(A\) such that for every tuple
+    \((\varepsilon, \delta, f, \mathcal{D}, S)\) where
+    \begin{itemize}\setlength\itemsep{0em}
+        \item \(\varepsilon, \delta \in (0, 1)\) are the accuracy and confidence
+              parameters, respectively.
+        \item \(f: \mathcal{X} \to \{0, 1\}\) is a binary labelling map on \(\mathcal{X}\).
+        \item \(\mathcal{D}\) is a probability distribution on \(\mathcal{X}\).
+        \item The realisability assumption holds with respect to the triple
+              \((\mathcal{H}, \mathcal{D}, f)\).
+        \item The set \(S = (x_j, f(x_j))_{j=1}^m\) with \(m \geq
+              m_{\mathcal{H}}(\varepsilon, \delta)\) is composed of i.i.d.~samples of
+              \(\mathcal{X}\) generated by \(\mathcal{D}\) and labelled by \(f\).
+    \end{itemize}
+    The algorithm \(A\) returns a predictor \(A(S) = h\) with a probability of at
+    least \(1 - \delta\), over the choice of \(S\), such that
+    \[
+        L_{(\mathcal{D}, f)}(h) \leq \varepsilon.
+    \]
 
-The map \(m_{\mathcal{H}}: (0, 1)^2 \to \N\) determines the \emph{sample
-  complexity} necessary to ensure that the learning algorithm will result in a
-PAC solution. We shall impose \(m_{\mathcal{H}}\) to return the minimal sample
-complexity such that \(\mathcal{H}\) is PAC learnable with accuracy
-\(\varepsilon\) and confidence \(\delta\).
+    The map \(m_{\mathcal{H}}: (0, 1)^2 \to \N\) determines the \emph{sample
+        complexity} necessary to ensure that the learning algorithm will result in a
+    PAC solution. We shall impose \(m_{\mathcal{H}}\) to return the minimal sample
+    complexity such that \(\mathcal{H}\) is PAC learnable with accuracy
+    \(\varepsilon\) and confidence \(\delta\).
 \end{definition}
 
 Rephrasing \cref{cor:finite-hypothesis-pac-learnability} with our new jargon:
 
 \begin{corollary}
-\label{cor:finite-hypothesis-pac-learnability-succint}
-Every finite hypothesis class \(\mathcal{H}\) is PAC learnable with sample complexity
-\[
-m_{\mathcal{H}}(\varepsilon, \delta) \leq
-\left\lceil \frac{\log(|\mathcal{H}| / \delta)}{\varepsilon} \right\rceil.
-\]
+    \label{cor:finite-hypothesis-pac-learnability-succint}
+    Every finite hypothesis class \(\mathcal{H}\) is PAC learnable with sample complexity
+    \[
+        m_{\mathcal{H}}(\varepsilon, \delta) \leq
+        \left\lceil \frac{\log(|\mathcal{H}| / \delta)}{\varepsilon} \right\rceil.
+    \]
 \end{corollary}
 
 \subsection{Agnostic PAC Learning Model}
@@ -241,211 +241,211 @@ to revise the true error to be in accordance with this new distribution
 \(\mathcal{D}\).
 
 \begin{definition}[Revising the true error]
-\label{def:true-error-revised}
-Given a probability distribution \(\mathcal{D}\) over \(\mathcal{X} \times
-\mathcal{Y}\), and a predictor \(h: \mathcal{X} \to \mathcal{Y}\), the
-\emph{true error} of \(h\) is given by
-\[
-L_{\mathcal{D}}(h) \coloneq \Prob_{(x, y) \sim \mathcal{D}}(h(x) \neq y)
-= \mathcal{D}(\{(x, y) \in \mathcal{X} \times \mathcal{Y} \colon h(x) \neq y\}).
-\]
+    \label{def:true-error-revised}
+    Given a probability distribution \(\mathcal{D}\) over \(\mathcal{X} \times
+    \mathcal{Y}\), and a predictor \(h: \mathcal{X} \to \mathcal{Y}\), the
+    \emph{true error} of \(h\) is given by
+    \[
+        L_{\mathcal{D}}(h) \coloneq \Prob_{(x, y) \sim \mathcal{D}}(h(x) \neq y)
+        = \mathcal{D}(\{(x, y) \in \mathcal{X} \times \mathcal{Y} \colon h(x) \neq y\}).
+    \]
 \end{definition}
 
 \begin{proposition}[Bayes optimal predictor]
-\label{prop:bayes-optimal-predictor}
-Let \(\mathcal{D}\) be any distribution on \(\mathcal{X} \times \{0, 1\}\). The
-best predictor \(f_{\mathcal{D}}: \mathcal{X} \to \{0, 1\}\), called the
-\emph{Bayes optimal predictor}\footnote{In reality, this predictor cannot be
-  used since the learner does not have access to the probability distribution
-  \(\mathcal{D}\).}, will be given by
-\[
-f_{\mathcal{D}}(x) \coloneq
-\begin{cases}
-  1, &\text{if } \Prob_{(x, y) \sim \mathcal{D}}(y = 1 \mid x) \geq 1/2 \\
-  0, &\text{otherwise.}
-\end{cases}
-\]
-That is, for any predictor \(h: \mathcal{X} \to \{0, 1\}\) we have
-\(L_{\mathcal{D}}(f_{\mathcal{D}}) \leq L_{\mathcal{D}}(h)\).
+    \label{prop:bayes-optimal-predictor}
+    Let \(\mathcal{D}\) be any distribution on \(\mathcal{X} \times \{0, 1\}\). The
+    best predictor \(f_{\mathcal{D}}: \mathcal{X} \to \{0, 1\}\), called the
+    \emph{Bayes optimal predictor}\footnote{In reality, this predictor cannot be
+        used since the learner does not have access to the probability distribution
+        \(\mathcal{D}\).}, will be given by
+    \[
+        f_{\mathcal{D}}(x) \coloneq
+        \begin{cases}
+            1, & \text{if } \Prob_{(x, y) \sim \mathcal{D}}(y = 1 \mid x) \geq 1/2 \\
+            0, & \text{otherwise.}
+        \end{cases}
+    \]
+    That is, for any predictor \(h: \mathcal{X} \to \{0, 1\}\) we have
+    \(L_{\mathcal{D}}(f_{\mathcal{D}}) \leq L_{\mathcal{D}}(h)\).
 \end{proposition}
 
 \begin{definition}[Agnostic PAC learning model]
-\label{def:agnostic-pac-learning-model}
-A hypothesis class \(\mathcal{H}\) is said to be \emph{agnostic PAC learnable}
-if there exists a minimal map \(m_{\mathcal{H}}: (0, 1)^2 \to \N\) and leaning
-algorithm \(A\) such that for every tuple \((\varepsilon, \delta,
-\mathcal{D}, S)\) where
-\begin{itemize}\setlength\itemsep{0em}
-\item \(\varepsilon, \delta \in (0, 1)\) are the accuracy and confidence
-  parameters, respectively.
-\item \(\mathcal{D}\) is a probability distribution over
-  \(\mathcal{X} \times \mathcal{Y}\).
-\item \(S \in (\mathcal{X} \times \mathcal{Y})^m\) is an i.i.d.~sample of size
-  \(m \geq m_{\mathcal{H}}(\varepsilon, \delta)\) generated by \(\mathcal{D}\).
-\end{itemize}
-The algorithm \(A\) returns a predictor \(A(S) \coloneq g \in \mathcal{H}\) with
-a probability of at least \(1 - \delta\) over the choice of \(S\), such that
-\[
-L_{\mathcal{D}}(g) \leq \min_{h \in \mathcal{H}} L_{\mathcal{D}}(h) + \varepsilon.
-\]
+    \label{def:agnostic-pac-learning-model}
+    A hypothesis class \(\mathcal{H}\) is said to be \emph{agnostic PAC learnable}
+    if there exists a minimal map \(m_{\mathcal{H}}: (0, 1)^2 \to \N\) and leaning
+    algorithm \(A\) such that for every tuple \((\varepsilon, \delta,
+    \mathcal{D}, S)\) where
+    \begin{itemize}\setlength\itemsep{0em}
+        \item \(\varepsilon, \delta \in (0, 1)\) are the accuracy and confidence
+              parameters, respectively.
+        \item \(\mathcal{D}\) is a probability distribution over
+              \(\mathcal{X} \times \mathcal{Y}\).
+        \item \(S \in (\mathcal{X} \times \mathcal{Y})^m\) is an i.i.d.~sample of size
+              \(m \geq m_{\mathcal{H}}(\varepsilon, \delta)\) generated by \(\mathcal{D}\).
+    \end{itemize}
+    The algorithm \(A\) returns a predictor \(A(S) \coloneq g \in \mathcal{H}\) with
+    a probability of at least \(1 - \delta\) over the choice of \(S\), such that
+    \[
+        L_{\mathcal{D}}(g) \leq \min_{h \in \mathcal{H}} L_{\mathcal{D}}(h) + \varepsilon.
+    \]
 \end{definition}
 
 \section{Extending The PAC Model}
 
 \begin{definition}[Generalised loss function]
-\label{def:generalised-loss-function}
-Let \(\mathcal{H}\) be a collection of hypothesis, and \(\mathcal{Z}\) a domain
-of interest. Any map of the type
-\[
-\ell: \mathcal{H} \times \mathcal{Z} \to \R_{\geq 0}
-\]
-is a \emph{loss function}.
+    \label{def:generalised-loss-function}
+    Let \(\mathcal{H}\) be a collection of hypothesis, and \(\mathcal{Z}\) a domain
+    of interest. Any map of the type
+    \[
+        \ell: \mathcal{H} \times \mathcal{Z} \to \R_{\geq 0}
+    \]
+    is a \emph{loss function}.
 \end{definition}
 
 \begin{definition}[Generalised error functions]
-\label{def:generalised-error-functions}
-Consider a hypothesis class \(\mathcal{H}\), a domain \(\mathcal{Z}\) with
-associated distribution \(\mathcal{D}\), and a loss function \(\ell: \mathcal{H}
-\times \mathcal{Z} \to \R_{\geq 0}\). We define the following:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item The \emph{true error} of a predictor \(h \in \mathcal{H}\) is given by
-  \[
-  L_{\mathcal{D}}(h) \coloneq \Expect_{z \sim \mathcal{D}}[\ell(h, z)].
-  \]
-\item Given an i.i.d.~sample \(S \in \mathcal{Z}^m\), we define the \emph{empirical
-    error} of a predictor \(h \in \mathcal{H}\) to be
-  \[
-  L_S(h) \coloneq \frac{1}{m} \sum_{z \in S} \ell(h, z)
-  \]
-\end{enumerate}
+    \label{def:generalised-error-functions}
+    Consider a hypothesis class \(\mathcal{H}\), a domain \(\mathcal{Z}\) with
+    associated distribution \(\mathcal{D}\), and a loss function \(\ell: \mathcal{H}
+    \times \mathcal{Z} \to \R_{\geq 0}\). We define the following:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item The \emph{true error} of a predictor \(h \in \mathcal{H}\) is given by
+              \[
+                  L_{\mathcal{D}}(h) \coloneq \Expect_{z \sim \mathcal{D}}[\ell(h, z)].
+              \]
+        \item Given an i.i.d.~sample \(S \in \mathcal{Z}^m\), we define the \emph{empirical
+                  error} of a predictor \(h \in \mathcal{H}\) to be
+              \[
+                  L_S(h) \coloneq \frac{1}{m} \sum_{z \in S} \ell(h, z)
+              \]
+    \end{enumerate}
 \end{definition}
 
 \begin{example}
-\label{exp:loss-functions}
-The following are extensively used loss functions:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item (\emph{Classifier loss}) Given a domain \(\mathcal{Z} = \mathcal{X} \times
-  \mathcal{Y}\) and a predictor \(h\), we define the classifier loss function
-  \[
-  \ell_{\text{class}}(h, (x, y)) \coloneq
-  \begin{cases}
-    0, &\text{if } h(x) = y \\
-    1, &\text{if } h(x) \neq y.
-  \end{cases}
-  \]
+    \label{exp:loss-functions}
+    The following are extensively used loss functions:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item (\emph{Classifier loss}) Given a domain \(\mathcal{Z} = \mathcal{X} \times
+              \mathcal{Y}\) and a predictor \(h\), we define the classifier loss function
+              \[
+                  \ell_{\text{class}}(h, (x, y)) \coloneq
+                  \begin{cases}
+                      0, & \text{if } h(x) = y     \\
+                      1, & \text{if } h(x) \neq y.
+                  \end{cases}
+              \]
 
-\item (\emph{Square loss}) Consider a domain \(\mathcal{Z} = \mathcal{X} \times
-  \mathcal{Y}\) and a predictor \(h\), we define the square loss function as
-  \[
-  \ell_{\text{sq}}(h, (x, y)) \coloneq (h(x) - y)^2,
-  \]
-  which is commonly used in regression learning problems.
-\end{enumerate}
+        \item (\emph{Square loss}) Consider a domain \(\mathcal{Z} = \mathcal{X} \times
+              \mathcal{Y}\) and a predictor \(h\), we define the square loss function as
+              \[
+                  \ell_{\text{sq}}(h, (x, y)) \coloneq (h(x) - y)^2,
+              \]
+              which is commonly used in regression learning problems.
+    \end{enumerate}
 \end{example}
 
 \begin{definition}[Agnostic PAC learning model for generalised loss functions]
-\label{def:agnostic-pac-learning-model-loss-function}
-A hypothesis class \(\mathcal{H}\) is said to be \emph{agnostic PAC learnable}
-with respect to a domain \(\mathcal{Z}\) and loss function
-\(\ell: \mathcal{H} \times \mathcal{Z} \to \R_{\geq 0}\) if there exists a
-minimal map \(m_{\mathcal{H}}: (0, 1)^2 \to \N\) and leaning algorithm \(A\)
-such that for every tuple \((\varepsilon, \delta, \mathcal{D}, S)\) where
-\begin{itemize}\setlength\itemsep{0em}
-\item \(\varepsilon, \delta \in (0, 1)\) are the accuracy and confidence
-  parameters, respectively.
-\item \(\mathcal{D}\) is a probability distribution over
-  \(\mathcal{Z}\).
-\item \(S \in \mathcal{Z}^m\) is an i.i.d.~sample of size
-  \(m \geq m_{\mathcal{H}}(\varepsilon, \delta)\) generated by \(\mathcal{D}\).
-\end{itemize}
-The algorithm \(A\) returns a predictor \(A(S) \coloneq g \in \mathcal{H}\) with
-a probability of at least \(1 - \delta\) over the choice of \(S\), such that
-\[
-L_{\mathcal{D}}(g) \leq \min_{h \in \mathcal{H}} L_{\mathcal{D}}(h) + \varepsilon,
-\]
-where the true error function \(L_{\mathcal{D}}\) is given by
-\(L_{\mathcal{D}}(h) = \Expect_{z \sim \mathcal{D}}[\ell(h, z)]\).
+    \label{def:agnostic-pac-learning-model-loss-function}
+    A hypothesis class \(\mathcal{H}\) is said to be \emph{agnostic PAC learnable}
+    with respect to a domain \(\mathcal{Z}\) and loss function
+    \(\ell: \mathcal{H} \times \mathcal{Z} \to \R_{\geq 0}\) if there exists a
+    minimal map \(m_{\mathcal{H}}: (0, 1)^2 \to \N\) and leaning algorithm \(A\)
+    such that for every tuple \((\varepsilon, \delta, \mathcal{D}, S)\) where
+    \begin{itemize}\setlength\itemsep{0em}
+        \item \(\varepsilon, \delta \in (0, 1)\) are the accuracy and confidence
+              parameters, respectively.
+        \item \(\mathcal{D}\) is a probability distribution over
+              \(\mathcal{Z}\).
+        \item \(S \in \mathcal{Z}^m\) is an i.i.d.~sample of size
+              \(m \geq m_{\mathcal{H}}(\varepsilon, \delta)\) generated by \(\mathcal{D}\).
+    \end{itemize}
+    The algorithm \(A\) returns a predictor \(A(S) \coloneq g \in \mathcal{H}\) with
+    a probability of at least \(1 - \delta\) over the choice of \(S\), such that
+    \[
+        L_{\mathcal{D}}(g) \leq \min_{h \in \mathcal{H}} L_{\mathcal{D}}(h) + \varepsilon,
+    \]
+    where the true error function \(L_{\mathcal{D}}\) is given by
+    \(L_{\mathcal{D}}(h) = \Expect_{z \sim \mathcal{D}}[\ell(h, z)]\).
 \end{definition}
 
 \section{Learning via Uniform Convergence}
 
 \begin{definition}[\(\varepsilon\)-representative sample]
-\label{def:epsilon-representative-sample}
-Let \(\mathcal{Z}\) be a domain with distribution \(\mathcal{D}\), and
-associated hypothesis class \(\mathcal{H}\) and loss function \(\ell\). We say
-that a sample \(S\) is \(\varepsilon\)-representative if for every predictor \(h
-\in \mathcal{H}\) we have
-\[
-|L_S(h) - L_{\mathcal{D}}(h)| \leq \varepsilon.
-\]
+    \label{def:epsilon-representative-sample}
+    Let \(\mathcal{Z}\) be a domain with distribution \(\mathcal{D}\), and
+    associated hypothesis class \(\mathcal{H}\) and loss function \(\ell\). We say
+    that a sample \(S\) is \(\varepsilon\)-representative if for every predictor \(h
+    \in \mathcal{H}\) we have
+    \[
+        |L_S(h) - L_{\mathcal{D}}(h)| \leq \varepsilon.
+    \]
 \end{definition}
 
 \begin{lemma}
-\label{lem:epsilon-representative-good-erm-output}
-Consider a context \((\mathcal{Z}, \mathcal{D}, \mathcal{H}, \ell)\), and an
-\((\varepsilon/2)\)-representative sample \(S\). Any output of the ERM learner
-\[
-\text{ERM}_{\mathcal{H}}(S) = h_S \in \argmin_{h \in \mathcal{H}} L_S(h)
-\]
-will be such that
-\[
-L_{\mathcal{D}}(h_S) \leq \min_{h \in \mathcal{H}} L_{\mathcal{D}}(h) + \varepsilon.
-\]
+    \label{lem:epsilon-representative-good-erm-output}
+    Consider a context \((\mathcal{Z}, \mathcal{D}, \mathcal{H}, \ell)\), and an
+    \((\varepsilon/2)\)-representative sample \(S\). Any output of the ERM learner
+    \[
+        \text{ERM}_{\mathcal{H}}(S) = h_S \in \argmin_{h \in \mathcal{H}} L_S(h)
+    \]
+    will be such that
+    \[
+        L_{\mathcal{D}}(h_S) \leq \min_{h \in \mathcal{H}} L_{\mathcal{D}}(h) + \varepsilon.
+    \]
 \end{lemma}
 
 \begin{proof}
-Let \(h \in \mathcal{H}\) be any predictor, then
-\(|L_S(h) - L_{\mathcal{D}}(h)| \leq \varepsilon/2\) therefore
-\[
-L_{\mathcal{D}}(h) \leq L_S(h) + \varepsilon/2
-\, \text{ and }\,
-L_S(h) \leq L_{\mathcal{D}}(h) + \varepsilon/2
-\]
-In particular, since \(h_S\)
-minimises the empirical error we have
-\begin{align*}
-  L_{\mathcal{D}}(h_S)
-  &\leq L_S(h_S) + \varepsilon/2 \\
-  &\leq L_S(h) + \varepsilon/2 \\
-  &\leq (L_{\mathcal{D}}(h) + \varepsilon/2) + \varepsilon/2 \\
-  &= L_{\mathcal{D}}(h) + \varepsilon,
-\end{align*}
-which proves the proposition.
+    Let \(h \in \mathcal{H}\) be any predictor, then
+    \(|L_S(h) - L_{\mathcal{D}}(h)| \leq \varepsilon/2\) therefore
+    \[
+        L_{\mathcal{D}}(h) \leq L_S(h) + \varepsilon/2
+        \, \text{ and }\,
+        L_S(h) \leq L_{\mathcal{D}}(h) + \varepsilon/2
+    \]
+    In particular, since \(h_S\)
+    minimises the empirical error we have
+    \begin{align*}
+        L_{\mathcal{D}}(h_S)
+         & \leq L_S(h_S) + \varepsilon/2                             \\
+         & \leq L_S(h) + \varepsilon/2                               \\
+         & \leq (L_{\mathcal{D}}(h) + \varepsilon/2) + \varepsilon/2 \\
+         & = L_{\mathcal{D}}(h) + \varepsilon,
+    \end{align*}
+    which proves the proposition.
 \end{proof}
 
 \begin{corollary}
-\label{cor:erm-is-agnostic-pac-learner-sufficient-condition}
-The \(\text{ERM}_{\mathcal{H}}\) learner is an agnostic PAC learner if with a
-probability of at least \(1- \delta\) over the random choice of a sample \(S\),
-the training set \(S\) is \(\varepsilon\)-representative.
+    \label{cor:erm-is-agnostic-pac-learner-sufficient-condition}
+    The \(\text{ERM}_{\mathcal{H}}\) learner is an agnostic PAC learner if with a
+    probability of at least \(1- \delta\) over the random choice of a sample \(S\),
+    the training set \(S\) is \(\varepsilon\)-representative.
 \end{corollary}
 
 \begin{definition}[Uniform convergence property]
-\label{def:learner-uniform-convergence-property}
-A hypothesis class \(\mathcal{H}\) is said to \emph{satisfy the uniform convergence
-property}---with respect to a domain \(\mathcal{Z}\) and a loss function
-\(\ell\)---if there exists a minimal function
-\[
-m_{\mathcal{H}}^{\text{UC}}: (0, 1)^2 \longrightarrow \N
-\]
-such that: for every distribution \(\mathcal{D}\) over \(\mathcal{Z}\), and
-parameters \(\varepsilon, \delta \in (0, 1)\), if \(S \in \mathcal{Z}^m\) is an
-i.i.d.~sample with size
-\(m \geq m_{\mathcal{H}}^{\text{UC}}(\varepsilon, \delta)\), then with a
-probability of at least \(1 - \delta\) the sample \(S\) is
-\(\varepsilon\)-representative.
+    \label{def:learner-uniform-convergence-property}
+    A hypothesis class \(\mathcal{H}\) is said to \emph{satisfy the uniform convergence
+        property}---with respect to a domain \(\mathcal{Z}\) and a loss function
+    \(\ell\)---if there exists a minimal function
+    \[
+        m_{\mathcal{H}}^{\text{UC}}: (0, 1)^2 \longrightarrow \N
+    \]
+    such that: for every distribution \(\mathcal{D}\) over \(\mathcal{Z}\), and
+    parameters \(\varepsilon, \delta \in (0, 1)\), if \(S \in \mathcal{Z}^m\) is an
+    i.i.d.~sample with size
+    \(m \geq m_{\mathcal{H}}^{\text{UC}}(\varepsilon, \delta)\), then with a
+    probability of at least \(1 - \delta\) the sample \(S\) is
+    \(\varepsilon\)-representative.
 \end{definition}
 
 \begin{corollary}
-\label{cor:unif-conv-hypothesis-is-agnostically-pac-learnable}
-If a hypothesis class \(\mathcal{H}\) has the uniform convergence property---with
-respect to \((\mathcal{Z}, \ell)\)---with a function
-\(m_{\mathcal{H}}^{\text{UC}}\) then \(\mathcal{H}\) is agnostically PAC
-learnable with a sample complexity
-\[
-m_{\mathcal{H}}(\varepsilon, \delta) \leq
-m_{\mathcal{H}}^{\text{UC}}(\varepsilon/2, \delta).
-\]
+    \label{cor:unif-conv-hypothesis-is-agnostically-pac-learnable}
+    If a hypothesis class \(\mathcal{H}\) has the uniform convergence property---with
+    respect to \((\mathcal{Z}, \ell)\)---with a function
+    \(m_{\mathcal{H}}^{\text{UC}}\) then \(\mathcal{H}\) is agnostically PAC
+    learnable with a sample complexity
+    \[
+        m_{\mathcal{H}}(\varepsilon, \delta) \leq
+        m_{\mathcal{H}}^{\text{UC}}(\varepsilon/2, \delta).
+    \]
 \end{corollary}
 
 \section{Finite Hypothesis Classes are Uniform Convergent}
@@ -453,600 +453,600 @@ m_{\mathcal{H}}^{\text{UC}}(\varepsilon/2, \delta).
 \subsection{Important Measure Concentration Inequalities}
 
 \begin{proposition}[Strong law of large numbers]
-\label{prop:strong-law-of-large-numbers}
-Let \((Z_1, \dots, Z_m)\) be a sequence of i.i.d.~random variables with equal
-mean \(\mu\). The strong law of large numbers states that when \(m \to \infty\)
-the empirical average \(\overline Z \coloneq \frac{1}{m} \sum_{j=1}^m Z_j\)
-converges to the expected value \(\mu\) with a probability of \(1\).
+    \label{prop:strong-law-of-large-numbers}
+    Let \((Z_1, \dots, Z_m)\) be a sequence of i.i.d.~random variables with equal
+    mean \(\mu\). The strong law of large numbers states that when \(m \to \infty\)
+    the empirical average \(\overline Z \coloneq \frac{1}{m} \sum_{j=1}^m Z_j\)
+    converges to the expected value \(\mu\) with a probability of \(1\).
 \end{proposition}
 
 \begin{lemma}[Markov's inequality]
-\label{lem:markov-inequality}
-Let \(Z\) be a non-negative random variable. Then for any \(a \geq 0\) we have
-\[
-\Prob(Z \geq a) \leq \Expect[Z] / a,
-\]
-known as the Markov's inequality.
+    \label{lem:markov-inequality}
+    Let \(Z\) be a non-negative random variable. Then for any \(a \geq 0\) we have
+    \[
+        \Prob(Z \geq a) \leq \Expect[Z] / a,
+    \]
+    known as the Markov's inequality.
 \end{lemma}
 
 \begin{proof}
-Since \(\Prob(Z \geq x)\) is monotonically non-increasing as a function of
-\(x\), for any \(a \geq 0\) we have
-\begin{align*}
-  \Expect[Z]
-  &= \int_0^{\infty} \Prob(Z \geq x)\, \diff x \\
-  &\geq \int_0^a \Prob(Z \geq x)\, \diff x \\
-  &\geq \int_0^a \Prob(Z \geq a)\, \diff x \\
-  &= a \Prob(Z \geq a),
-\end{align*}
-therefore \(\Prob(Z \geq a) \leq \Expect[Z] / a\) as wanted.
+    Since \(\Prob(Z \geq x)\) is monotonically non-increasing as a function of
+    \(x\), for any \(a \geq 0\) we have
+    \begin{align*}
+        \Expect[Z]
+         & = \int_0^{\infty} \Prob(Z \geq x)\, \diff x \\
+         & \geq \int_0^a \Prob(Z \geq x)\, \diff x     \\
+         & \geq \int_0^a \Prob(Z \geq a)\, \diff x     \\
+         & = a \Prob(Z \geq a),
+    \end{align*}
+    therefore \(\Prob(Z \geq a) \leq \Expect[Z] / a\) as wanted.
 \end{proof}
 
 \begin{lemma}
-\label{lem:markov-inequality-lemma}
-Given a random variable \(Z\) with values in \([0, 1]\), denote \(\mu \coloneq
-\Expect[Z]\). Then for any \(a \in (0, 1)\) we have the following two upper-bounds
-\begin{gather}
-  \Prob(Z > 1 - a) \geq \frac{\mu - (1 - a)}{a}, \\
-  \Prob(Z > a) \geq \frac{\mu - a}{1 - a} \geq \mu - a.
-\end{gather}
+    \label{lem:markov-inequality-lemma}
+    Given a random variable \(Z\) with values in \([0, 1]\), denote \(\mu \coloneq
+    \Expect[Z]\). Then for any \(a \in (0, 1)\) we have the following two upper-bounds
+    \begin{gather}
+        \Prob(Z > 1 - a) \geq \frac{\mu - (1 - a)}{a}, \\
+        \Prob(Z > a) \geq \frac{\mu - a}{1 - a} \geq \mu - a.
+    \end{gather}
 \end{lemma}
 
 \begin{proof}
-Define a random variable \(X \coloneq 1 - Z\). Since \(Z \in [0, 1]\) then \(Y\)
-is non-negative and has \(\Expect[Y] = 1 - \mu\). By the Markov's inequality on
-\(Y\) we have
-\[
-\Prob(Z \leq 1 - a)
-= \Prob(1 - Z \geq a)
-= \Prob(Y \geq a)
-\leq \frac{\Expect[Y]}{a}
-= \frac{1 - \mu}{a}.
-\]
-Therefore
-\[
-\Prob(Z > 1 - a) \geq 1 - \frac{1 - \mu}{a} = \frac{\mu - (1 - a)}{a}.
-\]
+    Define a random variable \(X \coloneq 1 - Z\). Since \(Z \in [0, 1]\) then \(Y\)
+    is non-negative and has \(\Expect[Y] = 1 - \mu\). By the Markov's inequality on
+    \(Y\) we have
+    \[
+        \Prob(Z \leq 1 - a)
+        = \Prob(1 - Z \geq a)
+        = \Prob(Y \geq a)
+        \leq \frac{\Expect[Y]}{a}
+        = \frac{1 - \mu}{a}.
+    \]
+    Therefore
+    \[
+        \Prob(Z > 1 - a) \geq 1 - \frac{1 - \mu}{a} = \frac{\mu - (1 - a)}{a}.
+    \]
 \end{proof}
 
 \begin{lemma}[Hoeffding's lemma]
-\label{lem:hoeffding-lemma}
-Let \(X\) be a random variable taking values in the interval \([a, b]\),
-and such that \(\Expect[X] = 0\). Then for every \(\lambda > 0\) we have
-\[
-\Expect[e^{\lambda X}] \leq \exp\Big( \frac{\lambda^2 (b - a)^2}{8} \Big).
-\]
+    \label{lem:hoeffding-lemma}
+    Let \(X\) be a random variable taking values in the interval \([a, b]\),
+    and such that \(\Expect[X] = 0\). Then for every \(\lambda > 0\) we have
+    \[
+        \Expect[e^{\lambda X}] \leq \exp\Big( \frac{\lambda^2 (b - a)^2}{8} \Big).
+    \]
 \end{lemma}
 
 \begin{proof}
-Notice that the exponential map \(f(x) \coloneq e^{\lambda x}\) is convex,
-therefore by definition it follows that for any \(t \in (0, 1)\) and \(x \in [a,
-b]\) we have
-\[
-f(x) \leq t f(a) + (1 - t) f(b).
-\]
-Letting \(t \coloneq \frac{b - x}{b - a} \in [0, 1]\) we find
-\[
-e^{\lambda x} \leq \frac{b-x}{b-a} e^{\lambda a} + \frac{x-a}{b-a} e^{\lambda b}.
-\]
-If we now consider the expectation of \(f\) with respect to the random variable
-\(X\) we find the following inequality:
-\begin{align}\label{eq:hoeffding-lemma}
-  \nonumber
-  \Expect[e^{\lambda X}]
-  &\leq \frac{b - \Expect[X]}{b - a} e^{\lambda a}
-    + \frac{\Expect[X] - a}{b - a} e^{\lambda b} \\
-  &= \frac{b}{b - a} e^{\lambda a} - \frac{a}{b - a} e^{\lambda b}
-\end{align}
-since the expected value of \(X\) is null. Given \(p \coloneq -\frac{a}{b - a}\)
-define a map
-\[
-L(h) \coloneq -h p + \log(1 - p + p e^h)
-\]
-so that, for \(h_0 \coloneq \lambda(b - a)\) we have that \(e^{L(h_0)}\) is
-exactly the right-hand side of \cref{eq:hoeffding-lemma}. Using the fact that
-\(L(0) = L'(0) = 0\) and that \(L''(h) \leq 1/4\) for any \(h\), we find by the
-Taylor expansion of \(L\) about \(0\) that
-\[
-L(h_0) \approx L(0) + L'(0) h_0 + \frac{L''(h)}{2} h_0^2 = \frac{L''(h_0)}{2}
-\leq \frac{h_0^2}{8}.
-\]
-With this we have
-\[
-\Expect[e^{\lambda X}] \leq e^{L(h_0)} \leq e^{h_0^2/8}
-= e^{\frac{\lambda^2 (b - a)^2}{8}},
-\]
-which is the bound we wanted to prove.
+    Notice that the exponential map \(f(x) \coloneq e^{\lambda x}\) is convex,
+    therefore by definition it follows that for any \(t \in (0, 1)\) and \(x \in [a,
+        b]\) we have
+    \[
+        f(x) \leq t f(a) + (1 - t) f(b).
+    \]
+    Letting \(t \coloneq \frac{b - x}{b - a} \in [0, 1]\) we find
+    \[
+        e^{\lambda x} \leq \frac{b-x}{b-a} e^{\lambda a} + \frac{x-a}{b-a} e^{\lambda b}.
+    \]
+    If we now consider the expectation of \(f\) with respect to the random variable
+    \(X\) we find the following inequality:
+    \begin{align}\label{eq:hoeffding-lemma}
+        \nonumber
+        \Expect[e^{\lambda X}]
+         & \leq \frac{b - \Expect[X]}{b - a} e^{\lambda a}
+        + \frac{\Expect[X] - a}{b - a} e^{\lambda b}                       \\
+         & = \frac{b}{b - a} e^{\lambda a} - \frac{a}{b - a} e^{\lambda b}
+    \end{align}
+    since the expected value of \(X\) is null. Given \(p \coloneq -\frac{a}{b - a}\)
+    define a map
+    \[
+        L(h) \coloneq -h p + \log(1 - p + p e^h)
+    \]
+    so that, for \(h_0 \coloneq \lambda(b - a)\) we have that \(e^{L(h_0)}\) is
+    exactly the right-hand side of \cref{eq:hoeffding-lemma}. Using the fact that
+    \(L(0) = L'(0) = 0\) and that \(L''(h) \leq 1/4\) for any \(h\), we find by the
+    Taylor expansion of \(L\) about \(0\) that
+    \[
+        L(h_0) \approx L(0) + L'(0) h_0 + \frac{L''(h)}{2} h_0^2 = \frac{L''(h_0)}{2}
+        \leq \frac{h_0^2}{8}.
+    \]
+    With this we have
+    \[
+        \Expect[e^{\lambda X}] \leq e^{L(h_0)} \leq e^{h_0^2/8}
+        = e^{\frac{\lambda^2 (b - a)^2}{8}},
+    \]
+    which is the bound we wanted to prove.
 \end{proof}
 
 \begin{lemma}[Hoeffding's inequality]
-\label{lem:hoeffding-inequality}
-Let \((Z_1, \dots, Z_m)\) be a collection of i.i.d.~random variables,
-and let \(\overline Z \coloneq \frac{1}{m} \sum_{j=1}^m Z_j\).  If for
-all \(1 \leq j \leq m\) we have \(\Expect[Z_j] = \mu\) and
-\(\Prob[a \leq Z_j \leq b] = 1\), then for any \(\varepsilon > 0\) we have
-an upper-bound
-\[
-\Prob\big( \big| \overline{Z} - \mu \big| > \varepsilon \big)
-\leq 2 \exp\Big( -\frac{2 m \varepsilon^{2}}{(b - a)^2} \Big).
-\]
+    \label{lem:hoeffding-inequality}
+    Let \((Z_1, \dots, Z_m)\) be a collection of i.i.d.~random variables,
+    and let \(\overline Z \coloneq \frac{1}{m} \sum_{j=1}^m Z_j\).  If for
+    all \(1 \leq j \leq m\) we have \(\Expect[Z_j] = \mu\) and
+    \(\Prob[a \leq Z_j \leq b] = 1\), then for any \(\varepsilon > 0\) we have
+    an upper-bound
+    \[
+        \Prob\big( \big| \overline{Z} - \mu \big| > \varepsilon \big)
+        \leq 2 \exp\Big( -\frac{2 m \varepsilon^{2}}{(b - a)^2} \Big).
+    \]
 \end{lemma}
 
 \begin{proof}
-For each \(j\), let \(X_j \coloneq Z_j - \Expect[Z_j]\) and define
-\(\overline{X} \coloneq \frac{1}{m} \sum_{j=1}^m X_j\). Since the exponential
-function is monotonically increasing, we have that for every pair
-\(\lambda, \varepsilon > 0\):
-\[
-\Prob\big( \overline{X} \geq \varepsilon \big)
-= \Prob(e^{\lambda X} \geq e^{\lambda \varepsilon})
-\leq e^{-\lambda \varepsilon} \Expect[e^{\lambda \overline X}],
-\]
-where we used the Markov's inequality \cref{lem:markov-inequality}. Since the
-random variables are i.i.d.~we have
-\[
-\Expect[e^{\lambda \overline X}]
-= \Expect[e^{\lambda \frac{1}{m} \sum_j X_j}]
-= \Expect\Big[ \prod_{j=1}^m e^{\lambda X_j/m} \Big]
-= \prod_{j=1}^m \Expect[e^{\lambda X_j/m}].
-\]
-Via \cref{lem:hoeffding-lemma}, for each index \(j\) we have an upper-bound
-\[
-\Expect[e^{\lambda X_j/m}] \leq \exp\Big( \frac{\lambda^2 (b - a)^2}{8 m^2} \Big).
-\]
-With this bound in hands we obtain
-\[
-\Expect[e^{\lambda \overline X}]
-= \prod_{j=1}^m \exp\Big( \frac{\lambda^2 (b - a)^2}{8 m^2} \Big)
-= \exp\Big( \frac{\lambda^2 (b - a)^2}{8 m} \Big).
-\]
-Therefore it follows that
-\[
-\Prob\big( \overline X \geq \varepsilon \big)
-\leq \exp\Big(-\lambda \varepsilon + \frac{\lambda^2 (b - a)^2}{8 m} \Big).
-\]
-If we let \(\lambda \coloneq \frac{4 m \varepsilon}{(b-a)}^2\) we obtain
-\[
-\Prob\big( \overline X \geq \varepsilon \big)
-\leq \exp\Big( -\frac{2 m \varepsilon}{(b - a)^2} \Big).
-\]
+    For each \(j\), let \(X_j \coloneq Z_j - \Expect[Z_j]\) and define
+    \(\overline{X} \coloneq \frac{1}{m} \sum_{j=1}^m X_j\). Since the exponential
+    function is monotonically increasing, we have that for every pair
+    \(\lambda, \varepsilon > 0\):
+    \[
+        \Prob\big( \overline{X} \geq \varepsilon \big)
+        = \Prob(e^{\lambda X} \geq e^{\lambda \varepsilon})
+        \leq e^{-\lambda \varepsilon} \Expect[e^{\lambda \overline X}],
+    \]
+    where we used the Markov's inequality \cref{lem:markov-inequality}. Since the
+    random variables are i.i.d.~we have
+    \[
+        \Expect[e^{\lambda \overline X}]
+        = \Expect[e^{\lambda \frac{1}{m} \sum_j X_j}]
+        = \Expect\Big[ \prod_{j=1}^m e^{\lambda X_j/m} \Big]
+        = \prod_{j=1}^m \Expect[e^{\lambda X_j/m}].
+    \]
+    Via \cref{lem:hoeffding-lemma}, for each index \(j\) we have an upper-bound
+    \[
+        \Expect[e^{\lambda X_j/m}] \leq \exp\Big( \frac{\lambda^2 (b - a)^2}{8 m^2} \Big).
+    \]
+    With this bound in hands we obtain
+    \[
+        \Expect[e^{\lambda \overline X}]
+        = \prod_{j=1}^m \exp\Big( \frac{\lambda^2 (b - a)^2}{8 m^2} \Big)
+        = \exp\Big( \frac{\lambda^2 (b - a)^2}{8 m} \Big).
+    \]
+    Therefore it follows that
+    \[
+        \Prob\big( \overline X \geq \varepsilon \big)
+        \leq \exp\Big(-\lambda \varepsilon + \frac{\lambda^2 (b - a)^2}{8 m} \Big).
+    \]
+    If we let \(\lambda \coloneq \frac{4 m \varepsilon}{(b-a)}^2\) we obtain
+    \[
+        \Prob\big( \overline X \geq \varepsilon \big)
+        \leq \exp\Big( -\frac{2 m \varepsilon}{(b - a)^2} \Big).
+    \]
 
-If we now consider the case for the random variable \(-\overline{X}\) we shall
-find
-\[
-\Prob(\overline X \leq -\varepsilon)
-\leq \exp\Big( -\frac{2 m \varepsilon^{2}}{(b-a)^2} \Big).
-\]
-Using the union bound
-\(\Prob(|\overline X| \geq \varepsilon) \leq \Prob(\overline X \geq \varepsilon)
-+ \Prob(\overline X \leq - \varepsilon)\) we obtain the wanted inequality.
+    If we now consider the case for the random variable \(-\overline{X}\) we shall
+    find
+    \[
+        \Prob(\overline X \leq -\varepsilon)
+        \leq \exp\Big( -\frac{2 m \varepsilon^{2}}{(b-a)^2} \Big).
+    \]
+    Using the union bound
+    \(\Prob(|\overline X| \geq \varepsilon) \leq \Prob(\overline X \geq \varepsilon)
+    + \Prob(\overline X \leq - \varepsilon)\) we obtain the wanted inequality.
 \end{proof}
 
 \section{Uniform Convergence for Finite Hypothesis Classes}
 
 \begin{proposition}
-\label{prop:finite-hypothesis-agnostically-pac-learnable}
-Let \(\mathcal{H}\) be a \emph{finite} hypothesis class with respect to a domain
-\(\mathcal{Z}\), and let \(\ell: \mathcal{H} \times \mathcal{Z} \to [0, 1]\) be
-a loss function. Then \(\mathcal{H}\) has the uniform convergence property with
-a sample complexity of
-\[
-m_{\mathcal{H}}^{\text{UC}}(\varepsilon, \delta) \leq
-\left\lceil \frac{\log(2 |\mathcal{H}| / \delta)}{2 \varepsilon^2} \right\rceil.
-\]
-Moreover, \(\mathcal{H}\) is agnostically PAC learnable with respect to the ERM
-algorithm with a sample complexity
-\[
-m_{\mathcal{H}}(\varepsilon) \leq m_{\mathcal{H}}^{\text{UC}}(\varepsilon/2, \delta)
-\leq
-\left\lceil \frac{2 \log(2 |\mathcal{H}| / \delta)}{\varepsilon^2} \right\rceil
-\]
+    \label{prop:finite-hypothesis-agnostically-pac-learnable}
+    Let \(\mathcal{H}\) be a \emph{finite} hypothesis class with respect to a domain
+    \(\mathcal{Z}\), and let \(\ell: \mathcal{H} \times \mathcal{Z} \to [0, 1]\) be
+    a loss function. Then \(\mathcal{H}\) has the uniform convergence property with
+    a sample complexity of
+    \[
+        m_{\mathcal{H}}^{\text{UC}}(\varepsilon, \delta) \leq
+        \left\lceil \frac{\log(2 |\mathcal{H}| / \delta)}{2 \varepsilon^2} \right\rceil.
+    \]
+    Moreover, \(\mathcal{H}\) is agnostically PAC learnable with respect to the ERM
+    algorithm with a sample complexity
+    \[
+        m_{\mathcal{H}}(\varepsilon) \leq m_{\mathcal{H}}^{\text{UC}}(\varepsilon/2, \delta)
+        \leq
+        \left\lceil \frac{2 \log(2 |\mathcal{H}| / \delta)}{\varepsilon^2} \right\rceil
+    \]
 \end{proposition}
 
 \begin{proof}
-Fix parameters \(\varepsilon, \delta \in (0, 1)\). Lets consider the set
-\[
-\mathcal{S}_{\text{bad}} \coloneq
-\{S \colon \exists h \in \mathcal{H},\, |L_S(h) - L_{\mathcal{D}}(h)| > \varepsilon\}
-= \bigcup_{h \in \mathcal{H}} \{S \colon |L_S(h) - L_{\mathcal{D}}(h)| > \varepsilon\}
-\]
-and for the sake of brevity define the notation
-\(\mathcal{S}_{\text{bad}}^h \coloneq \{S \colon |L_S(h) - L_{\mathcal{D}}(h)| >
-\varepsilon\}\) for each \(h \in \mathcal{H}\). Via the union bound we find
-\[
-\mathcal{D}^m(\mathcal{S}_{\text{bad}})
-\leq \sum_{h \in \mathcal{H}} \mathcal{D}^m(\mathcal{S}_{\text{bad}}^h)
-\]
+    Fix parameters \(\varepsilon, \delta \in (0, 1)\). Lets consider the set
+    \[
+        \mathcal{S}_{\text{bad}} \coloneq
+        \{S \colon \exists h \in \mathcal{H},\, |L_S(h) - L_{\mathcal{D}}(h)| > \varepsilon\}
+        = \bigcup_{h \in \mathcal{H}} \{S \colon |L_S(h) - L_{\mathcal{D}}(h)| > \varepsilon\}
+    \]
+    and for the sake of brevity define the notation
+    \(\mathcal{S}_{\text{bad}}^h \coloneq \{S \colon |L_S(h) - L_{\mathcal{D}}(h)| >
+    \varepsilon\}\) for each \(h \in \mathcal{H}\). Via the union bound we find
+    \[
+        \mathcal{D}^m(\mathcal{S}_{\text{bad}})
+        \leq \sum_{h \in \mathcal{H}} \mathcal{D}^m(\mathcal{S}_{\text{bad}}^h)
+    \]
 
-Fix a predictor \(h \in \mathcal{H}\), chosen prior to the sampling of the
-training set. Let \(S = (z_j, f(z_j))_{j=1}^m\) be an i.i.d.~sampled training
-set. Since each \(z_j\) is sampled i.i.d.~it follows that
-\(\Expect[\ell(h, z_j)] = L_{\mathcal{D}}(h)\) from the definition of the true
-error. By the linearity of the expected value, we also have
-\[
-\Expect[L_S(h)] = \Expect\Big[ \frac{1}{m} \sum_{j=1}^m \ell(h, z_j) \Big]
-= \frac{1}{m} \sum_{j=1}^m \Expect[\ell(h, z_j)]
-=  L_{\mathcal{D}}(h).
-\]
-It follows that \(|L_{\mathcal{D}}(h) - L_S(h)| = |\Expect[L_S(h)] - L_S(h)|\)
-and we would wish to show that \(L_S(h)\) is \emph{concentrated} around its
-expected value.
+    Fix a predictor \(h \in \mathcal{H}\), chosen prior to the sampling of the
+    training set. Let \(S = (z_j, f(z_j))_{j=1}^m\) be an i.i.d.~sampled training
+    set. Since each \(z_j\) is sampled i.i.d.~it follows that
+    \(\Expect[\ell(h, z_j)] = L_{\mathcal{D}}(h)\) from the definition of the true
+    error. By the linearity of the expected value, we also have
+    \[
+        \Expect[L_S(h)] = \Expect\Big[ \frac{1}{m} \sum_{j=1}^m \ell(h, z_j) \Big]
+        = \frac{1}{m} \sum_{j=1}^m \Expect[\ell(h, z_j)]
+        =  L_{\mathcal{D}}(h).
+    \]
+    It follows that \(|L_{\mathcal{D}}(h) - L_S(h)| = |\Expect[L_S(h)] - L_S(h)|\)
+    and we would wish to show that \(L_S(h)\) is \emph{concentrated} around its
+    expected value.
 
-Since \(L_S(h)\) is composed of the sum of \(m\) i.i.d.~random variables, we can
-apply the law of large numbers to conclude that when \(m \to \infty\) the
-empirical average \(L_S(h)\) converges to its true expected value
-\(L_{\mathcal{D}}(h)\). We would like to quantify this for finite \(m\), and for
-that we shall make use of the Hoeffding's inequality. For that, consider the
-sequence of random variables \((\ell(h, z_1), \dots, \ell(h, z_m))\), which are
-sampled i.i.d.~since \(h\) is a fixed hypothesis and \((z_1, \dots, z_m)\) are
-i.i.d.~random variables. Since \(\im \ell \subseteq [0, 1]\) and that
-\(z_j \in [0, 1]\) for all indices \(j\). We have satisfied every condition of
-\cref{lem:hoeffding-inequality} and thus we may apply the Hoeffding's inequality
-as follows:
-\[
-\mathcal{D}^m(\mathcal{S}_{\text{bad}}^h)
-= \Prob(|L_S(h) - L_{\mathcal{D}}(h)| > \varepsilon)
-\leq 2 e^{-2 m \varepsilon}.
-\]
-Therefore going back to \(\mathcal{S}_{\text{bad}}\) we find
-\[
-\mathcal{D}^m(\mathcal{S}_{\text{bad}})
-\leq \sum_{h \in \mathcal{H}} \mathcal{D}^m(\mathcal{S}_{\text{bad}}^{h})
-= 2 |\mathcal{H}| e^{-2 m \varepsilon}.
-\]
+    Since \(L_S(h)\) is composed of the sum of \(m\) i.i.d.~random variables, we can
+    apply the law of large numbers to conclude that when \(m \to \infty\) the
+    empirical average \(L_S(h)\) converges to its true expected value
+    \(L_{\mathcal{D}}(h)\). We would like to quantify this for finite \(m\), and for
+    that we shall make use of the Hoeffding's inequality. For that, consider the
+    sequence of random variables \((\ell(h, z_1), \dots, \ell(h, z_m))\), which are
+    sampled i.i.d.~since \(h\) is a fixed hypothesis and \((z_1, \dots, z_m)\) are
+    i.i.d.~random variables. Since \(\im \ell \subseteq [0, 1]\) and that
+    \(z_j \in [0, 1]\) for all indices \(j\). We have satisfied every condition of
+    \cref{lem:hoeffding-inequality} and thus we may apply the Hoeffding's inequality
+    as follows:
+    \[
+        \mathcal{D}^m(\mathcal{S}_{\text{bad}}^h)
+        = \Prob(|L_S(h) - L_{\mathcal{D}}(h)| > \varepsilon)
+        \leq 2 e^{-2 m \varepsilon}.
+    \]
+    Therefore going back to \(\mathcal{S}_{\text{bad}}\) we find
+    \[
+        \mathcal{D}^m(\mathcal{S}_{\text{bad}})
+        \leq \sum_{h \in \mathcal{H}} \mathcal{D}^m(\mathcal{S}_{\text{bad}}^{h})
+        = 2 |\mathcal{H}| e^{-2 m \varepsilon}.
+    \]
 
-Therefore, by choosing an integer \(m \in \N\)
-\[
-m \geq \frac{\log(2 |\mathcal{H}| / \delta)}{2 \varepsilon^2}
-\]
-we ensure that \(\mathcal{D}^m(\mathcal{S}_{\text{bad}}) \leq \delta\),
-therefore
-\[
-\mathcal{D}^m(\{S \colon \forall h \in \mathcal{H},\,
-|L_S(h) - L_{\mathcal{D}}(h)| \leq \varepsilon\}) \geq 1 - \delta.
-\]
+    Therefore, by choosing an integer \(m \in \N\)
+    \[
+        m \geq \frac{\log(2 |\mathcal{H}| / \delta)}{2 \varepsilon^2}
+    \]
+    we ensure that \(\mathcal{D}^m(\mathcal{S}_{\text{bad}}) \leq \delta\),
+    therefore
+    \[
+        \mathcal{D}^m(\{S \colon \forall h \in \mathcal{H},\,
+        |L_S(h) - L_{\mathcal{D}}(h)| \leq \varepsilon\}) \geq 1 - \delta.
+    \]
 \end{proof}
 
 \section{Universal Learners are Impossible}
 
 \begin{theorem}[No-free-lunch]
-\label{thm:no-free-lunch}
-Let \(A\) be a learning algorithm assigned for the binary classification of a
-domain \(\mathcal{X}\) with respect to the \(\{0, 1\}\)-loss function
-\(\ell_{\text{class}}\). Let \(m < |\mathcal{X}|/2\) be the size of a training
-set. There exists a distribution \(\mathcal{D}\) over the domain
-\(\mathcal{X} \times \{0, 1\}\) for which
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item There exists a labelling map \(f: \mathcal{X} \to \{0, 1\}\) for which
-  \(L_{\mathcal{D}}(f) = 0\).
-\item With a probability of at least \(1/7\) over the choice of the training set
-  \(S \sim \mathcal{D}^m\) we have
-  \[
-  L_{\mathcal{D}}(A(S)) \geq \frac{1}{8}.
-  \]
-\end{enumerate}
-In other words, there exists a true labelling map \(f\), with respect to the
-distribution \(\mathcal{D}\), underlying the learning problem, and the algorithm
-\emph{fails} to output a predictor with a good approximation of \(f\).
+    \label{thm:no-free-lunch}
+    Let \(A\) be a learning algorithm assigned for the binary classification of a
+    domain \(\mathcal{X}\) with respect to the \(\{0, 1\}\)-loss function
+    \(\ell_{\text{class}}\). Let \(m < |\mathcal{X}|/2\) be the size of a training
+    set. There exists a distribution \(\mathcal{D}\) over the domain
+    \(\mathcal{X} \times \{0, 1\}\) for which
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item There exists a labelling map \(f: \mathcal{X} \to \{0, 1\}\) for which
+              \(L_{\mathcal{D}}(f) = 0\).
+        \item With a probability of at least \(1/7\) over the choice of the training set
+              \(S \sim \mathcal{D}^m\) we have
+              \[
+                  L_{\mathcal{D}}(A(S)) \geq \frac{1}{8}.
+              \]
+    \end{enumerate}
+    In other words, there exists a true labelling map \(f\), with respect to the
+    distribution \(\mathcal{D}\), underlying the learning problem, and the algorithm
+    \emph{fails} to output a predictor with a good approximation of \(f\).
 \end{theorem}
 
 \begin{proof}
-Let \(C \subseteq \mathcal{X}\) be a subset of size \(2 m\). We'll prove that if
-a learner has access to only half of \(C\), then it has no information on how to
-correctly label the remaining half of \(C\). The number of maps
-\(C \to \{0, 1\}\) is given by \(T \coloneq |\{0, 1\}|^{|C|} = 2^{2m}\): let
-\((f_1, \dots, f_T)\) denote all such maps. For each \(1 \leq j \leq T\) define
-a distribution \(\mathcal{D}_j\) over \(C \times \{0, 1\}\) where
-\[
-\mathcal{D}_j(\{(x, y)\}) =
-\begin{cases}
-  \frac{1}{|C|}, &\text{if } y = f_i(x) \\
-  0, &\text{otherwise.}
-\end{cases}
-\]
-That is, \(\mathcal{D}_j\) makes \(f_j\) the true labelling function on
-\(C\)---so that \(L_{\mathcal{D}_j}(f_j) = 0\).
+    Let \(C \subseteq \mathcal{X}\) be a subset of size \(2 m\). We'll prove that if
+    a learner has access to only half of \(C\), then it has no information on how to
+    correctly label the remaining half of \(C\). The number of maps
+    \(C \to \{0, 1\}\) is given by \(T \coloneq |\{0, 1\}|^{|C|} = 2^{2m}\): let
+    \((f_1, \dots, f_T)\) denote all such maps. For each \(1 \leq j \leq T\) define
+    a distribution \(\mathcal{D}_j\) over \(C \times \{0, 1\}\) where
+    \[
+        \mathcal{D}_j(\{(x, y)\}) =
+        \begin{cases}
+            \frac{1}{|C|}, & \text{if } y = f_i(x) \\
+            0,             & \text{otherwise.}
+        \end{cases}
+    \]
+    That is, \(\mathcal{D}_j\) makes \(f_j\) the true labelling function on
+    \(C\)---so that \(L_{\mathcal{D}_j}(f_j) = 0\).
 
-Let \(K = (2 m)^m\) denote the number of possible sequences consisting of \(m\)
-i.i.d.~sampled instances from \(C\), and let \((S_1, \dots, S_K)\) denote all
-such sequences. Given a sequence \(S_j = (x_1, \dots, x_m)\), define
-\(S_j^i \coloneq (x_j, f_j)_{j=1}^m\) to be the labelling of \(S_j\) by the map
-\(f_i\). Given a distribution \(D_i\), the available training sets for the
-algorithm \(A\) are \((S_1^i, \dots, S_K^i)\), which are i.i.d.~and labelled by
-the same map \(f_i\). Therefore one has
-\begin{equation}\label{eq:nfl-expect-AS}
-\Expect_{S \sim \mathcal{D}_i^m}[L_{\mathcal{D}_i}(A(S))]
-= \frac{1}{K} \sum_{j=1}^K L_{\mathcal{D}_i}(A(S_{j}^i)).
-\end{equation}
+    Let \(K = (2 m)^m\) denote the number of possible sequences consisting of \(m\)
+    i.i.d.~sampled instances from \(C\), and let \((S_1, \dots, S_K)\) denote all
+    such sequences. Given a sequence \(S_j = (x_1, \dots, x_m)\), define
+    \(S_j^i \coloneq (x_j, f_j)_{j=1}^m\) to be the labelling of \(S_j\) by the map
+    \(f_i\). Given a distribution \(D_i\), the available training sets for the
+    algorithm \(A\) are \((S_1^i, \dots, S_K^i)\), which are i.i.d.~and labelled by
+    the same map \(f_i\). Therefore one has
+    \begin{equation}\label{eq:nfl-expect-AS}
+        \Expect_{S \sim \mathcal{D}_i^m}[L_{\mathcal{D}_i}(A(S))]
+        = \frac{1}{K} \sum_{j=1}^K L_{\mathcal{D}_i}(A(S_{j}^i)).
+    \end{equation}
 
-Considering all \(T\) pairs \((f_j, \mathcal{D}_j)\) we have the following
-relations:
-\begin{align}\label{eq:nfl-max-i-in-T}
-  \nonumber
-  \max_{1 \leq i \leq T} \Expect_{S \sim \mathcal{D}_i^m}[L_{\mathcal{D}_i}(A(S))]
-  &\geq \frac{1}{T} \sum_{i=i}^{T} \Expect_{S \sim \mathcal{D}_i^m}[L_{\mathcal{D}_i}(A(S))]
-  \\
-  \nonumber
-  &= \frac{1}{T} \sum_{i=i}^{T} \Big(
-    \frac{1}{K} \sum_{j=1}^K L_{\mathcal{D}_i}(A(S_j^i))
-    \Big) \\
-  \nonumber
-  &= \frac{1}{K} \sum_{j=1}^{K} \Big(
-    \frac{1}{T} \sum_{i=1}^T L_{\mathcal{D}_i}(A(S_j^i))
-    \Big) \\
-  &\geq \min_{1 \leq j \leq K} \frac{1}{T} \sum_{i=1}^T L_{\mathcal{D}_i}(A(S_j^i)).
-\end{align}
-Fix any \(1 \leq j \leq K\) and let \(S_j \coloneq (x_1, \dots, x_m)\) and let
-\((v_1, \dots, v_p)\) be a sequence containing all instances of \(C\) not
-appearing in \(S_j\)---which certainly has \(p \geq m\). Hence, for any
-labelling \(h: C \to \{0, 1\}\) and any \(1 \leq i \leq T\) we have a true error
-\begin{align*}
-L_{\mathcal{D}_i}(h)
-&= \frac{1}{2m} \sum_{x \in C} \ell_{\text{class}}(h, (x, f_i(x))) \\
-&\geq \frac{1}{2 m} \sum_{k=1}^p \ell_{\text{class}}(h, (v_k, f_i(v_k))) \\
-&\geq \frac{1}{2 p} \sum_{k=1}^p \ell_{\text{class}}(h, (v_k, f_i(v_k))).
-\end{align*}
-From this we obtain that
-\begin{align}\label{eq:nfl-avg-true-loss-T}
-  \nonumber
-  \frac{1}{T} \sum_{i=1}^T L_{\mathcal{D}_i}(A(S_j^i))
-  &\geq \frac{1}{T} \sum_{i=1}^T \Big(
-    \frac{1}{2 p} \sum_{k=1}^p \ell_{\text{class}}(A(S_j^i), (v_k, f_i(v_k)))
-    \Big) \\
-  \nonumber
-  &= \frac{1}{2 p} \sum_{k=1}^p \Big(
-    \frac{1}{T} \sum_{i=1}^T \ell_{\text{class}}(A(S_j^i), (v_k, f_i(v_k)))
-    \Big) \\
-  &\geq \frac{1}{2} \min_{1 \leq k \leq p} \frac{1}{T}
-    \sum_{i=1}^T \ell_{\text{class}}(A(S_j^i), (v_k, f_i(v_k))).
-\end{align}
-For the last time, fix an index \(1 \leq k \leq p\). Partition \((f_1, \dots,
-f_T)\) into a collection of \(T/2\) disjoint pairs of the form \((f_i, f_{i'})\)
-for which \(f_i(c) \neq f_{i'}(c)\) if and only if \(c = v_k\). From
-construction, such pairs satisfy \(S_j^i = S_j^{i'}\) for any \(1 \leq j \leq
-K\), therefore
-\[
-\ell_{\text{class}}(A(S_j^i), (v_k, f_i(v_k)))
-+ \ell_{\text{class}}(A(S_j^{i'}), (v_k, f_{i'}(v_k)))
-= 1,
-\]
-which in turn implies in
-\begin{equation}\label{eq:nfl-avg-T-is-half}
-\frac{1}{T} \sum_{i=1}^T \ell_{\text{class}}(A(S_j^i), (v_k, f_i(v_k)) = \frac{1}{2}.
-\end{equation}
+    Considering all \(T\) pairs \((f_j, \mathcal{D}_j)\) we have the following
+    relations:
+    \begin{align}\label{eq:nfl-max-i-in-T}
+        \nonumber
+        \max_{1 \leq i \leq T} \Expect_{S \sim \mathcal{D}_i^m}[L_{\mathcal{D}_i}(A(S))]
+         & \geq \frac{1}{T} \sum_{i=i}^{T} \Expect_{S \sim \mathcal{D}_i^m}[L_{\mathcal{D}_i}(A(S))]
+        \\
+        \nonumber
+         & = \frac{1}{T} \sum_{i=i}^{T} \Big(
+        \frac{1}{K} \sum_{j=1}^K L_{\mathcal{D}_i}(A(S_j^i))
+        \Big)                                                                                        \\
+        \nonumber
+         & = \frac{1}{K} \sum_{j=1}^{K} \Big(
+        \frac{1}{T} \sum_{i=1}^T L_{\mathcal{D}_i}(A(S_j^i))
+        \Big)                                                                                        \\
+         & \geq \min_{1 \leq j \leq K} \frac{1}{T} \sum_{i=1}^T L_{\mathcal{D}_i}(A(S_j^i)).
+    \end{align}
+    Fix any \(1 \leq j \leq K\) and let \(S_j \coloneq (x_1, \dots, x_m)\) and let
+    \((v_1, \dots, v_p)\) be a sequence containing all instances of \(C\) not
+    appearing in \(S_j\)---which certainly has \(p \geq m\). Hence, for any
+    labelling \(h: C \to \{0, 1\}\) and any \(1 \leq i \leq T\) we have a true error
+    \begin{align*}
+        L_{\mathcal{D}_i}(h)
+         & = \frac{1}{2m} \sum_{x \in C} \ell_{\text{class}}(h, (x, f_i(x)))        \\
+         & \geq \frac{1}{2 m} \sum_{k=1}^p \ell_{\text{class}}(h, (v_k, f_i(v_k)))  \\
+         & \geq \frac{1}{2 p} \sum_{k=1}^p \ell_{\text{class}}(h, (v_k, f_i(v_k))).
+    \end{align*}
+    From this we obtain that
+    \begin{align}\label{eq:nfl-avg-true-loss-T}
+        \nonumber
+        \frac{1}{T} \sum_{i=1}^T L_{\mathcal{D}_i}(A(S_j^i))
+         & \geq \frac{1}{T} \sum_{i=1}^T \Big(
+        \frac{1}{2 p} \sum_{k=1}^p \ell_{\text{class}}(A(S_j^i), (v_k, f_i(v_k)))
+        \Big)                                                  \\
+        \nonumber
+         & = \frac{1}{2 p} \sum_{k=1}^p \Big(
+        \frac{1}{T} \sum_{i=1}^T \ell_{\text{class}}(A(S_j^i), (v_k, f_i(v_k)))
+        \Big)                                                  \\
+         & \geq \frac{1}{2} \min_{1 \leq k \leq p} \frac{1}{T}
+        \sum_{i=1}^T \ell_{\text{class}}(A(S_j^i), (v_k, f_i(v_k))).
+    \end{align}
+    For the last time, fix an index \(1 \leq k \leq p\). Partition \((f_1, \dots,
+    f_T)\) into a collection of \(T/2\) disjoint pairs of the form \((f_i, f_{i'})\)
+    for which \(f_i(c) \neq f_{i'}(c)\) if and only if \(c = v_k\). From
+    construction, such pairs satisfy \(S_j^i = S_j^{i'}\) for any \(1 \leq j \leq
+    K\), therefore
+    \[
+        \ell_{\text{class}}(A(S_j^i), (v_k, f_i(v_k)))
+        + \ell_{\text{class}}(A(S_j^{i'}), (v_k, f_{i'}(v_k)))
+        = 1,
+    \]
+    which in turn implies in
+    \begin{equation}\label{eq:nfl-avg-T-is-half}
+        \frac{1}{T} \sum_{i=1}^T \ell_{\text{class}}(A(S_j^i), (v_k, f_i(v_k)) = \frac{1}{2}.
+    \end{equation}
 
-Now substituting \cref{eq:nfl-avg-T-is-half} in \cref{eq:nfl-avg-true-loss-T}
-results in
-\[
-\frac{1}{T} \sum_{i=1}^{T} L_{\mathcal{D}_i}(A(S_j^i)) \geq \frac{1}{4}.
-\]
-If we now substitute this into \cref{eq:nfl-max-i-in-T} we get
-\[
-\max_{1 \leq i \leq T} \Expect_{S \sim \mathcal{D}_i^m}[L_{\mathcal{D}_i}(A(S))]
-\geq \frac{1}{4},
-\]
-and say this maximum is attained at an index \(1 \leq i_0 \leq T\). Denote
-\((f_{i_0}, \mathcal{D}_{i_0}) \coloneq (f, \mathcal{D})\) for short. Using the
-\cref{lem:markov-inequality-lemma} we have
-\[
-\Prob(L_{\mathcal{D}}(A(S)) \geq 1/8)
-\geq \frac{\Expect_{S \sim \mathcal{D}^m}[L_{\mathcal{D}}(A(S))] - 1/8}{1 - 1/8}
-= \frac{1}{7}
-\]
+    Now substituting \cref{eq:nfl-avg-T-is-half} in \cref{eq:nfl-avg-true-loss-T}
+    results in
+    \[
+        \frac{1}{T} \sum_{i=1}^{T} L_{\mathcal{D}_i}(A(S_j^i)) \geq \frac{1}{4}.
+    \]
+    If we now substitute this into \cref{eq:nfl-max-i-in-T} we get
+    \[
+        \max_{1 \leq i \leq T} \Expect_{S \sim \mathcal{D}_i^m}[L_{\mathcal{D}_i}(A(S))]
+        \geq \frac{1}{4},
+    \]
+    and say this maximum is attained at an index \(1 \leq i_0 \leq T\). Denote
+    \((f_{i_0}, \mathcal{D}_{i_0}) \coloneq (f, \mathcal{D})\) for short. Using the
+    \cref{lem:markov-inequality-lemma} we have
+    \[
+        \Prob(L_{\mathcal{D}}(A(S)) \geq 1/8)
+        \geq \frac{\Expect_{S \sim \mathcal{D}^m}[L_{\mathcal{D}}(A(S))] - 1/8}{1 - 1/8}
+        = \frac{1}{7}
+    \]
 \end{proof}
 
 \begin{corollary}
-\label{cor:full-hypothesis-class-not-pac-learnable}
-Let \(\mathcal{X}\) be an infinite domain and define
-\(\mathcal{H} \coloneq \{0, 1\}^{\mathcal{X}}\) to be our hypothesis class---that is, the collection of all
-possible binary classifiers of \(\mathcal{X}\). Then
-\(\mathcal{H}\) is \emph{not} PAC learnable.
+    \label{cor:full-hypothesis-class-not-pac-learnable}
+    Let \(\mathcal{X}\) be an infinite domain and define
+    \(\mathcal{H} \coloneq \{0, 1\}^{\mathcal{X}}\) to be our hypothesis class---that is, the collection of all
+    possible binary classifiers of \(\mathcal{X}\). Then
+    \(\mathcal{H}\) is \emph{not} PAC learnable.
 \end{corollary}
 
 \begin{proof}
-Suppose, for the sake of contradiction, that \(\mathcal{H}\) is PAC learnable. Take
-\(\varepsilon < 1/8\) and \(\delta < 1/7\). From assumption, there exists an algorithm
-\(A\) and a number \(m \in \N\), depending on the choice of \(\varepsilon\) and
-\(\delta\), such that for any distribution \(\mathcal{D}\) over
-\(\mathcal{X} \times \{0, 1\}\) and labelling function
-\(f: \mathcal{X} \to \{0, 1\}\) with \(L_{\mathcal{D}}(f) = 0\)---then, with a probability of at least
-\(1 - \delta\) over a sample \(S \sim \mathcal{D}^m\), the algorithm \(A\) will output a
-classifier with \(L_{\mathcal{D}}(A(S)) \leq \varepsilon\). Since
-\(\mathcal{X}\) is infinite, then certainly its cardinality overcomes \(2 m\) and by
-\cref{thm:no-free-lunch} the algorithm \(A\) fails for some distribution
-\(\mathcal{D}_0\) with a probability greater than \(1/7\)---in this case the failure of
-\(A\) means \(L_{\mathcal{D}_0}(A(S)) > 1/8\). This is a contradiction and therefore
-proves that \(\mathcal{H}\) is not PAC learnable.
+    Suppose, for the sake of contradiction, that \(\mathcal{H}\) is PAC learnable. Take
+    \(\varepsilon < 1/8\) and \(\delta < 1/7\). From assumption, there exists an algorithm
+    \(A\) and a number \(m \in \N\), depending on the choice of \(\varepsilon\) and
+    \(\delta\), such that for any distribution \(\mathcal{D}\) over
+    \(\mathcal{X} \times \{0, 1\}\) and labelling function
+    \(f: \mathcal{X} \to \{0, 1\}\) with \(L_{\mathcal{D}}(f) = 0\)---then, with a probability of at least
+    \(1 - \delta\) over a sample \(S \sim \mathcal{D}^m\), the algorithm \(A\) will output a
+    classifier with \(L_{\mathcal{D}}(A(S)) \leq \varepsilon\). Since
+    \(\mathcal{X}\) is infinite, then certainly its cardinality overcomes \(2 m\) and by
+    \cref{thm:no-free-lunch} the algorithm \(A\) fails for some distribution
+    \(\mathcal{D}_0\) with a probability greater than \(1/7\)---in this case the failure of
+    \(A\) means \(L_{\mathcal{D}_0}(A(S)) > 1/8\). This is a contradiction and therefore
+    proves that \(\mathcal{H}\) is not PAC learnable.
 \end{proof}
 
 \begin{definition}[Threshold function]
-\label{def:threshold-function}
-Let \(P\) be a proposition taking values in the set
-\(\{\texttt{false}, \texttt{true}\}\). We define a map
-\(\mathbf{1}_P: \{\texttt{false}, \texttt{true}\} \to \{0, 1\}\) as
-\[
-\mathbf{1}_P(x) =
-\begin{cases}
-  1, &\text{if } P(x) = \texttt{true} \\
-  0, &\text{if } P(x) = \texttt{false}.
-\end{cases}
-\]
-A common use of such maps are threshold functions: for each \(a \in \R\) we define
-a map \(\mathbf{1}_{< a}\) assuming \(1\) if the argument is less than \(a\) and
-\(0\) otherwise.
+    \label{def:threshold-function}
+    Let \(P\) be a proposition taking values in the set
+    \(\{\texttt{false}, \texttt{true}\}\). We define a map
+    \(\mathbf{1}_P: \{\texttt{false}, \texttt{true}\} \to \{0, 1\}\) as
+    \[
+        \mathbf{1}_P(x) =
+        \begin{cases}
+            1, & \text{if } P(x) = \texttt{true}   \\
+            0, & \text{if } P(x) = \texttt{false}.
+        \end{cases}
+    \]
+    A common use of such maps are threshold functions: for each \(a \in \R\) we define
+    a map \(\mathbf{1}_{< a}\) assuming \(1\) if the argument is less than \(a\) and
+    \(0\) otherwise.
 \end{definition}
 
 \begin{lemma}
-\label{lem:threshold-functions-pac-learnable}
-Let \(\mathcal{H}\) denote the infinite collection of all threshold functions as in
-\cref{def:threshold-function}. Then \(\mathcal{H}\) is PAC learnable with the ERM
-algorithm with a sample complexity of
-\[
-m_{\mathcal{H}}(\varepsilon, \delta) \leq \left\lceil \frac{\log(2/\delta)}{\varepsilon} \right\rceil.
-\]
+    \label{lem:threshold-functions-pac-learnable}
+    Let \(\mathcal{H}\) denote the infinite collection of all threshold functions as in
+    \cref{def:threshold-function}. Then \(\mathcal{H}\) is PAC learnable with the ERM
+    algorithm with a sample complexity of
+    \[
+        m_{\mathcal{H}}(\varepsilon, \delta) \leq \left\lceil \frac{\log(2/\delta)}{\varepsilon} \right\rceil.
+    \]
 \end{lemma}
 
 \begin{proof}
-Via the realisability assumption, let \(a^{\star} \in \R\) be such that
-\(L_{\mathcal{D}}(\mathbf{1}_{a^{\star}}) = 0\). Consider the marginal distribution
-\(\mathcal{D}_{\mathcal{X}}\) and take points \(a_0 < a^{\star} < a_1\) such that\footnote{If such
-  points do not exist, we can set \(a_0 \coloneq -\infty\) and \(a_1 \coloneq \infty\).}
-\[
-\Prob_{x \sim \mathcal{D}_{\mathcal{X}}}(a_0 < x < a^{\star})
-= \Prob_{x \sim \mathcal{D}_{\mathcal{X}}}(a^{\star} < x < a_1)
-= \varepsilon.
-\]
-Let \(S \sim \mathcal{D}^m\) be a training set, and define constants\footnote{If the first
-  set is empty, we instead set \(b_0 \coloneq \infty\), and if the latter is empty then
-  \(b_1 \coloneq -\infty\).}
-\[
-b_0 \coloneq \max_{(x, 1) \in S} x
-\quad \text{ and } \quad
-b_1 \coloneq \min_{(x, 0) \in S} x
-\]
-Let \(b_S \in \R\) be a threshold obtained by \(\text{ERM}_{\mathcal{H}}\), giving
-\(b_0 < b_S < b_1\). Notice that in order to have a true error
-\(L_{\mathcal{D}}(\mathbf{1}_{< b_S}) \leq \varepsilon\) it is sufficient to ensure that \(a_0 \leq b_0\)
-and \(b_1 \leq a_1\) so that \(b_S \in (a_0, a_1)\). Notice that
-\begin{align*}
-  \Prob_{S \sim \mathcal{D}^m}(L_{\mathcal{D}}(\mathbf{1}_{< b_S}) > \varepsilon)
-  &\leq \Prob_{S \sim \mathcal{D}^m}(b_0 < a_0 \text{ and } b_1 > a_1) \\
-  &\leq \Prob_{S \sim \mathcal{D}^m}(b_0 < a_0) + \Prob(b_1 > a_1)
-\end{align*}
-Notice that in order to have the event \(b_0 < a_0\) one has to sample every point
-\((x, y) \in S\) with \(x < a_0\), since the probability of having a sample \(x \in
-(a_0, a^{\star})\) is \(\varepsilon\) it follows that
-\begin{align*}
-  \Prob_{S \sim \mathcal{D}^m}(b_0 < a_0)
-  &= \Prob_{S \sim \mathcal{D}^m}(\forall (x, y) \in S,\, x \notin (a_0, a^{\star})) \\
-  &= (1 - \varepsilon)^m \\
-  &\leq e^{-m \varepsilon} \\
-  &\leq e^{- \frac{\log(2/\delta)}{\varepsilon} \varepsilon} \\
-  &= \delta/2,
-\end{align*}
-since \(m > \log(2/\delta)/\varepsilon\). Analogously, \(b_1 > a_1\) only if each point
-\((x, y)\) of \(S\) has \(x > a_1\), therefore
-\(\Prob_{S \sim \mathcal{D}^m}(b_1 > a_1) \leq \delta/2\).  This shows that
-\[
-\Prob_{S \sim \mathcal{D}^m}(L_{\mathcal{D}}(\mathbf{1}_{< b_S} > \varepsilon)) \leq \delta.
-\]
+    Via the realisability assumption, let \(a^{\star} \in \R\) be such that
+    \(L_{\mathcal{D}}(\mathbf{1}_{a^{\star}}) = 0\). Consider the marginal distribution
+    \(\mathcal{D}_{\mathcal{X}}\) and take points \(a_0 < a^{\star} < a_1\) such that\footnote{If such
+        points do not exist, we can set \(a_0 \coloneq -\infty\) and \(a_1 \coloneq \infty\).}
+    \[
+        \Prob_{x \sim \mathcal{D}_{\mathcal{X}}}(a_0 < x < a^{\star})
+        = \Prob_{x \sim \mathcal{D}_{\mathcal{X}}}(a^{\star} < x < a_1)
+        = \varepsilon.
+    \]
+    Let \(S \sim \mathcal{D}^m\) be a training set, and define constants\footnote{If the first
+        set is empty, we instead set \(b_0 \coloneq \infty\), and if the latter is empty then
+        \(b_1 \coloneq -\infty\).}
+    \[
+        b_0 \coloneq \max_{(x, 1) \in S} x
+        \quad \text{ and } \quad
+        b_1 \coloneq \min_{(x, 0) \in S} x
+    \]
+    Let \(b_S \in \R\) be a threshold obtained by \(\text{ERM}_{\mathcal{H}}\), giving
+    \(b_0 < b_S < b_1\). Notice that in order to have a true error
+    \(L_{\mathcal{D}}(\mathbf{1}_{< b_S}) \leq \varepsilon\) it is sufficient to ensure that \(a_0 \leq b_0\)
+    and \(b_1 \leq a_1\) so that \(b_S \in (a_0, a_1)\). Notice that
+    \begin{align*}
+        \Prob_{S \sim \mathcal{D}^m}(L_{\mathcal{D}}(\mathbf{1}_{< b_S}) > \varepsilon)
+         & \leq \Prob_{S \sim \mathcal{D}^m}(b_0 < a_0 \text{ and } b_1 > a_1) \\
+         & \leq \Prob_{S \sim \mathcal{D}^m}(b_0 < a_0) + \Prob(b_1 > a_1)
+    \end{align*}
+    Notice that in order to have the event \(b_0 < a_0\) one has to sample every point
+    \((x, y) \in S\) with \(x < a_0\), since the probability of having a sample \(x \in
+    (a_0, a^{\star})\) is \(\varepsilon\) it follows that
+    \begin{align*}
+        \Prob_{S \sim \mathcal{D}^m}(b_0 < a_0)
+         & = \Prob_{S \sim \mathcal{D}^m}(\forall (x, y) \in S,\, x \notin (a_0, a^{\star})) \\
+         & = (1 - \varepsilon)^m                                                             \\
+         & \leq e^{-m \varepsilon}                                                           \\
+         & \leq e^{- \frac{\log(2/\delta)}{\varepsilon} \varepsilon}                         \\
+         & = \delta/2,
+    \end{align*}
+    since \(m > \log(2/\delta)/\varepsilon\). Analogously, \(b_1 > a_1\) only if each point
+    \((x, y)\) of \(S\) has \(x > a_1\), therefore
+    \(\Prob_{S \sim \mathcal{D}^m}(b_1 > a_1) \leq \delta/2\).  This shows that
+    \[
+        \Prob_{S \sim \mathcal{D}^m}(L_{\mathcal{D}}(\mathbf{1}_{< b_S} > \varepsilon)) \leq \delta.
+    \]
 \end{proof}
 
 \begin{definition}[Restricting the hypothesis class]
-\label{def:restrict-hypothesis-class}
-Let \(\mathcal{H}\) be a hypothesis class of maps \(\mathcal{X} \to \mathcal{Y}\) and take a finite set
-\(C \subseteq \mathcal{X}\). We define \(\mathcal{H}|_C \coloneq (h|_C)_{h \in \mathcal{H}}\) to be the restriction of the
-hypothesis class to \(C\). We say that \(\mathcal{H}\) \emph{shatters} \(C\) if it is the
-case that \(\mathcal{H}|_C = \mathcal{Y}^{C}\).
+    \label{def:restrict-hypothesis-class}
+    Let \(\mathcal{H}\) be a hypothesis class of maps \(\mathcal{X} \to \mathcal{Y}\) and take a finite set
+    \(C \subseteq \mathcal{X}\). We define \(\mathcal{H}|_C \coloneq (h|_C)_{h \in \mathcal{H}}\) to be the restriction of the
+    hypothesis class to \(C\). We say that \(\mathcal{H}\) \emph{shatters} \(C\) if it is the
+    case that \(\mathcal{H}|_C = \mathcal{Y}^{C}\).
 \end{definition}
 
 \begin{corollary}
-\label{cor:shatters-2m-cannot-learn-with-train-of-size-m}
-Let \(\mathcal{H}\) be a hypothesis class of maps \(\mathcal{X} \to \{0, 1\}\), and \(m\) be the
-training set size. Assume the existence of a subset \(C \subseteq \mathcal{X}\) with cardinality
-\(2 m\) such that \(\mathcal{H}|_C\) shatters \(C\). It follows that for any learning
-algorithm \(A\) there exists a distribution \(\mathcal{D}\) over \(\mathcal{X} \times \{0, 1\}\) and a
-predictor \(h \in \mathcal{H}\) for which \(L_{\mathcal{D}}(h) = 0\) and having a probability of at
-least \(1/7\) over the choice of samples \(S \sim \mathcal{D}^m\) that \(L_{\mathcal{D}}A(S) \geq 1/8\).
+    \label{cor:shatters-2m-cannot-learn-with-train-of-size-m}
+    Let \(\mathcal{H}\) be a hypothesis class of maps \(\mathcal{X} \to \{0, 1\}\), and \(m\) be the
+    training set size. Assume the existence of a subset \(C \subseteq \mathcal{X}\) with cardinality
+    \(2 m\) such that \(\mathcal{H}|_C\) shatters \(C\). It follows that for any learning
+    algorithm \(A\) there exists a distribution \(\mathcal{D}\) over \(\mathcal{X} \times \{0, 1\}\) and a
+    predictor \(h \in \mathcal{H}\) for which \(L_{\mathcal{D}}(h) = 0\) and having a probability of at
+    least \(1/7\) over the choice of samples \(S \sim \mathcal{D}^m\) that \(L_{\mathcal{D}}A(S) \geq 1/8\).
 \end{corollary}
 
 \begin{definition}[VC-dimension]
-\label{def:vc-dimension}
-Let \(\mathcal{H}\) be a hypothesis class. We define the \emph{VC-dimension} of
-\(\mathcal{H}\) to be:
-\[
-\vcdim \mathcal{H} \coloneq \max \{|C| \colon C \subseteq \mathcal{X} \text{ is shattered by } \mathcal{H}|_C\}.
-\]
+    \label{def:vc-dimension}
+    Let \(\mathcal{H}\) be a hypothesis class. We define the \emph{VC-dimension} of
+    \(\mathcal{H}\) to be:
+    \[
+        \vcdim \mathcal{H} \coloneq \max \{|C| \colon C \subseteq \mathcal{X} \text{ is shattered by } \mathcal{H}|_C\}.
+    \]
 \end{definition}
 
 \begin{theorem}
-\label{thm:infinite-VC-dim-not-learnable}
-If \(\mathcal{H}\) is a class with \emph{infinite} VC-dimension, then
-\(\mathcal{H}\) is \emph{not PAC learnable}.
+    \label{thm:infinite-VC-dim-not-learnable}
+    If \(\mathcal{H}\) is a class with \emph{infinite} VC-dimension, then
+    \(\mathcal{H}\) is \emph{not PAC learnable}.
 \end{theorem}
 
 \begin{proof}
-Let \(S\) be a training set with size \(m\). Since
-\(\vcdim \mathcal{H} = \infty\) then there exists a set with size \(2 m\) that is shattered by
-\(\mathcal{H}\)---thus by \cref{cor:shatters-2m-cannot-learn-with-train-of-size-m}
-\(\mathcal{H}\) isn't PAC learnable.
+    Let \(S\) be a training set with size \(m\). Since
+    \(\vcdim \mathcal{H} = \infty\) then there exists a set with size \(2 m\) that is shattered by
+    \(\mathcal{H}\)---thus by \cref{cor:shatters-2m-cannot-learn-with-train-of-size-m}
+    \(\mathcal{H}\) isn't PAC learnable.
 \end{proof}
 
 \section{Fundamental Theorem of PAC Learning}
 
 \begin{definition}[Growth function]
-\label{def:growth-function-learning}
-Let \(\mathcal{H}\) be a hypothesis class. We define the growth function of \(\mathcal{H}\) to be
-the map \(\Growth_{\mathcal{H}}: \N \to \N\) given by
-\[
-\Growth_{\mathcal{H}}(m) \coloneq \max \{|\mathcal{H}_C| \colon C \subseteq \mathcal{X} \text{ with } |C| = m\}.
-\]
+    \label{def:growth-function-learning}
+    Let \(\mathcal{H}\) be a hypothesis class. We define the growth function of \(\mathcal{H}\) to be
+    the map \(\Growth_{\mathcal{H}}: \N \to \N\) given by
+    \[
+        \Growth_{\mathcal{H}}(m) \coloneq \max \{|\mathcal{H}_C| \colon C \subseteq \mathcal{X} \text{ with } |C| = m\}.
+    \]
 \end{definition}
 
 \begin{corollary}
-\label{cor:growth-function-lower-vc-dim}
-If \(\vcdim \mathcal{H} = d\) then for any \(m \leq d\) we have \(\Growth_{\mathcal{H}}(m) = 2^m\).
+    \label{cor:growth-function-lower-vc-dim}
+    If \(\vcdim \mathcal{H} = d\) then for any \(m \leq d\) we have \(\Growth_{\mathcal{H}}(m) = 2^m\).
 \end{corollary}
 
 \begin{lemma}[Sauer-Shelah-Perles]
-\label{lem:sauer-shelah-perles}
-Let \(\mathcal{H}\) be a hypothesis class with \(\vcdim \mathcal{H} \leq d\) finite. Then for any
-\(m \in \N\) one has
-\[
-\Growth_{\mathcal{H}}(m) \leq \sum_{j=0}^d \binom m j.
-\]
-In particular, if \(m > d + 1\) then our bound becomes
-\[
-\Growth_{\mathcal{H}}(m) \leq \Big(\frac{e m}{d}\Big)^d
-\]
+    \label{lem:sauer-shelah-perles}
+    Let \(\mathcal{H}\) be a hypothesis class with \(\vcdim \mathcal{H} \leq d\) finite. Then for any
+    \(m \in \N\) one has
+    \[
+        \Growth_{\mathcal{H}}(m) \leq \sum_{j=0}^d \binom m j.
+    \]
+    In particular, if \(m > d + 1\) then our bound becomes
+    \[
+        \Growth_{\mathcal{H}}(m) \leq \Big(\frac{e m}{d}\Big)^d
+    \]
 \end{lemma}
 
 \begin{theorem}[Fundamental theorem of statistical learning]
-\label{thm:fundamental-thm-stat-learning}
-Let \(\mathcal{H}\) be a hypothesis class of maps \(\mathcal{X} \to \{0, 1\}\) together with the
-binary loss function. The following conditions are equivalent:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item The collection \(\mathcal{H}\) has the uniform convergence property.
+    \label{thm:fundamental-thm-stat-learning}
+    Let \(\mathcal{H}\) be a hypothesis class of maps \(\mathcal{X} \to \{0, 1\}\) together with the
+    binary loss function. The following conditions are equivalent:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item The collection \(\mathcal{H}\) has the uniform convergence property.
 
-\item Any ERM rule succeeds at PAC learning \(\mathcal{H}\) agnostically.
+        \item Any ERM rule succeeds at PAC learning \(\mathcal{H}\) agnostically.
 
-\item The collection \(\mathcal{H}\) is agnostic PAC learnable.
+        \item The collection \(\mathcal{H}\) is agnostic PAC learnable.
 
-\item The collection \(\mathcal{H}\) is PAC learnable.
+        \item The collection \(\mathcal{H}\) is PAC learnable.
 
-\item Any ERM rule succeeds at PAC learning \(\mathcal{H}\).
+        \item Any ERM rule succeeds at PAC learning \(\mathcal{H}\).
 
-\item The collection \(\mathcal{H}\) has a finite VC-dimension.
-\end{enumerate}
+        \item The collection \(\mathcal{H}\) has a finite VC-dimension.
+    \end{enumerate}
 \end{theorem}
 
 \begin{theorem}[Sample complexity estimation]
-\label{thm:finite-vc-dim-sample-complexity-estimation}
-Let \(\mathcal{H}\) be a hypothesis class of maps \(\mathcal{X} \to \{0, 1\}\) together with the
-binary loss function, and having a finite \(\vcdim \mathcal{H} = d\). There exists
-constants \(c_1, c_2 \in \R\) such that:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item \(\mathcal{H}\) has the uniform convergence property and sample complexity:
-  \[
-  c_1 \frac{d + \log(1/\delta)}{\varepsilon^2} \leq
-  m_{\mathcal{H}}^{\text{UC}}(\varepsilon, \delta) \leq
-  c_2 \frac{d + \log(1/\delta)}{\varepsilon^2}.
-  \]
+    \label{thm:finite-vc-dim-sample-complexity-estimation}
+    Let \(\mathcal{H}\) be a hypothesis class of maps \(\mathcal{X} \to \{0, 1\}\) together with the
+    binary loss function, and having a finite \(\vcdim \mathcal{H} = d\). There exists
+    constants \(c_1, c_2 \in \R\) such that:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item \(\mathcal{H}\) has the uniform convergence property and sample complexity:
+              \[
+                  c_1 \frac{d + \log(1/\delta)}{\varepsilon^2} \leq
+                  m_{\mathcal{H}}^{\text{UC}}(\varepsilon, \delta) \leq
+                  c_2 \frac{d + \log(1/\delta)}{\varepsilon^2}.
+              \]
 
-\item \(\mathcal{H}\) is agnostic PAC learnable and has sample complexity:
-  \[
-  c_1 \frac{d + \log(1/\delta)}{\varepsilon^2} \leq
-  m_{\mathcal{H}}^{\text{UC}}(\varepsilon, \delta) \leq
-  c_2 \frac{d + \log(1/\delta)}{\varepsilon^2}.
-  \]
+        \item \(\mathcal{H}\) is agnostic PAC learnable and has sample complexity:
+              \[
+                  c_1 \frac{d + \log(1/\delta)}{\varepsilon^2} \leq
+                  m_{\mathcal{H}}^{\text{UC}}(\varepsilon, \delta) \leq
+                  c_2 \frac{d + \log(1/\delta)}{\varepsilon^2}.
+              \]
 
-\item \(\mathcal{H}\) is PAC learnable with sample complexity of:
-  \[
-  c_1 \frac{d + \log(1/\delta)}{\varepsilon} \leq
-  m_{\mathcal{H}}(\varepsilon, \delta) \leq
-  c_2 \frac{d \log(1/\varepsilon) + \log(1/\delta)}{\varepsilon}.
-  \]
-\end{enumerate}
+        \item \(\mathcal{H}\) is PAC learnable with sample complexity of:
+              \[
+                  c_1 \frac{d + \log(1/\delta)}{\varepsilon} \leq
+                  m_{\mathcal{H}}(\varepsilon, \delta) \leq
+                  c_2 \frac{d \log(1/\varepsilon) + \log(1/\delta)}{\varepsilon}.
+              \]
+    \end{enumerate}
 \end{theorem}
 
 \todo[inline]{Write proof}
@@ -1054,42 +1054,42 @@ constants \(c_1, c_2 \in \R\) such that:
 \section{Non-Uniform Learnability}
 
 \begin{definition}[Competitive hypothesis]
-\label{def:competitive-hypothesis}
-Let \(\mathcal{H}\) be a hypothesis class, and let \(h, h' \in \mathcal{H}\) be a pair of predictors,
-and consider parameters \(\varepsilon, \delta \in (0, 1)\). We say that \(h\) is
-\((\varepsilon, \delta)\)-competitive with respect to \(h'\) if with a probability of at least
-\(1 - \delta\) we have
-\[
-L_{\mathcal{D}}(h) \leq L_{\mathcal{D}}(h') + \varepsilon.
-\]
+    \label{def:competitive-hypothesis}
+    Let \(\mathcal{H}\) be a hypothesis class, and let \(h, h' \in \mathcal{H}\) be a pair of predictors,
+    and consider parameters \(\varepsilon, \delta \in (0, 1)\). We say that \(h\) is
+    \((\varepsilon, \delta)\)-competitive with respect to \(h'\) if with a probability of at least
+    \(1 - \delta\) we have
+    \[
+        L_{\mathcal{D}}(h) \leq L_{\mathcal{D}}(h') + \varepsilon.
+    \]
 \end{definition}
 
 \begin{definition}
-\label{def:non-uniform-learnable-hypothesis-class}
-We say that a hypothesis class \(\mathcal{H}\) is \emph{non-uniformly learnable} if there
-exists an algorithm \(A\) and a map
-\[
-m_{\mathcal{H}}^{\text{NUL}}: (0, 1)^2 \times \mathcal{H} \longrightarrow \N
-\]
-such that, for every triple \((\varepsilon, \delta, h) \in (0, 1)^2 \times \mathcal{H}\) the resulting predictor
-\(A(S)\) is \((\varepsilon, \delta)\)-competitive with respect to \(h\). That is, with a
-probability of at least \(1 - \delta\) over the choice of sample set \(S \sim \mathcal{D}^m\) we have
-\[
-L_{\mathcal{D}} A(S) \leq L_{\mathcal{D}}(h) + \varepsilon.
-\]
+    \label{def:non-uniform-learnable-hypothesis-class}
+    We say that a hypothesis class \(\mathcal{H}\) is \emph{non-uniformly learnable} if there
+    exists an algorithm \(A\) and a map
+    \[
+        m_{\mathcal{H}}^{\text{NUL}}: (0, 1)^2 \times \mathcal{H} \longrightarrow \N
+    \]
+    such that, for every triple \((\varepsilon, \delta, h) \in (0, 1)^2 \times \mathcal{H}\) the resulting predictor
+    \(A(S)\) is \((\varepsilon, \delta)\)-competitive with respect to \(h\). That is, with a
+    probability of at least \(1 - \delta\) over the choice of sample set \(S \sim \mathcal{D}^m\) we have
+    \[
+        L_{\mathcal{D}} A(S) \leq L_{\mathcal{D}}(h) + \varepsilon.
+    \]
 \end{definition}
 
 \begin{lemma}
-\label{lem:countable-unif-conv-prop--then-non-unif-learnable}
-Let \(\mathcal{H} = \bigcup_{n \in \N} \mathcal{H}_n\) be a hypothesis class. If each \(\mathcal{H}_n\) has the
-uniform convergence property, then \(\mathcal{H}\) is non-uniformly learnable.
+    \label{lem:countable-unif-conv-prop--then-non-unif-learnable}
+    Let \(\mathcal{H} = \bigcup_{n \in \N} \mathcal{H}_n\) be a hypothesis class. If each \(\mathcal{H}_n\) has the
+    uniform convergence property, then \(\mathcal{H}\) is non-uniformly learnable.
 \end{lemma}
 
 \begin{theorem}
-\label{thm:non-uniformly-learnable-iff-countable-union-pac}
-Let \(\mathcal{H}\) be a hypothesis class of maps of the form
-\(\mathcal{X} \to \{0, 1\}\). The class \(\mathcal{H}\) is non-uniformly learnable if and only if it
-consists of a countable union of agnostic PAC learnable hypothesis classes.
+    \label{thm:non-uniformly-learnable-iff-countable-union-pac}
+    Let \(\mathcal{H}\) be a hypothesis class of maps of the form
+    \(\mathcal{X} \to \{0, 1\}\). The class \(\mathcal{H}\) is non-uniformly learnable if and only if it
+    consists of a countable union of agnostic PAC learnable hypothesis classes.
 \end{theorem}
 
 

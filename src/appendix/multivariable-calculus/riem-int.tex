@@ -12,73 +12,73 @@ b\). Another terminology we are going to adopt is that, the interval \(I\) is
 non-degenerate if \(a_j < b_j\) for all \(1 \leq j \leq n\).
 
 \begin{notation}
-In \emph{this} section we denote by \(\mathcal I^n\) the collection of all
-\emph{closed} intervals of \(\R^n\).
+    In \emph{this} section we denote by \(\mathcal I^n\) the collection of all
+    \emph{closed} intervals of \(\R^n\).
 \end{notation}
 
 \begin{definition}[Interval measure]
-\label{def:interval-measure}
-We define the map \(\Vol: \mathcal I^n \to \R\) as the \emph{measure} (or
-volume) of the \(n\)-dimensional closed intervals of \(\R^n\), it's defined as
-the product of the interval sides, that is
-\[
-  \Vol I \coloneq \prod_{j=1}^n b_j - a_j,
-  \ \text{ for }\ I = [a, b] \in \mathcal I^n.
-\]
+    \label{def:interval-measure}
+    We define the map \(\Vol: \mathcal I^n \to \R\) as the \emph{measure} (or
+    volume) of the \(n\)-dimensional closed intervals of \(\R^n\), it's defined as
+    the product of the interval sides, that is
+    \[
+        \Vol I \coloneq \prod_{j=1}^n b_j - a_j,
+        \ \text{ for }\ I = [a, b] \in \mathcal I^n.
+    \]
 \end{definition}
 
 \begin{corollary}[Measure of intervals in \(\R^n\)]
-\label{cor:interval-measure-properties}
-Let \(I \coloneq [a, b] \subseteq \R^n\) be an \(n\)-dimensional closed
-interval, then the following properties are satisfied concerning the measure
-\(\Vol\):
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item (Homogeneity) Let \(\gamma \geq 0\) be a scalar and define the
-  multiplication of the interval by \(\gamma\) as \(\gamma I \coloneq [\gamma
-  a, \gamma b]\). Then we have that
-  \[
-    \Vol(\lambda I) = \lambda^n \Vol I.
-  \]
-\item (Additivity) Given a finite collection of closed intervals \(\{I_{j}
-  \subseteq \R^n\}_{j = 1}^p\), we have that
-  \[
-    \Vol \bigcup_{j=1}^p I_j = \sum_{j=1}^p \Vol I_j.
-  \]
-\item (Cover inequality) Given a finite closed cover \(\{I_{j}\}^{p}\), by
-  \(n\)-dimensional closed intervals, of \(I\) --- that is \(I \subseteq
-  \bigcup_{j=1}^p I_j\) --- then
-  \[
-    \Vol I \leq \sum_{j=1}^p \Vol I_j.
-  \]
-\end{enumerate}
+    \label{cor:interval-measure-properties}
+    Let \(I \coloneq [a, b] \subseteq \R^n\) be an \(n\)-dimensional closed
+    interval, then the following properties are satisfied concerning the measure
+    \(\Vol\):
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item (Homogeneity) Let \(\gamma \geq 0\) be a scalar and define the
+              multiplication of the interval by \(\gamma\) as \(\gamma I \coloneq [\gamma
+                  a, \gamma b]\). Then we have that
+              \[
+                  \Vol(\lambda I) = \lambda^n \Vol I.
+              \]
+        \item (Additivity) Given a finite collection of closed intervals \(\{I_{j}
+              \subseteq \R^n\}_{j = 1}^p\), we have that
+              \[
+                  \Vol \bigcup_{j=1}^p I_j = \sum_{j=1}^p \Vol I_j.
+              \]
+        \item (Cover inequality) Given a finite closed cover \(\{I_{j}\}^{p}\), by
+              \(n\)-dimensional closed intervals, of \(I\) --- that is \(I \subseteq
+              \bigcup_{j=1}^p I_j\) --- then
+              \[
+                  \Vol I \leq \sum_{j=1}^p \Vol I_j.
+              \]
+    \end{enumerate}
 \end{corollary}
 
 \begin{definition}[Partition]
-\label{def:interval-partition}
-Let \(I \subseteq \R^n\) be a closed interval. A \emph{partition} on \(I\) is a
-\emph{finite} collection of closed intervals \(\{I_{j}\}_{j=1}^p\) such that \(I
-= \bigcup_{j=1}^p I_j\). The intervals pertaining to the partition are said to
-be \emph{finer} than \(I\).
+    \label{def:interval-partition}
+    Let \(I \subseteq \R^n\) be a closed interval. A \emph{partition} on \(I\) is a
+    \emph{finite} collection of closed intervals \(\{I_{j}\}_{j=1}^p\) such that \(I
+    = \bigcup_{j=1}^p I_j\). The intervals pertaining to the partition are said to
+    be \emph{finer} than \(I\).
 \end{definition}
 
 \begin{definition}[Partition mesh]
-\label{def:partition-mesh}
-Given a partition \(P \in 2^{\mathcal I^n}\), we define the \emph{mesh} of \(P\)
-as the maximum diameter (recall \cref{def:Rn-diameter}) of the elements of the
-partition. That is, \(\Mesh: 2^{\mathcal I^n} \to \R\) is a map defined by
-\[
-  \Mesh(P) \coloneq \max_{I \in P} d(I).
-\]
+    \label{def:partition-mesh}
+    Given a partition \(P \in 2^{\mathcal I^n}\), we define the \emph{mesh} of \(P\)
+    as the maximum diameter (recall \cref{def:Rn-diameter}) of the elements of the
+    partition. That is, \(\Mesh: 2^{\mathcal I^n} \to \R\) is a map defined by
+    \[
+        \Mesh(P) \coloneq \max_{I \in P} d(I).
+    \]
 \end{definition}
 
 \begin{definition}[Distinguished points]
-\label{def:distinguished-points}
-Given a partition \(P = \{I_{j}\}_{j=1}^p \in 2^{\mathcal I^n}\), we define a
-collection of \emph{distinguished points} of the partition as a collection of
-points \(\xi \coloneq \{\xi_j \in I_{j}\}_{j=1}^p\). The partition \(P\)
-together with the distinguished points \(\xi\) will be denoted as the pair \((P,
-\xi)\) --- the collection of pairs \((P, \xi)\) will be denoted by \(\mathcal
-P\).
+    \label{def:distinguished-points}
+    Given a partition \(P = \{I_{j}\}_{j=1}^p \in 2^{\mathcal I^n}\), we define a
+    collection of \emph{distinguished points} of the partition as a collection of
+    points \(\xi \coloneq \{\xi_j \in I_{j}\}_{j=1}^p\). The partition \(P\)
+    together with the distinguished points \(\xi\) will be denoted as the pair \((P,
+    \xi)\) --- the collection of pairs \((P, \xi)\) will be denoted by \(\mathcal
+    P\).
 \end{definition}
 
 An important filter base \(\mathcal B \subseteq 2^{\mathcal P}\) is
@@ -89,613 +89,613 @@ denote \(\mathcal B\) by \(\Mesh(P) \to 0\).
 \subsection{Riemann Sums and Integrals}
 
 \begin{definition}[Riemann sum]
-\label{def:riemann-sum}
-Let \(f: I \to \R\) be a map where \(I \in \mathcal I^n\). Consider the
-partition together with distinguished points \((P, \xi) \in \mathcal P\), then,
-we define the \emph{Riemann sum} \(\sigma: \R^I \times \mathcal P \to \R\) by
-\[
-  \sigma(f, P, \xi) \coloneq \sum_{j=1}^p f(\xi_j) \Vol(I_j),
-\]
-where \(P \coloneq \{I_{j}\}_{j=1}^p\). We say that \(\sigma(f, P, \xi)\) is the
-Riemann sum of the map \(f\) with respect to the partition \(P\) and
-distinguished points \(\xi\).
+    \label{def:riemann-sum}
+    Let \(f: I \to \R\) be a map where \(I \in \mathcal I^n\). Consider the
+    partition together with distinguished points \((P, \xi) \in \mathcal P\), then,
+    we define the \emph{Riemann sum} \(\sigma: \R^I \times \mathcal P \to \R\) by
+    \[
+        \sigma(f, P, \xi) \coloneq \sum_{j=1}^p f(\xi_j) \Vol(I_j),
+    \]
+    where \(P \coloneq \{I_{j}\}_{j=1}^p\). We say that \(\sigma(f, P, \xi)\) is the
+    Riemann sum of the map \(f\) with respect to the partition \(P\) and
+    distinguished points \(\xi\).
 \end{definition}
 
 \begin{definition}[Riemann integrable maps]
-\label{def:riemann-integrable}
-A map \(f: I \to \R\) is said to be \emph{Riemann integrable} if the limit
-\[
-  \lim_{\Mesh(P) \to 0} \sigma(f, P, \xi)
-\]
-exists in \(\R\). We'll denote the \(\R\)-vector space of Riemann integrable
-maps with a given domain \(E \subseteq \R^n\) by \(\mathcal R(E)\)\footnote{For
-the time being, we have only defined the case where \(E\) is an interval, but
-I'm already generalizing the notation for its uses in the following
-subsections.}.
+    \label{def:riemann-integrable}
+    A map \(f: I \to \R\) is said to be \emph{Riemann integrable} if the limit
+    \[
+        \lim_{\Mesh(P) \to 0} \sigma(f, P, \xi)
+    \]
+    exists in \(\R\). We'll denote the \(\R\)-vector space of Riemann integrable
+    maps with a given domain \(E \subseteq \R^n\) by \(\mathcal R(E)\)\footnote{For
+        the time being, we have only defined the case where \(E\) is an interval, but
+        I'm already generalizing the notation for its uses in the following
+        subsections.}.
 \end{definition}
 
 \begin{proposition}[Boundness of Riemann integrable maps]
-\label{prop:riemann-integral-map-bounded}
-Let \(f: I \to \R\) be a Riemann integrable map. Then, \(f\) is bounded on \(I\).
+    \label{prop:riemann-integral-map-bounded}
+    Let \(f: I \to \R\) be a Riemann integrable map. Then, \(f\) is bounded on \(I\).
 \end{proposition}
 
 \begin{proof}
-We prove the contrapositive proposition. Suppose that \(f\) is unbounded on
-\(I\) and let \(P\) be any partition of the interval \(I\). In particular, since
-\(P\) covers \(I\), then there exists an interval \(I_{k} \in P\) for which
-\(f\) is unbounded. Let \(\xi\) be any collection of distinguished points of
-\(P\) and define \(\xi'\) as the collection of distinguished points \(\xi_j'
-\coloneq \xi_j\) for \(j \neq m\), and \(\xi_k' \in I_k\) to be such that
-\(\xi_k' \neq \xi_k\). Then, from construction, it follows that \(\sigma(f, P,
-\xi) - \sigma(f, P, \xi') = (f(\xi_k) - f(\xi_k')) \Vol(I_k)\). Since from
-hypothesis \(f\) is unbounded in \(\xi_k\), for every \(M > 0\), there exists
-\(\xi_k' \in I_k\) such that \(\norm{f(\xi_k) - f(\xi_k')} > M\) --- that is,
-\(\norm{f(\xi_k) - f(\xi_k')}\) is obviously unbounded, which implies in the
-divergence of the Riemann sums, hence \(f\) is non-Riemann integrable.
+    We prove the contrapositive proposition. Suppose that \(f\) is unbounded on
+    \(I\) and let \(P\) be any partition of the interval \(I\). In particular, since
+    \(P\) covers \(I\), then there exists an interval \(I_{k} \in P\) for which
+    \(f\) is unbounded. Let \(\xi\) be any collection of distinguished points of
+    \(P\) and define \(\xi'\) as the collection of distinguished points \(\xi_j'
+    \coloneq \xi_j\) for \(j \neq m\), and \(\xi_k' \in I_k\) to be such that
+    \(\xi_k' \neq \xi_k\). Then, from construction, it follows that \(\sigma(f, P,
+    \xi) - \sigma(f, P, \xi') = (f(\xi_k) - f(\xi_k')) \Vol(I_k)\). Since from
+    hypothesis \(f\) is unbounded in \(\xi_k\), for every \(M > 0\), there exists
+    \(\xi_k' \in I_k\) such that \(\norm{f(\xi_k) - f(\xi_k')} > M\) --- that is,
+    \(\norm{f(\xi_k) - f(\xi_k')}\) is obviously unbounded, which implies in the
+    divergence of the Riemann sums, hence \(f\) is non-Riemann integrable.
 \end{proof}
 
 \begin{definition}[Riemann integral]
-\label{def:riemann-integral}
-The Riemann integral of real valued maps is an \(\R\)-linear map \(\int:
-\mathcal R \to \R\) defined by mapping any \(f \in \mathcal R(I)\) to
-\[
-  \int_I f(x)\, \diff x \coloneq \lim_{\Mesh(P) \to 0} \sigma(f, P, \xi).
-\]
+    \label{def:riemann-integral}
+    The Riemann integral of real valued maps is an \(\R\)-linear map \(\int:
+    \mathcal R \to \R\) defined by mapping any \(f \in \mathcal R(I)\) to
+    \[
+        \int_I f(x)\, \diff x \coloneq \lim_{\Mesh(P) \to 0} \sigma(f, P, \xi).
+    \]
 \end{definition}
 
 \subsection{Sets of Lebesgue Measure Zero}
 
 \begin{definition}[Set of Lebesgue measure zero]
-\label{def:measure-zero-set}
-A set \(E \subseteq \R^n\) is said be of Lebesgue \emph{measure zero} if for
-every \(\varepsilon > 0\) there exists a \emph{countable open cover} \(\mathcal
-U\) of \(E\) by \(n\)-dimensional \emph{open} intervals whose total volume
-\(\sum_{I \in \mathcal U} \Vol \Cl I\) does \emph{not} exceed
-\(\varepsilon\).
+    \label{def:measure-zero-set}
+    A set \(E \subseteq \R^n\) is said be of Lebesgue \emph{measure zero} if for
+    every \(\varepsilon > 0\) there exists a \emph{countable open cover} \(\mathcal
+    U\) of \(E\) by \(n\)-dimensional \emph{open} intervals whose total volume
+    \(\sum_{I \in \mathcal U} \Vol \Cl I\) does \emph{not} exceed
+    \(\varepsilon\).
 \end{definition}
 
 \begin{corollary}
-\label{cor:compact-finite-cover-infinitesimal-volume}
-A compact subset \(E \subseteq \R^n\) is of measure zero if and only if, for all
-\(\varepsilon\), there exists a \emph{finite} open cover \(\mathcal U\) of \(E\)
-by open \(n\)-dimensional intervals such that \(\sum_{I \in \mathcal U} \Vol
-\Cl I \leq \varepsilon\).
+    \label{cor:compact-finite-cover-infinitesimal-volume}
+    A compact subset \(E \subseteq \R^n\) is of measure zero if and only if, for all
+    \(\varepsilon\), there exists a \emph{finite} open cover \(\mathcal U\) of \(E\)
+    by open \(n\)-dimensional intervals such that \(\sum_{I \in \mathcal U} \Vol
+    \Cl I \leq \varepsilon\).
 \end{corollary}
 
 \begin{proof}
-If \(E\) satisfies the last property, then clearly \(E\) is a set of measure
-zero. On the other hand, if we assume that \(E\) is of measure zero, given any
-\(\varepsilon > 0\), let \(\mathcal C\) be a \emph{countable} cover of \(E\) for
-which \(\sum_{I \in \mathcal C} \Vol \Cl I \leq \varepsilon\). Since
-\(E\) is compact, there exists a finite subcover \(\mathcal U \subseteq \mathcal
-C\) of \(E\), and since \(\sum_{I \in \mathcal U} \Vol \Cl I \leq \sum_{I
-\in \mathcal C} \Vol \Cl I \leq \varepsilon\), thus \(\mathcal U\) is the
-wanted finite cover.
+    If \(E\) satisfies the last property, then clearly \(E\) is a set of measure
+    zero. On the other hand, if we assume that \(E\) is of measure zero, given any
+    \(\varepsilon > 0\), let \(\mathcal C\) be a \emph{countable} cover of \(E\) for
+    which \(\sum_{I \in \mathcal C} \Vol \Cl I \leq \varepsilon\). Since
+    \(E\) is compact, there exists a finite subcover \(\mathcal U \subseteq \mathcal
+    C\) of \(E\), and since \(\sum_{I \in \mathcal U} \Vol \Cl I \leq \sum_{I
+        \in \mathcal C} \Vol \Cl I \leq \varepsilon\), thus \(\mathcal U\) is the
+    wanted finite cover.
 \end{proof}
 
 \begin{lemma}
-\label{lem:measure-zero-properties}
-The following are properties of sets of measure zero:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item A subset of a set of measure zero is of measure zero.
-\item The countable union of sets of measure zero is of measure zero.
-\item A countable set is of measure zero.
-\item A non-degenerate interval is \emph{not} a set of measure zero.
-\end{enumerate}
+    \label{lem:measure-zero-properties}
+    The following are properties of sets of measure zero:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item A subset of a set of measure zero is of measure zero.
+        \item The countable union of sets of measure zero is of measure zero.
+        \item A countable set is of measure zero.
+        \item A non-degenerate interval is \emph{not} a set of measure zero.
+    \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item Let \(E \subseteq \R^n\) be a set of measure zero and \(A \subseteq E\) be
-  a subset. If \(\mathcal U\) is a closed cover by intervals satisfying the
-  measure zero condition, then in particular \(\mathcal U\) covers \(A\)
-  therefore \(A\) is of zero measure.
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item Let \(E \subseteq \R^n\) be a set of measure zero and \(A \subseteq E\) be
+              a subset. If \(\mathcal U\) is a closed cover by intervals satisfying the
+              measure zero condition, then in particular \(\mathcal U\) covers \(A\)
+              therefore \(A\) is of zero measure.
 
-\item Let \(\{E_{j} \subseteq \R^{n}\}_{j \in J}\) be a countable collection of
-  sets of measure zero, and let \(\{\mathcal U_{j}\}_{j \in J}\) be a collection
-  where \(\mathcal U_j\) is the corresponding closed cover by intervals for
-  \(E_j\). Notice that the countable union \(E \coloneq \bigcup_{j \in J} E_j\)
-  can be covered by \(\mathcal U \coloneq \bigcup_{j \in J} \mathcal U_j\),
-  therefore, since the union of countable collections is countable, it follows
-  that \(\mathcal U\) is a countable cover for \(E\) which satisfies the wanted
-  property.
+        \item Let \(\{E_{j} \subseteq \R^{n}\}_{j \in J}\) be a countable collection of
+              sets of measure zero, and let \(\{\mathcal U_{j}\}_{j \in J}\) be a collection
+              where \(\mathcal U_j\) is the corresponding closed cover by intervals for
+              \(E_j\). Notice that the countable union \(E \coloneq \bigcup_{j \in J} E_j\)
+              can be covered by \(\mathcal U \coloneq \bigcup_{j \in J} \mathcal U_j\),
+              therefore, since the union of countable collections is countable, it follows
+              that \(\mathcal U\) is a countable cover for \(E\) which satisfies the wanted
+              property.
 
-\item We initially consider a single point in space. Notice that, for any given
-  \(\varepsilon\), there exists a closed interval (for instance, one could
-  choose an interval of equal sides containing the point, whose sides have
-  length less than \(\varepsilon^{1/n}\)), whose volume is less than
-  \(\varepsilon\), contaning the given point --- that is, this one interval is
-  sufficient to cover the point. We conclude that a singleton is of measure
-  zero. Using the last item, we find that a countable set is of measure zero.
+        \item We initially consider a single point in space. Notice that, for any given
+              \(\varepsilon\), there exists a closed interval (for instance, one could
+              choose an interval of equal sides containing the point, whose sides have
+              length less than \(\varepsilon^{1/n}\)), whose volume is less than
+              \(\varepsilon\), contaning the given point --- that is, this one interval is
+              sufficient to cover the point. We conclude that a singleton is of measure
+              zero. Using the last item, we find that a countable set is of measure zero.
 
-\item Let \(I = [a, b] \subseteq \R^n\) be a non-degenerate interval. Since
-  \(\R^n\) is Lindel\"{o}f, every cover of \(I\) has a finite subcover so, we can
-  proceed by induction on the cardinality \(m \in \N\) of the open cover. For
-  \(m = 1\), let \((\alpha, \beta) \subseteq \R^n\) be an open interval covering
-  \(I\). Notice that every \(x \in I\) is such that \(a_j \leq x_j \leq b_j\),
-  for all \(1 \leq j \leq n\), then, since \(x\) must lie at \((\alpha,
-  \beta)\), we necessarily have \(\alpha_j < a \leq x_j \leq b < \beta_j\) so
-  that \(b_j - a_j < \beta_j - \alpha_j\) and hence \(\Vol I < \Vol [\alpha,
-  \beta]\). For the hypothesis of induction, suppose the proposition holds for a
-  cover of cardinality \(n - 1 \in \N_{> 1}\). Let \(\{(\alpha^{i},
-  \beta^i) \subseteq \R^n\}_{i = 1}^m\) be a cover of \(I\) by open
-  intervals. Let \(1 \leq k \leq n\) be such that \(a \in (\alpha^k, \beta^k)\),
-  that is, \(\alpha_k < a_j < \beta_{j}^{k}\).  If for some index \(1 \leq j_0
-  \leq n\) we have \(b_{j_0} > \beta_{j_0}^k\), we define the point \(\beta'\) to
-  be such that, if \(\beta_j^k < b_j\) then \(\beta_j' = \beta_j^k\), otherwise,
-  if \(\beta_j^k \geq b_j\), we let \(a_j < \beta_j' < b_j\) --- that is, we
-  constructed a point so that the closed interval \([\beta', b]\) is
-  non-degenerate. From the hypothesis of induction, every cover of \([\beta',
-  b]\) with cardinality \(m - 1\) has total volume strictly greater than \(\Vol
-  [\beta', b]\). In particular, since \([\beta', b] \subset [a, b]\) then
-  \(\{(\alpha^i, \beta^i)\}_{i=1}^m\) is a cover of \([\beta', b]\), notice that
-  \([\beta', b] \cap (\alpha^k, \beta^k) = \emptyset\), thus the cover
-  \(\{(\alpha^{i}, \beta^i)\}_{i = 1, i \neq k}^m\) is a cover of \([\beta', b]\)
-  with cardinality \(n - 1\), hence \(\Vol [\beta', b] < \sum_{i=1, i \neq k}^m
-  \Vol [\alpha^i, \beta^i]\). Then we find that
-  \begin{align*}
-    b_j - a_j
-    &< (b_j - \beta'_j) + (\beta_j' - a_j) \\
-    &\leq (b_j - \beta_j') + (\beta_j^k - a_j) \\
-    &< (b_j - \beta_j') + (\beta_j^k - \alpha_j^k).
-  \end{align*}
-  Therefore we conclude that
-  \begin{align*}
-    \Vol [a, b]
-    &< \Vol [\beta', b] + \Vol [\alpha^k, \beta^k] \\
-    &< \sum_{i=1, i \neq k}^{m} \Vol [\alpha^i, \beta^{i}] + \Vol [\alpha^k,
-    \beta^k] \\
-    &= \sum_{i=1}^m \Vol [\alpha^i, \beta^i],
-  \end{align*}
-  which proves that the proposition is true for all \(m \in \N\).
-\end{enumerate}
+        \item Let \(I = [a, b] \subseteq \R^n\) be a non-degenerate interval. Since
+              \(\R^n\) is Lindel\"{o}f, every cover of \(I\) has a finite subcover so, we can
+              proceed by induction on the cardinality \(m \in \N\) of the open cover. For
+              \(m = 1\), let \((\alpha, \beta) \subseteq \R^n\) be an open interval covering
+              \(I\). Notice that every \(x \in I\) is such that \(a_j \leq x_j \leq b_j\),
+              for all \(1 \leq j \leq n\), then, since \(x\) must lie at \((\alpha,
+              \beta)\), we necessarily have \(\alpha_j < a \leq x_j \leq b < \beta_j\) so
+              that \(b_j - a_j < \beta_j - \alpha_j\) and hence \(\Vol I < \Vol [\alpha,
+                  \beta]\). For the hypothesis of induction, suppose the proposition holds for a
+              cover of cardinality \(n - 1 \in \N_{> 1}\). Let \(\{(\alpha^{i},
+              \beta^i) \subseteq \R^n\}_{i = 1}^m\) be a cover of \(I\) by open
+              intervals. Let \(1 \leq k \leq n\) be such that \(a \in (\alpha^k, \beta^k)\),
+              that is, \(\alpha_k < a_j < \beta_{j}^{k}\).  If for some index \(1 \leq j_0
+              \leq n\) we have \(b_{j_0} > \beta_{j_0}^k\), we define the point \(\beta'\) to
+              be such that, if \(\beta_j^k < b_j\) then \(\beta_j' = \beta_j^k\), otherwise,
+              if \(\beta_j^k \geq b_j\), we let \(a_j < \beta_j' < b_j\) --- that is, we
+              constructed a point so that the closed interval \([\beta', b]\) is
+              non-degenerate. From the hypothesis of induction, every cover of \([\beta',
+                      b]\) with cardinality \(m - 1\) has total volume strictly greater than \(\Vol
+              [\beta', b]\). In particular, since \([\beta', b] \subset [a, b]\) then
+              \(\{(\alpha^i, \beta^i)\}_{i=1}^m\) is a cover of \([\beta', b]\), notice that
+              \([\beta', b] \cap (\alpha^k, \beta^k) = \emptyset\), thus the cover
+              \(\{(\alpha^{i}, \beta^i)\}_{i = 1, i \neq k}^m\) is a cover of \([\beta', b]\)
+              with cardinality \(n - 1\), hence \(\Vol [\beta', b] < \sum_{i=1, i \neq k}^m
+              \Vol [\alpha^i, \beta^i]\). Then we find that
+              \begin{align*}
+                  b_j - a_j
+                   & < (b_j - \beta'_j) + (\beta_j' - a_j)          \\
+                   & \leq (b_j - \beta_j') + (\beta_j^k - a_j)      \\
+                   & < (b_j - \beta_j') + (\beta_j^k - \alpha_j^k).
+              \end{align*}
+              Therefore we conclude that
+              \begin{align*}
+                  \Vol [a, b]
+                   & < \Vol [\beta', b] + \Vol [\alpha^k, \beta^k]                           \\
+                   & < \sum_{i=1, i \neq k}^{m} \Vol [\alpha^i, \beta^{i}] + \Vol [\alpha^k,
+                  \beta^k]                                                                   \\
+                   & = \sum_{i=1}^m \Vol [\alpha^i, \beta^i],
+              \end{align*}
+              which proves that the proposition is true for all \(m \in \N\).
+    \end{enumerate}
 \end{proof}
 
 \begin{example}
-\label{exp:graph-lebesgue-measure-zero}
-Let \(f: I \to \R\) be a continuous map on the interval \(I \subseteq
-\R^{n-1}\). The graph of \(f\) is a \(n\)-dimensional set of Lebesgue measure
-zero.
+    \label{exp:graph-lebesgue-measure-zero}
+    Let \(f: I \to \R\) be a continuous map on the interval \(I \subseteq
+    \R^{n-1}\). The graph of \(f\) is a \(n\)-dimensional set of Lebesgue measure
+    zero.
 
-\begin{proof}
-Let \(\Gamma\) denote the graph of \(f\) over \(I\). To see this, notice that
-since \(I\) is closed, then \(f\) is uniformly continuous on \(I\). For any
-\(\varepsilon > 0\), let \(\delta > 0\) be such that \(\norm{f(x) - f(y)}_{\R} <
-\varepsilon\) for every \(x, y \in I\) such that \(\norm{x - y}_{\R^{n-1}} <
-\delta\). Let \(P\) be a partition of \(I\) with \(\Mesh P < \delta\). For any
-point \(x_0 \in R\) of each \(R \in P\), we have an induced interval \(R'
-\coloneq R \times [f(x_0) - \varepsilon, f(x_0) + \varepsilon]\) which is such
-that \(\Gamma \subseteq R'\), since we have an oscillation \(\omega(f, R) <
-\varepsilon\) from the construction of \(P\). Let \(P'\) be the collection of
-induced intervals \(R'\) of the partition \(P\). From the last observation we
-have that \(P'\) is a closed cover of \(\Gamma\) by closed \(n\)-dimensional
-intervals. Moreover, \(\sum_{R' \in P'} \Vol R' = \sum_{R \in P} 2 \varepsilon
-\Vol R = 2 \varepsilon \Vol I\) --- therefore \(\Gamma\) indeed is of Lebesgue
-measure zero
-\end{proof}
+    \begin{proof}
+        Let \(\Gamma\) denote the graph of \(f\) over \(I\). To see this, notice that
+        since \(I\) is closed, then \(f\) is uniformly continuous on \(I\). For any
+        \(\varepsilon > 0\), let \(\delta > 0\) be such that \(\norm{f(x) - f(y)}_{\R} <
+        \varepsilon\) for every \(x, y \in I\) such that \(\norm{x - y}_{\R^{n-1}} <
+        \delta\). Let \(P\) be a partition of \(I\) with \(\Mesh P < \delta\). For any
+        point \(x_0 \in R\) of each \(R \in P\), we have an induced interval \(R'
+        \coloneq R \times [f(x_0) - \varepsilon, f(x_0) + \varepsilon]\) which is such
+        that \(\Gamma \subseteq R'\), since we have an oscillation \(\omega(f, R) <
+        \varepsilon\) from the construction of \(P\). Let \(P'\) be the collection of
+        induced intervals \(R'\) of the partition \(P\). From the last observation we
+        have that \(P'\) is a closed cover of \(\Gamma\) by closed \(n\)-dimensional
+        intervals. Moreover, \(\sum_{R' \in P'} \Vol R' = \sum_{R \in P} 2 \varepsilon
+        \Vol R = 2 \varepsilon \Vol I\) --- therefore \(\Gamma\) indeed is of Lebesgue
+        measure zero
+    \end{proof}
 \end{example}
 
 \begin{notation}
-Given a set \(X\) and a property \(P\), we say that \(P\) holds \emph{almost
-everywhere} on \(X\) if the subset \(A \subseteq X\), such that \(P\) is not
-true, is a set of measure zero.
+    Given a set \(X\) and a property \(P\), we say that \(P\) holds \emph{almost
+        everywhere} on \(X\) if the subset \(A \subseteq X\), such that \(P\) is not
+    true, is a set of measure zero.
 \end{notation}
 
 \begin{theorem}[Lebesgue's criterion]
-\label{thm:lebesgue-criterion-integrable}
-A map \(f: I \to \R\) is Riemann integrable if and only if \(f\) is
-\emph{bounded} on \(I\) and \(f\) is \emph{continuous almost everywhere} on
-\(I\).
+    \label{thm:lebesgue-criterion-integrable}
+    A map \(f: I \to \R\) is Riemann integrable if and only if \(f\) is
+    \emph{bounded} on \(I\) and \(f\) is \emph{continuous almost everywhere} on
+    \(I\).
 \end{theorem}
 
 \begin{proof}
-(\emph{Necessity}) Let \(f\) be Riemann integrable, then, from
-\cref{prop:riemann-integral-map-bounded}, \(f\) is bounded on \(I\). For the
-sake of contradiction, let \(E \subseteq I\) be the set composed of the points
-of discontinuity of \(f\), we'll suppose that \(E\) doesn't have measure
-zero. Notice that if \(x \in E\), then there exists \(n \in \N\) for which
-\(\omega(f, x) \geq 1/n\) --- that is, \(f\) does not converge to a value in
-\(x\). We can then define \(E_n \coloneq \{x \in I \colon \omega(f, x) \geq 1/n\}\)
-for every \(n \in \N\) so that \(E_n \subseteq E\) and thus \(E = \bigcup_{n \in
-\N} E_n\). Since \(E\) isn't of measure zero from assumption, it follows that
-there necessarily exists at least one \(n_0 \in \N\) such that \(E_{n_0}\) isn't
-of measure zero.
+    (\emph{Necessity}) Let \(f\) be Riemann integrable, then, from
+    \cref{prop:riemann-integral-map-bounded}, \(f\) is bounded on \(I\). For the
+    sake of contradiction, let \(E \subseteq I\) be the set composed of the points
+    of discontinuity of \(f\), we'll suppose that \(E\) doesn't have measure
+    zero. Notice that if \(x \in E\), then there exists \(n \in \N\) for which
+    \(\omega(f, x) \geq 1/n\) --- that is, \(f\) does not converge to a value in
+    \(x\). We can then define \(E_n \coloneq \{x \in I \colon \omega(f, x) \geq 1/n\}\)
+    for every \(n \in \N\) so that \(E_n \subseteq E\) and thus \(E = \bigcup_{n \in
+        \N} E_n\). Since \(E\) isn't of measure zero from assumption, it follows that
+    there necessarily exists at least one \(n_0 \in \N\) such that \(E_{n_0}\) isn't
+    of measure zero.
 
-Let \(P\) be a partition of \(I\), we'll consider two subsets of this partition:
-\[
-  A \coloneq \{R \in P \colon R \cap E_{n_{0}} \neq \emptyset
-  \text{ and } \omega(f, R) \geq 1/(2n_0)\},
-\]
-and \(B \coloneq P \setminus A\). Since \(P\) partitions the interval, for any
-\(x \in E_{n_0}\), there exists \(R \in P\) such that \(x \in \Int R\) or \(x
-\in \partial R\) --- we now analyse both cases:
-\begin{itemize}\setlength\itemsep{0em}
-\item In the case where \(x\) is an interior point, since \(\omega(f, x) \geq
-  1/n_0\), it follows that \(R \in A\).
-\item Otherwise, if \(x\) is a boundary point, then there actually exists at
-  least another \(R' \in P\) such that \(x \in \partial R \cap \partial
-  R'\). Suppose, for the sake of contradiction, that every interval \(R' \in P\)
-  containing \(x\) as a boundary point is such that \(f\) has an oscillation
-  \(\omega(f, R') < 1/(2n_0)\), then, if we take any ball \(B_x(r) \cap I\),
-  neighbourhood of \(x\), we find that, \(\omega(f, B_x(r)) < 1/(2n_0) +
-  1/(2n_0) = 1/n_0\), that is, the limit \(\omega(f, x) < 1/n_0\), which is a
-  contradiction to the assumption that \(x \in E_n\) --- thus there must exist
-  \(R' \in P\) with \(x \in \partial R'\) such that \(\omega(f, R') \geq
-  1/(2n_0)\) so that \(R' \in A\).
-\end{itemize}
-This implies that \(A\) covers the interval \(E_{n_0}\) by closed intervals and,
-by assumption, \(\sum_{R \in A} \Vol R > \Vol E_{n_0}\).
+    Let \(P\) be a partition of \(I\), we'll consider two subsets of this partition:
+    \[
+        A \coloneq \{R \in P \colon R \cap E_{n_{0}} \neq \emptyset
+        \text{ and } \omega(f, R) \geq 1/(2n_0)\},
+    \]
+    and \(B \coloneq P \setminus A\). Since \(P\) partitions the interval, for any
+    \(x \in E_{n_0}\), there exists \(R \in P\) such that \(x \in \Int R\) or \(x
+    \in \partial R\) --- we now analyse both cases:
+    \begin{itemize}\setlength\itemsep{0em}
+        \item In the case where \(x\) is an interior point, since \(\omega(f, x) \geq
+              1/n_0\), it follows that \(R \in A\).
+        \item Otherwise, if \(x\) is a boundary point, then there actually exists at
+              least another \(R' \in P\) such that \(x \in \partial R \cap \partial
+              R'\). Suppose, for the sake of contradiction, that every interval \(R' \in P\)
+              containing \(x\) as a boundary point is such that \(f\) has an oscillation
+              \(\omega(f, R') < 1/(2n_0)\), then, if we take any ball \(B_x(r) \cap I\),
+              neighbourhood of \(x\), we find that, \(\omega(f, B_x(r)) < 1/(2n_0) +
+              1/(2n_0) = 1/n_0\), that is, the limit \(\omega(f, x) < 1/n_0\), which is a
+              contradiction to the assumption that \(x \in E_n\) --- thus there must exist
+              \(R' \in P\) with \(x \in \partial R'\) such that \(\omega(f, R') \geq
+              1/(2n_0)\) so that \(R' \in A\).
+    \end{itemize}
+    This implies that \(A\) covers the interval \(E_{n_0}\) by closed intervals and,
+    by assumption, \(\sum_{R \in A} \Vol R > \Vol E_{n_0}\).
 
-We are now going to consider any two distinct choices of distinguished points
-\(\xi\) and \(\xi'\) of \(P\) such that, if \(\xi_j\) and\(\xi_j'\) are elements
-of a common interval of \(B\) then \(\xi_j = \xi'_j\), and if \(\xi_j\) and
-\(\xi_j'\) are elements common to an interval of \(A\), we choose \(\xi_j\) and
-\(\xi_j\) to be any points such that \(f(\xi_j) - f(\xi_j') > 1/(3n_0)\) ---
-which is always possible from the construction of \(A\). Notice that we have
-\begin{align*}
-  \norm{\sigma(f, P, \xi) - \sigma(f, P, \xi')}
-  &= \norm{\sum_{R_{j} \in A} (f(\xi_j) - f(\xi_j')) \Vol R_j} \\
-  &> \frac 1 {3 n_0} \sum_{R_j \in A} \Vol R_j \\
-  &> \frac 1 {3 n_0} \Vol E_{n_0} > 0,
-\end{align*}
-and therefore the limit \(\lim_{\Mesh(P) \to 0} \sigma(f, P, \xi)\) does not
-converge whenever \(E_{n_0}\) is of measure zero --- that is, if the set of
-discontinuities of \(f\) isn't of measure zero, then \(f\) is non-Riemann
-integrable.
+    We are now going to consider any two distinct choices of distinguished points
+    \(\xi\) and \(\xi'\) of \(P\) such that, if \(\xi_j\) and\(\xi_j'\) are elements
+    of a common interval of \(B\) then \(\xi_j = \xi'_j\), and if \(\xi_j\) and
+    \(\xi_j'\) are elements common to an interval of \(A\), we choose \(\xi_j\) and
+    \(\xi_j\) to be any points such that \(f(\xi_j) - f(\xi_j') > 1/(3n_0)\) ---
+    which is always possible from the construction of \(A\). Notice that we have
+    \begin{align*}
+        \norm{\sigma(f, P, \xi) - \sigma(f, P, \xi')}
+         & = \norm{\sum_{R_{j} \in A} (f(\xi_j) - f(\xi_j')) \Vol R_j} \\
+         & > \frac 1 {3 n_0} \sum_{R_j \in A} \Vol R_j                 \\
+         & > \frac 1 {3 n_0} \Vol E_{n_0} > 0,
+    \end{align*}
+    and therefore the limit \(\lim_{\Mesh(P) \to 0} \sigma(f, P, \xi)\) does not
+    converge whenever \(E_{n_0}\) is of measure zero --- that is, if the set of
+    discontinuities of \(f\) isn't of measure zero, then \(f\) is non-Riemann
+    integrable.
 
-(\emph{Sufficiency}) Suppose that \(f\) is bounded and continuous almost
-everywhere on \(I\). Let \(\varepsilon > 0\) be any constant and consider the
-subset \(E_{\varepsilon} \coloneq \{x \in I \colon \omega(f, x) \geq \varepsilon\}\)
-of discontinuous points of \(f\). If \(E\) is the set of points of discontinuity
-of \(f\), then by hypothesis \(E\) is of measure zero --- since
-\(E_{\varepsilon} \subseteq E\), then \(E_{\varepsilon}\) is also of measure
-zero. Moreover, \(E_{\varepsilon}\) is necessarily closed, which implies in
-\(E_{\varepsilon}\) compact. Let \(\{I_{j}\}_{j=1}^k\) be a \emph{finite} open
-cover of \(E_{\varepsilon}\) by open intervals \(I_j \subseteq \R^n\) such that
-\(\sum_{i=1}^k \Vol \Cl I < \varepsilon\) (recall that this is possible
-because of \cref{cor:compact-finite-cover-infinitesimal-volume}).
+    (\emph{Sufficiency}) Suppose that \(f\) is bounded and continuous almost
+    everywhere on \(I\). Let \(\varepsilon > 0\) be any constant and consider the
+    subset \(E_{\varepsilon} \coloneq \{x \in I \colon \omega(f, x) \geq \varepsilon\}\)
+    of discontinuous points of \(f\). If \(E\) is the set of points of discontinuity
+    of \(f\), then by hypothesis \(E\) is of measure zero --- since
+    \(E_{\varepsilon} \subseteq E\), then \(E_{\varepsilon}\) is also of measure
+    zero. Moreover, \(E_{\varepsilon}\) is necessarily closed, which implies in
+    \(E_{\varepsilon}\) compact. Let \(\{I_{j}\}_{j=1}^k\) be a \emph{finite} open
+    cover of \(E_{\varepsilon}\) by open intervals \(I_j \subseteq \R^n\) such that
+    \(\sum_{i=1}^k \Vol \Cl I < \varepsilon\) (recall that this is possible
+    because of \cref{cor:compact-finite-cover-infinitesimal-volume}).
 
-We now define the \(\lambda\)-dilations of intervals of the cover
-\(\{I_{j}\}_{j=1}^k\) but with centre unchanged --- that is, if \(I_j = (x,
-y)\), then the dilation \(I_{j}^{\lambda} \coloneq (z, w)\) must be such that
-\(w_i - z_i = \lambda^{1/n} (y_i - x_i)\) and \(w_i + z_i = y_i + x_i\), for all
-\(1 \leq i \leq n\). Solving such system we obtain \(z_i = \frac 1 2 [x_i(1 +
-\lambda^{1/n}) + y_i(1 - \lambda^{1/n})]\) and \(w_i = \frac 1 2 [x_i(1 -
-\lambda^{1/n}) + y_i(1 + \lambda^{1/n})]\). This way we have
-\[
-  \sum_{j=1}^k \Vol \Cl I_j^{\lambda}
-  = \lambda^n \sum_{j=1}^k \Vol \Cl I_j
-  < \lambda^n \varepsilon.
-\]
-We'll define the sets \(C_{\lambda} \coloneq (\bigcup_{j=1}^k I_j^{\lambda})
-\cap I\) --- moreover, \(d\) will be the minimum distance between the boundaries
-of \(C_2\) and \(C_3\).
+    We now define the \(\lambda\)-dilations of intervals of the cover
+    \(\{I_{j}\}_{j=1}^k\) but with centre unchanged --- that is, if \(I_j = (x,
+    y)\), then the dilation \(I_{j}^{\lambda} \coloneq (z, w)\) must be such that
+    \(w_i - z_i = \lambda^{1/n} (y_i - x_i)\) and \(w_i + z_i = y_i + x_i\), for all
+    \(1 \leq i \leq n\). Solving such system we obtain \(z_i = \frac 1 2 [x_i(1 +
+            \lambda^{1/n}) + y_i(1 - \lambda^{1/n})]\) and \(w_i = \frac 1 2 [x_i(1 -
+            \lambda^{1/n}) + y_i(1 + \lambda^{1/n})]\). This way we have
+    \[
+        \sum_{j=1}^k \Vol \Cl I_j^{\lambda}
+        = \lambda^n \sum_{j=1}^k \Vol \Cl I_j
+        < \lambda^n \varepsilon.
+    \]
+    We'll define the sets \(C_{\lambda} \coloneq (\bigcup_{j=1}^k I_j^{\lambda})
+    \cap I\) --- moreover, \(d\) will be the minimum distance between the boundaries
+    of \(C_2\) and \(C_3\).
 
-From construction, we have \(E_{\varepsilon} \subseteq \Int C_2\), now if we
-consider the compact set \(K \coloneq I \setminus (\Int C_2)\), then, for every
-\(x \in K\), we have \(\omega(f, x) < \varepsilon\). Using
-\cref{thm:heine-cantor}, we find that there exists a \(\delta > 0\) such that
-\(\norm{f(x) - f(y)} < 2 \varepsilon\), for all \(x, y \in K\) with \(\norm{x -
-y} < \delta\). We'll now finally show the convergence of the Riemann sums. Let
-\(P' \coloneq {\{R'_{\alpha}\}}_{\alpha \in A}\) and \(P'' \coloneq
-{\{R''_{\beta}\}}_{\beta \in B}\) be any two partitions of \(I\) with \(\Mesh(P'),
-\Mesh(P'') < \min(d, \delta)\). Define \(P \coloneq \{R_{(\alpha, \beta)}
-\coloneq R'_{\alpha} \cap R''_{\beta}\}_{(\alpha, \beta) \in A \times B}\),
-which clearly is a partition of \(I\). Since we are dealing with partitions,
-for every \(R'_{\alpha} \in P'\) we have \(R'_{\alpha} = \bigcup_{\beta \in
-B} R_{(\alpha, \beta)}\) --- thus \(\Vol R'_{\alpha} = \sum_{\beta \in B} \Vol
-R_{(\alpha, \beta)}\). Let \(\xi'\) and \(\xi\) be any two distinguished points
-of the partitions \(P'\) and \(P\), respectively, then
-\begin{align*}
-  \norm{\sigma(f, P', \xi') - \sigma(f, P, \xi)}
-  &= \norm{\sum_{(\alpha, \beta) \in A \times B} (f(\xi'_{\alpha}) -
-    f(\xi_{(\alpha, \beta)})) \Vol R_{(\alpha, \beta)}} \\
-  &\leq \sum_{(\alpha, \beta) \in A' \times B'}
-    \norm{f(\xi'_{\alpha}) - f(\xi_{(\alpha, \beta)})} \Vol R_{(\alpha, \beta)} \\
-  &\qquad+  \sum_{(\alpha, \beta) (A \times B) \setminus (A' \times B')}
-  \norm{f(\xi'_{\alpha}) - f(\xi_{(\alpha, \beta)})} \Vol R_{(\alpha, \beta)},
-\end{align*}
-where we define
-\[
-  A' \times B' \coloneq
-  \{(\alpha, \beta) \in A \times B : R'_{\alpha} \subseteq C_3\}.
-\]
-Moreover, since the diameter \(d(R'_{\alpha}) < d\), then for every
-\(R'_{\alpha}\) not entirely contained in \(C_3\), the intersection with any
-\(R''_{\beta}\), namely \(R_{(\alpha, \beta)}\), cannot lie in the interior of
-\(C_2\) --- that is, for all \((\alpha, \beta) \in (A \times B) \setminus (A'
-\times B')\) we'll have \(R_{(\alpha, \beta)} \subseteq K\) and surely
-\(\xi'_{\alpha}, \xi_{(\alpha, \beta)} \in K\), which satisfy
-\(\norm{f(\xi'_{\alpha}) - f(\xi_{(\alpha, \beta)})} < 2 \varepsilon\) since
-\(\Mesh P' < \delta\). Assuming \(f\) is bounded by \(M > 0\) in \(I\), that is
-\(\norm{f} \leq M\), then \(\norm{f(\xi'_{\alpha}) - f(\xi_{(\alpha, \beta)})} <
-2 M\) and thus
-\begin{align*}
-  \norm{\sigma(f, P', \xi') - \sigma(f, P, \xi)}
-  &\leq  \sum_{(\alpha, \beta) \in A' \times B'} 2 M \Vol R_{(\alpha, \beta)}
-    + \sum_{(\alpha, \beta) \in (A \times B) \setminus (A' \times B')}
-    2 \varepsilon \Vol R_{(\alpha, \beta)} \\
-  &\leq 2 M (3^n \varepsilon) + 2 \varepsilon \Vol I \\
-  &= 2 \varepsilon(3^n M + \Vol I).
-\end{align*}
-Therefore, since the same construction is applicable for \(P''\), that is,
-\(\norm{\sigma(f, P'', \xi''') - \sigma(f, P, \xi)} \leq 2 \varepsilon (3^n M +
-\Vol I)\), thus
-\[
-  \norm{\sigma(f, P', \xi') - \sigma(f, P'', \xi'')}
-  \leq 4 \varepsilon (3^n M + \Vol I).
-\]
-Since \(P'\) and \(P''\) where chosen arbitrarily, it follows that the sequence
-of Riemann sums converge by the Cauchy criterion and thus \(f\) is Riemann
-integrable from definition.
+    From construction, we have \(E_{\varepsilon} \subseteq \Int C_2\), now if we
+    consider the compact set \(K \coloneq I \setminus (\Int C_2)\), then, for every
+    \(x \in K\), we have \(\omega(f, x) < \varepsilon\). Using
+    \cref{thm:heine-cantor}, we find that there exists a \(\delta > 0\) such that
+    \(\norm{f(x) - f(y)} < 2 \varepsilon\), for all \(x, y \in K\) with \(\norm{x -
+        y} < \delta\). We'll now finally show the convergence of the Riemann sums. Let
+    \(P' \coloneq {\{R'_{\alpha}\}}_{\alpha \in A}\) and \(P'' \coloneq
+    {\{R''_{\beta}\}}_{\beta \in B}\) be any two partitions of \(I\) with \(\Mesh(P'),
+    \Mesh(P'') < \min(d, \delta)\). Define \(P \coloneq \{R_{(\alpha, \beta)}
+    \coloneq R'_{\alpha} \cap R''_{\beta}\}_{(\alpha, \beta) \in A \times B}\),
+    which clearly is a partition of \(I\). Since we are dealing with partitions,
+    for every \(R'_{\alpha} \in P'\) we have \(R'_{\alpha} = \bigcup_{\beta \in
+        B} R_{(\alpha, \beta)}\) --- thus \(\Vol R'_{\alpha} = \sum_{\beta \in B} \Vol
+    R_{(\alpha, \beta)}\). Let \(\xi'\) and \(\xi\) be any two distinguished points
+    of the partitions \(P'\) and \(P\), respectively, then
+    \begin{align*}
+        \norm{\sigma(f, P', \xi') - \sigma(f, P, \xi)}
+         & = \norm{\sum_{(\alpha, \beta) \in A \times B} (f(\xi'_{\alpha}) -
+        f(\xi_{(\alpha, \beta)})) \Vol R_{(\alpha, \beta)}}                         \\
+         & \leq \sum_{(\alpha, \beta) \in A' \times B'}
+        \norm{f(\xi'_{\alpha}) - f(\xi_{(\alpha, \beta)})} \Vol R_{(\alpha, \beta)} \\
+         & \qquad+  \sum_{(\alpha, \beta) (A \times B) \setminus (A' \times B')}
+        \norm{f(\xi'_{\alpha}) - f(\xi_{(\alpha, \beta)})} \Vol R_{(\alpha, \beta)},
+    \end{align*}
+    where we define
+    \[
+        A' \times B' \coloneq
+        \{(\alpha, \beta) \in A \times B : R'_{\alpha} \subseteq C_3\}.
+    \]
+    Moreover, since the diameter \(d(R'_{\alpha}) < d\), then for every
+    \(R'_{\alpha}\) not entirely contained in \(C_3\), the intersection with any
+    \(R''_{\beta}\), namely \(R_{(\alpha, \beta)}\), cannot lie in the interior of
+    \(C_2\) --- that is, for all \((\alpha, \beta) \in (A \times B) \setminus (A'
+    \times B')\) we'll have \(R_{(\alpha, \beta)} \subseteq K\) and surely
+    \(\xi'_{\alpha}, \xi_{(\alpha, \beta)} \in K\), which satisfy
+    \(\norm{f(\xi'_{\alpha}) - f(\xi_{(\alpha, \beta)})} < 2 \varepsilon\) since
+    \(\Mesh P' < \delta\). Assuming \(f\) is bounded by \(M > 0\) in \(I\), that is
+    \(\norm{f} \leq M\), then \(\norm{f(\xi'_{\alpha}) - f(\xi_{(\alpha, \beta)})} <
+    2 M\) and thus
+    \begin{align*}
+        \norm{\sigma(f, P', \xi') - \sigma(f, P, \xi)}
+         & \leq  \sum_{(\alpha, \beta) \in A' \times B'} 2 M \Vol R_{(\alpha, \beta)}
+        + \sum_{(\alpha, \beta) \in (A \times B) \setminus (A' \times B')}
+        2 \varepsilon \Vol R_{(\alpha, \beta)}                                        \\
+         & \leq 2 M (3^n \varepsilon) + 2 \varepsilon \Vol I                          \\
+         & = 2 \varepsilon(3^n M + \Vol I).
+    \end{align*}
+    Therefore, since the same construction is applicable for \(P''\), that is,
+    \(\norm{\sigma(f, P'', \xi''') - \sigma(f, P, \xi)} \leq 2 \varepsilon (3^n M +
+    \Vol I)\), thus
+    \[
+        \norm{\sigma(f, P', \xi') - \sigma(f, P'', \xi'')}
+        \leq 4 \varepsilon (3^n M + \Vol I).
+    \]
+    Since \(P'\) and \(P''\) where chosen arbitrarily, it follows that the sequence
+    of Riemann sums converge by the Cauchy criterion and thus \(f\) is Riemann
+    integrable from definition.
 \end{proof}
 
 \subsection{Integrating Over Sets}
 
 \begin{definition}
-\label{def:admissible-set}
-A set \(E \subseteq \R^n\) is said to be \emph{admissible} if it is bounded and
-has measure zero boundary.
+    \label{def:admissible-set}
+    A set \(E \subseteq \R^n\) is said to be \emph{admissible} if it is bounded and
+    has measure zero boundary.
 \end{definition}
 
 \begin{corollary}[Operations on admissible sets]
-\label{cor:operations-admissible-sets}
-The finite union or intersection of admissible sets is admissible, and the
-difference of admissible sets is admissible.
+    \label{cor:operations-admissible-sets}
+    The finite union or intersection of admissible sets is admissible, and the
+    difference of admissible sets is admissible.
 \end{corollary}
 
 \begin{notation}
-\label{not:characteristic-set}
-We denote the characteristic map of a given set \(E\) to be \(\chi_E: E \to \{0,
-1\}\), where \(\chi_E(x) \coloneq 1\) if \(x \in E\), and \(\chi_E(x) \coloneq
-0\) if \(x \not\in E\). Moreover, given any map \(f: E \to \R\), we define the
-map \(f_{\chi_E}: \R^n \to \R\) as \(f_{\chi_{E}}|_{E} \coloneq f\) and
-\(f_{\chi_{E}}\) is zero everywhere else.
+    \label{not:characteristic-set}
+    We denote the characteristic map of a given set \(E\) to be \(\chi_E: E \to \{0,
+    1\}\), where \(\chi_E(x) \coloneq 1\) if \(x \in E\), and \(\chi_E(x) \coloneq
+    0\) if \(x \not\in E\). Moreover, given any map \(f: E \to \R\), we define the
+    map \(f_{\chi_E}: \R^n \to \R\) as \(f_{\chi_{E}}|_{E} \coloneq f\) and
+    \(f_{\chi_{E}}\) is zero everywhere else.
 \end{notation}
 
 \begin{definition}[Riemann integral over a set]
-\label{def:riemann-integral-over-set}
-Let \(E \subseteq \R^n\) be an admissible set and \(f: I \to \R\) for some \(I
-\supseteq E\), then we define the integral of \(f\) over the set \(E\) as
-\[
-  \int_E f(x)\, \diff x \coloneq \int_I f_{\chi_E}(x)\, \diff x.
-\]
+    \label{def:riemann-integral-over-set}
+    Let \(E \subseteq \R^n\) be an admissible set and \(f: I \to \R\) for some \(I
+    \supseteq E\), then we define the integral of \(f\) over the set \(E\) as
+    \[
+        \int_E f(x)\, \diff x \coloneq \int_I f_{\chi_E}(x)\, \diff x.
+    \]
 \end{definition}
 
 \begin{lemma}[The integral is well-defined]
-\label{lem:integral-well-defined}
-Let \(f: E \to \R\) be a map. The integral of \(f\) over \(E\) is independent of
-the choice of the interval containing \(E\).
+    \label{lem:integral-well-defined}
+    Let \(f: E \to \R\) be a map. The integral of \(f\) over \(E\) is independent of
+    the choice of the interval containing \(E\).
 \end{lemma}
 
 \begin{proof}
-Let \(I, I' \subseteq \R^n\) be any two intervals containing \(E\). Define an
-auxiliary interval \(I_0 \coloneq I \cap I'\). It follows from construction that
-every point of discontinuity of \(f_{\chi_E}\) is contained in \(I_0\). From
-\cref{thm:lebesgue-criterion-integrable} we see that, if the collection of
-points of discontinuity of \(f_{\chi_E}\) is not of measure zero, then both
-integrals of \(f_{\chi_E}\) over \(I\) and \(I'\) fail to exist --- while, if
-the collection is of measure zero, both integrals exist simultaneously.
+    Let \(I, I' \subseteq \R^n\) be any two intervals containing \(E\). Define an
+    auxiliary interval \(I_0 \coloneq I \cap I'\). It follows from construction that
+    every point of discontinuity of \(f_{\chi_E}\) is contained in \(I_0\). From
+    \cref{thm:lebesgue-criterion-integrable} we see that, if the collection of
+    points of discontinuity of \(f_{\chi_E}\) is not of measure zero, then both
+    integrals of \(f_{\chi_E}\) over \(I\) and \(I'\) fail to exist --- while, if
+    the collection is of measure zero, both integrals exist simultaneously.
 
-Suppose that the points of discontinuity form a set of measure zero. Given any
-\(\varepsilon > 0\), we consider a partition \(P_0\) of \(I\) with \(\Mesh P_0 <
-\varepsilon\). Define partitions \(P\) and \(P'\) of \(I\) and \(I'\),
-respectively, such that \(P_0 \subseteq P \cap P'\) --- that is, inside \(I_0\),
-they share the exact same collection of intervals as \(P_0\). Given any
-distinguished points \(\xi\) and \(\xi'\) of \(P\) and \(P'\), respectively,
-we have that \(f_{\chi_{E}}(x) = 0\) for every \(x \in \xi \cup \xi'\) such that
-\(x \not\in I_0\), therefore the Riemann sums of \(f_{\chi_E}\) under the
-partitions \(P\) and \(P'\) are always reduced to Riemann sums of \(f_{\chi_E}\)
-under the partition \(P_0\) and the corresponding distinguished points. This
-implies that the limit of the Riemann sums are equal for both partitions and
-therefore we have
-\[
-  \int_I f_{\chi_E}(x)\, \diff x = \int_{I'} f_{\chi_E}(x)\, \diff x.
-\]
+    Suppose that the points of discontinuity form a set of measure zero. Given any
+    \(\varepsilon > 0\), we consider a partition \(P_0\) of \(I\) with \(\Mesh P_0 <
+    \varepsilon\). Define partitions \(P\) and \(P'\) of \(I\) and \(I'\),
+    respectively, such that \(P_0 \subseteq P \cap P'\) --- that is, inside \(I_0\),
+    they share the exact same collection of intervals as \(P_0\). Given any
+    distinguished points \(\xi\) and \(\xi'\) of \(P\) and \(P'\), respectively,
+    we have that \(f_{\chi_{E}}(x) = 0\) for every \(x \in \xi \cup \xi'\) such that
+    \(x \not\in I_0\), therefore the Riemann sums of \(f_{\chi_E}\) under the
+    partitions \(P\) and \(P'\) are always reduced to Riemann sums of \(f_{\chi_E}\)
+    under the partition \(P_0\) and the corresponding distinguished points. This
+    implies that the limit of the Riemann sums are equal for both partitions and
+    therefore we have
+    \[
+        \int_I f_{\chi_E}(x)\, \diff x = \int_{I'} f_{\chi_E}(x)\, \diff x.
+    \]
 \end{proof}
 
 \begin{corollary}
-\label{cor:condidion-riemann-integrable-admissible-set}
-Let \(E \subseteq \R^n\) be an admissible set and \(f: E \to \R\). Then, \(f\)
-is Riemann integrable if and only if is bounded and continuous at almost all
-points of \(E\).
+    \label{cor:condidion-riemann-integrable-admissible-set}
+    Let \(E \subseteq \R^n\) be an admissible set and \(f: E \to \R\). Then, \(f\)
+    is Riemann integrable if and only if is bounded and continuous at almost all
+    points of \(E\).
 \end{corollary}
 
 \begin{proof}
-Notice that the discontinuities of the corresponding map \(f_{\chi_E}\) are
-those of \(f\) and perhaps a collection of points of \(\partial E\), where
-\(\chi_E\) changes its value. Since \(\partial E\) is of measure zero, it doesn't
-interfere in the use of Lebesgue's criterion and thus the proposition follows.
+    Notice that the discontinuities of the corresponding map \(f_{\chi_E}\) are
+    those of \(f\) and perhaps a collection of points of \(\partial E\), where
+    \(\chi_E\) changes its value. Since \(\partial E\) is of measure zero, it doesn't
+    interfere in the use of Lebesgue's criterion and thus the proposition follows.
 \end{proof}
 
 \subsection{Jordan Measure}
 
 \begin{definition}[Jordan measure]
-\label{def:jordan-measure}
-Given a bounded set \(E \subseteq \R\), we define the Jordan measure of \(E\) as
-the map
-\[
-  \mu(E) \coloneq \int_E \diff x.
-\]
-Notice that the integral over \(E\) only exists for admissible sets, thus the
-Jordan measure \(\mu\) is only defined for admissible sets.
+    \label{def:jordan-measure}
+    Given a bounded set \(E \subseteq \R\), we define the Jordan measure of \(E\) as
+    the map
+    \[
+        \mu(E) \coloneq \int_E \diff x.
+    \]
+    Notice that the integral over \(E\) only exists for admissible sets, thus the
+    Jordan measure \(\mu\) is only defined for admissible sets.
 \end{definition}
 
 \begin{definition}[Jordan's measure zero sets]
-\label{def:jordan-measure-zero}
-A set \(E \subseteq \R^n\) is said to be of Jordan measure zero (or of content
-zero) if for every \(\varepsilon > 0\) there exists a \emph{finite} open cover
-by intervals whose total volume is less than \(\varepsilon\).
+    \label{def:jordan-measure-zero}
+    A set \(E \subseteq \R^n\) is said to be of Jordan measure zero (or of content
+    zero) if for every \(\varepsilon > 0\) there exists a \emph{finite} open cover
+    by intervals whose total volume is less than \(\varepsilon\).
 \end{definition}
 
 \begin{definition}[Jordan-measurable sets]
-\label{def:jordan-measurable}
-A set \(E \subseteq \R^n\) is said to be Jordan-measurable if it is bounded and
-\(\partial E\) is a set of Jordan measure zero.
+    \label{def:jordan-measurable}
+    A set \(E \subseteq \R^n\) is said to be Jordan-measurable if it is bounded and
+    \(\partial E\) is a set of Jordan measure zero.
 \end{definition}
 
 \subsection{Riemann Integral Properties}
 
 \begin{corollary}
-The collection of Riemann integrable maps \(E \to \R\) for an \(\R\)-vector
-space. Moreover, the Riemann integral is an \(\R\)-linear functional \(\int_E:
-\mathcal R(E) \to \R\) of the dual space \(\mathcal R(E)^{*}\).
+    The collection of Riemann integrable maps \(E \to \R\) for an \(\R\)-vector
+    space. Moreover, the Riemann integral is an \(\R\)-linear functional \(\int_E:
+    \mathcal R(E) \to \R\) of the dual space \(\mathcal R(E)^{*}\).
 \end{corollary}
 
 \begin{proposition}
-\label{prop:domain-relations-riemann-integral}
-Let \(E, S \subseteq \R^n\) be admissible sets and \(f: E \cup S \to \R\). Then
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item \(f\) is Riemann integrable over \(E \cup S\) if and only if it's
-  integrable over both \(E\) and \(S\) simultaneously. Moreover, if such
-  condition is met, the \(f\) is also Riemann integrable over \(E \cap S\).
-\item If \(f\) is Riemann integrable over \(E \cup S\) \emph{and} \(\mu(E \cap
-  S) = 0\), then
-  \[
-    \int_{E \cup S} f(x)\, \diff x = \int_E f(x)\, \diff x + \int_S f(x)\, \diff x.
-  \]
-\end{enumerate}
+    \label{prop:domain-relations-riemann-integral}
+    Let \(E, S \subseteq \R^n\) be admissible sets and \(f: E \cup S \to \R\). Then
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item \(f\) is Riemann integrable over \(E \cup S\) if and only if it's
+              integrable over both \(E\) and \(S\) simultaneously. Moreover, if such
+              condition is met, the \(f\) is also Riemann integrable over \(E \cap S\).
+        \item If \(f\) is Riemann integrable over \(E \cup S\) \emph{and} \(\mu(E \cap
+              S) = 0\), then
+              \[
+                  \int_{E \cup S} f(x)\, \diff x = \int_E f(x)\, \diff x + \int_S f(x)\, \diff x.
+              \]
+    \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item If \(f\) is Riemann integrable over \(E \cup S\), then \(f\) is bounded
-  and continuous at almost all points of \(E \cup S\), which implies that \(f\)
-  is Riemann integrable over both \(E\) and \(S\). Since \(E \cap S \subseteq E
-  \cup S\) then \(f\) is also Riemann integrable over the intersection.
-\item Notice that \(\chi_{E \cup S}(x) = \chi_{E}(x) + \chi_S(x) - \chi_{E \cap
-  S}(x)\), therefore by definition --- if \(I \supseteq E \cup S\) is an
-  interval, then
-  \begin{align*}
-    \int_{E \cup S} f(x)\, \diff x
-    &= \int_{I} f_{\chi_{E \cup S}}(x)\, \diff x \\
-    &= \int_I f_{\chi_E}(x) + f_{\chi_S}(x) - f_{\chi_{E \cap S}}(x)\, \diff x \\
-    &= \int_I f_{\chi_E}(x)\, \diff x
-      + \int_{I} f_{\chi_S}(x)\, \diff x
-      - \int_I f_{\chi_{E \cap S}}(x)\, \diff x \\
-    &= \int_I f_{\chi_E}(x)\, \diff x
-      + \int_{I} f_{\chi_S}(x)\, \diff x
-  \end{align*}
-  where we used the hypothesis that \(\mu(E \cap S) = 0\) to conclude that
-  \[
-    \int_I f_{\chi_{E \cap S}}(x)\, \diff x
-    = \int_{E \cap S} f(x)\, \diff x = 0.
-  \]
-\end{enumerate}
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item If \(f\) is Riemann integrable over \(E \cup S\), then \(f\) is bounded
+              and continuous at almost all points of \(E \cup S\), which implies that \(f\)
+              is Riemann integrable over both \(E\) and \(S\). Since \(E \cap S \subseteq E
+              \cup S\) then \(f\) is also Riemann integrable over the intersection.
+        \item Notice that \(\chi_{E \cup S}(x) = \chi_{E}(x) + \chi_S(x) - \chi_{E \cap
+                  S}(x)\), therefore by definition --- if \(I \supseteq E \cup S\) is an
+              interval, then
+              \begin{align*}
+                  \int_{E \cup S} f(x)\, \diff x
+                   & = \int_{I} f_{\chi_{E \cup S}}(x)\, \diff x                               \\
+                   & = \int_I f_{\chi_E}(x) + f_{\chi_S}(x) - f_{\chi_{E \cap S}}(x)\, \diff x \\
+                   & = \int_I f_{\chi_E}(x)\, \diff x
+                  + \int_{I} f_{\chi_S}(x)\, \diff x
+                  - \int_I f_{\chi_{E \cap S}}(x)\, \diff x                                    \\
+                   & = \int_I f_{\chi_E}(x)\, \diff x
+                  + \int_{I} f_{\chi_S}(x)\, \diff x
+              \end{align*}
+              where we used the hypothesis that \(\mu(E \cap S) = 0\) to conclude that
+              \[
+                  \int_I f_{\chi_{E \cap S}}(x)\, \diff x
+                  = \int_{E \cap S} f(x)\, \diff x = 0.
+              \]
+    \end{enumerate}
 \end{proof}
 
 \begin{proposition}[Estimate]
-\label{prop:norm-of-integral-less-integral-of-norm}
-Let \(f \in \mathcal R(E)\), where \(E \subseteq \R^{n}\) is an admissible set,
-then \(\norm{f} \in \mathcal R(E)\) and also
-\[
-  \norm{\int_E f(x)\, \diff x} \leq \int_E \norm{f(x)}\, \diff x.
-\]
+    \label{prop:norm-of-integral-less-integral-of-norm}
+    Let \(f \in \mathcal R(E)\), where \(E \subseteq \R^{n}\) is an admissible set,
+    then \(\norm{f} \in \mathcal R(E)\) and also
+    \[
+        \norm{\int_E f(x)\, \diff x} \leq \int_E \norm{f(x)}\, \diff x.
+    \]
 \end{proposition}
 
 \begin{proof}
-Notice that if \(f\) is Riemann integrable, then \(f\) is bounded and and
-continuous at almost all points of \(E\), thus surely \(\norm f\) is bounded and
-continuous --- hence Riemann integrable. Moreover, since \(f(x) \leq
-\norm{f(x)}\) for all \(x \in E\), it follows that, for any given partition
-\(P\) and distinguished points \(\chi\), we have the inequality \(\sigma(f, P,
-\chi) \leq \sigma(\norm{f}, P, \chi)\), thus the integral inequality holds by
-taking the limit \(\Mesh P \to 0\).
+    Notice that if \(f\) is Riemann integrable, then \(f\) is bounded and and
+    continuous at almost all points of \(E\), thus surely \(\norm f\) is bounded and
+    continuous --- hence Riemann integrable. Moreover, since \(f(x) \leq
+    \norm{f(x)}\) for all \(x \in E\), it follows that, for any given partition
+    \(P\) and distinguished points \(\chi\), we have the inequality \(\sigma(f, P,
+    \chi) \leq \sigma(\norm{f}, P, \chi)\), thus the integral inequality holds by
+    taking the limit \(\Mesh P \to 0\).
 \end{proof}
 
 \begin{proposition}[Non-negative real valued maps]
-\label{prop:non-negative-real-valued-integral-non-negative}
-Let \(f: E \to \R\) be a Riemann integrable map over the admissible set \(E
-\subseteq \R^{n}\). If \(f\) is non-negative over \(E\), that is, \(f(x) \geq
-0\) for all \(x \in E\), then
-\[
-  \int_E f(x)\, \diff x \geq 0.
-\]
+    \label{prop:non-negative-real-valued-integral-non-negative}
+    Let \(f: E \to \R\) be a Riemann integrable map over the admissible set \(E
+    \subseteq \R^{n}\). If \(f\) is non-negative over \(E\), that is, \(f(x) \geq
+    0\) for all \(x \in E\), then
+    \[
+        \int_E f(x)\, \diff x \geq 0.
+    \]
 \end{proposition}
 
 \begin{proof}
-Just observe that for any partition \(P\) and distinguished points \(\chi\), we
-have \(\sigma(f, P, \chi) \geq 0\), thus \(\lim_{\Mesh P \to 0} \sigma(f, P,
-\chi) \geq 0\).
+    Just observe that for any partition \(P\) and distinguished points \(\chi\), we
+    have \(\sigma(f, P, \chi) \geq 0\), thus \(\lim_{\Mesh P \to 0} \sigma(f, P,
+    \chi) \geq 0\).
 \end{proof}
 
 \begin{corollary}
-\label{cor:inequality-maps-inequality-riemann-integral}
-Let \(E \subseteq R^n\) be an admissible set and \(f, g: E \to \R\) be two given
-maps. The following are miscellaneous immediate implications of
-\cref{cor:inequality-maps-inequality-riemann-integral}:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item If both \(f\) and \(g\) are Riemann integrable, and \(f(x) \leq g(x)\) for
-  all \(x \in E\), then
-  \[
-    \int_E f(x)\, \diff x \leq \int_E g(x)\, \diff x.
-  \]
+    \label{cor:inequality-maps-inequality-riemann-integral}
+    Let \(E \subseteq R^n\) be an admissible set and \(f, g: E \to \R\) be two given
+    maps. The following are miscellaneous immediate implications of
+    \cref{cor:inequality-maps-inequality-riemann-integral}:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item If both \(f\) and \(g\) are Riemann integrable, and \(f(x) \leq g(x)\) for
+              all \(x \in E\), then
+              \[
+                  \int_E f(x)\, \diff x \leq \int_E g(x)\, \diff x.
+              \]
 
-\item If \(f\) is Riemann integrable over \(E\) and, for some constants \(m, M
-  \in \R\) we have \(m \leq f(x) \leq M\) for all \(x \in E\), then
-  \[
-    m \mu(E) \leq \int_E f(x)\, \diff x \leq M \mu(E).
-  \]
+        \item If \(f\) is Riemann integrable over \(E\) and, for some constants \(m, M
+              \in \R\) we have \(m \leq f(x) \leq M\) for all \(x \in E\), then
+              \[
+                  m \mu(E) \leq \int_E f(x)\, \diff x \leq M \mu(E).
+              \]
 
-\item If \(f\) is Riemann integrable over \(E\), define constants \(m
-  \coloneq \inf_{x \in E} f(x)\) and \(M \coloneq \sup_{x \in E} f(x)\). Then,
-  there exist a constant \(m \leq \omega \leq M\) for which
-  \[
-    \int_E f(x)\, \diff x = \theta \mu(E).
-  \]
+        \item If \(f\) is Riemann integrable over \(E\), define constants \(m
+              \coloneq \inf_{x \in E} f(x)\) and \(M \coloneq \sup_{x \in E} f(x)\). Then,
+              there exist a constant \(m \leq \omega \leq M\) for which
+              \[
+                  \int_E f(x)\, \diff x = \theta \mu(E).
+              \]
 
-\item If additionally \(E\) is connected and \(f\) is continuous, then \(f\) is
-  Riemann integrable over \(E\) and there exists \(y \in E\) for which
-  \[
-    \int_E f(x)\, \diff x = f(y) \mu(E).
-  \]
+        \item If additionally \(E\) is connected and \(f\) is continuous, then \(f\) is
+              Riemann integrable over \(E\) and there exists \(y \in E\) for which
+              \[
+                  \int_E f(x)\, \diff x = f(y) \mu(E).
+              \]
 
-\item If \(f\) and \(g\) are Riemann integrable over \(E\) and, for some
-  constants \(m, M \in \R\) we have \(m \leq f(x) \leq M\) for all \(x \in E\),
-  and \(g(x) \geq 0\) for all \(x \in E\), then
-  \[
-    m \int_E g(x)\, \diff x \leq \int_E f(x) g(x)\, \diff x
-    \leq M \int_E g(x)\, \diff x.
-  \]
-\end{enumerate}
+        \item If \(f\) and \(g\) are Riemann integrable over \(E\) and, for some
+              constants \(m, M \in \R\) we have \(m \leq f(x) \leq M\) for all \(x \in E\),
+              and \(g(x) \geq 0\) for all \(x \in E\), then
+              \[
+                  m \int_E g(x)\, \diff x \leq \int_E f(x) g(x)\, \diff x
+                  \leq M \int_E g(x)\, \diff x.
+              \]
+    \end{enumerate}
 \end{corollary}
 
 \begin{lemma}
-\label{lem:zero-integral-jordan-measure-zero}
-Let \(f: E \to \R\) be a non-negative map that is Riemann integrable over
-\(E\), where \(E\) is an admissible set. If \(\int_E f(x)\, \diff x = 0\), then
-\(f(x) = 0\) at almost all points of \(E\).
+    \label{lem:zero-integral-jordan-measure-zero}
+    Let \(f: E \to \R\) be a non-negative map that is Riemann integrable over
+    \(E\), where \(E\) is an admissible set. If \(\int_E f(x)\, \diff x = 0\), then
+    \(f(x) = 0\) at almost all points of \(E\).
 \end{lemma}
 
 \begin{proof}
-Let \(x_0 \in E\) be any point of continuity of \(f\) and, for the sake of
-contradiction, assume that \(f(x_0) > 0\) and consider a constant \(c > 0\) with
-\(f(x_0) \geq c > 0\). Let \(U \subseteq E\) be any neighbourhood of \(x_0\) for
-which \(f(x) \geq c > 0\) for every \(x \in U\). Then we obtain the following
-contradiction --- where \(I \supseteq E\) is an interval:
-\[
-  \int_E f(x)\, \diff x
-  = \int_I f_{\chi_{E}}(x)\, \diff x
-  = \int_U f_{\chi_E}(x)\, \diff x
-  + \int_{I \setminus U} f_{\chi_{E}}(x)\, \diff x
-  \geq \int_U f_{\chi_{E}}(x)\, \diff x
-  \geq c \mu(U) > 0.
-\]
-This cannot be true, thus \(f(x_0) = 0\) for every point \(x_0 \in E\) where
-\(f\) is continuous. Since \(f\) is continuous almost everywhere, it follows
-that \(f\) is zero almost everywhere.
+    Let \(x_0 \in E\) be any point of continuity of \(f\) and, for the sake of
+    contradiction, assume that \(f(x_0) > 0\) and consider a constant \(c > 0\) with
+    \(f(x_0) \geq c > 0\). Let \(U \subseteq E\) be any neighbourhood of \(x_0\) for
+    which \(f(x) \geq c > 0\) for every \(x \in U\). Then we obtain the following
+    contradiction --- where \(I \supseteq E\) is an interval:
+    \[
+        \int_E f(x)\, \diff x
+        = \int_I f_{\chi_{E}}(x)\, \diff x
+        = \int_U f_{\chi_E}(x)\, \diff x
+        + \int_{I \setminus U} f_{\chi_{E}}(x)\, \diff x
+        \geq \int_U f_{\chi_{E}}(x)\, \diff x
+        \geq c \mu(U) > 0.
+    \]
+    This cannot be true, thus \(f(x_0) = 0\) for every point \(x_0 \in E\) where
+    \(f\) is continuous. Since \(f\) is continuous almost everywhere, it follows
+    that \(f\) is zero almost everywhere.
 \end{proof}
 
 \begin{corollary}
-\label{cor:norm-riemann-integral}
-Let \(\sim\) be the equivalence relation on \(\mathcal R(E)\) as follows: \(f
-\sim g\) if and only if the collection of points where the map \(f - g\) is
-non-zero forms a set of Lebesgue measure zero. Then the map \(\norm{-}:
-\mathcal R(E)/{\sim} \to \R\) defined by
-\[
-  \norm{f} \coloneq \int_E \norm{f(x)}_{\R^n}\, \diff x
-\]
-is a norm on the vector space \(\mathcal R(E)/{\sim}\).
+    \label{cor:norm-riemann-integral}
+    Let \(\sim\) be the equivalence relation on \(\mathcal R(E)\) as follows: \(f
+    \sim g\) if and only if the collection of points where the map \(f - g\) is
+    non-zero forms a set of Lebesgue measure zero. Then the map \(\norm{-}:
+    \mathcal R(E)/{\sim} \to \R\) defined by
+    \[
+        \norm{f} \coloneq \int_E \norm{f(x)}_{\R^n}\, \diff x
+    \]
+    is a norm on the vector space \(\mathcal R(E)/{\sim}\).
 \end{corollary}
 
 \section{Fubini's Theorem}
@@ -706,41 +706,41 @@ In order to proceed to the theorem of Fubini type, we first need to define the
 concept of Darboux lower and upper integrals.
 
 \begin{definition}[Darboux sums]
-\label{def:darboux-sums}
-Let \(f: I \to \R\) be a map defined on the interval \(I \subseteq \R^n\). If
-\(P \coloneq \{I_{j}\}_{j \in J}\) is a partition of \(I\) by intervals, then we
-define the following
-\begin{itemize}\setlength\itemsep{0em}
-\item The lower Darboux sum of \(f\) over the interval \(I\) corresponding to
-  the partition \(P\) is
-  \[
-    s(f, P) \coloneq \sum_{j \in J} \Vol(I_j) \inf_{x \in I_j} f(x).
-  \]
-\item The upper Darboux sum of \(f\) over the interval \(I\) corresponding to
-  the partition \(P\) is
-  \[
-    S(f, P) \coloneq \sum_{j \in J} \Vol(I_j) \sup_{x \in I_j} f(x).
-  \]
-\end{itemize}
+    \label{def:darboux-sums}
+    Let \(f: I \to \R\) be a map defined on the interval \(I \subseteq \R^n\). If
+    \(P \coloneq \{I_{j}\}_{j \in J}\) is a partition of \(I\) by intervals, then we
+    define the following
+    \begin{itemize}\setlength\itemsep{0em}
+        \item The lower Darboux sum of \(f\) over the interval \(I\) corresponding to
+              the partition \(P\) is
+              \[
+                  s(f, P) \coloneq \sum_{j \in J} \Vol(I_j) \inf_{x \in I_j} f(x).
+              \]
+        \item The upper Darboux sum of \(f\) over the interval \(I\) corresponding to
+              the partition \(P\) is
+              \[
+                  S(f, P) \coloneq \sum_{j \in J} \Vol(I_j) \sup_{x \in I_j} f(x).
+              \]
+    \end{itemize}
 \end{definition}
 
 \begin{definition}[Upper and lower Darboux integrals]
-\label{def:upper-lower-darboux}
-Let \(f: I \to \R\) be a map over the interval \(I \subseteq \R^n\). We define:
-\begin{itemize}\setlength\itemsep{0em}
-\item The lower Darboux integral of \(f\) is \(\underline{\mathcal{J}} \coloneq
-  \sup_P s(f, P)\), where the \(P\) goes through all partitions of \(I\).
+    \label{def:upper-lower-darboux}
+    Let \(f: I \to \R\) be a map over the interval \(I \subseteq \R^n\). We define:
+    \begin{itemize}\setlength\itemsep{0em}
+        \item The lower Darboux integral of \(f\) is \(\underline{\mathcal{J}} \coloneq
+              \sup_P s(f, P)\), where the \(P\) goes through all partitions of \(I\).
 
-\item The upper Darboux integral of \(f\) is \(\underline{\mathcal{J}} \coloneq
-  \inf_P S(f, P)\), where the \(P\) goes through all partitions of \(I\).
-\end{itemize}
+        \item The upper Darboux integral of \(f\) is \(\underline{\mathcal{J}} \coloneq
+              \inf_P S(f, P)\), where the \(P\) goes through all partitions of \(I\).
+    \end{itemize}
 \end{definition}
 
 \begin{theorem}[Darboux criterion]
-\label{thm:darboux-criterion}
-A map \(f: I \to \R\), where \(I \subseteq \R^n\) is an interval, is integrable
-over \(I\) if and only if \(f\) is bounded on \(I\) and the upper and lower
-Darboux integrals agree over \(I\).
+    \label{thm:darboux-criterion}
+    A map \(f: I \to \R\), where \(I \subseteq \R^n\) is an interval, is integrable
+    over \(I\) if and only if \(f\) is bounded on \(I\) and the upper and lower
+    Darboux integrals agree over \(I\).
 \end{theorem}
 
 \todo[inline]{Add proof of Darboux criterion later}
@@ -748,213 +748,213 @@ Darboux integrals agree over \(I\).
 \subsubsection{Fubini}
 
 \begin{theorem}
-\label{thm:fubini}
-Let \(X \times Y \subseteq \R^{m + n}\) be an interval, and \(f: X \times Y \to
-\R\) be a Riemann integrable map over \(X \times Y\). Then we have the following
-equality:
-\begin{equation}
-\label{eq:fubini}
-  \int_{X \times Y} f(x, y)\, \diff x\, \diff y
-  = \int_X \left( \int_Y f(x, y)\, \diff y\right)\, \diff x
-  = \int_Y \left( \int_X f(x, y)\, \diff x\right)\, \diff y.
-\end{equation}
+    \label{thm:fubini}
+    Let \(X \times Y \subseteq \R^{m + n}\) be an interval, and \(f: X \times Y \to
+    \R\) be a Riemann integrable map over \(X \times Y\). Then we have the following
+    equality:
+    \begin{equation}
+        \label{eq:fubini}
+        \int_{X \times Y} f(x, y)\, \diff x\, \diff y
+        = \int_X \left( \int_Y f(x, y)\, \diff y\right)\, \diff x
+        = \int_Y \left( \int_X f(x, y)\, \diff x\right)\, \diff y.
+    \end{equation}
 \end{theorem}
 
 \begin{proof}
-In order to prove the theorem, we first construct the following maps:
-\begin{itemize}\setlength\itemsep{0em}
-\item \(F_X: X \to \R\) is defined as \(F_{X}(x_0) \coloneq \int_Y f(x_0, y)\,
-  \diff x\) whenever such integral exists, in case not, we let
-  \(\underline{\mathcal{J}_{x_0}} \leq F_{X}(x_0) \leq
-  \overline{\mathcal{J}_{x_0}}\) be any element between the Darboux integrals of
-  the map \(f(x_{0}, -): Y \to \R\) given by \(y \mapsto f(x_{0}, y)\).
+    In order to prove the theorem, we first construct the following maps:
+    \begin{itemize}\setlength\itemsep{0em}
+        \item \(F_X: X \to \R\) is defined as \(F_{X}(x_0) \coloneq \int_Y f(x_0, y)\,
+              \diff x\) whenever such integral exists, in case not, we let
+              \(\underline{\mathcal{J}_{x_0}} \leq F_{X}(x_0) \leq
+              \overline{\mathcal{J}_{x_0}}\) be any element between the Darboux integrals of
+              the map \(f(x_{0}, -): Y \to \R\) given by \(y \mapsto f(x_{0}, y)\).
 
-\item \(F_Y: Y \to \R\) is defined as \(F_{Y}(y_{0}) \coloneq \int_x f(x,
-  y_{0})\, \diff x\) whenever such integral exists, in case not, we let
-  \(\underline{\mathcal{J}_{y_0}} \leq F_{Y}(y_{0}) \leq
-  \overline{\mathcal{J}_{y_0}}\) be any element between the Darboux integrals of
-  the map \(f(-, y_0): X \to \R\) given by \(x \mapsto f(x, y_{0})\).
-\end{itemize}
-We'll carry the proof for the first equality, but, knowing the construction of
-\(F_Y\), the idea for the second equality is the exact analogue.
+        \item \(F_Y: Y \to \R\) is defined as \(F_{Y}(y_{0}) \coloneq \int_x f(x,
+              y_{0})\, \diff x\) whenever such integral exists, in case not, we let
+              \(\underline{\mathcal{J}_{y_0}} \leq F_{Y}(y_{0}) \leq
+              \overline{\mathcal{J}_{y_0}}\) be any element between the Darboux integrals of
+              the map \(f(-, y_0): X \to \R\) given by \(x \mapsto f(x, y_{0})\).
+    \end{itemize}
+    We'll carry the proof for the first equality, but, knowing the construction of
+    \(F_Y\), the idea for the second equality is the exact analogue.
 
-Let \(P \coloneq \{X_{i}\}_{i \in I} \times \{Y_{j}\}_{j \in J}\) be any
-partition of the interval \(X \times Y\). Notice that
-\begin{align*}
-  s(f, P)
-  &= \sum_{(i, j) \in I \times J}
-    \inf_{(x, y) \in X_i \times y_j}f(x, y) \Vol(X_i \times Y_j) \\
-  &= \sum_{(i, j) \in I \times J}
-    \inf_{(x, y) \in X_i \times y_j}f(x, y) \Vol(X_i) \Vol(Y_j) \\
-  &\leq \sum_{i \in I}
-    \inf_{x \in X_i} \left[ \sum_{j \in J} f(x, y) \Vol(Y_j) \right] \Vol X_i  \\
-  &\leq \sum_{i \in I} \inf_{x \in X_i} \left[ \underline{\int_{Y}} f(x, y)\,
-    \diff y \right] \Vol X_i \\
-  &\leq \sum_{i \in I} \inf_{x \in X_i} F_X(x) \Vol X_i \\
-  &\leq \sum_{i \in I} \sup_{x \in X_i} F_X(x) \Vol X_i \\
-  &\leq \sum_{i \in I} \sup_{x \in X_i} \left[ \overline{\int_X} f(x, y)\, \diff
-  x \right] \Vol X_i \\
-  &\leq \sum_{i \in I} \sup_{x \in X_i} \left[ \sum_{j \in J} f(x, y) \Vol Y_j
-    \right] \Vol X_i \\
-  &\leq \sum_{(i, j) \in I \times J} f(x, y) \Vol(X_i \times Y_j) \\
-  &= S(f, P).
-\end{align*}
-By hypothesis, \(f\) is Riemann integrable over \(X \times Y\), thus
-\[
-  \lim_{\Mesh P \to 0} s(f, P)
-  = \lim_{\Mesh P \to 0} S(f, P)
-  = \int_{X \times Y} f(x, y)\, \diff x\, \diff y,
-\]
-therefore \(F_X\) is Riemann integrable over
-\(X\) and
-\[
-  \int_{X \times Y} f(x, y)\, \diff x\, \diff y = \int_X F_X(x)\, \diff x.
-\]
+    Let \(P \coloneq \{X_{i}\}_{i \in I} \times \{Y_{j}\}_{j \in J}\) be any
+    partition of the interval \(X \times Y\). Notice that
+    \begin{align*}
+        s(f, P)
+         & = \sum_{(i, j) \in I \times J}
+        \inf_{(x, y) \in X_i \times y_j}f(x, y) \Vol(X_i \times Y_j)                     \\
+         & = \sum_{(i, j) \in I \times J}
+        \inf_{(x, y) \in X_i \times y_j}f(x, y) \Vol(X_i) \Vol(Y_j)                      \\
+         & \leq \sum_{i \in I}
+        \inf_{x \in X_i} \left[ \sum_{j \in J} f(x, y) \Vol(Y_j) \right] \Vol X_i        \\
+         & \leq \sum_{i \in I} \inf_{x \in X_i} \left[ \underline{\int_{Y}} f(x, y)\,
+        \diff y \right] \Vol X_i                                                         \\
+         & \leq \sum_{i \in I} \inf_{x \in X_i} F_X(x) \Vol X_i                          \\
+         & \leq \sum_{i \in I} \sup_{x \in X_i} F_X(x) \Vol X_i                          \\
+         & \leq \sum_{i \in I} \sup_{x \in X_i} \left[ \overline{\int_X} f(x, y)\, \diff
+        x \right] \Vol X_i                                                               \\
+         & \leq \sum_{i \in I} \sup_{x \in X_i} \left[ \sum_{j \in J} f(x, y) \Vol Y_j
+        \right] \Vol X_i                                                                 \\
+         & \leq \sum_{(i, j) \in I \times J} f(x, y) \Vol(X_i \times Y_j)                \\
+         & = S(f, P).
+    \end{align*}
+    By hypothesis, \(f\) is Riemann integrable over \(X \times Y\), thus
+    \[
+        \lim_{\Mesh P \to 0} s(f, P)
+        = \lim_{\Mesh P \to 0} S(f, P)
+        = \int_{X \times Y} f(x, y)\, \diff x\, \diff y,
+    \]
+    therefore \(F_X\) is Riemann integrable over
+    \(X\) and
+    \[
+        \int_{X \times Y} f(x, y)\, \diff x\, \diff y = \int_X F_X(x)\, \diff x.
+    \]
 \end{proof}
 
 \begin{corollary}
-\label{cor:riemann-int-XxY-almost-int-X-and-Y}
-Let \(f: X \times Y \to \R\) be Riemann integrable. Then for almost all points
-\(x_0 \in X\) and almost all \(y_0 \in Y\) the integrals \(\int_Y f(x_0, y)\,
-\diff y\) and \(\int_X f(x, y_0)\, \diff x\) exist.
+    \label{cor:riemann-int-XxY-almost-int-X-and-Y}
+    Let \(f: X \times Y \to \R\) be Riemann integrable. Then for almost all points
+    \(x_0 \in X\) and almost all \(y_0 \in Y\) the integrals \(\int_Y f(x_0, y)\,
+    \diff y\) and \(\int_X f(x, y_0)\, \diff x\) exist.
 \end{corollary}
 
 \begin{proof}
-Since \(s(f, P) \leq S(f, P)\) for all partitions \(P\) of \(X \times Y\), then
-\(\underline{\int_Y} f(x_0, y)\, \diff y \leq \overline{\int_X} f(x_0, y)\,
-\diff y\) for every \(x_0 \in X\). From \cref{thm:fubini} we see that
-\[
-  \int_X \left( \overline{\int_Y} f(x, y)\, \diff y
-    - \underline{\int_Y} f(x, y)\, \diff y\right)\, \diff x = 0,
-\]
-therefore by \cref{lem:zero-integral-jordan-measure-zero} we conclude that the
-map \(x_0 \mapsto \overline{\int_Y} f(x_0, y)\, \diff y - \underline{\int_Y}
-f(x_0, y)\, \diff y\) equals zero for almost all \(x_0 \in X\) --- that is,
-\(\int_Y f(x_0, y)\, \diff y\) exists for almost all \(x_0 \in X\). The exact
-same argument can be used to show this for \(\int_X f(x, y_0)\, \diff x\).
+    Since \(s(f, P) \leq S(f, P)\) for all partitions \(P\) of \(X \times Y\), then
+    \(\underline{\int_Y} f(x_0, y)\, \diff y \leq \overline{\int_X} f(x_0, y)\,
+    \diff y\) for every \(x_0 \in X\). From \cref{thm:fubini} we see that
+    \[
+        \int_X \left( \overline{\int_Y} f(x, y)\, \diff y
+        - \underline{\int_Y} f(x, y)\, \diff y\right)\, \diff x = 0,
+    \]
+    therefore by \cref{lem:zero-integral-jordan-measure-zero} we conclude that the
+    map \(x_0 \mapsto \overline{\int_Y} f(x_0, y)\, \diff y - \underline{\int_Y}
+    f(x_0, y)\, \diff y\) equals zero for almost all \(x_0 \in X\) --- that is,
+    \(\int_Y f(x_0, y)\, \diff y\) exists for almost all \(x_0 \in X\). The exact
+    same argument can be used to show this for \(\int_X f(x, y_0)\, \diff x\).
 \end{proof}
 
 \begin{corollary}[Iterated Fubini's theorem]
-\label{cor:iterated-fubini-theorem}
-Let \(I \coloneq \prod_{j = 1}^n [a_j, b_j] \subseteq \R^n\) be an interval and
-\(f: I \to \R\) be a Riemann integrable map over \(I\). Then
-\[
-  \int_I f(x)\, \diff x = \int_{a_n}^{b_n} \left(
-    \int_{a_{n-1}}^{b_{n-1}} \left(
-      \dots \left(
+    \label{cor:iterated-fubini-theorem}
+    Let \(I \coloneq \prod_{j = 1}^n [a_j, b_j] \subseteq \R^n\) be an interval and
+    \(f: I \to \R\) be a Riemann integrable map over \(I\). Then
+    \[
+        \int_I f(x)\, \diff x = \int_{a_n}^{b_n} \left(
+        \int_{a_{n-1}}^{b_{n-1}} \left(
+        \dots \left(
         \int_{a_1}^{b_1} f(x, y)\, \diff x_1
-      \right)
-      \dots \right)\, \diff x_{n-1} \right)\, \diff x_n.
-\]
-Moreover, the result of the integral is invariant under any permutation of the
-order of the sub-intervals \([a_j, b_j]\) of integration.
+        \right)
+        \dots \right)\, \diff x_{n-1} \right)\, \diff x_n.
+    \]
+    Moreover, the result of the integral is invariant under any permutation of the
+    order of the sub-intervals \([a_j, b_j]\) of integration.
 \end{corollary}
 
 \begin{proof}
-This is just a direct application of \cref{thm:fubini}, moreover, the second
-part of the proposition can be obtained by seeing that the second equality of
-\cref{eq:fubini} is nothing but a transposition on the set \(\{X, Y\}\) ---
-generalizing this for transpositions on \(\{[a_j, b_j]\}_{j=1}^n\) imply that
-any permutation of the collection satisfies the integral equality.
+    This is just a direct application of \cref{thm:fubini}, moreover, the second
+    part of the proposition can be obtained by seeing that the second equality of
+    \cref{eq:fubini} is nothing but a transposition on the set \(\{X, Y\}\) ---
+    generalizing this for transpositions on \(\{[a_j, b_j]\}_{j=1}^n\) imply that
+    any permutation of the collection satisfies the integral equality.
 \end{proof}
 
 \subsubsection{Measuring Volumes Between Graphs of Maps}
 
 \begin{corollary}
-\label{cor:integral-over-graph-maps}
-Define \(D \subseteq \R^{n-1}\) to be a bounded set and let maps \(g_{1}, g_{2}:
-D \to \R\) such that \(g_1 \leq g_2\). Let \(f: E \to \R\) be a Riemann
-integrable map over \(E \coloneq \{(x, y) \in \R^{n - 1} \times \R \colon x \in D
-\text{ and } g_1(x) \leq y \leq g_2(x)\}\). Then
-\[
-  \int_E f(x, y)\, \diff x\, \diff y
-  = \int_D \left( \int_{g_1(x)}^{g_2(x)} f(x, y)\, \diff y \right)\, \diff x.
-\]
+    \label{cor:integral-over-graph-maps}
+    Define \(D \subseteq \R^{n-1}\) to be a bounded set and let maps \(g_{1}, g_{2}:
+    D \to \R\) such that \(g_1 \leq g_2\). Let \(f: E \to \R\) be a Riemann
+    integrable map over \(E \coloneq \{(x, y) \in \R^{n - 1} \times \R \colon x \in D
+    \text{ and } g_1(x) \leq y \leq g_2(x)\}\). Then
+    \[
+        \int_E f(x, y)\, \diff x\, \diff y
+        = \int_D \left( \int_{g_1(x)}^{g_2(x)} f(x, y)\, \diff y \right)\, \diff x.
+    \]
 \end{corollary}
 
 \begin{proof}
-For each \(x \in D\) define the set \(E_x \coloneq \{y \in \R \colon g_{1}(x) \leq y
-\leq g_2(x)\}\), and observe that, from construction, \(\chi_E(x, y) = \chi_D(x)
-\chi_{E_x}(y)\). Given any interval \(I \coloneq I_x \times I_y \supseteq E\),
-we have
-\begin{align*}
-  \int_E f(x, y)\, \diff x\, \diff y
-  = \int_I f_{\chi_E}(x, y)\, \diff x\, \diff y
-  = \int_{I_x} \left( \int_{I_y} f_{\chi_E}(x, y)\, \diff y  \right)\, \diff x
-\end{align*}
+    For each \(x \in D\) define the set \(E_x \coloneq \{y \in \R \colon g_{1}(x) \leq y
+    \leq g_2(x)\}\), and observe that, from construction, \(\chi_E(x, y) = \chi_D(x)
+    \chi_{E_x}(y)\). Given any interval \(I \coloneq I_x \times I_y \supseteq E\),
+    we have
+    \begin{align*}
+        \int_E f(x, y)\, \diff x\, \diff y
+        = \int_I f_{\chi_E}(x, y)\, \diff x\, \diff y
+        = \int_{I_x} \left( \int_{I_y} f_{\chi_E}(x, y)\, \diff y  \right)\, \diff x
+    \end{align*}
 \end{proof}
 
 \begin{corollary}[Measuring the set between the graph of continuous maps]
-\label{cor:measure-set-between-graphs-of-continuous-maps}
-Let \(D \subseteq \R^{n-1}\) be a Jordan-measurable set and \(g_1, g_2: D \to
-\R\) be continuous maps such that \(g_1 \leq g_2\). Then the set \(E \coloneq
-\{(x, y) \in \R^{n-1} \times \R \colon x \in D \text{ and } g_1(x) \leq y \leq
-g_2(x)\} \subseteq \R^n\) is Jordan-measurable and its Jordan measure is
-\[
-  \mu(E) = \int_D g_2(x) - g_1(x)\, \diff x.
-\]
+    \label{cor:measure-set-between-graphs-of-continuous-maps}
+    Let \(D \subseteq \R^{n-1}\) be a Jordan-measurable set and \(g_1, g_2: D \to
+    \R\) be continuous maps such that \(g_1 \leq g_2\). Then the set \(E \coloneq
+    \{(x, y) \in \R^{n-1} \times \R \colon x \in D \text{ and } g_1(x) \leq y \leq
+    g_2(x)\} \subseteq \R^n\) is Jordan-measurable and its Jordan measure is
+    \[
+        \mu(E) = \int_D g_2(x) - g_1(x)\, \diff x.
+    \]
 \end{corollary}
 
 \begin{proof}
-Denote by \(\Gamma_{g_1}\) and \(\Gamma_{g_2}\) the graphs of \(g_1\) and
-\(g_2\), respectively. By \cref{exp:graph-lebesgue-measure-zero},
-\(\Gamma_{g_1}\) and \(\Gamma_{g_2}\) are sets of Lebesgue measure
-zero. Define a set
-\[
-Z \coloneq \partial D \times
-[\inf_{x \in D} g_1(x), \sup_{x \in D} g_2(x)] \subseteq \R^n
-\] and the length \(\ell \coloneq \sup_{x
-\in d} g_2(x) - \inf_{x \in D} g_1(x)\). Since \(D\) is a Jordan-measurable set,
-it follows that \(\partial D\) can be covered by a finite collection of open
-sets with total volume arbitrarily small --- in particular, smaller than
-\(\varepsilon / \ell\). In particular, it follows that \(Z\) is a set of Jordan
-measure zero. Notice that \(\partial E \subseteq \Gamma_{g_1} \cup
-\Gamma_{g_2} \cup Z\) and thus \(\partial E\) is a set of Jordan measure zero
---- thus \(E\) is Jordan-measurable. The measure formula for \(E\) follows
-immediately by \cref{cor:integral-over-graph-maps}
+    Denote by \(\Gamma_{g_1}\) and \(\Gamma_{g_2}\) the graphs of \(g_1\) and
+    \(g_2\), respectively. By \cref{exp:graph-lebesgue-measure-zero},
+    \(\Gamma_{g_1}\) and \(\Gamma_{g_2}\) are sets of Lebesgue measure
+    zero. Define a set
+    \[
+        Z \coloneq \partial D \times
+        [\inf_{x \in D} g_1(x), \sup_{x \in D} g_2(x)] \subseteq \R^n
+    \] and the length \(\ell \coloneq \sup_{x
+        \in d} g_2(x) - \inf_{x \in D} g_1(x)\). Since \(D\) is a Jordan-measurable set,
+    it follows that \(\partial D\) can be covered by a finite collection of open
+    sets with total volume arbitrarily small --- in particular, smaller than
+    \(\varepsilon / \ell\). In particular, it follows that \(Z\) is a set of Jordan
+    measure zero. Notice that \(\partial E \subseteq \Gamma_{g_1} \cup
+    \Gamma_{g_2} \cup Z\) and thus \(\partial E\) is a set of Jordan measure zero
+    --- thus \(E\) is Jordan-measurable. The measure formula for \(E\) follows
+    immediately by \cref{cor:integral-over-graph-maps}
 \end{proof}
 
 \begin{corollary}
-\label{cor:slicing-measurable-sets-and-integrating}
-Let \(E \subseteq \R^n\) be a Jordan-measurable set and \(I \coloneq I_x \times
-I_y \subseteq \R^{n-1} \times \R\) be an interval containing \(E\). For each
-\(y_0 \in I_y\), define the section \(E_{y_0} \coloneq \{(x, y_{0})\} \subseteq
-E\). Then, for almost all \(y_0 \in I_y\) the set \(E_{y_0}\) is
-Jordan-measurable, and
-\[
-  \mu(E) = \int_{I_y} F_{\mu}(y)\, \diff y,
-\]
-where the map \(F_{\mu}: I_y \to \R\) is defined as \(F_{\mu}(y) \coloneq
-\mu(E_y)\) if \(E_y\) happens to be Jordan-measurable, otherwise, we let
-\(\underline{\int_{E_y}} \diff y \leq F_{\mu}(y) \leq \overline{\int_{E_y}}
-\diff y\) be any value between the lower and upper Darboux integrals of the
-measure of \(E_y\).
+    \label{cor:slicing-measurable-sets-and-integrating}
+    Let \(E \subseteq \R^n\) be a Jordan-measurable set and \(I \coloneq I_x \times
+    I_y \subseteq \R^{n-1} \times \R\) be an interval containing \(E\). For each
+    \(y_0 \in I_y\), define the section \(E_{y_0} \coloneq \{(x, y_{0})\} \subseteq
+    E\). Then, for almost all \(y_0 \in I_y\) the set \(E_{y_0}\) is
+    Jordan-measurable, and
+    \[
+        \mu(E) = \int_{I_y} F_{\mu}(y)\, \diff y,
+    \]
+    where the map \(F_{\mu}: I_y \to \R\) is defined as \(F_{\mu}(y) \coloneq
+    \mu(E_y)\) if \(E_y\) happens to be Jordan-measurable, otherwise, we let
+    \(\underline{\int_{E_y}} \diff y \leq F_{\mu}(y) \leq \overline{\int_{E_y}}
+    \diff y\) be any value between the lower and upper Darboux integrals of the
+    measure of \(E_y\).
 \end{corollary}
 
 \begin{corollary}[Cavalieri's principle]
-\label{cor:cavalieri-principle}
-Let \(A\) and \(B\) be two Jordan-measurable solids in \(\R^3\). For every \(z_0
-\in \R\), define the sets \(A_{z_0} \coloneq \{(x, y, z_{0}) \in A\}\) and
-\(B_{z_0} \coloneq \{(x, y, z_{0}) \in B\}\). If for every \(z_0 \in \R\) the
-sets \(A_{z_0}\) and \(B_{z_0}\) have the same area, that is, \(\mu(A_{z_0}) =
-\mu(B_{z_0})\), then the solids have the same volumes --- \(\mu(A) = \mu(B)\).
+    \label{cor:cavalieri-principle}
+    Let \(A\) and \(B\) be two Jordan-measurable solids in \(\R^3\). For every \(z_0
+    \in \R\), define the sets \(A_{z_0} \coloneq \{(x, y, z_{0}) \in A\}\) and
+    \(B_{z_0} \coloneq \{(x, y, z_{0}) \in B\}\). If for every \(z_0 \in \R\) the
+    sets \(A_{z_0}\) and \(B_{z_0}\) have the same area, that is, \(\mu(A_{z_0}) =
+    \mu(B_{z_0})\), then the solids have the same volumes --- \(\mu(A) = \mu(B)\).
 \end{corollary}
 
 \section{Change of Variables}
 
 \begin{remark}
-Throughout this section we'll use always the variable names \(D_t\) and \(D_x\)
-for \emph{domains} --- recall \cref{def: domain}.
+    Throughout this section we'll use always the variable names \(D_t\) and \(D_x\)
+    for \emph{domains} --- recall \cref{def: domain}.
 \end{remark}
 
 \begin{definition}[Support of a real valued map]
-\label{def:support-real-valued-map}
-Given a map \(f: D \to \R\), where \(D \subseteq \R^n\) is a domain, the support
-of \(f\), denoted by \(\supp f\), is the closure of the collection of points of
-\(D\) with non-zero image under \(f\), that is
-\[
-  \supp f \coloneq \Cl(\{x \in D \colon f(x) \neq 0\}).
-\]
+    \label{def:support-real-valued-map}
+    Given a map \(f: D \to \R\), where \(D \subseteq \R^n\) is a domain, the support
+    of \(f\), denoted by \(\supp f\), is the closure of the collection of points of
+    \(D\) with non-zero image under \(f\), that is
+    \[
+        \supp f \coloneq \Cl(\{x \in D \colon f(x) \neq 0\}).
+    \]
 \end{definition}
 
 The goal of this section will be to prove the theorem on the change of variables
@@ -966,407 +966,407 @@ theorem. For the proof of the theorem, head to
 \cref{subsub:change-variables-proof}.
 
 \begin{theorem}[Change of variables]
-\label{thm:change-variables}
-Let \(D_x, D_t \subseteq \R^n\) be bounded open domains, and \(\phi: D_t \isoto
-D_x\) a \(C^1\)-isomorphism. Let \(f: D_x \to \R\) be a Riemann integrable map
-over \(D_x\) for which \(\supp f\) is compact on \(D_x\). Then the map given by
-\(t \mapsto f \phi(t) \norm{\det(\Jac \phi(t))}\) is Riemann integrable on
-\(D_t\) and
-\[
-  \int_{D_x} f(x)\, \diff x
-  = \int_{D_t} f \phi(t) \norm{\det(\Jac \phi(t))}\, \diff t.
-\]
+    \label{thm:change-variables}
+    Let \(D_x, D_t \subseteq \R^n\) be bounded open domains, and \(\phi: D_t \isoto
+    D_x\) a \(C^1\)-isomorphism. Let \(f: D_x \to \R\) be a Riemann integrable map
+    over \(D_x\) for which \(\supp f\) is compact on \(D_x\). Then the map given by
+    \(t \mapsto f \phi(t) \norm{\det(\Jac \phi(t))}\) is Riemann integrable on
+    \(D_t\) and
+    \[
+        \int_{D_x} f(x)\, \diff x
+        = \int_{D_t} f \phi(t) \norm{\det(\Jac \phi(t))}\, \diff t.
+    \]
 \end{theorem}
 
 \subsection{Measurable Sets and Smooth Mappings}
 
 \begin{lemma}
-\label{lem:C1-isomorphisms-preserve-measure-properties}
-Let \(\phi: D_t \isoto D_x\) be a \(C^1\)-isomorphism. Then the following is
-true:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item Given any subset \(E_t \subseteq D_t\) of Lebesgue measure zero, the image
-  \(\phi(E_t) \subseteq D_x\) is also a set of Lebesgue measure zero.
+    \label{lem:C1-isomorphisms-preserve-measure-properties}
+    Let \(\phi: D_t \isoto D_x\) be a \(C^1\)-isomorphism. Then the following is
+    true:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item Given any subset \(E_t \subseteq D_t\) of Lebesgue measure zero, the image
+              \(\phi(E_t) \subseteq D_x\) is also a set of Lebesgue measure zero.
 
-\item Let \(E_t \subseteq D_t\) be any open subset with closure \(\Cl E_t
-  \subseteq D_t\) of Jordan measure zero. Then its image \(\phi(E_t)\) and the
-  closure \(\Cl(\phi(E_t))\) are both contained in \(D_x\) and the closure
-  is a set of Jordan measure zero.
+        \item Let \(E_t \subseteq D_t\) be any open subset with closure \(\Cl E_t
+              \subseteq D_t\) of Jordan measure zero. Then its image \(\phi(E_t)\) and the
+              closure \(\Cl(\phi(E_t))\) are both contained in \(D_x\) and the closure
+              is a set of Jordan measure zero.
 
-\item Let \(E_t \subseteq D_t\) be a Jordan-measurable set, and \(\Cl E_t
-  \subseteq D_t\). The image \(\phi(E_t)\) is Jordan measurable and
-  \(\Cl(\phi(E_t)) \subseteq D_x\).
-\end{enumerate}
+        \item Let \(E_t \subseteq D_t\) be a Jordan-measurable set, and \(\Cl E_t
+              \subseteq D_t\). The image \(\phi(E_t)\) is Jordan measurable and
+              \(\Cl(\phi(E_t)) \subseteq D_x\).
+    \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item Let \(I \subseteq D_t\) be a closed interval with \(E_t \subseteq
-I\). Since \(\phi\) is continuously differentiable, there exists \(M > 0\) such
-that \(\norm{\diff \phi(t)(x)} \leq M\) for all \(x \in I\). Using \cref{thm:
-several-mvt-Rn-val}, we obtain that for all pairs \(x, y \in I\), we have the
-relation \(\norm{f(x) - f(y)}_{\R^n} \leq M \norm{x - y}_{\R^n}\). Given any
-\(\varepsilon > 0\), since \(E_t\) is of Lebesgue measure zero, let
-\(\{I_{j}\}_{j \in J}\) be a countable collection of open intervals covering
-\(E_t\) with \(\sum_{j \in J} \Vol I_j < \varepsilon\) and we may assume that
-\(I_j \subseteq I\) for all \(j \in J\). Consider the countable collection
-\(\{\phi(I_{j})\}_{j \in J}\), which forms a cover for \(\phi(E_t)\). Let \(t_j
-\in I_j\) be the centre point of the interval corresponding to the index \(j \in
-J\) --- notice that, since the image of pairs of points of \(D_t\) under
-\(\phi\) is bounded by the product of their distance and \(M\) --- defining
-\(x_j \coloneq \phi(t_j)\), we can consider the open interval \(I_j' \subseteq
-E_t\) with \(x_j\) being its centre point, with dimension \(M\) times of
-\(I_j\), then clearly \(I_j'\) is able to cover the whole set \(\phi(I_j)\). Let
-\(\{I_{j}'\}_j\) be the collection of those intervals we constructed and notice
-that the image \(\phi(E_t)\) is completely encompassed by the union \(\bigcup_{j
-\in J} I_j'\), that is, \(\{I_{j}'\}_{j \in J}\) covers \(\phi(E_t)\). Moreover,
-we the volume of such collection was constructed so that \(\sum_{j \in J} \Vol
-I_j' = \sum_{j \in J} M^n \Vol I_j < M^n \varepsilon\), that is, \(\phi(E_t)\)
-can be covered by a collection of open intervals whose total volume can be
-chosen to be arbitrarily small volume --- thus \(\phi(E_t)\) is of Lebesgue
-measure zero.
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item Let \(I \subseteq D_t\) be a closed interval with \(E_t \subseteq
+              I\). Since \(\phi\) is continuously differentiable, there exists \(M > 0\) such
+              that \(\norm{\diff \phi(t)(x)} \leq M\) for all \(x \in I\). Using \cref{thm:
+                  several-mvt-Rn-val}, we obtain that for all pairs \(x, y \in I\), we have the
+              relation \(\norm{f(x) - f(y)}_{\R^n} \leq M \norm{x - y}_{\R^n}\). Given any
+              \(\varepsilon > 0\), since \(E_t\) is of Lebesgue measure zero, let
+              \(\{I_{j}\}_{j \in J}\) be a countable collection of open intervals covering
+              \(E_t\) with \(\sum_{j \in J} \Vol I_j < \varepsilon\) and we may assume that
+              \(I_j \subseteq I\) for all \(j \in J\). Consider the countable collection
+              \(\{\phi(I_{j})\}_{j \in J}\), which forms a cover for \(\phi(E_t)\). Let \(t_j
+              \in I_j\) be the centre point of the interval corresponding to the index \(j \in
+              J\) --- notice that, since the image of pairs of points of \(D_t\) under
+              \(\phi\) is bounded by the product of their distance and \(M\) --- defining
+              \(x_j \coloneq \phi(t_j)\), we can consider the open interval \(I_j' \subseteq
+              E_t\) with \(x_j\) being its centre point, with dimension \(M\) times of
+              \(I_j\), then clearly \(I_j'\) is able to cover the whole set \(\phi(I_j)\). Let
+              \(\{I_{j}'\}_j\) be the collection of those intervals we constructed and notice
+              that the image \(\phi(E_t)\) is completely encompassed by the union \(\bigcup_{j
+                  \in J} I_j'\), that is, \(\{I_{j}'\}_{j \in J}\) covers \(\phi(E_t)\). Moreover,
+              we the volume of such collection was constructed so that \(\sum_{j \in J} \Vol
+              I_j' = \sum_{j \in J} M^n \Vol I_j < M^n \varepsilon\), that is, \(\phi(E_t)\)
+              can be covered by a collection of open intervals whose total volume can be
+              chosen to be arbitrarily small volume --- thus \(\phi(E_t)\) is of Lebesgue
+              measure zero.
 
-\item Since \(\Cl E_t\) is a set of Jordan measure zero, it follows it
-  follows that \(\Cl E_t\) is also of Lebesgue measure zero. Notice that,
-  by the above item, the image \(\phi(\Cl E_t)\) will also be of Lebesgue
-  measure zero. Notice that \(\Cl(\phi(\Cl E_t))\) is a compact set
-  of \(\R^n\) and therefore we can apply
-  \cref{cor:compact-finite-cover-infinitesimal-volume} to conclude that
-  \(\Cl(\phi(\Cl E_t))\) is a set of Jordan measure zero. Since any
-  subset of a set of Jordan measure zero also has measure zero, it follows that
-  \(\phi(\Cl E_t)\) is of measure zero.
+        \item Since \(\Cl E_t\) is a set of Jordan measure zero, it follows it
+              follows that \(\Cl E_t\) is also of Lebesgue measure zero. Notice that,
+              by the above item, the image \(\phi(\Cl E_t)\) will also be of Lebesgue
+              measure zero. Notice that \(\Cl(\phi(\Cl E_t))\) is a compact set
+              of \(\R^n\) and therefore we can apply
+              \cref{cor:compact-finite-cover-infinitesimal-volume} to conclude that
+              \(\Cl(\phi(\Cl E_t))\) is a set of Jordan measure zero. Since any
+              subset of a set of Jordan measure zero also has measure zero, it follows that
+              \(\phi(\Cl E_t)\) is of measure zero.
 
-\item Since \(E_t\) is Jordan-measurable, the boundary \(\partial E_t\) is of
-  Jordan measure zero, therefore so is its image \(\phi(\partial E_t)\) by the
-  use of the last item. Since \(\phi\) is a \(C^1\)-isomorphism, given any \(p \in
-  \Int E_t\), we have \(\phi(p) \in \Int \phi(E_t)\), therefore \(\partial
-  \phi(E_t) = \phi(\partial E_t)\) --- thus \(\phi(E_t)\) has boundary of Jordan
-  measure zero and therefore is Jordan-measurable.
-\end{enumerate}
+        \item Since \(E_t\) is Jordan-measurable, the boundary \(\partial E_t\) is of
+              Jordan measure zero, therefore so is its image \(\phi(\partial E_t)\) by the
+              use of the last item. Since \(\phi\) is a \(C^1\)-isomorphism, given any \(p \in
+              \Int E_t\), we have \(\phi(p) \in \Int \phi(E_t)\), therefore \(\partial
+              \phi(E_t) = \phi(\partial E_t)\) --- thus \(\phi(E_t)\) has boundary of Jordan
+              measure zero and therefore is Jordan-measurable.
+    \end{enumerate}
 \end{proof}
 
 \begin{corollary}
-\label{cor:existence-right-int-change-variables}
-In the context of \cref{thm:change-variables}, the integral
-\[
-\int_{D_t} f\phi(t) \norm{\det(\Jac \phi(t))}\, \diff t
-\]
-exists.
+    \label{cor:existence-right-int-change-variables}
+    In the context of \cref{thm:change-variables}, the integral
+    \[
+        \int_{D_t} f\phi(t) \norm{\det(\Jac \phi(t))}\, \diff t
+    \]
+    exists.
 \end{corollary}
 
 \begin{proof}
-Since \(\phi\) is a \(C^1\)-isomorphism, its Jacobian \(\Jac \phi(t)\) is invertible
-for every \(t \in D_t\), thus \(\det(\Jac \phi(t)) \neq 0\). If \(g: D_t \to \R\)
-is defined as \(g(t) \coloneq f \phi(t) \norm{\det(\Jac \phi(t))}\), then for
-every \(t \in D_t\) such that \(\phi(t) \not\in \supp f\) we have \(t \not\in
-\supp g\) --- thus \(\supp g = \supp(f \phi \phi^{-1}(\supp f))\), and \(\supp
-g\) is a compact subset of \(D_t\) since it is closed. From this we can conclude
-that the map \(g_{\chi_{D_t}}\) has points of discontinuity in the fibers
-\(\phi^{-1}(x)\), where \(x \in D_x\) is a point of discontinuity of
-\(f\). Since \(f\) is Riemann integrable in \(D_x\), such points form a
-Lebesgue measure zero set --- thus the points of discontinuity of
-\(g_{\chi_{D_t}}\) are also of Lebesgue measure zero since \(\phi\) preserves
-Lebesgue measure zero sets by
-\cref{lem:C1-isomorphisms-preserve-measure-properties}. Using the Lebesgue's
-criterion, we conclude that \(g_{\chi_{D_t}}\) is Riemann integrable over
-any closed interval \(I_t\) such that \(D_t \subseteq I_t\) and thus the said
-integral does exist.
+    Since \(\phi\) is a \(C^1\)-isomorphism, its Jacobian \(\Jac \phi(t)\) is invertible
+    for every \(t \in D_t\), thus \(\det(\Jac \phi(t)) \neq 0\). If \(g: D_t \to \R\)
+    is defined as \(g(t) \coloneq f \phi(t) \norm{\det(\Jac \phi(t))}\), then for
+    every \(t \in D_t\) such that \(\phi(t) \not\in \supp f\) we have \(t \not\in
+    \supp g\) --- thus \(\supp g = \supp(f \phi \phi^{-1}(\supp f))\), and \(\supp
+    g\) is a compact subset of \(D_t\) since it is closed. From this we can conclude
+    that the map \(g_{\chi_{D_t}}\) has points of discontinuity in the fibers
+    \(\phi^{-1}(x)\), where \(x \in D_x\) is a point of discontinuity of
+    \(f\). Since \(f\) is Riemann integrable in \(D_x\), such points form a
+    Lebesgue measure zero set --- thus the points of discontinuity of
+    \(g_{\chi_{D_t}}\) are also of Lebesgue measure zero since \(\phi\) preserves
+    Lebesgue measure zero sets by
+    \cref{lem:C1-isomorphisms-preserve-measure-properties}. Using the Lebesgue's
+    criterion, we conclude that \(g_{\chi_{D_t}}\) is Riemann integrable over
+    any closed interval \(I_t\) such that \(D_t \subseteq I_t\) and thus the said
+    integral does exist.
 \end{proof}
 
 \subsection{One-Dimensional Change of Variables}
 
 \begin{lemma}[Changing variables in one dimension]
-\label{lem:change-variables-one-dimensional}
-Let \(\phi: I_t \isoto I_x\) be a \(C^1\)-isomorphism over the \(1\)-dimensional
-intervals \(I_t, I_x \subseteq \R\) and let \(f: I_x \to \R\) be a Riemann
-integrable map over \(I_x\). Then the map \(I_t \ni t \mapsto f \phi(t)
-\norm{\phi'(t)}\) is a Riemann integrable map over \(I_t\) and the following
-relation holds
-\[
-  \int_{I_x} f(x)\, \diff x = \int_{I_t} f \phi(t) \norm{\phi'(t)}\, \diff t.
-\]
+    \label{lem:change-variables-one-dimensional}
+    Let \(\phi: I_t \isoto I_x\) be a \(C^1\)-isomorphism over the \(1\)-dimensional
+    intervals \(I_t, I_x \subseteq \R\) and let \(f: I_x \to \R\) be a Riemann
+    integrable map over \(I_x\). Then the map \(I_t \ni t \mapsto f \phi(t)
+    \norm{\phi'(t)}\) is a Riemann integrable map over \(I_t\) and the following
+    relation holds
+    \[
+        \int_{I_x} f(x)\, \diff x = \int_{I_t} f \phi(t) \norm{\phi'(t)}\, \diff t.
+    \]
 \end{lemma}
 
 \begin{proof}
-All maps \(f, \phi\) and \(\phi'\) are bounded, thus the map \(g: I_t \to \R\)
-given by \(g(t) \coloneq f \phi(t) \norm{\phi'(t)}\) is bounded. As pointed out
-in the proof of \cref{cor:existence-right-int-change-variables}, the points of
-discontinuity of \(g\) are only those lying in the fibers \(\phi^{-1}(x)\),
-where \(x \in I_x\) is a point of discontinuity of \(f\) --- since \(f\) is
-Riemann integrable and \(\phi^{-1}\) is a \(C^1\)-isomorphism, the points of
-discontinuity of \(g\) form a set of Lebesgue measure zero, thus \(g\) is
-Riemann integrable over \(I_t\). Let \(P_x \coloneq \{[x_{j-1}, x_{j}]\}_{j \in
-J}\) be a partition of \(I_x\) and define \(P_t \coloneq \{\phi^{-1}([x_{j-1},
-x_j])\}_{j \in J}\) as the partition of \(I_t\). Since \(\phi\) and
-\(\phi^{-1}\) are both continuous functions over compact sets, it follows that
-they are both uniformly continuous --- thus, taking a sequence of partitions
-of \(I_x\) and the induced partitions of \(I_t\), we have \(\Mesh P_x \to 0\) if
-and only if \(\Mesh P_t \to 0\). Let \(\xi\) be a collection of distinguished
-points of \(P_x\) and \(\tau \coloneq \{\phi^{-1}(\xi_{j})\}_{j \in J}\) be the
-corresponding collection of distinguishes points of \(P_t\). Notice that,
-from construction, we have the following
-\[
-  \sum_{j \in J} f(\xi_{j}) \norm{x_j - x_{j-1}}
-  = \sum_{j \in J} f \phi(\tau_j) \norm{\phi(t_j) - \phi(t_{j-1})}.
-\]
-Since both \(f\) and \(g\) are Riemann integrable (over their respective
-domains), we find that the choice of distinguished points is arbitrary, thus we
-may choose \(\xi\) so that, when applying the mean value theorem to \(\phi\), we
-have \(\phi'(\tau_j) = \frac{\phi(t_j) - \phi(t_{j-1})}{t_j - t_{j-1}}\) ---
-where, as before, \(\tau_j \coloneq \phi^{-1}(\xi_j)\). This way we may rewrite
-the equation as
-\[
-  \sum_{j \in J} f(\xi_{j}) \norm{x_j - x_{j-1}}
-  = \sum_{j \in J} f \phi(\tau_{j}) \norm{\phi'(\tau_{j})}\,
-  \norm{t_j - t_{j - 1}}.
-\]
-Now, taking the limit \(\Mesh P_x \to 0\), which implies \(\Mesh P_t \to 0\), we
-find the integral equality just wanted.
+    All maps \(f, \phi\) and \(\phi'\) are bounded, thus the map \(g: I_t \to \R\)
+    given by \(g(t) \coloneq f \phi(t) \norm{\phi'(t)}\) is bounded. As pointed out
+    in the proof of \cref{cor:existence-right-int-change-variables}, the points of
+    discontinuity of \(g\) are only those lying in the fibers \(\phi^{-1}(x)\),
+    where \(x \in I_x\) is a point of discontinuity of \(f\) --- since \(f\) is
+    Riemann integrable and \(\phi^{-1}\) is a \(C^1\)-isomorphism, the points of
+    discontinuity of \(g\) form a set of Lebesgue measure zero, thus \(g\) is
+    Riemann integrable over \(I_t\). Let \(P_x \coloneq \{[x_{j-1}, x_{j}]\}_{j \in
+    J}\) be a partition of \(I_x\) and define \(P_t \coloneq \{\phi^{-1}([x_{j-1},
+        x_j])\}_{j \in J}\) as the partition of \(I_t\). Since \(\phi\) and
+    \(\phi^{-1}\) are both continuous functions over compact sets, it follows that
+    they are both uniformly continuous --- thus, taking a sequence of partitions
+    of \(I_x\) and the induced partitions of \(I_t\), we have \(\Mesh P_x \to 0\) if
+    and only if \(\Mesh P_t \to 0\). Let \(\xi\) be a collection of distinguished
+    points of \(P_x\) and \(\tau \coloneq \{\phi^{-1}(\xi_{j})\}_{j \in J}\) be the
+    corresponding collection of distinguishes points of \(P_t\). Notice that,
+    from construction, we have the following
+    \[
+        \sum_{j \in J} f(\xi_{j}) \norm{x_j - x_{j-1}}
+        = \sum_{j \in J} f \phi(\tau_j) \norm{\phi(t_j) - \phi(t_{j-1})}.
+    \]
+    Since both \(f\) and \(g\) are Riemann integrable (over their respective
+    domains), we find that the choice of distinguished points is arbitrary, thus we
+    may choose \(\xi\) so that, when applying the mean value theorem to \(\phi\), we
+    have \(\phi'(\tau_j) = \frac{\phi(t_j) - \phi(t_{j-1})}{t_j - t_{j-1}}\) ---
+    where, as before, \(\tau_j \coloneq \phi^{-1}(\xi_j)\). This way we may rewrite
+    the equation as
+    \[
+        \sum_{j \in J} f(\xi_{j}) \norm{x_j - x_{j-1}}
+        = \sum_{j \in J} f \phi(\tau_{j}) \norm{\phi'(\tau_{j})}\,
+        \norm{t_j - t_{j - 1}}.
+    \]
+    Now, taking the limit \(\Mesh P_x \to 0\), which implies \(\Mesh P_t \to 0\), we
+    find the integral equality just wanted.
 \end{proof}
 
 \begin{corollary}
-\label{cor:C1-isomorphism-intervals-upper-lower-integral}
-Let \(\phi: I_t \isoto I_x\) be a \(C^1\)-isomorphism between closed
-\(1\)-dimensional intervals \(I_t, I_x \subseteq \R\), and \(f: I_x \to \R\) be
-a Riemann integrable map over \(I_{x}\). Then we have the following relations
-\[
-  \overline{\int_{I_x}} f(x)\, \diff x
-  = \overline{\int_{I_t}} f \phi(t) \norm{\phi'(t)}\, \diff t
-  \ \text{ and }\
-  \underline{\int_{I_x}} f(x)\, \diff x
-  = \underline{\int_{I_t}} f \phi(t) \norm{\phi'(t)}\, \diff t.
-\]
+    \label{cor:C1-isomorphism-intervals-upper-lower-integral}
+    Let \(\phi: I_t \isoto I_x\) be a \(C^1\)-isomorphism between closed
+    \(1\)-dimensional intervals \(I_t, I_x \subseteq \R\), and \(f: I_x \to \R\) be
+    a Riemann integrable map over \(I_{x}\). Then we have the following relations
+    \[
+        \overline{\int_{I_x}} f(x)\, \diff x
+        = \overline{\int_{I_t}} f \phi(t) \norm{\phi'(t)}\, \diff t
+        \ \text{ and }\
+        \underline{\int_{I_x}} f(x)\, \diff x
+        = \underline{\int_{I_t}} f \phi(t) \norm{\phi'(t)}\, \diff t.
+    \]
 \end{corollary}
 
 \begin{proof}
-We'll verify the first relation, the second may be obtained with an analogous
-proof. Construct partitions \(P_x\) and \(P_t\) for \(I_x\) and \(I_t\),
-respectively, just as we've done for the proof of
-\cref{lem:change-variables-one-dimensional}. Assume for the time being that
-\(f\) is a non-negative map (we'll take hold of the general case just in a
-bit) and let \(M > 0\) be a constant bounding \(f\). Define \(\varepsilon
-\coloneq \sup_{j \in J} \omega(\phi, [t_{j-1}, t_j])\), that is, the supremum
-oscillation of \(\phi\) over each of the intervals of the partition
-\(P_t\). Notice that we have
-{\footnotesize%
-\begin{align*}
-  \sum_{j \in J} \sup_{x \in [x_{j-1}, x_j]} f(x) \norm{x_j - x_{j-1}}
-  &\leq \sum_{j \in J} \sup_{t \in [t_{j-1}, t_j]} f \phi(t)
-    \sup_{t \in [t_{j-1}, t_j]} \norm{\phi'(t)}\, \norm{t_j - t_{j-1}} \\
-  &\leq \sum_{j \in J} \sup_{t \in [t_{j-1}, t_j]}
-    \left[
-    f \phi(t) \sup_{t \in [t_{j-1}, t_j]} \norm{\phi'(t)}
-    \right]
-    \norm{t_j - t_{j-1}} \\
-  &\leq \sum_{j \in J} \sup_{t \in [t_{j-1}, t_j]}
-    f \phi(t) \left( \norm{\phi'(t)} + \varepsilon \right)
-    \norm{t_j - t_{j-1}} \\
-  &\leq \sum_{j \in J} \sup_{t \in [t_{j-1}, t_j]}
-    f \phi(t) \norm{\phi'(t)}\, \norm{t_j - t_{j-1}}
-    + \varepsilon \sum_{j \in J} \sup_{t \in [t_{j-1}, t_j]}
-    f\phi(t) \norm{t_j - t_{j-1}} \\
-  &\leq \sum_{j \in J} \sup_{t \in [t_{j-1}, t_j]}
-    f \phi(t) \norm{\phi'(t)}\, \norm{t_j - t_{j-1}}
-    + \varepsilon M \Vol I_t
-\end{align*}
-}%
-where \(\Vol I_t\) happens to be the length of the interval, since \(I_t
-\subseteq \R\). Since \(\phi\) is uniformly continuous, we find, from the last
-inequalities, that in the limit \(\Mesh P_t \to 0\) (which implies in \(\Mesh
-P_x \to 0\)):
-\[
-  \overline{\int_{I_x}} f(x)\, \diff x
-  \leq \overline{\int_{I_t}} f \phi(t) \norm{\phi'(t)}\, \diff t.
-\]
+    We'll verify the first relation, the second may be obtained with an analogous
+    proof. Construct partitions \(P_x\) and \(P_t\) for \(I_x\) and \(I_t\),
+    respectively, just as we've done for the proof of
+    \cref{lem:change-variables-one-dimensional}. Assume for the time being that
+    \(f\) is a non-negative map (we'll take hold of the general case just in a
+    bit) and let \(M > 0\) be a constant bounding \(f\). Define \(\varepsilon
+    \coloneq \sup_{j \in J} \omega(\phi, [t_{j-1}, t_j])\), that is, the supremum
+    oscillation of \(\phi\) over each of the intervals of the partition
+    \(P_t\). Notice that we have
+        {\footnotesize%
+            \begin{align*}
+                \sum_{j \in J} \sup_{x \in [x_{j-1}, x_j]} f(x) \norm{x_j - x_{j-1}}
+                 & \leq \sum_{j \in J} \sup_{t \in [t_{j-1}, t_j]} f \phi(t)
+                \sup_{t \in [t_{j-1}, t_j]} \norm{\phi'(t)}\, \norm{t_j - t_{j-1}} \\
+                 & \leq \sum_{j \in J} \sup_{t \in [t_{j-1}, t_j]}
+                \left[
+                    f \phi(t) \sup_{t \in [t_{j-1}, t_j]} \norm{\phi'(t)}
+                    \right]
+                \norm{t_j - t_{j-1}}                                               \\
+                 & \leq \sum_{j \in J} \sup_{t \in [t_{j-1}, t_j]}
+                f \phi(t) \left( \norm{\phi'(t)} + \varepsilon \right)
+                \norm{t_j - t_{j-1}}                                               \\
+                 & \leq \sum_{j \in J} \sup_{t \in [t_{j-1}, t_j]}
+                f \phi(t) \norm{\phi'(t)}\, \norm{t_j - t_{j-1}}
+                + \varepsilon \sum_{j \in J} \sup_{t \in [t_{j-1}, t_j]}
+                f\phi(t) \norm{t_j - t_{j-1}}                                      \\
+                 & \leq \sum_{j \in J} \sup_{t \in [t_{j-1}, t_j]}
+                f \phi(t) \norm{\phi'(t)}\, \norm{t_j - t_{j-1}}
+                + \varepsilon M \Vol I_t
+            \end{align*}
+        }%
+    where \(\Vol I_t\) happens to be the length of the interval, since \(I_t
+    \subseteq \R\). Since \(\phi\) is uniformly continuous, we find, from the last
+    inequalities, that in the limit \(\Mesh P_t \to 0\) (which implies in \(\Mesh
+    P_x \to 0\)):
+    \[
+        \overline{\int_{I_x}} f(x)\, \diff x
+        \leq \overline{\int_{I_t}} f \phi(t) \norm{\phi'(t)}\, \diff t.
+    \]
 
-Notice that we can use the same analogous proof for the \(C^1\)-isomorphism
-\(\phi^{-1}\) and the map \(I_t \ni t \mapsto f \phi(t) \norm{\phi'(t)}\), we
-find that
-\[
-  \overline{\int_{I_t}} f \phi(t) \norm{\phi'(t)}\, \diff t
-  \leq \overline{\int_{I_x}} f(x)\, \diff x,
-\]
-thus the equality for the first relation has been established for non-negative
-\(f\). Notice, however, that \(f = \max(f, 0) - \max(-f, 0)\), for any map
-\(f\), thus the equality holds for the general case.
+    Notice that we can use the same analogous proof for the \(C^1\)-isomorphism
+    \(\phi^{-1}\) and the map \(I_t \ni t \mapsto f \phi(t) \norm{\phi'(t)}\), we
+    find that
+    \[
+        \overline{\int_{I_t}} f \phi(t) \norm{\phi'(t)}\, \diff t
+        \leq \overline{\int_{I_x}} f(x)\, \diff x,
+    \]
+    thus the equality for the first relation has been established for non-negative
+    \(f\). Notice, however, that \(f = \max(f, 0) - \max(-f, 0)\), for any map
+    \(f\), thus the equality holds for the general case.
 \end{proof}
 
 \subsection{Change of Variables on Elementary
-\texorpdfstring{\(C^1\)}{C1}-Isomorphisms}
+    \texorpdfstring{\(C^1\)}{C1}-Isomorphisms}
 
 \begin{definition}[Elementary \(C^1\)-isomorphism in \(\R^n\)]
-\label{def:elementary-C1-isomorphism-Rn}
-Let \(\{t_{j}\}_{j=1}^n\) and \(\{x_{j}\}_{j = 1}^n\) be basis for the euclidean
-space \(\R^n\). Given any \(1 \leq k \leq n\), a \(C^1\)-isomorphism \(\phi: D_t
-\isoto D_x\) such that \(\phi_j(t_j) = t_j\) for every \(j \neq k\), and
-\(\phi_k(t_{k}) = x_k\), is said to be a \(k\)-elementary \(C^1\)-isomorphism ---
-that is, the only coordinate of \(\R^n\) changed under the mapping of \(\phi\)
-is the \(k\)-th.
+    \label{def:elementary-C1-isomorphism-Rn}
+    Let \(\{t_{j}\}_{j=1}^n\) and \(\{x_{j}\}_{j = 1}^n\) be basis for the euclidean
+    space \(\R^n\). Given any \(1 \leq k \leq n\), a \(C^1\)-isomorphism \(\phi: D_t
+    \isoto D_x\) such that \(\phi_j(t_j) = t_j\) for every \(j \neq k\), and
+    \(\phi_k(t_{k}) = x_k\), is said to be a \(k\)-elementary \(C^1\)-isomorphism ---
+    that is, the only coordinate of \(\R^n\) changed under the mapping of \(\phi\)
+    is the \(k\)-th.
 \end{definition}
 
 \begin{lemma}
-\label{lem:change-variables-elementary-C1-isomorphism}
-In the context of \cref{thm:change-variables}, if \(\phi\) is an elementary
-\(C^1\)-isomorphism, then the proposition is valid.
+    \label{lem:change-variables-elementary-C1-isomorphism}
+    In the context of \cref{thm:change-variables}, if \(\phi\) is an elementary
+    \(C^1\)-isomorphism, then the proposition is valid.
 \end{lemma}
 
 \begin{proof}
-Let \(\phi\) be an elementary \(C^1\)-isomorphism on the \(k\)-th
-coordinate. Given points \(x, t \in \R^n\), we define \(x' \coloneq (x_j)_{j=1,
-j \neq k}^n \in \R^{n-1}\) and \(t' \coloneq (t_j)_{j=1, j \neq k}^n \in
-\R^{n-1}\). Moreover, for every \(x', t' \in \R^{n-1}\), we define
-\(1\)-dimensional sections of the domains \(D_x\) and \(D_t\), respectively, as
-\begin{gather*}
-  D_{x_k}(x') \coloneq
-  \{p \in D_x \colon p_k = x_k \text{ and } p_j = x'_j \text{ for } j \neq k\}, \\
-  D_{t_k}(t') \coloneq
-  \{p \in D_t \colon p_k = t_k \text{ and } t_j = t'_j \text{ for } j \neq k\}. \\
-\end{gather*}
+    Let \(\phi\) be an elementary \(C^1\)-isomorphism on the \(k\)-th
+    coordinate. Given points \(x, t \in \R^n\), we define \(x' \coloneq (x_j)_{j=1,
+        j \neq k}^n \in \R^{n-1}\) and \(t' \coloneq (t_j)_{j=1, j \neq k}^n \in
+    \R^{n-1}\). Moreover, for every \(x', t' \in \R^{n-1}\), we define
+    \(1\)-dimensional sections of the domains \(D_x\) and \(D_t\), respectively, as
+    \begin{gather*}
+        D_{x_k}(x') \coloneq
+        \{p \in D_x \colon p_k = x_k \text{ and } p_j = x'_j \text{ for } j \neq k\}, \\
+        D_{t_k}(t') \coloneq
+        \{p \in D_t \colon p_k = t_k \text{ and } t_j = t'_j \text{ for } j \neq k\}. \\
+    \end{gather*}
 
-Let \(I_x \subseteq \R^n\) be a closed interval containing \(D_x\) and we let
-\(I_{x'}^0 \times I_{x_k} \times I_{x'}^1 \coloneq I_x\) be the representation
-of \(I_x\) by closed intervals \(I_{x'}^0 \subseteq \R^{k-1}\), \(I_{x_k}
-\subseteq \R\) and \(I_{x'}^1 \subseteq \R^{n-k}\). Analogously, let \(I_t
-\subseteq \R^n\) be a closed interval containing \(D_t\) and let \(I_{t'}^0
-\times I_{t_k} \times I_{t'}^1 \coloneq I_t\) where, as before, \(I_{t'}^0
-\subseteq \R^{k-1}\), \(I_{t_k} \subseteq \R\) and \(I_{t'}^1 \subseteq
-\R^{n-k}\) are all closed intervals. Thus, we have
-{\small
-\begin{align}
-  \nonumber
-  \int_{D_x} f(x)\, \diff x
-  &= \int_{I_x} f_{\chi_{D_x}}(x)\, \diff x \\
-  \label{eq:elem-diff-cv-fubini}
-  &= \int_{I_{x'}^0 \times I_{x'}^1} \left(
-  \int_{I_{x_k}} f_{\chi_{D_x}}(x')\, \diff x_k
-  \right)\, \diff x' \\
-  \label{eq:elem-diff-cv-def}
-  &= \int_{I_{x'}^0 \times I_{x'}^1} \left(
-    \int_{D_{x_k}(x')} f(x)\, \diff x
-    \right)\, \diff x_0' \\
-  \label{eq:elem-diff-cv-one-dim}
-  &= \int_{I_{t'}^0 \times I_{t'}^1} \left(
-    \int_{I_{t_k}} f\phi_{\chi_{D_t}}(t_1', \dots, t_k, \dots, t_n')
-    \norm{\det\left( \Jac \phi_{\chi_{D_t}}(t_1', \dots, t_k, \dots, t_n')
-    \right)}\, \diff t_k \right)\, \diff t' \\
-  \label{eq:elem-diff-cv-fubini-2}
-  &= \int_{I_{t'}^0 \times I_{t_k} \times I_{t'}^1}
-    f \phi_{\chi_{D_t}}(t) \norm{\det(\Jac \phi_{\chi_{D_t}}(t))}\, \diff t
-  = \int_{I_t}
-    f \phi_{\chi_{D_t}}(t) \norm{\det(\Jac \phi_{\chi_{D_t}}(t))}\, \diff t
-  \\
-  \label{eq:elem-diff-cv-def-2}
-  &= \int_{D_t} f \phi(t) \norm{\det(\Jac \phi(t))}\, \diff t
-\end{align}
-}
-where we have the following use of theorems and definitions for each of the
-equations: \cref{eq:elem-diff-cv-fubini} used \cref{thm:fubini},
-\cref{eq:elem-diff-cv-def} used \cref{def:riemann-integral-over-set},
-\cref{eq:elem-diff-cv-one-dim} used \cref{lem:change-variables-one-dimensional},
-\cref{eq:elem-diff-cv-fubini-2} used \cref{thm:fubini}, and, finally,
-\cref{eq:elem-diff-cv-def-2} used \cref{def:riemann-integral-over-set}. This
-proves the lemma.
+    Let \(I_x \subseteq \R^n\) be a closed interval containing \(D_x\) and we let
+    \(I_{x'}^0 \times I_{x_k} \times I_{x'}^1 \coloneq I_x\) be the representation
+    of \(I_x\) by closed intervals \(I_{x'}^0 \subseteq \R^{k-1}\), \(I_{x_k}
+    \subseteq \R\) and \(I_{x'}^1 \subseteq \R^{n-k}\). Analogously, let \(I_t
+    \subseteq \R^n\) be a closed interval containing \(D_t\) and let \(I_{t'}^0
+    \times I_{t_k} \times I_{t'}^1 \coloneq I_t\) where, as before, \(I_{t'}^0
+    \subseteq \R^{k-1}\), \(I_{t_k} \subseteq \R\) and \(I_{t'}^1 \subseteq
+    \R^{n-k}\) are all closed intervals. Thus, we have
+        {\small
+            \begin{align}
+                \nonumber
+                \int_{D_x} f(x)\, \diff x
+                 & = \int_{I_x} f_{\chi_{D_x}}(x)\, \diff x                   \\
+                \label{eq:elem-diff-cv-fubini}
+                 & = \int_{I_{x'}^0 \times I_{x'}^1} \left(
+                \int_{I_{x_k}} f_{\chi_{D_x}}(x')\, \diff x_k
+                \right)\, \diff x'                                            \\
+                \label{eq:elem-diff-cv-def}
+                 & = \int_{I_{x'}^0 \times I_{x'}^1} \left(
+                \int_{D_{x_k}(x')} f(x)\, \diff x
+                \right)\, \diff x_0'                                          \\
+                \label{eq:elem-diff-cv-one-dim}
+                 & = \int_{I_{t'}^0 \times I_{t'}^1} \left(
+                \int_{I_{t_k}} f\phi_{\chi_{D_t}}(t_1', \dots, t_k, \dots, t_n')
+                \norm{\det\left( \Jac \phi_{\chi_{D_t}}(t_1', \dots, t_k, \dots, t_n')
+                \right)}\, \diff t_k \right)\, \diff t'                       \\
+                \label{eq:elem-diff-cv-fubini-2}
+                 & = \int_{I_{t'}^0 \times I_{t_k} \times I_{t'}^1}
+                f \phi_{\chi_{D_t}}(t) \norm{\det(\Jac \phi_{\chi_{D_t}}(t))}\, \diff t
+                = \int_{I_t}
+                f \phi_{\chi_{D_t}}(t) \norm{\det(\Jac \phi_{\chi_{D_t}}(t))}\, \diff t
+                \\
+                \label{eq:elem-diff-cv-def-2}
+                 & = \int_{D_t} f \phi(t) \norm{\det(\Jac \phi(t))}\, \diff t
+            \end{align}
+        }
+    where we have the following use of theorems and definitions for each of the
+    equations: \cref{eq:elem-diff-cv-fubini} used \cref{thm:fubini},
+    \cref{eq:elem-diff-cv-def} used \cref{def:riemann-integral-over-set},
+    \cref{eq:elem-diff-cv-one-dim} used \cref{lem:change-variables-one-dimensional},
+    \cref{eq:elem-diff-cv-fubini-2} used \cref{thm:fubini}, and, finally,
+    \cref{eq:elem-diff-cv-def-2} used \cref{def:riemann-integral-over-set}. This
+    proves the lemma.
 \end{proof}
 
 \begin{proposition}
-\label{prop:decomposition-elementary-C1}
-Let \(f: E \to \R^n\) be a \(C^1\) map on the open set \(E \subseteq \R^n\),
-with \(0 \in E\) --- moreover, we impose that \(f(0) \coloneq 0\) and \(\diff
-f(0): T_0\R^n \to T_0\R^n\) is an \(\R\)-linear isomorphism. Then there exists a
-neighbourhood \(U \subseteq E\) of \(0 \in \R^n\), with mappings:
-\begin{itemize}\setlength\itemsep{0em}
-\item \(\{\phi_{j}: U \to \R^n\}_{j=1}^n\) of elementary \(C^1\)-isomorphisms,
-  such that \(\phi_j(0) = 0\) and \(\diff \phi(0)\) is an \(\R\)-linear
-  isomorphism.
-\item We define, for each \(1 \leq k \leq n\), the map \(\tau_k: \R^n \to \R^n\)
-  as \(\tau_k(\sum_{j=1}^n x_j e_j) \coloneq \sum_{j=1}^n x_{\tau(j)} e_{j}\),
-  where \(\tau \in \Aut_{\Grp}([n])\) is a transposition.
-\end{itemize}
-These maps allow us to write \(f|_U\) as the composition of elementary
-\(C^1\)-isomorphisms and transpositions
-\[
-  f(x) = \tau_1 \dots \tau_{n-1} g_n \dots g_1(x)\text{, for all } x \in U.
-\]
+    \label{prop:decomposition-elementary-C1}
+    Let \(f: E \to \R^n\) be a \(C^1\) map on the open set \(E \subseteq \R^n\),
+    with \(0 \in E\) --- moreover, we impose that \(f(0) \coloneq 0\) and \(\diff
+    f(0): T_0\R^n \to T_0\R^n\) is an \(\R\)-linear isomorphism. Then there exists a
+    neighbourhood \(U \subseteq E\) of \(0 \in \R^n\), with mappings:
+    \begin{itemize}\setlength\itemsep{0em}
+        \item \(\{\phi_{j}: U \to \R^n\}_{j=1}^n\) of elementary \(C^1\)-isomorphisms,
+              such that \(\phi_j(0) = 0\) and \(\diff \phi(0)\) is an \(\R\)-linear
+              isomorphism.
+        \item We define, for each \(1 \leq k \leq n\), the map \(\tau_k: \R^n \to \R^n\)
+              as \(\tau_k(\sum_{j=1}^n x_j e_j) \coloneq \sum_{j=1}^n x_{\tau(j)} e_{j}\),
+              where \(\tau \in \Aut_{\Grp}([n])\) is a transposition.
+    \end{itemize}
+    These maps allow us to write \(f|_U\) as the composition of elementary
+    \(C^1\)-isomorphisms and transpositions
+    \[
+        f(x) = \tau_1 \dots \tau_{n-1} g_n \dots g_1(x)\text{, for all } x \in U.
+    \]
 \end{proposition}
 
 \begin{proof}
-Define, for every \(0 \leq k \leq n\), the map \(p_k: \R^n \to \R^n\) by
-\(p_k(\sum_{j=1}^n x_j e_j) \coloneq \sum_{j=1}^k x_j e_j\).
+    Define, for every \(0 \leq k \leq n\), the map \(p_k: \R^n \to \R^n\) by
+    \(p_k(\sum_{j=1}^n x_j e_j) \coloneq \sum_{j=1}^k x_j e_j\).
 
-We do induction in the following proposition, where \(1 \leq m \leq n - 1\)
-\begin{itemize}\setlength\itemsep{0em}
-\item There exists a neighbourhood \(V_m \subseteq \R^n\) of zero, a map \(f_m
-  \in C^1(V_m)\) --- with \(f_m(0) = 0\) and \(\diff f_m(0)\) linear
-  isomorphism (we define \(f_1 \coloneq f\))--- for which
-  \[
-    p_{m-1} f_m(x) = p_{m-1}(x)\text{, for all } x \in V_m.
-  \]
-\end{itemize}
-Notice that the proposition is clearly true for \(m = 1\), now, we assume
-it's true for \(1 < m < n - 1\) as our hypothesis of induction.
+    We do induction in the following proposition, where \(1 \leq m \leq n - 1\)
+    \begin{itemize}\setlength\itemsep{0em}
+        \item There exists a neighbourhood \(V_m \subseteq \R^n\) of zero, a map \(f_m
+              \in C^1(V_m)\) --- with \(f_m(0) = 0\) and \(\diff f_m(0)\) linear
+              isomorphism (we define \(f_1 \coloneq f\))--- for which
+              \[
+                  p_{m-1} f_m(x) = p_{m-1}(x)\text{, for all } x \in V_m.
+              \]
+    \end{itemize}
+    Notice that the proposition is clearly true for \(m = 1\), now, we assume
+    it's true for \(1 < m < n - 1\) as our hypothesis of induction.
 
-Notice that \(f_m\) is a map that does only change the last \(x_m, \dots,
-x_{n}\) variables of its input, which allows us to write it as
-\[
-  f_{m}(x) = p_{m-1}(x) + \sum_{j=m}^n \alpha_j(x) e_j,
-\]
-where \(\alpha_j: V_m \to \R\) is a \(C^1(V_m)\) map for all \(m \leq j \leq
-n\), moreover, this implies in
-\[
-  \diff f_m(0)(e_m) = \sum_{j = m}^n \partial_{m} \alpha_j(0) e_{j}.
-\]
-Since \(\diff f_{m}(0)\) is an isomorphism, it cannot be the zero-map, thus
-there must exist some \(m \leq k_0 \leq n\) for which \(\partial_m
-\alpha_{k_0}(0) \neq 0\). Define \(\tau_m\) to be the transposition interchanging
-the \(m\)-th and \(k_0\)-th values of its input. Define a map \(\phi_m: V_m \to
-\R^n\) as
-\[
-  \phi_m(x) \coloneq x + (\alpha_{k_0}(x) - x_m) e_m,
-\]
-so that \(\phi_{m} \in C^1(V_m)\), and only changes the \(m\)-th coordinate of
-its input. Moreover \(\diff \phi_m(0)\) is an isomorphism, thus there must
-exist a neighbourhood \(U_m \subseteq V_m\) of zero for which the induced map
-\(\phi_m: U_m \to \phi_m(U_m)\) is a \(C^1\)-isomorphism (which, in fact, is
-elementary). We define \(V_{m + 1} \coloneq \phi_m(U_m)\), and also
-\[
-  f_{m+1}(y) \coloneq \tau_m f_m\phi^{-1}_m(y)\text{, for all } y \in V_{m+1},
-\]
-which makes \(f_{m+1} \in C^{1}(V_{m+1})\), also \(f_{m+1}(0) = 0\), and \(\diff
-f_{m+1}(0)\) is an isomorphism. Notice that, for all \(x \in U_m\) we have
-\begin{align*}
-  p_m f_{m+1}(\phi_m(x))
-  &= p_m \tau_m f_m \phi_m^{-1}(\phi_m(x)) \\
-  &= p_m \tau_m f(x) \\
-  &= p_m \tau_m \left[ p_{m-1}(x) + \sum_{j=m}^n \alpha_j(x) e_j \right] \\
-  &= p_{m} \left[
-    p_{m-1}(x) + \alpha_{k_0}(x) e_m + \dots
-    + \alpha_m(x) e_{k_0} + \dots + \alpha_n(x) e_n
-    \right] \\
-  &= p_{m-1}(x) + \alpha_{k_0}(x) e_m \\
-  &= p_m \phi_m(x).
-\end{align*}
-That is, since \(\phi_m\) is a bijection in \(V_{m+1}\), for any \(y \in
-V_{m+1}\) we have the equality
-\[
-  p_m f_{m+1}(y) = p_m(y).
-\]
-This concludes the proof by induction of our initial statement. We now must show
-that it, in fact, implies the proposition we set out to prove. For that we
-recall the definition of \(f_{m+1}\) and notice that, by taking \(\tau_m\) from
-both sides we obtain \(\tau_m f_{m+1}(y) = \tau_{m} \tau_m f_m \phi_m^{-1}(y) =
-f_m \phi_m^{-1}(y)\) for every \(y \in V_{m+1}\) --- which allow us to write,
-taking \(y = \phi_m(x)\),
-\[
-  f_m(x) = \tau_m f_{m+1}(\phi_m(x)) \text{, for every } x \in U_m.
-\]
-This recursive definition implies in (recalling that we set \(f_1 \coloneq f\)):
-\[
-  f = \tau_1 f_2 \phi_1
-  = \dots
-  = \tau_1 \dots \tau_{n-1} f_n \phi_{n-1} \dots \phi_{1},
-\]
-which is what we wanted since \(f_n\) is an elementary \(C^{1}\)-isomorphism for
-some neighbourhood of zero.
+    Notice that \(f_m\) is a map that does only change the last \(x_m, \dots,
+    x_{n}\) variables of its input, which allows us to write it as
+    \[
+        f_{m}(x) = p_{m-1}(x) + \sum_{j=m}^n \alpha_j(x) e_j,
+    \]
+    where \(\alpha_j: V_m \to \R\) is a \(C^1(V_m)\) map for all \(m \leq j \leq
+    n\), moreover, this implies in
+    \[
+        \diff f_m(0)(e_m) = \sum_{j = m}^n \partial_{m} \alpha_j(0) e_{j}.
+    \]
+    Since \(\diff f_{m}(0)\) is an isomorphism, it cannot be the zero-map, thus
+    there must exist some \(m \leq k_0 \leq n\) for which \(\partial_m
+    \alpha_{k_0}(0) \neq 0\). Define \(\tau_m\) to be the transposition interchanging
+    the \(m\)-th and \(k_0\)-th values of its input. Define a map \(\phi_m: V_m \to
+    \R^n\) as
+    \[
+        \phi_m(x) \coloneq x + (\alpha_{k_0}(x) - x_m) e_m,
+    \]
+    so that \(\phi_{m} \in C^1(V_m)\), and only changes the \(m\)-th coordinate of
+    its input. Moreover \(\diff \phi_m(0)\) is an isomorphism, thus there must
+    exist a neighbourhood \(U_m \subseteq V_m\) of zero for which the induced map
+    \(\phi_m: U_m \to \phi_m(U_m)\) is a \(C^1\)-isomorphism (which, in fact, is
+    elementary). We define \(V_{m + 1} \coloneq \phi_m(U_m)\), and also
+    \[
+        f_{m+1}(y) \coloneq \tau_m f_m\phi^{-1}_m(y)\text{, for all } y \in V_{m+1},
+    \]
+    which makes \(f_{m+1} \in C^{1}(V_{m+1})\), also \(f_{m+1}(0) = 0\), and \(\diff
+    f_{m+1}(0)\) is an isomorphism. Notice that, for all \(x \in U_m\) we have
+    \begin{align*}
+        p_m f_{m+1}(\phi_m(x))
+         & = p_m \tau_m f_m \phi_m^{-1}(\phi_m(x))                               \\
+         & = p_m \tau_m f(x)                                                     \\
+         & = p_m \tau_m \left[ p_{m-1}(x) + \sum_{j=m}^n \alpha_j(x) e_j \right] \\
+         & = p_{m} \left[
+            p_{m-1}(x) + \alpha_{k_0}(x) e_m + \dots
+            + \alpha_m(x) e_{k_0} + \dots + \alpha_n(x) e_n
+        \right]                                                                  \\
+         & = p_{m-1}(x) + \alpha_{k_0}(x) e_m                                    \\
+         & = p_m \phi_m(x).
+    \end{align*}
+    That is, since \(\phi_m\) is a bijection in \(V_{m+1}\), for any \(y \in
+    V_{m+1}\) we have the equality
+    \[
+        p_m f_{m+1}(y) = p_m(y).
+    \]
+    This concludes the proof by induction of our initial statement. We now must show
+    that it, in fact, implies the proposition we set out to prove. For that we
+    recall the definition of \(f_{m+1}\) and notice that, by taking \(\tau_m\) from
+    both sides we obtain \(\tau_m f_{m+1}(y) = \tau_{m} \tau_m f_m \phi_m^{-1}(y) =
+    f_m \phi_m^{-1}(y)\) for every \(y \in V_{m+1}\) --- which allow us to write,
+    taking \(y = \phi_m(x)\),
+    \[
+        f_m(x) = \tau_m f_{m+1}(\phi_m(x)) \text{, for every } x \in U_m.
+    \]
+    This recursive definition implies in (recalling that we set \(f_1 \coloneq f\)):
+    \[
+        f = \tau_1 f_2 \phi_1
+        = \dots
+        = \tau_1 \dots \tau_{n-1} f_n \phi_{n-1} \dots \phi_{1},
+    \]
+    which is what we wanted since \(f_n\) is an elementary \(C^{1}\)-isomorphism for
+    some neighbourhood of zero.
 \end{proof}
 
 \subsection{Proof for the Theorem on Change of Variables}
@@ -1376,96 +1376,96 @@ We now go for our (finally) last lemma before we can get to the proof of the
 main theorem of the section.
 
 \begin{lemma}
-\label{lem:composition-diffeo-change-variables}
-Let \(D_s \xrightarrow{\psi} D_t \xrightarrow{\phi} D_x\) be
-\(C^1\)-isomorphisms. Moreover, let \(f: D_x \to \R\) be a Riemann integrable
-map over \(D_x\). If \cref{thm:change-variables} holds for both \(\psi\), and
-for \(\phi\), then it is also valid for the composition \(\phi \psi: D_s \isoto
-D_x\).
+    \label{lem:composition-diffeo-change-variables}
+    Let \(D_s \xrightarrow{\psi} D_t \xrightarrow{\phi} D_x\) be
+    \(C^1\)-isomorphisms. Moreover, let \(f: D_x \to \R\) be a Riemann integrable
+    map over \(D_x\). If \cref{thm:change-variables} holds for both \(\psi\), and
+    for \(\phi\), then it is also valid for the composition \(\phi \psi: D_s \isoto
+    D_x\).
 \end{lemma}
 
 \begin{proof}
-Notice that, for every \(s \in D_s\), \(\Jac (\phi \psi)(s) = \Jac
-\phi(\psi(s)) \Jac \psi(s)\), then
-\[
-  \det(\Jac {(\phi \psi)}(s)) = \det(\Jac \phi(\psi(s))) \det(\Jac \psi(s)).
-\]
-Therefore we can write
-{\small
-\begin{align*}
-  \int_{D_x} f(x)\, \diff x
-  = \int_{D_t} f \phi(t) \norm{\det(\Jac \phi(t))}\, \diff t
-  &= \int_{D_s} f \phi \psi(s) \norm{\det(\Jac \phi(\psi(s)))}
-  \norm{\det(\Jac \psi(s))}\, \diff s \\
-  &= \int_{D_s} f \phi \psi(s) \norm{\det(\Jac{(\phi \psi)}(s))}\, \diff s,
-\end{align*}
-}
-which proves the proposition.
+    Notice that, for every \(s \in D_s\), \(\Jac (\phi \psi)(s) = \Jac
+    \phi(\psi(s)) \Jac \psi(s)\), then
+    \[
+        \det(\Jac {(\phi \psi)}(s)) = \det(\Jac \phi(\psi(s))) \det(\Jac \psi(s)).
+    \]
+    Therefore we can write
+        {\small
+            \begin{align*}
+                \int_{D_x} f(x)\, \diff x
+                = \int_{D_t} f \phi(t) \norm{\det(\Jac \phi(t))}\, \diff t
+                 & = \int_{D_s} f \phi \psi(s) \norm{\det(\Jac \phi(\psi(s)))}
+                \norm{\det(\Jac \psi(s))}\, \diff s                                         \\
+                 & = \int_{D_s} f \phi \psi(s) \norm{\det(\Jac{(\phi \psi)}(s))}\, \diff s,
+            \end{align*}
+        }
+    which proves the proposition.
 \end{proof}
 
 Now we are ready for the proof of \cref{thm:change-variables}.
 
 \begin{proof}
-Define the compact set \(K_t \coloneq \supp(t \mapsto f \phi(t) \norm{\det(\Jac
-\phi(t))})\), and, for every \(t \in K_t\), let \(U(t) \subseteq D_t\) be a
-neighbourhood of \(t\) with diameter less than \(\delta(t)\), for some
-\(\delta(t) > 0\) --- for which \(\phi|_{U(t)}\) can be decomposed into
-elementary \(C^1\)-isomorphisms. For each \(t \in K_t\), let \(U'(t) \subseteq
-U(t)\) be a neighbourhood of \(t\) with diameter less than \(\delta(t)/2\) ---
-with this, the collection \(\{U'(t)\}_{t \in K_t}\) is a cover for \(K_t\), more
-than that, since \(K_t\) is compact, there exists a finite collection of points
-\(\{t_{j}\}_{j=1}^k\) such that \(\{U'(t_j)\}_{j=1}^k\) is a cover for
-\(K_t\). Define \(\delta \coloneq \frac 1 2 \min(\delta(t_j)_{j=1}^k)\) so that,
-for any set \(A \subseteq D_t\) with closure of diameter less than \(\delta\)
-and non-empty intersection with the support, \(A \cap K_t \neq \emptyset\), the
-given set must be contained in some \(U'(t_m)\) for some \(1 \leq m \leq k\).
+    Define the compact set \(K_t \coloneq \supp(t \mapsto f \phi(t) \norm{\det(\Jac
+            \phi(t))})\), and, for every \(t \in K_t\), let \(U(t) \subseteq D_t\) be a
+    neighbourhood of \(t\) with diameter less than \(\delta(t)\), for some
+    \(\delta(t) > 0\) --- for which \(\phi|_{U(t)}\) can be decomposed into
+    elementary \(C^1\)-isomorphisms. For each \(t \in K_t\), let \(U'(t) \subseteq
+    U(t)\) be a neighbourhood of \(t\) with diameter less than \(\delta(t)/2\) ---
+    with this, the collection \(\{U'(t)\}_{t \in K_t}\) is a cover for \(K_t\), more
+    than that, since \(K_t\) is compact, there exists a finite collection of points
+    \(\{t_{j}\}_{j=1}^k\) such that \(\{U'(t_j)\}_{j=1}^k\) is a cover for
+    \(K_t\). Define \(\delta \coloneq \frac 1 2 \min(\delta(t_j)_{j=1}^k)\) so that,
+    for any set \(A \subseteq D_t\) with closure of diameter less than \(\delta\)
+    and non-empty intersection with the support, \(A \cap K_t \neq \emptyset\), the
+    given set must be contained in some \(U'(t_m)\) for some \(1 \leq m \leq k\).
 
-Let \(I \subseteq \R^n\) be an interval containing \(D_t\), and \(P \coloneq
-\{I_{s}\}_{s \in S}\) a partition of \(I\) with \(\Mesh P < \min(\delta, d)\)
---- where \(d \coloneq \inf_{(a, b) \in \partial K_t \times \partial D_t}
-\norm{b - a}\) is the minimal distance between the boundaries of \(K_t\) and
-\(D_{t}\). Let \(S'\) be the index set such that \(I_s \cap K_t \neq \emptyset\)
-if and only if \(s \in S'\) --- the set indices of intervals of the partition
-\(P\) with non-empty intersection with the support. Then
-\begin{align*}
-  \int_{D_t} f\phi(t) \norm{\det(\Jac \phi(t))}\, \diff t
-  &= \int_I f \phi_{\chi_{D_t}}(t)
-  \norm{\det(\Jac \phi_{\chi_{D_t}}(t))}\, \diff t \\
-  &= \sum_{s' \in S'} \int_{I_{s'}} f \phi(t) \norm{\det(\Jac \phi(t))}\, \diff t.
-\end{align*}
+    Let \(I \subseteq \R^n\) be an interval containing \(D_t\), and \(P \coloneq
+    \{I_{s}\}_{s \in S}\) a partition of \(I\) with \(\Mesh P < \min(\delta, d)\)
+    --- where \(d \coloneq \inf_{(a, b) \in \partial K_t \times \partial D_t}
+    \norm{b - a}\) is the minimal distance between the boundaries of \(K_t\) and
+    \(D_{t}\). Let \(S'\) be the index set such that \(I_s \cap K_t \neq \emptyset\)
+    if and only if \(s \in S'\) --- the set indices of intervals of the partition
+    \(P\) with non-empty intersection with the support. Then
+    \begin{align*}
+        \int_{D_t} f\phi(t) \norm{\det(\Jac \phi(t))}\, \diff t
+         & = \int_I f \phi_{\chi_{D_t}}(t)
+        \norm{\det(\Jac \phi_{\chi_{D_t}}(t))}\, \diff t                                   \\
+         & = \sum_{s' \in S'} \int_{I_{s'}} f \phi(t) \norm{\det(\Jac \phi(t))}\, \diff t.
+    \end{align*}
 
-Since \(I_s \in P\) are Jordan-measurable sets, so is their image \(\phi(I_s)
-\subseteq D_x\) --- this follows from
-\cref{lem:C1-isomorphisms-preserve-measure-properties}. Define the
-Jordan-measurable set \(E \coloneq \bigcup_{s' \in S'} I_{s'}\) so that, by our
-construction, given any \(x \in \supp f\), let \(t \coloneq \phi^{-1}(x)\), then
-\(f\phi(t) \norm{\det(\Jac \phi(t))} \neq 0\) thus \(t \in K_t\) --- therefore,
-\(t \in \bigcup_{s' \in S'} I_{s'}\), which implies in \(x \in E\), that is,
-\(\supp f \subseteq E\). Notice that, if \(I_x \subseteq \R^n\) is an interval
-containing \(D_x\), then
-\begin{align}
-  \nonumber
-  \int_{D_x} f(x)\, \diff x
-  &= \int_{I_x} f_{\chi_{D_x}}(x)\, \diff x
-  = \underbrace{\int_{I_x \setminus E} f_{\chi_{D_x}}(x)\, \diff x}_0
-  + \int_E f_{\chi_{D_x}}(x)\, \diff x \\
-  \label{eq:cv-diff-1}
-  &= \int_E f(x)\, \diff x
-  = \sum_{s' \in S'} \int_{\phi(I_{s'})} f(x)\, \diff x.
-\end{align}
-Since \(\phi\) is decomposed into elementary \(C^1\)-isomorphisms in
-any neighbourhood \(U'(t)\), for \(t \in K_t\), it follows that \(\phi\)
-decomposes into elementary \(C^1\)-isomorphisms in every interval \(I_{s'}\) for
-\(s' \in S'\) --- hence, by means of
-\cref{lem:change-variables-elementary-C1-isomorphism} we conclude that, for
-every \(s' \in S'\)
-\begin{equation}
-\label{eq:cv-diff-2}
-  \int_{\phi(I_{s'})} f(x)\, \diff x = \int_{I_{s'}} f\phi(t) \norm{\det(\Jac
-    \phi(t))}\, \diff t.
-\end{equation}
-Thus, merging both \cref{eq:cv-diff-1} and \cref{eq:cv-diff-2}, we obtain the
-desired equality.
+    Since \(I_s \in P\) are Jordan-measurable sets, so is their image \(\phi(I_s)
+    \subseteq D_x\) --- this follows from
+    \cref{lem:C1-isomorphisms-preserve-measure-properties}. Define the
+    Jordan-measurable set \(E \coloneq \bigcup_{s' \in S'} I_{s'}\) so that, by our
+    construction, given any \(x \in \supp f\), let \(t \coloneq \phi^{-1}(x)\), then
+    \(f\phi(t) \norm{\det(\Jac \phi(t))} \neq 0\) thus \(t \in K_t\) --- therefore,
+    \(t \in \bigcup_{s' \in S'} I_{s'}\), which implies in \(x \in E\), that is,
+    \(\supp f \subseteq E\). Notice that, if \(I_x \subseteq \R^n\) is an interval
+    containing \(D_x\), then
+    \begin{align}
+        \nonumber
+        \int_{D_x} f(x)\, \diff x
+         & = \int_{I_x} f_{\chi_{D_x}}(x)\, \diff x
+        = \underbrace{\int_{I_x \setminus E} f_{\chi_{D_x}}(x)\, \diff x}_0
+        + \int_E f_{\chi_{D_x}}(x)\, \diff x        \\
+        \label{eq:cv-diff-1}
+         & = \int_E f(x)\, \diff x
+        = \sum_{s' \in S'} \int_{\phi(I_{s'})} f(x)\, \diff x.
+    \end{align}
+    Since \(\phi\) is decomposed into elementary \(C^1\)-isomorphisms in
+    any neighbourhood \(U'(t)\), for \(t \in K_t\), it follows that \(\phi\)
+    decomposes into elementary \(C^1\)-isomorphisms in every interval \(I_{s'}\) for
+    \(s' \in S'\) --- hence, by means of
+    \cref{lem:change-variables-elementary-C1-isomorphism} we conclude that, for
+    every \(s' \in S'\)
+    \begin{equation}
+        \label{eq:cv-diff-2}
+        \int_{\phi(I_{s'})} f(x)\, \diff x = \int_{I_{s'}} f\phi(t) \norm{\det(\Jac
+            \phi(t))}\, \diff t.
+    \end{equation}
+    Thus, merging both \cref{eq:cv-diff-1} and \cref{eq:cv-diff-2}, we obtain the
+    desired equality.
 \end{proof}
 
 

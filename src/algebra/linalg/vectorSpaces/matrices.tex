@@ -1,9 +1,9 @@
 \section{Matrices}
 
 \begin{definition}[Matrix]
-   We define a \(m \times n\) matrix with entries in \(k\) as morphism \(k^n \to
-   k^m\) in the category \(\Vect_k\), that is, regarding \(k^n, k^m\) as
-   \(k\)-vector spaces.
+    We define a \(m \times n\) matrix with entries in \(k\) as morphism \(k^n \to
+    k^m\) in the category \(\Vect_k\), that is, regarding \(k^n, k^m\) as
+    \(k\)-vector spaces.
 \end{definition}
 
 \subsection{Classifying Matrices}
@@ -13,48 +13,48 @@ all of the other elements of the tuple are \(0 \in k\), moreover, if \(e_j \in
 k^n\) it is an \(n\)-tuple. Let the morphism \(\varphi \in \Hom_{\Vect_k}
 (k^n, k^m)\) and define for all \(1 \leq j \leq n\) the image
 \[
-   \varphi(e_j) \coloneq (t_{1 j}, t_{2 j}, \dots, t_{mj}) = \sum_{i = 1}^m t_{ij} e_i
-   \in k^m.
+    \varphi(e_j) \coloneq (t_{1 j}, t_{2 j}, \dots, t_{mj}) = \sum_{i = 1}^m t_{ij} e_i
+    \in k^m.
 \]
 
 We now prove that in fact the \(mn\) elements \(t_{ij} \in k\) determine
 completely the behaviour of \(\varphi\), since for any element \((a_j)_{j=1}^n
 \in k^n\) we have
 \[
-   \varphi((a_j)_{j=1}^n) = \varphi \Bigg( \sum_{j=1}^n a_j e_j \Bigg) =
-   \sum_{j=1}^n a_j \varphi(e_j) = \sum_{j=1}^n \left( \sum_{i=1}^m a_j t_{i j}
-   e_i\right) \in k^m.
+    \varphi((a_j)_{j=1}^n) = \varphi \Bigg( \sum_{j=1}^n a_j e_j \Bigg) =
+    \sum_{j=1}^n a_j \varphi(e_j) = \sum_{j=1}^n \left( \sum_{i=1}^m a_j t_{i j}
+    e_i\right) \in k^m.
 \]
 Moreover, it can trivially be seen that the mapping \((a_j)_{j=1}^n \mapsto
 \sum_{j=1}^n \sum_{i=1}^m a_j t_{ij} e_i\)is indeed a morphism of vector
 spaces since, for another \((b_j)_{j=1}^n \in k^n\), we have
 \[
-   \varphi((a_j + b_j)_{j=1}^n) = \varphi((a_j)_{j=1}^n) +
-   \varphi((b_j)_{j=1}^n)
+    \varphi((a_j + b_j)_{j=1}^n) = \varphi((a_j)_{j=1}^n) +
+    \varphi((b_j)_{j=1}^n)
 \]
 also, given \(c \in k\) we have
 \[
-   \varphi((c a_j)_{j=1}^n) = c\varphi((a_j)_{j=1}^n).
+    \varphi((c a_j)_{j=1}^n) = c\varphi((a_j)_{j=1}^n).
 \]
 
 Since the matrix \(k^n \to k^m\) can be identified and completely determined
 with elements \((t_{ij})_{i, j}\) where \(1 \leq i \leq m\) and \(1 \leq j \leq
 n\), then we visually can represent it by
 \[
-   \varphi =
-   \begin{pmatrix}
-      t_{1 1} & \dots & t_{1 n} \\
-      \vdots & \ddots & \vdots \\
-      t_{m 1} & \dots & t_{m n}
-   \end{pmatrix}
+    \varphi =
+    \begin{pmatrix}
+        t_{1 1} & \dots  & t_{1 n} \\
+        \vdots  & \ddots & \vdots  \\
+        t_{m 1} & \dots  & t_{m n}
+    \end{pmatrix}
 \]
 Also, we can regard the fact that \(\varphi((a_i)_{i=1}^n) = (b_i)_{i=1}^m\)
 visually as a system of equations
- \[
+\[
     \begin{pmatrix}
-      t_{1 1} & \dots & t_{1 n} \\
-      \vdots & \ddots & \vdots \\
-      t_{m 1} & \dots & t_{m n}
+        t_{1 1} & \dots  & t_{1 n} \\
+        \vdots  & \ddots & \vdots  \\
+        t_{m 1} & \dots  & t_{m n}
     \end{pmatrix}
     \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix}
     =
@@ -62,66 +62,66 @@ visually as a system of equations
 \]
 
 \begin{definition}[Square diagonal Matrix]
-  \label{def: square diagonal matrix}
-  We define a \(n \times n\) matrix \(A\) to be diagonal if for all \(i \neq j\)
-  indices we have \(a_{ij} = 0\).
+    \label{def: square diagonal matrix}
+    We define a \(n \times n\) matrix \(A\) to be diagonal if for all \(i \neq j\)
+    indices we have \(a_{ij} = 0\).
 \end{definition}
 
 \begin{definition}[Matrix for a linear map]
-  \label{def: matrix for a linear map}
-  Suppose \(V \iso k^n\) and \(W \iso k^m\) are \(k\)-vector spaces and \(L : V
-  \to W\) is a linear morphism. Let also \(\{v_j\}_{j=1}^n\) and
-  \(\{w_i\}_{i=1}^m\) be basis for the respective given finite dimensional
-  vector spaces. By the isomorphism, we can represent \(L\) as a matrix \(k^n
-  \to k^m\) whose components \(t_{i, j}\) with \(1 \leq i \leq m\) and \(1 \leq
-  i \leq n\) are defined with respect to the given basis as
-  \[
-    L v_j = \sum_{i=1}^m t_{i, j} w_i
-  \]
+    \label{def: matrix for a linear map}
+    Suppose \(V \iso k^n\) and \(W \iso k^m\) are \(k\)-vector spaces and \(L : V
+    \to W\) is a linear morphism. Let also \(\{v_j\}_{j=1}^n\) and
+    \(\{w_i\}_{i=1}^m\) be basis for the respective given finite dimensional
+    vector spaces. By the isomorphism, we can represent \(L\) as a matrix \(k^n
+    \to k^m\) whose components \(t_{i, j}\) with \(1 \leq i \leq m\) and \(1 \leq
+    i \leq n\) are defined with respect to the given basis as
+    \[
+        L v_j = \sum_{i=1}^m t_{i, j} w_i
+    \]
 \end{definition}
 
 \subsection{Matrix multiplication}
 
 \begin{definition}[Multiplication of matrices]\label{def: matrix multiplication}
-  Let \(A = [a_{i,j}] : k^n \to k^m\) and \(B = [b_{i, j}] : k^\ell \to k^n\) be
-  matrices. Then, the product of the matrices \(A\) and \(B\) is defined as
-  \(AB : k^n \to k^\ell\) with coefficients
-  \[
-    c_{i, j} = \sum_{k=1}^n a_{i, k} b_{k, j}
-  \]
+    Let \(A = [a_{i,j}] : k^n \to k^m\) and \(B = [b_{i, j}] : k^\ell \to k^n\) be
+    matrices. Then, the product of the matrices \(A\) and \(B\) is defined as
+    \(AB : k^n \to k^\ell\) with coefficients
+    \[
+        c_{i, j} = \sum_{k=1}^n a_{i, k} b_{k, j}
+    \]
 \end{definition}
 
 \begin{proposition}[Composition of morphisms matrix]
-  \label{prop: matrix of the composition}
-  Let \(k\)-linear morphisms \(V \xrightarrow g W \xrightarrow f L\) of finite
-  \(k\)-dimensional vector spaces, and choose basis \(\{v_j\}, \{w_k\}, \{l_i\}\)
-  to be basis of \(V, W, L\) respectively, and let \(A_g\) and \(A_f\) be the
-  matrix representation of the morphisms \(g\) and \(f\) with respect to the
-  given basis. Then the matrix representation of the composition \(f  g: V
-  \to L\) is given by \(A_{f  g} = A_f A_g\).
+    \label{prop: matrix of the composition}
+    Let \(k\)-linear morphisms \(V \xrightarrow g W \xrightarrow f L\) of finite
+    \(k\)-dimensional vector spaces, and choose basis \(\{v_j\}, \{w_k\}, \{l_i\}\)
+    to be basis of \(V, W, L\) respectively, and let \(A_g\) and \(A_f\) be the
+    matrix representation of the morphisms \(g\) and \(f\) with respect to the
+    given basis. Then the matrix representation of the composition \(f  g: V
+    \to L\) is given by \(A_{f  g} = A_f A_g\).
 \end{proposition}
 
 \begin{proof}
-  Let \(A_f \coloneq [a_{i, k}]\), and \(A_g \coloneq [b_{k, j}]\), and \(A_{f  g} =
-  [c_{i, j}]\). Then, since from definition we have \(g(v_j) = \sum_k b_{k, j}
-  w_k\), hence
-  \[
-    f  g(v_j) =
-    \sum_k b_{k, j} f(w_k) =
-    \sum_k \bigg( b_{k, j} \bigg( \sum_i a_{i, k} l_i \bigg) \bigg)
-    = \sum_i \bigg( \sum_k a_{i, k} b_{k, j} \bigg) l_i
-    = \sum_i c_{i, j} l_i
-  \]
-  thus \(c_{i, j} = \sum_k a_k{i, k} b_{k, j}\) and thus \(A_{f  g} = A_f
-  A_g\) as wanted.
+    Let \(A_f \coloneq [a_{i, k}]\), and \(A_g \coloneq [b_{k, j}]\), and \(A_{f  g} =
+    [c_{i, j}]\). Then, since from definition we have \(g(v_j) = \sum_k b_{k, j}
+    w_k\), hence
+    \[
+        f  g(v_j) =
+        \sum_k b_{k, j} f(w_k) =
+        \sum_k \bigg( b_{k, j} \bigg( \sum_i a_{i, k} l_i \bigg) \bigg)
+        = \sum_i \bigg( \sum_k a_{i, k} b_{k, j} \bigg) l_i
+        = \sum_i c_{i, j} l_i
+    \]
+    thus \(c_{i, j} = \sum_k a_k{i, k} b_{k, j}\) and thus \(A_{f  g} = A_f
+    A_g\) as wanted.
 \end{proof}
 
 \begin{definition}[Conjugation]\label{def: matrix conjugation}
-  Let \(M_n(k)\) be the collection of matrices \(k^n \to k^n\). We define a
-  matrix conjugation as the linear morphism \(M_n(k) \to M_n(k)\) with the
-  mapping \(A \mapsto B^{-1} A B\), where \(B\) is an invertible matrix.
+    Let \(M_n(k)\) be the collection of matrices \(k^n \to k^n\). We define a
+    matrix conjugation as the linear morphism \(M_n(k) \to M_n(k)\) with the
+    mapping \(A \mapsto B^{-1} A B\), where \(B\) is an invertible matrix.
 \end{definition}
 
 \begin{proposition}
-  Every conjugation is an automorphism of the matrix algebra \(M_n(k)\).
+    Every conjugation is an automorphism of the matrix algebra \(M_n(k)\).
 \end{proposition}

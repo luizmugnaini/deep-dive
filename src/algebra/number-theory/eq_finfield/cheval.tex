@@ -1,100 +1,100 @@
 \section{Chevalley's Theorem}
 
 \begin{remark}
-   We'll use in this section: \(k\) is a finite field with \(q\) elements.
+    We'll use in this section: \(k\) is a finite field with \(q\) elements.
 \end{remark}
 
 
 \begin{lemma}
-   Let \(f(x_1,\dots,x_n) \in k[x_1, \dots, x_n]\) be a polynomial with degree
-   less than  \(q\) in each of its variables. Then if \(f\) vanishes on all of
-   \(\A^n(k)\), it is a zero polynomial.
+    Let \(f(x_1,\dots,x_n) \in k[x_1, \dots, x_n]\) be a polynomial with degree
+    less than  \(q\) in each of its variables. Then if \(f\) vanishes on all of
+    \(\A^n(k)\), it is a zero polynomial.
 \end{lemma}
 
 \begin{proof}
-   Induction on \(n\). For \(n = 1\) we have that the polynomial is of one
-   variable and from hypothesis it vanishes on all \(\A^1(k) = k\) thus it has
-   \(|k| = q \) roots, but then since \(n < q\) from hypothesis, then \(f = 0\).
-   Suppose now that the statement is true for \(n-1\). Then, if \(f\) has \(n\)
-   variables, we can write it as
-   \[
-      f(x_1, \dots, x_n) = \sum_{i=0}^{q-1} g_i(x_1, \dots, x_{n-1}) x_n^i
-   \] 
-   where \(g \in k[x_1, \dots, x_{n-1}]\). Notice that since from induction
-   hypothesis \(\forall a = (a_1, \dots, a_{n-1}) \in \A^{n-1}(k)\) we have
-   \(g_i(a) = 0\) for any \(0 \leqslant i \leqslant q-1\) then we conclude that
-   \(\sum_{i=0}^{q-1}g_i(x_1,\dots,x_{n-1})x_n^i\) have \(q\) roots and  degree
-   at most \(q-1\), therefore we conclude that it must be identical to the zero
-   polynomial, which implies that \(f = 0\).
+    Induction on \(n\). For \(n = 1\) we have that the polynomial is of one
+    variable and from hypothesis it vanishes on all \(\A^1(k) = k\) thus it has
+    \(|k| = q \) roots, but then since \(n < q\) from hypothesis, then \(f = 0\).
+    Suppose now that the statement is true for \(n-1\). Then, if \(f\) has \(n\)
+    variables, we can write it as
+    \[
+        f(x_1, \dots, x_n) = \sum_{i=0}^{q-1} g_i(x_1, \dots, x_{n-1}) x_n^i
+    \]
+    where \(g \in k[x_1, \dots, x_{n-1}]\). Notice that since from induction
+    hypothesis \(\forall a = (a_1, \dots, a_{n-1}) \in \A^{n-1}(k)\) we have
+    \(g_i(a) = 0\) for any \(0 \leqslant i \leqslant q-1\) then we conclude that
+    \(\sum_{i=0}^{q-1}g_i(x_1,\dots,x_{n-1})x_n^i\) have \(q\) roots and  degree
+    at most \(q-1\), therefore we conclude that it must be identical to the zero
+    polynomial, which implies that \(f = 0\).
 \end{proof}
 
 \begin{lemma}
-   Each polynomial \(f \in k[x_1, \dots, x_n]\) is equivalent (i.e. \(\forall a
-   \in \A^n(k),\ f(a) = g(a) \Rightarrow f \sim g\)) to a reduced polynomial
-   (i.e. all variables with degree less than \(q\)).
+    Each polynomial \(f \in k[x_1, \dots, x_n]\) is equivalent (i.e. \(\forall a
+    \in \A^n(k),\ f(a) = g(a) \Rightarrow f \sim g\)) to a reduced polynomial
+    (i.e. all variables with degree less than \(q\)).
 \end{lemma}
 
 \begin{proof}
-   First we analyse the one variable case and then we generalize. Let \(m  \in
-   \mathbb{Z}_{> 0}\) and define \(\ell \in \mathbb{Z}_{>0}\) to be the minimal
-   element with the property that \(x^m \sim x^\ell\). Suppose, for the sake of
-   contradiction, that \(\ell \geqslant q\) and that \(\exists r,s \in
-   \mathbb{Z} : \ell = qs + r\) where \(0 \leqslant r < q\), therefore we have
-   that \( x^\ell = (x^q)^sx^r \sim x^{s+r}\) but \(x^\ell \sim x^m\) thus from
-   transitivity \(x^{s+r} \sim x^m\) and also  \(s+r < \ell\) thus  \(\ell\) is
-   not minimal \(\lightning\). Thus \(\ell < q\).
+    First we analyse the one variable case and then we generalize. Let \(m  \in
+    \mathbb{Z}_{> 0}\) and define \(\ell \in \mathbb{Z}_{>0}\) to be the minimal
+    element with the property that \(x^m \sim x^\ell\). Suppose, for the sake of
+    contradiction, that \(\ell \geqslant q\) and that \(\exists r,s \in
+    \mathbb{Z} : \ell = qs + r\) where \(0 \leqslant r < q\), therefore we have
+    that \( x^\ell = (x^q)^sx^r \sim x^{s+r}\) but \(x^\ell \sim x^m\) thus from
+    transitivity \(x^{s+r} \sim x^m\) and also  \(s+r < \ell\) thus  \(\ell\) is
+    not minimal \(\lightning\). Thus \(\ell < q\).
 
-   For the general case we proceed analogously, just take any set of positive
-   powers \(i_k\) and define \(j_k\) to be the minimal such that \(\prod_{k=1}^n
-   x_k^{i_k} \sim \prod_{k=1}^n x_k^{j_k}\), then the same conclusion can be
-   obtained for each power, that is, \(j_k < q\).
+    For the general case we proceed analogously, just take any set of positive
+    powers \(i_k\) and define \(j_k\) to be the minimal such that \(\prod_{k=1}^n
+    x_k^{i_k} \sim \prod_{k=1}^n x_k^{j_k}\), then the same conclusion can be
+    obtained for each power, that is, \(j_k < q\).
 \end{proof}
 
 \begin{theorem}[Chevalley]
-   Let \(f \in k[x_1, \dots x_n]\) be a polynomial with degree \(n\) variables
-   and suppose that \(f\) satisfies both
-   \begin{enumerate}[i.]
-      \item \(f(0, \dots, 0) := 0\).
-      \item The number of variables of \(f\) is strictly greater than the
-         degree of \(f\), that is, \(n > \deg(f)\).
-   \end{enumerate}
-   Then \(f\) has at least two zeros in \(\A^n(k)\).
+    Let \(f \in k[x_1, \dots x_n]\) be a polynomial with degree \(n\) variables
+    and suppose that \(f\) satisfies both
+    \begin{enumerate}[i.]
+        \item \(f(0, \dots, 0) := 0\).
+        \item The number of variables of \(f\) is strictly greater than the
+              degree of \(f\), that is, \(n > \deg(f)\).
+    \end{enumerate}
+    Then \(f\) has at least two zeros in \(\A^n(k)\).
 \end{theorem}
 
 \begin{proof}
-   Suppose, for the sake of contradiction, that \((0, \dots, 0) \in \A^n(k)\) is
-   the only zero of \(f\). Since \(|k| = q\) then the polynomial \(1 - f(x_1,
-   \dots, x_n)^{q-1}\) has value \(1\) at the origin \((0, \dots, 0)\) and zero
-   elsewhere. Notice that trivially the polynomial \(\prod_{i=1}^{n}
-   (1-x_i^{q-1})\) does also behave like that. We can now create a polynomial
-   which vanishes for all choices of points in \(\A^n(k)\), that is, 
-   \[
-      1 - f(x_1,\dots,x_n)^{q-1} - \prod_{i=1}^{n} (1 - x_i^{q-1})
-   \]
-   Now we can use the above lemma to define a reduced polynomial \(k[x_1, \dots,
-   x_n] \ni g \sim 1 - f(x_1, \dots, x_n)^{q-1}\) so that its degree \(\deg_i(g)
-   < q\) for all \(1 \leqslant i \leqslant n\) and since it has the same values
-   of \(1 - f^{q-1}\) then \(g(x_1, \dots, x_n) - \prod_{i=1}^n(1-x_i^{q-1})\)
-   also vanishes on all points of \(\A^n(k)\) and has degree less than \(q\).
-   Notice that since this polynomial is identically zero, then we have \(g =
-   \prod_{i=1}^n (1 - x_i^{q-1})\) and thus \(\deg(g) = n(q-1)\). Since \(g\)
-   is, by construction, reduced, then it must be true that \(\deg(g) = n(q-1)
-   \leqslant \deg(1 - f^{q-1}) = (q-1)\deg(f)\) but then we run straight to a
-   contradiction, that is \(n < \deg(f)\). The fact that made the contradiction
-   was that \(f\) had only one zero, thus it cannot be true and then we are done
-   with the theorem.
+    Suppose, for the sake of contradiction, that \((0, \dots, 0) \in \A^n(k)\) is
+    the only zero of \(f\). Since \(|k| = q\) then the polynomial \(1 - f(x_1,
+    \dots, x_n)^{q-1}\) has value \(1\) at the origin \((0, \dots, 0)\) and zero
+    elsewhere. Notice that trivially the polynomial \(\prod_{i=1}^{n}
+    (1-x_i^{q-1})\) does also behave like that. We can now create a polynomial
+    which vanishes for all choices of points in \(\A^n(k)\), that is,
+    \[
+        1 - f(x_1,\dots,x_n)^{q-1} - \prod_{i=1}^{n} (1 - x_i^{q-1})
+    \]
+    Now we can use the above lemma to define a reduced polynomial \(k[x_1, \dots,
+            x_n] \ni g \sim 1 - f(x_1, \dots, x_n)^{q-1}\) so that its degree \(\deg_i(g)
+    < q\) for all \(1 \leqslant i \leqslant n\) and since it has the same values
+    of \(1 - f^{q-1}\) then \(g(x_1, \dots, x_n) - \prod_{i=1}^n(1-x_i^{q-1})\)
+    also vanishes on all points of \(\A^n(k)\) and has degree less than \(q\).
+    Notice that since this polynomial is identically zero, then we have \(g =
+    \prod_{i=1}^n (1 - x_i^{q-1})\) and thus \(\deg(g) = n(q-1)\). Since \(g\)
+    is, by construction, reduced, then it must be true that \(\deg(g) = n(q-1)
+    \leqslant \deg(1 - f^{q-1}) = (q-1)\deg(f)\) but then we run straight to a
+    contradiction, that is \(n < \deg(f)\). The fact that made the contradiction
+    was that \(f\) had only one zero, thus it cannot be true and then we are done
+    with the theorem.
 \end{proof}
 
 \begin{corollary}
-   Let \(h(y) \in k[x_0, \dots, x_n]\) be a homogeneous polynomial of degree \(d
-   > 0\). If \(n + 1 > d\) then the projective hypersurface \(\overline{H}_h(k)\)
-   is non empty.
+    Let \(h(y) \in k[x_0, \dots, x_n]\) be a homogeneous polynomial of degree \(d
+    > 0\). If \(n + 1 > d\) then the projective hypersurface \(\overline{H}_h(k)\)
+    is non empty.
 \end{corollary}
 
 \begin{proof}
-   Obviously \((0, \dots, 0)\) is a zero, from the homogeneity property. From
-   Chevalley's theorem we conclude that since the number of variables is greater
-   than the degree of  \(h\), then there exists a non-zero point \(a = (a_0, \dots,
-   a_n) \in \A^{n+1}(k)\) such that \(h(a) = 0\), also, from the definition of
-   the projective hypersurface we have that \([a]  \in \overline{H}_h(k)\).
+    Obviously \((0, \dots, 0)\) is a zero, from the homogeneity property. From
+    Chevalley's theorem we conclude that since the number of variables is greater
+    than the degree of  \(h\), then there exists a non-zero point \(a = (a_0, \dots,
+    a_n) \in \A^{n+1}(k)\) such that \(h(a) = 0\), also, from the definition of
+    the projective hypersurface we have that \([a]  \in \overline{H}_h(k)\).
 \end{proof}

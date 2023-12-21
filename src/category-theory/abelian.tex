@@ -1,938 +1,938 @@
 \section{\texorpdfstring{\(k\)}{k}-Linear Categories}
 
 \begin{definition}[\(k\)-linear category]
-\label{def:k-linear-category}
-Let \(k\) be a commutative ring. A category \(\cat C\) is said to be
-\(k\)-linear if:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item For any pair of objects \(X, Y \in \cat C\) the morphism collection
-  \(\Mor_{\cat C}(X, Y)\) is a \(k\)-module.
+    \label{def:k-linear-category}
+    Let \(k\) be a commutative ring. A category \(\cat C\) is said to be
+    \(k\)-linear if:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item For any pair of objects \(X, Y \in \cat C\) the morphism collection
+              \(\Mor_{\cat C}(X, Y)\) is a \(k\)-module.
 
-\item Consider the following diagram in \(\cat C\):
-  \[
-  \begin{tikzcd}
-  X \ar[r, "u"]
-  &A \ar[r, shift left, "f"] \ar[r, shift right, "g"']
-  &B \ar[r, "v"]
-  &Y
-  \end{tikzcd}
-  \]
-  Then the following relations are satisfied, which mimic the familiar
-  distributive: given any two scalars \(r, t \in k\) we have equalities
-  \begin{align*}
-    v (r f + t g) &= r (v f) + t (v g), \\
-    (r f + t g) u &= r (f u) + t (g u).
-  \end{align*}
+        \item Consider the following diagram in \(\cat C\):
+              \[
+                  \begin{tikzcd}
+                      X \ar[r, "u"]
+                      &A \ar[r, shift left, "f"] \ar[r, shift right, "g"']
+                      &B \ar[r, "v"]
+                      &Y
+                  \end{tikzcd}
+              \]
+              Then the following relations are satisfied, which mimic the familiar
+              distributive: given any two scalars \(r, t \in k\) we have equalities
+              \begin{align*}
+                  v (r f + t g) & = r (v f) + t (v g), \\
+                  (r f + t g) u & = r (f u) + t (g u).
+              \end{align*}
 
-\item The category \(\cat C\) admits finite products and finite coproducts.
-\end{enumerate}
-A category \(\cat D\) is said to be an \emph{additive category} if \(\cat D\) is
-\(\Z\)-linear.
+        \item The category \(\cat C\) admits finite products and finite coproducts.
+    \end{enumerate}
+    A category \(\cat D\) is said to be an \emph{additive category} if \(\cat D\) is
+    \(\Z\)-linear.
 \end{definition}
 
 \begin{corollary}[Initial and final objects]
-\label{cor:k-linear-has-initial-and-final-obj}
-If \(\cat C\) is a \(k\)-linear category, then \(\cat C\) has an \emph{initial}
-and \emph{final} object.
+    \label{cor:k-linear-has-initial-and-final-obj}
+    If \(\cat C\) is a \(k\)-linear category, then \(\cat C\) has an \emph{initial}
+    and \emph{final} object.
 \end{corollary}
 
 \begin{proof}
-Since \(\cat C\) has all finite products and coproduct, the product \(F\) of the
-empty family of objects of \(\cat C\) is the final object of \(\cat C\), and the
-coproduct \(I\) of the empty family is the initial object of \(\cat C\).
+    Since \(\cat C\) has all finite products and coproduct, the product \(F\) of the
+    empty family of objects of \(\cat C\) is the final object of \(\cat C\), and the
+    coproduct \(I\) of the empty family is the initial object of \(\cat C\).
 \end{proof}
 
 \begin{definition}[\(k\)-linear functor]
-\label{def:k-linear-functor}
-Given \(k\)-categories \(\cat C\) and \(\cat D\), we define a
-\emph{\(k\)-linear functor} between \(\cat C \to \cat D\) to be a functor
-\(F: \cat C \to \cat D\) such that for all parallel morphisms
-\(f, g: A \para B\) and scalars \(r, t \in k\) we have
-\[
-F(r f + t g) = r (F f) + t (F g),
-\]
-for any \(A, B \in \cat C\). In other words, the induced map
-\(\Hom_{\cat C}(A, B) \to \Hom_{\cat D}(F A, F B)\) is a morphism of abelian
-groups.
+    \label{def:k-linear-functor}
+    Given \(k\)-categories \(\cat C\) and \(\cat D\), we define a
+    \emph{\(k\)-linear functor} between \(\cat C \to \cat D\) to be a functor
+    \(F: \cat C \to \cat D\) such that for all parallel morphisms
+    \(f, g: A \para B\) and scalars \(r, t \in k\) we have
+    \[
+        F(r f + t g) = r (F f) + t (F g),
+    \]
+    for any \(A, B \in \cat C\). In other words, the induced map
+    \(\Hom_{\cat C}(A, B) \to \Hom_{\cat D}(F A, F B)\) is a morphism of abelian
+    groups.
 \end{definition}
 
 \begin{corollary}
-\label{cor:opposite-category-k-linear}
-If \(\cat C\) is a \(k\)-linear category for some commutative ring \(k\) then
-\(\cat C^{\op}\) is \(k\)-linear.
+    \label{cor:opposite-category-k-linear}
+    If \(\cat C\) is a \(k\)-linear category for some commutative ring \(k\) then
+    \(\cat C^{\op}\) is \(k\)-linear.
 \end{corollary}
 
 \begin{definition}[Biproduct]
-\label{def:biproduct}
-Let \((X_1, \dots, X_n)\) be a finite family of objects of a \(k\)-linear
-category \(\cat C\). A pair \((X, (p_j, q_j)_{j=1}^n)\) is said to be a
-\emph{biproduct} of the family \((X_j)_j\) if:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item \(X\) is an object of \(\cat C\).
+    \label{def:biproduct}
+    Let \((X_1, \dots, X_n)\) be a finite family of objects of a \(k\)-linear
+    category \(\cat C\). A pair \((X, (p_j, q_j)_{j=1}^n)\) is said to be a
+    \emph{biproduct} of the family \((X_j)_j\) if:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item \(X\) is an object of \(\cat C\).
 
-\item \(p_j: X \to X_j\) and \(q_j: X_j \to X\) are morphisms in \(\cat C\) for each
-  \(1 \leq j \leq n\).
+        \item \(p_j: X \to X_j\) and \(q_j: X_j \to X\) are morphisms in \(\cat C\) for each
+              \(1 \leq j \leq n\).
 
-\item The pairs \((p_j, q_j)_j\) satisfy the following rules:
-  \begin{enumerate}[(1)]\setlength\itemsep{0em}
-  \item \(\sum_{j=1}^n q_j p_j = \Id_X\).
-  \item For each \(1 \leq i \neq j \leq n\) we have \(p_i q_j = 0\), and on the other
-    hand \(p_j q_j = \Id_{X_j}\).
-  \end{enumerate}
-\end{enumerate}
-In other words, \(X\) is both a product and a coproduct of the family in a
-compatible way.
+        \item The pairs \((p_j, q_j)_j\) satisfy the following rules:
+              \begin{enumerate}[(1)]\setlength\itemsep{0em}
+                  \item \(\sum_{j=1}^n q_j p_j = \Id_X\).
+                  \item For each \(1 \leq i \neq j \leq n\) we have \(p_i q_j = 0\), and on the other
+                        hand \(p_j q_j = \Id_{X_j}\).
+              \end{enumerate}
+    \end{enumerate}
+    In other words, \(X\) is both a product and a coproduct of the family in a
+    compatible way.
 \end{definition}
 
 \begin{theorem}
-\label{thm:product-iff-admits-biproduct}
-Let \((X_1, \dots, X_n)\) be a finite family of objects of a \(k\)-linear
-category \(\cat C\).
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item A pair \((P, (p_j: P \to X_j)_{j=1}^n)\) is a \emph{product} of
-  \((X_j)_j\) if and only if there exists a family of morphisms
-  \((q_j: X_j \to P)_{j=1}^n\) in \(\cat C\) such that \((P, (p_j, q_j)_j)\) is
-  the \emph{biproduct} of \((X_j)_j\).
+    \label{thm:product-iff-admits-biproduct}
+    Let \((X_1, \dots, X_n)\) be a finite family of objects of a \(k\)-linear
+    category \(\cat C\).
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item A pair \((P, (p_j: P \to X_j)_{j=1}^n)\) is a \emph{product} of
+              \((X_j)_j\) if and only if there exists a family of morphisms
+              \((q_j: X_j \to P)_{j=1}^n\) in \(\cat C\) such that \((P, (p_j, q_j)_j)\) is
+              the \emph{biproduct} of \((X_j)_j\).
 
-\item A pair \((C, (q_j: X_j \to X)_{j=1}^n)\) is a \emph{coproduct} of the family
-  \((X_j)_j\) if and only if there exists a collection of morphisms
-  \((p_j: C \to X_j)_{j=1}^n\) for which the pair \((C, (p_j, q_j)_j)\) is the
-  \emph{biproduct} of \((X_j)_j\).
-\end{enumerate}
+        \item A pair \((C, (q_j: X_j \to X)_{j=1}^n)\) is a \emph{coproduct} of the family
+              \((X_j)_j\) if and only if there exists a collection of morphisms
+              \((p_j: C \to X_j)_{j=1}^n\) for which the pair \((C, (p_j, q_j)_j)\) is the
+              \emph{biproduct} of \((X_j)_j\).
+    \end{enumerate}
 \end{theorem}
 
 \begin{proof}
-We shall prove only the first item since the second is merely its dual. Suppose
-that \(P\) is a product, and define morphisms \(\delta_{j i}: X_i \to X_j\) for each
-pair \(1 \leq i, j \leq n\) where
-\[
-\delta_{j i} =
-\begin{cases}
-  \Id_{X_j}, &\text{if } i = j \\
-  0, &\text{if } i \neq j. \\
-\end{cases}
-\]
-By the product universal property, for each \(1 \leq i \leq n\)
-there exists a unique morphism \(q_i: X_i \to P\) making the following diagram
-commute for all \(1 \leq j \leq n\):
-\[
-\begin{tikzcd}
-X_i
-\ar[d, dashed, "q_i"']
-\ar[rd, bend left, "\delta_{j i}"]
-& \\
-X \ar[r, "p_j"']
-&X_j
-\end{tikzcd}
-\]
+    We shall prove only the first item since the second is merely its dual. Suppose
+    that \(P\) is a product, and define morphisms \(\delta_{j i}: X_i \to X_j\) for each
+    pair \(1 \leq i, j \leq n\) where
+    \[
+        \delta_{j i} =
+        \begin{cases}
+            \Id_{X_j}, & \text{if } i = j     \\
+            0,         & \text{if } i \neq j. \\
+        \end{cases}
+    \]
+    By the product universal property, for each \(1 \leq i \leq n\)
+    there exists a unique morphism \(q_i: X_i \to P\) making the following diagram
+    commute for all \(1 \leq j \leq n\):
+    \[
+        \begin{tikzcd}
+            X_i
+            \ar[d, dashed, "q_i"']
+            \ar[rd, bend left, "\delta_{j i}"]
+            & \\
+            X \ar[r, "p_j"']
+            &X_j
+        \end{tikzcd}
+    \]
 
-Now that we have constructed a family \((q_j: X_j \to P)_j\) notice that for each
-\(1 \leq j \leq n\) one has
-\[
-p_j \sum_{i=1}^n q_i p_i
-= \sum_{i=1}^n p_j (q_i p_i)
-= \sum_{i=1}^{n} (p_j q_i) p_i
-= \sum_{i=1}^{n} \delta_{j i} p_i
-= p_j
-= p_j \Id_P
-\]
-Notice that since both \(\Id_P\) and \(\sum_{i=1}^{n} q_i p_i\) satisfy the
-commutativity property specified above for any \(1 \leq j \leq n\), we can use the
-universal property of \(P\) to obtain that
-\[
-\sum_{i=1}^{n} q_i p_i = \Id_P.
-\]
-Therefore the pair \((P, (p_j, q_j)_j)\) satisfies all the requirements to be
-the biproduct of \((X_j)_j\).
+    Now that we have constructed a family \((q_j: X_j \to P)_j\) notice that for each
+    \(1 \leq j \leq n\) one has
+    \[
+        p_j \sum_{i=1}^n q_i p_i
+        = \sum_{i=1}^n p_j (q_i p_i)
+        = \sum_{i=1}^{n} (p_j q_i) p_i
+        = \sum_{i=1}^{n} \delta_{j i} p_i
+        = p_j
+        = p_j \Id_P
+    \]
+    Notice that since both \(\Id_P\) and \(\sum_{i=1}^{n} q_i p_i\) satisfy the
+    commutativity property specified above for any \(1 \leq j \leq n\), we can use the
+    universal property of \(P\) to obtain that
+    \[
+        \sum_{i=1}^{n} q_i p_i = \Id_P.
+    \]
+    Therefore the pair \((P, (p_j, q_j)_j)\) satisfies all the requirements to be
+    the biproduct of \((X_j)_j\).
 
-Suppose, on the contrary, that there exists a family \((q_j: X_j \to P)_j\) of
-morphisms such that \((P, (p_j, q_j)_j)\) is a biproduct of \((X_j)_j\). Let
-\(Y \in \cat C\) be any object, and consider a collection of morphisms
-\((f_j: Y \to X_j)_{j=1}^n\). Notice that the map \(\sum_{i=1}^{n} q_i f_i: Y \to X\)
-is such that
-\[
-p_j \sum_{i=1}^n q_i f_i
-= \sum_{i=1}^{n} p_j (q_i f_i)
-= \sum_{i=1}^{n} (p_j q_i) f_i
-= f_j
-\]
-for each \(1 \leq j \leq n\). Moreover, if \(f: Y \to X\) is another morphism such that
-\(p_j f = f_j\) for each \(j\), then
-\[
-f
-= \Id_X f
-= \Big( \sum_{i=1}^n q_i p_i \Big) f
-= \sum_{i=1}^{n} (q_i p_i) f
-= \sum_{i=1}^{n} q_i (p_i f)
-= \sum_{i=1}^{n} q_i f_i.
-\]
-This shows that \(P\) enjoys the universal property of a product.
+    Suppose, on the contrary, that there exists a family \((q_j: X_j \to P)_j\) of
+    morphisms such that \((P, (p_j, q_j)_j)\) is a biproduct of \((X_j)_j\). Let
+    \(Y \in \cat C\) be any object, and consider a collection of morphisms
+    \((f_j: Y \to X_j)_{j=1}^n\). Notice that the map \(\sum_{i=1}^{n} q_i f_i: Y \to X\)
+    is such that
+    \[
+        p_j \sum_{i=1}^n q_i f_i
+        = \sum_{i=1}^{n} p_j (q_i f_i)
+        = \sum_{i=1}^{n} (p_j q_i) f_i
+        = f_j
+    \]
+    for each \(1 \leq j \leq n\). Moreover, if \(f: Y \to X\) is another morphism such that
+    \(p_j f = f_j\) for each \(j\), then
+    \[
+        f
+        = \Id_X f
+        = \Big( \sum_{i=1}^n q_i p_i \Big) f
+        = \sum_{i=1}^{n} (q_i p_i) f
+        = \sum_{i=1}^{n} q_i (p_i f)
+        = \sum_{i=1}^{n} q_i f_i.
+    \]
+    This shows that \(P\) enjoys the universal property of a product.
 \end{proof}
 
 \begin{corollary}[Finite products and coproducts are isomorphic]
-\label{cor:k-linear-cat-finite-coprod-prod-are-iso}
-Let \(\cat C\) be a \(k\)-linear category. Every finite collection of objects of
-\(\cat C\) has \emph{isomorphic product and coproduct}.
+    \label{cor:k-linear-cat-finite-coprod-prod-are-iso}
+    Let \(\cat C\) be a \(k\)-linear category. Every finite collection of objects of
+    \(\cat C\) has \emph{isomorphic product and coproduct}.
 \end{corollary}
 
 \begin{corollary}[Zero object]
-\label{cor:k-linear-category-has-zero-object}
-A \(k\)-linear category has a \emph{zero object}.
+    \label{cor:k-linear-category-has-zero-object}
+    A \(k\)-linear category has a \emph{zero object}.
 \end{corollary}
 
 \section{Properties of \texorpdfstring{\(k\)}{k}-Linear Categories}
 
 \begin{definition}[Kernels \& cokernels]
-\label{def:k-linear-cat-kernel}
-Let \(f: X \to Y\) be a morphism in a \(k\)-linear category \(\cat C\). A
-\emph{kernel} of \(f\), if it exists, is a pair \((U, u)\) where
-\(U \in \cat C\) and \(u: U \to X\) is a morphism such that
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item \(f u = 0\).
-\item For any morphisms \(u': U' \to X\) in \(\cat C\) such that \(f u' = 0\),
-  there exists a unique morphism \(\phi: U' \to U\) such that \(u' = u g\):
-  \[
-  \begin{tikzcd}
-  U \ar[r, "u"] \ar[rr, bend left=50, "0" description]
-  &X \ar[r, "f"]
-  &Y
-  \\
-  U' \ar[u, "\phi", dashed] \ar[ru, "u'"'] \ar[rru, bend right=35, "0" description]
-  & &
-  \end{tikzcd}
-  \]
-\end{enumerate}
+    \label{def:k-linear-cat-kernel}
+    Let \(f: X \to Y\) be a morphism in a \(k\)-linear category \(\cat C\). A
+    \emph{kernel} of \(f\), if it exists, is a pair \((U, u)\) where
+    \(U \in \cat C\) and \(u: U \to X\) is a morphism such that
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item \(f u = 0\).
+        \item For any morphisms \(u': U' \to X\) in \(\cat C\) such that \(f u' = 0\),
+              there exists a unique morphism \(\phi: U' \to U\) such that \(u' = u g\):
+              \[
+                  \begin{tikzcd}
+                      U \ar[r, "u"] \ar[rr, bend left=50, "0" description]
+                      &X \ar[r, "f"]
+                      &Y
+                      \\
+                      U' \ar[u, "\phi", dashed] \ar[ru, "u'"'] \ar[rru, bend right=35, "0" description]
+                      & &
+                  \end{tikzcd}
+              \]
+    \end{enumerate}
 
-A \emph{cokernel} of \(f\), if it exists, is a pair \((C, c)\) where
-\(C \in \cat C\) and \(c: Y \to C\) such that
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item \(c f = 0\).
+    A \emph{cokernel} of \(f\), if it exists, is a pair \((C, c)\) where
+    \(C \in \cat C\) and \(c: Y \to C\) such that
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item \(c f = 0\).
 
-\item If \(c': Y \to C'\) is a morphism such that \(c' f = 0\), then there exists
-  a unique \(\psi: C \to C'\) for which the following diagram commutes:
-  \[
-  \begin{tikzcd}
-  X
-  \ar[r, "f"]
-  \ar[rrd, bend right=35, "0" description]
-  \ar[rr, bend left=50, "0" description]
-  &Y
-  \ar[r, "c"]
-  \ar[dr, "c'"']
-  &C \ar[d, "\psi", dashed]
-  \\
-  &
-  &C'
-  \end{tikzcd}
-  \]
-\end{enumerate}
+        \item If \(c': Y \to C'\) is a morphism such that \(c' f = 0\), then there exists
+              a unique \(\psi: C \to C'\) for which the following diagram commutes:
+              \[
+                  \begin{tikzcd}
+                      X
+                      \ar[r, "f"]
+                      \ar[rrd, bend right=35, "0" description]
+                      \ar[rr, bend left=50, "0" description]
+                      &Y
+                      \ar[r, "c"]
+                      \ar[dr, "c'"']
+                      &C \ar[d, "\psi", dashed]
+                      \\
+                      &
+                      &C'
+                  \end{tikzcd}
+              \]
+    \end{enumerate}
 \end{definition}
 
 \begin{corollary}[Kernel is subobject \& cokernel is quotient]
-\label{cor:k-linear-cat-kernel-is-subobject}
-Given a morphism \(f: X \to Y\) admitting kernel \((U, u)\) and cokernel
-\((C, c)\) in a \(k\)-linear category \(\cat C\). Then the isomorphism class of
-\((U, u)\) is a subobject of \(X\), on the other hand, the isomorphism class of
-\((C, c)\) is a quotient of \(Y\).
+    \label{cor:k-linear-cat-kernel-is-subobject}
+    Given a morphism \(f: X \to Y\) admitting kernel \((U, u)\) and cokernel
+    \((C, c)\) in a \(k\)-linear category \(\cat C\). Then the isomorphism class of
+    \((U, u)\) is a subobject of \(X\), on the other hand, the isomorphism class of
+    \((C, c)\) is a quotient of \(Y\).
 \end{corollary}
 
 \begin{proof}
-Indeed, given a morphism \(v: V \to U\) such that \(u v = 0\) then \(u v = 0 = u
-0\) and by the universal property of the kernel, the unicity of \(v\) and \(0\)
-yields \(v = 0\). Let \(w: C \to Z\) be a morphism such that \(w c = 0\), then \(w
-c = 0 = 0 c\) but then by the universal property of cokernels we obtain \(w = 0\).
+    Indeed, given a morphism \(v: V \to U\) such that \(u v = 0\) then \(u v = 0 = u
+    0\) and by the universal property of the kernel, the unicity of \(v\) and \(0\)
+    yields \(v = 0\). Let \(w: C \to Z\) be a morphism such that \(w c = 0\), then \(w
+    c = 0 = 0 c\) but then by the universal property of cokernels we obtain \(w = 0\).
 \end{proof}
 
 \begin{lemma}
-\label{lem:k-linear-cat-monic-epic-iff-ker-coker-zero}
-In a \(k\)-linear category \(\cat C\):
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item A morphism \(f\) is \emph{monic} if and only if \(\ker f = 0\).
-\item A morphism \(g\) is \emph{epic} if and only if \(\coker f = 0\).
-\end{enumerate}
+    \label{lem:k-linear-cat-monic-epic-iff-ker-coker-zero}
+    In a \(k\)-linear category \(\cat C\):
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item A morphism \(f\) is \emph{monic} if and only if \(\ker f = 0\).
+        \item A morphism \(g\) is \emph{epic} if and only if \(\coker f = 0\).
+    \end{enumerate}
 \end{lemma}
 
 \begin{definition}[(Co)image]
-\label{def:k-linear-cat-image-coimage}
-Let \(\cat C\) be a \(k\)-category and \(f: X \to Y\) a morphism of \(\cat C\). We
-define, whenever possible\footnote{Not all morphisms admit an image or coimage
-  in a \(k\)-linear category since these constructions depend on the existence
-  of kernels and cokernels of certain maps---which cannot be always ensured in
-  this case.}, the following objects:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item The \emph{image} of \(f\) is given by
-  \(\im f = \ker(\coker f)\)\footnote{Here we are abusing the notation:
-    \(\coker f\) stands for the \emph{morphism} associated to the cokernel of
-    \(f\), while \(\ker(\coker f)\) is the kernel \emph{object} associated to
-    the morphism \(\coker f\). The same analogous abuse of notation is used
-    while defining the coimage of \(f\).}.
+    \label{def:k-linear-cat-image-coimage}
+    Let \(\cat C\) be a \(k\)-category and \(f: X \to Y\) a morphism of \(\cat C\). We
+    define, whenever possible\footnote{Not all morphisms admit an image or coimage
+        in a \(k\)-linear category since these constructions depend on the existence
+        of kernels and cokernels of certain maps---which cannot be always ensured in
+        this case.}, the following objects:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item The \emph{image} of \(f\) is given by
+              \(\im f = \ker(\coker f)\)\footnote{Here we are abusing the notation:
+                  \(\coker f\) stands for the \emph{morphism} associated to the cokernel of
+                  \(f\), while \(\ker(\coker f)\) is the kernel \emph{object} associated to
+                  the morphism \(\coker f\). The same analogous abuse of notation is used
+                  while defining the coimage of \(f\).}.
 
-\item The \emph{coimage} of \(f\) is given by \(\coim f = \coker(\ker f)\).
-\end{enumerate}
-In other words, we have the following commutative diagram:
-\[
-\begin{tikzcd}
-\ker f \ar[r, tail]
-&X \ar[r, "f"] \ar[d, two heads]
-&Y \ar[r, two heads]
-&\coker f
-\\
-&\coim f \ar[r, dashed, "\overline f"']
-&\im f \ar[u, tail]
-&
-\end{tikzcd}
-\]
-which describes the canonical decomposition of \(f\).
+        \item The \emph{coimage} of \(f\) is given by \(\coim f = \coker(\ker f)\).
+    \end{enumerate}
+    In other words, we have the following commutative diagram:
+    \[
+        \begin{tikzcd}
+            \ker f \ar[r, tail]
+            &X \ar[r, "f"] \ar[d, two heads]
+            &Y \ar[r, two heads]
+            &\coker f
+            \\
+            &\coim f \ar[r, dashed, "\overline f"']
+            &\im f \ar[u, tail]
+            &
+        \end{tikzcd}
+    \]
+    which describes the canonical decomposition of \(f\).
 \end{definition}
 
 \begin{definition}[Abelian category]
-\label{def:abelian-category}
-A \(k\)-linear category is said to be \emph{\(k\)-abelian} if:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item Every morphism of \(\cat C\) admits both kernel and cokernel.
-\item Every morphism \(f \in \cat C\) has an associated canonical isomorphism
-  \(\overline f: \coim f \isoto \im f\).
-\end{enumerate}
+    \label{def:abelian-category}
+    A \(k\)-linear category is said to be \emph{\(k\)-abelian} if:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item Every morphism of \(\cat C\) admits both kernel and cokernel.
+        \item Every morphism \(f \in \cat C\) has an associated canonical isomorphism
+              \(\overline f: \coim f \isoto \im f\).
+    \end{enumerate}
 \end{definition}
 
 \begin{corollary}
-\label{cor:abelian-cat-iff-op-abelian}
-A category \(\cat C\) is \(k\)-abelian if and only if the opposite category
-\(\cat C^{\op}\) is \(k\)-abelian.
+    \label{cor:abelian-cat-iff-op-abelian}
+    A category \(\cat C\) is \(k\)-abelian if and only if the opposite category
+    \(\cat C^{\op}\) is \(k\)-abelian.
 \end{corollary}
 
 \begin{lemma}[Isomorphisms in abelian categories]
-\label{lem:abelian-cat-iso-iff-monic-and-epic}
-In a \(k\)-abelian category, a morphism is an isomorphism if and only if it is
-monic and epic.
+    \label{lem:abelian-cat-iso-iff-monic-and-epic}
+    In a \(k\)-abelian category, a morphism is an isomorphism if and only if it is
+    monic and epic.
 \end{lemma}
 
 \begin{proof}
-It is trivial that an isomorphism is both monic and epic, we shall prove the
-converse Let \(f: X \to Y\) be both monic and epic in a \(k\)-abelian category
-\(\cat C\). Since \(f\) is monic then \(\ker f = 0\) and therefore
-\[
-\coim f = \coker(\ker f) = \coker(0) = (X, \Id_X).
-\]
-On the other hand, since \(f\) is epic then \(\coker f = 0\) and thus
-\[
-\im f = \ker(\coker f) = \ker(0) = (Y, \Id_Y).
-\]
-This shows that \(f = \overline f\). Now since \(\overline f\) is an isomorphism
-due to the fact that \(\cat C\) is abelian, then \(f\) is an isomorphism.
+    It is trivial that an isomorphism is both monic and epic, we shall prove the
+    converse Let \(f: X \to Y\) be both monic and epic in a \(k\)-abelian category
+    \(\cat C\). Since \(f\) is monic then \(\ker f = 0\) and therefore
+    \[
+        \coim f = \coker(\ker f) = \coker(0) = (X, \Id_X).
+    \]
+    On the other hand, since \(f\) is epic then \(\coker f = 0\) and thus
+    \[
+        \im f = \ker(\coker f) = \ker(0) = (Y, \Id_Y).
+    \]
+    This shows that \(f = \overline f\). Now since \(\overline f\) is an isomorphism
+    due to the fact that \(\cat C\) is abelian, then \(f\) is an isomorphism.
 \end{proof}
 
 \begin{theorem}
-\label{thm:k-linear-cat-all-co-kernels-then-admits-all-pullbacks-pushouts}
-Let \(\cat C\) be a \(k\)-linear category:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item If \(\cat C\) is such that every morphism admits a kernel. Then every pair
-  of compatible morphisms of \(\cat C\) admit a pullback.
+    \label{thm:k-linear-cat-all-co-kernels-then-admits-all-pullbacks-pushouts}
+    Let \(\cat C\) be a \(k\)-linear category:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item If \(\cat C\) is such that every morphism admits a kernel. Then every pair
+              of compatible morphisms of \(\cat C\) admit a pullback.
 
-\item If \(\cat C\) is such that every morphism admits a cokernel. Then every
-  pair of compatible morphisms of \(\cat C\) admit a pushout.
-\end{enumerate}
+        \item If \(\cat C\) is such that every morphism admits a cokernel. Then every
+              pair of compatible morphisms of \(\cat C\) admit a pushout.
+    \end{enumerate}
 \end{theorem}
 
 \begin{proof}
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item Let \(f: Y \to X\) and \(g: Z \to X\) be morphisms and let
-  \(\pi_Y: Y \times Z \to Y\) and \(\pi_Z: Y \times Z \to Z\) be the canonical projections. Let
-  \((U, u)\) be the kernel of the morphism
-  \(f \pi_Y - g \pi_Z: Y \times Z \to X\). Defining \(u_Y: U \to Y\) as
-  \(u_Y \coloneq \pi_Y u\) and \(u_Z: U \to Z\) as \(u_Z \coloneq \pi_Z u\), we have from definition
-  that \((f \pi_Y - g \pi_Z) u = 0\) and therefore \(f u_Y = g u_Z\). Hence the
-  following diagram commutes
-  \[
-  \begin{tikzcd}
-  U \ar[rrd, "u_Z", bend left]
-  \ar[ddr, "u_Y"', bend right]
-  \ar[rd, "u", tail]
-  & &
-  \\
-  &Y \times Z \ar[r, "\pi_Z"] \ar[d, "\pi_Y"']
-  &Z \ar[d, "g"]
-  \\
-  &Y \ar[r, "f"']
-  &X
-  \end{tikzcd}
-  \]
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item Let \(f: Y \to X\) and \(g: Z \to X\) be morphisms and let
+              \(\pi_Y: Y \times Z \to Y\) and \(\pi_Z: Y \times Z \to Z\) be the canonical projections. Let
+              \((U, u)\) be the kernel of the morphism
+              \(f \pi_Y - g \pi_Z: Y \times Z \to X\). Defining \(u_Y: U \to Y\) as
+              \(u_Y \coloneq \pi_Y u\) and \(u_Z: U \to Z\) as \(u_Z \coloneq \pi_Z u\), we have from definition
+              that \((f \pi_Y - g \pi_Z) u = 0\) and therefore \(f u_Y = g u_Z\). Hence the
+              following diagram commutes
+              \[
+                  \begin{tikzcd}
+                      U \ar[rrd, "u_Z", bend left]
+                      \ar[ddr, "u_Y"', bend right]
+                      \ar[rd, "u", tail]
+                      & &
+                      \\
+                      &Y \times Z \ar[r, "\pi_Z"] \ar[d, "\pi_Y"']
+                      &Z \ar[d, "g"]
+                      \\
+                      &Y \ar[r, "f"']
+                      &X
+                  \end{tikzcd}
+              \]
 
-  To see that \((U, u_Y, u_Z)\) is the pullback of \((f, g)\), let
-  \((W, w_Y: W \to Y, w_Z: W \to Z)\) be a triple in \(\cat C\) satisfying
-  \(f w_Y = g w_Z\). From the product universal property we have a unique morphism
-  \(w': W \to Y \times Z\) such that the following diagram commutes
-  \[
-  \begin{tikzcd}
-  &W \ar[rdd, bend left, "w_Z"]
-  \ar[ldd, bend right, "w_Y"']
-  \ar[d, "w'", dashed]
-  &
-  \\
-  &Y \times Z \ar[ld, "\pi_Y"'] \ar[rd, "\pi_Z"]
-  &
-  \\
-  Y & &Z
-  \end{tikzcd}
-  \]
-  Therefore
-  \[
-  (f \pi_Y - g \pi_Z) w' = f \pi_Y w' - g \pi_Z w' = f w_Y - g w_Z = 0.
-  \]
-  Hence from the universal property of the kernel of \(f \pi_Y - g \pi_Z\) there
-  exists a unique morphism \(w: W \to U\) such that the following diagram commutes:
-  \[
-  \begin{tikzcd}
-  &W
-  \ar[ld, "w"', dashed]
-  \ar[d, "w'"] & &
-  \\
-  U
-  \ar[r, "u"']
-  &Y \times Z
-  \ar[rr, "f \pi_Y - g \pi_Z"']
-  & &X
-  \end{tikzcd}
-  \]
-  This shows that the following diagram commutes:
-  \[
-  \begin{tikzcd}
-  W \ar[rrd, "w_Z", bend left]
-  \ar[ddr, "w_Y"', bend right]
-  \ar[rd, "w", dashed]
-  & &
-  \\
-  &U \ar[r, "u_Z"] \ar[d, "u_Y"']
-  \ar[rd, phantom, very near start, "\lrcorner"]
-  &Z \ar[d, "g"]
-  \\
-  &Y \ar[r, "f"']
-  &X
-  \end{tikzcd}
-  \]
+              To see that \((U, u_Y, u_Z)\) is the pullback of \((f, g)\), let
+              \((W, w_Y: W \to Y, w_Z: W \to Z)\) be a triple in \(\cat C\) satisfying
+              \(f w_Y = g w_Z\). From the product universal property we have a unique morphism
+              \(w': W \to Y \times Z\) such that the following diagram commutes
+              \[
+                  \begin{tikzcd}
+                      &W \ar[rdd, bend left, "w_Z"]
+                      \ar[ldd, bend right, "w_Y"']
+                      \ar[d, "w'", dashed]
+                      &
+                      \\
+                      &Y \times Z \ar[ld, "\pi_Y"'] \ar[rd, "\pi_Z"]
+                      &
+                      \\
+                      Y & &Z
+                  \end{tikzcd}
+              \]
+              Therefore
+              \[
+                  (f \pi_Y - g \pi_Z) w' = f \pi_Y w' - g \pi_Z w' = f w_Y - g w_Z = 0.
+              \]
+              Hence from the universal property of the kernel of \(f \pi_Y - g \pi_Z\) there
+              exists a unique morphism \(w: W \to U\) such that the following diagram commutes:
+              \[
+                  \begin{tikzcd}
+                      &W
+                      \ar[ld, "w"', dashed]
+                      \ar[d, "w'"] & &
+                      \\
+                      U
+                      \ar[r, "u"']
+                      &Y \times Z
+                      \ar[rr, "f \pi_Y - g \pi_Z"']
+                      & &X
+                  \end{tikzcd}
+              \]
+              This shows that the following diagram commutes:
+              \[
+                  \begin{tikzcd}
+                      W \ar[rrd, "w_Z", bend left]
+                      \ar[ddr, "w_Y"', bend right]
+                      \ar[rd, "w", dashed]
+                      & &
+                      \\
+                      &U \ar[r, "u_Z"] \ar[d, "u_Y"']
+                      \ar[rd, phantom, very near start, "\lrcorner"]
+                      &Z \ar[d, "g"]
+                      \\
+                      &Y \ar[r, "f"']
+                      &X
+                  \end{tikzcd}
+              \]
 
-\item The proof of this second fact becomes dual to item (a) as soon as we use
-  \cref{cor:k-linear-cat-finite-coprod-prod-are-iso}.
-\end{enumerate}
+        \item The proof of this second fact becomes dual to item (a) as soon as we use
+              \cref{cor:k-linear-cat-finite-coprod-prod-are-iso}.
+    \end{enumerate}
 \end{proof}
 
 \begin{corollary}
-\label{cor:abelian-cat-has-all-pullbacks}
-In a \(k\)-abelian category, every pair of compatible morphisms admit a pullback
-and pushout.
+    \label{cor:abelian-cat-has-all-pullbacks}
+    In a \(k\)-abelian category, every pair of compatible morphisms admit a pullback
+    and pushout.
 \end{corollary}
 
 \begin{lemma}
-\label{lem:pullback-pushout-mono-epi}
-Let \(\cat C\) be a \(k\)-abelian category:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item Let
-  \[
-  \begin{tikzcd}
-  P \ar[r, "p_2"] \ar[d, "p_1"']
-  \ar[rd, phantom, "\lrcorner", very near start]
-  &X_2 \ar[d, "f_2"] \\
-  X_1 \ar[r, "f_1"'] & X
-  \end{tikzcd}
-  \]
-  be a pullback square in \(\cat C\), then:
-  \begin{enumerate}[(i)]\setlength\itemsep{0em}
-  \item If \(f_1\) is a monomorphism, then so is \(p_2\).
-  \item If \(f_1\) is an epimorphism, then so is \(p_2\).
-  \end{enumerate}
+    \label{lem:pullback-pushout-mono-epi}
+    Let \(\cat C\) be a \(k\)-abelian category:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item Let
+              \[
+                  \begin{tikzcd}
+                      P \ar[r, "p_2"] \ar[d, "p_1"']
+                      \ar[rd, phantom, "\lrcorner", very near start]
+                      &X_2 \ar[d, "f_2"] \\
+                      X_1 \ar[r, "f_1"'] & X
+                  \end{tikzcd}
+              \]
+              be a pullback square in \(\cat C\), then:
+              \begin{enumerate}[(i)]\setlength\itemsep{0em}
+                  \item If \(f_1\) is a monomorphism, then so is \(p_2\).
+                  \item If \(f_1\) is an epimorphism, then so is \(p_2\).
+              \end{enumerate}
 
-\item Let
-  \[
-  \begin{tikzcd}
-  Y \ar[r, "g_2"] \ar[d, "g_1"']
-  &Y_2 \ar[d, "q_2"] \\
-  Y_1 \ar[r, "q_1"']
-  & Q \ar[lu, "\ulcorner", phantom, very near start]
-  \end{tikzcd}
-  \]
-  be a pushout square in \(\cat C\), then:
-  \begin{enumerate}[(i)]\setlength\itemsep{0em}
-  \item If \(g_2\) is a monomorphism, then so is \(q_1\).
-  \item If \(g_2\) is an epimorphism, then so is \(q_1\).
-  \end{enumerate}
-\end{enumerate}
+        \item Let
+              \[
+                  \begin{tikzcd}
+                      Y \ar[r, "g_2"] \ar[d, "g_1"']
+                      &Y_2 \ar[d, "q_2"] \\
+                      Y_1 \ar[r, "q_1"']
+                      & Q \ar[lu, "\ulcorner", phantom, very near start]
+                  \end{tikzcd}
+              \]
+              be a pushout square in \(\cat C\), then:
+              \begin{enumerate}[(i)]\setlength\itemsep{0em}
+                  \item If \(g_2\) is a monomorphism, then so is \(q_1\).
+                  \item If \(g_2\) is an epimorphism, then so is \(q_1\).
+              \end{enumerate}
+    \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item
-  \begin{enumerate}[(i)]\setlength\itemsep{0em}
-  \item Suppose \(f_1\) is a monomorphism. Let \(u: U \to P\) be a morphism in
-    \(\cat C\) such that \(p_2 u = 0\), then
-    \[
-    (f_1 p_1) u = (f_2 p_2) u = f_2 (p_2 u) = f_2 0 = 0.
-    \]
-    However, since \(f_1 (p_1 u) = 0 = f_1 0\) and \(f_1\) is monic, then
-    \(p_1 u = 0\). This shows that the triple \((U, 0: U \to X_1, 0: U \to X_2)\)
-    has \(u\) as its unique corresponding morphism associated to the universal
-    property of the pullback. Since \(u\) is unique and \(0: U \to P\) also
-    satisfies the needed conditions, it follows that \(u = 0\). This shows that
-    \(p_2 u = 0\) implies \(u = 0\)---which is equivalent to \(p_2\) being monic.
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item
+              \begin{enumerate}[(i)]\setlength\itemsep{0em}
+                  \item Suppose \(f_1\) is a monomorphism. Let \(u: U \to P\) be a morphism in
+                        \(\cat C\) such that \(p_2 u = 0\), then
+                        \[
+                            (f_1 p_1) u = (f_2 p_2) u = f_2 (p_2 u) = f_2 0 = 0.
+                        \]
+                        However, since \(f_1 (p_1 u) = 0 = f_1 0\) and \(f_1\) is monic, then
+                        \(p_1 u = 0\). This shows that the triple \((U, 0: U \to X_1, 0: U \to X_2)\)
+                        has \(u\) as its unique corresponding morphism associated to the universal
+                        property of the pullback. Since \(u\) is unique and \(0: U \to P\) also
+                        satisfies the needed conditions, it follows that \(u = 0\). This shows that
+                        \(p_2 u = 0\) implies \(u = 0\)---which is equivalent to \(p_2\) being monic.
 
-  \item Suppose \(f_2\) is an epimorphism. From definition the following
-    sequence is short exact:
-    \[
-    \begin{tikzcd}
-    0 \ar[r]
-    &P \ar[rr, "p", tail]
-    &&X_1 \times X_2 \ar[rr, "f_1 \pi_1 - f_2 \pi_2", two heads]
-    &&X \ar[r]
-    &0
-    \end{tikzcd}
-    \]
-    Let \(w: X_2 \to W\) be any morphism such that \(w p_2 = 0\), and using the
-    fact that \(p_2 = \pi_2 p\) we find that \(w \pi_2 p = 0\). This implies in the
-    existence of a morphism \(g: X \to W\) such that
-    \(g (f_1 \pi_1 - f_2 \pi_2) = w \pi_2\). On the other hand, if \(\iota_1: X_1 \emb X_1
-    \times X_2\) is the canonical inclusion, then
-    \[
-    g f_1 = g (f_1 \pi_1 - f_2 \pi_2) \iota_1 = w \pi_2 \iota_1 = w 0 = 0.
-    \]
-    Since \(f_1\) is assumed to be epic then \(g = 0\), which in turn implies in
-    \(w \pi_2 = 0\). Now using the fact that the canonical projection \(\pi_2\) is
-    also epic we conclude that \(w = 0\). This shows that for any morphism with
-    \(w p_2 = 0\) one has \(w = 0\), therefore \(p_2\) is an epimorphism.
-  \end{enumerate}
+                  \item Suppose \(f_2\) is an epimorphism. From definition the following
+                        sequence is short exact:
+                        \[
+                            \begin{tikzcd}
+                                0 \ar[r]
+                                &P \ar[rr, "p", tail]
+                                &&X_1 \times X_2 \ar[rr, "f_1 \pi_1 - f_2 \pi_2", two heads]
+                                &&X \ar[r]
+                                &0
+                            \end{tikzcd}
+                        \]
+                        Let \(w: X_2 \to W\) be any morphism such that \(w p_2 = 0\), and using the
+                        fact that \(p_2 = \pi_2 p\) we find that \(w \pi_2 p = 0\). This implies in the
+                        existence of a morphism \(g: X \to W\) such that
+                        \(g (f_1 \pi_1 - f_2 \pi_2) = w \pi_2\). On the other hand, if \(\iota_1: X_1 \emb X_1
+                        \times X_2\) is the canonical inclusion, then
+                        \[
+                            g f_1 = g (f_1 \pi_1 - f_2 \pi_2) \iota_1 = w \pi_2 \iota_1 = w 0 = 0.
+                        \]
+                        Since \(f_1\) is assumed to be epic then \(g = 0\), which in turn implies in
+                        \(w \pi_2 = 0\). Now using the fact that the canonical projection \(\pi_2\) is
+                        also epic we conclude that \(w = 0\). This shows that for any morphism with
+                        \(w p_2 = 0\) one has \(w = 0\), therefore \(p_2\) is an epimorphism.
+              \end{enumerate}
 
-\item The proof of (b-i) is dual to the proof of (a-ii), while (b-ii) is dual to
-  the proof of (a-i).
-\end{enumerate}
+        \item The proof of (b-i) is dual to the proof of (a-ii), while (b-ii) is dual to
+              the proof of (a-i).
+    \end{enumerate}
 \end{proof}
 
 \begin{definition}[Exact sequence]
-\label{def:abelian-cat-complex-exact-sequence}
-Let \(\cat C\) be an abelian category and consider a sequence inside \(\cat C\):
-\[
-\begin{tikzcd}
-\cdots \ar[r]
-&X_{j+1} \ar[r, "f_{j+1}"]
-&X_j \ar[r, "f_j"]
-&X_{j-1} \ar[r]
-&\cdots
-\end{tikzcd}
-\]
-Such sequence is said to be a \emph{complex} if \(f_j f_{j+1} = 0\) for every
-index \(j\). On the other hand, if \(\im f_{j+1} = \ker f_j\) then we say that
-the sequence is \emph{exact} in \(X_j\).
+    \label{def:abelian-cat-complex-exact-sequence}
+    Let \(\cat C\) be an abelian category and consider a sequence inside \(\cat C\):
+    \[
+        \begin{tikzcd}
+            \cdots \ar[r]
+            &X_{j+1} \ar[r, "f_{j+1}"]
+            &X_j \ar[r, "f_j"]
+            &X_{j-1} \ar[r]
+            &\cdots
+        \end{tikzcd}
+    \]
+    Such sequence is said to be a \emph{complex} if \(f_j f_{j+1} = 0\) for every
+    index \(j\). On the other hand, if \(\im f_{j+1} = \ker f_j\) then we say that
+    the sequence is \emph{exact} in \(X_j\).
 \end{definition}
 
 \begin{definition}[Split short exact sequence]
-\label{def:abelian-cat-split-short-exact}
-Let \(\cat C\) be an abelian category. A short exact sequence
-\[
-\begin{tikzcd}
-0 \ar[r] &X \ar[r, "f", tail] &Y \ar[r, two heads, "g"] &Z \ar[r] &0
-\end{tikzcd}
-\]
-is \emph{split} if there exists an isomorphism \(Y \iso X \oplus Z\) such that the
-following diagram commutes:
-\[
-\begin{tikzcd}
-0 \ar[r]
-&X \ar[r, "f", tail] \ar[d, equals]
-&Y \ar[r, two heads, "g"] \ar[d, "\dis"]
-&Z \ar[r] \ar[d, equals]
-&0
-\\
-0 \ar[r]
-&X \ar[r, tail]
-&X \oplus Z \ar[r, two heads]
-&Z \ar[r]
-&0
-\end{tikzcd}
-\]
+    \label{def:abelian-cat-split-short-exact}
+    Let \(\cat C\) be an abelian category. A short exact sequence
+    \[
+        \begin{tikzcd}
+            0 \ar[r] &X \ar[r, "f", tail] &Y \ar[r, two heads, "g"] &Z \ar[r] &0
+        \end{tikzcd}
+    \]
+    is \emph{split} if there exists an isomorphism \(Y \iso X \oplus Z\) such that the
+    following diagram commutes:
+    \[
+        \begin{tikzcd}
+            0 \ar[r]
+            &X \ar[r, "f", tail] \ar[d, equals]
+            &Y \ar[r, two heads, "g"] \ar[d, "\dis"]
+            &Z \ar[r] \ar[d, equals]
+            &0
+            \\
+            0 \ar[r]
+            &X \ar[r, tail]
+            &X \oplus Z \ar[r, two heads]
+            &Z \ar[r]
+            &0
+        \end{tikzcd}
+    \]
 \end{definition}
 
 \begin{theorem}
-\label{thm:abelian-cat-split-equivalent-conditions}
-Let \(\cat C\) be an abelian category and consider the following short exact
-sequence:
-\[
-\begin{tikzcd}
-0 \ar[r] &X \ar[r, "f", tail] &Y \ar[r, two heads, "g"] &Z \ar[r] &0
-\end{tikzcd}
-\]
-The following conditions are equivalent:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item The sequence is split.
+    \label{thm:abelian-cat-split-equivalent-conditions}
+    Let \(\cat C\) be an abelian category and consider the following short exact
+    sequence:
+    \[
+        \begin{tikzcd}
+            0 \ar[r] &X \ar[r, "f", tail] &Y \ar[r, two heads, "g"] &Z \ar[r] &0
+        \end{tikzcd}
+    \]
+    The following conditions are equivalent:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item The sequence is split.
 
-\item The morphism \(f\) is a split monomorphism.
+        \item The morphism \(f\) is a split monomorphism.
 
-\item The morphism \(g\) is a split epimorphism.
-\end{enumerate}
+        \item The morphism \(g\) is a split epimorphism.
+    \end{enumerate}
 \end{theorem}
 
 \begin{lemma}
-\label{lem:abelian-cat-middle-iso-if-lateral-are-iso}
-Let \(\cat C\) be an abelian category and consider the following commutative
-diagram with short exact rows:
-\[
-\begin{tikzcd}
-0 \ar[r]
-&A \ar[r, tail] \ar[d, "\alpha"']
-&B \ar[r, two heads] \ar[d, "\beta"]
-&C \ar[r] \ar[d, "\gamma"]
-&0
-\\
-0 \ar[r]
-&A' \ar[r, tail]
-&B' \ar[r, two heads]
-&C' \ar[r]
-&0
-\end{tikzcd}
-\]
-If \(\alpha\) and \(\gamma\) are isomorphisms, then so is \(\beta\).
+    \label{lem:abelian-cat-middle-iso-if-lateral-are-iso}
+    Let \(\cat C\) be an abelian category and consider the following commutative
+    diagram with short exact rows:
+    \[
+        \begin{tikzcd}
+            0 \ar[r]
+            &A \ar[r, tail] \ar[d, "\alpha"']
+            &B \ar[r, two heads] \ar[d, "\beta"]
+            &C \ar[r] \ar[d, "\gamma"]
+            &0
+            \\
+            0 \ar[r]
+            &A' \ar[r, tail]
+            &B' \ar[r, two heads]
+            &C' \ar[r]
+            &0
+        \end{tikzcd}
+    \]
+    If \(\alpha\) and \(\gamma\) are isomorphisms, then so is \(\beta\).
 \end{lemma}
 
 \begin{theorem}
-\label{thm:abelian-cat-completing-diagram}
-Let \(\cat C\) be an abelian category.
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item Given a diagram in \(\cat C\) with an exact bottom row:
-  \[
-  \begin{tikzcd}
-  & & &X_2 \ar[d, "f_2"] & \\
-  0 \ar[r]
-  &X_0 \ar[r, tail, "f_0"]
-  &X_1 \ar[r, two heads, "f_1"]
-  &X \ar[r]
-  &0
-  \end{tikzcd}
-  \]
-  Then we can complete this diagram with the pullback \((P, p_1, p_2)\) of the
-  pair \((f_1, f_2)\):
-  \[
-  \begin{tikzcd}
-  0 \ar[r]
-  &X_0
-  \ar[d, equals]
-  \ar[r, "p_0", tail]
-  &P
-  \ar[rd, "\lrcorner", phantom, very near start]
-  \ar[r, "p_2", two heads]
-  \ar[d, "p_1"']
-  &X_2
-  \ar[d, "f_2"]
-  \ar[r]
-  &0 \\
-  0 \ar[r]
-  &X_0 \ar[r, tail, "f_0"']
-  &X_1 \ar[r, two heads, "f_1"']
-  &X \ar[r]
-  &0
-  \end{tikzcd}
-  \]
+    \label{thm:abelian-cat-completing-diagram}
+    Let \(\cat C\) be an abelian category.
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item Given a diagram in \(\cat C\) with an exact bottom row:
+              \[
+                  \begin{tikzcd}
+                      & & &X_2 \ar[d, "f_2"] & \\
+                      0 \ar[r]
+                      &X_0 \ar[r, tail, "f_0"]
+                      &X_1 \ar[r, two heads, "f_1"]
+                      &X \ar[r]
+                      &0
+                  \end{tikzcd}
+              \]
+              Then we can complete this diagram with the pullback \((P, p_1, p_2)\) of the
+              pair \((f_1, f_2)\):
+              \[
+                  \begin{tikzcd}
+                      0 \ar[r]
+                      &X_0
+                      \ar[d, equals]
+                      \ar[r, "p_0", tail]
+                      &P
+                      \ar[rd, "\lrcorner", phantom, very near start]
+                      \ar[r, "p_2", two heads]
+                      \ar[d, "p_1"']
+                      &X_2
+                      \ar[d, "f_2"]
+                      \ar[r]
+                      &0 \\
+                      0 \ar[r]
+                      &X_0 \ar[r, tail, "f_0"']
+                      &X_1 \ar[r, two heads, "f_1"']
+                      &X \ar[r]
+                      &0
+                  \end{tikzcd}
+              \]
 
-  Reciprocally, given a commutative diagram with exact rows:
-  \[
-  \begin{tikzcd}
-  0 \ar[r]
-  &X_0
-  \ar[d, equals]
-  \ar[r, "p_0'", tail]
-  &P'
-  \ar[r, "p_2'", two heads]
-  \ar[d, "p_1'"']
-  &X_2
-  \ar[d, "f_2"]
-  \ar[r]
-  &0 \\
-  0 \ar[r]
-  &X_0 \ar[r, tail, "f_0"']
-  &X_1 \ar[r, two heads, "f_1"']
-  &X \ar[r]
-  &0
-  \end{tikzcd}
-  \]
-  Then there exists an isomorphism \(f: P' \isoto P\) such that the following
-  diagram commutes:
-  \[
-  \begin{tikzcd}
-  0
-  \ar[r]
-  &X_0
-  \ar[dddd, equals]
-  \ar[rr, "p_0", tail]
-  \ar[rrdd, "p_0'"', near start, tail, crossing over]
-  &
-  &P
-  \ar[rr, "p_2", two heads]
-  \ar[dddd, "p_1"', bend right=50]
-  &
-  &X_2
-  \ar[dddd, "f_2"]
-  \ar[r]
-  &0
-  \\
-  &
-  &
-  &
-  &
-  &
-  &
-  \\
-  &
-  &
-  &P'
-  \ar[uu, "f"', "\dis"]
-  \ar[uurr, "p_2'"', two heads]
-  \ar[dd, "p_1'"]
-  &
-  &
-  &
-  \\
-  &
-  &
-  &
-  &
-  \\
-  0
-  \ar[r]
-  &X_0
-  \ar[rr, tail, "f_0"']
-  &
-  &X_1
-  \ar[rr, two heads, "f_1"']
-  &
-  &X
-  \ar[r]
-  &0
-  \end{tikzcd}
-  \]
+              Reciprocally, given a commutative diagram with exact rows:
+              \[
+                  \begin{tikzcd}
+                      0 \ar[r]
+                      &X_0
+                      \ar[d, equals]
+                      \ar[r, "p_0'", tail]
+                      &P'
+                      \ar[r, "p_2'", two heads]
+                      \ar[d, "p_1'"']
+                      &X_2
+                      \ar[d, "f_2"]
+                      \ar[r]
+                      &0 \\
+                      0 \ar[r]
+                      &X_0 \ar[r, tail, "f_0"']
+                      &X_1 \ar[r, two heads, "f_1"']
+                      &X \ar[r]
+                      &0
+                  \end{tikzcd}
+              \]
+              Then there exists an isomorphism \(f: P' \isoto P\) such that the following
+              diagram commutes:
+              \[
+                  \begin{tikzcd}
+                      0
+                      \ar[r]
+                      &X_0
+                      \ar[dddd, equals]
+                      \ar[rr, "p_0", tail]
+                      \ar[rrdd, "p_0'"', near start, tail, crossing over]
+                      &
+                      &P
+                      \ar[rr, "p_2", two heads]
+                      \ar[dddd, "p_1"', bend right=50]
+                      &
+                      &X_2
+                      \ar[dddd, "f_2"]
+                      \ar[r]
+                      &0
+                      \\
+                      &
+                      &
+                      &
+                      &
+                      &
+                      &
+                      \\
+                      &
+                      &
+                      &P'
+                      \ar[uu, "f"', "\dis"]
+                      \ar[uurr, "p_2'"', two heads]
+                      \ar[dd, "p_1'"]
+                      &
+                      &
+                      &
+                      \\
+                      &
+                      &
+                      &
+                      &
+                      \\
+                      0
+                      \ar[r]
+                      &X_0
+                      \ar[rr, tail, "f_0"']
+                      &
+                      &X_1
+                      \ar[rr, two heads, "f_1"']
+                      &
+                      &X
+                      \ar[r]
+                      &0
+                  \end{tikzcd}
+              \]
 
 
-\item Given a diagram in \(\cat C\) with an exact bottom row:
-  \[
-  \begin{tikzcd}
-  0 \ar[r]
-  &Y \ar[r, tail, "g_1"] \ar[d, "g_2"']
-  &Y_1 \ar[r, two heads, "g_0"]
-  &Y \ar[r]
-  &0
-  \\
-  &Y_2 & & &
-  \end{tikzcd}
-  \]
-  Then we can complete this diagram with the pushout \((Q, q_1, q_2)\) of the
-  pair \((g_1, g_2)\):
-  \[
-  \begin{tikzcd}
-  0 \ar[r]
-  &Y \ar[d, "g_2"']
-  \ar[r, "g_1", tail]
-  &Y_1
-  \ar[r, "g_0", two heads]
-  \ar[d, "q_1"]
-  &Y_0
-  \ar[d, equals]
-  \ar[r]
-  &0
-  \\
-  0 \ar[r]
-  &Y_2 \ar[r, tail, "q_2"']
-  &Q \ar[r, two heads, "q_0"']
-  \ar[ul, "\ulcorner", phantom, very near start]
-  &Y_0 \ar[r]
-  &0
-  \end{tikzcd}
-  \]
+        \item Given a diagram in \(\cat C\) with an exact bottom row:
+              \[
+                  \begin{tikzcd}
+                      0 \ar[r]
+                      &Y \ar[r, tail, "g_1"] \ar[d, "g_2"']
+                      &Y_1 \ar[r, two heads, "g_0"]
+                      &Y \ar[r]
+                      &0
+                      \\
+                      &Y_2 & & &
+                  \end{tikzcd}
+              \]
+              Then we can complete this diagram with the pushout \((Q, q_1, q_2)\) of the
+              pair \((g_1, g_2)\):
+              \[
+                  \begin{tikzcd}
+                      0 \ar[r]
+                      &Y \ar[d, "g_2"']
+                      \ar[r, "g_1", tail]
+                      &Y_1
+                      \ar[r, "g_0", two heads]
+                      \ar[d, "q_1"]
+                      &Y_0
+                      \ar[d, equals]
+                      \ar[r]
+                      &0
+                      \\
+                      0 \ar[r]
+                      &Y_2 \ar[r, tail, "q_2"']
+                      &Q \ar[r, two heads, "q_0"']
+                      \ar[ul, "\ulcorner", phantom, very near start]
+                      &Y_0 \ar[r]
+                      &0
+                  \end{tikzcd}
+              \]
 
-  Reciprocally, given a commutative diagram with exact rows:
-  \[
-  \begin{tikzcd}
-  0 \ar[r]
-  &Y \ar[d, "g_2"']
-  \ar[r, "g_1", tail]
-  &Y_1
-  \ar[r, "g_0", two heads]
-  \ar[d, "q_1'"]
-  &Y_0
-  \ar[d, equals]
-  \ar[r]
-  &0
-  \\
-  0 \ar[r]
-  &Y_2 \ar[r, tail, "q_2'"']
-  &Q' \ar[r, two heads, "q_0'"']
-  &Y_0 \ar[r]
-  &0
-  \end{tikzcd}
-  \]
-  Then there exists an isomorphism \(g: P' \isoto P\) such that the following
-  diagram commutes:
-  \[
-  \begin{tikzcd}
-  0
-  \ar[r]
-  &Y
-  \ar[rr, "g_1", tail]
-  \ar[dddd, "g_2"']
-  &
-  &Y_1
-  \ar[rr, "g_0", two heads]
-  \ar[dddd, "q_1"', bend right=50]
-  \ar[dd, "q_1'"']
-  &
-  &Y_0
-  \ar[dddd, equals]
-  \ar[r]
-  &0
-  \\
-  &
-  &
-  &
-  &
-  &
-  &
-  \\
-  &
-  &
-  &Q'
-  \ar[dd, "g", "\dis"']
-  \ar[ddrr, "q_0'", two heads]
-  &
-  &
-  &
-  \\
-  &
-  &
-  &
-  &
-  \\
-  0
-  \ar[r]
-  &Y_2
-  \ar[rr, tail, "q_2"']
-  \ar[rruu, tail, "q_2'", near start, crossing over]
-  &
-  &Q
-  \ar[rr, two heads, "q_0"']
-  &
-  &Y_0
-  \ar[r]
-  &0
-  \end{tikzcd}
-  \]
-\end{enumerate}
+              Reciprocally, given a commutative diagram with exact rows:
+              \[
+                  \begin{tikzcd}
+                      0 \ar[r]
+                      &Y \ar[d, "g_2"']
+                      \ar[r, "g_1", tail]
+                      &Y_1
+                      \ar[r, "g_0", two heads]
+                      \ar[d, "q_1'"]
+                      &Y_0
+                      \ar[d, equals]
+                      \ar[r]
+                      &0
+                      \\
+                      0 \ar[r]
+                      &Y_2 \ar[r, tail, "q_2'"']
+                      &Q' \ar[r, two heads, "q_0'"']
+                      &Y_0 \ar[r]
+                      &0
+                  \end{tikzcd}
+              \]
+              Then there exists an isomorphism \(g: P' \isoto P\) such that the following
+              diagram commutes:
+              \[
+                  \begin{tikzcd}
+                      0
+                      \ar[r]
+                      &Y
+                      \ar[rr, "g_1", tail]
+                      \ar[dddd, "g_2"']
+                      &
+                      &Y_1
+                      \ar[rr, "g_0", two heads]
+                      \ar[dddd, "q_1"', bend right=50]
+                      \ar[dd, "q_1'"']
+                      &
+                      &Y_0
+                      \ar[dddd, equals]
+                      \ar[r]
+                      &0
+                      \\
+                      &
+                      &
+                      &
+                      &
+                      &
+                      &
+                      \\
+                      &
+                      &
+                      &Q'
+                      \ar[dd, "g", "\dis"']
+                      \ar[ddrr, "q_0'", two heads]
+                      &
+                      &
+                      &
+                      \\
+                      &
+                      &
+                      &
+                      &
+                      \\
+                      0
+                      \ar[r]
+                      &Y_2
+                      \ar[rr, tail, "q_2"']
+                      \ar[rruu, tail, "q_2'", near start, crossing over]
+                      &
+                      &Q
+                      \ar[rr, two heads, "q_0"']
+                      &
+                      &Y_0
+                      \ar[r]
+                      &0
+                  \end{tikzcd}
+              \]
+    \end{enumerate}
 \end{theorem}
 
 \begin{proof}
-We shall only prove item (a) since item (b) follows from duality. Using the
-universal property for the triple
-\((X_0, f_0: X_0 \to X_1, 0: X_0 \to X_2)\)---which satisfies
-\(f_1 f_0 = 0 = f_2 0\)---we have a unique morphism \(p_0: X_0 \to P\) for which
-satisfies \(p_1 p_0 = f_0\) and \(p_2 p_0 = 0\). It suffices for us to prove
-that \(p_0 = \ker p_2\): let \(u: U \to P\) be such that \(p_2 u = 0\), then
-\[
-f_1 p_1 u = f_2 p_2 u  = f_2 0 = 0.
-\]
-Therefore there exists \(u': U \to X_0\) such that \(f_0 u' = p_1 u\), moreover,
-we have
-\[
-p_2 p_0 u' = 0 = p_2 u\, \text{ and }\, p_1 p_0 u' = f_0 u' = p_1 u.
-\]
-By the pullback universal property we can use unicity to obtain \(u = p_0
-u'\). Notice that since \(f_0 = p_1 p_0\) is a monomorphism, then \(p_0\) is
-also a monomorphism.
+    We shall only prove item (a) since item (b) follows from duality. Using the
+    universal property for the triple
+    \((X_0, f_0: X_0 \to X_1, 0: X_0 \to X_2)\)---which satisfies
+    \(f_1 f_0 = 0 = f_2 0\)---we have a unique morphism \(p_0: X_0 \to P\) for which
+    satisfies \(p_1 p_0 = f_0\) and \(p_2 p_0 = 0\). It suffices for us to prove
+    that \(p_0 = \ker p_2\): let \(u: U \to P\) be such that \(p_2 u = 0\), then
+    \[
+        f_1 p_1 u = f_2 p_2 u  = f_2 0 = 0.
+    \]
+    Therefore there exists \(u': U \to X_0\) such that \(f_0 u' = p_1 u\), moreover,
+    we have
+    \[
+        p_2 p_0 u' = 0 = p_2 u\, \text{ and }\, p_1 p_0 u' = f_0 u' = p_1 u.
+    \]
+    By the pullback universal property we can use unicity to obtain \(u = p_0
+    u'\). Notice that since \(f_0 = p_1 p_0\) is a monomorphism, then \(p_0\) is
+    also a monomorphism.
 
-For the reciprocal, notice that the triple \((P', p_1', p_2')\) induces a unique
-morphism \(f: P' \to P\) such that \(p_1 f = p_1'\) and \(p_2 f = p_2'\). On the
-other hand, if we consider the triple
-\((X_0, f_0: X_0 \to X_1, 0: X_0 \to X_2)\) one has that the map
-\(f p_0': X_0 \to P\) satisfies the commutativity conditions:
-\begin{gather*}
-  p_1 (f p_0') = (p_1 f) p_0' = p_1' p_0' = f_0 = p_1 p_0, \\
-  p_2 (f p_0') = (p_2 f) p_0' = p_2' p_0' = 0 = p_2 p_0,
-\end{gather*}
-as does the map \(p_0: X_0 \to P\), hence by uniqueness we find that
-\(f p_0' = p_0\). Now by \cref{lem:abelian-cat-middle-iso-if-lateral-are-iso} we
-obtain that \(f\) is an isomorphism.
+    For the reciprocal, notice that the triple \((P', p_1', p_2')\) induces a unique
+    morphism \(f: P' \to P\) such that \(p_1 f = p_1'\) and \(p_2 f = p_2'\). On the
+    other hand, if we consider the triple
+    \((X_0, f_0: X_0 \to X_1, 0: X_0 \to X_2)\) one has that the map
+    \(f p_0': X_0 \to P\) satisfies the commutativity conditions:
+    \begin{gather*}
+        p_1 (f p_0') = (p_1 f) p_0' = p_1' p_0' = f_0 = p_1 p_0, \\
+        p_2 (f p_0') = (p_2 f) p_0' = p_2' p_0' = 0 = p_2 p_0,
+    \end{gather*}
+    as does the map \(p_0: X_0 \to P\), hence by uniqueness we find that
+    \(f p_0' = p_0\). Now by \cref{lem:abelian-cat-middle-iso-if-lateral-are-iso} we
+    obtain that \(f\) is an isomorphism.
 \end{proof}
 
 \section{Ideals}
 
 \begin{definition}[Bilateral ideal]
-\label{def:k-linear-cat-bilateral-ideal}
-Let \(\cat C\) be a \(k\)-linear category. We define a \emph{bilateral ideal} of
-\(\cat C\) to be a category \(\mathcal{I}\) with
-\(\Obj \mathcal{I} \subseteq \Obj \cat C\) and where \(\mathcal{I}(X, Y) \subseteq \Mor_{\cat C}(X, Y)\) is a
-submodule for any two \(X, Y \in \cat C\) such that:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item If \(f \in \mathcal{I}(X, Y)\) and \(g \in \Mor_{\cat C}(Y, Z)\) then \(g f \in \mathcal{I}(X, Z)\).
+    \label{def:k-linear-cat-bilateral-ideal}
+    Let \(\cat C\) be a \(k\)-linear category. We define a \emph{bilateral ideal} of
+    \(\cat C\) to be a category \(\mathcal{I}\) with
+    \(\Obj \mathcal{I} \subseteq \Obj \cat C\) and where \(\mathcal{I}(X, Y) \subseteq \Mor_{\cat C}(X, Y)\) is a
+    submodule for any two \(X, Y \in \cat C\) such that:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item If \(f \in \mathcal{I}(X, Y)\) and \(g \in \Mor_{\cat C}(Y, Z)\) then \(g f \in \mathcal{I}(X, Z)\).
 
-\item If \(f \in \mathcal{I}(X, Y)\) and \(h \in \Mor_{\cat C}(W, X)\) then \(f h \in \mathcal{I}(W, Y)\).
-\end{enumerate}
+        \item If \(f \in \mathcal{I}(X, Y)\) and \(h \in \Mor_{\cat C}(W, X)\) then \(f h \in \mathcal{I}(W, Y)\).
+    \end{enumerate}
 \end{definition}
 
 \begin{definition}[Quotient category]
-\label{def:k-linear-cat-quotient-category}
-Let \(\cat C\) be a \(k\)-linear category and \(\mathcal{I}\) be a bilateral ideal of
-\(\cat C\). We define the \emph{quotient category} \(\cat C/\mathcal{I}\) to be the
-\(k\)-linear category composed of the objects of \(\cat C\) and for each
-\(X, Y \in \cat C/\mathcal{I}\) we have
-\[
-\Mor_{\cat C/\mathcal{I}}(X, Y) \coloneq \Mor_{\cat C}(X, Y)/\mathcal{I}(X, Y).
-\]
+    \label{def:k-linear-cat-quotient-category}
+    Let \(\cat C\) be a \(k\)-linear category and \(\mathcal{I}\) be a bilateral ideal of
+    \(\cat C\). We define the \emph{quotient category} \(\cat C/\mathcal{I}\) to be the
+    \(k\)-linear category composed of the objects of \(\cat C\) and for each
+    \(X, Y \in \cat C/\mathcal{I}\) we have
+    \[
+        \Mor_{\cat C/\mathcal{I}}(X, Y) \coloneq \Mor_{\cat C}(X, Y)/\mathcal{I}(X, Y).
+    \]
 \end{definition}
 
 \begin{definition}[Functor kernel]
-\label{def:k-linear-functor-kernel}
-Let \(F: \cat C \to \cat D\) be a \(k\)-linear functor. We define the
-\emph{kernel} of \(F\) to be the bilateral ideal \(\ker F\) of \(\cat C\) given
-by the morphisms \(f \in \Mor \cat C\) such that \(F f = 0\).
+    \label{def:k-linear-functor-kernel}
+    Let \(F: \cat C \to \cat D\) be a \(k\)-linear functor. We define the
+    \emph{kernel} of \(F\) to be the bilateral ideal \(\ker F\) of \(\cat C\) given
+    by the morphisms \(f \in \Mor \cat C\) such that \(F f = 0\).
 \end{definition}
 
 \begin{proposition}
-\label{prop:k-linear-functor-quotient-kernel-equivalence--cats}
-Let \(F: \cat C \to \cat D\) be a \(k\)-linear functor that is both full and
-essentially surjective. Then there exists a unique equivalence of categories
-\(\overline F: \cat C/\ker F \isoto \cat D\) such that the following diagram
-quasi-commutes:
-\[
-\begin{tikzcd}
-\cat C \ar[d, "P"'] \ar[r, "F"]               &\cat D \\
-\cat C/\ker F \ar[ru, "\overline F"', dashed] &
-\end{tikzcd}
-\]
-where \(P: \cat C \to \cat C/\ker F\) is the canonical projection functor.
+    \label{prop:k-linear-functor-quotient-kernel-equivalence--cats}
+    Let \(F: \cat C \to \cat D\) be a \(k\)-linear functor that is both full and
+    essentially surjective. Then there exists a unique equivalence of categories
+    \(\overline F: \cat C/\ker F \isoto \cat D\) such that the following diagram
+    quasi-commutes:
+    \[
+        \begin{tikzcd}
+            \cat C \ar[d, "P"'] \ar[r, "F"]               &\cat D \\
+            \cat C/\ker F \ar[ru, "\overline F"', dashed] &
+        \end{tikzcd}
+    \]
+    where \(P: \cat C \to \cat C/\ker F\) is the canonical projection functor.
 \end{proposition}
 
 \begin{proof}
-Let \(\overline F: \cat C/\ker F \to \cat D\) be the functor given by
-\(\overline F X \coloneq F X\) for any \(X \in \cat C/\ker F\) and for each morphism
-\(f: X \to Y\) in \(\cat C\) we define
-\[
-\overline F (f + (\ker F)(X, Y)) = F f.
-\]
-So that indeed \(\overline F P = F\). Moreover, it is clear that \(\overline F\)
-inherits the properties of being full and essentially surjective from \(F\). On
-the other hand, if \(\overline F (g + (\ker F)(Z, W)) = 0\) then \(F g = 0\) and
-hence \(g \in (\ker F)(Z, W)\), thus \(\overline F\) is faithful.
+    Let \(\overline F: \cat C/\ker F \to \cat D\) be the functor given by
+    \(\overline F X \coloneq F X\) for any \(X \in \cat C/\ker F\) and for each morphism
+    \(f: X \to Y\) in \(\cat C\) we define
+    \[
+        \overline F (f + (\ker F)(X, Y)) = F f.
+    \]
+    So that indeed \(\overline F P = F\). Moreover, it is clear that \(\overline F\)
+    inherits the properties of being full and essentially surjective from \(F\). On
+    the other hand, if \(\overline F (g + (\ker F)(Z, W)) = 0\) then \(F g = 0\) and
+    hence \(g \in (\ker F)(Z, W)\), thus \(\overline F\) is faithful.
 \end{proof}
 
 \section{Exact Functors}
 
 \begin{proposition}
-\label{prop:abelian-cat-left-right-exact-functors}
-Let \(F: \cat C \to \cat D\) be a \(k\)-linear functor between \(k\)-abelian
-categories:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item If \(F\) is covariant, then \(F\) is \emph{left exact} if it preserves
-  kernels---that is, \(F(\ker g) = \ker(F g)\) for any \(g \in \Mor \cat C\). On the
-  other hand, \(F\) is said to be \emph{right exact} if it preserves
-  cokernels---for any \(g \in \Mor \cat C\) we have \(F(\coker g) = \coker(F g)\).
+    \label{prop:abelian-cat-left-right-exact-functors}
+    Let \(F: \cat C \to \cat D\) be a \(k\)-linear functor between \(k\)-abelian
+    categories:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item If \(F\) is covariant, then \(F\) is \emph{left exact} if it preserves
+              kernels---that is, \(F(\ker g) = \ker(F g)\) for any \(g \in \Mor \cat C\). On the
+              other hand, \(F\) is said to be \emph{right exact} if it preserves
+              cokernels---for any \(g \in \Mor \cat C\) we have \(F(\coker g) = \coker(F g)\).
 
-\item If \(F\) is contravariant, then \(F\) is \emph{left exact} if it
-  transforms kernels into cokernels---that is, \(F(\ker g) = \coker(F g)\) for any
-  \(g \in \Mor \cat C\). Moreover, \(F\) is \emph{right exact} if it transforms
-  cokernels into kernels---that is, \(F(\coker g) = \ker(F g)\) for any
-  \(g \in \Mor \cat C\).
-\end{enumerate}
+        \item If \(F\) is contravariant, then \(F\) is \emph{left exact} if it
+              transforms kernels into cokernels---that is, \(F(\ker g) = \coker(F g)\) for any
+              \(g \in \Mor \cat C\). Moreover, \(F\) is \emph{right exact} if it transforms
+              cokernels into kernels---that is, \(F(\coker g) = \ker(F g)\) for any
+              \(g \in \Mor \cat C\).
+    \end{enumerate}
 \end{proposition}
 
 

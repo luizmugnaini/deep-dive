@@ -1,234 +1,234 @@
 \section{An Elementary Construction of Differential Forms}
 
 \begin{definition}[\(k\)-surface]
-\label{def:k-surface-Rn}
-Let \(E \subseteq \R^n\) be an open set. We define a \emph{\(k\)-surface in}
-\(E\) to be a \(C^1\) \emph{map} \(\Phi: D \to E\), where \(D \subseteq \R^k\)
-is a \emph{compact} set --- this set is commonly referenced to as the parameter
-domain of \(\Phi\).
+    \label{def:k-surface-Rn}
+    Let \(E \subseteq \R^n\) be an open set. We define a \emph{\(k\)-surface in}
+    \(E\) to be a \(C^1\) \emph{map} \(\Phi: D \to E\), where \(D \subseteq \R^k\)
+    is a \emph{compact} set --- this set is commonly referenced to as the parameter
+    domain of \(\Phi\).
 \end{definition}
 
 \begin{definition}[Differential \(k\)-form]
-Let \(E \subseteq \R^n\) be an open set. A \emph{differential \(k\)-form} in
-\(E\), for \(k > 0\), is a multilinear map \(\omega\) given by
-\[
-  \omega \coloneq \sum f_{j_1 \dots j_k}\,
-  \diff x_{j_1} \wedge \dots \wedge \diff x_{j_k},
-\]
-where the sum runs over the sequence of indices \((j_1, \dots, j_k)\), where \(1
-\leq j_r \leq n\) for each \(1 \leq r \leq k\), and \(f_{j_1 \dots j_k}: E \to
-\R\) are continuous maps --- that is, \(0\)-forms. A differential \(k\)-form is
-said to be of class \(C^p\) if each map \(f_{j_1 \dots j_k}\) is of class
-\(C^p\).
+    Let \(E \subseteq \R^n\) be an open set. A \emph{differential \(k\)-form} in
+    \(E\), for \(k > 0\), is a multilinear map \(\omega\) given by
+    \[
+        \omega \coloneq \sum f_{j_1 \dots j_k}\,
+        \diff x_{j_1} \wedge \dots \wedge \diff x_{j_k},
+    \]
+    where the sum runs over the sequence of indices \((j_1, \dots, j_k)\), where \(1
+    \leq j_r \leq n\) for each \(1 \leq r \leq k\), and \(f_{j_1 \dots j_k}: E \to
+    \R\) are continuous maps --- that is, \(0\)-forms. A differential \(k\)-form is
+    said to be of class \(C^p\) if each map \(f_{j_1 \dots j_k}\) is of class
+    \(C^p\).
 
-The form \(\omega\) is said to be a \emph{basic} \(k\)-form if we have the
-ordering \(1 \leq j_1 < \dots < j_k \leq n\) for its indices --- in this case we
-commonly denote each sequence of indexes as \(I \coloneq (j_1, \dots, j_k)\) and
-write
-\[
-  \omega = \sum_I f_{I}\, \diff x_{I}.
-\]
+    The form \(\omega\) is said to be a \emph{basic} \(k\)-form if we have the
+    ordering \(1 \leq j_1 < \dots < j_k \leq n\) for its indices --- in this case we
+    commonly denote each sequence of indexes as \(I \coloneq (j_1, \dots, j_k)\) and
+    write
+    \[
+        \omega = \sum_I f_{I}\, \diff x_{I}.
+    \]
 \end{definition}
 
 \begin{definition}[Line integral]
-\label{def:line-integral}
-The integrals of \(1\)-forms are called \emph{line integrals}.
+    \label{def:line-integral}
+    The integrals of \(1\)-forms are called \emph{line integrals}.
 \end{definition}
 
 \begin{example}
-Lets calculate a line integral on the \(1\)-surface (\(C^1\) curve)
-\(\gamma: [0, 2 \pi] \to \R^2\) defined by \(t \mapsto (a \cos(t), b \sin(t))\),
-for constants \(a, b > 0\). Let \(\omega = x\, \diff y\) be a \(1\)-form on
-\(\R^2\). Measuring this curve with respect to \(\omega\) yields
-\[
-  \int_{\gamma} \omega = \int_0^{2\pi} a \cos(t) [b \cos(t)]\, \diff t
-  = ab \int_0^{2 \pi} \frac{\cos(2t) - 1}{2}\, \diff t = - ab \pi.
-\]
+    Lets calculate a line integral on the \(1\)-surface (\(C^1\) curve)
+    \(\gamma: [0, 2 \pi] \to \R^2\) defined by \(t \mapsto (a \cos(t), b \sin(t))\),
+    for constants \(a, b > 0\). Let \(\omega = x\, \diff y\) be a \(1\)-form on
+    \(\R^2\). Measuring this curve with respect to \(\omega\) yields
+    \[
+        \int_{\gamma} \omega = \int_0^{2\pi} a \cos(t) [b \cos(t)]\, \diff t
+        = ab \int_0^{2 \pi} \frac{\cos(2t) - 1}{2}\, \diff t = - ab \pi.
+    \]
 \end{example}
 
 \begin{definition}[Surface area]
-\label{def:k-surface-area}
-Let \(\Phi: D \to E\) be a \(k\)-surface on the open set \(E \subseteq \R^n\),
-and \(\omega \coloneq \sum_I f_{i_1 \dots i_k}\, \diff x_{i_1 \dots i_k}\). We
-define the area of the surface \(\Phi\) on \(\omega\) to be given by
-\[
-  \int_{\Phi} \omega
-  \coloneq \int_D \sum_I f_{i_1 \dots i_k}(\Phi(t))
-  \det {\left[ \partial_j \Phi_{i_r}(t) \right]}_{1 \leq r, j \leq k}
-  \, \diff t
-\]
+    \label{def:k-surface-area}
+    Let \(\Phi: D \to E\) be a \(k\)-surface on the open set \(E \subseteq \R^n\),
+    and \(\omega \coloneq \sum_I f_{i_1 \dots i_k}\, \diff x_{i_1 \dots i_k}\). We
+    define the area of the surface \(\Phi\) on \(\omega\) to be given by
+    \[
+        \int_{\Phi} \omega
+        \coloneq \int_D \sum_I f_{i_1 \dots i_k}(\Phi(t))
+        \det {\left[ \partial_j \Phi_{i_r}(t) \right]}_{1 \leq r, j \leq k}
+        \, \diff t
+    \]
 \end{definition}
 
 \begin{definition}[Piecewise smooth]
-\label{def:piecewise-smooth-surface}
-We define the concept of a piecewise smooth surface in an inductive manner. A
-point is a zero dimensional surface of any smoothness class. A surface \(S
-\subseteq \R^n\) of dimension \(k\) is piecewise smooth if, after a countable
-collection of at most \((k-1)\)-dimensional piecewise smooth surfaces can be
-removed from \(S\), the resulting surface can be decomposed into a countable
-collection of \(k\)-dimensional smooth surfaces.
+    \label{def:piecewise-smooth-surface}
+    We define the concept of a piecewise smooth surface in an inductive manner. A
+    point is a zero dimensional surface of any smoothness class. A surface \(S
+    \subseteq \R^n\) of dimension \(k\) is piecewise smooth if, after a countable
+    collection of at most \((k-1)\)-dimensional piecewise smooth surfaces can be
+    removed from \(S\), the resulting surface can be decomposed into a countable
+    collection of \(k\)-dimensional smooth surfaces.
 \end{definition}
 
 \begin{theorem}[A zero form has null coefficients]
-\label{thm:zero-form-standard-representation}
-Let \(\omega \coloneq \sum_J f_J\, \diff x_J\) be a \(k\)-form in an open set
-\(E \subseteq \R^{n}\), in its standard representation. If \(\omega = 0\) in
-\(E\) (that is \(\omega(\Phi) = 0\) for all \(k\)-surface \(\Phi\) in \(E\)),
-then \(f_J(x) = 0\) for all \(x \in E\).
+    \label{thm:zero-form-standard-representation}
+    Let \(\omega \coloneq \sum_J f_J\, \diff x_J\) be a \(k\)-form in an open set
+    \(E \subseteq \R^{n}\), in its standard representation. If \(\omega = 0\) in
+    \(E\) (that is \(\omega(\Phi) = 0\) for all \(k\)-surface \(\Phi\) in \(E\)),
+    then \(f_J(x) = 0\) for all \(x \in E\).
 \end{theorem}
 
 \begin{proof}
-Suppose, for the sake of contradiction, that there exists an index sequence \(S
-\coloneq (s_1, \dots, s_{k})\) such that \(f_{S}(y) \neq 0\) for some \(y \in
-E\). Since \(f_{S}\) is continuous, let \(\delta > 0\) be such that \(f_J(x) >
-0\) whenever \(\norm{x_i - y_i} \leq \delta\), for all \(1 \leq i \leq n\). Let
-\(D \subseteq \R^k\) be the compact set given by
-\[
-  D \coloneq \{t \in \R^{k} \colon \norm{t_j} \leq \delta
-  \text{ for all } 1 \leq j \leq k\}.
-\]
-Define a \(k\)-surface \(\Phi: D \to E\) to be given by
-\[
-  \Phi(t) \coloneq v + \sum_{j=1}^k t_j e_{s_j}\text{, for all } t \in D.
-\]
-Notice that \(D\) was chosen so that \(f_S(\Phi(t)) > 0\) for all \(t \in
-D\). Notice that
-\[
-  \int_{\Phi} \omega = \int_D \sum_J f_J(\Phi(t))
-  \det[\partial_i \Phi_{j_r}(t)]_{1 \leq i, r \leq k}\, \diff t
-  = \int_D f_S(\Phi(t)) \det[\partial_i \Phi_{s_r}]_{1 \leq i, r \leq k}\, \diff t
-\]
-since for all indexing sequence \(J \coloneq (j_1, \dots, j_k) \neq S\)
-the matrix \([\partial_i \Phi_{j_r}(t)]_{1 \leq i, r \leq k}\) has at least one
-column equal to zero --- since there must exists at least one \(j_{r_0} \in J
-\setminus S\), thus \(\Phi_{j_0}(t) = y_{j_0}\) for all \(t \in D\) and thus the
-column \([\partial_i \Phi_{j_0}(t)]_{1 \leq i \leq k} = 0\), which implies in
-\(\det [\partial_i \Phi_{j_r}(t)]_{1 \leq i, r \leq k} = 0\). On the other hand,
-notice that \(\partial_i \Phi_{s_r}(t) = \delta_{i r}\) for all \(1 \leq i, r
-\leq k\), thus \(\det [\partial_i \Phi_{s_r}(t)]_{1 \leq i, r \leq k} = 1\). We
-conclude that
-\[
-  \int_{\Phi} \omega = \int_D f_S(t)\, \diff t,
-\]
-which is strictly positive since \(f_S(y) > 0\). Therefore \(\omega(\Phi) \neq
-0\), which is a contradiction --- thus there must exist no indexing sequence
-\(S\) and therefore every coefficient is the zero-map.
+    Suppose, for the sake of contradiction, that there exists an index sequence \(S
+    \coloneq (s_1, \dots, s_{k})\) such that \(f_{S}(y) \neq 0\) for some \(y \in
+    E\). Since \(f_{S}\) is continuous, let \(\delta > 0\) be such that \(f_J(x) >
+    0\) whenever \(\norm{x_i - y_i} \leq \delta\), for all \(1 \leq i \leq n\). Let
+    \(D \subseteq \R^k\) be the compact set given by
+    \[
+        D \coloneq \{t \in \R^{k} \colon \norm{t_j} \leq \delta
+        \text{ for all } 1 \leq j \leq k\}.
+    \]
+    Define a \(k\)-surface \(\Phi: D \to E\) to be given by
+    \[
+        \Phi(t) \coloneq v + \sum_{j=1}^k t_j e_{s_j}\text{, for all } t \in D.
+    \]
+    Notice that \(D\) was chosen so that \(f_S(\Phi(t)) > 0\) for all \(t \in
+    D\). Notice that
+    \[
+        \int_{\Phi} \omega = \int_D \sum_J f_J(\Phi(t))
+        \det[\partial_i \Phi_{j_r}(t)]_{1 \leq i, r \leq k}\, \diff t
+        = \int_D f_S(\Phi(t)) \det[\partial_i \Phi_{s_r}]_{1 \leq i, r \leq k}\, \diff t
+    \]
+    since for all indexing sequence \(J \coloneq (j_1, \dots, j_k) \neq S\)
+    the matrix \([\partial_i \Phi_{j_r}(t)]_{1 \leq i, r \leq k}\) has at least one
+    column equal to zero --- since there must exists at least one \(j_{r_0} \in J
+    \setminus S\), thus \(\Phi_{j_0}(t) = y_{j_0}\) for all \(t \in D\) and thus the
+    column \([\partial_i \Phi_{j_0}(t)]_{1 \leq i \leq k} = 0\), which implies in
+    \(\det [\partial_i \Phi_{j_r}(t)]_{1 \leq i, r \leq k} = 0\). On the other hand,
+    notice that \(\partial_i \Phi_{s_r}(t) = \delta_{i r}\) for all \(1 \leq i, r
+    \leq k\), thus \(\det [\partial_i \Phi_{s_r}(t)]_{1 \leq i, r \leq k} = 1\). We
+    conclude that
+    \[
+        \int_{\Phi} \omega = \int_D f_S(t)\, \diff t,
+    \]
+    which is strictly positive since \(f_S(y) > 0\). Therefore \(\omega(\Phi) \neq
+    0\), which is a contradiction --- thus there must exist no indexing sequence
+    \(S\) and therefore every coefficient is the zero-map.
 \end{proof}
 
 \subsection{Differential Operator}
 
 \begin{definition}
-\label{def:differential-operator-form}
-Let \(f: E \to \R\) be a map of class \(C^1\), we define an operator \(\diff\)
-which transforms any \(0\)-form \(f\) into
-\[
-  \diff f \coloneq \sum_{j=1}^n \partial_j f\, \diff x_j.
-\]
-Now, for any \(k\)-form \(\omega \coloneq \sum_J f_J\, \diff x_J\), where \(k
-\geq 1\) and \(f_J: E \to \R\) is again a map of class \(C^1\) (a \(0\)-form) we
-associate the \((k+1)\)-form \(\diff \omega\) --- which is defined by
-\[
-  \diff \omega \coloneq \sum_J \diff f_J \wedge \diff x_{J}.
-\]
+    \label{def:differential-operator-form}
+    Let \(f: E \to \R\) be a map of class \(C^1\), we define an operator \(\diff\)
+    which transforms any \(0\)-form \(f\) into
+    \[
+        \diff f \coloneq \sum_{j=1}^n \partial_j f\, \diff x_j.
+    \]
+    Now, for any \(k\)-form \(\omega \coloneq \sum_J f_J\, \diff x_J\), where \(k
+    \geq 1\) and \(f_J: E \to \R\) is again a map of class \(C^1\) (a \(0\)-form) we
+    associate the \((k+1)\)-form \(\diff \omega\) --- which is defined by
+    \[
+        \diff \omega \coloneq \sum_J \diff f_J \wedge \diff x_{J}.
+    \]
 \end{definition}
 
 \begin{example}
-\label{exp:curve-integral}
-Let \(E \subseteq \R^n\) be an open set, and \(\gamma: [0, 1] \to E\) be a
-\(1\)-surface (that is, a continuous differentiable curve). If we let \(f: E \to
-\R\) be a \(C^1\) map, we have from the definition that the integral over the
-curve \(\gamma\) of \(\diff f\) is given by --- recalling \cref{thm:
-multi-comp-diff},
-\[
-  \int_{\gamma} \diff f =
-  \int_0^1 \sum_{j=1}^n \partial_j f (\gamma(t)) \gamma_j'(t)\, \diff t
-  = \int_0^1 \diff (f \gamma)(t)\, \diff t
-  = f \gamma(1) - f \gamma(0).
-\]
-since \(f \gamma: [0, 1] \to \R\) is a continuously differentiable map.
+    \label{exp:curve-integral}
+    Let \(E \subseteq \R^n\) be an open set, and \(\gamma: [0, 1] \to E\) be a
+    \(1\)-surface (that is, a continuous differentiable curve). If we let \(f: E \to
+    \R\) be a \(C^1\) map, we have from the definition that the integral over the
+    curve \(\gamma\) of \(\diff f\) is given by --- recalling \cref{thm:
+        multi-comp-diff},
+    \[
+        \int_{\gamma} \diff f =
+        \int_0^1 \sum_{j=1}^n \partial_j f (\gamma(t)) \gamma_j'(t)\, \diff t
+        = \int_0^1 \diff (f \gamma)(t)\, \diff t
+        = f \gamma(1) - f \gamma(0).
+    \]
+    since \(f \gamma: [0, 1] \to \R\) is a continuously differentiable map.
 \end{example}
 
 \begin{theorem}
-\label{thm:differential-operator-forms-properties}
-The following are properties of the differential operator on forms. Let \(E
-\subseteq \R^n\) be some open set.
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item (Skew-product rule) Let \(\omega\) be a \(k\)-form and \(\gamma\) be a
-  \(m\)-form, both of class \(C^1(E)\). Then
-  \[
-    \diff (\omega \wedge \gamma)
-    = (\diff \omega) \wedge \gamma + (-1)^k \omega \wedge \diff \gamma.
-  \]
-\item If \(\omega\) is a \(k\)-form of class \(C^2(E)\), then \(\diff(\diff
-  \omega) = 0\).
-\end{enumerate}
+    \label{thm:differential-operator-forms-properties}
+    The following are properties of the differential operator on forms. Let \(E
+    \subseteq \R^n\) be some open set.
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item (Skew-product rule) Let \(\omega\) be a \(k\)-form and \(\gamma\) be a
+              \(m\)-form, both of class \(C^1(E)\). Then
+              \[
+                  \diff (\omega \wedge \gamma)
+                  = (\diff \omega) \wedge \gamma + (-1)^k \omega \wedge \diff \gamma.
+              \]
+        \item If \(\omega\) is a \(k\)-form of class \(C^2(E)\), then \(\diff(\diff
+              \omega) = 0\).
+    \end{enumerate}
 \end{theorem}
 
 \begin{proof}
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item Let \(\omega \coloneq \sum_I f_{I} \diff x_I\) and \(\gamma(x)
-  \coloneq \sum_J g_{J} \diff x_{J}\) for \(C^1\) coefficients \(f_I, g_J: E
-  \rightrightarrows \R\) --- if \(k\) or \(m\) are zero, we just omit the
-  \(1\)-forms from the definitions. From the wedge product we have
-  \[
-    \diff(\omega \wedge \gamma)
-    = \sum_{I, J} \diff\left( f_I \cdot g_J\, \diff x_I \wedge \diff x_J \right)
-    = \sum_{I, J} \diff(f_I \cdot g_J) \wedge \diff x_I \wedge \diff x_J.
-  \]
-  Define, for each pair \(I\) and \(J\), the indexing sequence \((\!(I, J)\!)\)
-  consisting of the increasing ordered union of the sequences \(I\) and
-  \(J\). Moreover, for each \((\!(I, J)\!)\), there will be an associated sign
-  \begin{equation}
-    \label{eq:sequence-index-sign}
-    \sign(I, J) \coloneq |\{j - i \colon j - i < 0 \text{ for }
-    (i, j) \in I \times J\}|,
-  \end{equation}
-  that is, the number of times the indices of \(J\) is greater than the ones
-  from \(I\). From the skew-commutativity property
-  (\cref{prop:exterior-algebra-associative-skew-commutative}),
-  \begin{align*}
-    \diff (\omega \wedge \gamma)
-    &= \sum_{I, J} \sign(I, J)\,
-      \diff(f_{I} \cdot g_{J}) \wedge \diff x_{(\!(I, J)\!)} \\
-    &= \sum_{(I, J)} \sign(I, J)
-    \left( \diff f_I \cdot g_J + f_I \cdot \diff g_J \right)
-    \wedge \diff x_{(\!(I, J)\!)} \\
-    &= \sum_{I, J} \left( \diff f_I \cdot g_J + f_I \cdot \diff g_J \right)
-    \wedge \diff x_I \wedge \diff x_J.
-  \end{align*}
-  From the distributive property, associativity and skew-commutativity we get
-  \begin{align*}
-    \diff(\omega \wedge \gamma)
-    &= \sum_{I, J} (g_J\, \diff f_I \wedge \diff x_I \wedge \diff x_J
-    +  f_I\, \diff g_J \wedge \diff x_I \wedge \diff x_J) \\
-    &= \sum_{I, J} (\diff f_I \wedge \diff x_I) \wedge (g_J\, \diff x_J)
-      + (-1)^k (f_I\, \diff x_I) \wedge (\diff g_J \wedge \diff x_J) \\
-    &= \sum_{I, J} (\diff f_I \wedge \diff x_I) \wedge (g_J\, \diff x_J)
-      + (-1)^k \sum_{I, J} (f_I\, \diff x_I) \wedge (\diff g_J \wedge \diff x_J)
-    \\
-    &= \bigg( \sum_I \diff f_I \wedge \diff x_I\bigg) \wedge
-      \bigg( \sum_J g_J\, \diff x_J \bigg)
-      + (-1)^k \bigg( \sum_I f_I\, \diff x_I \bigg) \wedge
-      \bigg( \sum_J \diff g_J \wedge \diff x_J \bigg) \\
-    &= \diff \omega \wedge \lambda + (-1)^k \omega \wedge \diff \lambda.
-  \end{align*}
-\item For the case of a zero form \(f: E \to \R\), of class \(C^2\), we have
-  \[
-    \diff(\diff f) =
-    \diff \bigg( \sum_{j=1}^n \partial_j f\, \diff x_j \bigg)
-    = \sum_{j = 1}^n \diff (\partial_j f)\, \diff x_j
-    = \sum_{i, j = 1}^n \partial_{i j} f\, \diff x_i \wedge \diff x_j
-  \]
-  Notice however that \(\partial_{i j} f = \partial_{j i} f\) for any \(1 \leq
-  i, j \leq n\), thus each pair \((i, j)\) and \((j, i)\) of the sum cancel with
-  each other --- since \(\diff x_i \wedge \diff x_j = - \diff x_j \wedge \diff
-  x_i\) --- which implies in \(\diff(\diff f) = 0\).
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item Let \(\omega \coloneq \sum_I f_{I} \diff x_I\) and \(\gamma(x)
+              \coloneq \sum_J g_{J} \diff x_{J}\) for \(C^1\) coefficients \(f_I, g_J: E
+              \rightrightarrows \R\) --- if \(k\) or \(m\) are zero, we just omit the
+              \(1\)-forms from the definitions. From the wedge product we have
+              \[
+                  \diff(\omega \wedge \gamma)
+                  = \sum_{I, J} \diff\left( f_I \cdot g_J\, \diff x_I \wedge \diff x_J \right)
+                  = \sum_{I, J} \diff(f_I \cdot g_J) \wedge \diff x_I \wedge \diff x_J.
+              \]
+              Define, for each pair \(I\) and \(J\), the indexing sequence \((\!(I, J)\!)\)
+              consisting of the increasing ordered union of the sequences \(I\) and
+              \(J\). Moreover, for each \((\!(I, J)\!)\), there will be an associated sign
+              \begin{equation}
+                  \label{eq:sequence-index-sign}
+                  \sign(I, J) \coloneq |\{j - i \colon j - i < 0 \text{ for }
+                  (i, j) \in I \times J\}|,
+              \end{equation}
+              that is, the number of times the indices of \(J\) is greater than the ones
+              from \(I\). From the skew-commutativity property
+              (\cref{prop:exterior-algebra-associative-skew-commutative}),
+              \begin{align*}
+                  \diff (\omega \wedge \gamma)
+                   & = \sum_{I, J} \sign(I, J)\,
+                  \diff(f_{I} \cdot g_{J}) \wedge \diff x_{(\!(I, J)\!)}                    \\
+                   & = \sum_{(I, J)} \sign(I, J)
+                  \left( \diff f_I \cdot g_J + f_I \cdot \diff g_J \right)
+                  \wedge \diff x_{(\!(I, J)\!)}                                             \\
+                   & = \sum_{I, J} \left( \diff f_I \cdot g_J + f_I \cdot \diff g_J \right)
+                  \wedge \diff x_I \wedge \diff x_J.
+              \end{align*}
+              From the distributive property, associativity and skew-commutativity we get
+              \begin{align*}
+                  \diff(\omega \wedge \gamma)
+                   & = \sum_{I, J} (g_J\, \diff f_I \wedge \diff x_I \wedge \diff x_J
+                  +  f_I\, \diff g_J \wedge \diff x_I \wedge \diff x_J)                  \\
+                   & = \sum_{I, J} (\diff f_I \wedge \diff x_I) \wedge (g_J\, \diff x_J)
+                  + (-1)^k (f_I\, \diff x_I) \wedge (\diff g_J \wedge \diff x_J)         \\
+                   & = \sum_{I, J} (\diff f_I \wedge \diff x_I) \wedge (g_J\, \diff x_J)
+                  + (-1)^k \sum_{I, J} (f_I\, \diff x_I) \wedge (\diff g_J \wedge \diff x_J)
+                  \\
+                   & = \bigg( \sum_I \diff f_I \wedge \diff x_I\bigg) \wedge
+                  \bigg( \sum_J g_J\, \diff x_J \bigg)
+                  + (-1)^k \bigg( \sum_I f_I\, \diff x_I \bigg) \wedge
+                  \bigg( \sum_J \diff g_J \wedge \diff x_J \bigg)                        \\
+                   & = \diff \omega \wedge \lambda + (-1)^k \omega \wedge \diff \lambda.
+              \end{align*}
+        \item For the case of a zero form \(f: E \to \R\), of class \(C^2\), we have
+              \[
+                  \diff(\diff f) =
+                  \diff \bigg( \sum_{j=1}^n \partial_j f\, \diff x_j \bigg)
+                  = \sum_{j = 1}^n \diff (\partial_j f)\, \diff x_j
+                  = \sum_{i, j = 1}^n \partial_{i j} f\, \diff x_i \wedge \diff x_j
+              \]
+              Notice however that \(\partial_{i j} f = \partial_{j i} f\) for any \(1 \leq
+              i, j \leq n\), thus each pair \((i, j)\) and \((j, i)\) of the sum cancel with
+              each other --- since \(\diff x_i \wedge \diff x_j = - \diff x_j \wedge \diff
+              x_i\) --- which implies in \(\diff(\diff f) = 0\).
 
-  For the general case, if \(\omega = \sum_I f_I\, \diff x_I\) is any \(C^2\)
-  \(k\)-form, since \(\diff^2 \omega = \sum_I \diff^2 f_I\, \diff x_I\) and
-  \(\diff^2 f_I = 0\), for all \(I\), it follows immediately that \(\diff^2
-  \omega = 0\).
-\end{enumerate}
+              For the general case, if \(\omega = \sum_I f_I\, \diff x_I\) is any \(C^2\)
+              \(k\)-form, since \(\diff^2 \omega = \sum_I \diff^2 f_I\, \diff x_I\) and
+              \(\diff^2 f_I = 0\), for all \(I\), it follows immediately that \(\diff^2
+              \omega = 0\).
+    \end{enumerate}
 \end{proof}
 
 \subsection{Change of Variables --- The Pullback Operation}
@@ -238,367 +238,367 @@ Let \(\omega \coloneq \sum_I f_I\, \diff x_I\) be a \(k\)-form in an open set
 set \(V \subseteq \R^m\). Notice that there arises a \emph{natural pullback}
 operation \(\phi^{*}\) that allows for a \emph{change of variables}
 \begin{equation}
-\label{eq:change-of-variables-forms}
-  \phi^{*}(\omega) = \sum_I f_I \phi\, \diff v_I,
+    \label{eq:change-of-variables-forms}
+    \phi^{*}(\omega) = \sum_I f_I \phi\, \diff v_I,
 \end{equation}
 where \(v_I\) represents the coordinates coming from \(V\).
 
 \begin{proposition}[Pullback properties]
-\label{prop:algebraic-properties-pullback-forms}
-Let \(\omega\) and \(\lambda\) be, respectively, a \(k\)-form and an \(m\)-form
-in the open set \(E \subseteq \R^n\). Let \(\phi: V \to E\) be a \(C^{1}\)
-map. The following properties hold:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item If \(k = m\), then \(\phi^{*}(\omega + \lambda) = \phi^{*}(\omega) +
-  \phi^{*}(\lambda)\).
-\item \(\phi^{*}(\omega \wedge \lambda) = \phi^{*}(\omega) \wedge \phi^{*}
-  (\lambda)\).
-\item If \(\omega\) is \(C^{1}\) and \(\phi\) is of class \(C^2\), then
-  \(\diff(\phi^{*}(\omega)) = \phi^{*}(\diff \omega)\).
-\end{enumerate}
+    \label{prop:algebraic-properties-pullback-forms}
+    Let \(\omega\) and \(\lambda\) be, respectively, a \(k\)-form and an \(m\)-form
+    in the open set \(E \subseteq \R^n\). Let \(\phi: V \to E\) be a \(C^{1}\)
+    map. The following properties hold:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item If \(k = m\), then \(\phi^{*}(\omega + \lambda) = \phi^{*}(\omega) +
+              \phi^{*}(\lambda)\).
+        \item \(\phi^{*}(\omega \wedge \lambda) = \phi^{*}(\omega) \wedge \phi^{*}
+              (\lambda)\).
+        \item If \(\omega\) is \(C^{1}\) and \(\phi\) is of class \(C^2\), then
+              \(\diff(\phi^{*}(\omega)) = \phi^{*}(\diff \omega)\).
+    \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-Let \(\omega \coloneq \sum f_I\, \diff x_I\) and \(\lambda \coloneq \sum g_J\,
-\diff x_J\).
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item If \(k = m\), then \(\omega + \lambda\) is a \(k\)-form in \(E\), and we
-  have
-  \[
-    \phi^{*}(\omega + \lambda)
-    = \phi^{*} \left( \sum f_I\, \diff x_I + \sum g_J\, \diff x_J \right)
-    = \sum f_I \phi\, \diff v_I + \sum g_J \phi\, \diff v_J
-    = \phi^{*}(\omega) + \phi^{*}(\lambda).
-  \]
-\item Notice that
-  \begin{align*}
-    \phi^{*}(\omega \wedge \lambda)
-    &= \phi^{*} \bigg(
-      \sum_{I, J} f_I \cdot g_J\, \diff x_I \wedge \diff x_J
-    \bigg)
-    = \sum_{I, J} (f_I \cdot g_J) \phi\, \diff v_I \wedge \diff v_J \\
-    &= \sum_{I, J} (f_I \phi) \cdot (g_J \phi)\, \diff v_I \wedge \diff v_J
-    = \sum_{I, J} (f_I \phi\, \diff v_I) \wedge (g_J \phi\, \diff v_J) \\
-    &= \phi^{*}(\omega) \wedge \phi^{*}(\lambda).
-  \end{align*}
-\item We first prove the equality for the base case of a \(0\)-form. Let \(h: E
-  \to \R\) be a \(0\)-form, then
-  \begin{align*}
-    \phi^{*} (\diff h)
-    &= \phi^{*} \bigg( \sum_{i=1}^n \partial_i h\, \diff x_i \bigg)
-    = \sum_{i=1}^n (\partial_i h) \phi\, \diff v_i \\
-    &= \sum_{i=1}^n (\partial_i h) \phi
-      \bigg( \sum_{j=1}^{n} \partial_j v_i\, \diff x_j \bigg)
-    = \sum_{j=1}^n \partial_j (h \phi)\, \diff x_j \\
-    &= \diff (\phi^{*}(h))
-  \end{align*}
-  We now turn to the general case. Notice that \(\phi^{*}(\omega) = \sum_I
-  \phi^{*}(f_I)\, \diff v_I = \sum_I \phi^{*}(f_I)\, \phi^{*}(\diff x_{I})\),
-  since \(\phi^{*} (\diff x_I) = \diff v_I\). Therefore, assuming \(\phi\) is of
-  class \(C^2\), we have
-  \begin{align*}
-    \diff (\phi^{*} \omega)
-    &= \sum_I \diff(\phi^{*} f_{I}) \wedge \diff v_{I}
-    = \sum_I \phi^{*}(\diff f_I) \wedge \phi^{*} (\diff x_{I}) \\
-    &= \sum_I \phi^{*}(\diff f_I \wedge \diff x_I)
-    = \phi^{*} \bigg( \sum_I \diff f_I \wedge \diff x_I \bigg) \\
-    &= \phi^{*}(\diff \omega).
-  \end{align*}
-  The need for \(\phi\) to be \(C^2\) comes from the fact that the first
-  equality --- by \cref{thm:differential-operator-forms-properties} --- is
-  obtained by noting that
-  \[
-    \diff (\phi^{*}(f)\, \diff v_I)
-    = \diff (\phi^{*}(f)) \wedge \diff v_I
-      + \phi^{*}(f) \wedge \underbrace{\diff(\diff v_I)}_{0}
-    = \diff (\phi^{*}f) \wedge \diff v_I.
-  \]
-\end{enumerate}
+    Let \(\omega \coloneq \sum f_I\, \diff x_I\) and \(\lambda \coloneq \sum g_J\,
+    \diff x_J\).
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item If \(k = m\), then \(\omega + \lambda\) is a \(k\)-form in \(E\), and we
+              have
+              \[
+                  \phi^{*}(\omega + \lambda)
+                  = \phi^{*} \left( \sum f_I\, \diff x_I + \sum g_J\, \diff x_J \right)
+                  = \sum f_I \phi\, \diff v_I + \sum g_J \phi\, \diff v_J
+                  = \phi^{*}(\omega) + \phi^{*}(\lambda).
+              \]
+        \item Notice that
+              \begin{align*}
+                  \phi^{*}(\omega \wedge \lambda)
+                   & = \phi^{*} \bigg(
+                  \sum_{I, J} f_I \cdot g_J\, \diff x_I \wedge \diff x_J
+                  \bigg)
+                  = \sum_{I, J} (f_I \cdot g_J) \phi\, \diff v_I \wedge \diff v_J           \\
+                   & = \sum_{I, J} (f_I \phi) \cdot (g_J \phi)\, \diff v_I \wedge \diff v_J
+                  = \sum_{I, J} (f_I \phi\, \diff v_I) \wedge (g_J \phi\, \diff v_J)        \\
+                   & = \phi^{*}(\omega) \wedge \phi^{*}(\lambda).
+              \end{align*}
+        \item We first prove the equality for the base case of a \(0\)-form. Let \(h: E
+              \to \R\) be a \(0\)-form, then
+              \begin{align*}
+                  \phi^{*} (\diff h)
+                   & = \phi^{*} \bigg( \sum_{i=1}^n \partial_i h\, \diff x_i \bigg)
+                  = \sum_{i=1}^n (\partial_i h) \phi\, \diff v_i                    \\
+                   & = \sum_{i=1}^n (\partial_i h) \phi
+                  \bigg( \sum_{j=1}^{n} \partial_j v_i\, \diff x_j \bigg)
+                  = \sum_{j=1}^n \partial_j (h \phi)\, \diff x_j                    \\
+                   & = \diff (\phi^{*}(h))
+              \end{align*}
+              We now turn to the general case. Notice that \(\phi^{*}(\omega) = \sum_I
+              \phi^{*}(f_I)\, \diff v_I = \sum_I \phi^{*}(f_I)\, \phi^{*}(\diff x_{I})\),
+              since \(\phi^{*} (\diff x_I) = \diff v_I\). Therefore, assuming \(\phi\) is of
+              class \(C^2\), we have
+              \begin{align*}
+                  \diff (\phi^{*} \omega)
+                   & = \sum_I \diff(\phi^{*} f_{I}) \wedge \diff v_{I}
+                  = \sum_I \phi^{*}(\diff f_I) \wedge \phi^{*} (\diff x_{I}) \\
+                   & = \sum_I \phi^{*}(\diff f_I \wedge \diff x_I)
+                  = \phi^{*} \bigg( \sum_I \diff f_I \wedge \diff x_I \bigg) \\
+                   & = \phi^{*}(\diff \omega).
+              \end{align*}
+              The need for \(\phi\) to be \(C^2\) comes from the fact that the first
+              equality --- by \cref{thm:differential-operator-forms-properties} --- is
+              obtained by noting that
+              \[
+                  \diff (\phi^{*}(f)\, \diff v_I)
+                  = \diff (\phi^{*}(f)) \wedge \diff v_I
+                  + \phi^{*}(f) \wedge \underbrace{\diff(\diff v_I)}_{0}
+                  = \diff (\phi^{*}f) \wedge \diff v_I.
+              \]
+    \end{enumerate}
 \end{proof}
 
 \begin{lemma}[Pullback composition]
-\label{lem:pullback-composition-forms}
-Let \(\omega\) be a \(k\)-form in an open set \(W \subseteq \R^p\). Consider two
-composable \(C^1\) maps \(\phi: E \to V\) and \(\psi: V \to W\), where \(U
-\subseteq \R^n\) and \(V \subseteq \R^m\). Then the following equality holds
-\[
-  \phi^{*}(\psi^{*}(\omega)) = {(\psi \phi)}^{*}(\omega).
-\]
-Moreover, these are \(k\)-forms in \(U\).
+    \label{lem:pullback-composition-forms}
+    Let \(\omega\) be a \(k\)-form in an open set \(W \subseteq \R^p\). Consider two
+    composable \(C^1\) maps \(\phi: E \to V\) and \(\psi: V \to W\), where \(U
+    \subseteq \R^n\) and \(V \subseteq \R^m\). Then the following equality holds
+    \[
+        \phi^{*}(\psi^{*}(\omega)) = {(\psi \phi)}^{*}(\omega).
+    \]
+    Moreover, these are \(k\)-forms in \(U\).
 \end{lemma}
 
 \begin{proof}
-Define \(\omega \coloneq \sum_I f_I\, \diff w_I\). Thus
-\begin{align*}
-  \phi^{*}(\psi^{*}(\omega))
-  = \phi^{*} \bigg( \sum_I f_I \psi\, \diff v_I \bigg)
-  = \sum_I (f_I \psi) \phi\, \diff u_I
-  = \sum_I f_I (\psi \phi)\, \diff u_I
-  = (\psi \phi)^{*} (\omega).
-\end{align*}
+    Define \(\omega \coloneq \sum_I f_I\, \diff w_I\). Thus
+    \begin{align*}
+        \phi^{*}(\psi^{*}(\omega))
+        = \phi^{*} \bigg( \sum_I f_I \psi\, \diff v_I \bigg)
+        = \sum_I (f_I \psi) \phi\, \diff u_I
+        = \sum_I f_I (\psi \phi)\, \diff u_I
+        = (\psi \phi)^{*} (\omega).
+    \end{align*}
 \end{proof}
 
 \begin{lemma}
-\label{lem:integral-on-k-surface}
-Let \(\omega\) be a \(k\)-form in an open set \(E \subseteq \R^n\). We consider
-two \(k\)-surfaces \(\Phi: D \to E\) and \(\Id_D: D \to \R^k\), with \(\Id_D(t)
-\coloneq t\) --- where \(D \subseteq \R^k\) is a compact set. Then
-\[
-  \int_{\Phi} \omega = \int_{\Id_D} \Phi^{*}(\omega).
-\]
+    \label{lem:integral-on-k-surface}
+    Let \(\omega\) be a \(k\)-form in an open set \(E \subseteq \R^n\). We consider
+    two \(k\)-surfaces \(\Phi: D \to E\) and \(\Id_D: D \to \R^k\), with \(\Id_D(t)
+    \coloneq t\) --- where \(D \subseteq \R^k\) is a compact set. Then
+    \[
+        \int_{\Phi} \omega = \int_{\Id_D} \Phi^{*}(\omega).
+    \]
 \end{lemma}
 
 \begin{proof}
-Define \(\omega \coloneq \sum_I f_I\, \diff x_I\), and \(\Phi_j \coloneq \pi_j
-\Phi\) as the \(j\)-th projection of the surface \(\Phi\) --- that is
-\[
-  \Phi^{*}(\omega) = \sum_I f_I \Phi\, \diff \Phi_I.
-\]
-Defining \(I \coloneq (i_p)_{p=1}^k\), and since \(\diff \Phi_{i_p} =
-\sum_{q=1}^k \partial_q \Phi_{i_p}\, \diff t_{q}\) for all \(1 \leq p \leq k\),
-we see that
-\begin{align*}
-  \diff \Phi_{i_1} \wedge \dots \wedge \diff \Phi_{i_k}
-  &= \bigg( \sum_{q=1}^k \partial_q \Phi_{i_1}\, \diff t_{q} \bigg)
-    \wedge \dots \wedge \bigg( \sum_{q=1}^k \partial_q \Phi_{i_k} \diff t_q \bigg)
-  \\
-  &= \sum_{1 \leq i_1, \dots, i_k \leq k} \left[
-    \prod_{q=1}^k \partial_q \Phi_{i_q}
-  \right]\, \diff t_{i_1} \wedge \dots \wedge \diff t_{i_k} \\
-  &= \sum_{1 \leq i_1, \dots, i_k \leq k} \left[
-    \prod_{q=1}^k \partial_q \Phi_{i_q}
-  \right] \left(
-    \sign(i_1, \dots, i_k)\, \diff t_{1} \wedge \dots \wedge \diff t_{k}
-  \right) \\
-  &= \det [\partial_q \Phi_{i_p}]_{p, q = 1}^{n}\,
-    \diff t_1 \wedge \dots \wedge \diff t_k \\
-  &= \det(\Jac \Phi)\, \diff t_1 \wedge \dots \wedge \diff t_k.
-\end{align*}
-Where the \(\sign\) map is defined as in
-\cref{eq:sequence-index-sign}. Therefore, combining equations we find
-\[
-  \Phi^{*}(\omega) = \sum_I f_I \Phi\, \det(\Jac \Phi)\,
-  \diff t_1 \wedge \dots \wedge \diff t_k,
-\]
-thus indeed
-\begin{align*}
-  \int_{\Id_D} \Phi^{*}(\omega)
-  &= \int_{\Id_D} \sum_I
-    f_I \Phi(t)\, \det(\Jac \Phi(t))\, \diff t_1 \wedge \dots \wedge \diff t_k
-  \\
-  &= \int_D \sum_I f_I \Phi(t)\, \det(\Jac \Phi(t))\, \diff t \\
-  &= \int_{\Phi} \omega.
-\end{align*}
+    Define \(\omega \coloneq \sum_I f_I\, \diff x_I\), and \(\Phi_j \coloneq \pi_j
+    \Phi\) as the \(j\)-th projection of the surface \(\Phi\) --- that is
+    \[
+        \Phi^{*}(\omega) = \sum_I f_I \Phi\, \diff \Phi_I.
+    \]
+    Defining \(I \coloneq (i_p)_{p=1}^k\), and since \(\diff \Phi_{i_p} =
+    \sum_{q=1}^k \partial_q \Phi_{i_p}\, \diff t_{q}\) for all \(1 \leq p \leq k\),
+    we see that
+    \begin{align*}
+        \diff \Phi_{i_1} \wedge \dots \wedge \diff \Phi_{i_k}
+         & = \bigg( \sum_{q=1}^k \partial_q \Phi_{i_1}\, \diff t_{q} \bigg)
+        \wedge \dots \wedge \bigg( \sum_{q=1}^k \partial_q \Phi_{i_k} \diff t_q \bigg)
+        \\
+         & = \sum_{1 \leq i_1, \dots, i_k \leq k} \left[
+            \prod_{q=1}^k \partial_q \Phi_{i_q}
+        \right]\, \diff t_{i_1} \wedge \dots \wedge \diff t_{i_k}           \\
+         & = \sum_{1 \leq i_1, \dots, i_k \leq k} \left[
+            \prod_{q=1}^k \partial_q \Phi_{i_q}
+            \right] \left(
+        \sign(i_1, \dots, i_k)\, \diff t_{1} \wedge \dots \wedge \diff t_{k}
+        \right)                                                             \\
+         & = \det [\partial_q \Phi_{i_p}]_{p, q = 1}^{n}\,
+        \diff t_1 \wedge \dots \wedge \diff t_k                             \\
+         & = \det(\Jac \Phi)\, \diff t_1 \wedge \dots \wedge \diff t_k.
+    \end{align*}
+    Where the \(\sign\) map is defined as in
+    \cref{eq:sequence-index-sign}. Therefore, combining equations we find
+    \[
+        \Phi^{*}(\omega) = \sum_I f_I \Phi\, \det(\Jac \Phi)\,
+        \diff t_1 \wedge \dots \wedge \diff t_k,
+    \]
+    thus indeed
+    \begin{align*}
+        \int_{\Id_D} \Phi^{*}(\omega)
+         & = \int_{\Id_D} \sum_I
+        f_I \Phi(t)\, \det(\Jac \Phi(t))\, \diff t_1 \wedge \dots \wedge \diff t_k
+        \\
+         & = \int_D \sum_I f_I \Phi(t)\, \det(\Jac \Phi(t))\, \diff t \\
+         & = \int_{\Phi} \omega.
+    \end{align*}
 \end{proof}
 
 \begin{theorem}
-\label{thm:change-of-variable-integral-over-surface-forms}
-Let \(\psi: V \to E\) be a map of class \(C^1\) on open sets \(V \subseteq
-\R^m\), and \(E \subseteq \R^n\). Consider a \(k\)-surface \(\Phi: D \to V\),
-where \(D \subseteq \R^k\) is compact, and a \(k\)-form \(\omega\) in
-\(E\). Then we have the following equality
-\[
-  \int_{\psi \Phi} \omega = \int_{\Phi} \psi^{*}(\omega).
-\]
+    \label{thm:change-of-variable-integral-over-surface-forms}
+    Let \(\psi: V \to E\) be a map of class \(C^1\) on open sets \(V \subseteq
+    \R^m\), and \(E \subseteq \R^n\). Consider a \(k\)-surface \(\Phi: D \to V\),
+    where \(D \subseteq \R^k\) is compact, and a \(k\)-form \(\omega\) in
+    \(E\). Then we have the following equality
+    \[
+        \int_{\psi \Phi} \omega = \int_{\Phi} \psi^{*}(\omega).
+    \]
 \end{theorem}
 
 \begin{proof}
-The theorem is a direct consequence of the preceding lemmas --- notice that
-\[
-  \int_{\psi \Phi} \omega
-  = \int_{\Id_D} (\psi \Phi)^{*} \omega
-  = \int_{\Id_D} \Phi^{*}(\psi^{*}(\omega))
-  = \int_{\Phi} \psi^{*}(\omega).
-\]
+    The theorem is a direct consequence of the preceding lemmas --- notice that
+    \[
+        \int_{\psi \Phi} \omega
+        = \int_{\Id_D} (\psi \Phi)^{*} \omega
+        = \int_{\Id_D} \Phi^{*}(\psi^{*}(\omega))
+        = \int_{\Phi} \psi^{*}(\omega).
+    \]
 \end{proof}
 
 \subsection{Simplexes and Chains}
 
 \begin{notation}
-For the purposes of this section, we are going to define the collection
-\[
-  \Delta_{\text{c}}^k \coloneq \left\{
-    (t_{1}, \dots, t_k) \in \R^k \colon
-    \sum_{j=1}^k t_j \leq 1 \text{, and }
-    t_j \geq 0 \text{ for all } 1 \leq j \leq k
-  \right\}.
-\]
-which represents the \emph{\(k\)-simplex} obtained by the corner of a
-\(k\)-dimensional unit cube.
+    For the purposes of this section, we are going to define the collection
+    \[
+        \Delta_{\text{c}}^k \coloneq \left\{
+        (t_{1}, \dots, t_k) \in \R^k \colon
+        \sum_{j=1}^k t_j \leq 1 \text{, and }
+        t_j \geq 0 \text{ for all } 1 \leq j \leq k
+        \right\}.
+    \]
+    which represents the \emph{\(k\)-simplex} obtained by the corner of a
+    \(k\)-dimensional unit cube.
 \end{notation}
 
 \begin{definition}[Affine map]
-\label{def:affine-map}
-Given vector spaces \(V\) and \(L\), we say that \(f: V \to L\) is a affine map
-if \(f(x) = \ell + \phi(x)\) for all \(x \in V\), where \(\phi: V \to L\) is a
-\(k\)-linear map and \(\ell = f(0) \in L\).
+    \label{def:affine-map}
+    Given vector spaces \(V\) and \(L\), we say that \(f: V \to L\) is a affine map
+    if \(f(x) = \ell + \phi(x)\) for all \(x \in V\), where \(\phi: V \to L\) is a
+    \(k\)-linear map and \(\ell = f(0) \in L\).
 \end{definition}
 
 \begin{definition}[Oriented affine \(k\)-simplex]
-\label{def:oriented-affine-k-simplex}
-Let \(p_0, \dots, p_k \in \R^n\) be any points. We define the oriented affine
-\(k\)-simplex induced by the points \(p_0, \dots, p_k\) in \(\R^n\) as an affine
-map \(\sigma: \Delta_{\text{c}}^k \to \R^n\) given by
-\[
-  \sigma(\alpha) \coloneq p_0 + \sum_{j=1}^k \alpha_j (p_j - p_0)
-  \text{, for all } \alpha \in \Delta_{\text{c}}^k.
-\]
-We can also denote \(\sigma\) by \([p_0, \dots, p_k]\) as in
-\cref{def:orientation}. If we define the \(\R\)-linear map \(A: \R^k \to \R^n\)
-to be given by \(A(e_j) \coloneq p_j - p_0\), then we can write \(\sigma(\alpha)
-= p_0 + A(\alpha)\).
+    \label{def:oriented-affine-k-simplex}
+    Let \(p_0, \dots, p_k \in \R^n\) be any points. We define the oriented affine
+    \(k\)-simplex induced by the points \(p_0, \dots, p_k\) in \(\R^n\) as an affine
+    map \(\sigma: \Delta_{\text{c}}^k \to \R^n\) given by
+    \[
+        \sigma(\alpha) \coloneq p_0 + \sum_{j=1}^k \alpha_j (p_j - p_0)
+        \text{, for all } \alpha \in \Delta_{\text{c}}^k.
+    \]
+    We can also denote \(\sigma\) by \([p_0, \dots, p_k]\) as in
+    \cref{def:orientation}. If we define the \(\R\)-linear map \(A: \R^k \to \R^n\)
+    to be given by \(A(e_j) \coloneq p_j - p_0\), then we can write \(\sigma(\alpha)
+    = p_0 + A(\alpha)\).
 
-If \(\tau \in S_{k+1}\) is a permutation on \(k+1\) elements, and \(\mu \coloneq
-[p_{\tau(0)}, p_{\tau(1)}, \dots, p_{\tau(k)}]\) is an oriented affine
-\(k\)-simplex, also induced by the points \(p_0, \dots, p_k\), we say that
-\[
-  \tau = \sign(\tau) \sigma.
-\]
-Moreover, \(\mu\) is said to have the \emph{same orientation} of \(\sigma\) if
-\(\sign(\tau) > 0\), otherwise, if \(\sign(\tau) < 0\), then \(\mu\) is said to
-have the \emph{opposite orientation} of \(\sigma\).
+    If \(\tau \in S_{k+1}\) is a permutation on \(k+1\) elements, and \(\mu \coloneq
+    [p_{\tau(0)}, p_{\tau(1)}, \dots, p_{\tau(k)}]\) is an oriented affine
+    \(k\)-simplex, also induced by the points \(p_0, \dots, p_k\), we say that
+    \[
+        \tau = \sign(\tau) \sigma.
+    \]
+    Moreover, \(\mu\) is said to have the \emph{same orientation} of \(\sigma\) if
+    \(\sign(\tau) > 0\), otherwise, if \(\sign(\tau) < 0\), then \(\mu\) is said to
+    have the \emph{opposite orientation} of \(\sigma\).
 
-In the special case where \(k = n\) and the collection \(\{p_{j} -
-p_0\}_{j=1}^k\) is linearly independent, we say that:
-\begin{itemize}\setlength\itemsep{0em}
-\item \(\sigma\) is \emph{positively} oriented if \(\det A > 0\).
-\item \(\sigma\) is \emph{negatively} oriented if \(\det A < 0\).
-\end{itemize}
-In particular, the simplex \(\Id_{\R^k} \coloneq [0, e_1, \dots, e_k]\) in
-\(\R^k\) is positively oriented.
+    In the special case where \(k = n\) and the collection \(\{p_{j} -
+    p_0\}_{j=1}^k\) is linearly independent, we say that:
+    \begin{itemize}\setlength\itemsep{0em}
+        \item \(\sigma\) is \emph{positively} oriented if \(\det A > 0\).
+        \item \(\sigma\) is \emph{negatively} oriented if \(\det A < 0\).
+    \end{itemize}
+    In particular, the simplex \(\Id_{\R^k} \coloneq [0, e_1, \dots, e_k]\) in
+    \(\R^k\) is positively oriented.
 \end{definition}
 
 \begin{example}
-\label{exp:oriented-0-simplex}
-A special example of an oriented affine \(k\)-simplex occurs for the case \(k =
-0\), where we get a simplex induced by a single point \(p_0 \in \R^k\) --- in
-such case, two \(0\)-simplexes are conceivable, \(\sigma = p_0\) or \(\sigma =
--p_0\).
+    \label{exp:oriented-0-simplex}
+    A special example of an oriented affine \(k\)-simplex occurs for the case \(k =
+    0\), where we get a simplex induced by a single point \(p_0 \in \R^k\) --- in
+    such case, two \(0\)-simplexes are conceivable, \(\sigma = p_0\) or \(\sigma =
+    -p_0\).
 \end{example}
 
 \begin{definition}
-\label{def:oriented-0-simplex-integral-0-form}
-Let \(\sigma = \varepsilon p_0\) be an oriented affine \(0\)-simplex --- where
-\(\varepsilon \in \{-1, 1\}\) and \(p_0 \in \R^k\). If \(f: E \to \R\) is a
-\(0\)-form in the open set \(E \subseteq \R^n\), we define its integral over the
-\(0\)-simplex \(\sigma\) as
-\[
-  \int_{\sigma} f \coloneq \varepsilon f(p_0).
-\]
+    \label{def:oriented-0-simplex-integral-0-form}
+    Let \(\sigma = \varepsilon p_0\) be an oriented affine \(0\)-simplex --- where
+    \(\varepsilon \in \{-1, 1\}\) and \(p_0 \in \R^k\). If \(f: E \to \R\) is a
+    \(0\)-form in the open set \(E \subseteq \R^n\), we define its integral over the
+    \(0\)-simplex \(\sigma\) as
+    \[
+        \int_{\sigma} f \coloneq \varepsilon f(p_0).
+    \]
 \end{definition}
 
 \begin{proposition}\label{prop:integral-simplex-change-orientation}
-Let \(\sigma: \Delta_{\text{c}}^k \to E\) be an oriented affine \(k\)-simplex in
-an open set \(E \subseteq \R^n\), and \(\omega\) be any \(k\)-form in \(E\). If
-\(\mu = \varepsilon \sigma\) where \(\varepsilon \in \{-1, 1\}\)\footnote{If
-\(\sigma = [p_0, \dots, p_k]\), we say that \(\mu = \sign(\tau) \sigma\) if
-\(\mu = [p_{\tau(0)}, \dots, p_{\tau(k)}]\) --- where \(\tau \in S_{k+1}\) is a
-permutation on \(k+1\) elements.}, then
-\[
-  \int_{\mu} \omega = \varepsilon \int_{\sigma} \omega.
-\]
+    Let \(\sigma: \Delta_{\text{c}}^k \to E\) be an oriented affine \(k\)-simplex in
+    an open set \(E \subseteq \R^n\), and \(\omega\) be any \(k\)-form in \(E\). If
+    \(\mu = \varepsilon \sigma\) where \(\varepsilon \in \{-1, 1\}\)\footnote{If
+    \(\sigma = [p_0, \dots, p_k]\), we say that \(\mu = \sign(\tau) \sigma\) if
+    \(\mu = [p_{\tau(0)}, \dots, p_{\tau(k)}]\) --- where \(\tau \in S_{k+1}\) is a
+    permutation on \(k+1\) elements.}, then
+    \[
+        \int_{\mu} \omega = \varepsilon \int_{\sigma} \omega.
+    \]
 \end{proposition}
 
 \begin{proof}
-For the base case \(k=0\), we have
-\cref{def:oriented-0-simplex-integral-0-form}. Now, let \(k \geq 1\) and define,
-for each \(1 \leq j_0 \leq k\), the transposition \(\tau_{j_0} \in S_{k+1}\)
-given by \(\tau_{j_0}(0) = j_0\) and \(\tau_{j_0}(j_0) = 0\) --- while
-\(\tau_{j_0}(i) = i\) for all \(i \neq 0, j_0\). Suppose \(\sigma \coloneq [p_0,
-\dots, p_{k}]\), then since \(\sign(\tau_{j_0}) = -1\), the oriented affine
-\(k\)-simplex \(\mu \coloneq [p_{\tau_{j_{0}}}(0), \dots, p_{\tau_{j_0}(k)}]\) is
-such that \(\mu = \sign(\tau_{j_0}) \sigma = -\sigma\) --- moreover,
-\[
-  \mu(u) = p_{j_0} + \sum_{j=1}^k u_i (p_{\tau_{j_0}(i)} - p_{j_0})
-  \coloneq p_{j_0} + B(u)
-  \text{, for all } u \in \Delta_{\text{c}}^k,
-\]
-where \(B: \R^k \to \R^n\) is a linear map with matrix representation \(B =
-[p_{\tau_{j_0}(j)} - p_{j_0}]_{j=1}^k\) (notice we are disregarding the column
-with \(j = 0\)), where each \(p_{\tau_{j_0}(j)} - p_{j_0} = [\partial_j
-\mu_i]_{i=1}^n\) is the \(j\)-th column of \(B\). Therefore, if \(\omega
-\coloneq \sum_I f_I\, \diff x_{I}\) and \(I \coloneq (i_p)_{p=1}^k\) for each
-\(I\), we obtain
-\[
-  \int_{\mu} \omega
-  = \int_{\Delta_{\text{c}}^k}
-    \sum_I f_I \mu(t) \det(B)\, \diff t.
-\]
+    For the base case \(k=0\), we have
+    \cref{def:oriented-0-simplex-integral-0-form}. Now, let \(k \geq 1\) and define,
+    for each \(1 \leq j_0 \leq k\), the transposition \(\tau_{j_0} \in S_{k+1}\)
+    given by \(\tau_{j_0}(0) = j_0\) and \(\tau_{j_0}(j_0) = 0\) --- while
+    \(\tau_{j_0}(i) = i\) for all \(i \neq 0, j_0\). Suppose \(\sigma \coloneq [p_0,
+        \dots, p_{k}]\), then since \(\sign(\tau_{j_0}) = -1\), the oriented affine
+    \(k\)-simplex \(\mu \coloneq [p_{\tau_{j_{0}}}(0), \dots, p_{\tau_{j_0}(k)}]\) is
+    such that \(\mu = \sign(\tau_{j_0}) \sigma = -\sigma\) --- moreover,
+    \[
+        \mu(u) = p_{j_0} + \sum_{j=1}^k u_i (p_{\tau_{j_0}(i)} - p_{j_0})
+        \coloneq p_{j_0} + B(u)
+        \text{, for all } u \in \Delta_{\text{c}}^k,
+    \]
+    where \(B: \R^k \to \R^n\) is a linear map with matrix representation \(B =
+    [p_{\tau_{j_0}(j)} - p_{j_0}]_{j=1}^k\) (notice we are disregarding the column
+    with \(j = 0\)), where each \(p_{\tau_{j_0}(j)} - p_{j_0} = [\partial_j
+            \mu_i]_{i=1}^n\) is the \(j\)-th column of \(B\). Therefore, if \(\omega
+    \coloneq \sum_I f_I\, \diff x_{I}\) and \(I \coloneq (i_p)_{p=1}^k\) for each
+    \(I\), we obtain
+    \[
+        \int_{\mu} \omega
+        = \int_{\Delta_{\text{c}}^k}
+        \sum_I f_I \mu(t) \det(B)\, \diff t.
+    \]
 
-If we let \(A: \R^k \to \R^n\) be the linear map defined by \(A(u) \coloneq
-\sum_{i=1}^k u_i (p_i - p_0)\) for all \(u \in \R^k\), we can write \(\sigma(u)
-= p_0 + A(u)\). Notice however that, for each \(1 \leq i \leq k\) with \(i \neq
-j_0\), we have the relation \(B(e_i) = A(e_i) - A(e_{j_0})\) (which does not
-affect the value of the determinant) --- while \(B(e_{j_0}) = - A(e_{j_0})\)
-(which multiplies the determinant by \(-1\)). Therefore \(\det B = - \det
-A\). Hence,
-\begin{equation}
-\label{eq:dets-change-sign-int-form}
-  \int_{\mu} \omega
-  = \int_{\Delta_{\text{c}}^k} \sum_I f_I \mu(t) (- \det A)\, \diff t
-  = \int_{\Delta_{\text{c}}^k} \sum_{I} f \sigma(t) \det(A)\, \diff t
-  = \int_{\sigma} \omega.
-\end{equation}
+    If we let \(A: \R^k \to \R^n\) be the linear map defined by \(A(u) \coloneq
+    \sum_{i=1}^k u_i (p_i - p_0)\) for all \(u \in \R^k\), we can write \(\sigma(u)
+    = p_0 + A(u)\). Notice however that, for each \(1 \leq i \leq k\) with \(i \neq
+    j_0\), we have the relation \(B(e_i) = A(e_i) - A(e_{j_0})\) (which does not
+    affect the value of the determinant) --- while \(B(e_{j_0}) = - A(e_{j_0})\)
+    (which multiplies the determinant by \(-1\)). Therefore \(\det B = - \det
+    A\). Hence,
+    \begin{equation}
+        \label{eq:dets-change-sign-int-form}
+        \int_{\mu} \omega
+        = \int_{\Delta_{\text{c}}^k} \sum_I f_I \mu(t) (- \det A)\, \diff t
+        = \int_{\Delta_{\text{c}}^k} \sum_{I} f \sigma(t) \det(A)\, \diff t
+        = \int_{\sigma} \omega.
+    \end{equation}
 
-For the case where we transpose a pair of indices \(i\) and \(j\), with \(0 < i
-< j \leq k\), then \(\mu(u) = p_0 + C(u)\) --- where \(C\) has all columns
-matching to those of \(A\), except the interchange between the \(i\)-th and
-\(j\)-th columns, which implies in \(\det C = - \det A\). Therefore we get again
-the same as in \cref{eq:dets-change-sign-int-form}, which finishes the proof.
+    For the case where we transpose a pair of indices \(i\) and \(j\), with \(0 < i
+    < j \leq k\), then \(\mu(u) = p_0 + C(u)\) --- where \(C\) has all columns
+    matching to those of \(A\), except the interchange between the \(i\)-th and
+    \(j\)-th columns, which implies in \(\det C = - \det A\). Therefore we get again
+    the same as in \cref{eq:dets-change-sign-int-form}, which finishes the proof.
 \end{proof}
 
 \begin{definition}[Affine \(k\)-chain]
-\label{def:affine-k-chain}
-Let \(E \subseteq \R^n\) be an open set. A finite collection of oriented affine
-\(k\)-simplexes in \(E\) is said to be an \emph{affine \(k\)-chain} in \(E\). It
-is to be noted that the finite collection may contain some \emph{multiplicities}
---- that is, some of the \(k\)-simplexes can coincide.
+    \label{def:affine-k-chain}
+    Let \(E \subseteq \R^n\) be an open set. A finite collection of oriented affine
+    \(k\)-simplexes in \(E\) is said to be an \emph{affine \(k\)-chain} in \(E\). It
+    is to be noted that the finite collection may contain some \emph{multiplicities}
+    --- that is, some of the \(k\)-simplexes can coincide.
 
-If \(\Gamma \coloneq (\sigma_j)_{j=1}^m\) is an affine \(k\)-chain in \(E\), we
-define
-\[
-  \int_{\Gamma} \omega \coloneq \sum_{j=1}^m \int_{\sigma_j} \omega.
-\]
-We'll usually denote \(\Gamma\) by the \emph{formal sum} \(\sum_{j=1}^m \sigma_j\)
-\emph{mapping} \(\omega \xmapsto{\Gamma} \sum_j \int_{\sigma_j} \omega\).
+    If \(\Gamma \coloneq (\sigma_j)_{j=1}^m\) is an affine \(k\)-chain in \(E\), we
+    define
+    \[
+        \int_{\Gamma} \omega \coloneq \sum_{j=1}^m \int_{\sigma_j} \omega.
+    \]
+    We'll usually denote \(\Gamma\) by the \emph{formal sum} \(\sum_{j=1}^m \sigma_j\)
+    \emph{mapping} \(\omega \xmapsto{\Gamma} \sum_j \int_{\sigma_j} \omega\).
 \end{definition}
 
 \begin{definition}[Boundary]
-\label{def:affine-k-simplex-boundary}
-Let \(k \geq 1\). Given an oriented affine \(k\)-simplex \(\sigma \coloneq [p_0,
-\dots, p_k]\), we define the \emph{boundary} of \(\sigma\) to be an affine
-\((k-1)\)-chain defined by
-\[
-  \partial \sigma \coloneq
-  \sum_{j=0}^k (-1)^j [p_0, \dots, p_{j-1}, p_{j+1}, \dots, p_k].
-\]
+    \label{def:affine-k-simplex-boundary}
+    Let \(k \geq 1\). Given an oriented affine \(k\)-simplex \(\sigma \coloneq [p_0,
+        \dots, p_k]\), we define the \emph{boundary} of \(\sigma\) to be an affine
+    \((k-1)\)-chain defined by
+    \[
+        \partial \sigma \coloneq
+        \sum_{j=0}^k (-1)^j [p_0, \dots, p_{j-1}, p_{j+1}, \dots, p_k].
+    \]
 \end{definition}
 
 \begin{definition}[Differentiable simplexes and chains]
-\label{def:differentiable-simplexes-and-chains}
-Let \(E \subseteq \R^n\) and \(V \subseteq \R^m\) be open sets. If \(\phi: E \to
-V\) is a map of class \(C^2\), and \(\sigma\) is an oriented affine
-\(k\)-simplex in \(E\), then the induced map
-\[
-  \Phi \coloneq \phi \sigma: \Delta_{\text{c}}^k \longrightarrow V
-\]
-is a \(k\)-surface in \(V\). The surface \(\Phi\) is said to be an
-\emph{oriented \(k\)-simplex of class \(C^2\)} in \(V\). Moreover, \(\Phi\) has
-a boundary defined by
-\[
-  \partial \Phi \coloneq \phi(\partial \sigma),
-\]
-therefore, \(\partial \Phi\) is a \((k-1)\)-chain of class \(C^2\) in \(V\).
+    \label{def:differentiable-simplexes-and-chains}
+    Let \(E \subseteq \R^n\) and \(V \subseteq \R^m\) be open sets. If \(\phi: E \to
+    V\) is a map of class \(C^2\), and \(\sigma\) is an oriented affine
+    \(k\)-simplex in \(E\), then the induced map
+    \[
+        \Phi \coloneq \phi \sigma: \Delta_{\text{c}}^k \longrightarrow V
+    \]
+    is a \(k\)-surface in \(V\). The surface \(\Phi\) is said to be an
+    \emph{oriented \(k\)-simplex of class \(C^2\)} in \(V\). Moreover, \(\Phi\) has
+    a boundary defined by
+    \[
+        \partial \Phi \coloneq \phi(\partial \sigma),
+    \]
+    therefore, \(\partial \Phi\) is a \((k-1)\)-chain of class \(C^2\) in \(V\).
 
-A finite collection \(\Psi \coloneq (\Phi_j)_{j=1}^r\) of oriented
-\(k\)-simplexes of class \(C^2\) in \(V\) is said to be a \emph{\(k\)-chain of
-class \(C^2\) in \(V\)}. Given a \(k\)-form \(\omega\) in \(V\), we define
-\[
-  \int_{\Psi} \omega \coloneq \sum_{j=1}^r \int_{\Phi_j} \omega.
-\]
-As expected, the boundary of \(\Psi\) is defined to be the \((k-1)\)-chain of
-class \(C^2\) in \(V\) given by \(\partial \Psi \coloneq \sum_{j=1}^r \partial
-\Phi_j\).
+    A finite collection \(\Psi \coloneq (\Phi_j)_{j=1}^r\) of oriented
+    \(k\)-simplexes of class \(C^2\) in \(V\) is said to be a \emph{\(k\)-chain of
+        class \(C^2\) in \(V\)}. Given a \(k\)-form \(\omega\) in \(V\), we define
+    \[
+        \int_{\Psi} \omega \coloneq \sum_{j=1}^r \int_{\Phi_j} \omega.
+    \]
+    As expected, the boundary of \(\Psi\) is defined to be the \((k-1)\)-chain of
+    class \(C^2\) in \(V\) given by \(\partial \Psi \coloneq \sum_{j=1}^r \partial
+    \Phi_j\).
 \end{definition}
 
 In the context of the last definition, given an affine \(k\)-chain \(\Gamma
@@ -609,299 +609,299 @@ corresponding \(k\)-chain of class \(C^2\) in \(V\), namely, \(\sum_{j=1}^r \phi
 \subsection{Oriented Boundaries on Sets}
 
 \begin{definition}[Positively oriented boundaries on a set]
-\label{def:positively-oriented-boundary-on-sets}
-Let \(\phi: \Delta_{\text{c}}^n \mono \R^n\) be an injective map of class
-\(C^2\), whose Jacobian determinant is positive in the interior of
-\(\Delta_{\text{c}}^k\). Let \(E \coloneq \phi(\Delta_{\text{c}}^n)\) --- then,
-by the inverse map theorem (see \cref{thm:inverse-map}), \(E\) is the closure of
-an open set of \(\R^n\). We define the \emph{positively oriented boundary of
-  the set} \(E\) to be the \((n-1)\)-chain
-\[
-  \partial E \coloneq \partial \phi = \phi(\partial \Id_{\R^n}),
-\]
-where \(\Id_{\R^n} \coloneq [0, e_1, \dots, e_n]\) --- that is to say that, for
-any \((n-1)\)-form \(\omega\) in \(E\), we have
-\[
-  \int_{\partial E} \omega \coloneq \int_{\partial \phi} \omega.
-\]
+    \label{def:positively-oriented-boundary-on-sets}
+    Let \(\phi: \Delta_{\text{c}}^n \mono \R^n\) be an injective map of class
+    \(C^2\), whose Jacobian determinant is positive in the interior of
+    \(\Delta_{\text{c}}^k\). Let \(E \coloneq \phi(\Delta_{\text{c}}^n)\) --- then,
+    by the inverse map theorem (see \cref{thm:inverse-map}), \(E\) is the closure of
+    an open set of \(\R^n\). We define the \emph{positively oriented boundary of
+        the set} \(E\) to be the \((n-1)\)-chain
+    \[
+        \partial E \coloneq \partial \phi = \phi(\partial \Id_{\R^n}),
+    \]
+    where \(\Id_{\R^n} \coloneq [0, e_1, \dots, e_n]\) --- that is to say that, for
+    any \((n-1)\)-form \(\omega\) in \(E\), we have
+    \[
+        \int_{\partial E} \omega \coloneq \int_{\partial \phi} \omega.
+    \]
 
-If \(\{E_{j}\}_{j=1}^r\) is a collection of subsets of \(\R^n\) with disjoint
-\emph{interior}, let
-\(\{\phi_{j} \colon \Delta_{\text{c}}^n \mono \R^n\}_{j=1}^r\) be an associated
-collection of injective \(C^2\)-maps with positive Jacobian determinant in the
-interior of \(\Delta_{\text{c}}^n\), and such that
-\(\phi_j(\Delta_{\text{c}}^n) = E_j\). We define the positively oriented
-boundary of the set \(\Omega \coloneq E_1 \cup \dots \cup E_r\) as the
-\((n-1)\)-chain
-\[
-  \partial \Omega \coloneq \partial \phi_1 + \dots + \partial \phi_{r}
-  \text{,}\ \text{ that is }
-  \int_{\partial \Omega} \omega \coloneq \sum_{j=1}^r \int_{\partial \phi_j} \omega,
-\]
-where \(\omega\) is any \((n-1)\)-form in \(\Omega\).
+    If \(\{E_{j}\}_{j=1}^r\) is a collection of subsets of \(\R^n\) with disjoint
+    \emph{interior}, let
+    \(\{\phi_{j} \colon \Delta_{\text{c}}^n \mono \R^n\}_{j=1}^r\) be an associated
+    collection of injective \(C^2\)-maps with positive Jacobian determinant in the
+    interior of \(\Delta_{\text{c}}^n\), and such that
+    \(\phi_j(\Delta_{\text{c}}^n) = E_j\). We define the positively oriented
+    boundary of the set \(\Omega \coloneq E_1 \cup \dots \cup E_r\) as the
+    \((n-1)\)-chain
+    \[
+        \partial \Omega \coloneq \partial \phi_1 + \dots + \partial \phi_{r}
+        \text{,}\ \text{ that is }
+        \int_{\partial \Omega} \omega \coloneq \sum_{j=1}^r \int_{\partial \phi_j} \omega,
+    \]
+    where \(\omega\) is any \((n-1)\)-form in \(\Omega\).
 \end{definition}
 
 \begin{proposition}
-\label{prop:same-boundary-same-integral-over-form}
-Let \(\phi, \psi: \Delta_{\text{c}}^n \rightrightarrows \R^n\) be injective
-\(C^2\)-maps with positive Jacobian determinant in the interior of
-\(\Delta_{\text{c}}^n\). If \(\phi(\Delta_{\text{c}}^n) =
-\psi(\Delta_{\text{c}}^n)\), then \(\partial \phi = \partial \psi\) --- that is,
-for every \((n-1)\)-form \(\omega\) in the image of the maps, we have
-\[
-  \int_{\partial \phi} \omega = \int_{\partial \psi} \omega.
-\]
+    \label{prop:same-boundary-same-integral-over-form}
+    Let \(\phi, \psi: \Delta_{\text{c}}^n \rightrightarrows \R^n\) be injective
+    \(C^2\)-maps with positive Jacobian determinant in the interior of
+    \(\Delta_{\text{c}}^n\). If \(\phi(\Delta_{\text{c}}^n) =
+    \psi(\Delta_{\text{c}}^n)\), then \(\partial \phi = \partial \psi\) --- that is,
+    for every \((n-1)\)-form \(\omega\) in the image of the maps, we have
+    \[
+        \int_{\partial \phi} \omega = \int_{\partial \psi} \omega.
+    \]
 \end{proposition}
 
 \begin{proof}
-\todo[inline]{Prove}
+    \todo[inline]{Prove}
 \end{proof}
 
 \begin{example}
-Let \(S: [0, \pi] \times [0, 2\pi] \to \R^3\) be a \(2\)-surface in \(\R^3\),
-defined by
-\[
-  S(u, v) \coloneq (\sin(u) \cos(v), \sin(u) \sin(v), \cos(u)).
-\]
-Notice that the positively oriented boundary of \(S\) corresponds to the \(4\)
-distinct curves induced by \(S\) under the positively oriented boundary of the
-rectangle \([0, \pi] \times [0, 2 \pi]\) --- that is, \(\partial S =
-\sum_{j=1}^4 \gamma_j\) where we have
-\begin{align*}
-  \gamma_1:& [0, \pi] \longrightarrow \R^3
-  \text{ mapping } u \longmapsto S(u, 0) = (\sin(u), 0, \cos(u)); \\
-  \gamma_2:& [0, 2 \pi] \longrightarrow \R^3
-  \text{ mapping } v \longmapsto S(\pi, v) = (0, 0, -1); \\
-  \gamma_3:& [0, \pi]\longrightarrow \R^3
-  \text{ mapping } u \longmapsto S(\pi - u, 2 \pi) = (\sin(u), 0, -\cos(u)); \\
-  \gamma_4:& [0, 2 \pi] \longrightarrow \R^3
-  \text{ mapping } v \longmapsto S(0, 2\pi - v) = (0, 0, 1).
-\end{align*}
-Now, given any \(1\)-form \(\omega \coloneq f_1\, \diff x_1 + f_2\, \diff x_2 +
-f_3\, \diff x_3\) in \(\R^3\), we have
-\begin{align*}
-  \int_{\partial S} \omega
-  &= \sum_{j=1}^4 \int_{\gamma_j} \omega \\
-  &= \int_0^{\pi} \sum_{i=1}^3
-    f_i \gamma_1(x)\, \underbrace{\partial \gamma_1^{(i)}(x)}_{0}\, \diff x
-  + \int_{\gamma_2} \omega
-  + \int_{\gamma_3} \omega
-  + \int_0^{2 \pi} \sum_{i=1}^3
-    f_i \gamma_4(x)\, \underbrace{\partial \gamma_4^{(i)}(x)}_{0}\, \diff x \\
-  &= \int_{\gamma_2} \omega + \int_{\gamma_3} \omega.
-\end{align*}
-Notice however that if we make the change of variables from \(x\) to \(\pi - x\)
-in the integral \(\int_{\gamma_3} \omega\), we obtain
-\begin{align*}
-  \int_{\gamma_3} \omega
-  &= \int_0^{\pi} - f_1 \gamma_3(x) \cos(x) + f_3 \gamma_3(x) \sin(x)\, \diff x
-  \\
-  &= - \int_{\pi}^0 - f_1\gamma_3(\pi - x) \cos(x) + f_{3} \gamma_{3}(\pi - x)
-  \sin(x)\, \diff x
-  \\
-  &= \int_0^{\pi} -f_1\gamma_2(x) \cos(x) + f_3\gamma_2(x) \sin(x) \, \diff x
-  \\
-  &= - \int_{\gamma_2} \omega
-\end{align*}
-Where the third equality may be obtained by noting that \(\gamma_3(\pi - x) =
-\gamma_2(x)\). We conclude that
-\[
-  \int_{\partial S} \omega = 0,
-\]
-and, more generally, \(\partial S = 0\).
+    Let \(S: [0, \pi] \times [0, 2\pi] \to \R^3\) be a \(2\)-surface in \(\R^3\),
+    defined by
+    \[
+        S(u, v) \coloneq (\sin(u) \cos(v), \sin(u) \sin(v), \cos(u)).
+    \]
+    Notice that the positively oriented boundary of \(S\) corresponds to the \(4\)
+    distinct curves induced by \(S\) under the positively oriented boundary of the
+    rectangle \([0, \pi] \times [0, 2 \pi]\) --- that is, \(\partial S =
+    \sum_{j=1}^4 \gamma_j\) where we have
+    \begin{align*}
+        \gamma_1: & [0, \pi] \longrightarrow \R^3
+        \text{ mapping } u \longmapsto S(u, 0) = (\sin(u), 0, \cos(u));            \\
+        \gamma_2: & [0, 2 \pi] \longrightarrow \R^3
+        \text{ mapping } v \longmapsto S(\pi, v) = (0, 0, -1);                     \\
+        \gamma_3: & [0, \pi]\longrightarrow \R^3
+        \text{ mapping } u \longmapsto S(\pi - u, 2 \pi) = (\sin(u), 0, -\cos(u)); \\
+        \gamma_4: & [0, 2 \pi] \longrightarrow \R^3
+        \text{ mapping } v \longmapsto S(0, 2\pi - v) = (0, 0, 1).
+    \end{align*}
+    Now, given any \(1\)-form \(\omega \coloneq f_1\, \diff x_1 + f_2\, \diff x_2 +
+    f_3\, \diff x_3\) in \(\R^3\), we have
+    \begin{align*}
+        \int_{\partial S} \omega
+         & = \sum_{j=1}^4 \int_{\gamma_j} \omega                                \\
+         & = \int_0^{\pi} \sum_{i=1}^3
+        f_i \gamma_1(x)\, \underbrace{\partial \gamma_1^{(i)}(x)}_{0}\, \diff x
+        + \int_{\gamma_2} \omega
+        + \int_{\gamma_3} \omega
+        + \int_0^{2 \pi} \sum_{i=1}^3
+        f_i \gamma_4(x)\, \underbrace{\partial \gamma_4^{(i)}(x)}_{0}\, \diff x \\
+         & = \int_{\gamma_2} \omega + \int_{\gamma_3} \omega.
+    \end{align*}
+    Notice however that if we make the change of variables from \(x\) to \(\pi - x\)
+    in the integral \(\int_{\gamma_3} \omega\), we obtain
+    \begin{align*}
+        \int_{\gamma_3} \omega
+         & = \int_0^{\pi} - f_1 \gamma_3(x) \cos(x) + f_3 \gamma_3(x) \sin(x)\, \diff x
+        \\
+         & = - \int_{\pi}^0 - f_1\gamma_3(\pi - x) \cos(x) + f_{3} \gamma_{3}(\pi - x)
+        \sin(x)\, \diff x
+        \\
+         & = \int_0^{\pi} -f_1\gamma_2(x) \cos(x) + f_3\gamma_2(x) \sin(x) \, \diff x
+        \\
+         & = - \int_{\gamma_2} \omega
+    \end{align*}
+    Where the third equality may be obtained by noting that \(\gamma_3(\pi - x) =
+    \gamma_2(x)\). We conclude that
+    \[
+        \int_{\partial S} \omega = 0,
+    \]
+    and, more generally, \(\partial S = 0\).
 \end{example}
 
 \subsection{Stoke's Theorem}
 
 \begin{theorem}[Stoke's]
-\label{thm:stokes}
-Let \(\Psi\) be a \(k\)-chain of class \(C^2\) in an open set \(V \subseteq
-\R^n\), and let \(\omega\) be a \((k-1)\)-form of class \(C^1\) in \(V\). Then
-the following equality holds
-\[
-  \int_{\Psi} \diff \omega = \int_{\partial \Psi} \omega.
-\]
+    \label{thm:stokes}
+    Let \(\Psi\) be a \(k\)-chain of class \(C^2\) in an open set \(V \subseteq
+    \R^n\), and let \(\omega\) be a \((k-1)\)-form of class \(C^1\) in \(V\). Then
+    the following equality holds
+    \[
+        \int_{\Psi} \diff \omega = \int_{\partial \Psi} \omega.
+    \]
 \end{theorem}
 
 \begin{proof}
-Since \(\Psi = \sum_{j=1}^r \Phi_j\) for some finite collection
-\((\Phi_j)_{j=1}^r\) of oriented \(k\)-simplexes of class \(C^2\), it suffices
-to prove that the theorem holds for any oriented \(k\)-simplex of class \(C^2\),
-since \(\int_{\Psi} \gamma = \sum_{j=1}^r \int_{\Phi_j} \gamma\) for any
-\((k-1)\)-form \(\gamma\) in \(V\).
+    Since \(\Psi = \sum_{j=1}^r \Phi_j\) for some finite collection
+    \((\Phi_j)_{j=1}^r\) of oriented \(k\)-simplexes of class \(C^2\), it suffices
+    to prove that the theorem holds for any oriented \(k\)-simplex of class \(C^2\),
+    since \(\int_{\Psi} \gamma = \sum_{j=1}^r \int_{\Phi_j} \gamma\) for any
+    \((k-1)\)-form \(\gamma\) in \(V\).
 
-Let \(\Phi\) be any oriented \(k\)-simplex of class \(C^2\) in \(V\), and
-consider the positively oriented affine \(k\)-simplex \(\Id_{\R^k} \coloneq [0,
-e_1, \dots, e_k]: \Delta_{\text{c}}^k \to \R^k\). From
-\cref{def:differentiable-simplexes-and-chains}, there must exist an open set \(E
-\subseteq \R^k\) with \(\Delta_{\text{c}}^k \subseteq E\), and a \(C^2\)-map
-\(\phi: E \to V\) such that \(\Phi = \phi \Id_{\R^k}\). Therefore, given any
-\((k-1)\)-form \(\omega\) in \(V\), we have
-\[
-  \int_{\Phi} \diff \omega
-  = \int_{\phi \Id_{\R^k}} \diff \omega
-  = \int_{\Id_{\R^k}} \phi^{*}(\diff \omega)
-  = \int_{\Id_{\R^k}} \diff (\phi^{*} (\omega)).
-\]
-Moreover, we can also consider the positively oriented boundary of \(\Phi\),
-which yields
-\[
-  \int_{\partial \Phi} \omega
-  = \int_{\partial(\phi \Id_{\R^k})} \omega
-  = \int_{\phi(\partial \Id_{\R^k})} \omega
-  = \int_{\partial \Id_{\R^k}} \phi^{*}(\omega).
-\]
-Hence, our goal will be to prove that the theorem is true for any \((k-1)\)-form
-of the type \(\phi^{*}(\omega)\), that is, any \((k-1)\)-form \(\gamma\) in
-\(E\) it should be true that
-\begin{equation}
-\label{eq:goal-stokes}
-  \int_{\Id_{\R^k}} \diff \gamma = \int_{\partial \Id_{\R^k}} \gamma.
-\end{equation}
+    Let \(\Phi\) be any oriented \(k\)-simplex of class \(C^2\) in \(V\), and
+    consider the positively oriented affine \(k\)-simplex \(\Id_{\R^k} \coloneq [0,
+        e_1, \dots, e_k]: \Delta_{\text{c}}^k \to \R^k\). From
+    \cref{def:differentiable-simplexes-and-chains}, there must exist an open set \(E
+    \subseteq \R^k\) with \(\Delta_{\text{c}}^k \subseteq E\), and a \(C^2\)-map
+    \(\phi: E \to V\) such that \(\Phi = \phi \Id_{\R^k}\). Therefore, given any
+    \((k-1)\)-form \(\omega\) in \(V\), we have
+    \[
+        \int_{\Phi} \diff \omega
+        = \int_{\phi \Id_{\R^k}} \diff \omega
+        = \int_{\Id_{\R^k}} \phi^{*}(\diff \omega)
+        = \int_{\Id_{\R^k}} \diff (\phi^{*} (\omega)).
+    \]
+    Moreover, we can also consider the positively oriented boundary of \(\Phi\),
+    which yields
+    \[
+        \int_{\partial \Phi} \omega
+        = \int_{\partial(\phi \Id_{\R^k})} \omega
+        = \int_{\phi(\partial \Id_{\R^k})} \omega
+        = \int_{\partial \Id_{\R^k}} \phi^{*}(\omega).
+    \]
+    Hence, our goal will be to prove that the theorem is true for any \((k-1)\)-form
+    of the type \(\phi^{*}(\omega)\), that is, any \((k-1)\)-form \(\gamma\) in
+    \(E\) it should be true that
+    \begin{equation}
+        \label{eq:goal-stokes}
+        \int_{\Id_{\R^k}} \diff \gamma = \int_{\partial \Id_{\R^k}} \gamma.
+    \end{equation}
 
-Let's first deal with the base case, \(k = 1\). Given any \(0\)-form \(\gamma: E
-\to \R\) of class \(C^1\) in \(E \subseteq \R\), we have --- by the fundamental
-theorem of calculus,
-\[
-  \int_{\Id_{\R}} \diff \gamma
-  = \int_0^1 (\diff \gamma(x))\, \diff x
-  = \gamma(1) - \gamma(0)
-  = \int_{\partial \Id_{\R}} \gamma
-\]
+    Let's first deal with the base case, \(k = 1\). Given any \(0\)-form \(\gamma: E
+    \to \R\) of class \(C^1\) in \(E \subseteq \R\), we have --- by the fundamental
+    theorem of calculus,
+    \[
+        \int_{\Id_{\R}} \diff \gamma
+        = \int_0^1 (\diff \gamma(x))\, \diff x
+        = \gamma(1) - \gamma(0)
+        = \int_{\partial \Id_{\R}} \gamma
+    \]
 
-We now assume that \(k > 1\). Since any \((k-1)\)-form \(\gamma\) in \(E\) can
-be written as a sum
-\[
-  \gamma =
-  \sum_{r=1}^k f_r\, \diff x_1 \wedge \dots \wedge \diff x_{r-1} \wedge
-    \diff x_{r+1} \wedge \dots \wedge \diff x_k
-  \coloneq \sum_{r=1}^k \gamma_r,
-\]
-we may as well simply prove \cref{eq:goal-stokes} for every \(\gamma_r\), with
-\(1 \leq r \leq k\) --- this is now what we'll do, for each index \(r\). The
-boundary of \(\Id_{\R^k}\) is given by
-\begin{equation}
-\label{eq:stokes-standard-boundary}
-  \partial \Id_{\R^k} = [e_1, \dots, e_k] + \sum_{j=1}^k (-1)^j \sigma_j,
-\end{equation}
-where we define each \(\sigma_j\) to be the oriented \((k-1)\)-simplex
-\(\sigma_j \coloneq [0, e_1, \dots, e_{j-1}, e_{j+1}, \dots, e_k]\) --- that is,
-removing the \(j\)-th component of \(\Id_{\R^k}\), for each \(1 \leq j \leq
-k\). Moreover, to facilitate our analysis, we'll define another oriented
-\((k-1)\)-simplex, \(\sigma_0\), defined by transposing the \(r\)-th component of
-\(\Id_{\R^k}\) an amount of \(r-1\) times to the left, so that
-\[
-  \sigma_0 \coloneq [e_r, e_1, \dots, e_{r-1}, e_{r+1}, \dots, e_k]
-  = (-1)^{r-1} [e_1, \dots, e_k].
-\]
-Therefore, we can rewrite \cref{eq:stokes-standard-boundary} as
-\[
-  \partial \Id_{\R^k}
-  = (-1)^{r-1} \sigma_0 + \sum_{j=1}^k (-1)^{j} \sigma_j.
-\]
+    We now assume that \(k > 1\). Since any \((k-1)\)-form \(\gamma\) in \(E\) can
+    be written as a sum
+    \[
+        \gamma =
+        \sum_{r=1}^k f_r\, \diff x_1 \wedge \dots \wedge \diff x_{r-1} \wedge
+        \diff x_{r+1} \wedge \dots \wedge \diff x_k
+        \coloneq \sum_{r=1}^k \gamma_r,
+    \]
+    we may as well simply prove \cref{eq:goal-stokes} for every \(\gamma_r\), with
+    \(1 \leq r \leq k\) --- this is now what we'll do, for each index \(r\). The
+    boundary of \(\Id_{\R^k}\) is given by
+    \begin{equation}
+        \label{eq:stokes-standard-boundary}
+        \partial \Id_{\R^k} = [e_1, \dots, e_k] + \sum_{j=1}^k (-1)^j \sigma_j,
+    \end{equation}
+    where we define each \(\sigma_j\) to be the oriented \((k-1)\)-simplex
+    \(\sigma_j \coloneq [0, e_1, \dots, e_{j-1}, e_{j+1}, \dots, e_k]\) --- that is,
+    removing the \(j\)-th component of \(\Id_{\R^k}\), for each \(1 \leq j \leq
+    k\). Moreover, to facilitate our analysis, we'll define another oriented
+    \((k-1)\)-simplex, \(\sigma_0\), defined by transposing the \(r\)-th component of
+    \(\Id_{\R^k}\) an amount of \(r-1\) times to the left, so that
+    \[
+        \sigma_0 \coloneq [e_r, e_1, \dots, e_{r-1}, e_{r+1}, \dots, e_k]
+        = (-1)^{r-1} [e_1, \dots, e_k].
+    \]
+    Therefore, we can rewrite \cref{eq:stokes-standard-boundary} as
+    \[
+        \partial \Id_{\R^k}
+        = (-1)^{r-1} \sigma_0 + \sum_{j=1}^k (-1)^{j} \sigma_j.
+    \]
 
-We can analyse each of the \((k-1)\)-simplexes \(\sigma_j: \Delta_{\text{c}}^{k-1}
-\to \R^k\), for \(0 \leq j \leq k\):
-\begin{itemize}\setlength\itemsep{0em}
-\item For the special case \(j = 0\), given any \(t \in
-  \Delta_{\text{c}}^{k-1}\), if \(x \coloneq \sigma_0(t) \in \R^k\), then
-  \begin{equation}
-    \label{eq:stokes-sigma-0}
-    x_i =
-    \begin{cases}
-      t_i,                    &1 \leq i < r \\
-      1 - \sum_{i=1}^{k-1} t_i, &i = r \\
-      t_{i-1},                 &r < i \leq k
-    \end{cases}
-  \end{equation}
-  Therefore, the matrix \([\partial_q \sigma_0^{(p)}(t)]_{i, j}\), where \(1
-  \leq p, q \leq k - 1\) and \(p \neq r\), corresponds to the identity matrix on
-  \(\R^{k-1}\) restricted to \(\Delta_{\text{c}}^k\), therefore \(\det [\partial_q
-  \sigma_0^{(p)}] = 1\) and thus
-  \begin{equation}\label{eq:sigma-0-stokes}
-    \int_{\sigma_0} \gamma_r
-    = \int_{\Delta_{\text{c}}^{k-1}} f_r\sigma_r(t)\, \diff t.
-  \end{equation}
-\item For any \(j \neq 0\), given any \(t \in \Delta_{\text{c}}^k\), if \(x
-  \coloneq \sigma_j(t) \in \R^k\), then
-  \begin{equation}
-    \label{eq:stokes-sigma-j}
-    x_i =
-    \begin{cases}
-      t_i,    &1 \leq i < j \\
-      0,      &i = j \\
-      t_{i-1}, &j < i \leq k
-    \end{cases}
-  \end{equation}
-  Moreover, since
-  \[
-    \int_{\sigma_j} \gamma_r
-    = \int_{\Delta_{\text{c}}^k} f_r\sigma_j(t)
-    \det{\left[
-        \partial_q \sigma_j^{(p)}(t)
-      \right]}_{\substack{p, q = 1 \\ p \neq r}}^{k-1}\,
-    \diff t,
-  \]
-  there are two possible cases, for any \(t \in \Delta_{\text{c}}^k\): if \(j \neq
-  r\), then the \(j\)-th row of the Jacobian matrix is entirely composed of
-  zeros, hence \(\det[\partial_q \sigma_j^{(p)}(t)]_{p, q} = 0\), otherwise, if
-  \(j = r\), the matrix corresponds exactly to the identity matrix of
-  \(\R^{k-1}\) restricted to \(\Delta_{\text{c}}^{k-1}\) --- therefore
-  \(\det[\partial_q \sigma_j^{(p)}(t)]_{p, q} = 1\) for any \(t \in
-  \Delta_{\text{c}}^{k-1}\), which implies in
-  \begin{equation}\label{eq:sigma-js-stokes}
-    \int_{\sigma_j} \gamma_r =
-    \begin{cases}
-      0,                                               &j \neq r \\
-      \int_{\Delta_{\text{c}}^{k-1}} f_r\sigma_r(t)\, \diff t, &j = r
-    \end{cases}
-  \end{equation}
-\end{itemize}
-With \cref{eq:sigma-0-stokes} and \cref{eq:sigma-js-stokes} at hand, we obtain
-\begin{align*}
-  \int_{\partial \Id_{\R^k}} \gamma_r
-  &= (-1)^{r-1} \int_{\sigma_0} \gamma_r + \sum_{j=1}^r(-1)^j \int_{\sigma_j} \gamma_r
-  \\
-  &= (-1)^{r-1} \int_{\sigma_0} \gamma_r + (-1)^r \int_{\sigma_r} \gamma_r
-  \\
-  &= (-1)^{r-1} \int_{\Delta_{\text{c}}^{k-1}} f_r\sigma_0(t) - f_r\sigma_r(t)\,
-    \diff t
-\end{align*}
+    We can analyse each of the \((k-1)\)-simplexes \(\sigma_j: \Delta_{\text{c}}^{k-1}
+    \to \R^k\), for \(0 \leq j \leq k\):
+    \begin{itemize}\setlength\itemsep{0em}
+        \item For the special case \(j = 0\), given any \(t \in
+              \Delta_{\text{c}}^{k-1}\), if \(x \coloneq \sigma_0(t) \in \R^k\), then
+              \begin{equation}
+                  \label{eq:stokes-sigma-0}
+                  x_i =
+                  \begin{cases}
+                      t_i,                      & 1 \leq i < r \\
+                      1 - \sum_{i=1}^{k-1} t_i, & i = r        \\
+                      t_{i-1},                  & r < i \leq k
+                  \end{cases}
+              \end{equation}
+              Therefore, the matrix \([\partial_q \sigma_0^{(p)}(t)]_{i, j}\), where \(1
+              \leq p, q \leq k - 1\) and \(p \neq r\), corresponds to the identity matrix on
+              \(\R^{k-1}\) restricted to \(\Delta_{\text{c}}^k\), therefore \(\det [\partial_q
+                  \sigma_0^{(p)}] = 1\) and thus
+              \begin{equation}\label{eq:sigma-0-stokes}
+                  \int_{\sigma_0} \gamma_r
+                  = \int_{\Delta_{\text{c}}^{k-1}} f_r\sigma_r(t)\, \diff t.
+              \end{equation}
+        \item For any \(j \neq 0\), given any \(t \in \Delta_{\text{c}}^k\), if \(x
+              \coloneq \sigma_j(t) \in \R^k\), then
+              \begin{equation}
+                  \label{eq:stokes-sigma-j}
+                  x_i =
+                  \begin{cases}
+                      t_i,     & 1 \leq i < j \\
+                      0,       & i = j        \\
+                      t_{i-1}, & j < i \leq k
+                  \end{cases}
+              \end{equation}
+              Moreover, since
+              \[
+                  \int_{\sigma_j} \gamma_r
+                  = \int_{\Delta_{\text{c}}^k} f_r\sigma_j(t)
+                  \det{\left[
+                          \partial_q \sigma_j^{(p)}(t)
+                          \right]}_{\substack{p, q = 1 \\ p \neq r}}^{k-1}\,
+                  \diff t,
+              \]
+              there are two possible cases, for any \(t \in \Delta_{\text{c}}^k\): if \(j \neq
+              r\), then the \(j\)-th row of the Jacobian matrix is entirely composed of
+              zeros, hence \(\det[\partial_q \sigma_j^{(p)}(t)]_{p, q} = 0\), otherwise, if
+              \(j = r\), the matrix corresponds exactly to the identity matrix of
+              \(\R^{k-1}\) restricted to \(\Delta_{\text{c}}^{k-1}\) --- therefore
+              \(\det[\partial_q \sigma_j^{(p)}(t)]_{p, q} = 1\) for any \(t \in
+              \Delta_{\text{c}}^{k-1}\), which implies in
+              \begin{equation}\label{eq:sigma-js-stokes}
+                  \int_{\sigma_j} \gamma_r =
+                  \begin{cases}
+                      0,                                                       & j \neq r \\
+                      \int_{\Delta_{\text{c}}^{k-1}} f_r\sigma_r(t)\, \diff t, & j = r
+                  \end{cases}
+              \end{equation}
+    \end{itemize}
+    With \cref{eq:sigma-0-stokes} and \cref{eq:sigma-js-stokes} at hand, we obtain
+    \begin{align*}
+        \int_{\partial \Id_{\R^k}} \gamma_r
+         & = (-1)^{r-1} \int_{\sigma_0} \gamma_r + \sum_{j=1}^r(-1)^j \int_{\sigma_j} \gamma_r
+        \\
+         & = (-1)^{r-1} \int_{\sigma_0} \gamma_r + (-1)^r \int_{\sigma_r} \gamma_r
+        \\
+         & = (-1)^{r-1} \int_{\Delta_{\text{c}}^{k-1}} f_r\sigma_0(t) - f_r\sigma_r(t)\,
+        \diff t
+    \end{align*}
 
-Notice, on the other hand, that
-\begin{align*}
-  \diff \gamma_r
-  &= \diff f_r \wedge \diff x_1 \wedge \dots \wedge \diff x_{r-1}
-    \wedge \diff x_{r+1} \wedge \dots \wedge \diff x_k \\
-  &= \bigg(\sum_{j=1}^k \partial_j f_r\, \diff x_j\bigg) \wedge \diff x_1 \wedge
-    \dots \wedge \diff x_{r-1} \wedge \diff x_{r+1} \wedge \dots \wedge \diff x_k
-  \\
-  &= \partial_r f_r\, \diff x_r \wedge \diff x_1 \wedge \dots \wedge \diff x_{r-1}
-    \wedge \diff x_{r+1} \wedge \dots \wedge \diff x_k \\
-  &= (-1)^{r-1} \partial_r f_r\, \diff x_1 \wedge \dots \wedge \diff x_k.
-\end{align*}
-Therefore, by Fubini's theorem (see \cref{thm:fubini}),
-{\small
-\begin{align*}
-  \int_{\Id_{\R^k}} \diff \gamma
-  &= (-1)^{r-1} \int_{\Delta_{\text{c}}^k} \partial_r f_r(x)\, \diff x \\
-  &= (-1)^{r-1} \int_{\Delta_{\text{c}}^{k-1}} \left[
-      \int_0^{1 - x_1 + \dots + x_{r-1} + x_{r+1} + x_{k-1}}
-      \partial_r f_r(x)\, \diff x_r
-    \right]\,
-  \diff (x_1, \dots, x_{r-1}, x_{r+1}, \dots, x_k) \\
-  &= (-1)^{r-1} \int_{\Delta_{\text{c}}^{k-1}} f_r\sigma_0(t) - f_r
-    \sigma_r(t)\,
-    \diff t.
-\end{align*}
-}
-Where the last equality was obtained by means of \cref{eq:stokes-sigma-0} and
-\cref{eq:stokes-sigma-j} since the variables are independent of each other. That
-is, we just proved that
-\[
-  \int_{\Id_{\R^k}} \diff \gamma_r = \int_{\partial \Id_{\R^k}} \gamma_r,
-\]
-which implies in \cref{eq:goal-stokes} --- thus the proof is complete!
+    Notice, on the other hand, that
+    \begin{align*}
+        \diff \gamma_r
+         & = \diff f_r \wedge \diff x_1 \wedge \dots \wedge \diff x_{r-1}
+        \wedge \diff x_{r+1} \wedge \dots \wedge \diff x_k                                 \\
+         & = \bigg(\sum_{j=1}^k \partial_j f_r\, \diff x_j\bigg) \wedge \diff x_1 \wedge
+        \dots \wedge \diff x_{r-1} \wedge \diff x_{r+1} \wedge \dots \wedge \diff x_k
+        \\
+         & = \partial_r f_r\, \diff x_r \wedge \diff x_1 \wedge \dots \wedge \diff x_{r-1}
+        \wedge \diff x_{r+1} \wedge \dots \wedge \diff x_k                                 \\
+         & = (-1)^{r-1} \partial_r f_r\, \diff x_1 \wedge \dots \wedge \diff x_k.
+    \end{align*}
+    Therefore, by Fubini's theorem (see \cref{thm:fubini}),
+    {\small
+            \begin{align*}
+                \int_{\Id_{\R^k}} \diff \gamma
+                 & = (-1)^{r-1} \int_{\Delta_{\text{c}}^k} \partial_r f_r(x)\, \diff x \\
+                 & = (-1)^{r-1} \int_{\Delta_{\text{c}}^{k-1}} \left[
+                    \int_0^{1 - x_1 + \dots + x_{r-1} + x_{r+1} + x_{k-1}}
+                    \partial_r f_r(x)\, \diff x_r
+                    \right]\,
+                \diff (x_1, \dots, x_{r-1}, x_{r+1}, \dots, x_k)                       \\
+                 & = (-1)^{r-1} \int_{\Delta_{\text{c}}^{k-1}} f_r\sigma_0(t) - f_r
+                \sigma_r(t)\,
+                \diff t.
+            \end{align*}
+        }
+    Where the last equality was obtained by means of \cref{eq:stokes-sigma-0} and
+    \cref{eq:stokes-sigma-j} since the variables are independent of each other. That
+    is, we just proved that
+    \[
+        \int_{\Id_{\R^k}} \diff \gamma_r = \int_{\partial \Id_{\R^k}} \gamma_r,
+    \]
+    which implies in \cref{eq:goal-stokes} --- thus the proof is complete!
 \end{proof}
 
 %%% Local Variables:

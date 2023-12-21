@@ -3,282 +3,282 @@
 \subsection{Locally Euclidean}
 
 \begin{definition}[Locally euclidean]\label{def: locally euclidean}
-Let \(M\) be a topological space. We say that \(M \) is locally euclidean of
-dimension \(n\) if for all points \(x \in X\) there exists a neighbourhood
-\(U_x \subseteq M\) of \(x\) such that exists an open set \(V \subseteq
-\R^n\) for which \(U_x \iso V\), that is, \(U_x\) is isomorphic to
-\(V\).
+    Let \(M\) be a topological space. We say that \(M \) is locally euclidean of
+    dimension \(n\) if for all points \(x \in X\) there exists a neighbourhood
+    \(U_x \subseteq M\) of \(x\) such that exists an open set \(V \subseteq
+    \R^n\) for which \(U_x \iso V\), that is, \(U_x\) is isomorphic to
+    \(V\).
 \end{definition}
 
 \begin{proposition}\label{prop: open ball homeomorphic to Rn}
-Let \(B^n \subseteq \R^n\) be any open ball, then the morphism
-\[
-  \varphi: B^n \to \R^n,\ x \longmapsto \frac{x}{1 - |x|}
-\]
-is an isomorphism \(B^n \iso \R^n\).
+    Let \(B^n \subseteq \R^n\) be any open ball, then the morphism
+    \[
+        \varphi: B^n \to \R^n,\ x \longmapsto \frac{x}{1 - |x|}
+    \]
+    is an isomorphism \(B^n \iso \R^n\).
 \end{proposition}
 
 \begin{lemma}\label{lem:locally-euclidean-equivalences}
-A topological space \(M\) is locally euclidean of dimension \(n\) if and only
-if either of the following is true:
-\begin{enumerate}[(a)]
-  \item Every point of \(M\) has a neighbourhood in \(M\) that is isomorphic
-    to an open ball in \(\R^n\).
-  \item Every point of \(M\) has a neighbourhood in \(M\) that is isomorphic
-    to \(\R^n\).
-\end{enumerate}
+    A topological space \(M\) is locally euclidean of dimension \(n\) if and only
+    if either of the following is true:
+    \begin{enumerate}[(a)]
+        \item Every point of \(M\) has a neighbourhood in \(M\) that is isomorphic
+              to an open ball in \(\R^n\).
+        \item Every point of \(M\) has a neighbourhood in \(M\) that is isomorphic
+              to \(\R^n\).
+    \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-From \cref{prop: open ball homeomorphic to Rn}, we find that the proof of one
-of the two statements proves the other. Lets prove the first one of them.
-(\(\Leftarrow\)) Since \(B^n \subseteq \R^n\) is an open of
-\(\R^n\) we conclude from the definition \cref{def: locally euclidean}
-that \(M\) is indeed locally euclidean.
-(\(\Rightarrow\)) Suppose \(M\) is a locally euclidean \(n\)-dimensional
-topological space, then let any point \(p \in M\) and define \(U_p \subseteq
-M\) be a neighbourhood of \(p\) such that exists \(V \subseteq \R^n\)
-for which we can define an isomorphism \(\phi : U_p \to V\). From the fact
-that the collection of open balls in \(\R^n\) form a basis for
-\(\R^n\), we conclude that there exists an open ball \(B^n \subseteq
-V\) for which \(p \in B^n\). Thus the open set \(\psi^{-1}(B) \subseteq M\) is
-a neighbourhood of \(p\). Since \(\phi\) is an isomorphism, then the
-morphism \(\psi|_B^{-1} : B \to \phi^{-1}(B)\) is an isomorphism, thus \(B
-\iso \phi^{-1}(B)\) as wanted.
+    From \cref{prop: open ball homeomorphic to Rn}, we find that the proof of one
+    of the two statements proves the other. Lets prove the first one of them.
+    (\(\Leftarrow\)) Since \(B^n \subseteq \R^n\) is an open of
+    \(\R^n\) we conclude from the definition \cref{def: locally euclidean}
+    that \(M\) is indeed locally euclidean.
+    (\(\Rightarrow\)) Suppose \(M\) is a locally euclidean \(n\)-dimensional
+    topological space, then let any point \(p \in M\) and define \(U_p \subseteq
+    M\) be a neighbourhood of \(p\) such that exists \(V \subseteq \R^n\)
+    for which we can define an isomorphism \(\phi : U_p \to V\). From the fact
+    that the collection of open balls in \(\R^n\) form a basis for
+    \(\R^n\), we conclude that there exists an open ball \(B^n \subseteq
+    V\) for which \(p \in B^n\). Thus the open set \(\psi^{-1}(B) \subseteq M\) is
+    a neighbourhood of \(p\). Since \(\phi\) is an isomorphism, then the
+    morphism \(\psi|_B^{-1} : B \to \phi^{-1}(B)\) is an isomorphism, thus \(B
+    \iso \phi^{-1}(B)\) as wanted.
 \end{proof}
 
 \begin{proposition}
-\label{prop:locally-euclidean-first-countable}
-Every locally euclidean space is first countable.
+    \label{prop:locally-euclidean-first-countable}
+    Every locally euclidean space is first countable.
 \end{proposition}
 
 \todo[inline]{prove}
 
 \begin{definition}[Miscellaneous]
-Let \(M\) be a locally euclidean \(n\)-dimensional topological space. We
-define:
-\begin{enumerate}[(C1)]
-  \item\label{def: coordinate domain}
-    (Coordinate domain) An open set \(U \subseteq M\) is called a coordinate
-    domain of \(M\) if it is isomorphic to an open set of \(\R^n\).
-  \item\label{def: coordinate map}
-    (Coordinate map) An isomorphism \(\phi\) from a coordinate domain to an
-    open set of \(\R^n\) is called a coordinate map.
-  \item\label{def: coordinate chart}
-    (Coordinate chart) The pair \((U, \phi)\) of a coordinate domain and one
-    of its coordinate maps is called a coordinate chart for \(M\). Given \(x \in
-    M\), we say that \((U, \phi)\) is a chart \emph{at} \(x\) if \(x \in U\).
-  \item\label{def: coordinate ball}
-    (Coordinate ball) A coordinate domain isomorphic to an open ball of
-    \(\R^n\) is called a coordinate ball.
-  \item\label{def: euclidean neighbourhood}
-    (Coordinate neighbourhood or euclidean neighbourhood) Given a point \(p
-    \in M\), if \(U \subseteq M\) is a coordinate domain of \(M\) such that
-    \(p \in U\), then we say that \(U\) is a coordinate neighbourhood of
-    \(p\).
-\end{enumerate}
+    Let \(M\) be a locally euclidean \(n\)-dimensional topological space. We
+    define:
+    \begin{enumerate}[(C1)]
+        \item\label{def: coordinate domain}
+        (Coordinate domain) An open set \(U \subseteq M\) is called a coordinate
+        domain of \(M\) if it is isomorphic to an open set of \(\R^n\).
+        \item\label{def: coordinate map}
+        (Coordinate map) An isomorphism \(\phi\) from a coordinate domain to an
+        open set of \(\R^n\) is called a coordinate map.
+        \item\label{def: coordinate chart}
+        (Coordinate chart) The pair \((U, \phi)\) of a coordinate domain and one
+        of its coordinate maps is called a coordinate chart for \(M\). Given \(x \in
+        M\), we say that \((U, \phi)\) is a chart \emph{at} \(x\) if \(x \in U\).
+        \item\label{def: coordinate ball}
+        (Coordinate ball) A coordinate domain isomorphic to an open ball of
+        \(\R^n\) is called a coordinate ball.
+        \item\label{def: euclidean neighbourhood}
+        (Coordinate neighbourhood or euclidean neighbourhood) Given a point \(p
+        \in M\), if \(U \subseteq M\) is a coordinate domain of \(M\) such that
+        \(p \in U\), then we say that \(U\) is a coordinate neighbourhood of
+        \(p\).
+    \end{enumerate}
 \end{definition}
 
 \begin{proposition}
-\label{prop:coordinate-ball-second-countable}
-Every coordinate ball is second countable.
+    \label{prop:coordinate-ball-second-countable}
+    Every coordinate ball is second countable.
 \end{proposition}
 
 \begin{proof}
-Let \(M\) be a locally euclidean \(n\)-dimensional topological space and let
-\(U \subseteq M\) be a coordinate ball of \(M\) and \(\phi: U \isoto B^n\) be an
-isomorphism. From \cref{cor:euclidean-space-second-countable} we find that there
-exists a countable basis \(\mathcal B \subseteq 2^{\R^n}\) for \(B^n\). Since
-\(\phi\) is an isomorphism, then the collection of preimages \(\{\phi^{-1}(B)
-\subseteq U \colon B \in \mathcal B\}\) is also a basis for \(U\) and is clearly
-countable --- hence \(U\) is second countable.
+    Let \(M\) be a locally euclidean \(n\)-dimensional topological space and let
+    \(U \subseteq M\) be a coordinate ball of \(M\) and \(\phi: U \isoto B^n\) be an
+    isomorphism. From \cref{cor:euclidean-space-second-countable} we find that there
+    exists a countable basis \(\mathcal B \subseteq 2^{\R^n}\) for \(B^n\). Since
+    \(\phi\) is an isomorphism, then the collection of preimages \(\{\phi^{-1}(B)
+    \subseteq U \colon B \in \mathcal B\}\) is also a basis for \(U\) and is clearly
+    countable --- hence \(U\) is second countable.
 \end{proof}
 
 \begin{proposition}[Locally euclidean from surjective morphism]
-\label{prop:locally-euclidean-from-surjective-map}
-Let \(X\) be locally euclidean of dimension \(n\), and \(f: X \to Y\) be a
-surjective local isomorphism. Then \(Y\) is locally euclidean of dimension
-\(n\).
+    \label{prop:locally-euclidean-from-surjective-map}
+    Let \(X\) be locally euclidean of dimension \(n\), and \(f: X \to Y\) be a
+    surjective local isomorphism. Then \(Y\) is locally euclidean of dimension
+    \(n\).
 \end{proposition}
 
 \begin{proof}
-Let \(\mathcal B\) be a basis for \(X\). Since \(f\) is continuous, surjective
-and a open (see \cref{prop:properties-local-homeomorphism}), we can use
-\cref{prop: basis image surjective} to conclude that \(f(\mathcal B)\) is a
-basis for \(Y\). Since \(f\) is a local isomorphism, given any point \(y \in
-Y\), choose a neighbourhood \(V_y \in f(\mathcal B)\), so that there exists a
-\(B \in \mathcal B\) such that \(f(B) = V_y\). Consider the isomorphism
-\(f|_B: B \to V_y\). Since \(X\) is locally euclidean of dimension \(n\), there
-exists an open set \(W \subseteq \R^n\) such that \(B \iso W\). Moreover, since
-\(B \iso V_y\), then \(V_y \iso W\). We conclude that \(Y\) is locally euclidean
-of dimension \(n\).
+    Let \(\mathcal B\) be a basis for \(X\). Since \(f\) is continuous, surjective
+    and a open (see \cref{prop:properties-local-homeomorphism}), we can use
+    \cref{prop: basis image surjective} to conclude that \(f(\mathcal B)\) is a
+    basis for \(Y\). Since \(f\) is a local isomorphism, given any point \(y \in
+    Y\), choose a neighbourhood \(V_y \in f(\mathcal B)\), so that there exists a
+    \(B \in \mathcal B\) such that \(f(B) = V_y\). Consider the isomorphism
+    \(f|_B: B \to V_y\). Since \(X\) is locally euclidean of dimension \(n\), there
+    exists an open set \(W \subseteq \R^n\) such that \(B \iso W\). Moreover, since
+    \(B \iso V_y\), then \(V_y \iso W\). We conclude that \(Y\) is locally euclidean
+    of dimension \(n\).
 \end{proof}
 
 \subsection{Topological Manifold}
 
 \begin{definition}[Topological manifold]\label{def: topological manifold}
-An \(n\)-dimensional topological manifold is a second countable Hausdorff
-space that is locally euclidean \(n\)-dimensional.
+    An \(n\)-dimensional topological manifold is a second countable Hausdorff
+    space that is locally euclidean \(n\)-dimensional.
 \end{definition}
 
 \begin{proposition}\label{prop:coordinate-ball-basis}
-Every topological manifold admits a basis of coordinate balls.
+    Every topological manifold admits a basis of coordinate balls.
 \end{proposition}
 
 \begin{proof}
-Let \(M\) be a \(n\)-dimensional topological manifold. From
-\cref{lem:locally-euclidean-equivalences} we can take, for every point \(p \in
-M\), a neighbourhood \(U \subseteq M\) such that \(U \iso B^n\) (an open ball of
-\(\R^n\)). Define \(\mathcal{U}\) to be the collection of all coordinate balls
-on \(M\), from our last argument it follows that \(\mathcal U\) covers
-\(M\). Let \(U, U' \in \mathcal U\) be intersecting coordinate balls and
-\(\phi\) be a coordinate isomorphism of either \(U\) or \(U'\). Let \(p \in U
-\cap U'\) be any point and define a ball \(B_{p}^{n} \subseteq \phi(U
-\cap U') \subseteq \R^n\) that is a neighbourhood of \(\phi(p) \in \R^n\).
-Let \(V \subseteq M\) be defined as \(V \coloneq \phi^{-1}(B^n)\) so that \(V
-\subseteq U \cap U'\) and also \(p \in V\). Notice that the induced map \(\psi:
-V \to B^n\), defined by \(\psi(x) \coloneq \phi(x)\), is an isomorphism --- that
-is, \(V \in \mathcal U\) and hence \(\mathcal U\) is a basis for \(M\) (see
-\cref{prop:equivalent-basis}).
+    Let \(M\) be a \(n\)-dimensional topological manifold. From
+    \cref{lem:locally-euclidean-equivalences} we can take, for every point \(p \in
+    M\), a neighbourhood \(U \subseteq M\) such that \(U \iso B^n\) (an open ball of
+    \(\R^n\)). Define \(\mathcal{U}\) to be the collection of all coordinate balls
+    on \(M\), from our last argument it follows that \(\mathcal U\) covers
+    \(M\). Let \(U, U' \in \mathcal U\) be intersecting coordinate balls and
+    \(\phi\) be a coordinate isomorphism of either \(U\) or \(U'\). Let \(p \in U
+    \cap U'\) be any point and define a ball \(B_{p}^{n} \subseteq \phi(U
+    \cap U') \subseteq \R^n\) that is a neighbourhood of \(\phi(p) \in \R^n\).
+    Let \(V \subseteq M\) be defined as \(V \coloneq \phi^{-1}(B^n)\) so that \(V
+    \subseteq U \cap U'\) and also \(p \in V\). Notice that the induced map \(\psi:
+    V \to B^n\), defined by \(\psi(x) \coloneq \phi(x)\), is an isomorphism --- that
+    is, \(V \in \mathcal U\) and hence \(\mathcal U\) is a basis for \(M\) (see
+    \cref{prop:equivalent-basis}).
 \end{proof}
 
 \begin{proposition}
-Every open subset of an \(n\)-manifold is itself an \(n\)-manifold.
+    Every open subset of an \(n\)-manifold is itself an \(n\)-manifold.
 \end{proposition}
 
 \begin{proof}
-Consider \(U \subseteq M\) an open set and let \(p \in U\). Then consider \(V
-\subseteq M\) to be a coordinate neighbourhood of \(x\) such that \(V \iso B
-\subseteq \R^n\), then the set \(U \cap V\) is open and isomorphic
-to a subset of \(B\) and hence \(V\) is \(n\)-dimensional locally euclidean.
-Moreover, since a subset of a Hausdorff space is Hausdorff and a subset of a
-second countable space is second countable, then \(U\) is indeed a
-\(n\)-manifold.
+    Consider \(U \subseteq M\) an open set and let \(p \in U\). Then consider \(V
+    \subseteq M\) to be a coordinate neighbourhood of \(x\) such that \(V \iso B
+    \subseteq \R^n\), then the set \(U \cap V\) is open and isomorphic
+    to a subset of \(B\) and hence \(V\) is \(n\)-dimensional locally euclidean.
+    Moreover, since a subset of a Hausdorff space is Hausdorff and a subset of a
+    second countable space is second countable, then \(U\) is indeed a
+    \(n\)-manifold.
 \end{proof}
 
 \begin{definition}
-The empty topological space is an \(n\)-manifold for all \(n > 0\).
+    The empty topological space is an \(n\)-manifold for all \(n > 0\).
 \end{definition}
 
 \begin{theorem}[Dimension invariance]\label{def: manifold dimension invariance}
-If \(m \neq n\), then a non-empty topological space cannot be both
-\(n\)-manifold and \(m\)-manifold.
+    If \(m \neq n\), then a non-empty topological space cannot be both
+    \(n\)-manifold and \(m\)-manifold.
 \end{theorem}
 
 \begin{proposition}
-A separable metric space that is locally euclidean of dimension \(n\) is an
-\(n\)-manifold.
+    A separable metric space that is locally euclidean of dimension \(n\) is an
+    \(n\)-manifold.
 \end{proposition}
 
 \begin{proof}
-From \cref{prop: metric space properties}, since \(M\) is separable then it is
-also second countable. Moreover, from \cref{prop: metric space T2} we find
-that \(M\) is Hausdorff. Hence \(M\) is an \(n\)-manifold.
+    From \cref{prop: metric space properties}, since \(M\) is separable then it is
+    also second countable. Moreover, from \cref{prop: metric space T2} we find
+    that \(M\) is Hausdorff. Hence \(M\) is an \(n\)-manifold.
 \end{proof}
 
 \begin{proposition}
-Every topological manifold is separable and metrizable.
+    Every topological manifold is separable and metrizable.
 \end{proposition}
 
 \begin{proof}
-Notice that since a manifold is second countable, then by \cref{prop: second
-countable properties} we find that it is separable.
-\todo[inline]{After proving Urysohn metrization theorem, prove the
-metrizability property}
+    Notice that since a manifold is second countable, then by \cref{prop: second
+        countable properties} we find that it is separable.
+    \todo[inline]{After proving Urysohn metrization theorem, prove the
+        metrizability property}
 \end{proof}
 
 \subsection{Manifolds with Boundary}
 
 \begin{definition}[Upper half-space]\label{def:upper-half-space}
-We define the closed \(n\)-dimensional upper half-space \(\Uhs^n \subseteq
-\R^n\) as
-\[
-  \Uhs^n \coloneq \{x \in \R^n \colon \pi_n(x) \geq 0\}
-\]
-where \(\pi_n\) is the projection of the \(n\)-th coordinate. We define the
-boundary of \(\Uhs^n\) as \(\Bd \Uhs^n \coloneq \{x \colon \pi_n(x) = 0\}\),
-and the interior as \(\Int(\Uhs^n) \coloneq \{x \colon \pi_n(x) > 0\}\).
+    We define the closed \(n\)-dimensional upper half-space \(\Uhs^n \subseteq
+    \R^n\) as
+    \[
+        \Uhs^n \coloneq \{x \in \R^n \colon \pi_n(x) \geq 0\}
+    \]
+    where \(\pi_n\) is the projection of the \(n\)-th coordinate. We define the
+    boundary of \(\Uhs^n\) as \(\Bd \Uhs^n \coloneq \{x \colon \pi_n(x) = 0\}\),
+    and the interior as \(\Int(\Uhs^n) \coloneq \{x \colon \pi_n(x) > 0\}\).
 \end{definition}
 
 \begin{definition}[Manifold with boundary]
-\label{def: manifold with boundary}
-We define an \(n\)-dimensional topological manifold with boundary to be a
-second countable Hausdorff space such that each point has a neighbourhood
-isomorphic to an open set of \(\R^n\) or \(\Uhs^n\).
+    \label{def: manifold with boundary}
+    We define an \(n\)-dimensional topological manifold with boundary to be a
+    second countable Hausdorff space such that each point has a neighbourhood
+    isomorphic to an open set of \(\R^n\) or \(\Uhs^n\).
 \end{definition}
 
 \begin{definition}[Miscellaneous]
-Let \(M\) be an \(n\)-manifold with boundary. We define
-\begin{enumerate}[(MB1)]
-  \item A coordinate chart for \(M\) is a pair \((U, \phi)\), where \(U
-    \subseteq M\) is an open set and \(\phi: U \isoto V\) is an isomorphism,
-    where \(V \subseteq \R^n\) or \(V \subseteq \Uhs^n\). We say that the chart
-    is an interior chart if \(V\) is an open subset of \(\R^n\). A chart is said
-    to be a boundary chart if \(V\) is an open subset of \(\Uhs^n\) with
-    \(\im(\phi) \cap \Bd \Uhs^n \neq \emptyset\).
-  \item A point \(p \in M\) is called an interior point of \(M\) if it is
-    contained in the domain of an interior chart. The collection of such
-    points is called the interior of \(M\), and is denoted \(\Int(M)\).
-  \item A point \(p \in M\) is called a boundary point of \(M\) if it is in
-    the domain of a boundary chart that maps \(p\) to a point of
-    \(\Uhs^n\). The boundary of \(M\), is defined as the collection of
-    such points and is denoted by \(\Bd M\).
-\end{enumerate}
+    Let \(M\) be an \(n\)-manifold with boundary. We define
+    \begin{enumerate}[(MB1)]
+        \item A coordinate chart for \(M\) is a pair \((U, \phi)\), where \(U
+              \subseteq M\) is an open set and \(\phi: U \isoto V\) is an isomorphism,
+              where \(V \subseteq \R^n\) or \(V \subseteq \Uhs^n\). We say that the chart
+              is an interior chart if \(V\) is an open subset of \(\R^n\). A chart is said
+              to be a boundary chart if \(V\) is an open subset of \(\Uhs^n\) with
+              \(\im(\phi) \cap \Bd \Uhs^n \neq \emptyset\).
+        \item A point \(p \in M\) is called an interior point of \(M\) if it is
+              contained in the domain of an interior chart. The collection of such
+              points is called the interior of \(M\), and is denoted \(\Int(M)\).
+        \item A point \(p \in M\) is called a boundary point of \(M\) if it is in
+              the domain of a boundary chart that maps \(p\) to a point of
+              \(\Uhs^n\). The boundary of \(M\), is defined as the collection of
+              such points and is denoted by \(\Bd M\).
+    \end{enumerate}
 \end{definition}
 
 \begin{proposition}\label{prop: interior is a manifold}
-If \(M\) is an \(n\)-dimensional manifold with boundary, then \(\Int(M)\) is
-an open subset of \(M\), which is itself an \(n\)-dimensional manifold
-(without boundary).
+    If \(M\) is an \(n\)-dimensional manifold with boundary, then \(\Int(M)\) is
+    an open subset of \(M\), which is itself an \(n\)-dimensional manifold
+    (without boundary).
 \end{proposition}
 
 \begin{proof}
-Let \(p \in \Int(M)\) be any point, then by definition we have that \(p \in
-U\) where \((U, \phi)\) is an interior chart for \(M\) and therefore \(U \iso
-V\) where \(V\) is some open subset of \(\R^n\), hence locally
-euclidean, which makes \(\Int(M)\) an \(n\)-dimensional manifold (since a
-subset of a Hausdorff space is Hausdorff and a subset of a second countable
-space is again second countable). To prove that \(\Int(M)\) is open, we can
-use the fact that \(M\) is first countable and lemma \cref{lem: sequence
-lemma}. First, suppose the converse, so that \((x_i)_{i \in \N}\) is a
-sequence of points in \(M\) that is not-eventually in \(\Int(M)\) and, for the
-sake of contradiction, \(x_i \to p\). Consider the open neighbourhood \(U\) of
-\(p\) (which happens to be the chart domain), if \(x_i \to p\) then there exists
-\(N \in \N\) such that \(x_i \in U\) for all \(i \geq N\), but notice that every
-point of \(U\) is an interior point of \(M\), therefore \(x_i \in \Int(M)\),
-which is a contradiction to the hypothesis that the sequence is not-eventually
-in \(\Int(M)\). Hence such sequences cannot converge to \(p\), and \(\Int(M)\)
-is open.
+    Let \(p \in \Int(M)\) be any point, then by definition we have that \(p \in
+    U\) where \((U, \phi)\) is an interior chart for \(M\) and therefore \(U \iso
+    V\) where \(V\) is some open subset of \(\R^n\), hence locally
+    euclidean, which makes \(\Int(M)\) an \(n\)-dimensional manifold (since a
+    subset of a Hausdorff space is Hausdorff and a subset of a second countable
+    space is again second countable). To prove that \(\Int(M)\) is open, we can
+    use the fact that \(M\) is first countable and lemma \cref{lem: sequence
+        lemma}. First, suppose the converse, so that \((x_i)_{i \in \N}\) is a
+    sequence of points in \(M\) that is not-eventually in \(\Int(M)\) and, for the
+    sake of contradiction, \(x_i \to p\). Consider the open neighbourhood \(U\) of
+    \(p\) (which happens to be the chart domain), if \(x_i \to p\) then there exists
+    \(N \in \N\) such that \(x_i \in U\) for all \(i \geq N\), but notice that every
+    point of \(U\) is an interior point of \(M\), therefore \(x_i \in \Int(M)\),
+    which is a contradiction to the hypothesis that the sequence is not-eventually
+    in \(\Int(M)\). Hence such sequences cannot converge to \(p\), and \(\Int(M)\)
+    is open.
 \end{proof}
 
 \begin{theorem}[Boundary invariance]\label{thm: boundary invariance}
-Let \(M\) be a manifold with boundary, then
-\[
-  \Bd M \cap \Int(M) = \emptyset
-\]
+    Let \(M\) be a manifold with boundary, then
+    \[
+        \Bd M \cap \Int(M) = \emptyset
+    \]
 \end{theorem}
 
 \begin{proof}
-\todo[inline]{Proof to come far ahead}
+    \todo[inline]{Proof to come far ahead}
 \end{proof}
 
 \begin{corollary}
-If \(M\) is a non-empty \(n\)-manifold with boundary, then the collection
-\(\Bd M\) is closed in \(M\), and \(M\) is an \(n\)-manifold if and only
-if \(\Bd M = \emptyset\).
+    If \(M\) is a non-empty \(n\)-manifold with boundary, then the collection
+    \(\Bd M\) is closed in \(M\), and \(M\) is an \(n\)-manifold if and only
+    if \(\Bd M = \emptyset\).
 \end{corollary}
 
 \begin{proof}
-Since \(\Bd M = M \setminus \Int(M)\) from theorem \cref{thm: boundary
-invariance} and \(\Int(M)\) is open from \cref{prop: interior is a manifold},
-then it follows that \(\Bd M\) is closed. (\(\Rightarrow\)) Moreover,
-suppose that \(M\) is a manifold, then given any point \(p \in M\) there
-exists an interior chart \((U, \phi)\) such that \(p \in U \subseteq
-\Int(M)\), hence \(\Int(M) = M\), and from \cref{thm: boundary invariance} we
-conclude that \(\Bd M = \emptyset\). (\(\Leftarrow\)) Suppose that
-\(\Bd M = \emptyset\), then from \cref{thm: boundary invariance} we
-conclude that \(M = \Int(M)\), which is a manifold by \cref{prop: interior is a
-manifold}.
+    Since \(\Bd M = M \setminus \Int(M)\) from theorem \cref{thm: boundary
+        invariance} and \(\Int(M)\) is open from \cref{prop: interior is a manifold},
+    then it follows that \(\Bd M\) is closed. (\(\Rightarrow\)) Moreover,
+    suppose that \(M\) is a manifold, then given any point \(p \in M\) there
+    exists an interior chart \((U, \phi)\) such that \(p \in U \subseteq
+    \Int(M)\), hence \(\Int(M) = M\), and from \cref{thm: boundary invariance} we
+    conclude that \(\Bd M = \emptyset\). (\(\Leftarrow\)) Suppose that
+    \(\Bd M = \emptyset\), then from \cref{thm: boundary invariance} we
+    conclude that \(M = \Int(M)\), which is a manifold by \cref{prop: interior is a
+        manifold}.
 \end{proof}
 
 %%% Local Variables:

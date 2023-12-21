@@ -5,97 +5,97 @@
 \section{Monoidal Categories}
 
 \begin{definition}
-\label{def:monoidal-category}
-A \emph{monoidal category} is a tuple
-\((\cat M, \otimes, 1, \alpha, \lambda, \rho)\) consisting of:
-\begin{itemize}\setlength\itemsep{0em}
-\item A \emph{category} \(\cat M\).
+    \label{def:monoidal-category}
+    A \emph{monoidal category} is a tuple
+    \((\cat M, \otimes, 1, \alpha, \lambda, \rho)\) consisting of:
+    \begin{itemize}\setlength\itemsep{0em}
+        \item A \emph{category} \(\cat M\).
 
-\item A bifunctor \(\otimes: \cat M \times \cat M \to \cat M\)
+        \item A bifunctor \(\otimes: \cat M \times \cat M \to \cat M\)
 
-\item A distinguished object \(1 \in \cat M\) that is \emph{unitary} with
-  respect to \(\otimes\), that is:
-  \[
-  m \otimes 1 = m = 1 \otimes m
-  \]
-  for any object \(m \in \cat M\).
+        \item A distinguished object \(1 \in \cat M\) that is \emph{unitary} with
+              respect to \(\otimes\), that is:
+              \[
+                  m \otimes 1 = m = 1 \otimes m
+              \]
+              for any object \(m \in \cat M\).
 
-\item A \emph{natural isomorphism}
-  \[
-  \alpha: (- \otimes (- \otimes -))
-  \overset{\iso}\Longrightarrow ((- \otimes -) \otimes -).
-  \]
-  called \emph{associator}, in the sense that given any triple of objects \((a,
-  b, c)\) of \(\cat M\), the image
-  \[
-  \begin{tikzcd}
-  a \otimes (b \otimes c)
-  \ar[r, "{\alpha(a, b, c)}"', "\dis"]
-  &(a \otimes b) \otimes c
-  \end{tikzcd}
-  \]
-  is an isomorphism in \(\cat M\).
+        \item A \emph{natural isomorphism}
+              \[
+                  \alpha: (- \otimes (- \otimes -))
+                  \overset{\iso}\Longrightarrow ((- \otimes -) \otimes -).
+              \]
+              called \emph{associator}, in the sense that given any triple of objects \((a,
+              b, c)\) of \(\cat M\), the image
+              \[
+                  \begin{tikzcd}
+                      a \otimes (b \otimes c)
+                      \ar[r, "{\alpha(a, b, c)}"', "\dis"]
+                      &(a \otimes b) \otimes c
+                  \end{tikzcd}
+              \]
+              is an isomorphism in \(\cat M\).
 
-\item Two \emph{natural isomorphisms}
-  \[
-  \lambda: (1 \otimes -)
-  \overset{\iso}\Longrightarrow (-)
-  \quad
-  \text{ and }
-  \quad
-  \rho: (- \otimes 1)
-  \overset{\iso}\Longrightarrow (-)
-  \]
-  called \emph{left and right unitors}, respectively. In other words, given any
-  object \(a \in \cat M\) the morphisms \(\lambda a: 1 \otimes a \isoto a\) and
-  \(\rho a: a \otimes 1 \isoto a\) are \emph{isomorphisms} in \(\cat M\).
-\end{itemize}
-This data should satisfy the following two conditions:
-\begin{itemize}\setlength\itemsep{0em}
-\item (Triangle identity) Given any pair \((a, b)\) of objects in \(\cat M\),
-  the diagram
-  \[
-  \begin{tikzcd}
-  a \otimes (1 \otimes b) \ar[rr, "{\alpha(a, 1, b)}"]
-  \ar[rd, "\Id_a \otimes \rho b"']
-  & &(a \otimes 1) \otimes b \ar[ld, "\lambda a \otimes \Id_b"]
-  \\
-  &a \otimes b &
-  \end{tikzcd}
-  \]
-  commutes in \(\cat M\).
+        \item Two \emph{natural isomorphisms}
+              \[
+                  \lambda: (1 \otimes -)
+                  \overset{\iso}\Longrightarrow (-)
+                  \quad
+                  \text{ and }
+                  \quad
+                  \rho: (- \otimes 1)
+                  \overset{\iso}\Longrightarrow (-)
+              \]
+              called \emph{left and right unitors}, respectively. In other words, given any
+              object \(a \in \cat M\) the morphisms \(\lambda a: 1 \otimes a \isoto a\) and
+              \(\rho a: a \otimes 1 \isoto a\) are \emph{isomorphisms} in \(\cat M\).
+    \end{itemize}
+    This data should satisfy the following two conditions:
+    \begin{itemize}\setlength\itemsep{0em}
+        \item (Triangle identity) Given any pair \((a, b)\) of objects in \(\cat M\),
+              the diagram
+              \[
+                  \begin{tikzcd}
+                      a \otimes (1 \otimes b) \ar[rr, "{\alpha(a, 1, b)}"]
+                      \ar[rd, "\Id_a \otimes \rho b"']
+                      & &(a \otimes 1) \otimes b \ar[ld, "\lambda a \otimes \Id_b"]
+                      \\
+                      &a \otimes b &
+                  \end{tikzcd}
+              \]
+              commutes in \(\cat M\).
 
-\item (Pentagon identity) Given any tuple \((a, b, c, d)\) of objects in
-  \(\cat M\), the diagram
-  \[
-  \begin{tikzcd}
-  &
-  &(a \otimes b) \otimes (c \otimes d)
-  \ar[rdd, "{\alpha(a \otimes b, c, d)}"]
-  &
-  \\
-  & & &
-  \\
-  a \otimes (b \otimes (c \otimes d))
-  \ar[dd, "{\Id_a \otimes \alpha(b, c, d)}"']
-  \ar[rruu, "{\alpha(a, b, c \otimes d)}"]
-  &
-  &
-  &((a \otimes b) \otimes c) \otimes d
-  \\
-  & & &
-  \\
-  % empty
-  a \otimes ((b \otimes c) \otimes d)
-  \ar[rrr, "{\alpha(a, b \otimes c, d)}"']
-  &
-  &
-  &(a \otimes (b \otimes c)) \otimes d
-  \ar[uu, "{\alpha(a, b, c) \otimes \Id_d}"']
-  \end{tikzcd}
-  \]
-  is commutative in \(\cat M\).
-\end{itemize}
+        \item (Pentagon identity) Given any tuple \((a, b, c, d)\) of objects in
+              \(\cat M\), the diagram
+              \[
+                  \begin{tikzcd}
+                      &
+                      &(a \otimes b) \otimes (c \otimes d)
+                      \ar[rdd, "{\alpha(a \otimes b, c, d)}"]
+                      &
+                      \\
+                      & & &
+                      \\
+                      a \otimes (b \otimes (c \otimes d))
+                      \ar[dd, "{\Id_a \otimes \alpha(b, c, d)}"']
+                      \ar[rruu, "{\alpha(a, b, c \otimes d)}"]
+                      &
+                      &
+                      &((a \otimes b) \otimes c) \otimes d
+                      \\
+                      & & &
+                      \\
+                      % empty
+                      a \otimes ((b \otimes c) \otimes d)
+                      \ar[rrr, "{\alpha(a, b \otimes c, d)}"']
+                      &
+                      &
+                      &(a \otimes (b \otimes c)) \otimes d
+                      \ar[uu, "{\alpha(a, b, c) \otimes \Id_d}"']
+                  \end{tikzcd}
+              \]
+              is commutative in \(\cat M\).
+    \end{itemize}
 \end{definition}
 The tuple \((\cat M, \otimes, 1, \alpha, \lambda, \rho)\) is said to be a
 \emph{strict monoidal category} if the three natural isomorphisms are naturally
@@ -103,278 +103,278 @@ isomorphic to the identity---if this is the case, we shall refer to the category
 simply by the triple \((\cat M, \otimes, 1)\).
 
 \begin{definition}[Monoidal functor]
-\label{def:monoidal-functor}
-Let \((\cat M, \otimes, 1, \alpha, \lambda, \rho)\) and \((\cat N,
-\widehat\otimes, \widehat 1, \widehat \alpha, \widehat \lambda, \widehat \rho)\)
-be two (strict) monoidal categories. We say that a functor \(F: \cat M \to \cat
-N\) is a (\emph{strict}) \emph{monoidal functor} if it preserves the actions of
-the natural isomorphisms. To put concretely, we have:
-\begin{itemize}\setlength\itemsep{0em}
-\item The unit of \(\cat M\) is mapped to the unit of \(\cat N\), that is,
-  \(F e = \widehat e\).
+    \label{def:monoidal-functor}
+    Let \((\cat M, \otimes, 1, \alpha, \lambda, \rho)\) and \((\cat N,
+    \widehat\otimes, \widehat 1, \widehat \alpha, \widehat \lambda, \widehat \rho)\)
+    be two (strict) monoidal categories. We say that a functor \(F: \cat M \to \cat
+    N\) is a (\emph{strict}) \emph{monoidal functor} if it preserves the actions of
+    the natural isomorphisms. To put concretely, we have:
+    \begin{itemize}\setlength\itemsep{0em}
+        \item The unit of \(\cat M\) is mapped to the unit of \(\cat N\), that is,
+              \(F e = \widehat e\).
 
-\item For any \(a \in \cat M\) one has
-  \(F (\lambda a) = \widehat \lambda (F a)\) and
-  \(F (\rho a) = \widehat \rho(F a)\).
+        \item For any \(a \in \cat M\) one has
+              \(F (\lambda a) = \widehat \lambda (F a)\) and
+              \(F (\rho a) = \widehat \rho(F a)\).
 
-\item For any pair \((a, b)\) of objects in \(\cat M\) there exists an
-  isomorphism \(F(a \otimes b) \iso F a \widehat \otimes F b\) in \(\cat
-  N\)---in the strict case, the isomorphism is replaced by an equality.
+        \item For any pair \((a, b)\) of objects in \(\cat M\) there exists an
+              isomorphism \(F(a \otimes b) \iso F a \widehat \otimes F b\) in \(\cat
+              N\)---in the strict case, the isomorphism is replaced by an equality.
 
-\item For any triple \((a, b, c)\) of objects in \(\cat M\) we have
-  \(F \alpha(a, b, c) = \widehat \alpha (F a, F b, F c)\).
+        \item For any triple \((a, b, c)\) of objects in \(\cat M\) we have
+              \(F \alpha(a, b, c) = \widehat \alpha (F a, F b, F c)\).
 
-\item For every two maps \(f\) and \(g\) in \(\cat M\) there exists an
-  isomorphism \(F(f \otimes g) \iso F f \widehat \otimes F g\) in
-  \(\cat N\)---in the strict case, the isomorphism is replaced by an equality.
-\end{itemize}
+        \item For every two maps \(f\) and \(g\) in \(\cat M\) there exists an
+              isomorphism \(F(f \otimes g) \iso F f \widehat \otimes F g\) in
+              \(\cat N\)---in the strict case, the isomorphism is replaced by an equality.
+    \end{itemize}
 \end{definition}
 
 \begin{definition}[Monoidal natural transformation]
-\label{def:monoidal-natural-transformation}
-Let \((\cat M, \otimes, 1, \alpha, \lambda, \rho)\) and
-\((\cat N, \widehat\otimes, \widehat 1, \widehat \alpha, \widehat \lambda,
-\widehat \rho)\) be two (strict) monoidal categories, and consider a pair of
-parallel (strict) functors \(F, G: \cat M \para \cat N\). A natural
-transformation \(\eta: F \nat G\) is said to be \emph{monoidal} if
-\(\eta_1 = \widehat 1\), and for any pair of objects \(a, b \in \cat M\) the
-diagram
-\[
-\begin{tikzcd}
-F(a \otimes b) \ar[d, "\dis"']
-\ar[r, "\eta_{a \otimes b}"]
-&G(a \otimes b) \ar[d, "\dis"] \\
-F a \widehat\otimes F b \ar[r, "\eta_a \widehat\otimes \eta_b"']
-&G a \widehat\otimes G b
-\end{tikzcd}
-\]
-commutes in the monoidal category \(\cat N\).
+    \label{def:monoidal-natural-transformation}
+    Let \((\cat M, \otimes, 1, \alpha, \lambda, \rho)\) and
+    \((\cat N, \widehat\otimes, \widehat 1, \widehat \alpha, \widehat \lambda,
+    \widehat \rho)\) be two (strict) monoidal categories, and consider a pair of
+    parallel (strict) functors \(F, G: \cat M \para \cat N\). A natural
+    transformation \(\eta: F \nat G\) is said to be \emph{monoidal} if
+    \(\eta_1 = \widehat 1\), and for any pair of objects \(a, b \in \cat M\) the
+    diagram
+    \[
+        \begin{tikzcd}
+            F(a \otimes b) \ar[d, "\dis"']
+            \ar[r, "\eta_{a \otimes b}"]
+            &G(a \otimes b) \ar[d, "\dis"] \\
+            F a \widehat\otimes F b \ar[r, "\eta_a \widehat\otimes \eta_b"']
+            &G a \widehat\otimes G b
+        \end{tikzcd}
+    \]
+    commutes in the monoidal category \(\cat N\).
 \end{definition}
 
 \begin{theorem}[Strictification of monoidal categories]
-\label{thm:strictification-mon-cat}
-Every monoidal category is \emph{monoidally equivalent} to a \emph{strict}
-monoidal category.
+    \label{thm:strictification-mon-cat}
+    Every monoidal category is \emph{monoidally equivalent} to a \emph{strict}
+    monoidal category.
 \end{theorem}
 
 \begin{proof}
-Let \((\cat M, \otimes, 1, \alpha, \lambda, \rho)\) be a monoidal
-category. We shall construct a strict monoidal category out of \(\cat M\). To
-that end, define a category \(\cat N\) where:
-\begin{itemize}\setlength\itemsep{0em}
-\item The objects of \(\cat N\) are pairs \((F, \eta)\) where \(F\) is an
-  \emph{endofunctor} of \(\cat M\) and
-  \[
-  \eta: F(- \otimes -) \isonat F(-) \otimes (-)
-  \]
-  is a \emph{natural isomorphism} such that, for any triple \((a, b, c)\) of
-  objects of \(\cat M\), the pentagonal diagram
-  \[
-  \begin{tikzcd}
-  &
-  &(F(a) \otimes b) \otimes c
-  &
-  \\
-  & & &
-  \\
-  F(a \otimes b) \otimes c
-  \ar[rruu, "\eta_{(a, b)} \otimes \Id_c"]
-  &
-  &
-  & F(a) \otimes (b \otimes c)
-  \ar[luu, "{\alpha(F a, b, c)}"']
-  \\
-  & & &
-  \\
-  F((a \otimes b) \otimes c)
-  \ar[uu, "\eta_{(a \otimes b, c)}"]
-  &
-  &
-  &F(a \otimes (b \otimes c))
-  \ar[lll, "{F \alpha(a, b, c)}"]
-  \ar[uu, "\eta_{(a, b \otimes c)}"']
-  \end{tikzcd}
-  \]
+    Let \((\cat M, \otimes, 1, \alpha, \lambda, \rho)\) be a monoidal
+    category. We shall construct a strict monoidal category out of \(\cat M\). To
+    that end, define a category \(\cat N\) where:
+    \begin{itemize}\setlength\itemsep{0em}
+        \item The objects of \(\cat N\) are pairs \((F, \eta)\) where \(F\) is an
+              \emph{endofunctor} of \(\cat M\) and
+              \[
+                  \eta: F(- \otimes -) \isonat F(-) \otimes (-)
+              \]
+              is a \emph{natural isomorphism} such that, for any triple \((a, b, c)\) of
+              objects of \(\cat M\), the pentagonal diagram
+              \[
+                  \begin{tikzcd}
+                      &
+                      &(F(a) \otimes b) \otimes c
+                      &
+                      \\
+                      & & &
+                      \\
+                      F(a \otimes b) \otimes c
+                      \ar[rruu, "\eta_{(a, b)} \otimes \Id_c"]
+                      &
+                      &
+                      & F(a) \otimes (b \otimes c)
+                      \ar[luu, "{\alpha(F a, b, c)}"']
+                      \\
+                      & & &
+                      \\
+                      F((a \otimes b) \otimes c)
+                      \ar[uu, "\eta_{(a \otimes b, c)}"]
+                      &
+                      &
+                      &F(a \otimes (b \otimes c))
+                      \ar[lll, "{F \alpha(a, b, c)}"]
+                      \ar[uu, "\eta_{(a, b \otimes c)}"']
+                  \end{tikzcd}
+              \]
 
-\item A morphism \(\varepsilon: (F, \eta) \to (F', \eta')\) is a natural
-  transformation \(\varepsilon: F \nat F'\) such that, given any pair \((a, b)\)
-  of objects of \(\cat M\), the diagram
-  \begin{equation}\label{eq:coherence-morphism-cat-N}
-  \begin{tikzcd}
-  F(a \otimes b) \ar[d, "\eta_{(a, b)}"']
-  \ar[r, "\varepsilon_{a \otimes b}"]
-  &F'(a \otimes b) \ar[d, "\eta'_{(a, b)}"]
-  \\
-  F(a) \otimes b \ar[r, "\varepsilon_a \otimes \Id_b"']
-  &F'(a) \otimes b
-  \end{tikzcd}
-  \end{equation}
-  commutes in \(\cat M\). Moreover, we define the composition of morphisms in
-  \(\cat N\) to be given by the vertical composition of natural transformations.
+        \item A morphism \(\varepsilon: (F, \eta) \to (F', \eta')\) is a natural
+              transformation \(\varepsilon: F \nat F'\) such that, given any pair \((a, b)\)
+              of objects of \(\cat M\), the diagram
+              \begin{equation}\label{eq:coherence-morphism-cat-N}
+                  \begin{tikzcd}
+                      F(a \otimes b) \ar[d, "\eta_{(a, b)}"']
+                      \ar[r, "\varepsilon_{a \otimes b}"]
+                      &F'(a \otimes b) \ar[d, "\eta'_{(a, b)}"]
+                      \\
+                      F(a) \otimes b \ar[r, "\varepsilon_a \otimes \Id_b"']
+                      &F'(a) \otimes b
+                  \end{tikzcd}
+              \end{equation}
+              commutes in \(\cat M\). Moreover, we define the composition of morphisms in
+              \(\cat N\) to be given by the vertical composition of natural transformations.
 
-\item Define a bifunctor \(\widehat\otimes: \cat N \times \cat N \to \cat N\) as
-  \((F, \eta) \widehat\otimes (F', \eta') \coloneq (F F', \widehat\eta)\), where
-  \[
-  \widehat\eta: F F'(- \otimes -) \nat F F'(-) \otimes (-)
-  \]
-  is the natural transformation given by the composition
-  \[
-  \begin{tikzcd}
-  F F'(a \otimes b)
-  \ar[rr, "F \eta'_{(a, b)}"']
-  \ar[rrrr, bend left, "\widehat\eta_{(a, b)}"]
-  &
-  &F (F'(a) \otimes b)
-  \ar[rr, "\eta_{(F' a, b)}"']
-  &
-  &F F'(a) \otimes b
-  \end{tikzcd}
-  \]
-  for any pair of objects \((a, b)\) of \(\cat M\).
-\end{itemize}
-From this construction we find that the triple
-\((\cat N, \widehat\otimes, (\Id_{\cat M}, I))\)---where the natural
-transformation \(I: (- \otimes -) \isonat (- \otimes -)\) is the identity
-morphism \(I_{(a, b)} \coloneq \Id_{a \otimes b}\) in \(\cat M\) for any two
-\(a, b \in \cat M\)---is a \emph{strict monoidal category}, since:
-\begin{itemize}\setlength\itemsep{0em}
-\item The bifunctor \(\widehat\otimes\) satisfies \emph{equality} for both left
-  and right unitors: given an object \((F, \eta) \in \cat N\), consider any two
-  objects \(a, b \in \cat N\) then by the definition of \((F, \eta)
-  \widehat\otimes (\Id_{\cat M}, I) = (F, \widehat\eta)\) and \((\Id_{\cat M},
-  I) \widehat\otimes (F, \widehat\eta')\) one has
-  \[
-  \begin{tikzcd}
-  {F(a \otimes b)} \ar[rr, "F \Id_{a \otimes b} = \Id_{F(a \otimes b)}"']
-  \ar[rrrr, bend left, "\widehat\eta_{(a, b)}"]
-  &&{F(a \otimes b)} \ar[rr, "\eta_{(a, b)}"']
-  &&{F(a) \otimes b}
-  \end{tikzcd}
-  \]
-  \[
-  \begin{tikzcd}
-  {F(a \otimes b)} \ar[rr, "\Id_{\cat M} \eta_{(a, b)} = \eta_{(a, b)}"]
-  \ar[rrrr, bend right, "\widehat\eta'_{(a, b)}"']
-  &&{F(a) \otimes b} \ar[rr, "I_{(Fa, b)} = \Id_{F(a) \otimes b}"]
-  &&{F(a) \otimes b}
-  \end{tikzcd}
-  \]
-  therefore \(\widehat\eta = \eta = \widehat\eta'\). Moreover, this also shows
-  that the triangle identity is satisfied.
+        \item Define a bifunctor \(\widehat\otimes: \cat N \times \cat N \to \cat N\) as
+              \((F, \eta) \widehat\otimes (F', \eta') \coloneq (F F', \widehat\eta)\), where
+              \[
+                  \widehat\eta: F F'(- \otimes -) \nat F F'(-) \otimes (-)
+              \]
+              is the natural transformation given by the composition
+              \[
+                  \begin{tikzcd}
+                      F F'(a \otimes b)
+                      \ar[rr, "F \eta'_{(a, b)}"']
+                      \ar[rrrr, bend left, "\widehat\eta_{(a, b)}"]
+                      &
+                      &F (F'(a) \otimes b)
+                      \ar[rr, "\eta_{(F' a, b)}"']
+                      &
+                      &F F'(a) \otimes b
+                  \end{tikzcd}
+              \]
+              for any pair of objects \((a, b)\) of \(\cat M\).
+    \end{itemize}
+    From this construction we find that the triple
+    \((\cat N, \widehat\otimes, (\Id_{\cat M}, I))\)---where the natural
+    transformation \(I: (- \otimes -) \isonat (- \otimes -)\) is the identity
+    morphism \(I_{(a, b)} \coloneq \Id_{a \otimes b}\) in \(\cat M\) for any two
+    \(a, b \in \cat M\)---is a \emph{strict monoidal category}, since:
+    \begin{itemize}\setlength\itemsep{0em}
+        \item The bifunctor \(\widehat\otimes\) satisfies \emph{equality} for both left
+              and right unitors: given an object \((F, \eta) \in \cat N\), consider any two
+              objects \(a, b \in \cat N\) then by the definition of \((F, \eta)
+              \widehat\otimes (\Id_{\cat M}, I) = (F, \widehat\eta)\) and \((\Id_{\cat M},
+              I) \widehat\otimes (F, \widehat\eta')\) one has
+              \[
+                  \begin{tikzcd}
+                      {F(a \otimes b)} \ar[rr, "F \Id_{a \otimes b} = \Id_{F(a \otimes b)}"']
+                      \ar[rrrr, bend left, "\widehat\eta_{(a, b)}"]
+                      &&{F(a \otimes b)} \ar[rr, "\eta_{(a, b)}"']
+                      &&{F(a) \otimes b}
+                  \end{tikzcd}
+              \]
+              \[
+                  \begin{tikzcd}
+                      {F(a \otimes b)} \ar[rr, "\Id_{\cat M} \eta_{(a, b)} = \eta_{(a, b)}"]
+                      \ar[rrrr, bend right, "\widehat\eta'_{(a, b)}"']
+                      &&{F(a) \otimes b} \ar[rr, "I_{(Fa, b)} = \Id_{F(a) \otimes b}"]
+                      &&{F(a) \otimes b}
+                  \end{tikzcd}
+              \]
+              therefore \(\widehat\eta = \eta = \widehat\eta'\). Moreover, this also shows
+              that the triangle identity is satisfied.
 
-\item Associativity follows from the associativity of morphisms and functors.
-\end{itemize}
+        \item Associativity follows from the associativity of morphisms and functors.
+    \end{itemize}
 
-We now prove that \(\cat M\) and \(\cat N\) are equivalent categories. In order
-to do that, define a functor \(E: \cat M \to \cat N\) mapping objects
-\(a \mapsto (a \otimes (-), \alpha(a, -, -))\) and morphisms
-\(f \mapsto f \otimes (-)\). We now show that \(E\) is an equivalence of
-categories:
-\begin{itemize}\setlength\itemsep{0em}
-\item (Essentially surjective) Notice that, given any object
-  \((F, \eta) \in \cat N\), we can define a morphism
-  \[
-  \varepsilon: (F 1 \otimes (-), \alpha(F1, -, -))
-  \longrightarrow (F, \eta)
-  \]
-  by constructing a natural transformation
-  \(\varepsilon: F 1 \otimes (-) \nat F\) where
-  \(\varepsilon_a \coloneq \lambda_{a} \eta_{(1, a)}^{-1}\), which is an
-  isomorphism \(F(1) \otimes a \iso F a\) for any \(a \in \cat M\)---showing
-  that \(\varepsilon\) is a natural isomorphism, defining an isomorphism
-  \(E(F 1) \iso (F, \eta)\).
+    We now prove that \(\cat M\) and \(\cat N\) are equivalent categories. In order
+    to do that, define a functor \(E: \cat M \to \cat N\) mapping objects
+    \(a \mapsto (a \otimes (-), \alpha(a, -, -))\) and morphisms
+    \(f \mapsto f \otimes (-)\). We now show that \(E\) is an equivalence of
+    categories:
+    \begin{itemize}\setlength\itemsep{0em}
+        \item (Essentially surjective) Notice that, given any object
+              \((F, \eta) \in \cat N\), we can define a morphism
+              \[
+                  \varepsilon: (F 1 \otimes (-), \alpha(F1, -, -))
+                  \longrightarrow (F, \eta)
+              \]
+              by constructing a natural transformation
+              \(\varepsilon: F 1 \otimes (-) \nat F\) where
+              \(\varepsilon_a \coloneq \lambda_{a} \eta_{(1, a)}^{-1}\), which is an
+              isomorphism \(F(1) \otimes a \iso F a\) for any \(a \in \cat M\)---showing
+              that \(\varepsilon\) is a natural isomorphism, defining an isomorphism
+              \(E(F 1) \iso (F, \eta)\).
 
-\item (Full) Let \(a, b \in \cat M\) be any two objects, and
-  \(\varepsilon: E a \to E b\) be any morphism of \(\cat N\)---that is, a
-  natural transformation \(\varepsilon: (a \otimes -) \nat (b \otimes -)\)
-  satisfying the coherence diagram \cref{eq:coherence-morphism-cat-N}. Define
-  \(f: a \to b\) to be the morphism in \(\cat M\) given by
-  \(f \coloneq (\lambda b) \circ \varepsilon_1 \circ (\lambda^{-1} a)\). By the
-  definition of \(E\), one has \(E f = f \otimes (-)\)---we wish to show that
-  this agrees with \(\varepsilon\). Given any \(c \in \cat M\) the diagram
-  \[
-  \begin{tikzcd}
-  a \otimes c \ar[rr, "{\Id_a \otimes \rho(c)^{-1}}"]
-  \ar[d, "\varepsilon_c"']
-  && a \otimes (1  \otimes c) \ar[rr, "{\alpha(a, 1, c)}"]
-  \ar[d, "\varepsilon_{e \otimes c}"']
-  \ar[rrrr, bend left=30, "{\Id_a \otimes \rho c}"]
-  && (a \otimes 1) \otimes c \ar[rr, "{\lambda a \otimes \Id_c}"]
-  \ar[d, "\varepsilon_1 \otimes \Id_c"]
-  && a \otimes c \ar[d, "f \otimes \Id_c"]
-  \\
-  b \otimes c \ar[rr, "{\Id_b \otimes \rho(c)^{-1}}"']
-  && b \otimes (1 \otimes c) \ar[rr, "{\alpha(b, 1, c)}"']
-  \ar[rrrr, bend right=30, "{\Id_b \otimes \rho c}"']
-  && (b \otimes 1) \otimes c \ar[rr, "{\lambda b \otimes \Id_c}"']
-  && b \otimes c
-  \end{tikzcd}
-  \]
-  is commutative in \(\cat M\): the left and center squares commute by the
-  naturallity of \(\varepsilon\), the up and down wings commute by the triangle
-  identities, the right square commutes by the definition of \(f\). It follows
-  from commutativity that \(\varepsilon_c = f \otimes \Id_c\), therefore
-  \(E f = \varepsilon\).
+        \item (Full) Let \(a, b \in \cat M\) be any two objects, and
+              \(\varepsilon: E a \to E b\) be any morphism of \(\cat N\)---that is, a
+              natural transformation \(\varepsilon: (a \otimes -) \nat (b \otimes -)\)
+              satisfying the coherence diagram \cref{eq:coherence-morphism-cat-N}. Define
+              \(f: a \to b\) to be the morphism in \(\cat M\) given by
+              \(f \coloneq (\lambda b) \circ \varepsilon_1 \circ (\lambda^{-1} a)\). By the
+              definition of \(E\), one has \(E f = f \otimes (-)\)---we wish to show that
+              this agrees with \(\varepsilon\). Given any \(c \in \cat M\) the diagram
+              \[
+                  \begin{tikzcd}
+                      a \otimes c \ar[rr, "{\Id_a \otimes \rho(c)^{-1}}"]
+                      \ar[d, "\varepsilon_c"']
+                      && a \otimes (1  \otimes c) \ar[rr, "{\alpha(a, 1, c)}"]
+                      \ar[d, "\varepsilon_{e \otimes c}"']
+                      \ar[rrrr, bend left=30, "{\Id_a \otimes \rho c}"]
+                      && (a \otimes 1) \otimes c \ar[rr, "{\lambda a \otimes \Id_c}"]
+                      \ar[d, "\varepsilon_1 \otimes \Id_c"]
+                      && a \otimes c \ar[d, "f \otimes \Id_c"]
+                      \\
+                      b \otimes c \ar[rr, "{\Id_b \otimes \rho(c)^{-1}}"']
+                      && b \otimes (1 \otimes c) \ar[rr, "{\alpha(b, 1, c)}"']
+                      \ar[rrrr, bend right=30, "{\Id_b \otimes \rho c}"']
+                      && (b \otimes 1) \otimes c \ar[rr, "{\lambda b \otimes \Id_c}"']
+                      && b \otimes c
+                  \end{tikzcd}
+              \]
+              is commutative in \(\cat M\): the left and center squares commute by the
+              naturallity of \(\varepsilon\), the up and down wings commute by the triangle
+              identities, the right square commutes by the definition of \(f\). It follows
+              from commutativity that \(\varepsilon_c = f \otimes \Id_c\), therefore
+              \(E f = \varepsilon\).
 
-\item (Faithful) Let \(f\) and \(g\) be morphisms of \(\cat M\) such that \(E f
-  = E g\), so that in particular \(f \otimes \Id_1 = g \otimes \Id_1\)---hence
-  \(f = g\), proving injectivity on the morphism collections of \(\cat M\) and
-  \(\cat N\).
+        \item (Faithful) Let \(f\) and \(g\) be morphisms of \(\cat M\) such that \(E f
+              = E g\), so that in particular \(f \otimes \Id_1 = g \otimes \Id_1\)---hence
+              \(f = g\), proving injectivity on the morphism collections of \(\cat M\) and
+              \(\cat N\).
 
-\item (Monoidal) First, it is clear that
-  \(E 1 = (1 \otimes (-), \alpha(1, -, -)) \iso (\Id_{\cat M}, I)\). Moreover,
-  for any pair of morphisms \(f\) and \(g\) of \(\cat M\) one has
-  \[
-  E(f \otimes g) = (f \otimes g) \otimes (-)
-  \iso f \otimes (g \otimes -)
-  = E f \widehat\otimes E g.
-  \]
-  Given any two \(a, b \in \cat M\), from definition:
-  \[
-  E (a \otimes b) = ((a \otimes b) \otimes (-), \alpha(a \otimes b, -, -))
-  \iso (a \otimes (b \otimes -), \alpha(a \otimes b, -, -)),
-  \]
-  also we know that if
-  \[
-  (a \otimes (b \otimes -), \beta)
-  \coloneq (a, \alpha(a, -, -)) \widehat\otimes (b, \alpha(b, -, -))
-  = E a \widehat\otimes E b,
-  \]
-  then \(\beta\) is defined so that the up wing of the diagram
-  \[
-  \begin{tikzcd}
-  a \otimes (b \otimes (c \otimes d))
-  \ar[rr, "{a \otimes \alpha(b, c, d)}"']
-  \ar[rrrr, bend left, "\beta_{(c, d)}"]
-  \ar[d, "\alpha{(a, b, c \otimes d)}"']
-  &&a \otimes ((b \otimes c) \otimes d)
-  \ar[rr, "{\alpha(a, b \otimes c, d)}"']
-  &&(a \otimes (b \otimes c)) \otimes d
-  \ar[d, "\alpha{(a, b, c)} \otimes \Id_d"]
-  \\
-  (a \otimes b) \otimes (c \otimes d)
-  \ar[rrrr, "\alpha{(a \otimes b, c, d)}"']
-  && &&((a \otimes b) \otimes c) \otimes d
-  \end{tikzcd}
-  \]
-  commutes in \(\cat M\) for any two \(c, d \in \cat M\)---the square commutes
-  by the pentagon identity. This shows that
-  \[
-  \alpha(a, b, -): (a \otimes (b \otimes -), \beta)
-  \isoto (a \otimes (b \otimes -), \alpha(a \otimes b, -, -))
-  \]
-  is an isomorphsim in \(\cat N\). Therefore
-  \(E(a \otimes b) \iso E a \widehat \otimes E b\). For the left and right
-  unitor isomorphisms \(E (\lambda a) \iso \widehat \lambda(E a)\) and
-  \(E(\rho a) \iso \widehat \rho(E a)\) we shall simply argue that they both
-  come straight from the triangle identity of \(\cat M\). Similarly,
-  \[
-  E(\alpha(a, b, c)) \iso \widehat \alpha(E a, E b, E c)
-  \]
-  works via a reduction to the pentagon identity in \(\cat M\).
-\end{itemize}
-This proves that \(E: \cat M \to \cat N\) is indeed a monoidal equivalence of
-categories.
+        \item (Monoidal) First, it is clear that
+              \(E 1 = (1 \otimes (-), \alpha(1, -, -)) \iso (\Id_{\cat M}, I)\). Moreover,
+              for any pair of morphisms \(f\) and \(g\) of \(\cat M\) one has
+              \[
+                  E(f \otimes g) = (f \otimes g) \otimes (-)
+                  \iso f \otimes (g \otimes -)
+                  = E f \widehat\otimes E g.
+              \]
+              Given any two \(a, b \in \cat M\), from definition:
+              \[
+                  E (a \otimes b) = ((a \otimes b) \otimes (-), \alpha(a \otimes b, -, -))
+                  \iso (a \otimes (b \otimes -), \alpha(a \otimes b, -, -)),
+              \]
+              also we know that if
+              \[
+                  (a \otimes (b \otimes -), \beta)
+                  \coloneq (a, \alpha(a, -, -)) \widehat\otimes (b, \alpha(b, -, -))
+                  = E a \widehat\otimes E b,
+              \]
+              then \(\beta\) is defined so that the up wing of the diagram
+              \[
+                  \begin{tikzcd}
+                      a \otimes (b \otimes (c \otimes d))
+                      \ar[rr, "{a \otimes \alpha(b, c, d)}"']
+                      \ar[rrrr, bend left, "\beta_{(c, d)}"]
+                      \ar[d, "\alpha{(a, b, c \otimes d)}"']
+                      &&a \otimes ((b \otimes c) \otimes d)
+                      \ar[rr, "{\alpha(a, b \otimes c, d)}"']
+                      &&(a \otimes (b \otimes c)) \otimes d
+                      \ar[d, "\alpha{(a, b, c)} \otimes \Id_d"]
+                      \\
+                      (a \otimes b) \otimes (c \otimes d)
+                      \ar[rrrr, "\alpha{(a \otimes b, c, d)}"']
+                      && &&((a \otimes b) \otimes c) \otimes d
+                  \end{tikzcd}
+              \]
+              commutes in \(\cat M\) for any two \(c, d \in \cat M\)---the square commutes
+              by the pentagon identity. This shows that
+              \[
+                  \alpha(a, b, -): (a \otimes (b \otimes -), \beta)
+                  \isoto (a \otimes (b \otimes -), \alpha(a \otimes b, -, -))
+              \]
+              is an isomorphsim in \(\cat N\). Therefore
+              \(E(a \otimes b) \iso E a \widehat \otimes E b\). For the left and right
+              unitor isomorphisms \(E (\lambda a) \iso \widehat \lambda(E a)\) and
+              \(E(\rho a) \iso \widehat \rho(E a)\) we shall simply argue that they both
+              come straight from the triangle identity of \(\cat M\). Similarly,
+              \[
+                  E(\alpha(a, b, c)) \iso \widehat \alpha(E a, E b, E c)
+              \]
+              works via a reduction to the pentagon identity in \(\cat M\).
+    \end{itemize}
+    This proves that \(E: \cat M \to \cat N\) is indeed a monoidal equivalence of
+    categories.
 \end{proof}
 
 From now on, in view of the equivalence given by
@@ -382,279 +382,279 @@ From now on, in view of the equivalence given by
 monoidal category as a strict monoidal category.
 
 \begin{definition}[(Co)monoid objects in \(\Mon\)]
-\label{def:(co)monoids}
-Let \((\cat M, \otimes, 1, \alpha, \lambda, \rho)\) be a monoidal category. We
-define the following objects:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item A \emph{monoid} in \(\cat M\) is a triple \((m, \mu, \theta)\)---where
-  \(m\) is an object of \(\cat M\), a bifunctor \(\mu: m \otimes m \to m\)
-  refered to as a \emph{multiplication}, and a functor \(\theta: 1 \to m\)
-  called \emph{unit}---such that both diagrams
-  \[
-  \begin{tikzcd}
-  m \otimes (m \otimes m) \ar[d, "\Id_m \otimes \mu"']
-  \ar[r, "{\alpha(m, m, m)}"]
-  &(m \otimes m) \otimes m
-  \ar[r, "\mu \otimes \Id_m"]
-  &m \otimes m \ar[d, "\mu"] \\
-  m \otimes m \ar[rr, "\mu"']
-  &&m
-  \end{tikzcd}
-  \]
-  \[
-  \begin{tikzcd}
-  1 \otimes m \ar[r, "\theta \otimes \Id_m"]
-  \ar[rd, "\rho"']
-  & m \otimes m \ar[d, "\mu"]
-  &m \otimes 1
-  \ar[l, "\Id_m \otimes \theta"']
-  \ar[ld, "\lambda"] \\
-  &m &
-  \end{tikzcd}
-  \]
-  commute in \(\cat M\). A morphism of monoids
-  \(\phi: (m, \mu, \theta) \to (m', \mu', \theta')\) is a morphism
-  \(\phi: m \to m'\) in \(\cat M\) satisfying
-  \(\phi \mu = \mu'(\phi \otimes \phi)\), and \(\phi \theta = \theta'\). We then
-  define the subcategory \(\Mon_{\cat M}\) of \(\cat M\) composed of monoidal
-  objects in \(\cat M\).
+    \label{def:(co)monoids}
+    Let \((\cat M, \otimes, 1, \alpha, \lambda, \rho)\) be a monoidal category. We
+    define the following objects:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item A \emph{monoid} in \(\cat M\) is a triple \((m, \mu, \theta)\)---where
+              \(m\) is an object of \(\cat M\), a bifunctor \(\mu: m \otimes m \to m\)
+              refered to as a \emph{multiplication}, and a functor \(\theta: 1 \to m\)
+              called \emph{unit}---such that both diagrams
+              \[
+                  \begin{tikzcd}
+                      m \otimes (m \otimes m) \ar[d, "\Id_m \otimes \mu"']
+                      \ar[r, "{\alpha(m, m, m)}"]
+                      &(m \otimes m) \otimes m
+                      \ar[r, "\mu \otimes \Id_m"]
+                      &m \otimes m \ar[d, "\mu"] \\
+                      m \otimes m \ar[rr, "\mu"']
+                      &&m
+                  \end{tikzcd}
+              \]
+              \[
+                  \begin{tikzcd}
+                      1 \otimes m \ar[r, "\theta \otimes \Id_m"]
+                      \ar[rd, "\rho"']
+                      & m \otimes m \ar[d, "\mu"]
+                      &m \otimes 1
+                      \ar[l, "\Id_m \otimes \theta"']
+                      \ar[ld, "\lambda"] \\
+                      &m &
+                  \end{tikzcd}
+              \]
+              commute in \(\cat M\). A morphism of monoids
+              \(\phi: (m, \mu, \theta) \to (m', \mu', \theta')\) is a morphism
+              \(\phi: m \to m'\) in \(\cat M\) satisfying
+              \(\phi \mu = \mu'(\phi \otimes \phi)\), and \(\phi \theta = \theta'\). We then
+              define the subcategory \(\Mon_{\cat M}\) of \(\cat M\) composed of monoidal
+              objects in \(\cat M\).
 
-\item A \emph{comonoid} in \(\cat M\) is a triple \((c, \kappa, \sigma)\)
-  \(c\) is an object of \(\cat M\), a bifunctor \(\kappa: c \to c \otimes c\)
-  refered to as a \emph{comultiplication}, and a functor \(\sigma: c \to 1\)
-  called \emph{counit}---such that both diagrams
-  \[
-  \begin{tikzcd}
-  c \otimes (c \otimes c)
-  &(c \otimes c) \otimes c
-  \ar[l, "{\alpha(c, c, c)^{-1}}"']
-  &c \otimes c
-  \ar[l, "\kappa \otimes \Id_c"']
-  \\
-  c \otimes c
-  \ar[u, "\Id_c \otimes \kappa"]
-  &&c \ar[ll, "\kappa"] \ar[u, "\kappa"']
-  \end{tikzcd}
-  \]
-  \[
-  \begin{tikzcd}
-  1 \otimes c
-  & c \otimes c
-  \ar[l, "\sigma \otimes \Id_c"']
-  \ar[r, "\Id_c \otimes \sigma"]
-  &c \otimes 1
-  \\
-  &c \ar[u, "\kappa"'] \ar[lu, "\rho^{-1}"] \ar[ru, "\lambda^{-1}"'] &
-  \end{tikzcd}
-  \]
-  commute in \(\cat M\). A morphism of comonoids
-  \(\psi: (c, \kappa, \sigma) \to (c', \kappa', \sigma')\) is a morphism
-  \(\psi: c \to c'\) in \(\cat M\) satisfying
-  \(\kappa' \psi = (\psi \otimes \psi) \kappa\), and \(\sigma = \sigma'
-  \psi\). We then define the subcategory \(\coMon_{\cat M}\) of \(\cat M\)
-  composed of comonoidal objects in \(\cat M\).
-\end{enumerate}
+        \item A \emph{comonoid} in \(\cat M\) is a triple \((c, \kappa, \sigma)\)
+              \(c\) is an object of \(\cat M\), a bifunctor \(\kappa: c \to c \otimes c\)
+              refered to as a \emph{comultiplication}, and a functor \(\sigma: c \to 1\)
+              called \emph{counit}---such that both diagrams
+              \[
+                  \begin{tikzcd}
+                      c \otimes (c \otimes c)
+                      &(c \otimes c) \otimes c
+                      \ar[l, "{\alpha(c, c, c)^{-1}}"']
+                      &c \otimes c
+                      \ar[l, "\kappa \otimes \Id_c"']
+                      \\
+                      c \otimes c
+                      \ar[u, "\Id_c \otimes \kappa"]
+                      &&c \ar[ll, "\kappa"] \ar[u, "\kappa"']
+                  \end{tikzcd}
+              \]
+              \[
+                  \begin{tikzcd}
+                      1 \otimes c
+                      & c \otimes c
+                      \ar[l, "\sigma \otimes \Id_c"']
+                      \ar[r, "\Id_c \otimes \sigma"]
+                      &c \otimes 1
+                      \\
+                      &c \ar[u, "\kappa"'] \ar[lu, "\rho^{-1}"] \ar[ru, "\lambda^{-1}"'] &
+                  \end{tikzcd}
+              \]
+              commute in \(\cat M\). A morphism of comonoids
+              \(\psi: (c, \kappa, \sigma) \to (c', \kappa', \sigma')\) is a morphism
+              \(\psi: c \to c'\) in \(\cat M\) satisfying
+              \(\kappa' \psi = (\psi \otimes \psi) \kappa\), and \(\sigma = \sigma'
+              \psi\). We then define the subcategory \(\coMon_{\cat M}\) of \(\cat M\)
+              composed of comonoidal objects in \(\cat M\).
+    \end{enumerate}
 \end{definition}
 
 \begin{definition}[Monoid actions]
-\label{def:monoid-actions}
-Let \((\cat M, \otimes, 1)\) be a monoidal category, and
-\((m, \mu, \theta) \in \Mon_{\cat M}\). A \emph{left-action} of the monoid
-\((m, \mu, \theta)\) on an object \(a \in \cat M\) is a bifunctor
-\(\sigma: m \otimes a \to a\) such that
-\[
-\begin{tikzcd}
-m \otimes (m \otimes a)
-\ar[r, "{\alpha(m, m, a)}"]
-\ar[d, "\Id_m \otimes \sigma"']
-&(m \otimes m) \otimes a
-\ar[r, "\mu \otimes \Id_a"]
-&m \otimes a
-\ar[d, "\sigma"']
-&1 \otimes a
-\ar[l, "\theta \otimes \Id_a"']
-\ar[ld, "\lambda"]
-\\
-m \otimes a \ar[rr, "\sigma"']
-&
-&a
-&
-\end{tikzcd}
-\]
-commutes in \(\cat M\). Right-actions are defined analogously.
+    \label{def:monoid-actions}
+    Let \((\cat M, \otimes, 1)\) be a monoidal category, and
+    \((m, \mu, \theta) \in \Mon_{\cat M}\). A \emph{left-action} of the monoid
+    \((m, \mu, \theta)\) on an object \(a \in \cat M\) is a bifunctor
+    \(\sigma: m \otimes a \to a\) such that
+    \[
+        \begin{tikzcd}
+            m \otimes (m \otimes a)
+            \ar[r, "{\alpha(m, m, a)}"]
+            \ar[d, "\Id_m \otimes \sigma"']
+            &(m \otimes m) \otimes a
+            \ar[r, "\mu \otimes \Id_a"]
+            &m \otimes a
+            \ar[d, "\sigma"']
+            &1 \otimes a
+            \ar[l, "\theta \otimes \Id_a"']
+            \ar[ld, "\lambda"]
+            \\
+            m \otimes a \ar[rr, "\sigma"']
+            &
+            &a
+            &
+        \end{tikzcd}
+    \]
+    commutes in \(\cat M\). Right-actions are defined analogously.
 
-Given any two left-actions \(\sigma: m \otimes a \to a\) and
-\(\lambda: m \otimes b \to b\), we define a \emph{morphism of left-actions}
-\(\phi: \sigma \to \lambda\) to be a morphism \(\phi: a \to b\) in \(\cat M\)
-such that
-\[
-\begin{tikzcd}
-m \otimes a
-\ar[d, "\sigma"']
-\ar[rr, "\Id_m \otimes \phi"]
-&&m \otimes b \ar[d, "\lambda"]
-\\
-a \ar[rr, "\phi"']
-&&b
-\end{tikzcd}
-\]
-is a commutative diagram in \(\cat M\). With these notions we are able to define
-two categories \(\rActMon_{(\cat M, m)}\) and \(\lActMon_{(\cat M, m)}\),
-composed of right and left actions of \(m\) on objects of \(\cat M\),
-respectively, and morphisms between them.
+    Given any two left-actions \(\sigma: m \otimes a \to a\) and
+    \(\lambda: m \otimes b \to b\), we define a \emph{morphism of left-actions}
+    \(\phi: \sigma \to \lambda\) to be a morphism \(\phi: a \to b\) in \(\cat M\)
+    such that
+    \[
+        \begin{tikzcd}
+            m \otimes a
+            \ar[d, "\sigma"']
+            \ar[rr, "\Id_m \otimes \phi"]
+            &&m \otimes b \ar[d, "\lambda"]
+            \\
+            a \ar[rr, "\phi"']
+            &&b
+        \end{tikzcd}
+    \]
+    is a commutative diagram in \(\cat M\). With these notions we are able to define
+    two categories \(\rActMon_{(\cat M, m)}\) and \(\lActMon_{(\cat M, m)}\),
+    composed of right and left actions of \(m\) on objects of \(\cat M\),
+    respectively, and morphisms between them.
 \end{definition}
 
 \section{Braided \& Symmetric Monoidal Categories}
 
 \begin{definition}[Braiding]
-\label{def:braiding}
-Given a monoidal category \((\cat M, \otimes, 1, \alpha, \lambda, \rho)\), we
-define a \emph{braiding} of \(\cat M\) to be a natural isomorphism\footnote{That
-  is, for any two \(a, b \in \cat M\) one has an isomorphism
-  \(\gamma_{(a, b)}: a \otimes b \isoto b \otimes a\).}
-\[
-\gamma: (- \otimes -') \isonat (-' \otimes -),
-\]
-that is coherent with associativity and unitors of \(\cat M\), in the sense that
-the diagrams
-\[
-\begin{tikzcd}
-(a \otimes b) \otimes c
-\ar[rr, "\gamma_{(a \otimes b, c)}"]
-\ar[dd, "{\alpha^{-1}(a, b, c)}"']
-&&c \otimes (a \otimes b)
-\ar[dd, "{\alpha(c, a, b)}"]
-\\
-&&
-\\
-a \otimes (b \otimes c)
-\ar[dd, "\Id_a \otimes \gamma_{(b, c)}"']
-&&(c \otimes a) \otimes b
-\ar[dd, "\gamma_{(c, a)} \otimes \Id_b"]
-\\
-&&
-\\
-a \otimes (c \otimes b)
-\ar[rr, "\alpha{(a, c, b)}"']
-&&(a \otimes c) \otimes b
-\end{tikzcd}
-\qquad
-\qquad
-\begin{tikzcd}
-a \otimes (b \otimes c)
-\ar[rr, "\gamma_{(a, b \otimes c)}"]
-\ar[dd, "{\alpha(a, b, c)}"']
-&&(b \otimes c) \otimes a
-\ar[dd, "{\alpha(b, c, a)^{-1}}"]
-\\
-&&
-\\
-(a \otimes b) \otimes c
-\ar[dd, "\gamma_{(a, b)} \otimes \Id_c"']
-&&b \otimes (c \otimes a)
-\ar[dd, "\gamma_{(c, a)} \otimes \Id_b"]
-\\
-&&
-\\
-(b \otimes a) \otimes c
-\ar[rr, "\alpha{(b, a, c)}"']
-&&b \otimes (a \otimes c)
-\end{tikzcd}
-\]
-\[
-\begin{tikzcd}
-a \otimes 1 \ar[rr, "\gamma_{(a, 1)}"]
-\ar[rd, "\lambda"']
-&&1 \otimes a \ar[ld, "\rho"]
-\\
-&a &
-\end{tikzcd}
-\]
-should commute for all triples \((a, b, c)\) of objects of \(\cat M\).
+    \label{def:braiding}
+    Given a monoidal category \((\cat M, \otimes, 1, \alpha, \lambda, \rho)\), we
+    define a \emph{braiding} of \(\cat M\) to be a natural isomorphism\footnote{That
+        is, for any two \(a, b \in \cat M\) one has an isomorphism
+        \(\gamma_{(a, b)}: a \otimes b \isoto b \otimes a\).}
+    \[
+        \gamma: (- \otimes -') \isonat (-' \otimes -),
+    \]
+    that is coherent with associativity and unitors of \(\cat M\), in the sense that
+    the diagrams
+    \[
+        \begin{tikzcd}
+            (a \otimes b) \otimes c
+            \ar[rr, "\gamma_{(a \otimes b, c)}"]
+            \ar[dd, "{\alpha^{-1}(a, b, c)}"']
+            &&c \otimes (a \otimes b)
+            \ar[dd, "{\alpha(c, a, b)}"]
+            \\
+            &&
+            \\
+            a \otimes (b \otimes c)
+            \ar[dd, "\Id_a \otimes \gamma_{(b, c)}"']
+            &&(c \otimes a) \otimes b
+            \ar[dd, "\gamma_{(c, a)} \otimes \Id_b"]
+            \\
+            &&
+            \\
+            a \otimes (c \otimes b)
+            \ar[rr, "\alpha{(a, c, b)}"']
+            &&(a \otimes c) \otimes b
+        \end{tikzcd}
+        \qquad
+        \qquad
+        \begin{tikzcd}
+            a \otimes (b \otimes c)
+            \ar[rr, "\gamma_{(a, b \otimes c)}"]
+            \ar[dd, "{\alpha(a, b, c)}"']
+            &&(b \otimes c) \otimes a
+            \ar[dd, "{\alpha(b, c, a)^{-1}}"]
+            \\
+            &&
+            \\
+            (a \otimes b) \otimes c
+            \ar[dd, "\gamma_{(a, b)} \otimes \Id_c"']
+            &&b \otimes (c \otimes a)
+            \ar[dd, "\gamma_{(c, a)} \otimes \Id_b"]
+            \\
+            &&
+            \\
+            (b \otimes a) \otimes c
+            \ar[rr, "\alpha{(b, a, c)}"']
+            &&b \otimes (a \otimes c)
+        \end{tikzcd}
+    \]
+    \[
+        \begin{tikzcd}
+            a \otimes 1 \ar[rr, "\gamma_{(a, 1)}"]
+            \ar[rd, "\lambda"']
+            &&1 \otimes a \ar[ld, "\rho"]
+            \\
+            &a &
+        \end{tikzcd}
+    \]
+    should commute for all triples \((a, b, c)\) of objects of \(\cat M\).
 \end{definition}
 
 \begin{definition}[Braided monoidal category]
-\label{def:braided-monoidal-category}
-A monoidal category \((\cat M, \otimes, 1)\) is said to be \emph{braided} if it
-is endowed with a braiding \(\gamma\). We shall denote this data shortly by
-\((\cat M, \gamma)\).
+    \label{def:braided-monoidal-category}
+    A monoidal category \((\cat M, \otimes, 1)\) is said to be \emph{braided} if it
+    is endowed with a braiding \(\gamma\). We shall denote this data shortly by
+    \((\cat M, \gamma)\).
 \end{definition}
 
 \begin{corollary}
-\label{cor:braiding-morphisms}
-For any given pair of morphisms \(f: a \to b\) and \(g: c \to d\) in a braided
-monoidal category \(\cat M\), we have
-\[
-(g \otimes f) \gamma_{(a, c)} \iso \gamma_{(b, d)} (f \otimes g).
-\]
+    \label{cor:braiding-morphisms}
+    For any given pair of morphisms \(f: a \to b\) and \(g: c \to d\) in a braided
+    monoidal category \(\cat M\), we have
+    \[
+        (g \otimes f) \gamma_{(a, c)} \iso \gamma_{(b, d)} (f \otimes g).
+    \]
 \end{corollary}
 
 \begin{definition}[Braided monoidal functor]
-\label{def:braided-monoidal-functor}
-A monoidal functor \(F: (\cat A, \gamma) \to (\cat B, \widehat \gamma)\) between
-braided monoidal categories is said to be a \emph{braided monoidal functor} if
-for every pair of objects \(a, b \in \cat A\) the braiding coherence square
-\[
-\begin{tikzcd}
-F a \otimes F b \ar[r, "\widehat\gamma"] \ar[d, "\dis"']
-&F b \otimes F a \ar[d, "\dis"] \\
-F (a \otimes b) \ar[r, "F \gamma"'] &F (b \otimes a)
-\end{tikzcd}
-\]
-commutes in \(\cat B\).
+    \label{def:braided-monoidal-functor}
+    A monoidal functor \(F: (\cat A, \gamma) \to (\cat B, \widehat \gamma)\) between
+    braided monoidal categories is said to be a \emph{braided monoidal functor} if
+    for every pair of objects \(a, b \in \cat A\) the braiding coherence square
+    \[
+        \begin{tikzcd}
+            F a \otimes F b \ar[r, "\widehat\gamma"] \ar[d, "\dis"']
+            &F b \otimes F a \ar[d, "\dis"] \\
+            F (a \otimes b) \ar[r, "F \gamma"'] &F (b \otimes a)
+        \end{tikzcd}
+    \]
+    commutes in \(\cat B\).
 \end{definition}
 
 \begin{corollary}
-\label{cor:composition-of-braided-monoidal-functors}
-The composition of braided monoidal functors is again a braided monoidal
-functor.
+    \label{cor:composition-of-braided-monoidal-functors}
+    The composition of braided monoidal functors is again a braided monoidal
+    functor.
 \end{corollary}
 
 \begin{proof}
-Indeed, if
-\((\cat A, \gamma) \xrightarrow F (\cat B, \widehat \gamma) \xrightarrow G (\cat
-C, \widetilde \gamma)\) are braided monoidal functors, then for every pair
-\(a, b \in \cat A\) one has the following commutative diagram in \(\cat C\):
-\[
-\begin{tikzcd}
-G F a \otimes G F b
-\ar[r, "\widetilde \gamma"]
-\ar[d, "\dis"']
-&GF b \otimes GF a
-\ar[d, "\dis"]
-\\
-G(F a \otimes F b)
-\ar[r, "G \widehat \gamma"]
-\ar[d, "\dis"']
-&G (F b \otimes F a)
-\ar[d, "\dis"]
-\\
-GF (a \otimes b)
-\ar[r, "G F \gamma"']
-&GF (b \otimes a)
-\end{tikzcd}
-\]
+    Indeed, if
+    \((\cat A, \gamma) \xrightarrow F (\cat B, \widehat \gamma) \xrightarrow G (\cat
+    C, \widetilde \gamma)\) are braided monoidal functors, then for every pair
+    \(a, b \in \cat A\) one has the following commutative diagram in \(\cat C\):
+    \[
+        \begin{tikzcd}
+            G F a \otimes G F b
+            \ar[r, "\widetilde \gamma"]
+            \ar[d, "\dis"']
+            &GF b \otimes GF a
+            \ar[d, "\dis"]
+            \\
+            G(F a \otimes F b)
+            \ar[r, "G \widehat \gamma"]
+            \ar[d, "\dis"']
+            &G (F b \otimes F a)
+            \ar[d, "\dis"]
+            \\
+            GF (a \otimes b)
+            \ar[r, "G F \gamma"']
+            &GF (b \otimes a)
+        \end{tikzcd}
+    \]
 \end{proof}
 
 \begin{definition}
-\label{def:category-of-braided-monoidal}
-We define a category \(\BrMonCat\) composed of braided monoidal categories and
-braided monoidal functors between them.
+    \label{def:category-of-braided-monoidal}
+    We define a category \(\BrMonCat\) composed of braided monoidal categories and
+    braided monoidal functors between them.
 \end{definition}
 
 \begin{definition}[Symmetric monoidal category]
-\label{def:symmetric-monoidal-category}
-A braided monoidal category \((\cat M, \gamma)\) is said to be \emph{symmetric}
-if for any two \(a, b \in \cat M\) the triangle
-\[
-\begin{tikzcd}
-a \otimes b \ar[rr, "\Id_{a \otimes b}"]
-& &a \otimes b \ar[ld, "\gamma_{(a, b)}"] \\
-&b \otimes a \ar[lu, "\gamma_{(b, a)}"] &
-\end{tikzcd}
-\]
-commutes in \(\cat M\). A morphism between symmetric monoidal categories is a
-braided monoidal functor between them.
+    \label{def:symmetric-monoidal-category}
+    A braided monoidal category \((\cat M, \gamma)\) is said to be \emph{symmetric}
+    if for any two \(a, b \in \cat M\) the triangle
+    \[
+        \begin{tikzcd}
+            a \otimes b \ar[rr, "\Id_{a \otimes b}"]
+            & &a \otimes b \ar[ld, "\gamma_{(a, b)}"] \\
+            &b \otimes a \ar[lu, "\gamma_{(b, a)}"] &
+        \end{tikzcd}
+    \]
+    commutes in \(\cat M\). A morphism between symmetric monoidal categories is a
+    braided monoidal functor between them.
 \end{definition}
 
 \end{document}

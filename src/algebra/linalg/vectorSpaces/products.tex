@@ -3,149 +3,149 @@
 \subsection{Free Vector Spaces}
 
 \begin{proposition}
-Let \(S\) be a set and define the power set \(k^S\) with addition and
-scalar multiplication, that is, given \(f, g \in k^S\) and \(a \in k\) we
-have \((f + g)(x) = f(x) + g(x)\) and \((a f)(x) = af(x)\). Then the set
-\(k^S\) is a \(k\)-vector space.
+    Let \(S\) be a set and define the power set \(k^S\) with addition and
+    scalar multiplication, that is, given \(f, g \in k^S\) and \(a \in k\) we
+    have \((f + g)(x) = f(x) + g(x)\) and \((a f)(x) = af(x)\). Then the set
+    \(k^S\) is a \(k\)-vector space.
 \end{proposition}
 
 \begin{proof}
-Notice that clearly \((k^S, +)\) is an abelian group from the construction of
-the additive structure, moreover, since \(k\) is a field, it inherit the
-associativity and distributivity of scalar multiplication. The \(0\) vector
-can be regarded as the map whose image is the singleton \(\{0\}\).
+    Notice that clearly \((k^S, +)\) is an abelian group from the construction of
+    the additive structure, moreover, since \(k\) is a field, it inherit the
+    associativity and distributivity of scalar multiplication. The \(0\) vector
+    can be regarded as the map whose image is the singleton \(\{0\}\).
 \end{proof}
 
 \begin{proposition}[Functoriality of \(k^S\)]
-Let sets \(S, S'\) and a map \(\alpha : S \to S'\), then
-\[
-  \alpha^\ast : k^{S'} \to k^S \ \text{ mapping }\ (f : S' \to k) \mapsto
-  (f  \alpha : S \to k)
-\]
-is a morphism of \(k\)-vector spaces. Moreover if \(\beta : S' \to S''\) then
-\((\beta  \alpha)^\ast = \alpha^\ast  \beta^\ast\).
+    Let sets \(S, S'\) and a map \(\alpha : S \to S'\), then
+    \[
+        \alpha^\ast : k^{S'} \to k^S \ \text{ mapping }\ (f : S' \to k) \mapsto
+        (f  \alpha : S \to k)
+    \]
+    is a morphism of \(k\)-vector spaces. Moreover if \(\beta : S' \to S''\) then
+    \((\beta  \alpha)^\ast = \alpha^\ast  \beta^\ast\).
 \end{proposition}
 
 \begin{proof}
-Let maps \(f, g : S' \to k\), then
-\[
-  (f + g : S' \to k) \xmapsto{\alpha^\ast} \left( (f + g) \alpha : S
-  \to k \right),
-\]
-but for every \(s \in S\) we have \((f + g)(\alpha(s)) = f(\alpha(s)) +
-g(\alpha(s))\), which shows the first property. For the second property, let
-\(a \in k\), then we get the map
-\[
-  ((a \cdot f) : S' \to k) \xmapsto{\alpha^\ast} ( (a \cdot f)  \alpha
-  : S \to k),
-\]
-but for each \(s \in S\) we have \((a \cdot f)(\alpha(s)) = a \cdot
-f(\alpha(s))\), proving the second property, which finishes the proof.
+    Let maps \(f, g : S' \to k\), then
+    \[
+        (f + g : S' \to k) \xmapsto{\alpha^\ast} \left( (f + g) \alpha : S
+        \to k \right),
+    \]
+    but for every \(s \in S\) we have \((f + g)(\alpha(s)) = f(\alpha(s)) +
+    g(\alpha(s))\), which shows the first property. For the second property, let
+    \(a \in k\), then we get the map
+    \[
+        ((a \cdot f) : S' \to k) \xmapsto{\alpha^\ast} ( (a \cdot f)  \alpha
+        : S \to k),
+    \]
+    but for each \(s \in S\) we have \((a \cdot f)(\alpha(s)) = a \cdot
+    f(\alpha(s))\), proving the second property, which finishes the proof.
 \end{proof}
 
 \begin{definition}[Free vector space]\label{def: free vector space}
-Let \(S\) be a set, we define the free vector space on \(S\) to be the object
-\[
-  k^{\oplus S} = \{f \in k^S \colon f(s) \neq 0 \text{ only for finitely many }
-  s \in S\},
-\]
-together with an additive structure and scalar multiplication, satisfying for
-all \(f, g \in k^{\oplus S}\), \(s \in S\) and \(a \in k\):
-\[
-  (f + g)(s) = f(s) + g(s)\ \text{ and }\ (a \cdot f)(s) = a \cdot f(s).
-\]
+    Let \(S\) be a set, we define the free vector space on \(S\) to be the object
+    \[
+        k^{\oplus S} = \{f \in k^S \colon f(s) \neq 0 \text{ only for finitely many }
+        s \in S\},
+    \]
+    together with an additive structure and scalar multiplication, satisfying for
+    all \(f, g \in k^{\oplus S}\), \(s \in S\) and \(a \in k\):
+    \[
+        (f + g)(s) = f(s) + g(s)\ \text{ and }\ (a \cdot f)(s) = a \cdot f(s).
+    \]
 \end{definition}
 
 \begin{proposition}
-The object \(k^{\oplus S}\) is a \(k\)-vector space.
+    The object \(k^{\oplus S}\) is a \(k\)-vector space.
 \end{proposition}
 
 \begin{proof}
-Let the maps \(f, g \in k^{\oplus S}\), so that the specification of
-finiteness of non-zero values is satisfied. Denote \(A, B\) the finite sets
-containing the non-zero elements of \(S\) under, respectively, \(f\) and
-\(g\). Notice now that the map \(f + g \in k^S\) is such that for all \(s \in
-A \cup B\) then \((f+g)(s) = f(s)+g(s) \neq  0\) thus, denoting \(C\) as the
-set containing all non-zero elements of \(S\) under \(f + g\), we see that \(A
-\cup B \subseteq C\). The converse is trivial since if \(s \in C\) then
-\(f(s) + g(s) \neq 0\) and thus at least one of the images is non-zero, thus
-\(s \in A \cup B\) and then \(C \subseteq  A \cup B\), which implies that \(A
-\cup B = C\) and, in particular, \(C\) is finite. Therefore \(f + g \in
-k^{\oplus S}\). Note now that for any \(c \in \R \setminus \{0\}\),
-then \(c \cdot f\) has non-zero values only in \(A \subseteq S\), in the case
-\(c = 0\) then  \(c \cdot f\) is zero all over \(S\), which makes \(c \cdot f
-\in k^{\oplus S}\). Thus indeed \(k^{\oplus S}\) is a vector space.
+    Let the maps \(f, g \in k^{\oplus S}\), so that the specification of
+    finiteness of non-zero values is satisfied. Denote \(A, B\) the finite sets
+    containing the non-zero elements of \(S\) under, respectively, \(f\) and
+    \(g\). Notice now that the map \(f + g \in k^S\) is such that for all \(s \in
+    A \cup B\) then \((f+g)(s) = f(s)+g(s) \neq  0\) thus, denoting \(C\) as the
+    set containing all non-zero elements of \(S\) under \(f + g\), we see that \(A
+    \cup B \subseteq C\). The converse is trivial since if \(s \in C\) then
+    \(f(s) + g(s) \neq 0\) and thus at least one of the images is non-zero, thus
+    \(s \in A \cup B\) and then \(C \subseteq  A \cup B\), which implies that \(A
+    \cup B = C\) and, in particular, \(C\) is finite. Therefore \(f + g \in
+    k^{\oplus S}\). Note now that for any \(c \in \R \setminus \{0\}\),
+    then \(c \cdot f\) has non-zero values only in \(A \subseteq S\), in the case
+    \(c = 0\) then  \(c \cdot f\) is zero all over \(S\), which makes \(c \cdot f
+    \in k^{\oplus S}\). Thus indeed \(k^{\oplus S}\) is a vector space.
 \end{proof}
 
 For each \(s \in S\) we can define a map \(\mathbf{s} : S \to k\) such that
 \[
-\mathbf{s}(x) \coloneq
-\begin{cases}
-  1, &\text{ for } x = s\\
-  0, &\text{ for } x \neq s
-\end{cases}
+    \mathbf{s}(x) \coloneq
+    \begin{cases}
+        1, & \text{ for } x = s    \\
+        0, & \text{ for } x \neq s
+    \end{cases}
 \]
 Also, this notion comes together with the natural monomorphism
 \[
-\iota : S \hookrightarrow k^{\oplus S} \text{ mapping } s \mapsto \mathbf{s}
+    \iota : S \hookrightarrow k^{\oplus S} \text{ mapping } s \mapsto \mathbf{s}
 \]
 which allow us to write any element \(v \in k^{\oplus S}\) as a linear
 combination, with non-zero scalars \(a_i \in k\), of the form
 \[
-v = \sum_{i=1}^n a_i \mathbf{s}_i \in k^{\oplus S},\
-\text{ mapping }\ s \mapsto
-\begin{cases}
-  a_i, &\text{if } s = s_i \text{ for some } i \\
-  0, &\text{if } s \neq s_i \text{ for all } i
-\end{cases}
+    v = \sum_{i=1}^n a_i \mathbf{s}_i \in k^{\oplus S},\
+    \text{ mapping }\ s \mapsto
+    \begin{cases}
+        a_i, & \text{if } s = s_i \text{ for some } i   \\
+        0,   & \text{if } s \neq s_i \text{ for all } i
+    \end{cases}
 \]
 
 \begin{proposition}[Universal property of the free vector spaces]
-\label{prop: universal property free vs}
-Let \(S\) be a set, and \(V\) be a \(k\)-vector space, and a function \(f : S
-\to V\). Then there exists a unique \(k\)-linear morphism \(\ell : k^{\oplus
-S} \to V\) such that the diagram commutes:
-\[
-  \begin{tikzcd}
-    S \ar[r, "f"] \ar[d, hook, "\iota"] &V \\
-    k^{\oplus S} \ar[ru, dashed, swap, "\ell"]
-  \end{tikzcd}
-\]
+    \label{prop: universal property free vs}
+    Let \(S\) be a set, and \(V\) be a \(k\)-vector space, and a function \(f : S
+    \to V\). Then there exists a unique \(k\)-linear morphism \(\ell : k^{\oplus
+            S} \to V\) such that the diagram commutes:
+    \[
+        \begin{tikzcd}
+            S \ar[r, "f"] \ar[d, hook, "\iota"] &V \\
+            k^{\oplus S} \ar[ru, dashed, swap, "\ell"]
+        \end{tikzcd}
+    \]
 \end{proposition}
 
 \begin{proof}
-(Uniqueness) Notice that for all \(\alpha \in k^{\oplus S}\) we can write it
-as a finite sum \(\alpha = \sum_{s \in S}\alpha(s) \mathbf s\) (the
-finiteness comes from the fact that only finitely may \(\mathbf s\) will
-actually appear, since there are only finite non-zero values under
-\(\alpha\)). Let now  \(L : k^{\oplus S} \to V\) be a morphism of
-\(k\)-vector spaces such that \(f = L  \iota\) for a given \(f : S \to
-V\). Then
-\[
-  L(\alpha) = \sum_{s \in S} L(\alpha(s) \mathbf{s}) = \sum_{s \in S}
-  \alpha(s) L(\mathbf s) = \sum_{s \in S} \alpha(s) (L  \iota)(s)
-  = \sum_{s \in S} \alpha(s) f(s),
-\]
-which implies that the morphism \(L\) is indeed unique.
+    (Uniqueness) Notice that for all \(\alpha \in k^{\oplus S}\) we can write it
+    as a finite sum \(\alpha = \sum_{s \in S}\alpha(s) \mathbf s\) (the
+    finiteness comes from the fact that only finitely may \(\mathbf s\) will
+    actually appear, since there are only finite non-zero values under
+    \(\alpha\)). Let now  \(L : k^{\oplus S} \to V\) be a morphism of
+    \(k\)-vector spaces such that \(f = L  \iota\) for a given \(f : S \to
+    V\). Then
+    \[
+        L(\alpha) = \sum_{s \in S} L(\alpha(s) \mathbf{s}) = \sum_{s \in S}
+        \alpha(s) L(\mathbf s) = \sum_{s \in S} \alpha(s) (L  \iota)(s)
+        = \sum_{s \in S} \alpha(s) f(s),
+    \]
+    which implies that the morphism \(L\) is indeed unique.
 
-To prove the existence of \(L\), consider its definition as above. Notice
-that for any \(\alpha, \beta \in k^{\oplus S}\) we have
-\[
-  L(\alpha + \beta) = \sum_{s \in S} (\alpha + \beta)(s) f(s) = \sum_{s \in
-  S} \alpha(s)f(s) + \sum_{s \in S} \beta(s)f(s) = L(\alpha) + L(\beta).
-\]
-Moreover, if \(a \in k\), then \(k \alpha = k\sum_{s \in S} \alpha(s)
-\mathbf s\), thus indeed
-\[
-  L(k \alpha) = \sum_{s \in S} (k \alpha)(s) f(s) = k \sum_{s \in S}
-  \alpha(s) f(s) = k L(\alpha),
-\]
-proving the last condition in order to be a morphism of \(k\)-vector spaces,
+    To prove the existence of \(L\), consider its definition as above. Notice
+    that for any \(\alpha, \beta \in k^{\oplus S}\) we have
+    \[
+        L(\alpha + \beta) = \sum_{s \in S} (\alpha + \beta)(s) f(s) = \sum_{s \in
+            S} \alpha(s)f(s) + \sum_{s \in S} \beta(s)f(s) = L(\alpha) + L(\beta).
+    \]
+    Moreover, if \(a \in k\), then \(k \alpha = k\sum_{s \in S} \alpha(s)
+    \mathbf s\), thus indeed
+    \[
+        L(k \alpha) = \sum_{s \in S} (k \alpha)(s) f(s) = k \sum_{s \in S}
+        \alpha(s) f(s) = k L(\alpha),
+    \]
+    proving the last condition in order to be a morphism of \(k\)-vector spaces,
 \end{proof}
 
 This way we find that actually
 \[
-\Hom_{\Set}(S, V) \iso \Hom_{\Vect_k}(k^{\oplus S}, V).
+    \Hom_{\Set}(S, V) \iso \Hom_{\Vect_k}(k^{\oplus S}, V).
 \]
 
 We now want in some way to construct a morphism that maps \(k^{\oplus S'} \to
@@ -154,324 +154,324 @@ k^{\oplus S}\), where \(S, S'\) are sets, just as we've done for the case
 S'\), and the inclusion maps \(\iota_S : S \to k^{\oplus S}\) and \(\iota_{S'} :
 S' \hookrightarrow k^{\oplus S'}\), and construct the map
 \[
-\ell = \iota_{S'}  \alpha : S \to k^{\oplus S'}.
+    \ell = \iota_{S'}  \alpha : S \to k^{\oplus S'}.
 \]
 Then, by means of the universal property for free vector spaces, we find that
 there exists a unique morphism of \(k\)-vector spaces \(\alpha_\ast : k^{\oplus
-S} \to k^{\oplus S'} \) such that \(\ell = \alpha_\ast  \iota_S\), that is,
+        S} \to k^{\oplus S'} \) such that \(\ell = \alpha_\ast  \iota_S\), that is,
 the following diagram commutes
 \[
-\begin{tikzcd}
-  &S \arrow[r, "\alpha"] \arrow[d, "\iota_S"] \arrow[dr, "\ell"]
-  &S' \arrow[d, "\iota_{S'}"]
-  \\
-  &k^{\oplus S} \arrow[r, dashed, "\alpha_\ast"]
-  &k^{\oplus S'}
-\end{tikzcd}
+    \begin{tikzcd}
+        &S \arrow[r, "\alpha"] \arrow[d, "\iota_S"] \arrow[dr, "\ell"]
+        &S' \arrow[d, "\iota_{S'}"]
+        \\
+        &k^{\oplus S} \arrow[r, dashed, "\alpha_\ast"]
+        &k^{\oplus S'}
+    \end{tikzcd}
 \]
 
 \subsection{Product}
 
 \begin{definition}[Pair product]
-Let \(L, V\) be \(k\)-vector spaces. Then the product
-\[
-  L \times V = \{(\ell, v) \colon \ell \in L,\ v \in V\},
-\]
-equipped with pairwise sum and product by scalar is a \(k\)-vector space.
+    Let \(L, V\) be \(k\)-vector spaces. Then the product
+    \[
+        L \times V = \{(\ell, v) \colon \ell \in L,\ v \in V\},
+    \]
+    equipped with pairwise sum and product by scalar is a \(k\)-vector space.
 \end{definition}
 
 \begin{definition}[General product]
-Let \(\{V_i\}_{i \in I}\) be a set of \(k\)-vector spaces, with an indexing
-set \(I\). The product of these vector spaces is defined as
-\[
-  \prod_{i \in I} V_i = \{(v_i)_{i \in I} \colon v_i \in V_i\}
-\]
-equipped with addition and multiplication by scalar as
-\[
-  (v_i)_{i \in I} + (u_i)_{i \in I} = (v_i + u_i)_{i \in I}\ \text{ and }\
-  a(v_i)_{i \in I} = (av_i)_{i \in I}
-\]
-is a \(k\)-vector space.
+    Let \(\{V_i\}_{i \in I}\) be a set of \(k\)-vector spaces, with an indexing
+    set \(I\). The product of these vector spaces is defined as
+    \[
+        \prod_{i \in I} V_i = \{(v_i)_{i \in I} \colon v_i \in V_i\}
+    \]
+    equipped with addition and multiplication by scalar as
+    \[
+        (v_i)_{i \in I} + (u_i)_{i \in I} = (v_i + u_i)_{i \in I}\ \text{ and }\
+        a(v_i)_{i \in I} = (av_i)_{i \in I}
+    \]
+    is a \(k\)-vector space.
 \end{definition}
 
 \begin{proposition}
-Let \(S\) be a set. Then there exists a natural isomorphism
-\[
-  k^S \iso \prod_{s \in S} k,
-\]
-so that \(\prod_{s \in S} k\) generalizes the power set.
+    Let \(S\) be a set. Then there exists a natural isomorphism
+    \[
+        k^S \iso \prod_{s \in S} k,
+    \]
+    so that \(\prod_{s \in S} k\) generalizes the power set.
 \end{proposition}
 
 \begin{proof}
-For any \(f \in k^S\) map \((f : S \to k) \mapsto (f(s))_{s \in S}\). Notice
-that the mapping is obviously a monomorphism, since the maps \(S \to k\) are
-well defined, and is also an epimorphism because we just need to create
-a function fitting such an image.
+    For any \(f \in k^S\) map \((f : S \to k) \mapsto (f(s))_{s \in S}\). Notice
+    that the mapping is obviously a monomorphism, since the maps \(S \to k\) are
+    well defined, and is also an epimorphism because we just need to create
+    a function fitting such an image.
 \end{proof}
 
 \begin{proposition}[Universal property for products]
-Let the indexed set of \(k\)-vector spaces \(\{V_i\}_{i \in I}\). For any
-given \(k\)-vector space \(L\), together with a morphism \(\varphi_j : L \to
-V\), there exists a unique morphism \(\ell : L \to \prod_{i \in I} V_i\) such
-that the diagram commutes:
-\[
-  \begin{tikzcd}
-      &L
-      \ar[r, dashed, "\ell"]
-      \ar[dr, swap, "\varphi_j"]
-        &\prod_{i \in I} V_i
-        \ar[d, "\pi_j", two heads] \\
-      &
-        &V_j
-  \end{tikzcd}
-\]
+    Let the indexed set of \(k\)-vector spaces \(\{V_i\}_{i \in I}\). For any
+    given \(k\)-vector space \(L\), together with a morphism \(\varphi_j : L \to
+    V\), there exists a unique morphism \(\ell : L \to \prod_{i \in I} V_i\) such
+    that the diagram commutes:
+    \[
+        \begin{tikzcd}
+            &L
+            \ar[r, dashed, "\ell"]
+            \ar[dr, swap, "\varphi_j"]
+            &\prod_{i \in I} V_i
+            \ar[d, "\pi_j", two heads] \\
+            &
+            &V_j
+        \end{tikzcd}
+    \]
 \end{proposition}
 
 \begin{proof}
-Notice that this is simply the product universal product restricted for only
-one branch of the product \(V_j \times \prod_{i \neq j} V_i\). For the
-uniqueness, notice that since we want \(\varphi_j = \pi_j  \ell\), then
-it ought to be the case that
-\[
-  L \ni x \overset{\ell}\longmapsto (\varphi_j(x))_{i \in I} \in \prod_{i
-  \in I} V_i
-\]
-since the composition needs to be satisfied for any index \(j \in I\).
-Therefore the morphism \(\ell\) is indeed unique, if it exists. Now we show
-its existence. Notice that since \(\varphi_j\) is a \(k\)-linear map, then
-indeed for any \(x, y \in L\) and \(a \in k\) we have \(\ell(x + ay) =
-(\varphi_i(x + ay))_{i \in I} = (\varphi_i(x))_{i \in I} + a
-(\varphi_i(y))_{i \in I} = \ell(x) + a \ell(y)\), which shows the linearity
-and the existence.
+    Notice that this is simply the product universal product restricted for only
+    one branch of the product \(V_j \times \prod_{i \neq j} V_i\). For the
+    uniqueness, notice that since we want \(\varphi_j = \pi_j  \ell\), then
+    it ought to be the case that
+    \[
+        L \ni x \overset{\ell}\longmapsto (\varphi_j(x))_{i \in I} \in \prod_{i
+            \in I} V_i
+    \]
+    since the composition needs to be satisfied for any index \(j \in I\).
+    Therefore the morphism \(\ell\) is indeed unique, if it exists. Now we show
+    its existence. Notice that since \(\varphi_j\) is a \(k\)-linear map, then
+    indeed for any \(x, y \in L\) and \(a \in k\) we have \(\ell(x + ay) =
+    (\varphi_i(x + ay))_{i \in I} = (\varphi_i(x))_{i \in I} + a
+    (\varphi_i(y))_{i \in I} = \ell(x) + a \ell(y)\), which shows the linearity
+    and the existence.
 \end{proof}
 
 \begin{definition}[Direct sum]
-Given an indexed collection of \(k\)-vector spaces \(\{V_i\}_{i \in I}\), we
-define the direct sum of them as
-\[
-  \bigoplus _{i \in I} V_i \coloneq \{(v_i)_{i \in I} \colon v_i \in V_i, \text{ where
-  } v_i \neq 0 \text{ finitely many times in } I\}
-\]
-together with addition and scalar multiplication being defined component-wise.
+    Given an indexed collection of \(k\)-vector spaces \(\{V_i\}_{i \in I}\), we
+    define the direct sum of them as
+    \[
+        \bigoplus _{i \in I} V_i \coloneq \{(v_i)_{i \in I} \colon v_i \in V_i, \text{ where
+        } v_i \neq 0 \text{ finitely many times in } I\}
+    \]
+    together with addition and scalar multiplication being defined component-wise.
 \end{definition}
 
 \begin{proposition}
-The direct sum of \(k\)-vector spaces is again a \(k\)-vector space.
+    The direct sum of \(k\)-vector spaces is again a \(k\)-vector space.
 \end{proposition}
 
 \begin{proposition}
-Let a set \(S\). Then, the exists natural isomorphism \(\bigoplus_{s \in S} k
-\iso k^{\oplus S}\).
+    Let a set \(S\). Then, the exists natural isomorphism \(\bigoplus_{s \in S} k
+    \iso k^{\oplus S}\).
 \end{proposition}
 
 \begin{proof}
-Notice that if we make the morphism \(\ell : \bigoplus_{s \in S} k \to
-k^{\oplus S}\) defined as the mapping
-\[
-  \bigoplus_{s \in S} k \ni (a_s)_{s \in S} \overset{\ell}\longmapsto (s
-  \xmapsto{f} a_s) \in k^{\oplus S}
-\]
-then we see that no information is lost since this is surely injective,
-because the morphisms of \(k^{\oplus S}\) are well defined, and given any
-morphism \(f \in k^{\oplus S}\) we know that its non-zero values are finite,
-thus we can construct its image as a tuple in \(\bigoplus_{s \in S} k\),
-which allow us to say that such mapping is also surjective. Therefore, the
-morphism \(\ell\) is an isomorphism. We now show that it is indeed
-\(k\)-linear. Let the tuples \((a_s)_{s \in S}\) and \((b_s)_{s \in S}\),
-then
-\[
-  (a_s)_s + (b_s)_s = (a_s + b_s)_s \overset \ell \longmapsto (s \xmapsto f
-  a_s + b_s) = (s \xmapsto g a_s) + (s \xmapsto h b_s).
-\]
-Moreover, if \(c \in k\) is any scalar, then \((c a_s)_s \longmapsto (s
-\mapsto c a_s) = c (s \mapsto a_s)\), which shows the last property for
-\(\ell\) being a \(k\)-linear morphism.
+    Notice that if we make the morphism \(\ell : \bigoplus_{s \in S} k \to
+    k^{\oplus S}\) defined as the mapping
+    \[
+        \bigoplus_{s \in S} k \ni (a_s)_{s \in S} \overset{\ell}\longmapsto (s
+        \xmapsto{f} a_s) \in k^{\oplus S}
+    \]
+    then we see that no information is lost since this is surely injective,
+    because the morphisms of \(k^{\oplus S}\) are well defined, and given any
+    morphism \(f \in k^{\oplus S}\) we know that its non-zero values are finite,
+    thus we can construct its image as a tuple in \(\bigoplus_{s \in S} k\),
+    which allow us to say that such mapping is also surjective. Therefore, the
+    morphism \(\ell\) is an isomorphism. We now show that it is indeed
+    \(k\)-linear. Let the tuples \((a_s)_{s \in S}\) and \((b_s)_{s \in S}\),
+    then
+    \[
+        (a_s)_s + (b_s)_s = (a_s + b_s)_s \overset \ell \longmapsto (s \xmapsto f
+        a_s + b_s) = (s \xmapsto g a_s) + (s \xmapsto h b_s).
+    \]
+    Moreover, if \(c \in k\) is any scalar, then \((c a_s)_s \longmapsto (s
+    \mapsto c a_s) = c (s \mapsto a_s)\), which shows the last property for
+    \(\ell\) being a \(k\)-linear morphism.
 \end{proof}
 
 \begin{proposition}[Universal property for the direct sum]
-Let the collection of \(k\)-vector spaces \(\{V_i\}_{i \in I}\) and for every
-\(j \in I\) define the inclusion \(\iota_j : V_j \to \bigoplus_{i \in I}
-V_i\), where
-\[
-  v \overset{\iota_j}\longmapsto (v_i)_{i \in I}, \text{ where } v_i =
-  \begin{cases}
-      v, &i = j \\
-      0, &i \neq j
-  \end{cases}.
-\]
+    Let the collection of \(k\)-vector spaces \(\{V_i\}_{i \in I}\) and for every
+    \(j \in I\) define the inclusion \(\iota_j : V_j \to \bigoplus_{i \in I}
+    V_i\), where
+    \[
+        v \overset{\iota_j}\longmapsto (v_i)_{i \in I}, \text{ where } v_i =
+        \begin{cases}
+            v, & i = j    \\
+            0, & i \neq j
+        \end{cases}.
+    \]
 
-Then, for any arbitrary \(k\)-vector space \(L\), together with \(k\)-linear
-morphisms \((f_i : V_i \to L)_{i \in I}\), there exists a unique \(k\)-linear
-morphism \(\ell : \bigoplus_{i \in I} V_i \to L\) such that the diagram
-commutes for every \(j \in I\):
-\[
-  \begin{tikzcd}
-      &L &\bigoplus_{i \in I} V_i \ar[l, dashed, swap, "\ell"]  \\
-      & &V_j \ar[u, hook, swap, "\iota_j"] \ar[ul, "f_j"]
-  \end{tikzcd}
-\]
+    Then, for any arbitrary \(k\)-vector space \(L\), together with \(k\)-linear
+    morphisms \((f_i : V_i \to L)_{i \in I}\), there exists a unique \(k\)-linear
+    morphism \(\ell : \bigoplus_{i \in I} V_i \to L\) such that the diagram
+    commutes for every \(j \in I\):
+    \[
+        \begin{tikzcd}
+            &L &\bigoplus_{i \in I} V_i \ar[l, dashed, swap, "\ell"]  \\
+            & &V_j \ar[u, hook, swap, "\iota_j"] \ar[ul, "f_j"]
+        \end{tikzcd}
+    \]
 \end{proposition}
 
 \begin{proof}
-Since we want to have \(\ell  \iota_j = f_j\), it must be the case for
-any \(v \in v_j\) that, being \(\iota_j(v) \coloneq (v_i)_i\), then
-\[
-  \ell((v_i)_{i \in i}) = \ell \left( \sum_{i \in i} \iota_i(v_i) \right) =
-  \sum_{i \in i} \ell(\iota_i(v_i)) = \sum_{i \in i} f_i(v_i)
-\]
-thus indeed necessarily, if such a map exists, then \(\ell\) is unique. We
-now check that \(\ell\) is indeed a \(k\)-linear morphism.
-\begin{gather*}
-  \ell\left( (v_i + w_i)_i \right) = \sum_i f_i(v_i + w_i) = \sum_i f_i(v_i)
-  + \sum_i  f_i(w_i) \\
-  \ell((av_i)_i) = \sum_i f_i(av_i) = a \sum_i f_i(v_i)
-\end{gather*}
-Which proves that \(\ell\) is indeed a morphism of \(k\) vector spaces as
-wanted.
+    Since we want to have \(\ell  \iota_j = f_j\), it must be the case for
+    any \(v \in v_j\) that, being \(\iota_j(v) \coloneq (v_i)_i\), then
+    \[
+        \ell((v_i)_{i \in i}) = \ell \left( \sum_{i \in i} \iota_i(v_i) \right) =
+        \sum_{i \in i} \ell(\iota_i(v_i)) = \sum_{i \in i} f_i(v_i)
+    \]
+    thus indeed necessarily, if such a map exists, then \(\ell\) is unique. We
+    now check that \(\ell\) is indeed a \(k\)-linear morphism.
+    \begin{gather*}
+        \ell\left( (v_i + w_i)_i \right) = \sum_i f_i(v_i + w_i) = \sum_i f_i(v_i)
+        + \sum_i  f_i(w_i) \\
+        \ell((av_i)_i) = \sum_i f_i(av_i) = a \sum_i f_i(v_i)
+    \end{gather*}
+    Which proves that \(\ell\) is indeed a morphism of \(k\) vector spaces as
+    wanted.
 \end{proof}
 
 \begin{proposition}
-Let \(\{S_i\}_{i \in S}\) be a collection of sets. There exists a canonical
-isomorphism
-\[
-\bigoplus_{i \in I} k^{\oplus S_i} \iso k^{\oplus \left( \coprod_{i \in I}
-S_i \right)}
-\]
+    Let \(\{S_i\}_{i \in S}\) be a collection of sets. There exists a canonical
+    isomorphism
+    \[
+        \bigoplus_{i \in I} k^{\oplus S_i} \iso k^{\oplus \left( \coprod_{i \in I}
+                S_i \right)}
+    \]
 \end{proposition}
 
 \begin{proof}
-Just use both universal properties for coproduct and free vector spaces, this
-establishes a two way unique morphism, which proves the canonical
-isomorphism.
+    Just use both universal properties for coproduct and free vector spaces, this
+    establishes a two way unique morphism, which proves the canonical
+    isomorphism.
 \end{proof}
 
 \begin{proposition}
-Let the \(k\)-linear morphism \(T : k^n \to k^m\) and \(S:k^n \to k^\ell\).
-If we consider their matrix representation, they induce the \(k\)-linear
-morphism
-\[
-  M : k^n \to k^{m+\ell}\ \text{ represented by }\
-  M = \begin{pmatrix} T \\ S \end{pmatrix}
-\]
+    Let the \(k\)-linear morphism \(T : k^n \to k^m\) and \(S:k^n \to k^\ell\).
+    If we consider their matrix representation, they induce the \(k\)-linear
+    morphism
+    \[
+        M : k^n \to k^{m+\ell}\ \text{ represented by }\
+        M = \begin{pmatrix} T \\ S \end{pmatrix}
+    \]
 \end{proposition}
 
 \begin{proof}
-Notice that from the universal property of products we have
-\[
-\begin{tikzcd}
-    &k^n \ar["T", r] \ar["M", dr] \ar[swap, "S", d] &k^m \\
-    &k^\ell &k^m \times k^\ell \iso k^{m+\ell} \ar["\pi_\ell", l]
-    \ar[swap, "\pi_m", u]
-\end{tikzcd}
-\]
-Where the isomorphism \(k^m \times k^\ell \iso k^{m+\ell}\) is induced by the
-mapping  \(((a_i)_{i=1}^m, (b_i)_{i=1}^\ell) = (c_i)_{i=1}^{m+\ell}\) where
-\(c_i \coloneq a_i\) for all \(1 \leq i \leq m\) and \(c_i \coloneq b_i\) for all  \(m+1
-\leq i \leq m+\ell\). Notice then that the morphism \(M\) is induced by the
-morphism \(T, S\) so that \(T = \pi_m  M\) and \(S = \pi_\ell  M\),
-so that we need to have \(M(v) = (T(v), S(v))\) for all \(v \in k^m\), but
-notice that \(M : k^n \to k^m\times k^\ell\) is in fact isomorphic to a
-\(k\)-linear map \(k^n \to k^{m+\ell}\), so that we can encode the
-transformation of \(M\), without losing, information as follows. Suppose that
-\[
-T =
-\begin{bmatrix}
-  a_{11} &\dots &a_{1n} \\
-  \vdots &\ddots &\vdots \\
-  a_{m1} &\dots & a_{mn}
-\end{bmatrix}
-\ \text{ and }\
-S =
-\begin{bmatrix}
-  b_{11} &\dots &b_{1n} \\
-  \vdots &\ddots &\vdots \\
-  b_{\ell 1} &\dots & b_{\ell n}
-\end{bmatrix}
-\]
-then we can say that \(M\) can be isomorphically represented by
-\[
-M(v) = \left((u_i)_{i=1}^m, (u_i)_{i=m+1}^{m+\ell} \right) \iso
-\begin{bmatrix}
-  a_{11} &\dots &a_{1n} \\
-  \vdots &\ddots &\vdots \\
-  a_{m1} &\dots & a_{mn} \\
-  b_{(m+1) 1} &\dots &b_{(m+1) n} \\
-  \vdots &\ddots &\vdots \\
-  b_{(m+\ell) 1} &\dots & b_{(m+\ell) n}
-\end{bmatrix}
-\begin{bmatrix}
-  v_1 \\ \vdots \\ v_n
-\end{bmatrix}
-=
-\begin{bmatrix} u_1 \\ \vdots \\ u_{m+\ell} \end{bmatrix}
-\]
-where \((u_i)_{i=1}^m = T(v) \) and \((u_i)_{i=m+1}^{m+\ell} = S(v)\).
+    Notice that from the universal property of products we have
+    \[
+        \begin{tikzcd}
+            &k^n \ar["T", r] \ar["M", dr] \ar[swap, "S", d] &k^m \\
+            &k^\ell &k^m \times k^\ell \iso k^{m+\ell} \ar["\pi_\ell", l]
+            \ar[swap, "\pi_m", u]
+        \end{tikzcd}
+    \]
+    Where the isomorphism \(k^m \times k^\ell \iso k^{m+\ell}\) is induced by the
+    mapping  \(((a_i)_{i=1}^m, (b_i)_{i=1}^\ell) = (c_i)_{i=1}^{m+\ell}\) where
+    \(c_i \coloneq a_i\) for all \(1 \leq i \leq m\) and \(c_i \coloneq b_i\) for all  \(m+1
+    \leq i \leq m+\ell\). Notice then that the morphism \(M\) is induced by the
+    morphism \(T, S\) so that \(T = \pi_m  M\) and \(S = \pi_\ell  M\),
+    so that we need to have \(M(v) = (T(v), S(v))\) for all \(v \in k^m\), but
+    notice that \(M : k^n \to k^m\times k^\ell\) is in fact isomorphic to a
+    \(k\)-linear map \(k^n \to k^{m+\ell}\), so that we can encode the
+    transformation of \(M\), without losing, information as follows. Suppose that
+    \[
+        T =
+        \begin{bmatrix}
+            a_{11} & \dots  & a_{1n} \\
+            \vdots & \ddots & \vdots \\
+            a_{m1} & \dots  & a_{mn}
+        \end{bmatrix}
+        \ \text{ and }\
+        S =
+        \begin{bmatrix}
+            b_{11}     & \dots  & b_{1n}     \\
+            \vdots     & \ddots & \vdots     \\
+            b_{\ell 1} & \dots  & b_{\ell n}
+        \end{bmatrix}
+    \]
+    then we can say that \(M\) can be isomorphically represented by
+    \[
+        M(v) = \left((u_i)_{i=1}^m, (u_i)_{i=m+1}^{m+\ell} \right) \iso
+        \begin{bmatrix}
+            a_{11}         & \dots  & a_{1n}         \\
+            \vdots         & \ddots & \vdots         \\
+            a_{m1}         & \dots  & a_{mn}         \\
+            b_{(m+1) 1}    & \dots  & b_{(m+1) n}    \\
+            \vdots         & \ddots & \vdots         \\
+            b_{(m+\ell) 1} & \dots  & b_{(m+\ell) n}
+        \end{bmatrix}
+        \begin{bmatrix}
+            v_1 \\ \vdots \\ v_n
+        \end{bmatrix}
+        =
+        \begin{bmatrix} u_1 \\ \vdots \\ u_{m+\ell} \end{bmatrix}
+    \]
+    where \((u_i)_{i=1}^m = T(v) \) and \((u_i)_{i=m+1}^{m+\ell} = S(v)\).
 \end{proof}
 
 \begin{proposition}
-Let the \(k\)-linear morphism \(T : k^n \to k^\ell\) and \(S : k^m \to
-k^\ell\). They induce the \(k\)-linear morphism
-\[
-M : k^{n+m} \iso k^n \oplus k^m \to k^\ell \text{ represented by }
-M = \begin{pmatrix} T &S \end{pmatrix}
-\]
+    Let the \(k\)-linear morphism \(T : k^n \to k^\ell\) and \(S : k^m \to
+    k^\ell\). They induce the \(k\)-linear morphism
+    \[
+        M : k^{n+m} \iso k^n \oplus k^m \to k^\ell \text{ represented by }
+        M = \begin{pmatrix} T &S \end{pmatrix}
+    \]
 \end{proposition}
 
 \begin{proof}
-From the universal property of the coproduct we have that
-\[
-  \begin{tikzcd}
-    &k^n \ar[hook, "\iota_n", d]  \ar[dr, "T"]& \\
-    & k^{n+m} \iso k^n \oplus k^m \ar[r, "M"] &k^\ell \\
-    &k^m \ar[hook, "\iota_m", u] \ar[ur, "S"] &
-  \end{tikzcd}
-\]
-Where \(k^n, k^m\) are both finite, then \(k^n \oplus k^m \iso k^n \times k^m
-\iso k^{n+m}\), which proves the isomorphism written. Therefore \(M : k^n
-\oplus k^m \to k^\ell\) is isomorphic to a \(k\)-linear morphism \(k^{n+m}
-\to k^\ell\). Moreover, if \(T\) and \(S\) are represented by
-\[
-T =
-\begin{bmatrix}
-  a_{11} &\dots &a_{1n} \\
-  \vdots &\ddots &\vdots \\
-  a_{\ell 1} &\dots & a_{\ell n}
-\end{bmatrix}
-\ \text{ and }\
-S =
-\begin{bmatrix}
-  b_{11} &\dots &b_{1m} \\
-  \vdots &\ddots &\vdots \\
-  b_{\ell 1} &\dots & b_{\ell m}
-\end{bmatrix}
-\]
-Then from the construction \(T = M  \iota_n\) and \(S = M
-\iota_m\) we conclude that for all element \(a = (a_i)_{i=1}^n \in k^n\) and
-every \(b = (b_i)_{i=1}^m \in k^m\), will be such that
-\begin{gather*}
-  k^n \ni (a_i)_{i=1}^n \xmapsto{\iota_n} (a_1, \dots, a_n, 0, \dots, 0)
-  \xmapsto{M} (a'_i)_{i=1}^\ell = T(a) \in k^\ell
-  \\
-  k^m \ni (b_i)_{i=1}^m \xmapsto{\iota_m} (b_1, \dots, b_m, 0, \dots, 0)
-  \xmapsto{M} (b'_i)_{i=1}^\ell = S(b) \in k^\ell
-\end{gather*}
-therefore, if we have the element
-\[
-  (a_1, \dots, a_n, b_1, \dots, b_m) \iso \left( (a_1, \dots, a_n), (b_1,
-  \dots, b_m) \right) \xmapsto M (a'_i + b'_i)_{i=1}^\ell = T(a) + S(b)
-\]
-which shows that indeed
-\[
-  M =
-  \begin{bmatrix}
-    a_{11} &\dots &a_{1n} &b_{1(n+1)} &\dots &b_{1(n+m)} \\
-    \vdots &\ddots &\vdots &\vdots &\ddots &\vdots\\
-    a_{\ell 1} &\dots & a_{\ell n} &b_{\ell (n+1)} &\dots &b_{\ell(n+m)}
-  \end{bmatrix}
-  =
-  \begin{bmatrix}
-    T &S
-  \end{bmatrix}
-  .
-\]
+    From the universal property of the coproduct we have that
+    \[
+        \begin{tikzcd}
+            &k^n \ar[hook, "\iota_n", d]  \ar[dr, "T"]& \\
+            & k^{n+m} \iso k^n \oplus k^m \ar[r, "M"] &k^\ell \\
+            &k^m \ar[hook, "\iota_m", u] \ar[ur, "S"] &
+        \end{tikzcd}
+    \]
+    Where \(k^n, k^m\) are both finite, then \(k^n \oplus k^m \iso k^n \times k^m
+    \iso k^{n+m}\), which proves the isomorphism written. Therefore \(M : k^n
+    \oplus k^m \to k^\ell\) is isomorphic to a \(k\)-linear morphism \(k^{n+m}
+    \to k^\ell\). Moreover, if \(T\) and \(S\) are represented by
+    \[
+        T =
+        \begin{bmatrix}
+            a_{11}     & \dots  & a_{1n}     \\
+            \vdots     & \ddots & \vdots     \\
+            a_{\ell 1} & \dots  & a_{\ell n}
+        \end{bmatrix}
+        \ \text{ and }\
+        S =
+        \begin{bmatrix}
+            b_{11}     & \dots  & b_{1m}     \\
+            \vdots     & \ddots & \vdots     \\
+            b_{\ell 1} & \dots  & b_{\ell m}
+        \end{bmatrix}
+    \]
+    Then from the construction \(T = M  \iota_n\) and \(S = M
+    \iota_m\) we conclude that for all element \(a = (a_i)_{i=1}^n \in k^n\) and
+    every \(b = (b_i)_{i=1}^m \in k^m\), will be such that
+    \begin{gather*}
+        k^n \ni (a_i)_{i=1}^n \xmapsto{\iota_n} (a_1, \dots, a_n, 0, \dots, 0)
+        \xmapsto{M} (a'_i)_{i=1}^\ell = T(a) \in k^\ell
+        \\
+        k^m \ni (b_i)_{i=1}^m \xmapsto{\iota_m} (b_1, \dots, b_m, 0, \dots, 0)
+        \xmapsto{M} (b'_i)_{i=1}^\ell = S(b) \in k^\ell
+    \end{gather*}
+    therefore, if we have the element
+    \[
+        (a_1, \dots, a_n, b_1, \dots, b_m) \iso \left( (a_1, \dots, a_n), (b_1,
+        \dots, b_m) \right) \xmapsto M (a'_i + b'_i)_{i=1}^\ell = T(a) + S(b)
+    \]
+    which shows that indeed
+    \[
+        M =
+        \begin{bmatrix}
+            a_{11}     & \dots  & a_{1n}     & b_{1(n+1)}     & \dots  & b_{1(n+m)}    \\
+            \vdots     & \ddots & \vdots     & \vdots         & \ddots & \vdots        \\
+            a_{\ell 1} & \dots  & a_{\ell n} & b_{\ell (n+1)} & \dots  & b_{\ell(n+m)}
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            T & S
+        \end{bmatrix}
+        .
+    \]
 \end{proof}

@@ -1,144 +1,144 @@
 \section{\texorpdfstring{\(\Ab\)}{Ab} --- Category of Abelian Groups}
 
 \begin{definition}[Category of abelian groups]
-We define the category of abelian groups, denoted \(\Ab\), to be the category
-whose objects are abelian groups and group morphisms between them.
+    We define the category of abelian groups, denoted \(\Ab\), to be the category
+    whose objects are abelian groups and group morphisms between them.
 \end{definition}
 
 In the following propositions we are going to describe ways of telling if the
 group you might be interested is abelian or not.
 
 \begin{proposition}
-A group \(G\) is abelian if and only either one of the following conditions
-are satisfied:
-\begin{itemize}
-  \setlength\itemsep{0em}
-  \item The map \(\phi: G \to G\) sending \(g \mapsto g^{-1}\) is a morphism of
-    groups.
-  \item The map \(\psi: G \to G\) sending \(g \mapsto g^2\) is a morphism of
-    groups.
-\end{itemize}
+    A group \(G\) is abelian if and only either one of the following conditions
+    are satisfied:
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item The map \(\phi: G \to G\) sending \(g \mapsto g^{-1}\) is a morphism of
+              groups.
+        \item The map \(\psi: G \to G\) sending \(g \mapsto g^2\) is a morphism of
+              groups.
+    \end{itemize}
 \end{proposition}
 
 \begin{proof}
-If \(G\) is abelian, then for any \(g, g' \in G\) we have:
-\begin{gather*}
-  \phi(gg') = (gg')^{-1} = g'^{-1} g^{-1} = g^{-1}g'^{-1} = \phi(g) \phi(g'),
-  \\
-  \psi(gg') = (gg')^2 = (gg')(gg') = g^2g'^2 = \psi(g)\psi(g').
-\end{gather*}
-That is, \(\phi\) and \(\psi\) are morphisms. Now suppose \(\phi\) and
-\(\psi\) are morphisms and consider any elements \(g, g' \in G\) --- we get
-the following relations from each of the morphisms:
-\begin{gather*}
-  gg' = \phi(g^{-1})\phi(g'^{-1}) = \phi(g^{-1}g'^{-1})
-  = \phi((g'g)^{-1}) = g'g,
-  \\
-  (gg')^2 = \psi(gg') = \psi(g) \psi(g') = g^2 g'^2.
-\end{gather*}
-Using cancellation law for the second relation we find \(g'g = gg'\). This
-shows that \(G\) is abelian.
+    If \(G\) is abelian, then for any \(g, g' \in G\) we have:
+    \begin{gather*}
+        \phi(gg') = (gg')^{-1} = g'^{-1} g^{-1} = g^{-1}g'^{-1} = \phi(g) \phi(g'),
+        \\
+        \psi(gg') = (gg')^2 = (gg')(gg') = g^2g'^2 = \psi(g)\psi(g').
+    \end{gather*}
+    That is, \(\phi\) and \(\psi\) are morphisms. Now suppose \(\phi\) and
+    \(\psi\) are morphisms and consider any elements \(g, g' \in G\) --- we get
+    the following relations from each of the morphisms:
+    \begin{gather*}
+        gg' = \phi(g^{-1})\phi(g'^{-1}) = \phi(g^{-1}g'^{-1})
+        = \phi((g'g)^{-1}) = g'g,
+        \\
+        (gg')^2 = \psi(gg') = \psi(g) \psi(g') = g^2 g'^2.
+    \end{gather*}
+    Using cancellation law for the second relation we find \(g'g = gg'\). This
+    shows that \(G\) is abelian.
 \end{proof}
 
 \begin{proposition}
-Let \(\phi \in \Hom_\Grp(G, \Aut_\Grp(G))\) be the morphism of groups mapping
-\(g \xmapsto \phi \gamma_g\) --- as defined in \cref{lem: grp-inner-aut-cor}.
-\(G\) is an abelian group if and only if \(\phi\) is trivial.
+    Let \(\phi \in \Hom_\Grp(G, \Aut_\Grp(G))\) be the morphism of groups mapping
+    \(g \xmapsto \phi \gamma_g\) --- as defined in \cref{lem: grp-inner-aut-cor}.
+    \(G\) is an abelian group if and only if \(\phi\) is trivial.
 \end{proposition}
 
 \begin{proof}
-Let \(G\) be an abelian group, then for all \(g \in G\) the corresponding inner
-automorphism \(\gamma_g\) maps
-\(a \xmapsto{\gamma_g} g a g^{-1} = a (g g^{-1}) = a\) hence
-\(\gamma_g = \Id_G\), thus \(\phi\) is indeed trivial. Let \(\phi\) be trivial,
-then for all \(g \in G\) the map \(\gamma_g = \Id_G\) and therefore for all
-\(a \in G\) we have \(g a g^{-1} = a\), which implies in
-\(g a g^{-1} = a g g^{-1} = a g^{-1} g = g g^{-1} a = g^{-1} g a\) --- that is,
-the group \(G\) is abelian.
+    Let \(G\) be an abelian group, then for all \(g \in G\) the corresponding inner
+    automorphism \(\gamma_g\) maps
+    \(a \xmapsto{\gamma_g} g a g^{-1} = a (g g^{-1}) = a\) hence
+    \(\gamma_g = \Id_G\), thus \(\phi\) is indeed trivial. Let \(\phi\) be trivial,
+    then for all \(g \in G\) the map \(\gamma_g = \Id_G\) and therefore for all
+    \(a \in G\) we have \(g a g^{-1} = a\), which implies in
+    \(g a g^{-1} = a g g^{-1} = a g^{-1} g = g g^{-1} a = g^{-1} g a\) --- that is,
+    the group \(G\) is abelian.
 \end{proof}
 
 Now that we know some ways of identifying abelian groups, we dive deep again
 into the categorical foundations of the category of abelian groups \(\Ab\).
 
 \begin{proposition}[\(\Hom_\Ab\) abelian group]\label{prop: hom-ab-grp}
-Let \(G, H \in \Ab\) be any two commutative groups. The collection of
-morphisms \(\Hom_\Ab(G, H)\) forms an abelian group with a binary operation
-defined by \((\phi + \psi)(g) = \phi(g) +_H \psi(g)\) --- where \(+_H\) is the
-binary operation of \(H\).
+    Let \(G, H \in \Ab\) be any two commutative groups. The collection of
+    morphisms \(\Hom_\Ab(G, H)\) forms an abelian group with a binary operation
+    defined by \((\phi + \psi)(g) = \phi(g) +_H \psi(g)\) --- where \(+_H\) is the
+    binary operation of \(H\).
 \end{proposition}
 
 \begin{proof}
-Let \(\phi, \psi \in \Hom_\Ab(G, H)\) be any morphisms and consider elements
-\(g, g' \in G\). From the commutativity of \(H\) it follows that
-\begin{align*}
-  (\phi + \psi)(g +_G g')
-  &= \phi(g +_G g') +_H \psi(g +_G g')
-  \\
-  &= \left(\phi(g) +_H \phi(g')\right) +_H \left(\psi(g) +_H \psi(g')\right)
-  \\
-  &= \left(\phi(g) +_H \psi(g)\right) +_H \left(\phi(g') +_H \psi(g')\right)
-  \\
-  &= (\phi + \psi)(g) +_H (\phi + \psi)(g').
-\end{align*}
-That is, \(\phi + \psi \in \Hom_\Ab(G, H)\). Moreover, given a morphism
-\(f \in \Hom_\Ab(G, H)\), define the map \(k: G \to H\) mapping
-\(k(g) = f(g)^{-1}\). Notice that \(k\) is a morphism:
-\begin{align*}
-  k(g +_G g')
-  &= f(g +_G g')^{-1} \\
-  &= (f(g) +_H f(g'))^{-1} \\
-  &= f(g')^{-1} +_H f(g)^{-1} \\
-  &= f(g)^{-1} +_H f(g')^{-1} \\
-  &= k(g) +_H k(g').
-\end{align*}
-Moreover, \((f + k)(g) = f(g) +_H k(g) = f(g) +_H f(g)^{-1} = e_H\) --- that
-is, \(f + k\) is the trivial morphism \(g \mapsto e_H\), i.e. \(k\) is the
-inverse of \(f\). This finishes the proof that \(\Hom_\Ab(G, H)\) is a group.
-For the commutativity, it follows directly from the commutativity of \(H\):
-for all \(\phi, \psi \in \Hom_\Ab(G, H)\) we have
-\[
-  (\phi + \psi)(g) = \phi(g) +_H \psi(g) = \psi(g) +_H \phi(g) = (\psi +
-  \phi)(g).
-\]
+    Let \(\phi, \psi \in \Hom_\Ab(G, H)\) be any morphisms and consider elements
+    \(g, g' \in G\). From the commutativity of \(H\) it follows that
+    \begin{align*}
+        (\phi + \psi)(g +_G g')
+         & = \phi(g +_G g') +_H \psi(g +_G g')
+        \\
+         & = \left(\phi(g) +_H \phi(g')\right) +_H \left(\psi(g) +_H \psi(g')\right)
+        \\
+         & = \left(\phi(g) +_H \psi(g)\right) +_H \left(\phi(g') +_H \psi(g')\right)
+        \\
+         & = (\phi + \psi)(g) +_H (\phi + \psi)(g').
+    \end{align*}
+    That is, \(\phi + \psi \in \Hom_\Ab(G, H)\). Moreover, given a morphism
+    \(f \in \Hom_\Ab(G, H)\), define the map \(k: G \to H\) mapping
+    \(k(g) = f(g)^{-1}\). Notice that \(k\) is a morphism:
+    \begin{align*}
+        k(g +_G g')
+         & = f(g +_G g')^{-1}         \\
+         & = (f(g) +_H f(g'))^{-1}    \\
+         & = f(g')^{-1} +_H f(g)^{-1} \\
+         & = f(g)^{-1} +_H f(g')^{-1} \\
+         & = k(g) +_H k(g').
+    \end{align*}
+    Moreover, \((f + k)(g) = f(g) +_H k(g) = f(g) +_H f(g)^{-1} = e_H\) --- that
+    is, \(f + k\) is the trivial morphism \(g \mapsto e_H\), i.e. \(k\) is the
+    inverse of \(f\). This finishes the proof that \(\Hom_\Ab(G, H)\) is a group.
+    For the commutativity, it follows directly from the commutativity of \(H\):
+    for all \(\phi, \psi \in \Hom_\Ab(G, H)\) we have
+    \[
+        (\phi + \psi)(g) = \phi(g) +_H \psi(g) = \psi(g) +_H \phi(g) = (\psi +
+        \phi)(g).
+    \]
 \end{proof}
 
 The following corollaries follow immediately from the construction of the
 category.
 
 \begin{corollary}
-Let \(G \in \Grp\) and \(H \in \Ab\). The collection of morphisms
-\(\Hom_\Grp(G, H)\) forms a group under the binary operation defined above.
+    Let \(G \in \Grp\) and \(H \in \Ab\). The collection of morphisms
+    \(\Hom_\Grp(G, H)\) forms a group under the binary operation defined above.
 \end{corollary}
 
 \begin{corollary}
-Let \(A \in \Set\) and \(H \in \Ab\). The collection of morphisms
-\(\Hom_\Set(A, FH)\) forms a group under the binary operation defined above
---- where \(F: \Grp \to \Set\) is a forgetful functor.
+    Let \(A \in \Set\) and \(H \in \Ab\). The collection of morphisms
+    \(\Hom_\Set(A, FH)\) forms a group under the binary operation defined above
+    --- where \(F: \Grp \to \Set\) is a forgetful functor.
 \end{corollary}
 
 \begin{proposition}[Cokernel in \(\Ab\)]
-\label{prop:Ab-has-cokernel}
-The category of abelian groups has cokernels.
+    \label{prop:Ab-has-cokernel}
+    The category of abelian groups has cokernels.
 \end{proposition}
 
 \begin{proof}
-Let \(\phi: G \to H\) be a morphism of abelian groups and \(Q\) be any other
-abelian group and \(\alpha: G \to Q\) be any morphism for which
-\(\alpha \phi = 0\) --- the trivial morphism. Since \(G\) is abelian, it follows
-that any subgroup of \(G\) is normal --- in particular, \(\im \phi\) is normal
-in \(G\) and from \cref{cor:universal-property-quotients-grp} we see that
-\[
-\begin{tikzcd}
-H \ar[r, "\phi"] \ar[rr, bend left, "0"]
-&G \ar[r, "\alpha"] \ar[d, two heads, "\pi"]
-&Q \\
-&G/{\im \phi} \ar[ru, bend right, dashed]
-\end{tikzcd}
-\]
-thus we conclude that
-\[
-G/{\im \phi} \iso \coker \phi.
-\]
+    Let \(\phi: G \to H\) be a morphism of abelian groups and \(Q\) be any other
+    abelian group and \(\alpha: G \to Q\) be any morphism for which
+    \(\alpha \phi = 0\) --- the trivial morphism. Since \(G\) is abelian, it follows
+    that any subgroup of \(G\) is normal --- in particular, \(\im \phi\) is normal
+    in \(G\) and from \cref{cor:universal-property-quotients-grp} we see that
+    \[
+        \begin{tikzcd}
+            H \ar[r, "\phi"] \ar[rr, bend left, "0"]
+            &G \ar[r, "\alpha"] \ar[d, two heads, "\pi"]
+            &Q \\
+            &G/{\im \phi} \ar[ru, bend right, dashed]
+        \end{tikzcd}
+    \]
+    thus we conclude that
+    \[
+        G/{\im \phi} \iso \coker \phi.
+    \]
 \end{proof}
 
 A much more trivial proof of \cref{prop:epic-in-grp} can be achieved easily in
@@ -147,300 +147,300 @@ for expository purposes we shall not use our results concerning the equivalence
 of epimorphisms and surjection in the category of groups, as we proved above.
 
 \begin{proposition}
-\label{prop:epic-in-Ab}
-Let \(\phi: G \to H\) be a morphism of \emph{abelian groups}. The following
-propositions are equivalent in \(\Ab\):
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item The morphism \(\phi\) is an \emph{epimorphism}.
+    \label{prop:epic-in-Ab}
+    Let \(\phi: G \to H\) be a morphism of \emph{abelian groups}. The following
+    propositions are equivalent in \(\Ab\):
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item The morphism \(\phi\) is an \emph{epimorphism}.
 
-\item The \(\coker \phi\) is \emph{trivial}.
+        \item The \(\coker \phi\) is \emph{trivial}.
 
-\item The set-function \(\phi\) is \emph{surjective}.
-\end{enumerate}
+        \item The set-function \(\phi\) is \emph{surjective}.
+    \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-\begin{itemize}\setlength\itemsep{0em}
-\item (a) \(\implies\) (b): Let \(\phi\) be an epimorphism and consider both the
-  canonical projection and the trivial morphism
-  \(\pi, 0: G \rightrightarrows \coker \phi\). Notice that, from the definition
-  of the cokernel, both maps are trivial when composed with \(\phi\), that is,
-  \(\pi \phi = 0 \phi\) --- but since \(\phi\) is an epimorphism, then
-  \(\pi = 0\) and such a thing can only occur when \(\coker \phi\) itself is
-  trivial.
+    \begin{itemize}\setlength\itemsep{0em}
+        \item (a) \(\implies\) (b): Let \(\phi\) be an epimorphism and consider both the
+              canonical projection and the trivial morphism
+              \(\pi, 0: G \rightrightarrows \coker \phi\). Notice that, from the definition
+              of the cokernel, both maps are trivial when composed with \(\phi\), that is,
+              \(\pi \phi = 0 \phi\) --- but since \(\phi\) is an epimorphism, then
+              \(\pi = 0\) and such a thing can only occur when \(\coker \phi\) itself is
+              trivial.
 
-\item (b) \(\implies\) (c): Let \(\coker \phi\) be trivial, that is,
-  \(G/{\im \phi} = \im \phi\), which implies that \(G = \im \phi\) and hence
-  \(\phi\) is surjective.
+        \item (b) \(\implies\) (c): Let \(\coker \phi\) be trivial, that is,
+              \(G/{\im \phi} = \im \phi\), which implies that \(G = \im \phi\) and hence
+              \(\phi\) is surjective.
 
-\item (c) \(\implies\) (a): If \(\phi\) is surjective, then since \(\Ab\) is a
-  concrete category, \(\phi\) is an epimorphism.
-\end{itemize}
+        \item (c) \(\implies\) (a): If \(\phi\) is surjective, then since \(\Ab\) is a
+              concrete category, \(\phi\) is an epimorphism.
+    \end{itemize}
 \end{proof}
 
 \begin{proposition}[Coequalizers in \(\Ab\)]
-\label{prop:coequalizer-Ab}
-The category of abelian groups have coequalizers. Moreover, given group
-morphisms \(f, g: A \para B\) between abelian groups, we have
-\[
-\Coeq(f, g) = B/\im(f - g).
-\]
+    \label{prop:coequalizer-Ab}
+    The category of abelian groups have coequalizers. Moreover, given group
+    morphisms \(f, g: A \para B\) between abelian groups, we have
+    \[
+        \Coeq(f, g) = B/\im(f - g).
+    \]
 \end{proposition}
 
 \begin{proof}
-Given any abelian group \(G\) and a map \(m: B \to G\) such that \(m f = m g\),
-we have that, for all \(a \in A\),
-\[
-m((f - g)(a)) = m(f(a) - g(a)) = m f(a) - m g(a) = 0
-\]
-therefore \(\im(f - g) \subseteq \ker m\). Thus using the universal property
-\cref{cor:universal-property-quotients-grp} we obtain a unique morphism \(n:
-B/\im(f - g) \to G\) such that the following diagram commutes
-\[
-\begin{tikzcd}
-B/\im(f - g) \ar[d, dashed, "n"']
-&B \ar[l, two heads, "\pi"] \ar[ld, bend left, "m"]
-&A \ar[l, shift right, "f"'] \ar[l, shift left, "g"] \\
-G & &
-\end{tikzcd}
-\]
-Therefore \(B/\im(f - g) = \Coeq(f, g)\).
+    Given any abelian group \(G\) and a map \(m: B \to G\) such that \(m f = m g\),
+    we have that, for all \(a \in A\),
+    \[
+        m((f - g)(a)) = m(f(a) - g(a)) = m f(a) - m g(a) = 0
+    \]
+    therefore \(\im(f - g) \subseteq \ker m\). Thus using the universal property
+    \cref{cor:universal-property-quotients-grp} we obtain a unique morphism \(n:
+    B/\im(f - g) \to G\) such that the following diagram commutes
+    \[
+        \begin{tikzcd}
+            B/\im(f - g) \ar[d, dashed, "n"']
+            &B \ar[l, two heads, "\pi"] \ar[ld, bend left, "m"]
+            &A \ar[l, shift right, "f"'] \ar[l, shift left, "g"] \\
+            G & &
+        \end{tikzcd}
+    \]
+    Therefore \(B/\im(f - g) = \Coeq(f, g)\).
 \end{proof}
 
 \subsection{Coproduct and Fiber Product}
 
 \begin{proposition}[Coproduct in \(\Ab\)]\label{prop: coprod-ab}
-The direct product of abelian groups is a coproduct in \(\Ab\). That is, for any
-\(G, H, W \in \Ab\) and morphisms \(f \in \Hom_\Ab(W, G)\) and
-\(k \in \Hom_\Ab(W, H)\), there exists a unique morphism
-\(\varphi \in \Hom_\Ab(W, G \times H)\) such that the following diagram commutes
-\[
-  \begin{tikzcd}
-    G \ar[dr, "\iota_G"] \ar[ddr, bend right, swap, "f"] &
-    &H \ar[dl, swap, "\iota_H"] \ar[ddl, bend left, "k"] \\
-    &G \times H \ar[d, dashed, "\varphi"]  & \\
-    &W &
-  \end{tikzcd}
-\]
-Where we define inclusion morphisms \(g \xmapsto{\iota_G} (g, e_H)\) and \(h
-\xmapsto{\iota_H} (e_G, h)\).
+    The direct product of abelian groups is a coproduct in \(\Ab\). That is, for any
+    \(G, H, W \in \Ab\) and morphisms \(f \in \Hom_\Ab(W, G)\) and
+    \(k \in \Hom_\Ab(W, H)\), there exists a unique morphism
+    \(\varphi \in \Hom_\Ab(W, G \times H)\) such that the following diagram commutes
+    \[
+        \begin{tikzcd}
+            G \ar[dr, "\iota_G"] \ar[ddr, bend right, swap, "f"] &
+            &H \ar[dl, swap, "\iota_H"] \ar[ddl, bend left, "k"] \\
+            &G \times H \ar[d, dashed, "\varphi"]  & \\
+            &W &
+        \end{tikzcd}
+    \]
+    Where we define inclusion morphisms \(g \xmapsto{\iota_G} (g, e_H)\) and \(h
+    \xmapsto{\iota_H} (e_G, h)\).
 \end{proposition}
 
 \begin{proof}
-Since \(\Ab \subset \Grp\) --- that is, the category of abelian groups is a
-subcategory of \(\Grp\) --- then, from \cref{prop: forgetful-func-grp-set}
-there exists a functor \(\Ab \to \Set\). Since coproducts exists in \(\Set\)
-and are unique, a set-function \(\varphi\) exists and is unique, commuting the
-diagram in \(\Set\). We now show that we can extend such set-function into a
-morphism of groups. Let \(\varphi: G \times H \to W\) be the mapping \((g, h)
-\xmapsto \varphi f(g) k(h)\). Notice that
-\begin{align*}
-  \varphi((g, h)(g', h'))
-  = \varphi(gg', hh')
-  = f(g g') k(hh')
-  = f(g) f(g') k(h) k(h')
-  &= f(g) k(h) f(g') k(h') \\
-  &= \varphi(g, h) \varphi(g', h')
-\end{align*}
-that is, \(\varphi\) is a morphism of groups.
+    Since \(\Ab \subset \Grp\) --- that is, the category of abelian groups is a
+    subcategory of \(\Grp\) --- then, from \cref{prop: forgetful-func-grp-set}
+    there exists a functor \(\Ab \to \Set\). Since coproducts exists in \(\Set\)
+    and are unique, a set-function \(\varphi\) exists and is unique, commuting the
+    diagram in \(\Set\). We now show that we can extend such set-function into a
+    morphism of groups. Let \(\varphi: G \times H \to W\) be the mapping \((g, h)
+    \xmapsto \varphi f(g) k(h)\). Notice that
+    \begin{align*}
+        \varphi((g, h)(g', h'))
+        = \varphi(gg', hh')
+        = f(g g') k(hh')
+        = f(g) f(g') k(h) k(h')
+         & = f(g) k(h) f(g') k(h')         \\
+         & = \varphi(g, h) \varphi(g', h')
+    \end{align*}
+    that is, \(\varphi\) is a morphism of groups.
 \end{proof}
 
 \begin{remark}[Coproducts in \(\Grp\)]\label{rem:coprod-grp}
-\cref{prop: coprod-ab} is not at all true for the category of groups. Consider
-for instance the cyclic groups \(C_2 = \{e_x, x\}\) and
-\(C_3 = \{e_y, y, y^2\}\). Let \(\sigma_k \in S_3\), for \(0 \leq k \leq 2\) be
-the rotation of \(\{1, 2, 3\}\) by \(k\), that is, the permutations represented
-by
-\[
-  M_{\sigma_0} =
-  \begin{bmatrix}
-    1 &0 &0 \\ 0 &1 &0 \\ 0 &0 &1
-  \end{bmatrix}
-  \qquad
-  M_{\sigma_1} =
-  \begin{bmatrix}
-    0 &0 &1 \\ 1 &0 &0 \\ 0 &1 &0
-  \end{bmatrix}
-  \qquad
-  M_{\sigma_2} =
-  \begin{bmatrix}
-    0 &1 &0 \\ 0 &0 &1 \\ 1 &0 &0
-  \end{bmatrix}
-\]
-Consider the embeddings \(f: C_2 \mono S_3\) mapping \(x^k \xmapsto f \sigma_k\)
-for \(k \in \{0, 1\}\), and \(g: C_3 \mono S_3\) mapping
-\(y^k \xmapsto g \sigma_k\) for \(k \in \{0, 1, 2\}\).
+    \cref{prop: coprod-ab} is not at all true for the category of groups. Consider
+    for instance the cyclic groups \(C_2 = \{e_x, x\}\) and
+    \(C_3 = \{e_y, y, y^2\}\). Let \(\sigma_k \in S_3\), for \(0 \leq k \leq 2\) be
+    the rotation of \(\{1, 2, 3\}\) by \(k\), that is, the permutations represented
+    by
+    \[
+        M_{\sigma_0} =
+        \begin{bmatrix}
+            1 & 0 & 0 \\ 0 &1 &0 \\ 0 &0 &1
+        \end{bmatrix}
+        \qquad
+        M_{\sigma_1} =
+        \begin{bmatrix}
+            0 & 0 & 1 \\ 1 &0 &0 \\ 0 &1 &0
+        \end{bmatrix}
+        \qquad
+        M_{\sigma_2} =
+        \begin{bmatrix}
+            0 & 1 & 0 \\ 0 &0 &1 \\ 1 &0 &0
+        \end{bmatrix}
+    \]
+    Consider the embeddings \(f: C_2 \mono S_3\) mapping \(x^k \xmapsto f \sigma_k\)
+    for \(k \in \{0, 1\}\), and \(g: C_3 \mono S_3\) mapping
+    \(y^k \xmapsto g \sigma_k\) for \(k \in \{0, 1, 2\}\).
 
-Suppose, for the sake of contradiction, that \(C_2 \times C_3\) is a coproduct
-in \(\Grp\), that is, exists a unique morphism
-\(\varphi: C_2 \times C_3 \to S_3\) such that \(f = \varphi \iota_{C_2}\) and
-\(g = \varphi \iota_{C_3}\).  Since \(\varphi\) is supposedly a morphism of
-groups,
-\begin{gather*}
-  \varphi(x, y) = \varphi(x, e_y) \varphi(e_x, y) = \sigma_1 \sigma_1 =
-  \sigma_2 \\
-  \varphi(x, y^2) = \varphi(x, e_y) \varphi(e_x, y^2) = \sigma_1 \sigma_2
-  = \sigma_0
-\end{gather*}
-However, \(\varphi(e_x, e_y) = \sigma_0\) and on the other hand we have
-\(\varphi(x, y) \varphi(x, y^2) = \sigma_2\), which contradicts the properties
-of a group morphism. This shows that there exists no such \(\varphi\) in
-\(\Grp\) and hence \(C_2 \times C_3\) is not a coproduct in \(\Grp\).
+    Suppose, for the sake of contradiction, that \(C_2 \times C_3\) is a coproduct
+    in \(\Grp\), that is, exists a unique morphism
+    \(\varphi: C_2 \times C_3 \to S_3\) such that \(f = \varphi \iota_{C_2}\) and
+    \(g = \varphi \iota_{C_3}\).  Since \(\varphi\) is supposedly a morphism of
+    groups,
+    \begin{gather*}
+        \varphi(x, y) = \varphi(x, e_y) \varphi(e_x, y) = \sigma_1 \sigma_1 =
+        \sigma_2 \\
+        \varphi(x, y^2) = \varphi(x, e_y) \varphi(e_x, y^2) = \sigma_1 \sigma_2
+        = \sigma_0
+    \end{gather*}
+    However, \(\varphi(e_x, e_y) = \sigma_0\) and on the other hand we have
+    \(\varphi(x, y) \varphi(x, y^2) = \sigma_2\), which contradicts the properties
+    of a group morphism. This shows that there exists no such \(\varphi\) in
+    \(\Grp\) and hence \(C_2 \times C_3\) is not a coproduct in \(\Grp\).
 
-Although \(C_2 \times C_3\) is not a coproduct in \(\Grp\), that doesn't mean
-that \(\Grp\) has no coproducts, they just behave differently when compared with
-\(\Ab\). For instance, let \(C_2 * C_3 \in \Grp\) be defined to be the group
-generated by elements \(x\) and \(y\), such that \(x^2 = e\) and \(y^3 =
-e\). We'll now show that \(C_2 * C_3\) is a coproduct of \(C_2\) and \(C_3\) in
-\(\Grp\). Let \(G\) be any group and consider morphisms \(f: C_2 \to G\) and
-\(k: C_3 \to G\). The inclusions \(\iota_{C_2}: C_2 \to C_2 * C_3\) and
-\(\iota_{C_3}: C_3 \to C_2 * C_3\) will be naturally given maps by taking each
-element to itself.
+    Although \(C_2 \times C_3\) is not a coproduct in \(\Grp\), that doesn't mean
+    that \(\Grp\) has no coproducts, they just behave differently when compared with
+    \(\Ab\). For instance, let \(C_2 * C_3 \in \Grp\) be defined to be the group
+    generated by elements \(x\) and \(y\), such that \(x^2 = e\) and \(y^3 =
+    e\). We'll now show that \(C_2 * C_3\) is a coproduct of \(C_2\) and \(C_3\) in
+    \(\Grp\). Let \(G\) be any group and consider morphisms \(f: C_2 \to G\) and
+    \(k: C_3 \to G\). The inclusions \(\iota_{C_2}: C_2 \to C_2 * C_3\) and
+    \(\iota_{C_3}: C_3 \to C_2 * C_3\) will be naturally given maps by taking each
+    element to itself.
 
-Let \(q \in C_2 * C_3\) be any element. We know that there exists a finite
-collection of coefficients \(I = \{(a, b) \in \Z^2\}\) such that
-\(q = \prod_{(a, b) \in I} x^a y^b\). Define \(\phi: C_2 * C_3 \to G\) as the
-mapping
-\[
-  \phi(q) = \phi\left(\prod_{(a, b) \in I} x^a y^b\right)
-  = \prod_{(a, b) \in I} f(x^a) k(y^b)
-  = \prod_{(a, b) \in I} f(x)^a k(y)^b
-\]
-It should be clear that this definition implies \(\phi \iota_{C_2} = f\) and
-\(\phi \iota_{C_3} = g\). Notice that \(\phi(e) = f(e) k(e) = e_G\) and for all
-\(q, p \in C_2 * C_3\) --- with respective coefficients
-\(I = \{(a, b) \in \Z^2\}\) and \(J = \{(c,d) \in \Z^2\}\) --- we have
-\begin{align*}
-  \phi(q) \phi(p)
-  = \phi\left[ \prod_{(a, b) \in I} x^a y^b \right]
-  \phi\left[ \prod_{(c, d) \in J} x^c y^d \right]
-  &= \prod_{(a, b) \in I} f(x^a) k(y^b)
-  \prod_{(c, d) \in J} f(x^c) k(y^d)
-  \\
-  &= \prod_{(\alpha, \beta) \in A} f(x^\alpha) g(y^\beta)
-  \\
-  &= \phi\left(\prod_{(\alpha, \beta) \in A} f(x^\alpha) g(y^\beta) \right)
-  \\
-  &= \phi\left(\prod_{(a, b) \in I} x^a y^b
-    \prod_{(c, d) \in J} x^c y^d\right)
-  = \phi(qp)
-\end{align*}
-that is, \(\phi\) is a morphism of groups --- where we define \(A\) as the
-concatenation of the coefficients \(I\) and \(J\). We have shown that the
-following diagram commutes
-\[
-  \begin{tikzcd}
-    C_2 \ar[dr, "\iota_{C_2}"] \ar[ddr, swap, bend right, "f"]
-    & &C_3 \ar[dl, swap, "\iota_{C_3}"] \ar[ddl, bend left, "g"] \\
-    &C_2 * C_3 \ar[d, dashed, "\phi"] & \\
-    &G &
-  \end{tikzcd}
-\]
-We can then conclude that \(C_2 * C_3\), as defined above, is the coproduct of
-\(C_2\) and \(C_3\) in \(\Grp\).
+    Let \(q \in C_2 * C_3\) be any element. We know that there exists a finite
+    collection of coefficients \(I = \{(a, b) \in \Z^2\}\) such that
+    \(q = \prod_{(a, b) \in I} x^a y^b\). Define \(\phi: C_2 * C_3 \to G\) as the
+    mapping
+    \[
+        \phi(q) = \phi\left(\prod_{(a, b) \in I} x^a y^b\right)
+        = \prod_{(a, b) \in I} f(x^a) k(y^b)
+        = \prod_{(a, b) \in I} f(x)^a k(y)^b
+    \]
+    It should be clear that this definition implies \(\phi \iota_{C_2} = f\) and
+    \(\phi \iota_{C_3} = g\). Notice that \(\phi(e) = f(e) k(e) = e_G\) and for all
+    \(q, p \in C_2 * C_3\) --- with respective coefficients
+    \(I = \{(a, b) \in \Z^2\}\) and \(J = \{(c,d) \in \Z^2\}\) --- we have
+    \begin{align*}
+        \phi(q) \phi(p)
+        = \phi\left[ \prod_{(a, b) \in I} x^a y^b \right]
+        \phi\left[ \prod_{(c, d) \in J} x^c y^d \right]
+         & = \prod_{(a, b) \in I} f(x^a) k(y^b)
+        \prod_{(c, d) \in J} f(x^c) k(y^d)
+        \\
+         & = \prod_{(\alpha, \beta) \in A} f(x^\alpha) g(y^\beta)
+        \\
+         & = \phi\left(\prod_{(\alpha, \beta) \in A} f(x^\alpha) g(y^\beta) \right)
+        \\
+         & = \phi\left(\prod_{(a, b) \in I} x^a y^b
+        \prod_{(c, d) \in J} x^c y^d\right)
+        = \phi(qp)
+    \end{align*}
+    that is, \(\phi\) is a morphism of groups --- where we define \(A\) as the
+    concatenation of the coefficients \(I\) and \(J\). We have shown that the
+    following diagram commutes
+    \[
+        \begin{tikzcd}
+            C_2 \ar[dr, "\iota_{C_2}"] \ar[ddr, swap, bend right, "f"]
+            & &C_3 \ar[dl, swap, "\iota_{C_3}"] \ar[ddl, bend left, "g"] \\
+            &C_2 * C_3 \ar[d, dashed, "\phi"] & \\
+            &G &
+        \end{tikzcd}
+    \]
+    We can then conclude that \(C_2 * C_3\), as defined above, is the coproduct of
+    \(C_2\) and \(C_3\) in \(\Grp\).
 \end{remark}
 
 \begin{proposition}[Fiber products]
-Fiber products exist in \(\Ab\). That is, given abelian groups
-\(G, H, W \in \Ab\) and group morphisms \(\phi \in \Hom_\Ab(G, W)\) and
-\(\psi \in \Hom_\Ab(H, W)\). Let
-\[
-  G \times_W H \in \Ab_W
-\]
-be the fiber product of \(\phi\) and \(\psi\) in the category
-\(\Ab_W \subseteq \Ab\)\footnote{As a reminder: \(\Ab_W\) is the category whose
-  objects are morphisms \(f \in \Hom_\Ab(-, W)\). If \(f: G \to W\) and
-  \(g: H \to W\) are objects of \(\Ab_W\), a morphism
-  \(h \in \Hom_{\Ab_W}(f, g)\) is such that \(hg = f\).}
-for which exists natural projections \(\pi_G\) and \(\pi_H\). Let \(Q \in \Ab\)
-be any abelian group and consider any morphisms \(f \in \Hom_\Ab(Q, G)\) and
-\(k \in \Hom_\Ab(Q, H)\). Then there exists a unique morphism
-\(\varphi \in \Hom_\Ab(Q, P)\) such that the following diagram commutes
-\[
-  \begin{tikzcd}
-    Q \ar[dr, dashed, "\varphi"] \ar[ddr, bend right, swap, "f"]
-    \ar[drr, bend left, "k"]
-    & & \\
-    &G \times_W H \ar[r, "\pi_H"] \ar[d, swap, "\pi_G"] &H \ar[d, "\psi"] \\
-    &G \ar[r, swap, "\phi"] &W
-  \end{tikzcd}
-\]
+    Fiber products exist in \(\Ab\). That is, given abelian groups
+    \(G, H, W \in \Ab\) and group morphisms \(\phi \in \Hom_\Ab(G, W)\) and
+    \(\psi \in \Hom_\Ab(H, W)\). Let
+    \[
+        G \times_W H \in \Ab_W
+    \]
+    be the fiber product of \(\phi\) and \(\psi\) in the category
+    \(\Ab_W \subseteq \Ab\)\footnote{As a reminder: \(\Ab_W\) is the category whose
+        objects are morphisms \(f \in \Hom_\Ab(-, W)\). If \(f: G \to W\) and
+        \(g: H \to W\) are objects of \(\Ab_W\), a morphism
+        \(h \in \Hom_{\Ab_W}(f, g)\) is such that \(hg = f\).}
+    for which exists natural projections \(\pi_G\) and \(\pi_H\). Let \(Q \in \Ab\)
+    be any abelian group and consider any morphisms \(f \in \Hom_\Ab(Q, G)\) and
+    \(k \in \Hom_\Ab(Q, H)\). Then there exists a unique morphism
+    \(\varphi \in \Hom_\Ab(Q, P)\) such that the following diagram commutes
+    \[
+        \begin{tikzcd}
+            Q \ar[dr, dashed, "\varphi"] \ar[ddr, bend right, swap, "f"]
+            \ar[drr, bend left, "k"]
+            & & \\
+            &G \times_W H \ar[r, "\pi_H"] \ar[d, swap, "\pi_G"] &H \ar[d, "\psi"] \\
+            &G \ar[r, swap, "\phi"] &W
+        \end{tikzcd}
+    \]
 \end{proposition}
 
 \begin{proof}
-Define \(G \times_W H = \{(g, h) \in G \times H \colon \phi(g) =
-\psi(h)\}\). Since \(\phi\) and \(\psi\) are group morphisms, given
-\((g, h) \in G \times_W H\), we have
-\[
-  \phi(g^{-1}) = \phi(g)^{-1} = \psi(h)^{-1} = \psi(h^{-1}),
-\]
-that is, \((g^{-1}, h^{-1}) \in G \times_W H\) exists and is the inverse of
-\((g, h)\). Moreover, given any elements \((g, h), (g', h') \in G \times_W H\),
-the product \((g, h)(g', h') = (gg', hh')\) is such that
-\[
-  \phi(gg') = \phi(g) \phi(g') = \psi(h) \psi(h') = \psi(hh'),
-\]
-thus \((gg', hh') \in G \times_W H\). This shows that \(G \times_W H\) is
-indeed a group and since \(G \times H\) is abelian, so is the fiber product
-defined above.
+    Define \(G \times_W H = \{(g, h) \in G \times H \colon \phi(g) =
+    \psi(h)\}\). Since \(\phi\) and \(\psi\) are group morphisms, given
+    \((g, h) \in G \times_W H\), we have
+    \[
+        \phi(g^{-1}) = \phi(g)^{-1} = \psi(h)^{-1} = \psi(h^{-1}),
+    \]
+    that is, \((g^{-1}, h^{-1}) \in G \times_W H\) exists and is the inverse of
+    \((g, h)\). Moreover, given any elements \((g, h), (g', h') \in G \times_W H\),
+    the product \((g, h)(g', h') = (gg', hh')\) is such that
+    \[
+        \phi(gg') = \phi(g) \phi(g') = \psi(h) \psi(h') = \psi(hh'),
+    \]
+    thus \((gg', hh') \in G \times_W H\). This shows that \(G \times_W H\) is
+    indeed a group and since \(G \times H\) is abelian, so is the fiber product
+    defined above.
 
-From the forgetful functor \(\Ab \to \Set\) we know that there exists a unique
-set-function \(\varphi\) such that the diagram commutes in \(\Set\). If we
-define \(\varphi\) as the mapping \(q \overset \varphi \longmapsto (f(q),
-k(q))\) we can see that it preserves the group structure, since
-\begin{align*}
-  \varphi(qq')
-  &= (f(qq'), k(qq')) \\
-  &= (f(q)f(q'), k(q)k(q')) \\
-  &= (f(q), k(q))(f(q'), k(q')) \\
-  &= \varphi(q) \varphi(q'),
-\end{align*}
-that is, \(\varphi \in \Mor(\Ab)\).
+    From the forgetful functor \(\Ab \to \Set\) we know that there exists a unique
+    set-function \(\varphi\) such that the diagram commutes in \(\Set\). If we
+    define \(\varphi\) as the mapping \(q \overset \varphi \longmapsto (f(q),
+    k(q))\) we can see that it preserves the group structure, since
+    \begin{align*}
+        \varphi(qq')
+         & = (f(qq'), k(qq'))           \\
+         & = (f(q)f(q'), k(q)k(q'))     \\
+         & = (f(q), k(q))(f(q'), k(q')) \\
+         & = \varphi(q) \varphi(q'),
+    \end{align*}
+    that is, \(\varphi \in \Mor(\Ab)\).
 \end{proof}
 
 \subsection{Direct Sums and Free Groups}
 
 \begin{definition}[Direct sum of abelian groups]
-\label{def:Ab-direct-sum}
-Let \(\{G_j\}_{j \in J}\) be an indexed collection of abelian groups. We define
-their direct sum as the collection of tuples \((g_j)_{j \in J}\) such that
-\(g_j \neq e_{G_j}\) for only finitely many indexes \(j \in J\) --- that is, set
-of tuples with finite support. We denote the direct sum of
-\(\{G_{j}\}_{j \in J}\) as \(\bigoplus_{j \in J} G_j\) and the group structure
-of the direct sum is defined naturally as
-\((x_j)_{j \in J} + (y_j)_{j \in J} = (x_j +_{G_{j}} y_j)_{j \in J}\).
+    \label{def:Ab-direct-sum}
+    Let \(\{G_j\}_{j \in J}\) be an indexed collection of abelian groups. We define
+    their direct sum as the collection of tuples \((g_j)_{j \in J}\) such that
+    \(g_j \neq e_{G_j}\) for only finitely many indexes \(j \in J\) --- that is, set
+    of tuples with finite support. We denote the direct sum of
+    \(\{G_{j}\}_{j \in J}\) as \(\bigoplus_{j \in J} G_j\) and the group structure
+    of the direct sum is defined naturally as
+    \((x_j)_{j \in J} + (y_j)_{j \in J} = (x_j +_{G_{j}} y_j)_{j \in J}\).
 \end{definition}
 
 \begin{proposition}[Direct sum universal property]
-\label{prop:Ab-direct-sum-universal-property}
-The direct sum defined in \cref{def:Ab-direct-sum} satisfies the universal
-property of direct sums. In other words, let \(\{G_{j}\}_{j \in J}\) be a
-collection of abelian groups and \(H\) be any abelian group, in addition,
-consider the collection of morphisms \(\{\phi_j \in \Hom_{\Grp}(G_j,
-H)\}\). There exists a unique morphism \(\psi: \bigoplus_{j \in J} G_j \to H\)
-such that the following diagram commutes
-\[
-  \begin{tikzcd}
-    G_j \ar[rd, bend left, "\phi_j"] \ar[d, tail, "\iota"] &\\
-    \bigoplus_{j \in J} G_j \ar[r, dashed, "\psi"] &H
-  \end{tikzcd}
-\]
-for every \(j \in J\) --- where \(\iota_{j}: G_j \to \bigoplus_{j \in J} G_j\)
-is the natural inclusion, mapping
-\(x_{j_0} \xmapsto{\iota_{j}} (x_j)_{j \in J}\) such that \(x_j = x_{j_0}\) for
-\(j = j_0\) and \(x_j = e_{G_j}\) for \(j \neq j_0\).
+    \label{prop:Ab-direct-sum-universal-property}
+    The direct sum defined in \cref{def:Ab-direct-sum} satisfies the universal
+    property of direct sums. In other words, let \(\{G_{j}\}_{j \in J}\) be a
+    collection of abelian groups and \(H\) be any abelian group, in addition,
+    consider the collection of morphisms \(\{\phi_j \in \Hom_{\Grp}(G_j,
+    H)\}\). There exists a unique morphism \(\psi: \bigoplus_{j \in J} G_j \to H\)
+    such that the following diagram commutes
+    \[
+        \begin{tikzcd}
+            G_j \ar[rd, bend left, "\phi_j"] \ar[d, tail, "\iota"] &\\
+            \bigoplus_{j \in J} G_j \ar[r, dashed, "\psi"] &H
+        \end{tikzcd}
+    \]
+    for every \(j \in J\) --- where \(\iota_{j}: G_j \to \bigoplus_{j \in J} G_j\)
+    is the natural inclusion, mapping
+    \(x_{j_0} \xmapsto{\iota_{j}} (x_j)_{j \in J}\) such that \(x_j = x_{j_0}\) for
+    \(j = j_0\) and \(x_j = e_{G_j}\) for \(j \neq j_0\).
 \end{proposition}
 
 \begin{proof}
-Let \(\psi: \bigoplus_{j \in J} G_j \to H\) be the map defined by
-\(\psi(x) = \prod_{j \in J} \phi_{j}(x_j)\), where
-\(x = (x_j)_{j \in J} \in \bigoplus_{j \in J} G_j\) is any element. Notice that
-\(\psi(x)\) is therefore a finite product of elements of \(H\) and from the
-group structure of the direct sum, we find that \(\psi\) is clearly a group
-morphism. Moreover, \(\psi\) satisfies the commutativity
-\(\psi \iota_j = \phi_j\) for each \(j \in J\). Since such definition of
-\(\psi\) defines the image of every element of its domain, \(\psi\) is the
-unique morphism making the diagram commute.
+    Let \(\psi: \bigoplus_{j \in J} G_j \to H\) be the map defined by
+    \(\psi(x) = \prod_{j \in J} \phi_{j}(x_j)\), where
+    \(x = (x_j)_{j \in J} \in \bigoplus_{j \in J} G_j\) is any element. Notice that
+    \(\psi(x)\) is therefore a finite product of elements of \(H\) and from the
+    group structure of the direct sum, we find that \(\psi\) is clearly a group
+    morphism. Moreover, \(\psi\) satisfies the commutativity
+    \(\psi \iota_j = \phi_j\) for each \(j \in J\). Since such definition of
+    \(\psi\) defines the image of every element of its domain, \(\psi\) is the
+    unique morphism making the diagram commute.
 \end{proof}
 
 If \(G\) is an abelian group and \(A, B \subseteq G\) are subgroups such that
@@ -453,23 +453,23 @@ the ring \(\Z\). Moreover, if an abelian group has a basis, then we say that it
 is free.
 
 \begin{definition}[Basis]
-\label{def:Ab-basis}
-Let \(G\) be an abelian group. We say that a non-empty collection
-\(\{g_j\}_{j \in J}\) is a basis for \(G\) if, given an element \(g \in G\),
-there exists a unique tuple of coefficients
-\((a_j)_{j \in J} \in \bigoplus_{j \in J} \Z\) such that
-\(g = \sum_{j \in J} a_j g_j\).
+    \label{def:Ab-basis}
+    Let \(G\) be an abelian group. We say that a non-empty collection
+    \(\{g_j\}_{j \in J}\) is a basis for \(G\) if, given an element \(g \in G\),
+    there exists a unique tuple of coefficients
+    \((a_j)_{j \in J} \in \bigoplus_{j \in J} \Z\) such that
+    \(g = \sum_{j \in J} a_j g_j\).
 \end{definition}
 
 Therefore the existence of a basis allow us to couple the coefficients coming
 from \(\bigoplus_{j \in J} \Z\) to any element of \(G\) in a unique way, which
 induces a natural isomorphism
 \[
-  G \iso \bigoplus_{j \in J} \Z.
+    G \iso \bigoplus_{j \in J} \Z.
 \]
 
 \begin{definition}[Abelian free group]\label{def:Ab-free}
-An abelian group is said to be free if it allows a basis.
+    An abelian group is said to be free if it allows a basis.
 \end{definition}
 
 Equivalently as we did with free vector spaces, we can build free abelian groups
@@ -478,23 +478,23 @@ the collection of those will be likewise denoted by \(\Z^{\oplus S}\), which is
 a group under pointwise addition. For each \(s \in S\) we define a map
 \(\mathbf{s} \in \Z^{\oplus}\) by the mapping
 \[
-  \mathbf{s}(x) \coloneq
-  \begin{cases}
-    1, &\text{for } x = s \\
-    0, &\text{otherwise}
-  \end{cases}
+    \mathbf{s}(x) \coloneq
+    \begin{cases}
+        1, & \text{for } x = s \\
+        0, & \text{otherwise}
+    \end{cases}
 \]
 Then, any element \(\phi \in \Z^{\oplus S}\) can be written as a linear
 combination of finitely many maps \(\mathbf{s}\) (which is possible because of
 the finite support of \(\phi\)) that is, for some \(a_j \in \Z\) for each
 \(1 \leq j \leq n\), we have
 \[
-  \phi = \sum_{j=1}^n a_j \mathbf{s}_j,\ \text{ mapping }\
-  s \xmapsto \phi
-  \begin{cases}
-    a_j, &\text{ if } s = s_j \text{ for some } 1 \leq j \leq n \\
-    0, &\text{otherwise}
-  \end{cases}
+    \phi = \sum_{j=1}^n a_j \mathbf{s}_j,\ \text{ mapping }\
+    s \xmapsto \phi
+    \begin{cases}
+        a_j, & \text{ if } s = s_j \text{ for some } 1 \leq j \leq n \\
+        0,   & \text{otherwise}
+    \end{cases}
 \]
 Moreover, such choice of coefficients \(a_j \in \Z\) is unique. Let
 \(\{b_{j}\}_{j=1}^n \subseteq \Z\) be another set of coefficients with the same
@@ -504,72 +504,72 @@ also define a map \(\iota_S: S \mono \Z^{\oplus S}\) by pairing
 \(s \mapsto \mathbf{s}\).
 
 \begin{proposition}[Free \(\Ab\) universal property]
-\label{prop:free-abelian-group-universal-property}
-Let \(S\) be a set. Consider \(G\) to be any abelian group and a set-function
-\(g: S \to G\), then there exists a unique morphism of groups
-\(g_{*}: \Z^{\oplus S} \to G\) such that
-\[
-  \begin{tikzcd}
-    S \ar[d, hook, "\iota_S"] \ar[r, "g"] &G \\
-    \Z^{\oplus S} \ar[ru, bend right, dashed, "g_{*}"']  &
-  \end{tikzcd}
-\]
-is a commutative diagram.
+    \label{prop:free-abelian-group-universal-property}
+    Let \(S\) be a set. Consider \(G\) to be any abelian group and a set-function
+    \(g: S \to G\), then there exists a unique morphism of groups
+    \(g_{*}: \Z^{\oplus S} \to G\) such that
+    \[
+        \begin{tikzcd}
+            S \ar[d, hook, "\iota_S"] \ar[r, "g"] &G \\
+            \Z^{\oplus S} \ar[ru, bend right, dashed, "g_{*}"']  &
+        \end{tikzcd}
+    \]
+    is a commutative diagram.
 \end{proposition}
 
 \begin{proof}
-Define \(g_{*}\) by
-\(g_{*}(\sum_{s \in S} a_s \mathbf{s}) \coloneq \sum_{s \in S} a_s g(s)\). Then
-\(g_{*}\iota_S(s) = g_{*}(\mathbf{s}) = g(s)\). Moreover, it follows from the
-construction that
-\(g_{*}(\sum_{s \in S} a_s \mathbf{s}) = \sum_{s \in S} a_s g_{*}(\mathbf{s})\)
-thus \(g_{*}\) is a group morphism. If we let \(f: \Z^{\oplus S} \to G\) be a
-morphism satisfying such commutativity, we'll see that, since
-\(f_{*}(\mathbf{s}) = g(s) = g_{*}(\mathbf{s})\), since any element of
-\(\Z^{\oplus S}\) can be written uniquely as a linear combination of the basis
-\(\{\mathbf{s}\}_{s \in S}\), then \(f_{*}\) and \(g_{*}\) agree in every point
-of the domain --- hence \(f_{*} = g_{*}\).
+    Define \(g_{*}\) by
+    \(g_{*}(\sum_{s \in S} a_s \mathbf{s}) \coloneq \sum_{s \in S} a_s g(s)\). Then
+    \(g_{*}\iota_S(s) = g_{*}(\mathbf{s}) = g(s)\). Moreover, it follows from the
+    construction that
+    \(g_{*}(\sum_{s \in S} a_s \mathbf{s}) = \sum_{s \in S} a_s g_{*}(\mathbf{s})\)
+    thus \(g_{*}\) is a group morphism. If we let \(f: \Z^{\oplus S} \to G\) be a
+    morphism satisfying such commutativity, we'll see that, since
+    \(f_{*}(\mathbf{s}) = g(s) = g_{*}(\mathbf{s})\), since any element of
+    \(\Z^{\oplus S}\) can be written uniquely as a linear combination of the basis
+    \(\{\mathbf{s}\}_{s \in S}\), then \(f_{*}\) and \(g_{*}\) agree in every point
+    of the domain --- hence \(f_{*} = g_{*}\).
 \end{proof}
 
 \begin{corollary}
-Let \(f: X \to Y\) be a set-function between sets \(X\) and \(Y\). Then, there
-exists a unique morphism \(\overline{f}: \Z^{\oplus X} \to \Z^{\oplus Y}\) such
-that the following diagram commutes
-\[
-  \begin{tikzcd}
-    X \ar[d, "f"'] \ar[r, hook, "\iota_X"]
-    &\Z^{\oplus X} \ar[d, dashed, swap, "\overline f"] \\
-    Y \ar[r, hook, "\iota_Y"] &\Z^{\oplus Y}
-  \end{tikzcd}
-\]
+    Let \(f: X \to Y\) be a set-function between sets \(X\) and \(Y\). Then, there
+    exists a unique morphism \(\overline{f}: \Z^{\oplus X} \to \Z^{\oplus Y}\) such
+    that the following diagram commutes
+    \[
+        \begin{tikzcd}
+            X \ar[d, "f"'] \ar[r, hook, "\iota_X"]
+            &\Z^{\oplus X} \ar[d, dashed, swap, "\overline f"] \\
+            Y \ar[r, hook, "\iota_Y"] &\Z^{\oplus Y}
+        \end{tikzcd}
+    \]
 \end{corollary}
 
 \begin{proof}
-Let \(\overline f\) be defined by
-\(\overline f(\sum a_x \mathbf{x}) \coloneq \sum a_x \iota_Y f(x)\) --- so that,
-in particular, \(\overline f(\mathbf{x}) = \iota_Y f(x)\), that is, the diagram
-commutes. Let \(\overline g: \Z^{\oplus X} \to \Z^{\oplus Y}\) be a morphism
-such that the diagram commutes, then necessarily
-\(\overline g(\mathbf{x}) = \iota_Y f(x) = \overline f(\mathbf{x})\), that is,
-\(\overline g\) and \(\overline f\) agree on the basis of \(\Z^{\oplus X}\),
-thus \(\overline g = \overline f\).
+    Let \(\overline f\) be defined by
+    \(\overline f(\sum a_x \mathbf{x}) \coloneq \sum a_x \iota_Y f(x)\) --- so that,
+    in particular, \(\overline f(\mathbf{x}) = \iota_Y f(x)\), that is, the diagram
+    commutes. Let \(\overline g: \Z^{\oplus X} \to \Z^{\oplus Y}\) be a morphism
+    such that the diagram commutes, then necessarily
+    \(\overline g(\mathbf{x}) = \iota_Y f(x) = \overline f(\mathbf{x})\), that is,
+    \(\overline g\) and \(\overline f\) agree on the basis of \(\Z^{\oplus X}\),
+    thus \(\overline g = \overline f\).
 \end{proof}
 
 \begin{notation}
-When it's not confusing, we can even drop the notation \(\mathbf{s}\) and
-instead identify the elements as \(s \in \Z^{\oplus S}\), so that
-\(\sum a_s s \coloneq \sum a_s \mathbf{s}\). Moreover, for now on, we'll refer
-to the \emph{free abelian group generated by} \(S\), that is, \(\Z^{\oplus S}\),
-as \(F_{\Ab}(S)\) --- this is motivated by the fact that the notation
-\(\Z^{\oplus S}\), although cool, may be a rather obscure way of talking about a
-group. The elements of \(S\), in particular, will be referred to as \emph{free
-  generators}.
+    When it's not confusing, we can even drop the notation \(\mathbf{s}\) and
+    instead identify the elements as \(s \in \Z^{\oplus S}\), so that
+    \(\sum a_s s \coloneq \sum a_s \mathbf{s}\). Moreover, for now on, we'll refer
+    to the \emph{free abelian group generated by} \(S\), that is, \(\Z^{\oplus S}\),
+    as \(F_{\Ab}(S)\) --- this is motivated by the fact that the notation
+    \(\Z^{\oplus S}\), although cool, may be a rather obscure way of talking about a
+    group. The elements of \(S\), in particular, will be referred to as \emph{free
+        generators}.
 \end{notation}
 
 \begin{proposition}
-\label{prop:Ab-isomorphic-factor-of-free}
-Let \(G\) be any abelian group
-\todo[inline]{Continue: mini exercises on free ab grp}
+    \label{prop:Ab-isomorphic-factor-of-free}
+    Let \(G\) be any abelian group
+    \todo[inline]{Continue: mini exercises on free ab grp}
 \end{proposition}
 
 \todo[inline]{Continue direct products}
@@ -577,17 +577,17 @@ Let \(G\) be any abelian group
 \section{Graded Abelian Groups}
 
 \begin{definition}[Graded abelian group]
-\label{def:graded-abelian-group}
-A \emph{graded abelian group} is defined to be an abelian group \(A\) consisting
-of an indexed collection of abelian groups \((A_s)_{s \in S}\)---it should be
-noted that \(S\) can be any set with an additive structure, for instance \(A\)
-would be a \(\Z\)-graded abelian group if \(S = \Z\). An element \(a \in A\) is
-said to have \emph{degree} \(s_0\) if \(a \in A_{s_0}\).
+    \label{def:graded-abelian-group}
+    A \emph{graded abelian group} is defined to be an abelian group \(A\) consisting
+    of an indexed collection of abelian groups \((A_s)_{s \in S}\)---it should be
+    noted that \(S\) can be any set with an additive structure, for instance \(A\)
+    would be a \(\Z\)-graded abelian group if \(S = \Z\). An element \(a \in A\) is
+    said to have \emph{degree} \(s_0\) if \(a \in A_{s_0}\).
 
-Given \(S\)-graded abelian groups \(A\) and \(B\) we define a morphism
-\(f: A \to B\) to be a collection of morphisms of groups
-\((f_s: A_s \to B_{s+d})_{s \in S}\) for some fixed element \(d \in S\), in such
-case we say that \(f\) has \emph{degree} \(d\).
+    Given \(S\)-graded abelian groups \(A\) and \(B\) we define a morphism
+    \(f: A \to B\) to be a collection of morphisms of groups
+    \((f_s: A_s \to B_{s+d})_{s \in S}\) for some fixed element \(d \in S\), in such
+    case we say that \(f\) has \emph{degree} \(d\).
 \end{definition}
 
 %%% Local Variables:

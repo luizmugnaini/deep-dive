@@ -1,207 +1,207 @@
 \section{Generalized Jacobi Sum}
 
 \begin{definition}[Generalized Jacobi sum]
-   Let \(\chi_1, \dots, \chi_n\) be characters on \(\F_p\). We define the Jacobi
-   sum of these characters as
+    Let \(\chi_1, \dots, \chi_n\) be characters on \(\F_p\). We define the Jacobi
+    sum of these characters as
     \[
-       J(\chi_1, \dots, \chi_n) = \sum_{t_1+ \dots+t_n = 1}\chi_1(t_1) \cdots
-       \chi_n(t_n)
-   \] 
-   where \(t_i \in \F_p\). Another fruitful formula is 
-   \[
-      J_0(\chi_1,\dots,\chi_n) = \sum_{t_1+\dots+t_n = 0}
-      \chi_1(t_1)\cdots\chi_n(t_n)
-   \] 
+        J(\chi_1, \dots, \chi_n) = \sum_{t_1+ \dots+t_n = 1}\chi_1(t_1) \cdots
+        \chi_n(t_n)
+    \]
+    where \(t_i \in \F_p\). Another fruitful formula is
+    \[
+        J_0(\chi_1,\dots,\chi_n) = \sum_{t_1+\dots+t_n = 0}
+        \chi_1(t_1)\cdots\chi_n(t_n)
+    \]
 \end{definition}
 
 \begin{proposition}
-   The following properties hold
-   \begin{enumerate}[I.]
-      \item \(J_0(\varepsilon, \dots, \varepsilon) = J(\varepsilon, \dots,
-         \varepsilon) = p^{n-1}\).
-      \item If not all \(\chi_i\) are trivial but some are, then 
-          \[
-             J_0(\chi_1,\dots,\chi_n) = J(\chi_1,\dots,\chi_n) = 0.
-         \] 
-      \item Let \(\chi_n \neq  \varepsilon\), then
-         \[
-            J_0(\chi_1,\dots,\chi_n) = 
-            \begin{cases}
-               0, &\text{ if } \prod_{i=1}^n \chi_i \neq  \varepsilon, \\
-               (p-1)\chi_n(-1)J(\chi_1,\dots,\chi_{n-1}), &\text{ otherwise. }
-            \end{cases}
-         \] 
-   \end{enumerate}
+    The following properties hold
+    \begin{enumerate}[I.]
+        \item \(J_0(\varepsilon, \dots, \varepsilon) = J(\varepsilon, \dots,
+              \varepsilon) = p^{n-1}\).
+        \item If not all \(\chi_i\) are trivial but some are, then
+              \[
+                  J_0(\chi_1,\dots,\chi_n) = J(\chi_1,\dots,\chi_n) = 0.
+              \]
+        \item Let \(\chi_n \neq  \varepsilon\), then
+              \[
+                  J_0(\chi_1,\dots,\chi_n) =
+                  \begin{cases}
+                      0,                                         & \text{ if } \prod_{i=1}^n \chi_i \neq  \varepsilon, \\
+                      (p-1)\chi_n(-1)J(\chi_1,\dots,\chi_{n-1}), & \text{ otherwise. }
+                  \end{cases}
+              \]
+    \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-   We prove each assertion
-   \begin{enumerate}[i.]
-      \item Notice that if we make \( \sum_{i=1}^{n}t_i = 0 \Rightarrow t_n =
-         -\sum_{i=1}^{n-1} t_i\) is completely determined by the choices for the
-         \(1 \leqslant i \leqslant n-1\) indexes and therefore they are the only
-         ones that really vary through all of \(\F_p\), thus, every one of those
-         has \(p\) possible choices and thus \(J(\varepsilon, \dots, \varepsilon) =
-         \sum_{t_1+\dots+t_n = 0} \varepsilon(t_1)\dots \varepsilon(t_n) =
-         \sum_{t_1 + \dots + t_n = 0} 1 = p^{n-1}\). The exact same argument
-         structure can be used to show the same for \(J(\varepsilon, \dots,
-         \varepsilon)\).
-      \item Let the indexes \(1 \leqslant i \leqslant s\) be the ones with non
-         trivial character and \(s+1 \leqslant i \leqslant n\) the ones with
-         trivial character, then
-         \[
-            \sum_{t_1+\dots+t_n=0} \chi_1(t_1) \cdots \chi_n(t_n)
-            = \sum_{t_1,\dots,t_{n-1} \in \F_p} \chi_1(t_1) \cdots \chi_s(t_s)
-            = p^{(n-s) - 1} \sum_{i=1}^{s} \left( \sum_{t_i \in \F_p}
-            \chi_i(t_i) \right) = 0
-         \] 
-         The same can be argued for \(J(\chi_1, \dots, \chi_n)\).
-      \item Note that rearranging terms we can write
-         \[
-            J_0(\chi_1, \dots, \chi_n) = \sum_{t_1+\dots+t_n=0} \chi_1(t_1)
-            \cdots \chi_n(t_n) = \sum_{t_n \in \F_p} \left( \sum_{t_1 + \dots +
-            t_{n-1} = -t_n} \chi_1(t_1)\cdots\chi_{n-1}(t_{n-1})\right)
-            \chi_n(t_n)
-         \] 
-         from hypothesis we have \(\chi_n \neq \varepsilon\) which implies that
-         \(\chi_n(0) = 0\) and therefore, the case \(t_n=0\) does not contribute
-         to the sum, thereof  we may consider only \(t_n \in \F_n^\ast\). Since
-         we are assuming now that \(t_n\) is invertible, simply define for every
-         index \(t_i := -t_n t_i'\), which yields on the inner sum of the
-         equation above, the following
-         \begin{align*}
-             \sum_{t_1 + \dots + t_{n-1} = -t_n}
-             \chi_1(t_1)\cdots\chi_{n-1}(t_{n-1})
-             &= \sum_{t_1' + \dots + t_{n-1}' = 1} \chi(-t_nt_1') \cdots
-             \chi(-t_nt_{n-1}') \\
-             &= \prod_{i = 1}^{n-1} \chi_i(-t_n) \sum_{t_1' + \dots + t_n' = 1}
-             \chi_1(t_1') \cdots \chi_n(t_n') \\
-             &= \prod_{i=1}^{n-1} \chi_i(-t_n) J(\chi_1, \dots, \chi_n)
-         \end{align*}
-         therefore we find 
-         \begin{align*}
-            J_0(\chi_1, \dots, \chi_n) 
-            &= \sum_{t_n \in \F_p^{\ast}} \left( \prod_{i=1}^{n-1} \chi_i(-t_n)
-            J(\chi_1,\dots, \chi_n)\right) \chi_n(t_n) \\
-            &= \prod_{i=1}^{n-1} \chi_i(-1) J(\chi_1,\dots,\chi_{n-1}) \sum_{t_n
-            \in \F_p^\ast}\left( \prod_{i=1}^{n} \chi_i(t_n) \right) 
-         \end{align*}
-         Now we apply the two distinct cases. For \(\prod_{i=1}^{n} \chi_i =
-         \varepsilon\) we have that 
-         \[
-            J_0(\chi_1,\dots,\chi_n) = \left( \chi_n(-1) \right)^{-1} J(\chi_1,
-            \dots, \chi_n) \sum_{t_n \in \F_p^\ast} \varepsilon(t_n) = (p-1)
-            \chi_n(-1) J(\chi_1,\dots,\chi_n)
-         \]
-         and for the last case if \(\prod_{i = 1}^n \chi_i \neq  \varepsilon\)
-         we have that \(\sum_{t_n \in \F_p^\ast} \prod_{i=1}^n \chi_i(t_n) =
-         0\), which concludes the argument since \(J_0(\chi_1, \dots, \chi_n)=
-         0\) in this case.
-   \end{enumerate}
+    We prove each assertion
+    \begin{enumerate}[i.]
+        \item Notice that if we make \( \sum_{i=1}^{n}t_i = 0 \Rightarrow t_n =
+              -\sum_{i=1}^{n-1} t_i\) is completely determined by the choices for the
+              \(1 \leqslant i \leqslant n-1\) indexes and therefore they are the only
+              ones that really vary through all of \(\F_p\), thus, every one of those
+              has \(p\) possible choices and thus \(J(\varepsilon, \dots, \varepsilon) =
+              \sum_{t_1+\dots+t_n = 0} \varepsilon(t_1)\dots \varepsilon(t_n) =
+              \sum_{t_1 + \dots + t_n = 0} 1 = p^{n-1}\). The exact same argument
+              structure can be used to show the same for \(J(\varepsilon, \dots,
+              \varepsilon)\).
+        \item Let the indexes \(1 \leqslant i \leqslant s\) be the ones with non
+              trivial character and \(s+1 \leqslant i \leqslant n\) the ones with
+              trivial character, then
+              \[
+                  \sum_{t_1+\dots+t_n=0} \chi_1(t_1) \cdots \chi_n(t_n)
+                  = \sum_{t_1,\dots,t_{n-1} \in \F_p} \chi_1(t_1) \cdots \chi_s(t_s)
+                  = p^{(n-s) - 1} \sum_{i=1}^{s} \left( \sum_{t_i \in \F_p}
+                  \chi_i(t_i) \right) = 0
+              \]
+              The same can be argued for \(J(\chi_1, \dots, \chi_n)\).
+        \item Note that rearranging terms we can write
+              \[
+                  J_0(\chi_1, \dots, \chi_n) = \sum_{t_1+\dots+t_n=0} \chi_1(t_1)
+                  \cdots \chi_n(t_n) = \sum_{t_n \in \F_p} \left( \sum_{t_1 + \dots +
+                      t_{n-1} = -t_n} \chi_1(t_1)\cdots\chi_{n-1}(t_{n-1})\right)
+                  \chi_n(t_n)
+              \]
+              from hypothesis we have \(\chi_n \neq \varepsilon\) which implies that
+              \(\chi_n(0) = 0\) and therefore, the case \(t_n=0\) does not contribute
+              to the sum, thereof  we may consider only \(t_n \in \F_n^\ast\). Since
+              we are assuming now that \(t_n\) is invertible, simply define for every
+              index \(t_i := -t_n t_i'\), which yields on the inner sum of the
+              equation above, the following
+              \begin{align*}
+                  \sum_{t_1 + \dots + t_{n-1} = -t_n}
+                  \chi_1(t_1)\cdots\chi_{n-1}(t_{n-1})
+                   & = \sum_{t_1' + \dots + t_{n-1}' = 1} \chi(-t_nt_1') \cdots
+                  \chi(-t_nt_{n-1}')                                                   \\
+                   & = \prod_{i = 1}^{n-1} \chi_i(-t_n) \sum_{t_1' + \dots + t_n' = 1}
+                  \chi_1(t_1') \cdots \chi_n(t_n')                                     \\
+                   & = \prod_{i=1}^{n-1} \chi_i(-t_n) J(\chi_1, \dots, \chi_n)
+              \end{align*}
+              therefore we find
+              \begin{align*}
+                  J_0(\chi_1, \dots, \chi_n)
+                   & = \sum_{t_n \in \F_p^{\ast}} \left( \prod_{i=1}^{n-1} \chi_i(-t_n)
+                  J(\chi_1,\dots, \chi_n)\right) \chi_n(t_n)                             \\
+                   & = \prod_{i=1}^{n-1} \chi_i(-1) J(\chi_1,\dots,\chi_{n-1}) \sum_{t_n
+                      \in \F_p^\ast}\left( \prod_{i=1}^{n} \chi_i(t_n) \right)
+              \end{align*}
+              Now we apply the two distinct cases. For \(\prod_{i=1}^{n} \chi_i =
+              \varepsilon\) we have that
+              \[
+                  J_0(\chi_1,\dots,\chi_n) = \left( \chi_n(-1) \right)^{-1} J(\chi_1,
+                  \dots, \chi_n) \sum_{t_n \in \F_p^\ast} \varepsilon(t_n) = (p-1)
+                  \chi_n(-1) J(\chi_1,\dots,\chi_n)
+              \]
+              and for the last case if \(\prod_{i = 1}^n \chi_i \neq  \varepsilon\)
+              we have that \(\sum_{t_n \in \F_p^\ast} \prod_{i=1}^n \chi_i(t_n) =
+              0\), which concludes the argument since \(J_0(\chi_1, \dots, \chi_n)=
+              0\) in this case.
+    \end{enumerate}
 \end{proof}
 
 \begin{theorem}
-   Let characters \(\chi_1, \dots, \chi_n\) be non-trivial and  \(\prod_{i =
-   1}^{n} \chi_i \neq  \varepsilon\) then 
-   \[
-      \prod_{i=1}^{n} g(\chi_i) = J(\chi_1, \dots, \chi_n) g(\chi_1 \cdots
-      \chi_n).
-   \] 
-\end{theorem}
-
-\begin{proof}
-   \todo[inline]{Maybe some day write the proof of this theorem about Jacobi
-   Generalized, it's really the same thing as in the \(n=2\) case \dots}
-\end{proof}
-
-\begin{corollary}
-   Let \(\chi_1,\dots,\chi_n\) be non-trivial and \(\prod_{i=1}^n \chi_i = 
-   \varepsilon\) then  
-   \[
-      \prod_{i=1}^n g(\chi_i) = p\chi_n(-1) J(\chi_1,\dots,\chi_{n-1}).
-   \] 
-\end{corollary}
-
-\begin{corollary}
-   Let \(\chi_1,\dots,\chi_n\) be non-trivial and \(\prod_{i=1}^n \chi_i = 
-   \varepsilon\) then  
-   \[
-      J(\chi_1, \dots, \chi_n) = -\chi_n(-1) J(\chi_1,\dots,\chi_{n-1})
-   \] 
-\end{corollary}
-
-\begin{theorem}
-   Let \(\chi_1, \dots, \chi_n\) be all non-trivial. Then
-   \begin{enumerate}[I.]
-      \item If \(\prod_{i=1}^n \chi_i \neq  \varepsilon\), then
-         \[
-            |J(\chi_1, \dots, \chi_n)| = p^{\frac{n-1}{2}}.
-         \] 
-      \item If \(\prod_{i=1}^n \chi_i = \varepsilon\), then
-         \[
-            |J_0(\chi_1, \dots, \chi_n)| = (p-1)p^{\frac{n}{2} - 1}\ \text{ and
-            }\ |J(\chi_1,\dots, \chi_n)| = p^{\frac{n}{2} - 1}.
-         \] 
-   \end{enumerate}
-\end{theorem}
-
-\begin{proof}
-   If \(\prod_i \chi_i \neq  \varepsilon\) then \(|g(\chi_i)| = \sqrt{p}  \) and
-   therefore 
-   \[
-      p^{\frac{n}{2}} = |J(\chi_1, \dots, \chi_n)| p^{\frac{1}{2}} 
-      \Rightarrow  |J(\chi_1, \dots, \chi_n)| = p^{\frac{n-1}{2}}.
-   \] 
-   On the contrary suppose the product is trivial and then we know that
-   \[
-      J_0(\chi_1,\dots,\chi_n) = \chi_n(-1) (p-1) J(\chi_1, \dots, \chi_{n-1})
-   \] 
-   and therefore, since \(J(\chi_1, \dots, \chi_n) = -\chi_n(-1)
-   J(\chi_1,\dots,\chi_{n-1})\) implies
+    Let characters \(\chi_1, \dots, \chi_n\) be non-trivial and  \(\prod_{i =
+        1}^{n} \chi_i \neq  \varepsilon\) then
     \[
-       J_0(\chi_1,\dots, \chi_n) = - J(\chi_1, \dots, \chi_n) (p-1) = -
-       \frac{\prod_{i=1}^{n}g(\chi_i)}{p \chi_n(-1)} (p-1)
-   \] 
-   from this we conclude the assertion. More directly, the second equality can
-   be obtained by using
-   \[
-      J(\chi_1,\dots,\chi_n) = \frac{\prod_{i=1}^{n+1}
-      g(\chi_i)}{p\chi_{n+1}(-1)}.
-   \] 
+        \prod_{i=1}^{n} g(\chi_i) = J(\chi_1, \dots, \chi_n) g(\chi_1 \cdots
+        \chi_n).
+    \]
+\end{theorem}
+
+\begin{proof}
+    \todo[inline]{Maybe some day write the proof of this theorem about Jacobi
+        Generalized, it's really the same thing as in the \(n=2\) case \dots}
+\end{proof}
+
+\begin{corollary}
+    Let \(\chi_1,\dots,\chi_n\) be non-trivial and \(\prod_{i=1}^n \chi_i =
+    \varepsilon\) then
+    \[
+        \prod_{i=1}^n g(\chi_i) = p\chi_n(-1) J(\chi_1,\dots,\chi_{n-1}).
+    \]
+\end{corollary}
+
+\begin{corollary}
+    Let \(\chi_1,\dots,\chi_n\) be non-trivial and \(\prod_{i=1}^n \chi_i =
+    \varepsilon\) then
+    \[
+        J(\chi_1, \dots, \chi_n) = -\chi_n(-1) J(\chi_1,\dots,\chi_{n-1})
+    \]
+\end{corollary}
+
+\begin{theorem}
+    Let \(\chi_1, \dots, \chi_n\) be all non-trivial. Then
+    \begin{enumerate}[I.]
+        \item If \(\prod_{i=1}^n \chi_i \neq  \varepsilon\), then
+              \[
+                  |J(\chi_1, \dots, \chi_n)| = p^{\frac{n-1}{2}}.
+              \]
+        \item If \(\prod_{i=1}^n \chi_i = \varepsilon\), then
+              \[
+                  |J_0(\chi_1, \dots, \chi_n)| = (p-1)p^{\frac{n}{2} - 1}\ \text{ and
+                  }\ |J(\chi_1,\dots, \chi_n)| = p^{\frac{n}{2} - 1}.
+              \]
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    If \(\prod_i \chi_i \neq  \varepsilon\) then \(|g(\chi_i)| = \sqrt{p}  \) and
+    therefore
+    \[
+        p^{\frac{n}{2}} = |J(\chi_1, \dots, \chi_n)| p^{\frac{1}{2}}
+        \Rightarrow  |J(\chi_1, \dots, \chi_n)| = p^{\frac{n-1}{2}}.
+    \]
+    On the contrary suppose the product is trivial and then we know that
+    \[
+        J_0(\chi_1,\dots,\chi_n) = \chi_n(-1) (p-1) J(\chi_1, \dots, \chi_{n-1})
+    \]
+    and therefore, since \(J(\chi_1, \dots, \chi_n) = -\chi_n(-1)
+    J(\chi_1,\dots,\chi_{n-1})\) implies
+    \[
+        J_0(\chi_1,\dots, \chi_n) = - J(\chi_1, \dots, \chi_n) (p-1) = -
+        \frac{\prod_{i=1}^{n}g(\chi_i)}{p \chi_n(-1)} (p-1)
+    \]
+    from this we conclude the assertion. More directly, the second equality can
+    be obtained by using
+    \[
+        J(\chi_1,\dots,\chi_n) = \frac{\prod_{i=1}^{n+1}
+            g(\chi_i)}{p\chi_{n+1}(-1)}.
+    \]
 \end{proof}
 
 \begin{theorem}\label{thm: fermat generalization}
-   Let the polynomial \(\sum_{i=1}^{n} a_i x_i^{\ell_i} = b \) where we have
-   \(a_i \in \F_p^\ast\) and \(b \in \F_p\) also define \(N\) to be the number
-   of solutions to such polynomial. Then
-   \begin{enumerate}[I.]
-      \item If \(b = 0\) then 
-         \[
-            N = p^{n-1} + \sum_{\chi_1,\dots,\chi_n} \left(
-            J_0(\chi_1,\dots,\chi_n) \prod_{i=1}^{n} \chi_i(a_i^{-1}) \right) 
-         \] 
-         where we define \(\chi_i^{\ell_i} = \varepsilon,\ \chi_i \neq
-         \varepsilon\) and \(\prod_{i=1}^{n} \chi_i = \varepsilon\). Let \(M\) 
-         be the number of \(n\)-tuples \((\chi_1,\dots,\chi_n)\) that satisfy
-         such properties, then 
-          \[
-             |N - p^{n-1}| \leqslant M(p-1) p^{\frac{n}{2} - 1}.
-         \] 
-      \item If \(b \neq 0\) then
-         \[
-            N = p^{n-1} + \sum_{\chi_1, \dots, \chi_n} \left(
-            \chi_1\cdots\chi_n(b) J(\chi_1,\dots,\chi_n) \prod_{i =1}^n
-            \chi_i(a_i^{-1}) \right) 
-         \]
-         were, not exactly as above, we define \(x_i \neq  \varepsilon\) and
-         \(\chi_i^{\ell_i} = \varepsilon\) only. Let \(M_0\) be the number of
-         \(n\)-tuples \((\chi_1,\dots,\chi_n)\) satisfying such conditions and
-         also \(\prod_{i=1}^{n}\chi_i = \varepsilon\), let also \(M_1\) be the
-         same but now over the tuples such that \(\prod_{i=1}^n \chi_i \neq
-         \varepsilon\), then
-         \[
-            |N-p^{n-1}| \leqslant M_0 p^{\frac{n}{2} -1}  + M_1
-            p^{\frac{n-1}{2}}.
-         \] 
-   \end{enumerate}
+    Let the polynomial \(\sum_{i=1}^{n} a_i x_i^{\ell_i} = b \) where we have
+    \(a_i \in \F_p^\ast\) and \(b \in \F_p\) also define \(N\) to be the number
+    of solutions to such polynomial. Then
+    \begin{enumerate}[I.]
+        \item If \(b = 0\) then
+              \[
+                  N = p^{n-1} + \sum_{\chi_1,\dots,\chi_n} \left(
+                  J_0(\chi_1,\dots,\chi_n) \prod_{i=1}^{n} \chi_i(a_i^{-1}) \right)
+              \]
+              where we define \(\chi_i^{\ell_i} = \varepsilon,\ \chi_i \neq
+              \varepsilon\) and \(\prod_{i=1}^{n} \chi_i = \varepsilon\). Let \(M\)
+              be the number of \(n\)-tuples \((\chi_1,\dots,\chi_n)\) that satisfy
+              such properties, then
+              \[
+                  |N - p^{n-1}| \leqslant M(p-1) p^{\frac{n}{2} - 1}.
+              \]
+        \item If \(b \neq 0\) then
+              \[
+                  N = p^{n-1} + \sum_{\chi_1, \dots, \chi_n} \left(
+                  \chi_1\cdots\chi_n(b) J(\chi_1,\dots,\chi_n) \prod_{i =1}^n
+                  \chi_i(a_i^{-1}) \right)
+              \]
+              were, not exactly as above, we define \(x_i \neq  \varepsilon\) and
+              \(\chi_i^{\ell_i} = \varepsilon\) only. Let \(M_0\) be the number of
+              \(n\)-tuples \((\chi_1,\dots,\chi_n)\) satisfying such conditions and
+              also \(\prod_{i=1}^{n}\chi_i = \varepsilon\), let also \(M_1\) be the
+              same but now over the tuples such that \(\prod_{i=1}^n \chi_i \neq
+              \varepsilon\), then
+              \[
+                  |N-p^{n-1}| \leqslant M_0 p^{\frac{n}{2} -1}  + M_1
+                  p^{\frac{n-1}{2}}.
+              \]
+    \end{enumerate}
 \end{theorem}

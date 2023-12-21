@@ -3,411 +3,411 @@
 \subsection{Weak-Hausdorff Spaces}
 
 \begin{definition}[Weak-Hausdorff space]
-\label{def:weak-hausdorff}
-A space \(X\) is said to be \emph{weak-Hausdorff} if for every compact Hausdorff
-space \(K\) and continuous map \(g: K \to X\) one has that \(g(K)\) is
-\emph{closed} in \(X\).
+    \label{def:weak-hausdorff}
+    A space \(X\) is said to be \emph{weak-Hausdorff} if for every compact Hausdorff
+    space \(K\) and continuous map \(g: K \to X\) one has that \(g(K)\) is
+    \emph{closed} in \(X\).
 \end{definition}
 
 \begin{corollary}
-\label{cor:weak-hausdorff-is-T1}
-A weak-Hausdorff space is T\(_1\).
+    \label{cor:weak-hausdorff-is-T1}
+    A weak-Hausdorff space is T\(_1\).
 \end{corollary}
 
 \begin{proof}
-Let \(X\) be a weak-Hausdorff space and \(x \in X\), we shall take advantage of
-the fact that \(X\) is T\(_1\) if and only if \(\{x\}\) is closed in \(X\). Let
-\(K\) be a compact set and \(\const_x: K \to X\) be the constant map \(k \mapsto
-x\), which is continuous. Since \(g K = \{x\}\), and \(g K\) is closed by
-hypothesis, the property follows.
+    Let \(X\) be a weak-Hausdorff space and \(x \in X\), we shall take advantage of
+    the fact that \(X\) is T\(_1\) if and only if \(\{x\}\) is closed in \(X\). Let
+    \(K\) be a compact set and \(\const_x: K \to X\) be the constant map \(k \mapsto
+    x\), which is continuous. Since \(g K = \{x\}\), and \(g K\) is closed by
+    hypothesis, the property follows.
 \end{proof}
 
 \begin{lemma}
-\label{lem:weak-haudorff-has-compact-hausdorff-subspace}
-If \(X\) is weak-Hausdorff, \(K\) is a compact Hausdorff space, and
-\(g: K \to X\) is a morphism, then \(g K\) is a \emph{compact Hausdorff subspace
-  of \(X\)}.
+    \label{lem:weak-haudorff-has-compact-hausdorff-subspace}
+    If \(X\) is weak-Hausdorff, \(K\) is a compact Hausdorff space, and
+    \(g: K \to X\) is a morphism, then \(g K\) is a \emph{compact Hausdorff subspace
+        of \(X\)}.
 \end{lemma}
 
 \begin{proof}
-We already know from \cref{prop:image-of-compact-is-compact} that \(g K\) is
-compact, thus we shall only prove that \(g K\) is Hausdorff. Let
-\(x, y \in g K\) be any two distinct points. Using
-\cref{cor:weak-hausdorff-is-T1} and \cref{prop:compact-hausdorff-is-normal} we
-can find \emph{disjoint open sets} \(U, V \subseteq K\) such that
-\(g^{-1}x \subseteq U\) and \(g^{-1}y \subseteq V\). Then the sets
-\(K \setminus U\) and \(K \setminus V\) are \emph{closed} in \(K\), thus
-\emph{compact} (see \cref{prop:closed-subset-compact}). Therefore the sets
-\(g(K \setminus U)\) and \(g(K \setminus V)\) are both \emph{closed in
-  \(X\)}. From this we know that \(g K \setminus g(K \setminus U)\) and
-\(g K \setminus g(K \setminus V)\) are both \emph{open in \(g K\)}, both of
-which are \emph{disjoint} and contain \(x\) and \(y\), respectively---which
-shows that \(X\) is Hausdorff.
+    We already know from \cref{prop:image-of-compact-is-compact} that \(g K\) is
+    compact, thus we shall only prove that \(g K\) is Hausdorff. Let
+    \(x, y \in g K\) be any two distinct points. Using
+    \cref{cor:weak-hausdorff-is-T1} and \cref{prop:compact-hausdorff-is-normal} we
+    can find \emph{disjoint open sets} \(U, V \subseteq K\) such that
+    \(g^{-1}x \subseteq U\) and \(g^{-1}y \subseteq V\). Then the sets
+    \(K \setminus U\) and \(K \setminus V\) are \emph{closed} in \(K\), thus
+    \emph{compact} (see \cref{prop:closed-subset-compact}). Therefore the sets
+    \(g(K \setminus U)\) and \(g(K \setminus V)\) are both \emph{closed in
+        \(X\)}. From this we know that \(g K \setminus g(K \setminus U)\) and
+    \(g K \setminus g(K \setminus V)\) are both \emph{open in \(g K\)}, both of
+    which are \emph{disjoint} and contain \(x\) and \(y\), respectively---which
+    shows that \(X\) is Hausdorff.
 \end{proof}
 
 \begin{definition}[Compactly closed]
-\label{def:compactly-closed}
-A subset \(A\) of \(X\) is said to be \emph{compactly closed} if, for every
-compact space \(K\) and morphism \(g: K \to X\), the preimage \(g^{-1} A\) is
-closed in \(K\).
+    \label{def:compactly-closed}
+    A subset \(A\) of \(X\) is said to be \emph{compactly closed} if, for every
+    compact space \(K\) and morphism \(g: K \to X\), the preimage \(g^{-1} A\) is
+    closed in \(K\).
 \end{definition}
 
 \begin{proposition}
-\label{prop:compactly-closed-in-weak-hausdorff-space}
-If \(X\) is a weak-Hausdorff space, a subset \(A \subseteq X\) is compactly
-closed if and only if the intersection of \(A\) with each compact subset of
-\(X\) is closed.
+    \label{prop:compactly-closed-in-weak-hausdorff-space}
+    If \(X\) is a weak-Hausdorff space, a subset \(A \subseteq X\) is compactly
+    closed if and only if the intersection of \(A\) with each compact subset of
+    \(X\) is closed.
 \end{proposition}
 
 \begin{proof}
-\begin{itemize}\setlength\itemsep{0em}
-\item (\(\implies\)) Suppose \(A\) is compactly closed, and let
-  \(K \subseteq X\) be any compact subspace of \(X\). If we consider the
-  inclusion morphism \(\iota: K \emb X\), we have that
-  \(\iota^{-1} A = K \cap A\) is closed.
+    \begin{itemize}\setlength\itemsep{0em}
+        \item (\(\implies\)) Suppose \(A\) is compactly closed, and let
+              \(K \subseteq X\) be any compact subspace of \(X\). If we consider the
+              inclusion morphism \(\iota: K \emb X\), we have that
+              \(\iota^{-1} A = K \cap A\) is closed.
 
-\item (\(\impliedby\)) Assume the latter property, and let \(K\) be a compact
-  space together with a morphism \(g: K \to X\). Since \(g K\) is compact in
-  \(X\) it follows from assumption that \(A \cap g K\) is closed in \(X\). Since
-  \(g\) is continuous, then \(g^{-1}(A \cap g K) = g^{-1} A\) is closed in
-  \(K\).
-\end{itemize}
+        \item (\(\impliedby\)) Assume the latter property, and let \(K\) be a compact
+              space together with a morphism \(g: K \to X\). Since \(g K\) is compact in
+              \(X\) it follows from assumption that \(A \cap g K\) is closed in \(X\). Since
+              \(g\) is continuous, then \(g^{-1}(A \cap g K) = g^{-1} A\) is closed in
+              \(K\).
+    \end{itemize}
 \end{proof}
 
 \subsection{\texorpdfstring{\(k\)}{k}-Spaces}
 
 \begin{definition}[\(k\)-space]
-\label{def:k-space}
-A space \(X\) is said to be a \emph{\(k\)-space} if every compactly closed
-subspace of \(X\) is closed. The full-subcategory of \(\Top\) whose objects are
-\(k\)-spaces will be denoted by \(\kTop\).
+    \label{def:k-space}
+    A space \(X\) is said to be a \emph{\(k\)-space} if every compactly closed
+    subspace of \(X\) is closed. The full-subcategory of \(\Top\) whose objects are
+    \(k\)-spaces will be denoted by \(\kTop\).
 \end{definition}
 
 \begin{lemma}[\(k\)-ification]
-\label{lem:k-ification}
-Given a topological space \((X, \tau)\), we can transform \(X\) into a
-\(k\)-space by creating a topology \(\tau_k\) where \(C\) is closed in
-\((X, \tau_k)\) if and only if \(C\) is compactly closed in \((X, \tau)\). We
-shall shortly denote the \(k\)-space \((X, \tau_k)\) by \(kX\).
+    \label{lem:k-ification}
+    Given a topological space \((X, \tau)\), we can transform \(X\) into a
+    \(k\)-space by creating a topology \(\tau_k\) where \(C\) is closed in
+    \((X, \tau_k)\) if and only if \(C\) is compactly closed in \((X, \tau)\). We
+    shall shortly denote the \(k\)-space \((X, \tau_k)\) by \(kX\).
 \end{lemma}
 
 \begin{definition}[\(k\)-ification functor]
-\label{def:k-ification-functor}
-We define the \(k\)-ification functor
-\[
-k: \Top \longrightarrow \kTop
-\]
-to be the functor mapping topological spaces \(X\) to its \(k\)-ified space
-\(k X\), and \(k f \coloneq f\) for every topological morphism \(f\).
+    \label{def:k-ification-functor}
+    We define the \(k\)-ification functor
+    \[
+        k: \Top \longrightarrow \kTop
+    \]
+    to be the functor mapping topological spaces \(X\) to its \(k\)-ified space
+    \(k X\), and \(k f \coloneq f\) for every topological morphism \(f\).
 \end{definition}
 
 \begin{lemma}
-\label{lem:weak-hausdorff-into-compactly-generated-space}
-If \(X\) is a weak-Hausdorff space, then \(kX\) is also a weak-Hausdorff
-\(k\)-space.
+    \label{lem:weak-hausdorff-into-compactly-generated-space}
+    If \(X\) is a weak-Hausdorff space, then \(kX\) is also a weak-Hausdorff
+    \(k\)-space.
 \end{lemma}
 
 \begin{notation}[Products]
-\label{not:cartesian-and-k-products}
-In what follows, we shall denote by \(X \times_{\text{c}} Y\) the
-\emph{cartesian product} of spaces \(X\) and \(Y\), which shall be endowed with
-the usual product topology. Moreover, from now on we shall reserve the notation
-\[
-X \times Y \coloneq k(X \times_{\text{c}} Y),
-\]
-which may seem odd, but is a convention used throughout the literature and we'll
-adopt here.
+    \label{not:cartesian-and-k-products}
+    In what follows, we shall denote by \(X \times_{\text{c}} Y\) the
+    \emph{cartesian product} of spaces \(X\) and \(Y\), which shall be endowed with
+    the usual product topology. Moreover, from now on we shall reserve the notation
+    \[
+        X \times Y \coloneq k(X \times_{\text{c}} Y),
+    \]
+    which may seem odd, but is a convention used throughout the literature and we'll
+    adopt here.
 \end{notation}
 
 \begin{proposition}[Quotients]
-\label{prop:quotient-k-space-is-k-space}
-The quotient of a \(k\)-space is a \(k\)-space.
+    \label{prop:quotient-k-space-is-k-space}
+    The quotient of a \(k\)-space is a \(k\)-space.
 \end{proposition}
 
 \begin{proof}
-Let \(X\) be a \(k\)-space and \(q: X \epi Y\) be a quotient map---we want to
-show that \(Y\) is a \(k\)-space. Let \(A \subseteq Y\) be a compactly closed
-subset. We'll prove that \(q^{-1} A\) is compactly closed in \(X\), thus closed,
-yielding the conclusion that \(A\) is closed in \(Y\). Given any compact space
-\(K\) and a morphism \(\phi: K \to X\). Then the map \(q \phi: K \to Y\) is such
-that \((q \phi)^{-1} A = \phi^{-1}(q^{-1} A)\) is closed in \(K\) since \(A\) is
-compactly generated---the result follows.
+    Let \(X\) be a \(k\)-space and \(q: X \epi Y\) be a quotient map---we want to
+    show that \(Y\) is a \(k\)-space. Let \(A \subseteq Y\) be a compactly closed
+    subset. We'll prove that \(q^{-1} A\) is compactly closed in \(X\), thus closed,
+    yielding the conclusion that \(A\) is closed in \(Y\). Given any compact space
+    \(K\) and a morphism \(\phi: K \to X\). Then the map \(q \phi: K \to Y\) is such
+    that \((q \phi)^{-1} A = \phi^{-1}(q^{-1} A)\) is closed in \(K\) since \(A\) is
+    compactly generated---the result follows.
 \end{proof}
 
 \begin{proposition}
-\label{prop:k-space-product-of-quotient-maps-is-quotient-map}
-Let \(X\) and \(Y\) be \(k\)-spaces, and consider quotient maps \(q: X \epi X'\)
-and \(p: Y \epi Y'\). Then the product
-\[
-q \times p: X \times Y \epi X' \times Y'
-\]
-is also a quotient map.
+    \label{prop:k-space-product-of-quotient-maps-is-quotient-map}
+    Let \(X\) and \(Y\) be \(k\)-spaces, and consider quotient maps \(q: X \epi X'\)
+    and \(p: Y \epi Y'\). Then the product
+    \[
+        q \times p: X \times Y \epi X' \times Y'
+    \]
+    is also a quotient map.
 \end{proposition}
 
 \begin{proposition}
-\label{prop:k-space-is-weak-hausdorff-iff-diagonal-closed}
-A \(k\)-space \(X\) is \emph{weak-Hausdorff} if and only if the \emph{diagonal}
-\(\Delta X\) is \emph{closed} in \(X \times X\).
+    \label{prop:k-space-is-weak-hausdorff-iff-diagonal-closed}
+    A \(k\)-space \(X\) is \emph{weak-Hausdorff} if and only if the \emph{diagonal}
+    \(\Delta X\) is \emph{closed} in \(X \times X\).
 \end{proposition}
 
 \begin{proof}
-\begin{itemize}\setlength\itemsep{0em}
-\item (\(\impliedby\)) Assume that \(\Delta X\) is closed in \(X \times X\). Let
-  \(K\) be a compact space and \(\phi: K \to X\) a continuous map. Since \(X\)
-  is a \(k\)-space, we may simply show that \(\phi K\) is compactly closed. To
-  that end, let \(C\) be another compact space together with a morphism
-  \(\psi: C \to X\), then
-  \[
-  \psi^{-1}(\phi K) = \pi_2 (\phi \times \psi)^{-1}(\Delta X)
-  \]
-  is a closed subset of \(C\)---where \(\pi_2: K \times C \epi C\) is the
-  canonical second projection. This proves that \(\phi K\) is compactly closed.
+    \begin{itemize}\setlength\itemsep{0em}
+        \item (\(\impliedby\)) Assume that \(\Delta X\) is closed in \(X \times X\). Let
+              \(K\) be a compact space and \(\phi: K \to X\) a continuous map. Since \(X\)
+              is a \(k\)-space, we may simply show that \(\phi K\) is compactly closed. To
+              that end, let \(C\) be another compact space together with a morphism
+              \(\psi: C \to X\), then
+              \[
+                  \psi^{-1}(\phi K) = \pi_2 (\phi \times \psi)^{-1}(\Delta X)
+              \]
+              is a closed subset of \(C\)---where \(\pi_2: K \times C \epi C\) is the
+              canonical second projection. This proves that \(\phi K\) is compactly closed.
 
-\item (\(\implies\)) Suppose \(X\) is a weak-Hausdorff \(k\)-space. It suffices
-  to show that \(\Delta X\) is compactly closed in \(X \times_{\text{c}} X\), so
-  that \(\Delta X\) is closed in the \(k\)-space \(X \times X\). Let \(K\) be
-  any compact set and \(\phi: K \to X \times_{\text{c}} X\) be a
-  morphism. Considering the canonical projections
-  \(\pi_1, \pi_2: X \times_{\text{c}} X \para X\), define the set
-  \[
-  A \coloneq \pi_1(\phi K) \cup \pi_2(\phi K)
-  \]
-  of \(X\). The set \(A\) is constructed so that one has
-  \(\phi K \subseteq A \times_{\text{c}} A\) and hence
-  \(\phi^{-1}(\Delta X) = \phi^{-1}(\Delta A)\). Since \(X\) is weak-Hausdorff,
-  if we consider the maps \(\pi_1 \phi, \pi_2 \phi: K \para X\), we find that
-  \(\pi_1\phi K\) and \(\pi_2 \phi K\) are both compact Hausdorff subspaces of
-  \(X\)---hence \(A\) is a compact Hausdorff space. Since \(A\) is Hausdorff, it
-  follows that \(\Delta A\) is closed in \(A \times_{\text{c}} A\), therefore by
-  continuity \(\phi^{-1}(\Delta A) = \phi^{-1}(\Delta X)\) is closed in \(K\).
-\end{itemize}
+        \item (\(\implies\)) Suppose \(X\) is a weak-Hausdorff \(k\)-space. It suffices
+              to show that \(\Delta X\) is compactly closed in \(X \times_{\text{c}} X\), so
+              that \(\Delta X\) is closed in the \(k\)-space \(X \times X\). Let \(K\) be
+              any compact set and \(\phi: K \to X \times_{\text{c}} X\) be a
+              morphism. Considering the canonical projections
+              \(\pi_1, \pi_2: X \times_{\text{c}} X \para X\), define the set
+              \[
+                  A \coloneq \pi_1(\phi K) \cup \pi_2(\phi K)
+              \]
+              of \(X\). The set \(A\) is constructed so that one has
+              \(\phi K \subseteq A \times_{\text{c}} A\) and hence
+              \(\phi^{-1}(\Delta X) = \phi^{-1}(\Delta A)\). Since \(X\) is weak-Hausdorff,
+              if we consider the maps \(\pi_1 \phi, \pi_2 \phi: K \para X\), we find that
+              \(\pi_1\phi K\) and \(\pi_2 \phi K\) are both compact Hausdorff subspaces of
+              \(X\)---hence \(A\) is a compact Hausdorff space. Since \(A\) is Hausdorff, it
+              follows that \(\Delta A\) is closed in \(A \times_{\text{c}} A\), therefore by
+              continuity \(\phi^{-1}(\Delta A) = \phi^{-1}(\Delta X)\) is closed in \(K\).
+    \end{itemize}
 \end{proof}
 
 \subsection{CG Spaces}
 
 \begin{definition}[Compactly generated space]
-\label{def:compactly-generated}
-A space \(X\) is said to be \emph{compactly generated} (or, shortly, CG space)
-if \(X\) is a \emph{weak-Hausdorff \(k\)-space}. The full-subcategory of
-\(\Top\) composed of compactly generated spaces will be denoted by \(\cgTop\).
+    \label{def:compactly-generated}
+    A space \(X\) is said to be \emph{compactly generated} (or, shortly, CG space)
+    if \(X\) is a \emph{weak-Hausdorff \(k\)-space}. The full-subcategory of
+    \(\Top\) composed of compactly generated spaces will be denoted by \(\cgTop\).
 \end{definition}
 
 The \(k\)-ification functor \(k: \Top \to \kTop\) can also act on the category
 of weak-Hausdorff spaces \(\wHTop\), producing compactly generated spaces:
 \[
-k: \wHTop \longrightarrow \cgTop.
+    k: \wHTop \longrightarrow \cgTop.
 \]
 
 \begin{lemma}
-\label{lem:cgTop-and-wHTop}
-The canonical forgetful functor \(j: \cgTop \to \wHTop\) embedding CG
-spaces as weak-Hausdorff spaces is such that there exists a \emph{bijection}
-\[
-\Hom_{\cgTop}(X, k Y) \iso \Hom_{\wHTop}(j X, Y)
-\]
-for every \(X \in \cgTop\) and \(Y \in \wHTop\). Then \(k\) is
-\emph{right-adjoint} to \(j\):
-\[
-\begin{tikzcd}
-\cgTop \ar[r, shift left, "j"]
-&\wHTop \ar[l, shift left, "k"]
-\end{tikzcd}
-\]
+    \label{lem:cgTop-and-wHTop}
+    The canonical forgetful functor \(j: \cgTop \to \wHTop\) embedding CG
+    spaces as weak-Hausdorff spaces is such that there exists a \emph{bijection}
+    \[
+        \Hom_{\cgTop}(X, k Y) \iso \Hom_{\wHTop}(j X, Y)
+    \]
+    for every \(X \in \cgTop\) and \(Y \in \wHTop\). Then \(k\) is
+    \emph{right-adjoint} to \(j\):
+    \[
+        \begin{tikzcd}
+            \cgTop \ar[r, shift left, "j"]
+            &\wHTop \ar[l, shift left, "k"]
+        \end{tikzcd}
+    \]
 \end{lemma}
 
 \begin{example}
-\label{exp:compactly-generated-fst-ctbl-lcly-cpct-and-wk-haus}
-As examples of compactly generated spaces we have:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item If \(X\) is \emph{locally compact}, then it is a compactly generated
-  space.
+    \label{exp:compactly-generated-fst-ctbl-lcly-cpct-and-wk-haus}
+    As examples of compactly generated spaces we have:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item If \(X\) is \emph{locally compact}, then it is a compactly generated
+              space.
 
-\item If \(X\) is a \emph{first-countable weak-Hausdorff} space, then it is
-  compactly generated.
-\end{enumerate}
+        \item If \(X\) is a \emph{first-countable weak-Hausdorff} space, then it is
+              compactly generated.
+    \end{enumerate}
 \end{example}
 
 \begin{lemma}
-\label{lem:relations-cartesian-and-k-product}
-Let \(X\) and \(Y\) be topological spaces, then
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item If \(X\) is locally compact and \(Y\) is compactly generated, then
-  \[
-  X \times Y = X \times_{\text{c}} Y.
-  \]
-\item If both \(X\) and \(Y\) are weak-Hausdorff, then
-  \[
-  X \times Y = k X \times k Y.
-  \]
-\item If both \(X\) and \(Y\) are compactly generated, then \(X \times Y\) is a
-  \emph{product} in the category \(\cgTop\).
-\end{enumerate}
+    \label{lem:relations-cartesian-and-k-product}
+    Let \(X\) and \(Y\) be topological spaces, then
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item If \(X\) is locally compact and \(Y\) is compactly generated, then
+              \[
+                  X \times Y = X \times_{\text{c}} Y.
+              \]
+        \item If both \(X\) and \(Y\) are weak-Hausdorff, then
+              \[
+                  X \times Y = k X \times k Y.
+              \]
+        \item If both \(X\) and \(Y\) are compactly generated, then \(X \times Y\) is a
+              \emph{product} in the category \(\cgTop\).
+    \end{enumerate}
 \end{lemma}
 
 \begin{lemma}
-\label{lem:compactly-generated-cont-map-iff-restriction-to-cpct}
-Let \(X\) be a compactly generated space. A set-function \(f: X \to Y\) is
-\emph{continuous} if and only if the restriction \(f|_K\) is continuous for
-every compact subspace \(K \subseteq X\).
+    \label{lem:compactly-generated-cont-map-iff-restriction-to-cpct}
+    Let \(X\) be a compactly generated space. A set-function \(f: X \to Y\) is
+    \emph{continuous} if and only if the restriction \(f|_K\) is continuous for
+    every compact subspace \(K \subseteq X\).
 \end{lemma}
 
 \begin{proposition}[Quotients of CG spaces]
-\label{prop:quotient-of-compactly-generated-space}
-Let \(X\) be a compactly generated space, and \(q: X \epi Y\) be a quotient
-map. Then \(Y\) is \emph{compactly generated} if and only if the preimage of the
-diagonal of \(Y\),
-\[
-(q \times q)^{-1}(\Delta Y),
-\]
-is \emph{closed} in \(X \times X\).
+    \label{prop:quotient-of-compactly-generated-space}
+    Let \(X\) be a compactly generated space, and \(q: X \epi Y\) be a quotient
+    map. Then \(Y\) is \emph{compactly generated} if and only if the preimage of the
+    diagonal of \(Y\),
+    \[
+        (q \times q)^{-1}(\Delta Y),
+    \]
+    is \emph{closed} in \(X \times X\).
 \end{proposition}
 
 \begin{proof}
-\begin{itemize}\setlength\itemsep{0em}
-\item (\(\implies\)) Suppose \(Y\) is compactly generated. From
-  \cref{prop:k-space-is-weak-hausdorff-iff-diagonal-closed} we know that
-  \(\Delta Y\) is a closed subspace of \(Y \times Y\), therefore by continuity
-  of \(q \times q\) with respect to the product topology
-  \(X \times_{\text{c}} X\) (see
-  \cref{prop:product-of-continuous-maps-is-continuous}) we obtain that
-  \((q \times q)^{-1}(\Delta Y)\) is a closed subspace of
-  \(X \times_{\text{c}} X\), it follows\footnote{ Given any space \(Z\), if
-    \(C \subseteq Z\) is a closed set then, given any compact set \(K\) and
-    continuous map \(g: K \to Z\), we are always ensured that \(g^{-1} C\) is
-    closed---this merely follows from the continuity of \(g\). Therefore \(k Z\)
-    preserves the closed sets of \(Z\), in the sense that if \(C\) is closed in
-    \(Z\) then \(C\) is also closed in \(k Z\) } that
-  \((q \times q)^{-1}(\Delta Y)\) is closed in \(X \times X\).
+    \begin{itemize}\setlength\itemsep{0em}
+        \item (\(\implies\)) Suppose \(Y\) is compactly generated. From
+              \cref{prop:k-space-is-weak-hausdorff-iff-diagonal-closed} we know that
+              \(\Delta Y\) is a closed subspace of \(Y \times Y\), therefore by continuity
+              of \(q \times q\) with respect to the product topology
+              \(X \times_{\text{c}} X\) (see
+              \cref{prop:product-of-continuous-maps-is-continuous}) we obtain that
+              \((q \times q)^{-1}(\Delta Y)\) is a closed subspace of
+              \(X \times_{\text{c}} X\), it follows\footnote{ Given any space \(Z\), if
+                  \(C \subseteq Z\) is a closed set then, given any compact set \(K\) and
+                  continuous map \(g: K \to Z\), we are always ensured that \(g^{-1} C\) is
+                  closed---this merely follows from the continuity of \(g\). Therefore \(k Z\)
+                  preserves the closed sets of \(Z\), in the sense that if \(C\) is closed in
+                  \(Z\) then \(C\) is also closed in \(k Z\) } that
+              \((q \times q)^{-1}(\Delta Y)\) is closed in \(X \times X\).
 
-\item (\(\impliedby\)) Suppose that \((q \times q)^{-1}(\Delta Y)\) is closed in
-  \(X \times X\). Since \(q\) is a quotient map, then \(Y\) is a quotient
-  space of a \(k\)-space \(X\)---therefore \(Y\) itself is a \(k\)-space.
+        \item (\(\impliedby\)) Suppose that \((q \times q)^{-1}(\Delta Y)\) is closed in
+              \(X \times X\). Since \(q\) is a quotient map, then \(Y\) is a quotient
+              space of a \(k\)-space \(X\)---therefore \(Y\) itself is a \(k\)-space.
 
-  Since \(q\) is a quotient map and \(X\) is in particular a \(k\)-space, from
-  \cref{prop:k-space-product-of-quotient-maps-is-quotient-map} we know that
-  \(q \times q: X \times X \epi Y \times Y\) is a quotient map. Since
-  \((q \times q)^{-1}(\Delta Y)\) is closed in \(X \times X\) then \(\Delta Y\)
-  is closed in \(Y \times Y\). Therefore by
-  \cref{prop:k-space-is-weak-hausdorff-iff-diagonal-closed} we conclude that
-  \(Y\) is compactly generated.
-\end{itemize}
+              Since \(q\) is a quotient map and \(X\) is in particular a \(k\)-space, from
+              \cref{prop:k-space-product-of-quotient-maps-is-quotient-map} we know that
+              \(q \times q: X \times X \epi Y \times Y\) is a quotient map. Since
+              \((q \times q)^{-1}(\Delta Y)\) is closed in \(X \times X\) then \(\Delta Y\)
+              is closed in \(Y \times Y\). Therefore by
+              \cref{prop:k-space-is-weak-hausdorff-iff-diagonal-closed} we conclude that
+              \(Y\) is compactly generated.
+    \end{itemize}
 \end{proof}
 
 \begin{proposition}
-\label{prop:attaching-space-compactly-generated}
-Let \(X\) and \(Y\) be compactly generated spaces, and \(A \subseteq X\) be a
-\emph{closed subspace}. Then for every morphism \(f: A \to Y\) the attaching
-space \(Y \cup_f X\) is \emph{compactly generated}.
+    \label{prop:attaching-space-compactly-generated}
+    Let \(X\) and \(Y\) be compactly generated spaces, and \(A \subseteq X\) be a
+    \emph{closed subspace}. Then for every morphism \(f: A \to Y\) the attaching
+    space \(Y \cup_f X\) is \emph{compactly generated}.
 \end{proposition}
 
 \begin{definition}[Weak topology]
-\label{def:weak-topology}
-Let \((X_j)_{j \in J}\) be a collection of topological spaces together with
-inclusions \(X_j \emb X_{j+1}\). We define the \emph{weak topology} on the union
-set \(X \coloneq \bigcup_{j \in J} X_j\) as follows: a set \(U \subseteq X\) is
-\emph{open} if and only if \(U \cap X_j\) is open in \(X_j\) for all
-\(j \in J\).
+    \label{def:weak-topology}
+    Let \((X_j)_{j \in J}\) be a collection of topological spaces together with
+    inclusions \(X_j \emb X_{j+1}\). We define the \emph{weak topology} on the union
+    set \(X \coloneq \bigcup_{j \in J} X_j\) as follows: a set \(U \subseteq X\) is
+    \emph{open} if and only if \(U \cap X_j\) is open in \(X_j\) for all
+    \(j \in J\).
 \end{definition}
 
 \begin{proposition}[Colimits]
-\label{prop:compactly-generated-passage-colimit}
-Let \((X_j)_{j \in J}\) be a collection of compactly generated spaces together
-with inclusions \(X_j \emb X_{j+1}\) with closed images. Then the \emph{colimit}
-\[
-\Colim_{j \in J} X_j = \bigcup_{j \in J} X_j
-\]
-is \emph{compactly generated}\footnote{
-  The colimit of the sequence is endowed with the weak topology (see
-  \cref{def:weak-topology}).
-}.
+    \label{prop:compactly-generated-passage-colimit}
+    Let \((X_j)_{j \in J}\) be a collection of compactly generated spaces together
+    with inclusions \(X_j \emb X_{j+1}\) with closed images. Then the \emph{colimit}
+    \[
+        \Colim_{j \in J} X_j = \bigcup_{j \in J} X_j
+    \]
+    is \emph{compactly generated}\footnote{
+        The colimit of the sequence is endowed with the weak topology (see
+        \cref{def:weak-topology}).
+    }.
 \end{proposition}
 
 \section{Construction of CW-Complexes}
 
 \begin{definition}[Attaching cells to a space]
-\label{def:attaching-cells}
-Let \(f: \coprod_{j \in J} S_j^{n-1} \to X\) be a morphism of topological
-spaces, where \(J\) is a set and \(S_j^{n-1}\) is an indexed copy of the
-\((n-1)\)-sphere. We shall consider the attaching space \(Y\) given by the
-\emph{pushout}
-\[
-\begin{tikzcd}
-\coprod_{j \in J} S_j^{n-1} \ar[r, "f"] \ar[d, hook]
-\ar[rd, phantom, "\ulcorner", very near end]
-&X \ar[d]
-\\
-\coprod_{j \in J} D_j^n \ar[r]
-&X \cup_f \Big( \coprod_{j \in J} D_j^n \Big) \eqqcolon Y
-\end{tikzcd}
-\]
-where \(D_j^n \hookleftarrow S^{n-1}\) denotes an indexed copy of the
-\(n\)-disk. We define the following notions concerning the triple \((Y, X, f)\):
-\begin{itemize}\setlength\itemsep{0em}
-\item An \emph{\(n\)-cell} in \(Y\) is defined to be the image \(e_j^n\) of a
-  disk \(D_j^n\) in \(Y\), so that by construction we have
-  \(Y = X \cup \big( \bigcup_{j \in J} e_j^n \big)\).
+    \label{def:attaching-cells}
+    Let \(f: \coprod_{j \in J} S_j^{n-1} \to X\) be a morphism of topological
+    spaces, where \(J\) is a set and \(S_j^{n-1}\) is an indexed copy of the
+    \((n-1)\)-sphere. We shall consider the attaching space \(Y\) given by the
+    \emph{pushout}
+    \[
+        \begin{tikzcd}
+            \coprod_{j \in J} S_j^{n-1} \ar[r, "f"] \ar[d, hook]
+            \ar[rd, phantom, "\ulcorner", very near end]
+            &X \ar[d]
+            \\
+            \coprod_{j \in J} D_j^n \ar[r]
+            &X \cup_f \Big( \coprod_{j \in J} D_j^n \Big) \eqqcolon Y
+        \end{tikzcd}
+    \]
+    where \(D_j^n \hookleftarrow S^{n-1}\) denotes an indexed copy of the
+    \(n\)-disk. We define the following notions concerning the triple \((Y, X, f)\):
+    \begin{itemize}\setlength\itemsep{0em}
+        \item An \emph{\(n\)-cell} in \(Y\) is defined to be the image \(e_j^n\) of a
+              disk \(D_j^n\) in \(Y\), so that by construction we have
+              \(Y = X \cup \big( \bigcup_{j \in J} e_j^n \big)\).
 
-\item One can decompose \(f\) into a collection of maps
-  \((f_j^n: D_j^n \to Y)_{j \in J}\), each of these is called a
-  \emph{characteristic map}.
-\end{itemize}
+        \item One can decompose \(f\) into a collection of maps
+              \((f_j^n: D_j^n \to Y)_{j \in J}\), each of these is called a
+              \emph{characteristic map}.
+    \end{itemize}
 \end{definition}
 
 \begin{definition}[Filtered space]
-\label{def:filtered-space}
-A \emph{filtered topological space} \(X\) is a space together with an increasing
-sequence \((X_n)_{n \in \N}\) of closed subspaces, with inclusions
-\(X_n \emb X_{n+1}\) for all \(n \in \N\), and
-\[
-X = \Colim_{n \in \N} X_n = \bigcup_{n \in \N} X_n.
-\]
-Where \(X\) is endowed with the \emph{weak topology}.
+    \label{def:filtered-space}
+    A \emph{filtered topological space} \(X\) is a space together with an increasing
+    sequence \((X_n)_{n \in \N}\) of closed subspaces, with inclusions
+    \(X_n \emb X_{n+1}\) for all \(n \in \N\), and
+    \[
+        X = \Colim_{n \in \N} X_n = \bigcup_{n \in \N} X_n.
+    \]
+    Where \(X\) is endowed with the \emph{weak topology}.
 \end{definition}
 
 \begin{definition}[Relative cell complex]
-\label{def:relative-cell-complex}
-A \emph{relative cell complex} is a pair \((X, A)\) where \(A\) is a
-\(k\)-space, and \(X\) is a filtered space with:
-\begin{itemize}\setlength\itemsep{0em}
-\item The initial space of the sequence \((X_n)_{n \in \N}\) associated to \(X\)
-  is
-  \[
-  X_0 = A \disj \Big( \coprod_{j \in J_0} D_j^0 \Big),
-  \]
-  where \(D_j^0\) is a copy of the \(0\)-disk indexed by a set \(J_0\).
+    \label{def:relative-cell-complex}
+    A \emph{relative cell complex} is a pair \((X, A)\) where \(A\) is a
+    \(k\)-space, and \(X\) is a filtered space with:
+    \begin{itemize}\setlength\itemsep{0em}
+        \item The initial space of the sequence \((X_n)_{n \in \N}\) associated to \(X\)
+              is
+              \[
+                  X_0 = A \disj \Big( \coprod_{j \in J_0} D_j^0 \Big),
+              \]
+              where \(D_j^0\) is a copy of the \(0\)-disk indexed by a set \(J_0\).
 
-\item For each \(n \in \N\) we have an associated attaching map
-  \(f_n: \coprod_{j \in J_{n+1}} S_j^n \to X_n\) such that
-  \[
-  X_{n+1} = X_n \cup_{f_n} \Big( \coprod_{j \in J_{n+1}} D_j^{n+1} \Big)
-  \]
-  where \(S_j^n\) and \(D_j^{n+1}\) are copies of the \(n\)-sphere and
-  \((n+1)\)-disk indexed by a set \(J_{n+1}\), respectively. In other words, the
-  following diagram is a \emph{pushout} in \(\Top\):
-  \[
-  \begin{tikzcd}
-  \coprod_{j \in J_{n+1}} S_j^{n-1} \ar[r, "f_n"] \ar[d, hook]
-  \ar[rd, phantom, "\ulcorner", very near end]
-  &X_n \ar[d, hook]
-  \\
-  \coprod_{j \in J_{n+1}} D_j^n \ar[r] &X_{n+1}
-  \end{tikzcd}
-  \]
-  Each space \(X_n\) is called the \emph{\(n\)-skeleton} of \((X, A)\).
-\end{itemize}
-We say that \((X, A)\) is a \emph{finite} relative cell complex if \(X\) has
-finitely many \(n\)-cells for each \(n \in \N\). Moreover, if \(X = X_n\) we say
-that \((X, A)\) is an \emph{\(n\)-dimensional} relative cell complex.
+        \item For each \(n \in \N\) we have an associated attaching map
+              \(f_n: \coprod_{j \in J_{n+1}} S_j^n \to X_n\) such that
+              \[
+                  X_{n+1} = X_n \cup_{f_n} \Big( \coprod_{j \in J_{n+1}} D_j^{n+1} \Big)
+              \]
+              where \(S_j^n\) and \(D_j^{n+1}\) are copies of the \(n\)-sphere and
+              \((n+1)\)-disk indexed by a set \(J_{n+1}\), respectively. In other words, the
+              following diagram is a \emph{pushout} in \(\Top\):
+              \[
+                  \begin{tikzcd}
+                      \coprod_{j \in J_{n+1}} S_j^{n-1} \ar[r, "f_n"] \ar[d, hook]
+                      \ar[rd, phantom, "\ulcorner", very near end]
+                      &X_n \ar[d, hook]
+                      \\
+                      \coprod_{j \in J_{n+1}} D_j^n \ar[r] &X_{n+1}
+                  \end{tikzcd}
+              \]
+              Each space \(X_n\) is called the \emph{\(n\)-skeleton} of \((X, A)\).
+    \end{itemize}
+    We say that \((X, A)\) is a \emph{finite} relative cell complex if \(X\) has
+    finitely many \(n\)-cells for each \(n \in \N\). Moreover, if \(X = X_n\) we say
+    that \((X, A)\) is an \emph{\(n\)-dimensional} relative cell complex.
 
-Together with relative cell complexes we define a \emph{cellular map}
-\(\phi: (X, A) \to (Y, B)\) between relative cell complexes to be a continuous
-map \(\phi(X_n) \subseteq Y_n\) for each \(n \in \N\). We say that a pair
-\((Y, A)\) is a \emph{subcomplex} of \((X, A)\) if \(Y\) is a subspace of \(X\)
-that is given by the union of \(A\) with cells of \(X\).
+    Together with relative cell complexes we define a \emph{cellular map}
+    \(\phi: (X, A) \to (Y, B)\) between relative cell complexes to be a continuous
+    map \(\phi(X_n) \subseteq Y_n\) for each \(n \in \N\). We say that a pair
+    \((Y, A)\) is a \emph{subcomplex} of \((X, A)\) if \(Y\) is a subspace of \(X\)
+    that is given by the union of \(A\) with cells of \(X\).
 
-A \emph{CW-complex} is a relative cell complex \((X, \emptyset)\), that is, each
-skeleton \(X_n\) is formed exclusively by attaching \(n\)-cells on
-\(X_{n-1}\).
+    A \emph{CW-complex} is a relative cell complex \((X, \emptyset)\), that is, each
+    skeleton \(X_n\) is formed exclusively by attaching \(n\)-cells on
+    \(X_{n-1}\).
 \end{definition}
 
 %%% Local Variables:

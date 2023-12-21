@@ -3,162 +3,162 @@
 \subsection{For the Fundamental Groupoid}
 
 \begin{theorem}[van Kampen theorem for the fundamental groupoid]
-\label{thm:van-Kampen-groupoid}
-Let \(X\) be a space, and \(\mathcal{O}\) be a connected open
-cover\footnote{That is, composed of connected open subsets of \(X\).} of \(X\)
-that is closed under finite intersections---which is a subcategory of \(\Top\)
-whose morphisms are inclusions. Considering the functor
-\(\Pi_1: \Top \to \Grpd\), the fundamental groupoid \(\Pi_1 X\) is the colimit
-of the functor \(\Pi_1|_{\mathcal{O}}\), that is:
-\[
-\Pi_1 X \iso \Colim_{U \in \mathcal{O}} \Pi_1 U
-\]
-in the category \(\Grpd\).
+    \label{thm:van-Kampen-groupoid}
+    Let \(X\) be a space, and \(\mathcal{O}\) be a connected open
+    cover\footnote{That is, composed of connected open subsets of \(X\).} of \(X\)
+    that is closed under finite intersections---which is a subcategory of \(\Top\)
+    whose morphisms are inclusions. Considering the functor
+    \(\Pi_1: \Top \to \Grpd\), the fundamental groupoid \(\Pi_1 X\) is the colimit
+    of the functor \(\Pi_1|_{\mathcal{O}}\), that is:
+    \[
+        \Pi_1 X \iso \Colim_{U \in \mathcal{O}} \Pi_1 U
+    \]
+    in the category \(\Grpd\).
 \end{theorem}
 
 \begin{proof}
-We'll show that \(\Pi_1|\) Let \(\mathcal{G}\) be a groupoid and consider the
-constant functor \(C: \mathcal{O} \to \Grpd\) mapping \(U \mapsto \mathcal{G}\)
-and \(\iota \mapsto \Id_{\mathcal{G}}\) for any object \(U \in \mathcal{O}\) and
-morphism \(\iota\) of \(\mathcal{O}\). Let \(\eta: \Pi_1|_{\mathcal{O}} \nat C\)
-be a natural transformation. The pair \((\mathcal{G}, \eta)\) forms a
-\emph{cocone} over the functor \(\Pi_1|_{\mathcal{O}}\): indeed, given an object
-\(U \in \mathcal{O}\) there exists a morphism of groupoids
-\(\eta_U: \Pi_1 U \to C U = \mathcal{G}\) and from naturality, given any
-inclusion \(\iota: U \emb V\) in \(\mathcal{O}\) one has that
-\[
-\begin{tikzcd}
-\Pi_1 U \ar[d, "\Pi_1 \iota"'] \ar[r, "\eta_U"]
-&C U = \mathcal{G} \ar[d, "C \iota = \Id_{\mathcal{G}}"] \\
-\Pi_1 V \ar[r, "\eta_V"'] &C V = \mathcal{G}
-\end{tikzcd}
-\]
-commutes in \(\Grpd\)---showing that
-\(\eta_U = \Id_{\mathcal{G}} \eta_U = \eta_V \circ \Pi_1 \iota\), hence
-compatibility \(\Pi_1\) is satisfied, making \((\mathcal{G}, \eta)\) a cocone.
+    We'll show that \(\Pi_1|\) Let \(\mathcal{G}\) be a groupoid and consider the
+    constant functor \(C: \mathcal{O} \to \Grpd\) mapping \(U \mapsto \mathcal{G}\)
+    and \(\iota \mapsto \Id_{\mathcal{G}}\) for any object \(U \in \mathcal{O}\) and
+    morphism \(\iota\) of \(\mathcal{O}\). Let \(\eta: \Pi_1|_{\mathcal{O}} \nat C\)
+    be a natural transformation. The pair \((\mathcal{G}, \eta)\) forms a
+    \emph{cocone} over the functor \(\Pi_1|_{\mathcal{O}}\): indeed, given an object
+    \(U \in \mathcal{O}\) there exists a morphism of groupoids
+    \(\eta_U: \Pi_1 U \to C U = \mathcal{G}\) and from naturality, given any
+    inclusion \(\iota: U \emb V\) in \(\mathcal{O}\) one has that
+    \[
+        \begin{tikzcd}
+            \Pi_1 U \ar[d, "\Pi_1 \iota"'] \ar[r, "\eta_U"]
+            &C U = \mathcal{G} \ar[d, "C \iota = \Id_{\mathcal{G}}"] \\
+            \Pi_1 V \ar[r, "\eta_V"'] &C V = \mathcal{G}
+        \end{tikzcd}
+    \]
+    commutes in \(\Grpd\)---showing that
+    \(\eta_U = \Id_{\mathcal{G}} \eta_U = \eta_V \circ \Pi_1 \iota\), hence
+    compatibility \(\Pi_1\) is satisfied, making \((\mathcal{G}, \eta)\) a cocone.
 
-Consider the collection \((i_U: \Pi_1 U \to \Pi_1 X)_{U \in \mathcal{O}}\) of
-canonical inclusions of groupoids. To show the universal property of \(\Pi_1 X\)
-we must construct a \emph{unique morphism} of groupoids (that is, a functor
-between groupoids) \(\chi: \Pi_1 X \to \mathcal{G}\) such that
-\begin{equation}\label{eq:van-kampen-grpd}
-\begin{tikzcd}
-\mathcal{G} &\Pi_1 U \ar[l, "\eta_U"'] \ar[dl, bend left, "i_U"] \\
-\Pi_1 X \ar[u, dashed, "\chi"] &
-\end{tikzcd}
-\end{equation}
-commutes in \(\Grpd\) for all \(U \in \mathcal{O}\).
+    Consider the collection \((i_U: \Pi_1 U \to \Pi_1 X)_{U \in \mathcal{O}}\) of
+    canonical inclusions of groupoids. To show the universal property of \(\Pi_1 X\)
+    we must construct a \emph{unique morphism} of groupoids (that is, a functor
+    between groupoids) \(\chi: \Pi_1 X \to \mathcal{G}\) such that
+    \begin{equation}\label{eq:van-kampen-grpd}
+        \begin{tikzcd}
+            \mathcal{G} &\Pi_1 U \ar[l, "\eta_U"'] \ar[dl, bend left, "i_U"] \\
+            \Pi_1 X \ar[u, dashed, "\chi"] &
+        \end{tikzcd}
+    \end{equation}
+    commutes in \(\Grpd\) for all \(U \in \mathcal{O}\).
 
-To that end, for every \(x \in X\), if \(x \in U\) let
-\(\chi x \coloneq \eta_U x\). For the morphisms of \(\Pi_1 X\), consider any
-path \(f \in \Path_X(x, y)\) on \(X\). If \(\im f\) lies interely in some object
-\(U \in \mathcal{O}\), simply define \(\chi [f] \coloneq \eta_U [f]\)---since
-\(\mathcal{O}\) is closed under finite intersections, if
-\(\im f \subseteq U \cap V\) for some \(U, V \in \mathcal{O}\), then the image
-\(\eta_{\bullet} [f]\) is independent of the choice of \(U\) or \(V\). Consider
-now the case where \(f\) has an image not entirely contained in a single element
-of \(\mathcal{O}\), but multiple ones, say
-\(\im f \subseteq \bigcup_{j=1}^n U_j\) for some finite collection of sets
-\(U_j \in \mathcal{O}\)---since \(\mathcal{O}\) is closed under finite
-intersections, this, we shall define a corresponding collection of paths
-\((f_j: I \to U_j)_{j=1}^n\) such that
-\[
-f = f_n f_{n-1} \cdots f_2 f_1.
-\]
-With this collection in hands we may define
-\(\chi[f] \coloneq \eta_{U_n}[f_n] \cdots \eta_{U_1}[f_1]\).
+    To that end, for every \(x \in X\), if \(x \in U\) let
+    \(\chi x \coloneq \eta_U x\). For the morphisms of \(\Pi_1 X\), consider any
+    path \(f \in \Path_X(x, y)\) on \(X\). If \(\im f\) lies interely in some object
+    \(U \in \mathcal{O}\), simply define \(\chi [f] \coloneq \eta_U [f]\)---since
+    \(\mathcal{O}\) is closed under finite intersections, if
+    \(\im f \subseteq U \cap V\) for some \(U, V \in \mathcal{O}\), then the image
+    \(\eta_{\bullet} [f]\) is independent of the choice of \(U\) or \(V\). Consider
+    now the case where \(f\) has an image not entirely contained in a single element
+    of \(\mathcal{O}\), but multiple ones, say
+    \(\im f \subseteq \bigcup_{j=1}^n U_j\) for some finite collection of sets
+    \(U_j \in \mathcal{O}\)---since \(\mathcal{O}\) is closed under finite
+    intersections, this, we shall define a corresponding collection of paths
+    \((f_j: I \to U_j)_{j=1}^n\) such that
+    \[
+        f = f_n f_{n-1} \cdots f_2 f_1.
+    \]
+    With this collection in hands we may define
+    \(\chi[f] \coloneq \eta_{U_n}[f_n] \cdots \eta_{U_1}[f_1]\).
 
-We must ensure that this is well defined: let \(g \in \Path_X(x, y)\) be another
-path and suppose there exists a homotopy \(\varepsilon: f \nat g\). Take a
-decomposition \((g_j: I \to V_j)_{j=1}^m\) for sets \(V_j \in
-\mathcal{O}\). Consider a partition \((J_j \times S_j)_{j=1}^{\ell}\) of the
-square \(I \times I\) such that
-\(\im \varepsilon|_{J_j \times S_j} \subseteq U\) for some
-\(U \in \mathcal{O}\), and such that \((J_j)_{j=1}^{\ell}\) is a refinement for
-the decompositions of \(f\) and \(g\)---that is, \(f|_{J_j}\) and \(g|_{J_j}\)
-are paths entirely contained in some set of \(\mathcal{O}\). In this way we see
-that \(\varepsilon\) induces a collection of homotopies
-\((\varepsilon_j: f_j \nat g_j)_{j=1}^{\ell}\) proving that \([f_j] = [g_j]\) in
-some \(\Pi_1 U\), therefore \(\chi [f] = \chi [g]\). Hence \(\chi\) is a
-uniquely defined functor satisfying \cref{eq:van-kampen-grpd}.
+    We must ensure that this is well defined: let \(g \in \Path_X(x, y)\) be another
+    path and suppose there exists a homotopy \(\varepsilon: f \nat g\). Take a
+    decomposition \((g_j: I \to V_j)_{j=1}^m\) for sets \(V_j \in
+    \mathcal{O}\). Consider a partition \((J_j \times S_j)_{j=1}^{\ell}\) of the
+    square \(I \times I\) such that
+    \(\im \varepsilon|_{J_j \times S_j} \subseteq U\) for some
+    \(U \in \mathcal{O}\), and such that \((J_j)_{j=1}^{\ell}\) is a refinement for
+    the decompositions of \(f\) and \(g\)---that is, \(f|_{J_j}\) and \(g|_{J_j}\)
+    are paths entirely contained in some set of \(\mathcal{O}\). In this way we see
+    that \(\varepsilon\) induces a collection of homotopies
+    \((\varepsilon_j: f_j \nat g_j)_{j=1}^{\ell}\) proving that \([f_j] = [g_j]\) in
+    some \(\Pi_1 U\), therefore \(\chi [f] = \chi [g]\). Hence \(\chi\) is a
+    uniquely defined functor satisfying \cref{eq:van-kampen-grpd}.
 \end{proof}
 
 \subsection{For the Fundamental Group}
 
 \begin{theorem}[van Kampen theorem for the fundamental group]
-\label{thm:van-kampen-group}
-Let \((X, x) \in \bpTop\) be a path-connected space, and \(\mathcal{O}\) be a
-path-connected open cover of \(X\) closed under finite intersections---and such
-that \(x \in U\) for every \(U \in \mathcal{O}\), therefore \(\mathcal{O}\) is a
-subcategory of \(\bpTop\) whose morphisms are inclusions. Then the fundamental
-groupoid of \(X\) is the colimit of the functor \(\pi_1|_{\mathcal{O}}:
-\mathcal{O} \to \Grp\), that is:
-\[
-\pi_1(X, x) \iso \Colim_{U \in \mathcal{O}} \pi_1(U, x).
-\]
+    \label{thm:van-kampen-group}
+    Let \((X, x) \in \bpTop\) be a path-connected space, and \(\mathcal{O}\) be a
+    path-connected open cover of \(X\) closed under finite intersections---and such
+    that \(x \in U\) for every \(U \in \mathcal{O}\), therefore \(\mathcal{O}\) is a
+    subcategory of \(\bpTop\) whose morphisms are inclusions. Then the fundamental
+    groupoid of \(X\) is the colimit of the functor \(\pi_1|_{\mathcal{O}}:
+    \mathcal{O} \to \Grp\), that is:
+    \[
+        \pi_1(X, x) \iso \Colim_{U \in \mathcal{O}} \pi_1(U, x).
+    \]
 \end{theorem}
 
 We first prove a particular case of the classical van Kampen theorem and after
 generalize.
 
 \begin{lemma}
-\label{lem:van-kampen-finite-cover}
-The van Kampen theorem for the fundamental group holds when \(\mathcal{O}\) is
-finite.
+    \label{lem:van-kampen-finite-cover}
+    The van Kampen theorem for the fundamental group holds when \(\mathcal{O}\) is
+    finite.
 \end{lemma}
 
 \begin{proof}
-Let \(G\) be a group and \(C: \mathcal{O} \to \Grp\) be the constant functor on
-\(G\) and consider the cocone \((G, \eta: \pi_1|_{\mathcal{O}} \nat C)\) over
-the functor \(\pi_1|_{\mathcal{O}}\). We'll construct a morphism of groups
-\(\chi: \pi_1(X, x) \to G\). Recall that the inclusion functor
-\(J: \pi_1(X, x) \to \Pi_1 X\) is an equivalence of categories, since
-\(\pi_1(X, x)\) is a skeleton of \(\Pi_1 X\) by
-\cref{prop:pi1-equivalent-to-Pi1-for-connected-space}. Define a quasi-inverse of
-\(J\) as follows: consider a collection \((\gamma_y)_{y \in X}\) of paths
-\(\gamma_y \in \Path_X(x, y)\) where \(\im \gamma_y \subseteq U\) when
-\(y \in U\) and \(\gamma_x \coloneq \const_x\)---this is possible because
-\(\mathcal{O}\) is closed under finite intersections---then define
-\(F: \Pi_1 X \to \pi_1(X, x)\) by mapping \(f: a \to b\) to
-\(F f \coloneq \gamma_b f \gamma_a^{-1}: x \to x\).
+    Let \(G\) be a group and \(C: \mathcal{O} \to \Grp\) be the constant functor on
+    \(G\) and consider the cocone \((G, \eta: \pi_1|_{\mathcal{O}} \nat C)\) over
+    the functor \(\pi_1|_{\mathcal{O}}\). We'll construct a morphism of groups
+    \(\chi: \pi_1(X, x) \to G\). Recall that the inclusion functor
+    \(J: \pi_1(X, x) \to \Pi_1 X\) is an equivalence of categories, since
+    \(\pi_1(X, x)\) is a skeleton of \(\Pi_1 X\) by
+    \cref{prop:pi1-equivalent-to-Pi1-for-connected-space}. Define a quasi-inverse of
+    \(J\) as follows: consider a collection \((\gamma_y)_{y \in X}\) of paths
+    \(\gamma_y \in \Path_X(x, y)\) where \(\im \gamma_y \subseteq U\) when
+    \(y \in U\) and \(\gamma_x \coloneq \const_x\)---this is possible because
+    \(\mathcal{O}\) is closed under finite intersections---then define
+    \(F: \Pi_1 X \to \pi_1(X, x)\) by mapping \(f: a \to b\) to
+    \(F f \coloneq \gamma_b f \gamma_a^{-1}: x \to x\).
 
-Notice that the quasi-inverse functors \(J\) and \(F\) induce, for each \(U \in
-\mathcal{O}\), a corresponding pair of quasi-inverse functors
-\[
-F_U \colon \Pi_1 U \rightleftarrows \pi_1(U, x) \colon J_U.
-\]
-Then we can construct a cocone \((G, \delta: \Pi_1|_{\mathcal{O}} \nat C)\) over
-the functor \(\Pi_1|_{\mathcal{O}}\), where
-\(\delta_U \coloneq \eta_U F_U: \Pi_1 U \to G\). By means of
-\cref{thm:van-Kampen-groupoid} there exists a \emph{unique} morphism of
-groupoids \(\xi: \Pi_1 X \to G\) (where \(G\) is interpreted as a groupoid with a
-single object) such that
-\[
-\begin{tikzcd}
-\Pi_1 U \ar[r, "F_U"] \ar[rrd, bend right, hook, "i_U"']
-&\pi_1(U, x) \ar[r, "\eta_U"] &G \\
-&&\Pi_1 X \ar[u, dashed, "\xi"']
-\end{tikzcd}
-\]
-commutes in \(\Grpd\) for every \(U \in \mathcal{O}\). Define
-\(\chi \coloneq \xi J: \pi_1(X, x) \to G\), and notice that since
-\(\eta_U F_U = \xi i_U\) we can precompose with \(J_U: \pi_1(U, x) \to \Pi_1 U\)
-and use that \(F_U J_U = \Id_{\pi_1(U, x)}\) to obtain that
-\(\eta_U = \xi i_U J_U\). Notice however that given any \([g] \in \pi_1(U, x)\)
-one has \(i_U J_U [g] = [g] \in \Pi_1 X\) while \(J j_U [g] = [g] \in \Pi_1 X\)
-again---for the canonical inclusion
-\(j_U: \pi_1(U, x) \emb \pi_1(X, x)\)---therefore \(i_U J_U = J j_U\). This
-proves that \(\eta_U = \xi J j_U = \chi j_U\) for every \(U \in \mathcal{O}\),
-that is
-\[
-\begin{tikzcd}
-\pi_1(U, x) \ar[r, "\eta_U"] \ar[rdd, bend right, "j_U", hook] &G \\
-&\Pi_1 X \ar[u, dashed, "\xi"] \\
-&\pi_1(X, x) \ar[u, "J"] \ar[uu, dashed, bend right=50, "\chi"']
-\end{tikzcd}
-\]
-commutes in \(\Grp\), which proves the universal property for the colimit
-\(\pi_1(X, x)\).
+    Notice that the quasi-inverse functors \(J\) and \(F\) induce, for each \(U \in
+    \mathcal{O}\), a corresponding pair of quasi-inverse functors
+    \[
+        F_U \colon \Pi_1 U \rightleftarrows \pi_1(U, x) \colon J_U.
+    \]
+    Then we can construct a cocone \((G, \delta: \Pi_1|_{\mathcal{O}} \nat C)\) over
+    the functor \(\Pi_1|_{\mathcal{O}}\), where
+    \(\delta_U \coloneq \eta_U F_U: \Pi_1 U \to G\). By means of
+    \cref{thm:van-Kampen-groupoid} there exists a \emph{unique} morphism of
+    groupoids \(\xi: \Pi_1 X \to G\) (where \(G\) is interpreted as a groupoid with a
+    single object) such that
+    \[
+        \begin{tikzcd}
+            \Pi_1 U \ar[r, "F_U"] \ar[rrd, bend right, hook, "i_U"']
+            &\pi_1(U, x) \ar[r, "\eta_U"] &G \\
+            &&\Pi_1 X \ar[u, dashed, "\xi"']
+        \end{tikzcd}
+    \]
+    commutes in \(\Grpd\) for every \(U \in \mathcal{O}\). Define
+    \(\chi \coloneq \xi J: \pi_1(X, x) \to G\), and notice that since
+    \(\eta_U F_U = \xi i_U\) we can precompose with \(J_U: \pi_1(U, x) \to \Pi_1 U\)
+    and use that \(F_U J_U = \Id_{\pi_1(U, x)}\) to obtain that
+    \(\eta_U = \xi i_U J_U\). Notice however that given any \([g] \in \pi_1(U, x)\)
+    one has \(i_U J_U [g] = [g] \in \Pi_1 X\) while \(J j_U [g] = [g] \in \Pi_1 X\)
+    again---for the canonical inclusion
+    \(j_U: \pi_1(U, x) \emb \pi_1(X, x)\)---therefore \(i_U J_U = J j_U\). This
+    proves that \(\eta_U = \xi J j_U = \chi j_U\) for every \(U \in \mathcal{O}\),
+    that is
+    \[
+        \begin{tikzcd}
+            \pi_1(U, x) \ar[r, "\eta_U"] \ar[rdd, bend right, "j_U", hook] &G \\
+            &\Pi_1 X \ar[u, dashed, "\xi"] \\
+            &\pi_1(X, x) \ar[u, "J"] \ar[uu, dashed, bend right=50, "\chi"']
+        \end{tikzcd}
+    \]
+    commutes in \(\Grp\), which proves the universal property for the colimit
+    \(\pi_1(X, x)\).
 \end{proof}
 
 \subsubsection{Proof of the Classical van Kampen Theorem}
@@ -167,80 +167,80 @@ Let \(\mathcal{O}\) be a path-connected open cover of \(X\) closed under
 intersections and composed of neighbourhoods of the chosen base-point \(x\). Let
 \(\mathfrak{F} \subseteq 2^{\mathcal{O}}\) be the category whose objects are the
 \emph{finite} subsets of \(\mathcal{O}\) of the cover that is \emph{closed under
-  finite intersections}, and morphisms are \emph{inclusions}. Given any such
+    finite intersections}, and morphisms are \emph{inclusions}. Given any such
 subset \(\mathcal{C} \in \mathfrak F\), we know from
 \cref{lem:van-kampen-finite-cover} that the space
 \(U_{\mathcal{C}} \coloneq \bigcup_{U \in \mathcal{C}} U\) satisfies
 \begin{equation}\label{eq:van-kampen-grp-1}
-\pi_1(U_{\mathcal{C}}, x) \iso \Colim_{U \in \mathcal{C}} \pi_1(U, x).
+    \pi_1(U_{\mathcal{C}}, x) \iso \Colim_{U \in \mathcal{C}} \pi_1(U, x).
 \end{equation}
 
 \begin{itemize}\setlength\itemsep{0em}
-\item Let's prove that the colimit of the functor
-  \(\pi_1|_{\mathfrak{F}}: \mathfrak{F} \to \Grp\)---which maps each
-  \(\mathcal{C} \in \mathfrak{F}\) to the group
-  \(\pi_1(U_{\mathcal{C}}, x)\)---is the fundamental group \(\pi_1(X,
-  x)\). Given any group \(G\) and a its corresponding constant functor
-  \(C_G: \mathfrak{F} \to \Grp\) with \(C_G \mathcal{C} \coloneq G\), let
-  \(\eta: \pi_1|_{\mathfrak{F}} \nat C_G\) be a natural transformation. The pair
-  \((G, \eta)\) is then a cocone over the functor \(\pi_1|_{\mathfrak F}\).
+    \item Let's prove that the colimit of the functor
+          \(\pi_1|_{\mathfrak{F}}: \mathfrak{F} \to \Grp\)---which maps each
+          \(\mathcal{C} \in \mathfrak{F}\) to the group
+          \(\pi_1(U_{\mathcal{C}}, x)\)---is the fundamental group \(\pi_1(X,
+          x)\). Given any group \(G\) and a its corresponding constant functor
+          \(C_G: \mathfrak{F} \to \Grp\) with \(C_G \mathcal{C} \coloneq G\), let
+          \(\eta: \pi_1|_{\mathfrak{F}} \nat C_G\) be a natural transformation. The pair
+          \((G, \eta)\) is then a cocone over the functor \(\pi_1|_{\mathfrak F}\).
 
-  We'll construct a unique morphism of groups \(\chi: \pi_1(X, x) \to G\)
-  satisfying the coherence of the cocones using the same technique from
-  \cref{thm:van-Kampen-groupoid}. If \(f: x \to x\) is a loop contained entirely
-  in a set \(U_{\mathcal{C}} \subseteq X\) for some
-  \(\mathcal{C} \in \mathfrak{F} F\), we simply map
-  \(\chi [f] \coloneq \eta_{\mathcal{C}} [f]\). If on the other hand \(f\) is
-  not entirely contained in a single set, say that \(f\) is contained in the
-  union \(\bigcup_{j=1}^n U_j\) for sets \(U_j \in \mathcal{C}\) and define a
-  collection of decompositions of \(f\), namely \((f_j: I \to U_j)_{j=1}^n\),
-  for which \(f\) is the result of the concatenation of paths. From the same
-  argument as before, merely map
-  \(\chi [f] \coloneq \eta_{U_n} [f_n] \cdots \eta_{U_1} [f_1]\), which is well
-  defined and unique\footnote{Simply refer to the proof of
-    \cref{thm:van-Kampen-groupoid}, now it should be clear that the proof
-    follows exacly the same steps}. Therefore one has
-  \begin{equation}\label{eq:van-kampen-grp-2}
-  \Colim_{\mathcal{C} \in \mathfrak{F}} \pi_1(U_{\mathcal{C}}, x) \iso \pi_1(X, x).
-  \end{equation}
+          We'll construct a unique morphism of groups \(\chi: \pi_1(X, x) \to G\)
+          satisfying the coherence of the cocones using the same technique from
+          \cref{thm:van-Kampen-groupoid}. If \(f: x \to x\) is a loop contained entirely
+          in a set \(U_{\mathcal{C}} \subseteq X\) for some
+          \(\mathcal{C} \in \mathfrak{F} F\), we simply map
+          \(\chi [f] \coloneq \eta_{\mathcal{C}} [f]\). If on the other hand \(f\) is
+          not entirely contained in a single set, say that \(f\) is contained in the
+          union \(\bigcup_{j=1}^n U_j\) for sets \(U_j \in \mathcal{C}\) and define a
+          collection of decompositions of \(f\), namely \((f_j: I \to U_j)_{j=1}^n\),
+          for which \(f\) is the result of the concatenation of paths. From the same
+          argument as before, merely map
+          \(\chi [f] \coloneq \eta_{U_n} [f_n] \cdots \eta_{U_1} [f_1]\), which is well
+          defined and unique\footnote{Simply refer to the proof of
+              \cref{thm:van-Kampen-groupoid}, now it should be clear that the proof
+              follows exacly the same steps}. Therefore one has
+          \begin{equation}\label{eq:van-kampen-grp-2}
+              \Colim_{\mathcal{C} \in \mathfrak{F}} \pi_1(U_{\mathcal{C}}, x) \iso \pi_1(X, x).
+          \end{equation}
 
-\item For the final part of the proof, we shall prove that the colimits of the
-  functors \(\pi_1|_{\mathcal{O}}\) and \(\pi_1|_{\mathfrak{F}}\) agree so that
-  the van Kampen theorem is true. Recalling \cref{eq:van-kampen-grp-1}, one has
-  \begin{align*}
-  \Colim_{\mathcal{C} \in \mathfrak{F}} \pi_1(U_{\mathcal{C}}, x)
-  &\iso
-  \Colim_{\mathcal{C} \in \mathfrak{F}}(\Colim_{U \in \mathcal{C}} \pi_1(U, x)) \\
-  &\iso
-  \Colim_{(\mathcal{O}, \mathfrak{F})} \pi_1(U, x),
-  \end{align*}
-  where \((\mathcal{O}, \mathfrak{F})\) is the category whose objects are pairs
-  \((U, \mathcal{C}) \in \mathcal{C} \times \mathfrak{F}\), and morphisms are
-  paired inclusions---also
-  \(\pi_1(-, x)|_{(\mathcal{O}, \mathfrak{F})}: (\mathcal{O}, \mathfrak{F}) \to
-  \Grp\) is defined to map \((U, \mathcal{C})\) to \(\pi_1(U, x)\). Notice that
-  the functors \(\pi_1(-, x)|_{\mathcal{O}}\) and
-  \(\pi_1(-, x)|_{(\mathcal{O}, \mathfrak{F})}\) factor as
-  \[
-  \begin{tikzcd}
-  \mathcal{O} \ar[rr, "\pi_1{(-, x)}|_{\mathcal{O}}"] \ar[rd, "\iota"]
-  & &\Grp \\
-  &(\mathcal{O}, \mathfrak{F})
-  \ar[ru, "\pi_1{(-, x)}|_{(\mathcal{O}, \mathfrak F)}"']
-  \ar[lu, bend left=50, "p"] &
-  \end{tikzcd}
-  \]
-  Where \(\iota U \coloneq (U, \{U\})\) and \(p (U, \mathcal{C}) \coloneq
-  U\). Therefore one has an isomorphism
-  \begin{equation}\label{eq:van-kampen-grp-3}
-  \Colim_{U \in \mathcal{O}} \pi_1(U, x)
-  \iso
-  \Colim_{(U, \mathcal{C}) \in (\mathcal{O}, \mathfrak F)} \pi_1(U, x).
-  \end{equation}
+    \item For the final part of the proof, we shall prove that the colimits of the
+          functors \(\pi_1|_{\mathcal{O}}\) and \(\pi_1|_{\mathfrak{F}}\) agree so that
+          the van Kampen theorem is true. Recalling \cref{eq:van-kampen-grp-1}, one has
+          \begin{align*}
+              \Colim_{\mathcal{C} \in \mathfrak{F}} \pi_1(U_{\mathcal{C}}, x)
+               & \iso
+              \Colim_{\mathcal{C} \in \mathfrak{F}}(\Colim_{U \in \mathcal{C}} \pi_1(U, x)) \\
+               & \iso
+              \Colim_{(\mathcal{O}, \mathfrak{F})} \pi_1(U, x),
+          \end{align*}
+          where \((\mathcal{O}, \mathfrak{F})\) is the category whose objects are pairs
+          \((U, \mathcal{C}) \in \mathcal{C} \times \mathfrak{F}\), and morphisms are
+          paired inclusions---also
+          \(\pi_1(-, x)|_{(\mathcal{O}, \mathfrak{F})}: (\mathcal{O}, \mathfrak{F}) \to
+          \Grp\) is defined to map \((U, \mathcal{C})\) to \(\pi_1(U, x)\). Notice that
+          the functors \(\pi_1(-, x)|_{\mathcal{O}}\) and
+          \(\pi_1(-, x)|_{(\mathcal{O}, \mathfrak{F})}\) factor as
+          \[
+              \begin{tikzcd}
+                  \mathcal{O} \ar[rr, "\pi_1{(-, x)}|_{\mathcal{O}}"] \ar[rd, "\iota"]
+                  & &\Grp \\
+                  &(\mathcal{O}, \mathfrak{F})
+                  \ar[ru, "\pi_1{(-, x)}|_{(\mathcal{O}, \mathfrak F)}"']
+                  \ar[lu, bend left=50, "p"] &
+              \end{tikzcd}
+          \]
+          Where \(\iota U \coloneq (U, \{U\})\) and \(p (U, \mathcal{C}) \coloneq
+          U\). Therefore one has an isomorphism
+          \begin{equation}\label{eq:van-kampen-grp-3}
+              \Colim_{U \in \mathcal{O}} \pi_1(U, x)
+              \iso
+              \Colim_{(U, \mathcal{C}) \in (\mathcal{O}, \mathfrak F)} \pi_1(U, x).
+          \end{equation}
 \end{itemize}
 Therefore, by \cref{eq:van-kampen-grp-2,eq:van-kampen-grp-3} we have
 \[
-\Colim_{U \in \mathcal{O}} \pi_1(U, x) \iso \pi_1(X, x)
+    \Colim_{U \in \mathcal{O}} \pi_1(U, x) \iso \pi_1(X, x)
 \]
 as wanted.
 
@@ -249,346 +249,346 @@ as wanted.
 \subsection{Initial Constructions}
 
 \begin{definition}[Covering space]
-\label{def:covering-space}
-A surjective continuous map \(p: E \to B\) is said to be a \emph{covering space
-  over \(B\)} if for every point \(x \in B\), there exists a neigbourhood
-\(U \subseteq B\) of \(x\) that is \emph{evenly covered} by \(p\), that is:
-there exists a bundle isomorphism over \(B\) between the pullback\footnote{It
-  should be noted that the pullback of \(p\) over \(U\) is nothing more than the
-  induced bundle \(\iota^{*} p\) given by the inclusion \(\iota: U \emb B\).} of
-\(p\) over \(U\) and a product bundle \(\pi: U \times E_x \to U\) with
-\emph{discrete\footnote{Here, discrete means a space together with the discrete
-    topology. We shall make use of the functor \(\Disc: \Set \to \Top\) mapping
-    a bare set \(S\) to the topological space \(\Disc S\) with underlying set
-    \(S\) and endowed with the discrete topology.} fibre}
-\(E_x = p^{-1} x\). Diagrammatically, one has that the diagram
-\[
-\begin{tikzcd}
-U \times E_x \ar[r, "\dis"] \ar[rd, "\pi"']
-&p^{-1} U \ar[r, hook] \ar[d]
-\ar[rd, "\lrcorner", phantom, very near start]
-&E \ar[d, "p"] \\
-&U \ar[r, hook] &B
-\end{tikzcd}
-\]
-commutes in \(\Top\), where the topological isomorphism
-\(U \times E_x \isoto p^{-1} U\) is explicitly given by \((u, e) \mapsto
-e\). Said concisely, a covering space is a locally trivial bundle with discrete
-fibre.
+    \label{def:covering-space}
+    A surjective continuous map \(p: E \to B\) is said to be a \emph{covering space
+        over \(B\)} if for every point \(x \in B\), there exists a neigbourhood
+    \(U \subseteq B\) of \(x\) that is \emph{evenly covered} by \(p\), that is:
+    there exists a bundle isomorphism over \(B\) between the pullback\footnote{It
+        should be noted that the pullback of \(p\) over \(U\) is nothing more than the
+        induced bundle \(\iota^{*} p\) given by the inclusion \(\iota: U \emb B\).} of
+    \(p\) over \(U\) and a product bundle \(\pi: U \times E_x \to U\) with
+    \emph{discrete\footnote{Here, discrete means a space together with the discrete
+            topology. We shall make use of the functor \(\Disc: \Set \to \Top\) mapping
+            a bare set \(S\) to the topological space \(\Disc S\) with underlying set
+            \(S\) and endowed with the discrete topology.} fibre}
+    \(E_x = p^{-1} x\). Diagrammatically, one has that the diagram
+    \[
+        \begin{tikzcd}
+            U \times E_x \ar[r, "\dis"] \ar[rd, "\pi"']
+            &p^{-1} U \ar[r, hook] \ar[d]
+            \ar[rd, "\lrcorner", phantom, very near start]
+            &E \ar[d, "p"] \\
+            &U \ar[r, hook] &B
+        \end{tikzcd}
+    \]
+    commutes in \(\Top\), where the topological isomorphism
+    \(U \times E_x \isoto p^{-1} U\) is explicitly given by \((u, e) \mapsto
+    e\). Said concisely, a covering space is a locally trivial bundle with discrete
+    fibre.
 
-Yet another equivalent way of defining a covering space goes as follows. \(B\) is
-evenly covered by \(p\) if there exists an open cover \(\mathcal{U}\) of \(B\)
-such that any \(U \in \mathcal{U}\) has a preimage \(p^{-1} U = \bigdisj_{\alpha}
-V_{\alpha}\) where \(V_{\alpha}\) is an open set of \(E\), and the restriction
-\(p|_{V_{\alpha}}: V_{\alpha} \isoto U\) is a topological isomorphism.
+    Yet another equivalent way of defining a covering space goes as follows. \(B\) is
+    evenly covered by \(p\) if there exists an open cover \(\mathcal{U}\) of \(B\)
+    such that any \(U \in \mathcal{U}\) has a preimage \(p^{-1} U = \bigdisj_{\alpha}
+    V_{\alpha}\) where \(V_{\alpha}\) is an open set of \(E\), and the restriction
+    \(p|_{V_{\alpha}}: V_{\alpha} \isoto U\) is a topological isomorphism.
 \end{definition}
 
 \begin{corollary}
-\label{cor:covering-space-is-locally-top-iso}
-A covering space is a local topological isomorphism.
+    \label{cor:covering-space-is-locally-top-iso}
+    A covering space is a local topological isomorphism.
 \end{corollary}
 
 \begin{proof}
-Given a covering space \(p: E \to B\) and \(x \in E\), we can consider the
-neighbourhood \(U \subseteq B\) of \(p x\) that is evenly covered by \(p\). Then
-from our last definition we know that \(U\) is isomorphic to a disjoint union of
-open sets of \(E\). Let \(V \subseteq p^{-1} U\) be one such open set which is
-also a neighbourhood of \(x\). Then the restriction \(p|_V: V \to p(V) = U\) is
-an isomorphism, showing that \(p\) is indeed a local isomorphism.
+    Given a covering space \(p: E \to B\) and \(x \in E\), we can consider the
+    neighbourhood \(U \subseteq B\) of \(p x\) that is evenly covered by \(p\). Then
+    from our last definition we know that \(U\) is isomorphic to a disjoint union of
+    open sets of \(E\). Let \(V \subseteq p^{-1} U\) be one such open set which is
+    also a neighbourhood of \(x\). Then the restriction \(p|_V: V \to p(V) = U\) is
+    an isomorphism, showing that \(p\) is indeed a local isomorphism.
 \end{proof}
 
 \begin{notation}[Sheets]
-\label{not:coveing-space-sheet}
-Let \(p: E \to B\) be a covering space and \(x \in B\) be any point. Consider a
-neighbourhood \(U \subseteq B\) of \(x\) such that \(p\) admits a trivialisation
-\(\phi: p^{-1} U \isoto U \times E_x\). Since \(E_x\) is discrete, we have an
-isomorphism \(U \times E_x \iso \bigdisj_{e \in E_x} U \times e\). Moreover,
-clearly \(U \iso U \times e\) for any \(e \in E_x\). We shall define a
-\emph{sheet} over \(U\) to be an open set
-\begin{equation}\label{eq:covering-space-sheet}
-U_e \coloneq \phi^{-1}(U \times \{e\}) \subseteq E.
-\end{equation}
-The motivation comes from the fact that \(U_e \iso U \times e \iso U\).
+    \label{not:coveing-space-sheet}
+    Let \(p: E \to B\) be a covering space and \(x \in B\) be any point. Consider a
+    neighbourhood \(U \subseteq B\) of \(x\) such that \(p\) admits a trivialisation
+    \(\phi: p^{-1} U \isoto U \times E_x\). Since \(E_x\) is discrete, we have an
+    isomorphism \(U \times E_x \iso \bigdisj_{e \in E_x} U \times e\). Moreover,
+    clearly \(U \iso U \times e\) for any \(e \in E_x\). We shall define a
+    \emph{sheet} over \(U\) to be an open set
+    \begin{equation}\label{eq:covering-space-sheet}
+        U_e \coloneq \phi^{-1}(U \times \{e\}) \subseteq E.
+    \end{equation}
+    The motivation comes from the fact that \(U_e \iso U \times e \iso U\).
 \end{notation}
 
 \begin{proposition}[Covering projections are open]
-\label{prop:covering-projection-is-open}
-Given a covering space \(p: E \to B\), the projection \(p\) is open.
+    \label{prop:covering-projection-is-open}
+    Given a covering space \(p: E \to B\), the projection \(p\) is open.
 \end{proposition}
 
 \begin{proof}
-Consider the open cover \((U_x)_{x \in B}\) of \(B\)---where \(U_x\) is a
-neighbourhood of \(x\) such that there exists a topological isomorphism
-\(p^{-1} U_x \iso U_x \times \Disc E_x\), for each \(x \in B\). Under the
-product topology, projections are open maps (see
-\cref{lem:projections-open-under-product-top}), therefore \(p|_{p^{-1} U_x}\) is
-an open map for each \(x \in B\). Given any open set \(V \subseteq E\), notice
-that \(V = \bigcup_{x \in B} (W \cap p^{-1} U_x)\), therefore
-\[
-p V = p\Big(\bigcup_{x \in B} (W \cap p^{-1} U_x)\Big)
-= \bigcup_{x \in B} p(W \cap p^{-1} U_x)
-\]
-is the union of open sets, thus open---which shows that \(p\) is an open map.
+    Consider the open cover \((U_x)_{x \in B}\) of \(B\)---where \(U_x\) is a
+    neighbourhood of \(x\) such that there exists a topological isomorphism
+    \(p^{-1} U_x \iso U_x \times \Disc E_x\), for each \(x \in B\). Under the
+    product topology, projections are open maps (see
+    \cref{lem:projections-open-under-product-top}), therefore \(p|_{p^{-1} U_x}\) is
+    an open map for each \(x \in B\). Given any open set \(V \subseteq E\), notice
+    that \(V = \bigcup_{x \in B} (W \cap p^{-1} U_x)\), therefore
+    \[
+        p V = p\Big(\bigcup_{x \in B} (W \cap p^{-1} U_x)\Big)
+        = \bigcup_{x \in B} p(W \cap p^{-1} U_x)
+    \]
+    is the union of open sets, thus open---which shows that \(p\) is an open map.
 \end{proof}
 
 \begin{lemma}[Fibre-wise diagonal of covering space is open and closed]
-\label{lem:fibre-wise-diag-open-and-closed}
-Let \(p: E \to B\) be a covering space, and \(E \times_B E\) be the pullback of
-\(p\) with itself. Then the diagonal of \(E\) with respect to the fibre product
-over \(B\), namely
-\[
-\Delta_B E = \{(e, e) \in E \times_B E \colon e \in E\},
-\]
-is an \emph{open and closed set} in \(E \times_B E\).
+    \label{lem:fibre-wise-diag-open-and-closed}
+    Let \(p: E \to B\) be a covering space, and \(E \times_B E\) be the pullback of
+    \(p\) with itself. Then the diagonal of \(E\) with respect to the fibre product
+    over \(B\), namely
+    \[
+        \Delta_B E = \{(e, e) \in E \times_B E \colon e \in E\},
+    \]
+    is an \emph{open and closed set} in \(E \times_B E\).
 \end{lemma}
 
 \begin{proof}
-First we prove that \(\Delta_B E\) is open. Let \(e \in E\) be any point and
-\(U_{p e} \subseteq B\) be a neighbourhood of \(p e\) together with an
-isomorphism
-\[
-p^{-1} U_{p e} \iso U_{p e} \times E_{p e} = U_{p e} \times \{e\}.
-\]
-Since \(p^{-1} U_{p e}\) is open, it follows that
-\(U_{p e} \times \{e\} \emb E\) is open. Then the set
-\((E \times_B E) \cap (U_{p e} \times U_{p e})\) is an open neighbourhood of
-\((e, e)\) in \(E \times_B E\). This shows that \(\Delta_B E\) is open.
+    First we prove that \(\Delta_B E\) is open. Let \(e \in E\) be any point and
+    \(U_{p e} \subseteq B\) be a neighbourhood of \(p e\) together with an
+    isomorphism
+    \[
+        p^{-1} U_{p e} \iso U_{p e} \times E_{p e} = U_{p e} \times \{e\}.
+    \]
+    Since \(p^{-1} U_{p e}\) is open, it follows that
+    \(U_{p e} \times \{e\} \emb E\) is open. Then the set
+    \((E \times_B E) \cap (U_{p e} \times U_{p e})\) is an open neighbourhood of
+    \((e, e)\) in \(E \times_B E\). This shows that \(\Delta_B E\) is open.
 
-To show that \(\Delta_B E\) is closed, let \((x, y) \in E \times_B E\) with
-\(x \neq y\). Let \(U \subseteq B\) be a neighbourhood of \(p x = p y\) that is
-evenly covered, and consider the induced sheets \(U_x, U_y \subseteq E\) for
-\(x\) and \(y\), respectively. From the assumption that \(x\) and \(y\) are
-distinct points, we have an empty intersection
-\(U_x \cap U_y = \emptyset\)---which shows that \(U_x \times U_y\) is disjoint
-from \(\Delta_B E\). Therefore \((E \times_B E) \cap (U_x \times U_y)\) is a
-neighbourhood for \((x, y) \in E \times_B E\) outside of \(\Delta_B E\), showing
-that \(\Delta_B E\) is closed.
+    To show that \(\Delta_B E\) is closed, let \((x, y) \in E \times_B E\) with
+    \(x \neq y\). Let \(U \subseteq B\) be a neighbourhood of \(p x = p y\) that is
+    evenly covered, and consider the induced sheets \(U_x, U_y \subseteq E\) for
+    \(x\) and \(y\), respectively. From the assumption that \(x\) and \(y\) are
+    distinct points, we have an empty intersection
+    \(U_x \cap U_y = \emptyset\)---which shows that \(U_x \times U_y\) is disjoint
+    from \(\Delta_B E\). Therefore \((E \times_B E) \cap (U_x \times U_y)\) is a
+    neighbourhood for \((x, y) \in E \times_B E\) outside of \(\Delta_B E\), showing
+    that \(\Delta_B E\) is closed.
 \end{proof}
 
 \section{Lifting Properties}
 
 \begin{definition}[Lift]
-\label{def:lift-top}
-Let \(f: Y \to X\) and \(g: Z \to X\) be morphisms. We define a \emph{lift of
-  \(g\) along \(f\)} to be a morphism \(\lift{g}: Z \to Y\) such that the
-following diagram commutes:
-\[
-\begin{tikzcd}
- &Y \ar[d, "f"] \\
-Z \ar[r, "g"'] \ar[ru, "\lift g", bend left] & X
-\end{tikzcd}
-\]
+    \label{def:lift-top}
+    Let \(f: Y \to X\) and \(g: Z \to X\) be morphisms. We define a \emph{lift of
+        \(g\) along \(f\)} to be a morphism \(\lift{g}: Z \to Y\) such that the
+    following diagram commutes:
+    \[
+        \begin{tikzcd}
+            &Y \ar[d, "f"] \\
+            Z \ar[r, "g"'] \ar[ru, "\lift g", bend left] & X
+        \end{tikzcd}
+    \]
 \end{definition}
 
 \begin{proposition}[Homotopy lift via covering space]
-\label{prop:homotopy-lift-via-covering-space}
-Let \(p: E \to B\) be a covering space and consider a homotopy \(\eta: X \times
-I \to B\). Let \(\lift \eta_0: X \to E\) be a lift of \(\eta(-, 0)\) along
-\(p\). Then there exists a \emph{unique lift} \(\lift \eta: X \times I \to E\)
-of \(\eta\) along \(p\) which \emph{extends} \(\lift \eta_0\). That is, the
-following diagram commutes:
-\[
-\begin{tikzcd}
-X \times 0 \ar[r, "\lift \eta_0"] \ar[d]
-&E \ar[d, "p"] \\
-X \times I \ar[ru, dashed, "\lift \eta"] \ar[r, "\eta"']
-&X
-\end{tikzcd}
-\]
+    \label{prop:homotopy-lift-via-covering-space}
+    Let \(p: E \to B\) be a covering space and consider a homotopy \(\eta: X \times
+    I \to B\). Let \(\lift \eta_0: X \to E\) be a lift of \(\eta(-, 0)\) along
+    \(p\). Then there exists a \emph{unique lift} \(\lift \eta: X \times I \to E\)
+    of \(\eta\) along \(p\) which \emph{extends} \(\lift \eta_0\). That is, the
+    following diagram commutes:
+    \[
+        \begin{tikzcd}
+            X \times 0 \ar[r, "\lift \eta_0"] \ar[d]
+            &E \ar[d, "p"] \\
+            X \times I \ar[ru, dashed, "\lift \eta"] \ar[r, "\eta"']
+            &X
+        \end{tikzcd}
+    \]
 \end{proposition}
 
 \begin{proof}
-We shall prove this proposition in three acts, first we shall construct a lift
-with respect to a neighbourhood of any given point \(x \in X\), later the
-uniqueness of such lift, and finally how all this pieces together to form the
-required lift.
+    We shall prove this proposition in three acts, first we shall construct a lift
+    with respect to a neighbourhood of any given point \(x \in X\), later the
+    uniqueness of such lift, and finally how all this pieces together to form the
+    required lift.
 
-\begin{enumerate}[(i)]\setlength\itemsep{0em}
-\item Let \(x \in X\) be any point and take, for each \((x, t) \in x \times I\),
-  an evenly covered neighbourhood \(U_t \subseteq B\) of \(\eta(x, t)\). Now we
-  can choose a neighbourhood \(N_t \times (a_t, b_t)\) of \((x, t)\) such that
-  \(\eta(N_t \times (a_t, b_t)) \subseteq U_t\) is again evenly covered by
-  \(p\).
+    \begin{enumerate}[(i)]\setlength\itemsep{0em}
+        \item Let \(x \in X\) be any point and take, for each \((x, t) \in x \times I\),
+              an evenly covered neighbourhood \(U_t \subseteq B\) of \(\eta(x, t)\). Now we
+              can choose a neighbourhood \(N_t \times (a_t, b_t)\) of \((x, t)\) such that
+              \(\eta(N_t \times (a_t, b_t)) \subseteq U_t\) is again evenly covered by
+              \(p\).
 
-  Since \(x \times I\) is compact, let \(0 = t_0 < t_1 < \dots < t_n = 1\) be a
-  partition of \(I\) such that \(\{N_{t_j} \times [t_j, t_{j+1}]\}_{j=0}^{n-1}\)
-  covers \(x \times I\)---and also satisfies the requirement that
-  \(\eta(N_{t_j} \times [t_j, t_{j+1}])\) is evenly covered by \(p\) as in the
-  previous construction. Define the neighbourhood
-  \(N \coloneq \bigcap_{j=0}^n N_{t_j}\) of \(x\), so that
-  \(\eta(N \times [t_j, t_{j+1}])\) is still evenly covered by \(p\) for any \(j\).
+              Since \(x \times I\) is compact, let \(0 = t_0 < t_1 < \dots < t_n = 1\) be a
+              partition of \(I\) such that \(\{N_{t_j} \times [t_j, t_{j+1}]\}_{j=0}^{n-1}\)
+              covers \(x \times I\)---and also satisfies the requirement that
+              \(\eta(N_{t_j} \times [t_j, t_{j+1}])\) is evenly covered by \(p\) as in the
+              previous construction. Define the neighbourhood
+              \(N \coloneq \bigcap_{j=0}^n N_{t_j}\) of \(x\), so that
+              \(\eta(N \times [t_j, t_{j+1}])\) is still evenly covered by \(p\) for any \(j\).
 
-  We proceed by induction assuming that, for some \(j\), the lift \(\lift \eta\)
-  has been constructed on \(N \times [0, t_j]\) and which extends the given
-  starting lift \(\lift \eta_0\). Let \(U_j \subseteq B\) be an evenly covered
-  set containing \(\eta(N \times [t_j, t_{j+1}])\), and take
-  \(V_j \subseteq E\) to be an open set projecting isomorphically onto \(U_j\)
-  via \(p\) and with \(\lift\eta(x, t) \in V_j\).  Define
-  \[
-  N' \times t_j \coloneq (N \times t_j) \cap (\lift\eta|_{N \times t_j})^{-1} V_j,
-  \]
-  which is again a neighbourhood of \((x, t_j)\). From this construction we find
-  that \(\lift\eta(N' \times t_j) \subseteq V_j\). Now we define \(\lift\eta\)
-  on \(N' \times [t_j, t_{j+1}]\) to be the composition of \(\eta\) with
-  \(p^{-1}: U_j \to V_j\), that is:
-  \[
-  \begin{tikzcd}
-  &V_j \\
-  N' \times [t_j, t_{j+1}]
-  \ar[ru, bend left, "\lift\eta"]
-  \ar[r, "\eta"']
-  & U_j \ar[u, "p^{-1}"', "\dis"]
-  \end{tikzcd}
-  \]
-  This procedure is to be done a finite number of iterations, so that in the end
-  we obtain a lift \(\lift\eta: M \times I \to E\) for some neighbourhood
-  \(M \subseteq X\) of \(x\).
+              We proceed by induction assuming that, for some \(j\), the lift \(\lift \eta\)
+              has been constructed on \(N \times [0, t_j]\) and which extends the given
+              starting lift \(\lift \eta_0\). Let \(U_j \subseteq B\) be an evenly covered
+              set containing \(\eta(N \times [t_j, t_{j+1}])\), and take
+              \(V_j \subseteq E\) to be an open set projecting isomorphically onto \(U_j\)
+              via \(p\) and with \(\lift\eta(x, t) \in V_j\).  Define
+              \[
+                  N' \times t_j \coloneq (N \times t_j) \cap (\lift\eta|_{N \times t_j})^{-1} V_j,
+              \]
+              which is again a neighbourhood of \((x, t_j)\). From this construction we find
+              that \(\lift\eta(N' \times t_j) \subseteq V_j\). Now we define \(\lift\eta\)
+              on \(N' \times [t_j, t_{j+1}]\) to be the composition of \(\eta\) with
+              \(p^{-1}: U_j \to V_j\), that is:
+              \[
+                  \begin{tikzcd}
+                      &V_j \\
+                      N' \times [t_j, t_{j+1}]
+                      \ar[ru, bend left, "\lift\eta"]
+                      \ar[r, "\eta"']
+                      & U_j \ar[u, "p^{-1}"', "\dis"]
+                  \end{tikzcd}
+              \]
+              This procedure is to be done a finite number of iterations, so that in the end
+              we obtain a lift \(\lift\eta: M \times I \to E\) for some neighbourhood
+              \(M \subseteq X\) of \(x\).
 
-\item To prove the uniqueness of the lifting \(\lift\eta\) we'll work simply on
-  the case of a single point \(x\), so that uniqueness for the total set
-  \(X \times I\) will follow from the uniqueness of the lift on segments
-  \(x \times I\) for each \(x \in X\). Let \(\lift\eta\) and \(\lift\eta'\) be
-  two lifts of \(\eta: x \times I \to B\) with \(\lift\eta(0) =
-  \lift\eta'(0)\). From the same argument as before, take a partition
-  \(0 = t_0 < t_1 < \dots < t_n = 1\) of \(I\) such that
-  \(\eta([t_j, t_{j+1}])\) is contained in an evenly covered neighbourhood
-  \(U_j \subseteq B\) by \(p\). Using induction, we may assume that
-  \(\lift\eta|_{[0, t_j]} = \lift\eta'|_{[0, t_j]}\) for some \(j\). Using the
-  fact that \([t_j, t_{j+1}]\) is a connected set, the image
-  \(\lift\eta([t_j, t_{j+1}]) \subseteq E\) will also be connected. Therefore
-  there exists a set \(V_j \subseteq E\) containing
-  \(\lift\eta([t_j, t_{j+1}])\), and with \(V_j \iso U_j\) via \(p\). Since
-  \(\lift\eta t_j = \lift\eta' t_j\) then by connectedness
-  \(\lift\eta'([t_j, t_{j+1}]) \subseteq V_j\). The lift condition implies in
-  \(p \lift\eta = p \lift\eta'\), however we also know that \(p\) is injective
-  in \(V_j\)---therefore it follows that
-  \(\lift\eta|_{[t_j, t_{j+1}]} = \lift\eta'|_{[t_j, t_{j+1}]}\). This procedure
-  is continued for finitely many steps and shows that
-  \(\lift\eta = \lift\eta'\).
+        \item To prove the uniqueness of the lifting \(\lift\eta\) we'll work simply on
+              the case of a single point \(x\), so that uniqueness for the total set
+              \(X \times I\) will follow from the uniqueness of the lift on segments
+              \(x \times I\) for each \(x \in X\). Let \(\lift\eta\) and \(\lift\eta'\) be
+              two lifts of \(\eta: x \times I \to B\) with \(\lift\eta(0) =
+              \lift\eta'(0)\). From the same argument as before, take a partition
+              \(0 = t_0 < t_1 < \dots < t_n = 1\) of \(I\) such that
+              \(\eta([t_j, t_{j+1}])\) is contained in an evenly covered neighbourhood
+              \(U_j \subseteq B\) by \(p\). Using induction, we may assume that
+              \(\lift\eta|_{[0, t_j]} = \lift\eta'|_{[0, t_j]}\) for some \(j\). Using the
+              fact that \([t_j, t_{j+1}]\) is a connected set, the image
+              \(\lift\eta([t_j, t_{j+1}]) \subseteq E\) will also be connected. Therefore
+              there exists a set \(V_j \subseteq E\) containing
+              \(\lift\eta([t_j, t_{j+1}])\), and with \(V_j \iso U_j\) via \(p\). Since
+              \(\lift\eta t_j = \lift\eta' t_j\) then by connectedness
+              \(\lift\eta'([t_j, t_{j+1}]) \subseteq V_j\). The lift condition implies in
+              \(p \lift\eta = p \lift\eta'\), however we also know that \(p\) is injective
+              in \(V_j\)---therefore it follows that
+              \(\lift\eta|_{[t_j, t_{j+1}]} = \lift\eta'|_{[t_j, t_{j+1}]}\). This procedure
+              is continued for finitely many steps and shows that
+              \(\lift\eta = \lift\eta'\).
 
-\item Notice that, by choosing a point \(x \in X\), we obtain a lift piece of
-  the form \(M \times I \to E\) where \(M \subseteq X\) is a neighbourhood of
-  \(x\). Notice however that in the overlap of such neighbourhoods, when one
-  considers the whole range of points contained in \(X\), we must have an
-  agreement of the lift pieces. Therefore, such neighbourhoods may be glued to
-  create a well defined lift \(\lift\eta: X \times I \to E\). Moreover, using
-  the proof of the last item we know that each segment
-  \(\lift\eta|_{x \times I}\) is unique for any \(x \in X\), thus \(\lift\eta\)
-  itself is unique.
-\end{enumerate}
+        \item Notice that, by choosing a point \(x \in X\), we obtain a lift piece of
+              the form \(M \times I \to E\) where \(M \subseteq X\) is a neighbourhood of
+              \(x\). Notice however that in the overlap of such neighbourhoods, when one
+              considers the whole range of points contained in \(X\), we must have an
+              agreement of the lift pieces. Therefore, such neighbourhoods may be glued to
+              create a well defined lift \(\lift\eta: X \times I \to E\). Moreover, using
+              the proof of the last item we know that each segment
+              \(\lift\eta|_{x \times I}\) is unique for any \(x \in X\), thus \(\lift\eta\)
+              itself is unique.
+    \end{enumerate}
 \end{proof}
 
 \begin{corollary}
-\label{cor:lift-via-covering-space}
-Let \(p: E \to B\) be a covering space. The following are lifting properties
-associated to \(p\):
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item For each path \(\gamma: I \to B\) starting at \(x_0 \in B\) and each \(e_0
-  \in p^{-1} x_0\) there exists a \emph{unique lift} \(\lift \gamma: I \to E\)
-  which starts at \(e_0\).
+    \label{cor:lift-via-covering-space}
+    Let \(p: E \to B\) be a covering space. The following are lifting properties
+    associated to \(p\):
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item For each path \(\gamma: I \to B\) starting at \(x_0 \in B\) and each \(e_0
+              \in p^{-1} x_0\) there exists a \emph{unique lift} \(\lift \gamma: I \to E\)
+              which starts at \(e_0\).
 
-\item For each homotopy \(\eta: I \times I \to B\) of paths starting at \(x_0\)
-  and each \(e_0 \in p^{-1} x_0\) there is a unique lifted homotopy
-  \(\lift \eta: I \times I \to E\) of paths starting at \(e_0\).
+        \item For each homotopy \(\eta: I \times I \to B\) of paths starting at \(x_0\)
+              and each \(e_0 \in p^{-1} x_0\) there is a unique lifted homotopy
+              \(\lift \eta: I \times I \to E\) of paths starting at \(e_0\).
 
-\item The lift of a constant path is constant.
+        \item The lift of a constant path is constant.
 
-\item Every homotopy between paths lifts to a homotopy of paths\footnote{Since
-    the end-points are fixed---which was pointed out in item (c).}.
-\end{enumerate}
+        \item Every homotopy between paths lifts to a homotopy of paths\footnote{Since
+                  the end-points are fixed---which was pointed out in item (c).}.
+    \end{enumerate}
 \end{corollary}
 
 \begin{proposition}
-\label{proposition:covering-induces-monomorphism-fundamental-grps}
-Given a covering \(p: E \epi B\), the induced morphism of groups
-\[
-p_{*}: \pi_1(E, e) \mono \pi_1(B, p e)
-\]
-is a monomorphism for any \(e \in E\).
+    \label{proposition:covering-induces-monomorphism-fundamental-grps}
+    Given a covering \(p: E \epi B\), the induced morphism of groups
+    \[
+        p_{*}: \pi_1(E, e) \mono \pi_1(B, p e)
+    \]
+    is a monomorphism for any \(e \in E\).
 \end{proposition}
 
 \begin{proof}
-Let \([\lift f]\) be a kernel element of \(p_{*}\), so that
-\(p_{*}[\lift f] = [f] = [\const_{p e}]\). Thus there exists a homotopy
-\(\eta: f \nat \const_{p e}\) and via
-\cref{prop:homotopy-lift-via-covering-space} we obtain a lifted homotopy of
-loops \(\lift\eta: \lift f \nat \const_e\), showing that
-\([\lift f] = [\const_e]\). Therefore \(p\) is indeed a monomorphism of groups.
+    Let \([\lift f]\) be a kernel element of \(p_{*}\), so that
+    \(p_{*}[\lift f] = [f] = [\const_{p e}]\). Thus there exists a homotopy
+    \(\eta: f \nat \const_{p e}\) and via
+    \cref{prop:homotopy-lift-via-covering-space} we obtain a lifted homotopy of
+    loops \(\lift\eta: \lift f \nat \const_e\), showing that
+    \([\lift f] = [\const_e]\). Therefore \(p\) is indeed a monomorphism of groups.
 \end{proof}
 
 \begin{proposition}
-\label{prop:covering-space-n-of-sheets-is-index}
-Let \(E\) and \(B\) be path-connected spaces. The number of sheets of a pointed
-covering space \(p: (E, e) \to (B, b)\) is equal to the index of the subgroup
-\(p_{*}\pi_1(E, e)\) in \(\pi_1(B, b)\).
+    \label{prop:covering-space-n-of-sheets-is-index}
+    Let \(E\) and \(B\) be path-connected spaces. The number of sheets of a pointed
+    covering space \(p: (E, e) \to (B, b)\) is equal to the index of the subgroup
+    \(p_{*}\pi_1(E, e)\) in \(\pi_1(B, b)\).
 \end{proposition}
 
 \begin{proof}
-Define the notation \(G \coloneq p_{*} \pi_1(E, e)\). Let
-\(\gamma \in \Loop(B, b)\) be a loop and consider its lifted loop
-\(\lift \gamma \in \Loop(E, e)\).
-\todo[inline]{Continue}
+    Define the notation \(G \coloneq p_{*} \pi_1(E, e)\). Let
+    \(\gamma \in \Loop(B, b)\) be a loop and consider its lifted loop
+    \(\lift \gamma \in \Loop(E, e)\).
+    \todo[inline]{Continue}
 \end{proof}
 
 \begin{theorem}[Lifting out of connected space]
-\label{thm:lifting-out-of-connected-space}
-Let \(p: E \to B\) be a covering space, and \(f: Y \to X\) be a continuous map,
-where \(Y\) is a connected space. Consider two \emph{lifts of \(f\) along
-  \(p\)}: continuous maps \(\lift f_1, \lift f_2: Y \para E\) such that
-the triangle
-\[
-\begin{tikzcd}
-&E \ar[dd, "p"] \\
-Y \ar[ru, shift left, "\lift f_1"]
-\ar[ru, shift right, "\lift f_2"']
-\ar[dr, "f"']
-&
-\\
-&X
-\end{tikzcd}
-\]
-commutes in \(\Top\). If there exists \(y \in Y\) such that
-\(\lift f_1 y = \lift f_2 y\), then the lifts agree everywhere
-\(\lift f_1 = \lift f_2\).
+    \label{thm:lifting-out-of-connected-space}
+    Let \(p: E \to B\) be a covering space, and \(f: Y \to X\) be a continuous map,
+    where \(Y\) is a connected space. Consider two \emph{lifts of \(f\) along
+        \(p\)}: continuous maps \(\lift f_1, \lift f_2: Y \para E\) such that
+    the triangle
+    \[
+        \begin{tikzcd}
+            &E \ar[dd, "p"] \\
+            Y \ar[ru, shift left, "\lift f_1"]
+            \ar[ru, shift right, "\lift f_2"']
+            \ar[dr, "f"']
+            &
+            \\
+            &X
+        \end{tikzcd}
+    \]
+    commutes in \(\Top\). If there exists \(y \in Y\) such that
+    \(\lift f_1 y = \lift f_2 y\), then the lifts agree everywhere
+    \(\lift f_1 = \lift f_2\).
 \end{theorem}
 
 \begin{proof}
-Consider the pullback \(E \times_B E\) of \(p\) with itself and consider the
-uniquely defined morphism \((\lift f_1, \lift f_2): Y \to E \times_B E\)
-making the diagram
-\[
-\begin{tikzcd}
-Y \ar[rrd, bend left, "\lift{f}_1"]
-\ar[ddr, "\lift{f}_2"', bend right]
-\ar[rd, dashed]
-& &
-\\
-&E \times_B E \ar[r] \ar[d]
-\ar[rd, phantom, "\lrcorner", very near start]
-&E \ar[d, "p"]
-\\
-&E \ar[r, "p"']
-&B
-\end{tikzcd}
-\]
-commute. Define \(\Delta_B E \subseteq E \times_B E\) for the diagonal of \(E\)
-with respect to the fibre product. Using
-\cref{lem:fibre-wise-diag-open-and-closed} we know that \(\Delta_B E\) is both
-open and closed, thus
-\(V \coloneq (\lift f_1, \lift f_2)^{-1}(\Delta_B E) \subseteq Y\) is both
-open and closed in \(Y\), which is a non-empty set since by hypothesis
-\(\lift f_1\) and \(\lift f_2\) agree at least in one point of
-\(Y\). Since \(V\) is closed, then \(Y \setminus V\) is open in \(Y\) and
-certainly disjoint from \(V\). Since their union is the whole space \(Y\), by
-the hypothesis that \(Y\) is connected, it must be the case that \(V =
-Y\). Therefore \(\lift f_1 = \lift f_2\) as wanted.
+    Consider the pullback \(E \times_B E\) of \(p\) with itself and consider the
+    uniquely defined morphism \((\lift f_1, \lift f_2): Y \to E \times_B E\)
+    making the diagram
+    \[
+        \begin{tikzcd}
+            Y \ar[rrd, bend left, "\lift{f}_1"]
+            \ar[ddr, "\lift{f}_2"', bend right]
+            \ar[rd, dashed]
+            & &
+            \\
+            &E \times_B E \ar[r] \ar[d]
+            \ar[rd, phantom, "\lrcorner", very near start]
+            &E \ar[d, "p"]
+            \\
+            &E \ar[r, "p"']
+            &B
+        \end{tikzcd}
+    \]
+    commute. Define \(\Delta_B E \subseteq E \times_B E\) for the diagonal of \(E\)
+    with respect to the fibre product. Using
+    \cref{lem:fibre-wise-diag-open-and-closed} we know that \(\Delta_B E\) is both
+    open and closed, thus
+    \(V \coloneq (\lift f_1, \lift f_2)^{-1}(\Delta_B E) \subseteq Y\) is both
+    open and closed in \(Y\), which is a non-empty set since by hypothesis
+    \(\lift f_1\) and \(\lift f_2\) agree at least in one point of
+    \(Y\). Since \(V\) is closed, then \(Y \setminus V\) is open in \(Y\) and
+    certainly disjoint from \(V\). Since their union is the whole space \(Y\), by
+    the hypothesis that \(Y\) is connected, it must be the case that \(V =
+    Y\). Therefore \(\lift f_1 = \lift f_2\) as wanted.
 \end{proof}
 
 \begin{proposition}
-% \label{prop:}
-Let \(q: E \to B \times I\) be a locally trivial covering space with
-fibre \(F\). Then \(B\) admits an open cover \(\mathcal{U}\) for which \(q\) is
-trivial over \(U \times I\) for each \(U \in \mathcal{U}\).
+    % \label{prop:}
+    Let \(q: E \to B \times I\) be a locally trivial covering space with
+    fibre \(F\). Then \(B\) admits an open cover \(\mathcal{U}\) for which \(q\) is
+    trivial over \(U \times I\) for each \(U \in \mathcal{U}\).
 \end{proposition}
 
 \todo[inline]{Prove when needed}
@@ -602,197 +602,197 @@ trivial over \(U \times I\) for each \(U \in \mathcal{U}\).
 \section{Coverings and \texorpdfstring{\(G\)}{G}-Actions}
 
 \begin{definition}[Properly discontinuous action]
-\label{def:properly-discontinuous-action}
-Given a discrete topological group \(G\), a left action \(G \times E \to E\) is
-said to be \emph{properly discontinuous} if for each pair
-\((g, x) \in G \times E\), where \(g \neq e\), there exists a neighbourhood
-\(U \subseteq E\) of \(x\) such that
-\[
-U \cap g U = \emptyset.
-\]
-In particular, every properly discontinuous action is free.
+    \label{def:properly-discontinuous-action}
+    Given a discrete topological group \(G\), a left action \(G \times E \to E\) is
+    said to be \emph{properly discontinuous} if for each pair
+    \((g, x) \in G \times E\), where \(g \neq e\), there exists a neighbourhood
+    \(U \subseteq E\) of \(x\) such that
+    \[
+        U \cap g U = \emptyset.
+    \]
+    In particular, every properly discontinuous action is free.
 \end{definition}
 
 \begin{definition}[\(G\)-principal covering space]
-\label{def:G-principal-covering}
-Let \(G\) be a discrete topological group. A \emph{left \(G\)-principal covering
-  space} is a covering \(p: E \to B\) together with a properly discontinuous
-left action \(G \laction E\) for which \(p(g x) = p x\) for every pair
-\((g, x) \in G \times E\), and such that the induced action on the fibres is
-transitive.
+    \label{def:G-principal-covering}
+    Let \(G\) be a discrete topological group. A \emph{left \(G\)-principal covering
+        space} is a covering \(p: E \to B\) together with a properly discontinuous
+    left action \(G \laction E\) for which \(p(g x) = p x\) for every pair
+    \((g, x) \in G \times E\), and such that the induced action on the fibres is
+    transitive.
 \end{definition}
 
 \begin{proposition}
-\label{prop:properly-discontinuous-induces-covering}
-If \(G \laction X\) is a properly discontinuous action of a discrete group \(G\)
-on a space \(X\), the canonical projection \(q: X \epi X/G\) is a
-\(G\)-principal covering space.
+    \label{prop:properly-discontinuous-induces-covering}
+    If \(G \laction X\) is a properly discontinuous action of a discrete group \(G\)
+    on a space \(X\), the canonical projection \(q: X \epi X/G\) is a
+    \(G\)-principal covering space.
 \end{proposition}
 
 \begin{proof}
-First of all, it is clear that \(q(g x) = q x \in X/G\) for any pair
-\((g, x) \in G \times X\). Let \([x] \in X/G\) be any point, and
-\(V \subseteq X\) be a neighbourhood of \(x\) such that
-\(V \cap g V \neq \emptyset\) implies \(g = e\), and define \(U \coloneq q
-V\). Notice that since \(G\) acts by topological isomorphisms, one has
-\(q^{-1} U = \bigcup_{g \in G} g V\)---now, since each \(g V\) is open, it
-follows that \(q^{-1} U \subseteq X\) is open. Since \(X/G\) has the quotient
-topology, then \(U \subseteq X/G\) is open.
+    First of all, it is clear that \(q(g x) = q x \in X/G\) for any pair
+    \((g, x) \in G \times X\). Let \([x] \in X/G\) be any point, and
+    \(V \subseteq X\) be a neighbourhood of \(x\) such that
+    \(V \cap g V \neq \emptyset\) implies \(g = e\), and define \(U \coloneq q
+    V\). Notice that since \(G\) acts by topological isomorphisms, one has
+    \(q^{-1} U = \bigcup_{g \in G} g V\)---now, since each \(g V\) is open, it
+    follows that \(q^{-1} U \subseteq X\) is open. Since \(X/G\) has the quotient
+    topology, then \(U \subseteq X/G\) is open.
 
-Consider \(q^{-1} U = \bigdisj_{g \in G} V_g\), where \(V_g \coloneq g
-V\). Given any \(g \in G\), suppose there exists \(h \in G\) such that
-\(V_g \cap V_h \neq \emptyset\)---then for any \(x' \in V_g \cap V_h\), one has
-\(h^{-1} x' \in V_g \cap V\), and from construction this implies in
-\(h^{-1} g = e\), thus \(h = g\).
+    Consider \(q^{-1} U = \bigdisj_{g \in G} V_g\), where \(V_g \coloneq g
+    V\). Given any \(g \in G\), suppose there exists \(h \in G\) such that
+    \(V_g \cap V_h \neq \emptyset\)---then for any \(x' \in V_g \cap V_h\), one has
+    \(h^{-1} x' \in V_g \cap V\), and from construction this implies in
+    \(h^{-1} g = e\), thus \(h = g\).
 
-It remains for us to show a trivialisation for \(q\)---we shall prove that
-\(q|_{V_g}: V_g \to U\) is an isomorphism. Since quotient maps are open, it
-suffices to show that \(q|_{V_g}\) is bijective. Let \([x'] \in U\) be any
-point, and take \(x'' \in V\) such that \(q x'' = [x']\), then in particular
-\(g x'' \in g V\) and \(q(g x'') = [g x''] = [x']\)---thus \(q|_{V_g}\) is
-surjective. For injectivity, let \(x', x'' \in V\) be a pair of points such that
-\(q(g x') = q(g x'')\), then \([x'] = [x'']\) in \(X/G\), which implies in the
-existence of a point \(h \in G\) such that \(x' = h x''\), then
-\(x'' \in V \cap V_h\)---therefore \(h = e\) and hence \(x' = x''\), thus in
-particular \(g x' = g x''\) as wanted.
+    It remains for us to show a trivialisation for \(q\)---we shall prove that
+    \(q|_{V_g}: V_g \to U\) is an isomorphism. Since quotient maps are open, it
+    suffices to show that \(q|_{V_g}\) is bijective. Let \([x'] \in U\) be any
+    point, and take \(x'' \in V\) such that \(q x'' = [x']\), then in particular
+    \(g x'' \in g V\) and \(q(g x'') = [g x''] = [x']\)---thus \(q|_{V_g}\) is
+    surjective. For injectivity, let \(x', x'' \in V\) be a pair of points such that
+    \(q(g x') = q(g x'')\), then \([x'] = [x'']\) in \(X/G\), which implies in the
+    existence of a point \(h \in G\) such that \(x' = h x''\), then
+    \(x'' \in V \cap V_h\)---therefore \(h = e\) and hence \(x' = x''\), thus in
+    particular \(g x' = g x''\) as wanted.
 \end{proof}
 
 \begin{definition}[Deck transformations]
-\label{def:deck-transformations}
-Given a covering space \(p: E \to B\), we define a group of automorphisms
-\(\Aut(p)\) of the cover \(p\) to be composed of topological isomorphisms
-\(\alpha: E \isoto E\) such that \(p \alpha = p\)---such maps are called
-\emph{deck transformations} of the covering \(p\).
+    \label{def:deck-transformations}
+    Given a covering space \(p: E \to B\), we define a group of automorphisms
+    \(\Aut(p)\) of the cover \(p\) to be composed of topological isomorphisms
+    \(\alpha: E \isoto E\) such that \(p \alpha = p\)---such maps are called
+    \emph{deck transformations} of the covering \(p\).
 \end{definition}
 
 \begin{example}[Translations]
-\label{exp:left-translation-is-deck-transformation}
-Given a left \(G\)-principal covering \(p: E \to B\), the \emph{left
-  translation} of \(E\) by \(g \in E\), the isomorphism \(\ell_g: E \isoto E\)
-mapping \(e \mapsto g e\), is a deck transformation of \(p\). The collection of
-such maps \((\ell_g)_{g \in G}\) define a morphism of groups
-\[
-\ell: G \longrightarrow \Aut(p).
-\]
+    \label{exp:left-translation-is-deck-transformation}
+    Given a left \(G\)-principal covering \(p: E \to B\), the \emph{left
+        translation} of \(E\) by \(g \in E\), the isomorphism \(\ell_g: E \isoto E\)
+    mapping \(e \mapsto g e\), is a deck transformation of \(p\). The collection of
+    such maps \((\ell_g)_{g \in G}\) define a morphism of groups
+    \[
+        \ell: G \longrightarrow \Aut(p).
+    \]
 
-Assume that \(E\) is a connected space. Let \(x \in B\) be any point and
-consider any deck transformation \(\alpha \in \Aut(p)\). From the fact that
-\(\alpha\) is bijective and \(p \alpha = p\), it acts as a permutation on the
-fibre \(p^{-1} x\). Since \(p\) is a \(G\)-principal covering, then \(G\) acts
-transitively on the fibres: hence given any two points \(e, e' \in p^{-1} x\),
-since \(\alpha e \in p^{-1}(p e)\), it follows that there exists \(g \in G\)
-such that \(\alpha e' = g(\alpha e)\). Therefore \(\alpha\), using the
-connectedness of \(E\), is uniquely defined by its image under a single
-point. This shows that, under these assumptions, \(\ell\) is an isomorphism
-\(G \iso \Aut(p)\).
+    Assume that \(E\) is a connected space. Let \(x \in B\) be any point and
+    consider any deck transformation \(\alpha \in \Aut(p)\). From the fact that
+    \(\alpha\) is bijective and \(p \alpha = p\), it acts as a permutation on the
+    fibre \(p^{-1} x\). Since \(p\) is a \(G\)-principal covering, then \(G\) acts
+    transitively on the fibres: hence given any two points \(e, e' \in p^{-1} x\),
+    since \(\alpha e \in p^{-1}(p e)\), it follows that there exists \(g \in G\)
+    such that \(\alpha e' = g(\alpha e)\). Therefore \(\alpha\), using the
+    connectedness of \(E\), is uniquely defined by its image under a single
+    point. This shows that, under these assumptions, \(\ell\) is an isomorphism
+    \(G \iso \Aut(p)\).
 \end{example}
 
 \begin{proposition}
-\label{prop:automorphism-grp-covering-properties}
-Let \(p: E \to B\) be a covering space. The following are properties concerning
-the automorphism group of \(p\):
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item If \(E\) is a connected space, then \(\Aut(p)\) has a properly
-  discontinuous action on \(E\).
+    \label{prop:automorphism-grp-covering-properties}
+    Let \(p: E \to B\) be a covering space. The following are properties concerning
+    the automorphism group of \(p\):
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item If \(E\) is a connected space, then \(\Aut(p)\) has a properly
+              discontinuous action on \(E\).
 
-\item If \(B\) is locally path connected and \(H \subseteq \Aut(p)\) is a
-  subgroup, then the induced map \(q: E/H \to B\) is a covering.
-\end{enumerate}
+        \item If \(B\) is locally path connected and \(H \subseteq \Aut(p)\) is a
+              subgroup, then the induced map \(q: E/H \to B\) is a covering.
+    \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item Consider any point \(e \in E\) and deck transformation \(g \in
-  \Aut(p)\). Since \(p\) is a covering, choose \(U \subseteq B\) to be an evenly
-  covered neighbourhood of \(p e\) and let \(U_e\) be a sheet over \(U\) with
-  \(e \in U_e\). Suppose there exists a point \(e' \in U_e \cap g U_e\) and
-  notice that, since \(p g = p\), we have \(p e' = p(g^{-1} e')\).
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item Consider any point \(e \in E\) and deck transformation \(g \in
+              \Aut(p)\). Since \(p\) is a covering, choose \(U \subseteq B\) to be an evenly
+              covered neighbourhood of \(p e\) and let \(U_e\) be a sheet over \(U\) with
+              \(e \in U_e\). Suppose there exists a point \(e' \in U_e \cap g U_e\) and
+              notice that, since \(p g = p\), we have \(p e' = p(g^{-1} e')\).
 
-\todo[inline]{Continue proof of the properties of the automorphism group of covering spaces.}
-\end{enumerate}
+              \todo[inline]{Continue proof of the properties of the automorphism group of covering spaces.}
+    \end{enumerate}
 \end{proof}
 
 \begin{proposition}
-\label{prop:prop-disc-and-1-connected-simply-connected-iso-grps}
-Let \(E\) be a simply connected space. If \(G \laction E\) is a properly
-discontinuous action of a discrete topological group \(G\), then the action
-induces an isomorphism of groups
-\[
-\pi_1(E/G) \iso G.
-\]
+    \label{prop:prop-disc-and-1-connected-simply-connected-iso-grps}
+    Let \(E\) be a simply connected space. If \(G \laction E\) is a properly
+    discontinuous action of a discrete topological group \(G\), then the action
+    induces an isomorphism of groups
+    \[
+        \pi_1(E/G) \iso G.
+    \]
 \end{proposition}
 
 \begin{proof}
-Let \([x] \in E/G\) be any base point, and choose \(x \in q^{-1}[x]\)---where
-\(q: E \epi E/G\) is the canonical projection. Define a map
-\(\psi_x: \pi_1(E/G, [x]) \to G\) such that \(\psi_x[\alpha] = g\) if and only
-if \(\lift \alpha_x(1) = g x\)---where \(\lift \alpha_x: I \to E\) is the lift of
-\(\alpha\) over \(q\). We now show that \(\psi_x\) is the required isomorphism
-of groups:
-\begin{itemize}\setlength\itemsep{0em}
-\item (Well defined) Suppose that \([\alpha] = [\beta]\) and that
-  \(\psi_x[\alpha] = g\) while \(\psi_x[\beta] = h\). This means that
-  \(\lift \alpha_x(1) = g x\) and \(\lift \beta_x(1) = h x\), but since
-  \(\lift \alpha_x = \lift \beta_x\), then \(g x = h x\) and hence
-  \(h^{-1} g x = x\). Since \(G\) has a properly discontinuous action, there
-  exists a neighbourhood \(U \subseteq E\) of \(x\) such that
-  \(U \cap (h^{-1} g) U\) is \emph{non-empty}, thus it is necessarily the case
-  that \(h^{-1} g = e\), thus \(h = g\). This proves that
-  \(\psi_x[\alpha] = \psi_x[\beta]\).
+    Let \([x] \in E/G\) be any base point, and choose \(x \in q^{-1}[x]\)---where
+    \(q: E \epi E/G\) is the canonical projection. Define a map
+    \(\psi_x: \pi_1(E/G, [x]) \to G\) such that \(\psi_x[\alpha] = g\) if and only
+    if \(\lift \alpha_x(1) = g x\)---where \(\lift \alpha_x: I \to E\) is the lift of
+    \(\alpha\) over \(q\). We now show that \(\psi_x\) is the required isomorphism
+    of groups:
+    \begin{itemize}\setlength\itemsep{0em}
+        \item (Well defined) Suppose that \([\alpha] = [\beta]\) and that
+              \(\psi_x[\alpha] = g\) while \(\psi_x[\beta] = h\). This means that
+              \(\lift \alpha_x(1) = g x\) and \(\lift \beta_x(1) = h x\), but since
+              \(\lift \alpha_x = \lift \beta_x\), then \(g x = h x\) and hence
+              \(h^{-1} g x = x\). Since \(G\) has a properly discontinuous action, there
+              exists a neighbourhood \(U \subseteq E\) of \(x\) such that
+              \(U \cap (h^{-1} g) U\) is \emph{non-empty}, thus it is necessarily the case
+              that \(h^{-1} g = e\), thus \(h = g\). This proves that
+              \(\psi_x[\alpha] = \psi_x[\beta]\).
 
-\item (Injective) Suppose \(\psi_x [\alpha] = \psi_x [\beta]\), then
-  \(\lift \alpha_x(1) = g x = \lift \beta_x(1)\) for some \(g \in G\). This
-  shows that \(\lift \alpha_x \simhtrel{\Bd I} \lift \beta_x\), hence
-  \(\alpha \simhtrel{\Bd I} \beta\) thus \([\alpha] = [\beta]\).
+        \item (Injective) Suppose \(\psi_x [\alpha] = \psi_x [\beta]\), then
+              \(\lift \alpha_x(1) = g x = \lift \beta_x(1)\) for some \(g \in G\). This
+              shows that \(\lift \alpha_x \simhtrel{\Bd I} \lift \beta_x\), hence
+              \(\alpha \simhtrel{\Bd I} \beta\) thus \([\alpha] = [\beta]\).
 
-\item (Surjective) From the fact that \(\pi_1(E/G, [x])\) acts transitively on
-  the fibres of \(q\), it folows that \(\psi_x\) is surjective.
+        \item (Surjective) From the fact that \(\pi_1(E/G, [x])\) acts transitively on
+              the fibres of \(q\), it folows that \(\psi_x\) is surjective.
 
-\item (Group morphism) Let \(\psi_x[\alpha] = g\) and \(\psi_x [\beta] = h\) and
-  define \(k \coloneq \psi_x[\beta \cdot \alpha]\), so that
-  \[
-  k x = (\lift{\beta \cdot \alpha})_x(1)
-  = (\lift \beta_{\lift \alpha_x(1)} \cdot \lift \alpha_x)(1)
-  = \lift \beta_{g x}(1)
-  = g \lift \beta_x(1)
-  = g h x,
-  \]
-  therefore \(k = g h\).
-\end{itemize}
+        \item (Group morphism) Let \(\psi_x[\alpha] = g\) and \(\psi_x [\beta] = h\) and
+              define \(k \coloneq \psi_x[\beta \cdot \alpha]\), so that
+              \[
+                  k x = (\lift{\beta \cdot \alpha})_x(1)
+                  = (\lift \beta_{\lift \alpha_x(1)} \cdot \lift \alpha_x)(1)
+                  = \lift \beta_{g x}(1)
+                  = g \lift \beta_x(1)
+                  = g h x,
+              \]
+              therefore \(k = g h\).
+    \end{itemize}
 \end{proof}
 
 \section{Fibre Transport}
 
 \begin{definition}[Homotopy lifting property]
-\label{def:homotopy-lifting-property}
-A continuous map \(p: E \to B\) is said to heve the \emph{homotopy lifting
-  property} (HLP) for a given space \(X\) if: for any homotopy \(\eta: X \times
-I \to B\) and continuous map \(a: X \to E\) such that \(p a x = \eta(x, 0)\)
-\emph{exists} a homotopy \(\delta: X \times I \to E\) such that the diagram
-\[
-\begin{tikzcd}
-X \ar[r, "a"] \ar[d, "i_0"']
-&E \ar[d, "p"] \\
-X \times I \ar[ru, "\delta" description]
-\ar[r, "\eta"']
-&B
-\end{tikzcd}
-\]
-commutes in \(\Top\)---the map \(i_0: X \emb X \times I\) is defined as
-\(x \mapsto (x, 0)\)
+    \label{def:homotopy-lifting-property}
+    A continuous map \(p: E \to B\) is said to heve the \emph{homotopy lifting
+        property} (HLP) for a given space \(X\) if: for any homotopy \(\eta: X \times
+    I \to B\) and continuous map \(a: X \to E\) such that \(p a x = \eta(x, 0)\)
+    \emph{exists} a homotopy \(\delta: X \times I \to E\) such that the diagram
+    \[
+        \begin{tikzcd}
+            X \ar[r, "a"] \ar[d, "i_0"']
+            &E \ar[d, "p"] \\
+            X \times I \ar[ru, "\delta" description]
+            \ar[r, "\eta"']
+            &B
+        \end{tikzcd}
+    \]
+    commutes in \(\Top\)---the map \(i_0: X \emb X \times I\) is defined as
+    \(x \mapsto (x, 0)\)
 \end{definition}
 
 \todo[inline]{Check proof of these last fibration stuff---tom Dieck's book}
 
 \begin{definition}[Fibration]
-\label{def:fibration}
-A continuous map \(p: E \to B\) is said to be a \emph{fibration} if it satisfies
-the homotopy lifting property for every space.
+    \label{def:fibration}
+    A continuous map \(p: E \to B\) is said to be a \emph{fibration} if it satisfies
+    the homotopy lifting property for every space.
 \end{definition}
 
 \begin{theorem}
-\label{thm:coverings-are-fibrations}
-A covering space is a fibration.
+    \label{thm:coverings-are-fibrations}
+    A covering space is a fibration.
 \end{theorem}
 
 % \begin{proof}
@@ -801,25 +801,25 @@ A covering space is a fibration.
 % \end{proof}
 
 \begin{proposition}[Unique path lifting]
-\label{prop:path-lifting}
-Let \(p: E \to B\) be a covering space, and \(\gamma: I \to B\) be a path with
-initial point \(\gamma 0 \coloneq p e \in B\). Then there exists a \emph{unique
-  lifting} \(I \to E\) of \(\gamma\) that begins in \(e\). Furthermore, any two
-paths \(u, v: I \para E\) with \(u 0 = v 0\) are \emph{homotopic} if and only if
-their images are homotopic in \(B\).
+    \label{prop:path-lifting}
+    Let \(p: E \to B\) be a covering space, and \(\gamma: I \to B\) be a path with
+    initial point \(\gamma 0 \coloneq p e \in B\). Then there exists a \emph{unique
+        lifting} \(I \to E\) of \(\gamma\) that begins in \(e\). Furthermore, any two
+    paths \(u, v: I \para E\) with \(u 0 = v 0\) are \emph{homotopic} if and only if
+    their images are homotopic in \(B\).
 \end{proposition}
 
 \begin{lemma}
-\label{lem:general-lifting-lemma}
-Let \(p: E \to B\) be a covering space and define \(p e_0 \coloneq b_0\). Let
-\(Y\) be a path connected and locally path connected space, and \(f: Y \to B\)
-be a continuous map with \(f y_0 = b_0\). There exists a lift \(Y \to E\) of
-\(f\) over \(p\) such that \(y_0 \mapsto e_0\) if and only if
-\[
-f_{*} \pi_1(Y, y_0) \subseteq p_{*} \pi_1(E, e_0).
-\]
-If such a lift exists, then it's unique.
-\todo[inline]{See Munkres, page 478}
+    \label{lem:general-lifting-lemma}
+    Let \(p: E \to B\) be a covering space and define \(p e_0 \coloneq b_0\). Let
+    \(Y\) be a path connected and locally path connected space, and \(f: Y \to B\)
+    be a continuous map with \(f y_0 = b_0\). There exists a lift \(Y \to E\) of
+    \(f\) over \(p\) such that \(y_0 \mapsto e_0\) if and only if
+    \[
+        f_{*} \pi_1(Y, y_0) \subseteq p_{*} \pi_1(E, e_0).
+    \]
+    If such a lift exists, then it's unique.
+    \todo[inline]{See Munkres, page 478}
 \end{lemma}
 
 %%% Local Variables:

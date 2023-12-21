@@ -1,88 +1,88 @@
 \section{ZFC}
 
 \begin{theorem}[Cantor]
-\label{thm:cantor-power-set-theorem}
-Let \(A\) be a set and \(f: A \to 2^A\) be a map, then \(f\) is not surjective
-and hence \(|A| < |2^A|\).
+    \label{thm:cantor-power-set-theorem}
+    Let \(A\) be a set and \(f: A \to 2^A\) be a map, then \(f\) is not surjective
+    and hence \(|A| < |2^A|\).
 \end{theorem}
 
 \begin{proof}
-Let \(B \coloneq \{x \in A \colon x \notin f(x)\}\) be a set of \(2^A\) and
-suppose, for the sake of contradiction, that \(f\) is surjective. That is,
-there must exist some \(y \in A\) for which \(f(y) = B\) --- notice however that
-this can't be the case since by the law of excluded middle if \(y \in B\) then
-\(y \notin f(y)\) thus \(f(y) \neq B\), while if \(y \notin B\) then \(y \in
-f(y)\) and thus \(f(y) \neq B\). Therefore \(f\) cannot be surjective and thus
-\(|A| < |2^A|\) since there exists an injective mapping \(x \mapsto \{x\}\).
+    Let \(B \coloneq \{x \in A \colon x \notin f(x)\}\) be a set of \(2^A\) and
+    suppose, for the sake of contradiction, that \(f\) is surjective. That is,
+    there must exist some \(y \in A\) for which \(f(y) = B\) --- notice however that
+    this can't be the case since by the law of excluded middle if \(y \in B\) then
+    \(y \notin f(y)\) thus \(f(y) \neq B\), while if \(y \notin B\) then \(y \in
+    f(y)\) and thus \(f(y) \neq B\). Therefore \(f\) cannot be surjective and thus
+    \(|A| < |2^A|\) since there exists an injective mapping \(x \mapsto \{x\}\).
 \end{proof}
 
 \begin{theorem}
-\label{thm:no-set-contains-all-sets}
-There is no set containing all sets as members.
+    \label{thm:no-set-contains-all-sets}
+    There is no set containing all sets as members.
 \end{theorem}
 
 \begin{proof}
-For the sake of contradiction, let \(A\) be a set containing every set as a
-member. In particular \(2^A \subseteq A\) so that \(|2^A| \leq A\) --- this
-can't be the case by \cref{thm:cantor-power-set-theorem}, thus \(A\) cannot be a
-set.
+    For the sake of contradiction, let \(A\) be a set containing every set as a
+    member. In particular \(2^A \subseteq A\) so that \(|2^A| \leq A\) --- this
+    can't be the case by \cref{thm:cantor-power-set-theorem}, thus \(A\) cannot be a
+    set.
 \end{proof}
 
 \begin{definition}[Cardinal numbers]
-\label{def:ordinal-cardinal}
-A \emph{cardinal number} is an isomorphism \emph{class} of sets, and the
-\emph{cardinality} of a given set \(S\) is its isomorphism class. The following
-are properties pertaining to cardinal numbers:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item Every set has a unique cardinal number as its cardinality.
-\item Every cardinal number is the cardinality of some set.
-\item Two sets have the same cardinality if and only if they are isomorphic as
-  sets.
-\end{enumerate}
+    \label{def:ordinal-cardinal}
+    A \emph{cardinal number} is an isomorphism \emph{class} of sets, and the
+    \emph{cardinality} of a given set \(S\) is its isomorphism class. The following
+    are properties pertaining to cardinal numbers:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item Every set has a unique cardinal number as its cardinality.
+        \item Every cardinal number is the cardinality of some set.
+        \item Two sets have the same cardinality if and only if they are isomorphic as
+              sets.
+    \end{enumerate}
 \end{definition}
 
 \begin{definition}[Well ordering]
-\label{def:well-ordering}
-A \emph{well-ordering} on a set \(S\) is a total ordering such that every
-non-empty subset of \(S\) has a \emph{least} element. A set equipped with a
-well-order is called a \emph{poset}.
+    \label{def:well-ordering}
+    A \emph{well-ordering} on a set \(S\) is a total ordering such that every
+    non-empty subset of \(S\) has a \emph{least} element. A set equipped with a
+    well-order is called a \emph{poset}.
 \end{definition}
 
 \begin{definition}[Ordinal]
-\label{def:ordinal}
-An \emph{ordinal number} is an isomorphism \emph{class} of \emph{well-ordered
-  sets}, and the \emph{ordinal rank} of a poset \(S\) is its isomorphism
-class. The following are properties satisfied by the ordinal numbers in its
-regard to ordinal ranks:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item Every poset has a unique ordinal numbers as its ordinal rank.
+    \label{def:ordinal}
+    An \emph{ordinal number} is an isomorphism \emph{class} of \emph{well-ordered
+        sets}, and the \emph{ordinal rank} of a poset \(S\) is its isomorphism
+    class. The following are properties satisfied by the ordinal numbers in its
+    regard to ordinal ranks:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item Every poset has a unique ordinal numbers as its ordinal rank.
 
-\item Every ordinal number is the ordinal rank of some poset.
+        \item Every ordinal number is the ordinal rank of some poset.
 
-\item Two sets have the same ordinal rank if and only if they are isomorphic as
-  posets.
-\end{enumerate}
-Moreover, ordinals also have the following properties:
-\begin{enumerate}[(a)]\setcounter{enumi}{3}\setlength\itemsep{0em}
-\item Every ordinal \(\alpha\) has an immediate successor \(\alpha + 1\) ---
-  this process entails the addition of an element to the end of a chain of a
-  well-ordering of type \(\alpha\).
+        \item Two sets have the same ordinal rank if and only if they are isomorphic as
+              posets.
+    \end{enumerate}
+    Moreover, ordinals also have the following properties:
+    \begin{enumerate}[(a)]\setcounter{enumi}{3}\setlength\itemsep{0em}
+        \item Every ordinal \(\alpha\) has an immediate successor \(\alpha + 1\) ---
+              this process entails the addition of an element to the end of a chain of a
+              well-ordering of type \(\alpha\).
 
-\item There is a natural well-ordering on the collection of all ordinals. Given
-  two ordinals \(\alpha\) and \(\beta\), we say that \(\alpha \leq \beta\) if
-  and only if there exists an initial segment of \(\beta\) for which \(\alpha\)
-  is isomorphic to.
+        \item There is a natural well-ordering on the collection of all ordinals. Given
+              two ordinals \(\alpha\) and \(\beta\), we say that \(\alpha \leq \beta\) if
+              and only if there exists an initial segment of \(\beta\) for which \(\alpha\)
+              is isomorphic to.
 
-\item The induced well-ordering on the set \(\{\beta \colon \beta < \alpha\}\)
-  is the isomorphism class represented by \(\alpha\) --- therefore, one can
-  define an ordinal as a set containing all the smaller ordinals as members.
+        \item The induced well-ordering on the set \(\{\beta \colon \beta < \alpha\}\)
+              is the isomorphism class represented by \(\alpha\) --- therefore, one can
+              define an ordinal as a set containing all the smaller ordinals as members.
 
-\item (Equivalent to the Axiom of Choice) Every set is well-orderable, hence
-  bijective to some ordinal.
-\end{enumerate}
+        \item (Equivalent to the Axiom of Choice) Every set is well-orderable, hence
+              bijective to some ordinal.
+    \end{enumerate}
 
-We denote by \(\omega\) the \emph{natural numbers}, so that every ordinal
-bijective to \(\omega\) is said to be \emph{countable}.
+    We denote by \(\omega\) the \emph{natural numbers}, so that every ordinal
+    bijective to \(\omega\) is said to be \emph{countable}.
 \end{definition}
 
 The cardinal numbers are well-ordered, and can be indexed by means of
@@ -91,17 +91,17 @@ hence \(\aleph_0 = \omega\), while \(\aleph_1 = \omega_1\) (the first
 uncountable ordinal), for instance.
 
 \begin{definition}[Successor \& limit ordinal]
-\label{def:successor-limit-ordinal}
-Given an ordinal \(\alpha\), we can classify it as a \emph{successor ordinal},
-if there exists an ordinal \(\beta\) such that \(\alpha = \beta + 1\), or as a
-\emph{limit ordinal} --- in particular, every cardinal is a limit ordinal.
+    \label{def:successor-limit-ordinal}
+    Given an ordinal \(\alpha\), we can classify it as a \emph{successor ordinal},
+    if there exists an ordinal \(\beta\) such that \(\alpha = \beta + 1\), or as a
+    \emph{limit ordinal} --- in particular, every cardinal is a limit ordinal.
 \end{definition}
 
 \begin{definition}[Successor \& limit cardinal]
-\label{def:successor-limit-cardinal}
-A cardinal is said to be a \emph{successor cardinal} if its corresponding
-indexing ordinal is a successor ordinal, otherwise it is a \emph{limit
-cardinal}.
+    \label{def:successor-limit-cardinal}
+    A cardinal is said to be a \emph{successor cardinal} if its corresponding
+    indexing ordinal is a successor ordinal, otherwise it is a \emph{limit
+        cardinal}.
 \end{definition}
 
 

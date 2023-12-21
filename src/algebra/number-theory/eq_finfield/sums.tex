@@ -1,138 +1,138 @@
 \section{Gau{\ss} and Jacobi Sums over Finite Fields}
 
 \begin{definition}[Trace]
-   Let \(k\) be a finite field with \(p^n\) elements. If  \(\alpha \in k\) we
-   define the trace of \(\alpha\) to be equal to
-   \[
-      \tr(\alpha) = \sum_{i=0}^{n-1} \alpha^{p^{i}}
-   \] 
-\end{definition}
-
-\begin{proposition}
-   Let \(k\) be a field with  \(p^n\) elements and let \(\alpha, \beta, \in k\)
-   and \(\ell \in \F_p\), then
-   \begin{enumerate}[I.]
-      \item \(\tr(\alpha) \in \F_p\).
-      \item \(\tr(\alpha + \beta) = \tr(\alpha) + \tr(\beta)\).
-      \item \(\tr(\ell\alpha) = \ell \tr(\alpha)\).
-      \item The trace is a surjective function, that is \( \tr : k
-         \twoheadrightarrow \F_p \) 
-   \end{enumerate}
-\end{proposition}
-
-\begin{proof}
-   We prove the last statement. Let the polynomial \(\sum_{i=0}^{n-1} X^{p^i}\),
-   then we know that in \(k\) it has at most \(p^{n-1}\) roots, but also  \(|k|
-   = p^n\) and thus we can ensure the existence of an element \(\alpha \in
-   k\) such that \(\tr(\alpha) \neq 0\), that is, is not root of the said
-   polynomial. From this we conclude that, given any element \(\ell \in \F_p\)
-   then, since \(\tr(\alpha) \in \F_p^\ast\) we have that \(\ell/\tr(\alpha) \in
-   \F_p\) and also \(\tr\left( \frac{\alpha\ell}{\tr(\alpha)} \right) =
-   \frac{\ell}{\tr(\alpha)}\tr(\alpha) = \ell \in \F_p \) and thus we conclude
-   the surjectivity of the function.
-\end{proof}
-
-\begin{definition}
-   We define the function \(\psi\) for a general finite field \(k\) as
+    Let \(k\) be a finite field with \(p^n\) elements. If  \(\alpha \in k\) we
+    define the trace of \(\alpha\) to be equal to
     \[
-       \psi:k \to \mathbb{C}\ \text{ such that }\ \psi(\alpha) :=
-       \zeta_p^{\tr(\alpha)},\  \forall \alpha \in k.
-   \] 
+        \tr(\alpha) = \sum_{i=0}^{n-1} \alpha^{p^{i}}
+    \]
 \end{definition}
 
 \begin{proposition}
-   The \(\psi\) function has the properties:
-   \begin{enumerate}[I.]
-      \item \(\psi(\alpha + \beta) = \psi(\alpha)\psi(\beta)\).
-      \item \(\exists \alpha \in k\) such that \(\varphi(\alpha) \neq 1\).
-      \item \(\sum_{\alpha \in k} \psi(\alpha) = 0\).
-   \end{enumerate}
+    Let \(k\) be a field with  \(p^n\) elements and let \(\alpha, \beta, \in k\)
+    and \(\ell \in \F_p\), then
+    \begin{enumerate}[I.]
+        \item \(\tr(\alpha) \in \F_p\).
+        \item \(\tr(\alpha + \beta) = \tr(\alpha) + \tr(\beta)\).
+        \item \(\tr(\ell\alpha) = \ell \tr(\alpha)\).
+        \item The trace is a surjective function, that is \( \tr : k
+              \twoheadrightarrow \F_p \)
+    \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-   We prove the last two items. For II we have ensured the existence of an
-   element \(\alpha \in k\) such that \(\tr(\alpha) \neq  0\) and therefore
-   \(\psi(\alpha) \neq  1\). For III define \(S := \sum_{\alpha \in
-   k}\psi(\alpha)\) and let any \(\beta \in k\) such that \(\varphi(\beta) \neq
-   1\), then surely \(\psi(\beta) S = \sum_{\alpha \in k} \psi(\alpha + \beta) =
-   S \Rightarrow S = 0\).
-\end{proof}
-
-\begin{proposition}
-   Let \(\alpha,\beta,\gamma \in k\) and \(|k| = q\), then
-   \[
-      \frac{1}{q} \sum_{\alpha \in k} \psi(\alpha(\beta - \gamma)) =
-      \delta(\beta, \gamma)
-   \] 
-   where \(\delta\) is the Kronecker function.
-\end{proposition}
-
-\begin{proof}
-   Trivially, for \(\beta = \gamma\) then we have a sum of \(\psi(0) = 1\) which
-   yield  \(\sum_{\alpha \in k} \psi(0) = q\) and therefore the result follows.
-   For the case \(\beta\neq\gamma\) then we have \(\alpha(\beta - \gamma)\) 
-   ranging in all of \(k\), thus we can see the sum as simply  \(\sum_{x \in k}
-   \psi(x) = 0\) where \(x := \alpha((\beta - \gamma)\) and the claim follows.
+    We prove the last statement. Let the polynomial \(\sum_{i=0}^{n-1} X^{p^i}\),
+    then we know that in \(k\) it has at most \(p^{n-1}\) roots, but also  \(|k|
+    = p^n\) and thus we can ensure the existence of an element \(\alpha \in
+    k\) such that \(\tr(\alpha) \neq 0\), that is, is not root of the said
+    polynomial. From this we conclude that, given any element \(\ell \in \F_p\)
+    then, since \(\tr(\alpha) \in \F_p^\ast\) we have that \(\ell/\tr(\alpha) \in
+    \F_p\) and also \(\tr\left( \frac{\alpha\ell}{\tr(\alpha)} \right) =
+    \frac{\ell}{\tr(\alpha)}\tr(\alpha) = \ell \in \F_p \) and thus we conclude
+    the surjectivity of the function.
 \end{proof}
 
 \begin{definition}
-   Let \(\chi\) be a character of \(k\) and let \(\alpha \in k^\ast\). We define
-   the Gau{\ss} sum on \(k\) belonging to \(\chi\) to be 
-   \[
-      g_\alpha(\chi) = \sum_{t \in k} \chi(t) \psi(\alpha t).
-   \] 
+    We define the function \(\psi\) for a general finite field \(k\) as
+    \[
+        \psi:k \to \mathbb{C}\ \text{ such that }\ \psi(\alpha) :=
+        \zeta_p^{\tr(\alpha)},\  \forall \alpha \in k.
+    \]
+\end{definition}
+
+\begin{proposition}
+    The \(\psi\) function has the properties:
+    \begin{enumerate}[I.]
+        \item \(\psi(\alpha + \beta) = \psi(\alpha)\psi(\beta)\).
+        \item \(\exists \alpha \in k\) such that \(\varphi(\alpha) \neq 1\).
+        \item \(\sum_{\alpha \in k} \psi(\alpha) = 0\).
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    We prove the last two items. For II we have ensured the existence of an
+    element \(\alpha \in k\) such that \(\tr(\alpha) \neq  0\) and therefore
+    \(\psi(\alpha) \neq  1\). For III define \(S := \sum_{\alpha \in
+        k}\psi(\alpha)\) and let any \(\beta \in k\) such that \(\varphi(\beta) \neq
+    1\), then surely \(\psi(\beta) S = \sum_{\alpha \in k} \psi(\alpha + \beta) =
+    S \Rightarrow S = 0\).
+\end{proof}
+
+\begin{proposition}
+    Let \(\alpha,\beta,\gamma \in k\) and \(|k| = q\), then
+    \[
+        \frac{1}{q} \sum_{\alpha \in k} \psi(\alpha(\beta - \gamma)) =
+        \delta(\beta, \gamma)
+    \]
+    where \(\delta\) is the Kronecker function.
+\end{proposition}
+
+\begin{proof}
+    Trivially, for \(\beta = \gamma\) then we have a sum of \(\psi(0) = 1\) which
+    yield  \(\sum_{\alpha \in k} \psi(0) = q\) and therefore the result follows.
+    For the case \(\beta\neq\gamma\) then we have \(\alpha(\beta - \gamma)\)
+    ranging in all of \(k\), thus we can see the sum as simply  \(\sum_{x \in k}
+    \psi(x) = 0\) where \(x := \alpha((\beta - \gamma)\) and the claim follows.
+\end{proof}
+
+\begin{definition}
+    Let \(\chi\) be a character of \(k\) and let \(\alpha \in k^\ast\). We define
+    the Gau{\ss} sum on \(k\) belonging to \(\chi\) to be
+    \[
+        g_\alpha(\chi) = \sum_{t \in k} \chi(t) \psi(\alpha t).
+    \]
 \end{definition}
 
 \begin{theorem}
-   Let \(k\) be a finite field with \(|k| = q \) and let \(q \equiv 1
-   \pmod{m}\). The homogeneous polynomial \(f(x) := \sum_{i=0}^{n} a_i x_i^{m}
-   \in k^\ast[x]\) defines projective hypersurface on \(\PP^{n}(k)\). We have
-   the following properties:
-   \begin{enumerate}[I.]
-      \item The hypersurface defined by \(f(x) = 0\) on the projective space is
-         such that the number of point is
-         \[
-            \sum_{i=0}^{n-1} q^i + \frac{1}{q-1} \sum_{\chi_0,\dots,\chi_n}
-            \left( J_0(\chi_0,\dots,\chi_n)\prod_{j=0}^{n} \chi_j(a_j^{-1})
-            \right) 
-         \] 
-         where we define the characters to be such that \(\chi_j^m =
-         \varepsilon,\ \chi_j \neq  \varepsilon\) and \(\prod_{j=1}^n \chi_j =
-         \varepsilon\).
-      \item Under the same conditions specified above, we have
-         \[
-            \frac{1}{q-1} J_0(\chi_0,\dots,\chi_n) = \frac{1}{q} \prod_{j=0}^{n}
-            g(\chi_j).
-         \] 
-   \end{enumerate}
+    Let \(k\) be a finite field with \(|k| = q \) and let \(q \equiv 1
+    \pmod{m}\). The homogeneous polynomial \(f(x) := \sum_{i=0}^{n} a_i x_i^{m}
+    \in k^\ast[x]\) defines projective hypersurface on \(\PP^{n}(k)\). We have
+    the following properties:
+    \begin{enumerate}[I.]
+        \item The hypersurface defined by \(f(x) = 0\) on the projective space is
+              such that the number of point is
+              \[
+                  \sum_{i=0}^{n-1} q^i + \frac{1}{q-1} \sum_{\chi_0,\dots,\chi_n}
+                  \left( J_0(\chi_0,\dots,\chi_n)\prod_{j=0}^{n} \chi_j(a_j^{-1})
+                  \right)
+              \]
+              where we define the characters to be such that \(\chi_j^m =
+              \varepsilon,\ \chi_j \neq  \varepsilon\) and \(\prod_{j=1}^n \chi_j =
+              \varepsilon\).
+        \item Under the same conditions specified above, we have
+              \[
+                  \frac{1}{q-1} J_0(\chi_0,\dots,\chi_n) = \frac{1}{q} \prod_{j=0}^{n}
+                  g(\chi_j).
+              \]
+    \end{enumerate}
 \end{theorem}
 
 \begin{proof}
-   Notice that the polynomial \(\sum_{i=0}^{n} a_ix_i^{m} = 0\) forms a
-   hyperplane in \(\A^{n+1}(k)\) with 
-   \[
-      N = q^n + \sum_{\chi_1,\dots, \chi_n} \left( J_0(\chi_0,\dots,\chi_n)
-      \prod_{i=1}^n \chi_i(a_i^{-1}) \right) 
-   \] 
-   from theorem \ref{thm: fermat generalization}. Now, in order to find the
-   number of points for the projective plane \(\PP^n(k)\) we have
-   \[
-      \frac{N-1}{q-1} = \frac{q^n - 1}{q-1} + \frac{1}{q-1}\sum_{\chi_1,\dots,
-      \chi_n} \left( J_0(\chi_0,\dots,\chi_n) \prod_{i=1}^n \chi_i(a_i^{-1})
-      \right) 
-   \] 
-   which matches exactly with the statement when we expand the first term.
-   Also, we know that \(J_0(\chi_0,\dots,\chi_n) =
-   \chi_0(-1)(q-1)J(\chi_1,\dots,\chi_n)\) and also 
+    Notice that the polynomial \(\sum_{i=0}^{n} a_ix_i^{m} = 0\) forms a
+    hyperplane in \(\A^{n+1}(k)\) with
     \[
-       J(\chi_1,\dots,\chi_n) = \frac{\prod_{i=1}^{n}
-       g(\chi_i)}{g(\chi_1\cdots\chi_n)}
-   \] 
-   thus, multiplying and dividing the equation by \(g(\chi_0)\) we find
-   \(g(\chi_0)g(\chi_1\cdots\chi_n) = g(\varepsilon) = \chi_0(-1)q\), then we
-   find that
-   \[
-      J_0(\chi_0,\dots,\chi_n) = \frac{q-1}{q} \prod_{i=0}^{n} g(\chi_i)
-   \] 
-   which finishes the proof.
+        N = q^n + \sum_{\chi_1,\dots, \chi_n} \left( J_0(\chi_0,\dots,\chi_n)
+        \prod_{i=1}^n \chi_i(a_i^{-1}) \right)
+    \]
+    from theorem \ref{thm: fermat generalization}. Now, in order to find the
+    number of points for the projective plane \(\PP^n(k)\) we have
+    \[
+        \frac{N-1}{q-1} = \frac{q^n - 1}{q-1} + \frac{1}{q-1}\sum_{\chi_1,\dots,
+            \chi_n} \left( J_0(\chi_0,\dots,\chi_n) \prod_{i=1}^n \chi_i(a_i^{-1})
+        \right)
+    \]
+    which matches exactly with the statement when we expand the first term.
+    Also, we know that \(J_0(\chi_0,\dots,\chi_n) =
+    \chi_0(-1)(q-1)J(\chi_1,\dots,\chi_n)\) and also
+    \[
+        J(\chi_1,\dots,\chi_n) = \frac{\prod_{i=1}^{n}
+            g(\chi_i)}{g(\chi_1\cdots\chi_n)}
+    \]
+    thus, multiplying and dividing the equation by \(g(\chi_0)\) we find
+    \(g(\chi_0)g(\chi_1\cdots\chi_n) = g(\varepsilon) = \chi_0(-1)q\), then we
+    find that
+    \[
+        J_0(\chi_0,\dots,\chi_n) = \frac{q-1}{q} \prod_{i=0}^{n} g(\chi_i)
+    \]
+    which finishes the proof.
 \end{proof}

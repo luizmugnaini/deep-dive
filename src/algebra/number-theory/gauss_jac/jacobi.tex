@@ -1,97 +1,97 @@
 \section{Jacobi Sum}
 
 \begin{definition}[Jacobi sum]
-   Let \(\chi\) and \(\lambda\) be characters of \(\F_p\) and set \[J(\chi,
-   \lambda) := \sum_{a + b = 1} \chi(a)\lambda(b)\] this we call the Jacobi
-   sum.
+    Let \(\chi\) and \(\lambda\) be characters of \(\F_p\) and set \[J(\chi,
+        \lambda) := \sum_{a + b = 1} \chi(a)\lambda(b)\] this we call the Jacobi
+    sum.
 \end{definition}
 
 \begin{theorem}
-   Let \(\chi, \lambda\) be non-trivial (\(\varepsilon\)) characters. Then
-   \begin{enumerate}[I.]
-      \item \(J(\varepsilon, \varepsilon) = p\).
-      \item \(J(\varepsilon, \chi) = 0\).
-      \item \(J(\chi, \chi^{-1}) = - \chi(-1)\).
-      \item If  \(\chi\lambda \neq \varepsilon\) then
-         \[
-            J(\chi, \lambda) = \frac{g(\chi)g(\lambda)}{g(\chi\lambda)}.
-         \] 
-   \end{enumerate}
+    Let \(\chi, \lambda\) be non-trivial (\(\varepsilon\)) characters. Then
+    \begin{enumerate}[I.]
+        \item \(J(\varepsilon, \varepsilon) = p\).
+        \item \(J(\varepsilon, \chi) = 0\).
+        \item \(J(\chi, \chi^{-1}) = - \chi(-1)\).
+        \item If  \(\chi\lambda \neq \varepsilon\) then
+              \[
+                  J(\chi, \lambda) = \frac{g(\chi)g(\lambda)}{g(\chi\lambda)}.
+              \]
+    \end{enumerate}
 \end{theorem}
 
 \begin{proof}
-   We prove the properties above:
-   \begin{enumerate}[I.]
-      \item \(J(\varepsilon, \varepsilon) = \sum_{a + b = 1} \varepsilon(a)
-         \varepsilon(b) = \sum_{a+b=1} 1 = p\) since \(a, b \in \F_p\).
-      \item \(J(\varepsilon, \chi) = \sum_{a+b = 1} \chi(b) = \sum_{b \in \F_p}
-         \chi(b) = 0\).
-      \item \(J(\chi, \chi^{-1}) = \sum_{a+b=1} \chi(a) \chi^{-1}(b) = \sum_{a +
-         b = 1} \chi(a)\chi(b^{-1}) = \sum_{\substack{a+b=1\\ b \neq 0}}
-         \chi(a/b) = \sum_{a \neq 1} \chi\big(\frac{a}{1-a}\big)\) now if we
-         just define \(c := \frac{a}{1-a} \Rightarrow a = \frac{c}{1 + c}\) we
-         can see that \(a\) varies on \(\F_p\) but does not pass in \(-1\) and
-         \(c\) does the same but does not pass in \(1\), thus \(J(\chi,
-         \chi^{-1}) = \sum_{c \neq -1} \chi(c) = \sum_{c \in \F_p} \chi(c) -
-         \chi(-1) = - \chi(-1)\).
-      \item For this item we start from the other side of the equation, notice
-         that 
-         \begin{align*}
-            g(\chi)g(\lambda) 
-            = \sum_{x \in \F_p} \chi(x)\zeta^{x}\sum_{y \in \F_p}
-            \lambda(y)\zeta^{y} 
-            = \sum_{x, y \in \F_p} \chi(x)\lambda(y)\zeta^{x+y}
-            = \sum_{t \in \F_p} \left( \sum_{x+y=t} \chi(x)\lambda(y) \right)
-            \zeta^t
-         \end{align*}
-         For the case where \(t=0\) we have simply \(\sum_{x \in \F_p}
-         \chi(x)\lambda(-x) = \sum_{x \in \F_p} \chi(x) \lambda(-1)\lambda(x) =
-         \lambda(-1)\sum_{x \in \F_P} \chi\lambda(x) = 0\) and since
-         \(\chi\lambda \neq  \varepsilon\) then this sum evaluates to \(0\).
-         Now, for the case \(t \neq  0\) we can define new variables \(x' :=
-         x/t\) and  \(y' := y/t\) so that  \(x + y = t \Leftrightarrow x' + y' =
-         1\) and thus we can use the Jacobi sum explicitly:
-         \(\sum_{x+y=t}\chi(x)\lambda(y) = \sum_{x'+y'=1} \chi(tx')\lambda(ty')
-         = \chi\lambda(t) \sum_{x' + y' = 1} \chi(x)\lambda(y) = \chi\lambda(t)
-         J(\chi, \lambda)\) and therefore we conclude that, substituting in the
-         above equation:
-          \[
-             g(\chi)g(\lambda) 
-             = \sum_{t \in \F_p^\ast} \chi\lambda(t) J(\chi, \lambda)\zeta^t
-             = J(\chi, \lambda) g(\chi\lambda)
-         \] 
-         where we conclude the proof.
-   \end{enumerate}
+    We prove the properties above:
+    \begin{enumerate}[I.]
+        \item \(J(\varepsilon, \varepsilon) = \sum_{a + b = 1} \varepsilon(a)
+              \varepsilon(b) = \sum_{a+b=1} 1 = p\) since \(a, b \in \F_p\).
+        \item \(J(\varepsilon, \chi) = \sum_{a+b = 1} \chi(b) = \sum_{b \in \F_p}
+              \chi(b) = 0\).
+        \item \(J(\chi, \chi^{-1}) = \sum_{a+b=1} \chi(a) \chi^{-1}(b) = \sum_{a +
+                  b = 1} \chi(a)\chi(b^{-1}) = \sum_{\substack{a+b=1\\ b \neq 0}}
+              \chi(a/b) = \sum_{a \neq 1} \chi\big(\frac{a}{1-a}\big)\) now if we
+              just define \(c := \frac{a}{1-a} \Rightarrow a = \frac{c}{1 + c}\) we
+              can see that \(a\) varies on \(\F_p\) but does not pass in \(-1\) and
+              \(c\) does the same but does not pass in \(1\), thus \(J(\chi,
+              \chi^{-1}) = \sum_{c \neq -1} \chi(c) = \sum_{c \in \F_p} \chi(c) -
+              \chi(-1) = - \chi(-1)\).
+        \item For this item we start from the other side of the equation, notice
+              that
+              \begin{align*}
+                  g(\chi)g(\lambda)
+                  = \sum_{x \in \F_p} \chi(x)\zeta^{x}\sum_{y \in \F_p}
+                  \lambda(y)\zeta^{y}
+                  = \sum_{x, y \in \F_p} \chi(x)\lambda(y)\zeta^{x+y}
+                  = \sum_{t \in \F_p} \left( \sum_{x+y=t} \chi(x)\lambda(y) \right)
+                  \zeta^t
+              \end{align*}
+              For the case where \(t=0\) we have simply \(\sum_{x \in \F_p}
+              \chi(x)\lambda(-x) = \sum_{x \in \F_p} \chi(x) \lambda(-1)\lambda(x) =
+              \lambda(-1)\sum_{x \in \F_P} \chi\lambda(x) = 0\) and since
+              \(\chi\lambda \neq  \varepsilon\) then this sum evaluates to \(0\).
+              Now, for the case \(t \neq  0\) we can define new variables \(x' :=
+              x/t\) and  \(y' := y/t\) so that  \(x + y = t \Leftrightarrow x' + y' =
+              1\) and thus we can use the Jacobi sum explicitly:
+              \(\sum_{x+y=t}\chi(x)\lambda(y) = \sum_{x'+y'=1} \chi(tx')\lambda(ty')
+              = \chi\lambda(t) \sum_{x' + y' = 1} \chi(x)\lambda(y) = \chi\lambda(t)
+              J(\chi, \lambda)\) and therefore we conclude that, substituting in the
+              above equation:
+              \[
+                  g(\chi)g(\lambda)
+                  = \sum_{t \in \F_p^\ast} \chi\lambda(t) J(\chi, \lambda)\zeta^t
+                  = J(\chi, \lambda) g(\chi\lambda)
+              \]
+              where we conclude the proof.
+    \end{enumerate}
 \end{proof}
 
 \begin{proposition}
-   Let \(\chi,\lambda\) be such that  \(\chi\lambda \neq  \varepsilon\), then
-   \(|J(\chi,\lambda)| = \sqrt{p}\).
+    Let \(\chi,\lambda\) be such that  \(\chi\lambda \neq  \varepsilon\), then
+    \(|J(\chi,\lambda)| = \sqrt{p}\).
 \end{proposition}
 
 \begin{proposition}
-   If \(p \equiv 1 \pmod{4}\) then there exists \(a, b \in \mathbb{Z}\) such
-   that \(p = a^2 + b^2\). If  \(p \equiv 1 \pmod{3}\) then there are  \(a, b
-   \in \mathbb{Z}\) such that \(p = a^2 - ab + b^2\).
+    If \(p \equiv 1 \pmod{4}\) then there exists \(a, b \in \mathbb{Z}\) such
+    that \(p = a^2 + b^2\). If  \(p \equiv 1 \pmod{3}\) then there are  \(a, b
+    \in \mathbb{Z}\) such that \(p = a^2 - ab + b^2\).
 \end{proposition}
 
 \begin{proof}
-   For \(p \equiv 1 \pmod{4}\), let \(\lambda \) be the generator of the group
-   of characters of \(\F_p\), that is, the order of \(\lambda\) is \(p-1\), then
-   let \(\chi := \lambda^{\frac{p-1}{4}}\) to have order \(4\), the image of
-   \(\chi\) is a subset of \(\{-1, 1, i, -i\}\) (all the \(4\)th roots of
-   unity). From this we conclude that \(J(\chi, \chi) = \sum_{s + t=1} \chi(st)
-   \in \mathbb{Z}[i]\) and therefore \(J(\chi, \chi) = a + bi\) for some  \(a,
-   b \in \mathbb{Z}\). Since \(|J(\chi,\chi)| = \sqrt{p}\) then \(p = |J(\chi,
-   \chi)|^2 = a^2 + b^2\), proving the statement. 
+    For \(p \equiv 1 \pmod{4}\), let \(\lambda \) be the generator of the group
+    of characters of \(\F_p\), that is, the order of \(\lambda\) is \(p-1\), then
+    let \(\chi := \lambda^{\frac{p-1}{4}}\) to have order \(4\), the image of
+    \(\chi\) is a subset of \(\{-1, 1, i, -i\}\) (all the \(4\)th roots of
+    unity). From this we conclude that \(J(\chi, \chi) = \sum_{s + t=1} \chi(st)
+    \in \mathbb{Z}[i]\) and therefore \(J(\chi, \chi) = a + bi\) for some  \(a,
+    b \in \mathbb{Z}\). Since \(|J(\chi,\chi)| = \sqrt{p}\) then \(p = |J(\chi,
+    \chi)|^2 = a^2 + b^2\), proving the statement.
 
-   For the case where \(p \equiv 1 \pmod{3}\) we let  \(\lambda\) be the
-   generator of the group of characters and then we let \(\chi := \lambda^{
-   \frac{p-1}{3}}\) which implies in order \(3\). Then the image of  \(\chi \)
-   is a subset of the \(3\)rd roots of unity \(\{1, \omega, \omega^2\}\) where
-   we have \(\omega:= e^{\frac{2\pi i }{3}}\). Then \(J(\chi, \chi) = \sum_{a+b
-   = 1} \chi(ab) \in \mathbb{Z}[\omega]\) and therefore exists \(x, y \in
-   \mathbb{Z}\) such that \(J(\chi, \chi) =x + y\omega\). Now, from the same
-   argument as before we have  \(p = |J(\chi, \chi)| = N(a + b\omega) = a^2 - ab
-   + b^2\) where \(N\) is the norm function on \(\mathbb{Z}[\omega]\).
+    For the case where \(p \equiv 1 \pmod{3}\) we let  \(\lambda\) be the
+    generator of the group of characters and then we let \(\chi := \lambda^{
+        \frac{p-1}{3}}\) which implies in order \(3\). Then the image of  \(\chi \)
+    is a subset of the \(3\)rd roots of unity \(\{1, \omega, \omega^2\}\) where
+    we have \(\omega:= e^{\frac{2\pi i }{3}}\). Then \(J(\chi, \chi) = \sum_{a+b
+        = 1} \chi(ab) \in \mathbb{Z}[\omega]\) and therefore exists \(x, y \in
+    \mathbb{Z}\) such that \(J(\chi, \chi) =x + y\omega\). Now, from the same
+    argument as before we have  \(p = |J(\chi, \chi)| = N(a + b\omega) = a^2 - ab
+    + b^2\) where \(N\) is the norm function on \(\mathbb{Z}[\omega]\).
 \end{proof}

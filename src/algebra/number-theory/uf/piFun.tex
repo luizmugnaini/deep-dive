@@ -1,32 +1,32 @@
 \subsection{Distribution of primes}
 
 \begin{definition}
-   We define the function \(\pi: \mathbb{Z}_{>1} \to
-   \mathbb{Z}_{\geqslant 0}\) for a given \(n \in \mathbb{Z}_{\geqslant 0}\) to
-   be the number of prime numbers \(1 < p \leqslant n\).
+    We define the function \(\pi: \mathbb{Z}_{>1} \to
+    \mathbb{Z}_{\geqslant 0}\) for a given \(n \in \mathbb{Z}_{\geqslant 0}\) to
+    be the number of prime numbers \(1 < p \leqslant n\).
 \end{definition}
 
 \begin{theorem}
-   A weak lower bound: \(\pi(x) \geqslant \log(\log(x))\) for \(x \geqslant 2\).
+    A weak lower bound: \(\pi(x) \geqslant \log(\log(x))\) for \(x \geqslant 2\).
 \end{theorem}
 
 \begin{proof}
-   Since \(\prod_{j=1}^n p_j + 1\) is not divisible by any of the primes in
-   \(\{p_1, \dots, p_n\} \) then the next prime needs to satisfy \(p_{n+1}
-   \leqslant \prod_{j=1}^n p_j + 1\) because there is always a prime (less than
-   or equal to the number, dividing it). (Proof by induction that \(p_n <
-   2^{2^n}\)) If by hypothesis of induction \(p_n < 2^{2^n}\) then  
-   \[
-      p_{n+1} < \prod_{j=1}^n 2^{2^j} + 1 = 2^{\sum_{j=1}^n 2^j} + 1 =
-      2^{2^{n+1} - 2}+1 < 2^{2^{n+1}}.
-   \]
-   Thus, \(p^n < 2^{2^n}\) and therefore \(\pi(2^{2^n}) \geqslant n\). Now, let
-   \(x > e\) and let \(n \in \mathbb{Z}\) be such that \(e^{e^{n-1}} < x
-   \leqslant e^{e^n}\). For \(n > 3\) we have \(e^{n-1} > 2^n\) thus 
-   \[
-      \pi(x) \geqslant  \pi(e^{e^{n-1}}) \geqslant  \pi(e^{2^n}) \geqslant n
-      \geqslant \log(\log(x)).
-   \] 
-   which is a proof for \(x > e^e\). Now, for the case where \(x \leqslant e^e\)
-   
+    Since \(\prod_{j=1}^n p_j + 1\) is not divisible by any of the primes in
+    \(\{p_1, \dots, p_n\} \) then the next prime needs to satisfy \(p_{n+1}
+    \leqslant \prod_{j=1}^n p_j + 1\) because there is always a prime (less than
+    or equal to the number, dividing it). (Proof by induction that \(p_n <
+    2^{2^n}\)) If by hypothesis of induction \(p_n < 2^{2^n}\) then
+    \[
+        p_{n+1} < \prod_{j=1}^n 2^{2^j} + 1 = 2^{\sum_{j=1}^n 2^j} + 1 =
+        2^{2^{n+1} - 2}+1 < 2^{2^{n+1}}.
+    \]
+    Thus, \(p^n < 2^{2^n}\) and therefore \(\pi(2^{2^n}) \geqslant n\). Now, let
+    \(x > e\) and let \(n \in \mathbb{Z}\) be such that \(e^{e^{n-1}} < x
+    \leqslant e^{e^n}\). For \(n > 3\) we have \(e^{n-1} > 2^n\) thus
+    \[
+        \pi(x) \geqslant  \pi(e^{e^{n-1}}) \geqslant  \pi(e^{2^n}) \geqslant n
+        \geqslant \log(\log(x)).
+    \]
+    which is a proof for \(x > e^e\). Now, for the case where \(x \leqslant e^e\)
+
 \end{proof}

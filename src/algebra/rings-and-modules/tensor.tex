@@ -1,236 +1,236 @@
 \section{Tensor Products}
 
 \begin{definition}[Biadditive and bilinear maps]
-\label{def:biadditive-and-bilinear-maps}
-Let \(R\) be a ring and consider a right \(R\)-module \(A\), and a left
-\(R\)-module \(B\), and an abelian group \(G\). A map \(f: A \times B \to G\) is
-said to be \emph{\(R\)-biadditive} if, for any pairs \((a, b), (a', b') \in A \times
-B\) and scalar \(r \in R\) we have the following conditions satisfied:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item \(f(a + a', b) = f(a, b) + f(a', b)\).
-\item \(f(a, b + b') = f(a, b) + f(a, b')\).
-\item \(f(a r, b) = f(a, r b)\).
-\end{enumerate}
-Further, if \(R\) is \emph{commutative}, we say that \(f\) is
-\emph{\(R\)-bilinear} if it also satisfies:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}\setcounter{enumi}{3}
-\item \(f(a r, b) = f(a, rb) = r f(a, b)\).
-\end{enumerate}
+    \label{def:biadditive-and-bilinear-maps}
+    Let \(R\) be a ring and consider a right \(R\)-module \(A\), and a left
+    \(R\)-module \(B\), and an abelian group \(G\). A map \(f: A \times B \to G\) is
+    said to be \emph{\(R\)-biadditive} if, for any pairs \((a, b), (a', b') \in A \times
+    B\) and scalar \(r \in R\) we have the following conditions satisfied:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item \(f(a + a', b) = f(a, b) + f(a', b)\).
+        \item \(f(a, b + b') = f(a, b) + f(a, b')\).
+        \item \(f(a r, b) = f(a, r b)\).
+    \end{enumerate}
+    Further, if \(R\) is \emph{commutative}, we say that \(f\) is
+    \emph{\(R\)-bilinear} if it also satisfies:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}\setcounter{enumi}{3}
+        \item \(f(a r, b) = f(a, rb) = r f(a, b)\).
+    \end{enumerate}
 
-Now let \(A\) be a \(k\)-algebra, where \(k\) is a commutative ring, and
-consider modules \(L_A\) and \({}_AM\). Then we define a morphism of
-\(k\)-modules \(g: L \times M \to X\) to be \(A\)-bilinear if
-\begin{itemize}\setlength\itemsep{0em}
-\item \(g(\ell \alpha + \ell' \beta, m) = g(\ell, m) \alpha + g(\ell', m) \beta\), for any \(\alpha, \beta \in k\).
-\item \(g(\ell, m \alpha + m' \beta) = g(\ell, m) \alpha + g(\ell, m') \beta\), for any \(\alpha, \beta \in k\).
-\item \(g(\ell a, m) = g(\ell, a m)\).
-\end{itemize}
+    Now let \(A\) be a \(k\)-algebra, where \(k\) is a commutative ring, and
+    consider modules \(L_A\) and \({}_AM\). Then we define a morphism of
+    \(k\)-modules \(g: L \times M \to X\) to be \(A\)-bilinear if
+    \begin{itemize}\setlength\itemsep{0em}
+        \item \(g(\ell \alpha + \ell' \beta, m) = g(\ell, m) \alpha + g(\ell', m) \beta\), for any \(\alpha, \beta \in k\).
+        \item \(g(\ell, m \alpha + m' \beta) = g(\ell, m) \alpha + g(\ell, m') \beta\), for any \(\alpha, \beta \in k\).
+        \item \(g(\ell a, m) = g(\ell, a m)\).
+    \end{itemize}
 \end{definition}
 
 \begin{definition}[Tensor product]
-\label{def:tensor-product}
-Let \(R\) be a ring and consider right and left \(R\)-modules \(A_R\) and
-\({}_RB\). The \emph{tensor product} of \(A\) and \(B\) is an abelian group
-\(A \otimes_R B\) together with an \(R\)-biadditive map
-\(t: A \times B \to A \otimes_R B\) such that, for every abelian group \(G\) and
-any \(R\)-biadditive map \(f: A \times B \to G\), there exists a unique abelian
-group morphism \(\phi: A \otimes_R B \to G\) such that the following triangle
-commutes:
-\[
-\begin{tikzcd}
-A \times B \ar[d, "t"'] \ar[r, "f"] &G \\
-A \otimes_R B \ar[ru, dashed, "\phi"', bend right] &
-\end{tikzcd}
-\]
+    \label{def:tensor-product}
+    Let \(R\) be a ring and consider right and left \(R\)-modules \(A_R\) and
+    \({}_RB\). The \emph{tensor product} of \(A\) and \(B\) is an abelian group
+    \(A \otimes_R B\) together with an \(R\)-biadditive map
+    \(t: A \times B \to A \otimes_R B\) such that, for every abelian group \(G\) and
+    any \(R\)-biadditive map \(f: A \times B \to G\), there exists a unique abelian
+    group morphism \(\phi: A \otimes_R B \to G\) such that the following triangle
+    commutes:
+    \[
+        \begin{tikzcd}
+            A \times B \ar[d, "t"'] \ar[r, "f"] &G \\
+            A \otimes_R B \ar[ru, dashed, "\phi"', bend right] &
+        \end{tikzcd}
+    \]
 \end{definition}
 
 \begin{lemma}[Uniqueness up to isomorphism]
-\label{lem:tensor-product-unique-up-to-iso}
-Let \(X\) and \(Y\) be tensor products for \(R\)-modules \(A_R\) and \({}_RB\),
-then there exists a natural isomorphism \(X \iso Y\).
+    \label{lem:tensor-product-unique-up-to-iso}
+    Let \(X\) and \(Y\) be tensor products for \(R\)-modules \(A_R\) and \({}_RB\),
+    then there exists a natural isomorphism \(X \iso Y\).
 \end{lemma}
 
 \begin{proof}
-Let \(t_X: A \times B \to X\) and \(t_Y: A \times B \to Y\) be their
-respectively associated \(R\)-biadditive map. Consider the universal property of
-the tensor product applied to both \((X, t_X)\) and \((Y, t_Y)\): we obtain
-unique morphisms of groups \(\phi_1: X \to Y\) and \(\phi_2: Y \to X\) such that
-the following diagram commutes
-\[
-\begin{tikzcd}
-X \ar[rd, dashed, bend right, "\phi_1"']
-&A \times B \ar[l, "t_X"']
-\ar[d, "t_Y"]
-\ar[r, "t_X"]
-&X
-\\
-&Y \ar[ru, "\phi_2"', dashed, bend right] &
-\end{tikzcd}
-\qquad
-\qquad
-\begin{tikzcd}
-Y \ar[rd, dashed, bend right, "\phi_2"']
-&A \times B \ar[l, "t_Y"']
-\ar[d, "t_X"]
-\ar[r, "t_Y"]
-&Y
-\\
-&X \ar[ru, "\phi_1"', dashed, bend right] &
-\end{tikzcd}
-\]
-From the left diagram we see that \(\Id_X: X \to X\) also makes the diagram
-commute and on the right diagram \(\Id_Y: Y \to Y\) is also a possible morphism
-satisfying commutativity. Since the morphisms \(\phi_1\) and \(\phi_2\) are
-uniquely chosen, then the compositions \(\phi_1 \phi_2\) and \(\phi_2 \phi_1\)
-are also unique. Therefore it follows that \(\phi_1 \phi_2 = \Id_Y\) and
-\(\phi_2 \phi_1 = \Id_X\)---hence \(X \iso Y\).
+    Let \(t_X: A \times B \to X\) and \(t_Y: A \times B \to Y\) be their
+    respectively associated \(R\)-biadditive map. Consider the universal property of
+    the tensor product applied to both \((X, t_X)\) and \((Y, t_Y)\): we obtain
+    unique morphisms of groups \(\phi_1: X \to Y\) and \(\phi_2: Y \to X\) such that
+    the following diagram commutes
+    \[
+        \begin{tikzcd}
+            X \ar[rd, dashed, bend right, "\phi_1"']
+            &A \times B \ar[l, "t_X"']
+            \ar[d, "t_Y"]
+            \ar[r, "t_X"]
+            &X
+            \\
+            &Y \ar[ru, "\phi_2"', dashed, bend right] &
+        \end{tikzcd}
+        \qquad
+        \qquad
+        \begin{tikzcd}
+            Y \ar[rd, dashed, bend right, "\phi_2"']
+            &A \times B \ar[l, "t_Y"']
+            \ar[d, "t_X"]
+            \ar[r, "t_Y"]
+            &Y
+            \\
+            &X \ar[ru, "\phi_1"', dashed, bend right] &
+        \end{tikzcd}
+    \]
+    From the left diagram we see that \(\Id_X: X \to X\) also makes the diagram
+    commute and on the right diagram \(\Id_Y: Y \to Y\) is also a possible morphism
+    satisfying commutativity. Since the morphisms \(\phi_1\) and \(\phi_2\) are
+    uniquely chosen, then the compositions \(\phi_1 \phi_2\) and \(\phi_2 \phi_1\)
+    are also unique. Therefore it follows that \(\phi_1 \phi_2 = \Id_Y\) and
+    \(\phi_2 \phi_1 = \Id_X\)---hence \(X \iso Y\).
 \end{proof}
 
 \begin{lemma}[Existence]
-\label{lem:tensor-product-exists}
-Given a ring \(R\) together with right and left \(R\)-modules \(A_R\) and
-\({}_RB\), their tensor product \(A \otimes_R B\) exists.
+    \label{lem:tensor-product-exists}
+    Given a ring \(R\) together with right and left \(R\)-modules \(A_R\) and
+    \({}_RB\), their tensor product \(A \otimes_R B\) exists.
 \end{lemma}
 
 \begin{proof}
-Let \(F\) be the free abelian group with basis \(A \times B\), and consider the
-subgroup \(S\) of \(S\) generated by elements of the following form, for any
-\((a, b), (a', b') \in A \times B\) and \(r \in R\):
-\begin{itemize}\setlength\itemsep{0em}
-\item \((a, b + b') - (a, b) - (a, b')\),
-\item \((a + a', b) - (a, b) - (a', b)\),
-\item \((a r, b) - (a, r b)\).
-\end{itemize}
-We'll show that the quotient \(F/S\) is the wanted tensor product
-\(A \otimes_R B\). Define the map \(t: A \otimes B \to F/S\)
-naturally by mapping \((a, b) \mapsto (a, b) + S\). From the definition of
-\(S\) we obtain freely that \(t\) is \(R\)-biadditive.
+    Let \(F\) be the free abelian group with basis \(A \times B\), and consider the
+    subgroup \(S\) of \(S\) generated by elements of the following form, for any
+    \((a, b), (a', b') \in A \times B\) and \(r \in R\):
+    \begin{itemize}\setlength\itemsep{0em}
+        \item \((a, b + b') - (a, b) - (a, b')\),
+        \item \((a + a', b) - (a, b) - (a', b)\),
+        \item \((a r, b) - (a, r b)\).
+    \end{itemize}
+    We'll show that the quotient \(F/S\) is the wanted tensor product
+    \(A \otimes_R B\). Define the map \(t: A \otimes B \to F/S\)
+    naturally by mapping \((a, b) \mapsto (a, b) + S\). From the definition of
+    \(S\) we obtain freely that \(t\) is \(R\)-biadditive.
 
-Let \(G\) be any abelian group and \(f: A \times B \to G\) any \(R\)-biadditive
-map. Then from the free group theorem there exists a unique morphism of groups
-\(\phi: F \to G\) determined by mapping \((a, b) \mapsto f(a, b)\). Moreover,
-\(S \subseteq \ker \phi\) from the fact that we imposed \(R\)-biadditiveness in
-\(f\). Therefore, by the quotient theorem \(\phi\) induces a unique morphism of
-groups \(\psi: F/S \to G\) satisfying \(\psi t = f\):
-\[
-\begin{tikzcd}
-A \times B \ar[rrd, bend left, "f"]
-\ar[d, hook]
-\ar[dd, bend right=50, "t"']
-&&\\
-F \ar[rr, dashed, "\phi"]
-\ar[d, two heads]
-&&G \\
-F/S \ar[rru, bend right, "\psi"', dashed]
-&&
-\end{tikzcd}
-\]
-This shows that \(F/S\) satisfies the universal property of the tensor product
-and thus \(A \otimes_R B \iso F/S\).
+    Let \(G\) be any abelian group and \(f: A \times B \to G\) any \(R\)-biadditive
+    map. Then from the free group theorem there exists a unique morphism of groups
+    \(\phi: F \to G\) determined by mapping \((a, b) \mapsto f(a, b)\). Moreover,
+    \(S \subseteq \ker \phi\) from the fact that we imposed \(R\)-biadditiveness in
+    \(f\). Therefore, by the quotient theorem \(\phi\) induces a unique morphism of
+    groups \(\psi: F/S \to G\) satisfying \(\psi t = f\):
+    \[
+        \begin{tikzcd}
+            A \times B \ar[rrd, bend left, "f"]
+            \ar[d, hook]
+            \ar[dd, bend right=50, "t"']
+            &&\\
+            F \ar[rr, dashed, "\phi"]
+            \ar[d, two heads]
+            &&G \\
+            F/S \ar[rru, bend right, "\psi"', dashed]
+            &&
+        \end{tikzcd}
+    \]
+    This shows that \(F/S\) satisfies the universal property of the tensor product
+    and thus \(A \otimes_R B \iso F/S\).
 \end{proof}
 
 \begin{proposition}
-\label{prop:tensoring-maps}
-Consider a morphism of left \(R\)-modules \(\lambda: A_R \to B_R\) and a
-morphism of right \(R\)-modules \(\rho: {}_RX \to {}_RY\). The maps \(\lambda\)
-and \(\rho\) induce a unique morphism of abelian groups
-\[
-\lambda \otimes \rho: A \otimes_R X \longrightarrow B \otimes_R Y.
-\]
-This morphism is given by the mapping
-\(a \otimes x \mapsto \lambda(a) \otimes \rho(x)\).
+    \label{prop:tensoring-maps}
+    Consider a morphism of left \(R\)-modules \(\lambda: A_R \to B_R\) and a
+    morphism of right \(R\)-modules \(\rho: {}_RX \to {}_RY\). The maps \(\lambda\)
+    and \(\rho\) induce a unique morphism of abelian groups
+    \[
+        \lambda \otimes \rho: A \otimes_R X \longrightarrow B \otimes_R Y.
+    \]
+    This morphism is given by the mapping
+    \(a \otimes x \mapsto \lambda(a) \otimes \rho(x)\).
 \end{proposition}
 
 \begin{proof}
-Let \(\phi: A \times X \to B \otimes_R Y\) be the map given by
-\(\phi(a, b) \coloneq a \otimes b\). Then for any \(r \in R\) one has
-\[
-\phi(a r, b)
-= \lambda(a r) \otimes \rho(b)
-= \lambda(a) r \otimes \rho(b)
-= \lambda(a) \otimes r \rho(b)
-= \lambda(a) \otimes \rho(r b)
-= \phi(a, r b).
-\]
-Thus \(\phi\) is \(R\)-biadditive. The morphism uniquely induced morphism
-\(A \otimes_R X \to B \otimes_R Y\) is exactly \(\lambda \otimes \rho\) as
-described above.
+    Let \(\phi: A \times X \to B \otimes_R Y\) be the map given by
+    \(\phi(a, b) \coloneq a \otimes b\). Then for any \(r \in R\) one has
+    \[
+        \phi(a r, b)
+        = \lambda(a r) \otimes \rho(b)
+        = \lambda(a) r \otimes \rho(b)
+        = \lambda(a) \otimes r \rho(b)
+        = \lambda(a) \otimes \rho(r b)
+        = \phi(a, r b).
+    \]
+    Thus \(\phi\) is \(R\)-biadditive. The morphism uniquely induced morphism
+    \(A \otimes_R X \to B \otimes_R Y\) is exactly \(\lambda \otimes \rho\) as
+    described above.
 \end{proof}
 
 \begin{corollary}
-\label{cor:composition-tensored-maps}
-Consider right \(R\)-module morphisms \(A \xrightarrow{\rho_1} B
-\xrightarrow{\rho_2} C\) and morphisms of left \(R\)-modules \(X
-\xrightarrow{\lambda_1} Y \xrightarrow{\lambda_2} Z\). Then we have a composition
-\[
-(\rho_2 \otimes \lambda_2) \circ (\rho_1 \otimes \lambda_1)
-= \rho_2 \rho_1 \otimes \lambda_2 \lambda_1.
-\]
+    \label{cor:composition-tensored-maps}
+    Consider right \(R\)-module morphisms \(A \xrightarrow{\rho_1} B
+    \xrightarrow{\rho_2} C\) and morphisms of left \(R\)-modules \(X
+    \xrightarrow{\lambda_1} Y \xrightarrow{\lambda_2} Z\). Then we have a composition
+    \[
+        (\rho_2 \otimes \lambda_2) \circ (\rho_1 \otimes \lambda_1)
+        = \rho_2 \rho_1 \otimes \lambda_2 \lambda_1.
+    \]
 \end{corollary}
 
 \begin{lemma}[Additive tensoring functors]
-\label{lem:addive-tensor-functors}
-Let \(A\) be a right \(R\)-module and \(B\) be a left \(R\)-module.
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item There exists an additive functor \(F_A: \lMod{R} \to \Ab\) given by
-  \(F_A(B) = A \otimes_R B\) and \(F_A(\beta) = \Id_A \otimes \beta\). We shall
-  denote this functor by \(A \otimes_R -\).
+    \label{lem:addive-tensor-functors}
+    Let \(A\) be a right \(R\)-module and \(B\) be a left \(R\)-module.
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item There exists an additive functor \(F_A: \lMod{R} \to \Ab\) given by
+              \(F_A(B) = A \otimes_R B\) and \(F_A(\beta) = \Id_A \otimes \beta\). We shall
+              denote this functor by \(A \otimes_R -\).
 
-\item There exists an additive functor \(G_B: \rMod{R} \to \Ab\) mapping \(G_B(A) =
-  A \otimes_R B\) and \(G_B(\alpha) = \alpha \otimes \Id_B\). This functor will
-  be denoted by \(- \otimes_R B\).
-\end{enumerate}
+        \item There exists an additive functor \(G_B: \rMod{R} \to \Ab\) mapping \(G_B(A) =
+              A \otimes_R B\) and \(G_B(\alpha) = \alpha \otimes \Id_B\). This functor will
+              be denoted by \(- \otimes_R B\).
+    \end{enumerate}
 \end{lemma}
 
 \begin{corollary}[Induced isomorphisms]
-\label{cor:isos-induce-iso-tensor}
-Let \(f \in \Hom_{\rMod{R}}(M, N)\) and \(g \in \Hom_{\lMod{R}}(L, K)\) be
-isomorphisms. The induced morphism
-\(f \otimes g: M \otimes_R L \to N \otimes_R K\) is an isomorphism of abelian
-groups.
+    \label{cor:isos-induce-iso-tensor}
+    Let \(f \in \Hom_{\rMod{R}}(M, N)\) and \(g \in \Hom_{\lMod{R}}(L, K)\) be
+    isomorphisms. The induced morphism
+    \(f \otimes g: M \otimes_R L \to N \otimes_R K\) is an isomorphism of abelian
+    groups.
 \end{corollary}
 
 \begin{proof}
-The functor \(- \otimes_R L\) takes \(f\) to the isomorphism \(f \otimes \Id_L\)
-and \(M \otimes_R -\) takes \(g\) to the isomorphism \(\Id_M \otimes g\). The
-composition \((f \otimes \Id_L) (\Id_M \otimes g) = f \otimes g\) will thus be
-an isomorphism.
+    The functor \(- \otimes_R L\) takes \(f\) to the isomorphism \(f \otimes \Id_L\)
+    and \(M \otimes_R -\) takes \(g\) to the isomorphism \(\Id_M \otimes g\). The
+    composition \((f \otimes \Id_L) (\Id_M \otimes g) = f \otimes g\) will thus be
+    an isomorphism.
 \end{proof}
 
 \begin{proposition}[Extending scalars]
-\label{prop:extending-scalars-tensor-prod}
-Let \(R\) be a ring and consider a subring \(S \subseteq R\).
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item Let \(A \in \Mod{(R, S)}\), then for any \(B \in \lMod{S}\) the tensor
-  product \(A \otimes_S B\) inherits a natural structure of a left \(R\)-module:
-  for any \(r \in R\) and \(a \otimes b \in A \otimes_S B\) we have
-  \(r(a \otimes b) = (r a) \otimes b\).
+    \label{prop:extending-scalars-tensor-prod}
+    Let \(R\) be a ring and consider a subring \(S \subseteq R\).
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item Let \(A \in \Mod{(R, S)}\), then for any \(B \in \lMod{S}\) the tensor
+              product \(A \otimes_S B\) inherits a natural structure of a left \(R\)-module:
+              for any \(r \in R\) and \(a \otimes b \in A \otimes_S B\) we have
+              \(r(a \otimes b) = (r a) \otimes b\).
 
-\item Let \(B \in \Mod{(S, R)}\), then for any \(A \in \rMod{S}\) the tensor
-  product \(A \otimes_S B\) inherits a natural structure of a right \(R\)-module:
-  for any \(r \in R\) and \(a \otimes b \in A \otimes_S B\) we have
-  \((a \otimes b) r = a \otimes (b r)\).
-\end{enumerate}
+        \item Let \(B \in \Mod{(S, R)}\), then for any \(A \in \rMod{S}\) the tensor
+              product \(A \otimes_S B\) inherits a natural structure of a right \(R\)-module:
+              for any \(r \in R\) and \(a \otimes b \in A \otimes_S B\) we have
+              \((a \otimes b) r = a \otimes (b r)\).
+    \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-We shall prove only the first proposition since the other follows
-analogously. Given any \(r \in R\), consider the left multiplication morphism
-\({}_r\mul: A \to A\) and the morphism of groups \({}_r\mul \otimes \Id_B\)
-under the functor \(- \otimes_S B\). Notice that this map associates
-\(a \otimes b \mapsto {}_r\mul(a) \otimes b = (r a) \otimes b\). It is trivial
-to verify that \({}_r\mul\) induces a multiplicative left \(R\)-module
-structure on the abelian group \(A \otimes_S B\)---transforming it into a left
-\(R\)-module.
+    We shall prove only the first proposition since the other follows
+    analogously. Given any \(r \in R\), consider the left multiplication morphism
+    \({}_r\mul: A \to A\) and the morphism of groups \({}_r\mul \otimes \Id_B\)
+    under the functor \(- \otimes_S B\). Notice that this map associates
+    \(a \otimes b \mapsto {}_r\mul(a) \otimes b = (r a) \otimes b\). It is trivial
+    to verify that \({}_r\mul\) induces a multiplicative left \(R\)-module
+    structure on the abelian group \(A \otimes_S B\)---transforming it into a left
+    \(R\)-module.
 \end{proof}
 
 \begin{example}
-\label{exp:extending-scalars-tensor-product}
-If \(R\) is ring and \(S\) is any subring of \(R\), then \(R\) has a structure
-of \((R, S)\)-bimodule and therefore for any given left \(S\)-module \(M\) we
-can obtain a left \(R\)-module \(R \otimes_S M\). That is, the procedure shown
-in \cref{prop:extending-scalars-tensor-prod} allows one to extend the scalars
-associated to a module.
+    \label{exp:extending-scalars-tensor-product}
+    If \(R\) is ring and \(S\) is any subring of \(R\), then \(R\) has a structure
+    of \((R, S)\)-bimodule and therefore for any given left \(S\)-module \(M\) we
+    can obtain a left \(R\)-module \(R \otimes_S M\). That is, the procedure shown
+    in \cref{prop:extending-scalars-tensor-prod} allows one to extend the scalars
+    associated to a module.
 \end{example}
 
 

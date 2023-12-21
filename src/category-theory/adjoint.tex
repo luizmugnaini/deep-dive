@@ -1,187 +1,187 @@
 \section{Reflections}
 
 \begin{definition}[Reflection along a functor]
-\label{def:reflection-functor}
-Let \(F: \cat C \to \cat D\) be any functor and \(D \in \cat D\). We define a
-\emph{reflection of \(D\) along \(F\)} to be a pair \((R_D, \eta_D)\) where
-\(R_D \in \cat C\) is an object, and \(\eta_D: D \to F R_D\) is a morphism of
-\(\cat D\) such that: if \(C \in \cat C\) is any object and
-\(\delta: D \to F C\) is a morphism of \(\cat D\), then there exists a
-\emph{unique morphism} \(\varepsilon: R_D \to C\) in \(\cat C\) such that the
-diagram
-\[
-\begin{tikzcd}
-D \ar[rd, "\eta_D"'] \ar[rr, "\delta"] & &F C \\
-&F R_D \ar[ru, dashed, "F \varepsilon"'] &
-\end{tikzcd}
-\]
-commutes in the category \(\cat D\).
+    \label{def:reflection-functor}
+    Let \(F: \cat C \to \cat D\) be any functor and \(D \in \cat D\). We define a
+    \emph{reflection of \(D\) along \(F\)} to be a pair \((R_D, \eta_D)\) where
+    \(R_D \in \cat C\) is an object, and \(\eta_D: D \to F R_D\) is a morphism of
+    \(\cat D\) such that: if \(C \in \cat C\) is any object and
+    \(\delta: D \to F C\) is a morphism of \(\cat D\), then there exists a
+    \emph{unique morphism} \(\varepsilon: R_D \to C\) in \(\cat C\) such that the
+    diagram
+    \[
+        \begin{tikzcd}
+            D \ar[rd, "\eta_D"'] \ar[rr, "\delta"] & &F C \\
+            &F R_D \ar[ru, dashed, "F \varepsilon"'] &
+        \end{tikzcd}
+    \]
+    commutes in the category \(\cat D\).
 \end{definition}
 
 \begin{proposition}[Uniqueness of reflections]
-\label{prop:reflection-unique-up-to-iso}
-Let \(F: \cat C \to \cat D\) be a functor and \(D \in \cat D\) be an object. If
-the reflection of \(D\) along \(F\) exists, then it is \emph{unique up to
-  isomorphism}.
+    \label{prop:reflection-unique-up-to-iso}
+    Let \(F: \cat C \to \cat D\) be a functor and \(D \in \cat D\) be an object. If
+    the reflection of \(D\) along \(F\) exists, then it is \emph{unique up to
+        isomorphism}.
 \end{proposition}
 
 \begin{proof}
-Suppose the reflection of \(D\) along \(F\) exists and let \((R_D, \eta_D)\) and
-\((R_D', \eta_D')\) be two such reflections. From definition:
-\begin{itemize}\setlength\itemsep{0em}
-\item Choose the object \(R_D \in \cat C\) and the morphism
-  \(\eta_D: D \to F R_D\) in \(\cat D\). Since \((R_D', \eta_D')\) is a reflection,
-  there exists a unique \(\varepsilon': R_D' \to R_D\) such that \(F(\varepsilon') \eta_D' = \eta_D\).
+    Suppose the reflection of \(D\) along \(F\) exists and let \((R_D, \eta_D)\) and
+    \((R_D', \eta_D')\) be two such reflections. From definition:
+    \begin{itemize}\setlength\itemsep{0em}
+        \item Choose the object \(R_D \in \cat C\) and the morphism
+              \(\eta_D: D \to F R_D\) in \(\cat D\). Since \((R_D', \eta_D')\) is a reflection,
+              there exists a unique \(\varepsilon': R_D' \to R_D\) such that \(F(\varepsilon') \eta_D' = \eta_D\).
 
-\item Analogously, choose the object \(R_D' \in \cat C\) and the morphism
-  \(\eta_D': D \to F R_D'\) in \(\cat D\). Since \((R_D, \eta_D)\) is a reflection,
-  there exists a unique \(\varepsilon: R_D \to R_D'\) such that \(F(\varepsilon) \eta_D = \eta_D'\).
-\end{itemize}
-With \(\varepsilon\) and \(\varepsilon'\) in hands, notice that
-\[
-F(\varepsilon \varepsilon') \eta_D' = F(\varepsilon) F(\varepsilon') \eta_D' = F(\varepsilon) \eta_D = \eta_D'
-= \Id_{F R_D'} \eta_D' = F(\Id_{R_D'}) \eta_D'
-\]
-and since the composition \(\varepsilon \varepsilon'\) is unique satisfying such equation, it must
-be the case that \(\varepsilon \varepsilon' = \Id_{R_D'}\). Analogously we obtain that
-\(\varepsilon' \varepsilon = \Id_{R_D}\), showing that \(R_D \iso R_D'\).
+        \item Analogously, choose the object \(R_D' \in \cat C\) and the morphism
+              \(\eta_D': D \to F R_D'\) in \(\cat D\). Since \((R_D, \eta_D)\) is a reflection,
+              there exists a unique \(\varepsilon: R_D \to R_D'\) such that \(F(\varepsilon) \eta_D = \eta_D'\).
+    \end{itemize}
+    With \(\varepsilon\) and \(\varepsilon'\) in hands, notice that
+    \[
+        F(\varepsilon \varepsilon') \eta_D' = F(\varepsilon) F(\varepsilon') \eta_D' = F(\varepsilon) \eta_D = \eta_D'
+        = \Id_{F R_D'} \eta_D' = F(\Id_{R_D'}) \eta_D'
+    \]
+    and since the composition \(\varepsilon \varepsilon'\) is unique satisfying such equation, it must
+    be the case that \(\varepsilon \varepsilon' = \Id_{R_D'}\). Analogously we obtain that
+    \(\varepsilon' \varepsilon = \Id_{R_D}\), showing that \(R_D \iso R_D'\).
 \end{proof}
 
 \begin{proposition}
-\label{prop:reflection-as-func-and-unit-as-nat-tranf}
-Let \(F: \cat C \to \cat D\) be a functor and assume that for any \(D \in \cat D\)
-the reflection of \(D\) along \(F\) exists and is \((R_D, \eta_D)\). Then there
-exists a \emph{unique} functor \(R: \cat D \to \cat C\) such that the following
-two properties are satisfied:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item For any \(D \in \cat D\) we have \(R D = R_D\).
+    \label{prop:reflection-as-func-and-unit-as-nat-tranf}
+    Let \(F: \cat C \to \cat D\) be a functor and assume that for any \(D \in \cat D\)
+    the reflection of \(D\) along \(F\) exists and is \((R_D, \eta_D)\). Then there
+    exists a \emph{unique} functor \(R: \cat D \to \cat C\) such that the following
+    two properties are satisfied:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item For any \(D \in \cat D\) we have \(R D = R_D\).
 
-\item The map \(\eta: \Id_{\cat D} \nat F R\) given by
-  \((\eta_D: D \to F R D)_{D \in \cat D}\) is a natural transformation.
-\end{enumerate}
+        \item The map \(\eta: \Id_{\cat D} \nat F R\) given by
+              \((\eta_D: D \to F R D)_{D \in \cat D}\) is a natural transformation.
+    \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-Let \(R: \cat D \to \cat C\) be defined as above---we want to prove that \(R\) is
-indeed a functor. Lets define how \(R\) acts on \(\Mor(\cat D)\). Consider a
-morphism \(\delta: D \to D'\) in \(\cat D\). The reflection pair
-\((R_D, \eta_D)\) says that there exists a unique morphism
-\(\varepsilon: R_D \to R_{D'}\) such that the following diagram commutes
-\[
-\begin{tikzcd}
-D \ar[r, "\delta"] \ar[rd, "\eta_D"']
-&D' \ar[r, "\eta_{D'}"]
-&F R_{D'}
-\\
-& F R_D \ar[ru, "F \varepsilon"']
-&
-\end{tikzcd}
-\]
-We shall define \(R \delta \coloneq \varepsilon\). If \(\delta': D' \to D''\) is yet another morphism in
-\(\cat D\), then from construction one has
-\begin{align*}
-  F(R(\delta') R(\delta)) \eta_D
-  = F R(\delta') F R(\delta) \eta_D
-  = F(\varepsilon') F(\varepsilon) \eta_D
-  = F(\varepsilon') \eta_{D'} \delta
-  = \eta_{D''} \delta' \delta.
-\end{align*}
-On the other hand we have
-\[
-F R(\delta' \delta) \eta_D = \eta_{D''} (\delta' \delta),
-\]
-therefore, from uniqueness we obtain \(R(\delta') R(\delta) = R(\delta' \delta)\).
+    Let \(R: \cat D \to \cat C\) be defined as above---we want to prove that \(R\) is
+    indeed a functor. Lets define how \(R\) acts on \(\Mor(\cat D)\). Consider a
+    morphism \(\delta: D \to D'\) in \(\cat D\). The reflection pair
+    \((R_D, \eta_D)\) says that there exists a unique morphism
+    \(\varepsilon: R_D \to R_{D'}\) such that the following diagram commutes
+    \[
+        \begin{tikzcd}
+            D \ar[r, "\delta"] \ar[rd, "\eta_D"']
+            &D' \ar[r, "\eta_{D'}"]
+            &F R_{D'}
+            \\
+            & F R_D \ar[ru, "F \varepsilon"']
+            &
+        \end{tikzcd}
+    \]
+    We shall define \(R \delta \coloneq \varepsilon\). If \(\delta': D' \to D''\) is yet another morphism in
+    \(\cat D\), then from construction one has
+    \begin{align*}
+        F(R(\delta') R(\delta)) \eta_D
+        = F R(\delta') F R(\delta) \eta_D
+        = F(\varepsilon') F(\varepsilon) \eta_D
+        = F(\varepsilon') \eta_{D'} \delta
+        = \eta_{D''} \delta' \delta.
+    \end{align*}
+    On the other hand we have
+    \[
+        F R(\delta' \delta) \eta_D = \eta_{D''} (\delta' \delta),
+    \]
+    therefore, from uniqueness we obtain \(R(\delta') R(\delta) = R(\delta' \delta)\).
 \end{proof}
 
 \begin{definition}[Left adjoint]
-\label{def:left-adjoint}
-A functor \(R: \cat D \to \cat C\) is a \emph{left adjoint} of a functor
-\(F: \cat C \to \cat D\) if there exists a natural transformation
-\(\eta: \Id_{\cat D} \nat F R\) for which \((R D, \eta_D)\) is a reflection of
-\(D\) along \(F\) for any \(D \in \cat D\).
+    \label{def:left-adjoint}
+    A functor \(R: \cat D \to \cat C\) is a \emph{left adjoint} of a functor
+    \(F: \cat C \to \cat D\) if there exists a natural transformation
+    \(\eta: \Id_{\cat D} \nat F R\) for which \((R D, \eta_D)\) is a reflection of
+    \(D\) along \(F\) for any \(D \in \cat D\).
 \end{definition}
 
 \begin{definition}[Coreflection]
-\label{def:coreflection-along-functor}
-Let \(F: \cat C \to \cat D\) be a functor and \(D \in \cat D\) be any object. A pair
-\((R_D, \nu_D)\) is said to be a \emph{coreflection} of \(D\) along \(F\) if \(R_D
-\in \cat C\) and \(\nu_D: F R_D \to D\) is a morphism of \(\cat D\) such that: for any
-\(C \in \cat C\) and morphism \(\delta: F C \to D\) in \(\cat D\) there exists a
-\emph{unique} morphism \(\varepsilon: C \to R_D\) for which the triangle
-\[
-\begin{tikzcd}
-F C \ar[rr, "\delta"] \ar[rd, "F \varepsilon"']
-& &D
-\\
-&F R_D
-\ar[ru, "\nu_D"']
-&
-\end{tikzcd}
-\]
-commutes in \(\cat D\).
+    \label{def:coreflection-along-functor}
+    Let \(F: \cat C \to \cat D\) be a functor and \(D \in \cat D\) be any object. A pair
+    \((R_D, \nu_D)\) is said to be a \emph{coreflection} of \(D\) along \(F\) if \(R_D
+    \in \cat C\) and \(\nu_D: F R_D \to D\) is a morphism of \(\cat D\) such that: for any
+    \(C \in \cat C\) and morphism \(\delta: F C \to D\) in \(\cat D\) there exists a
+    \emph{unique} morphism \(\varepsilon: C \to R_D\) for which the triangle
+    \[
+        \begin{tikzcd}
+            F C \ar[rr, "\delta"] \ar[rd, "F \varepsilon"']
+            & &D
+            \\
+            &F R_D
+            \ar[ru, "\nu_D"']
+            &
+        \end{tikzcd}
+    \]
+    commutes in \(\cat D\).
 \end{definition}
 
 \begin{definition}[Right adjoint]
-\label{def:right-adjoint}
-A functor \(R: \cat D \to \cat C\) is a \emph{right adjoint} of a functor
-\(F: \cat C \to \cat D\) if there exists a natural transformation
-\(\nu: F R \nat \Id_{\cat D}\) such that: for each \(D \in \cat D\) the pair
-\((R D, \nu_D)\) is a coreflection of \(D\) along \(F\).
+    \label{def:right-adjoint}
+    A functor \(R: \cat D \to \cat C\) is a \emph{right adjoint} of a functor
+    \(F: \cat C \to \cat D\) if there exists a natural transformation
+    \(\nu: F R \nat \Id_{\cat D}\) such that: for each \(D \in \cat D\) the pair
+    \((R D, \nu_D)\) is a coreflection of \(D\) along \(F\).
 \end{definition}
 
 \begin{theorem}[Equivalent definitions]
-\label{thm:equivalent-defs-adjoint-pair}
-Let \(F \colon \cat C \adj \cat D \colon G\) be two functors. The following
-properties are equivalent:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item The functor \(G\) is left adjoint to \(F\).
-\item There exists a pair of natural transformations
-  \(\eta: \Id_{\cat D} \nat F G\) and \(\nu: G F \nat \Id_{\cat C}\) for which
-  \[
-  (F \nu) (\eta F) = \Id_F,\,
-  \text{ and }\,
-  (\nu G) (G \eta) = \Id_G.
-  \]
+    \label{thm:equivalent-defs-adjoint-pair}
+    Let \(F \colon \cat C \adj \cat D \colon G\) be two functors. The following
+    properties are equivalent:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item The functor \(G\) is left adjoint to \(F\).
+        \item There exists a pair of natural transformations
+              \(\eta: \Id_{\cat D} \nat F G\) and \(\nu: G F \nat \Id_{\cat C}\) for which
+              \[
+                  (F \nu) (\eta F) = \Id_F,\,
+                  \text{ and }\,
+                  (\nu G) (G \eta) = \Id_G.
+              \]
 
-\item For every pair of objects \(C \in \cat C\) and \(D \in \cat D\) there exists a
-  natural bijection
-  \[
-  \theta_{C D}: \Mor_{\cat C}(G D, C) \isoto \Mor_{\cat D}(D, F C).
-  \]
-  The naturality of \(\theta\) over the choice of \(C\) and \(D\) can be expressed as
-  follows: for any two other objects \(C' \in \cat C\) and \(D' \in \cat D\)
-  together with morphisms \(c \in \Mor_{\cat C}(C', C)\) and \(d \in \Mor_{\cat
-    D}(D', D)\) the following two squares commute
-  \[
-  \begin{tikzcd}
-  \Mor_{\cat C}(G D, C) \ar[r, "c_{*}"] \ar[d, "\theta_{C D}"']
-  &\Mor_{\cat C}(G D, C') \ar[d, "\theta_{C' D}"]
-  \\
-  \Mor_{\cat D}(D, F C) \ar[r, "{(F c)_{*}}"']
-  &\Mor_{\cat D}(D, F C')
-  \end{tikzcd}
-  \qquad
-  \qquad
-  \begin{tikzcd}
-  \Mor_{\cat C}(G D, C) \ar[r, "(G d)^{*}"]
-  \ar[d, "\theta_{C D}"']
-  &\Mor_{\cat C}(G D', C) \ar[d, "\theta_{C D'}"]
-  \\
-  \Mor_{\cat D}(D, F C) \ar[r, "{d^{*}}"']
-  &\Mor_{\cat D}(D', F C)
-  \end{tikzcd}
-  \]
+        \item For every pair of objects \(C \in \cat C\) and \(D \in \cat D\) there exists a
+              natural bijection
+              \[
+                  \theta_{C D}: \Mor_{\cat C}(G D, C) \isoto \Mor_{\cat D}(D, F C).
+              \]
+              The naturality of \(\theta\) over the choice of \(C\) and \(D\) can be expressed as
+              follows: for any two other objects \(C' \in \cat C\) and \(D' \in \cat D\)
+              together with morphisms \(c \in \Mor_{\cat C}(C', C)\) and \(d \in \Mor_{\cat
+                  D}(D', D)\) the following two squares commute
+              \[
+                  \begin{tikzcd}
+                      \Mor_{\cat C}(G D, C) \ar[r, "c_{*}"] \ar[d, "\theta_{C D}"']
+                      &\Mor_{\cat C}(G D, C') \ar[d, "\theta_{C' D}"]
+                      \\
+                      \Mor_{\cat D}(D, F C) \ar[r, "{(F c)_{*}}"']
+                      &\Mor_{\cat D}(D, F C')
+                  \end{tikzcd}
+                  \qquad
+                  \qquad
+                  \begin{tikzcd}
+                      \Mor_{\cat C}(G D, C) \ar[r, "(G d)^{*}"]
+                      \ar[d, "\theta_{C D}"']
+                      &\Mor_{\cat C}(G D', C) \ar[d, "\theta_{C D'}"]
+                      \\
+                      \Mor_{\cat D}(D, F C) \ar[r, "{d^{*}}"']
+                      &\Mor_{\cat D}(D', F C)
+                  \end{tikzcd}
+              \]
 
-\item The functor \(F\) is right adjoint to \(G\).
-\end{enumerate}
+        \item The functor \(F\) is right adjoint to \(G\).
+    \end{enumerate}
 \end{theorem}
 
 \begin{notation}
-\label{not:adjoint-functor}
-Let \(F \colon \cat C \adj \cat D \colon G\) be functors forming a pair
-\((G, F)\) of adjoint functors. We shall denote that \(G\) is a left adjoint of
-\(F\) (or, which is equivalent, \(F\) is right adjoint of \(G\)) by
-\(G \Adj F\).
+    \label{not:adjoint-functor}
+    Let \(F \colon \cat C \adj \cat D \colon G\) be functors forming a pair
+    \((G, F)\) of adjoint functors. We shall denote that \(G\) is a left adjoint of
+    \(F\) (or, which is equivalent, \(F\) is right adjoint of \(G\)) by
+    \(G \Adj F\).
 \end{notation}
 
 % \section{Adjoint Pairs}

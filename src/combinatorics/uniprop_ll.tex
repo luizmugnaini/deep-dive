@@ -3,136 +3,136 @@
 \subsection{Quotients}
 
 \begin{definition}[Quotient]\label{def: quotient-graph}
-  Let \(G\) be a graph and \(\sim\) be an equivalence relation on the collection
-  of vertices \(\Vertex(G)\). We define the quotient graph \(G/{\sim}\) to be the graph
-  whose vertices are the vertex classes \(\Vertex(G)/{\sim}\) and whose edges are
-  such that \(\Edge_{G/{\sim}}([x], [y])\) if and only if \(\Edge_G(x, y)\).
+    Let \(G\) be a graph and \(\sim\) be an equivalence relation on the collection
+    of vertices \(\Vertex(G)\). We define the quotient graph \(G/{\sim}\) to be the graph
+    whose vertices are the vertex classes \(\Vertex(G)/{\sim}\) and whose edges are
+    such that \(\Edge_{G/{\sim}}([x], [y])\) if and only if \(\Edge_G(x, y)\).
 \end{definition}
 
 \begin{proposition}[Universal property of quotients]
-  \label{prop: quotient-graph}
-  The quotient graph is a quotient in the category \(\Graph\). In other words,
-  let \(G\) be a graph and \(\sim\) be an equivalence relation on \(\Vertex(G)\).
-  Consider any graph \(H\) together with a morphism of graphs \(\psi: G \to H\).
-  Then there exists a unique morphism of graphs \(\phi: G/{\sim}\, \to H\) such
-  that the following diagram commutes
-  \[
-    \begin{tikzcd}
-      G \ar[d, two heads, swap, "\pi"] \ar[r, "\psi"] &H \\
-      G/{\sim} \ar[ur, swap, bend right, dashed, "\phi"] &
-    \end{tikzcd}
-  \]
-  where \(\pi\) is the naturally defined projection.
+    \label{prop: quotient-graph}
+    The quotient graph is a quotient in the category \(\Graph\). In other words,
+    let \(G\) be a graph and \(\sim\) be an equivalence relation on \(\Vertex(G)\).
+    Consider any graph \(H\) together with a morphism of graphs \(\psi: G \to H\).
+    Then there exists a unique morphism of graphs \(\phi: G/{\sim}\, \to H\) such
+    that the following diagram commutes
+    \[
+        \begin{tikzcd}
+            G \ar[d, two heads, swap, "\pi"] \ar[r, "\psi"] &H \\
+            G/{\sim} \ar[ur, swap, bend right, dashed, "\phi"] &
+        \end{tikzcd}
+    \]
+    where \(\pi\) is the naturally defined projection.
 \end{proposition}
 
 \begin{proof}
-  First we show that \(\phi\) is indeed unique. Suppose \(\phi_1\) and
-  \(\phi_2\) are both morphisms that satisfy the commutativity of the diagram.
-  Given any \(x \in \Vertex(G)\) we have \(\psi(x) = \phi_1([x]) = \phi_2([x])\) and
-  since \(\pi(\Vertex(G)) = \Vertex(G/{\sim})\) (surjective property) then \(\phi_1\) and
-  \(\phi_2\) have equal images throughout their whole domain --- implying
-  \(\phi_1 = \phi_2\). To show that \(\phi\) is a morphism of graphs, it is
-  sufficient to consider any \(x, y \in G\) such that \(\Edge_G(x, y)\): \(\psi\)
-  being a morphism implies \(\Edge_G(\psi(x), \psi(y))\), then --- since \(\phi([x])
-  = \psi(x)\) and \(\phi([y]) = \psi(y)\) --- we get that \(\Edge_G(\phi([x]),
-  \phi([y]))\) is true.
+    First we show that \(\phi\) is indeed unique. Suppose \(\phi_1\) and
+    \(\phi_2\) are both morphisms that satisfy the commutativity of the diagram.
+    Given any \(x \in \Vertex(G)\) we have \(\psi(x) = \phi_1([x]) = \phi_2([x])\) and
+    since \(\pi(\Vertex(G)) = \Vertex(G/{\sim})\) (surjective property) then \(\phi_1\) and
+    \(\phi_2\) have equal images throughout their whole domain --- implying
+    \(\phi_1 = \phi_2\). To show that \(\phi\) is a morphism of graphs, it is
+    sufficient to consider any \(x, y \in G\) such that \(\Edge_G(x, y)\): \(\psi\)
+    being a morphism implies \(\Edge_G(\psi(x), \psi(y))\), then --- since \(\phi([x])
+    = \psi(x)\) and \(\phi([y]) = \psi(y)\) --- we get that \(\Edge_G(\phi([x]),
+    \phi([y]))\) is true.
 \end{proof}
 
 \subsection{Coproducts}
 
 \begin{definition}[Coproduct]\label{def: coprod-graph}
-  Let \(G = (V, E)\) and \(H = (V', E')\) be graphs, we define their coproduct
-  \(G \oplus H\) to be the disjoint union of vertices and edges of the original
-  graphs --- that is, \(G \oplus H = (V \amalg V', E \amalg
-  E')\)\footnote{\(\amalg\) denotes the standard disjoint union in \(\Set\).}.
+    Let \(G = (V, E)\) and \(H = (V', E')\) be graphs, we define their coproduct
+    \(G \oplus H\) to be the disjoint union of vertices and edges of the original
+    graphs --- that is, \(G \oplus H = (V \amalg V', E \amalg
+    E')\)\footnote{\(\amalg\) denotes the standard disjoint union in \(\Set\).}.
 \end{definition}
 
 \begin{proposition}[Universal property of coproducts]
-  \label{prop: coprod-graph}
-  Given graphs \(G, H \in \Graph\), the graph \(G \oplus H\) is a coproduct of
-  \(G\) and \(H\) in the category of simple loopless graphs. That is, given any
-  graph \(W \in \Graph\) and graph morphisms \(f: G \to W\) and \(g: H \to W\),
-  there exists a unique graph morphism \(\phi: G \oplus H \to W\) such that the
-  following diagram commutes
-  \[
-    \begin{tikzcd}
-      G \ar[dr, hook, "\iota_G"] \ar[ddr, swap, bend right, "f"]
-      & &H \ar[dl, swap, hook', "\iota_{H}"] \ar[ddl, bend left, "g"]
-      \\
-      &G \oplus H \ar[d, dashed, "\phi"]
-      \\
-      &W &
-    \end{tikzcd}
-  \]
-  Where the inclusion morphisms \(\iota_G\) and \(\iota_{H}\) are naturally
-  defined.
+    \label{prop: coprod-graph}
+    Given graphs \(G, H \in \Graph\), the graph \(G \oplus H\) is a coproduct of
+    \(G\) and \(H\) in the category of simple loopless graphs. That is, given any
+    graph \(W \in \Graph\) and graph morphisms \(f: G \to W\) and \(g: H \to W\),
+    there exists a unique graph morphism \(\phi: G \oplus H \to W\) such that the
+    following diagram commutes
+    \[
+        \begin{tikzcd}
+            G \ar[dr, hook, "\iota_G"] \ar[ddr, swap, bend right, "f"]
+            & &H \ar[dl, swap, hook', "\iota_{H}"] \ar[ddl, bend left, "g"]
+            \\
+            &G \oplus H \ar[d, dashed, "\phi"]
+            \\
+            &W &
+        \end{tikzcd}
+    \]
+    Where the inclusion morphisms \(\iota_G\) and \(\iota_{H}\) are naturally
+    defined.
 \end{proposition}
 
 \begin{proof}
-  Notice that \(\phi\) is defined by a map of vertices \(\Vertex(G) \cup \Vertex(H) \to
-  \Vertex(W)\) with the restriction that \(\Edge_{G \oplus H}(x, y)\) implies
-  \(\Edge_W(\phi(x), \phi(y))\), we'll first prove that \(f\) together with \(g\)
-  completely identify \(\phi\). Let \(v \in G \oplus H\) be any vertex. If \(v
-  \in \Vertex(G)\), suppose \(f(v) = h\) then necessarily \(\phi \iota_G(v) = h\). On
-  the other hand, if \(v \in \Vertex(H)\) and if \(g(v) = h'\) then \(\phi
-  \iota_{H}(v) = h'\). Since \(\codom \phi = \Vertex(G) \amalg \Vertex(H)\) and we have
-  \(\iota_G(G) = \Vertex(G)\) and \(\iota_{H}(H) = \Vertex(H)\), this shows that \(f\) and
-  \(g\) completely determine the image of \(\phi\) --- hence \(\phi\) is
-  uniquely defined.
+    Notice that \(\phi\) is defined by a map of vertices \(\Vertex(G) \cup \Vertex(H) \to
+    \Vertex(W)\) with the restriction that \(\Edge_{G \oplus H}(x, y)\) implies
+    \(\Edge_W(\phi(x), \phi(y))\), we'll first prove that \(f\) together with \(g\)
+    completely identify \(\phi\). Let \(v \in G \oplus H\) be any vertex. If \(v
+    \in \Vertex(G)\), suppose \(f(v) = h\) then necessarily \(\phi \iota_G(v) = h\). On
+    the other hand, if \(v \in \Vertex(H)\) and if \(g(v) = h'\) then \(\phi
+    \iota_{H}(v) = h'\). Since \(\codom \phi = \Vertex(G) \amalg \Vertex(H)\) and we have
+    \(\iota_G(G) = \Vertex(G)\) and \(\iota_{H}(H) = \Vertex(H)\), this shows that \(f\) and
+    \(g\) completely determine the image of \(\phi\) --- hence \(\phi\) is
+    uniquely defined.
 
-  Finally we show that \(\phi\) is indeed a morphism of graphs. Given \(x, y \in
-  \Vertex(G)\), suppose \(\Edge_G(x, y)\), then \(\Edge_W(f(x), f(y)) = \Edge_W(\phi(x),
-  \phi(y))\) --- since \(\phi(x) = f(x)\) and \(\phi(y) = f(y)\). The case \(x,
-  y \in \Vertex(H)\) is completely analogous and we'll therefore omit for the sake of
-  brevity. We don't need to inspect the case where \(x \in \Vertex(G)\) and \(y \in
-  \Vertex(H)\) since \(\Edge_{G \oplus H}(x, y)\) is always false in such instance. Thus
-  \(\phi\) is a morphism of graphs.
+    Finally we show that \(\phi\) is indeed a morphism of graphs. Given \(x, y \in
+    \Vertex(G)\), suppose \(\Edge_G(x, y)\), then \(\Edge_W(f(x), f(y)) = \Edge_W(\phi(x),
+    \phi(y))\) --- since \(\phi(x) = f(x)\) and \(\phi(y) = f(y)\). The case \(x,
+    y \in \Vertex(H)\) is completely analogous and we'll therefore omit for the sake of
+    brevity. We don't need to inspect the case where \(x \in \Vertex(G)\) and \(y \in
+    \Vertex(H)\) since \(\Edge_{G \oplus H}(x, y)\) is always false in such instance. Thus
+    \(\phi\) is a morphism of graphs.
 \end{proof}
 
 \subsection{Products}
 
 \begin{definition}[Kronecker product]
-  Let \(G, H \in \Graph\). We define the Kronecker product of \(G\) and \(H\) to
-  be the graph \(G \otimes H = (V, E)\) whose vertices are \(V = \Vertex(G) \times
-  \Vertex(H)\) and edges defined by \(\Edge_{G \otimes H}(v \otimes h, v' \otimes h')\) if
-  and only if \(\Edge_G(v, v')\) and \(\Edge_H(h, h')\).
+    Let \(G, H \in \Graph\). We define the Kronecker product of \(G\) and \(H\) to
+    be the graph \(G \otimes H = (V, E)\) whose vertices are \(V = \Vertex(G) \times
+    \Vertex(H)\) and edges defined by \(\Edge_{G \otimes H}(v \otimes h, v' \otimes h')\) if
+    and only if \(\Edge_G(v, v')\) and \(\Edge_H(h, h')\).
 \end{definition}
 
 \begin{proposition}[Products]
-  The Kronecker product as defined above is a product in the category of simple
-  loopless graphs \(\Graph\). That is, given graphs \(G, H, W \in \Graph\) and
-  graph morphisms \(f: W \to G\) and \(g: W \to H\), there exists a unique
-  morphism of graphs \(\phi: W \to G \otimes H\) such that the following diagram
-  commutes
-  \[
-    \begin{tikzcd}
-      &W \ar[d, dashed, "\phi"]
-      \ar[ddl, bend right, swap, "f"]
-      \ar[ddr, bend left, "g"]
-      & \\
-      &G \otimes H
-      \ar[dr, two heads, swap, "\pi_H"]
-      \ar[dl, two heads, "\pi_G"]
-      & \\
-      G & &H
-    \end{tikzcd}
-  \]
-  Where \(\pi_G\) and \(\pi_H\) are the naturally defined projection morphisms.
+    The Kronecker product as defined above is a product in the category of simple
+    loopless graphs \(\Graph\). That is, given graphs \(G, H, W \in \Graph\) and
+    graph morphisms \(f: W \to G\) and \(g: W \to H\), there exists a unique
+    morphism of graphs \(\phi: W \to G \otimes H\) such that the following diagram
+    commutes
+    \[
+        \begin{tikzcd}
+            &W \ar[d, dashed, "\phi"]
+            \ar[ddl, bend right, swap, "f"]
+            \ar[ddr, bend left, "g"]
+            & \\
+            &G \otimes H
+            \ar[dr, two heads, swap, "\pi_H"]
+            \ar[dl, two heads, "\pi_G"]
+            & \\
+            G & &H
+        \end{tikzcd}
+    \]
+    Where \(\pi_G\) and \(\pi_H\) are the naturally defined projection morphisms.
 \end{proposition}
 
 \begin{proof}
-  Consider the morphism \(\phi: W \to G \otimes H\) defined by the mapping \(w
-  \xmapsto \phi f(w) \otimes g(w)\). Let \(w, w' \in \Vertex(W)\) be any vertices such
-  that \(\Edge_W(w, w')\), since \(f\) and \(g\) are graph morphisms, then
-  \(\Edge_G(f(w), f(w'))\) and \(\Edge_H(g(w), g(w'))\). Since \(\phi(w) = f(w) \otimes
-  g(w)\) and \(\phi(w') = f(w') \otimes g(w')\) it follows from the construction
-  of the Kronecker product that \(\Edge_{G \otimes H}(\phi(w), \phi(w'))\). This
-  shows that \(\phi\) is a graph morphism.
+    Consider the morphism \(\phi: W \to G \otimes H\) defined by the mapping \(w
+    \xmapsto \phi f(w) \otimes g(w)\). Let \(w, w' \in \Vertex(W)\) be any vertices such
+    that \(\Edge_W(w, w')\), since \(f\) and \(g\) are graph morphisms, then
+    \(\Edge_G(f(w), f(w'))\) and \(\Edge_H(g(w), g(w'))\). Since \(\phi(w) = f(w) \otimes
+    g(w)\) and \(\phi(w') = f(w') \otimes g(w')\) it follows from the construction
+    of the Kronecker product that \(\Edge_{G \otimes H}(\phi(w), \phi(w'))\). This
+    shows that \(\phi\) is a graph morphism.
 
-  We now inspect its uniqueness. Let \(\phi, \phi' \in \Hom_\Graph(W, G \otimes
-  H)\) be morphisms satisfying the commutativity of the diagram. Then \(f =
-  \pi_G \phi = \pi_G \phi'\) and \(g = \pi_H \phi = \pi_H \phi'\), thus, given
-  any \(w \in W\) we have \(\pi_G\phi(w) = \pi_G \phi'(w)\) and \(\pi_H \phi(w)
-  = \pi_H\phi'(w)\), which implies in \(\phi(w) = \phi'(w)\). Therefore \(\phi\)
-  is unique.
+    We now inspect its uniqueness. Let \(\phi, \phi' \in \Hom_\Graph(W, G \otimes
+    H)\) be morphisms satisfying the commutativity of the diagram. Then \(f =
+    \pi_G \phi = \pi_G \phi'\) and \(g = \pi_H \phi = \pi_H \phi'\), thus, given
+    any \(w \in W\) we have \(\pi_G\phi(w) = \pi_G \phi'(w)\) and \(\pi_H \phi(w)
+    = \pi_H\phi'(w)\), which implies in \(\phi(w) = \phi'(w)\). Therefore \(\phi\)
+    is unique.
 \end{proof}

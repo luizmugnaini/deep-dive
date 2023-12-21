@@ -2,94 +2,94 @@
 
 %
 \begin{definition}[Ring]
-\label{def:ring}
-A ring \(R\) is a set endowed with an additive structure \(+: R \times R \to R\)
-such that \((R, +)\) is an \emph{abelian group}, moreover, \(R\) is also endowed
-with a second multiplicative structure \(\cdot: R \times R \to R\), making
-\((R, \cdot)\) into a monoid --- that is, it is both associative and has a
-two-sided identity:
-\begin{itemize}\setlength\itemsep{0em}
-\item Given \(r, s, t \in R\), we have \(r (s t) = (r s) t\).
+    \label{def:ring}
+    A ring \(R\) is a set endowed with an additive structure \(+: R \times R \to R\)
+    such that \((R, +)\) is an \emph{abelian group}, moreover, \(R\) is also endowed
+    with a second multiplicative structure \(\cdot: R \times R \to R\), making
+    \((R, \cdot)\) into a monoid --- that is, it is both associative and has a
+    two-sided identity:
+    \begin{itemize}\setlength\itemsep{0em}
+        \item Given \(r, s, t \in R\), we have \(r (s t) = (r s) t\).
 
-\item There exists a unitary element \(1_R \in R\) for which all \(r \in R\) is
-  such that
-  \[
-    r 1_R = 1_R r = r.
-  \]
-\end{itemize}
-Furthermore, we impose that the product structure is distributive over the
-additive structure, that is, given any three \(r, t, s \in R\), one has
-\[
-  (r + t) s = r s + t s \text{ and } r (t + s) = r t + r s.
-\]
+        \item There exists a unitary element \(1_R \in R\) for which all \(r \in R\) is
+              such that
+              \[
+                  r 1_R = 1_R r = r.
+              \]
+    \end{itemize}
+    Furthermore, we impose that the product structure is distributive over the
+    additive structure, that is, given any three \(r, t, s \in R\), one has
+    \[
+        (r + t) s = r s + t s \text{ and } r (t + s) = r t + r s.
+    \]
 \end{definition}
 %
 
 %
 \begin{remark}
-\label{rem:def-ring}
-Notice that we impose the following in the definition of a ring --- which may
-vary from author to author --- the ring is always associative and has a unity.
+    \label{rem:def-ring}
+    Notice that we impose the following in the definition of a ring --- which may
+    vary from author to author --- the ring is always associative and has a unity.
 \end{remark}
 %
 
 %
 \begin{definition}
-\label{def:commutative-ring}
-A ring \(R\) is said to be \emph{commutative} if for all \(r, s \in R\) we have
-\(r s = s r\).
+    \label{def:commutative-ring}
+    A ring \(R\) is said to be \emph{commutative} if for all \(r, s \in R\) we have
+    \(r s = s r\).
 \end{definition}
 %
 
 %
 \begin{corollary}
-\label{cor:ring-unique-identity}
-Given a ring \(R\), its identity is unique.
+    \label{cor:ring-unique-identity}
+    Given a ring \(R\), its identity is unique.
 \end{corollary}
 %
 
 %
 \begin{proof}
-Let \(1, 1' \in R\) be both identities of \(R\), then \(1 1' = 1\) but \(1 1' =
-1'\), thus \(1 = 1'\).
+    Let \(1, 1' \in R\) be both identities of \(R\), then \(1 1' = 1\) but \(1 1' =
+    1'\), thus \(1 = 1'\).
 \end{proof}
 %
 
 %
 \begin{corollary}
-\label{cor:zero-element-ring}
-Given a ring \(R\), we have for all \(r \in R\) that \(0_R r = r 0_R = 0_R\).
+    \label{cor:zero-element-ring}
+    Given a ring \(R\), we have for all \(r \in R\) that \(0_R r = r 0_R = 0_R\).
 \end{corollary}
 %
 
 %
 \begin{proof}
-Note that for both cases, since \(0 = 0 + 0\), we are able to write the
-following
-\begin{align*}
-  r \cdot 0 &= r \cdot (0 + 0) = r \cdot 0 + r \cdot 0, \\
-  0 \cdot r &= (0 + 0) \cdot r = 0 \cdot r + 0 \cdot r.
-\end{align*}
-Further, since \((R, +)\) is a group, we evoke the cancellation to obtain
-\(r \cdot 0 = 0\) and \(0 \cdot r = 0\).
+    Note that for both cases, since \(0 = 0 + 0\), we are able to write the
+    following
+    \begin{align*}
+        r \cdot 0 & = r \cdot (0 + 0) = r \cdot 0 + r \cdot 0, \\
+        0 \cdot r & = (0 + 0) \cdot r = 0 \cdot r + 0 \cdot r.
+    \end{align*}
+    Further, since \((R, +)\) is a group, we evoke the cancellation to obtain
+    \(r \cdot 0 = 0\) and \(0 \cdot r = 0\).
 \end{proof}
 %
 
 %
 \begin{corollary}
-\label{cor:ring-additive-inverse}
-Let \(R\), then \((-1) \cdot r = r \cdot (-1) = -r\).
+    \label{cor:ring-additive-inverse}
+    Let \(R\), then \((-1) \cdot r = r \cdot (-1) = -r\).
 \end{corollary}
 %
 
 %
 \begin{proof}
-Notice that since \(1 \cdot r = r \cdot 1 = r\) we may write
-\begin{align*}
-  r + (-1) \cdot r &= (1 - 1) \cdot r = 0 \cdot r = 0, \\
-  r + r \cdot (-1) &= r \cdot (1 - 1) = r \cdot 0 = 0.
-\end{align*}
-Thus we arrive at the desired conclusion.
+    Notice that since \(1 \cdot r = r \cdot 1 = r\) we may write
+    \begin{align*}
+        r + (-1) \cdot r & = (1 - 1) \cdot r = 0 \cdot r = 0, \\
+        r + r \cdot (-1) & = r \cdot (1 - 1) = r \cdot 0 = 0.
+    \end{align*}
+    Thus we arrive at the desired conclusion.
 \end{proof}
 %
 
@@ -97,83 +97,83 @@ Thus we arrive at the desired conclusion.
 
 %
 \begin{example}[Trivial ring]
-\label{exp:trivial-ring}
-The trivial group \(*\) can be endowed with a ring structure by imposing that
-\(* \cdot * = *\) and \(* + * = *\), so that \((*, +, \cdot)\) is a ring --- we
-call such ring \emph{trivial} or \emph{zero-ring}. Moreover, in such ring we
-have the equality \(0 = 1\).
+    \label{exp:trivial-ring}
+    The trivial group \(*\) can be endowed with a ring structure by imposing that
+    \(* \cdot * = *\) and \(* + * = *\), so that \((*, +, \cdot)\) is a ring --- we
+    call such ring \emph{trivial} or \emph{zero-ring}. Moreover, in such ring we
+    have the equality \(0 = 1\).
 \end{example}
 %
 
 %
 \begin{corollary}
-\label{cor:zero-ring-condition}
-A ring \(R\) is a zero-ring if and only if \(0 = 1\).
+    \label{cor:zero-ring-condition}
+    A ring \(R\) is a zero-ring if and only if \(0 = 1\).
 \end{corollary}
 %
 
 %
 \begin{proof}
-If \(R\) is a zero-ring, it's obvious that \(0 = 1\). On the other hand, assume
-that \(R\) is a ring such that \(0 = 1\), then if \(r \in R\) is any element, we
-have \(r = 1 \cdot r = 0 \cdot r = 0\), thus \(R\) is indeed a zero ring.
+    If \(R\) is a zero-ring, it's obvious that \(0 = 1\). On the other hand, assume
+    that \(R\) is a ring such that \(0 = 1\), then if \(r \in R\) is any element, we
+    have \(r = 1 \cdot r = 0 \cdot r = 0\), thus \(R\) is indeed a zero ring.
 \end{proof}
 %
 
 %
 \begin{example}[Power set ring]
-\label{exp:power-set-ring}
-Let \(S\) be any set and \(2^S\) be its power set. If we define additive and
-multiplicative structures in \(2^S\) given by
-\(A + B \coloneq (A \cup B) \setminus (A \cap B)\) and
-\(A \cdot B \coloneq A \cap B\), for all \(A, B \in 2^S\), then
-\((2^S, +, \cdot)\) is a ring.
+    \label{exp:power-set-ring}
+    Let \(S\) be any set and \(2^S\) be its power set. If we define additive and
+    multiplicative structures in \(2^S\) given by
+    \(A + B \coloneq (A \cup B) \setminus (A \cap B)\) and
+    \(A \cdot B \coloneq A \cap B\), for all \(A, B \in 2^S\), then
+    \((2^S, +, \cdot)\) is a ring.
 
-In order to prove that, we first show that \((2^S, +)\) forms an abelian
-group. Since \(A \cup B = B \cup A\) and \(A \cap B = B \cap A\), then clearly
-\(A + B = B + A\). Moreover, the empty set \(\emptyset\) is the additive
-identity, since \(A \cup \emptyset = A\) and \(A \cap \emptyset = \emptyset\)
-and \(A \setminus \emptyset = A\) --- thus \(A + \emptyset = A\). Every set is
-its own inverse: notice that \(A \cup A = A\) and \(A \cup A = A\), hence
-\(A + A = A \setminus A = \emptyset\). We therefore conclude that \((2^S, +)\)
-is an abelian group.
+    In order to prove that, we first show that \((2^S, +)\) forms an abelian
+    group. Since \(A \cup B = B \cup A\) and \(A \cap B = B \cap A\), then clearly
+    \(A + B = B + A\). Moreover, the empty set \(\emptyset\) is the additive
+    identity, since \(A \cup \emptyset = A\) and \(A \cap \emptyset = \emptyset\)
+    and \(A \setminus \emptyset = A\) --- thus \(A + \emptyset = A\). Every set is
+    its own inverse: notice that \(A \cup A = A\) and \(A \cup A = A\), hence
+    \(A + A = A \setminus A = \emptyset\). We therefore conclude that \((2^S, +)\)
+    is an abelian group.
 
-Now we show that \((2^S, \cdot)\) is a monoid with distributivity over
-addition. Let \(A, B, C \in 2^S\) be any three sets. For associativity we have
-\[
-  (A \cdot B) \cdot C
-  = (A \cap B) \cap C
-  = A \cap (B \cap C)
-  = A \cdot (B \cdot C).
-\]
-The unitary element is \(S\) itself, since \(A \cap S = S \cap A = A\) for all
-\(A \in 2^S\). Moreover,
-\begin{align*}
-  (A + B) \cdot C
-  &= [(A \cup B) \setminus (A \cap B)] \cap C \\
-  &= [(A \cap C) \cup (B \cap C)] \setminus [(A \cap C) \cap (B \cap C)] \\
-  &= A \cdot C + B \cdot C.
-\end{align*}
-We can analogously show the same for
-\(A \cdot (B + C) = A \cdot B + A \cdot C\).
+    Now we show that \((2^S, \cdot)\) is a monoid with distributivity over
+    addition. Let \(A, B, C \in 2^S\) be any three sets. For associativity we have
+    \[
+        (A \cdot B) \cdot C
+        = (A \cap B) \cap C
+        = A \cap (B \cap C)
+        = A \cdot (B \cdot C).
+    \]
+    The unitary element is \(S\) itself, since \(A \cap S = S \cap A = A\) for all
+    \(A \in 2^S\). Moreover,
+    \begin{align*}
+        (A + B) \cdot C
+         & = [(A \cup B) \setminus (A \cap B)] \cap C                            \\
+         & = [(A \cap C) \cup (B \cap C)] \setminus [(A \cap C) \cap (B \cap C)] \\
+         & = A \cdot C + B \cdot C.
+    \end{align*}
+    We can analogously show the same for
+    \(A \cdot (B + C) = A \cdot B + A \cdot C\).
 \end{example}
 %
 
 %
 \begin{example}
-\label{exp:function-ring}
-Let \(R\) be a ring and \(S\) be a set. The set of set-functions \(R^S\), of the
-form \(S \to R\), together with the pointwise addition and multiplication make
-\(R^S\) into a ring.
+    \label{exp:function-ring}
+    Let \(R\) be a ring and \(S\) be a set. The set of set-functions \(R^S\), of the
+    form \(S \to R\), together with the pointwise addition and multiplication make
+    \(R^S\) into a ring.
 \end{example}
 %
 
 %
 \begin{example}
-\label{exp:square-matrices-ring}
-Let \(M_n(R)\) denote the collection of all \(n \times n\) matrices with entries
-in the ring \(R\). If we endow \(M_n(R)\) with component-wise addition and matrix
-multiplication, then \((M_n(R), +, \cdot)\) is a ring.
+    \label{exp:square-matrices-ring}
+    Let \(M_n(R)\) denote the collection of all \(n \times n\) matrices with entries
+    in the ring \(R\). If we endow \(M_n(R)\) with component-wise addition and matrix
+    multiplication, then \((M_n(R), +, \cdot)\) is a ring.
 \end{example}
 %
 
@@ -181,74 +181,74 @@ multiplication, then \((M_n(R), +, \cdot)\) is a ring.
 
 %
 \begin{definition}[Zero-divisor]
-\label{def:zero-divisor}
-Let \(R\) be a ring. We say that \(a \in R\) is a \emph{left-zero-divisor} if
-there exists \(b \neq 0\) in \(R\) for which \(a b = 0\). On the other hand,
-\(a\) is said to be a \emph{right-zero-divisor} if \(b a = 0\).
+    \label{def:zero-divisor}
+    Let \(R\) be a ring. We say that \(a \in R\) is a \emph{left-zero-divisor} if
+    there exists \(b \neq 0\) in \(R\) for which \(a b = 0\). On the other hand,
+    \(a\) is said to be a \emph{right-zero-divisor} if \(b a = 0\).
 \end{definition}
 %
 
 %
 \begin{remark}
-\label{rem:zero-ring-only-no-zero-divisors}
-The zero-ring is the \emph{only} ring with \emph{no} zero-divisors.
+    \label{rem:zero-ring-only-no-zero-divisors}
+    The zero-ring is the \emph{only} ring with \emph{no} zero-divisors.
 
-If \(R\) is a non-zero ring, then \(0 \in R\) and since \(0\) is clearly a
-zero-divisor, \(R\) has at least one zero-divisor. On the other hand, if \(*\)
-is a zero-ring, then zero is the only element of \(*\) --- thus we have no
-element different than zero for there to be a zero-divisor.
+    If \(R\) is a non-zero ring, then \(0 \in R\) and since \(0\) is clearly a
+    zero-divisor, \(R\) has at least one zero-divisor. On the other hand, if \(*\)
+    is a zero-ring, then zero is the only element of \(*\) --- thus we have no
+    element different than zero for there to be a zero-divisor.
 \end{remark}
 %
 
 %
 \begin{proposition}
-\label{prop:no-zero-divisor-injective-multiplication}
-Let \(R\) be a ring. An element \(a \in R\) is \emph{not} a left-zero-divisor
-(or right-zero-divisor) if and only if the map \(R \to R\) given by the
-\emph{left-multiplication} by \(a\) (or right-multiplication) is
-\emph{injective}.
+    \label{prop:no-zero-divisor-injective-multiplication}
+    Let \(R\) be a ring. An element \(a \in R\) is \emph{not} a left-zero-divisor
+    (or right-zero-divisor) if and only if the map \(R \to R\) given by the
+    \emph{left-multiplication} by \(a\) (or right-multiplication) is
+    \emph{injective}.
 \end{proposition}
 %
 
 %
 \begin{proof}
-We only concern ourselves with the left case, the right case is clearly
-analogous. Let \(a \in R\) be a non-left-zero-divisor, then if \(a b = a c\) for
-some \(b, c \in R\), then \(a b - a c = a (b - c) = 0\) --- and, since \(a\) is
-not a zero-divisor, then necessarily \(b - c = 0\), that is \(b = c\).
+    We only concern ourselves with the left case, the right case is clearly
+    analogous. Let \(a \in R\) be a non-left-zero-divisor, then if \(a b = a c\) for
+    some \(b, c \in R\), then \(a b - a c = a (b - c) = 0\) --- and, since \(a\) is
+    not a zero-divisor, then necessarily \(b - c = 0\), that is \(b = c\).
 
-On the other hand, if \(a\) is a left-zero-divisor then let \(b \neq 0\) be any
-element of \(R\) such that \(a b = 0\). Notice then that both \(b\) and zero
-have the same image under the multiplication map, thus \(R \to R\) is definitely
-not injective.
+    On the other hand, if \(a\) is a left-zero-divisor then let \(b \neq 0\) be any
+    element of \(R\) such that \(a b = 0\). Notice then that both \(b\) and zero
+    have the same image under the multiplication map, thus \(R \to R\) is definitely
+    not injective.
 \end{proof}
 %
 
 %
 \begin{remark}
-\label{rem:no-zero-divisor-is-cancellation-in-disguise}
-Notice that \cref{prop:no-zero-divisor-injective-multiplication} simply states
-that for an element to be a zero-divisor the cancellation law must be true,
-that is, \(a \in R\) is not a zero-divisor if \(a b = a c\) implies \(b = c\)
-for every \(b, c \in R\).
+    \label{rem:no-zero-divisor-is-cancellation-in-disguise}
+    Notice that \cref{prop:no-zero-divisor-injective-multiplication} simply states
+    that for an element to be a zero-divisor the cancellation law must be true,
+    that is, \(a \in R\) is not a zero-divisor if \(a b = a c\) implies \(b = c\)
+    for every \(b, c \in R\).
 \end{remark}
 %
 
 %
 \begin{definition}[Domain]
-\label{def:domain}
-An object \(R\) is said to be a \emph{domain} if \(R\) is non-zero ring and for
-every two elements \(a, b \in R\) such that \(a b = 0\) we must have either
-\(a = 0\) or \(b = 0\).
+    \label{def:domain}
+    An object \(R\) is said to be a \emph{domain} if \(R\) is non-zero ring and for
+    every two elements \(a, b \in R\) such that \(a b = 0\) we must have either
+    \(a = 0\) or \(b = 0\).
 \end{definition}
 %
 
 %
 \begin{definition}[Integral domain]
-\label{def:integral-domain}
-An object \(R\) is said to be an \emph{integral domain} if \(R\) is a non-zero
-commutative ring such that, for all \(a, b \in R\) such that \(a b = 0\), then
-either \(a = 0\) or \(b = 0\).
+    \label{def:integral-domain}
+    An object \(R\) is said to be an \emph{integral domain} if \(R\) is a non-zero
+    commutative ring such that, for all \(a, b \in R\) such that \(a b = 0\), then
+    either \(a = 0\) or \(b = 0\).
 \end{definition}
 %
 
@@ -258,34 +258,34 @@ non-zero-divisor. Classic examples of integral domains are \(\Z, \Q, \R\) and
 
 %
 \begin{corollary}
-\label{cor:cancellation-integral-domain}
-In an integral domain \(R\), if \(r, a, b \in R\) are such that \(r a = r b\)
-and \(r \neq 0\), then \(a = b\) --- that is, cancellation by non-zero elements
-holds.
+    \label{cor:cancellation-integral-domain}
+    In an integral domain \(R\), if \(r, a, b \in R\) are such that \(r a = r b\)
+    and \(r \neq 0\), then \(a = b\) --- that is, cancellation by non-zero elements
+    holds.
 \end{corollary}
 %
 
 %
 \begin{proof}
-This is immediate from \cref{prop:no-zero-divisor-injective-multiplication}.
+    This is immediate from \cref{prop:no-zero-divisor-injective-multiplication}.
 \end{proof}
 %
 
 
 %
 \begin{corollary}
-\label{cor:idempotent-in-integral-domain}
-If \(R\) is an integral domain, an element \(x \in R\) is such that \(x^2 = 1\),
-if and only if \(x \in \{-1, 1\}\).
+    \label{cor:idempotent-in-integral-domain}
+    If \(R\) is an integral domain, an element \(x \in R\) is such that \(x^2 = 1\),
+    if and only if \(x \in \{-1, 1\}\).
 \end{corollary}
 %
 
 %
 \begin{proof}
-If \(x \in \{-1, 1\}\), clearly \(x^2 = 1\), since this is true for any given
-ring. For the other implication, suppose now that \(x^2 = 1\), then \(x^2 - 1 =
-(x + 1) (x - 1) = 0\) but since \(R\) is an integral domain, either \(x = 1\) or
-\(x = -1\).
+    If \(x \in \{-1, 1\}\), clearly \(x^2 = 1\), since this is true for any given
+    ring. For the other implication, suppose now that \(x^2 = 1\), then \(x^2 - 1 =
+    (x + 1) (x - 1) = 0\) but since \(R\) is an integral domain, either \(x = 1\) or
+    \(x = -1\).
 \end{proof}
 %
 
@@ -293,90 +293,90 @@ ring. For the other implication, suppose now that \(x^2 = 1\), then \(x^2 - 1 =
 
 %
 \begin{definition}[Nilpotent]
-\label{def:nilpotent}
-Let \(R\) be a ring. An element \(a \in R\) is said to be \emph{nilpotent} if
-there exists some \(n \in \Z\) such that \(a^n = 0\).
+    \label{def:nilpotent}
+    Let \(R\) be a ring. An element \(a \in R\) is said to be \emph{nilpotent} if
+    there exists some \(n \in \Z\) such that \(a^n = 0\).
 \end{definition}
 %
 
 %
 \begin{lemma}
-\label{lem:nilpotent-sum}
-Let \(R\) be a ring. If \(a, b \in R\) are nilpotent elements with \(a b = b
-a\), then \(a + b\) is nilpotent.
+    \label{lem:nilpotent-sum}
+    Let \(R\) be a ring. If \(a, b \in R\) are nilpotent elements with \(a b = b
+    a\), then \(a + b\) is nilpotent.
 \end{lemma}
 %
 
 %
 \begin{proof}
-Suppose \(n, m \in \Z\) are such that \(a^n = b^m = 0\). Since \(a\) and \(b\)
-commute, we can write the binomial equation
-\((a + b)^{n m} = \sum_{j=0}^{n m} \binom{nm}{j} a^{n m - j} b^j\) --- for
-\(j < m\) we have \(n m - j > nm - m = n (m - 1)\), greater than a
-multiple of \(n\), so that \(a^{n m - j} = 0\); for \(j \geq m\), we have
-\(b^j = 0\). Thus we arrive at \((a + b)^{n m} = 0\).
+    Suppose \(n, m \in \Z\) are such that \(a^n = b^m = 0\). Since \(a\) and \(b\)
+    commute, we can write the binomial equation
+    \((a + b)^{n m} = \sum_{j=0}^{n m} \binom{nm}{j} a^{n m - j} b^j\) --- for
+    \(j < m\) we have \(n m - j > nm - m = n (m - 1)\), greater than a
+    multiple of \(n\), so that \(a^{n m - j} = 0\); for \(j \geq m\), we have
+    \(b^j = 0\). Thus we arrive at \((a + b)^{n m} = 0\).
 \end{proof}
 %
 
 %
 \begin{lemma}
-\label{lem:nilpotent-in-Z/nZ}
-A class \([m]_n\) is nilpotent in \(\Z/n\Z\) if and only if \(m\) shares all
-prime factors of \(n\).
+    \label{lem:nilpotent-in-Z/nZ}
+    A class \([m]_n\) is nilpotent in \(\Z/n\Z\) if and only if \(m\) shares all
+    prime factors of \(n\).
 \end{lemma}
 %
 
 %
 \begin{proof}
-Suppose that there exists a prime \(p\) in the prime factorization of \(n\) such
-that \(p\) does not divide \(m\). If \(\ell \in \Z\) is any exponent,
-\(m^{\ell}\) won't be divisible by \(n\) since it lacks the \(p\) factor ---
-hence \(m\) fails to be nilpotent.
+    Suppose that there exists a prime \(p\) in the prime factorization of \(n\) such
+    that \(p\) does not divide \(m\). If \(\ell \in \Z\) is any exponent,
+    \(m^{\ell}\) won't be divisible by \(n\) since it lacks the \(p\) factor ---
+    hence \(m\) fails to be nilpotent.
 
-If \(m\) shares every prime factor of \(n\), let \(k\) be defined to be the
-maximum exponent in the prime factorization of \(n\) (which is ensured to exist
-since the collection is finite). Then clearly \([m]_n^k = [m^k]_n = 0\) since
-\(m^k\) is divisible by \(n\).
+    If \(m\) shares every prime factor of \(n\), let \(k\) be defined to be the
+    maximum exponent in the prime factorization of \(n\) (which is ensured to exist
+    since the collection is finite). Then clearly \([m]_n^k = [m^k]_n = 0\) since
+    \(m^k\) is divisible by \(n\).
 \end{proof}
 %
 
 %
 \begin{lemma}
-\label{lem:properties-nilpotent-element-in-commutative-ring}
-Let \(R\) be a \emph{commutative} ring and \(x \in R\) be a nilpotent
-element. The following statements hold:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item The element \(x\) is either zero or zero-divisor.
+    \label{lem:properties-nilpotent-element-in-commutative-ring}
+    Let \(R\) be a \emph{commutative} ring and \(x \in R\) be a nilpotent
+    element. The following statements hold:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item The element \(x\) is either zero or zero-divisor.
 
-\item For every \(r \in R\), the product \(r x\) is nilpotent.
+        \item For every \(r \in R\), the product \(r x\) is nilpotent.
 
-\item For every invertible element \(u \in R\), the sum \(x + u\) is invertible.
-\end{enumerate}
+        \item For every invertible element \(u \in R\), the sum \(x + u\) is invertible.
+    \end{enumerate}
 \end{lemma}
 %
 
 %
 \begin{proof}
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item If \(x\) is non-zero, both the left and right multiplications of \(x\)
-  have the same image under the distinct elements \(x^{n-1}\) and \(0\) ---
-  hence \(x\) is a zero-divisor.
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item If \(x\) is non-zero, both the left and right multiplications of \(x\)
+              have the same image under the distinct elements \(x^{n-1}\) and \(0\) ---
+              hence \(x\) is a zero-divisor.
 
-\item From commutativity \((r x)^n = r^n x^n = r^n \cdot 0 = 0\).
+        \item From commutativity \((r x)^n = r^n x^n = r^n \cdot 0 = 0\).
 
-\item First we deal with the case where \(u = 1\). Remember that given any
-  \(a \in R\) and \(m \in \N\) we have
-  \[
-    (1 + a) (1 - a + a^2 - \dots + (-1)^m a^m) = 1 + (-1)^m a^{m + 1}.
-  \]
-  Therefore, for every \(m > n\), we have
-  \((1 + x) \sum_{j=0}^{m} (-1)^j a^j = 1\) --- which shows that \(1 + x\) is
-  invertible. For the general case, if \(v\) is the inverse of \(u\), one sees
-  that for any \(m > n\) we have
-  \[
-    (u + x) \sum_{j=0}^m (-1)^j v x^j = 1 + (-1)^m x^{m + 1} = 1.
-  \]
-\end{enumerate}
+        \item First we deal with the case where \(u = 1\). Remember that given any
+              \(a \in R\) and \(m \in \N\) we have
+              \[
+                  (1 + a) (1 - a + a^2 - \dots + (-1)^m a^m) = 1 + (-1)^m a^{m + 1}.
+              \]
+              Therefore, for every \(m > n\), we have
+              \((1 + x) \sum_{j=0}^{m} (-1)^j a^j = 1\) --- which shows that \(1 + x\) is
+              invertible. For the general case, if \(v\) is the inverse of \(u\), one sees
+              that for any \(m > n\) we have
+              \[
+                  (u + x) \sum_{j=0}^m (-1)^j v x^j = 1 + (-1)^m x^{m + 1} = 1.
+              \]
+    \end{enumerate}
 \end{proof}
 %
 
@@ -384,102 +384,102 @@ element. The following statements hold:
 
 %
 \begin{definition}[Unit]
-\label{def:unit-element-ring}
-Let \(R\) be a ring. An element \(u \in R\) is said to be a \emph{left-unit} (or
-\emph{right-unit}) if there exists \(a \in R\) for which \(u a = 1\) (or
-\(a u = 1\)). An element is said to be a \emph{unit} if it is both a left and
-right unit.
+    \label{def:unit-element-ring}
+    Let \(R\) be a ring. An element \(u \in R\) is said to be a \emph{left-unit} (or
+    \emph{right-unit}) if there exists \(a \in R\) for which \(u a = 1\) (or
+    \(a u = 1\)). An element is said to be a \emph{unit} if it is both a left and
+    right unit.
 \end{definition}
 %
 
 %
 \begin{proposition}
-\label{prop:unit-properties-ring}
-Let \(R\) be a ring and \(u \in R\) be an element. The following propositions
-hold.
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item The element \(u\) is a left-unit (or right-unit) if and only if the
-  left-multiplication (or right-multiplication) map \(R \to R\) is
-  \emph{surjective}.
+    \label{prop:unit-properties-ring}
+    Let \(R\) be a ring and \(u \in R\) be an element. The following propositions
+    hold.
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item The element \(u\) is a left-unit (or right-unit) if and only if the
+              left-multiplication (or right-multiplication) map \(R \to R\) is
+              \emph{surjective}.
 
-\item If \(u\) is a \emph{left}-unit (or right-unit), then \(u\) is a
-  non-\emph{right}-zero-divisor (or non-\emph{left}-zero-divisor).
+        \item If \(u\) is a \emph{left}-unit (or right-unit), then \(u\) is a
+              non-\emph{right}-zero-divisor (or non-\emph{left}-zero-divisor).
 
-\item The \emph{inverse} of a unit is \emph{unique}.
+        \item The \emph{inverse} of a unit is \emph{unique}.
 
-\item Units form a \emph{group} under multiplication --- such group is denoted
-  by \(R^{\unit}\).
-\end{enumerate}
+        \item Units form a \emph{group} under multiplication --- such group is denoted
+              by \(R^{\unit}\).
+    \end{enumerate}
 \end{proposition}
 %
 
 %
 \begin{proof}
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item Suppose first that \(u\) is a left-unit. Let \(a \in R\) be any element
-  and suppose that \(v \in R\) is such that \(u v = R\) (which is ensured to
-  exist) --- then \(u (v a) = (u v) a = a\), thus left-multiplication is
-  surjective.
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item Suppose first that \(u\) is a left-unit. Let \(a \in R\) be any element
+              and suppose that \(v \in R\) is such that \(u v = R\) (which is ensured to
+              exist) --- then \(u (v a) = (u v) a = a\), thus left-multiplication is
+              surjective.
 
-  On the other hand, if the left-multiplication by \(u\) is surjective, we can
-  conclude that there must exist \(v \in R\) for which \(u v = 1\) --- hence
-  \(u\) is a left-unit of \(R\).
+              On the other hand, if the left-multiplication by \(u\) is surjective, we can
+              conclude that there must exist \(v \in R\) for which \(u v = 1\) --- hence
+              \(u\) is a left-unit of \(R\).
 
-  The proof for the right-unit case is completely analogous and won't be
-  included.
+              The proof for the right-unit case is completely analogous and won't be
+              included.
 
-\item If \(u\) is a left-unit, assume \(v \in R\) is such that
-  \(u v = 1\). Notice that the \emph{right}-multiplication maps
-  \(f_u, f_v: R \rightrightarrows R\) by \(u\) and \(v\), respectively, are such
-  that --- for all \(a \in R\),
-  \[
-    f_v f_u(a) = f_v(a u) = (a u) v = a (u v) = a \cdot 1 = a.
-  \]
-  Therefore, \(f_v\) is the left-inverse of \(f_u\) and thus \(f_u\) is
-  injective. The equivalent proof can be written for the right-unit.
+        \item If \(u\) is a left-unit, assume \(v \in R\) is such that
+              \(u v = 1\). Notice that the \emph{right}-multiplication maps
+              \(f_u, f_v: R \rightrightarrows R\) by \(u\) and \(v\), respectively, are such
+              that --- for all \(a \in R\),
+              \[
+                  f_v f_u(a) = f_v(a u) = (a u) v = a (u v) = a \cdot 1 = a.
+              \]
+              Therefore, \(f_v\) is the left-inverse of \(f_u\) and thus \(f_u\) is
+              injective. The equivalent proof can be written for the right-unit.
 
-\item Let \(u\) be a unit and \(v_1, v_2 \in R\) be such that \(v_1 u = 1\) and
-  \(u v_2 = 1\) --- notice that
-  \[
-    v_1 = v_1 \cdot 1 = v_1 (u v_2) = (v_1 u) v_2 = 1 \cdot v_2 = v_2.
-  \]
+        \item Let \(u\) be a unit and \(v_1, v_2 \in R\) be such that \(v_1 u = 1\) and
+              \(u v_2 = 1\) --- notice that
+              \[
+                  v_1 = v_1 \cdot 1 = v_1 (u v_2) = (v_1 u) v_2 = 1 \cdot v_2 = v_2.
+              \]
 
 
-\item Let \(U\) denote the collection of units of \(R\) (such set is ensured to
-  be non-empty since \(1\) is a unit) --- zero-rings are not a problem since
-  zero is a unit in such case. If \(a, b \in U\) are units, then there are
-  \(x, y \in U\) such that \(a x = x a = 1\) and \(b y = y b = 1\) (from the
-  last item, inverses are unique) --- therefore,
-  \((a b) (y x) = a (b y) x = a x = 1\), that is, \(a b \in U\) and \(y x\)
-  its inverse.
-\end{enumerate}
+        \item Let \(U\) denote the collection of units of \(R\) (such set is ensured to
+              be non-empty since \(1\) is a unit) --- zero-rings are not a problem since
+              zero is a unit in such case. If \(a, b \in U\) are units, then there are
+              \(x, y \in U\) such that \(a x = x a = 1\) and \(b y = y b = 1\) (from the
+              last item, inverses are unique) --- therefore,
+              \((a b) (y x) = a (b y) x = a x = 1\), that is, \(a b \in U\) and \(y x\)
+              its inverse.
+    \end{enumerate}
 \end{proof}
 %
 
 %
 \begin{lemma}
-\label{lem:unit-two-or-more-inverses}
-Let \(R\) be a ring and \(a \in R\) be an element. If \(a\) is a right-unit (or
-left-unit) and has two or more left-inverses (or right-inverses), then
-\begin{itemize}\setlength\itemsep{0em}
-\item The element \(a\) is \emph{not} a left-zero-divisor (or
-  right-zero-divisor).
-\item The element \(a\) \emph{is} a right-zero-divisor (or left-zero-divisor).
-\end{itemize}
+    \label{lem:unit-two-or-more-inverses}
+    Let \(R\) be a ring and \(a \in R\) be an element. If \(a\) is a right-unit (or
+    left-unit) and has two or more left-inverses (or right-inverses), then
+    \begin{itemize}\setlength\itemsep{0em}
+        \item The element \(a\) is \emph{not} a left-zero-divisor (or
+              right-zero-divisor).
+        \item The element \(a\) \emph{is} a right-zero-divisor (or left-zero-divisor).
+    \end{itemize}
 \end{lemma}
 %
 
 %
 \begin{proof}
-We shall restrict ourselves with the right-unit case --- the other is completely
-analogous. Since \(a\) is a right-unit, there must exist \(u \in R\) such that
-\(u a = 1\), then if \(x, y \in R\) are such that \(a x = a y\), we can multiply
-both left-sides by \(u\) and obtain \((u a) x = x = y = (u a) y\) --- thus
-left-multiplication by \(a\) is injective and \(a\) is not a left-zero-divisor.
+    We shall restrict ourselves with the right-unit case --- the other is completely
+    analogous. Since \(a\) is a right-unit, there must exist \(u \in R\) such that
+    \(u a = 1\), then if \(x, y \in R\) are such that \(a x = a y\), we can multiply
+    both left-sides by \(u\) and obtain \((u a) x = x = y = (u a) y\) --- thus
+    left-multiplication by \(a\) is injective and \(a\) is not a left-zero-divisor.
 
-For the other item, notice that if \(u\) and \(v\) are distinct left-inverses of
-\(a\), then \(u a = v a = 1\) have the same image under right-multiplication by
-\(a\) --- hence \(a\) is a right-zero-divisor.
+    For the other item, notice that if \(u\) and \(v\) are distinct left-inverses of
+    \(a\), then \(u a = v a = 1\) have the same image under right-multiplication by
+    \(a\) --- hence \(a\) is a right-zero-divisor.
 \end{proof}
 %
 
@@ -487,94 +487,94 @@ For the other item, notice that if \(u\) and \(v\) are distinct left-inverses of
 
 %
 \begin{definition}[Division ring]
-\label{def:division-ring}
-A ring \(R\) is said to be a \emph{division ring} if \emph{every} non-zero
-element is a \emph{unit}.
+    \label{def:division-ring}
+    A ring \(R\) is said to be a \emph{division ring} if \emph{every} non-zero
+    element is a \emph{unit}.
 \end{definition}
 %
 
 %
 \begin{definition}[Field]
-\label{def:field}
-A non-zero ring \(R\) is said to be a field if \(R\) is a \emph{commutative}
-division ring.
+    \label{def:field}
+    A non-zero ring \(R\) is said to be a field if \(R\) is a \emph{commutative}
+    division ring.
 \end{definition}
 %
 
 %
 \begin{remark}
-\label{rem:field-and-integral-domain}
-By the item (b) of \cref{prop:unit-properties-ring}, we see that a unit is a
-non-zero-divisor, thus, if every non-zero element is a unit, then every non-zero
-element is also a non-zero-divisor. This implies directly that \emph{every field
-is an integral domain}. On the other hand, \(\Z\) is an integral domain but fails
-to be a field, hence \emph{not every integral domain is a field}. The concepts
-can however coincide in a special case, as we see in
-\cref{prop:commutative-field-iff-integral-domain}.
+    \label{rem:field-and-integral-domain}
+    By the item (b) of \cref{prop:unit-properties-ring}, we see that a unit is a
+    non-zero-divisor, thus, if every non-zero element is a unit, then every non-zero
+    element is also a non-zero-divisor. This implies directly that \emph{every field
+        is an integral domain}. On the other hand, \(\Z\) is an integral domain but fails
+    to be a field, hence \emph{not every integral domain is a field}. The concepts
+    can however coincide in a special case, as we see in
+    \cref{prop:commutative-field-iff-integral-domain}.
 \end{remark}
 %
 
 %
 \begin{proposition}
-\label{prop:subring-field-is-integral-domain}
-Any subring of a field is an integral domain.
+    \label{prop:subring-field-is-integral-domain}
+    Any subring of a field is an integral domain.
 \end{proposition}
 %
 
 %
 \begin{proof}
-Let \(k\) be a field and \(R \subseteq k\) be a non-zero subring. Certainly
-\(R\) is commutative. Moreover if \(a, b \in R\) are such that \(a b = 0\),
-suppose, for the sake of contradiction, that \(a\) and \(b\) are both
-non-zero. From the field properties, there are inverses \(a^{-1}, b^{-1} \in k\)
-so that \(a^{-1}(a b) b^{-1} = (a^{-1} a) (b b^{-1}) = 1 \cdot 1 = 1\), but \(a
-b = 0\) --- this implies that \(1 = 0\), which is a contradiction, thus \(a\) or
-\(b\) are zero.
+    Let \(k\) be a field and \(R \subseteq k\) be a non-zero subring. Certainly
+    \(R\) is commutative. Moreover if \(a, b \in R\) are such that \(a b = 0\),
+    suppose, for the sake of contradiction, that \(a\) and \(b\) are both
+    non-zero. From the field properties, there are inverses \(a^{-1}, b^{-1} \in k\)
+    so that \(a^{-1}(a b) b^{-1} = (a^{-1} a) (b b^{-1}) = 1 \cdot 1 = 1\), but \(a
+    b = 0\) --- this implies that \(1 = 0\), which is a contradiction, thus \(a\) or
+    \(b\) are zero.
 \end{proof}
 %
 
 %
 \begin{proposition}
-\label{prop:commutative-field-iff-integral-domain}
-A finite and commutative ring \(R\) is a field if and only if \(R\) is an
-integral domain.
+    \label{prop:commutative-field-iff-integral-domain}
+    A finite and commutative ring \(R\) is a field if and only if \(R\) is an
+    integral domain.
 \end{proposition}
 %
 
 %
 \begin{proof}
-If \(R\) is a finite commutative integral domain, let \(a \in R\) be a
-non-zero-divisor of \(R\) --- so that multiplication by \(a\) is an injective
-map. Since the ring is finite, the multiplication by \(a\) is also surjective
---- thus by \cref{prop:unit-properties-ring} we find that \(a\) is a unit.
+    If \(R\) is a finite commutative integral domain, let \(a \in R\) be a
+    non-zero-divisor of \(R\) --- so that multiplication by \(a\) is an injective
+    map. Since the ring is finite, the multiplication by \(a\) is also surjective
+    --- thus by \cref{prop:unit-properties-ring} we find that \(a\) is a unit.
 \end{proof}
 %
 
 %
 \begin{proposition}[Particular case of Weddenburn's theorem]
-\label{prop:division-ring-p2-elements-commutative}
-Let \(R\) be a division ring with \(p^2\) elements and \(p\) be a prime,
-then \(R\) is a field.
+    \label{prop:division-ring-p2-elements-commutative}
+    Let \(R\) be a division ring with \(p^2\) elements and \(p\) be a prime,
+    then \(R\) is a field.
 \end{proposition}
 %
 
 %
 \begin{proof}
-For the proof, we shall use the concepts of centre and centralizer, developed in
-\cref{def:ring-center} and \cref{def:ring-centralizer}. If we assume that \(R\)
-is non-commutative, the centre \(Z(R)\) will be a proper subring of
-\(R\). Moreover, since \(Z(R)\) is also a subgroup of \(R\) under
-multiplication, by \cref{cor:order-subgroup-divides-order-group} we conclude
-that \(|Z(R)| = p\). Let now \(r \in R \setminus Z(R)\), clearly the centralizer
-must contain both the centre of the ring --- since by definition it must commute
-with \(r\) --- and by symmetry, \(r \in Z(r)\), thus
-\(\{r\} \cup Z(R) \subseteq Z(r)\). Since the centralizer is a subgroup of \(R\)
-and \(|Z(r)| > p\), one concludes by
-\cref{cor:order-subgroup-divides-order-group} that \(|Z(r)| = p^2\) ---
-therefore \(Z(r) = R\). That, however gives us a contradiction because if the
-centralizer of \(r\) is the whole ring, then \(r\) commutes with every element
-and thus \(r \in Z(R)\) --- this cannot be the case by hypothesis, thus one
-concludes that \(R\) must be commutative and therefore a field.
+    For the proof, we shall use the concepts of centre and centralizer, developed in
+    \cref{def:ring-center} and \cref{def:ring-centralizer}. If we assume that \(R\)
+    is non-commutative, the centre \(Z(R)\) will be a proper subring of
+    \(R\). Moreover, since \(Z(R)\) is also a subgroup of \(R\) under
+    multiplication, by \cref{cor:order-subgroup-divides-order-group} we conclude
+    that \(|Z(R)| = p\). Let now \(r \in R \setminus Z(R)\), clearly the centralizer
+    must contain both the centre of the ring --- since by definition it must commute
+    with \(r\) --- and by symmetry, \(r \in Z(r)\), thus
+    \(\{r\} \cup Z(R) \subseteq Z(r)\). Since the centralizer is a subgroup of \(R\)
+    and \(|Z(r)| > p\), one concludes by
+    \cref{cor:order-subgroup-divides-order-group} that \(|Z(r)| = p^2\) ---
+    therefore \(Z(r) = R\). That, however gives us a contradiction because if the
+    centralizer of \(r\) is the whole ring, then \(r\) commutes with every element
+    and thus \(r \in Z(R)\) --- this cannot be the case by hypothesis, thus one
+    concludes that \(R\) must be commutative and therefore a field.
 \end{proof}
 %
 
@@ -582,21 +582,21 @@ concludes that \(R\) must be commutative and therefore a field.
 
 %
 \begin{definition}[Monoid ring]
-\label{def:monoid-ring}
-Given a monoid \((M, \cdot)\) and a ring \(R\), we define a new ring called
-\emph{monoid ring} \(R[M] \coloneq R^{\oplus M}\) --- that is, the ring whose
-elements are formal linear combinations \(\sum_{m \in M} a_m \cdot m\), where
-the coefficients \(a_m \in R\) are non-zero for at most finitely many
-\(m \in M\).
+    \label{def:monoid-ring}
+    Given a monoid \((M, \cdot)\) and a ring \(R\), we define a new ring called
+    \emph{monoid ring} \(R[M] \coloneq R^{\oplus M}\) --- that is, the ring whose
+    elements are formal linear combinations \(\sum_{m \in M} a_m \cdot m\), where
+    the coefficients \(a_m \in R\) are non-zero for at most finitely many
+    \(m \in M\).
 
-The unitary element of \(R[M]\) is defined to be \(1_R \cdot 1_{M}\). The
-additive and multiplicative structures are defined as follows
-\begin{align*}
-  \sum_{m \in M} a_m \cdot m + \sum_{m \in M} b_m \cdot m
-  &\coloneq \sum_{m \in M} (a_m + b_m) \cdot m, \\
-  \sum_{m \in M} a_m \cdot m + \sum_{m \in M} b_m \cdot m
-  &\coloneq \sum_{m \in M} \sum_{m_1 \cdot m_2 = m} (a_{m_1} b_{m_2}) \cdot m.
-\end{align*}
+    The unitary element of \(R[M]\) is defined to be \(1_R \cdot 1_{M}\). The
+    additive and multiplicative structures are defined as follows
+    \begin{align*}
+        \sum_{m \in M} a_m \cdot m + \sum_{m \in M} b_m \cdot m
+         & \coloneq \sum_{m \in M} (a_m + b_m) \cdot m,                                \\
+        \sum_{m \in M} a_m \cdot m + \sum_{m \in M} b_m \cdot m
+         & \coloneq \sum_{m \in M} \sum_{m_1 \cdot m_2 = m} (a_{m_1} b_{m_2}) \cdot m.
+    \end{align*}
 \end{definition}
 %
 
@@ -604,23 +604,23 @@ additive and multiplicative structures are defined as follows
 
 %
 \begin{definition}[Polynomial]
-\label{def:polynomial}
-Let \(R\) be a ring. A \emph{polynomial} is a map \(f: R \to R\) given by a
-\emph{finite} linear combination of non-negative powers of the indeterminate
-variable with coefficients in \(R\)
-\[
-  f(x) = \sum_{j \geq 0} a_j x^j, \text{ where } a_j = 0 \text{ for } j \gg 0.
-\]
-The collection of all polynomials over \(R\) with variable \(x\) is denoted by
-\(R[x]\) --- this collection forms a ring under point-wise addition and product,
-that is, given another element \(g(x) \coloneq \sum_{j \geq 0} b_j x^j\), we
-define
-\begin{align*}
-  f(x) + g(x) &\coloneq \sum_{j \geq 0} (a_j + b_j) x^j,\\
-  f(x) \cdot g(x) &\coloneq \sum_{k \geq 0} \sum_{i + j = k} a_i b_j x^{i + j}.
-\end{align*}
-It should be noted immediately that \(R[x] \iso R[\N]\), where \(\N\) is viewed
-as a monoid under addition.
+    \label{def:polynomial}
+    Let \(R\) be a ring. A \emph{polynomial} is a map \(f: R \to R\) given by a
+    \emph{finite} linear combination of non-negative powers of the indeterminate
+    variable with coefficients in \(R\)
+    \[
+        f(x) = \sum_{j \geq 0} a_j x^j, \text{ where } a_j = 0 \text{ for } j \gg 0.
+    \]
+    The collection of all polynomials over \(R\) with variable \(x\) is denoted by
+    \(R[x]\) --- this collection forms a ring under point-wise addition and product,
+    that is, given another element \(g(x) \coloneq \sum_{j \geq 0} b_j x^j\), we
+    define
+    \begin{align*}
+        f(x) + g(x)     & \coloneq \sum_{j \geq 0} (a_j + b_j) x^j,                    \\
+        f(x) \cdot g(x) & \coloneq \sum_{k \geq 0} \sum_{i + j = k} a_i b_j x^{i + j}.
+    \end{align*}
+    It should be noted immediately that \(R[x] \iso R[\N]\), where \(\N\) is viewed
+    as a monoid under addition.
 \end{definition}
 %
 
@@ -632,58 +632,58 @@ coefficients is necessarily finite, this equality relation is well defined.
 
 %
 \begin{corollary}
-\label{cor:ring-R[x]-inherits-commutativity}
-If \(R\) is a commutative ring, then \(R[x]\) is commutative.
+    \label{cor:ring-R[x]-inherits-commutativity}
+    If \(R\) is a commutative ring, then \(R[x]\) is commutative.
 \end{corollary}
 %
 
 %
 \begin{lemma}
-\label{lem:ring-R[x]-inherits-integral-domain}
-A ring \(R\) is an integral domain if and only if \(R[x]\) is an integral
-domain.
+    \label{lem:ring-R[x]-inherits-integral-domain}
+    A ring \(R\) is an integral domain if and only if \(R[x]\) is an integral
+    domain.
 \end{lemma}
 %
 
 %
 \begin{proof}
-If \(R\) is an integral domain, then clearly \(R[x]\) is both non-zero and
-commutative. Moreover, suppose that \(f(x) \coloneq \sum_{j \geq 0} a_j x^j\)
-and \(g(x) \coloneq \sum_{j \geq 0} b_j x^j\) are elements of \(R[x]\) such that
-\(f \cdot g = 0\) --- notice that from definition we have
-\[
-  f(x) g(x) = \sum_{k \geq 0} \sum_{i + j = k} a_i b_j x^{i + j},
-\]
-which is merely a finite combination with coefficients, so that if
-\(f \cdot g = 0\), we necessarily have \(a_j = 0\) for all \(j \geq 0\) or
-\(b_j = 0\) for all \(j \geq 0\) since \(R\) is an integral domain --- thus
-either \(f = 0\) or \(g = 0\).
+    If \(R\) is an integral domain, then clearly \(R[x]\) is both non-zero and
+    commutative. Moreover, suppose that \(f(x) \coloneq \sum_{j \geq 0} a_j x^j\)
+    and \(g(x) \coloneq \sum_{j \geq 0} b_j x^j\) are elements of \(R[x]\) such that
+    \(f \cdot g = 0\) --- notice that from definition we have
+    \[
+        f(x) g(x) = \sum_{k \geq 0} \sum_{i + j = k} a_i b_j x^{i + j},
+    \]
+    which is merely a finite combination with coefficients, so that if
+    \(f \cdot g = 0\), we necessarily have \(a_j = 0\) for all \(j \geq 0\) or
+    \(b_j = 0\) for all \(j \geq 0\) since \(R\) is an integral domain --- thus
+    either \(f = 0\) or \(g = 0\).
 
-On the other hand, if \(R[x]\) is an integral domain, let \(a, b \in R\) be
-elements such that \(a b = 0\) in \(R\), then we can consider the constant
-polynomials \(f(x) \coloneq a\) and \(g(x) \coloneq b\) to conclude that, since
-\(f \cdot g = 0\) then \(a = 0\) or \(b = 0\).
+    On the other hand, if \(R[x]\) is an integral domain, let \(a, b \in R\) be
+    elements such that \(a b = 0\) in \(R\), then we can consider the constant
+    polynomials \(f(x) \coloneq a\) and \(g(x) \coloneq b\) to conclude that, since
+    \(f \cdot g = 0\) then \(a = 0\) or \(b = 0\).
 \end{proof}
 %
 
 %
 \begin{definition}
-\label{def:degree-polynomial}
-The \emph{degree} of a \emph{non-zero} polynomial
-\(f(x) \coloneq \sum_{j \geq 0} a_j x^j\) is defined as the maximum index for
-which the corresponding coefficient is non-zero, that is
-\[
-  \deg f \coloneq \max \{j \colon a_j \neq 0\}.
-\]
-This is well defined because \(a_j \neq 0\) for only finitely many indices.
-By convention, the zero-polynomial has degree \(-\infty\).
+    \label{def:degree-polynomial}
+    The \emph{degree} of a \emph{non-zero} polynomial
+    \(f(x) \coloneq \sum_{j \geq 0} a_j x^j\) is defined as the maximum index for
+    which the corresponding coefficient is non-zero, that is
+    \[
+        \deg f \coloneq \max \{j \colon a_j \neq 0\}.
+    \]
+    This is well defined because \(a_j \neq 0\) for only finitely many indices.
+    By convention, the zero-polynomial has degree \(-\infty\).
 \end{definition}
 %
 
 Polynomials of multiple variables are obtained simply as an iteration of the
 process of construction of \(R[x]\), that is,
 \[
-  R[x_1, \dots, x_n] \coloneq R[x_1] \dots [x_n].
+    R[x_1, \dots, x_n] \coloneq R[x_1] \dots [x_n].
 \]
 The ordering of the list \(x_1, \dots, x_n\) is irrelevant in the construction
 of the ring, if we swap any elements of the list we still end up with isomorphic
@@ -696,10 +696,10 @@ finite.
 
 %
 \begin{definition}[Power series ring]
-\label{def:power-series-ring}
-Let \(R\) be a ring. The ring of \emph{power series} with variable \(x\) and
-coefficients in \(R\), denoted by \(R[\![x]\!]\), is defined to be the ring
-whose elements are formal sums \(\sum_{j=0}^{\infty} a_j x^j\).
+    \label{def:power-series-ring}
+    Let \(R\) be a ring. The ring of \emph{power series} with variable \(x\) and
+    coefficients in \(R\), denoted by \(R[\![x]\!]\), is defined to be the ring
+    whose elements are formal sums \(\sum_{j=0}^{\infty} a_j x^j\).
 \end{definition}
 %
 
@@ -707,112 +707,112 @@ whose elements are formal sums \(\sum_{j=0}^{\infty} a_j x^j\).
 
 %
 \begin{definition}
-\label{def:ring-morphism}
-Let \(R\) and \(S\) be rings. We define a morphism of rings \(\phi: R \to S\) to
-be a map such that, for all \(a, b \in R\), we have \(\phi(a + b) = \phi(a) +
-\phi(b)\) and \(\phi(a b) = \phi(a) \phi(b)\). Moreover, we also impose that
-morphisms are unitary, that is, \(\phi(1_R) = 1_S\).
+    \label{def:ring-morphism}
+    Let \(R\) and \(S\) be rings. We define a morphism of rings \(\phi: R \to S\) to
+    be a map such that, for all \(a, b \in R\), we have \(\phi(a + b) = \phi(a) +
+    \phi(b)\) and \(\phi(a b) = \phi(a) \phi(b)\). Moreover, we also impose that
+    morphisms are unitary, that is, \(\phi(1_R) = 1_S\).
 \end{definition}
 %
 
 %
 \begin{definition}
-\label{def:ring-category}
-The category of rings is defined to consist of rings and morphisms between them
---- such category will be denoted by \(\Rng\).
+    \label{def:ring-category}
+    The category of rings is defined to consist of rings and morphisms between them
+    --- such category will be denoted by \(\Rng\).
 \end{definition}
 %
 
 %
 \begin{remark}
-\label{rem:zero-ring-not-zero-object-in-Ring}
-Curiously, the zero-ring is \emph{not} a zero-object in the category of rings,
-it \emph{is} a \emph{final} object but \emph{fails} to be \emph{initial} ---
-this is due to the fact that we imposed morphisms to be unitary, hence for a
-non-zero ring \(R\), there exists no ring morphism from the zero-ring to \(R\).
+    \label{rem:zero-ring-not-zero-object-in-Ring}
+    Curiously, the zero-ring is \emph{not} a zero-object in the category of rings,
+    it \emph{is} a \emph{final} object but \emph{fails} to be \emph{initial} ---
+    this is due to the fact that we imposed morphisms to be unitary, hence for a
+    non-zero ring \(R\), there exists no ring morphism from the zero-ring to \(R\).
 
-One should, however, not be afraid, because \(\Rng\) does have initial objects.
-In fact, \(\Z\) is initial in \(\Rng\) --- for any ring \(R\) we can
-define a unique ring morphism \(\Z \unique R\) mapping \(n \mapsto n \cdot 1_R\)
-for any \(n \in \Z\).
+    One should, however, not be afraid, because \(\Rng\) does have initial objects.
+    In fact, \(\Z\) is initial in \(\Rng\) --- for any ring \(R\) we can
+    define a unique ring morphism \(\Z \unique R\) mapping \(n \mapsto n \cdot 1_R\)
+    for any \(n \in \Z\).
 \end{remark}
 %
 
 %
 \begin{corollary}[Unit preservation]
-\label{cor:ring-morphisms-preserve-units}
-If \(\phi: R \to S\) is a ring morphism and \(u \in R\) is a left-unit (or
-right-unit), then \(\phi(u) \in S\) is again a left-unit (or right-unit).
+    \label{cor:ring-morphisms-preserve-units}
+    If \(\phi: R \to S\) is a ring morphism and \(u \in R\) is a left-unit (or
+    right-unit), then \(\phi(u) \in S\) is again a left-unit (or right-unit).
 \end{corollary}
 %
 
 %
 \begin{proof}
-Let \(v \in R\) be such that \(v u = 1_R\), then \(\phi(v u) = \phi(v) \phi(u)\)
-but \(\phi(v u) = \phi(1_R) = 1_S\) thus \(\phi(v) \phi(u) = 1_S\) and
-\(\phi(u)\) is indeed a left-unit in \(S\).
+    Let \(v \in R\) be such that \(v u = 1_R\), then \(\phi(v u) = \phi(v) \phi(u)\)
+    but \(\phi(v u) = \phi(1_R) = 1_S\) thus \(\phi(v) \phi(u) = 1_S\) and
+    \(\phi(u)\) is indeed a left-unit in \(S\).
 \end{proof}
 %
 
 %
 \begin{proposition}[Image of morphism is a subring]
-\label{prop:image-of-morphism-is-subring}
-The image of a ring morphism \(R \to S\) is a subring of \(S\).
+    \label{prop:image-of-morphism-is-subring}
+    The image of a ring morphism \(R \to S\) is a subring of \(S\).
 \end{proposition}
 %
 
 %
 \begin{proof}
-Let \(\phi: R \to S\) be any ring morphism. Since it is a ring morphism,
-\(\phi(1_R) = 1_S \in \im \phi\), moreover, if \(a, b \in R\) then \(\phi(a + b)
-= \phi(a) + \phi(b) \in \im \phi\) and \(\phi(a b) = \phi(a) \phi(b) \in \im
-\phi\) --- thus \(\im \phi\) is a subring of \(S\).
+    Let \(\phi: R \to S\) be any ring morphism. Since it is a ring morphism,
+    \(\phi(1_R) = 1_S \in \im \phi\), moreover, if \(a, b \in R\) then \(\phi(a + b)
+    = \phi(a) + \phi(b) \in \im \phi\) and \(\phi(a b) = \phi(a) \phi(b) \in \im
+    \phi\) --- thus \(\im \phi\) is a subring of \(S\).
 \end{proof}
 %
 
 %
 \begin{remark}
-\label{rem:non-zero-divisors-may-not-be-preserved}
-The image of non-zero-divisors may be a zero-divisor in the new ring --- for
-instance, \(3 \in Z\) is a non-zero-divisor but the ring morphism
-\(Z \epi \Z/6\Z\) (canonical projection) maps \(3 \mapsto [3]_6\), which is a
-zero divisor since \([2]_6 [3]_6 = [0]_6\).
+    \label{rem:non-zero-divisors-may-not-be-preserved}
+    The image of non-zero-divisors may be a zero-divisor in the new ring --- for
+    instance, \(3 \in Z\) is a non-zero-divisor but the ring morphism
+    \(Z \epi \Z/6\Z\) (canonical projection) maps \(3 \mapsto [3]_6\), which is a
+    zero divisor since \([2]_6 [3]_6 = [0]_6\).
 \end{remark}
 %
 
 %
 \begin{proposition}
-\label{prop:sufficient-conditions-morphism-of-rings}
-Let \(\phi: R \to S\) be a set-function between rings \(R\) and \(S\) such that
-the additive and multiplicative structures are preserved. If either one of the
-following propositions hold, then \(\phi\) is a morphism of rings:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item The set-function \(\phi\) is surjective.
+    \label{prop:sufficient-conditions-morphism-of-rings}
+    Let \(\phi: R \to S\) be a set-function between rings \(R\) and \(S\) such that
+    the additive and multiplicative structures are preserved. If either one of the
+    following propositions hold, then \(\phi\) is a morphism of rings:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item The set-function \(\phi\) is surjective.
 
-\item The set-function \(\phi \neq 0\) and \(S\) is an integral domain.
-\end{enumerate}
+        \item The set-function \(\phi \neq 0\) and \(S\) is an integral domain.
+    \end{enumerate}
 \end{proposition}
 %
 
 %
 \begin{proof}
-We simply need to show that each of the propositions yield \(\phi(1_R) = 1_S\)
---- which is the only condition left for \(\phi\) to be a morphism of rings.
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item If \(\phi\) is surjective, then there exists \(r \in R\) such that
-  \(\phi(a) = 1_S\) but then
-  \[
-  1_S = \phi(a) = \phi(a \cdot 1_R) = \phi(a) \phi(1_R)
-  = 1_S \cdot \phi(1_R) = \phi(1_R).
-  \]
+    We simply need to show that each of the propositions yield \(\phi(1_R) = 1_S\)
+    --- which is the only condition left for \(\phi\) to be a morphism of rings.
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item If \(\phi\) is surjective, then there exists \(r \in R\) such that
+              \(\phi(a) = 1_S\) but then
+              \[
+                  1_S = \phi(a) = \phi(a \cdot 1_R) = \phi(a) \phi(1_R)
+                  = 1_S \cdot \phi(1_R) = \phi(1_R).
+              \]
 
-\item If \(\phi(1_R)\) where to be zero, the whole image of \(\phi\) would also
-  evaluate to zero, thus \(1_R\) has a non-zero image under \(\phi\). Let
-  \(r \in R\) be any element such that \(\phi(r) \neq 0\) --- then
-  \(\phi(r) = \phi(r \cdot 1_R) = \phi(r) \phi(1_R)\) thus by means of
-  \cref{cor:cancellation-integral-domain} we can conclude that
-  \(\phi(1_R) = 1_S\).
-\end{enumerate}
+        \item If \(\phi(1_R)\) where to be zero, the whole image of \(\phi\) would also
+              evaluate to zero, thus \(1_R\) has a non-zero image under \(\phi\). Let
+              \(r \in R\) be any element such that \(\phi(r) \neq 0\) --- then
+              \(\phi(r) = \phi(r \cdot 1_R) = \phi(r) \phi(1_R)\) thus by means of
+              \cref{cor:cancellation-integral-domain} we can conclude that
+              \(\phi(1_R) = 1_S\).
+    \end{enumerate}
 \end{proof}
 %
 
@@ -826,10 +826,10 @@ further by imposing that \(R\) is commutative). Intuitively, morphisms between
 two objects \((\alpha, R) \to (\beta, S)\) are ring morphisms \(\phi: R \to S\)
 such that the following diagram commutes in the category of sets:
 \[
-\begin{tikzcd}
-R \ar[rr, "\phi"] & &S \\
-&A \ar[lu, "\alpha"] \ar[ru, swap, "\beta"] &
-\end{tikzcd}
+    \begin{tikzcd}
+        R \ar[rr, "\phi"] & &S \\
+        &A \ar[lu, "\alpha"] \ar[ru, swap, "\beta"] &
+    \end{tikzcd}
 \]
 
 In the same context of what is explained above, we now state a universal
@@ -838,72 +838,72 @@ property concerning the ring \(\Z[x_1, \dots, x_n]\) in the category
 
 %
 \begin{proposition}
-\label{prop:Z[several]-initial-polynomial-rings}
-Let \(R\) be a ring and define a set-function \(\alpha: A \to R\) mapping
-\(a_j \mapsto x_j\). The object \((\alpha, \Z[x_1, \dots, x_n])\) is initial in
-\(\cat R_A\).
+    \label{prop:Z[several]-initial-polynomial-rings}
+    Let \(R\) be a ring and define a set-function \(\alpha: A \to R\) mapping
+    \(a_j \mapsto x_j\). The object \((\alpha, \Z[x_1, \dots, x_n])\) is initial in
+    \(\cat R_A\).
 \end{proposition}
 %
 
 %
 \begin{proof}
-Let \((\beta, R)\) be any object in \(\cat R_A\). We now construct a morphism
-\[
-\phi: (\alpha, \Z[x_1, \dots, x_n]) \to (\beta, R).
-\]
-We can impose that \(\phi(x_j) \coloneq \beta(a_j)\) for every
-\(1 \leq j \leq n\). For \(\phi\) to be a ring morphism, one must also impose
-that is preserves both the additive and multiplicative structures of the
-rings. Since \(\Z\) is initial in \(\Rng\), we can uniquely determine that
-\(\phi(r) = \psi(r)\) --- where \(\psi: \Z \unique \R\) is a unique
-morphism. That is, we defined morphism \(\phi\) given by
-\begin{align*}
-  \phi\bigg( \sum m_{i_1 \dots i_n} x_1^{i_1} \dots x_n^{i_n} \bigg)
-  &= \sum \phi(m_{i_1 \dots i_n}) \phi(x_1^{i_1}) \dots \phi(x_n^{i_n}) \\
-  &= \sum \psi(m_{i_1 \dots i_n}) \beta(a_1)^{i_1} \dots \beta(a_n)^{i_n},
-\end{align*}
-which is surely both a ring morphism and unique --- thus \((\alpha, \Z[x_1,
-\dots, x_n])\) is initial, and
-\[
-\begin{tikzcd}
-\Z[x_1, \dots, x_n] \ar[rr, dashed, "\phi"] & &R \\
-&A \ar[lu, "\alpha"] \ar[ru, swap, "\beta"]   &
-\end{tikzcd}
-\]
+    Let \((\beta, R)\) be any object in \(\cat R_A\). We now construct a morphism
+    \[
+        \phi: (\alpha, \Z[x_1, \dots, x_n]) \to (\beta, R).
+    \]
+    We can impose that \(\phi(x_j) \coloneq \beta(a_j)\) for every
+    \(1 \leq j \leq n\). For \(\phi\) to be a ring morphism, one must also impose
+    that is preserves both the additive and multiplicative structures of the
+    rings. Since \(\Z\) is initial in \(\Rng\), we can uniquely determine that
+    \(\phi(r) = \psi(r)\) --- where \(\psi: \Z \unique \R\) is a unique
+    morphism. That is, we defined morphism \(\phi\) given by
+    \begin{align*}
+        \phi\bigg( \sum m_{i_1 \dots i_n} x_1^{i_1} \dots x_n^{i_n} \bigg)
+         & = \sum \phi(m_{i_1 \dots i_n}) \phi(x_1^{i_1}) \dots \phi(x_n^{i_n})    \\
+         & = \sum \psi(m_{i_1 \dots i_n}) \beta(a_1)^{i_1} \dots \beta(a_n)^{i_n},
+    \end{align*}
+    which is surely both a ring morphism and unique --- thus \((\alpha, \Z[x_1,
+        \dots, x_n])\) is initial, and
+    \[
+        \begin{tikzcd}
+            \Z[x_1, \dots, x_n] \ar[rr, dashed, "\phi"] & &R \\
+            &A \ar[lu, "\alpha"] \ar[ru, swap, "\beta"]   &
+        \end{tikzcd}
+    \]
 \end{proof}
 %
 
 %
 \begin{proposition}[Universal property of polynomial rings]
-\label{prop:universal-property-polynomial-rings}
-Let \(f: R \to S\) be any ring morphism and \(s_0 \in S\) be a fixed element
-commuting with \(f(r)\) for all \(r \in R\). There exists a \emph{unique} ring
-morphism \(\phi: R[x] \unique S\) which \emph{extends} \(f\) and maps
-\(x \mapsto s_0\).
+    \label{prop:universal-property-polynomial-rings}
+    Let \(f: R \to S\) be any ring morphism and \(s_0 \in S\) be a fixed element
+    commuting with \(f(r)\) for all \(r \in R\). There exists a \emph{unique} ring
+    morphism \(\phi: R[x] \unique S\) which \emph{extends} \(f\) and maps
+    \(x \mapsto s_0\).
 \end{proposition}
 %
 
 %
 \begin{proof}
-In the construction of \(\phi\) we first impose that \(\phi(x) \coloneq
-s_0\). Moreover, for \(\phi\) to extend \(f\) one has to define \(\phi(r)
-\coloneq f(r)\) for all given \(r \in R\). In order for \(\phi\) to be a ring
-morphism it also needs to preserve the additive and multiplicative structures of
-the rings --- hence we end up with
-\[
-\phi\bigg( \sum_{j \geq 0} r_j x^j \bigg)
-= \sum_{j \geq 0} \phi(r_j) \phi(x)^j
-= \sum_{j \geq 0} f(r_j) s_0^j.
-\]
-Since \(\phi\) is completely defined by the image under constant polynomials and
-\(x\), we find that \(\phi\) is the unique ring morphism sending \(x\) to
-\(s_0\) for which the following diagram commutes
-\[
-\begin{tikzcd}
-R \ar[d, hook] \ar[r, "f"]         & S \\
-R[x] \ar[ru, dashed, swap, "\phi"] &
-\end{tikzcd}
-\]
+    In the construction of \(\phi\) we first impose that \(\phi(x) \coloneq
+    s_0\). Moreover, for \(\phi\) to extend \(f\) one has to define \(\phi(r)
+    \coloneq f(r)\) for all given \(r \in R\). In order for \(\phi\) to be a ring
+    morphism it also needs to preserve the additive and multiplicative structures of
+    the rings --- hence we end up with
+    \[
+        \phi\bigg( \sum_{j \geq 0} r_j x^j \bigg)
+        = \sum_{j \geq 0} \phi(r_j) \phi(x)^j
+        = \sum_{j \geq 0} f(r_j) s_0^j.
+    \]
+    Since \(\phi\) is completely defined by the image under constant polynomials and
+    \(x\), we find that \(\phi\) is the unique ring morphism sending \(x\) to
+    \(s_0\) for which the following diagram commutes
+    \[
+        \begin{tikzcd}
+            R \ar[d, hook] \ar[r, "f"]         & S \\
+            R[x] \ar[ru, dashed, swap, "\phi"] &
+        \end{tikzcd}
+    \]
 \end{proof}
 %
 
@@ -917,52 +917,52 @@ evaluation.
 
 %
 \begin{definition}[Kernel]
-\label{def:ring-morphism-kernel}
-The kernel of a ring morphism \(\phi: R \to S\) is the set
-\[
-\ker \phi \coloneq \{r \in R \colon \phi(r) = 0_S\}.
-\]
+    \label{def:ring-morphism-kernel}
+    The kernel of a ring morphism \(\phi: R \to S\) is the set
+    \[
+        \ker \phi \coloneq \{r \in R \colon \phi(r) = 0_S\}.
+    \]
 \end{definition}
 %
 
 %
 \begin{proposition}[Ring monomorphisms]
-\label{prop:ring-kernel-monomorphism-injective}
-Let \(\phi: R \to S\) be a ring morphism. The following properties are
-equivalent:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item The ring morphism \(\phi\) is a monomorphism.
+    \label{prop:ring-kernel-monomorphism-injective}
+    Let \(\phi: R \to S\) be a ring morphism. The following properties are
+    equivalent:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item The ring morphism \(\phi\) is a monomorphism.
 
-\item The kernel of \(\phi\) is trivial --- that is, \(\ker \phi = \{0_R\}\).
+        \item The kernel of \(\phi\) is trivial --- that is, \(\ker \phi = \{0_R\}\).
 
-\item The set-function \(\phi\) injective.
-\end{enumerate}
+        \item The set-function \(\phi\) injective.
+    \end{enumerate}
 \end{proposition}
 %
 
 %
 \begin{proof}
-(a) \(\implies\) (b): Suppose \(\phi\) is monic. Let \(r \in \ker \phi\) be any
-element and consider the uniquely defined morphisms
-\(\eval_r, \eval_{0_R}: \Z[x] \rightrightarrows R\) provided by
-\cref{prop:Z[several]-initial-polynomial-rings} by fixing \(\eval_r(x) = r\) and
-\(\eval_{0_R}(x) = 0_S\). Notice that
-\(\phi \eval_r(n) = \phi \eval_{0_R}(n) = \phi(n)\) for any \(n \in \Z\), while
-\(\phi \eval_r(x) = \phi(r) = 0_S\) and
-\(\phi \eval_{0_R}(x) = \phi(0_R) = 0_S\) --- thus \(\eval_r = \eval_{0_S}\),
-which in turn implies that \(r = \eval_r(x) = \eval_{0_R}(x) = 0_S\). Therefore
-indeed \(\ker \phi = \{0_R\}\).
+    (a) \(\implies\) (b): Suppose \(\phi\) is monic. Let \(r \in \ker \phi\) be any
+    element and consider the uniquely defined morphisms
+    \(\eval_r, \eval_{0_R}: \Z[x] \rightrightarrows R\) provided by
+    \cref{prop:Z[several]-initial-polynomial-rings} by fixing \(\eval_r(x) = r\) and
+    \(\eval_{0_R}(x) = 0_S\). Notice that
+    \(\phi \eval_r(n) = \phi \eval_{0_R}(n) = \phi(n)\) for any \(n \in \Z\), while
+    \(\phi \eval_r(x) = \phi(r) = 0_S\) and
+    \(\phi \eval_{0_R}(x) = \phi(0_R) = 0_S\) --- thus \(\eval_r = \eval_{0_S}\),
+    which in turn implies that \(r = \eval_r(x) = \eval_{0_R}(x) = 0_S\). Therefore
+    indeed \(\ker \phi = \{0_R\}\).
 
-(b) \(\implies\) (c): Suppose \(\phi\) has trivial kernel and let \(r, t \in R\)
-be such that \(\phi(r) = \phi(t)\), then \(\phi(r) - \phi(t) = \phi(r - t) = 0\)
-and \(r - t \in \ker \phi\), which implies in \(r = t\) --- that is, \(\phi\) is
-injective.
+    (b) \(\implies\) (c): Suppose \(\phi\) has trivial kernel and let \(r, t \in R\)
+    be such that \(\phi(r) = \phi(t)\), then \(\phi(r) - \phi(t) = \phi(r - t) = 0\)
+    and \(r - t \in \ker \phi\), which implies in \(r = t\) --- that is, \(\phi\) is
+    injective.
 
-(c) \(\implies\) (a): Suppose \(\phi\) is an injective set-function. Since
-injections are monomorphisms in \(\Set\), we conclude that the set-function
-\(\phi: R \to S\) is a monomorphism in \(\Set\) when \(R\) and \(S\) are viewed
-as sets. If we now endows \(R\) and \(S\) with their respective ring structures,
-we obtain that \(\phi\) is a monic in \(\Rng\).
+    (c) \(\implies\) (a): Suppose \(\phi\) is an injective set-function. Since
+    injections are monomorphisms in \(\Set\), we conclude that the set-function
+    \(\phi: R \to S\) is a monomorphism in \(\Set\) when \(R\) and \(S\) are viewed
+    as sets. If we now endows \(R\) and \(S\) with their respective ring structures,
+    we obtain that \(\phi\) is a monic in \(\Rng\).
 \end{proof}
 %
 
@@ -970,34 +970,34 @@ we obtain that \(\phi\) is a monic in \(\Rng\).
 
 %
 \begin{definition}[Subring]
-\label{def:subring}
-Let \(R\) be a ring. A subring \(S\) of \(R\) is a ring whose elements are
-contained in \(R\) and the canonical inclusion map \(S \emb R\) is a ring
-morphism.
+    \label{def:subring}
+    Let \(R\) be a ring. A subring \(S\) of \(R\) is a ring whose elements are
+    contained in \(R\) and the canonical inclusion map \(S \emb R\) is a ring
+    morphism.
 \end{definition}
 %
 
 %
 \begin{remark}
-\label{rem:subring-same-unity}
-It should be noted that \(S\) is a ring with unity where \(1_S = 1_R\).
+    \label{rem:subring-same-unity}
+    It should be noted that \(S\) is a ring with unity where \(1_S = 1_R\).
 \end{remark}
 %
 
 %
 \begin{proposition}[Intersection of subrings]
-\label{prop:intersection-subring-is-subring}
-Let \(R\) be a ring and \(\{S_{j}\}_{j \in J}\) be a collection of subrings of
-\(R\). The intersection \(\bigcap_{j \in J} S_j\) is also a subring of \(R\).
+    \label{prop:intersection-subring-is-subring}
+    Let \(R\) be a ring and \(\{S_{j}\}_{j \in J}\) be a collection of subrings of
+    \(R\). The intersection \(\bigcap_{j \in J} S_j\) is also a subring of \(R\).
 \end{proposition}
 %
 
 %
 \begin{proof}
-Since each \(S_j\) is a subring, if \(a, b \in \bigcap_{j \in J} S_j\) then \(a,
-b \in S_j\) for all \(j \in J\), and \(a + b, a b \in S_j\). Since every subring
-contains the unity, so does the intersection --- hence \(\bigcap_{j \in J} S_j\)
-is a subring of \(R\).
+    Since each \(S_j\) is a subring, if \(a, b \in \bigcap_{j \in J} S_j\) then \(a,
+    b \in S_j\) for all \(j \in J\), and \(a + b, a b \in S_j\). Since every subring
+    contains the unity, so does the intersection --- hence \(\bigcap_{j \in J} S_j\)
+    is a subring of \(R\).
 \end{proof}
 %
 
@@ -1006,105 +1006,105 @@ is a subring of \(R\).
 
 %
 \begin{definition}[Center]
-\label{def:ring-center}
-Given a ring \(R\), we define its centre to be
-\[
-Z(R) \coloneq \{r \in R \colon r x = x r \text{ for all } x \in R\}.
-\]
+    \label{def:ring-center}
+    Given a ring \(R\), we define its centre to be
+    \[
+        Z(R) \coloneq \{r \in R \colon r x = x r \text{ for all } x \in R\}.
+    \]
 \end{definition}
 %
 
 %
 \begin{corollary}
-\label{cor:center-is-subring}
-The centre of a ring is a subring.
+    \label{cor:center-is-subring}
+    The centre of a ring is a subring.
 \end{corollary}
 %
 
 %
 \begin{proof}
-Let \(R\) be a ring. Clearly, \(1 \in Z(R)\). Moreover, if \(r, s \in Z(R)\)
-then for any \(x \in R\) we have
-\begin{gather*}
-(r + s) x = r x + s x = x r + x s = x (r + s), \\
-(r s) x = r(s x) = (s x) r = (x s) r = x (s r) = x (r s).
-\end{gather*}
-Therefore \(Z(R)\) is indeed a subring of \(R\).
+    Let \(R\) be a ring. Clearly, \(1 \in Z(R)\). Moreover, if \(r, s \in Z(R)\)
+    then for any \(x \in R\) we have
+    \begin{gather*}
+        (r + s) x = r x + s x = x r + x s = x (r + s), \\
+        (r s) x = r(s x) = (s x) r = (x s) r = x (s r) = x (r s).
+    \end{gather*}
+    Therefore \(Z(R)\) is indeed a subring of \(R\).
 \end{proof}
 %
 
 %
 \begin{corollary}
-\label{cor:division-ring-center-is-field}
-If \(R\) is a division ring, then its centre \(Z(R)\) is a field.
+    \label{cor:division-ring-center-is-field}
+    If \(R\) is a division ring, then its centre \(Z(R)\) is a field.
 \end{corollary}
 %
 
 %
 \begin{proof}
-Since \(Z(R)\) inherits the division ring structure and every element of
-\(Z(R)\) commutes, it is indeed a field.
+    Since \(Z(R)\) inherits the division ring structure and every element of
+    \(Z(R)\) commutes, it is indeed a field.
 \end{proof}
 %
 
 %
 \begin{definition}[Centralizer]
-\label{def:ring-centralizer}
-Given a ring \(R\) and an element \(r \in R\), the centralizer of \(r\) is
-defined to be the collection of elements \(x \in R\) such that \(x r = r x\) ---
-we shall denote the centralizer of \(r\) as \(Z(r)\).
+    \label{def:ring-centralizer}
+    Given a ring \(R\) and an element \(r \in R\), the centralizer of \(r\) is
+    defined to be the collection of elements \(x \in R\) such that \(x r = r x\) ---
+    we shall denote the centralizer of \(r\) as \(Z(r)\).
 \end{definition}
 %
 
 %
 \begin{corollary}
-\label{cor:centralizer-is-subring}
-The centralizer of an element is a subring.
+    \label{cor:centralizer-is-subring}
+    The centralizer of an element is a subring.
 \end{corollary}
 %
 
 %
 \begin{proof}
-This is simply a straightforward particular case of
-\cref{cor:center-is-subring}.
+    This is simply a straightforward particular case of
+    \cref{cor:center-is-subring}.
 \end{proof}
 %
 
 %
 \begin{corollary}
-\label{cor:division-ring-centralizer-is-division-ring}
-In a division ring a centralizer is also a division ring.
+    \label{cor:division-ring-centralizer-is-division-ring}
+    In a division ring a centralizer is also a division ring.
 \end{corollary}
 %
 
 %
 \begin{proof}
-Let \(R\) be a division ring and \(r \in R\) any element. If \(x \in Z(r)\) is
-any element, then since \(r x = x r\), we have \((r^{-1} x^{-1}) r x = (r^{-1}
-x^{-1}) x r = 1\) thus \(r^{-1} x^{-1} r\) is a left-inverse of \(r\) ---
-moreover, we equivalently see that \(r x^{-1} r^{-1}\) is a right-inverse of
-\(r\). Since \(Z(r)\) is a subring, such inverses are contained in \(Z(r)\) and
-thus \(Z(r)\) is a division ring.
+    Let \(R\) be a division ring and \(r \in R\) any element. If \(x \in Z(r)\) is
+    any element, then since \(r x = x r\), we have \((r^{-1} x^{-1}) r x = (r^{-1}
+    x^{-1}) x r = 1\) thus \(r^{-1} x^{-1} r\) is a left-inverse of \(r\) ---
+    moreover, we equivalently see that \(r x^{-1} r^{-1}\) is a right-inverse of
+    \(r\). Since \(Z(r)\) is a subring, such inverses are contained in \(Z(r)\) and
+    thus \(Z(r)\) is a division ring.
 
-Notice however that the centralizer may not be a field since there can be
-non-commuting elements in \(Z(r)\).
+    Notice however that the centralizer may not be a field since there can be
+    non-commuting elements in \(Z(r)\).
 \end{proof}
 %
 
 %
 \begin{corollary}
-\label{cor:center-is-intersection-of-all-centralizers}
-The centre of a ring is the intersection of all centralizers of the ring.
+    \label{cor:center-is-intersection-of-all-centralizers}
+    The centre of a ring is the intersection of all centralizers of the ring.
 \end{corollary}
 %
 
 %
 \begin{proof}
-Let \(R\) be a ring. Certainly, if \(x \in Z(R)\) then it commutes with every
-element of \(R\) --- which is equivalent to \(x \in \bigcap_{r \in R}
-Z(r)\). Moreover, if an element belongs to the intersection of all centralizers,
-every element of the ring commutes with it and thus such element is also present
-in the centre of the ring. Therefore \(Z(R) = \bigcap_{r \in R} Z(r)\).
+    Let \(R\) be a ring. Certainly, if \(x \in Z(R)\) then it commutes with every
+    element of \(R\) --- which is equivalent to \(x \in \bigcap_{r \in R}
+    Z(r)\). Moreover, if an element belongs to the intersection of all centralizers,
+    every element of the ring commutes with it and thus such element is also present
+    in the centre of the ring. Therefore \(Z(R) = \bigcap_{r \in R} Z(r)\).
 \end{proof}
 %
 
@@ -1112,114 +1112,114 @@ in the centre of the ring. Therefore \(Z(R) = \bigcap_{r \in R} Z(r)\).
 
 %
 \begin{remark}[Epimorphisms and surjection in \(\Rng\)]
-\label{rem:ring-epimorphisms-and-surjection}
-In \(\Rng\), epimorphisms are \emph{not necessarily} surjective set-functions.
+    \label{rem:ring-epimorphisms-and-surjection}
+    In \(\Rng\), epimorphisms are \emph{not necessarily} surjective set-functions.
 
-A classical counterexample is the ring morphism given by the canonical inclusion
-\(\iota: \Z \emb \Q\). Let \(R\) be any ring and consider ring morphisms
-\(f, g: \Q \rightrightarrows R\) such that the following diagram commutes
-\[
-\begin{tikzcd}
-\Z \ar[r, hook, "\iota"]
-&\Q \ar[r, shift left, "f"] \ar[r, shift right, swap, "g"]
-&R
-\end{tikzcd}
-\]
-Since \(f|_{\Z} = g|_{\Z}\) we have, for any \(p/q \in \Q\), that
-\(f(p/q) = f(p) f(q)^{-1}\) and \(g(p/q) = g(p) g(q)^{-1}\), which implies in
-\(f(p/q) = g(p/q)\) --- that is, \(f = g\) in general, which implies that
-\(\iota\) is an epimorphism in \(\Rng\). For the shock of the reader, the same
-is obviously not the case in \(\Set\). If we take the rings \(\Z\) and \(\Q\) as
-abelian groups, one sees that \(\coker \phi\) is non-trivial and by
-\cref{prop:epic-in-Ab} we arrive at the fact that \(\phi\) is not an epimorphism
-in \(\Ab\) neither.
+    A classical counterexample is the ring morphism given by the canonical inclusion
+    \(\iota: \Z \emb \Q\). Let \(R\) be any ring and consider ring morphisms
+    \(f, g: \Q \rightrightarrows R\) such that the following diagram commutes
+    \[
+        \begin{tikzcd}
+            \Z \ar[r, hook, "\iota"]
+            &\Q \ar[r, shift left, "f"] \ar[r, shift right, swap, "g"]
+            &R
+        \end{tikzcd}
+    \]
+    Since \(f|_{\Z} = g|_{\Z}\) we have, for any \(p/q \in \Q\), that
+    \(f(p/q) = f(p) f(q)^{-1}\) and \(g(p/q) = g(p) g(q)^{-1}\), which implies in
+    \(f(p/q) = g(p/q)\) --- that is, \(f = g\) in general, which implies that
+    \(\iota\) is an epimorphism in \(\Rng\). For the shock of the reader, the same
+    is obviously not the case in \(\Set\). If we take the rings \(\Z\) and \(\Q\) as
+    abelian groups, one sees that \(\coker \phi\) is non-trivial and by
+    \cref{prop:epic-in-Ab} we arrive at the fact that \(\phi\) is not an epimorphism
+    in \(\Ab\) neither.
 \end{remark}
 %
 
 %
 \begin{remark}
-\label{rem:isomorphisms-in-ring}
-With the caution given by \cref{rem:ring-epimorphisms-and-surjection} one can
-rightly observe that in the category of rings a morphism may be both monic and
-epic but yet lack the conditions for being an isomorphism.
+    \label{rem:isomorphisms-in-ring}
+    With the caution given by \cref{rem:ring-epimorphisms-and-surjection} one can
+    rightly observe that in the category of rings a morphism may be both monic and
+    epic but yet lack the conditions for being an isomorphism.
 \end{remark}
 %
 
 \begin{remark}
-\label{rem:cokernel-in-ring}
-Cokernels in \(\Rng\) are not what one would normally expect of a good category,
-notice that given a ring morphism \(\phi: R \to S\) and, if \(\alpha: S \to Q\)
-is any ring morphism such that \(\alpha \phi = 0\) --- as is required by the
-universal property of cokernels --- then \(\alpha\phi(1) = \alpha(1) = 0\),
-which can only be the case for \(Q = 0\), the zero-ring. We therefore conclude
-that \(\coker \phi\) must be the zero-ring.
+    \label{rem:cokernel-in-ring}
+    Cokernels in \(\Rng\) are not what one would normally expect of a good category,
+    notice that given a ring morphism \(\phi: R \to S\) and, if \(\alpha: S \to Q\)
+    is any ring morphism such that \(\alpha \phi = 0\) --- as is required by the
+    universal property of cokernels --- then \(\alpha\phi(1) = \alpha(1) = 0\),
+    which can only be the case for \(Q = 0\), the zero-ring. We therefore conclude
+    that \(\coker \phi\) must be the zero-ring.
 \end{remark}
 
 \subsection{Products}
 
 %
 \begin{proposition}[Product]
-\label{prop:product-ring}
-Products exist in the category of rings.
+    \label{prop:product-ring}
+    Products exist in the category of rings.
 \end{proposition}
 %
 
 %
 \begin{proof}
-Let \(R\) and \(S\) be rings. We'll define on \(R \times S\) additive and
-multiplicative structures naturally as follows:
-\begin{gather*}
-(x, a) +_{R \times S} (y, b)     \coloneq (x +_R y, a +_S b), \\
-(x, a) \cdot_{R \times S} (y, b) \coloneq (x \cdot_R y, a \cdot_S b),
-\end{gather*}
-for any \(x, y \in R\) and \(a, b \in S\). We now check that \(R \times S\) is a
-product in \(\Rng\).
+    Let \(R\) and \(S\) be rings. We'll define on \(R \times S\) additive and
+    multiplicative structures naturally as follows:
+    \begin{gather*}
+        (x, a) +_{R \times S} (y, b)     \coloneq (x +_R y, a +_S b), \\
+        (x, a) \cdot_{R \times S} (y, b) \coloneq (x \cdot_R y, a \cdot_S b),
+    \end{gather*}
+    for any \(x, y \in R\) and \(a, b \in S\). We now check that \(R \times S\) is a
+    product in \(\Rng\).
 
-Let \(Z\) be any ring and let \(\phi: Z \to R\) and \(\psi: Z \to S\) be any two
-ring morphisms. Considering the canonical projections \(\pi_R: R \times S \epi
-R\) and \(\pi_S: R \times S \epi S\), we can construct a map \(\ell: Z \to R
-\times S\) sending \(z \mapsto (\phi(z), \psi(z))\). Such a map inherits the
-preservation of both the multiplicative and additive structures of \(Z\) and \(R
-\times S\) since \(\phi\) and \(\psi\) do so --- therefore \(\ell\) is a
-morphism of rings. Moreover, \(\ell\) is completely determined by the image of
-both \(\phi\) and \(\psi\), hence \(\ell\) is the unique morphism of rings such
-that the following diagram commutes
-\[
-\begin{tikzcd}
-&Z \ar[ddl, bend right, swap, "\phi"]
-\ar[ddr, bend left, "\psi"]
-\ar[d, dashed, "\ell"] & \\
-&R \times S \ar[ld, two heads, "\pi_R"]
-\ar[rd, two heads, swap, "\pi_S"] &\\
-R & &S
-\end{tikzcd}
-\]
+    Let \(Z\) be any ring and let \(\phi: Z \to R\) and \(\psi: Z \to S\) be any two
+    ring morphisms. Considering the canonical projections \(\pi_R: R \times S \epi
+    R\) and \(\pi_S: R \times S \epi S\), we can construct a map \(\ell: Z \to R
+    \times S\) sending \(z \mapsto (\phi(z), \psi(z))\). Such a map inherits the
+    preservation of both the multiplicative and additive structures of \(Z\) and \(R
+    \times S\) since \(\phi\) and \(\psi\) do so --- therefore \(\ell\) is a
+    morphism of rings. Moreover, \(\ell\) is completely determined by the image of
+    both \(\phi\) and \(\psi\), hence \(\ell\) is the unique morphism of rings such
+    that the following diagram commutes
+    \[
+        \begin{tikzcd}
+            &Z \ar[ddl, bend right, swap, "\phi"]
+            \ar[ddr, bend left, "\psi"]
+            \ar[d, dashed, "\ell"] & \\
+            &R \times S \ar[ld, two heads, "\pi_R"]
+            \ar[rd, two heads, swap, "\pi_S"] &\\
+            R & &S
+        \end{tikzcd}
+    \]
 \end{proof}
 %
 
 \begin{remark}
-\label{rem:coproduct-Z[x,y]}
-Coproducts on the other hand, although present in \(\Rng\), are not as easy to
-construct. Lets work out a special case: consider the commutative ring
-\(\Z[x, y]\) \emph{in} the \emph{category of commutative rings}. We'll show that
-\(\Z[x, y]\) is the coproduct of two copies of \(\Z[x]\). Let \(R\) be any
-commutative ring together with morphisms of rings \(f, g: \Z[x]
-\rightrightarrows R\). We define a map \(\phi: \Z[x, y] \to R\) for which \(x
-\mapsto f(x)\), while \(y \mapsto g(x)\) and finally \(n \mapsto n\) for every
-\(n \in \Z\). One immediately sees that \(\phi\) indeed satisfies every
-condition of being a ring morphism. Moreover, since the image of \(x, y\) and
-\(\Z\) completely defines \(\phi\), we conclude that \(\phi\) is the unique
-morphism of rings such that the following diagram commutes
-\[
-\begin{tikzcd}
-\Z[x] \ar[dr, hook] \ar[rdd, bend right, swap, "f"]
-& &\Z[x] \ar[dl, hook'] \ar[dld, bend left, "g"] \\
-&\Z[x, y] \ar[d, dashed, "\phi"] & \\
-&R &
-\end{tikzcd}
-\]
-thus \(\Z[x, y]\) is a coproduct of two copies of \(\Z[x]\) in the category of
-commutative rings.
+    \label{rem:coproduct-Z[x,y]}
+    Coproducts on the other hand, although present in \(\Rng\), are not as easy to
+    construct. Lets work out a special case: consider the commutative ring
+    \(\Z[x, y]\) \emph{in} the \emph{category of commutative rings}. We'll show that
+    \(\Z[x, y]\) is the coproduct of two copies of \(\Z[x]\). Let \(R\) be any
+    commutative ring together with morphisms of rings \(f, g: \Z[x]
+    \rightrightarrows R\). We define a map \(\phi: \Z[x, y] \to R\) for which \(x
+    \mapsto f(x)\), while \(y \mapsto g(x)\) and finally \(n \mapsto n\) for every
+    \(n \in \Z\). One immediately sees that \(\phi\) indeed satisfies every
+    condition of being a ring morphism. Moreover, since the image of \(x, y\) and
+    \(\Z\) completely defines \(\phi\), we conclude that \(\phi\) is the unique
+    morphism of rings such that the following diagram commutes
+    \[
+        \begin{tikzcd}
+            \Z[x] \ar[dr, hook] \ar[rdd, bend right, swap, "f"]
+            & &\Z[x] \ar[dl, hook'] \ar[dld, bend left, "g"] \\
+            &\Z[x, y] \ar[d, dashed, "\phi"] & \\
+            &R &
+        \end{tikzcd}
+    \]
+    thus \(\Z[x, y]\) is a coproduct of two copies of \(\Z[x]\) in the category of
+    commutative rings.
 \end{remark}
 
 \subsection{The Ring \texorpdfstring{\(\End_{\Ab}(G)\)}{End\_Ab(G)}}
@@ -1233,28 +1233,28 @@ given by composition of morphisms.
 
 %
 \begin{proposition}
-\label{prop:Z-isomorphic-End(Z)-in-Ring}
-In the category of rings, there exists a natural isomorphism
-\[
-\Z \iso \End_{\Ab}(\Z).
-\]
+    \label{prop:Z-isomorphic-End(Z)-in-Ring}
+    In the category of rings, there exists a natural isomorphism
+    \[
+        \Z \iso \End_{\Ab}(\Z).
+    \]
 \end{proposition}
 %
 
 %
 \begin{proof}
-Let \(\phi: \End_{\Ab}(\Z) \to \Z\) sending \(f \mapsto f(1)\) it is clear that
-\[
-\phi(f + g) = (f + g)(1) = f(1) + g(1) = \phi(f) + \phi(g),
-\]
-moreover the multiplicative structure is also preserved:
-\[
-\phi(f g) = (f g)(1) = f(g(1)) = f(1 \cdot g(1)) = f(1) g(1) = \phi(f) \phi(g).
-\]
-Also, \(\phi(\Id) = \Id(1) = 1\), therefore \(\phi\) is a ring morphism. Since
-the image of the identity element over a group morphism completely determines
-the map, one can be certain that \(\phi\) is a bijection --- thus an isomorphism
-of rings.
+    Let \(\phi: \End_{\Ab}(\Z) \to \Z\) sending \(f \mapsto f(1)\) it is clear that
+    \[
+        \phi(f + g) = (f + g)(1) = f(1) + g(1) = \phi(f) + \phi(g),
+    \]
+    moreover the multiplicative structure is also preserved:
+    \[
+        \phi(f g) = (f g)(1) = f(g(1)) = f(1 \cdot g(1)) = f(1) g(1) = \phi(f) \phi(g).
+    \]
+    Also, \(\phi(\Id) = \Id(1) = 1\), therefore \(\phi\) is a ring morphism. Since
+    the image of the identity element over a group morphism completely determines
+    the map, one can be certain that \(\phi\) is a bijection --- thus an isomorphism
+    of rings.
 \end{proof}
 %
 
@@ -1264,104 +1264,104 @@ the left and right, respectively, multiplication of elements of \(R\) by \(r\).
 
 %
 \begin{proposition}
-\label{prop:left-multiplication-injective-ring-morphism}
-Let \(R\) be a ring. The map \(m: R \mono \End_{\Ab}(R)\) sending
-\(r \mapsto {}_rm\) is an injective ring morphism.
+    \label{prop:left-multiplication-injective-ring-morphism}
+    Let \(R\) be a ring. The map \(m: R \mono \End_{\Ab}(R)\) sending
+    \(r \mapsto {}_rm\) is an injective ring morphism.
 \end{proposition}
 %
 
 %
 \begin{proof}
-We first show that \(m\) is a ring morphism: let \(a, b \in R\) be any three
-elements, then for any \(r \in R\) we have
-\[
-m(a + b)(r) = {}_{a + b}m(r) = (a + b)r = a r + b r = m(a)(r) + m(b)(r).
-\]
-On the other hand, multiplication yields composition, as expected
-\[
-m(a b)(r) = {}_{a b}m(r) = (a b) r = a (b r) = {}_am({}_bm(r)) = m(a)(m(b)(r)).
-\]
-Also, \(m(1)(r) = 1 \cdot r = r = \Id_R(r)\) and hence \(m(1) = \Id_R\). We
-conclude that \(m\) is indeed a ring morphism. The injectivity comes from the
-fact that the only element that yields a zero-map in \(\End_{\Rng}(R)\) is zero
---- thus the kernel is trivial.
+    We first show that \(m\) is a ring morphism: let \(a, b \in R\) be any three
+    elements, then for any \(r \in R\) we have
+    \[
+        m(a + b)(r) = {}_{a + b}m(r) = (a + b)r = a r + b r = m(a)(r) + m(b)(r).
+    \]
+    On the other hand, multiplication yields composition, as expected
+    \[
+        m(a b)(r) = {}_{a b}m(r) = (a b) r = a (b r) = {}_am({}_bm(r)) = m(a)(m(b)(r)).
+    \]
+    Also, \(m(1)(r) = 1 \cdot r = r = \Id_R(r)\) and hence \(m(1) = \Id_R\). We
+    conclude that \(m\) is indeed a ring morphism. The injectivity comes from the
+    fact that the only element that yields a zero-map in \(\End_{\Rng}(R)\) is zero
+    --- thus the kernel is trivial.
 \end{proof}
 %
 
 %
 \begin{remark}
-\label{rem:ring-right-multiplication-lacks-conditions}
-Notice that one cannot further extend
-\cref{prop:left-multiplication-injective-ring-morphism} for
-right-multiplications, this comes from the fact that
-\[
-m_{a b}(r) = r (a b) = (r a) b = m_b(m_a(r)).
-\]
-That is, the multiplicative structure has its order reversed when transitioning
-to the compositional structure.
+    \label{rem:ring-right-multiplication-lacks-conditions}
+    Notice that one cannot further extend
+    \cref{prop:left-multiplication-injective-ring-morphism} for
+    right-multiplications, this comes from the fact that
+    \[
+        m_{a b}(r) = r (a b) = (r a) b = m_b(m_a(r)).
+    \]
+    That is, the multiplicative structure has its order reversed when transitioning
+    to the compositional structure.
 \end{remark}
 %
 
 %
 \begin{proposition}
-\label{prop:unique-ring-structure-Z}
-Up to isomorphism, there exists a unique ring (with identity) structure whose
-underlying group is \((\Z, +)\).
+    \label{prop:unique-ring-structure-Z}
+    Up to isomorphism, there exists a unique ring (with identity) structure whose
+    underlying group is \((\Z, +)\).
 \end{proposition}
 %
 
 %
 \begin{proof}
-Let \(R\) be any ring with underlying group \(\Z\), and fix any \(r \in
-R\). Consider the ring morphism \(m: R \to \End_{\Ab}(R)\) as defined in
-\cref{prop:left-multiplication-injective-ring-morphism}. Let
-\(f \in \End_{\Ab}(R)\) is completely defined by \(f(1_R)\), thus
-\({}_{f(1_r)}m = f\). Therefore \(m\) is surjective and hence a bijection ---
-\(m\) thus establishes an isomorphism \(R \iso \End_{\Ab}(R)\). Moreover, by
-\cref{prop:Z-isomorphic-End(Z)-in-Ring} we have \(\End_{\Ab}(R) \iso \Z\), thus
-\[
-R \iso \End_{\Ab}(R) \iso \Z,
-\]
-which proves the statement.
+    Let \(R\) be any ring with underlying group \(\Z\), and fix any \(r \in
+    R\). Consider the ring morphism \(m: R \to \End_{\Ab}(R)\) as defined in
+    \cref{prop:left-multiplication-injective-ring-morphism}. Let
+    \(f \in \End_{\Ab}(R)\) is completely defined by \(f(1_R)\), thus
+    \({}_{f(1_r)}m = f\). Therefore \(m\) is surjective and hence a bijection ---
+    \(m\) thus establishes an isomorphism \(R \iso \End_{\Ab}(R)\). Moreover, by
+    \cref{prop:Z-isomorphic-End(Z)-in-Ring} we have \(\End_{\Ab}(R) \iso \Z\), thus
+    \[
+        R \iso \End_{\Ab}(R) \iso \Z,
+    \]
+    which proves the statement.
 \end{proof}
 %
 
 %
 \begin{proposition}
-\label{prop:center-ring-iso-center-End(R)}
-Let \(R\) be a ring and. There is a subring \(S \subseteq Z(R)\) of the
-centre of \(R\) such that there exists a \emph{ring} isomorphism
-\[
-S \iso Z(\End_{\Ab}(R)).
-\]
+    \label{prop:center-ring-iso-center-End(R)}
+    Let \(R\) be a ring and. There is a subring \(S \subseteq Z(R)\) of the
+    centre of \(R\) such that there exists a \emph{ring} isomorphism
+    \[
+        S \iso Z(\End_{\Ab}(R)).
+    \]
 \end{proposition}
 %
 
 %
 \begin{proof}
-Let \(f \in Z(\End_{\Ab}(R))\) be any group morphism. Since \(f\) commutes with
-every group endomorphism on \(R\), in particular \(f\) commutes with every
-right-multiplication by an element of \(R\) --- that is, given \(r \in R\), we
-have \(f(x r) = f(x) r\), which can only be the case if \(f\) was a
-left-multiplication by an element of \(R\). Moreover, by
-\cref{prop:left-multiplication-injective-ring-morphism} the map
-\(m: R \to \End_{\Ab}(R)\) is injective --- restricting \(m\) to the subring of
-\(Z(R)\) given by
-\(S \coloneq \{r \in Z(R) \colon {}_rm \in Z(\End_{\Ab}(R))\}\) makes \(m|_S\)
-into a surjective morphism. Therefore the morphism
-\(\overline{m}: S \iso Z(\End_{\Ab}(R))\), where \(\overline{m}(r) = m(r)\) for
-all \(r \in S\), is an isomorphism of rings.
+    Let \(f \in Z(\End_{\Ab}(R))\) be any group morphism. Since \(f\) commutes with
+    every group endomorphism on \(R\), in particular \(f\) commutes with every
+    right-multiplication by an element of \(R\) --- that is, given \(r \in R\), we
+    have \(f(x r) = f(x) r\), which can only be the case if \(f\) was a
+    left-multiplication by an element of \(R\). Moreover, by
+    \cref{prop:left-multiplication-injective-ring-morphism} the map
+    \(m: R \to \End_{\Ab}(R)\) is injective --- restricting \(m\) to the subring of
+    \(Z(R)\) given by
+    \(S \coloneq \{r \in Z(R) \colon {}_rm \in Z(\End_{\Ab}(R))\}\) makes \(m|_S\)
+    into a surjective morphism. Therefore the morphism
+    \(\overline{m}: S \iso Z(\End_{\Ab}(R))\), where \(\overline{m}(r) = m(r)\) for
+    all \(r \in S\), is an isomorphism of rings.
 \end{proof}
 %
 
 %
 \begin{corollary}
-\label{cor:Z/nZ-iso-End(Z/nZ)}
-Let \(n \in \Z_{> 0}\) be a positive integer. There exists a \emph{ring}
-isomorphism
-\[
-\Z/n\Z \iso \End_{\Ab}(\Z/n\Z).
-\]
+    \label{cor:Z/nZ-iso-End(Z/nZ)}
+    Let \(n \in \Z_{> 0}\) be a positive integer. There exists a \emph{ring}
+    isomorphism
+    \[
+        \Z/n\Z \iso \End_{\Ab}(\Z/n\Z).
+    \]
 \end{corollary}
 %
 

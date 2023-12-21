@@ -1,29 +1,29 @@
 \section{Affine space, projective space, and polynomials}
 
 \begin{definition}[Affine space]
-   Let \(k\) be a field and \(\A^n(k)\) be the collection of objects \(a =
-   (a_i)_{i=1}^{n}\) with \(a_i \in k\). We define in \(\A^n(k)\) the notion of
-   addition and multiplication as usual, so that we can view it as a vector
-   space. We call \(\A^n(k)\) the affine \(n\) dimensional \(k\)-space. The
-   point \(0 := (0, \dots, 0)\) is called the origin.
+    Let \(k\) be a field and \(\A^n(k)\) be the collection of objects \(a =
+    (a_i)_{i=1}^{n}\) with \(a_i \in k\). We define in \(\A^n(k)\) the notion of
+    addition and multiplication as usual, so that we can view it as a vector
+    space. We call \(\A^n(k)\) the affine \(n\) dimensional \(k\)-space. The
+    point \(0 := (0, \dots, 0)\) is called the origin.
 \end{definition}
 
 \begin{definition}[Projective space]
-   Let \(k\) be a field, we define the projective  \(n\) dimensional
-   \(k\)-space to be
-   \[
-      \PP^n(k) := (\A^{n+1}(k)\setminus\{0\})/\sim
-   \] 
-   where \(\sim\) is an equivalence relation between objects \(a, b \in
-   \A^{n+1}(k) \setminus \{0\} \) defined as
-   \[
-      (a_0, a_1, \dots, a_n) \sim (b_0, b_1, \dots, b_n) \Leftrightarrow \exists
-      \gamma \in k^\ast \text{ such that } a_i = \gamma b_i.
-   \] 
-   Objects in the projective space are equivalence classes containing
-   representative points of the affine \(n+1\) dimensional \(k\)-space.
-   Geometrically we see these equivalence classes as injective correspondences
-   with lines in \(\A^{n+1}(k)\) that pass through the origin.
+    Let \(k\) be a field, we define the projective  \(n\) dimensional
+    \(k\)-space to be
+    \[
+        \PP^n(k) := (\A^{n+1}(k)\setminus\{0\})/\sim
+    \]
+    where \(\sim\) is an equivalence relation between objects \(a, b \in
+    \A^{n+1}(k) \setminus \{0\} \) defined as
+    \[
+        (a_0, a_1, \dots, a_n) \sim (b_0, b_1, \dots, b_n) \Leftrightarrow \exists
+        \gamma \in k^\ast \text{ such that } a_i = \gamma b_i.
+    \]
+    Objects in the projective space are equivalence classes containing
+    representative points of the affine \(n+1\) dimensional \(k\)-space.
+    Geometrically we see these equivalence classes as injective correspondences
+    with lines in \(\A^{n+1}(k)\) that pass through the origin.
 \end{definition}
 
 Let \(k\) be a finite field with  \(|k| = q \), then the number of objects
@@ -34,158 +34,158 @@ given any representative \(a \in \A^{n+1}(k) \setminus \{0\} \) we have that the
 class \([a] \in \PP^n(k)\) has a total of \(q-1\) distinct elements (since
 \(\gamma \in k^\ast\) has a total of \(q-1\) possibilities). Therefore we
 conclude that the number of objects in \(\PP^{n}(k)\) is
- \[
+\[
     \frac{q^{n+1}-1}{q-1} = q^n + q^{n-1} + \cdots + q + 1.
-\] 
+\]
 
 \begin{lemma}
-   Let \(\overline{H}\) be the set whose elements are classes \([x] \in \PP^n(k)
-   : x_0 = 0\). Then the map 
-   \[
-      \varphi: \PP^{n}(k) \to \A^n(k) \text{ defined as } \varphi([x]) :=
-      (x_1/x_0, x_2/x_0, \dots, x_n/x_0)
-   \] 
-   establishes an isomorphism \(\PP^{n}(k) \iso \A^{n}(k)\).
+    Let \(\overline{H}\) be the set whose elements are classes \([x] \in \PP^n(k)
+    : x_0 = 0\). Then the map
+    \[
+        \varphi: \PP^{n}(k) \to \A^n(k) \text{ defined as } \varphi([x]) :=
+        (x_1/x_0, x_2/x_0, \dots, x_n/x_0)
+    \]
+    establishes an isomorphism \(\PP^{n}(k) \iso \A^{n}(k)\).
 \end{lemma}
 
 \begin{proof}
-   (Monomorphism) Suppose that \(\varphi([x]) = \varphi([y])\), then from the
-   definition of the affine space, we have that for all index \(i\) we have
-   \(x_i/x_0 = y_i/y_0 \Rightarrow \frac{x_0}{y_0}x_i = y_i\) if we take
-   \(\gamma := \frac{x_0}{y_0} \in k^\ast\) we see that in fact 
+    (Monomorphism) Suppose that \(\varphi([x]) = \varphi([y])\), then from the
+    definition of the affine space, we have that for all index \(i\) we have
+    \(x_i/x_0 = y_i/y_0 \Rightarrow \frac{x_0}{y_0}x_i = y_i\) if we take
+    \(\gamma := \frac{x_0}{y_0} \in k^\ast\) we see that in fact
     \[
-       (x_1/x_0,\dots,x_n/x_0) \sim (y_1/y_0,\dots,y_n/y_0) \Leftrightarrow [x]
-       = [y]
-   \] 
-   thus \(\varphi\) is a monomorphism.
-   (Epimorphism) Let \((\ell_1, \dots, \ell_n) \in \A^n(k)\), then we have that
-   \[\varphi\left(\left[(1, \ell_1, \dots, \ell_n)\right]\right) =
-   (\ell_1,\dots,\ell_n)\] which shows, that  \(\varphi\) is an epimorphism.
+        (x_1/x_0,\dots,x_n/x_0) \sim (y_1/y_0,\dots,y_n/y_0) \Leftrightarrow [x]
+        = [y]
+    \]
+    thus \(\varphi\) is a monomorphism.
+    (Epimorphism) Let \((\ell_1, \dots, \ell_n) \in \A^n(k)\), then we have that
+    \[\varphi\left(\left[(1, \ell_1, \dots, \ell_n)\right]\right) =
+        (\ell_1,\dots,\ell_n)\] which shows, that  \(\varphi\) is an epimorphism.
 \end{proof}
 
 \begin{definition}[Hyperplane]
-   We define the set \(\overline{H}\) to be the hyperplane at infinity of
-   \(\PP^n(k)\). This set has the structure of \(\PP^{n-1}(k)\), since we are
-   confined to define \(x_0 = 0\). Thus 
-   \[
-      \overline{H} \iso \PP^{n-1}(k)
-   \] 
-   will be interpreted as the points at infinity.
+    We define the set \(\overline{H}\) to be the hyperplane at infinity of
+    \(\PP^n(k)\). This set has the structure of \(\PP^{n-1}(k)\), since we are
+    confined to define \(x_0 = 0\). Thus
+    \[
+        \overline{H} \iso \PP^{n-1}(k)
+    \]
+    will be interpreted as the points at infinity.
 \end{definition}
 
 \begin{definition}
-   We define \(k[x_1, \dots, x_n]\) to be the ring of polynomials of \(n\)
-   variables over \(k\). If  \(f \in k[x_1, \dots, x_n]\) is such a polynomial,
-   then it has the form
-   \[
-      f(x_1, \dots, x_n) = \sum_{(i_k)_{k=1}^n} \bigg(a_{(i_k)} \prod_{k = 1}^n
-      x_k^{i_k}\bigg)
-   \] 
-   where each \(i_k \in \mathbb{Z}_{\geqslant 0}\) and \(a_{(i_k)} \neq 0\).
+    We define \(k[x_1, \dots, x_n]\) to be the ring of polynomials of \(n\)
+    variables over \(k\). If  \(f \in k[x_1, \dots, x_n]\) is such a polynomial,
+    then it has the form
+    \[
+        f(x_1, \dots, x_n) = \sum_{(i_k)_{k=1}^n} \bigg(a_{(i_k)} \prod_{k = 1}^n
+        x_k^{i_k}\bigg)
+    \]
+    where each \(i_k \in \mathbb{Z}_{\geqslant 0}\) and \(a_{(i_k)} \neq 0\).
 
-   A monomial has the form \(\prod_{k=1}^n x_k^{i_k}\) and it's total degree is
-   defined to be the sum \(\sum_{k=1}^n i_k\). The total degree of \(f\),
-   denoted by \(\deg(f)\), is defined to be the maximum of the degrees of the
-   monomials that occur in \(f\). We also extend this notion for each variable,
-   thus we may say that the degree of the variable \(x_m\), which we denote by
-   \(\deg_m(f)\), is the maximum of it's degrees over all monomials of \(f\).
+    A monomial has the form \(\prod_{k=1}^n x_k^{i_k}\) and it's total degree is
+    defined to be the sum \(\sum_{k=1}^n i_k\). The total degree of \(f\),
+    denoted by \(\deg(f)\), is defined to be the maximum of the degrees of the
+    monomials that occur in \(f\). We also extend this notion for each variable,
+    thus we may say that the degree of the variable \(x_m\), which we denote by
+    \(\deg_m(f)\), is the maximum of it's degrees over all monomials of \(f\).
 \end{definition}
 
 \begin{corollary}
-   Given \(f, g \in k[x_1, \dots, x_n]\) then
-   \begin{enumerate}[I.]
-      \item \(\deg(fg) = \deg(f) + \deg(g)\).
-      \item  \(\deg_m(fg) = \deg_m(f) + \deg_m(g)\).
-   \end{enumerate}
+    Given \(f, g \in k[x_1, \dots, x_n]\) then
+    \begin{enumerate}[I.]
+        \item \(\deg(fg) = \deg(f) + \deg(g)\).
+        \item  \(\deg_m(fg) = \deg_m(f) + \deg_m(g)\).
+    \end{enumerate}
 \end{corollary}
 
 \begin{definition}[Homogeneous polynomial]
-   We say that a polynomial \(f\) is homogeneous of degree \(\ell\) if every
-   monomial of \(f\) has degree \(\ell\). 
+    We say that a polynomial \(f\) is homogeneous of degree \(\ell\) if every
+    monomial of \(f\) has degree \(\ell\).
 \end{definition}
 
 Let \(K \supseteq k\) be a field. Then, if \(f(x_1, \dots, x_n) \in k[x_1, \dots,
-x_n]\) we can map \(\A^n(K) \xrightarrow{f} K\) by sending \(a \mapsto f(a)\).
+        x_n]\) we can map \(\A^n(K) \xrightarrow{f} K\) by sending \(a \mapsto f(a)\).
 We call \(a \in \A^n(K) : f(a) = 0\) a zero of \(f\).
 
 \begin{definition}[Hypersurface]
-   Let \(f \in k[x_1, \dots, x_n]\) be a non-zero polynomial and \(K \supseteq
-   k\) be fields. We define the object \(H_f(K) := \{a \in \A^n(K) : f(a) = 0\}
-   \) to be the hypersurface defined by \(f\) in \(\A^n(K)\).
+    Let \(f \in k[x_1, \dots, x_n]\) be a non-zero polynomial and \(K \supseteq
+    k\) be fields. We define the object \(H_f(K) := \{a \in \A^n(K) : f(a) = 0\}
+    \) to be the hypersurface defined by \(f\) in \(\A^n(K)\).
 \end{definition}
 
 \begin{definition}[Projective hypersurface]
-   Let \(K \supseteq k\) be fields and \(h \in k[x_0, \dots, x_n]\) be a non-zero
-   homogeneous polynomial of degree \(\ell\). Since \(\forall \gamma \in K\) we
-   have \(h(\gamma x) = \gamma^\ell h(x)\) then if \(a \in \A^{n+1}(K)\) is a
-   zero of \(h\), it follows that \(h(\gamma a) = \gamma^\ell h(a) = 0\). We
-   define the set
+    Let \(K \supseteq k\) be fields and \(h \in k[x_0, \dots, x_n]\) be a non-zero
+    homogeneous polynomial of degree \(\ell\). Since \(\forall \gamma \in K\) we
+    have \(h(\gamma x) = \gamma^\ell h(x)\) then if \(a \in \A^{n+1}(K)\) is a
+    zero of \(h\), it follows that \(h(\gamma a) = \gamma^\ell h(a) = 0\). We
+    define the set
     \[
-       \overline{H}_h(K) = \{[a] \in \PP^n(K) : h(a) = 0\} 
-   \] 
-   to be the projective hypersurface defined by \(h\) on \(\PP^n(K)\).
+        \overline{H}_h(K) = \{[a] \in \PP^n(K) : h(a) = 0\}
+    \]
+    to be the projective hypersurface defined by \(h\) on \(\PP^n(K)\).
 \end{definition}
 
 \begin{definition}[Algebraic variety]
-   Let a collection \(f_1, \dots, f_m \in k[x_1, \dots, x_n]\). If the ideal
-   \((f_1, \dots, f_m)\) is prime, then
+    Let a collection \(f_1, \dots, f_m \in k[x_1, \dots, x_n]\). If the ideal
+    \((f_1, \dots, f_m)\) is prime, then
     \[
-       V = \{(a_1, \dots, a_n) \in \A^n(k) :f_j(a_1, \dots, a_n) = 0\} 
-   \] 
-   is an algebraic variety.
+        V = \{(a_1, \dots, a_n) \in \A^n(k) :f_j(a_1, \dots, a_n) = 0\}
+    \]
+    is an algebraic variety.
 \end{definition}
 
 \begin{definition}[Projective algebraic set]
-   Let \(h_1, \dots, h_m \in k[x_0, x_1, \dots, x_n]\) be a collection of
-   homogeneous polynomials. If the ideal \((h_1,\dots,h_m)\) is a prime ideal,
-   then
+    Let \(h_1, \dots, h_m \in k[x_0, x_1, \dots, x_n]\) be a collection of
+    homogeneous polynomials. If the ideal \((h_1,\dots,h_m)\) is a prime ideal,
+    then
     \[
-       V = \{[a] \in \PP^{n}(k) : h_i(a) = 0\} 
-   \] 
-   is called a projective algebraic set.
+        V = \{[a] \in \PP^{n}(k) : h_i(a) = 0\}
+    \]
+    is called a projective algebraic set.
 \end{definition}
 
 \begin{proposition}[Homogenization]
-   Let \(f \in k[x_1, \dots, x_n]\) and define the polynomial \(\overline{f} \in
-   k[y_0, y_1,\dots,y_n]\) such that
-   \[
-      \overline{f}(y_0, \dots, y_n) := y_0^{\deg(f)} f\left( y_1/y_0, \dots,
-      y_n/y_0 \right).
-   \] 
-   Then \(\overline{f}\) is a homogeneous polynomial with degree equal to
-   \(\deg(f)\) and moreover \[\overline{f}(1, y_1, \dots, y_n) = f(y_1, \dots,
-   y_n).\]
+    Let \(f \in k[x_1, \dots, x_n]\) and define the polynomial \(\overline{f} \in
+    k[y_0, y_1,\dots,y_n]\) such that
+    \[
+        \overline{f}(y_0, \dots, y_n) := y_0^{\deg(f)} f\left( y_1/y_0, \dots,
+        y_n/y_0 \right).
+    \]
+    Then \(\overline{f}\) is a homogeneous polynomial with degree equal to
+    \(\deg(f)\) and moreover \[\overline{f}(1, y_1, \dots, y_n) = f(y_1, \dots,
+        y_n).\]
 \end{proposition}
 
 \begin{proof}
-   Let \(\prod_{k=1}^n x_k^{i_k}\) be any monomial of \(f\), with degree
-   \(\sum_k i_k = \ell \leqslant \deg(f)\). Then, the respective monomial in
-   \(\overline{f}\) will have the form \[y_0^{\deg(f)}\prod_{k=1}^n
-   y_k^{i_k}/y_0 = y_0^{\deg(f) - \ell} \prod_{k=1}^n y_k^{i_k}\] which
-   has degree \(\deg(f)\) and therefore all monomials of \(\overline{f}\) have
-   degree \(\deg(f)\) and thus it is homogeneous.
+    Let \(\prod_{k=1}^n x_k^{i_k}\) be any monomial of \(f\), with degree
+    \(\sum_k i_k = \ell \leqslant \deg(f)\). Then, the respective monomial in
+    \(\overline{f}\) will have the form \[y_0^{\deg(f)}\prod_{k=1}^n
+        y_k^{i_k}/y_0 = y_0^{\deg(f) - \ell} \prod_{k=1}^n y_k^{i_k}\] which
+    has degree \(\deg(f)\) and therefore all monomials of \(\overline{f}\) have
+    degree \(\deg(f)\) and thus it is homogeneous.
 \end{proof}
 
 \begin{definition}[Hypersurface projective closure]
-   Let \(H_f(K) \subseteq \A^n(K)\) be the hypersurface generated by \(f \in
-   k[x_1, \dots, x_n]\).  Since  \(\overline{f} \in k[y_0, \dots, y_n]\) and is
-   homogeneous, then it defines a projective hypersurface
-   \(\overline{H}_{\overline{f}} \subseteq \PP^n(K)\). We call
-   \(\overline{H}_{\overline{f}}(K)\) the projective closure of \(H_f(K)\) in
-   \(\PP^n(K)\).
+    Let \(H_f(K) \subseteq \A^n(K)\) be the hypersurface generated by \(f \in
+    k[x_1, \dots, x_n]\).  Since  \(\overline{f} \in k[y_0, \dots, y_n]\) and is
+    homogeneous, then it defines a projective hypersurface
+    \(\overline{H}_{\overline{f}} \subseteq \PP^n(K)\). We call
+    \(\overline{H}_{\overline{f}}(K)\) the projective closure of \(H_f(K)\) in
+    \(\PP^n(K)\).
 \end{definition}
 
 \begin{definition}
-   We now define another mapping, namely
-   \[
-      \lambda : \A^n(K) \to \PP^n(K) \text{ such that } (a_1, \dots, a_n)
-      \mapsto [1 : a_1 : \cdots : a_n].
-   \] 
-   Which is clearly injective and also \(\mathrm{im}\big(
-   \lambda\big|_{H_f(K)}\big) \subseteq \overline{H}_{\overline{f}}(K)\). Also
-   importantly we have 
-   \[
-      \mathrm{im}(\lambda) \iso \A^n(K)
-   \] 
-   will be viewed as the finite points.
+    We now define another mapping, namely
+    \[
+        \lambda : \A^n(K) \to \PP^n(K) \text{ such that } (a_1, \dots, a_n)
+        \mapsto [1 : a_1 : \cdots : a_n].
+    \]
+    Which is clearly injective and also \(\mathrm{im}\big(
+    \lambda\big|_{H_f(K)}\big) \subseteq \overline{H}_{\overline{f}}(K)\). Also
+    importantly we have
+    \[
+        \mathrm{im}(\lambda) \iso \A^n(K)
+    \]
+    will be viewed as the finite points.
 \end{definition}

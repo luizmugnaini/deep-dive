@@ -6,20 +6,20 @@
 \usepackage{layout}
 \usepackage{afterpage}
 \usepackage[
-  asymmetric,
-  textheight     = 673pt,
-  marginparsep   = 7pt,
-  footskip       = 27pt,
-  hoffset        = 0pt,
-  paperwidth     = 597pt,
-  textwidth      = 452pt,
-  marginparwidth = 101pt,
-  voffset        = 0pt,
-  paperheight    = 845pt,
+    asymmetric,
+    textheight     = 673pt,
+    marginparsep   = 7pt,
+    footskip       = 27pt,
+    hoffset        = 0pt,
+    paperwidth     = 597pt,
+    textwidth      = 452pt,
+    marginparwidth = 101pt,
+    voffset        = 0pt,
+    paperheight    = 845pt,
 ]{geometry}
 
 \newcommand{\changegeometry}{\newgeometry{includehead,headheight=89pt}%
-  \afterpage{\aftergroup\restoregeometry}%
+    \afterpage{\aftergroup\restoregeometry}%
 }
 
 % Math stuff: do not mess with the ordering!
@@ -47,13 +47,13 @@
 % References
 \usepackage{hyperref}
 \hypersetup{
-  colorlinks = true,
-  allcolors  = brightmaroon,
+    colorlinks = true,
+    allcolors  = brightmaroon,
 }
 \usepackage[capitalize,nameinlink]{cleveref}
 \usepackage[
-  backend = biber,
-  style   = alphabetic,
+    backend = biber,
+    style   = alphabetic,
 ]{biblatex}
 \addbibresource{src/bibliography.bib}
 
@@ -131,7 +131,7 @@
 \newcommand{\dis}{\iso}
 
 \newcommand{\isounique}{%
-  \xdashrightarrow{\raisebox{-.6ex}[0ex][0ex]{\(\arrowiso\)}}
+    \xdashrightarrow{\raisebox{-.6ex}[0ex][0ex]{\(\arrowiso\)}}
 }%
 
 % Natural transformation arrow

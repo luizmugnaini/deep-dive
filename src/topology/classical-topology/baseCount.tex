@@ -1,140 +1,140 @@
 \section{Countability}
 
 \begin{definition}[First countable]\label{def: first countable}
-Let \(X\) be a topological space. We say that \(X\) is first countable if for
-all points \(p \in X\) there exists a countable basis of \(X\) composed of
-neighbourhoods of \(p\). Equivalently \(\chi(p, X) \leq \aleph_0\).
+    Let \(X\) be a topological space. We say that \(X\) is first countable if for
+    all points \(p \in X\) there exists a countable basis of \(X\) composed of
+    neighbourhoods of \(p\). Equivalently \(\chi(p, X) \leq \aleph_0\).
 \end{definition}
 
 \subsection{Convergence on First Countable Spaces}
 
 \begin{proposition}[Sufficient condition for Hausdorff]
-Let \(X\) be a first countable space. Then, \(X\) is Hausdorff if and only if
-every sequence has at most one limit
+    Let \(X\) be a first countable space. Then, \(X\) is Hausdorff if and only if
+    every sequence has at most one limit
 \end{proposition}
 
 \begin{proof}
-Let \(x, y \in X\) be distinct points, and \(\mathcal B\) be a neighbourhood
-basis at \(x\) and \(\mathcal A\) be a neighbourhood basis at \(y\). If \(X\)
-is not Hausdorff, then for all \(n \in \N\), choose a point \(x_n \in
-B_n \cap A_n\), where \(B_n \in \mathcal B\) and \(A_n \in \mathcal A\) and
-consider the sequence \(\{x_n\}_{n \in \N}\). Then there exists
-sub-sequences \(\{x_k\}\) and \(\{x_j\}\) for which \(x_k \to x\) and \(x_j \to
-y\).
+    Let \(x, y \in X\) be distinct points, and \(\mathcal B\) be a neighbourhood
+    basis at \(x\) and \(\mathcal A\) be a neighbourhood basis at \(y\). If \(X\)
+    is not Hausdorff, then for all \(n \in \N\), choose a point \(x_n \in
+    B_n \cap A_n\), where \(B_n \in \mathcal B\) and \(A_n \in \mathcal A\) and
+    consider the sequence \(\{x_n\}_{n \in \N}\). Then there exists
+    sub-sequences \(\{x_k\}\) and \(\{x_j\}\) for which \(x_k \to x\) and \(x_j \to
+    y\).
 \end{proof}
 
 \begin{definition}[Nested neighbourhood basis]
-Let \(X\) be a topological space and a point \(p \in X\). The infinite sequence
-of neighbourhoods of \(p\), namely \((U_i)_{i \in \N}\) is said to be
-a nested neighbourhood basis at \(p\) if for all \(i \in \N, U_{i+1}
-\subseteq U_i\) and for all neighbourhood \(V\) of \(p\), there exists \(i \in
-\N\) for which \(U_i \subseteq V\).
+    Let \(X\) be a topological space and a point \(p \in X\). The infinite sequence
+    of neighbourhoods of \(p\), namely \((U_i)_{i \in \N}\) is said to be
+    a nested neighbourhood basis at \(p\) if for all \(i \in \N, U_{i+1}
+    \subseteq U_i\) and for all neighbourhood \(V\) of \(p\), there exists \(i \in
+    \N\) for which \(U_i \subseteq V\).
 \end{definition}
 
 \begin{lemma}
-Let \(X\) be a first countable topological space. Then, for all points \(p \in
-X\) there exists a nested neighbourhood basis at \(p\).
+    Let \(X\) be a first countable topological space. Then, for all points \(p \in
+    X\) there exists a nested neighbourhood basis at \(p\).
 \end{lemma}
 
 \begin{proof}
-Since \(X\) is first countable, let \(\mathcal V\) be a countable basis for the
-topology of \(X\) at \(p\). If \(|\mathcal V| < \infty\) then define \(U_i \coloneq
-V_1 \cap \dots \cap V_{|\mathcal V|}\) for all \(i \in \N\). If
-\(|\mathcal V|\) is infinite, then define for all \(i \in \N\) the
-set \(U_i \coloneq V_1 \cap \dots \cap V_i\). For both cases, the sequence
-\((U_i)_{i \in \N}\) is a nested neighbourhood basis.
+    Since \(X\) is first countable, let \(\mathcal V\) be a countable basis for the
+    topology of \(X\) at \(p\). If \(|\mathcal V| < \infty\) then define \(U_i \coloneq
+    V_1 \cap \dots \cap V_{|\mathcal V|}\) for all \(i \in \N\). If
+    \(|\mathcal V|\) is infinite, then define for all \(i \in \N\) the
+    set \(U_i \coloneq V_1 \cap \dots \cap V_i\). For both cases, the sequence
+    \((U_i)_{i \in \N}\) is a nested neighbourhood basis.
 \end{proof}
 
 \begin{definition}[Eventually in]
-Let \(X\) be a topological space, and a sequence \((x_i)_{i \in \N}
-\subseteq X\), and a set \(A \subseteq X\). We say that \((x_i)_{i \in
-\N}\) is eventually in \(A\) if \(x_i \in A\) for all but finitely
-many \(i \in \N\).
+    Let \(X\) be a topological space, and a sequence \((x_i)_{i \in \N}
+    \subseteq X\), and a set \(A \subseteq X\). We say that \((x_i)_{i \in
+            \N}\) is eventually in \(A\) if \(x_i \in A\) for all but finitely
+    many \(i \in \N\).
 \end{definition}
 
 \begin{lemma}[Sequence lemma]\label{lem: sequence lemma}
-Let \(X\) be a first countable space, and a set \(A \subseteq X\), and a point
-\(p \in X\). Then
-\begin{enumerate}[(a)]
-  \item \(p \in \Cl A\) if and only if \(p\) is a limit of points of
-    \(A\).
-  \item \(A\) is closed in \(X\) if and only if \(A\) contains every limit
-    point of sequences in \(A\).
-  \item \(p \in \Int(A)\) if and only if all sequences that converge to
-    \(p\) are eventually in \(A\).
-  \item \(A\) is open in \(X\) if and only if every sequence in \(X\)
-    converging to a point of \(A\) is eventually in \(A\).
-\end{enumerate}
+    Let \(X\) be a first countable space, and a set \(A \subseteq X\), and a point
+    \(p \in X\). Then
+    \begin{enumerate}[(a)]
+        \item \(p \in \Cl A\) if and only if \(p\) is a limit of points of
+              \(A\).
+        \item \(A\) is closed in \(X\) if and only if \(A\) contains every limit
+              point of sequences in \(A\).
+        \item \(p \in \Int(A)\) if and only if all sequences that converge to
+              \(p\) are eventually in \(A\).
+        \item \(A\) is open in \(X\) if and only if every sequence in \(X\)
+              converging to a point of \(A\) is eventually in \(A\).
+    \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-(a) (\(\Rightarrow\)) Let \(p \in \Cl A\), then for all neighbourhoods
-\(V \subseteq A\) of \(p\), the set \(V \cap (A \setminus \{p\})\) is
-non-empty. Since \(X\) is first countable, consider \((U_i)_{i \in \N}\) a nested
-neighbourhood basis at \(p\) and construct the sequence \(x : \N \to \bigcup_{i
-\in \N} U_i \cap (A \setminus \{p\}) \) defined as \(i \mapsto x_i \in U_i \cap
-(A \setminus \{p\})\). We'll show that \(x_i \to p\). Consider \(V \subseteq X\)
-any neighbourhood of \(p\), since \((U_i)_{i \in \N}\) is a basis then there
-exists an indexing set \(I_{V} \subseteq \N\) for which \(V = \bigcup_{i \in
-I_V} U_i\).  Consider the index \(n \coloneq \min(I_V)\), then, from the
-definition of the nested basis, we have for all \(i \geq n\) the elements \(x_i
-\in V \cap A\), hence \(x_i \to p\).
-(\(\Leftarrow\)) Suppose that \((x_i)_{i \in \N}\) is a sequence of points in
-\(A\) such that \(x_i \to p\). From definition, for all neighbourhood \(V
-\subseteq X\) of \(p\), there exists \(n \in \N\) such that \(\forall i \geq N,
-x_i \in V\), moreover, since \(x_i \in A\) then \(x_i \in V \cap A\) which
-implies that \(p \not\in \Ext(A)\), hence \(p \in \Cl A\).
+    (a) (\(\Rightarrow\)) Let \(p \in \Cl A\), then for all neighbourhoods
+    \(V \subseteq A\) of \(p\), the set \(V \cap (A \setminus \{p\})\) is
+    non-empty. Since \(X\) is first countable, consider \((U_i)_{i \in \N}\) a nested
+    neighbourhood basis at \(p\) and construct the sequence \(x : \N \to \bigcup_{i
+        \in \N} U_i \cap (A \setminus \{p\}) \) defined as \(i \mapsto x_i \in U_i \cap
+    (A \setminus \{p\})\). We'll show that \(x_i \to p\). Consider \(V \subseteq X\)
+    any neighbourhood of \(p\), since \((U_i)_{i \in \N}\) is a basis then there
+    exists an indexing set \(I_{V} \subseteq \N\) for which \(V = \bigcup_{i \in
+        I_V} U_i\).  Consider the index \(n \coloneq \min(I_V)\), then, from the
+    definition of the nested basis, we have for all \(i \geq n\) the elements \(x_i
+    \in V \cap A\), hence \(x_i \to p\).
+    (\(\Leftarrow\)) Suppose that \((x_i)_{i \in \N}\) is a sequence of points in
+    \(A\) such that \(x_i \to p\). From definition, for all neighbourhood \(V
+    \subseteq X\) of \(p\), there exists \(n \in \N\) such that \(\forall i \geq N,
+    x_i \in V\), moreover, since \(x_i \in A\) then \(x_i \in V \cap A\) which
+    implies that \(p \not\in \Ext(A)\), hence \(p \in \Cl A\).
 
-(b) (\(\Rightarrow\)) Suppose that \(A\) is closed, then \(A = \Cl A\).
-Consider any sequence \((x_i)_{i \in \N}\) of points in \(A\) and let
-\(x_i \to p\). From item (a) we have that \(p \in A\). (\(\Leftarrow\))
-Suppose the contrary, then given any \(p \in \Cl A\) we have \(p \in
-A\), which implies that \(A\) is closed.
+    (b) (\(\Rightarrow\)) Suppose that \(A\) is closed, then \(A = \Cl A\).
+    Consider any sequence \((x_i)_{i \in \N}\) of points in \(A\) and let
+    \(x_i \to p\). From item (a) we have that \(p \in A\). (\(\Leftarrow\))
+    Suppose the contrary, then given any \(p \in \Cl A\) we have \(p \in
+    A\), which implies that \(A\) is closed.
 
-(c) (\(\Rightarrow\)) Suppose \(p \in \Int(A)\). Let \((x_i)_{i \in
-\N} \subseteq X\) be a sequence such that \(x_i \to p\). Consider any
-neighbourhood \(V \subseteq A\) of \(p\), then from the definition of
-convergence, exists \(N \in \N\) such that \(\forall i \geq N, x_i \in
-V_p\), then there exists at most \(N - 1\) points of \((x_i)_{i \in
-\N}\) outside \(A\), hence the sequence is eventually in \(A\).
-(\(\Leftarrow\)) Suppose \((x_i)_{i \in \N}\) is not-eventually in
-\(A\) and \(x_i \to p\). For the sake of contradiction, suppose that \(p \in
-\Int(A)\), then given a neighbourhood \(V \subseteq A\) of \(p\), there must
-exist \(N \in \N\) such that \(\forall i \geq N, x_i \in V \subseteq
-A\), which is a contradiction to the fact that \((x_i)_{i \in \N}\) is
-not-eventually in \(A\), hence \(p \not\in \Int(A)\).
+    (c) (\(\Rightarrow\)) Suppose \(p \in \Int(A)\). Let \((x_i)_{i \in
+            \N} \subseteq X\) be a sequence such that \(x_i \to p\). Consider any
+    neighbourhood \(V \subseteq A\) of \(p\), then from the definition of
+    convergence, exists \(N \in \N\) such that \(\forall i \geq N, x_i \in
+    V_p\), then there exists at most \(N - 1\) points of \((x_i)_{i \in
+            \N}\) outside \(A\), hence the sequence is eventually in \(A\).
+    (\(\Leftarrow\)) Suppose \((x_i)_{i \in \N}\) is not-eventually in
+    \(A\) and \(x_i \to p\). For the sake of contradiction, suppose that \(p \in
+    \Int(A)\), then given a neighbourhood \(V \subseteq A\) of \(p\), there must
+    exist \(N \in \N\) such that \(\forall i \geq N, x_i \in V \subseteq
+    A\), which is a contradiction to the fact that \((x_i)_{i \in \N}\) is
+    not-eventually in \(A\), hence \(p \not\in \Int(A)\).
 
-(d) (\(\Rightarrow\)) Let \(A\) be open, then \(A = \Int(A)\). Given any \(p
-\in A\) we have from item (c) that \(p\) is the limit of all of its converging
-sequences are eventually in \(A\). (\(\Leftarrow\)) Suppose the contrary, and
-let \(p \in A\) be any point. From item (c) we see that \(p \in \Int(A)\),
-which implies that \(A \subseteq \Int(A)\) and hence \(A\) is open.
+    (d) (\(\Rightarrow\)) Let \(A\) be open, then \(A = \Int(A)\). Given any \(p
+    \in A\) we have from item (c) that \(p\) is the limit of all of its converging
+    sequences are eventually in \(A\). (\(\Leftarrow\)) Suppose the contrary, and
+    let \(p \in A\) be any point. From item (c) we see that \(p \in \Int(A)\),
+    which implies that \(A \subseteq \Int(A)\) and hence \(A\) is open.
 \end{proof}
 
 \subsection{Second Countable Spaces and Covers}
 
 \begin{definition}[Second countable]\label{def: second countable}
-A topological space \(X\) is second countable if it admits a countable basis
-for its topology. Equivalently \(w(X) \leq \aleph_0\).
+    A topological space \(X\) is second countable if it admits a countable basis
+    for its topology. Equivalently \(w(X) \leq \aleph_0\).
 \end{definition}
 
 \begin{definition}[Cover]\label{def: cover}
-Let \(X\) be a topological space and \(\mathcal U \subseteq 2^X\). We say that
-\(\mathcal U\) is a cover of \(X\) if for all points \(x \in X\) there exists
-\(U \in \mathcal U\) such that \(x \in U\).
+    Let \(X\) be a topological space and \(\mathcal U \subseteq 2^X\). We say that
+    \(\mathcal U\) is a cover of \(X\) if for all points \(x \in X\) there exists
+    \(U \in \mathcal U\) such that \(x \in U\).
 \end{definition}
 
 \begin{definition}[Open and closed covers]
-Let \(\mathcal U\) be a cover of a space \(X\). If all elements \(U \in
-\mathcal U\) are opens in \(X\), then \(\mathcal U\) is said to be open. On
-the other hand, if all \(U \in \mathcal U\) are closed in \(X\), then
-\(\mathcal U\) is said to be closed.
+    Let \(\mathcal U\) be a cover of a space \(X\). If all elements \(U \in
+    \mathcal U\) are opens in \(X\), then \(\mathcal U\) is said to be open. On
+    the other hand, if all \(U \in \mathcal U\) are closed in \(X\), then
+    \(\mathcal U\) is said to be closed.
 \end{definition}
 
 \begin{definition}[Subcover]
-Let \(\mathcal U\) be a cover of a space \(X\). If \(\mathcal U' \subseteq
-\mathcal U\) is a cover for \(X\), then we call it a subcover of \(\mathcal
-U\).
+    Let \(\mathcal U\) be a cover of a space \(X\). If \(\mathcal U' \subseteq
+    \mathcal U\) is a cover for \(X\), then we call it a subcover of \(\mathcal
+    U\).
 \end{definition}
 
 Although formally we should always write down if the cover is either open or
@@ -144,200 +144,200 @@ covers --- otherwise I'll specifically write ``closed cover'' in order to avoid
 any confusion.
 
 \begin{proposition}[Basis out of covers]
-\label{prop:union-cover-basis}
-Let \(\mathcal U\) be an open cover of the space \(X\). For all \(U \in \mathcal
-U\), define \(\mathcal{B}_U\) as the basis for the subspace \(U\). Then union
-\(\bigcup_{U \in \mathcal U} \mathcal{B}_U\) is a basis for \(X\).
+    \label{prop:union-cover-basis}
+    Let \(\mathcal U\) be an open cover of the space \(X\). For all \(U \in \mathcal
+    U\), define \(\mathcal{B}_U\) as the basis for the subspace \(U\). Then union
+    \(\bigcup_{U \in \mathcal U} \mathcal{B}_U\) is a basis for \(X\).
 \end{proposition}
 
 \begin{proof}
-Define \(\mathcal B \coloneq \bigcup_{U \in \mathcal U} \mathcal B_{U}\).
-Clearly \(\bigcup_{B \in \mathcal B} B = \bigcup_{U \in \mathcal U} \bigcup_{B
-\in \mathcal B_U} B = X\) --- since every element of \(X\) can be found in
-\(\mathcal U\) and \(\mathcal B_U \subseteq 2^U \subseteq 2^{X}\). Let \(x \in
-X\) be any point and let \(U \in \mathcal U\) be a neighbourhood of
-\(x\). Notice that on \(U\) the basis \(\mathcal B_U\) satisfies the local
-intersecting condition (see \cref{item:basis-intersection-property}). Since \(x
-\in X\) is any point, then the condition is true globally for \(\mathcal B\),
-thus \(\mathcal B\) is a basis for \(X\).
+    Define \(\mathcal B \coloneq \bigcup_{U \in \mathcal U} \mathcal B_{U}\).
+    Clearly \(\bigcup_{B \in \mathcal B} B = \bigcup_{U \in \mathcal U} \bigcup_{B
+        \in \mathcal B_U} B = X\) --- since every element of \(X\) can be found in
+    \(\mathcal U\) and \(\mathcal B_U \subseteq 2^U \subseteq 2^{X}\). Let \(x \in
+    X\) be any point and let \(U \in \mathcal U\) be a neighbourhood of
+    \(x\). Notice that on \(U\) the basis \(\mathcal B_U\) satisfies the local
+    intersecting condition (see \cref{item:basis-intersection-property}). Since \(x
+    \in X\) is any point, then the condition is true globally for \(\mathcal B\),
+    thus \(\mathcal B\) is a basis for \(X\).
 \end{proof}
 
 \begin{corollary}[Second countable out of a cover]
-\label{cor:second-countable-out-of-cover}
-Let \(\mathcal U\) be a countable open cover of the space \(X\). If every \(U
-\in \mathcal U\) is second countable, then \(X\) is second countable.
+    \label{cor:second-countable-out-of-cover}
+    Let \(\mathcal U\) be a countable open cover of the space \(X\). If every \(U
+    \in \mathcal U\) is second countable, then \(X\) is second countable.
 \end{corollary}
 
 \begin{proof}
-We consider \(\mathcal B\) as in \cref{prop:union-cover-basis}, the union of the
-basis \(\mathcal B_U\) for the cover elements \(U \in \mathcal U\) --- and since
-\(U\) is second countable, we choose \(\mathcal B_U\) to be a countable
-cover. Since \(\mathcal U\) is countable and so is every basis contained in the
-basis \(\mathcal B\), we conclude that \(\mathcal B\) itself is countable and by
-\cref{prop:union-cover-basis} we find that \(\mathcal B\) is a basis for \(X\).
+    We consider \(\mathcal B\) as in \cref{prop:union-cover-basis}, the union of the
+    basis \(\mathcal B_U\) for the cover elements \(U \in \mathcal U\) --- and since
+    \(U\) is second countable, we choose \(\mathcal B_U\) to be a countable
+    cover. Since \(\mathcal U\) is countable and so is every basis contained in the
+    basis \(\mathcal B\), we conclude that \(\mathcal B\) itself is countable and by
+    \cref{prop:union-cover-basis} we find that \(\mathcal B\) is a basis for \(X\).
 \end{proof}
 
 \begin{definition}[Lindelöf space]
-A space \(X\) is said to be Lindelöf if every open cover of \(X\) has a
-countable subcover.
+    A space \(X\) is said to be Lindelöf if every open cover of \(X\) has a
+    countable subcover.
 \end{definition}
 
 \begin{definition}[Separable space]
-A space \(X\) is said to be separable if it contains a countable dense subset.
+    A space \(X\) is said to be separable if it contains a countable dense subset.
 \end{definition}
 
 \begin{proposition}[Properties of second countable spaces]
-\label{prop: second countable properties}
-The following properties hold
-\begin{enumerate}[(SC1)]
-  \item A second countable space is first countable.
-  \item A second countable space is separable.
-  \item A second countable space is Lindelöf.
-\end{enumerate}
+    \label{prop: second countable properties}
+    The following properties hold
+    \begin{enumerate}[(SC1)]
+        \item A second countable space is first countable.
+        \item A second countable space is separable.
+        \item A second countable space is Lindelöf.
+    \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-Let \(\mathcal B\) be a countable basis for \(X\).
-(SC1) Let a point \(p \in X\), then the set \(\mathcal B_p \subseteq \mathcal
-B\) of neighbourhoods of \(p\) is a countable basis for \(X\) at \(p\).
+    Let \(\mathcal B\) be a countable basis for \(X\).
+    (SC1) Let a point \(p \in X\), then the set \(\mathcal B_p \subseteq \mathcal
+    B\) of neighbourhoods of \(p\) is a countable basis for \(X\) at \(p\).
 
-(SC2) Let \(f: I \to \bigcup_{B \in \mathcal B} B\) with \(n \mapsto x_n\),
-where \(|I| = |B|\) is an indexing set, and \(x \in X\) be any point, and any
-neighbourhood of \(V_x \subseteq X\) of \(x\). Since \(B\) is a basis, there
-exists an indexing set \(I_{V_x}\) such that \(V_x = \bigcup_{i \in  I_{V_x}}
-B_i\), hence \(V_x \cap A\) is non-empty. Moreover, define a sequence
-\((x_i)_{i \in I_{V_x}}\) such that \(x_i \in B_i\). Notice that clearly \(x_i
-\to x\), from the fact that \(V_x\) is a neighbourhood of \(x\), and \(x_i \in
-A\), from \cref{lem: sequence lemma} we have that \(x \in \Cl(\im(f))\).
-Hence we conclude that \(X = \Cl(\im(f))\) and thus \(\im(f)\) is a
-countable dense subset of \(X\).
+    (SC2) Let \(f: I \to \bigcup_{B \in \mathcal B} B\) with \(n \mapsto x_n\),
+    where \(|I| = |B|\) is an indexing set, and \(x \in X\) be any point, and any
+    neighbourhood of \(V_x \subseteq X\) of \(x\). Since \(B\) is a basis, there
+    exists an indexing set \(I_{V_x}\) such that \(V_x = \bigcup_{i \in  I_{V_x}}
+    B_i\), hence \(V_x \cap A\) is non-empty. Moreover, define a sequence
+    \((x_i)_{i \in I_{V_x}}\) such that \(x_i \in B_i\). Notice that clearly \(x_i
+    \to x\), from the fact that \(V_x\) is a neighbourhood of \(x\), and \(x_i \in
+    A\), from \cref{lem: sequence lemma} we have that \(x \in \Cl(\im(f))\).
+    Hence we conclude that \(X = \Cl(\im(f))\) and thus \(\im(f)\) is a
+    countable dense subset of \(X\).
 
-(SC3) Let \(\mathcal U\) be a cover for \(X\) and define \(\mathcal B' \coloneq
-\{B \in \mathcal B \colon B \subseteq U (U \in \mathcal U)\}\), and \(\mathcal
-U' \coloneq \{U \in \mathcal U \colon B \subseteq U (B \in \mathcal
-B')\}\). We'll show that \(\mathcal U'\) is a subcover of \(\mathcal U\). Let
-\(x \in X\) be any point.  since \(\mathcal U\) covers \(X\) then there exists
-\(U_x \in \mathcal U\) such that \(x \in U_x\). Moreover, since \(\mathcal B\)
-is a basis for the topology of \(X\), then there exists \(B_x \in \mathcal B\)
-such that \(B_x \subseteq U_x\), so that \(B_x \in \mathcal B'\) and \(U_x \in
-\mathcal U'\) from the construction of the collections. Hence \(\mathcal U'\)
-covers \(X\).
+    (SC3) Let \(\mathcal U\) be a cover for \(X\) and define \(\mathcal B' \coloneq
+    \{B \in \mathcal B \colon B \subseteq U (U \in \mathcal U)\}\), and \(\mathcal
+    U' \coloneq \{U \in \mathcal U \colon B \subseteq U (B \in \mathcal
+    B')\}\). We'll show that \(\mathcal U'\) is a subcover of \(\mathcal U\). Let
+    \(x \in X\) be any point.  since \(\mathcal U\) covers \(X\) then there exists
+    \(U_x \in \mathcal U\) such that \(x \in U_x\). Moreover, since \(\mathcal B\)
+    is a basis for the topology of \(X\), then there exists \(B_x \in \mathcal B\)
+    such that \(B_x \subseteq U_x\), so that \(B_x \in \mathcal B'\) and \(U_x \in
+    \mathcal U'\) from the construction of the collections. Hence \(\mathcal U'\)
+    covers \(X\).
 \end{proof}
 
 \begin{proposition}\label{prop: metric space properties}
-Given a metric space \(M\), the following properties are equivalent
-\begin{enumerate}[(MS1)]
-\item \(M\) is second countable.
-\item \(M\) is separable.
-\item \(M\) is Lindelöf.
-\end{enumerate}
+    Given a metric space \(M\), the following properties are equivalent
+    \begin{enumerate}[(MS1)]
+        \item \(M\) is second countable.
+        \item \(M\) is separable.
+        \item \(M\) is Lindelöf.
+    \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-(Separable \(\Rightarrow\) Lindelöf) Suppose \(M\) is separable and let \(A\)
-be a countable dense set in \(M\). Let \(\mathcal U\) be a cover of \(M\) and
-define the collection \(\mathcal U' \coloneq \{U \in \mathcal U \colon U
-\supseteq B(a, r),\ (a, r) \in A \times \Q\}\), where \(B(a,r)\) is the open
-ball of radius \(r\) around \(a\). We show that \(\mathcal U'\) is a subcover of
-\(M\).  Let \(x \in M\) be any point. Since \(\mathcal U\) covers \(M\) then
-there exists \(U_x \in \mathcal U\) such that \(x \in U_x\). Since \(M\) is a
-metric space, there exists an open ball \(B(x, \ell) \subseteq U_x\) for some
-\(\ell \in \R\).  Since \(A\) is dense in \(M\), there exists a point \(a \in
-A\) such that \(a \in B(x, \ell/2)\). Now, from the fact that \(\Q\) is dense in
-\(\R\) we conclude that there exists an \(r \in \Q\) such that \(d(x, a) < r <
-\ell/2\). Notice that \(B(a, r) \subseteq B(x, r) \subseteq U_x\), hence \(U_x
-\in \mathcal U'\). Therefore \(\mathcal U'\) is a subcover of \(\mathcal U\),
-and since \(|\mathcal U'| = |A \times \Q|\), we find that \(\mathcal U'\) is
-countable.
+    (Separable \(\Rightarrow\) Lindelöf) Suppose \(M\) is separable and let \(A\)
+    be a countable dense set in \(M\). Let \(\mathcal U\) be a cover of \(M\) and
+    define the collection \(\mathcal U' \coloneq \{U \in \mathcal U \colon U
+    \supseteq B(a, r),\ (a, r) \in A \times \Q\}\), where \(B(a,r)\) is the open
+    ball of radius \(r\) around \(a\). We show that \(\mathcal U'\) is a subcover of
+    \(M\).  Let \(x \in M\) be any point. Since \(\mathcal U\) covers \(M\) then
+    there exists \(U_x \in \mathcal U\) such that \(x \in U_x\). Since \(M\) is a
+    metric space, there exists an open ball \(B(x, \ell) \subseteq U_x\) for some
+    \(\ell \in \R\).  Since \(A\) is dense in \(M\), there exists a point \(a \in
+    A\) such that \(a \in B(x, \ell/2)\). Now, from the fact that \(\Q\) is dense in
+    \(\R\) we conclude that there exists an \(r \in \Q\) such that \(d(x, a) < r <
+    \ell/2\). Notice that \(B(a, r) \subseteq B(x, r) \subseteq U_x\), hence \(U_x
+    \in \mathcal U'\). Therefore \(\mathcal U'\) is a subcover of \(\mathcal U\),
+    and since \(|\mathcal U'| = |A \times \Q|\), we find that \(\mathcal U'\) is
+    countable.
 
-(Lindelöf \(\Rightarrow\) second countable) Suppose \(M\) is Lindelöf, then
-given a cover \(\mathcal U \coloneq \{B(x, \frac{1}{n}) \subseteq M \colon x \in M, n
-\in \N\}\) of \(M\) there exists a countable subcover \(\mathcal U'\). Let \(U
-\subseteq M\) be any open set and let \(x \in U\) be any point. Since \(M\) is a
-metric space, there exists \(r > 0\) such that \(B(x, r) \subseteq U\). Define
-now \(n \in N\) such that \(\frac 1 n < \frac r 2\). Since \(\mathcal U'\) is a
-cover of \(M\), there exists a \(B(p, \frac 1 n) \in \mathcal U'\) such that \(x
-\in B(p, \frac 1 n)\). We now show that \(B(p, \frac 1 n) \subseteq B(x,
-r)\). Let \(y \in B(p, \frac 1 n)\) be any point, then \(d(p, y) < \frac 1 n\),
-moreover \(d(x, p) < \frac 1 n\), hence we conclude that \(d(x, y) \leq d(x, p)
-+ d(p, y) < \frac 2 n < r\). This implies in particular that \(y \in B(x, r)\)
-and in general that \(B(p, \frac 1 n) \subseteq B(x, r) \subseteq U\). Hence we
-conclude that \(U\) can be written as a union of elements of \(\mathcal U'\),
-which implies that \(\mathcal U'\) is a countable basis for \(M\).
+    (Lindelöf \(\Rightarrow\) second countable) Suppose \(M\) is Lindelöf, then
+    given a cover \(\mathcal U \coloneq \{B(x, \frac{1}{n}) \subseteq M \colon x \in M, n
+    \in \N\}\) of \(M\) there exists a countable subcover \(\mathcal U'\). Let \(U
+    \subseteq M\) be any open set and let \(x \in U\) be any point. Since \(M\) is a
+    metric space, there exists \(r > 0\) such that \(B(x, r) \subseteq U\). Define
+    now \(n \in N\) such that \(\frac 1 n < \frac r 2\). Since \(\mathcal U'\) is a
+    cover of \(M\), there exists a \(B(p, \frac 1 n) \in \mathcal U'\) such that \(x
+    \in B(p, \frac 1 n)\). We now show that \(B(p, \frac 1 n) \subseteq B(x,
+    r)\). Let \(y \in B(p, \frac 1 n)\) be any point, then \(d(p, y) < \frac 1 n\),
+    moreover \(d(x, p) < \frac 1 n\), hence we conclude that \(d(x, y) \leq d(x, p)
+    + d(p, y) < \frac 2 n < r\). This implies in particular that \(y \in B(x, r)\)
+    and in general that \(B(p, \frac 1 n) \subseteq B(x, r) \subseteq U\). Hence we
+    conclude that \(U\) can be written as a union of elements of \(\mathcal U'\),
+    which implies that \(\mathcal U'\) is a countable basis for \(M\).
 
-By means of \cref{prop: second countable properties} we conclude the
-equivalence chain.
+    By means of \cref{prop: second countable properties} we conclude the
+    equivalence chain.
 \end{proof}
 
 \begin{corollary}
-\label{cor:euclidean-space-second-countable}
-Euclidean spaces are countable.
+    \label{cor:euclidean-space-second-countable}
+    Euclidean spaces are countable.
 \end{corollary}
 
 \begin{proof}
-Lets consider \(\R^n\), notice that \(\Q^n\) is dense in \(\R^n\) and countable,
-thus \(\R^n\) is separable, which by \cref{prop: metric space properties}
-implies that \(\R^n\) is second countable.
+    Lets consider \(\R^n\), notice that \(\Q^n\) is dense in \(\R^n\) and countable,
+    thus \(\R^n\) is separable, which by \cref{prop: metric space properties}
+    implies that \(\R^n\) is second countable.
 \end{proof}
 
 \subsection{Weights and Cardinality}
 
 \begin{proposition}\label{prop: weight m space subset union}
-Let \(X\) be a topological space and \(w(X) \leq \mathbf m\). Then for every
-collection \(\{U_i\}_{i \in I} \subseteq 2^X\) of open sets, there exists
-\(I_0 \subseteq I\) such that \(|I_0| \leq \mathbf m\) and \(\bigcup_{i \in
-I_0} U_i = \bigcup_{i \in  I} U_i\).
+    Let \(X\) be a topological space and \(w(X) \leq \mathbf m\). Then for every
+    collection \(\{U_i\}_{i \in I} \subseteq 2^X\) of open sets, there exists
+    \(I_0 \subseteq I\) such that \(|I_0| \leq \mathbf m\) and \(\bigcup_{i \in
+        I_0} U_i = \bigcup_{i \in  I} U_i\).
 \end{proposition}
 
 \begin{proof}
-Since \(I_0 \subseteq I\) then clearly \(\bigcup_{i \in  I_0} U_i \subseteq
-\bigcup_{i \in  I} U_i\). Let \(\mathcal B\) be a base for \(X\) such that
-\(|\mathcal B| \leq \mathbf m\) and define the collection \(\mathcal B_0 \coloneq
-\{U \in \mathcal B \colon U \subseteq U_i (i \in I)\}\). Define a function \(f:
-\mathcal B_0 \to I\) such that for all \(U \in \mathcal B_0\) we have \(U
-\subseteq  U_{f(U)} \in \{U_i\}_{i \in I}\). Define the indexing set \(I_0 \coloneq
-f(\mathcal B_0) \subseteq I\). Notice that \(|I_0| \leq |\mathcal B| \leq
-\mathbf m\). For any point \(x \in \bigcup_{i \in  I} U_i\) there exists \(i
-\in S\) such that \(x \in U_i\), and hence exists \(U \in \mathcal B\) such
-that \(x \in U \subseteq U_i\), from the fact that \(\mathcal B\) is a basis.
-From the definition of \(\mathcal B_0\) it follows that \(U \in \mathcal B_0\)
-and hence \(f(U) \in I_0\). Therefore, from the construction of \(f\) it
-follows that \(x \in U \subseteq U_{f(U)} \subseteq \bigcup_{i \in  I_0}
-U_i\). From this we conclude that \(\bigcup_{i \in  I} U_i \subseteq
-\bigcup_{i \in  I_0} U_i\).
+    Since \(I_0 \subseteq I\) then clearly \(\bigcup_{i \in  I_0} U_i \subseteq
+    \bigcup_{i \in  I} U_i\). Let \(\mathcal B\) be a base for \(X\) such that
+    \(|\mathcal B| \leq \mathbf m\) and define the collection \(\mathcal B_0 \coloneq
+    \{U \in \mathcal B \colon U \subseteq U_i (i \in I)\}\). Define a function \(f:
+    \mathcal B_0 \to I\) such that for all \(U \in \mathcal B_0\) we have \(U
+    \subseteq  U_{f(U)} \in \{U_i\}_{i \in I}\). Define the indexing set \(I_0 \coloneq
+    f(\mathcal B_0) \subseteq I\). Notice that \(|I_0| \leq |\mathcal B| \leq
+    \mathbf m\). For any point \(x \in \bigcup_{i \in  I} U_i\) there exists \(i
+    \in S\) such that \(x \in U_i\), and hence exists \(U \in \mathcal B\) such
+    that \(x \in U \subseteq U_i\), from the fact that \(\mathcal B\) is a basis.
+    From the definition of \(\mathcal B_0\) it follows that \(U \in \mathcal B_0\)
+    and hence \(f(U) \in I_0\). Therefore, from the construction of \(f\) it
+    follows that \(x \in U \subseteq U_{f(U)} \subseteq \bigcup_{i \in  I_0}
+    U_i\). From this we conclude that \(\bigcup_{i \in  I} U_i \subseteq
+    \bigcup_{i \in  I_0} U_i\).
 \end{proof}
 
 \begin{proposition}
-Let \(X\) be a topological space. If \(w(X) \leq \mathbf m\), then for every base
-\(\mathcal B\) for the topology of \(X\) there exists a base \(\mathcal B_0\)
-such that \(|\mathcal B_0| \leq \mathbf m\) and \(\mathcal B_0 \subseteq
-\mathcal B\).
+    Let \(X\) be a topological space. If \(w(X) \leq \mathbf m\), then for every base
+    \(\mathcal B\) for the topology of \(X\) there exists a base \(\mathcal B_0\)
+    such that \(|\mathcal B_0| \leq \mathbf m\) and \(\mathcal B_0 \subseteq
+    \mathcal B\).
 \end{proposition}
 
 \begin{proof}
-Suppose \(\mathbf m \geq \aleph_0\). Let \(\mathcal B \coloneq \{U_i\}_{i \in I}\)
-be any base for the space \(X\). Define a base \(\mathcal B_1 \coloneq \{W_t\}_{t
-\in T}\) for \(X\) such that \(|T| \leq \mathbf m\).
+    Suppose \(\mathbf m \geq \aleph_0\). Let \(\mathcal B \coloneq \{U_i\}_{i \in I}\)
+    be any base for the space \(X\). Define a base \(\mathcal B_1 \coloneq \{W_t\}_{t
+    \in T}\) for \(X\) such that \(|T| \leq \mathbf m\).
 
-For all \(t \in T\) define the set \(I(t) \coloneq \{i \in I \colon U_i \subseteq
-W_t\}\). From the fact that \(W_t\) is open and \(\mathcal B\) is a base for
-\(X\), we have that \(W_t = \bigcup_{i \in  I(t)} U_i\).  From \cref{prop:
-weight m space subset union} we find that there exists \(I_0(t) \subseteq
-I(t)\) for which \(|I_0(t)| \leq \mathbf m\) and
-\begin{equation}\label{eq: W_t I_0(t)}
-  W_t = \bigcup_{i \in  I(t)} U_i = \bigcup_{i \in  I_0(t)} U_i
-\end{equation}
+    For all \(t \in T\) define the set \(I(t) \coloneq \{i \in I \colon U_i \subseteq
+    W_t\}\). From the fact that \(W_t\) is open and \(\mathcal B\) is a base for
+    \(X\), we have that \(W_t = \bigcup_{i \in  I(t)} U_i\).  From \cref{prop:
+        weight m space subset union} we find that there exists \(I_0(t) \subseteq
+    I(t)\) for which \(|I_0(t)| \leq \mathbf m\) and
+    \begin{equation}\label{eq: W_t I_0(t)}
+        W_t = \bigcup_{i \in  I(t)} U_i = \bigcup_{i \in  I_0(t)} U_i
+    \end{equation}
 
-Now, define the set \(\mathcal B_0 \coloneq \{U_i\}_{i \in I(t), t \in T} \subseteq
-\mathcal B\). Since \(|T|, |S_0(t)| \leq \mathbf m\) and the fact that
-\(\mathbf m^2 = \mathbf m\), we find that \(|\mathcal B_0| \leq \mathbf m\).
-We now show that \(\mathcal B_0\) is a base for the space \(X\). Let a any
-point \(x \in X\) and a neighbourhood \(U \subseteq X\) of \(x\). From the
-hypothesis that \(\mathcal B_1\) is a basis, there exists \(t \in T\) such
-that \(W_t \subseteq U\). On the other hand \cref{eq: W_t I_0(t)} ensures the
-existence of an \(i \in I_0(t)\) such that \(U_i \subseteq W_t \subseteq U\).
-Since \(U_i \in \mathcal B_0\), we find that \(\mathcal B_0\) is indeed a
-basis for \(X\).
+    Now, define the set \(\mathcal B_0 \coloneq \{U_i\}_{i \in I(t), t \in T} \subseteq
+    \mathcal B\). Since \(|T|, |S_0(t)| \leq \mathbf m\) and the fact that
+    \(\mathbf m^2 = \mathbf m\), we find that \(|\mathcal B_0| \leq \mathbf m\).
+    We now show that \(\mathcal B_0\) is a base for the space \(X\). Let a any
+    point \(x \in X\) and a neighbourhood \(U \subseteq X\) of \(x\). From the
+    hypothesis that \(\mathcal B_1\) is a basis, there exists \(t \in T\) such
+    that \(W_t \subseteq U\). On the other hand \cref{eq: W_t I_0(t)} ensures the
+    existence of an \(i \in I_0(t)\) such that \(U_i \subseteq W_t \subseteq U\).
+    Since \(U_i \in \mathcal B_0\), we find that \(\mathcal B_0\) is indeed a
+    basis for \(X\).
 \end{proof}
 
 %%% Local Variables:

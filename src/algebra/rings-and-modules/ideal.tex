@@ -3,273 +3,273 @@
 \subsection{Ideals}
 
 \begin{definition}[Ideal]
-\label{def:ring-ideal}
-Let \(R\) be a ring. A subgroup \(\ideal{a}\) of \((R, +)\) is said to be a
-\emph{left-ideal} of \(R\) if for all \(r \in R\) we have
-\(r \ideal{a} \subseteq \ideal{a}\). On the other hand, \(\ideal{a}\) is a
-\emph{right-ideal} if for all \(r \in R\) we have
-\(\ideal{a} r \subseteq \ideal{a}\). Furthermore, if \(\ideal{a}\) is both a
-left and right ideal, we say that \(\ideal{a}\) is a \emph{two-sided-ideal} ---
-or simply an \emph{ideal}, without qualifiers, which will be the preferred
-nomenclature.
+    \label{def:ring-ideal}
+    Let \(R\) be a ring. A subgroup \(\ideal{a}\) of \((R, +)\) is said to be a
+    \emph{left-ideal} of \(R\) if for all \(r \in R\) we have
+    \(r \ideal{a} \subseteq \ideal{a}\). On the other hand, \(\ideal{a}\) is a
+    \emph{right-ideal} if for all \(r \in R\) we have
+    \(\ideal{a} r \subseteq \ideal{a}\). Furthermore, if \(\ideal{a}\) is both a
+    left and right ideal, we say that \(\ideal{a}\) is a \emph{two-sided-ideal} ---
+    or simply an \emph{ideal}, without qualifiers, which will be the preferred
+    nomenclature.
 \end{definition}
 
 \begin{remark}[Ideals and \(1\)]
-\label{rem:ideals-and-unity}
-The only ideal of a ring \(R\) containing the unity \(1_R\) is \(R\) itself ---
-thus ideals need not be subrings.
+    \label{rem:ideals-and-unity}
+    The only ideal of a ring \(R\) containing the unity \(1_R\) is \(R\) itself ---
+    thus ideals need not be subrings.
 \end{remark}
 
 \begin{corollary}
-\label{cor:image-is-ideal-then-surjective}
-If \(\phi: R \to S\) is a ring morphism such that \(\im \phi\) is an ideal of
-\(S\), then \(\phi\) is surjective.
+    \label{cor:image-is-ideal-then-surjective}
+    If \(\phi: R \to S\) is a ring morphism such that \(\im \phi\) is an ideal of
+    \(S\), then \(\phi\) is surjective.
 \end{corollary}
 
 \begin{proof}
-Since \(\im \phi\) is a subring, it contains \(1_S\) --- by
-\cref{rem:ideals-and-unity} we have \(\im \phi = S\).
+    Since \(\im \phi\) is a subring, it contains \(1_S\) --- by
+    \cref{rem:ideals-and-unity} we have \(\im \phi = S\).
 \end{proof}
 
 \begin{corollary}
-\label{cor:ideals-addition-intersection}
-The collection of ideals of a ring is closed under addition and intersection.
+    \label{cor:ideals-addition-intersection}
+    The collection of ideals of a ring is closed under addition and intersection.
 \end{corollary}
 
 \begin{proof}
-Let \(R\) be a ring and \(\ideal{a}, \ideal{b} \subseteq R\) be ideals. Let
-\(a, b \in R\) be any two elements, then
-\((a + b)(\ideal{a} + \ideal{b}) = (a + b) \ideal{a} + (a + b) \ideal{b}\) but
-since \((a + b) \ideal{a}, (a + b) \ideal{b} \subseteq \ideal{a} + \ideal{b}\),
-then \((a + b) (\ideal{a} + \ideal{b}) \subseteq \ideal{a} + \ideal{b}\) --- the
-same analogous arguments can be used to show that
-\((\ideal{a} + \ideal{b})(a + b) \subseteq \ideal{a} + \ideal{b}\). If
-\(a, b \in \ideal{a} \cap \ideal{b}\), then
-\((ab) \ideal{a} \cap \ideal{b}, \ideal{a} \cap \ideal{b} (a b) \subseteq
-\ideal{a}, \ideal{b}\) thus also contained in \(\ideal{a} \cap \ideal{b}\).
+    Let \(R\) be a ring and \(\ideal{a}, \ideal{b} \subseteq R\) be ideals. Let
+    \(a, b \in R\) be any two elements, then
+    \((a + b)(\ideal{a} + \ideal{b}) = (a + b) \ideal{a} + (a + b) \ideal{b}\) but
+    since \((a + b) \ideal{a}, (a + b) \ideal{b} \subseteq \ideal{a} + \ideal{b}\),
+    then \((a + b) (\ideal{a} + \ideal{b}) \subseteq \ideal{a} + \ideal{b}\) --- the
+    same analogous arguments can be used to show that
+    \((\ideal{a} + \ideal{b})(a + b) \subseteq \ideal{a} + \ideal{b}\). If
+    \(a, b \in \ideal{a} \cap \ideal{b}\), then
+    \((ab) \ideal{a} \cap \ideal{b}, \ideal{a} \cap \ideal{b} (a b) \subseteq
+    \ideal{a}, \ideal{b}\) thus also contained in \(\ideal{a} \cap \ideal{b}\).
 \end{proof}
 
 \begin{corollary}[Kernel is an ideal]
-\label{cor:kernel-is-ideal}
-Given a ring morphism \(\phi: R \to S\), then \(\ker \phi\) is a ring ideal of
-\(R\).
+    \label{cor:kernel-is-ideal}
+    Given a ring morphism \(\phi: R \to S\), then \(\ker \phi\) is a ring ideal of
+    \(R\).
 \end{corollary}
 
 \begin{proof}
-From group theoretic considerations, we already know that \(\ker \phi\) is a
-subring of \(R\). On the other hand, let \(r \in R\) be any element and \(a \in
-\ker \phi\), then \(\phi(r a) = \phi(r) \phi(a) = 0\) and \(\phi(a r) = \phi(a)
-\phi(r) = 0\), thus indeed both \(r a, a r \in \ker \phi\).
+    From group theoretic considerations, we already know that \(\ker \phi\) is a
+    subring of \(R\). On the other hand, let \(r \in R\) be any element and \(a \in
+    \ker \phi\), then \(\phi(r a) = \phi(r) \phi(a) = 0\) and \(\phi(a r) = \phi(a)
+    \phi(r) = 0\), thus indeed both \(r a, a r \in \ker \phi\).
 \end{proof}
 
 \begin{corollary}[Preimage of ideal is an ideal]
-\label{cor:inverse-image-of-ideal-is-ideal}
-Let \(\phi: R \to S\) be a ring morphism and \(\ideal{a}\) be an ideal of \(S\),
-then the preimage \(\phi^{-1}(\ideal{a})\) is an ideal of \(R\).
+    \label{cor:inverse-image-of-ideal-is-ideal}
+    Let \(\phi: R \to S\) be a ring morphism and \(\ideal{a}\) be an ideal of \(S\),
+    then the preimage \(\phi^{-1}(\ideal{a})\) is an ideal of \(R\).
 \end{corollary}
 
 \begin{proof}
-Let \(r \in R\) and \(a \in \phi^{-1}(\ideal{a})\) be any two elements. Notice
-that \(\phi(r a) = \phi(r) \phi(a)\) and \(\phi(a r) = \phi(a) \phi(r)\), and
-since \(\phi(a) \in \ideal{a}\) then \(\phi(r a), \phi(a r) \in \ideal{a}\) ---
-therefore \(r a, a r \in \phi^{-1}(\ideal{a})\).
+    Let \(r \in R\) and \(a \in \phi^{-1}(\ideal{a})\) be any two elements. Notice
+    that \(\phi(r a) = \phi(r) \phi(a)\) and \(\phi(a r) = \phi(a) \phi(r)\), and
+    since \(\phi(a) \in \ideal{a}\) then \(\phi(r a), \phi(a r) \in \ideal{a}\) ---
+    therefore \(r a, a r \in \phi^{-1}(\ideal{a})\).
 \end{proof}
 
 \begin{remark}[Image of ideals]
-\label{rem:image-of-ideal-need-not-be-ideal}
-Although the preimage of ideals is an ideal of the morphism's source, the
-\emph{image} of a given ideal \emph{need not be an ideal}. For instance, let
-\(\ideal{a} \subseteq R\) be an ideal of a ring \(R\) and \(\phi: R \to S\) be a
-\emph{non-surjective} morphism, then there exists \(s \in S\) whose preimage is
-the empty set, therefore \(s \phi(\ideal{a})\) is not contained in
-\(\phi(\ideal{a})\).
+    \label{rem:image-of-ideal-need-not-be-ideal}
+    Although the preimage of ideals is an ideal of the morphism's source, the
+    \emph{image} of a given ideal \emph{need not be an ideal}. For instance, let
+    \(\ideal{a} \subseteq R\) be an ideal of a ring \(R\) and \(\phi: R \to S\) be a
+    \emph{non-surjective} morphism, then there exists \(s \in S\) whose preimage is
+    the empty set, therefore \(s \phi(\ideal{a})\) is not contained in
+    \(\phi(\ideal{a})\).
 \end{remark}
 
 \begin{corollary}[Surjective morphisms preserve ideals]
-\label{cor:surjective-preserve-ideals}
-If \(\phi: R \epi S\) is a surjective ring morphism, then the image of any ideal
-\(\ideal{a} \subseteq R\) is an ideal of \(S\).
+    \label{cor:surjective-preserve-ideals}
+    If \(\phi: R \epi S\) is a surjective ring morphism, then the image of any ideal
+    \(\ideal{a} \subseteq R\) is an ideal of \(S\).
 \end{corollary}
 
 \begin{proof}
-This is immediate from \cref{rem:image-of-ideal-need-not-be-ideal}, for all \(s
-\in S\) we have both \(s \phi(\ideal{a}), \phi(\ideal{a}) s \subseteq
-\phi(\ideal{a})\) because there will exist \(r \in R\) whose image is \(s\).
+    This is immediate from \cref{rem:image-of-ideal-need-not-be-ideal}, for all \(s
+    \in S\) we have both \(s \phi(\ideal{a}), \phi(\ideal{a}) s \subseteq
+    \phi(\ideal{a})\) because there will exist \(r \in R\) whose image is \(s\).
 \end{proof}
 
 \begin{example}
-\label{exp:ideal-out-of-an-element}
-For every element \(r \in R\) of a ring \(R\), the objects \(r R\) and \(R r\)
-are, respectively, \emph{right} and \emph{left} ideals of \(R\). Indeed, given
-any \(a \in R\), we have \((r R) a = r (R a) \subseteq r R\), the analogous
-being true for the left ideal. If \(R\) is commutative, we have \(r R = R r\)
-and such ideal is commonly denoted by \((r)\) --- the \emph{principal ideal}
-generated by \(r\).
+    \label{exp:ideal-out-of-an-element}
+    For every element \(r \in R\) of a ring \(R\), the objects \(r R\) and \(R r\)
+    are, respectively, \emph{right} and \emph{left} ideals of \(R\). Indeed, given
+    any \(a \in R\), we have \((r R) a = r (R a) \subseteq r R\), the analogous
+    being true for the left ideal. If \(R\) is commutative, we have \(r R = R r\)
+    and such ideal is commonly denoted by \((r)\) --- the \emph{principal ideal}
+    generated by \(r\).
 \end{example}
 
 \begin{proposition}
-\label{prop:direct-sum-of-ideals-is-ideal}
-Let \(R\) be a ring and \((\ideal{a}_j)_{j \in J}\) be a collection of ideals of
-\(R\), then the direct sum \(\bigoplus_{j \in J} \ideal{a}_j\) is an ideal of
-\(R\).
+    \label{prop:direct-sum-of-ideals-is-ideal}
+    Let \(R\) be a ring and \((\ideal{a}_j)_{j \in J}\) be a collection of ideals of
+    \(R\), then the direct sum \(\bigoplus_{j \in J} \ideal{a}_j\) is an ideal of
+    \(R\).
 \end{proposition}
 
 \begin{proof}
-Let \(r \in R\) be any element and consider any formal sum
-\(\sum_{j \in J} a_j \in \bigoplus_{j \in J} \ideal{a}_j\) where \(a_j \neq 0\)
-for only finitely many \(j \in J\), then
-\(r (\sum_{j \in J} a_j) = \sum_{j \in J} r a_j\) bus since
-\(r a_j \in \ideal{a}_j\) for each \(j \in J\), then
-\(\sum_{j \in J} r a_j \in \bigoplus_{j \in J} \ideal{a}_j\) --- the same
-argument can be used for right-multiplication.
+    Let \(r \in R\) be any element and consider any formal sum
+    \(\sum_{j \in J} a_j \in \bigoplus_{j \in J} \ideal{a}_j\) where \(a_j \neq 0\)
+    for only finitely many \(j \in J\), then
+    \(r (\sum_{j \in J} a_j) = \sum_{j \in J} r a_j\) bus since
+    \(r a_j \in \ideal{a}_j\) for each \(j \in J\), then
+    \(\sum_{j \in J} r a_j \in \bigoplus_{j \in J} \ideal{a}_j\) --- the same
+    argument can be used for right-multiplication.
 \end{proof}
 
 \begin{lemma}
-\label{lem:direct-sum-smallest-ideal}
-Given a collection \((\ideal{a}_j)_{j \in J}\) of ideals of a ring \(R\), the
-ideal \(\bigoplus_{j \in J} \ideal{a}_j\) is the smallest ideal of \(R\)
-containing each ideal \(\ideal{a}_j\) for \(j \in J\).
+    \label{lem:direct-sum-smallest-ideal}
+    Given a collection \((\ideal{a}_j)_{j \in J}\) of ideals of a ring \(R\), the
+    ideal \(\bigoplus_{j \in J} \ideal{a}_j\) is the smallest ideal of \(R\)
+    containing each ideal \(\ideal{a}_j\) for \(j \in J\).
 \end{lemma}
 
 \begin{proof}
-Let \(\ideal{b}\) be an ideal of \(R\) containing every ideal \(\ideal{a}_j\)
-for \(j \in J\). Then in particular, given any element
-\(\sum_{j \in J} a_j \in \bigoplus_{j \in J} \ideal{a}_j\), since
-\(a_j \in \ideal{b}\) for every \(j \in J\) only finitely many such \(a_j\) are
-non-zero, we find that the sum \(\sum_{j \in J} a_j \in \ideal{b}\) --- thus
-indeed \(\bigoplus_{j \in J} \ideal{a} \subseteq \ideal{b}\).
+    Let \(\ideal{b}\) be an ideal of \(R\) containing every ideal \(\ideal{a}_j\)
+    for \(j \in J\). Then in particular, given any element
+    \(\sum_{j \in J} a_j \in \bigoplus_{j \in J} \ideal{a}_j\), since
+    \(a_j \in \ideal{b}\) for every \(j \in J\) only finitely many such \(a_j\) are
+    non-zero, we find that the sum \(\sum_{j \in J} a_j \in \ideal{b}\) --- thus
+    indeed \(\bigoplus_{j \in J} \ideal{a} \subseteq \ideal{b}\).
 \end{proof}
 
 \begin{definition}[Finitely generated ideals]
-\label{def:finitely-generated-ideal}
-An ideal \(\ideal{a}\) of a \emph{commutative} ring \(R\) is said to be
-\emph{finitely generated} if there exists a finite set of elements
-\(A \subseteq R\) such that \(\ideal{a} = (A)\).
+    \label{def:finitely-generated-ideal}
+    An ideal \(\ideal{a}\) of a \emph{commutative} ring \(R\) is said to be
+    \emph{finitely generated} if there exists a finite set of elements
+    \(A \subseteq R\) such that \(\ideal{a} = (A)\).
 \end{definition}
 
 \subsubsection{Division Rings and its Ideals}
 
 \begin{proposition}[Units and its ideals]
-\label{prop:unit-iff-R=aR}
-Let \(R\) be a ring and \(a \in R\). The element \(a\) is a \emph{left-unit} (or
-\emph{right-unit}) of \(R\) if and only if \(R = a R\) (or \(R = R a\))
+    \label{prop:unit-iff-R=aR}
+    Let \(R\) be a ring and \(a \in R\). The element \(a\) is a \emph{left-unit} (or
+    \emph{right-unit}) of \(R\) if and only if \(R = a R\) (or \(R = R a\))
 \end{proposition}
 
 \begin{proof}
-We prove the proposition only for left-units, for right-units the proof is
-completely analogous. Suppose \(a\) is a left-unit of \(R\) and let \(u \in R\)
-be such that \(a u = 1\), then \(aR\) contains \(1\) which implies in \(a R =
-R\). Now if \(R = a R\), then \(1 \in a R\), which means that there must exist
-\(u \in R\) for which \(a u = 1\), thus \(a\) is a left-unit.
+    We prove the proposition only for left-units, for right-units the proof is
+    completely analogous. Suppose \(a\) is a left-unit of \(R\) and let \(u \in R\)
+    be such that \(a u = 1\), then \(aR\) contains \(1\) which implies in \(a R =
+    R\). Now if \(R = a R\), then \(1 \in a R\), which means that there must exist
+    \(u \in R\) for which \(a u = 1\), thus \(a\) is a left-unit.
 \end{proof}
 
 \begin{proposition}[Division ring ideals]
-\label{prop:division-ring-ideals-are-0-or-ring}
-Let \(R\) be a ring. Then \(R\) is a \emph{division ring} if and only if its
-\emph{only} left-ideals and right-ideals are \(\{0\}\) and \(R\).
+    \label{prop:division-ring-ideals-are-0-or-ring}
+    Let \(R\) be a ring. Then \(R\) is a \emph{division ring} if and only if its
+    \emph{only} left-ideals and right-ideals are \(\{0\}\) and \(R\).
 \end{proposition}
 
 \begin{proof}
-Let \(R\) be a division ring. Suppose \(\ideal{a}\) is a left-ideal (or
-right-ideal) of \(R\), then given any \(r \in R\) and \(a \in \ideal{a}\) we
-have \(r a \in \ideal{a}\) (or \(a r \in \ideal{a}\)) --- in particular, if
-\(a \neq 0\), then \(a^{-1} \in R\) thus \(a^{-1} a = 1 \in \ideal{a}\) (or
-\(a a^{-1} = 1 \in \ideal{a}\)), thus \(\ideal{a} = R\) or \(\ideal{a} = 0\).
+    Let \(R\) be a division ring. Suppose \(\ideal{a}\) is a left-ideal (or
+    right-ideal) of \(R\), then given any \(r \in R\) and \(a \in \ideal{a}\) we
+    have \(r a \in \ideal{a}\) (or \(a r \in \ideal{a}\)) --- in particular, if
+    \(a \neq 0\), then \(a^{-1} \in R\) thus \(a^{-1} a = 1 \in \ideal{a}\) (or
+    \(a a^{-1} = 1 \in \ideal{a}\)), thus \(\ideal{a} = R\) or \(\ideal{a} = 0\).
 
-Suppose \(0\) and \(R\) are the only left and right ideals. Given any non-zero
-element \(r \in R\), the ideal \(r R\) (or \(R r\)) is non-zero, thus must be
-equal to \(R\), which is equivalent of \(1 \in r R\) (or \(1 \in R r\)) ---
-therefore \(r\) must be a unit of \(R\), proving that \(R\) is a division ring.
+    Suppose \(0\) and \(R\) are the only left and right ideals. Given any non-zero
+    element \(r \in R\), the ideal \(r R\) (or \(R r\)) is non-zero, thus must be
+    equal to \(R\), which is equivalent of \(1 \in r R\) (or \(1 \in R r\)) ---
+    therefore \(r\) must be a unit of \(R\), proving that \(R\) is a division ring.
 \end{proof}
 
 \begin{corollary}[Field ideals]
-\label{cor:field-ideals}
-The only left or right ideals of a field \(k\) are \(0\) and \(k\).
+    \label{cor:field-ideals}
+    The only left or right ideals of a field \(k\) are \(0\) and \(k\).
 \end{corollary}
 
 \begin{proposition}
-\label{prop:morphism-field-to-ring-is-injective}
-Let \(k\) be a field and \(R\) be a ring, then any ring morphism \(k \to R\) is
-injective.
+    \label{prop:morphism-field-to-ring-is-injective}
+    Let \(k\) be a field and \(R\) be a ring, then any ring morphism \(k \to R\) is
+    injective.
 \end{proposition}
 
 \begin{proof}
-Let \(\phi: k \to R\) be a ring morphism and let \(a, b \in k\) be any two
-elements such that \(\phi(a) = \phi(b)\), then \(a - b \in \ker \phi\). Remember
-that \(\ker \phi\) is an ideal of \(k\) but this means that \(\ker \phi\) is
-either \(0\) or \(k\) --- by
-\cref{prop:division-ring-ideals-are-0-or-ring}. Since \(\phi(1_k) = 1_R\) for
-\(\phi\) to be a ring morphism, then \(\ker \phi \neq k\) and we are left with
-\(\ker \phi = 0\) --- thus \(a = b\).
+    Let \(\phi: k \to R\) be a ring morphism and let \(a, b \in k\) be any two
+    elements such that \(\phi(a) = \phi(b)\), then \(a - b \in \ker \phi\). Remember
+    that \(\ker \phi\) is an ideal of \(k\) but this means that \(\ker \phi\) is
+    either \(0\) or \(k\) --- by
+    \cref{prop:division-ring-ideals-are-0-or-ring}. Since \(\phi(1_k) = 1_R\) for
+    \(\phi\) to be a ring morphism, then \(\ker \phi \neq k\) and we are left with
+    \(\ker \phi = 0\) --- thus \(a = b\).
 \end{proof}
 
 \subsubsection{Nilpotent Ideal}
 
 \begin{definition}[Nilpotent ideal]
-\label{def:nilpotent-ideal}
-Let \(R\) be a ring. We say that an ideal \(\ideal a \subseteq R\) is a \emph{nilpotent
-  ideal} if there exists \(k \in \Z_{> 0}\) such that the product of any \(k\)
-elements of \(\ideal a\) equals zero.
+    \label{def:nilpotent-ideal}
+    Let \(R\) be a ring. We say that an ideal \(\ideal a \subseteq R\) is a \emph{nilpotent
+        ideal} if there exists \(k \in \Z_{> 0}\) such that the product of any \(k\)
+    elements of \(\ideal a\) equals zero.
 \end{definition}
 
 \subsubsection{Nilradicals}
 
 \begin{definition}[Nilradical]
-\label{def:nilradical}
-Given a ring \(R\), we define the \emph{nilradical} of \(R\)
-to be the object \(N\) composed of every nilpotent element of \(R\).
+    \label{def:nilradical}
+    Given a ring \(R\), we define the \emph{nilradical} of \(R\)
+    to be the object \(N\) composed of every nilpotent element of \(R\).
 \end{definition}
 
 \begin{corollary}
-\label{cor:nilradical-is-ideal}
-The nilradical \(N\) of a \emph{commutative ring} \(R\) is an \emph{ideal} of
-\(R\).
+    \label{cor:nilradical-is-ideal}
+    The nilradical \(N\) of a \emph{commutative ring} \(R\) is an \emph{ideal} of
+    \(R\).
 \end{corollary}
 
 \begin{proof}
-Let \(a \in R\) and \(x \in N\) be any two elements --- suppose \(n \in
-\Z_{>0}\) is such that \(x^n = 0\). Since \(R\) is commutative then \((a x)^n =
-a^n x^n = a^n \cdot 0 = 0\), thus \(a x \in N\).
+    Let \(a \in R\) and \(x \in N\) be any two elements --- suppose \(n \in
+    \Z_{>0}\) is such that \(x^n = 0\). Since \(R\) is commutative then \((a x)^n =
+    a^n x^n = a^n \cdot 0 = 0\), thus \(a x \in N\).
 \end{proof}
 
 \begin{definition}[Reduced ring]
-\label{def:reduced-ring}
-A ring \(R\) is said to be reduced if it contains no non-zero nilpotent elements
+    \label{def:reduced-ring}
+    A ring \(R\) is said to be reduced if it contains no non-zero nilpotent elements
 \end{definition}
 
 \begin{corollary}
-\label{cor:reducing-with-nilradical}
-Let \(R\) be a \emph{commutative ring} and \(N\) be its nilradical. The quotient
-ring \(R/N\) is \emph{reduced}.
+    \label{cor:reducing-with-nilradical}
+    Let \(R\) be a \emph{commutative ring} and \(N\) be its nilradical. The quotient
+    ring \(R/N\) is \emph{reduced}.
 \end{corollary}
 
 \begin{proof}
-Suppose \(a + N \in R/N\) is a nilpotent element and \(a^n + N = N\) for some
-\(n \in \Z_{>0}\) --- which implies in \(a^n \in N\) thus there must exist
-\(m \in \Z_{>0}\) such that \((a^n)^m = a^{nm} = 0\), which implies in
-\(a \in N\) and hence \(a + N = N\).
+    Suppose \(a + N \in R/N\) is a nilpotent element and \(a^n + N = N\) for some
+    \(n \in \Z_{>0}\) --- which implies in \(a^n \in N\) thus there must exist
+    \(m \in \Z_{>0}\) such that \((a^n)^m = a^{nm} = 0\), which implies in
+    \(a \in N\) and hence \(a + N = N\).
 \end{proof}
 
 \begin{lemma}
-\label{lem:reduced-iff-r2=0-implies-r=0}
-A ring \(R\) is \emph{reduced} if and only if for all \(r \in R\) such that
-\(r^2 = 0\) implies \(r = 0\).
+    \label{lem:reduced-iff-r2=0-implies-r=0}
+    A ring \(R\) is \emph{reduced} if and only if for all \(r \in R\) such that
+    \(r^2 = 0\) implies \(r = 0\).
 \end{lemma}
 
 \begin{proof}
-If \(R\) is reduced then clearly \(r^2 = 0\) implies \(r = 0\). Let \(r \in R\)
-be any element such that \(r^n = 0\) for some \(n \in \Z_{>0}\), then proceed
-by the following algorithm --- start with \(r^n\), then:
-\begin{itemize}\setlength\itemsep{0em}
-\item If \(n = 1\), return \(r\) --- since \(r = 0\).
-\item If \(n\) is odd, \(r^{n + 1} = 0\) and thus
-  \(r^{(n+1)/2} r^{(n+1)/2} = 0\) which by hypothesis implies \(r^{(n+1)/2} =
-  0\). Continue the algorithm for \(r^{(n+1)/2}\).
-\item If \(n\) is even, \(r^n = r^{n/2} r^{n/2} = 0\) implies \(r^{n/2} =
-  0\). Continue the algorithm for \(r^{n/2} = 0\).
-\end{itemize}
-Such algorithm is ensured to terminate and will always result in \(r = 0\),
-which implies in \(R\) being a reduced ring.
+    If \(R\) is reduced then clearly \(r^2 = 0\) implies \(r = 0\). Let \(r \in R\)
+    be any element such that \(r^n = 0\) for some \(n \in \Z_{>0}\), then proceed
+    by the following algorithm --- start with \(r^n\), then:
+    \begin{itemize}\setlength\itemsep{0em}
+        \item If \(n = 1\), return \(r\) --- since \(r = 0\).
+        \item If \(n\) is odd, \(r^{n + 1} = 0\) and thus
+              \(r^{(n+1)/2} r^{(n+1)/2} = 0\) which by hypothesis implies \(r^{(n+1)/2} =
+              0\). Continue the algorithm for \(r^{(n+1)/2}\).
+        \item If \(n\) is even, \(r^n = r^{n/2} r^{n/2} = 0\) implies \(r^{n/2} =
+              0\). Continue the algorithm for \(r^{n/2} = 0\).
+    \end{itemize}
+    Such algorithm is ensured to terminate and will always result in \(r = 0\),
+    which implies in \(R\) being a reduced ring.
 \end{proof}
 
 \subsection{Quotient Ring}
@@ -278,8 +278,8 @@ We define now, for every ideal \(\ideal{a}\) of a given ring \(R\), a ring
 \(R/\ideal{a}\) together with an additive and multiplicative structure: for
 every \(a + \ideal{a}, b + \ideal{a} \in R/\ideal{a}\), we define
 \begin{gather*}
-(a + \ideal{a}) + (b + \ideal{a}) \coloneq (a + b) + \ideal{a}, \\
-(a + \ideal{a}) \cdot (b + \ideal{a}) \coloneq a b + \ideal{a}.
+    (a + \ideal{a}) + (b + \ideal{a}) \coloneq (a + b) + \ideal{a}, \\
+    (a + \ideal{a}) \cdot (b + \ideal{a}) \coloneq a b + \ideal{a}.
 \end{gather*}
 
 Let's show that both operations are well defined. Addition is clearly well
@@ -288,595 +288,595 @@ and \(b_1 + \ideal{a} = b_2 + \ideal{a}\) --- that is, both differences
 \(a_1 - a_2\) and \(b_1 - b_2 \in \ideal{a}\) are elements of
 \(\ideal{a}\). Notice that
 \begin{align*}
-a_1 b_1 - a_2 b_2
-&= a_1 b_1 - a_2 b_2 + (a_1 b_2 - a_1 b_2) \\
-&= (a_1 b_1 - a_1 b_2) + (a_1 b_2 - a_2 b_2) \\
-&= a_1 (b_1 - b_2) + (a_1 - a_2) b_2
+    a_1 b_1 - a_2 b_2
+     & = a_1 b_1 - a_2 b_2 + (a_1 b_2 - a_1 b_2)   \\
+     & = (a_1 b_1 - a_1 b_2) + (a_1 b_2 - a_2 b_2) \\
+     & = a_1 (b_1 - b_2) + (a_1 - a_2) b_2
 \end{align*}
 and therefore \(a_1 b_1 - a_2 b_2 \in \ideal{a}\), implying in
 \(a_1 b_1 + \ideal{a} = a_2 b_2 + \ideal{a}\) --- thus multiplication is well
 defined.
 
 \begin{proposition}[Universal property of quotient rings]
-\label{prop:universal-property-quotienting-rings}
-Let \(R\) be a ring. For every ring \(S\) together with a ring morphism \(\psi:
-R \to S\) and ideal \(\ideal{a} \subseteq \ker \psi\), there exists a
-\emph{unique} ring morphism \(\phi: R/\ideal{a} \unique S\) such that the
-following diagram commutes
-\[
-\begin{tikzcd}
-R \ar[r, "\psi"] \ar[d, swap, "\pi", two heads] &S \\
-R/\ideal{a} \ar[ru, bend right, swap, "\phi", dashed] &
-\end{tikzcd}
-\]
+    \label{prop:universal-property-quotienting-rings}
+    Let \(R\) be a ring. For every ring \(S\) together with a ring morphism \(\psi:
+    R \to S\) and ideal \(\ideal{a} \subseteq \ker \psi\), there exists a
+    \emph{unique} ring morphism \(\phi: R/\ideal{a} \unique S\) such that the
+    following diagram commutes
+    \[
+        \begin{tikzcd}
+            R \ar[r, "\psi"] \ar[d, swap, "\pi", two heads] &S \\
+            R/\ideal{a} \ar[ru, bend right, swap, "\phi", dashed] &
+        \end{tikzcd}
+    \]
 \end{proposition}
 
 \begin{proof}
-Let \(S\) be any ring together with a ring morphism \(\psi: R \to S\). Let
-\(\pi: R \epi R/\ideal{a}\) be the canonical projection morphism. Define a map
-\(\phi: R/\ideal{a} \to S\) by sending \(r + \ideal{a} \mapsto \psi(r)\). We
-show now that \(\phi\) is indeed well defined, consider elements
-\(x, y \in R/\ideal{a}\) to be such that \(\phi(x) = \phi(y)\), then
-\(\psi(x) = \psi(y)\) which is the same as
-\(\psi(x) - \psi(y) = \psi(x - y) = 0\), therefore \(x - y \in \ker \psi\), then
-\(x = y\) in \(R/\ideal{a}\). Moreover, \(\phi\) inherits from \(\psi\) the
-preservation of both additive and multiplicative structures, thus \(\phi\) is a
-morphism of rings and \(\phi \pi = \psi\). If \(\phi'\) is another morphism such
-that \(\phi' \pi = \psi\), since \(\pi\) is surjective then \(\phi \pi = \phi'
-\pi\) implies in \(\phi = \phi'\), thus \(\phi\) is unique.
+    Let \(S\) be any ring together with a ring morphism \(\psi: R \to S\). Let
+    \(\pi: R \epi R/\ideal{a}\) be the canonical projection morphism. Define a map
+    \(\phi: R/\ideal{a} \to S\) by sending \(r + \ideal{a} \mapsto \psi(r)\). We
+    show now that \(\phi\) is indeed well defined, consider elements
+    \(x, y \in R/\ideal{a}\) to be such that \(\phi(x) = \phi(y)\), then
+    \(\psi(x) = \psi(y)\) which is the same as
+    \(\psi(x) - \psi(y) = \psi(x - y) = 0\), therefore \(x - y \in \ker \psi\), then
+    \(x = y\) in \(R/\ideal{a}\). Moreover, \(\phi\) inherits from \(\psi\) the
+    preservation of both additive and multiplicative structures, thus \(\phi\) is a
+    morphism of rings and \(\phi \pi = \psi\). If \(\phi'\) is another morphism such
+    that \(\phi' \pi = \psi\), since \(\pi\) is surjective then \(\phi \pi = \phi'
+    \pi\) implies in \(\phi = \phi'\), thus \(\phi\) is unique.
 \end{proof}
 
 \begin{corollary}[Every ideal is a kernel]
-\label{cor:ideal-is-kernel}
-Given a ring \(R\), for every ideal \(\ideal{a} \subseteq R\) is the kernel of
-some ring morphism \(R \to S\). Therefore an additive subgroup of a ring \(R\)
-is an ideal if and only if it is a kernel of some ring morphism.
+    \label{cor:ideal-is-kernel}
+    Given a ring \(R\), for every ideal \(\ideal{a} \subseteq R\) is the kernel of
+    some ring morphism \(R \to S\). Therefore an additive subgroup of a ring \(R\)
+    is an ideal if and only if it is a kernel of some ring morphism.
 \end{corollary}
 
 \begin{proof}
-Simply let \(S = R/\ideal{a}\) and consider the canonical projection \(\pi: R
-\to R/\ideal{a}\), whose kernel is clearly \(\ideal{a}\).
+    Simply let \(S = R/\ideal{a}\) and consider the canonical projection \(\pi: R
+    \to R/\ideal{a}\), whose kernel is clearly \(\ideal{a}\).
 \end{proof}
 
 \begin{definition}[Characteristic]
-\label{def:ring-characteristic}
-Let \(R\) be a ring and \(\phi: \Z \unique R\) be the unique ring morphism
-mapping \(r \mapsto r \cdot 1_R\). We define the \emph{characteristic} of \(R\)
-to be the non-negative integer \(n \in \Z_{> 0}\) such that \(\ker \phi = n \Z\)
---- we denote such a property by \(\Char R = n\).
+    \label{def:ring-characteristic}
+    Let \(R\) be a ring and \(\phi: \Z \unique R\) be the unique ring morphism
+    mapping \(r \mapsto r \cdot 1_R\). We define the \emph{characteristic} of \(R\)
+    to be the non-negative integer \(n \in \Z_{> 0}\) such that \(\ker \phi = n \Z\)
+    --- we denote such a property by \(\Char R = n\).
 \end{definition}
 
 \begin{proposition}[Characteristic of integral domains]
-\label{prop:char-integral-domain-is-0-or-p}
-The characteristic of an \emph{integral domain} is either \emph{zero} or a
-\emph{prime number}.
+    \label{prop:char-integral-domain-is-0-or-p}
+    The characteristic of an \emph{integral domain} is either \emph{zero} or a
+    \emph{prime number}.
 \end{proposition}
 
 \begin{proof}
-Let \(R\) be an integral domain and let \(\Char R = n\). Suppose that \(n\) is
-non-zero and that there exists an integer \(m < n\) dividing \(n\) --- that is,
-for some integer \(q\) we have \(n = q m\). Then in particular
-\(n \cdot 1_R = (q \cdot 1_R) (m \cdot 1_R)\) but \(n \cdot 1_R = 0\) and since
-\(q, m < n\) it follows that \(q \cdot 1_R, m \cdot 1_R \neq 0\) in \(R\) ---
-thus we obtained a contradiction since \(R\) is said to be an integral domain,
-hence \(\Char R\) is either prime or zero.
+    Let \(R\) be an integral domain and let \(\Char R = n\). Suppose that \(n\) is
+    non-zero and that there exists an integer \(m < n\) dividing \(n\) --- that is,
+    for some integer \(q\) we have \(n = q m\). Then in particular
+    \(n \cdot 1_R = (q \cdot 1_R) (m \cdot 1_R)\) but \(n \cdot 1_R = 0\) and since
+    \(q, m < n\) it follows that \(q \cdot 1_R, m \cdot 1_R \neq 0\) in \(R\) ---
+    thus we obtained a contradiction since \(R\) is said to be an integral domain,
+    hence \(\Char R\) is either prime or zero.
 \end{proof}
 
 \begin{definition}[Boolean ring]
-\label{def:boolean-ring}
-A ring \(R\) is said to be \emph{boolean} if for all \(r \in R\) we have
-\(r^2 = r\).
+    \label{def:boolean-ring}
+    A ring \(R\) is said to be \emph{boolean} if for all \(r \in R\) we have
+    \(r^2 = r\).
 \end{definition}
 
 \begin{corollary}
-\label{cor:boolean-is-commutative-and-char-2}
-A non-zero \emph{boolean} ring is \emph{commutative} and has characteristic
-\(2\).
+    \label{cor:boolean-is-commutative-and-char-2}
+    A non-zero \emph{boolean} ring is \emph{commutative} and has characteristic
+    \(2\).
 \end{corollary}
 
 \begin{proof}
-Let \(x \in R\) be any element of a boolean ring \(R\). Then we have
-\(x + x = (x + x)^2 = 4 x^2\) and \(x + x = x^2 + x^2\), therefore,
-\(2 x^2 = 4 x^2\) which implies in \(x^2 + x^2 = 0\) but since
-\(x^2 + x^2 = x + x\) then we conclude that \(x + x = 0\) and thus
-\(\Char R = 2\).
+    Let \(x \in R\) be any element of a boolean ring \(R\). Then we have
+    \(x + x = (x + x)^2 = 4 x^2\) and \(x + x = x^2 + x^2\), therefore,
+    \(2 x^2 = 4 x^2\) which implies in \(x^2 + x^2 = 0\) but since
+    \(x^2 + x^2 = x + x\) then we conclude that \(x + x = 0\) and thus
+    \(\Char R = 2\).
 
-If \(x, y \in R\) are any two elements, then consider the sum
-\[
-x + y
-= (x + y)^2
-= x^2 + x y + y x + y^2
-= x + x y + y x + y,
-\]
-hence cancelling the common terms we obtain \(x y + y x = 0\), now since
-\(\Char R = 2\) one can use the fact that \(y x + yx = 0\) to make
-\[
-0 = x y + y x = x y + y x - (y x + y x) = x y - y x,
-\]
-thus \(x y = y x\).
+    If \(x, y \in R\) are any two elements, then consider the sum
+    \[
+        x + y
+        = (x + y)^2
+        = x^2 + x y + y x + y^2
+        = x + x y + y x + y,
+    \]
+    hence cancelling the common terms we obtain \(x y + y x = 0\), now since
+    \(\Char R = 2\) one can use the fact that \(y x + yx = 0\) to make
+    \[
+        0 = x y + y x = x y + y x - (y x + y x) = x y - y x,
+    \]
+    thus \(x y = y x\).
 \end{proof}
 
 \begin{corollary}
-\label{cor:boolean-integral-domain-is-Z/2Z}
-If \(R\) is a boolean ring and also an integral domain, then there exists a
-canonical isomorphism of rings \(R \iso \Z/2\Z\).
+    \label{cor:boolean-integral-domain-is-Z/2Z}
+    If \(R\) is a boolean ring and also an integral domain, then there exists a
+    canonical isomorphism of rings \(R \iso \Z/2\Z\).
 \end{corollary}
 
 \begin{proof}
-Let \(r \in R\) be any element, since \(r^2 = r\) then
-\(r^2 - r = r(1_R - r) = 0_R\) but since \(R\) is an integral domain, either
-\(r = 0_R\) or \(1_R - r = 0_R\), that is, \(r = 1_R\). Thus the map
-\(R \to \Z/2\Z\) sending \(0_R \mapsto [0]_2\) and \(1_R \mapsto [1]_2\) is an
-isomorphism of rings.
+    Let \(r \in R\) be any element, since \(r^2 = r\) then
+    \(r^2 - r = r(1_R - r) = 0_R\) but since \(R\) is an integral domain, either
+    \(r = 0_R\) or \(1_R - r = 0_R\), that is, \(r = 1_R\). Thus the map
+    \(R \to \Z/2\Z\) sending \(0_R \mapsto [0]_2\) and \(1_R \mapsto [1]_2\) is an
+    isomorphism of rings.
 \end{proof}
 
 \subsection{Decompositions}
 
 \begin{theorem}[First isomorphism]
-\label{thm:ring-first-isomorphism}
-Every ring morphism \(\phi: R \to S\) can be decomposed into the commutative
-diagram
-\[
-\begin{tikzcd}
-R \ar[r, two heads] \ar[rrr, bend left, "\phi"]
-&R/{\ker \phi} \ar[r, "\dis", "\overline{\phi}"']
-&\im \phi \ar[r, hook]
-&S
-\end{tikzcd}
-\]
-where \(\overline{\phi}: R/\ker \phi \isoto \im \phi\) is the natural ring
-morphism induced by \(\phi\).
+    \label{thm:ring-first-isomorphism}
+    Every ring morphism \(\phi: R \to S\) can be decomposed into the commutative
+    diagram
+    \[
+        \begin{tikzcd}
+            R \ar[r, two heads] \ar[rrr, bend left, "\phi"]
+            &R/{\ker \phi} \ar[r, "\dis", "\overline{\phi}"']
+            &\im \phi \ar[r, hook]
+            &S
+        \end{tikzcd}
+    \]
+    where \(\overline{\phi}: R/\ker \phi \isoto \im \phi\) is the natural ring
+    morphism induced by \(\phi\).
 \end{theorem}
 
 \begin{proof}
-The morphism \(\overline{\phi}\) is obtained by the quotient ring universal
-property --- that is, \(\overline{\phi}(r) = \phi(r) + \ker \phi\), which is a
-morphism \(R/{\ker \phi} \to S\). Restricting the codomain of
-\(\overline{\phi}\) we obtain the claimed isomorphism. The rest follows
-trivially.
+    The morphism \(\overline{\phi}\) is obtained by the quotient ring universal
+    property --- that is, \(\overline{\phi}(r) = \phi(r) + \ker \phi\), which is a
+    morphism \(R/{\ker \phi} \to S\). Restricting the codomain of
+    \(\overline{\phi}\) we obtain the claimed isomorphism. The rest follows
+    trivially.
 \end{proof}
 
 \begin{corollary}
-\label{cor:isomorphism-quotient-by-kernel-of-surjective-morphism}
-Let \(\phi: R \epi S\) be a \emph{surjective} ring morphism, then there exists
-a natural isomorphism
-\[
-S \iso R/{\ker \phi}
-\]
+    \label{cor:isomorphism-quotient-by-kernel-of-surjective-morphism}
+    Let \(\phi: R \epi S\) be a \emph{surjective} ring morphism, then there exists
+    a natural isomorphism
+    \[
+        S \iso R/{\ker \phi}
+    \]
 \end{corollary}
 
 \begin{proof}
-Indeed, if \(\phi\) is surjective, then \(\im \phi = S\) and by the first
-isomorphism theorem we obtain the natural isomorphism \(S \iso R/{\ker \phi}\).
+    Indeed, if \(\phi\) is surjective, then \(\im \phi = S\) and by the first
+    isomorphism theorem we obtain the natural isomorphism \(S \iso R/{\ker \phi}\).
 \end{proof}
 
 \begin{proposition}[Ideal of a quotient]
-\label{prop:ideal-of-a-quotient}
-Let \(R\) be a ring and \(\ideal{a} \subseteq R\) be an ideal. If \(\ideal{b}\)
-is an ideal of \(R\) and \(\ideal{a} \subseteq \ideal{b}\), then
-\(\ideal{b}/\ideal{a}\) is an ideal of \(R/\ideal{a}\) and there exists a
-natural isomorphism
-\[
-\frac{R/\ideal{a}}{\ideal{b}/\ideal{a}} \iso R/\ideal{b}.
-\]
+    \label{prop:ideal-of-a-quotient}
+    Let \(R\) be a ring and \(\ideal{a} \subseteq R\) be an ideal. If \(\ideal{b}\)
+    is an ideal of \(R\) and \(\ideal{a} \subseteq \ideal{b}\), then
+    \(\ideal{b}/\ideal{a}\) is an ideal of \(R/\ideal{a}\) and there exists a
+    natural isomorphism
+    \[
+        \frac{R/\ideal{a}}{\ideal{b}/\ideal{a}} \iso R/\ideal{b}.
+    \]
 \end{proposition}
 
 \begin{proof}
-By \cref{prop:universal-property-quotienting-rings}, let
-\(\phi: R/\ideal{a} \unique R/\ideal{b}\) be the morphism making the following
-diagram commute
-\[
-\begin{tikzcd}
-R \ar[r, two heads] \ar[d, two heads] & R/\ideal{b} \\
-R/\ideal{a} \ar[ru, dashed, bend right, "\phi"'] &
-\end{tikzcd}
-\]
-That is, \(\phi\) is defined by mapping \(r + \ideal{a} \mapsto r +
-\ideal{b}\). Notice that the kernel of \(\phi\) is composed of those elements
-\(r + \ideal{a} \in R/\ideal{a}\) for which \(\phi(r + \ideal{a}) = \ideal{b}\),
-that is, \(r \in \ideal{b}\) for \(r + \ideal{b} = \ideal{b}\) --- thus
-\(\ker \phi = \ideal{b}/\ideal{a}\), which is ensured to be an ideal. Since
-\(\phi\) is surjective, by means of
-\cref{cor:isomorphism-quotient-by-kernel-of-surjective-morphism} we obtain a
-natural isomorphism \(R/\ideal{b} \iso \frac{R/\ideal{a}}{\ideal{b}/\ideal{a}}\).
+    By \cref{prop:universal-property-quotienting-rings}, let
+    \(\phi: R/\ideal{a} \unique R/\ideal{b}\) be the morphism making the following
+    diagram commute
+    \[
+        \begin{tikzcd}
+            R \ar[r, two heads] \ar[d, two heads] & R/\ideal{b} \\
+            R/\ideal{a} \ar[ru, dashed, bend right, "\phi"'] &
+        \end{tikzcd}
+    \]
+    That is, \(\phi\) is defined by mapping \(r + \ideal{a} \mapsto r +
+    \ideal{b}\). Notice that the kernel of \(\phi\) is composed of those elements
+    \(r + \ideal{a} \in R/\ideal{a}\) for which \(\phi(r + \ideal{a}) = \ideal{b}\),
+    that is, \(r \in \ideal{b}\) for \(r + \ideal{b} = \ideal{b}\) --- thus
+    \(\ker \phi = \ideal{b}/\ideal{a}\), which is ensured to be an ideal. Since
+    \(\phi\) is surjective, by means of
+    \cref{cor:isomorphism-quotient-by-kernel-of-surjective-morphism} we obtain a
+    natural isomorphism \(R/\ideal{b} \iso \frac{R/\ideal{a}}{\ideal{b}/\ideal{a}}\).
 \end{proof}
 
 \begin{corollary}
-\label{cor:surjective-is-projection-into-quotient}
-Any surjective morphism \(\phi: R \epi S\) can be bijectively identified as a
-canonical projection \(R \epi R/\ker \phi\).
+    \label{cor:surjective-is-projection-into-quotient}
+    Any surjective morphism \(\phi: R \epi S\) can be bijectively identified as a
+    canonical projection \(R \epi R/\ker \phi\).
 \end{corollary}
 
 \begin{example}
-\label{exp:principal-ideals-and-ideals-of-a-quotient}
-If \(R\) is a \emph{commutative} ring and we consider principal ideals \((a)\)
-and \((b)\) of \(R\). If \([b] \in R/(a)\) is the class of \(b\), then we have
-\(([b]) = (a, b) / (a)\). By \cref{prop:ideal-of-a-quotient} we find a
-canonical isomorphism
-\[
-\frac{R/(a)}{([b])} \iso R/(a, b).
-\]
+    \label{exp:principal-ideals-and-ideals-of-a-quotient}
+    If \(R\) is a \emph{commutative} ring and we consider principal ideals \((a)\)
+    and \((b)\) of \(R\). If \([b] \in R/(a)\) is the class of \(b\), then we have
+    \(([b]) = (a, b) / (a)\). By \cref{prop:ideal-of-a-quotient} we find a
+    canonical isomorphism
+    \[
+        \frac{R/(a)}{([b])} \iso R/(a, b).
+    \]
 \end{example}
 
 \subsection{Generation of Ideals}
 
 \begin{definition}[Noetherian ring]
-\label{def:noetherian-ring}
-A \emph{commutative} ring \(R\) is said to be \emph{Noetherian} if \emph{every}
-ideal of \(R\) is \emph{finitely} generated.
+    \label{def:noetherian-ring}
+    A \emph{commutative} ring \(R\) is said to be \emph{Noetherian} if \emph{every}
+    ideal of \(R\) is \emph{finitely} generated.
 \end{definition}
 
 \begin{proposition}[Image of Noetherian ring]
-\label{prop:image-of-noetherian-is-noetherian}
-Let \(R\) be a Noetherian ring and \(S\) be a ring. If there exists a
-\emph{surjective} ring morphism \(R \epi S\) then \(S\) is Noetherian.
+    \label{prop:image-of-noetherian-is-noetherian}
+    Let \(R\) be a Noetherian ring and \(S\) be a ring. If there exists a
+    \emph{surjective} ring morphism \(R \epi S\) then \(S\) is Noetherian.
 \end{proposition}
 
 \begin{proof}
-Suppose there exists \(\phi: R \epi S\), a surjective ring morphism. Let
-\(\ideal{s}\) be any ideal of \(S\), since the preimage of an ideal is an ideal,
-then \(\phi^{-1}(\ideal{s})\) is an ideal of \(R\) --- thus finitely
-generated. Now, since \(\phi\) is surjective, \(\phi^{-1}(\ideal{s})\) is
-non-empty and there exists a finite set \(A \subseteq \phi^{-1}(\ideal{s})\)
-such that \(\phi^{-1}(\ideal{s}) = (A)\), since \(R\) is Noetherian. Therefore
-\(\phi(A) = B \subseteq \ideal{s}\) is a finite set, hence
-\(\phi((A)) = (B) = \ideal{s}\) --- proving that \(\ideal{s}\) is finitely
-generated.
+    Suppose there exists \(\phi: R \epi S\), a surjective ring morphism. Let
+    \(\ideal{s}\) be any ideal of \(S\), since the preimage of an ideal is an ideal,
+    then \(\phi^{-1}(\ideal{s})\) is an ideal of \(R\) --- thus finitely
+    generated. Now, since \(\phi\) is surjective, \(\phi^{-1}(\ideal{s})\) is
+    non-empty and there exists a finite set \(A \subseteq \phi^{-1}(\ideal{s})\)
+    such that \(\phi^{-1}(\ideal{s}) = (A)\), since \(R\) is Noetherian. Therefore
+    \(\phi(A) = B \subseteq \ideal{s}\) is a finite set, hence
+    \(\phi((A)) = (B) = \ideal{s}\) --- proving that \(\ideal{s}\) is finitely
+    generated.
 \end{proof}
 
 \begin{definition}[Principal ideal domain]
-\label{def:PID}
-An \emph{integral domain} \(R\) is said to be a \emph{principal ideal domain}
-(which we'll shortly name PID) if \emph{every} ideal of \(R\) is
-\emph{principal}.
+    \label{def:PID}
+    An \emph{integral domain} \(R\) is said to be a \emph{principal ideal domain}
+    (which we'll shortly name PID) if \emph{every} ideal of \(R\) is
+    \emph{principal}.
 \end{definition}
 
 \begin{example}
-\label{exp:integers-are-PID}
-The ring of integers \(\Z\) is a PID. Indeed, if \(\ideal{a}\) is an ideal of
-\(\Z\), then there exists \(n \in \Z\) for which \(\ideal{a}\) is a subgroup of
-\(n \Z = (n)\), thus \(\ideal{a}\) itself is principal.
+    \label{exp:integers-are-PID}
+    The ring of integers \(\Z\) is a PID. Indeed, if \(\ideal{a}\) is an ideal of
+    \(\Z\), then there exists \(n \in \Z\) for which \(\ideal{a}\) is a subgroup of
+    \(n \Z = (n)\), thus \(\ideal{a}\) itself is principal.
 
-Notice also that, given any two integers \(m, n \in \Z\), if
-\(d \coloneq \gcd(m, n)\) then \(m, n \in (d)\), which implies that
-\((m, n) \subseteq (d)\). Moreover, from Bézout's identity\footnote{Using the
-  well order on \((m, n)\), let \(\ell
-  \coloneq a_0 m + b_0 n\) be the smallest element of \((m, n)\). Notice that
-  given any other \(u = a m + b n \in (m, n)\), by the euclidean division
-  algorithm there exists two integers \(q, r \in \Z\) for which \(u = q \ell +
-  r\) and \(0 \leq r < \ell\). Therefore, one can write
-  \[
-  r = u - q \ell
-  = (a m + b n) - q (a_0 m + b_0 n) = (a - q a_0) m + (b - q b_0) n
-  \]
-  so that \(r \in (m, n)\) --- since \(\ell\) is the smallest element, then \(r
-  = 0\) and thus \(\ell\) divides \(u\).
+    Notice also that, given any two integers \(m, n \in \Z\), if
+    \(d \coloneq \gcd(m, n)\) then \(m, n \in (d)\), which implies that
+    \((m, n) \subseteq (d)\). Moreover, from Bézout's identity\footnote{Using the
+        well order on \((m, n)\), let \(\ell
+        \coloneq a_0 m + b_0 n\) be the smallest element of \((m, n)\). Notice that
+        given any other \(u = a m + b n \in (m, n)\), by the euclidean division
+        algorithm there exists two integers \(q, r \in \Z\) for which \(u = q \ell +
+        r\) and \(0 \leq r < \ell\). Therefore, one can write
+        \[
+            r = u - q \ell
+            = (a m + b n) - q (a_0 m + b_0 n) = (a - q a_0) m + (b - q b_0) n
+        \]
+        so that \(r \in (m, n)\) --- since \(\ell\) is the smallest element, then \(r
+        = 0\) and thus \(\ell\) divides \(u\).
 
-  In general, we have shown that \(\ell\) divides every element of \((m, n)\),
-  and in particular \(\ell\) also divides both \(m\) and \(n\). Now, if \(c \in
-  \Z\) is any common divisor of \(m\) and \(n\) then in particular \(c\) divides
-  \(a_0 m + b_0 n = \ell\) --- showing that \(c \leq \ell\) and hence \(\ell =
-  \gcd(m, n)\).
-},
-we have the existence of \(a, b \in \Z\) for which \(a m + b n = d\), thus
-\(d \in (m, n)\) --- proving that \((m, n) = (d)\).
+        In general, we have shown that \(\ell\) divides every element of \((m, n)\),
+        and in particular \(\ell\) also divides both \(m\) and \(n\). Now, if \(c \in
+        \Z\) is any common divisor of \(m\) and \(n\) then in particular \(c\) divides
+        \(a_0 m + b_0 n = \ell\) --- showing that \(c \leq \ell\) and hence \(\ell =
+        \gcd(m, n)\).
+    },
+    we have the existence of \(a, b \in \Z\) for which \(a m + b n = d\), thus
+    \(d \in (m, n)\) --- proving that \((m, n) = (d)\).
 \end{example}
 
 \begin{example}
-\label{exp:Z[x]-isnt-PID}
-The ring \(\Z[x]\) is \emph{not} a PID.
+    \label{exp:Z[x]-isnt-PID}
+    The ring \(\Z[x]\) is \emph{not} a PID.
 
-We consider the ideal \((2, x)\) and show that it isn't principal. Suppose there
-exists \(f(x) \in \Z[x]\) for which \((f(x)) = (2, x)\), so that there exists
-\(q(x) \in \Z[x]\) such that \(q(x) f(x) = 2\). Notice however that since \(\Z\)
-is an integral domain, the product of the leading term coefficients of \(f(x)\)
-and \(q(x)\) is necessarily non-zero (for non-zero polynomials), thus
-\(\deg f(x) g(x) = \deg f(x) + \deg g(x)\). Notice that \(\deg q(x) f(x) = 0\)
-thus \(\deg f(x) = 0\) and this can't be the case since we would have
-\(x \notin (f(x))\) --- this is a contradiction, such polynomial \(f(x)\) cannot
-exist and therefore \((2, x)\) isn't principal.
+    We consider the ideal \((2, x)\) and show that it isn't principal. Suppose there
+    exists \(f(x) \in \Z[x]\) for which \((f(x)) = (2, x)\), so that there exists
+    \(q(x) \in \Z[x]\) such that \(q(x) f(x) = 2\). Notice however that since \(\Z\)
+    is an integral domain, the product of the leading term coefficients of \(f(x)\)
+    and \(q(x)\) is necessarily non-zero (for non-zero polynomials), thus
+    \(\deg f(x) g(x) = \deg f(x) + \deg g(x)\). Notice that \(\deg q(x) f(x) = 0\)
+    thus \(\deg f(x) = 0\) and this can't be the case since we would have
+    \(x \notin (f(x))\) --- this is a contradiction, such polynomial \(f(x)\) cannot
+    exist and therefore \((2, x)\) isn't principal.
 \end{example}
 
 \begin{proposition}
-\label{prop:k[x]-is-PID}
-Given a field \(k\), the ring of polynomials \(k[x]\) is a PID.
+    \label{prop:k[x]-is-PID}
+    Given a field \(k\), the ring of polynomials \(k[x]\) is a PID.
 \end{proposition}
 
 \begin{proof}
-The zero ideal is obviously principal, thus let \(\ideal{a}\) be any non-zero
-proper ideal of \(k[x]\) and, by the well-ordering of the positive degree
-polynomials in \(k[x]\), let \(f(x) \in \ideal{a}\) be a non-zero monic
-polynomial with least degree.  We can indeed be certain that we can choose an
-\(f(x)\), because every non-zero coefficient of a polynomial of \(k[x]\) is a
-unity --- since \(\ideal{a}\) is non-zero, we are ensured that there will exist
-a polynomial with at least one non-zero coefficient.
+    The zero ideal is obviously principal, thus let \(\ideal{a}\) be any non-zero
+    proper ideal of \(k[x]\) and, by the well-ordering of the positive degree
+    polynomials in \(k[x]\), let \(f(x) \in \ideal{a}\) be a non-zero monic
+    polynomial with least degree.  We can indeed be certain that we can choose an
+    \(f(x)\), because every non-zero coefficient of a polynomial of \(k[x]\) is a
+    unity --- since \(\ideal{a}\) is non-zero, we are ensured that there will exist
+    a polynomial with at least one non-zero coefficient.
 
-Let \(g(x) \in k[x]\) be any polynomial and, since \(k\) is a field, let
-\(q(x), r(x) \in k[x]\) be polynomials such that \(g(x) = q(x) f(x) + r(x)\),
-where \(\deg r < \deg f(x)\). Notice then that the last condition implies in
-\(\deg r(x) \leq 0\), otherwise \(f(x)\) wouldn't be the monic polynomial with
-least degree among polynomials of positive degree in \(k[x]\). Now, if
-\(r(x) = 0\), then \(g(x) = q(x) f(x)\) and \(g(x) \in (f(x))\) --- on the other
-hand, if \(r(x) = a\) for some \(a \in k\), then \(a \in \ideal{a}\) but since
-\(k\) is a field, this implies in \(1 \in \ideal{a}\) thus \(\ideal{a} = k[x]\)
-and hence a contradiction to the hypothesis that \(\ideal{a}\) is
-proper. Assuming the latter does not hold, we find that \((f(x)) = \ideal{a}\)
-and hence \(k[x]\) is a PID.
+    Let \(g(x) \in k[x]\) be any polynomial and, since \(k\) is a field, let
+    \(q(x), r(x) \in k[x]\) be polynomials such that \(g(x) = q(x) f(x) + r(x)\),
+    where \(\deg r < \deg f(x)\). Notice then that the last condition implies in
+    \(\deg r(x) \leq 0\), otherwise \(f(x)\) wouldn't be the monic polynomial with
+    least degree among polynomials of positive degree in \(k[x]\). Now, if
+    \(r(x) = 0\), then \(g(x) = q(x) f(x)\) and \(g(x) \in (f(x))\) --- on the other
+    hand, if \(r(x) = a\) for some \(a \in k\), then \(a \in \ideal{a}\) but since
+    \(k\) is a field, this implies in \(1 \in \ideal{a}\) thus \(\ideal{a} = k[x]\)
+    and hence a contradiction to the hypothesis that \(\ideal{a}\) is
+    proper. Assuming the latter does not hold, we find that \((f(x)) = \ideal{a}\)
+    and hence \(k[x]\) is a PID.
 \end{proof}
 
 \begin{definition}[Product of ideals]
-\label{def:product-ideal}
-Given a ring \(R\) and ideals \(\ideal{a}\) and \(\ideal{b}\) of \(R\), we
-denote by \(\ideal{a b}\) the ideal generated by all products \(a b\) for \(a
-\in \ideal{a}\) and \(b \in \ideal{b}\).
+    \label{def:product-ideal}
+    Given a ring \(R\) and ideals \(\ideal{a}\) and \(\ideal{b}\) of \(R\), we
+    denote by \(\ideal{a b}\) the ideal generated by all products \(a b\) for \(a
+    \in \ideal{a}\) and \(b \in \ideal{b}\).
 \end{definition}
 
 \begin{lemma}
-\label{lem:}
-Let \(\ideal{a}\) and \(\ideal{b}\) be ideals of a \emph{commutative} ring
-\(R\). If either one of the following properties is true:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item The ideals \(\ideal{a}\) and \(\ideal{b}\) are \emph{comaximal}, that is,
-  \(\ideal{a} + \ideal{b} = R\).
+    \label{lem:}
+    Let \(\ideal{a}\) and \(\ideal{b}\) be ideals of a \emph{commutative} ring
+    \(R\). If either one of the following properties is true:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item The ideals \(\ideal{a}\) and \(\ideal{b}\) are \emph{comaximal}, that is,
+              \(\ideal{a} + \ideal{b} = R\).
 
-\item The quotient \(R/(\ideal{a b})\) is a \emph{reduced} ring.
-\end{enumerate}
-Then it follows that
-\[
-\ideal{a b} = \ideal{a} \cap \ideal{b}.
-\]
+        \item The quotient \(R/(\ideal{a b})\) is a \emph{reduced} ring.
+    \end{enumerate}
+    Then it follows that
+    \[
+        \ideal{a b} = \ideal{a} \cap \ideal{b}.
+    \]
 \end{lemma}
 
 \begin{proof}
-If \(a b \in \ideal{a b}\) is any element, then
-\(a, b \in \ideal{a} \cap \ideal{b}\) and hence
-\(a b \in \ideal{a} \cap \ideal{b}\) --- thus in either cases we have
-\(\ideal{a b} \subseteq \ideal{a} \cap \ideal{b}\). We now prove the other side
-of the inclusion for each of the properties --- let
-\(\ell \in \ideal{a} \cap \ideal{b}\) be any element:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item Since \(\ideal{a} + \ideal{b} = R\), then there are \(a \in \ideal{a}\)
-  and \(b \in \ideal{b}\) such that \(a + b = 1\). Moreover, since
-  \(\ell \in \ideal{a} \cap \ideal{b}\), it follows that
-  \(a \ell + b \ell = \ell\) is an element of \(\ideal{a b}\), thus
-  \(\ideal{a} \cap \ideal{b} \subseteq \ideal{a b}\).
+    If \(a b \in \ideal{a b}\) is any element, then
+    \(a, b \in \ideal{a} \cap \ideal{b}\) and hence
+    \(a b \in \ideal{a} \cap \ideal{b}\) --- thus in either cases we have
+    \(\ideal{a b} \subseteq \ideal{a} \cap \ideal{b}\). We now prove the other side
+    of the inclusion for each of the properties --- let
+    \(\ell \in \ideal{a} \cap \ideal{b}\) be any element:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item Since \(\ideal{a} + \ideal{b} = R\), then there are \(a \in \ideal{a}\)
+              and \(b \in \ideal{b}\) such that \(a + b = 1\). Moreover, since
+              \(\ell \in \ideal{a} \cap \ideal{b}\), it follows that
+              \(a \ell + b \ell = \ell\) is an element of \(\ideal{a b}\), thus
+              \(\ideal{a} \cap \ideal{b} \subseteq \ideal{a b}\).
 
-\item Notice that we have \(\ell^2 \in \ideal{a b}\), thus
-  \(\ell^2 + \ideal{a b} = \ideal{a b}\). Since \(R/(\ideal{a b})\) is reduced,
-  it follows that \(\ell + \ideal{a b} = \ideal{a b}\) (see
-  \cref{lem:reduced-iff-r2=0-implies-r=0}) --- thus \(\ell \in \ideal{a b}\) and
-  \(\ideal{a} \cap \ideal{b} \subseteq \ideal{a b}\).
-\end{enumerate}
+        \item Notice that we have \(\ell^2 \in \ideal{a b}\), thus
+              \(\ell^2 + \ideal{a b} = \ideal{a b}\). Since \(R/(\ideal{a b})\) is reduced,
+              it follows that \(\ell + \ideal{a b} = \ideal{a b}\) (see
+              \cref{lem:reduced-iff-r2=0-implies-r=0}) --- thus \(\ell \in \ideal{a b}\) and
+              \(\ideal{a} \cap \ideal{b} \subseteq \ideal{a b}\).
+    \end{enumerate}
 \end{proof}
 
 \begin{lemma}
-\label{lem:monomial-non-zero-divisor}
-Let \(R\) be a ring and \(f(x) \in R[x]\) be a \emph{monomial}. Then \(f(x)\) is
-\emph{not} a left or right zero-divisor.
+    \label{lem:monomial-non-zero-divisor}
+    Let \(R\) be a ring and \(f(x) \in R[x]\) be a \emph{monomial}. Then \(f(x)\) is
+    \emph{not} a left or right zero-divisor.
 \end{lemma}
 
 \begin{proof}
-Since \(f(x)\) is is a monomial and there is no element \(r \in R\) other than
-zero for which \(r \cdot 1_R = 0\) (where \(1_R\) is the coefficient of the
-leading term of \(f(x)\)), then it follows that the only polynomial
-\(z(x) \in R[x]\) for which \(f(x) z(x) = 0\) (or \(z(x) f(x) = 0\)) is the zero
-polynomial \(z(x) = 0\).
+    Since \(f(x)\) is is a monomial and there is no element \(r \in R\) other than
+    zero for which \(r \cdot 1_R = 0\) (where \(1_R\) is the coefficient of the
+    leading term of \(f(x)\)), then it follows that the only polynomial
+    \(z(x) \in R[x]\) for which \(f(x) z(x) = 0\) (or \(z(x) f(x) = 0\)) is the zero
+    polynomial \(z(x) = 0\).
 \end{proof}
 
 
 \begin{lemma}[Degree of the product of polynomials]
-\label{lem:degree-product-of-polynomials}
-If \(f(x) \in R[x]\) is \emph{monic} a polynomial and \(R\) is a ring, then for
-every \(g(x) \in R[x]\) we have
-\[
-\deg (f(x) g(x)) = \deg f(x) + \deg g(x).
-\]
+    \label{lem:degree-product-of-polynomials}
+    If \(f(x) \in R[x]\) is \emph{monic} a polynomial and \(R\) is a ring, then for
+    every \(g(x) \in R[x]\) we have
+    \[
+        \deg (f(x) g(x)) = \deg f(x) + \deg g(x).
+    \]
 \end{lemma}
 
 One can extend the euclidean division algorithm to the ring of polynomials,
 where we'll be able to divide polynomials by monomials.
 
 \begin{lemma}[Division of polynomials]
-\label{lem:division-of-polynomials}
-Given a \emph{monic} polynomial \(f(x) \in R[x]\), for some ring \(R\), then for
-all \(g(x) \in R[x]\) there exists two polynomials \(q(x), r(x) \in R[x]\) for
-which
-\[
-g(x) = f(x) q(x) + r(x),
-\]
-and \(\deg r(x) < \deg f(x)\). Moreover, such polynomials \(q(x)\) and \(r(x)\)
-are unique.
+    \label{lem:division-of-polynomials}
+    Given a \emph{monic} polynomial \(f(x) \in R[x]\), for some ring \(R\), then for
+    all \(g(x) \in R[x]\) there exists two polynomials \(q(x), r(x) \in R[x]\) for
+    which
+    \[
+        g(x) = f(x) q(x) + r(x),
+    \]
+    and \(\deg r(x) < \deg f(x)\). Moreover, such polynomials \(q(x)\) and \(r(x)\)
+    are unique.
 \end{lemma}
 
 \begin{proof}
-Indeed, if \(q'(x), r'(x) \in R[x]\) are polynomials --- and, for the sake of
-contradiction, \emph{distinct} from the respective \(q(x)\) and \(r(x)\) --- for
-which \(g(x) = f(x) q'(x) + r'(x)\), and \(\deg r'(x) < \deg f(x)\), we find
-that \(f(x) q(x) + r(x) = f(x) q'(x) + r'(x)\) and thus
-\begin{equation}\label{eq:polynomial-divison-unique-poly}
-r(x) - r'(x) = f(x) (q'(x) - q(x)).
-\end{equation}
-Notice however that by hypothesis \(\deg r(x), \deg r'(x) < \deg f(x)\), thus
-\(\deg(r(x) - r'(x)) \leq \max(\deg r(x), \deg r'(x)) < \deg f(x)\) --- which is
-in contradiction with \cref{eq:polynomial-divison-unique-poly} since for such
-equation to be true we should have
-\(\deg(r(x) - r'(x)) = \deg(f(x) (q'(x) - q(x))) = \deg f(x) + \deg(q'(x) -
-q(x))\). Therefore \(r(x) - r'(x)\) is necessarily the zero polynomial and
-\(f(x) q(x) = f(x) q'(x)\), now since \(f(x)\) is a monomial and by
-\cref{lem:monomial-non-zero-divisor} is not a zero-divisor, we use
-\cref{prop:no-zero-divisor-injective-multiplication} to conclude that
-\(q(x) = q'(x)\).
+    Indeed, if \(q'(x), r'(x) \in R[x]\) are polynomials --- and, for the sake of
+    contradiction, \emph{distinct} from the respective \(q(x)\) and \(r(x)\) --- for
+    which \(g(x) = f(x) q'(x) + r'(x)\), and \(\deg r'(x) < \deg f(x)\), we find
+    that \(f(x) q(x) + r(x) = f(x) q'(x) + r'(x)\) and thus
+    \begin{equation}\label{eq:polynomial-divison-unique-poly}
+        r(x) - r'(x) = f(x) (q'(x) - q(x)).
+    \end{equation}
+    Notice however that by hypothesis \(\deg r(x), \deg r'(x) < \deg f(x)\), thus
+    \(\deg(r(x) - r'(x)) \leq \max(\deg r(x), \deg r'(x)) < \deg f(x)\) --- which is
+    in contradiction with \cref{eq:polynomial-divison-unique-poly} since for such
+    equation to be true we should have
+    \(\deg(r(x) - r'(x)) = \deg(f(x) (q'(x) - q(x))) = \deg f(x) + \deg(q'(x) -
+    q(x))\). Therefore \(r(x) - r'(x)\) is necessarily the zero polynomial and
+    \(f(x) q(x) = f(x) q'(x)\), now since \(f(x)\) is a monomial and by
+    \cref{lem:monomial-non-zero-divisor} is not a zero-divisor, we use
+    \cref{prop:no-zero-divisor-injective-multiplication} to conclude that
+    \(q(x) = q'(x)\).
 \end{proof}
 
 In what follows, one should regard \(R^{\oplus d}\), for a ring \(R\), to be the
 ring of polynomials with degree less than or equal to \(d\) --- this observation
 is based on the fact that one can map injectively
 \begin{equation}\label{eq:embedding-Rd-in-R[x]}
-\Psi: R^{\oplus d} \mono R[x]\ \text{ sending }\
-(r_0, \dots, r_{d-1}) \mapsto \sum_{j=0}^{d-1} r_j x^j,
+    \Psi: R^{\oplus d} \mono R[x]\ \text{ sending }\
+    (r_0, \dots, r_{d-1}) \mapsto \sum_{j=0}^{d-1} r_j x^j,
 \end{equation}
 which is a morphism of \emph{abelian groups}. Therefore, the restriction of the
 codomain to the image of such map induces an \emph{isomorphism of abelian
-groups}
+    groups}
 \begin{equation}\label{eq:iso-Rd-in-R[x]}
-R^{\oplus} \iso \im \Psi \subseteq R[x].
+    R^{\oplus} \iso \im \Psi \subseteq R[x].
 \end{equation}
 
 \begin{proposition}
-\label{prop:isomorphism-ring-quotient-by-monic-degree-d}
-Let \(R\) be a \emph{commutative} ring, and \(f(x) \in R[x]\) a \emph{monic}
-polynomial with degree \(d \in \Z_{> 0}\). Define a map
-\(\phi: R[x] \to R^{\oplus d}\) sending \(g(x) \mapsto (r_0, \dots, r_{d-1})\),
-where \(r(x) \coloneq \Psi(r_0, \dots, r_{d-1}) \in R[x]\) is the
-\emph{remainder} of the division of \(g(x)\) by \(f(x)\). Such map \(\phi\)
-induces a natural isomorphism of \emph{abelian groups}
-\[
-R[x]/(f(x)) \iso R^{\oplus d}.
-\]
+    \label{prop:isomorphism-ring-quotient-by-monic-degree-d}
+    Let \(R\) be a \emph{commutative} ring, and \(f(x) \in R[x]\) a \emph{monic}
+    polynomial with degree \(d \in \Z_{> 0}\). Define a map
+    \(\phi: R[x] \to R^{\oplus d}\) sending \(g(x) \mapsto (r_0, \dots, r_{d-1})\),
+    where \(r(x) \coloneq \Psi(r_0, \dots, r_{d-1}) \in R[x]\) is the
+    \emph{remainder} of the division of \(g(x)\) by \(f(x)\). Such map \(\phi\)
+    induces a natural isomorphism of \emph{abelian groups}
+    \[
+        R[x]/(f(x)) \iso R^{\oplus d}.
+    \]
 \end{proposition}
 
 \begin{proof}
-Notice that every polynomial \(g(x)\) can be divided by a monic polynomial
-\(f(x)\) and the remainder \(r(x)\) of such division is unique by
-\cref{lem:division-of-polynomials}. Moreover, the isomorphism in
-\cref{eq:iso-Rd-in-R[x]} is a right inverse of \(\phi\), thus \(\phi\) is
-surjective. Moreover, \(\ker \phi = (f(x))\) since every polynomial in the
-principal ideal \((f(x))\) is divisible by \(f(x)\) and hence has a zero
-remainder when divided by \(f(x)\).
+    Notice that every polynomial \(g(x)\) can be divided by a monic polynomial
+    \(f(x)\) and the remainder \(r(x)\) of such division is unique by
+    \cref{lem:division-of-polynomials}. Moreover, the isomorphism in
+    \cref{eq:iso-Rd-in-R[x]} is a right inverse of \(\phi\), thus \(\phi\) is
+    surjective. Moreover, \(\ker \phi = (f(x))\) since every polynomial in the
+    principal ideal \((f(x))\) is divisible by \(f(x)\) and hence has a zero
+    remainder when divided by \(f(x)\).
 
-Let's check that \(\phi\) is indeed a morphism of abelian groups. Let \(g(x),
-g'(x) \in R[x]\) be two polynomials and let \(q(x), r(x) \in R[x]\) and \(q'(x),
-r'(x) \in R[x]\) be their respective pair of quotient and remainder in the
-division by \(f(x)\) --- where \(\deg r(x), \deg r'(x) < \deg f(x)\). Therefore,
-the sum of \(g(x)\) with \(g'(x)\) can be written as
-\[
-g(x) + g'(x) = f(x) (q(x) + q'(x)) + (r(x) + r'(x)).
-\]
-Since \(\deg (r(x) + r'(x)) \leq \max(\deg r(x), \deg r'(x)) < \deg f(x)\), then
-\(r(x) + r'(x)\) is the remainder of the division of \(g(x) + g'(x)\) by
-\(f(x)\). With this in our hands we can rightly see that
-\begin{align*}
-\phi(g(x) + g'(x))
-&= (r_0 + r_0', \dots, r_{d-1} + r_{d-1}') \\
-&= (r_0, \dots, r_{d-1}) + (r_0', \dots, r_{d-1}') \\
-&=\phi(g(x)) + \phi(g'(x)),
-\end{align*}
-where \(\Psi(r_0, \dots, r_{d-1}) \coloneq r(x)\) and
-\(\Psi(r_0', \dots, r_{d-1}') \coloneq r'(x)\) --- thus \(\phi\) is a morphism
-of abelian groups. By \cref{prop:universal-property-quotients-grp} we find
-\[
-R[x]/{\ker \phi} = R[x]/(f(x)) \iso \im \phi = R^{\oplus d}.
-\]
+    Let's check that \(\phi\) is indeed a morphism of abelian groups. Let \(g(x),
+    g'(x) \in R[x]\) be two polynomials and let \(q(x), r(x) \in R[x]\) and \(q'(x),
+    r'(x) \in R[x]\) be their respective pair of quotient and remainder in the
+    division by \(f(x)\) --- where \(\deg r(x), \deg r'(x) < \deg f(x)\). Therefore,
+    the sum of \(g(x)\) with \(g'(x)\) can be written as
+    \[
+        g(x) + g'(x) = f(x) (q(x) + q'(x)) + (r(x) + r'(x)).
+    \]
+    Since \(\deg (r(x) + r'(x)) \leq \max(\deg r(x), \deg r'(x)) < \deg f(x)\), then
+    \(r(x) + r'(x)\) is the remainder of the division of \(g(x) + g'(x)\) by
+    \(f(x)\). With this in our hands we can rightly see that
+    \begin{align*}
+        \phi(g(x) + g'(x))
+         & = (r_0 + r_0', \dots, r_{d-1} + r_{d-1}')         \\
+         & = (r_0, \dots, r_{d-1}) + (r_0', \dots, r_{d-1}') \\
+         & =\phi(g(x)) + \phi(g'(x)),
+    \end{align*}
+    where \(\Psi(r_0, \dots, r_{d-1}) \coloneq r(x)\) and
+    \(\Psi(r_0', \dots, r_{d-1}') \coloneq r'(x)\) --- thus \(\phi\) is a morphism
+    of abelian groups. By \cref{prop:universal-property-quotients-grp} we find
+    \[
+        R[x]/{\ker \phi} = R[x]/(f(x)) \iso \im \phi = R^{\oplus d}.
+    \]
 \end{proof}
 
 \begin{example}[Evaluation]
-\label{exp:evaluation-induces-isomorphism}
-Let \(R\) be a commutative ring. The evaluation morphism \(\eval_a: R[x] \to R\)
-(see \cref{prop:universal-property-polynomial-rings}), mapping
-\(f(x) \mapsto f(a)\), induces a natural isomorphism of \emph{abelian groups}
-\[
-R[x]/(x - a) \iso R.
-\]
-Such isomorphism, name it \(\phi\), is given by the map
-\(g(x) + (x - a) \mapsto r\), where \(r \in R\) is the remainder of the division
-of \(g(x)\) by \(x - a\).
+    \label{exp:evaluation-induces-isomorphism}
+    Let \(R\) be a commutative ring. The evaluation morphism \(\eval_a: R[x] \to R\)
+    (see \cref{prop:universal-property-polynomial-rings}), mapping
+    \(f(x) \mapsto f(a)\), induces a natural isomorphism of \emph{abelian groups}
+    \[
+        R[x]/(x - a) \iso R.
+    \]
+    Such isomorphism, name it \(\phi\), is given by the map
+    \(g(x) + (x - a) \mapsto r\), where \(r \in R\) is the remainder of the division
+    of \(g(x)\) by \(x - a\).
 
-First of all, if \(f(x) \in R[x]\) then the division by \(x - a\) yields
-\(q(x) \in R[x]\) and \(r \in R\) such that \(f(x) = (x - a) q(x) + r\) since
-the degree of the remainder should be less than \(\deg(x - a) = 1\). Therefore,
-evaluating \(\eval_{a}(f(x)) = (a - a) q(x) + r = r\) implies in \(f(a) = r\)
---- thus \(f(x) \in \ker \phi\) if and only if \(f(x) \in (x - a)\), hence
-\(\ker \phi = (x - a)\). Moreover, we can now rethink of the \(\phi\) as the
-mapping \(f(x) + (x - a) \mapsto f(a)\).
+    First of all, if \(f(x) \in R[x]\) then the division by \(x - a\) yields
+    \(q(x) \in R[x]\) and \(r \in R\) such that \(f(x) = (x - a) q(x) + r\) since
+    the degree of the remainder should be less than \(\deg(x - a) = 1\). Therefore,
+    evaluating \(\eval_{a}(f(x)) = (a - a) q(x) + r = r\) implies in \(f(a) = r\)
+    --- thus \(f(x) \in \ker \phi\) if and only if \(f(x) \in (x - a)\), hence
+    \(\ker \phi = (x - a)\). Moreover, we can now rethink of the \(\phi\) as the
+    mapping \(f(x) + (x - a) \mapsto f(a)\).
 
-If \(u(x) = u(a) + (x - a)\) and \(v(x) = v(a) + (x - a)\) are any two
-polynomials in \(R[x]/(x - a)\), one finds that
-\(u(x) + v(x) = (u(a) + v(a)) + (x - a)\) and therefore \(\phi(u(x) + v(x)) =
-u(a) + v(a) = \phi(u(x)) + \phi(v(x))\), thus \(\phi\) is a morphism of abelian
-groups. Therefore, by means of
-\cref{cor:isomorphism-quotient-by-kernel-of-surjective-morphism} we find that
-\(\phi\) is an isomorphism.
+    If \(u(x) = u(a) + (x - a)\) and \(v(x) = v(a) + (x - a)\) are any two
+    polynomials in \(R[x]/(x - a)\), one finds that
+    \(u(x) + v(x) = (u(a) + v(a)) + (x - a)\) and therefore \(\phi(u(x) + v(x)) =
+    u(a) + v(a) = \phi(u(x)) + \phi(v(x))\), thus \(\phi\) is a morphism of abelian
+    groups. Therefore, by means of
+    \cref{cor:isomorphism-quotient-by-kernel-of-surjective-morphism} we find that
+    \(\phi\) is an isomorphism.
 \end{example}
 
 \begin{example}[Constructing \(\CC\)]
-\label{exp:complex-numbers-from-R[x]}
-Consider, as in \cref{prop:isomorphism-ring-quotient-by-monic-degree-d}, the map
-\(\phi: \R[x] \to \R \oplus \R\) sending \(f(x) \mapsto (r_0, r_1)\), where
-\(r(x) = r_0 + r_1 x\) is the remainder of the division of \(f(x)\) by the
-polynomial \(x^2 + 1 \in \R[x]\).
+    \label{exp:complex-numbers-from-R[x]}
+    Consider, as in \cref{prop:isomorphism-ring-quotient-by-monic-degree-d}, the map
+    \(\phi: \R[x] \to \R \oplus \R\) sending \(f(x) \mapsto (r_0, r_1)\), where
+    \(r(x) = r_0 + r_1 x\) is the remainder of the division of \(f(x)\) by the
+    polynomial \(x^2 + 1 \in \R[x]\).
 
-For any element \(f(x) \coloneq a_0 + a_1 x \in \R[x]\) we have
-\(\deg f(x) < \deg(x^2 + 1) = 2\), then \(\phi(f(x)) = (a_0, a_1)\). Hence,
-given another \(g(x) = b_0 + b_1 x \in \R[x]\), one has that
-\begin{align*}
-  f(x) g(x)
-  &= (a_0 + a_1 x) (b_0 + b_1 x) \\
-  &= a_0 b_0 + (a_0 b_1 + a_1 b_0) x + a_1 b_1 x^2 \\
-  &= (x^2 + 1) a_1 b_1 + ((a_0 b_0 - a_1 b_1) + (a_0 b_1 + a_1 b_0)x).
-\end{align*}
-Thus \(\phi(f(x) g(x)) = (a_0 b_0 - a_1 b_1, a_0 b_1 + a_1 b_0)\), this induces
-a multiplicative structure \(\cdot: (\R \oplus \R)^2 \to \R \oplus \R\) defined
-by
-\[
-(a_0, a_1) \cdot (b_0, b_1) \coloneq (a_0 b_0 - a_1 b_1, a_0 b_1 + a_1 b_0).
-\]
+    For any element \(f(x) \coloneq a_0 + a_1 x \in \R[x]\) we have
+    \(\deg f(x) < \deg(x^2 + 1) = 2\), then \(\phi(f(x)) = (a_0, a_1)\). Hence,
+    given another \(g(x) = b_0 + b_1 x \in \R[x]\), one has that
+    \begin{align*}
+        f(x) g(x)
+         & = (a_0 + a_1 x) (b_0 + b_1 x)                                       \\
+         & = a_0 b_0 + (a_0 b_1 + a_1 b_0) x + a_1 b_1 x^2                     \\
+         & = (x^2 + 1) a_1 b_1 + ((a_0 b_0 - a_1 b_1) + (a_0 b_1 + a_1 b_0)x).
+    \end{align*}
+    Thus \(\phi(f(x) g(x)) = (a_0 b_0 - a_1 b_1, a_0 b_1 + a_1 b_0)\), this induces
+    a multiplicative structure \(\cdot: (\R \oplus \R)^2 \to \R \oplus \R\) defined
+    by
+    \[
+        (a_0, a_1) \cdot (b_0, b_1) \coloneq (a_0 b_0 - a_1 b_1, a_0 b_1 + a_1 b_0).
+    \]
 
-Now, since \((\R \oplus \R, \cdot) \iso \CC\), by identifying \((a, b) \mapsto a
-+ b i\), one obtains the following natural isomorphism
-\[
-\R[x]/(x^2 + 1) \iso \CC,
-\]
-hence we've constructed the complex numbers out of the ring \(\R[x]\).
+    Now, since \((\R \oplus \R, \cdot) \iso \CC\), by identifying \((a, b) \mapsto a
+    + b i\), one obtains the following natural isomorphism
+    \[
+        \R[x]/(x^2 + 1) \iso \CC,
+    \]
+    hence we've constructed the complex numbers out of the ring \(\R[x]\).
 \end{example}
 
 \begin{example}
-\label{exp:multiple-var-eval-isomorphism}
-Let \(R\) be a \emph{commutative} ring and elements \(a_1, \dots, a_n \in
-R\). Then there exists a canonical isomorphism of \emph{abelian groups}
-\[
-\frac{R[x_1, \dots, x_n]}{(x_1 - a_1, \dots, x_n - a_n)} \iso R.
-\]
+    \label{exp:multiple-var-eval-isomorphism}
+    Let \(R\) be a \emph{commutative} ring and elements \(a_1, \dots, a_n \in
+    R\). Then there exists a canonical isomorphism of \emph{abelian groups}
+    \[
+        \frac{R[x_1, \dots, x_n]}{(x_1 - a_1, \dots, x_n - a_n)} \iso R.
+    \]
 
-Denote \(S \coloneq \frac{R[x_1, \dots, x_n]}{(x_1 - a_1, \dots, x_n -
-  a_n)}\). Consider the evaluation map \(\eval: S \to R\) given by
-\([p(x_1, \dots, x_n)] \mapsto p(a_1, \dots, a_n)\), which is clearly a group
-morphism. Moreover, the map \(\rho: R \to S\) mapping \(r \mapsto [r]\) is both
-a group morphism and right inverse of the evaluation map,
-\(\eval \circ \rho = \Id_R\). Since for all \(1 \leq j \leq n\) we have
-\([x_j] = [a_j]\) as classes in the quotient ring \(S\), we find that, for any
-given \(p(x_1,\dots, x_n) \in R[x]\)
-\[
-[p(x_1, \dots, x_n)] = [p(a_1, \dots, a_n)],
-\]
-implying in \(\rho \circ \eval = \Id_S\).
+    Denote \(S \coloneq \frac{R[x_1, \dots, x_n]}{(x_1 - a_1, \dots, x_n -
+        a_n)}\). Consider the evaluation map \(\eval: S \to R\) given by
+    \([p(x_1, \dots, x_n)] \mapsto p(a_1, \dots, a_n)\), which is clearly a group
+    morphism. Moreover, the map \(\rho: R \to S\) mapping \(r \mapsto [r]\) is both
+    a group morphism and right inverse of the evaluation map,
+    \(\eval \circ \rho = \Id_R\). Since for all \(1 \leq j \leq n\) we have
+    \([x_j] = [a_j]\) as classes in the quotient ring \(S\), we find that, for any
+    given \(p(x_1,\dots, x_n) \in R[x]\)
+    \[
+        [p(x_1, \dots, x_n)] = [p(a_1, \dots, a_n)],
+    \]
+    implying in \(\rho \circ \eval = \Id_S\).
 \end{example}
 
 \subsection{Prime \& Maximal Ideals}
 
 \begin{definition}[Prime and maximal ideal]
-\label{def:prime-maximal-ideal}
-Let \(R\) be a \emph{commutative} ring and \(\ideal{a}\) be a \emph{proper}
-ideal of \(R\). We define the following:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item If \(R/\ideal{a}\) is an \emph{integral domain}, we call \(\ideal{a}\) a
-  \emph{prime ideal}.
+    \label{def:prime-maximal-ideal}
+    Let \(R\) be a \emph{commutative} ring and \(\ideal{a}\) be a \emph{proper}
+    ideal of \(R\). We define the following:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item If \(R/\ideal{a}\) is an \emph{integral domain}, we call \(\ideal{a}\) a
+              \emph{prime ideal}.
 
-\item If \(R/\ideal{a}\) is a \emph{field}, we call \(\ideal{a}\) a
-  \emph{maximal ideal}.
-\end{enumerate}
+        \item If \(R/\ideal{a}\) is a \emph{field}, we call \(\ideal{a}\) a
+              \emph{maximal ideal}.
+    \end{enumerate}
 \end{definition}
 
 \begin{example}
-\label{exp:prime-maximal-principal-ideal-of-R[x]}
-Given a commutative ring \(R\) and any monomial \(x - a \in R[x]\), then:
-\begin{itemize}\setlength\itemsep{0em}
-\item The ideal \((x - a)\) is prime if and only if \(R\) is an integral
-  domain.
-\item The ideal \((x - a)\) is maximal if and only if \(R\) is a field.
-\end{itemize}
-Such propositions are direct implications of the isomorphism
-\(R[x]/(x - a) \iso R\) given by
-\cref{prop:isomorphism-ring-quotient-by-monic-degree-d}.
+    \label{exp:prime-maximal-principal-ideal-of-R[x]}
+    Given a commutative ring \(R\) and any monomial \(x - a \in R[x]\), then:
+    \begin{itemize}\setlength\itemsep{0em}
+        \item The ideal \((x - a)\) is prime if and only if \(R\) is an integral
+              domain.
+        \item The ideal \((x - a)\) is maximal if and only if \(R\) is a field.
+    \end{itemize}
+    Such propositions are direct implications of the isomorphism
+    \(R[x]/(x - a) \iso R\) given by
+    \cref{prop:isomorphism-ring-quotient-by-monic-degree-d}.
 \end{example}
 
 Some may want to avoid the machinery of quotient rings when defining prime and
@@ -884,206 +884,206 @@ maximal ideals. Such ambition is palpable, the following proposition exposes
 this old fashioned alternative.
 
 \begin{proposition}
-\label{prop:equivalent-prime-maximal-ideals}
-Let \(\ideal{a}\) be a \emph{proper} ideal of a \emph{commutative} ring
-\(R\) --- then:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item The ideal \(\ideal{a}\) is \emph{prime} if and only if for every given
-  \(a, b \in R\) such that \(a b \in \ideal{a}\), we have either \(a \in
-  \ideal{a}\) or \(b \in \ideal{a}\).
+    \label{prop:equivalent-prime-maximal-ideals}
+    Let \(\ideal{a}\) be a \emph{proper} ideal of a \emph{commutative} ring
+    \(R\) --- then:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item The ideal \(\ideal{a}\) is \emph{prime} if and only if for every given
+              \(a, b \in R\) such that \(a b \in \ideal{a}\), we have either \(a \in
+              \ideal{a}\) or \(b \in \ideal{a}\).
 
-\item The ideal \(\ideal{a}\) is \emph{maximal} if and only the only ideals
-  that contain \(\ideal{a}\) is either \(\ideal{a}\) itself or \(R\).
-\end{enumerate}
+        \item The ideal \(\ideal{a}\) is \emph{maximal} if and only the only ideals
+              that contain \(\ideal{a}\) is either \(\ideal{a}\) itself or \(R\).
+    \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-\begin{enumerate}\setlength\itemsep{0em}
-\item The quotient ring \(R/\ideal{a}\) is an integral domain if and only if for
-  all \(a + \ideal{a}, b + \ideal{a} \in R/\ideal{a}\) such that
-  \((a + \ideal{a})(b + \ideal{a}) = \ideal{a}\) we have
-  \(a + \ideal{a} = \ideal{a}\) or \(b + \ideal{a} = \ideal{a}\) --- which is
-  equivalent to the requirement that either \(a \in \ideal{a}\) or
-  \(b \in \ideal{b}\).
+    \begin{enumerate}\setlength\itemsep{0em}
+        \item The quotient ring \(R/\ideal{a}\) is an integral domain if and only if for
+              all \(a + \ideal{a}, b + \ideal{a} \in R/\ideal{a}\) such that
+              \((a + \ideal{a})(b + \ideal{a}) = \ideal{a}\) we have
+              \(a + \ideal{a} = \ideal{a}\) or \(b + \ideal{a} = \ideal{a}\) --- which is
+              equivalent to the requirement that either \(a \in \ideal{a}\) or
+              \(b \in \ideal{b}\).
 
-\item The quotient ring \(R/\ideal{a}\) is a field if and only if \(\ideal{a}\)
-  and \(R/\ideal{a}\) are the only ideals of \(R/\ideal{a}\) --- that is, if
-  \(\ideal{b}\) is an ideal of \(R\) with \(\ideal{a} \subseteq \ideal{b}\),
-  then \(\ideal{b}\) is also an ideal of \(R/\ideal{a}\) (see
-  \cref{prop:ideal-of-a-quotient}), thus either \(\ideal{b} = \ideal{a}\) or
-  \(\ideal{b} = R/\ideal{a}\).
-\end{enumerate}
+        \item The quotient ring \(R/\ideal{a}\) is a field if and only if \(\ideal{a}\)
+              and \(R/\ideal{a}\) are the only ideals of \(R/\ideal{a}\) --- that is, if
+              \(\ideal{b}\) is an ideal of \(R\) with \(\ideal{a} \subseteq \ideal{b}\),
+              then \(\ideal{b}\) is also an ideal of \(R/\ideal{a}\) (see
+              \cref{prop:ideal-of-a-quotient}), thus either \(\ideal{b} = \ideal{a}\) or
+              \(\ideal{b} = R/\ideal{a}\).
+    \end{enumerate}
 \end{proof}
 
 \begin{corollary}
-\label{cor:maximal-implies-prime}
-Maximal ideals are prime ideals.
+    \label{cor:maximal-implies-prime}
+    Maximal ideals are prime ideals.
 \end{corollary}
 
 \begin{proof}
-Let \(R\) be a commutative ring and \(\ideal{m}\) be maximal. Let \(a, b \in R\)
-be any elements such that \(a b \in \ideal{m}\), then consider the principal
-ideals \((a)\) and \((b)\). Since \(\ideal{m}\) is maximal, such principal
-ideals can be either \(R\) or \(\ideal{m}\) --- for the former case, one of them
-equals \(1_R\), thus the other is contained in \(\ideal{m}\), on the other hand,
-for the latter case the element whose ideal equal to \(\ideal{m}\) belongs to
-\(\ideal{m}\). This shows that either \(a \in \ideal{m}\) or
-\(b \in \ideal{m}\).
+    Let \(R\) be a commutative ring and \(\ideal{m}\) be maximal. Let \(a, b \in R\)
+    be any elements such that \(a b \in \ideal{m}\), then consider the principal
+    ideals \((a)\) and \((b)\). Since \(\ideal{m}\) is maximal, such principal
+    ideals can be either \(R\) or \(\ideal{m}\) --- for the former case, one of them
+    equals \(1_R\), thus the other is contained in \(\ideal{m}\), on the other hand,
+    for the latter case the element whose ideal equal to \(\ideal{m}\) belongs to
+    \(\ideal{m}\). This shows that either \(a \in \ideal{m}\) or
+    \(b \in \ideal{m}\).
 \end{proof}
 
 \begin{proposition}
-\label{prop:finite-quotient-prime-iff-maximal}
-Let \(\ideal{a}\) be an ideal of a \emph{commutative} ring \(R\). If
-\(R/\ideal{a}\) is a \emph{finite} ring, then \(\ideal{a}\) is \emph{prime} if
-and only if it is \emph{maximal}.
+    \label{prop:finite-quotient-prime-iff-maximal}
+    Let \(\ideal{a}\) be an ideal of a \emph{commutative} ring \(R\). If
+    \(R/\ideal{a}\) is a \emph{finite} ring, then \(\ideal{a}\) is \emph{prime} if
+    and only if it is \emph{maximal}.
 \end{proposition}
 
 \begin{proof}
-Since a finite commutative ring is an integral domain if and only if it is a
-field, the proposition follows --- see
-\cref{prop:commutative-field-iff-integral-domain}.
+    Since a finite commutative ring is an integral domain if and only if it is a
+    field, the proposition follows --- see
+    \cref{prop:commutative-field-iff-integral-domain}.
 \end{proof}
 
 \begin{example}
-\label{exp:Z/nZ-finite-quotient-prime-iff-maximal-iff-prime-number}
-A good example of \cref{prop:finite-quotient-prime-iff-maximal} in action is the
-case of the ring \(\Z\) and the principal ideals \((n)\) for
-\(n \in \Z_{> 0}\). Since \(\Z/(n)\) is always finite, \((n)\) is a prime ideal
-if and only if \((n)\) is maximal --- on the other hand, \((n)\) is maximal if
-and only if in the case where \(n\) is a prime number.
+    \label{exp:Z/nZ-finite-quotient-prime-iff-maximal-iff-prime-number}
+    A good example of \cref{prop:finite-quotient-prime-iff-maximal} in action is the
+    case of the ring \(\Z\) and the principal ideals \((n)\) for
+    \(n \in \Z_{> 0}\). Since \(\Z/(n)\) is always finite, \((n)\) is a prime ideal
+    if and only if \((n)\) is maximal --- on the other hand, \((n)\) is maximal if
+    and only if in the case where \(n\) is a prime number.
 \end{example}
 
 \begin{definition}[Ring spectrum]
-\label{def:ring-spectrum}
-Given a \emph{commutative} ring \(R\), we define the following:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item The collection of all \emph{prime ideals} of \(R\) is called the
-  \emph{prime spectrum} of \(R\) and is denoted \(\Spec R\).
+    \label{def:ring-spectrum}
+    Given a \emph{commutative} ring \(R\), we define the following:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item The collection of all \emph{prime ideals} of \(R\) is called the
+              \emph{prime spectrum} of \(R\) and is denoted \(\Spec R\).
 
-\item The collection of all \emph{maximal ideals} of \(R\) is called the
-  \emph{maximal spectrum} of \(R\) and is denoted \(\Specm R\).
-\end{enumerate}
+        \item The collection of all \emph{maximal ideals} of \(R\) is called the
+              \emph{maximal spectrum} of \(R\) and is denoted \(\Specm R\).
+    \end{enumerate}
 \end{definition}
 
 \begin{proposition}[Prime \& maximal ideals in PIDs]
-\label{prop:PID-prime-iff-maximal}
-Let \(R\) be a \emph{PID}, and let \(\ideal{a}\) be a \emph{non-zero} ideal of
-\(R\). Then the ideal \(\ideal{a}\) is \emph{prime} if and only if it is
-\emph{maximal}.
+    \label{prop:PID-prime-iff-maximal}
+    Let \(R\) be a \emph{PID}, and let \(\ideal{a}\) be a \emph{non-zero} ideal of
+    \(R\). Then the ideal \(\ideal{a}\) is \emph{prime} if and only if it is
+    \emph{maximal}.
 \end{proposition}
 
 \begin{proof}
-Suppose \(\ideal{a}\) is prime. Since \(R\) is PID, we can be certain that there
-exists a non-zero element \(a \in R\) such that \(\ideal{a} = (a)\). Now,
-consider \(\ideal{b} \coloneq (b)\) to be any ideal of \(R\) containing
-\(\ideal{b}\), then in particular there exists \(q \in \R\) such that
-\(a = b q\) --- since \(\ideal{a}\) is prime and \(bq \in \ideal{a}\) then
-either \(b \in \ideal{a}\) or \(q \in \ideal{a}\):
-\begin{itemize}\setlength\itemsep{0em}
-\item For the case where \(b \in \ideal{a}\) then
-  \(\ideal{b} \subseteq \ideal{a}\) --- thus from hypothesis that \(\ideal{b}\)
-  contained \(\ideal{a}\) we conclude that \(\ideal{b} = \ideal{a}\).
+    Suppose \(\ideal{a}\) is prime. Since \(R\) is PID, we can be certain that there
+    exists a non-zero element \(a \in R\) such that \(\ideal{a} = (a)\). Now,
+    consider \(\ideal{b} \coloneq (b)\) to be any ideal of \(R\) containing
+    \(\ideal{b}\), then in particular there exists \(q \in \R\) such that
+    \(a = b q\) --- since \(\ideal{a}\) is prime and \(bq \in \ideal{a}\) then
+    either \(b \in \ideal{a}\) or \(q \in \ideal{a}\):
+    \begin{itemize}\setlength\itemsep{0em}
+        \item For the case where \(b \in \ideal{a}\) then
+              \(\ideal{b} \subseteq \ideal{a}\) --- thus from hypothesis that \(\ideal{b}\)
+              contained \(\ideal{a}\) we conclude that \(\ideal{b} = \ideal{a}\).
 
-\item If \(q \in \ideal{a}\), then there exists \(d \in R\) such that
-  \(q = a d\), therefore \(a = b q = b (a d) = b (d a) = (b d) a\) --- since
-  a PID is an integral domain and \(a \neq 0\), one can cancel \(a\) from both
-  sides to obtain \(b d = 1\), thus \(b\) is a unit element of \(R\). In
-  particular \(b d = 1 \in \ideal{b}\), thus \(\ideal{b} = R\).
-\end{itemize}
-By \cref{prop:equivalent-prime-maximal-ideals} we conclude that \(\ideal{a}\) is
-maximal.
+        \item If \(q \in \ideal{a}\), then there exists \(d \in R\) such that
+              \(q = a d\), therefore \(a = b q = b (a d) = b (d a) = (b d) a\) --- since
+              a PID is an integral domain and \(a \neq 0\), one can cancel \(a\) from both
+              sides to obtain \(b d = 1\), thus \(b\) is a unit element of \(R\). In
+              particular \(b d = 1 \in \ideal{b}\), thus \(\ideal{b} = R\).
+    \end{itemize}
+    By \cref{prop:equivalent-prime-maximal-ideals} we conclude that \(\ideal{a}\) is
+    maximal.
 \end{proof}
 
 \begin{example}[Prime ideals of \(k{[x]}\) are maximal]
-\label{exp:prime-ideals-of-k[x]-are-maximal}
-Let \(k\) be a field. Then non-zero prime ideals of \(k[x]\) are
-maximal. Indeed, from \cref{prop:k[x]-is-PID} we know that \(k[x]\) is PID, thus
-this is all but a consequence of \cref{prop:PID-prime-iff-maximal}.
+    \label{exp:prime-ideals-of-k[x]-are-maximal}
+    Let \(k\) be a field. Then non-zero prime ideals of \(k[x]\) are
+    maximal. Indeed, from \cref{prop:k[x]-is-PID} we know that \(k[x]\) is PID, thus
+    this is all but a consequence of \cref{prop:PID-prime-iff-maximal}.
 \end{example}
 
 \begin{proposition}[Maximal ideals in algebraically closed fields]
-\label{prop:alg-closed-field-maximal-iff-(x-a)}
-Let \(k\) be an \emph{algebraically closed field} and \(\ideal{a}\) be an ideal
-of \(k[x]\). Then \(\ideal{a}\) is maximal if and only if there exists some
-\(a \in k\) for which \(\ideal{a} = (x - a)\).
+    \label{prop:alg-closed-field-maximal-iff-(x-a)}
+    Let \(k\) be an \emph{algebraically closed field} and \(\ideal{a}\) be an ideal
+    of \(k[x]\). Then \(\ideal{a}\) is maximal if and only if there exists some
+    \(a \in k\) for which \(\ideal{a} = (x - a)\).
 \end{proposition}
 
 \begin{proof}
-From \cref{exp:prime-maximal-principal-ideal-of-R[x]} we know that \((x - a)\)
-is a maximal ideal of \(k[x]\), since \(k\) is a field.
+    From \cref{exp:prime-maximal-principal-ideal-of-R[x]} we know that \((x - a)\)
+    is a maximal ideal of \(k[x]\), since \(k\) is a field.
 
-Suppose \(\ideal{a}\) is maximal, since \(k[x]\) is a PID, it follows that there
-exists an \(f(x) \in k[x]\) for which \(\ideal{a} = (f(x))\). Moreover, since
-\(k\) is algebraically closed, there exists \(a \in R\) for which \(f(a) = 0\),
-therefore \(f(x) \in (x - a)\) and then \(\ideal{a} \subseteq (x - a)\). From
-the hypothesis that \(\ideal{a}\) is maximal, we conclude that either
-\((x - a) = \ideal{a}\) or \((x - a) = k[x]\) --- notice that the latter cannot
-be the case since the collection of constant polynomials is not contained in
-\((x - a)\), thus \(\ideal{a} = (x - a)\).
+    Suppose \(\ideal{a}\) is maximal, since \(k[x]\) is a PID, it follows that there
+    exists an \(f(x) \in k[x]\) for which \(\ideal{a} = (f(x))\). Moreover, since
+    \(k\) is algebraically closed, there exists \(a \in R\) for which \(f(a) = 0\),
+    therefore \(f(x) \in (x - a)\) and then \(\ideal{a} \subseteq (x - a)\). From
+    the hypothesis that \(\ideal{a}\) is maximal, we conclude that either
+    \((x - a) = \ideal{a}\) or \((x - a) = k[x]\) --- notice that the latter cannot
+    be the case since the collection of constant polynomials is not contained in
+    \((x - a)\), thus \(\ideal{a} = (x - a)\).
 \end{proof}
 
 \begin{example}
-\label{exp:bijection-compact-specm}
-Let \(K\) be a \emph{compact} topological space and \(C(K)\) be the ring of
-continuous maps \(K \to \R\), with addition and multiplication defined
-point-wise. We have the following facts:
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item For every \(p \in K\), the collection
-  \(\ideal{m}_p \coloneq \{f \in C(K) \colon f(p) = 0\}\) is a \emph{maximal
-    ideal} of \(R\).
+    \label{exp:bijection-compact-specm}
+    Let \(K\) be a \emph{compact} topological space and \(C(K)\) be the ring of
+    continuous maps \(K \to \R\), with addition and multiplication defined
+    point-wise. We have the following facts:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item For every \(p \in K\), the collection
+              \(\ideal{m}_p \coloneq \{f \in C(K) \colon f(p) = 0\}\) is a \emph{maximal
+                  ideal} of \(R\).
 
-\item If \(f_1, \dots, f_n \in C(K)\) have no common zeros, then
-  \((f_1, \dots, f_n) = R\).
+        \item If \(f_1, \dots, f_n \in C(K)\) have no common zeros, then
+              \((f_1, \dots, f_n) = R\).
 
-\item For every maximal ideal \(\ideal{m} \in \Specm C(K)\), there exists a
-  point \(p \in K\) for which \(\ideal{m} = \ideal{m}_p\).
+        \item For every maximal ideal \(\ideal{m} \in \Specm C(K)\), there exists a
+              point \(p \in K\) for which \(\ideal{m} = \ideal{m}_p\).
 
-\item If in addition \(K\) is Hausdorff, then there exists a \emph{bijective
-    set-function} \(K \isoto \Specm C(K)\) given by \(p \mapsto \ideal{m}_p\).
-\end{enumerate}
+        \item If in addition \(K\) is Hausdorff, then there exists a \emph{bijective
+                  set-function} \(K \isoto \Specm C(K)\) given by \(p \mapsto \ideal{m}_p\).
+    \end{enumerate}
 \end{example}
 
 \begin{proof}
-We now prove each one of these statements.
-\begin{enumerate}[(a)]\setlength\itemsep{0em}
-\item Consider any map \(f + \ideal{m}_p \in C(K)/\ideal{m}_p\) such that
-  \(f(p) \neq a\) for some \(a \neq 0\) and therefore \(f \notin
-  \ideal{m}_p\). Notice that the unit of \(C(K)/\ideal{m}_p\) is composed of
-  every element \(g \in C(K)\) such that \(g(p) = 1\). In particular, since
-  \(a\) is non-zero, then there exists an inverse \(a^{-1} \in \R\). If
-  \(g \in C(K)\) is any map assuming \(g(p) = a^{-1}\), then
-  \((f + \ideal{m}_p) (g + \ideal{m}_p) = 1 + \ideal{m}_p\).
+    We now prove each one of these statements.
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item Consider any map \(f + \ideal{m}_p \in C(K)/\ideal{m}_p\) such that
+              \(f(p) \neq a\) for some \(a \neq 0\) and therefore \(f \notin
+              \ideal{m}_p\). Notice that the unit of \(C(K)/\ideal{m}_p\) is composed of
+              every element \(g \in C(K)\) such that \(g(p) = 1\). In particular, since
+              \(a\) is non-zero, then there exists an inverse \(a^{-1} \in \R\). If
+              \(g \in C(K)\) is any map assuming \(g(p) = a^{-1}\), then
+              \((f + \ideal{m}_p) (g + \ideal{m}_p) = 1 + \ideal{m}_p\).
 
-\item Since \(f_1, \dots, f_n\) share no zeros, the function
-  \(f \coloneq \sum_{j=1}^n f_j^2\) must be strictly positive, therefore one can
-  define a continuous map \(g \in C(K)\) as \(g(x) \coloneq \frac{1}{f(x)}\) for
-  all \(x \in K\). Therefore \(g f = 1\), which implies in
-  \(1 \in (f_1, \dots, f_n)\) --- where we denote by \(1\) the constant map
-  assuming value \(1\).
+        \item Since \(f_1, \dots, f_n\) share no zeros, the function
+              \(f \coloneq \sum_{j=1}^n f_j^2\) must be strictly positive, therefore one can
+              define a continuous map \(g \in C(K)\) as \(g(x) \coloneq \frac{1}{f(x)}\) for
+              all \(x \in K\). Therefore \(g f = 1\), which implies in
+              \(1 \in (f_1, \dots, f_n)\) --- where we denote by \(1\) the constant map
+              assuming value \(1\).
 
-\item Let \(\ideal{m}\) be maximal and suppose, for the sake of contradiction,
-  that for all \(p \in K\) we have \(\ideal{m} \neq \ideal{m}_p\). Fix any
-  \(p \in K\) and let \(f_p \in \ideal{m}\) be such that \(f_p(p) \neq 0\). By
-  the continuity of \(f_p\) there exists a neighbourhood \(U_p \subseteq K\) of
-  \(p\) such that \(f(x) \neq 0\) for all \(x \in U_p\). Let
-  \(\mathcal{U} \coloneq \{ U_{p}\}_{p \in K}\) be an open cover of \(K\), where
-  each neighbourhood \(U_p\) is associated with a map \(f_p\) as described
-  above. Since \(K\) is compact, there exists a finite collection
-  \(U_{p_1}, \dots, U_{p_n} \in \mathcal{U}\) covering \(K\). From construction,
-  we obtain \((f_{p_1}, \dots, f_{p_n}) \subseteq \ideal{m}\). Notice that the
-  maps \(f_{p_j}\) share no common zero --- if \(q \in K\) is such that
-  \(f_{p_j}(q) = 0\) for each \(1 \leq j \leq n\), then
-  \(q \notin \bigcup_{j=1}^n U_{p_j}\), which is a contradiction --- therefore
-  \(1 \in \ideal{m}\) and \(\ideal{m} = C(K)\). We conclude that there must
-  exist \(p \in K\) such that \(\ideal{m} = \ideal{m}_p\).
-\todo[inline]{Prove last item, requires Urysohn's lemma}
-\end{enumerate}
+        \item Let \(\ideal{m}\) be maximal and suppose, for the sake of contradiction,
+              that for all \(p \in K\) we have \(\ideal{m} \neq \ideal{m}_p\). Fix any
+              \(p \in K\) and let \(f_p \in \ideal{m}\) be such that \(f_p(p) \neq 0\). By
+              the continuity of \(f_p\) there exists a neighbourhood \(U_p \subseteq K\) of
+              \(p\) such that \(f(x) \neq 0\) for all \(x \in U_p\). Let
+              \(\mathcal{U} \coloneq \{ U_{p}\}_{p \in K}\) be an open cover of \(K\), where
+              each neighbourhood \(U_p\) is associated with a map \(f_p\) as described
+              above. Since \(K\) is compact, there exists a finite collection
+              \(U_{p_1}, \dots, U_{p_n} \in \mathcal{U}\) covering \(K\). From construction,
+              we obtain \((f_{p_1}, \dots, f_{p_n}) \subseteq \ideal{m}\). Notice that the
+              maps \(f_{p_j}\) share no common zero --- if \(q \in K\) is such that
+              \(f_{p_j}(q) = 0\) for each \(1 \leq j \leq n\), then
+              \(q \notin \bigcup_{j=1}^n U_{p_j}\), which is a contradiction --- therefore
+              \(1 \in \ideal{m}\) and \(\ideal{m} = C(K)\). We conclude that there must
+              exist \(p \in K\) such that \(\ideal{m} = \ideal{m}_p\).
+              \todo[inline]{Prove last item, requires Urysohn's lemma}
+    \end{enumerate}
 \end{proof}
 
 \begin{definition}[Krull dimension]
-\label{def:krull-dimension}
-The \emph{Krull dimension} of a commutative ring \(R\) is defined as the length
-of the longest chain of prime ideals in \(R\).
+    \label{def:krull-dimension}
+    The \emph{Krull dimension} of a commutative ring \(R\) is defined as the length
+    of the longest chain of prime ideals in \(R\).
 \end{definition}
 
 %%% Local Variables:
