@@ -730,6 +730,10 @@ intuitive view of what the following definition states.
 
 \section{Structures}
 
+\subsection{Classical Approach}
+
+\subsection{Functional Structured Approach}
+
 \begin{definition}[Induced structure]
     \label{def:induced-functional-structure-space}
     Let \((X, F_X)\) be a functionally structured space, and \(\phi: X \to Y\) be a
@@ -832,7 +836,7 @@ Since every topological manifold is paracompact, by
 \end{corollary}
 
 \begin{definition}[Bump functions \& partition of unity]
-    \label{def:}
+    \label{def:bump-functions-partitions-of-unity}
     Let \(M\) be an \(m\)-manifold and \((U_{j}, \phi_j)_{j \in J}\) be an
     \emph{adequate} atlas on \(M\). Let \(\lambda: \R^m \to \R\) be a \emph{smooth
         non-negative} map such that \(\lambda|_{D^m} \coloneq 1\) and
@@ -860,17 +864,17 @@ Since every topological manifold is paracompact, by
 
 \subsection{Algebra of Germs}
 
-Define an equivalence relation \(\sim_p\) on the set of real-valued
-\(C^{\infty}\)-morphisms in \(M\), where \(p \in M\) is any point, as follows:
-given neighbourhoods \(U\) and \(V\) of \(p\), and \(C^{\infty}\)-morphisms
-\(f: U \to \R\) and \(g: V \to \R\), we say that \(f \sim_p g\) if and only if
-there exists a neighbourhood \(Q \subseteq U \cap V\) of \(p\) such that
-\(f|_Q = g|_Q\).
+Consider any point \(p \in M\). Define an equivalence relation \(\sim_p\) on
+the set of real-valued \(C^{\infty}\)-morphisms in \(M\) as follows: given
+neighbourhoods \(U\) and \(V\) of \(p\), and \(C^{\infty}\)-morphisms
+\(f: U \to \R\) and \(g: V \to \R\), we say that \(f \sim_p g\) if and only if there
+exists a neighbourhood \(Q \subseteq U \cap V\) of \(p\) such that \(f|_Q =
+g|_Q\).
 
 \begin{definition}[Algebra of germs in a manifold]
     \label{def:algebra-of-germs-manifold}
     Given a manifold \(M\) and a point \(p \in M\), we define the \emph{germs of
-        real-valued \(C^{\infty}\)-morphisms at \(p\) in \(M\)}, to be the natural
+        real-valued \(C^{\infty}\)-morphisms at \(p\)}, to be the natural
     \(\R\)-algebra on the following quotient:
     \[
         C_p^{\infty}(M) \coloneq
@@ -905,7 +909,7 @@ there exists a neighbourhood \(Q \subseteq U \cap V\) of \(p\) such that
     \]
     called \emph{differential of \(f\) at \(p\)}, which is an \(\R\)-linear map
     between tangent spaces. For any tangent vector \(X_p: C_p^{\infty}(N) \to \R\) of
-    \(T_p N\), we define the respective tangent vector
+    \(T_p N\), we define the induced tangent vector
     \(f_{*}(X_p): C_{f(p)}^{\infty}(M) \to \R\) of \(T_{f(p)} M\) as the
     \(\R\)-linear map given by
     \[
