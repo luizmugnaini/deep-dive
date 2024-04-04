@@ -40,8 +40,8 @@ feedback.
 
 ## Requirements
 
-- [TexLive LaTeX distribution](https://wiki.archlinux.org/title/TeX_Live).
-- [Make](https://www.gnu.org/software/make/).
+- A LaTeX distribution (I've tested with TeXLive and MiKTeX already and both work).
+- [Make](https://www.gnu.org/software/make/) if you're on Linux.
 - [LaTeXMk](https://archlinux.org/packages/extra/any/texlive-binextra/) for building.
 - [latexindent.pl](https://github.com/cmhughes/latexindent.pl/) for formatting.
 
@@ -54,3 +54,9 @@ make build  # single build
 make watch  # continuous build as files are changed
 make format # format the tex files with latexindent.pl
 ```
+
+# Troubleshooting
+
+* Did you get some strange "font not loadable" or something along those lines?
+  You are probably lacking Japanese support in your latex installation (used
+  for the Yoneda functor symbol) you may give a try installing `ckj-fonts`.
