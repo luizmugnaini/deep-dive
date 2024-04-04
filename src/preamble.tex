@@ -247,9 +247,10 @@
 \DeclareMathOperator{\supp}{supp} % Support
 
 % Yoneda embedding
-\newcommand{\yo}{\text{\usefont{U}{min}{m}{n}\symbol{'210}}}
-\DeclareFontFamily{U}{min}{}
-\DeclareFontShape{U}{min}{m}{n}{<-> udmj30}{}
+\font\maljapanese=dmjhira at 2ex
+\newcommand{\yo}{\maljapanese \char"48}%{\text{\usefont{U}{min}{m}{n}\symbol{'210}}}
+% \DeclareFontFamily{U}{min}{}
+% \DeclareFontShape{U}{min}{m}{n}{<-> udmj30}{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ** algebra **
