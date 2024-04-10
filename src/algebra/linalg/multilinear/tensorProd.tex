@@ -31,31 +31,35 @@ structure called tensor product. We'll now focus on the construction of it.
 
 Given a finite collection of \(k\)-vector spaces \(\{V_i\}_{i \in I}\), we define
 the free \(k\)-vector space \(\mathcal M = k^{\oplus \prod_{i \in I} V_i}\) --- that is, the
-space of set-functions \(\prod_{i \in I} V_i \to k\) with finite support. A map \(f \in
-\mathcal M\) is entirely described by the set of all tuples of its domain. For
+space of set-functions \(\prod_{i \in I} V_i \to k\) with finite support. A map
+\(f \in \mathcal M\) is entirely described by the set of all tuples of its domain. For
 each tuple \((v_i)_{i \in I} \in \prod_{i \in I} V_i\), we define a characteristic map
 \(\delta_{(v_{i})_{i \in I}}: \prod_{i \in I} V_i \to \{0, 1\}\) --- which happens to be an
-element of the space \(\mathcal M\). Since \(f(v) = \sum_{u \in \prod_{i \in I}V_i} f(u)
-\delta_v(u) = f(v) \delta_v(v) = f(v)\), then we conclude that the collection \(\{\delta_{v} \in
-\mathcal M \colon v \in V\}\) is a basis for the space \(\mathcal M\).
+element of the space \(\mathcal M\). Since
+\[
+    f(v) = \sum_{u \in \prod_{i \in I}V_i} f(u) \delta_v(u) = f(v) \delta_v(v) = f(v)
+\]
+we conclude that the collection \(\{\delta_{v} \in \mathcal M \colon v \in V\}\)
+is a basis for the space \(\mathcal M\).
 
-For the sake of brevity, we'll simply denote \(\delta_v = v\) for every \(v \in \prod_{i \in
-    I} V_i\). The space \(\mathcal M\) can then be viewed as the space of formal
-linear combination of the tuples of \(\prod_{i \in I} V_i\), that is
+For the sake of brevity, we'll simply denote \(\delta_v = v\) for every
+\(v \in \prod_{i \in I} V_i\). The space \(\mathcal M\) can then be viewed as
+the space of formal linear combination of the tuples of \(\prod_{i \in I} V_i\),
+that is
 \[
     \mathcal M =
     \left\{
-    \sum a_v v \colon v \in \prod_{i \in I} V_i \text{ and } a_v \in k
+        \sum a_v v \colon v \in \prod_{i \in I} V_i \text{ and } a_v \in k
     \right\}.
 \]
-Thus, if \(\Char k = 0\) and exists \(i \in I\) such that \(\dim_k(V_i) >
-0\), then \(\mathcal M\) is an infinite-dimensional vector space.
+Thus, if \(\Char k = 0\) and exists \(i \in I\) such that \(\dim_k(V_i) > 0\),
+then \(\mathcal M\) is an infinite-dimensional vector space.
 
 The next step in our construction is to refine the space \(\mathcal M\) by means
 of taking the quotient of \(\mathcal M\) by some subspace \(\mathcal M_0\) so
 that the maps \(f \in \mathcal M / \mathcal M_0\) satisfy the properties arising
-from the multilinear structure induced by the maps \cref{def: multilinear
-    map}. We can do so by considering the collection of maps of the following form
+from the multilinear structure induced by the maps \cref{def: multilinear map}.
+We can do so by considering the collection of maps of the following form
 \[
     f_0 = (v_1, \dots, v_j + av_j', \dots, v_n)
     - (v_1, \dots, v_j, \dots, v_n)
@@ -64,8 +68,8 @@ from the multilinear structure induced by the maps \cref{def: multilinear
 We may simply define \(\mathcal M_0 \subseteq \mathcal M\) to be the subspace spanned by
 the maps of the same form as \(f_0 \in \mathcal M\). Now, when we take the
 quotient \(\mathcal M / \mathcal M_0\) we essentially classify the maps of the
-form \(f_0\) as the zero-maps --- so that every element of \(\mathcal M / \mathcal
-M_0\) satisfy an internal version of the properties of the multilinear maps. We
+form \(f_0\) as the zero-maps --- so that every element of \(\mathcal M / \mathcal M_0\)
+satisfy an internal version of the properties of the multilinear maps. We
 are now ready to define what we call a tensor product --- we actually already
 constructed it, is the space \(\mathcal M / \mathcal M_{0}\)!
 
@@ -98,22 +102,20 @@ constructed it, is the space \(\mathcal M / \mathcal M_{0}\)!
     Let \(|I| = n\), and \(a \in k\) be any constant, then
     \begin{align*}
         \otimes(v_1, \dots, v_j + a v'_j, \dots, v_n)
-         & = v_1 \otimes \dots \otimes (v_j + a v'_j) \otimes \dots \otimes v_n
-        \\
-         & = (v_1, \dots, v_j + a v'_j, \dots, v_n) + \mathcal M_0
-        \\
-         & = [(v_1, \dots, v_j, \dots, v_n) + \mathcal M_0]
-        + [a (v_1, \dots, v'_j, \dots, v_n) + \mathcal M_0]
-        \\
-         & = v_1 \otimes \dots \otimes v_j \otimes \dots \otimes v_n
-        + a(v_1 \otimes \dots \otimes v'_j \otimes \dots \otimes v_n)
-        \\
-         & = \otimes(v_1, \dots, v_j, \dots, v_n) + a \otimes(v_1, \dots, v'_j, \dots, v_n).
+            &= v_1 \otimes \dots \otimes (v_j + a v'_j) \otimes \dots \otimes v_n \\
+            &= (v_1, \dots, v_j + a v'_j, \dots, v_n) + \mathcal M_0 \\
+            &= [(v_1, \dots, v_j, \dots, v_n) + \mathcal M_0]
+               + [a (v_1, \dots, v'_j, \dots, v_n) + \mathcal M_0] \\
+            &= v_1 \otimes \dots \otimes v_j \otimes \dots \otimes v_n
+               + a(v_1 \otimes \dots \otimes v'_j \otimes \dots \otimes v_n) \\
+            &= \otimes(v_1, \dots, v_j, \dots, v_n) 
+               + a \otimes(v_1, \dots, v'_j, \dots, v_n).
     \end{align*}
     Where we used the fact that
     \[
-        (v_1, \dots, v_j + a v'_j, \dots, v_n) - (v_1, \dots, v_j, \dots, v_n)
-        - a (v_1, \dots, v_j', \dots, v_n) = 0 \in \mathcal M / \mathcal M_{0}
+        (v_1, \dots, v_j + a v'_j, \dots, v_n)
+            = (v_1, \dots, v_j, \dots, v_n) + a (v_1, \dots, v_j', \dots, v_n)
+        \in \mathcal M / \mathcal M_{0}
     \]
 \end{proof}
 
@@ -645,6 +647,13 @@ where the last is a basis for \(V\), we have \(\Id_V(v_j) = \sum_{i=1}^n
         \item (Associative) \((f \otimes g) \otimes h = f \otimes (g \otimes h)\).
     \end{itemize}
 \end{definition}
+
+\begin{lemma}\label{lem:iso-tensor-alg-multilinear-maps}
+    Let \(V\) be a \(k\)-vector space. There exists a natural isomorphism
+    \[
+        T_{p + 1}^q(V) \iso \{\text{multilinear maps } (V^*)^p \times V^q \to V\}.
+    \]
+\end{lemma}
 
 \begin{definition}[Tensor algebra]\label{def: tensor algebra vs}
     We define the tensor algebra of the \(k\)-vector space \(V\) to be the
