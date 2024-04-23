@@ -32,8 +32,6 @@
 % Font
 \usepackage[no-math]{newpxtext}
 \usepackage{newpxmath}
-% Set arrow tip to that of newpxmath
-\tikzset{>=Straight Barb, commutative diagrams/arrow style=tikz}
 
 % Utilities
 \usepackage{enumerate}
@@ -66,7 +64,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ** Environments **
 
-\theoremstyle{definition}
+\theoremstyle{definition} % Plain text font for all envs
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
@@ -80,11 +78,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ** symbols **
 
-\renewcommand{\qedsymbol}{\(\natural\)}
-\renewcommand{\leq}{\leqslant}
-\renewcommand{\geq}{\geqslant}
-\renewcommand{\setminus}{\smallsetminus}
-\renewcommand{\preceq}{\preccurlyeq}
+\renewcommand{\qedsymbol}{\(\natural\)}  % QED symbol at the end of proofs
+\renewcommand{\leq}{\leqslant}           % Less than or equal to
+\renewcommand{\geq}{\geqslant}           % Greater than or equal to
+\renewcommand{\setminus}{\smallsetminus} % Negation operation for sets
+\renewcommand{\preceq}{\preccurlyeq}     % Partial order 'less than or equal to'
 
 % ':' for maps and '\colon' for relations on collections
 \DeclareMathSymbol{:}{\mathpunct}{operators}{"3A}
@@ -95,64 +93,49 @@
 \newcommand{\disj}{\amalg}     % Disjoint union
 \newcommand{\bigdisj}{\coprod} % Indexed disjoint union
 
-\DeclareMathOperator{\Log}{Log}
-\newcommand{\img}{\text{i}}
+% Complex stuff
+\newcommand{\img}{\text{i}}     % Imaginary unit
+\newcommand{\cconj}{\overline}  % Complex conjugate
+\DeclareMathOperator{\Log}{Log} % Complex logarithm
+\DeclareMathOperator{\Real}{Re} % Real part
+\DeclareMathOperator{\Img}{Img} % Imaginary part
 
-% Constant map
-\DeclareMathOperator{\const}{cons}
-
-% Multiplication map
-\DeclareMathOperator{\mul}{mul}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ** arrows **
-
-% Alias for Rightarrow
-\newcommand{\To}{\Rightarrow}
-
-% Monomorphism arrow
-\newcommand{\mono}{\rightarrowtail}
-
-% Epimorphism arrow
-\newcommand{\epi}{\twoheadrightarrow}
-
-% Unique morphism
-\newcommand{\unique}{\to}%{\dashrightarrow}
-\newcommand{\xdashrightarrow}[2][]{\ext@arrow 0359\rightarrowfill@@{#1}{#2}}
-
-% Isomorphism symbol
-\newcommand{\iso}{\simeq}
-
-\newcommand{\arrowiso}{\iso}
-% Isomorphism arrow
-\newcommand{\isoto}{\xrightarrow{\raisebox{-.6ex}[0ex][0ex]{\(\arrowiso\)}}}
-
-% How isomorphisms are depicted in diagrams: either \sim or \simeq
-\newcommand{\dis}{\iso}
-
-\newcommand{\isounique}{%
-    \xdashrightarrow{\raisebox{-.6ex}[0ex][0ex]{\(\arrowiso\)}}
-}%
-
-% Natural transformation arrow
-\newcommand{\nat}{\Rightarrow}
-
-% Natural isomorphism
-\newcommand{\isonat}{\xRightarrow{\raisebox{-.6ex}[0ex][0ex]{\(\arrowiso\)}}}
-
-% Embedding arrow
-\newcommand{\emb}{\hookrightarrow}
-
-% Parallel arrows
-\newcommand{\para}{\rightrightarrows}
-
-% Adjoint arrows
-\newcommand{\adj}{\rightleftarrows}
-\newcommand{\Adj}{\dashv}
+% Common maps throughout
+\DeclareMathOperator{\const}{cons} % Constant map
+\DeclareMathOperator{\mul}{mul}    % Multiplication map
 
 % Implication
 \renewcommand{\implies}{\Rightarrow}
 \renewcommand{\impliedby}{\Leftarrow}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ** Category-theoretical utilities **
+
+% Set arrow tip to that of newpxmath
+\tikzset{>=Straight Barb, commutative diagrams/arrow style=tikz}
+
+% Isomorphism symbol, i.e. \(C \iso D\)
+\newcommand{\iso}{\simeq}
+
+% Arrow holding a symbol above it
+\newcommand{\xdashrightarrow}[2][]{\ext@arrow 0359\rightarrowfill@@{#1}{#2}}
+
+\newcommand{\To}{\Rightarrow}         % Alias for Rightarrow
+\newcommand{\mono}{\rightarrowtail}   % Monomorphism
+\newcommand{\epi}{\twoheadrightarrow} % Epimorphism
+\newcommand{\unique}{\to}             % Unique morphism
+\newcommand{\arrowiso}{\iso}          % Isomorphism
+\newcommand{\dis}{\iso}               % Isomorphism in tikzcd diagrams
+\newcommand{\nat}{\Rightarrow}        % Natural transformation
+\newcommand{\emb}{\hookrightarrow}    % Embedding
+\newcommand{\adj}{\rightleftarrows}   % Adjunction pair i.e. \(F: C \adj D :G\)
+\newcommand{\Adj}{\dashv}             % Adjunction pair i.e. \(F \Adj G\)
+\newcommand{\para}{\rightrightarrows} % Parallel arrows
+
+% Isomorphism arrows
+\newcommand{\isoto}{\xrightarrow{\raisebox{-.6ex}[0ex][0ex]{\(\arrowiso\)}}}         % Isomorphism arrow
+\newcommand{\isounique}{\xdashrightarrow{\raisebox{-.6ex}[0ex][0ex]{\(\arrowiso\)}}} % Unique isomorphism arrow
+\newcommand{\isonat}{\xRightarrow{\raisebox{-.6ex}[0ex][0ex]{\(\arrowiso\)}}}        % Natural (functorial) isomorphism
 
 % Limits
 \DeclareMathOperator{\Lim}{lim}     % Limit
@@ -163,15 +146,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ** Common collections **
 
-\newcommand{\Z}{\mathbf{Z}}
-\newcommand{\N}{\mathbf{N}}
-\newcommand{\Q}{\mathbf{Q}}
-\newcommand{\CC}{\mathbf{C}}
-\newcommand{\R}{\mathbf{R}}
+\newcommand{\Z}{\mathbf{Z}}  % Integers
+\newcommand{\N}{\mathbf{N}}  % Naturals (with 0, obviously)
+\newcommand{\Q}{\mathbf{Q}}  % Rationals
+\newcommand{\CC}{\mathbf{C}} % Complex
+\newcommand{\R}{\mathbf{R}}  % Real
+
 \newcommand{\FF}{\mathbf{F}}
 
-\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\emptyset}{\varnothing} % Empty set
 
+% Distinct spaces that don't appear often in the notes (yet?)
 \newcommand{\Uhs}{\mathbf{H}}  % Upper half space
 \newcommand{\Proj}{\mathbf{P}} % Projective space
 
@@ -185,50 +170,6 @@
 
 % Opposite category
 \newcommand{\op}{\mathrm{op}}
-
-% Common categories
-\newcommand{\Set}{{\catfont{Set}}}          % Sets
-\newcommand{\FinSet}{{\catfont{FinSet}}}    % Finite sets
-\newcommand{\pSet}{{\catfont{pSet}}}        % Pointed sets
-\newcommand{\tOrd}{{\catfont{tOrd}}}        % Totally ordered sets
-
-\newcommand{\Vect}{{\catfont{Vect}}}        % Vector spaces
-\newcommand{\FinVect}{{\catfont{FinVect}}}  % Finite vector spaces
-
-\newcommand{\TVect}{{\catfont{TVect}}}      % Topological vector spaces
-\newcommand{\Ban}{{\catfont{Ban}}}          % Banach spaces
-
-\newcommand{\Grp}{{\catfont{Grp}}}          % Groups
-\newcommand{\Ab}{{\catfont{Ab}}}            % Abelian groups
-\newcommand{\GSet}[1]{{{#1}\text{-}\Set}}   % G-sets
-\newcommand{\Grpd}{{\catfont{Grpd}}}        % Groupoids
-
-\newcommand{\Mon}{{\catfont{Mon}}}          % Monoidal category
-\newcommand{\coMon}{{\catfont{coMon}}}      % coMonoidal category
-\newcommand{\rActMon}{{\catfont{rActMon}}}  % right action category
-\newcommand{\lActMon}{{\catfont{lActMon}}}  % left action category
-\newcommand{\BrMonCat}{{\catfont{BrMonCat}}} % Cat of braided monoidal cats
-
-\newcommand{\Graph}{{\catfont{Graph}}}      % Graphs
-\newcommand{\SimpGraph}{{\catfont{sGraph}}} % Simple graphs
-\newcommand{\ProfCol}{{\catfont{Prof}(\Col)}}   % C-profile category
-
-
-\newcommand{\Rng}{{\catfont{Ring}}}             % Rings
-\newcommand{\cRng}{{\catfont{CRing}}}           % Commutative rings
-\newcommand{\rMod}[1]{{\texttt{Mod}_{#1}}}      % Right modules
-\newcommand{\lMod}[1]{{{}_{#1}\catfont{Mod}}}   % Left modules
-\newcommand{\Mod}[1]{{#1\text{-}\catfont{Mod}}} % Modules over comm. ring
-\newcommand{\Alg}[1]{{#1\text{-}\catfont{Alg}}} % Algebras
-\newcommand{\cAlg}[1]{{#1\text{-}\catfont{CAlg}}} % Commutative algebras
-
-\newcommand{\Cat}{{\catfont{Cat}}}          % Small categories
-\newcommand{\CAT}{{\catfont{CAT}}}          % Big categories
-\newcommand{\UCat}{{\mathcal{U}\text{-}\catfont{Cat}}} % U-Categories
-
-\newcommand{\Psh}[1]{{\catfont{Psh}({#1})}}   % Category of presheaves
-\newcommand{\comma}{\downarrow} % Comma category separator
-\DeclareMathOperator{\El}{El}              % Category of elements
 
 % Operators
 \DeclareMathOperator{\Hom}{Mor}   % Morphisms
@@ -248,34 +189,78 @@
 
 % Yoneda embedding
 \font\maljapanese=dmjhira at 2ex
-\newcommand{\yo}{\maljapanese \char"48}%{\text{\usefont{U}{min}{m}{n}\symbol{'210}}}
-% \DeclareFontFamily{U}{min}{}
-% \DeclareFontShape{U}{min}{m}{n}{<-> udmj30}{}
+\newcommand{\yo}{\maljapanese \char"48}
+
+% %%%%%%%%%%%%%%%%%
+% Common categories
+% %%%%%%%%%%%%%%%%%
+
+\newcommand{\Set}{{\catfont{Set}}}                     % Sets
+\newcommand{\FinSet}{{\catfont{FinSet}}}               % Finite sets
+\newcommand{\pSet}{{\catfont{pSet}}}                   % Pointed sets
+\newcommand{\tOrd}{{\catfont{tOrd}}}                   % Totally ordered sets
+\newcommand{\Vect}{{\catfont{Vect}}}                   % Vector spaces
+\newcommand{\FinVect}{{\catfont{FinVect}}}             % Finite vector spaces
+\newcommand{\TVect}{{\catfont{TVect}}}                 % Topological vector spaces
+\newcommand{\Ban}{{\catfont{Ban}}}                     % Banach spaces
+\newcommand{\Grp}{{\catfont{Grp}}}                     % Groups
+\newcommand{\Ab}{{\catfont{Ab}}}                       % Abelian groups
+\newcommand{\GSet}[1]{{{#1}\text{-}\Set}}              % G-sets
+\newcommand{\Grpd}{{\catfont{Grpd}}}                   % Groupoids
+\newcommand{\Mon}{{\catfont{Mon}}}                     % Monoidal category
+\newcommand{\coMon}{{\catfont{coMon}}}                 % coMonoidal category
+\newcommand{\rActMon}{{\catfont{rActMon}}}             % right action category
+\newcommand{\lActMon}{{\catfont{lActMon}}}             % left action category
+\newcommand{\BrMonCat}{{\catfont{BrMonCat}}}           % Cat of braided monoidal cats
+\newcommand{\Graph}{{\catfont{Graph}}}                 % Graphs
+\newcommand{\SimpGraph}{{\catfont{sGraph}}}            % Simple graphs
+\newcommand{\ProfCol}{{\catfont{Prof}(\Col)}}          % C-profile category
+\newcommand{\Rng}{{\catfont{Ring}}}                    % Rings
+\newcommand{\cRng}{{\catfont{CRing}}}                  % Commutative rings
+\newcommand{\rMod}[1]{{\texttt{Mod}_{#1}}}             % Right modules
+\newcommand{\lMod}[1]{{{}_{#1}\catfont{Mod}}}          % Left modules
+\newcommand{\Mod}[1]{{#1\text{-}\catfont{Mod}}}        % Modules over comm. ring
+\newcommand{\Alg}[1]{{#1\text{-}\catfont{Alg}}}        % Algebras
+\newcommand{\cAlg}[1]{{#1\text{-}\catfont{CAlg}}}      % Commutative algebras
+\newcommand{\Cat}{{\catfont{Cat}}}                     % Small categories
+\newcommand{\CAT}{{\catfont{CAT}}}                     % Big categories
+\newcommand{\UCat}{{\mathcal{U}\text{-}\catfont{Cat}}} % U-Categories
+\newcommand{\Psh}[1]{{\catfont{Psh}({#1})}}            % Category of presheaves
+\newcommand{\comma}{\downarrow}                        % Comma category separator
+\DeclareMathOperator{\El}{El}                          % Category of elements
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ** algebra **
-\DeclareMathOperator{\rank}{rank}
-\DeclareMathOperator{\coker}{coker}
-\DeclareMathOperator{\codim}{codim}
-\DeclareMathOperator{\Tr}{tr}   % Trace
-\DeclareMathOperator{\Sym}{Sym} % Symmetric space
-\DeclareMathOperator{\Alt}{Alt} % Alternating space
-\DeclareMathOperator{\Ann}{Ann} % Annihilator
-\DeclareMathOperator{\Char}{char}
-\DeclareMathOperator{\Span}{span}
-\DeclareMathOperator{\Inn}{Inn}     % Inner automorphisms
-\DeclareMathOperator{\Spec}{Spec}   % Prime spectrum
-\DeclareMathOperator{\Specm}{Spec_m} % Maximal spectrum
-\newcommand{\lie}[1]{\mathfrak{#1}} % Font for Lie structures
-\DeclareMathOperator{\Rees}{Rees}   % Rees algebra
-\DeclareMathOperator{\Frac}{Frac}   % Field of fractions
 
-\DeclareMathOperator{\torsion}{\texttt{tor}}   % Torsion
+% Fonts
+\newcommand{\lie}[1]{\mathfrak{#1}}   % Lie structures
+\newcommand{\ideal}[1]{\mathfrak{#1}} % Ring ideal
 
-\DeclareMathOperator{\eval}{eval}
-\DeclareMathOperator{\sign}{sign}
+% Operators
+\DeclareMathOperator{\rank}{rank}            % Rank
+\DeclareMathOperator{\coker}{coker}          % Cokernel
+\DeclareMathOperator{\codim}{codim}          % Codimension
+\DeclareMathOperator{\Tr}{tr}                % Trace
+\DeclareMathOperator{\Sym}{Sym}              % Symmetric space
+\DeclareMathOperator{\Alt}{Alt}              % Alternating space
+\DeclareMathOperator{\Ann}{Ann}              % Annihilator
+\DeclareMathOperator{\Char}{char}            % Characteristic of a ring
+\DeclareMathOperator{\Span}{span}            % Linear span
+\DeclareMathOperator{\Inn}{Inn}              % Inner automorphisms
+\DeclareMathOperator{\Spec}{Spec}            % Prime spectrum
+\DeclareMathOperator{\Specm}{Spec_m}         % Maximal spectrum
+\DeclareMathOperator{\Rees}{Rees}            % Rees algebra
+\DeclareMathOperator{\Frac}{Frac}            % Field of fractions
+\DeclareMathOperator{\torsion}{\texttt{tor}} % Torsion
+\DeclareMathOperator{\Centre}{Z}             % Ring centre
+\DeclareMathOperator{\eval}{eval}            % Evaluation
+\DeclareMathOperator{\sign}{sign}            % Sign of value
+\DeclareMathOperator{\Orb}{Orb}              % Group orbit
+\DeclareMathOperator{\Stab}{Stab}            % Group stabilizer
+\newcommand{\laction}{\circlearrowright}     % Left group action
+\newcommand{\raction}{\circlearrowleft}      % Right group action
 
-% Matrices
+% Special linear spaces
 \DeclareMathOperator{\Mat}{Mat}
 \DeclareMathOperator{\GL}{GL}
 \DeclareMathOperator{\SL}{SL}
@@ -285,162 +270,146 @@
 \DeclareMathOperator{\Unit}{U}
 \DeclareMathOperator{\Orth}{O}
 
-% Matrix operators
-\DeclareMathOperator{\Transp}{\top}
-
-% Symbol for the group of units --- for instance, the group of units of a ring
-% \(R\) will be denoted by \(R^{\unit}\).
-\newcommand{\unit}{\times}
-
-% Orbit and stabilizer
-\DeclareMathOperator{\Orb}{Orb}
-\DeclareMathOperator{\Stab}{Stab}
-
-% Left and right group actions
-\newcommand{\laction}{\circlearrowright}
-\newcommand{\raction}{\circlearrowleft}
-
-% Ring ideals font
-\newcommand{\ideal}[1]{\mathfrak{#1}}
-
-\DeclareMathOperator{\Centre}{Z}
+% Postfix symbols
+\DeclareMathOperator{\Transp}{\top}  % Matrix transposition, i.e. \(M^{\Transp}\)
+\newcommand{\unit}{\times}           % Group of units, i.e. \(R^{\unit}\)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ** Topology **
 
-\let\Top\relax
-\newcommand{\Top}{{\catfont{Top}}}                       % Topological spaces
+% Distinct structures
+\newcommand{\splx}{\Delta}                  % Standard simplex
+\newcommand{\splxtop}{\Delta_{\text{top}}}  % Standard topological simplex
 
-\newcommand{\wHTop}{{\catfont{wH}\text{-}\catfont{Top}}} % Weak Hausdorff
-\newcommand{\kTop}{{k\text{-}\catfont{Top}}}             % k-spaces
-\newcommand{\cgTop}{{\catfont{cgTop}}} % Compactly generated
-
-\newcommand{\pTop}{{\catfont{Top}^{*}}}   % Pointed top spaces
-\newcommand{\bpTop}{{\catfont{Top}^{*/}}} % Base point top spaces
-
-\newcommand{\Ho}[1]{{\catfont{Ho}(#1)}}            % Homotopy category
-\newcommand{\HoTop}{{\catfont{Ho}(\catfont{Top})}} % Classical Homotopy cat
-
-\newcommand{\Splx}{{\mathbf{\Delta}}}           % Simplex category
-\newcommand{\sSet}{{\catfont{sSet}}}            % Simplicial sets
-\newcommand{\Simp}[1]{{\catfont{Simp}(#1)}}     % Simplicial category
-\newcommand{\CoSimp}[1]{{\catfont{CoSimp}(#1)}} % Cosimplicial category
-
-\newcommand{\splx}{\Delta}
-\newcommand{\splxtop}{\Delta_{\text{top}}}
-
-\DeclareMathOperator{\Sing}{Sing} % Singular complex functor
-\DeclareMathOperator{\Nondeg}{nd} % Non-degenerate simplices
-\newcommand{\disc}{\text{disc}}   % discrete
-\DeclareMathOperator{\face}{\partial} % Face map and boundary operator
-\DeclareMathOperator{\Cycle}{Z} % Cycles in singular chains
-\DeclareMathOperator{\Bdry}{B} % Boundaries in singular chains
-\DeclareMathOperator{\Hmlg}{H} % Homology
-\DeclareMathOperator{\rHmlg}{\widetilde{H}} % Reduced homology
-
-\DeclareMathOperator{\Sk}{sk} % Skeleton
-\DeclareMathOperator{\Cell}{Cell} % Collection of cells
-\DeclareMathOperator{\Sub}{Sub} % Collection of substructures of an object
-
-% attaching spaces
-\newcommand{\att}{\amalg}     % Disjoint union
-\newcommand{\bigatt}{\coprod} % Indexed disjoint union
-
-% Homotopy
-\newcommand{\simht}{\sim_{\text{h}}}              % Homotopy between maps
-\newcommand{\simhtrel}[1]{\sim_{\text{rel }{#1}}} % Relative htpy
-\newcommand{\isoht}{\iso_{\text{h}}}              % Homotopy equivalence
-\newcommand{\isotoht}{\isoto_{\text{h}}}          % Homotopy equivalence map
-\newcommand{\htpy}{\Rightarrow}                   % Htpy arrow
+% Homotopy equivalence relations
+\newcommand{\simht}{\sim_{\text{h}}}                    % Homotopy between maps
+\newcommand{\simhtrel}[1]{\sim_{\text{rel }{#1}}}       % Relative htpy
+\newcommand{\isoht}{\iso_{\text{h}}}                    % Homotopy equivalence
+\newcommand{\isotoht}{\isoto_{\text{h}}}                % Homotopy equivalence map
+\newcommand{\htpy}{\Rightarrow}                         % Htpy arrow
 \newcommand{\htpyrel}[1]{\Rightarrow_{\text{rel }{#1}}} % Relative htpy arrow
 
+% %%%%%%%%%%
+% Categories
+% %%%%%%%%%%
 
-% Functors on topological spaces
-\DeclareMathOperator{\Disc}{Disc}       % Discrete topology: Set -> Top
-\DeclareMathOperator{\Cone}{Cone}       % Cone
-\DeclareMathOperator{\Cyl}{Cyl}         % Cylinder
-\DeclareMathOperator{\Susp}{S}          % Suspension
-\DeclareMathOperator{\rSusp}{\Sigma}    % Reduced suspension
-\DeclareMathOperator{\Path}{Path}       % Path object
-\DeclareMathOperator{\Loop}{\Omega}       % Loop space
-\DeclareMathOperator{\Eval}{eval}       % Evaluation map
-\DeclareMathOperator{\curry}{curry}     % Currying a map
-\DeclareMathOperator{\uncurry}{uncurry} % Currying a map
-\DeclareMathOperator{\co}{co}           % Compact open co(K, U)
+\let\Top\relax
+\newcommand{\Top}{{\catfont{Top}}}                       % Topological spaces
+\newcommand{\wHTop}{{\catfont{wH}\text{-}\catfont{Top}}} % Weak Hausdorff
+\newcommand{\kTop}{{k\text{-}\catfont{Top}}}             % k-spaces
+\newcommand{\cgTop}{{\catfont{cgTop}}}                   % Compactly generated
+\newcommand{\pTop}{{\catfont{Top}^{*}}}                  % Pointed top spaces
+\newcommand{\bpTop}{{\catfont{Top}^{*/}}}                % Base point top spaces
+\newcommand{\Ho}[1]{{\catfont{Ho}(#1)}}                  % Homotopy category
+\newcommand{\HoTop}{{\catfont{Ho}(\catfont{Top})}}       % Classical Homotopy cat
+\newcommand{\Splx}{{\mathbf{\Delta}}}                    % Simplex category
+\newcommand{\sSet}{{\catfont{sSet}}}                     % Simplicial sets
+\newcommand{\Simp}[1]{{\catfont{Simp}(#1)}}              % Simplicial category
+\newcommand{\CoSimp}[1]{{\catfont{CoSimp}(#1)}}          % Cosimplicial category
 
-\newcommand{\lift}{\widehat} % Lifting of path and stuff
+% %%%%%%%%%
+% Operators
+% %%%%%%%%%
+
+% Function-like
+\DeclareMathOperator{\Sing}{Sing}           % Singular complex functor
+\DeclareMathOperator{\Nondeg}{nd}           % Non-degenerate simplices
+\newcommand{\disc}{\text{disc}}             % discrete
+\DeclareMathOperator{\face}{\partial}       % Face map and boundary operator
+\DeclareMathOperator{\Cycle}{Z}             % Cycles in singular chains
+\DeclareMathOperator{\Bdry}{B}              % Boundaries in singular chains
+\DeclareMathOperator{\Hmlg}{H}              % Homology
+\DeclareMathOperator{\rHmlg}{\widetilde{H}} % Reduced homology
+\DeclareMathOperator{\Sk}{sk}               % Skeleton
+\DeclareMathOperator{\Cell}{Cell}           % Collection of cells
+\DeclareMathOperator{\Sub}{Sub}             % Collection of substructures of an object
 
 % Set operators
-\DeclareMathOperator{\Cl}{Cl}       % Closure
-\DeclareMathOperator{\Bd}{\partial} % Boundary
-\DeclareMathOperator{\Int}{Int}     % Interior
-\DeclareMathOperator{\Ext}{Ext}     % Exterior
-\newcommand{\Compl}[1]{{#1}^{\text{c}}} % Complement
+\DeclareMathOperator{\Cl}{Cl}               % Closure
+\DeclareMathOperator{\Bd}{\partial}         % Boundary
+\DeclareMathOperator{\Int}{Int}             % Interior
+\DeclareMathOperator{\Ext}{Ext}             % Exterior
+\newcommand{\Compl}[1]{{#1}^{\text{c}}}     % Complement
+
+% Prefix operators
+\newcommand{\lift}{\widehat}                % Lifting of path and stuff
+
+% Operators for attaching spaces
+\newcommand{\att}{\amalg}                   % Disjoint union
+\newcommand{\bigatt}{\coprod}               % Indexed disjoint union
+
+% Functors on topological spaces
+\DeclareMathOperator{\Disc}{Disc}           % Discrete topology: Set -> Top
+\DeclareMathOperator{\Cone}{Cone}           % Cone
+\DeclareMathOperator{\Cyl}{Cyl}             % Cylinder
+\DeclareMathOperator{\Susp}{S}              % Suspension
+\DeclareMathOperator{\rSusp}{\Sigma}        % Reduced suspension
+\DeclareMathOperator{\Path}{Path}           % Path object
+\DeclareMathOperator{\Loop}{\Omega}         % Loop space
+\DeclareMathOperator{\Eval}{eval}           % Evaluation map
+\DeclareMathOperator{\curry}{curry}         % Currying a map
+\DeclareMathOperator{\uncurry}{uncurry}     % Currying a map
+\DeclareMathOperator{\co}{co}               % Compact open co(K, U)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ** Differentiable structures **
 
-\newcommand{\Bun}{{\catfont{Bun}}} % Bundle category
+% Categories
+\newcommand{\Bun}{{\catfont{Bun}}}       % Bundle category
 \newcommand{\VecBun}{{\catfont{VecBun}}} % Vector Bundle category
-\newcommand{\Man}{{\catfont{Man}}} % Manifolds
+\newcommand{\Man}{{\catfont{Man}}}       % Manifolds
 
-% Norm
-\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
-
-% Differential operators
-\newcommand{\diff}{\mathrm{d}}
+% Operators
 \newcommand{\Diff}{\mathrm{D}}
-\DeclareMathOperator{\grad}{grad} % Gradient
-\DeclareMathOperator{\Hess}{Hess} % Hessian
-\DeclareMathOperator{\Jac}{Jac}   % Jacobian
-\DeclareMathOperator{\Curl}{Curl} % Curl
-\DeclareMathOperator{\VecField}{\mathfrak{X}}
+\newcommand{\diff}{\mathrm{d}}                 % Differential
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert} % Norm of a vector
+\DeclareMathOperator{\grad}{grad}              % Gradient
+\DeclareMathOperator{\Hess}{Hess}              % Hessian
+\DeclareMathOperator{\Jac}{Jac}                % Jacobian
+\DeclareMathOperator{\Curl}{Curl}              % Curl
+\DeclareMathOperator{\VecField}{\mathfrak{X}}  % Space of all vector fields
+\newcommand{\trans}{\pitchfork}                % Transversality
+\DeclareMathOperator{\Vol}{vol}                % Set volume
+\DeclareMathOperator{\Mesh}{mesh}              % Set mesh
+\DeclareMathOperator{\Grass}{Grass}            % Grassmann variety
+\DeclareMathOperator{\Stie}{Stie}              % Stiefel variety
 
-\DeclareMathOperator{\Grass}{Grass} % Grassmann variety
-\DeclareMathOperator{\Stie}{Stie}      % Stiefel variety
-
-% Vector bundle
-\DeclareMathOperator{\zerosec}{Zero} % Zero section
-
-\newcommand{\trans}{\pitchfork} % Transversality
-
-% Set operators
-\DeclareMathOperator{\Vol}{vol}   % Volume
-\DeclareMathOperator{\Mesh}{mesh} % Mesh
+% Distinct structures
+\DeclareMathOperator{\zerosec}{Zero} % Vector bundle zero section
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ** Graphs **
 
-% Colouring
-\newcommand{\Col}{\mathfrak{C}}
-\newcommand{\prof}[1]{\underline{#1}}
+% Fonts
+\newcommand{\Col}{\mathfrak{C}}       % Wheel graph colors
+\newcommand{\prof}[1]{\underline{#1}} % Wheel graph prof
 
-\DeclareMathOperator{\Edge}{Edge}
-\DeclareMathOperator{\Vertex}{Vert}
-\DeclareMathOperator{\Circ}{circ}
-\DeclareMathOperator{\diam}{diam}
-\newcommand{\emptygraph}{\varnothing}
-\DeclarePairedDelimiterX{\size}[1]{\lVert}{\rVert}{#1}
+% Operators
+\DeclareMathOperator{\Edge}{Edge}                      % Set of edges
+\DeclareMathOperator{\Vertex}{Vert}                    % Set of vertices
+\DeclareMathOperator{\Circ}{circ}                      % Circumference
+\DeclareMathOperator{\diam}{diam}                      % Diameter
+\newcommand{\emptygraph}{\varnothing}                  % Empty graph
+\DeclarePairedDelimiterX{\size}[1]{\lVert}{\rVert}{#1} % Size of a graph
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ** machine learning **
 
-\DeclareMathOperator{\Prob}{\mathbb{P}} % Probability
+% Operators
+\DeclareMathOperator{\Prob}{\mathbb{P}}   % Probability
 \DeclareMathOperator{\Expect}{\mathbb{E}} % Expectation
-\newcommand{\Mean}{\mu} % Mean
-\DeclareMathOperator{\Cov}{Cov} % Covariance
-\DeclareMathOperator{\Var}{Var} % Variance
-\DeclareMathOperator{\Correlation}{Corr}
-\DeclareMathOperator{\stdev}{\sigma} % standard deviation
+\newcommand{\Mean}{\mu}                   % Mean
+\DeclareMathOperator{\Cov}{Cov}           % Covariance
+\DeclareMathOperator{\Var}{Var}           % Variance
+\DeclareMathOperator{\Correlation}{Corr}  % Correlation
+\DeclareMathOperator{\stdev}{\sigma}      % standard deviation
 \DeclareMathOperator{\ndist}{\mathcal{N}} % Normal distribution
-\DeclareMathOperator{\precision}{\beta}
-\DeclareMathOperator*{\argmax}{arg\,max}
-\DeclareMathOperator*{\argmin}{arg\,min}
-\DeclareMathOperator{\vcdim}{VCdim}
-\DeclareMathOperator{\Growth}{Growth} % Growth function
-\DeclareMathOperator{\Quantile}{Quant}
-
-
+\DeclareMathOperator{\precision}{\beta}   % Precision term
+\DeclareMathOperator*{\argmax}{arg\,max}  % Argmax
+\DeclareMathOperator*{\argmin}{arg\,min}  % Argmin
+\DeclareMathOperator{\vcdim}{VCdim}       % VC-dimension
+\DeclareMathOperator{\Growth}{Growth}     % Growth function
+\DeclareMathOperator{\Quantile}{Quant}    % Quantile
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ** MACROS END HERE **
