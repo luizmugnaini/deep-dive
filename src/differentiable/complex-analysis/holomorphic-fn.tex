@@ -1,0 +1,111 @@
+\begin{definition}[Holomorphic function]
+\label{def:holomorphic-function}
+    A function is said to be \emph{holomorphic} (also called \emph{analytic})
+    if it is a differentiable complex-valued function with a complex variable.
+\end{definition}
+
+Let \(f: \CC \to \CC\) be a holomorphic function such that \(f = u + \img v\) where 
+\(u, v: \CC \para \R\). Let's write the variables of \(f\) as \(z = x + \img y\) so that \(f\) may
+be seen as a function of two variables \(\R^2 \to \R^2\) given by \((x, y) \mapsto (u(x), v(y))\)
+from the bijection \(\CC \iso \R^2\). Since \(f\) is differentiable, then so are \(u\) and \(v\).
+Let's consider the definition of the derivative of \(f\) at a point \(z \in \CC\):
+\begin{equation}\label{eq:derivative-complex-function}
+    f'(z) = \lim_{\R \ni t \to 0} \frac{f(z + t) - f(z)}{t} 
+    = \lim_{\R \ni t \to 0} \frac{f(z + \img t) - f(z)}{\img t}.
+\end{equation}
+
+If we consider the real case where we approach from the purely real values we get
+\begin{align*}
+    \lim_{\R \ni t \to 0} \frac{f(z + t) - f(z)}{t}
+    &= \lim_{t \to 0} \frac{u(x + t, y) + \img v(x + t, y) - (u(x, y) + \img v(x, y))}{t} \\
+    &= \lim_{t \to 0} \frac{u(x + t, y) - u(x, y)}{t} 
+       + \img \lim_{t \to 0} \frac{v(x + t, y) - v(x, y)}{t} \\
+    &= \frac{\partial u}{\partial x} + \img \frac{\partial v}{\partial x}.
+\end{align*}
+On the other hand, if we restrict the limit by approaching from strictly imaginary values, we obtain:
+\begin{align*}
+    \lim_{\R \ni t \to 0} \frac{f(z + \img t) - f(z)}{\img t}
+    &= \lim_{t \to 0} \frac{u(x + \img t, y) + \img v(x + \img t, y) - (u(x, y) + \img v(x, y))}{\img t} \\
+    &= -\img \Big(
+        \lim_{t \to 0} \frac{u(x + t, y) - u(x, y)}{t} 
+       + \img \lim_{t \to 0} \frac{v(x + t, y) - v(x, y)}{t}
+    \Big) \\
+    &= -\img \frac{\partial u}{\partial x} + \frac{\partial v}{\partial x}.
+\end{align*}
+Since both limits are equal, as seen in \cref{eq:derivative-complex-function}, we obtain what we
+call the \emph{Cauchy-Riemann equation} for holomorphic functions:
+
+\begin{theorem}[Cauchy-Riemann]
+\label{thm:cauchy-riemann-complex-function}
+    Let \(D \subseteq \CC\) be an open set, and \(f = u + \img v: D \to \CC\)
+    be any function --- where \(u, v: \R^2 \para \R\) are differentiable functions. The function
+    \(f\) is \emph{holomorphic} if and only if the following two equations are satisfied:
+    \[
+        \frac{\partial u}{\partial x} = \frac{\partial v}{\partial y},
+        \quad\text{ and }\quad
+        \frac{\partial v}{\partial x} = -\frac{\partial u}{\partial y}.
+    \]
+\end{theorem}
+
+\begin{corollary}
+    The complex derivative of the holomorphic function \(f\) satisfies the following equalities:
+    \[ 
+        f'(z) = \frac{\partial u}{\partial x} + \img \frac{\partial v}{\partial x}
+              = \frac{\partial v}{\partial y} - \img \frac{\partial u}{\partial y}.
+    \]
+\end{corollary}
+
+\begin{corollary}
+    The squared absolute value of the first order derivative of \(f\) is equal to the Jacobian of
+    the \(\R\)-vector field \(F: D \to \R^2\) given by \((x, y) \mapsto (u(x, y), v(x, y))\):
+    \begin{align*}
+        |f'(z)|^2 &= \Jac F(z) \\
+                  &= \frac{\partial u}{\partial x} \frac{\partial v}{\partial y}   
+                    - \frac{\partial u}{\partial y} \frac{\partial v}{\partial x} \\
+                  &= \Big( \frac{\partial u}{\partial x} \Big)^2
+                    + \Big( \frac{\partial v}{\partial x} \Big)^2 \\
+                  &= \Big( \frac{\partial v}{\partial y} \Big)^2
+                    + \Big( \frac{\partial u}{\partial y} \Big)^2
+    \end{align*}
+\end{corollary}
+
+\section{Angles \& Holomorphic Maps}
+
+Let \(D \subseteq \CC\) be an open set and let \(\gamma = x + \img y: [a, b] \to D\) be a
+differentiable curve parametrized by the real valued interval \([a, b] \subseteq \R\).
+Consider a holomorphic function \(f: D \to \CC\).
+
+Let's take a closer look at the composition \(f \gamma: [a, b] \to \CC\). We can interpret
+\(\gamma'(t)\) as defining a direction at the tangent space \(T_{\gamma(t)}D\) whenever 
+\(\gamma'(t) \neq 0\). Consider \(z_0 \coloneq \gamma(t)\) and let \(\eta: [a, b] \to D\) be
+another differentiable curve such that \(\eta(h) = z_0\) for some \(h \in [a, b]\).
+
+\begin{theorem}[Holomorphic functions are conformal]
+\label{thm:holomorphic-fn-is-conformal}
+    If \(f'(z_0) \neq 0\) then the angle between the directional vectors defined by \(\gamma'(t)\)
+    and \(\eta'(h)\) at \(T_{z_0}D\) is the same as the angle between the directional vectors
+    defined by \((f \gamma)'(t)\) and \((f \eta)'(h)\).
+\end{theorem}
+
+\begin{proof}
+   Define an inner product \(\langle -, - \rangle: \CC \times \CC \to \R\) given by 
+   \(\langle z, w \rangle \coloneq \Real(z \cconj w)\). If \(z = a + \img b\) and
+   \(w = c + \img d\) then 
+   \[
+       \langle z, w \rangle = \Real(a c + b d + \img (b c - a d))
+                            = a c + b d
+                            = \langle (a, b), (c, d) \rangle_{\R^2}
+   \]
+   where \(\langle -, - \rangle_{\R^2}\) is the canonical inner product of the real vector space
+   \(\R^2\).
+
+   Let \(\theta(z, w)\) be the angle between \(z\) and \(w\), then
+   \[
+       \cos(\theta(z, w)) = \frac{\langle z, w \rangle}{|z| |w|}
+   \]
+   and since \(\sin(t) = \cos(t - \pi/2)\) it follows that
+   \[
+       \sin(\theta(z, w)) = \frac{\langle z, -\img w \rangle}{|z| |w|}.
+   \]
+   \todo[inline]{continue proof}
+\end{proof}
