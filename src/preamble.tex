@@ -70,10 +70,24 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{axiom}[theorem]{Axiom}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{remark}[theorem]{Remark}
-\newtheorem{example}[theorem]{Example}
-\newtheorem{notation}[theorem]{Notation}
+\newtheorem{definitionImpl}[theorem]{Definition}
+\newtheorem{remarkImpl}[theorem]{Remark}
+\newtheorem{exampleImpl}[theorem]{Example}
+\newtheorem{notationImpl}[theorem]{Notation}
+
+\newenvironment{definition}
+  {\begin{definitionImpl}}
+  {\par\noindent\hfill\(\clubsuit\)\end{definitionImpl}}
+\newenvironment{remark}
+  {\begin{remarkImpl}}
+  {\par\noindent\hfill\(\spadesuit\)\end{remarkImpl}}
+\newenvironment{example}
+  {\begin{exampleImpl}}
+  {\par\noindent\hfill\(\spadesuit\)\end{exampleImpl}}
+\newenvironment{notation}
+  {\begin{notationImpl}}
+  {\par\noindent\hfill\(\spadesuit\)\end{notationImpl}}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ** symbols **
