@@ -41,18 +41,15 @@ feedback.
 ## Requirements
 
 - A LaTeX distribution (I've tested with TeXLive and MiKTeX already and both work).
-- [Make](https://www.gnu.org/software/make/) if you're on Linux.
 - [LaTeXMk](https://archlinux.org/packages/extra/any/texlive-binextra/) for building.
-- [latexindent.pl](https://github.com/cmhughes/latexindent.pl/) for formatting.
+- [Lua](https://www.lua.org/) _optionally_ used for the build script.
 
 ## Usage
 
-```bash
-git clone https://github.com/luizmugnaini/deep-dive
-cd deep-dive
-make build  # single build
-make watch  # continuous build as files are changed
-make format # format the tex files with latexindent.pl
+The Lua build script can be used along with custom options, see the [script](./build.lua) for
+more details. You can also simply compile via
+```
+latexmk deep-dive.tex
 ```
 
 # Troubleshooting

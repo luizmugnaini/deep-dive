@@ -1,2 +1,0 @@
-@default_files = ('deep-dive.tex');
-$pdf_mode = 1;
