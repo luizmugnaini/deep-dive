@@ -1,4 +1,4 @@
-\chapter{Curves}
+\section{Arc-Length Parametrized Curves in \texorpdfstring{\(\R^3\)}{R3}}
 
 \begin{definition}\label{def:curve-r}
     Let \(\gamma: I \to \R^3\) be a differentiable curve parametrized by an interval \(I \subseteq \R\).
@@ -33,23 +33,25 @@
             where \(n: I \to \R^3\) is a function that assigns to each point the \emph{vector normal
             to the curve in the direction of change of the curvature}.
 
-            Notice that since \(\langle \gamma'(s), \gamma'(s) \rangle = 1\) for any \(s\), then by
-            differentiating this norm we get
+        \item Notice that since \(\langle \gamma'(s), \gamma'(s) \rangle = 1\) for any \(s\), then
+            by differentiating this norm we get
             \begin{align}\label{eq:curve-r-velocity-acceleration-orthogonal}
                 0 = \frac{\diff}{\diff s} \langle \gamma', \gamma' \rangle
                 = \langle \gamma'', \gamma' \rangle + \langle \gamma', \gamma'' \rangle
                 = 2 \langle \gamma'', \gamma' \rangle,
             \end{align}
-            hence \(\gamma''\) is orthogonal to \(\gamma'\) at every point of the curve.
-
-            The plane defined by the vectors \(\gamma'\) and \(\gamma''\) at a point \(s \in I\) is
-            called the \emph{oscullating plane} of \(\gamma\) at \(s\).
+            hence \(\gamma''\) is orthogonal to \(\gamma'\) at every point of the curve. The plane
+            defined by the vectors \(\gamma'\) and \(\gamma''\) at a point \(s \in I\) is called the
+            \emph{oscullating plane} of \(\gamma\) at \(s\).
 
         \item Define \(t \coloneq \gamma'\) to be the \emph{unitary tangent vector} to the curve
             \(\gamma\). By definition, we have \(t' = \kappa n\).
         
         \item Define \(b \coloneq t \wedge n\) to be the \emph{binormal vector} of \(\gamma\) ---
             being orthonormal to the oscullating planes of the curve. 
+
+        \item The plane defined by the vectors \(t\) and \(b\) is called the \emph{rectifier plane},
+            while the plane defined by \(v\) and \(b\) is called the \emph{normal plane}.
 
         \item Assume that \(\gamma''\) is a regular map, i.e. \(t'\) is regular. Since \(b\) is
             unitary, we can argue analogously to \cref{eq:curve-r-velocity-acceleration-orthogonal}
@@ -79,10 +81,32 @@
             \]
             which shows that \(\gamma\) is entirely contained within a plane orthogonal to \(b_0\).
 
-        \item If we compute the first derivative of \(n\), since \(n = b \wedge \gamma'\) we get
+            If we compute the first derivative of \(n\), since \(n = b \wedge t\) we get
             \[
-                n' = b' \wedge \gamma' + b \wedge \gamma'' = 
+                n' = b' \wedge t + b \wedge t'
+                = \tau (n \wedge t) + \kappa (b \wedge n)
+                = -\tau b - \kappa t.
             \]
-            \todo[inline]{Continue here}
+            This is the last of the triplet of equations that compose the so called
+            \emph{Frenet-Serret equations}:
+            \begin{align}
+                \label{eq:frenet-serret-diff-tangent}
+                t' &= \kappa n \\
+                \label{eq:frenet-serret-diff-normal}
+                n' &= -\kappa t - \tau b \\
+                \label{eq:frenet-serret-diff-binormal}
+                b' &= \tau n
+            \end{align}
     \end{enumerate}
 \end{definition}
+
+\begin{theorem}[Fundamental theorem for the theory of local curves]
+    \label{thm:fundamental-thm-theory-local-curves}
+    Let \(\kappa: I \to \R_{> 0}\) and \(\tau: I \to \R\) be differentiable functions. There exists
+    a regular arc-length parametrized curve \(\gamma: I \to \R^3\) such that \(\kappa\) is its
+    curvature and \(\tau\) is its torsion.
+
+    If \(\alpha\) is another regular curve satisfying these requirements, then there exists a \emph{rigid
+    motion} \(M: \R^3 \to \R^3\) taking \(v \mapsto \rho v + c\) --- where \(c \in \R^3\) is constant and
+    \(\rho\) is an orthogonal linear map --- such that \(M \alpha = \rho \alpha + c = \gamma\).
+\end{theorem}
