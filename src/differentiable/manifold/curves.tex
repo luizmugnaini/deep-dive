@@ -1,0 +1,88 @@
+\chapter{Curves}
+
+\begin{definition}\label{def:curve-r}
+    Let \(\gamma: I \to \R^3\) be a differentiable curve parametrized by an interval \(I \subseteq \R\).
+    Some elementary definitions follow:
+    \begin{enumerate}[(a)]\setlength\itemsep{0em}
+        \item A point \(t \in I\) such that \(\gamma'(t) \neq 0\) is said to be an \emph{regular}
+            point of \(\gamma\). A point that isn't regular is said to be \emph{singular}.
+
+        \item The arc-length of \(t_0 \leq t_1\), points of \(I\), is defined by the integral
+            \[
+                s(\gamma, t_0, t_1) = \int_{t_0}^{t_1} \norm{\gamma(t)} \diff t.
+            \]
+            Notice that if \(I = (a, b)\) and we fix \(a\) as the starting point of the arc-length
+            \(s\), then we get a function \(s(t) = \int_a^t \norm{\gamma(t)} \diff t\) that yields
+            the relation \(\diff s / \diff t = \norm{\gamma}\). If we impose that \(\norm{\gamma(t)}
+            = 1\) for all \(t \in I\), then we get \(s(t) = \int_a^t \diff t = t - a\). If we impose
+            that \(a = 0\), which is as simple as a translation, we get \(s(t) = t\) and in this
+            case we say that \(\gamma\) is an \emph{arc-length parametrized curve}.
+
+        \item If \(\gamma\) is arc-length parametrized, we define the \emph{curvature} at a point
+            \(s \in I\) to be the number 
+            \[
+                \kappa(s) \coloneq \norm{\gamma''(s)}.\
+            \] 
+            The curvature measures the ratio of variation of the angle between neighbouring tangent
+            vectors of the curve \(\gamma\).
+
+            If \(s \in I\) is such that \(\kappa(s) \neq 0\) then 
+            \[
+                \gamma''(s) = \kappa(s) n(s),
+            \]
+            where \(n: I \to \R^3\) is a function that assigns to each point the \emph{vector normal
+            to the curve in the direction of change of the curvature}.
+
+            Notice that since \(\langle \gamma'(s), \gamma'(s) \rangle = 1\) for any \(s\), then by
+            differentiating this norm we get
+            \begin{align}\label{eq:curve-r-velocity-acceleration-orthogonal}
+                0 = \frac{\diff}{\diff s} \langle \gamma', \gamma' \rangle
+                = \langle \gamma'', \gamma' \rangle + \langle \gamma', \gamma'' \rangle
+                = 2 \langle \gamma'', \gamma' \rangle,
+            \end{align}
+            hence \(\gamma''\) is orthogonal to \(\gamma'\) at every point of the curve.
+
+            The plane defined by the vectors \(\gamma'\) and \(\gamma''\) at a point \(s \in I\) is
+            called the \emph{oscullating plane} of \(\gamma\) at \(s\).
+
+        \item Define \(t \coloneq \gamma'\) to be the \emph{unitary tangent vector} to the curve
+            \(\gamma\). By definition, we have \(t' = \kappa n\).
+        
+        \item Define \(b \coloneq t \wedge n\) to be the \emph{binormal vector} of \(\gamma\) ---
+            being orthonormal to the oscullating planes of the curve. 
+
+        \item Assume that \(\gamma''\) is a regular map, i.e. \(t'\) is regular. Since \(b\) is
+            unitary, we can argue analogously to \cref{eq:curve-r-velocity-acceleration-orthogonal}
+            that \(b\) and \(b'\) are orthogonal. Furthermore the first derivative of \(b\) is given
+            by
+            \begin{align*}
+                b' = t' \wedge n + t \wedge n'
+                = (\kappa n) \wedge n + t \wedge n'
+                = t \wedge n',
+            \end{align*}
+            hence \(b\) is orthogonal to \(t\) as we've seen from the properties above.
+
+            This shows that \(b'\) is parallel to \(n\) and we may define a map \(\tau: I \to \R\)
+            such that
+            \[
+                b' = t \wedge n' = \tau n.
+            \]
+            The function \(\tau\) is said to be the \emph{torsion} of \(\gamma\).
+
+            If the image of \(\gamma\) can be embedded in \(\R^2\), the oscullating planes never
+            change angle with respect to their neighbours. That is, \(b' = 0\) and thus \(\tau = 0\).
+            Conversely, if \(\tau = 0\) \emph{and} \(\kappa \neq 0\), then \(b = b_0 \in \R^3\)
+            must be a constant vector. Taking the inner product between \(b\) and \(\gamma\) we
+            observe that its derivative vanishes at every point since
+            \[
+                \langle \gamma, b_0 \rangle' = \langle \gamma', b_0 \rangle = 0,
+            \]
+            which shows that \(\gamma\) is entirely contained within a plane orthogonal to \(b_0\).
+
+        \item If we compute the first derivative of \(n\), since \(n = b \wedge \gamma'\) we get
+            \[
+                n' = b' \wedge \gamma' + b \wedge \gamma'' = 
+            \]
+            \todo[inline]{Continue here}
+    \end{enumerate}
+\end{definition}
