@@ -62,12 +62,9 @@ end
 if opts.clean then
     os.remove(build_dir)
 end
-if opts.deepdive then
-    run_builder(config.deep_dive_main)
-end
-if opts.masters then
-    run_builder(config.masters_main)
-end
+
+run_builder(config.deep_dive_main)
+
 if not opts.quiet then
     print(string.format("\x1b[1;35mtime elapsed ::\x1b[0m %.5f seconds", os.clock() - start_time))
 end
